@@ -1,0 +1,3 @@
+{"id": "CORE_HYPO_001", "frecuencia_enarm": "media", "dificultad": "media", "letal_si_falla": false, "error_tipico": true, "tags": ["endocrino"], "v": "core_v1.2"}
+{"id": "CORE_HYPO_002", "frecuencia_enarm": "media", "dificultad": "baja", "letal_si_falla": false, "error_tipico": true, "tags": ["endocrino", "farmaco"], "v": "core_v1.2"}
+{"id": "CORE_HYPO_003", "frecuencia_enarm": "media", "dificultad": "alta", "letal_si_falla": false, "error_tipico": true, "tags": ["endocrino", "seguridad"], "v": "core_v1.2"}

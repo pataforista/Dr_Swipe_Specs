@@ -1,0 +1,8 @@
+{"id":"AW_ASTH_001","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["asma","urgencias","reconocimiento"],"v":"core_v2.3"}
+{"id":"AW_ASTH_002","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["asma","tratamiento","seguridad"],"v":"core_v2.3"}
+{"id":"AW_ASTH_003","frecuencia_enarm":"media","dificultad":"alta","letal_si_falla":true,"error_tipico":true,"tags":["asma","seguridad"],"v":"core_v2.3"}
+
+{"id":"AW_COPD_001","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["epoc","urgencias","tratamiento"],"v":"core_v2.3"}
+{"id":"AW_COPD_002","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["epoc","oxigeno","seguridad"],"v":"core_v2.3"}
+
+{"id":"AW_AIRWAY_001","frecuencia_enarm":"media","dificultad":"alta","letal_si_falla":true,"error_tipico":true,"tags":["via_aerea","ventilacion","urgencias"],"v":"core_v2.3"}

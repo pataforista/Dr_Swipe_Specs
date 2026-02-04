@@ -1,0 +1,6 @@
+{"id":"GI_NV_001","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":false,"error_tipico":true,"tags":["hda_no_variceal","ibp"],"v":"core_v2.6"}
+{"id":"GI_NV_002","frecuencia_enarm":"media","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["hda","choque","prioridad"],"v":"core_v2.6"}
+{"id":"GI_NV_003","frecuencia_enarm":"media","dificultad":"media","letal_si_falla":false,"error_tipico":true,"tags":["forrest","resangrado"],"v":"core_v2.6"}
+{"id":"GI_NV_004","frecuencia_enarm":"alta","dificultad":"alta","letal_si_falla":true,"error_tipico":true,"tags":["hdb","angiotac","urgencias"],"v":"core_v2.6"}
+{"id":"GI_NV_005","frecuencia_enarm":"media","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["hdb","colonoscopia"],"v":"core_v2.6"}
+{"id":"GI_NV_006","frecuencia_enarm":"media","dificultad":"alta","letal_si_falla":false,"error_tipico":true,"tags":["hdb","iatrogenia"],"v":"core_v2.6"}

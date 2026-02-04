@@ -1,0 +1,250 @@
+[
+  {
+    "id": "CORE_CHOLE_001",
+    "tema": "Cirugía",
+    "subtema": "Colecistitis",
+    "tipo_decision": "diagnostico",
+    "enunciado": "¿Qué sistema estandariza el diagnóstico y gravedad de la colecistitis aguda?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Tokyo Guidelines",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Leucocitosis aislada",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Criterio clínico sin clasificación de severidad",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "Tokyo Guidelines 2018.pdf"
+    ],
+    "version": "core_v1.1"
+  },
+  {
+    "id": "CORE_CHOLE_002",
+    "tema": "Cirugía",
+    "subtema": "Colecistitis",
+    "tipo_decision": "severidad",
+    "enunciado": "En colecistitis aguda, ¿qué utilidad tiene la clasificación de severidad (Tokyo Guidelines)?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Guía decisiones de manejo y urgencia (incluida necesidad de drenaje)",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Solo es descriptiva y no cambia conducta",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "Reemplaza la clínica y el ultrasonido",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      }
+    ],
+    "fuentes": [
+      "Tokyo Guidelines 2018 diagnostic criteria and severity grading ofacute cholecystitis.pdf"
+    ],
+    "version": "core_v1.2"
+  },
+  {
+    "id": "CORE_BILI_001",
+    "tema": "Cirugía general",
+    "subtema": "Colangitis aguda",
+    "tipo_decision": "diagnostico",
+    "enunciado": "Paciente con fiebre, dolor en hipocondrio derecho e ictericia. ¿Cuál es el diagnóstico sindrómico más probable?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Colangitis aguda",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Colecistitis aguda",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Hepatitis viral aguda",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "Tokyo Guidelines 2018 diagnostic criteria and severity grading of acute cholecystitis.pdf"
+    ],
+    "version": "core_v1.8"
+  },
+  {
+    "id": "CORE_BILI_002",
+    "tema": "Cirugía general",
+    "subtema": "Colangitis aguda",
+    "tipo_decision": "urgencia",
+    "enunciado": "Colangitis aguda con datos de choque séptico o deterioro neurológico. ¿Qué conducta es prioritaria?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Drenaje biliar urgente (CPRE o quirúrgico)",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Antibióticos y observación exclusiva",
+        "resultado": "error_letal",
+        "impacto": -6
+      },
+      {
+        "id": "C",
+        "texto": "Programar colecistectomía electiva",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "Tokyo Guidelines 2018 diagnostic criteria and severity grading of acute cholecystitis.pdf"
+    ],
+    "version": "core_v1.8"
+  },
+  {
+    "id": "CORE_BILI_003",
+    "tema": "Cirugía general",
+    "subtema": "Colangitis aguda",
+    "tipo_decision": "clasificacion",
+    "enunciado": "¿Qué conjunto de datos clínicos define la Pentada de Reynolds?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Tríada de Charcot + hipotensión y alteración del estado mental",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Dolor abdominal, vómito y fiebre",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Ictericia aislada con coluria",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "Tokyo Guidelines 2018 diagnostic criteria and severity grading of acute cholecystitis.pdf"
+    ],
+    "version": "core_v1.8"
+  },
+  {
+    "id": "CORE_BILI_004",
+    "tema": "Cirugía general",
+    "subtema": "Colecistitis aguda",
+    "tipo_decision": "diagnostico",
+    "enunciado": "Dolor en hipocondrio derecho, fiebre y signo de Murphy positivo sin ictericia. ¿Cuál es el diagnóstico más probable?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Colecistitis aguda",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Colangitis aguda",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Pancreatitis aguda",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "Tokyo Guidelines 2018 diagnostic criteria and severity grading of acute cholecystitis.pdf"
+    ],
+    "version": "core_v1.8"
+  },
+  {
+    "id": "CORE_BILI_005",
+    "tema": "Cirugía general",
+    "subtema": "Colecistitis aguda",
+    "tipo_decision": "manejo",
+    "enunciado": "Paciente con colecistitis aguda no complicada. ¿Cuál es el manejo inicial estándar?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Antibióticos y colecistectomía temprana",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Drenaje biliar urgente",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "Alta con analgésicos",
+        "resultado": "error_letal",
+        "impacto": -6
+      }
+    ],
+    "fuentes": [
+      "Tokyo Guidelines 2018 diagnostic criteria and severity grading of acute cholecystitis.pdf"
+    ],
+    "version": "core_v1.8"
+  },
+  {
+    "id": "CORE_BILI_006",
+    "tema": "Cirugía general",
+    "subtema": "Colangitis vs Colecistitis",
+    "tipo_decision": "seguridad",
+    "enunciado": "¿Cuál es el error más grave al confundir colangitis con colecistitis?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Retrasar drenaje biliar en colangitis",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Indicar antibióticos de amplio espectro",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Solicitar ultrasonido abdominal",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "Tokyo Guidelines 2018 diagnostic criteria and severity grading of acute cholecystitis.pdf"
+    ],
+    "version": "core_v1.8"
+  }
+]

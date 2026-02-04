@@ -1,0 +1,65 @@
+[
+  {
+    "id": "CORE_DKA_001",
+    "tema": "Endocrinología",
+    "subtema": "Crisis hiperglucémicas",
+    "tipo_decision": "manejo_inicial",
+    "enunciado": "Paciente con sospecha de DKA/EHH. ¿Qué intervención debe iniciarse primero?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Iniciar insulina IV inmediata",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "B",
+        "texto": "Iniciar líquidos IV",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "C",
+        "texto": "Administrar bicarbonato de rutina",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "Hyperglycemic Crises in Adults With Diabetes.pdf",
+      "Diabetic Ketoacidosis and Hyperosmolar Hyperglycemic State.pdf"
+    ],
+    "version": "core_v1.1"
+  },
+  {
+    "id": "CORE_DKA_002",
+    "tema": "Endocrinología",
+    "subtema": "Crisis hiperglucémicas",
+    "tipo_decision": "contraindicacion",
+    "enunciado": "En crisis hiperglucémica, ¿qué decisión aumenta riesgo inmediato si no se verifica antes?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Corregir potasio antes de iniciar insulina si está bajo",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Dar bolo de insulina sin revisar potasio",
+        "resultado": "error_letal",
+        "impacto": -6
+      },
+      {
+        "id": "C",
+        "texto": "Vigilar signos vitales seriados",
+        "resultado": "error_frecuente",
+        "impacto": -1
+      }
+    ],
+    "fuentes": [
+      "Hyperglycemic Crises in Adults With Diabetes.pdf"
+    ],
+    "version": "core_v1.1"
+  }
+]

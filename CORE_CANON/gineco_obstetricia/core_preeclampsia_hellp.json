@@ -1,0 +1,250 @@
+[
+  {
+    "id": "CORE_PREE_002",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Preeclampsia",
+    "tipo_decision": "diagnostico",
+    "enunciado": "¿Qué dato define preeclampsia con criterios de severidad independientemente de la presión arterial?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Daño a órgano blanco",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Edema periférico",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Ganancia ponderal",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "preeclampsia.pdf"
+    ],
+    "version": "core_v1.1"
+  },
+  {
+    "id": "CORE_PREE_003",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Preeclampsia",
+    "tipo_decision": "manejo_definitivo",
+    "enunciado": "Preeclampsia severa con feto viable. ¿Cuál es el tratamiento definitivo?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Interrupción del embarazo tras estabilización materna",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Antihipertensivos como manejo definitivo",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Reposo absoluto prolongado",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "preeclampsia.pdf"
+    ],
+    "version": "core_v1.1"
+  },
+  {
+    "id": "CORE_PREE_004",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Preeclampsia",
+    "tipo_decision": "diferencial",
+    "enunciado": "Embarazada con hipertensión, cefalea y alteraciones visuales. ¿Qué dato orienta a severidad y cambia manejo inmediato?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Síntomas neurológicos persistentes",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Edema periférico",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Aumento de peso aislado",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "preeclampsia.pdf"
+    ],
+    "version": "core_v1.4"
+  },
+  {
+    "id": "CORE_PREE_005",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Preeclampsia",
+    "tipo_decision": "prevencion",
+    "enunciado": "Preeclampsia con criterios de severidad. ¿Qué fármaco reduce el riesgo de eclampsia?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Sulfato de magnesio",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Benzodiacepinas profilácticas",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Antihipertensivos solos como profilaxis convulsiva",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "preeclampsia.pdf"
+    ],
+    "version": "core_v1.4"
+  },
+  {
+    "id": "CORE_PREE_006",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Preeclampsia",
+    "tipo_decision": "seguridad",
+    "enunciado": "Durante infusión de sulfato de magnesio, ¿qué dato obliga a suspender o ajustar por toxicidad?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Depresión respiratoria o abolición de reflejos osteotendinosos",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Leve náusea",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Hipertensión persistente",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "preeclampsia.pdf"
+    ],
+    "version": "core_v1.4"
+  },
+  {
+    "id": "CORE_PREE_007",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Preeclampsia",
+    "tipo_decision": "timing",
+    "enunciado": "Preeclampsia severa. ¿Qué principio guía el momento de la interrupción del embarazo?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Seguridad materna prioritaria tras estabilización",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Edad gestacional exclusivamente, aun con deterioro materno",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "Esperar resolución espontánea del cuadro",
+        "resultado": "error_letal",
+        "impacto": -6
+      }
+    ],
+    "fuentes": [
+      "preeclampsia.pdf"
+    ],
+    "version": "core_v1.4"
+  },
+  {
+    "id": "CORE_HELLP_001",
+    "tema": "Gineco-obstetricia",
+    "subtema": "HELLP",
+    "tipo_decision": "diagnostico",
+    "enunciado": "Embarazada con dolor en hipocondrio derecho, plaquetopenia y elevación de enzimas hepáticas. ¿Cuál es el diagnóstico probable?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Síndrome HELLP",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Colecistitis aguda",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Gastritis",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "preeclampsia.pdf"
+    ],
+    "version": "core_v1.4"
+  },
+  {
+    "id": "CORE_HELLP_002",
+    "tema": "Gineco-obstetricia",
+    "subtema": "HELLP",
+    "tipo_decision": "manejo",
+    "enunciado": "Síndrome HELLP confirmado. ¿Cuál es la conducta definitiva?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Interrupción del embarazo tras estabilización",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Manejo expectante prolongado",
+        "resultado": "error_letal",
+        "impacto": -6
+      },
+      {
+        "id": "C",
+        "texto": "Antihipertensivos únicamente",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "preeclampsia.pdf"
+    ],
+    "version": "core_v1.4"
+  }
+]

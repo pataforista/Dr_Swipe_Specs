@@ -1,0 +1,219 @@
+[
+  {
+    "id": "CORE_HTA_001",
+    "tema": "Cardiología",
+    "subtema": "Hipertensión",
+    "tipo_decision": "clasificacion",
+    "enunciado": "Ante cifras tensionales elevadas, ¿qué distinción cambia la conducta inmediata?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Urgencia vs emergencia hipertensiva (daño a órgano blanco)",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Solo el valor absoluto de la presión arterial",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Duración del diagnóstico de hipertensión",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "guias hipertension.pdf"
+    ],
+    "version": "core_v1.1"
+  },
+  {
+    "id": "CORE_HTA_002",
+    "tema": "Cardiología",
+    "subtema": "Hipertensión",
+    "tipo_decision": "manejo_inicial",
+    "enunciado": "Emergencia hipertensiva confirmada. ¿Qué principio guía el tratamiento inicial?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Descenso gradual y controlado de la presión arterial",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Normalizar la presión lo más rápido posible",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "No tratar hasta confirmar múltiples tomas",
+        "resultado": "error_letal",
+        "impacto": -6
+      }
+    ],
+    "fuentes": [
+      "Treatment of Hypertension.pdf"
+    ],
+    "version": "core_v1.1"
+  },
+  {
+    "id": "CORE_HTA_OB_001",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Hipertensión en embarazo",
+    "tipo_decision": "clasificacion",
+    "enunciado": "Embarazada con cifras tensionales elevadas antes de las 20 semanas. ¿Cuál es el diagnóstico más probable?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Hipertensión crónica",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Preeclampsia",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Hipertensión gestacional",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "guias hipertension.pdf"
+    ],
+    "version": "core_v1.6"
+  },
+  {
+    "id": "CORE_HTA_OB_002",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Hipertensión en embarazo",
+    "tipo_decision": "farmacologico",
+    "enunciado": "Hipertensión en embarazo que requiere tratamiento. ¿Cuál es un antihipertensivo de primera línea seguro?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Metildopa",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "IECA",
+        "resultado": "error_letal",
+        "impacto": -6
+      },
+      {
+        "id": "C",
+        "texto": "ARA II",
+        "resultado": "error_letal",
+        "impacto": -6
+      }
+    ],
+    "fuentes": [
+      "guias hipertension.pdf"
+    ],
+    "version": "core_v1.6"
+  },
+  {
+    "id": "CORE_HTA_OB_003",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Hipertensión en embarazo",
+    "tipo_decision": "seguridad",
+    "enunciado": "¿Qué clase de antihipertensivos está contraindicada durante todo el embarazo por teratogenicidad?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "IECA y ARA II",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Betabloqueadores selectivos",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Bloqueadores de canales de calcio",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "guias hipertension.pdf"
+    ],
+    "version": "core_v1.6"
+  },
+  {
+    "id": "CORE_HTA_OB_004",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Hipertensión en embarazo",
+    "tipo_decision": "urgencias",
+    "enunciado": "Embarazada con crisis hipertensiva y datos de daño a órgano blanco. ¿Cuál es el objetivo inicial del tratamiento?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Reducir TA de forma controlada para prevenir EVC materno",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Normalizar TA lo más rápido posible",
+        "resultado": "error_letal",
+        "impacto": -6
+      },
+      {
+        "id": "C",
+        "texto": "No tratar hasta terminar el embarazo",
+        "resultado": "error_letal",
+        "impacto": -6
+      }
+    ],
+    "fuentes": [
+      "guias hipertension.pdf"
+    ],
+    "version": "core_v1.6"
+  },
+  {
+    "id": "CORE_HTA_OB_005",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Hipertensión en embarazo",
+    "tipo_decision": "diferencial",
+    "enunciado": "Embarazada con hipertensión y proteinuria después de las 20 semanas. ¿Qué diagnóstico debe considerarse prioritariamente?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Preeclampsia",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Hipertensión crónica",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "HTA secundaria renal aislada",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "preeclampsia.pdf"
+    ],
+    "version": "core_v1.6"
+  }
+]

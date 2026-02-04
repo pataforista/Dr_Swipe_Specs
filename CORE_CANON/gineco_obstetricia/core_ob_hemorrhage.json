@@ -1,0 +1,32 @@
+[
+  {
+    "id": "CORE_OB_HEM_001",
+    "tema": "Embarazo ectópico",
+    "escenario": "Mujer en edad fértil con dolor abdominal súbito, síncope, TA baja y sangrado vaginal escaso.",
+    "pregunta": "¿Cuál es el primer estudio que nunca debe omitirse?",
+    "opciones": {
+      "A": "TAC abdominal",
+      "B": "Ultrasonido pélvico",
+      "C": "β-hCG",
+      "D": "Biometría hemática"
+    },
+    "respuesta_correcta": "C",
+    "justificacion": "Toda mujer en edad fértil con dolor abdominal es un embarazo hasta demostrar lo contrario. Omitir β-hCG retrasa el diagnóstico de ectópico roto.",
+    "letal_si_falla": true
+  },
+  {
+    "id": "CORE_OB_HEM_002",
+    "tema": "Embarazo ectópico roto",
+    "escenario": "Paciente con β-hCG positiva, inestabilidad hemodinámica y líquido libre en abdomen.",
+    "pregunta": "¿Cuál es la conducta correcta?",
+    "opciones": {
+      "A": "Metotrexato",
+      "B": "Observación y repetición de USG",
+      "C": "Laparotomía urgente",
+      "D": "Alta con vigilancia"
+    },
+    "respuesta_correcta": "C",
+    "justificacion": "El ectópico roto es una emergencia quirúrgica. El manejo médico está contraindicado en inestabilidad hemodinámica.",
+    "letal_si_falla": true
+  }
+]

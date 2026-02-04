@@ -1,0 +1,188 @@
+[
+  {
+    "id": "CORE_SEPSIS_001",
+    "tema": "Medicina crítica",
+    "subtema": "Choque séptico",
+    "tipo_decision": "reconocimiento",
+    "enunciado": "Paciente con infección sospechada, hipotensión persistente y lactato elevado. ¿Cuál es el diagnóstico sindrómico?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Choque séptico",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Sepsis sin choque",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "Respuesta inflamatoria no infecciosa",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      }
+    ],
+    "fuentes": [
+      "Surviving Sepsis Guidelines.pdf"
+    ],
+    "version": "core_v1.7"
+  },
+  {
+    "id": "CORE_SEPSIS_002",
+    "tema": "Medicina crítica",
+    "subtema": "Choque séptico",
+    "tipo_decision": "prioridad",
+    "enunciado": "Ante sospecha de choque séptico, ¿qué intervención temprana reduce mortalidad y no debe retrasarse?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Inicio inmediato de antibióticos de amplio espectro",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Esperar cultivos antes de tratar",
+        "resultado": "error_letal",
+        "impacto": -6
+      },
+      {
+        "id": "C",
+        "texto": "Administrar antipiréticos y observar",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "Surviving Sepsis Guidelines.pdf"
+    ],
+    "version": "core_v1.7"
+  },
+  {
+    "id": "CORE_SEPSIS_003",
+    "tema": "Medicina crítica",
+    "subtema": "Choque séptico",
+    "tipo_decision": "reanimacion",
+    "enunciado": "Paciente con choque séptico. ¿Cuál es la estrategia inicial de fluidos recomendada?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Cristaloides balanceados como primera línea",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Coloides sintéticos de inicio",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "Restricción hídrica inicial",
+        "resultado": "error_letal",
+        "impacto": -6
+      }
+    ],
+    "fuentes": [
+      "Surviving Sepsis Guidelines.pdf"
+    ],
+    "version": "core_v1.7"
+  },
+  {
+    "id": "CORE_SEPSIS_004",
+    "tema": "Medicina crítica",
+    "subtema": "Choque séptico",
+    "tipo_decision": "escalamiento",
+    "enunciado": "Choque séptico refractario a fluidos. ¿Cuál es el vasopresor de primera línea?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Norepinefrina",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Dopamina",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "Nitroglicerina",
+        "resultado": "error_letal",
+        "impacto": -6
+      }
+    ],
+    "fuentes": [
+      "Surviving Sepsis Guidelines.pdf"
+    ],
+    "version": "core_v1.7"
+  },
+  {
+    "id": "CORE_SEPSIS_005",
+    "tema": "Medicina crítica",
+    "subtema": "Choque séptico",
+    "tipo_decision": "seguridad",
+    "enunciado": "Durante manejo inicial del choque séptico, ¿qué error aumenta mortalidad de forma directa?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Retrasar antibióticos más de la primera hora",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Administrar oxígeno suplementario",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Monitorear signos vitales",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "Surviving Sepsis Guidelines.pdf"
+    ],
+    "version": "core_v1.7"
+  },
+  {
+    "id": "CORE_SEPSIS_006",
+    "tema": "Medicina crítica",
+    "subtema": "Choque séptico",
+    "tipo_decision": "objetivo",
+    "enunciado": "En choque séptico, ¿cuál es el objetivo hemodinámico inicial recomendado?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "PAM ≥ 65 mmHg",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Normalizar presión arterial basal del paciente",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "PAM ≥ 90 mmHg en todos los casos",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      }
+    ],
+    "fuentes": [
+      "Surviving Sepsis Guidelines.pdf"
+    ],
+    "version": "core_v1.7"
+  }
+]

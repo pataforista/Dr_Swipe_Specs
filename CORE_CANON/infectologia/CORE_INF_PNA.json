@@ -1,0 +1,170 @@
+{
+  "block_id": "CORE_INF_PNA",
+  "version": "v3.9",
+  "domain": "infectologia_grave",
+  "title": "Neumonía grave (CAP / HAP / VAP)",
+  "nodes": [
+    {
+      "id": "CORE_INF_PNA_001",
+      "type": "decision_node",
+      "prompt": "Paciente con neumonía adquirida en la comunidad. ¿Cuál criterio obliga a manejo en UCI?",
+      "options": [
+        {
+          "id": "A",
+          "text": "CURB-65 ≥ 3, hipotensión, FR ≥ 30 o confusión",
+          "outcome": "correct",
+          "impact": 0
+        },
+        {
+          "id": "B",
+          "text": "Edad joven sin comorbilidades",
+          "outcome": "incorrect",
+          "impact": -4
+        },
+        {
+          "id": "C",
+          "text": "Radiografía con infiltrado unilateral",
+          "outcome": "incorrect",
+          "impact": -3
+        }
+      ],
+      "difficulty": "media",
+      "letal_si_falla": true
+    },
+    {
+      "id": "CORE_INF_PNA_002",
+      "type": "decision_node",
+      "prompt": "Tratamiento antibiótico empírico inicial en CAP grave.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Ceftriaxona + Azitromicina",
+          "outcome": "correct",
+          "impact": 0
+        },
+        {
+          "id": "B",
+          "text": "Levofloxacino en monoterapia",
+          "outcome": "incorrect",
+          "impact": -4
+        },
+        {
+          "id": "C",
+          "text": "Amoxicilina-clavulanato VO",
+          "outcome": "incorrect",
+          "impact": -5
+        }
+      ],
+      "difficulty": "media",
+      "letal_si_falla": true
+    },
+    {
+      "id": "CORE_INF_PNA_003",
+      "type": "decision_node",
+      "prompt": "¿Cuándo debe ampliarse cobertura empírica a MRSA o Pseudomonas?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Factores de riesgo documentados (influenza reciente, cavitación, antibióticos IV previos)",
+          "outcome": "correct",
+          "impact": 0
+        },
+        {
+          "id": "B",
+          "text": "Todos los pacientes hospitalizados",
+          "outcome": "incorrect",
+          "impact": -3
+        },
+        {
+          "id": "C",
+          "text": "Leucocitosis marcada",
+          "outcome": "incorrect",
+          "impact": -2
+        }
+      ],
+      "difficulty": "media",
+      "letal_si_falla": false
+    },
+    {
+      "id": "CORE_INF_PNA_004",
+      "type": "decision_node",
+      "prompt": "Paciente con neumonía grave e hipoxemia persistente pese a oxígeno convencional. ¿Conducta correcta?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Escalar a VMNI o intubación temprana",
+          "outcome": "correct",
+          "impact": 0
+        },
+        {
+          "id": "B",
+          "text": "Mantener reservorio y observar",
+          "outcome": "incorrect",
+          "impact": -6
+        },
+        {
+          "id": "C",
+          "text": "Suspender oxígeno para valorar esfuerzo",
+          "outcome": "incorrect",
+          "impact": -6
+        }
+      ],
+      "difficulty": "alta",
+      "letal_si_falla": true
+    },
+    {
+      "id": "CORE_INF_PNA_005",
+      "type": "decision_node",
+      "prompt": "Tratamiento empírico inicial en neumonía asociada a ventilación mecánica con riesgo de multirresistencia.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Piperacilina-tazobactam + Vancomicina",
+          "outcome": "correct",
+          "impact": 0
+        },
+        {
+          "id": "B",
+          "text": "Ceftriaxona en monoterapia",
+          "outcome": "incorrect",
+          "impact": -6
+        },
+        {
+          "id": "C",
+          "text": "Azitromicina sola",
+          "outcome": "incorrect",
+          "impact": -6
+        }
+      ],
+      "difficulty": "alta",
+      "letal_si_falla": true
+    },
+    {
+      "id": "CORE_INF_PNA_006",
+      "type": "decision_node",
+      "prompt": "¿Cuál es la conducta correcta a las 48–72 h con cultivos y mejoría clínica?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Desescalar antibióticos según cultivos",
+          "outcome": "correct",
+          "impact": 0
+        },
+        {
+          "id": "B",
+          "text": "Mantener esquema amplio por seguridad",
+          "outcome": "incorrect",
+          "impact": -2
+        },
+        {
+          "id": "C",
+          "text": "Suspender antibióticos de inmediato sin evaluación",
+          "outcome": "incorrect",
+          "impact": -3
+        }
+      ],
+      "difficulty": "media",
+      "letal_si_falla": false
+    }
+  ]
+}

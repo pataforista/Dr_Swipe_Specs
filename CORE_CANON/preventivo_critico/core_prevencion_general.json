@@ -1,0 +1,96 @@
+[
+  {
+    "id": "CORE_PREV_001",
+    "tema": "Salud pública",
+    "subtema": "Prevención",
+    "tipo_decision": "clasificacion",
+    "enunciado": "Vacunación y tamizaje poblacional corresponden a qué nivel de prevención?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Vacunación: primaria / Tamizaje: secundaria",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Ambas son prevención primaria",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Ambas son prevención terciaria",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "prevencion.pdf"
+    ],
+    "version": "core_v1.1"
+  },
+  {
+    "id": "CORE_PREV_002",
+    "tema": "Salud pública",
+    "subtema": "Prevención",
+    "tipo_decision": "clasificacion",
+    "enunciado": "El tamizaje para cáncer de mama en población asintomática corresponde a qué nivel de prevención?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Prevención secundaria",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Prevención primaria",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Prevención terciaria",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "prevencion.pdf",
+      "NOM-041-SSA2-2011.pdf"
+    ],
+    "version": "core_v1.1"
+  },
+  {
+    "id": "CORE_PREV_003",
+    "tema": "Salud pública",
+    "subtema": "Prevención",
+    "tipo_decision": "clasificacion",
+    "enunciado": "La vacunación sistemática en población sana corresponde a qué nivel de prevención?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Prevención primaria",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Prevención secundaria",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Prevención terciaria",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "prevencion.pdf"
+    ],
+    "version": "core_v1.1"
+  }
+]

@@ -1,0 +1,6 @@
+{"id":"TOX_001","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["toxidrome","opioides"],"v":"core_v3.0"}
+{"id":"TOX_002","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["naloxona","depresion_respiratoria"],"v":"core_v3.0"}
+{"id":"TOX_003","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["colinergico","organofosforados"],"v":"core_v3.0"}
+{"id":"TOX_004","frecuencia_enarm":"media","dificultad":"alta","letal_si_falla":true,"error_tipico":true,"tags":["flumazenil","convulsiones"],"v":"core_v3.0"}
+{"id":"TOX_005","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["paracetamol","antidoto"],"v":"core_v3.0"}
+{"id":"TOX_006","frecuencia_enarm":"media","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["causticos","iatrogenia"],"v":"core_v3.0"}

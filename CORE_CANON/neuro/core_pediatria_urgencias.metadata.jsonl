@@ -1,0 +1,2 @@
+{"id": "CORE_PED_DEV_001", "frecuencia_enarm": "media", "dificultad": "media", "letal_si_falla": false, "error_tipico": true, "tags": ["pediatria", "desarrollo"], "v": "core_v1.1"}
+{"id": "CORE_PED_GROW_001", "frecuencia_enarm": "media", "dificultad": "media", "letal_si_falla": false, "error_tipico": true, "tags": ["pediatria", "crecimiento"], "v": "core_v1.1"}

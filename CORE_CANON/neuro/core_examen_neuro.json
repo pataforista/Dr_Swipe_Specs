@@ -1,0 +1,97 @@
+[
+  {
+    "id": "CORE_EXAN_001",
+    "tema": "Pediatría",
+    "subtema": "Enfermedades exantemáticas",
+    "tipo_decision": "diferencial",
+    "enunciado": "Niño con fiebre y exantema. ¿Qué prioridad general reduce error ENARM?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Identificar signos de alarma y etiologías con aislamiento/urgencia",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Asumir que todos los exantemas son virales benignos",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "Dar antibiótico a todos los exantemas",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      }
+    ],
+    "fuentes": [
+      "enf exantematicas.pdf",
+      "exanthema_in_pediatric_dermatology___a_confusing.2.pdf"
+    ],
+    "version": "core_v1.2"
+  },
+  {
+    "id": "CORE_EXAN_002",
+    "tema": "Pediatría",
+    "subtema": "Enfermedades exantemáticas",
+    "tipo_decision": "seguridad",
+    "enunciado": "En niño con exantema, ¿qué dato obliga a escalar a urgencias/valoración inmediata?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Compromiso del estado general o datos de choque/meningismo",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Prurito aislado con buen estado general",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Exantema leve sin fiebre",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "exanthema_in_pediatric_dermatology___a_confusing.2.pdf"
+    ],
+    "version": "core_v1.2"
+  },
+  {
+    "id": "CORE_EXAN_003",
+    "tema": "Pediatría",
+    "subtema": "Enfermedades exantemáticas",
+    "tipo_decision": "manejo",
+    "enunciado": "Sospecha de enfermedad exantemática contagiosa en brote escolar. ¿Qué medida es central para control?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Aislamiento/medidas de salud pública según etiología",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "No notificar ni orientar contactos",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "Tratar a todos los contactos con antibiótico",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      }
+    ],
+    "fuentes": [
+      "3_enfermedades_exantematicas_6555c8327a.pdf",
+      "enf exantematicas.pdf"
+    ],
+    "version": "core_v1.2"
+  }
+]

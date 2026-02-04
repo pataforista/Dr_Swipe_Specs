@@ -1,0 +1,2 @@
+{"id": "CORE_CHORIO_001", "frecuencia_enarm": "media", "dificultad": "media", "letal_si_falla": false, "error_tipico": true, "tags": ["obstetricia", "infeccion"], "v": "core_v1.1"}
+{"id": "CORE_CHORIO_002", "frecuencia_enarm": "media", "dificultad": "media", "letal_si_falla": true, "error_tipico": true, "tags": ["obstetricia", "infeccion"], "v": "core_v1.1"}

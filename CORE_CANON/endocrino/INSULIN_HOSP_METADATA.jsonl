@@ -1,0 +1,6 @@
+{"id":"INS_HOSP_001","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":false,"error_tipico":true,"tags":["insulina","hospital","basal_bolo"],"v":"core_v2.8"}
+{"id":"INS_HOSP_002","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":false,"error_tipico":true,"tags":["escala_movil","iatrogenia"],"v":"core_v2.8"}
+{"id":"INS_HOSP_003","frecuencia_enarm":"media","dificultad":"alta","letal_si_falla":true,"error_tipico":true,"tags":["ayuno","basal","seguridad"],"v":"core_v2.8"}
+{"id":"INS_HOSP_004","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["hipoglucemia","urgencias"],"v":"core_v2.8"}
+{"id":"INS_HOSP_005","frecuencia_enarm":"media","dificultad":"baja","letal_si_falla":false,"error_tipico":true,"tags":["metas_glucemicas"],"v":"core_v2.8"}
+{"id":"INS_HOSP_006","frecuencia_enarm":"media","dificultad":"alta","letal_si_falla":true,"error_tipico":true,"tags":["falla_renal","hipoglucemia"],"v":"core_v2.8"}

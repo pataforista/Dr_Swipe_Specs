@@ -1,0 +1,95 @@
+[
+  {
+    "id": "CORE_ATLS_001",
+    "tema": "Urgencias/Trauma",
+    "subtema": "ATLS",
+    "tipo_decision": "prioridad",
+    "enunciado": "Paciente politraumatizado inestable. ¿Cuál es el orden inicial correcto del abordaje?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "ABCDE",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Estudios de imagen completos antes de intervenir",
+        "resultado": "error_letal",
+        "impacto": -6
+      },
+      {
+        "id": "C",
+        "texto": "Interrogatorio extenso antes de estabilizar",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "ATLS-10°-EDICION-ESPANOL.pdf"
+    ],
+    "version": "core_v1.2"
+  },
+  {
+    "id": "CORE_ATLS_002",
+    "tema": "Urgencias/Trauma",
+    "subtema": "ATLS",
+    "tipo_decision": "manejo_inicial",
+    "enunciado": "En trauma, ¿qué acción es prioritaria ante sospecha de choque hemorrágico?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Control de hemorragia + reanimación dirigida",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Enviar a TAC aunque esté inestable",
+        "resultado": "error_letal",
+        "impacto": -6
+      },
+      {
+        "id": "C",
+        "texto": "Analgesia y observación como manejo principal",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "ATLS-10°-EDICION-ESPANOL.pdf"
+    ],
+    "version": "core_v1.2"
+  },
+  {
+    "id": "CORE_ATLS_003",
+    "tema": "Urgencias/Trauma",
+    "subtema": "ATLS",
+    "tipo_decision": "estudio",
+    "enunciado": "Trauma con inestabilidad hemodinámica. ¿Qué estudio bedside puede apoyar decisiones rápidas sin retrasar manejo?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "FAST",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Resonancia magnética",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "Endoscopia digestiva",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      }
+    ],
+    "fuentes": [
+      "ATLS-10°-EDICION-ESPANOL.pdf"
+    ],
+    "version": "core_v1.2"
+  }
+]

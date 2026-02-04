@@ -1,0 +1,33 @@
+[
+  {
+    "id": "CORE_DIAG_001",
+    "tema": "Metaclínico",
+    "subtema": "Exactitud diagnóstica",
+    "tipo_decision": "interpretacion",
+    "enunciado": "En pruebas diagnósticas, ¿qué medida cambia la probabilidad postprueba y es útil para decisiones clínicas?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Razones de verosimilitud (Likelihood Ratios)",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Solo la sensibilidad, sin contexto",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Solo el valor predictivo sin considerar prevalencia",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "Diagnostic Testing Accuracy Sensitivity, Specificity, Predictive Values and Likelihood Ratios.pdf"
+    ],
+    "version": "core_v1.2"
+  }
+]

@@ -1,0 +1,6 @@
+{"id":"STROKE_001","frecuencia_enarm":"alta","dificultad":"baja","letal_si_falla":true,"error_tipico":true,"tags":["evc","tac_simple","prioridad"],"v":"core_v2.9"}
+{"id":"STROKE_002","frecuencia_enarm":"media","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["evc","hemorragia","clasificacion"],"v":"core_v2.9"}
+{"id":"STROKE_003","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["evc","trombolisis","tiempo"],"v":"core_v2.9"}
+{"id":"STROKE_004","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["evc","contraindicaciones"],"v":"core_v2.9"}
+{"id":"STROKE_005","frecuencia_enarm":"media","dificultad":"alta","letal_si_falla":true,"error_tipico":true,"tags":["evc","hta","seguridad"],"v":"core_v2.9"}
+{"id":"STROKE_006","frecuencia_enarm":"media","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["evc","post_trombolisis","iatrogenia"],"v":"core_v2.9"}

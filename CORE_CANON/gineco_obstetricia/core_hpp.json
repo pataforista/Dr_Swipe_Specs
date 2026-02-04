@@ -1,0 +1,253 @@
+[
+  {
+    "id": "CORE_PPH_002",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Hemorragia postparto",
+    "tipo_decision": "manejo_inicial",
+    "enunciado": "Hemorragia postparto inmediata. ¿Cuál es la causa más frecuente hasta demostrar lo contrario?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Atonía uterina",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Retención placentaria",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Coagulopatía primaria",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "Postpartum Hemorrhage.pdf",
+      "FIGO 2022.pdf"
+    ],
+    "version": "core_v1.1"
+  },
+  {
+    "id": "CORE_PPH_003",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Hemorragia postparto",
+    "tipo_decision": "tratamiento",
+    "enunciado": "Atonía uterina confirmada. ¿Cuál es el tratamiento farmacológico de primera línea?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Oxitocina",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Misoprostol como primera línea universal",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Histerectomía inmediata",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "Postpartum Hemorrhage.pdf"
+    ],
+    "version": "core_v1.1"
+  },
+  {
+    "id": "CORE_PPH_004",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Hemorragia postparto",
+    "tipo_decision": "clasificacion",
+    "enunciado": "Hemorragia postparto persistente. ¿Qué esquema permite identificar rápidamente la causa más probable?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Las 4T: Tono, Tejido, Trauma, Trombina",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Clasificación por volumen únicamente",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Esperar estudios de laboratorio para clasificar",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "Postpartum Hemorrhage.pdf",
+      "FIGO recommendations 2022.pdf"
+    ],
+    "version": "core_v1.3"
+  },
+  {
+    "id": "CORE_PPH_005",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Hemorragia postparto",
+    "tipo_decision": "tratamiento",
+    "enunciado": "Hemorragia postparto por atonía uterina refractaria a oxitocina. ¿Cuál es el siguiente paso lógico?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Escalar uterotónicos y medidas mecánicas (masaje, uterotónicos adicionales)",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Esperar resolución espontánea",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "Alta con vigilancia ambulatoria",
+        "resultado": "error_letal",
+        "impacto": -6
+      }
+    ],
+    "fuentes": [
+      "Postpartum Hemorrhage.pdf"
+    ],
+    "version": "core_v1.3"
+  },
+  {
+    "id": "CORE_PPH_006",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Hemorragia postparto",
+    "tipo_decision": "farmacologico",
+    "enunciado": "En hemorragia postparto, ¿cuál es el rol del ácido tranexámico (TXA)?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Reducir sangrado si se administra tempranamente como coadyuvante",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Reemplaza a los uterotónicos",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "Está contraindicado en todos los casos obstétricos",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      }
+    ],
+    "fuentes": [
+      "FIGO recommendations 2022.pdf"
+    ],
+    "version": "core_v1.3"
+  },
+  {
+    "id": "CORE_PPH_007",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Hemorragia postparto",
+    "tipo_decision": "manejo",
+    "enunciado": "Hemorragia postparto que no responde a manejo médico inicial. ¿Qué medida mecánica puede evitar cirugía inmediata?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Taponamiento uterino (balón)",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Suspender tratamiento y observar",
+        "resultado": "error_letal",
+        "impacto": -6
+      },
+      {
+        "id": "C",
+        "texto": "Antibiótico profiláctico como manejo principal",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "Postpartum Hemorrhage.pdf"
+    ],
+    "version": "core_v1.3"
+  },
+  {
+    "id": "CORE_PPH_008",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Hemorragia postparto",
+    "tipo_decision": "escalamiento",
+    "enunciado": "Hemorragia postparto refractaria a manejo médico y mecánico. ¿Cuál es la conducta definitiva?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Intervención quirúrgica (ligaduras, histerectomía según contexto)",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Repetir oxitocina indefinidamente",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "Alta por mejoría parcial transitoria",
+        "resultado": "error_letal",
+        "impacto": -6
+      }
+    ],
+    "fuentes": [
+      "Postpartum Hemorrhage.pdf",
+      "FIGO recommendations 2022.pdf"
+    ],
+    "version": "core_v1.3"
+  },
+  {
+    "id": "CORE_PPH_009",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Hemorragia postparto",
+    "tipo_decision": "seguridad",
+    "enunciado": "Durante manejo de hemorragia postparto masiva, ¿qué principio de reanimación reduce mortalidad?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Reposición hemostática balanceada y control del sangrado",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Cristaloides ilimitados sin control del foco",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "Retrasar reanimación hasta cuantificar pérdida exacta",
+        "resultado": "error_letal",
+        "impacto": -6
+      }
+    ],
+    "fuentes": [
+      "Obstetric Hemorrhage, Clinical Case and Review.pdf"
+    ],
+    "version": "core_v1.3"
+  }
+]

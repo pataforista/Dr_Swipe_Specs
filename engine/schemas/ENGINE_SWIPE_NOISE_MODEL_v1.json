@@ -1,0 +1,33 @@
+{
+  "noise_types": {
+    "irrelevant_true": { "description": "Dato verdadero sin relevancia clínica actual" },
+    "borderline": { "description": "Dato ambiguo, bajo impacto inmediato" },
+    "duplicate": { "description": "Repetición de información ya vista" },
+    "delayed_result": { "description": "Resultado verdadero pero fuera de tiempo" },
+    "false_alarm": { "description": "Evento alarmante autolimitado que no cambia decisiones" }
+  },
+  "difficulty_weights": {
+    "easy": {
+      "irrelevant_true": 0.10,
+      "borderline": 0.05,
+      "duplicate": 0.05,
+      "delayed_result": 0.05,
+      "false_alarm": 0.00
+    },
+    "standard": {
+      "irrelevant_true": 0.20,
+      "borderline": 0.10,
+      "duplicate": 0.10,
+      "delayed_result": 0.10,
+      "false_alarm": 0.05
+    },
+    "hard": {
+      "irrelevant_true": 0.25,
+      "borderline": 0.15,
+      "duplicate": 0.15,
+      "delayed_result": 0.15,
+      "false_alarm": 0.10
+    }
+  },
+  "safety_rule": "Nunca aplicar ruido a evidencia con tags de contraindication, lethal_risk o decision_critical."
+}

@@ -1,0 +1,8 @@
+{"id":"VAX_OB_001","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":false,"error_tipico":true,"tags":["vacunas","embarazo"],"v":"core_v2.0"}
+{"id":"VAX_OB_002","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["vacunas","embarazo","seguridad"],"v":"core_v2.0"}
+{"id":"VAX_OB_003","frecuencia_enarm":"media","dificultad":"media","letal_si_falla":false,"error_tipico":true,"tags":["vacunas","embarazo","tosferina"],"v":"core_v2.0"}
+
+{"id":"VAX_GEN_001","frecuencia_enarm":"alta","dificultad":"baja","letal_si_falla":false,"error_tipico":true,"tags":["vacunas","contraindicaciones"],"v":"core_v2.0"}
+
+{"id":"VAX_PEP_001","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["vacunas","profilaxis","tetanicos"],"v":"core_v2.0"}
+{"id":"VAX_PEP_002","frecuencia_enarm":"media","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["vacunas","profilaxis","rabia"],"v":"core_v2.0"}

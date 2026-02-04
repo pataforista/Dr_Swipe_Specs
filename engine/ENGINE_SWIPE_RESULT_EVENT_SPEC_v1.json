@@ -1,0 +1,12 @@
+{
+  "result_event_enum": ["success", "fail", "fail_lethal"],
+  "rules": {
+    "success": "La ejecución del decision_node no produce fallo mecánico.",
+    "fail": "Fallo mecánico sin letalidad marcada.",
+    "fail_lethal": "Fallo mecánico con letal_si_falla=true en el decision_node."
+  },
+  "ui_constraints": {
+    "no_moralizing": true,
+    "no_clinical_explanation": true
+  }
+}

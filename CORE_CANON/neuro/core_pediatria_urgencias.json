@@ -1,0 +1,64 @@
+[
+  {
+    "id": "CORE_PED_DEV_001",
+    "tema": "Pediatría",
+    "subtema": "Hitos del desarrollo",
+    "tipo_decision": "tamizaje",
+    "enunciado": "Lactante que no sostiene la cabeza a los 4 meses. ¿Qué implica este hallazgo?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Retraso del desarrollo que requiere evaluación",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Variación normal",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "Dato irrelevante si el peso es adecuado",
+        "resultado": "error_letal",
+        "impacto": -6
+      }
+    ],
+    "fuentes": [
+      "hitos del desarrollo cdc.pdf"
+    ],
+    "version": "core_v1.1"
+  },
+  {
+    "id": "CORE_PED_GROW_001",
+    "tema": "Pediatría",
+    "subtema": "Crecimiento",
+    "tipo_decision": "interpretacion",
+    "enunciado": "Z-score menor a -2 DE en talla/edad indica:",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Desnutrición crónica",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Desnutrición aguda",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Variación normal",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "puntuacion-z-graficas-oms.pdf"
+    ],
+    "version": "core_v1.1"
+  }
+]

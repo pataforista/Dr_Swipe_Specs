@@ -1,0 +1,70 @@
+[
+  {
+    "id": "CORE_TRAUMA_ABC_001",
+    "tema": "trauma",
+    "subtema": "ABCDE",
+    "decision": "Prioridad inicial en paciente politraumatizado inconsciente",
+    "opciones": [
+      "Realizar TAC corporal total",
+      "Asegurar vía aérea con control cervical",
+      "Colocar accesos venosos y tomar laboratorios",
+      "Explorar abdomen en busca de sangrado"
+    ],
+    "respuesta_correcta": "Asegurar vía aérea con control cervical",
+    "justificacion": "La hipoxia mata en minutos. El ABCDE del ATLS prioriza la vía aérea con protección cervical antes de cualquier estudio o intervención diagnóstica.",
+    "dificultad": "baja",
+    "letal_si_falla": true,
+    "tags": ["trauma", "atls", "urgencias", "prioridades"]
+  },
+  {
+    "id": "CORE_TRAUMA_ABC_002",
+    "tema": "trauma",
+    "subtema": "via_aerea",
+    "decision": "Paciente con Glasgow 7 tras trauma",
+    "opciones": [
+      "Oxígeno por mascarilla",
+      "Sedación para disminuir agitación",
+      "Intubación orotraqueal",
+      "Esperar evolución neurológica"
+    ],
+    "respuesta_correcta": "Intubación orotraqueal",
+    "justificacion": "Un Glasgow ≤ 8 indica incapacidad para proteger la vía aérea. Retrasar la intubación aumenta riesgo de broncoaspiración e hipoxia fatal.",
+    "dificultad": "media",
+    "letal_si_falla": true,
+    "tags": ["trauma", "via_aerea", "glasgow"]
+  },
+  {
+    "id": "CORE_TRAUMA_ABC_003",
+    "tema": "trauma",
+    "subtema": "cervical",
+    "decision": "Protección de columna cervical en trauma",
+    "opciones": [
+      "Retirar collarín si el paciente está consciente",
+      "Mantener inmovilización hasta descartar lesión",
+      "Retirar collarín tras radiografía simple",
+      "Retirar collarín si no hay dolor cervical"
+    ],
+    "respuesta_correcta": "Mantener inmovilización hasta descartar lesión",
+    "justificacion": "La lesión cervical puede ser clínicamente silenciosa. Retirar inmovilización sin descarte adecuado expone a lesión medular irreversible.",
+    "dificultad": "media",
+    "letal_si_falla": true,
+    "tags": ["trauma", "columna", "seguridad"]
+  },
+  {
+    "id": "CORE_TRAUMA_ABC_004",
+    "tema": "trauma",
+    "subtema": "evaluacion",
+    "decision": "Orden correcto del ABCDE",
+    "opciones": [
+      "Breathing – Airway – Circulation – Disability – Exposure",
+      "Airway – Breathing – Circulation – Disability – Exposure",
+      "Circulation – Airway – Breathing – Exposure – Disability",
+      "Airway – Circulation – Breathing – Disability – Exposure"
+    ],
+    "respuesta_correcta": "Airway – Breathing – Circulation – Disability – Exposure",
+    "justificacion": "El algoritmo ATLS es secuencial y no intercambiable. Alterar el orden expone al paciente a causas prevenibles de muerte temprana.",
+    "dificultad": "baja",
+    "letal_si_falla": false,
+    "tags": ["atls", "algoritmos"]
+  }
+]

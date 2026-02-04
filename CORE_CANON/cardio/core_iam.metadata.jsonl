@@ -1,0 +1,10 @@
+{"id": "CORE_STEMI_001", "frecuencia_enarm": "alta", "dificultad": "media", "letal_si_falla": true, "error_tipico": true, "tags": ["cardiologia", "tiempo_dependiente"], "v": "core_v1.1"}
+{"id": "CORE_STEMI_002", "frecuencia_enarm": "alta", "dificultad": "baja", "letal_si_falla": false, "error_tipico": true, "tags": ["cardiologia"], "v": "core_v1.1"}
+{"id": "CORE_STEMI_004", "frecuencia_enarm": "media", "dificultad": "media", "letal_si_falla": true, "error_tipico": true, "tags": ["cardiologia", "contraindicacion"], "v": "core_v1.1"}
+{"id": "CORE_AMI_001", "frecuencia_enarm": "media", "dificultad": "alta", "letal_si_falla": true, "error_tipico": true, "tags": ["cirugia", "urgencias"], "v": "core_v1.1"}
+{"id": "CORE_IAM_005", "frecuencia_enarm": "alta", "dificultad": "media", "letal_si_falla": true, "error_tipico": true, "tags": ["cardiologia", "urgencias", "tiempo_dependiente"], "v": "core_v1.5"}
+{"id": "CORE_IAM_006", "frecuencia_enarm": "alta", "dificultad": "baja", "letal_si_falla": false, "error_tipico": true, "tags": ["cardiologia", "farmaco"], "v": "core_v1.5"}
+{"id": "CORE_IAM_007", "frecuencia_enarm": "media", "dificultad": "alta", "letal_si_falla": true, "error_tipico": true, "tags": ["cardiologia", "diferencial", "seguridad"], "v": "core_v1.5"}
+{"id": "CORE_IAM_008", "frecuencia_enarm": "media", "dificultad": "alta", "letal_si_falla": true, "error_tipico": true, "tags": ["cardiologia", "seguridad"], "v": "core_v1.5"}
+{"id": "CORE_IAM_009", "frecuencia_enarm": "alta", "dificultad": "media", "letal_si_falla": false, "error_tipico": true, "tags": ["cardiologia", "clasificacion"], "v": "core_v1.5"}
+{"id": "CORE_IAM_010", "frecuencia_enarm": "alta", "dificultad": "media", "letal_si_falla": true, "error_tipico": true, "tags": ["cardiologia", "reperfusión"], "v": "core_v1.5"}

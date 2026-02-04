@@ -1,0 +1,33 @@
+{
+  "case_id": "string",
+  "version": "v1",
+  "difficulty": "easy|standard|hard",
+  "dominant_tags": ["string"],
+  "checkpoint_nodes": [
+    { "sequence": 1, "decision_node_id": "string" },
+    { "sequence": 2, "decision_node_id": "string" }
+  ],
+  "noise_budget": {
+    "target_noise_items": 0,
+    "types_allowed": ["irrelevant_true", "borderline", "duplicate", "delayed_result", "false_alarm"]
+  },
+  "stream_order_rule": "non_chronological|mixed|frontload_signal|frontload_noise",
+  "evidence_stream": [
+    {
+      "evidence_id": "string",
+      "category": "timeline|vitals|labs|imaging|meds|notes",
+      "payload": { "title": "string", "text": "string" },
+      "tags": ["string"],
+      "noise_type": "none|irrelevant_true|borderline|duplicate|delayed_result|false_alarm",
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    }
+  ],
+  "checkpoint_triggers": [
+    { "after_evidence_index": 4, "checkpoint_sequence": 1 },
+    { "after_evidence_index": 9, "checkpoint_sequence": 2 }
+  ]
+}

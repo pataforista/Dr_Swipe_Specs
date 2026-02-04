@@ -1,0 +1,101 @@
+{
+  "case_id": "swipe_hard_001",
+  "version": "v1",
+  "difficulty": "hard",
+  "dominant_tags": ["acute_care"],
+  "checkpoint_nodes": [
+    { "sequence": 1, "decision_node_id": "CORE_NODE_CRITICAL_DECISION_001" },
+    { "sequence": 2, "decision_node_id": "CORE_NODE_ESCALATION_001" }
+  ],
+  "noise_budget": {
+    "target_noise_items": 4,
+    "types_allowed": ["irrelevant_true", "borderline", "duplicate", "delayed_result", "false_alarm"]
+  },
+  "stream_order_rule": "mixed",
+  "evidence_stream": [
+    {
+      "evidence_id": "h01",
+      "category": "vitals",
+      "payload": { "title": "TA", "text": "85/55 mmHg" },
+      "tags": ["hypotension"],
+      "noise_type": "none",
+      "safety_flags": { "contraindication": false, "lethal_risk": true, "decision_critical": true }
+    },
+    {
+      "evidence_id": "h02",
+      "category": "vitals",
+      "payload": { "title": "FC", "text": "132 lpm" },
+      "tags": ["tachycardia"],
+      "noise_type": "none",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "h03",
+      "category": "labs",
+      "payload": { "title": "Hb", "text": "9.0 g/dL" },
+      "tags": ["lab"],
+      "noise_type": "none",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "h04",
+      "category": "notes",
+      "payload": { "title": "Observación", "text": "Paciente agitado al traslado (evento autolimitado)" },
+      "tags": ["context"],
+      "noise_type": "false_alarm",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "h05",
+      "category": "labs",
+      "payload": { "title": "Creatinina", "text": "Reporte tardío disponible tras demora" },
+      "tags": ["renal_function"],
+      "noise_type": "delayed_result",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "h06",
+      "category": "imaging",
+      "payload": { "title": "Imagen", "text": "Hallazgos inespecíficos reportados" },
+      "tags": ["screening"],
+      "noise_type": "borderline",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "h07",
+      "category": "labs",
+      "payload": { "title": "Hb (repetición)", "text": "9.0 g/dL" },
+      "tags": ["lab"],
+      "noise_type": "duplicate",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "h08",
+      "category": "meds",
+      "payload": { "title": "Tratamiento previo", "text": "No documentado en el expediente" },
+      "tags": ["med_history"],
+      "noise_type": "irrelevant_true",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "h09",
+      "category": "timeline",
+      "payload": { "title": "Evolución", "text": "Información fragmentada en el tiempo" },
+      "tags": ["context"],
+      "noise_type": "none",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "h10",
+      "category": "notes",
+      "payload": { "title": "Contacto", "text": "Dato administrativo incompleto" },
+      "tags": ["admin"],
+      "noise_type": "none",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    }
+  ],
+  "checkpoint_triggers": [
+    { "after_evidence_index": 4, "checkpoint_sequence": 1 },
+    { "after_evidence_index": 9, "checkpoint_sequence": 2 }
+  ]
+}

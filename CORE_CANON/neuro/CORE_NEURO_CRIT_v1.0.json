@@ -1,0 +1,98 @@
+[
+  {
+    "id": "CORE_NEURO_001",
+    "tema": "Estatus epiléptico",
+    "enunciado": "Paciente con convulsión tónico-clónica continua de 7 minutos de evolución, sin recuperación de la conciencia entre episodios. ¿La conducta inicial más importante?",
+    "opciones": {
+      "A": "Administrar benzodiacepina IV de inmediato",
+      "B": "Solicitar TAC de cráneo urgente antes de tratar",
+      "C": "Iniciar fenitoína como monoterapia",
+      "D": "Esperar a que ceda espontáneamente"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "El estatus epiléptico es una emergencia neurológica tiempo-dependiente. La primera línea es una benzodiacepina IV para abortar la descarga neuronal continua.",
+    "letal_si_falla": true,
+    "dificultad": "media",
+    "tags": ["urgencias", "neurologia", "estatus_epileptico"]
+  },
+  {
+    "id": "CORE_NEURO_002",
+    "tema": "Estatus epiléptico refractario",
+    "enunciado": "Tras benzodiacepina IV adecuada, el paciente continúa convulsionando. ¿Siguiente paso recomendado?",
+    "opciones": {
+      "A": "Cargar antiepiléptico de acción prolongada (ej. levetiracetam/fenitoína)",
+      "B": "Repetir benzodiacepina indefinidamente",
+      "C": "Dar antipsicótico para sedación",
+      "D": "Esperar resultados de laboratorio"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "La benzodiacepina aborta la crisis, pero no previene recurrencia. Es obligatorio cargar un antiepiléptico para estabilización sostenida.",
+    "letal_si_falla": true,
+    "dificultad": "media",
+    "tags": ["urgencias", "neurologia", "estatus_epileptico"]
+  },
+  {
+    "id": "CORE_NEURO_003",
+    "tema": "Hipertensión intracraneal",
+    "enunciado": "Paciente con TCE grave presenta deterioro neurológico agudo, anisocoria y bradicardia. ¿Medida inmediata más importante?",
+    "opciones": {
+      "A": "Elevar la cabecera 30° y asegurar vía aérea",
+      "B": "Administrar líquidos a libre demanda",
+      "C": "Sedación profunda sin control ventilatorio",
+      "D": "Esperar TAC para decidir"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "Los signos sugieren hipertensión intracraneal con herniación inminente. Las medidas iniciales son no invasivas, inmediatas y salvavidas.",
+    "letal_si_falla": true,
+    "dificultad": "alta",
+    "tags": ["urgencias", "neurologia", "tce", "hic"]
+  },
+  {
+    "id": "CORE_NEURO_004",
+    "tema": "Herniación cerebral",
+    "enunciado": "¿Cuál hallazgo clínico es más sugestivo de herniación transtentorial?",
+    "opciones": {
+      "A": "Midriasis unilateral arreactiva",
+      "B": "Temblor distal fino",
+      "C": "Nistagmo horizontal",
+      "D": "Cefalea tensional"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "La compresión del III par craneal produce midriasis fija ipsilateral, un signo de alarma neurológica extrema.",
+    "letal_si_falla": true,
+    "dificultad": "media",
+    "tags": ["urgencias", "neurologia", "herniacion"]
+  },
+  {
+    "id": "CORE_NEURO_005",
+    "tema": "Hiperventilación",
+    "enunciado": "Respecto al uso de hiperventilación en hipertensión intracraneal, ¿cuál es la afirmación correcta?",
+    "opciones": {
+      "A": "Solo debe usarse como medida temporal en herniación inminente",
+      "B": "Es tratamiento de primera línea sostenido",
+      "C": "No tiene ningún efecto cerebral",
+      "D": "Está contraindicada en todos los casos"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "La hiperventilación reduce la PIC por vasoconstricción cerebral, pero disminuye la perfusión. Solo se usa como puente.",
+    "letal_si_falla": false,
+    "dificultad": "alta",
+    "tags": ["urgencias", "neurologia", "hic"]
+  },
+  {
+    "id": "CORE_NEURO_006",
+    "tema": "Meningitis bacteriana – antibióticos",
+    "enunciado": "Paciente con sospecha clínica alta de meningitis bacteriana. ¿Conducta correcta respecto a antibióticos?",
+    "opciones": {
+      "A": "Iniciar antibióticos empíricos inmediatamente",
+      "B": "Esperar punción lumbar para iniciar tratamiento",
+      "C": "Solicitar TAC y diferir antibióticos",
+      "D": "Dar solo analgésicos hasta confirmar"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "Retrasar antibióticos en meningitis aumenta mortalidad y secuelas neurológicas. El tratamiento no debe esperar confirmación.",
+    "letal_si_falla": true,
+    "dificultad": "media",
+    "tags": ["urgencias", "neurologia", "meningitis"]
+  }
+]

@@ -1,0 +1,3 @@
+{"id": "CORE_APP_001", "frecuencia_enarm": "alta", "dificultad": "media", "letal_si_falla": false, "error_tipico": true, "tags": ["cirugia", "abdomen_agudo"], "v": "core_v1.1"}
+{"id": "CORE_APP_002", "frecuencia_enarm": "alta", "dificultad": "media", "letal_si_falla": true, "error_tipico": true, "tags": ["cirugia", "abdomen_agudo", "complicacion"], "v": "core_v1.2"}
+{"id": "CORE_APP_003", "frecuencia_enarm": "alta", "dificultad": "alta", "letal_si_falla": true, "error_tipico": true, "tags": ["cirugia", "abdomen_agudo", "seguridad"], "v": "core_v1.2"}

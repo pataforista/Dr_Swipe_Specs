@@ -1,0 +1,98 @@
+[
+  {
+    "id": "CORE_NEUROF_001",
+    "tema": "Hemorragia subaracnoidea",
+    "enunciado": "Paciente con cefalea súbita 'en trueno', rigidez de nuca y vómito. TAC simple inicial es normal. ¿Siguiente paso correcto?",
+    "opciones": {
+      "A": "Punción lumbar para buscar xantocromía",
+      "B": "Alta con analgésicos",
+      "C": "Resonancia magnética electiva",
+      "D": "Iniciar AAS"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "Una TAC normal no descarta HSA en las primeras horas. La punción lumbar es obligatoria si la sospecha clínica es alta.",
+    "letal_si_falla": true,
+    "dificultad": "alta",
+    "tags": ["neurologia", "urgencias", "hsa"]
+  },
+  {
+    "id": "CORE_NEUROF_002",
+    "tema": "Encefalopatía hepática",
+    "enunciado": "Paciente cirrótico con somnolencia, asterixis y amonio elevado. ¿Tratamiento inicial más importante?",
+    "opciones": {
+      "A": "Lactulosa",
+      "B": "Restricción proteica estricta",
+      "C": "Sedación con benzodiacepinas",
+      "D": "Antipsicóticos"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "La lactulosa reduce la producción y absorción de amonio. Sedar al paciente empeora la encefalopatía y puede precipitar coma.",
+    "letal_si_falla": true,
+    "dificultad": "media",
+    "tags": ["neurologia", "urgencias", "hepatica"]
+  },
+  {
+    "id": "CORE_NEUROF_003",
+    "tema": "Crisis miasténica",
+    "enunciado": "Paciente con miastenia gravis presenta disnea progresiva y debilidad generalizada. ¿Indicador clave para intubación?",
+    "opciones": {
+      "A": "Capacidad vital forzada < 15–20 ml/kg",
+      "B": "Diplopía persistente",
+      "C": "Ptosis aislada",
+      "D": "Respuesta a anticolinesterásicos"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "La falla respiratoria es la principal causa de muerte en crisis miasténica. La CVF predice colapso ventilatorio.",
+    "letal_si_falla": true,
+    "dificultad": "alta",
+    "tags": ["neurologia", "urgencias", "miastenia"]
+  },
+  {
+    "id": "CORE_NEUROF_004",
+    "tema": "Síndrome de Guillain-Barré",
+    "enunciado": "Paciente con debilidad ascendente simétrica y arreflexia. ¿Conducta correcta?",
+    "opciones": {
+      "A": "Iniciar inmunoglobulina IV o plasmaféresis",
+      "B": "Esperar recuperación espontánea",
+      "C": "Administrar esteroides en monoterapia",
+      "D": "Alta con seguimiento"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "El Guillain-Barré puede progresar rápidamente a falla respiratoria. El tratamiento específico reduce duración y complicaciones.",
+    "letal_si_falla": true,
+    "dificultad": "media",
+    "tags": ["neurologia", "urgencias", "guillain_barre"]
+  },
+  {
+    "id": "CORE_NEUROF_005",
+    "tema": "Síndrome confusional agudo",
+    "enunciado": "Adulto mayor hospitalizado presenta inicio súbito de confusión fluctuante y desorientación. ¿Medida inicial correcta?",
+    "opciones": {
+      "A": "Buscar causa médica subyacente",
+      "B": "Iniciar sedación",
+      "C": "Asumir demencia",
+      "D": "Alta inmediata"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "El delirium es secundario a causas médicas reversibles (infección, fármacos, hipoxia). Sedar sin evaluar empeora el pronóstico.",
+    "letal_si_falla": false,
+    "dificultad": "media",
+    "tags": ["neurologia", "urgencias", "delirium"]
+  },
+  {
+    "id": "CORE_NEUROF_006",
+    "tema": "Convulsión febril vs meningitis",
+    "enunciado": "Niño con convulsión y fiebre persistente, rigidez de nuca y letargia postictal prolongada. ¿Conducta correcta?",
+    "opciones": {
+      "A": "Iniciar antibióticos empíricos y realizar estudio de LCR",
+      "B": "Alta por convulsión febril",
+      "C": "Solo antipiréticos",
+      "D": "Observación ambulatoria"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "Los datos neurológicos persistentes sugieren infección del SNC. Tratar como meningitis hasta demostrar lo contrario.",
+    "letal_si_falla": true,
+    "dificultad": "media",
+    "tags": ["neurologia", "urgencias", "meningitis"]
+  }
+]

@@ -1,0 +1,96 @@
+[
+  {
+    "id": "CORE_HYPO_001",
+    "tema": "Endocrinología",
+    "subtema": "Hipotiroidismo",
+    "tipo_decision": "diagnostico",
+    "enunciado": "Sospecha de hipotiroidismo primario. ¿Qué patrón de laboratorio es típico?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "TSH elevada con T4 libre baja",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "TSH baja con T4 libre baja (primario)",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "TSH normal siempre descarta hipotiroidismo",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "Hypothyroidism.pdf",
+      "Hypothyroidism2.pdf"
+    ],
+    "version": "core_v1.2"
+  },
+  {
+    "id": "CORE_HYPO_002",
+    "tema": "Endocrinología",
+    "subtema": "Hipotiroidismo",
+    "tipo_decision": "tratamiento",
+    "enunciado": "Hipotiroidismo primario confirmado en adulto estable. ¿Cuál es el tratamiento de primera línea?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Levotiroxina",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Liotironina como primera línea rutinaria",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Suspender tratamiento si mejora el ánimo",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "Hypothyroidism.pdf"
+    ],
+    "version": "core_v1.2"
+  },
+  {
+    "id": "CORE_HYPO_003",
+    "tema": "Endocrinología",
+    "subtema": "Hipotiroidismo",
+    "tipo_decision": "seguridad",
+    "enunciado": "Adulto mayor o con cardiopatía y se inicia tratamiento para hipotiroidismo. ¿Qué principio evita iatrogenia?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Iniciar dosis baja y titular lentamente",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Iniciar dosis plena estándar en todos los pacientes",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "Evitar levotiroxina porque siempre causa arritmias",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      }
+    ],
+    "fuentes": [
+      "Hypothyroidism3.pdf"
+    ],
+    "version": "core_v1.2"
+  }
+]

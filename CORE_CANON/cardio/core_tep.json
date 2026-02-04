@@ -1,0 +1,98 @@
+[
+  {
+    "id": "CORE_TEP_001",
+    "tema": "Sospecha clínica de TEP",
+    "enunciado": "Paciente con disnea súbita, dolor torácico pleurítico y taquicardia. Saturación 88% al aire ambiente. ¿Siguiente paso inicial?",
+    "opciones": {
+      "A": "Evaluar estabilidad hemodinámica",
+      "B": "Solicitar dímero D de inmediato",
+      "C": "Iniciar antibióticos empíricos",
+      "D": "Esperar radiografía de tórax"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "La estabilidad hemodinámica define todo el algoritmo diagnóstico-terapéutico del TEP. Antes de pruebas, se debe identificar choque o hipotensión.",
+    "letal_si_falla": true,
+    "dificultad": "media",
+    "tags": ["tep", "urgencias", "medicina_interna"]
+  },
+  {
+    "id": "CORE_TEP_002",
+    "tema": "TEP de alto riesgo (masivo)",
+    "enunciado": "Paciente con sospecha de TEP presenta hipotensión persistente y signos de choque obstructivo. ¿Conducta indicada?",
+    "opciones": {
+      "A": "Trombólisis sistémica inmediata",
+      "B": "Esperar angiotomografía para confirmar",
+      "C": "Iniciar anticoagulación oral",
+      "D": "Alta con seguimiento ambulatorio"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "El TEP masivo con inestabilidad es una emergencia vital. La trombólisis está indicada aun sin confirmación por imagen si el cuadro es compatible.",
+    "letal_si_falla": true,
+    "dificultad": "alta",
+    "tags": ["tep", "choque", "urgencias"]
+  },
+  {
+    "id": "CORE_TEP_003",
+    "tema": "Anticoagulación empírica",
+    "enunciado": "Paciente con alta sospecha clínica de TEP, estable, pero con retraso esperado en estudios de imagen. ¿Conducta correcta?",
+    "opciones": {
+      "A": "Iniciar anticoagulación empírica",
+      "B": "Esperar confirmación por TAC",
+      "C": "Solicitar dímero D y diferir todo",
+      "D": "Dar AAS mientras se confirma"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "Retrasar la anticoagulación en un TEP probable aumenta mortalidad. En ausencia de contraindicaciones, se debe iniciar empíricamente.",
+    "letal_si_falla": true,
+    "dificultad": "media",
+    "tags": ["tep", "anticoagulacion"]
+  },
+  {
+    "id": "CORE_TEP_004",
+    "tema": "Rol del Dímero D",
+    "enunciado": "¿En qué escenario es apropiado utilizar dímero D para descartar TEP?",
+    "opciones": {
+      "A": "Paciente con baja probabilidad clínica",
+      "B": "Paciente inestable",
+      "C": "Paciente en choque",
+      "D": "Paciente con alta sospecha clínica"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "El dímero D solo es útil para descartar TEP en pacientes con baja probabilidad clínica. No debe usarse en pacientes de alto riesgo o inestables.",
+    "letal_si_falla": false,
+    "dificultad": "media",
+    "tags": ["tep", "diagnostico"]
+  },
+  {
+    "id": "CORE_TEP_005",
+    "tema": "Estudio de imagen",
+    "enunciado": "Paciente estable con sospecha intermedia-alta de TEP. ¿Estudio diagnóstico de elección?",
+    "opciones": {
+      "A": "Angiotomografía pulmonar",
+      "B": "Radiografía de tórax",
+      "C": "Electrocardiograma",
+      "D": "Ecocardiograma transtorácico como único estudio"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "La angiotomografía pulmonar es el estándar diagnóstico en pacientes estables con sospecha de TEP.",
+    "letal_si_falla": false,
+    "dificultad": "baja",
+    "tags": ["tep", "imagen"]
+  },
+  {
+    "id": "CORE_TEP_006",
+    "tema": "Contraindicaciones de trombólisis",
+    "enunciado": "¿Cuál es una contraindicación absoluta para trombólisis en TEP?",
+    "opciones": {
+      "A": "Hemorragia intracraneal previa",
+      "B": "Edad mayor de 75 años",
+      "C": "Embarazo",
+      "D": "Hipertensión arterial controlada"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "La hemorragia intracraneal previa es una contraindicación absoluta para trombólisis por riesgo extremo de sangrado fatal.",
+    "letal_si_falla": true,
+    "dificultad": "media",
+    "tags": ["tep", "trombolisis", "seguridad"]
+  }
+]

@@ -1,0 +1,3 @@
+{"id": "CORE_DIV_001", "frecuencia_enarm": "media", "dificultad": "media", "letal_si_falla": false, "error_tipico": true, "tags": ["cirugia"], "v": "core_v1.1"}
+{"id": "CORE_DIV_002", "frecuencia_enarm": "media", "dificultad": "alta", "letal_si_falla": true, "error_tipico": true, "tags": ["cirugia", "complicacion"], "v": "core_v1.2"}
+{"id": "CORE_DIV_003", "frecuencia_enarm": "media", "dificultad": "media", "letal_si_falla": false, "error_tipico": true, "tags": ["cirugia", "estudio"], "v": "core_v1.2"}

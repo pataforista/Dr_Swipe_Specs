@@ -1,0 +1,4 @@
+{"context_id":"CTX_ADULTO_ESTABLE","vars":{"edad_grupo":"adulto","embarazo":false,"pediatrico":false,"inmunosupresion":false}}
+{"context_id":"CTX_EMBARAZO","vars":{"edad_grupo":"adulto","embarazo":true,"pediatrico":false,"inmunosupresion":false}}
+{"context_id":"CTX_PEDIATRICO","vars":{"edad_grupo":"pediatrico","embarazo":false,"pediatrico":true,"inmunosupresion":false}}
+{"context_id":"CTX_ALTO_RIESGO","vars":{"edad_grupo":"adulto","embarazo":false,"pediatrico":false,"inmunosupresion":true}}

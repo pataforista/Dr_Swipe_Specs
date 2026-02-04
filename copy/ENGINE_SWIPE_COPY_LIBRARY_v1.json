@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "version": "v1",
+    "language": "es",
+    "rules": {
+      "no_clinical_language": true,
+      "no_prescriptive_advice": true,
+      "no_moralizing": true,
+      "max_lines": 3
+    }
+  },
+  "intake": [
+    "Estás revisando un expediente incompleto.",
+    "No toda la información será útil.",
+    "Guarda solo lo necesario para avanzar con seguridad."
+  ],
+  "evidence_stream": {
+    "progress": [
+      "Información recibida: {current}/{total}."
+    ],
+    "decision_soon": [
+      "Se aproxima un punto de decisión."
+    ]
+  },
+  "checkpoint": {
+    "enter": [
+      "El sistema evaluará la información que decidiste conservar."
+    ],
+    "continue_button": [
+      "Continuar"
+    ]
+  },
+  "results": {
+    "success": [
+      "La decisión se ejecutó con la información disponible."
+    ],
+    "fail": [
+      "La información conservada fue insuficiente para esta decisión."
+    ],
+    "fail_lethal": [
+      "El sistema no pudo amortiguar un evento crítico."
+    ]
+  },
+  "patterns": {
+    "hoarding": [
+      "Patrón detectado: acumulación excesiva de información."
+    ],
+    "clean_dossier": [
+      "Patrón detectado: expediente compacto."
+    ],
+    "tunnel_vision": [
+      "Patrón detectado: enfoque limitado en pocas categorías."
+    ],
+    "safe_prioritization": [
+      "Patrón detectado: priorización segura bajo ruido."
+    ],
+    "delay": [
+      "Patrón detectado: toma de decisiones prolongada."
+    ]
+  },
+  "closure": [
+    "Conservaste {kept} de {total} elementos.",
+    "El expediente final refleja tu manejo de la información."
+  ],
+  "forbidden_examples": [
+    "Lo correcto habría sido...",
+    "Debiste guardar...",
+    "Esto indica que el paciente...",
+    "Diagnóstico:",
+    "Tratamiento recomendado:"
+  ]
+}

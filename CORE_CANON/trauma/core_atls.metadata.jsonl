@@ -1,0 +1,3 @@
+{"id": "CORE_ATLS_001", "frecuencia_enarm": "alta", "dificultad": "media", "letal_si_falla": true, "error_tipico": true, "tags": ["urgencias", "trauma", "prioridad"], "v": "core_v1.2"}
+{"id": "CORE_ATLS_002", "frecuencia_enarm": "alta", "dificultad": "alta", "letal_si_falla": true, "error_tipico": true, "tags": ["urgencias", "trauma", "choque"], "v": "core_v1.2"}
+{"id": "CORE_ATLS_003", "frecuencia_enarm": "media", "dificultad": "media", "letal_si_falla": false, "error_tipico": true, "tags": ["urgencias", "trauma", "estudio"], "v": "core_v1.2"}

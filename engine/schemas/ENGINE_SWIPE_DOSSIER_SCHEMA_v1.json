@@ -1,0 +1,20 @@
+{
+  "session_id": "string",
+  "difficulty": "easy|standard|hard",
+  "kept_items": 0,
+  "discarded_items": 0,
+  "timeline": [],
+  "vitals": [],
+  "labs": [],
+  "imaging": [],
+  "meds": [],
+  "notes": [],
+  "pinned_items": [],
+  "annotations": [
+    {
+      "evidence_id": "string",
+      "text": "string",
+      "timestamp": "iso8601"
+    }
+  ]
+}

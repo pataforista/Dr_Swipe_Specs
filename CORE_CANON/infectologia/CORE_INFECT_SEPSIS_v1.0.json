@@ -1,0 +1,98 @@
+[
+  {
+    "id": "CORE_INF_SEP_001",
+    "tema": "Sepsis - prioridad inicial",
+    "enunciado": "Paciente con sospecha de infección, TA 85/50, FC 120, lactato 4 mmol/L. ¿Primera acción prioritaria?",
+    "opciones": {
+      "A": "Iniciar antibióticos empíricos de amplio espectro",
+      "B": "Esperar cultivos definitivos",
+      "C": "Solo pasar líquidos y reevaluar",
+      "D": "Solicitar TAC antes de tratar"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "Cada hora de retraso en antibióticos aumenta mortalidad. Los cultivos no deben retrasar el inicio del tratamiento.",
+    "letal_si_falla": true,
+    "dificultad": "media",
+    "tags": ["sepsis", "urgencias", "infectologia"]
+  },
+  {
+    "id": "CORE_INF_SEP_002",
+    "tema": "Choque séptico",
+    "enunciado": "Paciente con sepsis, recibió 30 ml/kg de cristaloides y persiste con TAM <65 mmHg. ¿Siguiente paso?",
+    "opciones": {
+      "A": "Iniciar norepinefrina",
+      "B": "Seguir cargando líquidos",
+      "C": "Iniciar dopamina",
+      "D": "Administrar diuréticos"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "La norepinefrina es el vasopresor de primera línea. Más líquidos aumentan edema y falla orgánica.",
+    "letal_si_falla": true,
+    "dificultad": "media",
+    "tags": ["sepsis", "choque", "vasopresores"]
+  },
+  {
+    "id": "CORE_INF_SEP_003",
+    "tema": "Lactato",
+    "enunciado": "Paciente con infección y lactato elevado, pero TA normal. ¿Interpretación correcta?",
+    "opciones": {
+      "A": "Hipoperfusión oculta",
+      "B": "Dato irrelevante si la TA es normal",
+      "C": "Error de laboratorio",
+      "D": "Indica solo acidosis respiratoria"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "El lactato elevado refleja deuda de oxígeno y se asocia a mayor mortalidad incluso sin hipotensión.",
+    "letal_si_falla": true,
+    "dificultad": "media",
+    "tags": ["sepsis", "lactato"]
+  },
+  {
+    "id": "CORE_INF_SEP_004",
+    "tema": "Cultivos",
+    "enunciado": "En sospecha de sepsis, ¿cuál es la conducta correcta respecto a cultivos?",
+    "opciones": {
+      "A": "Tomarlos antes del antibiótico si no retrasa el inicio",
+      "B": "Esperar resultados para elegir antibiótico",
+      "C": "No tomarlos nunca",
+      "D": "Tomarlos 24 h después"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "Los cultivos guían la desescalada, pero nunca deben retrasar antibióticos.",
+    "letal_si_falla": false,
+    "dificultad": "baja",
+    "tags": ["sepsis", "cultivos"]
+  },
+  {
+    "id": "CORE_INF_SEP_005",
+    "tema": "Control del foco",
+    "enunciado": "Paciente séptico por probable abdomen agudo perforado. ¿Medida crítica adicional?",
+    "opciones": {
+      "A": "Control quirúrgico del foco",
+      "B": "Solo antibióticos",
+      "C": "Esperar estabilización completa",
+      "D": "Alta con seguimiento"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "Sin control del foco, los antibióticos fallan. El retraso quirúrgico aumenta mortalidad.",
+    "letal_si_falla": true,
+    "dificultad": "media",
+    "tags": ["sepsis", "cirugia"]
+  },
+  {
+    "id": "CORE_INF_SEP_006",
+    "tema": "Corticoides en choque séptico",
+    "enunciado": "Choque séptico refractario a líquidos y vasopresores. ¿Conducta correcta?",
+    "opciones": {
+      "A": "Agregar hidrocortisona",
+      "B": "Suspender vasopresores",
+      "C": "Dar dexametasona en bolo único",
+      "D": "No usar esteroides nunca"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "La hidrocortisona reduce duración del choque en pacientes refractarios.",
+    "letal_si_falla": false,
+    "dificultad": "media",
+    "tags": ["sepsis", "choque", "esteroides"]
+  }
+]

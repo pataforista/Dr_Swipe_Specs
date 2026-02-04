@@ -1,0 +1,8 @@
+{"id": "CORE_PREE_002", "frecuencia_enarm": "alta", "dificultad": "media", "letal_si_falla": false, "error_tipico": true, "tags": ["obstetricia"], "v": "core_v1.1"}
+{"id": "CORE_PREE_003", "frecuencia_enarm": "alta", "dificultad": "alta", "letal_si_falla": false, "error_tipico": true, "tags": ["obstetricia"], "v": "core_v1.1"}
+{"id": "CORE_PREE_004", "frecuencia_enarm": "alta", "dificultad": "media", "letal_si_falla": false, "error_tipico": true, "tags": ["obstetricia", "severidad"], "v": "core_v1.4"}
+{"id": "CORE_PREE_005", "frecuencia_enarm": "alta", "dificultad": "media", "letal_si_falla": false, "error_tipico": true, "tags": ["obstetricia", "farmaco", "seguridad"], "v": "core_v1.4"}
+{"id": "CORE_PREE_006", "frecuencia_enarm": "media", "dificultad": "alta", "letal_si_falla": true, "error_tipico": true, "tags": ["obstetricia", "farmaco", "toxicidad"], "v": "core_v1.4"}
+{"id": "CORE_PREE_007", "frecuencia_enarm": "alta", "dificultad": "alta", "letal_si_falla": true, "error_tipico": true, "tags": ["obstetricia", "timing", "seguridad"], "v": "core_v1.4"}
+{"id": "CORE_HELLP_001", "frecuencia_enarm": "media", "dificultad": "media", "letal_si_falla": false, "error_tipico": true, "tags": ["obstetricia", "diferencial"], "v": "core_v1.4"}
+{"id": "CORE_HELLP_002", "frecuencia_enarm": "media", "dificultad": "alta", "letal_si_falla": true, "error_tipico": true, "tags": ["obstetricia", "urgencias", "quirurgico"], "v": "core_v1.4"}

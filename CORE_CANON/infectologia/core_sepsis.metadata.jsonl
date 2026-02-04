@@ -1,0 +1,6 @@
+{"id": "CORE_SEPSIS_001", "frecuencia_enarm": "alta", "dificultad": "media", "letal_si_falla": true, "error_tipico": true, "tags": ["medicina_critica", "urgencias", "reconocimiento"], "v": "core_v1.7"}
+{"id": "CORE_SEPSIS_002", "frecuencia_enarm": "alta", "dificultad": "media", "letal_si_falla": true, "error_tipico": true, "tags": ["medicina_critica", "urgencias", "tiempo_dependiente"], "v": "core_v1.7"}
+{"id": "CORE_SEPSIS_003", "frecuencia_enarm": "media", "dificultad": "media", "letal_si_falla": true, "error_tipico": true, "tags": ["medicina_critica", "reanimacion"], "v": "core_v1.7"}
+{"id": "CORE_SEPSIS_004", "frecuencia_enarm": "media", "dificultad": "media", "letal_si_falla": true, "error_tipico": true, "tags": ["medicina_critica", "vasopresores"], "v": "core_v1.7"}
+{"id": "CORE_SEPSIS_005", "frecuencia_enarm": "alta", "dificultad": "media", "letal_si_falla": true, "error_tipico": true, "tags": ["medicina_critica", "seguridad"], "v": "core_v1.7"}
+{"id": "CORE_SEPSIS_006", "frecuencia_enarm": "media", "dificultad": "baja", "letal_si_falla": false, "error_tipico": true, "tags": ["medicina_critica", "objetivos"], "v": "core_v1.7"}

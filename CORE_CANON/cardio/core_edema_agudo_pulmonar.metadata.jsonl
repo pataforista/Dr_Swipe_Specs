@@ -1,0 +1,6 @@
+{"id":"HF_EAP_001","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":false,"error_tipico":true,"tags":["ic_aguda","perfil_hemodinamico"],"v":"core_v2.7"}
+{"id":"HF_EAP_002","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["eap","vmni","seguridad"],"v":"core_v2.7"}
+{"id":"HF_EAP_003","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["eap","nitratos","iatrogenia"],"v":"core_v2.7"}
+{"id":"HF_EAP_004","frecuencia_enarm":"media","dificultad":"alta","letal_si_falla":true,"error_tipico":true,"tags":["ic_aguda","hipoperfusion"],"v":"core_v2.7"}
+{"id":"HF_EAP_005","frecuencia_enarm":"alta","dificultad":"alta","letal_si_falla":true,"error_tipico":true,"tags":["eap","sedacion"],"v":"core_v2.7"}
+{"id":"HF_EAP_006","frecuencia_enarm":"media","dificultad":"alta","letal_si_falla":true,"error_tipico":true,"tags":["eap","intubacion","escalamiento"],"v":"core_v2.7"}

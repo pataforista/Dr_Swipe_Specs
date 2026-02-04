@@ -1,0 +1,32 @@
+[
+  {
+    "id": "CORE_ANAPH_001",
+    "tema": "Anafilaxia",
+    "escenario": "Paciente con urticaria generalizada, disnea, estridor y caída de la TA tras picadura de insecto.",
+    "pregunta": "¿Cuál es el tratamiento de primera línea?",
+    "opciones": {
+      "A": "Antihistamínicos IV",
+      "B": "Corticoides IV",
+      "C": "Epinefrina IM",
+      "D": "Nebulizaciones con salbutamol"
+    },
+    "respuesta_correcta": "C",
+    "justificacion": "La epinefrina IM es el único tratamiento que revierte broncoconstricción, vasodilatación y edema laríngeo. Retrasarla aumenta mortalidad.",
+    "letal_si_falla": true
+  },
+  {
+    "id": "CORE_ANAPH_002",
+    "tema": "Anafilaxia",
+    "escenario": "Paciente con anafilaxia tratada solo con antihistamínicos y esteroides, sin epinefrina.",
+    "pregunta": "¿Cuál es el principal riesgo de esta conducta?",
+    "opciones": {
+      "A": "Sedación excesiva",
+      "B": "Rebote tardío de síntomas",
+      "C": "Progresión a choque anafiláctico",
+      "D": "Interacción farmacológica"
+    },
+    "respuesta_correcta": "C",
+    "justificacion": "Antihistamínicos y esteroides no revierten la fase aguda. Omitir epinefrina permite progresión a colapso cardiovascular.",
+    "letal_si_falla": true
+  }
+]

@@ -1,0 +1,232 @@
+{
+  "block_id": "CORE_ABD_AGUDO",
+  "version": "v4.0",
+  "domain": "abdomen_agudo",
+  "title": "Abdomen agudo (pivotes: estabilidad, isquemia, perforación, obstrucción)",
+  "nodes": [
+    {
+      "id": "CORE_ABD_001",
+      "type": "decision_node",
+      "prompt": "Paciente con dolor abdominal intenso + TA 80/50, piel fría, alteración del estado mental. ¿Prioridad inmediata?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Reanimación y valoración quirúrgica urgente (no retrasar por estudios)",
+          "outcome": "correct",
+          "impact": 0
+        },
+        {
+          "id": "B",
+          "text": "Enviar a TAC con contraste para localizar causa antes de tratar",
+          "outcome": "incorrect",
+          "impact": -6
+        },
+        {
+          "id": "C",
+          "text": "Analgesia y observación en urgencias para ver evolución",
+          "outcome": "incorrect",
+          "impact": -6
+        }
+      ],
+      "difficulty": "media",
+      "letal_si_falla": true,
+      "tags": ["abdomen_agudo", "choque", "cirugia", "urgencias"]
+    },
+    {
+      "id": "CORE_ABD_002",
+      "type": "decision_node",
+      "prompt": "Dolor abdominal 'desproporcionado' al examen físico + FA o aterosclerosis + lactato elevado. ¿Diagnóstico probable y estudio de elección?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Isquemia mesentérica aguda; AngioTAC",
+          "outcome": "correct",
+          "impact": 0
+        },
+        {
+          "id": "B",
+          "text": "Apendicitis; USG",
+          "outcome": "incorrect",
+          "impact": -5
+        },
+        {
+          "id": "C",
+          "text": "Pancreatitis; TAC inmediata en primeras horas",
+          "outcome": "incorrect",
+          "impact": -4
+        }
+      ],
+      "difficulty": "alta",
+      "letal_si_falla": true,
+      "tags": ["isquemia_mesenterica", "angioTAC", "urgencias"]
+    },
+    {
+      "id": "CORE_ABD_003",
+      "type": "decision_node",
+      "prompt": "Sospecha fuerte de isquemia mesentérica aguda mientras llega AngioTAC. ¿Medida inicial correcta?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Reanimación + anticoagulación con heparina (si no hay contraindicación) y activar cirugía/endovascular",
+          "outcome": "correct",
+          "impact": 0
+        },
+        {
+          "id": "B",
+          "text": "Esperar imagen antes de cualquier acción terapéutica",
+          "outcome": "incorrect",
+          "impact": -6
+        },
+        {
+          "id": "C",
+          "text": "Dar vasopresores temprano como primera medida para subir TA",
+          "outcome": "incorrect",
+          "impact": -5
+        }
+      ],
+      "difficulty": "alta",
+      "letal_si_falla": true,
+      "tags": ["isquemia_mesenterica", "heparina", "time_sensitive"]
+    },
+    {
+      "id": "CORE_ABD_004",
+      "type": "decision_node",
+      "prompt": "Paciente con abdomen agudo + rigidez involuntaria (peritonitis) y aire libre subdiafragmático. ¿Conducta correcta?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Antibióticos de amplio espectro + cirugía urgente (control del foco)",
+          "outcome": "correct",
+          "impact": 0
+        },
+        {
+          "id": "B",
+          "text": "Observación con ayuno y reevaluación en 12 horas",
+          "outcome": "incorrect",
+          "impact": -6
+        },
+        {
+          "id": "C",
+          "text": "Colonoscopia diagnóstica urgente",
+          "outcome": "incorrect",
+          "impact": -6
+        }
+      ],
+      "difficulty": "media",
+      "letal_si_falla": true,
+      "tags": ["perforacion", "peritonitis", "cirugia", "antibioticos"]
+    },
+    {
+      "id": "CORE_ABD_005",
+      "type": "decision_node",
+      "prompt": "Obstrucción intestinal: vómito fecaloide, distensión, niveles hidroaéreos. ¿Qué dato obliga a cirugía urgente (estrangulación)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Dolor continuo severo + fiebre/leucocitosis + acidosis/lactato o signos peritoneales",
+          "outcome": "correct",
+          "impact": 0
+        },
+        {
+          "id": "B",
+          "text": "Distensión leve sin dolor y sin datos sistémicos",
+          "outcome": "incorrect",
+          "impact": -3
+        },
+        {
+          "id": "C",
+          "text": "Ausencia de evacuación por 12 horas como único criterio",
+          "outcome": "incorrect",
+          "impact": -3
+        }
+      ],
+      "difficulty": "media",
+      "letal_si_falla": true,
+      "tags": ["obstruccion_intestinal", "estrangulacion", "cirugia"]
+    },
+    {
+      "id": "CORE_ABD_006",
+      "type": "decision_node",
+      "prompt": "Obstrucción intestinal sin datos de estrangulación. ¿Manejo inicial correcto?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Ayuno + líquidos IV + sonda nasogástrica si vómito/distensión marcada + TAC para definir causa",
+          "outcome": "correct",
+          "impact": 0
+        },
+        {
+          "id": "B",
+          "text": "Laxantes estimulantes para acelerar tránsito",
+          "outcome": "incorrect",
+          "impact": -5
+        },
+        {
+          "id": "C",
+          "text": "Alimentación oral fraccionada para 'probar tolerancia'",
+          "outcome": "incorrect",
+          "impact": -4
+        }
+      ],
+      "difficulty": "media",
+      "letal_si_falla": false,
+      "tags": ["obstruccion_intestinal", "manejo_inicial", "TAC"]
+    },
+    {
+      "id": "CORE_ABD_007",
+      "type": "decision_node",
+      "prompt": "Mujer en edad fértil con dolor en fosa iliaca derecha. ¿Paso obligatorio antes de etiquetar como apendicitis?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Prueba de embarazo (β-hCG) y considerar patología ginecológica",
+          "outcome": "correct",
+          "impact": 0
+        },
+        {
+          "id": "B",
+          "text": "Programar apendicectomía sin estudios por alta sospecha",
+          "outcome": "incorrect",
+          "impact": -5
+        },
+        {
+          "id": "C",
+          "text": "Dar AINE y alta con cita",
+          "outcome": "incorrect",
+          "impact": -6
+        }
+      ],
+      "difficulty": "media",
+      "letal_si_falla": true,
+      "tags": ["apendicitis", "embarazo", "diagnostico_diferencial"]
+    },
+    {
+      "id": "CORE_ABD_008",
+      "type": "decision_node",
+      "prompt": "Anciano con dolor abdominal y pulsos femorales disminuidos o masa pulsátil. ¿Diagnóstico que NO debes perder y mejor estudio inicial si está estable?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Aneurisma de aorta abdominal (AAA); AngioTAC",
+          "outcome": "correct",
+          "impact": 0
+        },
+        {
+          "id": "B",
+          "text": "Gastritis; endoscopia",
+          "outcome": "incorrect",
+          "impact": -6
+        },
+        {
+          "id": "C",
+          "text": "Diverticulitis; colonoscopia en fase aguda",
+          "outcome": "incorrect",
+          "impact": -6
+        }
+      ],
+      "difficulty": "alta",
+      "letal_si_falla": true,
+      "tags": ["AAA", "abdomen_agudo", "angioTAC"]
+    }
+  ]
+}

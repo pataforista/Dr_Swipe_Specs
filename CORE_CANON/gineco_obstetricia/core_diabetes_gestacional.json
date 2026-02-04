@@ -1,0 +1,96 @@
+[
+  {
+    "id": "CORE_DMG_001",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Diabetes gestacional",
+    "tipo_decision": "tamizaje",
+    "enunciado": "Embarazada sin DM previa. ¿Cuál es el enfoque general para detectar diabetes gestacional?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Tamizaje durante el 2º trimestre (ventana estándar)",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Tamizar solo si hay síntomas de hiperglucemia",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "No tamizar si no hay factores de riesgo",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "diabetes gestacional.pdf",
+      "Epidemiology and management of gestational diabetes.pdf"
+    ],
+    "version": "core_v1.2"
+  },
+  {
+    "id": "CORE_DMG_002",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Diabetes gestacional",
+    "tipo_decision": "manejo_inicial",
+    "enunciado": "Diabetes gestacional confirmada. ¿Cuál es el primer paso de manejo antes de fármacos?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Plan nutricional + actividad física + automonitoreo",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Iniciar insulina en todos los casos desde el diagnóstico",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Suspender el control hasta el puerperio",
+        "resultado": "error_letal",
+        "impacto": -6
+      }
+    ],
+    "fuentes": [
+      "Epidemiology and management of gestational diabetes.pdf"
+    ],
+    "version": "core_v1.2"
+  },
+  {
+    "id": "CORE_DMG_003",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Diabetes gestacional",
+    "tipo_decision": "farmacologico",
+    "enunciado": "Diabetes gestacional con metas glucémicas no alcanzadas con medidas no farmacológicas. ¿Cuál es el tratamiento farmacológico estándar de referencia?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Insulina",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "No usar fármacos en embarazo bajo ninguna circunstancia",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "Cualquier hipoglucemiante oral sin considerar seguridad en embarazo",
+        "resultado": "error_letal",
+        "impacto": -6
+      }
+    ],
+    "fuentes": [
+      "diabetes gestacional.pdf"
+    ],
+    "version": "core_v1.2"
+  }
+]

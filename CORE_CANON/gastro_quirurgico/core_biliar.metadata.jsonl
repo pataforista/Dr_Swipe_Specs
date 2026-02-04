@@ -1,0 +1,8 @@
+{"id": "CORE_CHOLE_001", "frecuencia_enarm": "media", "dificultad": "media", "letal_si_falla": false, "error_tipico": true, "tags": ["cirugia", "biliar"], "v": "core_v1.1"}
+{"id": "CORE_CHOLE_002", "frecuencia_enarm": "media", "dificultad": "media", "letal_si_falla": false, "error_tipico": true, "tags": ["cirugia", "biliar"], "v": "core_v1.2"}
+{"id": "CORE_BILI_001", "frecuencia_enarm": "alta", "dificultad": "media", "letal_si_falla": true, "error_tipico": true, "tags": ["cirugia", "urgencias", "diagnostico"], "v": "core_v1.8"}
+{"id": "CORE_BILI_002", "frecuencia_enarm": "alta", "dificultad": "alta", "letal_si_falla": true, "error_tipico": true, "tags": ["cirugia", "urgencias", "drenaje"], "v": "core_v1.8"}
+{"id": "CORE_BILI_003", "frecuencia_enarm": "media", "dificultad": "media", "letal_si_falla": true, "error_tipico": true, "tags": ["cirugia", "clasificacion", "sepsis"], "v": "core_v1.8"}
+{"id": "CORE_BILI_004", "frecuencia_enarm": "alta", "dificultad": "media", "letal_si_falla": false, "error_tipico": true, "tags": ["cirugia", "diagnostico"], "v": "core_v1.8"}
+{"id": "CORE_BILI_005", "frecuencia_enarm": "high", "dificultad": "media", "letal_si_falla": true, "error_tipico": true, "tags": ["cirugia", "manejo"], "v": "core_v1.8"}
+{"id": "CORE_BILI_006", "frecuencia_enarm": "alta", "dificultad": "alta", "letal_si_falla": true, "error_tipico": true, "tags": ["cirugia", "seguridad"], "v": "core_v1.8"}

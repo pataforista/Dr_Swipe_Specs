@@ -1,0 +1,423 @@
+{
+  "schema": "CORE_CANON_MANIFEST_v1",
+  "version": "1.1.1",
+  "root": "CORE_CANON_v1.1_fixed",
+  "generated_utc": "2026-01-04",
+  "files": [
+    {
+      "path": "00_README_CORE.md",
+      "size_bytes": 1761,
+      "sha256": "4929b56f6c2a5cb48e6beae33bcb20af5c7400cf865c30c3b978b674f30c57f9"
+    },
+    {
+      "path": "01_CORE_PRINCIPIOS.md",
+      "size_bytes": 1945,
+      "sha256": "511529b20db1dda4e6d6d713a377ed80d8cb4d28ca9677a1d8e406b1ce077c6f"
+    },
+    {
+      "path": "02_CORE_GOBERNANZA.md",
+      "size_bytes": 1933,
+      "sha256": "42dedbcd98e1ea548ad83a294b736f158fbe8dbf1782be901e957c826691ab01"
+    },
+    {
+      "path": "CONTEXTO.jsonl",
+      "size_bytes": 500,
+      "sha256": "79a974d1b3516bed4482e13a8cfa32e240f26b6cc23da95b3e617a9695c3c6d0"
+    },
+    {
+      "path": "CORE_DECISIONS.jsonl",
+      "size_bytes": 45675,
+      "sha256": "5e80e804d4d37a91cb5697aeba25b150da5cb5aefe73f39b03b60c211f068a61"
+    },
+    {
+      "path": "CORE_INDEX.jsonl",
+      "size_bytes": 6573,
+      "sha256": "7f77aa822fe398ad253816faf6105b812a762f2f05e0b09fb246a258665fa467"
+    },
+    {
+      "path": "CORE_INDEX_REPORT.md",
+      "size_bytes": 1929,
+      "sha256": "0883fe01e5e47d53d4d4177fe2c447d6fd5d3ad567019a392f4a55411192e4b5"
+    },
+    {
+      "path": "METADATA.jsonl",
+      "size_bytes": 12922,
+      "sha256": "73adb69167caf5e521fe29082f60f2cbde0a2189d957e31c636ebae0ea4a238c"
+    },
+    {
+      "path": "cardio/core_acls.json",
+      "size_bytes": 4099,
+      "sha256": "b4f2aeea4eecb7b8fbb5f106ac9b5bceddc06373e53795bf3f3b5d0d296f7c59"
+    },
+    {
+      "path": "cardio/core_edema_agudo_pulmonar.decisions.jsonl",
+      "size_bytes": 3492,
+      "sha256": "fa4e14f00cf4b242e6ee3ab86eade0a1e454cc7e47b2d4d204efbad01c1c3b96"
+    },
+    {
+      "path": "cardio/core_edema_agudo_pulmonar.metadata.jsonl",
+      "size_bytes": 976,
+      "sha256": "8d4d799a439c09eaa47a62cff428f2f6cd4e142e68c850fcb7a73c1de1a61106"
+    },
+    {
+      "path": "cardio/core_iam.json",
+      "size_bytes": 8119,
+      "sha256": "f94177b41c3ab86b05ec72e80260d12e308ea09e01b7a16673f6910eddfa3c89"
+    },
+    {
+      "path": "cardio/core_iam.metadata.jsonl",
+      "size_bytes": 1809,
+      "sha256": "1394249e4ce887dce1dc8f50bb8adacdf1b359370c8091c991f1ce11e83afb5c"
+    },
+    {
+      "path": "cardio/core_tep.json",
+      "size_bytes": 4195,
+      "sha256": "2ab103b861371a7d93b37b72a62c350cbd3ddb57ee556d1cd8d01d6cb0fa922a"
+    },
+    {
+      "path": "endocrino/CORE_ENDO_LETAL_v1.0.json",
+      "size_bytes": 4491,
+      "sha256": "af6b907b42338f72e2614a63dfa935551b777fa797e3319a9894dbd9eb923ddf"
+    },
+    {
+      "path": "endocrino/CORE_INPATIENT_INSULIN_THERAPY_DECISIONS.jsonl",
+      "size_bytes": 3510,
+      "sha256": "ca143c66f378988cc73662ff5b9188502f98720deecca88c212e5627d9ca1d72"
+    },
+    {
+      "path": "endocrino/INSULIN_HOSP_METADATA.jsonl",
+      "size_bytes": 991,
+      "sha256": "a74370741557b4452e18d18174baa10dda6a5c25bcc24e7ecc6d902400080175"
+    },
+    {
+      "path": "endocrino/core_glucose.json",
+      "size_bytes": 1405,
+      "sha256": "2e75af66e588b7ff4b8c1f06fe0c0223c3c5f14b34fb3d73f87155359c598a9d"
+    },
+    {
+      "path": "endocrino/core_hipotiroidismo.json",
+      "size_bytes": 2472,
+      "sha256": "256ddd21e86816583cf84e27b56be39d449745fc9768637442e89b732e79cc7d"
+    },
+    {
+      "path": "endocrino/core_hipotiroidismo.metadata.jsonl",
+      "size_bytes": 514,
+      "sha256": "7765150d1e549b90b66c31aabbf05ff6a0e27927dda5077261c1f2db53971150"
+    },
+    {
+      "path": "gastro_quirurgico/CORE_ABD_AGUDO_v4.0.json",
+      "size_bytes": 7504,
+      "sha256": "d20786f32577d773605e4cac44af2305a6b947fa813d3a065470c7552760fdc6"
+    },
+    {
+      "path": "gastro_quirurgico/CORE_GI_BLEED_DECISIONS.jsonl",
+      "size_bytes": 3428,
+      "sha256": "34a53c3ec790749bdecdc2ff02aefd6c807849a567a5206e9423769868cb88b2"
+    },
+    {
+      "path": "gastro_quirurgico/CORE_GI_BLEED_NV_HDB_DECISIONS.jsonl",
+      "size_bytes": 3314,
+      "sha256": "2385002f25bb4c000e1b0a2cf6ec514f69fa44cb893b34540647903c542df333"
+    },
+    {
+      "path": "gastro_quirurgico/CORE_PANCREATITIS_ACUTE_DECISIONS.jsonl",
+      "size_bytes": 3225,
+      "sha256": "d78358d90367e933d4a425e5d37af0c6bade539d25b04fe91cf93ac133da3aaa"
+    },
+    {
+      "path": "gastro_quirurgico/GI_BLEED_METADATA.jsonl",
+      "size_bytes": 961,
+      "sha256": "04906428ffccd1205c9649d4292763d3f0c7942d092204dcc8aa795411f48efa"
+    },
+    {
+      "path": "gastro_quirurgico/GI_BLEED_NV_HDB_METADATA.jsonl",
+      "size_bytes": 952,
+      "sha256": "ec6e084bdb4368983b81395cd6e14577a16518a82c28427b541d6b2a94bc8bfc"
+    },
+    {
+      "path": "gastro_quirurgico/PANCREATITIS_METADATA.jsonl",
+      "size_bytes": 944,
+      "sha256": "bfaac61b92943feaf03ffd06d7ab4deec03c3fbadcb1013d4deafa2b48e44b4c"
+    },
+    {
+      "path": "gastro_quirurgico/core_apendicitis.json",
+      "size_bytes": 2630,
+      "sha256": "cde833319e91140f6b96d1a76841225088012def4f09ddeac0aa06ee2bf4c459"
+    },
+    {
+      "path": "gastro_quirurgico/core_apendicitis.metadata.jsonl",
+      "size_bytes": 557,
+      "sha256": "54b25034af10b4b2627a2c44f1d32ba803130bb6b8519defbb482b54498c32f5"
+    },
+    {
+      "path": "gastro_quirurgico/core_biliar.json",
+      "size_bytes": 6845,
+      "sha256": "778c32df5b5f7f02f4a9d15ecb24c87b50aa4d216fa548e5e9a51672d08707a8"
+    },
+    {
+      "path": "gastro_quirurgico/core_biliar.metadata.jsonl",
+      "size_bytes": 1423,
+      "sha256": "acb07db498d42de91072292b401f20834ec845713e1c0e8f2ff8cbb51e703211"
+    },
+    {
+      "path": "gastro_quirurgico/core_diverticulitis.json",
+      "size_bytes": 2577,
+      "sha256": "846c4ccb59ebca08a6cecaa5d6da4a576ccab344ce54c1db7eb0b70285250720"
+    },
+    {
+      "path": "gastro_quirurgico/core_diverticulitis.metadata.jsonl",
+      "size_bytes": 508,
+      "sha256": "7a0977b047bb7f77094d0cb8947cef1eefc21413311418b5fa8cdad9522d5837"
+    },
+    {
+      "path": "gineco_obstetricia/core_coriamnionitis.json",
+      "size_bytes": 1519,
+      "sha256": "d4c3b3481f0ae9feba506670fa10cfc6701d05eb69ad709080e1ccb87c188c10"
+    },
+    {
+      "path": "gineco_obstetricia/core_coriamnionitis.metadata.jsonl",
+      "size_bytes": 361,
+      "sha256": "a50160c3f1e503ad2a37e8f9fd6058e7adeebc1df2a91a95e3cabb7cde7ee6ec"
+    },
+    {
+      "path": "gineco_obstetricia/core_diabetes_gestacional.json",
+      "size_bytes": 2700,
+      "sha256": "96a093ea131a7d271697ca8da1f59d3f3b4c90cdfeae979a65806567e641d180"
+    },
+    {
+      "path": "gineco_obstetricia/core_diabetes_gestacional.metadata.jsonl",
+      "size_bytes": 526,
+      "sha256": "839d69126218fb16459aaa33645e061e65432eb1283cd406762b0d3b328d53ad"
+    },
+    {
+      "path": "gineco_obstetricia/core_hpp.json",
+      "size_bytes": 6793,
+      "sha256": "8e7eb2baac98c19aad41d630fd602645e0a1391fa293931a599ead00c52dea12"
+    },
+    {
+      "path": "gineco_obstetricia/core_hpp.metadata.jsonl",
+      "size_bytes": 1484,
+      "sha256": "2005657aed89d9a68f2d84881c0d008de8d6841b694963f9bc7b4b0140fd0ea3"
+    },
+    {
+      "path": "gineco_obstetricia/core_hta_embarazo.json",
+      "size_bytes": 5678,
+      "sha256": "fd24b3ba042b1f8f2b582fbaeba5d382ee84c46735669e57e1b56b4fbfe7c470"
+    },
+    {
+      "path": "gineco_obstetricia/core_hta_embarazo.metadata.jsonl",
+      "size_bytes": 1288,
+      "sha256": "cb99d29c7eb35d56087bc71712ebc949291d9eb621f286cd6a2717f6f1c7b7e9"
+    },
+    {
+      "path": "gineco_obstetricia/core_ob_hemorrhage.json",
+      "size_bytes": 1275,
+      "sha256": "0bab699e7ff54a4f03c8130cea85af85c4c5f89559b112d89d86628991fe9251"
+    },
+    {
+      "path": "gineco_obstetricia/core_preeclampsia_hellp.json",
+      "size_bytes": 6310,
+      "sha256": "09df3e4119951b7e0822c83b779b1565763919066b43b550123351b4abd729c6"
+    },
+    {
+      "path": "gineco_obstetricia/core_preeclampsia_hellp.metadata.jsonl",
+      "size_bytes": 1444,
+      "sha256": "bc533c96392008bf63ae07e97dcf43442366d482beb5d74f0e3c8a52d6670a10"
+    },
+    {
+      "path": "infectologia/CORE_INFECT_SEPSIS_v1.0.json",
+      "size_bytes": 3829,
+      "sha256": "be9765b858e5b84b44c35a30fb451dee5e119a4b30f80879f6fea63e6f391a03"
+    },
+    {
+      "path": "infectologia/CORE_INF_PNA.json",
+      "size_bytes": 4733,
+      "sha256": "5778d06639e3ef03be96525616c3fd6cd65575b2bdfb20779aa93e9811271283"
+    },
+    {
+      "path": "infectologia/core_sepsis.json",
+      "size_bytes": 4807,
+      "sha256": "4489156d370810214f68200f36fef5930dc7bb4bc4a2f0e6b0941481119046fe"
+    },
+    {
+      "path": "infectologia/core_sepsis.metadata.jsonl",
+      "size_bytes": 1152,
+      "sha256": "8474cb818f6274bcccdc277f95c8b3c5836022686ed847331da255907ca3b49f"
+    },
+    {
+      "path": "neuro/CORE_NEURO_CRIT_v1.0.json",
+      "size_bytes": 4589,
+      "sha256": "69526fa607fa42b91e80bb5d93165c7f3c70b1d0fe987edaece347cb0cba8028"
+    },
+    {
+      "path": "neuro/CORE_NEURO_FALTANTE_v1_0.json",
+      "size_bytes": 4218,
+      "sha256": "504b1eb297dbafb9d6246c7c4565b0c01a6ae861165b35f5aafdd408f0e6d341"
+    },
+    {
+      "path": "neuro/CORE_STROKE_ISCHEMIC_DECISIONS.jsonl",
+      "size_bytes": 3316,
+      "sha256": "d2b08fb781b8a05d5e853c060a05a49452b671818bcf2a9f278a9254a7c56617"
+    },
+    {
+      "path": "neuro/STROKE_METADATA.jsonl",
+      "size_bytes": 995,
+      "sha256": "7b42b2e2fd76db49ca52a82fc577571f50a75ae2ae56f34951b767d543e24c1c"
+    },
+    {
+      "path": "neuro/core_examen_neuro.json",
+      "size_bytes": 2664,
+      "sha256": "d25e447581c0921c510c95bb94452232213efbc1be34112a0a32bd4715edc90e"
+    },
+    {
+      "path": "neuro/core_examen_neuro.metadata.jsonl",
+      "size_bytes": 546,
+      "sha256": "b1b368940a316edb3ef6bafe30e00635575d46aa55b523739fdf41077cdf9b7d"
+    },
+    {
+      "path": "neuro/core_lenguaje.json",
+      "size_bytes": 795,
+      "sha256": "eb7f76f6902d49c312f6e71ea1ad2dadd9fb8d089e34c235ed88b8e61713a49f"
+    },
+    {
+      "path": "neuro/core_lenguaje.metadata.jsonl",
+      "size_bytes": 166,
+      "sha256": "8383733c5066dfa73d421950f050c4c87bba51e289dedd59c116fbae652fd4b9"
+    },
+    {
+      "path": "neuro/core_pediatria_urgencias.json",
+      "size_bytes": 1510,
+      "sha256": "cb56d76c39f1bcefeadbc6f93ca50233ffc7fe9c5efba8d1399d1eb321d22eb1"
+    },
+    {
+      "path": "neuro/core_pediatria_urgencias.metadata.jsonl",
+      "size_bytes": 364,
+      "sha256": "c5da662a3a64eae81c4abe9b273a992feac56168aac380b6204de03de90c0d9f"
+    },
+    {
+      "path": "preventivo_critico/CORE_VACCINES_DECISIONS.jsonl",
+      "size_bytes": 3456,
+      "sha256": "75557617bc3e960f9156315f047506f977f7667cfb637a0ed73e0005de46927a"
+    },
+    {
+      "path": "preventivo_critico/VACCINES_METADATA.jsonl",
+      "size_bytes": 1005,
+      "sha256": "c0db0b49edfe85207966a1ab6f10efa7a0911e63c1a0c41cec4aa3e10e01546c"
+    },
+    {
+      "path": "preventivo_critico/core_mbe_lr.json",
+      "size_bytes": 933,
+      "sha256": "1586b529165a371e2e112696617afd3bc29aeee100c86134a123f88bc59f67e0"
+    },
+    {
+      "path": "preventivo_critico/core_mbe_lr.metadata.jsonl",
+      "size_bytes": 165,
+      "sha256": "d8a84e4c831ab9a1aa8f5088ad0154aaebbdd493ff0b2c084e706aa1145b4f5b"
+    },
+    {
+      "path": "preventivo_critico/core_prevencion_general.json",
+      "size_bytes": 2322,
+      "sha256": "8c8486d633ffb5b69b786d5726163db84b14ec30de53a06cb1794a524afbd2f1"
+    },
+    {
+      "path": "preventivo_critico/core_prevencion_general.metadata.jsonl",
+      "size_bytes": 504,
+      "sha256": "92f845bec2d91b92f16b348355199cf2865a0731af349b2441ed0a3df562c245"
+    },
+    {
+      "path": "preventivo_critico/core_zscore_nutricion.json",
+      "size_bytes": 752,
+      "sha256": "292945ae24f665f2d4b81ea50ac23b08292e1de6535b707b54a33efbb45d09bb"
+    },
+    {
+      "path": "preventivo_critico/core_zscore_nutricion.metadata.jsonl",
+      "size_bytes": 181,
+      "sha256": "9b2b083becb9251ca2c6f81a4f9f0dcc105da2d8665d8e5409d93e8e3347ebb0"
+    },
+    {
+      "path": "renal_metabolico/ACIDBASE_METADATA.jsonl",
+      "size_bytes": 964,
+      "sha256": "9326e08be8adee1986cf047e8c0829b6d04f2999677088da311118fdb3aaaf30"
+    },
+    {
+      "path": "renal_metabolico/AKI_METADATA.jsonl",
+      "size_bytes": 947,
+      "sha256": "276e94bbf9b660ed1ea1ecfacc3b27bb37a9e293432f9fbfecb67ab71981a1ac"
+    },
+    {
+      "path": "renal_metabolico/CORE_ACIDBASE_DECISIONS.jsonl",
+      "size_bytes": 3597,
+      "sha256": "2d5601197b55d2dfc02348f70486a1c76702ab711cff8cceb4a8c3a275657ac1"
+    },
+    {
+      "path": "renal_metabolico/CORE_AKI_DECISIONS.jsonl",
+      "size_bytes": 3362,
+      "sha256": "64c61028bbcbe8d51e1656dfb192ee5c8e0b2ffd0ac438bfb40c429a3163bdee"
+    },
+    {
+      "path": "renal_metabolico/CORE_ELECTROLYTES_DECISIONS.jsonl",
+      "size_bytes": 3191,
+      "sha256": "c12c5cadb9e0b21fcc057f8267cdffe1cd65b5319df8ee6fbf8dc00f1688e973"
+    },
+    {
+      "path": "renal_metabolico/ELECTROLYTES_METADATA.jsonl",
+      "size_bytes": 1028,
+      "sha256": "b2ea8390b41ea91f6feae4cd9856852ea75428f4a90e4bee25561957f37bd287"
+    },
+    {
+      "path": "renal_metabolico/core_dka.json",
+      "size_bytes": 1746,
+      "sha256": "3a6618272b4b402cf66e579d9c71fe87b8d3d5422f10ec620b6169c0e3b1ce2b"
+    },
+    {
+      "path": "renal_metabolico/core_dka.metadata.jsonl",
+      "size_bytes": 356,
+      "sha256": "2c9777386fda479708f30b2dec51a36654f3e669cf3510603113f7ba84caee9d"
+    },
+    {
+      "path": "respiratorio/AIRWAYS_METADATA.jsonl",
+      "size_bytes": 1010,
+      "sha256": "a2336c7d30b9eeb08405ffef0825e7354932273475e24e42131aaba6e279f2ca"
+    },
+    {
+      "path": "respiratorio/CORE_AIRWAYS_DECISIONS.jsonl",
+      "size_bytes": 3318,
+      "sha256": "bb1ef0047946038dd58c144b1e01fd4743abafda8304eeef78374a56ea4f5fd4"
+    },
+    {
+      "path": "toxicologia/CORE_TOXICOLOGY_DECISIONS.jsonl",
+      "size_bytes": 3257,
+      "sha256": "77922d63bd92a8622dcd1ab7f0cd7479f457de3f053dc10d997f14892fc8ba6a"
+    },
+    {
+      "path": "toxicologia/TOXICOLOGY_METADATA.jsonl",
+      "size_bytes": 963,
+      "sha256": "723ffef263457ae5842f525bcb73d14f3fea141dae17dda555dfcf6e5881133e"
+    },
+    {
+      "path": "trauma/CORE_TRAUMA_ABC_v1.0.json",
+      "size_bytes": 2994,
+      "sha256": "1762256d70bb6cd8fb08e730952fa1514df7cab93504ae3d367edfa04203f3c6"
+    },
+    {
+      "path": "trauma/CORE_TRAUMA_SHOCK_v1.0.json",
+      "size_bytes": 3135,
+      "sha256": "9ebea0dec01bb6ee336eca2c5861b6c478318073f7f79fed1ef46770259302cb"
+    },
+    {
+      "path": "trauma/core_atls.json",
+      "size_bytes": 2357,
+      "sha256": "5c144fd84b5e074459c7701df5a9922d1b446de31611f3aa90bd8291472dc623"
+    },
+    {
+      "path": "trauma/core_atls.metadata.jsonl",
+      "size_bytes": 551,
+      "sha256": "65c068242c2ba659161243609ca2a6e5eb7b86bf26870496d4757d08509a2e28"
+    },
+    {
+      "path": "urgencias_generales/core_anaphylaxis.json",
+      "size_bytes": 1299,
+      "sha256": "7258cc63b87675c6ba6dfe400a1119bfd8908c7f6e272e69ee5fba4cadb38769"
+    }
+  ]
+}

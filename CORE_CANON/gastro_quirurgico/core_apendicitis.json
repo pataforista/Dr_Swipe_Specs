@@ -1,0 +1,97 @@
+[
+  {
+    "id": "CORE_APP_001",
+    "tema": "Cirugía",
+    "subtema": "Apendicitis",
+    "tipo_decision": "estudio",
+    "enunciado": "Ante sospecha de apendicitis con duda diagnóstica, ¿qué enfoque reduce apendicectomías innecesarias?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Uso de imagen (US/TAC) según contexto clínico",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Decisión exclusiva basada en score clínico",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Alta sin vigilancia ni criterios de alarma",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "appendicitis.pdf",
+      "sages_guideline_appendicitis.pdf"
+    ],
+    "version": "core_v1.1"
+  },
+  {
+    "id": "CORE_APP_002",
+    "tema": "Cirugía",
+    "subtema": "Apendicitis",
+    "tipo_decision": "complicacion",
+    "enunciado": "Sospecha de apendicitis. ¿Qué hallazgo sugiere perforación/complicación y eleva urgencia?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Datos de irritación peritoneal generalizada o sepsis",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Dolor leve intermitente sin fiebre",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Solo leucocitosis baja",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "appendicitis.pdf",
+      "sages.org-Guideline for the Diagnosis and Treatment of Appendicitis.pdf"
+    ],
+    "version": "core_v1.2"
+  },
+  {
+    "id": "CORE_APP_003",
+    "tema": "Cirugía",
+    "subtema": "Apendicitis",
+    "tipo_decision": "manejo",
+    "enunciado": "Ante cuadro compatible y alto riesgo clínico de apendicitis complicada. ¿Qué error ENARM debe evitarse?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Retrasar manejo esperando repetición de laboratorio sin reevaluación",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "B",
+        "texto": "Reevaluación seriada e imagen según contexto",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "C",
+        "texto": "Alta sin criterios de alarma",
+        "resultado": "error_letal",
+        "impacto": -6
+      }
+    ],
+    "fuentes": [
+      "sages.org-Guideline for the Diagnosis and Treatment of Appendicitis.pdf"
+    ],
+    "version": "core_v1.2"
+  }
+]

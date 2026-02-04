@@ -1,0 +1,6 @@
+{"id":"GI_BLEED_001","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["hda","abc","urgencias"],"v":"core_v2.5"}
+{"id":"GI_BLEED_002","frecuencia_enarm":"media","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["hda","via_aerea"],"v":"core_v2.5"}
+{"id":"GI_BLEED_003","frecuencia_enarm":"alta","dificultad":"baja","letal_si_falla":false,"error_tipico":true,"tags":["hda","cirrosis","varices"],"v":"core_v2.5"}
+{"id":"GI_BLEED_004","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["hda","varices","octreotido"],"v":"core_v2.5"}
+{"id":"GI_BLEED_005","frecuencia_enarm":"media","dificultad":"media","letal_si_falla":false,"error_tipico":true,"tags":["hda","transfusion"],"v":"core_v2.5"}
+{"id":"GI_BLEED_006","frecuencia_enarm":"alta","dificultad":"alta","letal_si_falla":true,"error_tipico":true,"tags":["hda","iatrogenia"],"v":"core_v2.5"}

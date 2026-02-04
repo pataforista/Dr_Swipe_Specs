@@ -1,0 +1,50 @@
+{
+  "session_id": "string",
+  "timestamp_start": "iso8601",
+  "timestamp_end": "iso8601",
+  "case_id": "string",
+  "difficulty": "easy|standard|hard",
+
+  "evidence_metrics": {
+    "total_items": 0,
+    "kept_items": 0,
+    "discarded_items": 0,
+    "pinned_items_count": 0,
+    "annotations_count": 0
+  },
+
+  "checkpoint_metrics": [
+    {
+      "checkpoint_sequence": 1,
+      "decision_node_id": "string",
+      "result_event": "success|fail|fail_lethal",
+      "time_to_checkpoint_ms": 0
+    },
+    {
+      "checkpoint_sequence": 2,
+      "decision_node_id": "string",
+      "result_event": "success|fail|fail_lethal",
+      "time_to_checkpoint_ms": 0
+    }
+  ],
+
+  "pattern_metrics": {
+    "hoarding": false,
+    "clean_dossier": false,
+    "tunnel_vision": false,
+    "safe_prioritization": false,
+    "delay": false
+  },
+
+  "timing_metrics": {
+    "total_time_ms": 0,
+    "pause_count": 0,
+    "total_pause_time_ms": 0,
+    "average_time_per_item_ms": 0
+  },
+
+  "ui_context": {
+    "platform": "web|mobile|pwa",
+    "input_mode": "gesture|buttons|mixed"
+  }
+}

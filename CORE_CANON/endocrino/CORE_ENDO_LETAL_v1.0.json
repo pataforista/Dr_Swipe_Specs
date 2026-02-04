@@ -1,0 +1,98 @@
+[
+  {
+    "id": "CORE_ENDO_001",
+    "tema": "Tormenta tiroidea – reconocimiento",
+    "enunciado": "Paciente con fiebre 40°C, taquicardia 160 lpm, agitación, diarrea y antecedente de hipertiroidismo. ¿Diagnóstico más probable?",
+    "opciones": {
+      "A": "Tormenta tiroidea",
+      "B": "Feocromocitoma",
+      "C": "Sepsis bacteriana",
+      "D": "Síndrome serotoninérgico"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "La combinación de hipertermia, taquicardia extrema y síntomas gastrointestinales y neuropsiquiátricos en un paciente tiroideo es altamente sugestiva de tormenta tiroidea.",
+    "letal_si_falla": true,
+    "dificultad": "media",
+    "tags": ["endocrino", "urgencias", "tiroides"]
+  },
+  {
+    "id": "CORE_ENDO_002",
+    "tema": "Tormenta tiroidea – secuencia terapéutica",
+    "enunciado": "Paciente con tormenta tiroidea confirmada. ¿Cuál es la secuencia correcta del manejo farmacológico inicial?",
+    "opciones": {
+      "A": "Betabloqueador → antitiroideo → yodo",
+      "B": "Yodo → antitiroideo → betabloqueador",
+      "C": "Antitiroideo → yodo → betabloqueador",
+      "D": "Solo betabloqueador"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "Primero se bloquean los efectos periféricos (betabloqueador), luego la síntesis (antitiroideo) y finalmente la liberación hormonal (yodo). Dar yodo antes del antitiroideo empeora la crisis.",
+    "letal_si_falla": true,
+    "dificultad": "alta",
+    "tags": ["endocrino", "urgencias", "tiroides"]
+  },
+  {
+    "id": "CORE_ENDO_003",
+    "tema": "Coma mixedematoso – reconocimiento",
+    "enunciado": "Paciente anciano con hipotermia, bradicardia, hiponatremia y alteración del estado mental. ¿Diagnóstico más probable?",
+    "opciones": {
+      "A": "Coma mixedematoso",
+      "B": "Sepsis",
+      "C": "Intoxicación por sedantes",
+      "D": "Hipoglucemia aislada"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "El coma mixedematoso es la forma extrema del hipotiroidismo y se caracteriza por hipotermia, bradicardia y deterioro neurológico.",
+    "letal_si_falla": true,
+    "dificultad": "media",
+    "tags": ["endocrino", "urgencias", "tiroides"]
+  },
+  {
+    "id": "CORE_ENDO_004",
+    "tema": "Coma mixedematoso – esteroides",
+    "enunciado": "Paciente con sospecha de coma mixedematoso. ¿Por qué se deben administrar esteroides antes o junto con hormona tiroidea?",
+    "opciones": {
+      "A": "Para cubrir una posible insuficiencia suprarrenal concomitante",
+      "B": "Para acelerar el metabolismo de la T4",
+      "C": "Para disminuir la fiebre",
+      "D": "Para evitar hiperglucemia"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "Existe riesgo de insuficiencia suprarrenal asociada. Administrar hormona tiroidea sin esteroides puede precipitar choque adrenal.",
+    "letal_si_falla": true,
+    "dificultad": "alta",
+    "tags": ["endocrino", "urgencias", "tiroides"]
+  },
+  {
+    "id": "CORE_ENDO_005",
+    "tema": "Crisis suprarrenal",
+    "enunciado": "Paciente con antecedente de uso crónico de esteroides suspende tratamiento y presenta choque, hipoglucemia e hiponatremia. ¿Conducta inmediata?",
+    "opciones": {
+      "A": "Hidrocortisona IV a dosis de estrés",
+      "B": "Esperar cortisol sérico",
+      "C": "Solo líquidos IV",
+      "D": "Iniciar insulina"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "La crisis suprarrenal es una emergencia vital. El tratamiento es inmediato con esteroides IV; esperar confirmación mata al paciente.",
+    "letal_si_falla": true,
+    "dificultad": "media",
+    "tags": ["endocrino", "urgencias", "adrenal"]
+  },
+  {
+    "id": "CORE_ENDO_006",
+    "tema": "Hipercalcemia maligna",
+    "enunciado": "Paciente con cáncer presenta confusión, deshidratación y calcio sérico de 15 mg/dL. ¿Tratamiento inicial más importante?",
+    "opciones": {
+      "A": "Hidratación IV con solución salina",
+      "B": "Bisfosfonatos IV de inmediato",
+      "C": "Calcitonina como monoterapia",
+      "D": "Diuréticos de asa sin líquidos"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "La hipercalcemia severa causa deshidratación y falla renal. La hidratación IV es la base inicial antes de terapias específicas.",
+    "letal_si_falla": true,
+    "dificultad": "media",
+    "tags": ["endocrino", "urgencias", "metabolico"]
+  }
+]

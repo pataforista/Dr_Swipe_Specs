@@ -1,0 +1,7 @@
+{"id":"ELY_NA_001","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["electrolitos","urgencias","neurologia"],"v":"core_v2.1"}
+{"id":"ELY_NA_002","frecuencia_enarm":"alta","dificultad":"alta","letal_si_falla":true,"error_tipico":true,"tags":["electrolitos","urgencias","tratamiento"],"v":"core_v2.1"}
+{"id":"ELY_NA_003","frecuencia_enarm":"media","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["electrolitos","seguridad"],"v":"core_v2.1"}
+
+{"id":"ELY_K_001","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["electrolitos","urgencias","cardiologia"],"v":"core_v2.1"}
+{"id":"ELY_K_002","frecuencia_enarm":"alta","dificultad":"alta","letal_si_falla":true,"error_tipico":true,"tags":["electrolitos","urgencias","cardiologia"],"v":"core_v2.1"}
+{"id":"ELY_K_003","frecuencia_enarm":"media","dificultad":"media","letal_si_falla":false,"error_tipico":true,"tags":["electrolitos","fisiologia"],"v":"core_v2.1"}

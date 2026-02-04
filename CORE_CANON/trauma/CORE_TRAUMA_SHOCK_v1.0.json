@@ -1,0 +1,87 @@
+[
+  {
+    "id": "CORE_TRAUMA_SHOCK_001",
+    "tema": "trauma",
+    "subtema": "choque_hemorragico",
+    "decision": "Causa más frecuente de choque en trauma",
+    "opciones": [
+      "Choque cardiogénico",
+      "Choque neurogénico",
+      "Choque hemorrágico",
+      "Choque séptico"
+    ],
+    "respuesta_correcta": "Choque hemorrágico",
+    "justificacion": "La hemorragia no controlada es la principal causa prevenible de muerte en trauma.",
+    "dificultad": "baja",
+    "letal_si_falla": false,
+    "tags": ["trauma", "choque"]
+  },
+  {
+    "id": "CORE_TRAUMA_SHOCK_002",
+    "tema": "trauma",
+    "subtema": "reanimacion",
+    "decision": "Manejo inicial del choque hemorrágico",
+    "opciones": [
+      "Cristaloides a grandes volúmenes",
+      "Transfusión masiva temprana",
+      "Vasopresores de inicio",
+      "Esperar estudios de imagen"
+    ],
+    "respuesta_correcta": "Transfusión masiva temprana",
+    "justificacion": "La reanimación hemostática temprana con hemoderivados reduce mortalidad. La sobrecarga de cristaloides empeora coagulopatía y acidosis.",
+    "dificultad": "media",
+    "letal_si_falla": true,
+    "tags": ["trauma", "hemorragia", "reanimacion"]
+  },
+  {
+    "id": "CORE_TRAUMA_SHOCK_003",
+    "tema": "trauma",
+    "subtema": "fluidos",
+    "decision": "Uso de cristaloides en trauma",
+    "opciones": [
+      "Son la base de la reanimación",
+      "Se evitan completamente",
+      "Se usan en volúmenes limitados",
+      "Reemplazan hemoderivados"
+    ],
+    "respuesta_correcta": "Se usan en volúmenes limitados",
+    "justificacion": "El exceso de cristaloides diluye factores de coagulación y favorece la tríada letal: hipotermia, acidosis y coagulopatía.",
+    "dificultad": "media",
+    "letal_si_falla": true,
+    "tags": ["trauma", "fluidoterapia"]
+  },
+  {
+    "id": "CORE_TRAUMA_SHOCK_004",
+    "tema": "trauma",
+    "subtema": "hipotension_permisiva",
+    "decision": "Objetivo de TA en choque hemorrágico sin TCE",
+    "opciones": [
+      "Normalizar TA inmediatamente",
+      "TAS 80–90 mmHg",
+      "PAM > 90 mmHg",
+      "TAS > 140 mmHg"
+    ],
+    "respuesta_correcta": "TAS 80–90 mmHg",
+    "justificacion": "La hipotensión permisiva limita el sangrado hasta lograr control definitivo, excepto en TCE donde se requiere normotensión.",
+    "dificultad": "alta",
+    "letal_si_falla": true,
+    "tags": ["trauma", "choque", "hipotension_permisiva"]
+  },
+  {
+    "id": "CORE_TRAUMA_SHOCK_005",
+    "tema": "trauma",
+    "subtema": "vasopresores",
+    "decision": "Uso de vasopresores en choque hemorrágico",
+    "opciones": [
+      "Indicados de primera línea",
+      "Indicados antes de transfundir",
+      "Solo tras control de hemorragia",
+      "Siempre contraindicados"
+    ],
+    "respuesta_correcta": "Solo tras control de hemorragia",
+    "justificacion": "Los vasopresores sin volumen ni control del sangrado empeoran la hipoperfusión tisular y la mortalidad.",
+    "dificultad": "alta",
+    "letal_si_falla": true,
+    "tags": ["trauma", "iatrogenia"]
+  }
+]

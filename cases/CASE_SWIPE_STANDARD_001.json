@@ -1,0 +1,101 @@
+{
+  "case_id": "swipe_standard_001",
+  "version": "v1",
+  "difficulty": "standard",
+  "dominant_tags": ["acute_care", "hemodynamics"],
+  "checkpoint_nodes": [
+    { "sequence": 1, "decision_node_id": "CORE_NODE_STABILIZE_001" },
+    { "sequence": 2, "decision_node_id": "CORE_NODE_WORKUP_002" }
+  ],
+  "noise_budget": {
+    "target_noise_items": 3,
+    "types_allowed": ["irrelevant_true", "borderline", "duplicate", "delayed_result", "false_alarm"]
+  },
+  "stream_order_rule": "mixed",
+  "evidence_stream": [
+    {
+      "evidence_id": "ev_001",
+      "category": "vitals",
+      "payload": { "title": "TA", "text": "90/60 mmHg (toma en triage)" },
+      "tags": ["hypotension"],
+      "noise_type": "none",
+      "safety_flags": { "contraindication": false, "lethal_risk": true, "decision_critical": true }
+    },
+    {
+      "evidence_id": "ev_002",
+      "category": "vitals",
+      "payload": { "title": "FC", "text": "120 lpm" },
+      "tags": ["tachycardia"],
+      "noise_type": "none",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "ev_003",
+      "category": "labs",
+      "payload": { "title": "Hb", "text": "8.1 g/dL" },
+      "tags": ["anemia"],
+      "noise_type": "none",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "ev_004",
+      "category": "notes",
+      "payload": { "title": "Nota enfermería", "text": "Paciente ansioso al ingreso" },
+      "tags": ["context"],
+      "noise_type": "irrelevant_true",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "ev_005",
+      "category": "imaging",
+      "payload": { "title": "Rx tórax", "text": "Sin hallazgos agudos" },
+      "tags": ["screening"],
+      "noise_type": "borderline",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "ev_006",
+      "category": "labs",
+      "payload": { "title": "Hb (repetición)", "text": "8.1 g/dL" },
+      "tags": ["anemia"],
+      "noise_type": "duplicate",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "ev_007",
+      "category": "labs",
+      "payload": { "title": "Glucosa capilar", "text": "Normal" },
+      "tags": ["screening"],
+      "noise_type": "irrelevant_true",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "ev_008",
+      "category": "labs",
+      "payload": { "title": "Creatinina (reporte tardío)", "text": "Disponible tras demora" },
+      "tags": ["renal_function"],
+      "noise_type": "delayed_result",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "ev_009",
+      "category": "meds",
+      "payload": { "title": "Medicaciones previas", "text": "Uso reciente de AINEs" },
+      "tags": ["med_history"],
+      "noise_type": "none",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "ev_010",
+      "category": "timeline",
+      "payload": { "title": "Síntoma", "text": "Dolor torácico transitorio que cedió" },
+      "tags": ["symptom"],
+      "noise_type": "false_alarm",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    }
+  ],
+  "checkpoint_triggers": [
+    { "after_evidence_index": 4, "checkpoint_sequence": 1 },
+    { "after_evidence_index": 9, "checkpoint_sequence": 2 }
+  ]
+}

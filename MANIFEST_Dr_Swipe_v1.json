@@ -1,0 +1,53 @@
+{
+  "project": "Dr. Swipe: Clinical Investigation",
+  "version": "v1",
+  "status": "frozen",
+  "freeze_act": "governance/ENGINE_SWIPE_FREEZE_ACT_v1.md",
+  "created_at": "2026-01-04",
+  "dependencies": {
+    "core": "CORE_CANON (external, read-only)",
+    "engine": "ENGINE_SWIPE_SPEC_v1.md"
+  },
+  "files": {
+    "engine": [
+      "engine/ENGINE_SWIPE_SPEC_v1.md",
+      "engine/ENGINE_SWIPE_ACCEPTANCE_TESTS_v1.md",
+      "engine/ENGINE_SWIPE_CORE_BRIDGE_v1.md",
+      "engine/ENGINE_SWIPE_SCORING_RULES_v1.md",
+      "engine/ENGINE_SWIPE_FEEDBACK_SPEC_v1.md",
+      "engine/ui/ENGINE_SWIPE_UI_MINIMAL_SPEC_v1.md",
+      "engine/ui/ENGINE_SWIPE_UI_CHECKLIST_v1.md",
+      "engine/ui/ENGINE_SWIPE_CASE_FRAMING_SPEC_v1.md",
+      "engine/schemas/ENGINE_SWIPE_DOSSIER_SCHEMA_v1.json",
+      "engine/schemas/ENGINE_SWIPE_CASE_INSTANCE_SCHEMA_v1.json",
+      "engine/schemas/ENGINE_SWIPE_NOISE_MODEL_v1.json",
+      "engine/ENGINE_SWIPE_RESULT_EVENT_SPEC_v1.json",
+      "engine/schemas/ENGINE_SWIPE_PATTERN_THRESHOLDS_v1.json"
+    ],
+    "generator": [
+      "generator/ENGINE_SWIPE_CASE_GENERATOR_RULES_v1.md"
+    ],
+    "cases": [
+      "cases/CASE_SWIPE_EASY_001.json",
+      "cases/CASE_SWIPE_STANDARD_001.json",
+      "cases/CASE_SWIPE_HARD_001.json",
+      "cases/ENGINE_SWIPE_CASE_QA_CHECKLIST_v1.md"
+    ],
+    "telemetry": [
+      "telemetry/ENGINE_SWIPE_TELEMETRY_SCHEMA_v1.json"
+    ],
+    "runtime": [
+      "runtime/ENGINE_SWIPE_RUNTIME_STUB_v1.md"
+    ],
+    "copy": [
+      "copy/ENGINE_SWIPE_COPY_LIBRARY_v1.json"
+    ],
+    "governance": [
+      "governance/ENGINE_SWIPE_FREEZE_ACT_v1.md"
+    ]
+  },
+  "integrity": {
+    "hashing": "optional",
+    "notes": "Si algún archivo listado cambia sin bump de versión, el bundle se considera no conforme."
+  }
+}

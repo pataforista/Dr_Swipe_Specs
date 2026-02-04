@@ -1,0 +1,6 @@
+{"id":"PAN_001","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["pancreatitis","diagnostico"],"v":"core_v3.1"}
+{"id":"PAN_002","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["pancreatitis","liquidos"],"v":"core_v3.1"}
+{"id":"PAN_003","frecuencia_enarm":"media","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["ringer_lactato","iatrogenia"],"v":"core_v3.1"}
+{"id":"PAN_004","frecuencia_enarm":"alta","dificultad":"alta","letal_si_falla":true,"error_tipico":true,"tags":["antibioticos","necrosis"],"v":"core_v3.1"}
+{"id":"PAN_005","frecuencia_enarm":"media","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["nutricion_enteral"],"v":"core_v3.1"}
+{"id":"PAN_006","frecuencia_enarm":"media","dificultad":"baja","letal_si_falla":false,"error_tipico":true,"tags":["bisap","gravedad"],"v":"core_v3.1"}

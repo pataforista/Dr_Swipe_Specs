@@ -1,0 +1,7 @@
+{"id": "CORE_HTA_001", "frecuencia_enarm": "alta", "dificultad": "media", "letal_si_falla": false, "error_tipico": true, "tags": ["cardiologia", "clasificacion"], "v": "core_v1.1"}
+{"id": "CORE_HTA_002", "frecuencia_enarm": "alta", "dificultad": "media", "letal_si_falla": true, "error_tipico": true, "tags": ["cardiologia", "urgencias"], "v": "core_v1.1"}
+{"id": "CORE_HTA_OB_001", "frecuencia_enarm": "alta", "dificultad": "media", "letal_si_falla": false, "error_tipico": true, "tags": ["obstetricia", "clasificacion"], "v": "core_v1.6"}
+{"id": "CORE_HTA_OB_002", "frecuencia_enarm": "alta", "dificultad": "media", "letal_si_falla": true, "error_tipico": true, "tags": ["obstetricia", "farmaco", "seguridad"], "v": "core_v1.6"}
+{"id": "CORE_HTA_OB_003", "frecuencia_enarm": "alta", "dificultad": "media", "letal_si_falla": true, "error_tipico": true, "tags": ["obstetricia", "farmaco", "teratogenicidad"], "v": "core_v1.6"}
+{"id": "CORE_HTA_OB_004", "frecuencia_enarm": "media", "dificultad": "alta", "letal_si_falla": true, "error_tipico": true, "tags": ["obstetricia", "urgencias"], "v": "core_v1.6"}
+{"id": "CORE_HTA_OB_005", "frecuencia_enarm": "alta", "dificultad": "media", "letal_si_falla": false, "error_tipico": true, "tags": ["obstetricia", "diferencial"], "v": "core_v1.6"}

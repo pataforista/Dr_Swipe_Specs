@@ -1,0 +1,33 @@
+[
+  {
+    "id": "CORE_ZSCORE_001",
+    "tema": "Pediatría",
+    "subtema": "Crecimiento (OMS)",
+    "tipo_decision": "interpretacion",
+    "enunciado": "Peso/talla con Z-score menor a -2 DE sugiere principalmente:",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Desnutrición aguda (wasting)",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Desnutrición crónica (stunting)",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Normalidad",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "puntuacion-z-graficas-oms.pdf"
+    ],
+    "version": "core_v1.2"
+  }
+]

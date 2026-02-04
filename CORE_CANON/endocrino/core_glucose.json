@@ -1,0 +1,32 @@
+[
+  {
+    "id": "CORE_GLU_001",
+    "tema": "Hipoglucemia grave",
+    "escenario": "Paciente hospitalizado con confusión, diaforesis y antecedente de diabetes. El laboratorio central tarda 40 minutos.",
+    "pregunta": "¿Cuál es la acción inmediata correcta?",
+    "opciones": {
+      "A": "Esperar confirmación de glucosa sérica",
+      "B": "Administrar dextrosa IV de inmediato",
+      "C": "Administrar insulina correctiva",
+      "D": "Administrar solución salina"
+    },
+    "respuesta_correcta": "B",
+    "justificacion": "La hipoglucemia neuroglucopénica causa daño cerebral irreversible por minuto. El glucómetro capilar es suficiente para actuar; esperar laboratorio es inaceptable.",
+    "letal_si_falla": true
+  },
+  {
+    "id": "CORE_GLU_002",
+    "tema": "Hipoglucemia grave",
+    "escenario": "Paciente inconsciente fuera del hospital, sin acceso IV inmediato.",
+    "pregunta": "¿Cuál es el tratamiento inicial más apropiado?",
+    "opciones": {
+      "A": "Dextrosa oral",
+      "B": "Glucagón IM",
+      "C": "Insulina de acción rápida",
+      "D": "Observación hasta recuperación espontánea"
+    },
+    "respuesta_correcta": "B",
+    "justificacion": "En ausencia de acceso IV, el glucagón IM moviliza glucógeno hepático y puede salvar la vida. La vía oral está contraindicada en inconsciencia.",
+    "letal_si_falla": true
+  }
+]

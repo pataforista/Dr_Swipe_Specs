@@ -1,0 +1,39 @@
+{
+  "patterns": {
+    "hoarding": {
+      "trigger_if": {
+        "kept_ratio_gte": 0.75,
+        "min_total_items": 8
+      }
+    },
+    "clean_dossier": {
+      "trigger_if": {
+        "kept_ratio_lte": 0.45,
+        "min_category_coverage_gte": 4
+      }
+    },
+    "tunnel_vision": {
+      "trigger_if": {
+        "min_category_coverage_lte": 2,
+        "min_total_items": 8
+      }
+    },
+    "safe_prioritization": {
+      "trigger_if": {
+        "kept_ratio_lte": 0.55,
+        "min_category_coverage_gte": 4,
+        "checkpoint1_result_in": ["success", "fail"]
+      }
+    },
+    "delay": {
+      "trigger_if": {
+        "average_time_per_item_ms_gte": 9000,
+        "pause_count_gte": 2
+      }
+    }
+  },
+  "definitions": {
+    "kept_ratio": "kept_items / total_items",
+    "min_category_coverage": "número de categorías únicas presentes en evidencia guardada (timeline,vitals,labs,imaging,meds,notes)"
+  }
+}

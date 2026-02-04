@@ -1,0 +1,6 @@
+{"id":"AKI_001","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":false,"error_tipico":true,"tags":["aki","clasificacion"],"v":"core_v2.4"}
+{"id":"AKI_002","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["aki","reanimacion","seguridad"],"v":"core_v2.4"}
+{"id":"AKI_003","frecuencia_enarm":"media","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["aki","sedimento","diagnostico"],"v":"core_v2.4"}
+{"id":"AKI_004","frecuencia_enarm":"alta","dificultad":"media","letal_si_falla":true,"error_tipico":true,"tags":["aki","iatrogenia"],"v":"core_v2.4"}
+{"id":"AKI_005","frecuencia_enarm":"media","dificultad":"media","letal_si_falla":false,"error_tipico":true,"tags":["aki","posrenal"],"v":"core_v2.4"}
+{"id":"AKI_006","frecuencia_enarm":"media","dificultad":"alta","letal_si_falla":true,"error_tipico":true,"tags":["aki","dialisis","urgencias"],"v":"core_v2.4"}

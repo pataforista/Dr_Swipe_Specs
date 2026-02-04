@@ -1,0 +1,96 @@
+[
+  {
+    "id": "CORE_DIV_001",
+    "tema": "Cirugía",
+    "subtema": "Diverticulitis",
+    "tipo_decision": "tratamiento",
+    "enunciado": "Diverticulitis no complicada en paciente estable. ¿Cuál es la conducta correcta según guías actuales?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Manejo selectivo; antibiótico no siempre obligatorio",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Antibiótico en todos los casos",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Cirugía inmediata",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "Diverticulitis review.pdf"
+    ],
+    "version": "core_v1.1"
+  },
+  {
+    "id": "CORE_DIV_002",
+    "tema": "Cirugía",
+    "subtema": "Diverticulitis",
+    "tipo_decision": "complicacion",
+    "enunciado": "Diverticulitis con sospecha de complicación (absceso, perforación). ¿Qué decisión es más consistente?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Escalar evaluación/manejo (imagen y tratamiento dirigido)",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Mantener manejo ambulatorio sin imagen pese a datos de complicación",
+        "resultado": "error_letal",
+        "impacto": -6
+      },
+      {
+        "id": "C",
+        "texto": "Tratar como no complicada de rutina",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "Diverticular Disease.pdf",
+      "Diverticulitis review.pdf"
+    ],
+    "version": "core_v1.2"
+  },
+  {
+    "id": "CORE_DIV_003",
+    "tema": "Cirugía",
+    "subtema": "Diverticulitis",
+    "tipo_decision": "estudio",
+    "enunciado": "Sospecha de diverticulitis con dudas o posible complicación. ¿Qué estudio suele ser el confirmatorio de elección?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "TAC con contraste (según disponibilidad y contraindicaciones)",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Radiografía simple como confirmatorio",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Colonoscopia en fase aguda como primera opción",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "Diverticulitis review.pdf"
+    ],
+    "version": "core_v1.2"
+  }
+]

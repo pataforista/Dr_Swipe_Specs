@@ -1,0 +1,101 @@
+{
+  "case_id": "swipe_easy_001",
+  "version": "v1",
+  "difficulty": "easy",
+  "dominant_tags": ["general_care"],
+  "checkpoint_nodes": [
+    { "sequence": 1, "decision_node_id": "CORE_NODE_INITIAL_REVIEW_001" },
+    { "sequence": 2, "decision_node_id": "CORE_NODE_FOLLOWUP_001" }
+  ],
+  "noise_budget": {
+    "target_noise_items": 2,
+    "types_allowed": ["irrelevant_true", "duplicate"]
+  },
+  "stream_order_rule": "mixed",
+  "evidence_stream": [
+    {
+      "evidence_id": "e01",
+      "category": "timeline",
+      "payload": { "title": "Motivo", "text": "Consulta breve; expediente incompleto" },
+      "tags": ["context"],
+      "noise_type": "none",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "e02",
+      "category": "vitals",
+      "payload": { "title": "FC", "text": "88 lpm" },
+      "tags": ["vital"],
+      "noise_type": "none",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "e03",
+      "category": "vitals",
+      "payload": { "title": "TA", "text": "120/75 mmHg" },
+      "tags": ["vital"],
+      "noise_type": "none",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "e04",
+      "category": "labs",
+      "payload": { "title": "Hb", "text": "14 g/dL" },
+      "tags": ["lab"],
+      "noise_type": "none",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "e05",
+      "category": "labs",
+      "payload": { "title": "Hb (repetición)", "text": "14 g/dL" },
+      "tags": ["lab"],
+      "noise_type": "duplicate",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "e06",
+      "category": "notes",
+      "payload": { "title": "Observación", "text": "Paciente tranquilo al ingreso" },
+      "tags": ["context"],
+      "noise_type": "irrelevant_true",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "e07",
+      "category": "imaging",
+      "payload": { "title": "Imagen", "text": "Sin hallazgos relevantes reportados" },
+      "tags": ["screening"],
+      "noise_type": "none",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "e08",
+      "category": "meds",
+      "payload": { "title": "Tratamiento actual", "text": "Sin tratamiento actual" },
+      "tags": ["med_history"],
+      "noise_type": "none",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "e09",
+      "category": "meds",
+      "payload": { "title": "Alergias / reacciones", "text": "No documentadas" },
+      "tags": ["med_history"],
+      "noise_type": "none",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    },
+    {
+      "evidence_id": "e10",
+      "category": "notes",
+      "payload": { "title": "Contacto", "text": "Información administrativa de seguimiento" },
+      "tags": ["admin"],
+      "noise_type": "none",
+      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+    }
+  ],
+  "checkpoint_triggers": [
+    { "after_evidence_index": 4, "checkpoint_sequence": 1 },
+    { "after_evidence_index": 9, "checkpoint_sequence": 2 }
+  ]
+}

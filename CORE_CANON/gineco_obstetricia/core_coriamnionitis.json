@@ -1,0 +1,64 @@
+[
+  {
+    "id": "CORE_CHORIO_001",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Corioamnionitis",
+    "tipo_decision": "diagnostico",
+    "enunciado": "¿Qué combinación clínica sugiere corioamnionitis?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Fiebre materna + taquicardia fetal",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Hipertensión aislada",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Bradipnea materna",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "Chorioamnionitis.pdf"
+    ],
+    "version": "core_v1.1"
+  },
+  {
+    "id": "CORE_CHORIO_002",
+    "tema": "Gineco-obstetricia",
+    "subtema": "Corioamnionitis",
+    "tipo_decision": "manejo",
+    "enunciado": "Sospecha clínica de corioamnionitis. ¿Cuál es el pilar del manejo?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Antibióticos de amplio espectro y resolución del embarazo",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Observación expectante",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "Antipiréticos únicamente",
+        "resultado": "error_letal",
+        "impacto": -6
+      }
+    ],
+    "fuentes": [
+      "Chorioamnionitis.pdf"
+    ],
+    "version": "core_v1.1"
+  }
+]

@@ -1,0 +1,314 @@
+[
+  {
+    "id": "CORE_STEMI_001",
+    "tema": "Cardiología",
+    "subtema": "IAM con elevación del ST",
+    "tipo_decision": "prioridad",
+    "enunciado": "Sospecha de IAM con elevación del ST. ¿Cuál es la prioridad terapéutica que define la ruta de manejo?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Reperfusión inmediata (ICP primaria o trombólisis según disponibilidad y tiempo)",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Esperar biomarcadores para confirmar diagnóstico",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "Manejo sintomático y observación",
+        "resultado": "error_letal",
+        "impacto": -6
+      }
+    ],
+    "fuentes": [
+      "comprehensive_review_of_st_segment_elevation.pdf",
+      "infarto.pdf"
+    ],
+    "version": "core_v1.1"
+  },
+  {
+    "id": "CORE_STEMI_002",
+    "tema": "Cardiología",
+    "subtema": "IAM con elevación del ST",
+    "tipo_decision": "estudio",
+    "enunciado": "Dolor torácico compatible con IAM. ¿Qué estudio debe realizarse de forma inmediata?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "ECG de 12 derivaciones",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Radiografía de tórax",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Ecocardiograma de esfuerzo",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "infarto.pdf"
+    ],
+    "version": "core_v1.1"
+  },
+  {
+    "id": "CORE_STEMI_004",
+    "tema": "Cardiología",
+    "subtema": "IAM con elevación del ST",
+    "tipo_decision": "contraindicacion",
+    "enunciado": "¿Cuál es una contraindicación absoluta para trombólisis?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Antecedente de hemorragia intracraneal",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "IAM previo",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Hipertensión controlada",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "infarto.pdf"
+    ],
+    "version": "core_v1.1"
+  },
+  {
+    "id": "CORE_AMI_001",
+    "tema": "Cirugía",
+    "subtema": "Isquemia mesentérica aguda",
+    "tipo_decision": "estudio",
+    "enunciado": "Dolor abdominal desproporcionado al examen físico. ¿Qué estudio confirma el diagnóstico?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Angio-TAC",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Ultrasonido abdominal",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Esperar signos peritoneales",
+        "resultado": "error_letal",
+        "impacto": -6
+      }
+    ],
+    "fuentes": [
+      "Acute mesenteric ischemia.pdf"
+    ],
+    "version": "core_v1.1"
+  },
+  {
+    "id": "CORE_IAM_005",
+    "tema": "Cardiología",
+    "subtema": "Síndrome coronario agudo",
+    "tipo_decision": "prioridad",
+    "enunciado": "Paciente con dolor torácico típico y cambios isquémicos en ECG. ¿Qué principio guía el manejo inicial?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "El tiempo es miocardio: no retrasar reperfusión",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Esperar confirmación con biomarcadores seriados",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "Manejo sintomático sin estrategia de reperfusión",
+        "resultado": "error_letal",
+        "impacto": -6
+      }
+    ],
+    "fuentes": [
+      "infarto.pdf",
+      "comprehensive_review_of_st_segment_elevation.pdf"
+    ],
+    "version": "core_v1.5"
+  },
+  {
+    "id": "CORE_IAM_006",
+    "tema": "Cardiología",
+    "subtema": "Síndrome coronario agudo",
+    "tipo_decision": "farmacologico",
+    "enunciado": "Ante sospecha de IAM, ¿qué tratamiento farmacológico inicial reduce mortalidad y debe indicarse salvo contraindicación?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Antiagregación plaquetaria (AAS)",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Solo analgesia con opioides",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Anticoagulación sin antiagregación",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "infarto.pdf"
+    ],
+    "version": "core_v1.5"
+  },
+  {
+    "id": "CORE_IAM_007",
+    "tema": "Cardiología",
+    "subtema": "Síndrome coronario agudo",
+    "tipo_decision": "diferencial",
+    "enunciado": "Dolor torácico agudo. ¿Qué diagnóstico diferencial debe descartarse antes de administrar trombólisis?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Disección aórtica",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "ERGE",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Ansiedad",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "infarto.pdf"
+    ],
+    "version": "core_v1.5"
+  },
+  {
+    "id": "CORE_IAM_008",
+    "tema": "Cardiología",
+    "subtema": "Síndrome coronario agudo",
+    "tipo_decision": "seguridad",
+    "enunciado": "Paciente con IAM inferior y sospecha de compromiso del ventrículo derecho. ¿Qué fármaco puede empeorar la condición?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Nitratos",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Cristaloides",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Oxígeno si está hipoxémico",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "infarto.pdf"
+    ],
+    "version": "core_v1.5"
+  },
+  {
+    "id": "CORE_IAM_009",
+    "tema": "Cardiología",
+    "subtema": "Síndrome coronario agudo",
+    "tipo_decision": "clasificacion",
+    "enunciado": "En síndrome coronario agudo, ¿qué hallazgo define un IAM con elevación del ST (IAMCEST)?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Elevación persistente del ST en ECG compatible",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Troponina elevada sin cambios electrocardiográficos",
+        "resultado": "error_frecuente",
+        "impacto": -2
+      },
+      {
+        "id": "C",
+        "texto": "Dolor torácico aislado",
+        "resultado": "error_grave",
+        "impacto": -4
+      }
+    ],
+    "fuentes": [
+      "comprehensive_review_of_st_segment_elevation.pdf"
+    ],
+    "version": "core_v1.5"
+  },
+  {
+    "id": "CORE_IAM_010",
+    "tema": "Cardiología",
+    "subtema": "Síndrome coronario agudo",
+    "tipo_decision": "ruta",
+    "enunciado": "IAM con elevación del ST en hospital sin sala de hemodinamia. ¿Qué estrategia es correcta?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Trombólisis o traslado oportuno según tiempos",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Esperar estabilización completa antes de decidir",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "Manejo conservador sin reperfusión",
+        "resultado": "error_letal",
+        "impacto": -6
+      }
+    ],
+    "fuentes": [
+      "infarto.pdf"
+    ],
+    "version": "core_v1.5"
+  }
+]

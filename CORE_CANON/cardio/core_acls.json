@@ -1,0 +1,98 @@
+[
+  {
+    "id": "CORE_ACLS_001",
+    "tema": "Taquicardia inestable",
+    "enunciado": "Paciente con FC 180 lpm, PA 70/40 mmHg, alteración del estado mental y dolor torácico. ¿Conducta inmediata?",
+    "opciones": {
+      "A": "Cardioversión eléctrica sincronizada",
+      "B": "Administrar adenosina IV",
+      "C": "Iniciar amiodarona en infusión",
+      "D": "Esperar ECG de 12 derivaciones"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "La taquicardia con datos de inestabilidad hemodinámica requiere cardioversión inmediata. Retrasar por fármacos o estudios mata al paciente.",
+    "letal_si_falla": true,
+    "dificultad": "media",
+    "tags": ["acls", "arritmias", "urgencias"]
+  },
+  {
+    "id": "CORE_ACLS_002",
+    "tema": "Taquicardia regular de QRS estrecho estable",
+    "enunciado": "Paciente estable con taquicardia regular de QRS estrecho a 180 lpm. ¿Primer fármaco recomendado?",
+    "opciones": {
+      "A": "Adenosina IV en bolo rápido",
+      "B": "Amiodarona IV",
+      "C": "Cardioversión eléctrica inmediata",
+      "D": "Digoxina"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "En taquicardia supraventricular regular y estable, la adenosina es de primera línea por su efecto transitorio sobre el nodo AV.",
+    "letal_si_falla": false,
+    "dificultad": "baja",
+    "tags": ["acls", "tsv"]
+  },
+  {
+    "id": "CORE_ACLS_003",
+    "tema": "Fibrilación auricular con respuesta ventricular rápida",
+    "enunciado": "Paciente con FA y FC 160 lpm, estable hemodinámicamente. ¿Objetivo inicial del manejo?",
+    "opciones": {
+      "A": "Control de la frecuencia ventricular",
+      "B": "Cardioversión eléctrica inmediata",
+      "C": "Trombólisis",
+      "D": "Implante de marcapasos"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "En FA estable, el primer objetivo es controlar la frecuencia. La cardioversión se reserva para inestabilidad o tras evaluar anticoagulación/tiempo de evolución.",
+    "letal_si_falla": false,
+    "dificultad": "media",
+    "tags": ["acls", "fibrilacion_auricular"]
+  },
+  {
+    "id": "CORE_ACLS_004",
+    "tema": "Bradicardia sintomática",
+    "enunciado": "Paciente con FC 35 lpm, síncope y PA 80/50 mmHg. ¿Tratamiento inicial recomendado?",
+    "opciones": {
+      "A": "Atropina IV",
+      "B": "Adenosina IV",
+      "C": "Amiodarona IV",
+      "D": "Cardioversión sincronizada"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "La atropina es el fármaco de primera línea en bradicardia sintomática. Si falla, se debe escalar a marcapasos transcutáneo o infusión de catecolaminas.",
+    "letal_si_falla": true,
+    "dificultad": "media",
+    "tags": ["acls", "bradicardia"]
+  },
+  {
+    "id": "CORE_ACLS_005",
+    "tema": "Fibrilación ventricular",
+    "enunciado": "Paciente inconsciente, sin pulso, monitor muestra fibrilación ventricular. ¿Conducta inmediata?",
+    "opciones": {
+      "A": "Desfibrilación inmediata",
+      "B": "Cardioversión sincronizada",
+      "C": "Administrar amiodarona antes de choque",
+      "D": "Esperar acceso venoso central"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "La fibrilación ventricular es un ritmo desfibrilable. Cada minuto sin choque reduce la supervivencia 7–10%.",
+    "letal_si_falla": true,
+    "dificultad": "baja",
+    "tags": ["acls", "paro_cardiaco"]
+  },
+  {
+    "id": "CORE_ACLS_006",
+    "tema": "AESP / Asistolia",
+    "enunciado": "Paciente en paro con actividad eléctrica sin pulso (AESP). ¿Conducta correcta?",
+    "opciones": {
+      "A": "RCP de alta calidad y búsqueda de causas reversibles",
+      "B": "Desfibrilación inmediata",
+      "C": "Cardioversión sincronizada",
+      "D": "Adenosina IV"
+    },
+    "respuesta_correcta": "A",
+    "justificacion": "AESP y asistolia no son ritmos desfibrilables. El manejo se basa en RCP eficaz y corrección de las 5H/5T.",
+    "letal_si_falla": true,
+    "dificultad": "media",
+    "tags": ["acls", "paro_cardiaco"]
+  }
+]

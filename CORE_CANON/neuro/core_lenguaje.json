@@ -1,0 +1,33 @@
+[
+  {
+    "id": "CORE_LANG_001",
+    "tema": "Metaclínico",
+    "subtema": "Lenguaje médico",
+    "tipo_decision": "interpretacion",
+    "enunciado": "En reactivos ENARM en inglés médico, ¿qué riesgo implica un false friend?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Cambiar completamente la interpretación clínica",
+        "resultado": "correcto",
+        "impacto": 3
+      },
+      {
+        "id": "B",
+        "texto": "Solo afecta la redacción",
+        "resultado": "error_grave",
+        "impacto": -4
+      },
+      {
+        "id": "C",
+        "texto": "No tiene impacto real",
+        "resultado": "error_letal",
+        "impacto": -6
+      }
+    ],
+    "fuentes": [
+      "False friends in medical Language.pdf"
+    ],
+    "version": "core_v1.1"
+  }
+]
