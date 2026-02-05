@@ -88,11 +88,37 @@ body {
     font-style: italic;
 }
 
+.learning-goals {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    text-align: left;
+    width: 100%;
+}
+
+.learning-goals h2 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.learning-goals ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    display: grid;
+    gap: 0.4rem;
+}
+
 /* Stream */
 #view-stream {
     padding: 1rem;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto 1fr auto auto;
+    gap: 0.75rem;
 }
 
 .game-header {
@@ -120,6 +146,8 @@ body {
     justify-content: space-between;
     font-size: 0.875rem;
     color: var(--text-muted);
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
 }
 
 .card-container {
@@ -137,6 +165,59 @@ body {
     max-width: 340px;
     aspect-ratio: 3/4;
     position: relative;
+}
+
+.learning-panel {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.tip-card,
+.feedback-card {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    border: 1px solid #e5e7eb;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tip-card h4,
+.feedback-card h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+}
+
+.feedback-card.feedback-correct {
+    border-color: rgba(22, 163, 74, 0.4);
+    background: rgba(22, 163, 74, 0.08);
+    animation: feedbackPop 0.4s ease-out;
+}
+
+.feedback-card.feedback-wrong {
+    border-color: rgba(220, 38, 38, 0.4);
+    background: rgba(220, 38, 38, 0.08);
+    animation: feedbackPop 0.4s ease-out;
+}
+
+@keyframes feedbackPop {
+    0% {
+        transform: scale(0.98);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .card {
@@ -279,4 +360,14 @@ body {
     padding: 0.5rem 0;
     border-bottom: 1px solid #f3f4f6;
     font-size: 0.875rem;
+}
+
+.result-box {
+    width: 100%;
+    padding: 1rem;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    color: var(--text-main);
 }
