@@ -77,6 +77,16 @@ body {
     margin-bottom: 0.5rem;
 }
 
+.narrative-container {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    line-height: 1.6;
+    border-left: 4px solid var(--primary);
+    text-align: left;
+}
+
 .subtitle {
     font-size: 1.25rem;
     color: var(--text-muted);
@@ -264,8 +274,23 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 3rem;
     margin-top: 1rem;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .btn {

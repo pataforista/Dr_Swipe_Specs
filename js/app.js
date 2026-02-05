@@ -1,12 +1,14 @@
 import { DataLoader } from './data_loader.js';
 import { SwipeEngine, ENGINE_STATE } from './engine.js';
 import { UIController } from './ui.js';
+import { AudioManager } from './audio_manager.js';
 
 class App {
     constructor() {
         this.loader = new DataLoader();
         this.engine = new SwipeEngine();
         this.ui = new UIController(this.engine);
+        this.audio = new AudioManager();
 
         this.init();
     }
@@ -28,10 +30,24 @@ class App {
     }
 
     bindEvents() {
-        // Intake
+        // Intro to Intake
+        document.getElementById('btn-to-intake').addEventListener('click', () => {
+            this.engine.state = ENGINE_STATE.INTAKE;
+            this.ui.update();
+            this.audio.play('swipe');
+        });
+
+        // Intake to Stream
         document.getElementById('btn-start').addEventListener('click', () => {
             this.engine.startReview();
             this.ui.update();
+            this.audio.play('swipe');
+
+            // Show tutorial if active
+            if (this.engine.tutorialActive) {
+                this.ui.showTutorialStep(0);
+                this.engine.tutorialActive = false;
+            }
         });
 
         // Swipe Actions
@@ -69,9 +85,15 @@ class App {
         } else if (result && result.action === 'finish') {
             // Finished
             this.ui.update();
+            this.audio.play('finish');
         } else {
             // Next card
             this.ui.update();
+
+            // Play feedback sound
+            if (this.engine.lastFeedback) {
+                this.audio.play(this.engine.lastFeedback.correct ? 'correct' : 'wrong');
+            }
         }
     }
 }

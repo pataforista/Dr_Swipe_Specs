@@ -1,4 +1,5 @@
 export const ENGINE_STATE = {
+    INTRO: 'intro',
     INTAKE: 'intake',
     STREAM: 'evidence_stream',
     CHECKPOINT: 'checkpoint',
@@ -8,9 +9,10 @@ export const ENGINE_STATE = {
 
 export class SwipeEngine {
     constructor() {
-        this.state = ENGINE_STATE.INTAKE;
+        this.state = ENGINE_STATE.INTRO;
         this.currentCase = null;
         this.currentIndex = 0;
+        this.tutorialActive = true;
 
         // Dossier state
         this.keptItems = [];
@@ -33,7 +35,7 @@ export class SwipeEngine {
 
     initializeSession(caseData) {
         this.currentCase = caseData;
-        this.state = ENGINE_STATE.INTAKE;
+        this.state = ENGINE_STATE.INTRO;
         this.currentIndex = 0;
         this.keptItems = [];
         this.discardedItems = [];

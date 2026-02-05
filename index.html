@@ -11,8 +11,20 @@
 
 <body>
     <div id="app-container">
+        <!-- View: Intro (Narrative) -->
+        <div id="view-intro" class="view active">
+            <h1 class="title">El Reporte 0</h1>
+            <div class="narrative-container">
+                <p>Es tu primer día en el hospital. El sistema está saturado de datos.</p>
+                <p>Tu misión no es solo leer, sino <strong>discernir</strong>. Guarda lo que importa, desecha el ruido.
+                </p>
+                <p>Cada decisión cuenta para el expediente final.</p>
+            </div>
+            <button id="btn-to-intake" class="btn primary">Entrar al Hospital</button>
+        </div>
+
         <!-- View: Intake (Start Screen) -->
-        <div id="view-intake" class="view active">
+        <div id="view-intake" class="view hidden">
             <h1 class="title">Dr. Swipe</h1>
             <p class="subtitle">Clinical Investigation</p>
             <div id="case-framing" class="framing-text">
@@ -62,9 +74,22 @@
             </section>
 
             <footer class="controls">
-                <button id="btn-discard" class="btn-circle discard">✖</button>
-                <button id="btn-keep" class="btn-circle keep">✔</button>
+                <div class="control-group">
+                    <button id="btn-discard" class="btn-circle discard">✖</button>
+                    <span class="btn-label">Descartar</span>
+                </div>
+                <div class="control-group">
+                    <button id="btn-keep" class="btn-circle keep">✔</button>
+                    <span class="btn-label">Guardar</span>
+                </div>
             </footer>
+        </div>
+
+        <!-- Tutorial Overlay -->
+        <div id="tutorial-overlay" class="tutorial-overlay hidden">
+            <div id="tutorial-step" class="tutorial-step">
+                <!-- Injected by JS -->
+            </div>
         </div>
 
         <!-- View: Checkpoint -->

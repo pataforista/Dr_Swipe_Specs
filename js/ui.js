@@ -4,6 +4,7 @@ export class UIController {
     constructor(engine) {
         this.engine = engine;
         this.views = {
+            intro: document.getElementById('view-intro'),
             intake: document.getElementById('view-intake'),
             stream: document.getElementById('view-stream'),
             checkpoint: document.getElementById('view-checkpoint'),
@@ -25,7 +26,9 @@ export class UIController {
             feedbackTitle: document.getElementById('feedback-title'),
             feedbackText: document.getElementById('feedback-text'),
             resultStatus: document.getElementById('result-status'),
-            listMistakes: document.getElementById('list-mistakes')
+            listMistakes: document.getElementById('list-mistakes'),
+            tutorialOverlay: document.getElementById('tutorial-overlay'),
+            tutorialStep: document.getElementById('tutorial-step')
         };
     }
 
@@ -49,6 +52,9 @@ export class UIController {
 
         // Map engine state to UI view
         switch (state) {
+            case ENGINE_STATE.INTRO:
+                this.showView('intro');
+                break;
             case ENGINE_STATE.INTAKE:
                 this.showView('intake');
                 this.renderIntake();
@@ -176,5 +182,44 @@ export class UIController {
                 });
             }
         }
+    }
+
+    showTutorialStep(stepNumber) {
+        if (!this.elements.tutorialOverlay) return;
+
+        const steps = [
+            {
+                title: "Bienvenido, Doctor",
+                text: "Esta es tu mesa de trabajo. Tu objetivo es construir un expediente clínico sólido.",
+                btnText: "Siguiente"
+            },
+            {
+                title: "¿Por qué hacemos esto?",
+                text: "En medicina, el exceso de información puede matar. Debes filtrar lo importante del ruido.",
+                btnText: "Entendido"
+            },
+            {
+                title: "Botones de Acción",
+                text: "Usa ✔ para GUARDAR evidencia crítica y ✖ para DESCARTAR lo irrelevante o duplicado.",
+                btnText: "Empezar Tutorial"
+            }
+        ];
+
+        const step = steps[stepNumber];
+        if (!step) {
+            this.elements.tutorialOverlay.classList.add('hidden');
+            return;
+        }
+
+        this.elements.tutorialOverlay.classList.remove('hidden');
+        this.elements.tutorialStep.innerHTML = `
+            <h3>${step.title}</h3>
+            <p>${step.text}</p>
+            <button class="btn primary" id="btn-tutorial-next">${step.btnText}</button>
+        `;
+
+        document.getElementById('btn-tutorial-next').onclick = () => {
+            this.showTutorialStep(stepNumber + 1);
+        };
     }
 }
