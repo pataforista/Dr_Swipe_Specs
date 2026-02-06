@@ -1,24 +1,54 @@
 {
   "case_id": "string",
   "version": "v1",
+  "mode": "standard|enarm",
   "difficulty": "easy|standard|hard",
-  "dominant_tags": ["string"],
+  "dominant_tags": [
+    "string"
+  ],
   "checkpoint_nodes": [
-    { "sequence": 1, "decision_node_id": "string" },
-    { "sequence": 2, "decision_node_id": "string" }
+    {
+      "sequence": 1,
+      "decision_node_id": "string"
+    },
+    {
+      "sequence": 2,
+      "decision_node_id": "string"
+    }
   ],
   "noise_budget": {
     "target_noise_items": 0,
-    "types_allowed": ["irrelevant_true", "borderline", "duplicate", "delayed_result", "false_alarm"]
+    "types_allowed": [
+      "irrelevant_true",
+      "borderline",
+      "duplicate",
+      "delayed_result",
+      "false_alarm"
+    ]
   },
   "stream_order_rule": "non_chronological|mixed|frontload_signal|frontload_noise",
   "evidence_stream": [
     {
       "evidence_id": "string",
+      "block_index": 1,
       "category": "timeline|vitals|labs|imaging|meds|notes",
-      "payload": { "title": "string", "text": "string" },
-      "tags": ["string"],
+      "payload": {
+        "title": "string",
+        "text": "string"
+      },
+      "tags": [
+        "string"
+      ],
+      "is_signal": true,
       "noise_type": "none|irrelevant_true|borderline|duplicate|delayed_result|false_alarm",
+      "noise_class": "none|ruido_blanco|ruido_trampa",
+      "highlight_targets": [
+        {
+          "text": "string",
+          "start": 0,
+          "end": 0
+        }
+      ],
       "safety_flags": {
         "contraindication": false,
         "lethal_risk": false,
@@ -26,8 +56,40 @@
       }
     }
   ],
+  "checkpoint_quizzes": [
+    {
+      "checkpoint_sequence": 1,
+      "question": "string",
+      "options": [
+        "string"
+      ],
+      "correct": "string",
+      "required_evidence_ids": [
+        "string"
+      ]
+    }
+  ],
+  "final_triad": [
+    {
+      "type": "diagnosis|gold_standard|treatment",
+      "question": "string",
+      "options": [
+        "string"
+      ],
+      "correct": "string",
+      "required_evidence_ids": [
+        "string"
+      ]
+    }
+  ],
   "checkpoint_triggers": [
-    { "after_evidence_index": 4, "checkpoint_sequence": 1 },
-    { "after_evidence_index": 9, "checkpoint_sequence": 2 }
+    {
+      "after_evidence_index": 5,
+      "checkpoint_sequence": 1
+    },
+    {
+      "after_evidence_index": 13,
+      "checkpoint_sequence": 2
+    }
   ]
 }

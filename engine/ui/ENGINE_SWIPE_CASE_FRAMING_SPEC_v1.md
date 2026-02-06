@@ -38,11 +38,15 @@ Se presenta una sola vez, al iniciar el intake.
 - Rol del jugador (revisor, investigador, guardia).
 - Naturaleza incompleta del expediente.
 - Expectativa explícita de descarte.
+En modo ENARM también se permite:
+- recordar que el objetivo es integrar síndrome y responder tríada final.
+- mencionar presión de tiempo (si aplica).
 
 #### Contenido prohibido
 - Diagnósticos
 - Objetivos clínicos
 - Menciones a tratamiento, estabilización, estudio, etc.
+En modo ENARM estas prohibiciones se relajan **solo** en checkpoints y cierre.
 
 #### Ejemplo permitido
 > “Estás revisando un expediente clínico incompleto.  
@@ -77,6 +81,8 @@ Cuando se entra al estado `checkpoint`.
 #### Contenido permitido
 - Aviso sistémico de que una decisión será evaluada.
 - Recordatorio de que el sistema solo lee el dossier.
+En modo ENARM:
+- Presentar la pregunta sindromática y opciones.
 
 #### Ejemplo permitido
 > “El sistema evaluará la información que decidiste conservar.”
@@ -85,6 +91,7 @@ Cuando se entra al estado `checkpoint`.
 - Preguntas clínicas
 - Lenguaje de examen
 - Feedback anticipatorio
+En modo ENARM solo se prohíbe dar la respuesta correcta antes del intento.
 
 ---
 
@@ -113,6 +120,10 @@ Ejemplo:
 Nunca:
 > “Tomaste una mala decisión.”
 
+### 4b. Feedback ENARM (opcional)
+- Puede señalar evidencia clave omitida **solo tras fallar**.
+- Formato sugerido: “Se te pasó: [segmento clave]”.
+
 ---
 
 ### 5. Cierre del Caso
@@ -123,6 +134,9 @@ Reflexión mecánica, no clínica.
 #### Contenido permitido
 - Estadísticas del dossier.
 - Tipo de manejo de información.
+En modo ENARM:
+- Mostrar tablero final con tríada (diagnóstico, estudio, tratamiento).
+- Referencia a GPC o “Perla ENARM”.
 
 Ejemplo:
 > “Guardaste 4 de 10 elementos.  

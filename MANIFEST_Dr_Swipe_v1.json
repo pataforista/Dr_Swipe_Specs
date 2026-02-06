@@ -15,6 +15,7 @@
       "engine/ENGINE_SWIPE_CORE_BRIDGE_v1.md",
       "engine/ENGINE_SWIPE_SCORING_RULES_v1.md",
       "engine/ENGINE_SWIPE_FEEDBACK_SPEC_v1.md",
+      "engine/ENGINE_SWIPE_META_LAYER_SPEC_v1.md",
       "engine/ui/ENGINE_SWIPE_UI_MINIMAL_SPEC_v1.md",
       "engine/ui/ENGINE_SWIPE_UI_CHECKLIST_v1.md",
       "engine/ui/ENGINE_SWIPE_CASE_FRAMING_SPEC_v1.md",

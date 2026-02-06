@@ -1,12 +1,14 @@
 # ENGINE_SWIPE_UI_MINIMAL_SPEC_v1
 
 ## Rol del documento
-Definir la interfaz mínima necesaria para operar ENGINE_SWIPE
-sin introducir:
+Definir la interfaz mínima necesaria para operar ENGINE_SWIPE.
+En modo estándar, sin introducir:
 - decisiones clínicas explícitas
 - pistas diagnósticas
 - lógica de examen
 - retroalimentación prescriptiva
+
+En modo ENARM, se habilitan UI de examen **solo** en checkpoints y cierre.
 
 La UI es un ejecutor visual del motor, no un intérprete clínico.
 
@@ -14,6 +16,10 @@ La UI es un ejecutor visual del motor, no un intérprete clínico.
 
 ## Principio rector
 La UI muestra **estado y acciones**, nunca **significado clínico**.
+En modo ENARM, el significado clínico solo aparece en:
+- checkpoint_quiz (síndrome)
+- final_triad (diagnóstico/estudio/tratamiento)
+- cierre con “Perla ENARM” + GPC
 
 Si una UI permite inferir qué decisión es correcta,
 esa UI viola el diseño del sistema.
@@ -29,6 +35,9 @@ La UI solo puede representar estados ya definidos por el motor:
 - checkpoint
 - results
 - dossier
+En modo ENARM se añaden:
+- checkpoint_quiz
+- final_triad
 
 La UI no puede crear estados nuevos.
 
@@ -61,6 +70,7 @@ La UI no puede crear estados nuevos.
 #### Acciones permitidas
 - swipe_right (guardar)
 - swipe_left (descartar)
+- highlight_select (subrayar segmento)
 - pin (solo si guardado)
 - annotate
 - pause
@@ -72,6 +82,8 @@ La UI no puede crear estados nuevos.
 - Mostrar tags, safety_flags o noise_type.
 
 La evidencia se presenta como texto plano + título.
+En modo ENARM:
+- Se permite subrayado con feedback táctil neutro.
 
 ---
 
@@ -127,6 +139,14 @@ Pin es solo ayuda cognitiva del jugador.
 
 El checkpoint ocurre por lógica, no por input clínico.
 
+### 6b. Estado: checkpoint_quiz (solo ENARM)
+#### Componentes permitidos
+- Pregunta sindromática + opciones.
+- Indicador de evidencia requerida (solo tras fallo).
+
+#### Prohibido
+- Explicaciones clínicas antes de responder.
+
 ---
 
 ### 7. Estado: results
@@ -156,11 +176,16 @@ El checkpoint ocurre por lógica, no por input clínico.
 - Feedback educativo explícito.
 - Recomendaciones.
 
+En modo ENARM se permite:
+- tablero final con tríada (diagnóstico, estudio, tratamiento).
+- resaltado visual de señal vs. ruido tras terminar.
+- botón “Ver diagrama GPC”.
+
 ---
 
 ## Restricciones globales de UI
 
-### Prohibido en cualquier estado
+### Prohibido en cualquier estado (modo estándar)
 - Diagnósticos.
 - Algoritmos.
 - Referencias a guías.

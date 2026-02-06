@@ -13,6 +13,7 @@ Sin explicar clínica, sin decir “qué debió hacer”.
 
 ## Principio rector
 El feedback **nombra patrones**, no decisiones.
+En modo ENARM se habilita feedback educativo **solo al cierre**.
 
 Nunca:
 - “Debiste conservar X”
@@ -84,6 +85,12 @@ No decir:
 - “Pocos”
 sin referencia.
 
+### 4. Feedback ENARM (cierre)
+Permitido únicamente en modo ENARM y solo al final:
+- “Perla ENARM” con referencia GPC.
+- Comparativa visual: señal en verde, ruido en rojo.
+- Mención explícita de segmento omitido o subrayado erróneo.
+
 ---
 
 ## Qué NO se permite como feedback
@@ -93,6 +100,8 @@ sin referencia.
 ❌ Usar lenguaje evaluativo (“bien”, “mal”)  
 ❌ Ofrecer recomendaciones  
 ❌ Frases tipo “aprendiste que…”
+En modo ENARM se permite mencionar la recomendación **si** proviene de GPC
+con formato de “Perla ENARM”.
 
 ---
 

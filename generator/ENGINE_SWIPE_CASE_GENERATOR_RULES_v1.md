@@ -10,14 +10,15 @@ sin inventar contenido clínico nuevo.
 - checkpoint_nodes (2 ids CORE)
 - noise model (ENGINE_SWIPE_NOISE_MODEL_v1.json)
 - dossier categories (ENGINE_SWIPE_DOSSIER_SCHEMA_v1.json)
+- mode (standard|enarm)
 
 ## Salida
 Un objeto que cumple ENGINE_SWIPE_CASE_INSTANCE_SCHEMA_v1.json.
 
 ## Tamaño del caso (MVP)
-- total_evidence_items = 10
-- target_noise_items = 3
-- target_signal_items = 7
+- total_evidence_items = 14
+- target_noise_items = 5
+- target_signal_items = 9
 
 ## Distribución mínima por categoría (para evitar túnel)
 Al menos 4 de estas 5 categorías deben aparecer en la señal:
@@ -26,6 +27,14 @@ Al menos 4 de estas 5 categorías deben aparecer en la señal:
 - imaging
 - meds
 - timeline/notes
+
+## Cobertura de tags (para mostrar el dataset)
+- cada dominant_tag debe aparecer al menos 2 veces en la señal.
+- incluir al menos 1 evidencia con tag secundario (no dominante) para variedad.
+
+## Bloques ENARM (ritmo)
+- dividir evidence_stream en 2 bloques: 1-6 y 7-14.
+- cada bloque debe contener ≥ 2 categorías.
 
 ## Reglas de ruido (no mentir)
 - El ruido es irrelevancia, duplicación, ambigüedad, desfase temporal o falsa alarma autolimitada.
@@ -56,10 +65,29 @@ Entonces:
 - false_alarm representa un evento alarmante autolimitado que no modifica elegibilidad del checkpoint.
 - No se permite false_alarm si podría cambiar contraindicación o letalidad.
 
+## Ruido ENARM (distractores activos)
+- ruido_blanco: datos normales, familiares o irrelevantes.
+- ruido_trampa: datos que sugieren diagnóstico alterno frecuente.
+- ruido_trampa debe ser descartable sin contradecir safety_flags.
+
 ## Orden del stream
 - Por defecto: mixed (mezclar señal y ruido).
-- Checkpoint 1: después de 5 evidencias (índice 4).
-- Checkpoint 2: al final (índice 9).
+- Checkpoint 1: después de 6 evidencias (índice 5).
+- Checkpoint 2: al final (índice 13).
+
+## Highlight targets (ENARM)
+- cada evidencia puede incluir 0..n segmentos objetivo.
+- señal debe tener ≥ 1 highlight_target.
+- ruido debe tener 0 highlight_target.
+
+## Checkpoint sindromático (ENARM)
+- generar pregunta de síndrome al final del bloque 1.
+- incluir required_evidence_ids (segmentos clave).
+- si falla, habilitar pista de evidencia omitida.
+
+## Tríada final (ENARM)
+- generar 3 preguntas: diagnóstico, estudio de elección, tratamiento inicial.
+- marcar evidencias críticas (ej. alergias) como required_evidence_ids.
 
 ## Compatibilidad con scoring
 - Asegurar suficiente “basura guardable” para que exista hoarding.
@@ -68,6 +96,6 @@ Entonces:
 ## Criterio de cierre
 Un caso generado debe:
 - cumplir schema
-- contener exactamente 10 evidencias
-- contener exactamente 3 ruidos (según difficulty/modelo)
+- contener exactamente 14 evidencias
+- contener exactamente 5 ruidos (según difficulty/modelo)
 - respetar safety_rule sin excepciones
