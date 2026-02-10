@@ -44,14 +44,23 @@
         <!-- View: Evidence Stream (Game Loop) -->
         <div id="view-stream" class="view hidden">
             <header class="game-header">
+                <div id="mission-banner" class="mission-banner">
+                    <!-- Injected by JS -->
+                </div>
+                <div class="confidence-container">
+                    <span class="label">Confianza Diagnóstica</span>
+                    <div class="confidence-bar">
+                        <div id="confidence-fill" class="confidence-fill" style="width: 50%"></div>
+                    </div>
+                </div>
                 <div class="progress-bar">
                     <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
                 </div>
-                <div class="stats">
+                <div id="game-stats" class="stats">
                     <span id="counter-kept">Guardados: 0</span>
                     <span id="counter-discarded">Descartados: 0</span>
-                    <span id="counter-correct">Aciertos: 0</span>
-                    <span id="counter-streak">Racha: 0</span>
+                    <span id="counter-correct" class="hide-during-stream">Aciertos: 0</span>
+                    <span id="counter-streak" class="hide-during-stream">Racha: 0</span>
                 </div>
             </header>
 
@@ -92,17 +101,30 @@
             </div>
         </div>
 
-        <!-- View: Checkpoint -->
         <div id="view-checkpoint" class="view hidden">
-            <h2>Punto de Decisión</h2>
-            <p id="checkpoint-message">El sistema evalúa la suficiencia de la evidencia...</p>
-            <button id="btn-checkpoint-continue" class="btn primary">Continuar</button>
+            <h2 id="checkpoint-title">Punto de Decisión</h2>
+            <div id="quiz-container" class="quiz-container">
+                <p id="quiz-question" class="quiz-question"></p>
+                <div id="quiz-options" class="quiz-options"></div>
+                <div id="quiz-hint" class="quiz-hint hidden"></div>
+            </div>
+            <button id="btn-checkpoint-continue" class="btn primary hidden">Siguiente Fase</button>
         </div>
 
-        <!-- View: Results/Dossier -->
         <div id="view-results" class="view hidden">
-            <h2>Expediente Final</h2>
-            <div id="result-status" class="result-box"></div>
+            <h2 class="title">Evaluación Final</h2>
+            <div id="result-outcome" class="result-box outcome-box"></div>
+
+            <div id="triad-container" class="triad-container hidden">
+                <h3>Tríada ENARM</h3>
+                <div id="triad-questions"></div>
+            </div>
+
+            <div id="perla-enarm" class="perla-card hidden">
+                <h4 id="perla-title"></h4>
+                <p id="perla-text"></p>
+                <span id="perla-gpc" class="gpc-tag"></span>
+            </div>
 
             <div class="dossier-lists">
                 <div class="list-section">

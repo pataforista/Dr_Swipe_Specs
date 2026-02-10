@@ -2,100 +2,288 @@
   "case_id": "swipe_easy_001",
   "version": "v1",
   "difficulty": "easy",
-  "dominant_tags": ["general_care"],
+  "dominant_tags": [
+    "general_care"
+  ],
   "checkpoint_nodes": [
-    { "sequence": 1, "decision_node_id": "CORE_NODE_INITIAL_REVIEW_001" },
-    { "sequence": 2, "decision_node_id": "CORE_NODE_FOLLOWUP_001" }
+    {
+      "sequence": 1,
+      "decision_node_id": "CORE_NODE_INITIAL_REVIEW_001"
+    },
+    {
+      "sequence": 2,
+      "decision_node_id": "CORE_NODE_FOLLOWUP_001"
+    }
   ],
   "noise_budget": {
     "target_noise_items": 2,
-    "types_allowed": ["irrelevant_true", "duplicate"]
+    "types_allowed": [
+      "irrelevant_true",
+      "duplicate"
+    ]
   },
   "stream_order_rule": "mixed",
   "evidence_stream": [
     {
       "evidence_id": "e01",
       "category": "timeline",
-      "payload": { "title": "Motivo", "text": "Consulta breve; expediente incompleto" },
-      "tags": ["context"],
+      "payload": {
+        "title": "Motivo",
+        "text": "Consulta breve; expediente incompleto"
+      },
+      "tags": [
+        "context"
+      ],
       "noise_type": "none",
-      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
     },
     {
       "evidence_id": "e02",
       "category": "vitals",
-      "payload": { "title": "FC", "text": "88 lpm" },
-      "tags": ["vital"],
+      "payload": {
+        "title": "FC",
+        "text": "88 lpm"
+      },
+      "tags": [
+        "vital"
+      ],
       "noise_type": "none",
-      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
     },
     {
       "evidence_id": "e03",
       "category": "vitals",
-      "payload": { "title": "TA", "text": "120/75 mmHg" },
-      "tags": ["vital"],
+      "payload": {
+        "title": "TA",
+        "text": "120/75 mmHg"
+      },
+      "tags": [
+        "vital"
+      ],
       "noise_type": "none",
-      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
     },
     {
       "evidence_id": "e04",
       "category": "labs",
-      "payload": { "title": "Hb", "text": "14 g/dL" },
-      "tags": ["lab"],
+      "payload": {
+        "title": "Hb",
+        "text": "14 g/dL"
+      },
+      "tags": [
+        "lab"
+      ],
       "noise_type": "none",
-      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
     },
     {
       "evidence_id": "e05",
       "category": "labs",
-      "payload": { "title": "Hb (repetición)", "text": "14 g/dL" },
-      "tags": ["lab"],
+      "payload": {
+        "title": "Hb (repetición)",
+        "text": "14 g/dL"
+      },
+      "tags": [
+        "lab"
+      ],
       "noise_type": "duplicate",
-      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
     },
     {
       "evidence_id": "e06",
       "category": "notes",
-      "payload": { "title": "Observación", "text": "Paciente tranquilo al ingreso" },
-      "tags": ["context"],
+      "payload": {
+        "title": "Observación",
+        "text": "Paciente tranquilo al ingreso"
+      },
+      "tags": [
+        "context"
+      ],
       "noise_type": "irrelevant_true",
-      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
     },
     {
       "evidence_id": "e07",
       "category": "imaging",
-      "payload": { "title": "Imagen", "text": "Sin hallazgos relevantes reportados" },
-      "tags": ["screening"],
+      "payload": {
+        "title": "Imagen",
+        "text": "Sin hallazgos relevantes reportados"
+      },
+      "tags": [
+        "screening"
+      ],
       "noise_type": "none",
-      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
     },
     {
       "evidence_id": "e08",
       "category": "meds",
-      "payload": { "title": "Tratamiento actual", "text": "Sin tratamiento actual" },
-      "tags": ["med_history"],
+      "payload": {
+        "title": "Tratamiento actual",
+        "text": "Sin tratamiento actual"
+      },
+      "tags": [
+        "med_history"
+      ],
       "noise_type": "none",
-      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
     },
     {
       "evidence_id": "e09",
       "category": "meds",
-      "payload": { "title": "Alergias / reacciones", "text": "No documentadas" },
-      "tags": ["med_history"],
+      "payload": {
+        "title": "Alergias / reacciones",
+        "text": "No documentadas"
+      },
+      "tags": [
+        "med_history"
+      ],
       "noise_type": "none",
-      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
     },
     {
       "evidence_id": "e10",
       "category": "notes",
-      "payload": { "title": "Contacto", "text": "Información administrativa de seguimiento" },
-      "tags": ["admin"],
+      "payload": {
+        "title": "Contacto",
+        "text": "Información administrativa de seguimiento"
+      },
+      "tags": [
+        "admin"
+      ],
       "noise_type": "none",
-      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
     }
   ],
   "checkpoint_triggers": [
-    { "after_evidence_index": 4, "checkpoint_sequence": 1 },
-    { "after_evidence_index": 9, "checkpoint_sequence": 2 }
-  ]
+    {
+      "after_evidence_index": 4,
+      "checkpoint_sequence": 1
+    },
+    {
+      "after_evidence_index": 9,
+      "checkpoint_sequence": 2
+    }
+  ],
+  "checkpoint_quizzes": [
+    {
+      "checkpoint_sequence": 1,
+      "question": "¿Cuál es el síndrome sugerido por la FC de 88 y TA 120/75 en este contexto?",
+      "options": [
+        "Normovolemia estable",
+        "Choque compensado",
+        "Sepsis temprana",
+        "Deshidratación leve"
+      ],
+      "correct_index": 0,
+      "required_evidence_ids": [
+        "e02",
+        "e03"
+      ]
+    },
+    {
+      "checkpoint_sequence": 2,
+      "question": "Con la evidencia descartada, ¿qué patrón de ruido identificaste?",
+      "options": [
+        "Ruido administrativo y duplicados",
+        "Falsas alarmas clínicas",
+        "Errores de laboratorio",
+        "Datos contradictorios"
+      ],
+      "correct_index": 0,
+      "required_evidence_ids": [
+        "e05",
+        "e10"
+      ]
+    }
+  ],
+  "final_triad": [
+    {
+      "type": "diagnosis",
+      "question": "¿Cuál es el diagnóstico más probable considerando la estabilidad y Hb de 14?",
+      "options": [
+        "Paciente sano / Control",
+        "Anemia ferropénica",
+        "Hemorragia interna",
+        "Desequilibrio hidroelectrolítico"
+      ],
+      "correct_index": 0,
+      "required_evidence_ids": [
+        "e04"
+      ]
+    },
+    {
+      "type": "gold_standard",
+      "question": "¿Qué estudio confirmaría la ausencia de patología en este protocolo?",
+      "options": [
+        "Seguimiento clínico",
+        "TAC de abdomen",
+        "Endoscopia superior",
+        "Biometría de control"
+      ],
+      "correct_index": 0,
+      "required_evidence_ids": [
+        "e07"
+      ]
+    },
+    {
+      "type": "treatment",
+      "question": "¿Cuál es la conducta a seguir según la GPC?",
+      "options": [
+        "Egreso con signos de alarma",
+        "Ingreso a observación",
+        "Transfusión inmediata",
+        "Líquidos IV a chorro"
+      ],
+      "correct_index": 0,
+      "required_evidence_ids": [
+        "e01"
+      ]
+    }
+  ],
+  "perla_enarm": {
+    "title": "Estabilización y Triaje",
+    "text": "La estabilidad hemodinámica (FC y TA normales) permite un abordaje conservador. No toda Hb normal requiere repetición inmediata si no hay sangrado activo.",
+    "gpc_ref": "GPC: Abordaje del Paciente en Triage"
+  }
 }

@@ -3,6 +3,7 @@ export const ENGINE_STATE = {
     INTAKE: 'intake',
     STREAM: 'evidence_stream',
     CHECKPOINT: 'checkpoint',
+    FINAL_TRIAD: 'final_triad',
     RESULTS: 'results',
     DOSSIER: 'dossier'
 };
@@ -24,12 +25,16 @@ export class SwipeEngine {
         this.checkpointsPassed = 0;
 
         this.lastFeedback = null;
+        this.confidence = 50; // Starts at 50%
+        this.quizResults = [];
+        this.currentCheckpoint = null;
         this.stats = {
             correct: 0,
             total: 0,
             streak: 0,
             bestStreak: 0,
-            mistakes: []
+            mistakes: [],
+            neuronas: 0
         };
     }
 
@@ -85,10 +90,14 @@ export class SwipeEngine {
         const activeTrigger = triggers.find(t => t.after_evidence_index === this.currentIndex);
 
         this.currentIndex++;
+        this.updateConfidence(correct, card);
 
         if (activeTrigger) {
             this.state = ENGINE_STATE.CHECKPOINT;
-            return { action: 'checkpoint', trigger: activeTrigger };
+            this.currentCheckpoint = this.currentCase.checkpoint_quizzes
+                ? this.currentCase.checkpoint_quizzes.find(q => q.checkpoint_sequence === activeTrigger.checkpoint_sequence)
+                : null;
+            return { action: 'checkpoint', trigger: activeTrigger, quiz: this.currentCheckpoint };
         }
 
         // Check if end of stream
@@ -143,6 +152,21 @@ export class SwipeEngine {
         return 'Conserva lo que cambia una decisión: signos vitales, labs, imágenes o fármacos.';
     }
 
+    updateConfidence(isCorrect, card) {
+        const delta = isCorrect ? 10 : -15;
+        // Signals are more important for confidence
+        const weight = card.noise_type === 'none' ? 1.5 : 1.0;
+
+        this.confidence = Math.min(100, Math.max(0, this.confidence + (delta * weight)));
+    }
+
+    getUnlockedHints(quiz) {
+        if (!quiz || !quiz.required_evidence_ids) return [];
+
+        const keptIds = this.keptItems.map(i => i.evidence_id);
+        return quiz.required_evidence_ids.filter(id => keptIds.includes(id));
+    }
+
     registerDecision(direction, card) {
         const expected = this.getExpectedAction(card);
         const correct = direction === expected;
@@ -170,17 +194,53 @@ export class SwipeEngine {
         };
     }
 
-    proceedFromCheckpoint() {
-        // Logic to validate decision would go here.
-        // For minimal spec, we just continue.
+    proceedFromCheckpoint(answerIndex) {
+        // If there was a quiz, validate answer
+        if (this.currentCheckpoint) {
+            const isCorrect = answerIndex === this.currentCheckpoint.correct_index;
+            this.quizResults.push({
+                checkpoint: this.currentCheckpoint.checkpoint_sequence,
+                correct: isCorrect,
+                question: this.currentCheckpoint.question
+            });
+
+            if (isCorrect) {
+                this.stats.neuronas += 50;
+                this.confidence = Math.min(100, this.confidence + 15);
+            } else {
+                this.confidence = Math.max(0, this.confidence - 10);
+            }
+        }
+
         this.checkpointsPassed++;
+        this.currentCheckpoint = null;
 
         // If there are more cards, go back to stream
         if (this.currentIndex < this.currentCase.evidence_stream.length) {
             this.state = ENGINE_STATE.STREAM;
         } else {
-            this.state = ENGINE_STATE.RESULTS;
+            this.state = ENGINE_STATE.FINAL_TRIAD;
+            this.currentTriadIndex = 0;
         }
+    }
+
+    handleTriadAnswer(answerIndex) {
+        const triad = this.currentCase.final_triad[this.currentTriadIndex];
+        const isCorrect = answerIndex === triad.correct_index;
+
+        if (isCorrect) {
+            this.stats.neuronas += 100;
+            this.confidence = Math.min(100, this.confidence + 10);
+        } else {
+            this.confidence = Math.max(0, this.confidence - 20);
+        }
+
+        this.currentTriadIndex++;
+        if (this.currentTriadIndex >= this.currentCase.final_triad.length) {
+            this.state = ENGINE_STATE.RESULTS;
+            return { action: 'finish' };
+        }
+        return { action: 'next_triad' };
     }
 
     annotate(text) {
@@ -189,6 +249,19 @@ export class SwipeEngine {
         if (card) {
             this.annotations[card.evidence_id] = text;
         }
+    }
+
+    getMission() {
+        if (!this.currentCase) return "Iniciando revisión...";
+
+        // Map difficulty or tags to a specific mission statement
+        const missions = {
+            'easy': 'Filtra el ruido básico: descarta duplicados y datos administrativos.',
+            'standard': 'Expediente crítico: conserva solo evidencia que defina una conducta clínica.',
+            'hard': 'Alta complejidad: ignora distractores sutiles y prioriza señales de riesgo.'
+        };
+
+        return missions[this.currentCase.difficulty] || 'Revisa el expediente y construye el dossier clínico.';
     }
 
     getProgress() {
