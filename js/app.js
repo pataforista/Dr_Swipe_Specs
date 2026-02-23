@@ -16,6 +16,9 @@ class App {
     async init() {
         this.bindEvents();
 
+        // Connect UI swipe to app logic
+        this.ui.onSwipeAction = (direction) => this.handleAction(direction);
+
         // Load default case (hardcoded for v1 prototype)
         // Ideally user selects from a menu, but for "intake" we load one to start.
         try {
@@ -93,6 +96,14 @@ class App {
             // Play feedback sound
             if (this.engine.lastFeedback) {
                 this.audio.play(this.engine.lastFeedback.correct ? 'correct' : 'wrong');
+            }
+
+            // Show Narration or Intuition if present
+            if (result.narration) {
+                this.ui.showEventNotification(result.narration, 'narration');
+            }
+            if (result.intuition) {
+                this.ui.showEventNotification(result.intuition, 'intuition');
             }
         }
     }

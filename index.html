@@ -13,14 +13,16 @@
     <div id="app-container">
         <!-- View: Intro (Narrative) -->
         <div id="view-intro" class="view active">
-            <h1 class="title">El Reporte 0</h1>
+            <h1 class="title">SCT: Acceso Nivel 1</h1>
             <div class="narrative-container">
-                <p>Es tu primer día en el hospital. El sistema está saturado de datos.</p>
-                <p>Tu misión no es solo leer, sino <strong>discernir</strong>. Guarda lo que importa, desecha el ruido.
+                <p>Protocolo de triaje avanzado activado. El flujo de pacientes del ENARM ha desbordado los sistemas
+                    convencionales.</p>
+                <p>Tu objetivo es el <strong>desbridamiento crítico</strong> de evidencia. Todo dato que no sea decisivo
+                    es iatrogenia potencial.
                 </p>
-                <p>Cada decisión cuenta para el expediente final.</p>
+                <p>Cada milisegundo de indecisión compromete el metabolismo del turno.</p>
             </div>
-            <button id="btn-to-intake" class="btn primary">Entrar al Hospital</button>
+            <button id="btn-to-intake" class="btn primary">Iniciar Desbridamiento</button>
         </div>
 
         <!-- View: Intake (Start Screen) -->
@@ -31,14 +33,14 @@
                 <!-- Content injected by JS -->
             </div>
             <div class="learning-goals">
-                <h2>Objetivo rápido</h2>
+                <h2>Directivas de Protocolo</h2>
                 <ul>
-                    <li>Guarda evidencia que cambia una decisión clínica.</li>
-                    <li>Descarta duplicados, datos administrativos o irrelevantes.</li>
-                    <li>Aprende con feedback inmediato en cada tarjeta.</li>
+                    <li><strong>ANEXAR:</strong> Evidencia con impacto en la decisión clínica (GPC).</li>
+                    <li><strong>DESCARTAR:</strong> Iatrogenia de datos (duplicados, ruido administrativo).</li>
+                    <li><strong>OPTIMIZAR:</strong> El enfoque clínico drena con cada segundo de latencia.</li>
                 </ul>
             </div>
-            <button id="btn-start" class="btn primary">Comenzar revisión</button>
+            <button id="btn-start-game" class="btn primary">Proceder a Triaje</button>
         </div>
 
         <!-- View: Evidence Stream (Game Loop) -->
@@ -55,6 +57,12 @@
                 </div>
                 <div class="progress-bar">
                     <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="time-container">
+                    <span class="label">Tiempo / Enfoque</span>
+                    <div class="time-bar">
+                        <div id="time-fill" class="time-fill" style="width: 100%"></div>
+                    </div>
                 </div>
                 <div id="game-stats" class="stats">
                     <span id="counter-kept">Guardados: 0</span>
@@ -144,6 +152,32 @@
             <button id="btn-restart" class="btn secondary">Volver al Inicio</button>
         </div>
     </div>
+
+    <!-- Tutorial / Scaffolding Overlay -->
+    <div id="tutorial-overlay" class="view hidden">
+        <div id="davinci-container">
+            <div id="davinci-arm">
+                <div class="robot-claw"></div>
+            </div>
+        </div>
+        <div id="mentor-dialog" class="dialog-box">
+            <div class="mentor-header">
+                <span class="mentor-name">SCT: Dra. Velez</span>
+                <span class="status-dot"></span>
+            </div>
+            <div id="mentor-text" class="mentor-content">
+                Iniciando simulación de triaje...
+            </div>
+            <div class="mentor-actions">
+                <button id="btn-tutorial-next" class="btn small">Entendido</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/json-logic-js@2.0.2/logic.min.js"></script>
 
     <!-- Scripts -->
     <script type="module" src="js/app.js"></script>

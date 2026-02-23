@@ -41,8 +41,39 @@ export class UIController {
             perlaTitle: document.getElementById('perla-title'),
             perlaText: document.getElementById('perla-text'),
             perlaGpc: document.getElementById('perla-gpc'),
-            resultOutcome: document.getElementById('result-outcome')
+            resultOutcome: document.getElementById('result-outcome'),
+            timeFill: document.getElementById('time-fill'),
+            tutorialOverlay: document.getElementById('tutorial-overlay'),
+            mentorText: document.getElementById('mentor-text'),
+            btnTutorialNext: document.getElementById('btn-tutorial-next'),
+            davinciContainer: document.getElementById('davinci-container')
         };
+
+        this.tutorialStep = 0;
+        this.tutorialData = [
+            {
+                text: "Bienvenido al Sistema Central de Triaje. Soy la Dra. Velez. Iniciemos el desbridamiento de este reporte.",
+                action: "none"
+            },
+            {
+                text: "Este es el Brazo Da Vinci de triaje. Deslice a la derecha para ANEXAR evidencia clínica crítica al expediente.",
+                action: "swipe-right"
+            },
+            {
+                text: "Deslice a la izquierda para DESCARTAR el ruido administrativo o duplicados que drenan su enfoque.",
+                action: "swipe-left"
+            },
+            {
+                text: "Monitoree su barra de Tiempo y Enfoque. Si desciende al 0%, el paciente entra en descompensación crítica. Proceda.",
+                action: "none"
+            }
+        ];
+
+        this.swipeThreshold = 100; // px
+        this.onSwipeAction = null; // callback for App
+        if (this.elements.btnTutorialNext) {
+            this.elements.btnTutorialNext.onclick = () => this.nextTutorialStep();
+        }
     }
 
     showView(viewName) {
@@ -74,6 +105,11 @@ export class UIController {
                 this.renderMission();
                 this.updateStats();
                 this.renderFeedback();
+
+                // Trigger tutorial if first time
+                if (this.engine.stats.total === 0 && this.tutorialStep === 0) {
+                    this.startTutorial();
+                }
                 break;
             case ENGINE_STATE.CHECKPOINT:
                 this.showView('checkpoint');
@@ -87,6 +123,7 @@ export class UIController {
             case ENGINE_STATE.DOSSIER:
                 this.showView('results');
                 this.renderResults();
+                this.launchConfetti();
                 break;
         }
     }
@@ -135,6 +172,63 @@ export class UIController {
         cardEl.appendChild(text);
 
         container.appendChild(cardEl);
+
+        this.initializeSwipe(cardEl);
+    }
+
+    initializeSwipe(cardEl) {
+        const hammer = new Hammer(cardEl);
+        hammer.get('pan').set({ direction: Hammer.DIRECTION_HORIZONTAL });
+
+        hammer.on('pan', (ev) => {
+            cardEl.style.transition = 'none';
+            const x = ev.deltaX;
+            const rotate = x / 10;
+            cardEl.style.transform = `translateX(${x}px) rotate(${rotate}deg)`;
+
+            // Visual feedback on draft
+            if (x > 50) cardEl.style.borderColor = 'var(--success)';
+            else if (x < -50) cardEl.style.borderColor = 'var(--danger)';
+            else cardEl.style.borderColor = '#e5e7eb';
+        });
+
+        hammer.on('panend', (ev) => {
+            cardEl.style.transition = 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            if (Math.abs(ev.deltaX) > this.swipeThreshold) {
+                const direction = ev.deltaX > 0 ? 'right' : 'left';
+                const finalX = direction === 'right' ? 1000 : -1000;
+                cardEl.style.transform = `translateX(${finalX}px) rotate(${ev.deltaX / 5}deg)`;
+
+                setTimeout(() => {
+                    if (this.onSwipeAction) this.onSwipeAction(direction);
+                }, 200);
+            } else {
+                cardEl.style.transform = '';
+                cardEl.style.borderColor = '#e5e7eb';
+            }
+        });
+    }
+
+    launchConfetti() {
+        const count = 200;
+        const defaults = {
+            origin: { y: 0.7 },
+            zIndex: 1000
+        };
+
+        function fire(particleRatio, opts) {
+            confetti({
+                ...defaults,
+                ...opts,
+                particleCount: Math.floor(count * particleRatio)
+            });
+        }
+
+        fire(0.25, { spread: 26, startVelocity: 55 });
+        fire(0.2, { spread: 60 });
+        fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+        fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+        fire(0.1, { spread: 120, startVelocity: 45 });
     }
 
     updateStats() {
@@ -160,6 +254,11 @@ export class UIController {
             this.elements.counterStreak.textContent = `Racha: ${this.engine.stats.streak}`;
             this.elements.counterStreak.classList.toggle('hide-during-stream', !isResults);
         }
+
+        if (this.elements.timeFill) {
+            this.elements.timeFill.style.width = `${this.engine.timeFocus}%`;
+            this.elements.timeFill.parentElement.classList.toggle('low-time', this.engine.timeFocus < 25);
+        }
     }
 
     renderFeedback() {
@@ -174,6 +273,26 @@ export class UIController {
             ? `✅ ¡Bien! ${actionLabel} era lo correcto.`
             : `🔍 Consejo: lo ideal era ${actionLabel.toLowerCase()}.`;
         this.elements.feedbackText.textContent = feedback.rationale;
+
+        // Check for Narrative or Intuition bits in the last action result
+        // Note: result is passed from App.js to handleAction
+    }
+
+    showEventNotification(message, type = 'info') {
+        const toast = document.createElement('div');
+        toast.className = `event-toast type-${type}`;
+        toast.innerHTML = `
+            <div class="toast-icon">${type === 'intuition' ? '🌟' : '📢'}</div>
+            <div class="toast-content">${message}</div>
+        `;
+        document.body.appendChild(toast);
+
+        // Animation
+        setTimeout(() => toast.classList.add('active'), 100);
+        setTimeout(() => {
+            toast.classList.remove('active');
+            setTimeout(() => toast.remove(), 500);
+        }, 3000);
     }
 
     renderDiscoveryEffect() {
@@ -329,42 +448,39 @@ export class UIController {
         }
     }
 
-    showTutorialStep(stepNumber) {
-        if (!this.elements.tutorialOverlay) return;
-
-        const steps = [
-            {
-                title: "Bienvenido, Doctor",
-                text: "Esta es tu mesa de trabajo. Tu objetivo es construir un expediente clínico sólido.",
-                btnText: "Siguiente"
-            },
-            {
-                title: "¿Por qué hacemos esto?",
-                text: "En medicina, el exceso de información puede matar. Debes filtrar lo importante del ruido.",
-                btnText: "Entendido"
-            },
-            {
-                title: "Botones de Acción",
-                text: "Usa ✔ para GUARDAR evidencia crítica y ✖ para DESCARTAR lo irrelevante o duplicado.",
-                btnText: "Empezar Tutorial"
-            }
-        ];
-
-        const step = steps[stepNumber];
-        if (!step) {
-            this.elements.tutorialOverlay.classList.add('hidden');
-            return;
-        }
-
+    startTutorial() {
+        this.tutorialStep = 0;
         this.elements.tutorialOverlay.classList.remove('hidden');
-        this.elements.tutorialStep.innerHTML = `
-            <h3>${step.title}</h3>
-            <p>${step.text}</p>
-            <button class="btn primary" id="btn-tutorial-next">${step.btnText}</button>
-        `;
+        this.elements.tutorialOverlay.classList.add('active');
+        this.updateTutorialContent();
+    }
 
-        document.getElementById('btn-tutorial-next').onclick = () => {
-            this.showTutorialStep(stepNumber + 1);
-        };
+    nextTutorialStep() {
+        this.tutorialStep++;
+        if (this.tutorialStep >= this.tutorialData.length) {
+            this.finishTutorial();
+        } else {
+            this.updateTutorialContent();
+        }
+    }
+
+    updateTutorialContent() {
+        const step = this.tutorialData[this.tutorialStep];
+        this.elements.mentorText.textContent = step.text;
+
+        // Visual cues
+        if (this.elements.davinciContainer) {
+            this.elements.davinciContainer.classList.remove('robot-swiping');
+            if (step.action !== 'none') {
+                this.elements.davinciContainer.classList.add('robot-swiping');
+            }
+        }
+    }
+
+    finishTutorial() {
+        this.elements.tutorialOverlay.classList.remove('active');
+        setTimeout(() => {
+            this.elements.tutorialOverlay.classList.add('hidden');
+        }, 500);
     }
 }

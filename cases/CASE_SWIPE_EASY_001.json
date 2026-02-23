@@ -90,7 +90,14 @@
         "contraindication": false,
         "lethal_risk": false,
         "decision_critical": false
-      }
+      },
+      "triggers": [
+        {
+          "on_action": "keep",
+          "set_flag": "anemia_descartada",
+          "narration": "Bien. Descartas anemia con esta Hb; el paciente tiene reserva fisiológica."
+        }
+      ]
     },
     {
       "evidence_id": "e05",
@@ -285,5 +292,57 @@
     "title": "Estabilización y Triaje",
     "text": "La estabilidad hemodinámica (FC y TA normales) permite un abordaje conservador. No toda Hb normal requiere repetición inmediata si no hay sangrado activo.",
     "gpc_ref": "GPC: Abordaje del Paciente en Triage"
-  }
+  },
+  "synergy_rules": [
+    {
+      "id": "intuition_vitals",
+      "condition": {
+        "and": [
+          {
+            "in": [
+              "e02",
+              {
+                "var": "kept_ids"
+              }
+            ]
+          },
+          {
+            "in": [
+              "e03",
+              {
+                "var": "kept_ids"
+              }
+            ]
+          }
+        ]
+      },
+      "message": "🌟 Intuición: Al notar FC y TA estables, confirmas que no hay choque oculto.",
+      "bonus": 75
+    },
+    {
+      "id": "intuition_low_risk",
+      "condition": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "world_state.anemia_descartada"
+              },
+              true
+            ]
+          },
+          {
+            "in": [
+              "e07",
+              {
+                "var": "kept_ids"
+              }
+            ]
+          }
+        ]
+      },
+      "message": "🌟 Intuición: Sin anemia y con imagen negativa, el riesgo es mínimo.",
+      "bonus": 100
+    }
+  ]
 }

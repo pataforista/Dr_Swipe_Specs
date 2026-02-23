@@ -36,6 +36,12 @@ export class SwipeEngine {
             mistakes: [],
             neuronas: 0
         };
+
+        // Advanced Gameplay Features
+        this.worldState = {}; // Key-value store for clinical flags
+        this.synergyRules = []; // Rules for "Intuition" bonos
+        this.timeFocus = 100; // 0-100 resource
+        this.eventLog = [];
     }
 
     initializeSession(caseData) {
@@ -54,6 +60,14 @@ export class SwipeEngine {
             bestStreak: 0,
             mistakes: []
         };
+
+        this.worldState = {
+            paciente_estable: true,
+            alerta_iatrogenia: false
+        };
+        this.timeFocus = 100;
+        this.synergyRules = caseData.synergy_rules || [];
+
         console.log("Session initialized for:", caseData.case_id);
     }
 
@@ -91,22 +105,97 @@ export class SwipeEngine {
 
         this.currentIndex++;
         this.updateConfidence(correct, card);
+        this.updateTimeFocus(direction, card);
+
+        // Check for Narrative Triggers
+        const triggerResult = this.evaluateTriggers(direction, card);
+
+        // Check for Synergy (Intuition)
+        const synergyResult = this.checkSynergy();
 
         if (activeTrigger) {
             this.state = ENGINE_STATE.CHECKPOINT;
             this.currentCheckpoint = this.currentCase.checkpoint_quizzes
                 ? this.currentCase.checkpoint_quizzes.find(q => q.checkpoint_sequence === activeTrigger.checkpoint_sequence)
                 : null;
-            return { action: 'checkpoint', trigger: activeTrigger, quiz: this.currentCheckpoint };
+            return {
+                action: 'checkpoint',
+                trigger: activeTrigger,
+                quiz: this.currentCheckpoint,
+                narration: triggerResult,
+                intuition: synergyResult
+            };
         }
 
         // Check if end of stream
         if (this.currentIndex >= this.currentCase.evidence_stream.length) {
             this.state = ENGINE_STATE.DOSSIER; // or results
-            return { action: 'finish' };
+            return { action: 'finish', intuition: synergyResult };
         }
 
-        return { action: 'next_card' };
+        return {
+            action: 'next_card',
+            narration: triggerResult,
+            intuition: synergyResult
+        };
+    }
+
+    updateTimeFocus(direction, card) {
+        // Cost of "over-reading" or "ignoring"
+        // Base cost for every card processed
+        const baseCost = 2;
+        const heavyPenalty = 5;
+
+        this.timeFocus -= baseCost;
+
+        // Penalty if skipping critical data or taking too long on noise
+        if (direction === 'left' && this.getExpectedAction(card) === 'right') {
+            this.timeFocus -= heavyPenalty;
+        }
+
+        this.timeFocus = Math.max(0, this.timeFocus);
+    }
+
+    evaluateTriggers(direction, card) {
+        const triggers = card.triggers || [];
+        let narration = null;
+
+        triggers.forEach(t => {
+            // Check condition: t.on_action ('keep' or 'discard')
+            const actionMatch = (direction === 'right' && t.on_action === 'keep') ||
+                (direction === 'left' && t.on_action === 'discard');
+
+            if (actionMatch) {
+                // Apply flag to worldState
+                if (t.set_flag) {
+                    this.worldState[t.set_flag] = t.value !== undefined ? t.value : true;
+                }
+                if (t.narration) narration = t.narration;
+            }
+        });
+
+        return narration;
+    }
+
+    checkSynergy() {
+        if (!window.jsonLogic) return null; // Safety for CDN load
+
+        let foundSynergy = null;
+        const context = {
+            kept_ids: this.keptItems.map(i => i.evidence_id),
+            world_state: this.worldState,
+            stats: this.stats
+        };
+
+        this.synergyRules.forEach(rule => {
+            if (!rule.active && window.jsonLogic.apply(rule.condition, context)) {
+                rule.active = true; // Mark as fired
+                this.stats.neuronas += rule.bonus || 50;
+                foundSynergy = rule.message;
+            }
+        });
+
+        return foundSynergy;
     }
 
     getExpectedAction(card) {
