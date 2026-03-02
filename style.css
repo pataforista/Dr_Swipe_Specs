@@ -800,3 +800,416 @@ body {
     font-size: 0.95rem;
     color: var(--text-main);
 }
+
+/* ===================== NEW ELEMENTS ===================== */
+
+/* Difficulty Selector */
+.difficulty-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
+    width: 100%;
+    margin-bottom: 1.25rem;
+}
+
+.difficulty-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.75rem 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.difficulty-btn:hover {
+    border-color: var(--primary);
+    background: #eff6ff;
+}
+
+.difficulty-btn.active {
+    border-color: var(--primary);
+    background: #eff6ff;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+.diff-icon {
+    font-size: 1.25rem;
+}
+
+.diff-label {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--text-main);
+}
+
+.diff-desc {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    line-height: 1.2;
+}
+
+/* Patient Card in Intake */
+.patient-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.patient-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.patient-icon {
+    font-size: 1.1rem;
+}
+
+.patient-details {
+    display: grid;
+    gap: 0.35rem;
+    font-size: 0.875rem;
+    color: var(--text-main);
+}
+
+.specialty-tag {
+    display: inline-block;
+    margin-top: 0.25rem;
+    background: #eff6ff;
+    color: var(--primary);
+    border: 1px solid #bfdbfe;
+    border-radius: 6px;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+/* Header bars grouping */
+.header-bars {
+    display: grid;
+    gap: 0.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.bar-group .label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+/* Category badges */
+.card-category.cat-vitals {
+    color: #ef4444;
+    background: #fef2f2;
+    border-radius: 6px;
+    padding: 0.2rem 0.6rem;
+    display: inline-block;
+}
+
+.card-category.cat-labs {
+    color: #7c3aed;
+    background: #f5f3ff;
+    border-radius: 6px;
+    padding: 0.2rem 0.6rem;
+    display: inline-block;
+}
+
+.card-category.cat-imaging {
+    color: #0284c7;
+    background: #f0f9ff;
+    border-radius: 6px;
+    padding: 0.2rem 0.6rem;
+    display: inline-block;
+}
+
+.card-category.cat-meds {
+    color: #047857;
+    background: #ecfdf5;
+    border-radius: 6px;
+    padding: 0.2rem 0.6rem;
+    display: inline-block;
+}
+
+.card-category.cat-timeline {
+    color: #b45309;
+    background: #fffbeb;
+    border-radius: 6px;
+    padding: 0.2rem 0.6rem;
+    display: inline-block;
+}
+
+.card-category.cat-notes {
+    color: #475569;
+    background: #f8fafc;
+    border-radius: 6px;
+    padding: 0.2rem 0.6rem;
+    display: inline-block;
+}
+
+.card-category.cat-admin {
+    color: #64748b;
+    background: #f1f5f9;
+    border-radius: 6px;
+    padding: 0.2rem 0.6rem;
+    display: inline-block;
+}
+
+/* Card alert banner (safety_flags) */
+.card-alert {
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+    color: #dc2626;
+    border-radius: 8px;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    animation: dangerPulse 1.5s infinite;
+}
+
+/* Card index badge */
+.card-index {
+    position: absolute;
+    bottom: 1rem;
+    right: 1.25rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+/* Swipe hints */
+.swipe-hints {
+    position: absolute;
+    bottom: -1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.hint-left,
+.hint-right {
+    opacity: 0.4;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+.hint-left.active {
+    opacity: 1;
+    color: var(--danger);
+    font-weight: 700;
+}
+
+.hint-right.active {
+    opacity: 1;
+    color: var(--success);
+    font-weight: 700;
+}
+
+/* Swipe preview colors */
+.card.swipe-right-preview {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
+}
+
+.card.swipe-left-preview {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.35);
+}
+
+/* Streak counter */
+.streak-counter {
+    font-weight: 700;
+}
+
+.streak-counter.streak-hot {
+    color: #f97316;
+    animation: dangerPulse 1s infinite;
+}
+
+/* Tutorial overlay positioning */
+.tutorial-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.5);
+    z-index: 2000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tutorial-overlay.active {
+    pointer-events: all;
+    opacity: 1;
+}
+
+/* Results score grid */
+.verdict-label {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.score-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.score-item {
+    background: white;
+    border-radius: 10px;
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    border: 1px solid #e2e8f0;
+}
+
+.score-num {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.score-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+}
+
+.verdict-excellent {
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+.verdict-good {
+    border-color: #3b82f6;
+    background: #eff6ff;
+}
+
+.verdict-bad {
+    border-color: #f43f5e;
+    background: #fff1f2;
+}
+
+/* List icons */
+.list-icon {
+    margin-right: 0.25rem;
+}
+
+/* btn.small fix */
+.btn.small {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    background: var(--primary);
+    color: white;
+    border-radius: 8px;
+}
+
+/* Intake view overflow */
+#view-intake {
+    overflow-y: auto;
+    justify-content: flex-start;
+    padding-top: 1.5rem;
+}
+
+/* Dossier Actions (Pin & Annotate) */
+.dossier-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.btn-action {
+    background: #e2e8f0;
+    color: var(--text-muted);
+    border: none;
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 600;
+}
+
+.btn-action:hover {
+    background: #cbd5e1;
+    color: var(--text-main);
+}
+
+.btn-action.active {
+    background: var(--primary);
+    color: white;
+}
+
+.dossier-note {
+    background: #fef9c3;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: #854d0e;
+    margin-top: 0.5rem;
+    border-left: 3px solid #eab308;
+}
+
+/* Scoring Tags */
+.scoring-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.scoring-tag {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.tag-hoarding,
+.tag-false_positive {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.tag-precision,
+.tag-clean_dossier,
+.tag-clinical_eye {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+mark.highlight-target {
+    background-color: #fef08a;
+    color: #1e293b;
+    border-radius: 2px;
+    padding: 0 0.15em;
+    cursor: default;
+}

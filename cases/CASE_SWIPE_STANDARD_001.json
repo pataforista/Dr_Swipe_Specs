@@ -1,101 +1,461 @@
 {
   "case_id": "swipe_standard_001",
   "version": "v1",
+  "mode": "enarm",
   "difficulty": "standard",
-  "dominant_tags": ["acute_care", "hemodynamics"],
+  "case_meta": {
+    "patient_code": "RH-2024-002",
+    "age": 55,
+    "sex": "Masculino",
+    "chief_complaint": "Melena de 2 días y síncope breve al levantarse. Llega en silla de ruedas desde urgencias.",
+    "enarm_specialty": "Medicina Interna — Hemorragia de Tubo Digestivo Alto"
+  },
+  "dominant_tags": [
+    "acute_care",
+    "hemodynamics",
+    "hemorragia_tda"
+  ],
   "checkpoint_nodes": [
-    { "sequence": 1, "decision_node_id": "CORE_NODE_STABILIZE_001" },
-    { "sequence": 2, "decision_node_id": "CORE_NODE_WORKUP_002" }
+    {
+      "sequence": 1,
+      "decision_node_id": "CORE_NODE_STABILIZE_001"
+    },
+    {
+      "sequence": 2,
+      "decision_node_id": "CORE_NODE_WORKUP_002"
+    }
   ],
   "noise_budget": {
-    "target_noise_items": 3,
-    "types_allowed": ["irrelevant_true", "borderline", "duplicate", "delayed_result", "false_alarm"]
+    "target_noise_items": 4,
+    "types_allowed": [
+      "irrelevant_true",
+      "borderline",
+      "duplicate",
+      "delayed_result",
+      "false_alarm"
+    ]
   },
   "stream_order_rule": "mixed",
   "evidence_stream": [
     {
       "evidence_id": "ev_001",
+      "block_index": 1,
       "category": "vitals",
-      "payload": { "title": "TA", "text": "90/60 mmHg (toma en triage)" },
-      "tags": ["hypotension"],
+      "payload": {
+        "title": "Tensión Arterial al ingreso",
+        "text": "TA: 90/60 mmHg en triage. Palidez de tegumentos. Llenado capilar de 3 segundos."
+      },
+      "tags": [
+        "hypotension",
+        "vital",
+        "hemodynamics"
+      ],
+      "is_signal": true,
       "noise_type": "none",
-      "safety_flags": { "contraindication": false, "lethal_risk": true, "decision_critical": true }
+      "noise_class": "none",
+      "highlight_targets": [
+        {
+          "text": "90/60 mmHg",
+          "start": 4,
+          "end": 14
+        }
+      ],
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": true,
+        "decision_critical": true
+      }
     },
     {
       "evidence_id": "ev_002",
+      "block_index": 1,
       "category": "vitals",
-      "payload": { "title": "FC", "text": "120 lpm" },
-      "tags": ["tachycardia"],
+      "payload": {
+        "title": "Frecuencia Cardíaca",
+        "text": "FC: 120 lpm. Taquicardia sinusal compensatoria. Indica hipovolemia aguda."
+      },
+      "tags": [
+        "tachycardia",
+        "vital",
+        "hemodynamics"
+      ],
+      "is_signal": true,
       "noise_type": "none",
-      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+      "noise_class": "none",
+      "highlight_targets": [
+        {
+          "text": "120 lpm",
+          "start": 4,
+          "end": 11
+        }
+      ],
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": true
+      },
+      "triggers": [
+        {
+          "on_action": "keep",
+          "set_flag": "choque_hipovolemico_sospechado",
+          "narration": "TA 90/60 + FC 120: el patrón es compatible con choque hipovolémico. La estabilización es la prioridad."
+        }
+      ]
     },
     {
       "evidence_id": "ev_003",
+      "block_index": 1,
       "category": "labs",
-      "payload": { "title": "Hb", "text": "8.1 g/dL" },
-      "tags": ["anemia"],
+      "payload": {
+        "title": "Hemoglobina inicial",
+        "text": "Hb: 8.1 g/dL. Anemia moderada. Confirma pérdida hemática significativa activa o reciente."
+      },
+      "tags": [
+        "anemia",
+        "lab",
+        "hematology"
+      ],
+      "is_signal": true,
       "noise_type": "none",
-      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+      "noise_class": "none",
+      "highlight_targets": [
+        {
+          "text": "8.1 g/dL",
+          "start": 4,
+          "end": 12
+        }
+      ],
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": true
+      }
     },
     {
       "evidence_id": "ev_004",
+      "block_index": 1,
       "category": "notes",
-      "payload": { "title": "Nota enfermería", "text": "Paciente ansioso al ingreso" },
-      "tags": ["context"],
+      "payload": {
+        "title": "Observación de enfermería",
+        "text": "Paciente ansioso y diaforético al ingreso. Estado de ánimo alterado por la situación aguda."
+      },
+      "tags": [
+        "context",
+        "behavioral"
+      ],
+      "is_signal": false,
       "noise_type": "irrelevant_true",
-      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+      "noise_class": "ruido_blanco",
+      "highlight_targets": [],
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
     },
     {
       "evidence_id": "ev_005",
+      "block_index": 1,
       "category": "imaging",
-      "payload": { "title": "Rx tórax", "text": "Sin hallazgos agudos" },
-      "tags": ["screening"],
+      "payload": {
+        "title": "Radiografía de tórax",
+        "text": "Sin hallazgos agudos pulmonares. No neumotórax, no cardiomegalia. Reporte preliminar normal."
+      },
+      "tags": [
+        "imaging",
+        "screening"
+      ],
+      "is_signal": false,
       "noise_type": "borderline",
-      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+      "noise_class": "ruido_blanco",
+      "highlight_targets": [],
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
     },
     {
       "evidence_id": "ev_006",
+      "block_index": 2,
       "category": "labs",
-      "payload": { "title": "Hb (repetición)", "text": "8.1 g/dL" },
-      "tags": ["anemia"],
+      "payload": {
+        "title": "Hemoglobina (segundo reporte)",
+        "text": "Hb: 8.1 g/dL — copia exacta del mismo laboratorio enviada por doble impresión. Valor idéntico."
+      },
+      "tags": [
+        "anemia",
+        "lab"
+      ],
+      "is_signal": false,
       "noise_type": "duplicate",
-      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+      "noise_class": "ruido_blanco",
+      "highlight_targets": [],
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
     },
     {
       "evidence_id": "ev_007",
+      "block_index": 2,
       "category": "labs",
-      "payload": { "title": "Glucosa capilar", "text": "Normal" },
-      "tags": ["screening"],
+      "payload": {
+        "title": "Glucosa capilar",
+        "text": "Glucosa: 98 mg/dL. Normal. No diabetes ni hipoglucemia en este contexto agudo."
+      },
+      "tags": [
+        "screening",
+        "metabolic"
+      ],
+      "is_signal": false,
       "noise_type": "irrelevant_true",
-      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+      "noise_class": "ruido_blanco",
+      "highlight_targets": [],
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
     },
     {
       "evidence_id": "ev_008",
+      "block_index": 2,
       "category": "labs",
-      "payload": { "title": "Creatinina (reporte tardío)", "text": "Disponible tras demora" },
-      "tags": ["renal_function"],
+      "payload": {
+        "title": "Creatinina sérica (resultado tardío)",
+        "text": "Cr: 1.1 mg/dL — disponible 4 horas después del ingreso a urgencias. Normal para la edad."
+      },
+      "tags": [
+        "renal_function",
+        "lab"
+      ],
+      "is_signal": false,
       "noise_type": "delayed_result",
-      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+      "noise_class": "ruido_blanco",
+      "highlight_targets": [],
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
     },
     {
       "evidence_id": "ev_009",
+      "block_index": 2,
       "category": "meds",
-      "payload": { "title": "Medicaciones previas", "text": "Uso reciente de AINEs" },
-      "tags": ["med_history"],
+      "payload": {
+        "title": "Uso reciente de AINEs",
+        "text": "Ibuprofeno 400 mg c/8h por lumbalgia, consumido durante 10 días previos al ingreso."
+      },
+      "tags": [
+        "med_history",
+        "nsaid_risk",
+        "pharmacology"
+      ],
+      "is_signal": true,
       "noise_type": "none",
-      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+      "noise_class": "none",
+      "highlight_targets": [
+        {
+          "text": "Ibuprofeno 400 mg c/8h por lumbalgia, consumido durante 10 días",
+          "start": 0,
+          "end": 63
+        }
+      ],
+      "safety_flags": {
+        "contraindication": true,
+        "lethal_risk": false,
+        "decision_critical": true
+      },
+      "triggers": [
+        {
+          "on_action": "keep",
+          "set_flag": "aine_causa_probable",
+          "narration": "AINEs por 10 días + melena + Hb 8.1: el patrón apunta a úlcera péptica por AINE como causa del sangrado."
+        }
+      ]
     },
     {
       "evidence_id": "ev_010",
+      "block_index": 2,
       "category": "timeline",
-      "payload": { "title": "Síntoma", "text": "Dolor torácico transitorio que cedió" },
-      "tags": ["symptom"],
+      "payload": {
+        "title": "Dolor torácico transitorio previo",
+        "text": "Refiere dolor torácico leve hace 3 días que cedió espontáneamente en 10 minutos. Sin recurrencia."
+      },
+      "tags": [
+        "false_alarm",
+        "cardiology"
+      ],
+      "is_signal": false,
       "noise_type": "false_alarm",
-      "safety_flags": { "contraindication": false, "lethal_risk": false, "decision_critical": false }
+      "noise_class": "ruido_trampa",
+      "highlight_targets": [],
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
     }
   ],
   "checkpoint_triggers": [
-    { "after_evidence_index": 4, "checkpoint_sequence": 1 },
-    { "after_evidence_index": 9, "checkpoint_sequence": 2 }
+    {
+      "after_evidence_index": 4,
+      "checkpoint_sequence": 1
+    },
+    {
+      "after_evidence_index": 9,
+      "checkpoint_sequence": 2
+    }
+  ],
+  "checkpoint_quizzes": [
+    {
+      "checkpoint_sequence": 1,
+      "question": "Con TA 90/60, FC 120 y Hb 8.1 g/dL, ¿cuál es el síndrome fisiopatológico que explica este cuadro?",
+      "options": [
+        "Choque hipovolémico hemorrágico — hemorragia activa con pérdida del 20-30% de volemia",
+        "Choque distributivo — vasodilatación sistémica por sepsis",
+        "Choque cardiogénico — falla de bomba con bajo gasto",
+        "Anemia crónica descompensada — sin compromiso hemodinámico agudo"
+      ],
+      "correct_index": 0,
+      "required_evidence_ids": [
+        "ev_001",
+        "ev_002",
+        "ev_003"
+      ]
+    },
+    {
+      "checkpoint_sequence": 2,
+      "question": "¿Cuáles son los dos tipos de ruido que contiene este expediente y que deberías haber descartado?",
+      "options": [
+        "Duplicado (Hb repetida) y resultado tardío (Cr llegó tarde) — ambos irrelevantes para la decisión inmediata",
+        "Falsas alarmas cardíacas y sepsis — son los distractores principales",
+        "Datos de laboratorio sin referencia y notas de enfermería con errores",
+        "Imágenes incompletas y diagnósticos previos no verificados"
+      ],
+      "correct_index": 0,
+      "required_evidence_ids": [
+        "ev_006",
+        "ev_008"
+      ]
+    }
+  ],
+  "final_triad": [
+    {
+      "type": "diagnosis",
+      "question": "Hombre 55 años, melena 2 días, síncope, TA 90/60, Hb 8.1, uso de AINEs 10 días. ¿Diagnóstico más probable?",
+      "options": [
+        "Hemorragia de tubo digestivo alto por úlcera péptica inducida por AINEs",
+        "Hemorragia de tubo digestivo bajo por diverticulosis",
+        "Tromboembolismo pulmonar con hemoptisis",
+        "Anemia hemolítica autoinmune"
+      ],
+      "correct_index": 0,
+      "required_evidence_ids": [
+        "ev_001",
+        "ev_002",
+        "ev_003",
+        "ev_009"
+      ]
+    },
+    {
+      "type": "gold_standard",
+      "question": "¿Cuál es el estudio diagnóstico de elección para confirmar y tratar la hemorragia de TDA en urgencias?",
+      "options": [
+        "Endoscopia alta urgente (dentro de las primeras 24 horas según ASGE)",
+        "TAC de abdomen y pelvis con contraste",
+        "Arteriografía mesentérica",
+        "Colonoscopia urgente"
+      ],
+      "correct_index": 0,
+      "required_evidence_ids": [
+        "ev_003",
+        "ev_009"
+      ]
+    },
+    {
+      "type": "treatment",
+      "question": "Previo a la endoscopia, ¿cuál es el manejo inicial correcto según la GPC de hemorragia TDA?",
+      "options": [
+        "IBP IV en bolo + infusión continua, reposición de volumen y suspender AINEs",
+        "Transfusión inmediata y traslado a quirófano sin endoscopia previa",
+        "Sucralfato oral y observación por 24 horas sin reposición hídrica",
+        "Omeprazol oral y colonoscopia electiva en 72 horas"
+      ],
+      "correct_index": 0,
+      "required_evidence_ids": [
+        "ev_001",
+        "ev_002",
+        "ev_009"
+      ]
+    }
+  ],
+  "perla_enarm": {
+    "title": "Hemorragia de Tubo Digestivo Alto por AINEs",
+    "text": "La tríada: melena + TA baja + FC elevada + uso de AINEs es la presentación clásica de úlcera péptica complicada con hemorragia. La GPC indica IBP IV (pantoprazol 80 mg bolo + infusión 8 mg/h) y endoscopia urgente dentro de 24h como estándar de oro. El score de Glasgow-Blatchford predice necesidad de intervención. Transfundir si Hb < 7 g/dL o inestabilidad hemodinámica persistente.",
+    "gpc_ref": "GPC IMSS-188-09: Diagnóstico y Tratamiento de la Hemorragia de Tubo Digestivo Alto"
+  },
+  "synergy_rules": [
+    {
+      "id": "intuition_shock_pattern",
+      "condition": {
+        "and": [
+          {
+            "in": [
+              "ev_001",
+              {
+                "var": "kept_ids"
+              }
+            ]
+          },
+          {
+            "in": [
+              "ev_002",
+              {
+                "var": "kept_ids"
+              }
+            ]
+          },
+          {
+            "in": [
+              "ev_003",
+              {
+                "var": "kept_ids"
+              }
+            ]
+          }
+        ]
+      },
+      "message": "🌟 Intuición: Reconociste la tríada de choque hipovolémico (hipotensión + taquicardia + anemia). +100 neuronas.",
+      "bonus": 100
+    },
+    {
+      "id": "intuition_aine_ulcera",
+      "condition": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "world_state.aine_causa_probable"
+              },
+              true
+            ]
+          },
+          {
+            "in": [
+              "ev_003",
+              {
+                "var": "kept_ids"
+              }
+            ]
+          }
+        ]
+      },
+      "message": "🌟 Intuición: AINEs + Hb baja + melena = patrón de úlcera péptica hemorrágica. ¡Diagnóstico integrado! +125 neuronas.",
+      "bonus": 125
+    }
   ]
 }

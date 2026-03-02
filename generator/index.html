@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Swipe - Generador de Casos Procedural</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --success: #10b981;
+            --danger: #ef4444;
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: var(--card);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            color: var(--primary);
+            margin-top: 0;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+
+        select,
+        input,
+        button {
+            padding: 0.75rem;
+            border-radius: 6px;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: white;
+            font-family: inherit;
+        }
+
+        button {
+            background: var(--primary);
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            grid-column: span 2;
+        }
+
+        button:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+        }
+
+        button:disabled {
+            background: #334155;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        #output-area {
+            width: 100%;
+            height: 400px;
+            background: #0f172a;
+            color: #10b981;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid #334155;
+            resize: vertical;
+            box-sizing: border-box;
+            font-size: 0.85rem;
+        }
+
+        .status {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .status.success {
+            color: var(--success);
+        }
+
+        .status.error {
+            color: var(--danger);
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Dr. Swipe — Generador Procedural</h1>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="domain">Dominio Clínico (ENARM)</label>
+                <select id="domain" disabled>
+                    <option value="">Cargando dominios...</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="difficulty">Dificultad</label>
+                <select id="difficulty">
+                    <option value="easy">🟢 Fácil (Menos ruido, sin trampas)</option>
+                    <option value="standard" selected>🟡 Estándar (Balance ENARM)</option>
+                    <option value="hard">🔴 Difícil (Ruido alto, distracciones cruzadas)</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="caseCode">Código de Caso (Opcional)</label>
+                <input type="text" id="caseCode" placeholder="Ej. PROC_001_CARDIO">
+            </div>
+            <button id="btn-generate" disabled>🎲 Generar Caso Procedural</button>
+        </div>
+
+        <div id="status-msg" class="status">Cargando base de datos CORE_UNIFIED.jsonl...</div>
+
+        <h3>Salida JSON (ENGINE_SWIPE_CASE_INSTANCE_SCHEMA_v1)</h3>
+        <textarea id="output-area" readonly placeholder="El caso generado aparecerá aquí..."></textarea>
+
+        <div class="toolbar">
+            <button id="btn-copy" style="width: auto;">📋 Copiar JSON</button>
+            <button id="btn-play" style="width: auto; background: var(--success);">▶️ Jugar Caso en Sandbox</button>
+        </div>
+    </div>
+
+    <script src="generator.js"></script>
+</body>
+
+</html>

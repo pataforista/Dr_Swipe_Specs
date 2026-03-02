@@ -1,9 +1,18 @@
 {
   "case_id": "swipe_easy_001",
   "version": "v1",
+  "mode": "enarm",
   "difficulty": "easy",
+  "case_meta": {
+    "patient_code": "MG-2024-001",
+    "age": 34,
+    "sex": "Femenino",
+    "chief_complaint": "Fatiga de 3 semanas de evolución sin causa aparente. Primera consulta.",
+    "enarm_specialty": "Medicina Interna — Abordaje General"
+  },
   "dominant_tags": [
-    "general_care"
+    "general_care",
+    "medicina_interna"
   ],
   "checkpoint_nodes": [
     {
@@ -16,25 +25,37 @@
     }
   ],
   "noise_budget": {
-    "target_noise_items": 2,
+    "target_noise_items": 3,
     "types_allowed": [
       "irrelevant_true",
-      "duplicate"
+      "duplicate",
+      "false_alarm"
     ]
   },
   "stream_order_rule": "mixed",
   "evidence_stream": [
     {
       "evidence_id": "e01",
+      "block_index": 1,
       "category": "timeline",
       "payload": {
-        "title": "Motivo",
-        "text": "Consulta breve; expediente incompleto"
+        "title": "Motivo de consulta",
+        "text": "Mujer de 34 años, acude por fatiga progresiva de 3 semanas. Niega fiebre, pérdida de peso o sangrado. No antecedentes de enfermedad crónica conocida."
       },
       "tags": [
-        "context"
+        "context",
+        "chief_complaint"
       ],
+      "is_signal": true,
       "noise_type": "none",
+      "noise_class": "none",
+      "highlight_targets": [
+        {
+          "text": "fatiga progresiva de 3 semanas",
+          "start": 26,
+          "end": 54
+        }
+      ],
       "safety_flags": {
         "contraindication": false,
         "lethal_risk": false,
@@ -43,15 +64,26 @@
     },
     {
       "evidence_id": "e02",
+      "block_index": 1,
       "category": "vitals",
       "payload": {
-        "title": "FC",
-        "text": "88 lpm"
+        "title": "Frecuencia Cardíaca",
+        "text": "88 lpm en reposo. Ritmo regular. No palpitaciones reportadas."
       },
       "tags": [
-        "vital"
+        "vital",
+        "hemodynamics"
       ],
+      "is_signal": true,
       "noise_type": "none",
+      "noise_class": "none",
+      "highlight_targets": [
+        {
+          "text": "88 lpm",
+          "start": 0,
+          "end": 6
+        }
+      ],
       "safety_flags": {
         "contraindication": false,
         "lethal_risk": false,
@@ -60,15 +92,26 @@
     },
     {
       "evidence_id": "e03",
+      "block_index": 1,
       "category": "vitals",
       "payload": {
-        "title": "TA",
-        "text": "120/75 mmHg"
+        "title": "Tensión Arterial",
+        "text": "120/75 mmHg. Normovolemia. Sin signos de hipoperfusión periférica."
       },
       "tags": [
-        "vital"
+        "vital",
+        "hemodynamics"
       ],
+      "is_signal": true,
       "noise_type": "none",
+      "noise_class": "none",
+      "highlight_targets": [
+        {
+          "text": "120/75 mmHg",
+          "start": 0,
+          "end": 11
+        }
+      ],
       "safety_flags": {
         "contraindication": false,
         "lethal_risk": false,
@@ -77,15 +120,26 @@
     },
     {
       "evidence_id": "e04",
+      "block_index": 1,
       "category": "labs",
       "payload": {
-        "title": "Hb",
-        "text": "14 g/dL"
+        "title": "Hemoglobina",
+        "text": "Hb: 14.2 g/dL (valor normal para mujer adulta). Serie roja sin alteraciones significativas."
       },
       "tags": [
-        "lab"
+        "lab",
+        "hematology"
       ],
+      "is_signal": true,
       "noise_type": "none",
+      "noise_class": "none",
+      "highlight_targets": [
+        {
+          "text": "14.2 g/dL",
+          "start": 4,
+          "end": 13
+        }
+      ],
       "safety_flags": {
         "contraindication": false,
         "lethal_risk": false,
@@ -95,21 +149,26 @@
         {
           "on_action": "keep",
           "set_flag": "anemia_descartada",
-          "narration": "Bien. Descartas anemia con esta Hb; el paciente tiene reserva fisiológica."
+          "narration": "Hb 14.2 g/dL descarta anemia ferropénica como causa de la fatiga. Redirige la búsqueda."
         }
       ]
     },
     {
       "evidence_id": "e05",
+      "block_index": 1,
       "category": "labs",
       "payload": {
-        "title": "Hb (repetición)",
-        "text": "14 g/dL"
+        "title": "Hemoglobina (reporte duplicado)",
+        "text": "Hb: 14.2 g/dL — segunda impresión del mismo laboratorio enviada al sistema por error de captura."
       },
       "tags": [
-        "lab"
+        "lab",
+        "hematology"
       ],
+      "is_signal": false,
       "noise_type": "duplicate",
+      "noise_class": "ruido_blanco",
+      "highlight_targets": [],
       "safety_flags": {
         "contraindication": false,
         "lethal_risk": false,
@@ -118,15 +177,20 @@
     },
     {
       "evidence_id": "e06",
+      "block_index": 2,
       "category": "notes",
       "payload": {
-        "title": "Observación",
-        "text": "Paciente tranquilo al ingreso"
+        "title": "Nota de enfermería",
+        "text": "Paciente cooperadora al ingreso, sin ansiedad aparente. Estado de ánimo tranquilo."
       },
       "tags": [
-        "context"
+        "context",
+        "behavioral"
       ],
+      "is_signal": false,
       "noise_type": "irrelevant_true",
+      "noise_class": "ruido_blanco",
+      "highlight_targets": [],
       "safety_flags": {
         "contraindication": false,
         "lethal_risk": false,
@@ -135,15 +199,26 @@
     },
     {
       "evidence_id": "e07",
+      "block_index": 2,
       "category": "imaging",
       "payload": {
-        "title": "Imagen",
-        "text": "Sin hallazgos relevantes reportados"
+        "title": "Radiografía de tórax PA",
+        "text": "Sin infiltrados, derrames ni cardiomegalia. Silueta cardíaca normal. Campos pulmonares limpios."
       },
       "tags": [
+        "imaging",
         "screening"
       ],
+      "is_signal": true,
       "noise_type": "none",
+      "noise_class": "none",
+      "highlight_targets": [
+        {
+          "text": "Sin infiltrados, derrames ni cardiomegalia",
+          "start": 0,
+          "end": 41
+        }
+      ],
       "safety_flags": {
         "contraindication": false,
         "lethal_risk": false,
@@ -152,15 +227,26 @@
     },
     {
       "evidence_id": "e08",
+      "block_index": 2,
       "category": "meds",
       "payload": {
-        "title": "Tratamiento actual",
-        "text": "Sin tratamiento actual"
+        "title": "Medicación actual",
+        "text": "Sin tratamiento farmacológico previo. No usa anticonceptivos ni suplementos. Niega uso de AINEs."
       },
       "tags": [
-        "med_history"
+        "med_history",
+        "pharmacology"
       ],
+      "is_signal": true,
       "noise_type": "none",
+      "noise_class": "none",
+      "highlight_targets": [
+        {
+          "text": "Sin tratamiento farmacológico previo",
+          "start": 0,
+          "end": 35
+        }
+      ],
       "safety_flags": {
         "contraindication": false,
         "lethal_risk": false,
@@ -169,15 +255,26 @@
     },
     {
       "evidence_id": "e09",
+      "block_index": 2,
       "category": "meds",
       "payload": {
-        "title": "Alergias / reacciones",
-        "text": "No documentadas"
+        "title": "Alergias documentadas",
+        "text": "Sin alergias medicamentosas conocidas. No reacciones previas a penicilina, sulfas ni AINEs."
       },
       "tags": [
-        "med_history"
+        "med_history",
+        "allergy"
       ],
+      "is_signal": true,
       "noise_type": "none",
+      "noise_class": "none",
+      "highlight_targets": [
+        {
+          "text": "Sin alergias medicamentosas conocidas",
+          "start": 0,
+          "end": 37
+        }
+      ],
       "safety_flags": {
         "contraindication": false,
         "lethal_risk": false,
@@ -186,15 +283,20 @@
     },
     {
       "evidence_id": "e10",
+      "block_index": 2,
       "category": "notes",
       "payload": {
-        "title": "Contacto",
-        "text": "Información administrativa de seguimiento"
+        "title": "Datos de contacto administrativo",
+        "text": "Número de expediente: MG-2024-001. Número de seguro médico y domicilio para facturación registrados."
       },
       "tags": [
-        "admin"
+        "admin",
+        "administrative"
       ],
-      "noise_type": "none",
+      "is_signal": false,
+      "noise_type": "irrelevant_true",
+      "noise_class": "ruido_blanco",
+      "highlight_targets": [],
       "safety_flags": {
         "contraindication": false,
         "lethal_risk": false,
@@ -215,12 +317,12 @@
   "checkpoint_quizzes": [
     {
       "checkpoint_sequence": 1,
-      "question": "¿Cuál es el síndrome sugerido por la FC de 88 y TA 120/75 en este contexto?",
+      "question": "Con FC 88 y TA 120/75, ¿cuál es el estado hemodinámico de esta paciente?",
       "options": [
-        "Normovolemia estable",
-        "Choque compensado",
-        "Sepsis temprana",
-        "Deshidratación leve"
+        "Normovolemia estable — no hay signos de choque",
+        "Choque compensado — necesita reposición hídrica urgente",
+        "Sepsis temprana — iniciar antibióticos empíricos",
+        "Deshidratación moderada — requiere hidratación IV"
       ],
       "correct_index": 0,
       "required_evidence_ids": [
@@ -230,12 +332,12 @@
     },
     {
       "checkpoint_sequence": 2,
-      "question": "Con la evidencia descartada, ¿qué patrón de ruido identificaste?",
+      "question": "De la evidencia descartada, ¿qué patrón de ruido identificaste en el expediente?",
       "options": [
-        "Ruido administrativo y duplicados",
-        "Falsas alarmas clínicas",
-        "Errores de laboratorio",
-        "Datos contradictorios"
+        "Duplicado de laboratorio y datos administrativos",
+        "Falsas alarmas clínicas de alto riesgo",
+        "Errores de laboratorio con valores imposibles",
+        "Datos contradictorios entre sí"
       ],
       "correct_index": 0,
       "required_evidence_ids": [
@@ -247,26 +349,28 @@
   "final_triad": [
     {
       "type": "diagnosis",
-      "question": "¿Cuál es el diagnóstico más probable considerando la estabilidad y Hb de 14?",
+      "question": "Con Hb 14.2 g/dL, TA y FC normales, sin pérdida de peso ni fiebre, ¿cuál es el diagnóstico más probable?",
       "options": [
-        "Paciente sano / Control",
-        "Anemia ferropénica",
-        "Hemorragia interna",
-        "Desequilibrio hidroelectrolítico"
+        "Fatiga funcional / paciente sana en control",
+        "Anemia ferropénica leve",
+        "Neoplasia oculta en estadio temprano",
+        "Insuficiencia cardíaca diastólica"
       ],
       "correct_index": 0,
       "required_evidence_ids": [
-        "e04"
+        "e04",
+        "e02",
+        "e03"
       ]
     },
     {
       "type": "gold_standard",
-      "question": "¿Qué estudio confirmaría la ausencia de patología en este protocolo?",
+      "question": "Con el abordaje inicial negativo, ¿qué conducta diagnóstica está indicada según GPC?",
       "options": [
-        "Seguimiento clínico",
-        "TAC de abdomen",
-        "Endoscopia superior",
-        "Biometría de control"
+        "Seguimiento ambulatorio con signos de alarma",
+        "TAC de tórax y abdomen urgente",
+        "Biopsia de médula ósea",
+        "Endoscopia superior de urgencias"
       ],
       "correct_index": 0,
       "required_evidence_ids": [
@@ -275,12 +379,12 @@
     },
     {
       "type": "treatment",
-      "question": "¿Cuál es la conducta a seguir según la GPC?",
+      "question": "¿Cuál es la conducta a seguir para esta paciente en primera consulta sin hallazgos patológicos?",
       "options": [
-        "Egreso con signos de alarma",
-        "Ingreso a observación",
-        "Transfusión inmediata",
-        "Líquidos IV a chorro"
+        "Egreso con instrucciones de signos de alarma y cita de seguimiento",
+        "Ingreso a hospitalización para estudio completo",
+        "Inicio de hierro oral inmediato sin estudios previos",
+        "Transfusión de concentrados eritrocitarios"
       ],
       "correct_index": 0,
       "required_evidence_ids": [
@@ -289,9 +393,9 @@
     }
   ],
   "perla_enarm": {
-    "title": "Estabilización y Triaje",
-    "text": "La estabilidad hemodinámica (FC y TA normales) permite un abordaje conservador. No toda Hb normal requiere repetición inmediata si no hay sangrado activo.",
-    "gpc_ref": "GPC: Abordaje del Paciente en Triage"
+    "title": "Abordaje de Fatiga en Primera Consulta",
+    "text": "La fatiga sin signos de alarma (sin fiebre, pérdida de peso, sangrado o anemia) en paciente joven con signos vitales estables permite un abordaje conservador. La GPC recomienda seguimiento ambulatorio con instrucciones de alarma antes de iniciar estudios costosos. No toda fatiga requiere hospitalización.",
+    "gpc_ref": "GPC IMSS-015-08: Diagnóstico y Tratamiento de la Fatiga Crónica"
   },
   "synergy_rules": [
     {
@@ -316,7 +420,7 @@
           }
         ]
       },
-      "message": "🌟 Intuición: Al notar FC y TA estables, confirmas que no hay choque oculto.",
+      "message": "🌟 Intuición Clínica: Combinaste FC y TA estables — confirmaste normovolemia sin choque oculto. +75 neuronas.",
       "bonus": 75
     },
     {
@@ -341,7 +445,7 @@
           }
         ]
       },
-      "message": "🌟 Intuición: Sin anemia y con imagen negativa, el riesgo es mínimo.",
+      "message": "🌟 Intuición Clínica: Sin anemia y con imagen de tórax limpia — descartaste las causas graves más frecuentes. +100 neuronas.",
       "bonus": 100
     }
   ]

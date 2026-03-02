@@ -4,43 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Swipe: Clinical Investigation</title>
+    <title>Dr. Swipe: ENARM Practice</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div id="app-container">
-        <!-- View: Intro (Narrative) -->
+
+        <!-- View: Intro -->
         <div id="view-intro" class="view active">
-            <h1 class="title">SCT: Acceso Nivel 1</h1>
+            <h1 class="title">Dr. Swipe</h1>
+            <p class="subtitle">Entrenamiento ENARM</p>
             <div class="narrative-container">
-                <p>Protocolo de triaje avanzado activado. El flujo de pacientes del ENARM ha desbordado los sistemas
-                    convencionales.</p>
-                <p>Tu objetivo es el <strong>desbridamiento crítico</strong> de evidencia. Todo dato que no sea decisivo
-                    es iatrogenia potencial.
+                <p>Tienes frente a ti un expediente clínico real. No toda la información es relevante.</p>
+                <p>Tu tarea: <strong>conserva</strong> solo lo que cambia una decisión clínica.
+                    <strong>Descarta</strong> el ruido — duplicados, datos administrativos y falsas alarmas.
                 </p>
-                <p>Cada milisegundo de indecisión compromete el metabolismo del turno.</p>
+                <p>Al final del caso, responderás la tríada ENARM: diagnóstico, estudio y tratamiento.</p>
             </div>
-            <button id="btn-to-intake" class="btn primary">Iniciar Desbridamiento</button>
+            <button id="btn-to-intake" class="btn primary">Empezar</button>
         </div>
 
         <!-- View: Intake (Start Screen) -->
         <div id="view-intake" class="view hidden">
             <h1 class="title">Dr. Swipe</h1>
-            <p class="subtitle">Clinical Investigation</p>
-            <div id="case-framing" class="framing-text">
-                <!-- Content injected by JS -->
+            <p class="subtitle">Selecciona el nivel de dificultad</p>
+
+            <!-- Sandbox Mode Label (Hidden by default) -->
+            <div id="sandbox-mode-banner" class="hidden"
+                style="background: var(--primary); color: white; padding: 0.5rem; border-radius: 8px; font-weight: bold; margin-bottom: 1rem;">
+                🎲 MODO SANDBOX PROCEDURAL ACTIVO
             </div>
+
+            <!-- Difficulty Selector -->
+            <div id="difficulty-section" class="difficulty-selector">
+                <button class="difficulty-btn active" data-difficulty="easy">
+                    <span class="diff-icon">🟢</span>
+                    <span class="diff-label">Fácil</span>
+                    <span class="diff-desc">Ruido básico: duplicados y admin</span>
+                </button>
+                <button class="difficulty-btn" data-difficulty="standard">
+                    <span class="diff-icon">🟡</span>
+                    <span class="diff-label">Estándar</span>
+                    <span class="diff-desc">Distractores sutiles y falsa alarma</span>
+                </button>
+                <button class="difficulty-btn" data-difficulty="hard">
+                    <span class="diff-icon">🔴</span>
+                    <span class="diff-label">Difícil</span>
+                    <span class="diff-desc">Señales de riesgo vital ocultas</span>
+                </button>
+            </div>
+
+            <!-- Patient Framing (injected by JS) -->
+            <div id="case-framing" class="framing-text"></div>
+
             <div class="learning-goals">
-                <h2>Directivas de Protocolo</h2>
+                <h2>¿Qué hacer?</h2>
                 <ul>
-                    <li><strong>ANEXAR:</strong> Evidencia con impacto en la decisión clínica (GPC).</li>
-                    <li><strong>DESCARTAR:</strong> Iatrogenia de datos (duplicados, ruido administrativo).</li>
-                    <li><strong>OPTIMIZAR:</strong> El enfoque clínico drena con cada segundo de latencia.</li>
+                    <li><strong>➡️ GUARDAR:</strong> Dato que cambia la decisión clínica.</li>
+                    <li><strong>⬅️ DESCARTAR:</strong> Duplicado, ruido administrativo o falsa alarma.</li>
+                    <li><strong>🧠 RESPONDER:</strong> Tríada ENARM al final (diagnóstico, estudio, tratamiento).</li>
                 </ul>
             </div>
-            <button id="btn-start-game" class="btn primary">Proceder a Triaje</button>
+            <button id="btn-start-game" class="btn primary">Iniciar Caso</button>
         </div>
 
         <!-- View: Evidence Stream (Game Loop) -->
@@ -49,26 +76,31 @@
                 <div id="mission-banner" class="mission-banner">
                     <!-- Injected by JS -->
                 </div>
-                <div class="confidence-container">
-                    <span class="label">Confianza Diagnóstica</span>
-                    <div class="confidence-bar">
-                        <div id="confidence-fill" class="confidence-fill" style="width: 50%"></div>
+                <div class="header-bars">
+                    <div class="bar-group">
+                        <span class="label">Confianza Diagnóstica</span>
+                        <div class="confidence-bar">
+                            <div id="confidence-fill" class="confidence-fill" style="width: 50%"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="progress-bar">
-                    <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
-                </div>
-                <div class="time-container">
-                    <span class="label">Tiempo / Enfoque</span>
-                    <div class="time-bar">
-                        <div id="time-fill" class="time-fill" style="width: 100%"></div>
+                    <div class="bar-group">
+                        <span class="label">Tiempo / Enfoque</span>
+                        <div class="time-bar">
+                            <div id="time-fill" class="time-fill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="bar-group">
+                        <span class="label">Progreso</span>
+                        <div class="progress-bar">
+                            <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+                        </div>
                     </div>
                 </div>
                 <div id="game-stats" class="stats">
-                    <span id="counter-kept">Guardados: 0</span>
-                    <span id="counter-discarded">Descartados: 0</span>
-                    <span id="counter-correct" class="hide-during-stream">Aciertos: 0</span>
-                    <span id="counter-streak" class="hide-during-stream">Racha: 0</span>
+                    <span id="counter-kept">📂 0</span>
+                    <span id="counter-discarded">🗑️ 0</span>
+                    <span id="counter-neuronas">🧠 0</span>
+                    <span id="counter-streak" class="streak-counter">🔥 0</span>
                 </div>
             </header>
 
@@ -76,17 +108,21 @@
                 <div id="card-stack" class="card-stack">
                     <!-- Current card goes here -->
                 </div>
+                <!-- Swipe hint arrows -->
+                <div class="swipe-hints">
+                    <span class="hint-left">⬅️ Descartar</span>
+                    <span class="hint-right">Guardar ➡️</span>
+                </div>
             </main>
 
             <section class="learning-panel">
                 <div class="tip-card">
-                    <h4>Consejo didáctico</h4>
                     <p id="learning-tip">Busca señales que cambien una decisión: signos vitales, labs, imagen o
                         fármacos.</p>
                 </div>
                 <div id="feedback-box" class="feedback-card">
-                    <h4 id="feedback-title">Listo para evaluar tu elección</h4>
-                    <p id="feedback-text">Desliza una tarjeta para recibir feedback inmediato.</p>
+                    <h4 id="feedback-title">Desliza una tarjeta para comenzar</h4>
+                    <p id="feedback-text">Evalúa si el dato es clave para la decisión clínica.</p>
                 </div>
             </section>
 
@@ -102,13 +138,7 @@
             </footer>
         </div>
 
-        <!-- Tutorial Overlay -->
-        <div id="tutorial-overlay" class="tutorial-overlay hidden">
-            <div id="tutorial-step" class="tutorial-step">
-                <!-- Injected by JS -->
-            </div>
-        </div>
-
+        <!-- View: Checkpoint / Final Triad -->
         <div id="view-checkpoint" class="view hidden">
             <h2 id="checkpoint-title">Punto de Decisión</h2>
             <div id="quiz-container" class="quiz-container">
@@ -116,9 +146,10 @@
                 <div id="quiz-options" class="quiz-options"></div>
                 <div id="quiz-hint" class="quiz-hint hidden"></div>
             </div>
-            <button id="btn-checkpoint-continue" class="btn primary hidden">Siguiente Fase</button>
+            <button id="btn-checkpoint-continue" class="btn primary hidden">Continuar</button>
         </div>
 
+        <!-- View: Results -->
         <div id="view-results" class="view hidden">
             <h2 class="title">Evaluación Final</h2>
             <div id="result-outcome" class="result-box outcome-box"></div>
@@ -136,25 +167,26 @@
 
             <div class="dossier-lists">
                 <div class="list-section">
-                    <h3>Evidencia Guardada</h3>
+                    <h3>✅ Evidencia Guardada</h3>
                     <ul id="list-kept"></ul>
                 </div>
                 <div class="list-section">
-                    <h3>Evidencia Descartada</h3>
+                    <h3>🗑️ Evidencia Descartada</h3>
                     <ul id="list-discarded"></ul>
                 </div>
                 <div class="list-section">
-                    <h3>Oportunidades de aprendizaje</h3>
+                    <h3>📚 Oportunidades de Aprendizaje</h3>
                     <ul id="list-mistakes"></ul>
                 </div>
             </div>
 
             <button id="btn-restart" class="btn secondary">Volver al Inicio</button>
         </div>
+
     </div>
 
-    <!-- Tutorial / Scaffolding Overlay -->
-    <div id="tutorial-overlay" class="view hidden">
+    <!-- Tutorial Overlay (Dra. Vélez) — SINGLE instance -->
+    <div id="tutorial-overlay" class="tutorial-overlay hidden">
         <div id="davinci-container">
             <div id="davinci-arm">
                 <div class="robot-claw"></div>
@@ -162,7 +194,7 @@
         </div>
         <div id="mentor-dialog" class="dialog-box">
             <div class="mentor-header">
-                <span class="mentor-name">SCT: Dra. Velez</span>
+                <span class="mentor-name">Dra. Vélez · ENARM Coach</span>
                 <span class="status-dot"></span>
             </div>
             <div id="mentor-text" class="mentor-content">
@@ -179,7 +211,7 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/json-logic-js@2.0.2/logic.min.js"></script>
 
-    <!-- Scripts -->
+    <!-- App -->
     <script type="module" src="js/app.js"></script>
 </body>
 

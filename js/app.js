@@ -10,50 +10,99 @@ class App {
         this.ui = new UIController(this.engine);
         this.audio = new AudioManager();
 
+        this.selectedDifficulty = 'easy';
+        this.caseMap = {
+            easy: 'case_swipe_easy_001',
+            standard: 'case_swipe_standard_001',
+            hard: 'case_swipe_hard_001'
+        };
+
         this.init();
     }
 
     async init() {
         this.bindEvents();
-
-        // Connect UI swipe to app logic
         this.ui.onSwipeAction = (direction) => this.handleAction(direction);
 
-        // Load default case (hardcoded for v1 prototype)
-        // Ideally user selects from a menu, but for "intake" we load one to start.
+        const urlParams = new URLSearchParams(window.location.search);
+        const mode = urlParams.get('mode');
+
+        if (mode === 'procedural') {
+            try {
+                const proceduralData = sessionStorage.getItem('PROCEDURAL_CASE');
+                if (proceduralData) {
+                    const caseData = JSON.parse(proceduralData);
+                    this.engine.initializeSession(caseData);
+                    this.selectedDifficulty = caseData.difficulty;
+
+                    // UI Adjustments for Sandbox
+                    document.getElementById('sandbox-mode-banner')?.classList.remove('hidden');
+                    document.getElementById('difficulty-section')?.classList.add('hidden');
+                    document.querySelector('.subtitle').textContent = "Juega un caso infinito generado al vuelo";
+
+                    this.ui.update();
+                    console.log("Loaded procedural sandbox case");
+                    return;
+                }
+            } catch (e) {
+                console.error("Failed to load procedural case from session:", e);
+                alert("Error cargando el caso procedimental. Volviendo a modo normal.");
+            }
+        }
+
+        // Pre-load easy case to prepare intake screen
         try {
-            const caseData = await this.loader.loadCase('case_swipe_easy_001');
-            this.engine.initializeSession(caseData);
+            await this.loadCase('easy');
             this.ui.update();
         } catch (error) {
             console.error("Failed to initialize app:", error);
-            // Fallback for file:// protocol if fetch fails
-            alert("Error cargando el caso. Si estás ejecutando localmente sin servidor, por favor usa un servidor local (ej. VS Code Live Server o 'python -m http.server').");
+            alert("Error cargando el caso. Por favor usa un servidor local (ej. VS Code Live Server o 'python -m http.server').");
         }
     }
 
+    async loadCase(difficulty) {
+        const caseId = this.caseMap[difficulty] || this.caseMap['easy'];
+        const caseData = await this.loader.loadCase(caseId);
+        this.engine.initializeSession(caseData);
+        this.selectedDifficulty = difficulty;
+    }
+
     bindEvents() {
-        // Intro to Intake
+        // Intro → Intake
         document.getElementById('btn-to-intake').addEventListener('click', () => {
             this.engine.state = ENGINE_STATE.INTAKE;
             this.ui.update();
             this.audio.play('swipe');
         });
 
-        // Intake to Stream
-        document.getElementById('btn-start').addEventListener('click', () => {
+        // Difficulty selector buttons
+        document.querySelectorAll('.difficulty-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                document.querySelectorAll('.difficulty-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const diff = btn.dataset.difficulty;
+                try {
+                    await this.loadCase(diff);
+                    this.ui.renderIntake();
+                } catch (e) {
+                    console.error("Cannot load case:", e);
+                }
+            });
+        });
+
+        // Intake → Stream (FIX: was 'btn-start', HTML has 'btn-start-game')
+        document.getElementById('btn-start-game').addEventListener('click', () => {
             this.engine.startReview();
             this.ui.update();
             this.audio.play('swipe');
 
-            // Show tutorial if active
             if (this.engine.tutorialActive) {
-                this.ui.showTutorialStep(0);
+                this.ui.startTutorial();
                 this.engine.tutorialActive = false;
             }
         });
 
-        // Swipe Actions
+        // Swipe buttons
         document.getElementById('btn-discard').addEventListener('click', () => this.handleAction('left'));
         document.getElementById('btn-keep').addEventListener('click', () => this.handleAction('right'));
 
@@ -65,11 +114,8 @@ class App {
             }
         });
 
-        // Checkpoint
-        document.getElementById('btn-checkpoint-continue').addEventListener('click', () => {
-            this.engine.proceedFromCheckpoint();
-            this.ui.update();
-        });
+        // FIX: Removed the redundant btn-checkpoint-continue listener here.
+        // ui.js handles it correctly with selectedIndex in handleQuizAnswer/handleTriadAnswer.
 
         // Restart
         document.getElementById('btn-restart').addEventListener('click', () => {
@@ -83,33 +129,27 @@ class App {
         const result = this.engine.handleSwipe(direction);
 
         if (result && result.action === 'checkpoint') {
-            // Checkpoint triggered
             this.ui.update();
         } else if (result && result.action === 'finish') {
-            // Finished
             this.ui.update();
             this.audio.play('finish');
         } else {
-            // Next card
             this.ui.update();
 
-            // Play feedback sound
             if (this.engine.lastFeedback) {
                 this.audio.play(this.engine.lastFeedback.correct ? 'correct' : 'wrong');
             }
 
-            // Show Narration or Intuition if present
-            if (result.narration) {
+            if (result && result.narration) {
                 this.ui.showEventNotification(result.narration, 'narration');
             }
-            if (result.intuition) {
+            if (result && result.intuition) {
                 this.ui.showEventNotification(result.intuition, 'intuition');
             }
         }
     }
 }
 
-// Start App
 window.addEventListener('DOMContentLoaded', () => {
     window.app = new App();
 });

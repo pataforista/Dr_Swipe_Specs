@@ -1,5 +1,15 @@
 import { ENGINE_STATE } from './engine.js';
 
+const CATEGORY_ICONS = {
+    vitals: '🩺',
+    labs: '🧪',
+    imaging: '📸',
+    meds: '💊',
+    timeline: '📋',
+    notes: '🗒️',
+    admin: '📁'
+};
+
 export class UIController {
     constructor(engine) {
         this.engine = engine;
@@ -16,7 +26,7 @@ export class UIController {
             progressFill: document.getElementById('progress-fill'),
             counterKept: document.getElementById('counter-kept'),
             counterDiscarded: document.getElementById('counter-discarded'),
-            counterCorrect: document.getElementById('counter-correct'),
+            counterNeuronas: document.getElementById('counter-neuronas'),
             counterStreak: document.getElementById('counter-streak'),
             caseFraming: document.getElementById('case-framing'),
             listKept: document.getElementById('list-kept'),
@@ -27,7 +37,6 @@ export class UIController {
             feedbackText: document.getElementById('feedback-text'),
             listMistakes: document.getElementById('list-mistakes'),
             tutorialOverlay: document.getElementById('tutorial-overlay'),
-            tutorialStep: document.getElementById('tutorial-step'),
             missionBanner: document.getElementById('mission-banner'),
             confidenceFill: document.getElementById('confidence-fill'),
             quizQuestion: document.getElementById('quiz-question'),
@@ -35,15 +44,12 @@ export class UIController {
             quizHint: document.getElementById('quiz-hint'),
             btnCheckpointContinue: document.getElementById('btn-checkpoint-continue'),
             checkpointTitle: document.getElementById('checkpoint-title'),
-            triadContainer: document.getElementById('triad-container'),
-            triadQuestions: document.getElementById('triad-questions'),
             perlaEnarm: document.getElementById('perla-enarm'),
             perlaTitle: document.getElementById('perla-title'),
             perlaText: document.getElementById('perla-text'),
             perlaGpc: document.getElementById('perla-gpc'),
             resultOutcome: document.getElementById('result-outcome'),
             timeFill: document.getElementById('time-fill'),
-            tutorialOverlay: document.getElementById('tutorial-overlay'),
             mentorText: document.getElementById('mentor-text'),
             btnTutorialNext: document.getElementById('btn-tutorial-next'),
             davinciContainer: document.getElementById('davinci-container')
@@ -52,25 +58,26 @@ export class UIController {
         this.tutorialStep = 0;
         this.tutorialData = [
             {
-                text: "Bienvenido al Sistema Central de Triaje. Soy la Dra. Velez. Iniciemos el desbridamiento de este reporte.",
+                text: "¡Hola! Soy la Dra. Vélez, tu guía ENARM. Verás tarjetas de un expediente clínico — tu misión es filtrar lo útil de lo irrelevante.",
                 action: "none"
             },
             {
-                text: "Este es el Brazo Da Vinci de triaje. Deslice a la derecha para ANEXAR evidencia clínica crítica al expediente.",
+                text: "Desliza ➡️ a la DERECHA (o presiona ✔) para GUARDAR un dato que cambia una decisión clínica: signos vitales, labs relevantes, imagen o fármacos.",
                 action: "swipe-right"
             },
             {
-                text: "Deslice a la izquierda para DESCARTAR el ruido administrativo o duplicados que drenan su enfoque.",
+                text: "Desliza ⬅️ a la IZQUIERDA (o presiona ✖) para DESCARTAR: duplicados, datos administrativos, falsas alarmas o resultados tardíos.",
                 action: "swipe-left"
             },
             {
-                text: "Monitoree su barra de Tiempo y Enfoque. Si desciende al 0%, el paciente entra en descompensación crítica. Proceda.",
+                text: "Al final responderás 3 preguntas tipo ENARM: diagnóstico, estudio gold standard y tratamiento. ¡Construye bien tu expediente! 🧠",
                 action: "none"
             }
         ];
 
-        this.swipeThreshold = 100; // px
-        this.onSwipeAction = null; // callback for App
+        this.swipeThreshold = 100;
+        this.onSwipeAction = null;
+
         if (this.elements.btnTutorialNext) {
             this.elements.btnTutorialNext.onclick = () => this.nextTutorialStep();
         }
@@ -78,8 +85,10 @@ export class UIController {
 
     showView(viewName) {
         Object.values(this.views).forEach(el => {
-            el.classList.add('hidden');
-            el.classList.remove('active');
+            if (el) {
+                el.classList.add('hidden');
+                el.classList.remove('active');
+            }
         });
 
         const target = this.views[viewName];
@@ -105,11 +114,6 @@ export class UIController {
                 this.renderMission();
                 this.updateStats();
                 this.renderFeedback();
-
-                // Trigger tutorial if first time
-                if (this.engine.stats.total === 0 && this.tutorialStep === 0) {
-                    this.startTutorial();
-                }
                 break;
             case ENGINE_STATE.CHECKPOINT:
                 this.showView('checkpoint');
@@ -129,14 +133,34 @@ export class UIController {
     }
 
     renderIntake() {
-        if (this.engine.currentCase) {
-            this.elements.caseFraming.textContent = `Caso ID: ${this.engine.currentCase.case_id} | Dificultad: ${this.engine.currentCase.difficulty}`;
+        if (!this.engine.currentCase) return;
+        const meta = this.engine.getCaseMeta();
+        const framing = this.elements.caseFraming;
+        if (!framing) return;
+
+        if (meta) {
+            framing.innerHTML = `
+                <div class="patient-card">
+                    <div class="patient-header">
+                        <span class="patient-icon">🏥</span>
+                        <strong>Expediente del Paciente</strong>
+                    </div>
+                    <div class="patient-details">
+                        <span><strong>Paciente:</strong> ${meta.patient_code || 'Anónimo'}</span>
+                        <span><strong>Edad/Sexo:</strong> ${meta.age || '?'} años, ${meta.sex || '?'}</span>
+                        <span><strong>Motivo de consulta:</strong> ${meta.chief_complaint || 'No especificado'}</span>
+                        <span class="specialty-tag">📌 ${meta.enarm_specialty || 'Medicina General'}</span>
+                    </div>
+                </div>
+            `;
+        } else {
+            framing.textContent = `Caso: ${this.engine.currentCase.case_id} | Dificultad: ${this.engine.currentCase.difficulty}`;
         }
     }
 
     renderMission() {
         if (this.elements.missionBanner) {
-            this.elements.missionBanner.textContent = `MISIÓN: ${this.engine.getMission()}`;
+            this.elements.missionBanner.textContent = this.engine.getMission();
         }
     }
 
@@ -155,9 +179,19 @@ export class UIController {
         cardEl.className = 'card';
         cardEl.style.animation = 'fadeIn 0.3s ease';
 
+        const icon = CATEGORY_ICONS[card.category] || '📄';
+
+        // Safety flag banner
+        if (card.safety_flags && (card.safety_flags.lethal_risk || card.safety_flags.decision_critical)) {
+            const alert = document.createElement('div');
+            alert.className = 'card-alert';
+            alert.textContent = card.safety_flags.lethal_risk ? '⚠️ Dato crítico de seguridad' : '⚡ Decisión crítica';
+            cardEl.appendChild(alert);
+        }
+
         const category = document.createElement('div');
-        category.className = 'card-category';
-        category.textContent = card.category;
+        category.className = `card-category cat-${card.category}`;
+        category.textContent = `${icon} ${card.category.toUpperCase()}`;
 
         const title = document.createElement('h3');
         title.className = 'card-title';
@@ -167,12 +201,34 @@ export class UIController {
         text.className = 'card-text';
         text.textContent = card.payload.text;
 
+        text.addEventListener('mouseup', () => {
+            const selection = window.getSelection();
+            if (!selection.isCollapsed && text.contains(selection.anchorNode)) {
+                try {
+                    const range = selection.getRangeAt(0);
+                    const mark = document.createElement('mark');
+                    mark.className = 'highlight-target';
+                    range.surroundContents(mark);
+                    selection.removeAllRanges();
+                    if (navigator.vibrate) navigator.vibrate(20);
+                } catch (e) {
+                    // Ignore complex selection errors spanning multiple nodes
+                }
+            }
+        });
+
+        // Card index indicator
+        const indexBadge = document.createElement('div');
+        indexBadge.className = 'card-index';
+        const total = this.engine.currentCase?.evidence_stream?.length || '?';
+        indexBadge.textContent = `${this.engine.currentIndex + 1} / ${total}`;
+
         cardEl.appendChild(category);
         cardEl.appendChild(title);
         cardEl.appendChild(text);
+        cardEl.appendChild(indexBadge);
 
         container.appendChild(cardEl);
-
         this.initializeSwipe(cardEl);
     }
 
@@ -183,47 +239,60 @@ export class UIController {
         hammer.on('pan', (ev) => {
             cardEl.style.transition = 'none';
             const x = ev.deltaX;
-            const rotate = x / 10;
+            const rotate = x / 12;
             cardEl.style.transform = `translateX(${x}px) rotate(${rotate}deg)`;
 
-            // Visual feedback on draft
-            if (x > 50) cardEl.style.borderColor = 'var(--success)';
-            else if (x < -50) cardEl.style.borderColor = 'var(--danger)';
-            else cardEl.style.borderColor = '#e5e7eb';
+            const leftHint = document.querySelector('.hint-left');
+            const rightHint = document.querySelector('.hint-right');
+
+            if (x > 50) {
+                cardEl.style.borderColor = 'var(--success)';
+                cardEl.classList.add('swipe-right-preview');
+                cardEl.classList.remove('swipe-left-preview');
+                if (rightHint) rightHint.classList.add('active');
+                if (leftHint) leftHint.classList.remove('active');
+            } else if (x < -50) {
+                cardEl.style.borderColor = 'var(--danger)';
+                cardEl.classList.add('swipe-left-preview');
+                cardEl.classList.remove('swipe-right-preview');
+                if (leftHint) leftHint.classList.add('active');
+                if (rightHint) rightHint.classList.remove('active');
+            } else {
+                cardEl.style.borderColor = '';
+                cardEl.classList.remove('swipe-right-preview', 'swipe-left-preview');
+                if (leftHint) leftHint.classList.remove('active');
+                if (rightHint) rightHint.classList.remove('active');
+            }
         });
 
         hammer.on('panend', (ev) => {
             cardEl.style.transition = 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            const leftHint = document.querySelector('.hint-left');
+            const rightHint = document.querySelector('.hint-right');
+            if (leftHint) leftHint.classList.remove('active');
+            if (rightHint) rightHint.classList.remove('active');
+
             if (Math.abs(ev.deltaX) > this.swipeThreshold) {
                 const direction = ev.deltaX > 0 ? 'right' : 'left';
-                const finalX = direction === 'right' ? 1000 : -1000;
+                const finalX = direction === 'right' ? 1200 : -1200;
                 cardEl.style.transform = `translateX(${finalX}px) rotate(${ev.deltaX / 5}deg)`;
-
                 setTimeout(() => {
                     if (this.onSwipeAction) this.onSwipeAction(direction);
                 }, 200);
             } else {
                 cardEl.style.transform = '';
-                cardEl.style.borderColor = '#e5e7eb';
+                cardEl.style.borderColor = '';
+                cardEl.classList.remove('swipe-right-preview', 'swipe-left-preview');
             }
         });
     }
 
     launchConfetti() {
         const count = 200;
-        const defaults = {
-            origin: { y: 0.7 },
-            zIndex: 1000
-        };
-
+        const defaults = { origin: { y: 0.7 }, zIndex: 1000 };
         function fire(particleRatio, opts) {
-            confetti({
-                ...defaults,
-                ...opts,
-                particleCount: Math.floor(count * particleRatio)
-            });
+            confetti({ ...defaults, ...opts, particleCount: Math.floor(count * particleRatio) });
         }
-
         fire(0.25, { spread: 26, startVelocity: 55 });
         fire(0.2, { spread: 60 });
         fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
@@ -232,27 +301,32 @@ export class UIController {
     }
 
     updateStats() {
-        this.elements.progressFill.style.width = `${this.engine.getProgress()}%`;
-
-        const oldConfidence = parseFloat(this.elements.confidenceFill.style.width) || 0;
-        const newConfidence = this.engine.confidence;
-        this.elements.confidenceFill.style.width = `${newConfidence}%`;
-
-        if (newConfidence > oldConfidence + 5) {
-            this.renderDiscoveryEffect();
+        if (this.elements.progressFill) {
+            this.elements.progressFill.style.width = `${this.engine.getProgress()}%`;
         }
 
-        this.elements.counterKept.textContent = `Guardados: ${this.engine.keptItems.length}`;
-        this.elements.counterDiscarded.textContent = `Descartados: ${this.engine.discardedItems.length}`;
+        const oldConfidence = parseFloat(this.elements.confidenceFill?.style.width) || 0;
+        const newConfidence = this.engine.confidence;
+        if (this.elements.confidenceFill) {
+            this.elements.confidenceFill.style.width = `${newConfidence}%`;
+            if (newConfidence > oldConfidence + 5) {
+                this.renderDiscoveryEffect();
+            }
+        }
 
-        const isResults = this.engine.state === ENGINE_STATE.RESULTS || this.engine.state === ENGINE_STATE.DOSSIER;
-        if (this.elements.counterCorrect) {
-            this.elements.counterCorrect.textContent = `Aciertos: ${this.engine.stats.correct}`;
-            this.elements.counterCorrect.classList.toggle('hide-during-stream', !isResults);
+        if (this.elements.counterKept) {
+            this.elements.counterKept.textContent = `📂 ${this.engine.keptItems.length}`;
+        }
+        if (this.elements.counterDiscarded) {
+            this.elements.counterDiscarded.textContent = `🗑️ ${this.engine.discardedItems.length}`;
+        }
+        if (this.elements.counterNeuronas) {
+            this.elements.counterNeuronas.textContent = `🧠 ${this.engine.stats.neuronas}`;
         }
         if (this.elements.counterStreak) {
-            this.elements.counterStreak.textContent = `Racha: ${this.engine.stats.streak}`;
-            this.elements.counterStreak.classList.toggle('hide-during-stream', !isResults);
+            const streak = this.engine.stats.streak;
+            this.elements.counterStreak.textContent = `🔥 ${streak}`;
+            this.elements.counterStreak.classList.toggle('streak-hot', streak >= 3);
         }
 
         if (this.elements.timeFill) {
@@ -268,14 +342,11 @@ export class UIController {
         this.elements.feedbackBox.classList.toggle('feedback-correct', feedback.correct);
         this.elements.feedbackBox.classList.toggle('feedback-wrong', !feedback.correct);
 
-        const actionLabel = feedback.expected === 'right' ? 'Guardar' : 'Descartar';
+        const actionLabel = feedback.expected === 'right' ? 'Guardar ➡️' : 'Descartar ⬅️';
         this.elements.feedbackTitle.textContent = feedback.correct
-            ? `✅ ¡Bien! ${actionLabel} era lo correcto.`
-            : `🔍 Consejo: lo ideal era ${actionLabel.toLowerCase()}.`;
+            ? `✅ Correcto — ${actionLabel} era lo indicado.`
+            : `🔍 Tip: lo ideal era ${feedback.expected === 'right' ? 'guardar ➡️' : 'descartar ⬅️'}.`;
         this.elements.feedbackText.textContent = feedback.rationale;
-
-        // Check for Narrative or Intuition bits in the last action result
-        // Note: result is passed from App.js to handleAction
     }
 
     showEventNotification(message, type = 'info') {
@@ -286,13 +357,11 @@ export class UIController {
             <div class="toast-content">${message}</div>
         `;
         document.body.appendChild(toast);
-
-        // Animation
         setTimeout(() => toast.classList.add('active'), 100);
         setTimeout(() => {
             toast.classList.remove('active');
             setTimeout(() => toast.remove(), 500);
-        }, 3000);
+        }, 3500);
     }
 
     renderDiscoveryEffect() {
@@ -307,7 +376,7 @@ export class UIController {
         const quiz = this.engine.currentCheckpoint;
         if (!quiz) return;
 
-        this.elements.checkpointTitle.textContent = `Reto Clínico #${quiz.checkpoint_sequence}`;
+        this.elements.checkpointTitle.textContent = `🩺 Reto Clínico — Etapa ${quiz.checkpoint_sequence}`;
         this.elements.quizQuestion.textContent = quiz.question;
         this.elements.quizOptions.innerHTML = '';
         this.elements.btnCheckpointContinue.classList.add('hidden');
@@ -315,7 +384,7 @@ export class UIController {
         const unlockedIds = this.engine.getUnlockedHints(quiz);
         if (unlockedIds.length > 0) {
             this.elements.quizHint.classList.remove('hidden');
-            this.elements.quizHint.innerHTML = `🌟 <strong>Investigación activa:</strong> Tienes ${unlockedIds.length} dato(s) clave.`;
+            this.elements.quizHint.innerHTML = `🌟 <strong>Tienes ${unlockedIds.length} dato(s) clave en tu expediente</strong> que pueden ayudarte.`;
         } else {
             this.elements.quizHint.classList.add('hidden');
         }
@@ -335,6 +404,7 @@ export class UIController {
 
         if (selectedIndex === correctIndex) {
             button.classList.add('correct');
+            this.showEventNotification('🧠 +50 Neuronas — ¡Respuesta correcta!', 'intuition');
         } else {
             button.classList.add('wrong');
             options[correctIndex].classList.add('correct');
@@ -352,7 +422,13 @@ export class UIController {
         const triad = this.engine.currentCase.final_triad[currentTriadIndex];
         if (!triad) return;
 
-        this.elements.checkpointTitle.textContent = `DESAFÍO FINAL: ${triad.type.toUpperCase()}`;
+        const typeLabel = {
+            diagnosis: '🔬 Diagnóstico',
+            gold_standard: '🏆 Estudio de Elección',
+            treatment: '💊 Tratamiento'
+        };
+
+        this.elements.checkpointTitle.textContent = `TRÍADA ENARM — ${typeLabel[triad.type] || triad.type.toUpperCase()} (${currentTriadIndex + 1}/3)`;
         this.elements.quizQuestion.textContent = triad.question;
         this.elements.quizOptions.innerHTML = '';
         this.elements.btnCheckpointContinue.classList.add('hidden');
@@ -360,7 +436,7 @@ export class UIController {
         const unlockedIds = this.engine.getUnlockedHints(triad);
         if (unlockedIds.length > 0) {
             this.elements.quizHint.classList.remove('hidden');
-            this.elements.quizHint.innerHTML = `🌟 <strong>Memoria clínica:</strong> Tienes ${unlockedIds.length} dato(s) clave en tu expediente.`;
+            this.elements.quizHint.innerHTML = `🌟 <strong>Memoria clínica activa:</strong> Tienes ${unlockedIds.length} dato(s) clave en tu expediente.`;
         } else {
             this.elements.quizHint.classList.add('hidden');
         }
@@ -380,6 +456,7 @@ export class UIController {
 
         if (selectedIndex === correctIndex) {
             button.classList.add('correct');
+            this.showEventNotification('🧠 +100 Neuronas — ¡Tríada correcta!', 'intuition');
         } else {
             button.classList.add('wrong');
             options[correctIndex].classList.add('correct');
@@ -396,52 +473,142 @@ export class UIController {
         const kept = this.engine.keptItems;
         const discarded = this.engine.discardedItems;
 
-        const createList = (items, parent) => {
+        const createList = (items, parent, isKept = false) => {
             if (!parent) return;
             parent.innerHTML = '';
             items.forEach(item => {
                 const li = document.createElement('li');
-                li.textContent = `[${item.category}] ${item.payload.title}: ${item.payload.text}`;
+                const icon = CATEGORY_ICONS[item.category] || '📄';
+                li.innerHTML = `<span class="list-icon">${icon}</span> <strong>${item.payload.title}:</strong> ${item.payload.text}`;
+
+                if (isKept) {
+                    const actions = document.createElement('div');
+                    actions.className = 'dossier-actions';
+
+                    const btnPin = document.createElement('button');
+                    const isPinned = this.engine.pinnedItems.has(item.evidence_id);
+                    btnPin.className = `btn-action ${isPinned ? 'active' : ''}`;
+                    btnPin.innerHTML = '📌 Pin';
+                    btnPin.onclick = () => {
+                        if (this.engine.pinnedItems.has(item.evidence_id)) {
+                            this.engine.unpinItem(item.evidence_id);
+                            btnPin.classList.remove('active');
+                        } else {
+                            if (this.engine.pinnedItems.size < 3) {
+                                this.engine.pinItem(item.evidence_id);
+                                btnPin.classList.add('active');
+                            } else {
+                                this.showEventNotification('Máximo 3 pines permitidos', 'info');
+                            }
+                        }
+                    };
+
+                    const btnAnnotate = document.createElement('button');
+                    btnAnnotate.className = 'btn-action';
+                    btnAnnotate.innerHTML = '✍️ Nota';
+                    btnAnnotate.onclick = () => {
+                        const note = prompt('Añadir nota a ' + item.payload.title, this.engine.annotations[item.evidence_id] || '');
+                        if (note !== null && note.trim() !== '') {
+                            this.engine.annotations[item.evidence_id] = note;
+                            let noteEl = li.querySelector('.dossier-note');
+                            if (!noteEl) {
+                                noteEl = document.createElement('div');
+                                noteEl.className = 'dossier-note';
+                                li.appendChild(noteEl);
+                            }
+                            noteEl.textContent = `📝 ${note}`;
+                        } else if (note === '') {
+                            delete this.engine.annotations[item.evidence_id];
+                            const noteEl = li.querySelector('.dossier-note');
+                            if (noteEl) noteEl.remove();
+                        }
+                    };
+
+                    actions.appendChild(btnPin);
+                    actions.appendChild(btnAnnotate);
+                    li.appendChild(actions);
+
+                    if (this.engine.annotations[item.evidence_id]) {
+                        const noteEl = document.createElement('div');
+                        noteEl.className = 'dossier-note';
+                        noteEl.textContent = `📝 ${this.engine.annotations[item.evidence_id]}`;
+                        li.appendChild(noteEl);
+                    }
+                }
+
                 parent.appendChild(li);
             });
         };
 
-        createList(kept, this.elements.listKept);
-        createList(discarded, this.elements.listDiscarded);
+        createList(kept, this.elements.listKept, true);
+        createList(discarded, this.elements.listDiscarded, false);
 
+        // Score outcome
         if (this.elements.resultOutcome) {
             const accuracy = this.engine.getAccuracy();
-            let verdict = "Investigación Incompleta";
-            if (accuracy > 80 && this.engine.confidence > 70) verdict = "Investigación de Excelencia";
-            else if (accuracy > 60) verdict = "Investigación Aceptable";
+            const neuronas = this.engine.stats.neuronas;
+            let verdict = '🔴 Expediente con ruido';
+            let verdictClass = 'verdict-bad';
+            if (accuracy > 80 && this.engine.confidence > 70) {
+                verdict = '🏆 Expediente de Excelencia';
+                verdictClass = 'verdict-excellent';
+            } else if (accuracy > 60) {
+                verdict = '✅ Expediente Aceptable';
+                verdictClass = 'verdict-good';
+            }
 
+            this.elements.resultOutcome.className = `result-box outcome-box ${verdictClass}`;
             this.elements.resultOutcome.innerHTML = `
-                <div style="font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">${verdict}</div>
-                <strong>Precisión Clínica:</strong> ${accuracy}%<br>
-                <strong>Confianza Final:</strong> ${Math.round(this.engine.confidence)}%<br>
-                <strong>Neuronas Ganadas:</strong> ${this.engine.stats.neuronas} 🧠
+                <div class="verdict-label">${verdict}</div>
+                <div class="score-grid">
+                    <div class="score-item"><span class="score-num">${accuracy}%</span><span class="score-label">Precisión</span></div>
+                    <div class="score-item"><span class="score-num">${Math.round(this.engine.confidence)}%</span><span class="score-label">Confianza</span></div>
+                    <div class="score-item"><span class="score-num">${neuronas} 🧠</span><span class="score-label">Neuronas</span></div>
+                </div>
             `;
+
+            if (this.engine.stats.scoring_tags && this.engine.stats.scoring_tags.length > 0) {
+                const tagsDiv = document.createElement('div');
+                tagsDiv.className = 'scoring-tags';
+                this.engine.stats.scoring_tags.forEach(tag => {
+                    const tagEl = document.createElement('span');
+                    tagEl.className = `scoring-tag tag-${tag}`;
+                    const tagNames = {
+                        'hoarding': '📦 Acumulador (-50)',
+                        'false_positive': '⚠️ Falso Positivo',
+                        'precision': '🎯 Alta Precisión (+50)',
+                        'clean_dossier': '✨ Dossier Limpio (+50)',
+                        'clinical_eye': '👁️ Ojo Clínico (+75)'
+                    };
+                    tagEl.textContent = tagNames[tag] || tag;
+                    tagsDiv.appendChild(tagEl);
+                });
+                this.elements.resultOutcome.appendChild(tagsDiv);
+            }
         }
 
+        // Perla ENARM
         if (this.elements.perlaEnarm && this.engine.currentCase.perla_enarm) {
             const perla = this.engine.currentCase.perla_enarm;
             this.elements.perlaEnarm.classList.remove('hidden');
-            this.elements.perlaTitle.textContent = perla.title;
+            this.elements.perlaTitle.textContent = `💡 Perla ENARM: ${perla.title}`;
             this.elements.perlaText.textContent = perla.text;
             this.elements.perlaGpc.textContent = perla.gpc_ref;
         }
 
+        // Mistakes / learning opportunities
         if (this.elements.listMistakes) {
             this.elements.listMistakes.innerHTML = '';
             if (this.engine.stats.mistakes.length === 0) {
                 const li = document.createElement('li');
-                li.textContent = '¡Excelente! No hay errores para revisar.';
+                li.textContent = '🌟 ¡Sin errores! Expediente perfecto.';
                 this.elements.listMistakes.appendChild(li);
             } else {
                 this.engine.stats.mistakes.forEach(mistake => {
                     const li = document.createElement('li');
-                    const expectedAction = mistake.expected === 'right' ? 'guardar' : 'descartar';
-                    li.textContent = `[${mistake.category}] ${mistake.title}: era mejor ${expectedAction}.`;
+                    const expectedAction = mistake.expected === 'right' ? 'guardar ➡️' : 'descartar ⬅️';
+                    const icon = CATEGORY_ICONS[mistake.category] || '📄';
+                    li.innerHTML = `${icon} <strong>${mistake.title}</strong> — era mejor ${expectedAction}.`;
                     this.elements.listMistakes.appendChild(li);
                 });
             }
@@ -450,8 +617,10 @@ export class UIController {
 
     startTutorial() {
         this.tutorialStep = 0;
-        this.elements.tutorialOverlay.classList.remove('hidden');
-        this.elements.tutorialOverlay.classList.add('active');
+        if (this.elements.tutorialOverlay) {
+            this.elements.tutorialOverlay.classList.remove('hidden');
+            this.elements.tutorialOverlay.classList.add('active');
+        }
         this.updateTutorialContent();
     }
 
@@ -466,21 +635,20 @@ export class UIController {
 
     updateTutorialContent() {
         const step = this.tutorialData[this.tutorialStep];
-        this.elements.mentorText.textContent = step.text;
-
-        // Visual cues
+        if (this.elements.mentorText) {
+            this.elements.mentorText.textContent = step.text;
+        }
         if (this.elements.davinciContainer) {
-            this.elements.davinciContainer.classList.remove('robot-swiping');
-            if (step.action !== 'none') {
-                this.elements.davinciContainer.classList.add('robot-swiping');
-            }
+            this.elements.davinciContainer.classList.toggle('robot-swiping', step.action !== 'none');
         }
     }
 
     finishTutorial() {
-        this.elements.tutorialOverlay.classList.remove('active');
-        setTimeout(() => {
-            this.elements.tutorialOverlay.classList.add('hidden');
-        }, 500);
+        if (this.elements.tutorialOverlay) {
+            this.elements.tutorialOverlay.classList.remove('active');
+            setTimeout(() => {
+                this.elements.tutorialOverlay.classList.add('hidden');
+            }, 500);
+        }
     }
 }
