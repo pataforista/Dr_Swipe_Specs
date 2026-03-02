@@ -127,6 +127,39 @@
             gap: 1rem;
             margin-top: 1rem;
         }
+
+        /* ─── Validation Badge ─────────────────── */
+        #validation-badge {
+            display: none;
+            margin-top: 1.25rem;
+            padding: 0.9rem 1.1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        #validation-badge.valid {
+            background: #052e16;
+            border: 1px solid var(--success);
+            color: var(--success);
+        }
+
+        #validation-badge.invalid {
+            background: #450a0a;
+            border: 1px solid var(--danger);
+            color: #fca5a5;
+        }
+
+        #validation-badge.warnings {
+            background: #1c1408;
+            border: 1px solid #f59e0b;
+            color: #fbbf24;
+        }
+
+        #validation-badge ul {
+            margin: 0.4rem 0 0 0;
+            padding-left: 1.2rem;
+        }
     </style>
 </head>
 
@@ -165,9 +198,11 @@
             <button id="btn-copy" style="width: auto;">📋 Copiar JSON</button>
             <button id="btn-play" style="width: auto; background: var(--success);">▶️ Jugar Caso en Sandbox</button>
         </div>
+
+        <div id="validation-badge"></div>
     </div>
 
-    <script src="generator.js"></script>
+    <script type="module" src="generator.js"></script>
 </body>
 
 </html>

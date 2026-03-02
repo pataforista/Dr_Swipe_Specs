@@ -445,7 +445,8 @@ export class SwipeEngine {
             this.stats.neuronas += 50;
         }
 
-        if (utilityRatio >= 0.8 && this.keptItems.length > 0 && this.keptItems.length <= 6) {
+        const totalRightActions = this.currentCase.evidence_stream.filter(e => this.getExpectedAction(e) === 'right').length;
+        if (utilityRatio >= 0.8 && this.keptItems.length > 0 && this.keptItems.length <= totalRightActions) {
             this.stats.scoring_tags.push('clean_dossier');
             this.stats.neuronas += 50;
         }

@@ -1,3 +1,5 @@
+import { validateCase, logValidationResult } from './validate_case.js';
+
 export class DataLoader {
     constructor() {
         this.basePath = 'cases/';
@@ -16,6 +18,20 @@ export class DataLoader {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
+
+            // ── Validación de integridad del caso ──────────────────────────
+            const validation = validateCase(data);
+            logValidationResult(validation);
+
+            if (!validation.valid) {
+                console.error(
+                    `[DataLoader] Caso "${caseId}" tiene ${validation.errors.length} error(es) crítico(s). ` +
+                    `Revisa la consola para detalles.`
+                );
+            }
+            // No se bloquea la carga; el validador actúa como monitor de calidad.
+            // ──────────────────────────────────────────────────────────────
+
             return data;
         } catch (error) {
             console.error("Failed to load case:", error);

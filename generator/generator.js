@@ -1,3 +1,5 @@
+import { validateCase, logValidationResult } from '../js/validate_case.js';
+
 const STATE = {
     coreData: [],
     domains: new Set()
@@ -60,6 +62,19 @@ document.getElementById('btn-play').addEventListener('click', () => {
     }
     try {
         const caseObj = JSON.parse(jsonStr);
+
+        // ── Validar antes de enviar al engine ────────────────────────────
+        const validation = validateCase(caseObj);
+        if (!validation.valid) {
+            const errList = validation.errors.slice(0, 5).join('\n• ');
+            const more = validation.errors.length > 5 ? `\n... y ${validation.errors.length - 5} más.` : '';
+            alert(
+                `⚠️ Este caso tiene ${validation.errors.length} error(es) clínico(s) y no puede jugarse:\n\n• ${errList}${more}\n\nRevisa la consola para el detalle completo.`
+            );
+            return;
+        }
+        // ────────────────────────────────────────────────────────────────
+
         sessionStorage.setItem('PROCEDURAL_CASE', JSON.stringify(caseObj));
         window.open('../index.html?mode=procedural', '_blank');
     } catch (e) {
@@ -123,7 +138,13 @@ function generateCase() {
         synergy_rules: []
     };
 
-    document.getElementById('output-area').value = JSON.stringify(caseInstance, null, 2);
+    const jsonStr = JSON.stringify(caseInstance, null, 2);
+    document.getElementById('output-area').value = jsonStr;
+
+    // ── Validar el caso generado ───────────────────────────────────────────
+    const validation = validateCase(caseInstance);
+    logValidationResult(validation);
+    _renderValidationBadge(validation);
 }
 
 function buildTriad(node) {
@@ -198,6 +219,43 @@ function getDifficultyNoise(diff) {
     if (diff === 'easy') return ['irrelevant_true', 'duplicate', 'borderline', 'delayed_result', 'irrelevant_true'];
     if (diff === 'standard') return ['duplicate', 'false_alarm', 'borderline', 'delayed_result', 'irrelevant_true'];
     return ['false_alarm', 'false_alarm', 'duplicate', 'delayed_result', 'borderline'];
+}
+
+// ─── Validation Badge UI ──────────────────────────────────────────────────────
+
+function _renderValidationBadge(validation) {
+    const badge = document.getElementById('validation-badge');
+    if (!badge) return;
+
+    badge.className = '';
+    badge.style.display = 'block';
+
+    const { valid, errors, warnings, summary } = validation;
+
+    if (!valid) {
+        badge.classList.add('invalid');
+        const errItems = errors.map(e => `<li>${e}</li>`).join('');
+        badge.innerHTML = `
+            <strong>❌ Caso inválido — ${errors.length} error(es) crítico(s)</strong>
+            <ul>${errItems}</ul>
+            ${warnings.length > 0 ? `<small>+ ${warnings.length} advertencia(s) — ver consola.</small>` : ''}
+            <br><small>Este caso <strong>no puede jugarse</strong> hasta que se corrijan los errores.</small>
+        `;
+    } else if (warnings.length > 0) {
+        badge.classList.add('warnings');
+        const warnItems = warnings.slice(0, 5).map(w => `<li>${w}</li>`).join('');
+        const more = warnings.length > 5 ? `<li>... y ${warnings.length - 5} más (ver consola)</li>` : '';
+        badge.innerHTML = `
+            <strong>🟡 Schema válido con ${warnings.length} advertencia(s)</strong>
+            <ul>${warnItems}${more}</ul>
+            <small>El caso puede jugarse pero tiene áreas de mejora.</small>
+        `;
+    } else {
+        badge.classList.add('valid');
+        badge.innerHTML = `
+            <strong>✅ Caso íntegro</strong> — ${summary.signal_count} señales · ${summary.noise_count} ruidos · 0 errores
+        `;
+    }
 }
 
 // Init
