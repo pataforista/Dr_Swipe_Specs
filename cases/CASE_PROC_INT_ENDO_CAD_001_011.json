@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "id": "PROC_INT_ENDO_CAD_001_011",
+    "title": "INT ENDO CAD 001 (Var 11)",
+    "category": "Procedural",
+    "difficulty": "standard",
+    "tags": [
+      "procedural",
+      "clinical_reasoning"
+    ]
+  },
+  "version": "v2",
+  "format": "clinical_reasoning",
+  "patient_profile": {
+    "name": "Ana",
+    "age": 23,
+    "sex": "Femenino",
+    "image_url": "https://api.dicebear.com/7.x/pixel-art/svg?seed=Ana23&backgroundColor=c0aede,b6e3f4",
+    "mood": "somnoliento",
+    "bio": "Acude por vómitos persistentes de 48 horas, dolor abdominal difuso y alteración del sensorio.",
+    "vitals": {
+      "TA": "90/60",
+      "FC": "125 lpm",
+      "Temp": "36.5°C"
+    },
+    "details": "Respiración de Kussmaul evidente. Mucosas muy secas. Glucosa reportada en 480 mg/dl. Gasometría con pH 7.15, HCO3 12."
+  },
+  "evidence_stream": [
+    {
+      "type": "differential",
+      "is_match": true,
+      "payload": {
+        "title": "A) Cetoacidosis Diabética (CAD)",
+        "text": "Descompensación diabética aguda (típica en pacientes jóvenes/DM1). Triada: Hiperglucemia, Cetonemia/Cetonuria y Acidosis Metabólica."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      },
+      "feedback": {
+        "match": "¡Correcto! Paciente joven con dolor abdominal, Kussmaul y aliento afrutado. La piedra angular inicial es la hidratación IV agresiva y medición de potasio ANTES de iniciar insulina.",
+        "discard": "Error: No reconociste la urgencia endocrinológica clásica de un paciente joven diabético."
+      }
+    },
+    {
+      "type": "differential",
+      "is_match": false,
+      "payload": {
+        "title": "B) Estado Hiperosmolar Hiperglucémico (EHH)",
+        "text": "Suele presentarse en adultos mayores (DM2) con hiperglucemias extremas (>600), deshidratación profunda y SIN acidosis significativa."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      },
+      "feedback": {
+        "match": "El EHH rara vez debuta con respiración de Kussmaul o acidosis severa (pH 7.15), además es propio de pacientes mayores de 65 años.",
+        "discard": "¡Buen ojo! La presencia de acidosis franca y Kussmaul hace la diferencia entre EHH y CAD."
+      }
+    },
+    {
+      "type": "differential",
+      "is_match": false,
+      "payload": {
+        "title": "C) Abdomen Agudo Quirúrgico",
+        "text": "Sospecha quirúrgica por dolor abdominal y vómito en un joven."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      },
+      "feedback": {
+        "match": "Aunque el dolor abdominal es fuerte, en la CAD suele ser por dilatación gástrica secundaria a la cetonemia, una cirugía innecesaria sería letal.",
+        "discard": "Bien hecho. El dolor abdominal en CAD mejora rápidamente tras el inicio de la hidratación y corrección metabólica."
+      }
+    }
+  ],
+  "perla_enarm": {
+    "title": "Manejo de la CAD: Líquidos Primero",
+    "text": "En la Cetoacidosis Diabética, lo principal es la REPOSICIÓN DE LÍQUIDOS (Sol. Salina al 0.9%). Nunca se debe iniciar Insulina si el Potasio está bajo (<3.3 mEq/L) para evitar arritmias fatales.",
+    "gpc_ref": "GPC Manejo de Cetoacidosis Diabética"
+  }
+}

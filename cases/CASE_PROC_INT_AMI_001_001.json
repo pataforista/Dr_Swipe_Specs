@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "id": "PROC_INT_AMI_001_001",
+    "title": "INT AMI 001 (Var 1)",
+    "category": "Procedural",
+    "difficulty": "hard",
+    "tags": [
+      "procedural",
+      "clinical_reasoning"
+    ]
+  },
+  "version": "v2",
+  "format": "clinical_reasoning",
+  "patient_profile": {
+    "name": "Rosa",
+    "age": 65,
+    "sex": "Femenino",
+    "image_url": "https://api.dicebear.com/7.x/pixel-art/svg?seed=Rosa65&backgroundColor=c0aede,b6e3f4",
+    "mood": "diaforético",
+    "bio": "Cuadro de diaforesis profusa y dolor retroesternal intenso que inició estando en reposo hace 120 mins.",
+    "vitals": {
+      "TA": "90/60 (tendencia al choque)",
+      "FC": "115 lpm",
+      "Temp": "36.8°C"
+    },
+    "details": "ECG muestra supra-desnivel del ST en derivaciones V1-V4 (Antero-septal). Tabaquista activo (20 paq/año)."
+  },
+  "evidence_stream": [
+    {
+      "type": "differential",
+      "is_match": true,
+      "payload": {
+        "title": "A) Infarto Agudo al Miocardio (SCACEST)",
+        "text": "Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      },
+      "feedback": {
+        "match": "¡Perfect Match! El cuadro clínico más el ECG con elevación del ST hacen el diagnóstico. ICP primaria en menos de 90 min ideal.",
+        "discard": "Error Crítico: El paciente tiene cambios isquémicos activos. Retrasar tratamiento aumenta mortalidad exponencialmente."
+      }
+    },
+    {
+      "type": "differential",
+      "is_match": false,
+      "payload": {
+        "title": "B) Costocondritis (Síndrome de Tietze)",
+        "text": "Dolor torácico reproducible a la palpación de las articulaciones condrocostales, sin cambios en ECG."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      },
+      "feedback": {
+        "match": "Error. No explica la diaforesis, el ECG alterado ni la irradiación. Podría costar la vida.",
+        "discard": "¡Ojo clínico! El dolor reproducible a la palpación casi siempre descarta origen isquémico clásico, aquí el dolor es visceral."
+      }
+    },
+    {
+      "type": "differential",
+      "is_match": false,
+      "payload": {
+        "title": "C) Tromboembolia Pulmonar",
+        "text": "Disnea súbita, taquicardia, dolor pleurítico, hipoxia severa. S1Q3T3 raro pero posible."
+      },
+      "safety_flags": {
+        "red_flag": true,
+        "lethal_risk": true
+      },
+      "feedback": {
+        "match": "Aunque es un dolor torácico letal, la presentación clásica del TEP es DISNEA SÚBITA profunda y desaturación, más que dolor opresivo.",
+        "discard": "Felicidades por descartarlo. Los cambios ST y el tipo de dolor nos centran en las coronarias."
+      }
+    }
+  ],
+  "perla_enarm": {
+    "title": "Cardiopatía Isquémica: Tiempo es Músculo",
+    "text": "En un SCACEST, el diagnóstico se hace con clínica + ECG (en <10 min). NO se debe esperar el resultado de las troponinas para activar código infarto ni trombolizar/ICP.",
+    "gpc_ref": "GPC Infarto Agudo al Miocardio con Elevación del ST"
+  }
+}

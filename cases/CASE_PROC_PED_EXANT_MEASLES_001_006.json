@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "id": "PROC_PED_EXANT_MEASLES_001_006",
+    "title": "PED EXANT MEASLES 001 (Var 6)",
+    "category": "Procedural",
+    "difficulty": "standard",
+    "tags": [
+      "procedural",
+      "clinical_reasoning"
+    ]
+  },
+  "version": "v2",
+  "format": "clinical_reasoning",
+  "patient_profile": {
+    "name": "Fernando",
+    "age": 2,
+    "sex": "Masculino",
+    "image_url": "https://api.dicebear.com/7.x/pixel-art/svg?seed=Fernando2&backgroundColor=c0aede,b6e3f4",
+    "mood": "irritable",
+    "bio": "Madre lo trae por fiebre de 3 días y exantema que inició en la cara y bajó al tronco.",
+    "vitals": {
+      "TA": "90/60 (Adecuada para edad)",
+      "FC": "130 lpm",
+      "Temp": "39.5°C"
+    },
+    "details": "Esquema de vacunación incompleto (padres antivacunas). Presenta manchas de Koplik."
+  },
+  "evidence_stream": [
+    {
+      "type": "differential",
+      "is_match": true,
+      "payload": {
+        "title": "A) Sarampión",
+        "text": "Pródromo de las 3 'C' (Cough, Coryza, Conjunctivitis) más Manchas de Koplik y exantema cefalocaudal confluente."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      },
+      "feedback": {
+        "match": "¡Correcto! Las manchas de Koplik son patognomónicas. Recuerda dar Vitamina A para reducir complicaciones y mortalidad.",
+        "discard": "Error: Ignoraste signos patognomónicos. El Sarampión es altamente contagioso y requiere aislamiento e intervención (Vitamina A)."
+      }
+    },
+    {
+      "type": "differential",
+      "is_match": false,
+      "payload": {
+        "title": "B) Rubéola",
+        "text": "Exantema maculopapular menos confluente, con adenopatías retroauriculares y occipitales dolorosas."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      },
+      "feedback": {
+        "match": "Falso. La Rubéola se caracteriza más por adenopatías retroauriculares marcadas (y manchas de Forchheimer), no Koplik.",
+        "discard": "¡Bien hecho! Diferenciaste el pródromo más severo del Sarampión frente al cuadro más leve de la Rubéola."
+      }
+    },
+    {
+      "type": "differential",
+      "is_match": false,
+      "payload": {
+        "title": "C) Escarlatina",
+        "text": "Exantema micropapular áspero (piel de lija) con lengua en fresa y palidez perioral, por S. pyogenes."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      },
+      "feedback": {
+        "match": "El antecedente de faringitis exudativa y la 'lengua en fresa' estarían presentes en Escarlatina, no las manchas de Koplik.",
+        "discard": "¡Correcto! Descartaste una etiología bacteriana (S. pyogenes) frente a un cuadro claramente viral clásico."
+      }
+    }
+  ],
+  "perla_enarm": {
+    "title": "Vitamina A en Sarampión",
+    "text": "El uso de Vitamina A en todos los casos de sarampión reduce la morbilidad (especialmente ocular y respiratoria) y la mortalidad. Es una perla ENARM inamovible.",
+    "gpc_ref": "GPC Diagnóstico Clínico de Enfermedades Exantemáticas en Niños"
+  }
+}

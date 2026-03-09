@@ -1,12 +1,16 @@
-export const ENGINE_STATE = {
+const ENGINE_STATE = {
     INTRO: 'intro',
     INTAKE: 'intake',
     STREAM: 'evidence_stream',
     CHECKPOINT: 'checkpoint',
     FINAL_TRIAD: 'final_triad',
     RESULTS: 'results',
-    DOSSIER: 'dossier'
+    DOSSIER: 'dossier',
+    GHOSTED: 'ghosted',
+    THE_CHAT: 'the_chat'
 };
+
+export { ENGINE_STATE };
 
 // Noise types that should be discarded
 const NOISE_TYPES_DISCARD = new Set([
@@ -29,6 +33,8 @@ export class SwipeEngine {
         this.discardedItems = [];
         this.annotations = {};
         this.pinnedItems = new Set();
+        this.formatVersion = 'v1';
+        this.patientProfile = null;
 
         // Metrics
         this.startTime = 0;
@@ -52,10 +58,83 @@ export class SwipeEngine {
         this.synergyRules = [];
         this.timeFocus = 100;
         this.eventLog = [];
+
+        // Gamification & Progression (Persisted)
+        this.coins = 0;
+        this.inventory = [];
+        this.challenge = { target: 3, progress: 0, completed: false };
+        this.loadGamificationState();
     }
+
+    loadGamificationState() {
+        try {
+            const state = JSON.parse(localStorage.getItem('drSwipeGameState')) || {};
+            this.coins = state.coins || 0;
+            this.inventory = state.inventory || [];
+
+            // Basic daily challenge persistence
+            const today = new Date().toDateString();
+            if (state.challengeDate !== today) {
+                // New day, reset challenge
+                this.challenge = { target: 3, progress: 0, completed: false, date: today };
+                this.saveGamificationState();
+            } else {
+                this.challenge = state.challenge || { target: 3, progress: 0, completed: false, date: today };
+            }
+        } catch (e) {
+            console.warn("Could not load gamification state:", e);
+        }
+    }
+
+    saveGamificationState() {
+        try {
+            const state = {
+                coins: this.coins,
+                inventory: this.inventory,
+                challenge: this.challenge,
+                challengeDate: this.challenge.date
+            };
+            localStorage.setItem('drSwipeGameState', JSON.stringify(state));
+        } catch (e) {
+            console.warn("Could not save gamification state:", e);
+        }
+    }
+
+    addCoins(amount) {
+        this.coins += amount;
+        this.saveGamificationState();
+    }
+
+    spendCoins(amount) {
+        if (this.coins >= amount) {
+            this.coins -= amount;
+            this.saveGamificationState();
+            return true;
+        }
+        return false;
+    }
+
+    updateChallengeState(isPerfect, isGhosted) {
+        if (this.challenge.completed) return;
+
+        if (isGhosted) {
+            // Reset challenge streak on lethal mistake
+            this.challenge.progress = 0;
+        } else if (isPerfect) {
+            this.challenge.progress += 1;
+            if (this.challenge.progress >= this.challenge.target) {
+                this.challenge.completed = true;
+                this.addCoins(50); // Daily challenge reward
+            }
+        }
+        this.saveGamificationState();
+    }
+
 
     initializeSession(caseData) {
         this.currentCase = caseData;
+        this.formatVersion = caseData.version || 'v1';
+        this.patientProfile = caseData.patient_profile || null;
         this.state = ENGINE_STATE.INTRO;
         this.currentIndex = 0;
         this.keptItems = [];
@@ -107,6 +186,10 @@ export class SwipeEngine {
             this.keptItems.push(card);
         } else {
             this.discardedItems.push(card);
+        }
+
+        if (this.state === ENGINE_STATE.GHOSTED) {
+            return { action: 'ghosted', feedback: this.lastFeedback };
         }
 
         // Check for checkpoint trigger AFTER this card index
@@ -206,6 +289,9 @@ export class SwipeEngine {
 
     // FIX: Extended to recognize all noise types from schema
     getExpectedAction(card) {
+        if (this.formatVersion === 'v2') {
+            return card.is_match ? 'right' : 'left';
+        }
         const isNoise = card.noise_type && NOISE_TYPES_DISCARD.has(card.noise_type);
         const isAdmin = card.category === 'admin' ||
             (card.tags && (card.tags.includes('admin') || card.tags.includes('administrative')));
@@ -299,6 +385,12 @@ export class SwipeEngine {
     registerDecision(direction, card) {
         const expected = this.getExpectedAction(card);
         const correct = direction === expected;
+
+        // Ghosting Logic for V2
+        if (this.formatVersion === 'v2' && card.safety_flags?.lethal_risk && !correct) {
+            this.state = ENGINE_STATE.GHOSTED;
+        }
+
         this.stats.total += 1;
         if (correct) {
             this.stats.correct += 1;
@@ -317,10 +409,12 @@ export class SwipeEngine {
         this.lastFeedback = {
             correct,
             expected,
-            rationale: this.getDecisionRationale(card),
             title: card.payload.title,
             category: card.category,
-            noiseType: card.noise_type
+            noiseType: card.noise_type,
+            feedback_text: this.formatVersion === 'v2' ?
+                (direction === 'right' ? card.feedback?.match : card.feedback?.discard) :
+                this.getDecisionRationale(card)
         };
 
         return correct;  // FIX: return correct for handleSwipe to use
@@ -455,5 +549,28 @@ export class SwipeEngine {
             this.stats.scoring_tags.push('clinical_eye');
             this.stats.neuronas += 75;
         }
+
+        // Gamification: Award Coins based on performance
+        const accuracy = this.getAccuracy();
+        let earnedCoins = 0;
+        if (accuracy >= 80 && this.stats.mistakes.filter(m => m.safety_flags?.lethal_risk).length === 0) {
+            earnedCoins = 10; // Base win
+            if (accuracy === 100) earnedCoins += 5; // Perfect match bonus
+        }
+
+        if (earnedCoins > 0) {
+            this.stats.earnedCoins = earnedCoins;
+            this.addCoins(earnedCoins);
+        }
+
+        // Update challenge (Considered "Perfect" for challenge if no ghosting and accuracy > 80%)
+        const isGhosted = this.state === ENGINE_STATE.GHOSTED;
+        const isPerfect = !isGhosted && accuracy >= 80;
+        this.updateChallengeState(isPerfect, isGhosted);
     }
+}
+
+// Node.js support
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { SwipeEngine, ENGINE_STATE };
 }

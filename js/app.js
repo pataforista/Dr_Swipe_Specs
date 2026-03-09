@@ -60,11 +60,11 @@ class App {
         }
     }
 
-    async loadCase(difficulty) {
-        const caseId = this.caseMap[difficulty] || this.caseMap['easy'];
-        const caseData = await this.loader.loadCase(caseId);
+    async loadCase(difficultyOrSpecialty) {
+        // Now using procedural cases filtered by specialty prefix or 'all'
+        const caseData = await this.loader.loadProceduralCase(difficultyOrSpecialty);
         this.engine.initializeSession(caseData);
-        this.selectedDifficulty = difficulty;
+        this.selectedDifficulty = difficultyOrSpecialty;
     }
 
     bindEvents() {
@@ -75,19 +75,44 @@ class App {
             this.audio.play('swipe');
         });
 
-        // Difficulty selector buttons
+        // Specialty selector buttons
         document.querySelectorAll('.difficulty-btn').forEach(btn => {
             btn.addEventListener('click', async () => {
                 document.querySelectorAll('.difficulty-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                const diff = btn.dataset.difficulty;
+                const specialty = btn.dataset.specialty;
                 try {
-                    await this.loadCase(diff);
+                    await this.loadCase(specialty);
                     this.ui.renderIntake();
                 } catch (e) {
                     console.error("Cannot load case:", e);
                 }
             });
+        });
+
+        // Gamification / Gacha events
+        document.getElementById('btn-open-gacha')?.addEventListener('click', () => {
+            this.engine.state = ENGINE_STATE.GACHA;
+            this.ui.update();
+        });
+
+        document.getElementById('btn-gacha-back')?.addEventListener('click', () => {
+            this.engine.state = ENGINE_STATE.INTAKE;
+            this.ui.update();
+        });
+
+        document.getElementById('btn-pull-gacha')?.addEventListener('click', () => {
+            if (this.engine.spendCoins(100)) {
+                this.audio.play('swipe'); // Play generic sound
+                this.ui.playGachaAnimation();
+            } else {
+                const errorMsg = document.getElementById('gacha-error-msg');
+                if (errorMsg) {
+                    errorMsg.classList.remove('hidden');
+                    setTimeout(() => errorMsg.classList.add('hidden'), 2000);
+                }
+                this.audio.play('wrong');
+            }
         });
 
         // Intake → Stream (FIX: was 'btn-start', HTML has 'btn-start-game')
@@ -128,7 +153,21 @@ class App {
 
         const result = this.engine.handleSwipe(direction);
 
-        if (result && result.action === 'checkpoint') {
+        if (this.engine.formatVersion === 'v2') {
+            this.ui.updatePatientSummary();
+        }
+
+        if (result && result.action === 'ghosted') {
+            this.ui.update();
+            this.audio.play('wrong');
+        } else if (this.engine.formatVersion === 'v2') {
+            // V2 clinical reasoning always shows "The Chat" after a swipe
+            this.engine.state = ENGINE_STATE.THE_CHAT;
+            this.ui.update();
+            if (this.engine.lastFeedback) {
+                this.audio.play(this.engine.lastFeedback.correct ? 'correct' : 'wrong');
+            }
+        } else if (result && result.action === 'checkpoint') {
             this.ui.update();
         } else if (result && result.action === 'finish') {
             this.ui.update();

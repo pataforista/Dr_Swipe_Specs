@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "id": "PROC_OBS_PREECLAMPSIA_001_012",
+    "title": "OBS PREECLAMPSIA 001 (Var 12)",
+    "category": "Procedural",
+    "difficulty": "hard",
+    "tags": [
+      "procedural",
+      "clinical_reasoning"
+    ]
+  },
+  "version": "v2",
+  "format": "clinical_reasoning",
+  "patient_profile": {
+    "name": "Isabel",
+    "age": 26,
+    "sex": "Femenino",
+    "image_url": "https://api.dicebear.com/7.x/pixel-art/svg?seed=Isabel26&backgroundColor=c0aede,b6e3f4",
+    "mood": "con cefalea",
+    "bio": "Gestante de 32 SDG Acude por cefalea pulsátil, fosfenos y acúfenos.",
+    "vitals": {
+      "TA": "170/115",
+      "FC": "90 lpm",
+      "Temp": "36.8°C"
+    },
+    "details": "Laboratorios muestran plaquetas en 85,000 y AST/ALT al doble del límite superior. Ácido úrico en 7 mg/dl."
+  },
+  "evidence_stream": [
+    {
+      "type": "differential",
+      "is_match": true,
+      "payload": {
+        "title": "A) Interrupción del Embarazo Previa Estabilización",
+        "text": "Preeclampsia CON datos de severidad. Se debe impregnar con Sulfato de Magnesio, control hipertensivo y resolver gestación."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      },
+      "feedback": {
+        "match": "¡Excelente! La TA >160/110, plaquetopenia, o cefalea/acúfenos son datos de SEVERIDAD. El tratamiento definitivo es la interrupción, pero siempre tras estabilizar a la madre y dar neuroprotección (Sulfato de Magnesio).",
+        "discard": "Error: Descartar la interrupción ante datos de severidad arriesga a la paciente a Eclampsia y muerte."
+      }
+    },
+    {
+      "type": "differential",
+      "is_match": false,
+      "payload": {
+        "title": "B) Manejo Expectante hasta Término",
+        "text": "Control con Alfametildopa y reposo absoluto en casa hasta las 38 SDG."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": false
+      },
+      "feedback": {
+        "match": "¡Mortalidad Materna! Esta paciente tiene datos de severidad inminente (crisis hipertensiva, síntomas neurológicos, plaquetopenia). Mandarla a casa es letal.",
+        "discard": "¡Bien hecho! Reconociste y rechazaste el manejo ambulatorio en una urgencia obstétrica severa."
+      }
+    },
+    {
+      "type": "differential",
+      "is_match": false,
+      "payload": {
+        "title": "C) Hígado Graso Agudo del Embarazo",
+        "text": "Insuficiencia hepática severa, ictericia y coagulopatía en el tercer trimestre."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      },
+      "feedback": {
+        "match": "Aunque hay elevación hepática en el síndrome HELLP (relacionado a Preeclampsia), el Hígado Graso Agudo cursa con hipoglucemia profunda y no necesariamente con hipertensión extrema inicial.",
+        "discard": "Correcto, la clínica hipertensiva con cefalea y fosfenos apunta directo al espectro de la Preeclampsia Severa."
+      }
+    }
+  ],
+  "perla_enarm": {
+    "title": "Manejo de Preeclampsia Severa",
+    "text": "Los datos de severidad obligan a interrumpir el embarazo SIN IMPORTAR la edad gestacional. Sin embargo, nunca operes a una paciente con crisis hipertensiva; la REGLA DE ORO es estabilizar primero (Labetalol/Nifedipino/Hidralazina) y neuroproteger con Sulfato de Magnesio.",
+    "gpc_ref": "GPC Preeclampsia - Eclampsia"
+  }
+}

@@ -52,7 +52,25 @@ export class UIController {
             timeFill: document.getElementById('time-fill'),
             mentorText: document.getElementById('mentor-text'),
             btnTutorialNext: document.getElementById('btn-tutorial-next'),
-            davinciContainer: document.getElementById('davinci-container')
+            davinciContainer: document.getElementById('davinci-container'),
+            patientSummaryBar: document.getElementById('patient-summary-bar'),
+            summaryNameAge: document.getElementById('summary-name-age'),
+            summaryVitals: document.getElementById('summary-vitals'),
+            viewChat: document.getElementById('view-chat'),
+            viewGacha: document.getElementById('view-gacha'),
+            chatMessages: document.getElementById('chat-messages'),
+            chatOutcomeBadge: document.getElementById('chat-outcome-badge'),
+            btnChatContinue: document.getElementById('btn-chat-continue'),
+            coinCount: document.getElementById('coin-count'),
+            gachaCoinCount: document.getElementById('gacha-coin-count'),
+            challengeProgress: document.getElementById('challenge-progress'),
+            challengeBanner: document.getElementById('daily-challenge-banner'),
+            gachaCard: document.getElementById('gacha-card'),
+            gachaResultIcon: document.getElementById('gacha-result-icon'),
+            gachaResultTitle: document.getElementById('gacha-result-title'),
+            gachaResultDesc: document.getElementById('gacha-result-desc'),
+            gachaErrorMsg: document.getElementById('gacha-error-msg'),
+            inventoryList: document.getElementById('inventory-list')
         };
 
         this.tutorialStep = 0;
@@ -129,16 +147,71 @@ export class UIController {
                 this.renderResults();
                 this.launchConfetti();
                 break;
+            case ENGINE_STATE.GHOSTED:
+                this.showView('results'); // Use results view but render ghosted
+                this.renderGhosted();
+                break;
+            case ENGINE_STATE.THE_CHAT:
+                this.showView('chat');
+                this.renderChat();
+                break;
+            case ENGINE_STATE.GACHA:
+                this.showView('gacha');
+                this.renderGacha();
+                break;
         }
     }
 
     renderIntake() {
         if (!this.engine.currentCase) return;
         const meta = this.engine.getCaseMeta();
+        const profile = this.engine.patientProfile; // V2 Support
         const framing = this.elements.caseFraming;
+
+        // Sync gamification state
+        if (this.elements.coinCount) {
+            this.elements.coinCount.textContent = this.engine.coins;
+        }
+
+        if (this.elements.challengeBanner && this.elements.challengeProgress) {
+            const chal = this.engine.challenge;
+            this.elements.challengeProgress.textContent = `${chal.progress}/${chal.target}`;
+            if (chal.completed) {
+                this.elements.challengeBanner.style.borderColor = 'var(--success)';
+                this.elements.challengeProgress.textContent = "¡Completado!";
+                this.elements.challengeProgress.style.background = "var(--success)";
+                this.elements.challengeProgress.style.color = "white";
+            } else {
+                this.elements.challengeBanner.style.borderColor = 'rgba(var(--accent-rgb), 0.3)';
+                this.elements.challengeProgress.style.background = "var(--surface)";
+                this.elements.challengeProgress.style.color = "var(--text-light)";
+            }
+        }
         if (!framing) return;
 
-        if (meta) {
+        if (this.engine.formatVersion === 'v2' && profile) {
+            framing.innerHTML = `
+                <div class="patient-card profile-card">
+                    <div class="profile-header" style="background-image: url('${profile.image_url || ''}')">
+                        <div class="profile-overlay">
+                            <h2 class="profile-name">${profile.name}, ${profile.age}</h2>
+                            <span class="mood-tag">✨ ${profile.mood || 'Estable'}</span>
+                        </div>
+                    </div>
+                    <div class="profile-body">
+                        <p class="profile-bio">${profile.bio}</p>
+                        <div class="vitals-grid">
+                            <div class="vital-tag"><span class="vital-label">TA</span><span class="vital-value">${profile.vitals?.TA || '--'}</span></div>
+                            <div class="vital-tag"><span class="vital-label">FC</span><span class="vital-value">${profile.vitals?.FC || '--'}</span></div>
+                            <div class="vital-tag"><span class="vital-label">TEMP</span><span class="vital-value">${profile.vitals?.Temp || '--'}</span></div>
+                        </div>
+                        <div class="profile-details">
+                            <p><strong>Detalles:</strong> ${profile.details}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else if (meta) {
             framing.innerHTML = `
                 <div class="patient-card">
                     <div class="patient-header">
@@ -585,6 +658,22 @@ export class UIController {
                 });
                 this.elements.resultOutcome.appendChild(tagsDiv);
             }
+
+            // Gamification Coin Reward Banner
+            if (this.engine.stats.earnedCoins > 0) {
+                const coinDiv = document.createElement('div');
+                coinDiv.className = 'coin-reward-banner';
+                coinDiv.style.marginTop = '1rem';
+                coinDiv.style.padding = '0.75rem';
+                coinDiv.style.background = 'rgba(234, 179, 8, 0.1)';
+                coinDiv.style.border = '1px solid #eab308';
+                coinDiv.style.borderRadius = '8px';
+                coinDiv.style.color = '#eab308';
+                coinDiv.style.fontWeight = 'bold';
+                coinDiv.style.textAlign = 'center';
+                coinDiv.innerHTML = `🪙 +${this.engine.stats.earnedCoins} Monedas ENARM ganadas`;
+                this.elements.resultOutcome.appendChild(coinDiv);
+            }
         }
 
         // Perla ENARM
@@ -650,5 +739,158 @@ export class UIController {
                 this.elements.tutorialOverlay.classList.add('hidden');
             }, 500);
         }
+    }
+
+    renderChat() {
+        const feedback = this.engine.lastFeedback;
+        if (!feedback) return;
+
+        // Setup Chat Container
+        this.elements.chatMessages.innerHTML = '';
+        this.elements.chatOutcomeBadge.className = `outcome-badge ${feedback.correct ? 'match' : 'error'}`;
+        this.elements.chatOutcomeBadge.textContent = feedback.correct ? '¡Perfect Match!' : 'Error clínico';
+
+        // Add sequence of messages
+        this.addMessage('system', `Analizando acción: ${feedback.expected === 'right' ? 'Match' : 'Descarte'}`);
+
+        // Delay the mentor's response for "effect"
+        setTimeout(() => {
+            this.addMessage('mentor', feedback.feedback_text || "Sin comentarios adicionales por ahora.");
+        }, 400);
+
+        this.elements.btnChatContinue.onclick = () => {
+            // Check if game continues or ends
+            if (this.engine.currentIndex < this.engine.currentCase.evidence_stream.length) {
+                this.engine.state = ENGINE_STATE.STREAM;
+            } else {
+                this.engine.state = ENGINE_STATE.FINAL_TRIAD;
+            }
+            this.update();
+        };
+    }
+
+    addMessage(type, text) {
+        const msg = document.createElement('div');
+        msg.className = `message ${type}`;
+        msg.textContent = text;
+        this.elements.chatMessages.appendChild(msg);
+        this.elements.chatMessages.scrollTop = this.elements.chatMessages.scrollHeight;
+    }
+
+    renderGhosted() {
+        this.elements.resultOutcome.innerHTML = `
+            <div class="ghosted-screen">
+                <div class="ghost-icon">👻</div>
+                <h2 class="title" style="color: var(--danger)">¡Te han hecho Ghosting!</h2>
+                <p>Ignoraste una <strong>Red Flag</strong> crítica y el paciente se ha complicado. La racha de estudio se ha perdido.</p>
+                <div class="feedback-card" style="margin-top: 20px; background: rgba(239, 68, 68, 0.1); border-color: var(--danger);">
+                    <h4>¿Qué pasó?</h4>
+                    <p>${this.engine.lastFeedback?.feedback_text || "No identificaste un riesgo vital inminente."}</p>
+                </div>
+            </div>
+        `;
+
+        // Hide normal results sections
+        if (this.elements.perlaEnarm) this.elements.perlaEnarm.classList.add('hidden');
+        const lists = document.querySelector('.dossier-lists');
+        if (lists) lists.style.display = 'none';
+
+        if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+    }
+
+    updatePatientSummary() {
+        const profile = this.engine.patientProfile;
+        if (!profile || !this.elements.patientSummaryBar) return;
+
+        this.elements.patientSummaryBar.classList.remove('hidden');
+        this.elements.summaryNameAge.textContent = `${profile.name}, ${profile.age}`;
+        this.elements.summaryVitals.textContent = `TA: ${profile.vitals?.TA} · FC: ${profile.vitals?.FC}`;
+    }
+
+    renderGacha() {
+        if (this.elements.gachaCoinCount) {
+            this.elements.gachaCoinCount.textContent = this.engine.coins;
+        }
+        if (this.elements.gachaErrorMsg) {
+            this.elements.gachaErrorMsg.classList.add('hidden');
+        }
+        if (this.elements.gachaCard) {
+            this.elements.gachaCard.classList.remove('flipped');
+        }
+
+        this.renderInventory();
+    }
+
+    renderInventory() {
+        if (!this.elements.inventoryList) return;
+        this.elements.inventoryList.innerHTML = '';
+
+        if (this.engine.inventory.length === 0) {
+            this.elements.inventoryList.innerHTML = '<li style="grid-column: 1/-1; color: var(--text-light);">Aún no tienes recompensas.</li>';
+            return;
+        }
+
+        const counts = this.engine.inventory.reduce((acc, item) => {
+            acc[item] = (acc[item] || 0) + 1;
+            return acc;
+        }, {});
+
+        const itemMeta = {
+            'avatar_gold': { icon: '🧑‍⚕️', name: 'Avatar Élite' },
+            'perla_dorada': { icon: '✨', name: 'Perla de Sabiduría' },
+            'tiempo_extra': { icon: '⏳', name: 'Bono de Tiempo' }
+        };
+
+        Object.entries(counts).forEach(([itemId, qty]) => {
+            const meta = itemMeta[itemId] || { icon: '📦', name: itemId };
+            const li = document.createElement('li');
+            li.innerHTML = `<span>${meta.icon}</span><strong>${meta.name}</strong><small>x${qty}</small>`;
+            this.elements.inventoryList.appendChild(li);
+        });
+    }
+
+    playGachaAnimation(reward) {
+        if (!this.elements.gachaCard) return;
+
+        // Define reward metadata
+        const rewardsDB = [
+            { id: 'avatar_gold', icon: '🧑‍⚕️', title: 'Avatar Élite', desc: 'Un nuevo diseño para la Dra. Vélez', weight: 30 },
+            { id: 'perla_dorada', icon: '✨', title: 'Perla de Sabiduría', desc: 'Pista automática en la Tríada Final', weight: 50 },
+            { id: 'tiempo_extra', icon: '⏳', title: 'Bono de Tiempo', desc: 'Gana más tiempo base en el siguiente caso', weight: 20 }
+        ];
+
+        // Random roll based on weights if reward is not specified
+        let pulledReward = reward;
+        if (!pulledReward) {
+            const rand = Math.random() * 100;
+            let sum = 0;
+            for (let r of rewardsDB) {
+                sum += r.weight;
+                if (rand <= sum) {
+                    pulledReward = r;
+                    break;
+                }
+            }
+        }
+
+        // Set the back of the card
+        if (this.elements.gachaResultIcon) this.elements.gachaResultIcon.textContent = pulledReward.icon;
+        if (this.elements.gachaResultTitle) this.elements.gachaResultTitle.textContent = pulledReward.title;
+        if (this.elements.gachaResultDesc) this.elements.gachaResultDesc.textContent = pulledReward.desc;
+
+        // Animate flip
+        setTimeout(() => {
+            this.elements.gachaCard.classList.add('flipped');
+            if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+
+            // Add to engine inventory
+            this.engine.inventory.push(pulledReward.id);
+            this.engine.saveGamificationState();
+
+            setTimeout(() => {
+                this.renderGacha(); // Refresh lists and coins
+                this.launchConfetti();
+            }, 800);
+        }, 100);
     }
 }

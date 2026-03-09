@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "id": "PROC_PED_EXANT_VARICELLA_001_009",
+    "title": "PED EXANT VARICELLA 001 (Var 9)",
+    "category": "Procedural",
+    "difficulty": "standard",
+    "tags": [
+      "procedural",
+      "clinical_reasoning"
+    ]
+  },
+  "version": "v2",
+  "format": "clinical_reasoning",
+  "patient_profile": {
+    "name": "María",
+    "age": 9,
+    "sex": "Femenino",
+    "image_url": "https://api.dicebear.com/7.x/pixel-art/svg?seed=María9&backgroundColor=c0aede,b6e3f4",
+    "mood": "quejumbroso",
+    "bio": "Cuadro eruptivo que inició en tronco y cuero cabelludo, diseminándose al resto del cuerpo.",
+    "vitals": {
+      "TA": "100/65",
+      "FC": "100 lpm",
+      "Temp": "38.5°C"
+    },
+    "details": "Lesiones en patrón de 'Cielo Estrellado' (pleomorfismo regional). Madre pregunta qué medicamento para la fiebre puede darle."
+  },
+  "evidence_stream": [
+    {
+      "type": "differential",
+      "is_match": true,
+      "payload": {
+        "title": "A) Varicela (Tratamiento: Paracetamol)",
+        "text": "Cuadro clásico de pleomorfismo regional (cielo estrellado). Manejo sintomático antipirético seguro."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      },
+      "feedback": {
+        "match": "¡Perfect Match! El pleomorfismo es el sello de la varicela. El Paracetamol es seguro para la fiebre.",
+        "discard": "Error: No reconociste el 'Cielo Estrellado', dato pivote para el diagnóstico clínico de Varicela."
+      }
+    },
+    {
+      "type": "differential",
+      "is_match": false,
+      "payload": {
+        "title": "B) Enfermedad Mano-Pie-Boca",
+        "text": "Lesiones vesiculares confinadas a palmas, plantas y mucosa oral, por Coxsackievirus A16."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      },
+      "feedback": {
+        "match": "En la Mano-Pie-Boca las lesiones respetan en gran medida el tronco y se concentran distalmente y en boca, a diferencia del patrón centrífugo/universal aquí.",
+        "discard": "¡Bien! Diferenciaste topográficamente las lesiones."
+      }
+    },
+    {
+      "type": "differential",
+      "is_match": false,
+      "payload": {
+        "title": "C) Varicela (Tratamiento: Ácido Acetilsalicílico)",
+        "text": "Misma enfermedad, pero se decide usar Aspirina para mitigar la fiebre intensa."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": false
+      },
+      "feedback": {
+        "match": "¡Síndrome de Reye FULMINANTE! Acabas de causarle una encefalopatía hepática severa por dar Aspirina en una infección viral infantil.",
+        "discard": "¡Excelente reflejo de seguridad! Jamás se debe dar Aspirina (AAS) en niños con Varicela o Influenza por el riesgo de Síndrome de Reye."
+      }
+    }
+  ],
+  "perla_enarm": {
+    "title": "Varicela vs Síndrome de Reye",
+    "text": "El reconocimiento del 'Cielo Estrellado' (pleomorfismo regional) rinde puntos asegurados. Además, SIEMPRE evita los salicilatos en infecciones virales infantiles (Varicela/Influenza) para prevenir Síndrome de Reye. Usa Paracetamol.",
+    "gpc_ref": "GPC Varicela en Pediatría"
+  }
+}

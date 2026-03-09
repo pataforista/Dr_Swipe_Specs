@@ -1,0 +1,80 @@
+{
+    "case_id": "psych_mania_001",
+    "version": "v2",
+    "mode": "clinical_reasoning",
+    "difficulty": "standard",
+    "patient_profile": {
+        "name": "Mujer",
+        "age": "28 años",
+        "image_type": "avatar_8bit",
+        "mood": "expansive",
+        "bio": "Reporta energía excesiva, compras impulsivas y no ha dormido en 4 días. Sin antecedentes de consumo.",
+        "vitals": {
+            "TA": "120/80",
+            "FC": "95 lpm",
+            "Temp": "36.5°C"
+        },
+        "details": "Antecedentes heredofamiliares de trastorno afectivo bipolarl en rama materna. Personal no patológico: Licenciada en artes, tabaquismo social."
+    },
+    "evidence_stream": [
+        {
+            "evidence_id": "diff_01",
+            "type": "differential",
+            "category": "diagnosis",
+            "payload": {
+                "title": "A) Episodio Maníaco",
+                "text": "Cumple criterios de temporalidad (más de 1 semana) y funcionalidad afectada por impulsividad."
+            },
+            "is_match": true,
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            },
+            "feedback": {
+                "match": "¡Match! Cumple criterios de temporalidad y funcionalidad. Recuerda descartar siempre causa orgánica.",
+                "discard": "Error: Este es el diagnóstico principal. Ignorar estos síntomas pone en riesgo la estabilidad de la paciente."
+            }
+        },
+        {
+            "evidence_id": "diff_02",
+            "type": "differential",
+            "category": "diagnosis",
+            "payload": {
+                "title": "B) Crisis de Pánico",
+                "text": "Episodios súbitos de miedo intenso con síntomas autonómicos, duración breve."
+            },
+            "is_match": false,
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
+            },
+            "feedback": {
+                "match": "No es el diagnóstico. La crisis de pánico es paroxística y breve, no dura 4 días continuos.",
+                "discard": "¡Ojo clínico! Correcto. La duración y el aumento de energía descartan una crisis de pánico simple."
+            }
+        },
+        {
+            "evidence_id": "diff_03",
+            "type": "differential",
+            "category": "diagnosis",
+            "payload": {
+                "title": "C) Consumo de Sustancias",
+                "text": "Uso agudo de estimulantes (cocaína, anfetaminas) que mimetizan cuadros maníacos."
+            },
+            "is_match": false,
+            "safety_flags": {
+                "red_flag": true,
+                "lethal_risk": true
+            },
+            "feedback": {
+                "match": "Aunque es un diferencial, la paciente niega consumo y el cuadro es muy florido para ser solo tóxico.",
+                "discard": "¡Correcto! Siempre hay que considerarlo, pero aquí los antecedentes familiares orientan a algo primario."
+            }
+        }
+    ],
+    "perla_enarm": {
+        "title": "Trastorno Bipolar: Episodio Maníaco",
+        "text": "El diagnóstico de manía requiere al menos 1 semana de síntomas (o menos si requiere hospitalización). Los síntomas cardinales son el aumento de energía, disminución de necesidad de sueño y verborrea.",
+        "gpc_ref": "Guía de Práctica Clínica: Diagnóstico y Tratamiento del Trastorno Bipolar"
+    }
+}

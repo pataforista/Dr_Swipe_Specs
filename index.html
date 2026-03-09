@@ -31,28 +31,55 @@
             <h1 class="title">Dr. Swipe</h1>
             <p class="subtitle">Selecciona el nivel de dificultad</p>
 
-            <!-- Sandbox Mode Label (Hidden by default) -->
-            <div id="sandbox-mode-banner" class="hidden"
-                style="background: var(--primary); color: white; padding: 0.5rem; border-radius: 8px; font-weight: bold; margin-bottom: 1rem;">
-                🎲 MODO SANDBOX PROCEDURAL ACTIVO
+            <!-- Gamification Header -->
+            <div class="intake-header-gamified">
+                <div id="enarm-coins-display" class="coin-display">
+                    <span class="coin-icon">🪙</span>
+                    <span id="coin-count">0</span>
+                </div>
+                <button id="btn-open-gacha" class="btn small gacha-btn">🎟️ Recompensas</button>
             </div>
 
-            <!-- Difficulty Selector -->
-            <div id="difficulty-section" class="difficulty-selector">
-                <button class="difficulty-btn active" data-difficulty="easy">
-                    <span class="diff-icon">🟢</span>
-                    <span class="diff-label">Fácil</span>
-                    <span class="diff-desc">Ruido básico: duplicados y admin</span>
+            <!-- Daily Challenge Banner -->
+            <div id="daily-challenge-banner" class="challenge-banner">
+                <div class="challenge-icon">🎯</div>
+                <div class="challenge-info">
+                    <strong>Reto de Guardia</strong>
+                    <span id="challenge-desc">Sobrevive 3 casos seguidos sin Ghosting</span>
+                </div>
+                <div class="challenge-reward">🪙 +50</div>
+                <div id="challenge-progress" class="challenge-progress-pill">0/3</div>
+            </div>
+
+            <h1 class="title">Guardia Clínica</h1>
+            <p class="subtitle">Selecciona el Servicio Médico</p>
+
+            <!-- Specialty Selector -->
+            <div id="specialty-section" class="difficulty-selector specialty-grid">
+                <button class="difficulty-btn active" data-specialty="all">
+                    <span class="diff-icon">🎲</span>
+                    <span class="diff-label">Aleatorio</span>
+                    <span class="diff-desc">Simulador ENARM</span>
                 </button>
-                <button class="difficulty-btn" data-difficulty="standard">
-                    <span class="diff-icon">🟡</span>
-                    <span class="diff-label">Estándar</span>
-                    <span class="diff-desc">Distractores sutiles y falsa alarma</span>
+                <button class="difficulty-btn" data-specialty="ped_">
+                    <span class="diff-icon">👶</span>
+                    <span class="diff-label">Pediatría</span>
+                    <span class="diff-desc">Vacunas y Exantemáticas</span>
                 </button>
-                <button class="difficulty-btn" data-difficulty="hard">
-                    <span class="diff-icon">🔴</span>
-                    <span class="diff-label">Difícil</span>
-                    <span class="diff-desc">Señales de riesgo vital ocultas</span>
+                <button class="difficulty-btn" data-specialty="obs_">
+                    <span class="diff-icon">🤰</span>
+                    <span class="diff-label">Gineco-Obs</span>
+                    <span class="diff-desc">Embarazo y Normativa</span>
+                </button>
+                <button class="difficulty-btn" data-specialty="int_">
+                    <span class="diff-icon">🫀</span>
+                    <span class="diff-label">Med. Interna</span>
+                    <span class="diff-desc">Cardiología y Endocrino</span>
+                </button>
+                <button class="difficulty-btn" data-specialty="surg_">
+                    <span class="diff-icon">🔪</span>
+                    <span class="diff-label">Cirugía</span>
+                    <span class="diff-desc">Abdomen Agudo y ATLS</span>
                 </button>
             </div>
 
@@ -102,6 +129,13 @@
                     <span id="counter-neuronas">🧠 0</span>
                     <span id="counter-streak" class="streak-counter">🔥 0</span>
                 </div>
+                <!-- V2: Persistent Patient Summary Bar -->
+                <div id="patient-summary-bar" class="patient-summary-bar hidden">
+                    <div class="summary-info">
+                        <span id="summary-name-age">Juan, 45</span>
+                        <span id="summary-vitals">TA: 160/100 · FC: 90</span>
+                    </div>
+                </div>
             </header>
 
             <main class="card-container">
@@ -147,6 +181,66 @@
                 <div id="quiz-hint" class="quiz-hint hidden"></div>
             </div>
             <button id="btn-checkpoint-continue" class="btn primary hidden">Continuar</button>
+        </div>
+
+        <!-- View: The Chat (V2 Feedback) -->
+        <div id="view-chat" class="view hidden">
+            <header class="chat-header">
+                <div class="mentor-info">
+                    <div id="chat-mentor-avatar" class="mentor-avatar-mini"></div>
+                    <span id="chat-mentor-name" class="mentor-name">Dra. Vélez</span>
+                </div>
+                <div id="chat-outcome-badge" class="outcome-badge">Match!</div>
+            </header>
+            <main id="chat-messages" class="chat-messages">
+                <!-- Messages injected here -->
+            </main>
+            <footer class="chat-footer">
+                <button id="btn-chat-continue" class="btn primary">Siguiente Diferencial</button>
+            </footer>
+        </div>
+
+        <!-- View: Gacha / Lootbox -->
+        <div id="view-gacha" class="view hidden">
+            <header class="gacha-header">
+                <button id="btn-gacha-back" class="btn small secondary">⬅ Volver</button>
+                <div class="coin-display">
+                    <span class="coin-icon">🪙</span>
+                    <span id="gacha-coin-count">0</span>
+                </div>
+            </header>
+
+            <main class="gacha-content">
+                <h2 class="title" style="color:var(--primary)">Máquina de Recompensas</h2>
+                <p class="subtitle">Intercambia 100 Monedas ENARM por ayudas clínicas o estéticas.</p>
+
+                <div class="gacha-stage">
+                    <div id="gacha-card" class="gacha-card">
+                        <div class="gacha-card-inner">
+                            <div class="gacha-card-front">
+                                <span class="gacha-mystery-icon">❓</span>
+                            </div>
+                            <div class="gacha-card-back">
+                                <span id="gacha-result-icon" class="gacha-result-icon">✨</span>
+                                <h3 id="gacha-result-title">Recompensa</h3>
+                                <p id="gacha-result-desc">Descripción</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gacha-controls">
+                    <button id="btn-pull-gacha" class="btn primary">Tirar (100 🪙)</button>
+                    <p id="gacha-error-msg" class="error-msg hidden">¡No tienes suficientes monedas!</p>
+                </div>
+
+                <div class="inventory-section">
+                    <h3>Tu Inventario</h3>
+                    <ul id="inventory-list" class="inventory-list">
+                        <!-- Loaded dynamically -->
+                    </ul>
+                </div>
+            </main>
         </div>
 
         <!-- View: Results -->
