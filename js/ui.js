@@ -18,7 +18,10 @@ export class UIController {
             intake: document.getElementById('view-intake'),
             stream: document.getElementById('view-stream'),
             checkpoint: document.getElementById('view-checkpoint'),
-            results: document.getElementById('view-results')
+            confidenceCheck: document.getElementById('view-confidence-check'),
+            results: document.getElementById('view-results'),
+            chat: document.getElementById('view-chat'),
+            gacha: document.getElementById('view-gacha')
         };
 
         this.elements = {
@@ -43,6 +46,7 @@ export class UIController {
             quizOptions: document.getElementById('quiz-options'),
             quizHint: document.getElementById('quiz-hint'),
             btnCheckpointContinue: document.getElementById('btn-checkpoint-continue'),
+            btnInterconsult: document.getElementById('btn-interconsult'),
             checkpointTitle: document.getElementById('checkpoint-title'),
             perlaEnarm: document.getElementById('perla-enarm'),
             perlaTitle: document.getElementById('perla-title'),
@@ -70,7 +74,13 @@ export class UIController {
             gachaResultTitle: document.getElementById('gacha-result-title'),
             gachaResultDesc: document.getElementById('gacha-result-desc'),
             gachaErrorMsg: document.getElementById('gacha-error-msg'),
-            inventoryList: document.getElementById('inventory-list')
+            inventoryList: document.getElementById('inventory-list'),
+            counterBudget: document.getElementById('counter-budget'),
+            counterConsult: document.getElementById('counter-consult'),
+            confidenceInput: document.getElementById('confidence-input'),
+            confidenceValue: document.getElementById('confidence-value'),
+            btnConfirmConfidence: document.getElementById('btn-confirm-confidence'),
+            biasTags: document.getElementById('bias-tags')
         };
 
         this.tutorialStep = 0;
@@ -140,6 +150,10 @@ export class UIController {
             case ENGINE_STATE.FINAL_TRIAD:
                 this.showView('checkpoint');
                 this.renderFinalTriad();
+                break;
+            case ENGINE_STATE.CONFIDENCE_CHECK:
+                this.showView('confidenceCheck');
+                this.renderConfidenceCheck();
                 break;
             case ENGINE_STATE.RESULTS:
             case ENGINE_STATE.DOSSIER:
@@ -401,6 +415,12 @@ export class UIController {
             this.elements.counterStreak.textContent = `🔥 ${streak}`;
             this.elements.counterStreak.classList.toggle('streak-hot', streak >= 3);
         }
+        if (this.elements.counterBudget) {
+            this.elements.counterBudget.textContent = `💸 ${this.engine.diagnosticBudget.points}`;
+        }
+        if (this.elements.counterConsult) {
+            this.elements.counterConsult.textContent = `☎️ ${this.engine.consult.tokens}`;
+        }
 
         if (this.elements.timeFill) {
             this.elements.timeFill.style.width = `${this.engine.timeFocus}%`;
@@ -462,6 +482,25 @@ export class UIController {
             this.elements.quizHint.classList.add('hidden');
         }
 
+        if (this.elements.btnInterconsult) {
+            this.elements.btnInterconsult.classList.remove('hidden');
+            this.elements.btnInterconsult.disabled = this.engine.consult.tokens <= 0;
+            this.elements.btnInterconsult.textContent = this.engine.consult.tokens > 0
+                ? `Interconsulta (☎️ ${this.engine.consult.tokens})`
+                : 'Interconsulta agotada';
+            this.elements.btnInterconsult.onclick = () => {
+                const eliminated = this.engine.applyInterconsultToOptions(quiz.options.length, quiz.correct_index);
+                if (eliminated === null) return;
+                const btns = this.elements.quizOptions.querySelectorAll('.quiz-option');
+                if (btns[eliminated]) {
+                    btns[eliminated].disabled = true;
+                    btns[eliminated].classList.add('eliminated');
+                    btns[eliminated].textContent = '✖ Opción descartada por interconsulta';
+                }
+                this.elements.btnInterconsult.disabled = true;
+            };
+        }
+
         quiz.options.forEach((opt, idx) => {
             const btn = document.createElement('button');
             btn.className = 'quiz-option';
@@ -484,6 +523,7 @@ export class UIController {
         }
 
         this.elements.btnCheckpointContinue.classList.remove('hidden');
+        if (this.elements.btnInterconsult) this.elements.btnInterconsult.classList.add('hidden');
         this.elements.btnCheckpointContinue.onclick = () => {
             this.engine.proceedFromCheckpoint(selectedIndex);
             this.update();
@@ -514,6 +554,25 @@ export class UIController {
             this.elements.quizHint.classList.add('hidden');
         }
 
+        if (this.elements.btnInterconsult) {
+            this.elements.btnInterconsult.classList.remove('hidden');
+            this.elements.btnInterconsult.disabled = this.engine.consult.tokens <= 0;
+            this.elements.btnInterconsult.textContent = this.engine.consult.tokens > 0
+                ? `Interconsulta (☎️ ${this.engine.consult.tokens})`
+                : 'Interconsulta agotada';
+            this.elements.btnInterconsult.onclick = () => {
+                const eliminated = this.engine.applyInterconsultToOptions(triad.options.length, triad.correct_index);
+                if (eliminated === null) return;
+                const btns = this.elements.quizOptions.querySelectorAll('.quiz-option');
+                if (btns[eliminated]) {
+                    btns[eliminated].disabled = true;
+                    btns[eliminated].classList.add('eliminated');
+                    btns[eliminated].textContent = '✖ Opción descartada por interconsulta';
+                }
+                this.elements.btnInterconsult.disabled = true;
+            };
+        }
+
         triad.options.forEach((opt, idx) => {
             const btn = document.createElement('button');
             btn.className = 'quiz-option';
@@ -536,8 +595,29 @@ export class UIController {
         }
 
         this.elements.btnCheckpointContinue.classList.remove('hidden');
+        if (this.elements.btnInterconsult) this.elements.btnInterconsult.classList.add('hidden');
         this.elements.btnCheckpointContinue.onclick = () => {
             this.engine.handleTriadAnswer(selectedIndex);
+            this.update();
+        };
+    }
+
+
+    renderConfidenceCheck() {
+        if (!this.elements.confidenceInput || !this.elements.btnConfirmConfidence) return;
+        this.elements.confidenceInput.value = this.engine.selfConfidence || 3;
+        if (this.elements.confidenceValue) {
+            this.elements.confidenceValue.textContent = this.elements.confidenceInput.value;
+        }
+
+        this.elements.confidenceInput.oninput = () => {
+            if (this.elements.confidenceValue) {
+                this.elements.confidenceValue.textContent = this.elements.confidenceInput.value;
+            }
+        };
+
+        this.elements.btnConfirmConfidence.onclick = () => {
+            this.engine.submitConfidenceCheck(this.elements.confidenceInput.value);
             this.update();
         };
     }
@@ -651,12 +731,40 @@ export class UIController {
                         'false_positive': '⚠️ Falso Positivo',
                         'precision': '🎯 Alta Precisión (+50)',
                         'clean_dossier': '✨ Dossier Limpio (+50)',
-                        'clinical_eye': '👁️ Ojo Clínico (+75)'
+                        'clinical_eye': '👁️ Ojo Clínico (+75)',
+                        'overtesting': '💸 Sobreuso diagnóstico (-25)'
                     };
                     tagEl.textContent = tagNames[tag] || tag;
                     tagsDiv.appendChild(tagEl);
                 });
                 this.elements.resultOutcome.appendChild(tagsDiv);
+            }
+
+            const biasLabels = {
+                confirmation_bias: '🧠 Sesgo de confirmación',
+                premature_closure: '⏱️ Cierre prematuro',
+                anchoring: '⚓ Anclaje',
+                search_satisficing: '🔎 Búsqueda satisfactoria'
+            };
+
+            if (this.engine.cognitiveBiasTags && this.engine.cognitiveBiasTags.length > 0) {
+                const biasDiv = document.createElement('div');
+                biasDiv.className = 'bias-tags';
+                biasDiv.innerHTML = '<h4>Espejo del médico</h4>';
+                this.engine.cognitiveBiasTags.forEach(tag => {
+                    const el = document.createElement('span');
+                    el.className = 'scoring-tag';
+                    el.textContent = biasLabels[tag] || tag;
+                    biasDiv.appendChild(el);
+                });
+                this.elements.resultOutcome.appendChild(biasDiv);
+            }
+
+            if (this.engine.selfConfidence) {
+                const calibracion = document.createElement('p');
+                calibracion.className = 'confidence-calibration';
+                calibracion.textContent = `Autoevaluación de confianza: ${this.engine.selfConfidence}/5`;
+                this.elements.resultOutcome.appendChild(calibracion);
             }
 
             // Gamification Coin Reward Banner

@@ -128,6 +128,8 @@
                     <span id="counter-discarded">🗑️ 0</span>
                     <span id="counter-neuronas">🧠 0</span>
                     <span id="counter-streak" class="streak-counter">🔥 0</span>
+                    <span id="counter-budget">💸 0</span>
+                    <span id="counter-consult">☎️ 1</span>
                 </div>
                 <!-- V2: Persistent Patient Summary Bar -->
                 <div id="patient-summary-bar" class="patient-summary-bar hidden">
@@ -180,6 +182,7 @@
                 <div id="quiz-options" class="quiz-options"></div>
                 <div id="quiz-hint" class="quiz-hint hidden"></div>
             </div>
+            <button id="btn-interconsult" class="btn secondary hidden">Interconsulta</button>
             <button id="btn-checkpoint-continue" class="btn primary hidden">Continuar</button>
         </div>
 
@@ -241,6 +244,17 @@
                     </ul>
                 </div>
             </main>
+        </div>
+
+
+        <div id="view-confidence-check" class="view hidden">
+            <h2 class="title">Calibración de confianza</h2>
+            <p class="subtitle">Antes del resultado final: ¿qué tan seguro estás de tu razonamiento?</p>
+            <div class="confidence-check-card">
+                <label for="confidence-input">Nivel de seguridad: <strong id="confidence-value">3</strong>/5</label>
+                <input id="confidence-input" type="range" min="1" max="5" value="3">
+                <button id="btn-confirm-confidence" class="btn primary">Ver mi evaluación</button>
+            </div>
         </div>
 
         <!-- View: Results -->
