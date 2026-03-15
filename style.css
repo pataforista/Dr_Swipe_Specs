@@ -1654,5 +1654,49 @@ mark.highlight-target {
          c o l o r :   v a r ( - - d a n g e r ) ; 
          f o n t - s i z e :   0 . 8 5 r e m ; 
          f o n t - w e i g h t :   6 0 0 ; 
- }  
+ 
+.quiz-option.eliminated {
+    opacity: 0.55;
+    text-decoration: line-through;
+}
+
+#view-confidence-check {
+    justify-content: center;
+    text-align: center;
+}
+
+.confidence-check-card {
+    width: 100%;
+    background: #f8fafc;
+    border: 1px solid #dbeafe;
+    border-radius: 12px;
+    padding: 1rem;
+    display: grid;
+    gap: 1rem;
+}
+
+.confidence-check-card input[type='range'] {
+    width: 100%;
+}
+
+.bias-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+    align-items: center;
+}
+
+.bias-tags h4 {
+    width: 100%;
+    color: var(--text-main);
+    margin-bottom: 0.25rem;
+}
+
+.confidence-calibration {
+    margin-top: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+ 
  

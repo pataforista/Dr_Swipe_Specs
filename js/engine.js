@@ -4,6 +4,7 @@ const ENGINE_STATE = {
     STREAM: 'evidence_stream',
     CHECKPOINT: 'checkpoint',
     FINAL_TRIAD: 'final_triad',
+    CONFIDENCE_CHECK: 'confidence_check',
     RESULTS: 'results',
     DOSSIER: 'dossier',
     GHOSTED: 'ghosted',
@@ -58,6 +59,11 @@ export class SwipeEngine {
         this.synergyRules = [];
         this.timeFocus = 100;
         this.eventLog = [];
+        this.decisionHistory = [];
+        this.cognitiveBiasTags = [];
+        this.selfConfidence = null;
+        this.diagnosticBudget = { points: 0, spent: 0, enabled: false };
+        this.consult = { tokens: 1, used: 0 };
 
         // Gamification & Progression (Persisted)
         this.coins = 0;
@@ -143,6 +149,10 @@ export class SwipeEngine {
         this.pinnedItems = new Set();
         this.checkpointsPassed = 0;
         this.lastFeedback = null;
+        this.decisionHistory = [];
+        this.cognitiveBiasTags = [];
+        this.selfConfidence = null;
+
         this.stats = {
             correct: 0,
             total: 0,
@@ -159,6 +169,12 @@ export class SwipeEngine {
         this.timeFocus = 100;
         this.confidence = 50;
         this.synergyRules = (caseData.synergy_rules || []).map(r => ({ ...r, active: false }));
+        this.diagnosticBudget = {
+            points: this.formatVersion === 'v2' ? 6 : 0,
+            spent: 0,
+            enabled: this.formatVersion === 'v2'
+        };
+        this.consult = { tokens: 1, used: 0 };
 
         console.log("Session initialized for:", caseData.case_id);
     }
@@ -184,6 +200,7 @@ export class SwipeEngine {
 
         if (direction === 'right') {
             this.keptItems.push(card);
+            this.consumeDiagnosticBudget(card);
         } else {
             this.discardedItems.push(card);
         }
@@ -232,6 +249,40 @@ export class SwipeEngine {
             narration: triggerResult,
             intuition: synergyResult
         };
+    }
+
+
+    consumeDiagnosticBudget(card) {
+        if (!this.diagnosticBudget.enabled) return;
+        const consumableCategories = new Set(['labs', 'imaging']);
+        if (!consumableCategories.has(card.category)) return;
+
+        this.diagnosticBudget.points -= 1;
+        this.diagnosticBudget.spent += 1;
+
+        if (this.diagnosticBudget.points < 0) {
+            this.stats.neuronas = Math.max(0, this.stats.neuronas - 25);
+            this.stats.scoring_tags = this.stats.scoring_tags || [];
+            if (!this.stats.scoring_tags.includes('overtesting')) {
+                this.stats.scoring_tags.push('overtesting');
+            }
+        }
+    }
+
+    useInterconsult() {
+        if (this.consult.tokens <= 0) return false;
+        this.consult.tokens -= 1;
+        this.consult.used += 1;
+        this.stats.neuronas = Math.max(0, this.stats.neuronas - 30);
+        return true;
+    }
+
+    applyInterconsultToOptions(optionsLength, correctIndex) {
+        if (!this.useInterconsult()) return null;
+        for (let i = 0; i < optionsLength; i++) {
+            if (i !== correctIndex) return i;
+        }
+        return null;
     }
 
     updateTimeFocus(direction, card) {
@@ -406,6 +457,14 @@ export class SwipeEngine {
             });
         }
 
+        this.decisionHistory.push({
+            direction,
+            expected,
+            category: card.category,
+            isCorrect: correct,
+            index: this.currentIndex
+        });
+
         this.lastFeedback = {
             correct,
             expected,
@@ -470,10 +529,31 @@ export class SwipeEngine {
         this.currentTriadIndex++;
         if (this.currentTriadIndex >= this.currentCase.final_triad.length) {
             this.calculateDossierScore();
-            this.state = ENGINE_STATE.RESULTS;
-            return { action: 'finish' };
+            this.state = ENGINE_STATE.CONFIDENCE_CHECK;
+            return { action: 'confidence_check' };
         }
         return { action: 'next_triad' };
+    }
+
+
+    submitConfidenceCheck(level) {
+        this.selfConfidence = Math.min(5, Math.max(1, Number(level) || 3));
+        this.evaluateCognitiveBiases();
+        this.state = ENGINE_STATE.RESULTS;
+    }
+
+    evaluateCognitiveBiases() {
+        const tags = [];
+        const wrongKeptSignals = this.decisionHistory.filter(d => !d.isCorrect && d.expected === 'right').length;
+        const lateSignalMisses = this.decisionHistory.filter(d => !d.isCorrect && d.expected === 'right' && d.index > (this.currentCase.evidence_stream.length * 0.6)).length;
+        const earlyErrors = this.decisionHistory.slice(0, 3).filter(d => !d.isCorrect).length;
+
+        if (wrongKeptSignals >= 2) tags.push('confirmation_bias');
+        if (this.keptItems.length <= 2 && this.stats.mistakes.length >= 3) tags.push('premature_closure');
+        if (earlyErrors >= 2) tags.push('anchoring');
+        if (lateSignalMisses >= 2) tags.push('search_satisficing');
+
+        this.cognitiveBiasTags = tags;
     }
 
     annotate(text) {

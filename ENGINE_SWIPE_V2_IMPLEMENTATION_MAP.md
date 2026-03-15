@@ -83,3 +83,84 @@ Con esta arquitectura, detectar un error fatal (descartar una "Red Flag" de cate
 2. La `gameMachine` evalúa si la tarjeta tenía la bandera `safety_flags: { lethal_risk: true }`.
 3. Si es verdadero, fuerza una transición de estado a `FATAL_ERROR_SCREEN`.
 4. El UI bloquea la partida de inmediato mostrando el "Game Over Clínico" del supervisor, en lugar de esperar hasta el final de las 14 tarjetas.
+
+---
+
+## 6. Capa de Entrenamiento de Élite (Metacognición + Retención)
+
+Para evolucionar de "buen juego educativo" a herramienta de alto rendimiento ENARM, se añade una capa transversal sobre el loop principal (`Stream -> Quiz -> Resultado`) enfocada en sesgos cognitivos, transferencia clínica y memoria a largo plazo.
+
+### 6.1 Metacognición: "Espejo del Médico"
+
+**Objetivo:** entrenar razonamiento clínico bajo presión, no solo recall de datos.
+
+* **Etiquetado de sesgos cognitivos en el debrief**
+  * Extender el evento de resultado con `cognitive_bias_tags: string[]`.
+  * Taxonomía inicial recomendada: `confirmation_bias`, `premature_closure`, `anchoring`, `search_satisficing`.
+  * Regla: cada etiqueta debe mapearse a evidencia observada del flujo (qué descartó, qué guardó, en qué orden, y qué ignoró).
+* **Calibración de confianza (1-5) antes del reveal final**
+  * Nuevo estado en `gameMachine`: `confidence_check` antes de `result`.
+  * Guardar par analítico: `answer_correctness` + `self_confidence`.
+  * Señal pedagógica clave: **error con alta confianza** para generar feedback correctivo prioritario.
+
+### 6.2 Profundidad mecánica: Gestión de recursos clínicos
+
+**Objetivo:** simular decisiones reales de práctica y costo de oportunidad.
+
+* **Presupuesto Diagnóstico (Modo Residente)**
+  * Cada estudio retenido (labs/imágenes) consume `diagnostic_budget_points`.
+  * El puntaje final pondera: precisión diagnóstica + eficiencia de uso de recursos.
+  * UI: contador visible de presupuesto + alerta de sobreuso.
+* **Interconsulta limitada**
+  * Consumible `consult_tokens` por sesión.
+  * Efecto configurable: eliminar distractor de tríada o revelar pista de alta utilidad.
+  * Penalización explícita en score para balancear anti-frustración vs mastery.
+
+### 6.3 Retención social y comunidad
+
+**Objetivo:** reducir abandono por fatiga del estudio individual.
+
+* **Guardia Interactiva (evento cooperativo time-boxed)**
+  * Meta comunitaria: resolver N casos por especialidad para desbloquear material premium.
+  * Telemetría: contribución individual y progreso global del evento.
+* **Ligas por especialidad**
+  * Escalera sugerida: `Interno -> R1 -> Jefe de Residentes -> Adscrito`.
+  * Recompensa: prestigio visual (marcos, títulos), no pay-to-win.
+
+### 6.4 SRM integrado: Repetición espaciada nativa
+
+**Objetivo:** convertir errores en agenda activa de repaso.
+
+* **Mazo de Errores**
+  * Cola automática priorizando: casos fallados, baja confianza, sesgo recurrente.
+  * Priorización mínima: `p(error) * recencia_decay * confidence_penalty`.
+* **Paciente de Seguimiento (48h)**
+  * Notificación narrativa basada en caso previo difícil.
+  * Reapertura rápida en modo micro-repaso para consolidación de memoria.
+
+### 6.5 Narrativa adaptativa y progresión
+
+**Objetivo:** mantener engagement emocional con feedback contextual.
+
+* **Dra. Vélez dinámica**
+  * Diálogos condicionados por racha, fatiga de errores y recuperación.
+  * Tono: firme, empático y orientado a seguridad clínica.
+* **Casos Legendarios**
+  * Unlock con moneda de progreso (`neuronas`) o hitos de desempeño.
+  * Mayor profundidad narrativa + dilemas éticos + arte premium.
+
+### 6.6 Priorización de implementación (impacto/esfuerzo)
+
+| Característica | Impacto | Esfuerzo | Objetivo principal |
+|---|---:|---:|---|
+| Sesgos Cognitivos | Alto | Bajo | Metacognición y precisión ENARM |
+| Mazo de Errores (SRM) | Muy alto | Medio | Retención de conocimiento |
+| Ligas por especialidad | Medio | Medio | Retención de usuarios |
+| Presupuesto Diagnóstico | Alto | Alto | Profundidad estratégica |
+
+### 6.7 Orden recomendado por fases
+
+1. **Fase 1 (rápido impacto):** sesgos cognitivos + calibración de confianza.
+2. **Fase 2 (núcleo de aprendizaje):** mazo de errores + paciente de seguimiento.
+3. **Fase 3 (engagement):** ligas + guardia interactiva.
+4. **Fase 4 (profundidad avanzada):** presupuesto diagnóstico + interconsulta limitada + casos legendarios.
