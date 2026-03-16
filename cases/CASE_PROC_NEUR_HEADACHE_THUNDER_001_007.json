@@ -1,0 +1,63 @@
+{
+  "case_id": "PROC_NEUR_HEADACHE_THUNDER_001_007",
+  "version": "v3_swipe_action",
+  "theme_config": "neur",
+  "difficulty": "hard",
+  "patient_intro": {
+    "name": "Antonio, 39 años",
+    "arrival_scenario": "Presenta la 'peor cefalea de su vida', de inicio súbito tras realizar esfuerzo físico (maniobra de Valsalva). TC simple de cráneo muestra hiperdensidad en cisternas de la base y polígono de Willis.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 160/100 mmHg, FC 95 lpm, Temp 37.2°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Hemorragia Subaracnoidea (HSA): Cefalea en trueno + Irritación meníngea. Causa principal: Rotura de aneurisma sacular.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Manejo Perfecto! La HSA es una emergencia neuroquirúrgica. La TC es el primer estudio."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true,
+        "lethal_if_discarded": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "B) Migraña con Aura: Dolor pulsátil de inicio gradual, precedido por escotomas. No es súbito ni 'en trueno'.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: ¡Bien! El inicio súbito es el red flag que descarta la migraña."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Cefalea en Trueno",
+    "text": "Si la TC es NEGATIVA pero la sospecha de HSA es alta, el siguiente paso es la PUNCIÓN LUMBAR buscando xantocromía.",
+    "gpc_ref": "GPC Manejo de la Hemorragia Subaracnoidea"
+  }
+}

@@ -184,6 +184,9 @@ export class SwipeEngine {
         
         // v3 migration: arrival_scenario instead of bio
         this.patientProfile = caseData.patient_intro || caseData.patient_profile || null;
+        if (this.patientProfile && this.patientProfile.arrival_scenario) {
+            this.patientProfile.bio = this.patientProfile.arrival_scenario;
+        }
         
         this.state = ENGINE_STATE.INTRO;
         this.currentIndex = 0;
@@ -242,16 +245,24 @@ export class SwipeEngine {
         console.log("Session initialized for:", caseData.case_id, "Rank:", this.playerRank, "v3:", this.formatVersion === 'v3_swipe_action');
     }
 
-    startReview() {
-        this.state = ENGINE_STATE.STREAM;
-        this.startTime = Date.now();
-    }
-
     getCurrentCard() {
         if (!this.currentCase || this.currentIndex >= this.currentCase.evidence_stream.length) {
             return null;
         }
-        return this.currentCase.evidence_stream[this.currentIndex];
+        let card = this.currentCase.evidence_stream[this.currentIndex];
+
+        // V3: Dynamic (RNG) Values
+        if (card.dynamic_value) {
+            const dv = card.dynamic_value;
+            const rngVal = Math.floor(Math.random() * (dv.max - dv.min + 1)) + dv.min;
+            card.card_text = `${card.category}: ${rngVal} ${dv.unit}`;
+            // If it's a triad/results card, update the payload too
+            if (card.payload) {
+                card.payload.text = card.card_text;
+            }
+        }
+
+        return card;
     }
 
     handleSwipe(direction) {
@@ -542,15 +553,30 @@ export class SwipeEngine {
         });
 
         if (this.state !== ENGINE_STATE.GHOSTED) {
+            let feedback_text = (this.formatVersion === 'v1' || this.formatVersion === 'v2') ?
+                (direction === 'right' ? card.feedback?.match : card.feedback?.discard) :
+                this.getDecisionRationale(card);
+            
+            // V3: Mentor Lore Override
+            let mentor = "Dra. Vélez";
+            if (card.scoring?.vazquez_comment) {
+                feedback_text = card.scoring.vazquez_comment;
+                // Parse specific mentor from comment if present (e.g., "Mendoza: ...")
+                if (feedback_text.includes(':')) {
+                    const parts = feedback_text.split(':');
+                    mentor = parts[0].trim();
+                    feedback_text = parts.slice(1).join(':').trim();
+                }
+            }
+
             this.lastFeedback = {
                 correct,
                 expected,
                 title: card.payload?.title || card.card_text || 'Evidencia',
                 category: card.category,
                 noiseType: card.noise_type,
-                feedback_text: (this.formatVersion === 'v1' || this.formatVersion === 'v2') ?
-                    (direction === 'right' ? card.feedback?.match : card.feedback?.discard) :
-                    this.getDecisionRationale(card)
+                feedback_text,
+                mentor
             };
         }
 

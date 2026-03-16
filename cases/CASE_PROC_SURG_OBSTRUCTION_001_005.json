@@ -1,0 +1,46 @@
+{
+  "case_id": "PROC_SURG_OBSTRUCTION_001_005",
+  "version": "v3_swipe_action",
+  "theme_config": "surg",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Rosa, 59 años",
+    "arrival_scenario": "Paciente con antecedente de 3 cirugías abdominales. Presenta dolor abdominal tipo cólico, distensión y ausencia de canalización de gases de 48 horas. Auscultación: ruidos peristálticos de lucha (metálicos) seguidos de silencio. Rx de abdomen con niveles hidroaéreos y 'pila de monedas'.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 100/60, FC 110 lpm, Temp 37.2°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Obstrucción Intestinal por Bridas y Adherencias: Principal causa de obstrucción en pacientes con cirugía previa.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Excelente! La 'pila de monedas' es característica de intestino delgado."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Obstrucción: Niveles Hidroaéreos",
+    "text": "La causa #1 de obstrucción intestinal en adultos son las BRIDAS post-quirúrgicas.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Obstrucción Intestinal"
+  }
+}

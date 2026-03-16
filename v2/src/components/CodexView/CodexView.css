@@ -1,0 +1,195 @@
+.codex-container {
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: var(--background);
+  transition: background-color 0.3s ease;
+}
+
+[data-theme='dark'] .codex-container {
+  background-color: #010409; /* Deep static black */
+}
+
+.codex-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--text-main);
+}
+
+[data-theme='dark'] .codex-header {
+  border-color: #f85149; /* Brutalist red border */
+}
+
+.codex-header h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: -2px;
+  color: var(--text-main);
+  margin: 0;
+}
+
+[data-theme='dark'] .codex-header h1 {
+  color: #f85149;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+}
+
+.codex-subtitle {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+.filter-pill-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filter-pill {
+  padding: 0.4rem 1rem;
+  border-radius: 99px;
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-pill.active {
+  background-color: var(--text-main);
+  color: var(--background);
+}
+
+[data-theme='dark'] .filter-pill {
+  border-color: #30363d;
+  color: #8b949e;
+}
+
+[data-theme='dark'] .filter-pill.active {
+  background-color: #388bfd;
+  color: white;
+  border-color: #388bfd;
+}
+
+.codex-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.codex-card {
+  background-color: var(--surface);
+  border: 2px solid var(--border-subtle);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-premium);
+}
+
+[data-theme='dark'] .codex-card {
+  background-color: #0d1117;
+  border-color: #30363d;
+}
+
+.codex-card.rarity-legendary {
+  background-color: #fff8e1;
+  border-color: #ffc107;
+}
+
+[data-theme='dark'] .codex-card.rarity-legendary {
+  background-color: #1a1401;
+  border-color: #d29922;
+  box-shadow: 0 0 15px rgba(210, 153, 34, 0.2);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.card-category {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.rarity-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #2ea44f;
+}
+
+.rarity-rare .rarity-indicator { background-color: #0969da; }
+.rarity-legendary .rarity-indicator { background-color: #d29922; }
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+}
+
+.card-snippet {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.card-ref {
+  font-family: monospace;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  background: rgba(0,0,0,0.05);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+[data-theme='dark'] .card-ref {
+  background: rgba(255,255,255,0.05);
+}
+
+.codex-card-locked {
+  background-color: rgba(255,255,255,0.5);
+  border: 2px dashed var(--border-subtle);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0.6;
+}
+
+[data-theme='dark'] .codex-card-locked {
+  background-color: #0d1117;
+  border-color: #21262d;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 0, 0, 0.03) 10px,
+    rgba(255, 0, 0, 0.03) 20px
+  );
+}
+
+.lock-icon {
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.lock-text {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}

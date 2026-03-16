@@ -1,0 +1,46 @@
+{
+  "case_id": "PROC_OBS_HEM_MOLA_001_005",
+  "version": "v3_swipe_action",
+  "theme_config": "obs",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Isabel, 24 años",
+    "arrival_scenario": "Acude por hiperemesis gravídica severa. Al EF, el útero se palpa a nivel de cicatriz umbilical, mayor a su edad gestacional de 14 semanas. HCG reportada en 250,000 mUI/ml. Presencia de quistes tecaluteínicos bilaterales en ovarios.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 150/90 mmHg (HTA temprana), FC 100 lpm, Temp 36.7°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Mola Hidatidiforme Completa: Proliferación trofoblástica. Útero mayor a amenorrea + Tormenta de nieve + HCG >100,000.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Acertaste! El manejo inicial es la evacuación mediante AMEU."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Mola: Tormenta de Nieve",
+    "text": "Descriptor clave: Imagen en 'Copo de Nieve' o 'Panal de Abejas'. Dato clínico: Útero mayor a amenorrea e hiperemesis severa.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Enfermedad Trofoblástica"
+  }
+}

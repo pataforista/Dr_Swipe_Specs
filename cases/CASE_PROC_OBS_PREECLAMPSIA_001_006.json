@@ -1,82 +1,62 @@
 {
-    "case_id": "PROC_OBS_PREECLAMPSIA_001_006",
-    "version": "v3_swipe_action",
-    "theme_config": "theme-default",
-    "difficulty": "hard",
-    "patient_intro": {
-        "name": "Laura",
-        "arrival_scenario": "Gestante de 32 SDG Acude por cefalea pulsátil, fosfenos y acúfenos.",
-        "time_limit_sec": 30
+  "case_id": "PROC_OBS_PREECLAMPSIA_001_006",
+  "version": "v3_swipe_action",
+  "theme_config": "obs",
+  "difficulty": "hard",
+  "patient_intro": {
+    "name": "María, 27 años",
+    "arrival_scenario": "Gestante de 34 SDG Acude por cefalea pulsátil, fosfenos y acúfenos. Tira reactiva con proteínas ++. Reflejos osteotendinosos hiperactivos (+++/++++).",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 160/110, FC 90 lpm, Temp 37.0°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
     },
-    "card_stream": [
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "TA 170/115, FC 90 lpm, Temp 36.8°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Para qué guardas signos vitales normales, R1? No estamos en piso de medicina interna."
-            }
-        },
-        {
-            "card_id": "card_0",
-            "ui_icon": "📄",
-            "category": "Evidencia",
-            "card_text": "Preeclampsia CON datos de severidad. Se debe impregnar con Sulfato de Magnesio, control hipertensivo y resolver gestación.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 100,
-                "error_type": "omission",
-                "vazquez_comment": "¡Excelente! La TA >160/110, plaquetopenia, o cefalea/acúfenos son datos de SEVERIDAD. El tratamiento definitivo es la interrupción, pero siempre tras estabilizar a la madre y dar neuroprotección (Sulfato de Magnesio)."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "card_1",
-            "ui_icon": "📄",
-            "category": "Evidencia",
-            "card_text": "Control con Alfametildopa y reposo absoluto en casa hasta las 38 SDG.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "lethal_hazard",
-                "vazquez_comment": "¡Mortalidad Materna! Esta paciente tiene datos de severidad inminente (crisis hipertensiva, síntomas neurológicos, plaquetopenia). Mandarla a casa es letal."
-            },
-            "safety_flags": {
-                "lethal_risk": true,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "card_2",
-            "ui_icon": "📄",
-            "category": "Evidencia",
-            "card_text": "Insuficiencia hepática severa, ictericia y coagulopatía en el tercer trimestre.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Aunque hay elevación hepática en el síndrome HELLP (relacionado a Preeclampsia), el Hígado Graso Agudo cursa con hipoglucemia profunda y no necesariamente con hipertensión extrema inicial."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        }
-    ],
-    "boss_fight_triad": {
-        "trigger": "after_cards",
-        "questions": []
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Preeclampsia con Datos de Severidad: PA ≥160/110 + Síntomas neurológicos (fosfenos, cefalea) + Trombocitopenia.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Excelente! Requiere interrupción del embarazo previa estabilización con Sulfato de Magnesio."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
     },
-    "perla_enarm": {
-        "title": "Manejo de Preeclampsia Severa",
-        "text": "Los datos de severidad obligan a interrumpir el embarazo SIN IMPORTAR la edad gestacional. Sin embargo, nunca operes a una paciente con crisis hipertensiva; la REGLA DE ORO es estabilizar primero (Labetalol/Nifedipino/Hidralazina) y neuroproteger con Sulfato de Magnesio.",
-        "gpc_ref": "GPC Preeclampsia - Eclampsia"
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "B) Manejo Expectante hasta Término: Control ambulatorio hasta las 38 SDG.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "lethal_hazard",
+        "vazquez_comment": "Castillo: ¡Bien! Reconociste la urgencia."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": false
+      }
     }
+  ],
+  "enarm_pearl": {
+    "title": "Neuroprotección en Preeclampsia",
+    "text": "El Sulfato de Magnesio es el fármaco de elección para prevenir eclampsia. Dosis de impregnación: 4g IV.",
+    "gpc_ref": "GPC Preeclampsia - Eclampsia"
+  }
 }

@@ -1,0 +1,63 @@
+{
+  "case_id": "PROC_PED_EXANT_ERYTHEMA_001_014",
+  "version": "v3_swipe_action",
+  "theme_config": "ped",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "José, 10 años",
+    "arrival_scenario": "Paciente con mejillas muy rojas 'como si lo hubieran golpeado', seguidas de exantema reticulado en brazos. Paciente con esferocitosis hereditaria (complicación latente por Parvovirus B19).",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA N/A, FC 80 lpm, Temp 37.2°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Eritema Infeccioso (5ta Enfermedad): Parvovirus B19. Signo de la bofetada + Exantema reticulado.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Match! El aspecto de 'encaje' es el descriptor clásico ENARM para Parvovirus B19."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "B) Crisis Aplásica: Riesgo real en pacientes con anemias hemolíticas crónicas infectados por Parvovirus B19.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡Excelente! En el examen, si mencionan un niño con anemia y este exantema, la respuesta es crisis aplásica."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true,
+        "lethal_if_discarded": true
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Bofetada y Encaje",
+    "text": "Descriptor clave: Exantema reticulado o en encaje. Riesgo: Hidrops fetalis en embarazadas y crisis aplásica en anémicos.",
+    "gpc_ref": "GPC Diagnóstico de Enfermedades Exantemáticas"
+  }
+}

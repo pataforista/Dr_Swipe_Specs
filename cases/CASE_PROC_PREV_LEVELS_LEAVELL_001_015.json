@@ -1,0 +1,62 @@
+{
+  "case_id": "PROC_PREV_LEVELS_LEAVELL_001_015",
+  "version": "v3_swipe_action",
+  "theme_config": "prev",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Carmen, 43 años",
+    "arrival_scenario": "Se presenta para control de salud. Pregunta por las acciones necesarias para evitar el cáncer cervicouterino. ¿Cuál sería un ejemplo de Prevención PRIMARIA en esta paciente respecto al virus del papiloma humano (VPH)?",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 110/70, FC 68 lpm, Temp 36.5°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Aplicación de Vacuna contra VPH (Primaria): Prevención Primaria: Acciones dirigidas a evitar la aparición de la enfermedad (vacunación).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Correcto! La vacuna evita la infección; es el pilar de la prevención primaria."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "B) Realización de Citología Cervical / Pap (Secundaria): Prevención Secundaria: Detección precoz de lesiones en etapas asintomáticas (Tamizaje).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Logrado! El Papanicolaou busca detectar la enfermedad ya establecida pero incipiente."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Leavell y Clark",
+    "text": "P1: Vacunas/Estilo Vida. P2: Detección/Tamizaje (Pap, Mastografía). P3: Rehabilitación/Evitar complicaciones.",
+    "gpc_ref": "Fundamentos de Salud Pública"
+  }
+}

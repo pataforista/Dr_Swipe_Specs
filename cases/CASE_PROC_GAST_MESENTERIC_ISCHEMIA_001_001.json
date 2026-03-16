@@ -1,0 +1,63 @@
+{
+  "case_id": "PROC_GAST_MESENTERIC_ISCHEMIA_001_001",
+  "version": "v3_swipe_action",
+  "theme_config": "gast",
+  "difficulty": "hard",
+  "patient_intro": {
+    "name": "Fernando, 61 años",
+    "arrival_scenario": "Acude por dolor abdominal de inicio súbito, periumbilical, de intensidad 10/10. Tiene antecedente de Fibrilación Auricular. Al examen físico: El abdomen está blando, depresible, sin rebote ni defensa muscular notable ('mismatch' dolor-clínica).",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 100/60 mmHg, FC 120 lpm (arrítmico), Temp 37.0°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Isquemia Mesentérica Aguda: Dolor desproporcionado a la exploración física + Factores de riesgo embólico (FA).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Excelente ojo clínico! El 'abdomen blando' con dolor 10/10 es la pista clásica para Isquemia Mesentérica."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true,
+        "lethal_if_discarded": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "B) Volvulus de Sigmoides: Causa obstrucción intestinal, distensión severa y signo de 'grano de café' en Rayos X. No suele ser súbito sin distensión.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: ¡Bien! El antecedente de FA te orientó correctamente hacia un evento vascular."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Isquemia: El Gran Mismatch",
+    "text": "Clave ENARM: Dolor 10/10 + Abdomen depresible/asintomático a la palpación = ISQUEMIA MESENTÉRICA. Pedir Angio-TC.",
+    "gpc_ref": "GPC Diagnóstico de Abdomen Agudo Vascular"
+  }
+}

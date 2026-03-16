@@ -1,0 +1,62 @@
+{
+  "case_id": "PROC_ENDO_DM2_MANAGEMENT_001_004",
+  "version": "v3_swipe_action",
+  "theme_config": "endo",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Ana, 60 años",
+    "arrival_scenario": "Paciente con DM2 de 5 años de evolución en manejo con Metformina 850 mg c/12h. Su HbA1c actual es de 8.2%. No tiene antecedentes de pancreatitis. Se busca intensificar tratamiento según las últimas guías ADA/GPC.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 130/80 mmHg, FC 72 lpm, Temp 36.5°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Agregar Agonista GLP-1 (Liraglutida/Semaglutida): Indicado en DM2 con riesgo cardiovascular establecido y obesidad. Excelente control de HbA1c.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Correcto! En pacientes con enfermedad CV o deseo de bajar de peso, los GLP-1 son la elección actual sobre las sulfonilureas."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "B) Agregar Sulfonilurea (Glibenclamida): Eficaz para bajar glucosa, pero causa ganancia de peso y riesgo alto de hipoglucemia. No tiene beneficio CV.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: ¡Bien! Evitaste el riesgo de hipoglucemia y la ganancia de peso innecesaria."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Algoritmo ADA: Cardio-Nefroprotección",
+    "text": "Si hay ECV establecida → GLP-1 o iSGLT2. Si hay Falla Cardíaca o ERC (Nefropatía) → iSGLT2 (Empagliflozina).",
+    "gpc_ref": "ADA Standards of Care in Diabetes"
+  }
+}

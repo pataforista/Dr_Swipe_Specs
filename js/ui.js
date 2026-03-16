@@ -98,7 +98,9 @@ export class UIController {
             btnCodexBack: document.getElementById('btn-codex-back'),
             tabPerlas: document.getElementById('tab-perlas'),
             tabErrores: document.getElementById('tab-errores'),
-            codexFilters: document.getElementById('codex-filters')
+            codexFilters: document.getElementById('codex-filters'),
+            chatMentorName: document.getElementById('chat-mentor-name'),
+            chatMentorAvatar: document.getElementById('chat-mentor-avatar')
         };
 
         this.tutorialStep = 0;
@@ -972,6 +974,21 @@ export class UIController {
         this.elements.chatMessages.innerHTML = '';
         this.elements.chatOutcomeBadge.className = `outcome-badge ${feedback.correct ? 'match' : 'error'}`;
         this.elements.chatOutcomeBadge.textContent = feedback.correct ? '¡Perfect Match!' : 'Error clínico';
+
+        // V3: Update Mentor Identity
+        if (this.elements.chatMentorName) {
+            this.elements.chatMentorName.textContent = feedback.mentor || "Dra. Vélez";
+        }
+        if (this.elements.chatMentorAvatar) {
+            // Placeholder: could map names to different CSS classes or icons
+            const mentorIcons = {
+                "Mendoza": "👴",
+                "Navarro": "👩‍⚕️",
+                "Castillo": "👩‍🔬",
+                "Dra. Vélez": "👩‍⚕️"
+            };
+            this.elements.chatMentorAvatar.textContent = mentorIcons[feedback.mentor] || "👩‍⚕️";
+        }
 
         // Add sequence of messages
         this.addMessage('system', `Analizando acción: ${feedback.expected === 'right' ? 'Match' : 'Descarte'}`);

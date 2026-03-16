@@ -1,0 +1,62 @@
+{
+  "case_id": "PROC_PED_NEO_APGAR_001_004",
+  "version": "v3_swipe_action",
+  "theme_config": "ped",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Rosa, 0 años",
+    "arrival_scenario": "Recién nacido a término. Tras el nacimiento presenta FC de 90 lpm, llanto débil, cierta flexión de extremidades e irritabilidad reflexiva (mueca). Se observa Silverman-Andersen: aleteo nasal leve, tiraje intercostal discreto. Resto normal.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA N/A, FC 90 lpm, Temp 36.5°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) APGAR 5 (Depresión Moderada): FC <100 (1) + Llanto débil (1) + Mueca (1) + Flexión (1) + Acrocianosis (1).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Excelente cálculo! El APGAR evalúa vitalidad, no pronóstico neurológico a largo plazo."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "B) Silverman-Andersen 2 (Dificultad Leve): Aleteo (1) + Tiraje (1) = 2. A diferencia del APGAR, a mayor puntaje Silverman, mayor gravedad.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Correcto! El Silverman mide dificultad respiratoria. 1-3 es leve."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "APGAR vs Silverman",
+    "text": "APGAR: Evalúa vitalidad (1 y 5 min). Silverman: Evalúa dificultad respiratoria. RECUERDA: Silverman 0 es el éxito, APGAR 10 es el éxito.",
+    "gpc_ref": "GPC Reanimación Neonatal"
+  }
+}

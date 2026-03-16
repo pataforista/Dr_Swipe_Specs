@@ -1,0 +1,62 @@
+{
+  "case_id": "PROC_ENGL_TECH_VOCABULARY_001_006",
+  "version": "v3_swipe_action",
+  "theme_config": "engl",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Rosa, 47 años",
+    "arrival_scenario": "Examination reveals a 'rash' on the upper limbs and 'wheezing' upon lung auscultation. False Friend Alert: The patient reports 'Constipation'. Does this refer to nasal congestion or bowel movement issues?",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 120/80, FC 78 bpm, Temp 37.0°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Correcto! Dominar estos términos es vital para la sección de inglés técnico del ENARM."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "B) Estreñimiento (Bowel movement issues): 'Constipation' es el falso amigo más común: significa Estreñimiento, NO congestión nasal.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Excelente! Evitaste caer en el falso amigo. 'Constipated' nasal se dice 'Congested'."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Inglés Médico: False Friends",
+    "text": "Constipation = Estreñimiento. Injury = Lesión. Sever = Cortar. Informed Consent = Consentimiento Informado.",
+    "gpc_ref": "ENARM Technical English Section"
+  }
+}

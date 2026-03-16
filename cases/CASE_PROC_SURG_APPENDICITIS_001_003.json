@@ -1,81 +1,78 @@
 {
-    "case_id": "PROC_SURG_APPENDICITIS_001_003",
-    "version": "v3_swipe_action",
-    "theme_config": "theme-default",
-    "difficulty": "standard",
-    "patient_intro": {
-        "name": "Rosa",
-        "arrival_scenario": "Refiere dolor punzante en cuadrante inferior derecho desde hace 24 hrs. Acompañado de náuseas y anorexia.",
-        "time_limit_sec": 30
+  "case_id": "PROC_SURG_APPENDICITIS_001_003",
+  "version": "v3_swipe_action",
+  "theme_config": "surg",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Marta, 20 años",
+    "arrival_scenario": "Refiere dolor punzante en cuadrante inferior derecho desde hace 24 hrs. Acompañado de náuseas y anorexia. Signo de McBurney Positivo. Rebote dudoso. Leucocitosis de 12 mil.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 120/80, FC 110 lpm, Temp 37.8°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
     },
-    "card_stream": [
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "TA 110/70, FC 110 lpm, Temp 38.2°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Para qué guardas signos vitales normales, R1? No estamos en piso de medicina interna."
-            }
-        },
-        {
-            "card_id": "card_0",
-            "ui_icon": "📄",
-            "category": "Evidencia",
-            "card_text": "Cuadro clásico de migración del dolor (Cronología de Murphy) y febrícula o fiebre. Requiere abordaje quirúrgico.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 100,
-                "error_type": "omission",
-                "vazquez_comment": "¡Match! La cronología, fiebre y signos focales apuntan a apendicitis. La conducta es interconsulta a cirugía."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "card_1",
-            "ui_icon": "📄",
-            "category": "Evidencia",
-            "card_text": "Dolor abdominal generalizado, fiebre y náuseas. Frecuentemente autolimitado.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "La gastroenteritis suele tener diarrea predominante y dolor generalizado, no focalizado en FID profunda."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "card_2",
-            "ui_icon": "📄",
-            "category": "Evidencia",
-            "card_text": "Dolor pélvico agudo, sangrado transvaginal y datos de choque hipovolémico.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "lethal_hazard",
-                "vazquez_comment": "La TA está estable y no hay factores de riesgo claros mencionados, pero siempre debe descartarse en mujeres en edad fértil con PIE."
-            },
-            "safety_flags": {
-                "lethal_risk": true
-            }
-        }
-    ],
-    "boss_fight_triad": {
-        "trigger": "after_cards",
-        "questions": []
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Apendicitis Aguda: Cuadro clásico de migración del dolor (Cronología de Murphy) y febrícula o fiebre. Requiere abordaje quirúrgico.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Match! La cronología, fiebre y signos focales apuntan a apendicitis. La conducta es interconsulta a cirugía."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
     },
-    "perla_enarm": {
-        "title": "Diagnóstico Clínico de Apendicitis",
-        "text": "El diagnóstico de apendicitis aguda es fundamentalmente CLÍNICO (Escala de Alvarado). La TAC se reserva para casos dudosos, no para cuadros típicos como este.",
-        "gpc_ref": "GPC Diagnóstico y Tratamiento de Apendicitis Aguda"
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "B) Gastroenteritis Infecciosa: Dolor abdominal generalizado, fiebre y náuseas. Frecuentemente autolimitado.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: ¡Buen ojo! La focalización (McBurney) y la leucocitosis alejan el diagnóstico de algo viral autolimitado."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "C) Embarazo Ectópico Roto: Dolor pélvico agudo, sangrado transvaginal y datos de choque hipovolémico.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "lethal_hazard",
+        "vazquez_comment": "Mendoza: ¡Correcto! TA normal y cuadro más compatible con foco infeccioso intestinal."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "condition": "female"
+      }
     }
+  ],
+  "enarm_pearl": {
+    "title": "Diagnóstico Clínico de Apendicitis",
+    "text": "El diagnóstico de apendicitis aguda es fundamentalmente CLÍNICO (Escala de Alvarado). La TAC se reserva para casos dudosos, no para cuadros típicos como este.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de Apendicitis Aguda"
+  }
 }

@@ -1,0 +1,46 @@
+{
+  "case_id": "PROC_PSYCH_MANIA_001_011",
+  "version": "v3_swipe_action",
+  "theme_config": "psych",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Pedro, 31 años",
+    "arrival_scenario": "Ingresa por agitación psicomotriz. Familia refiere que lleva 7 días sin dormir, gastando dinero excesivamente y hablando sin parar. Muestra disminución de la necesidad de dormir. Hipersexualidad y conducta de riesgo (compras impulsivas).",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 130/85, FC 105 lpm, Temp 36.8°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Episodio Maníaco (Trastorno Bipolar I): Estado de ánimo elevado/expansivo por al menos 1 semana. Criterios DIGFAST presentes.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Correcto! La duración de una semana define el episodio maníaco."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Criterios Manía: DIGFAST",
+    "text": "Mnemotecnia DIGFAST: Distractibility, Indiscretion, Grandiosity, Flight of ideas, Activity increase, Sleep deficit, Talkativeness.",
+    "gpc_ref": "Guía de Práctica Clínica Trastorno Bipolar"
+  }
+}

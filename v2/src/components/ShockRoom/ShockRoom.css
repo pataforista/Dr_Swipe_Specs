@@ -1,0 +1,135 @@
+.shock-room-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.95);
+  padding: 24px;
+  overflow: hidden;
+}
+
+.alarm-hue {
+  position: absolute;
+  inset: 0;
+  background-color: #ff0000;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.shock-header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.alarm-title {
+  color: #ff4d4d;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  animation: pulse 1s infinite;
+}
+
+.timer-display {
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 4rem;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.question-card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 400px;
+  background-color: #1a1a1a;
+  border: 2px solid #ff4d4d;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 0 30px rgba(255, 77, 77, 0.3);
+}
+
+.step-indicator {
+  color: #888;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.question-text {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-btn {
+  background-color: #262626;
+  border: 1px solid #404040;
+  color: #e5e5e5;
+  padding: 16px;
+  text-align: left;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.option-btn:hover {
+  background-color: #ff4d4d;
+  color: white;
+  border-color: #ff4d4d;
+}
+
+.option-btn:active {
+  transform: scale(0.98);
+}
+
+.dossier-preview {
+  position: relative;
+  z-index: 10;
+  margin-top: 40px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.dossier-label {
+  color: #666;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.dossier-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dossier-pill {
+  background-color: #333;
+  color: #ccc;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}

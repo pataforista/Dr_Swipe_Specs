@@ -55,7 +55,19 @@ export class DataLoader {
             // Filter by specialty if prefix is not 'all'
             let validCases = caseIndex;
             if (prefix !== 'all') {
-                validCases = caseIndex.filter(id => id.includes(prefix));
+                // Specialty mapping to include all relevant sub-prefixes
+                const specialtyMap = {
+                    'ped_': ['PED_'],
+                    'obs_': ['OBS_', 'GYN_'],
+                    'int_': ['INT_', 'CARD_', 'ENDO_', 'NEUR_', 'PSYC_', 'INF_', 'PREV_', 'STATS_', 'ENGL_'],
+                    'surg_': ['SURG_', 'GAST_']
+                };
+
+                const targets = specialtyMap[prefix] || [prefix.toUpperCase()];
+                validCases = caseIndex.filter(id => 
+                    targets.some(t => id.includes(t))
+                );
+
                 if (validCases.length === 0) validCases = caseIndex; // fallback if empty
             }
 

@@ -1,0 +1,62 @@
+{
+  "case_id": "PROC_GYN_CANCER_CERVICAL_001_002",
+  "version": "v3_swipe_action",
+  "theme_config": "gyn",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Marta, 25 años",
+    "arrival_scenario": "Mujer de 28 años con reporte de citología reciente que indica Lesión Intraepitelial Escamosa de Bajo Grado (LSIL). Citología reporta HSIL (Lesión de Alto Grado). Durante colposcopia se observa zona de transformación tipo 2 con epitelio acetoblanco denso.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 110/70, FC 72 lpm, Temp 36.4°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Colposcopia con Biopsia Dirigida: Ante HSIL o LSIL persistente, el estándar de oro es la visualización colposcópica y toma de biopsia.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Logrado! La colposcopia permite localizar el sitio exacto de la lesión para normar el tratamiento quirúrgico (cono)."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "B) Conización Cervical (LLETZ/Frío): Tratamiento de elección para NIC 2 y NIC 3 (lesiones de alto grado) para asegurar márgenes libres.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Correcto! En NIC 2 o 3 el objetivo es la remoción de la zona de transformación."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Citología: Bethesda 2014",
+    "text": "Clave: LSIL (Bajo grado) suele vigilarse o colposcopia según edad. HSIL (Alto grado) SIEMPRE va a colposcopia/biopsia/tratamiento.",
+    "gpc_ref": "NOM-014-SSA2-1994 Prevención Cacu"
+  }
+}

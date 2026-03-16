@@ -1,0 +1,62 @@
+{
+  "case_id": "PROC_SURG_APPENDICITIS_ALVARADO_001_007",
+  "version": "v3_swipe_action",
+  "theme_config": "surg",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Antonio, 29 años",
+    "arrival_scenario": "Paciente con dolor abdominal agudo. Al examen: Punto de McBurney (+) y signo de Rovsing (+). Leucocitosis de 14,000 con neutrofilia. Cálculo de Escala de Alvarado: Migración (1), Anorexia (1), Náusea (1), McBurney (2), Rebote (1), Fiebre (1), Leucocitosis (2). Total: 9/10.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 120/80, FC 100 lpm, Temp 38.3°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Apendicectomía (Sin necesidad de imagen extra): En hombres adultos con Alvarado ≥8, la probabilidad es >95%. Indicación quirúrgica directa.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Correcto! En hombres con cuadro clásico, la cirugía directa es costo-efectiva. En mujeres se prefiere USG inicial."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "B) Observación y Antibióticos: No es la conducta estándar ante una sospecha tan alta de apendicitis aguda no complicada.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: ¡Bien! El manejo expectante en apendicitis confirmada es arriesgado."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Alvarado: MANTREM",
+    "text": "M: Migración (1), A: Anorexia (1), N: Náusea (1), T: Tenderness/Dolor FID (2), R: Rebote (1), E: Elevación temp (1), M: Modif. WBC (2).",
+    "gpc_ref": "GPC Diagnóstico de Apendicitis Aguda"
+  }
+}
