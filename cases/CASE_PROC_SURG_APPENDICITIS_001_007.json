@@ -1,82 +1,81 @@
 {
-  "meta": {
-    "id": "PROC_SURG_APPENDICITIS_001_007",
-    "title": "SURG APPENDICITIS 001 (Var 7)",
-    "category": "Procedural",
+    "case_id": "PROC_SURG_APPENDICITIS_001_007",
+    "version": "v3_swipe_action",
+    "theme_config": "theme-default",
     "difficulty": "standard",
-    "tags": [
-      "procedural",
-      "clinical_reasoning"
-    ]
-  },
-  "version": "v2",
-  "format": "clinical_reasoning",
-  "patient_profile": {
-    "name": "Antonio",
-    "age": 27,
-    "sex": "Masculino",
-    "image_url": "https://api.dicebear.com/7.x/pixel-art/svg?seed=Antonio27&backgroundColor=c0aede,b6e3f4",
-    "mood": "ansioso",
-    "bio": "Refiere dolor punzante en cuadrante inferior derecho desde hace 12 hrs. Acompañado de náuseas y anorexia.",
-    "vitals": {
-      "TA": "130/85",
-      "FC": "90 lpm",
-      "Temp": "38.2°C"
+    "patient_intro": {
+        "name": "Antonio",
+        "arrival_scenario": "Refiere dolor punzante en cuadrante inferior derecho desde hace 12 hrs. Acompañado de náuseas y anorexia.",
+        "time_limit_sec": 30
     },
-    "details": "Signo de McBurney Positivo. Rebote dudoso. Leucocitosis de 16 mil."
-  },
-  "evidence_stream": [
-    {
-      "type": "differential",
-      "is_match": true,
-      "payload": {
-        "title": "A) Apendicitis Aguda",
-        "text": "Cuadro clásico de migración del dolor (Cronología de Murphy) y febrícula o fiebre. Requiere abordaje quirúrgico."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      },
-      "feedback": {
-        "match": "¡Match! La cronología, fiebre y signos focales apuntan a apendicitis. La conducta es interconsulta a cirugía.",
-        "discard": "Error: Descartar este diagnóstico retrasa una cirugía urgente y aumenta el riesgo de perforación."
-      }
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "🩺",
+            "category": "vitals",
+            "card_text": "TA 130/85, FC 90 lpm, Temp 38.2°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "¿Para qué guardas signos vitales normales, R1? No estamos en piso de medicina interna."
+            }
+        },
+        {
+            "card_id": "card_0",
+            "ui_icon": "📄",
+            "category": "Evidencia",
+            "card_text": "Cuadro clásico de migración del dolor (Cronología de Murphy) y febrícula o fiebre. Requiere abordaje quirúrgico.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "¡Match! La cronología, fiebre y signos focales apuntan a apendicitis. La conducta es interconsulta a cirugía."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "card_1",
+            "ui_icon": "📄",
+            "category": "Evidencia",
+            "card_text": "Dolor abdominal generalizado, fiebre y náuseas. Frecuentemente autolimitado.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "La gastroenteritis suele tener diarrea predominante y dolor generalizado, no focalizado en FID profunda."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "card_2",
+            "ui_icon": "📄",
+            "category": "Evidencia",
+            "card_text": "Dolor pélvico agudo, sangrado transvaginal y datos de choque hipovolémico.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "La TA está estable y no hay factores de riesgo claros mencionados, pero siempre debe descartarse en mujeres en edad fértil con PIE."
+            },
+            "safety_flags": {
+                "lethal_risk": false
+            }
+        }
+    ],
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": []
     },
-    {
-      "type": "differential",
-      "is_match": false,
-      "payload": {
-        "title": "B) Gastroenteritis Infecciosa",
-        "text": "Dolor abdominal generalizado, fiebre y náuseas. Frecuentemente autolimitado."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
-      },
-      "feedback": {
-        "match": "La gastroenteritis suele tener diarrea predominante y dolor generalizado, no focalizado en FID profunda.",
-        "discard": "¡Buen ojo! La focalización (McBurney) y la leucocitosis alejan el diagnóstico de algo viral autolimitado."
-      }
-    },
-    {
-      "type": "differential",
-      "is_match": false,
-      "payload": {
-        "title": "C) Embarazo Ectópico Roto",
-        "text": "Dolor pélvico agudo, sangrado transvaginal y datos de choque hipovolémico."
-      },
-      "safety_flags": {
-        "lethal_risk": false
-      },
-      "feedback": {
-        "match": "La TA está estable y no hay factores de riesgo claros mencionados, pero siempre debe descartarse en mujeres en edad fértil con PIE.",
-        "discard": "¡Correcto! TA normal y cuadro más compatible con foco infeccioso intestinal."
-      }
+    "perla_enarm": {
+        "title": "Diagnóstico Clínico de Apendicitis",
+        "text": "El diagnóstico de apendicitis aguda es fundamentalmente CLÍNICO (Escala de Alvarado). La TAC se reserva para casos dudosos, no para cuadros típicos como este.",
+        "gpc_ref": "GPC Diagnóstico y Tratamiento de Apendicitis Aguda"
     }
-  ],
-  "perla_enarm": {
-    "title": "Diagnóstico Clínico de Apendicitis",
-    "text": "El diagnóstico de apendicitis aguda es fundamentalmente CLÍNICO (Escala de Alvarado). La TAC se reserva para casos dudosos, no para cuadros típicos como este.",
-    "gpc_ref": "GPC Diagnóstico y Tratamiento de Apendicitis Aguda"
-  }
 }

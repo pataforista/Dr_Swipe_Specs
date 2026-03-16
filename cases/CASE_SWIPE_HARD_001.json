@@ -1,534 +1,215 @@
 {
-  "case_id": "swipe_hard_001",
-  "version": "v1",
-  "mode": "enarm",
-  "difficulty": "hard",
-  "case_meta": {
-    "patient_code": "AV-2024-003",
-    "age": 68,
-    "sex": "Masculino",
-    "chief_complaint": "Fiebre de 39.5°C, disuria y deterioro del estado general de 24 h. Antecedente de HTA y DM2 en tratamiento. Llega con alteración del estado de alerta.",
-    "enarm_specialty": "Medicina Interna — Sepsis de Foco Urinario / Urosepsis"
-  },
-  "dominant_tags": [
-    "acute_care",
-    "sepsis",
-    "infectious_disease",
-    "critical_care"
-  ],
-  "checkpoint_nodes": [
-    {
-      "sequence": 1,
-      "decision_node_id": "CORE_NODE_CRITICAL_DECISION_001"
+    "case_id": "swipe_hard_001",
+    "version": "v3_swipe_action",
+    "theme_config": "theme-default",
+    "difficulty": "hard",
+    "patient_intro": {
+        "name": "Paciente",
+        "arrival_scenario": "Ingresa al servicio de urgencias.",
+        "time_limit_sec": 30
     },
-    {
-      "sequence": 2,
-      "decision_node_id": "CORE_NODE_ESCALATION_001"
-    }
-  ],
-  "noise_budget": {
-    "target_noise_items": 4,
-    "types_allowed": [
-      "irrelevant_true",
-      "borderline",
-      "duplicate",
-      "delayed_result",
-      "false_alarm"
-    ]
-  },
-  "stream_order_rule": "mixed",
-  "evidence_stream": [
-    {
-      "evidence_id": "h01",
-      "block_index": 1,
-      "category": "vitals",
-      "payload": {
-        "title": "Tensión Arterial",
-        "text": "TA: 85/55 mmHg. Hipotensión severa a pesar de 500 mL de cristaloides en urgencias. Persistente."
-      },
-      "tags": [
-        "hypotension",
-        "vital",
-        "septic_shock"
-      ],
-      "is_signal": true,
-      "noise_type": "none",
-      "noise_class": "none",
-      "highlight_targets": [
+    "card_stream": [
         {
-          "text": "85/55 mmHg",
-          "start": 4,
-          "end": 14
+            "card_id": "h01",
+            "ui_icon": "🩺",
+            "category": "vitals",
+            "card_text": "TA: 85/55 mmHg. Hipotensión severa a pesar de 500 mL de cristaloides en urgencias. Persistente.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "lethal_hazard",
+                "vazquez_comment": "¡Eso era una Red Flag letal! ¡El paciente está en choque por tu culpa!"
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": true,
+                "decision_critical": true
+            }
         },
         {
-          "text": "a pesar de 500 mL de cristaloides",
-          "start": 30,
-          "end": 63
-        }
-      ],
-      "safety_flags": {
-        "contraindication": false,
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "evidence_id": "h02",
-      "block_index": 1,
-      "category": "vitals",
-      "payload": {
-        "title": "Frecuencia Cardíaca y Temperatura",
-        "text": "FC: 132 lpm. T°: 39.5°C. Taquicardia sinusal. Fiebre alta compatible con respuesta inflamatoria sistémica activa."
-      },
-      "tags": [
-        "tachycardia",
-        "fever",
-        "vital",
-        "sirs"
-      ],
-      "is_signal": true,
-      "noise_type": "none",
-      "noise_class": "none",
-      "highlight_targets": [
-        {
-          "text": "132 lpm",
-          "start": 4,
-          "end": 11
+            "card_id": "h02",
+            "ui_icon": "🩺",
+            "category": "vitals",
+            "card_text": "FC: 132 lpm. T°: 39.5°C. Taquicardia sinusal. Fiebre alta compatible con respuesta inflamatoria sistémica activa.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding"
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": true
+            }
         },
         {
-          "text": "39.5°C",
-          "start": 17,
-          "end": 23
-        }
-      ],
-      "safety_flags": {
-        "contraindication": false,
-        "lethal_risk": false,
-        "decision_critical": true
-      },
-      "triggers": [
-        {
-          "on_action": "keep",
-          "set_flag": "criterios_sirs_cumplidos",
-          "narration": "FC >90 + Temperatura >38.3°C + TA <90 sistólica refractaria: criterios de choque séptico. Actúa ahora."
-        }
-      ]
-    },
-    {
-      "evidence_id": "h03",
-      "block_index": 1,
-      "category": "labs",
-      "payload": {
-        "title": "Hemoglobina",
-        "text": "Hb: 9.0 g/dL. Anemia leve, probablemente crónica por enfermedad (DM2, HTA). No es la causa del choque."
-      },
-      "tags": [
-        "lab",
-        "hematology",
-        "anemia_cronica"
-      ],
-      "is_signal": true,
-      "noise_type": "none",
-      "noise_class": "none",
-      "highlight_targets": [
-        {
-          "text": "9.0 g/dL",
-          "start": 4,
-          "end": 12
-        }
-      ],
-      "safety_flags": {
-        "contraindication": false,
-        "lethal_risk": false,
-        "decision_critical": false
-      }
-    },
-    {
-      "evidence_id": "h04",
-      "block_index": 1,
-      "category": "notes",
-      "payload": {
-        "title": "Nota de traslado",
-        "text": "Paciente agitado durante el traslado en ambulancia, evento autolimitado. Cedió solo al llegar."
-      },
-      "tags": [
-        "context",
-        "behavioral",
-        "transport"
-      ],
-      "is_signal": false,
-      "noise_type": "false_alarm",
-      "noise_class": "ruido_trampa",
-      "highlight_targets": [],
-      "safety_flags": {
-        "contraindication": false,
-        "lethal_risk": false,
-        "decision_critical": false
-      }
-    },
-    {
-      "evidence_id": "h05",
-      "block_index": 1,
-      "category": "labs",
-      "payload": {
-        "title": "Creatinina (resultado tardío)",
-        "text": "Cr: 2.4 mg/dL — resultado disponible 5 horas post-ingreso. La decisión de antibiótico ya fue tomada sin este dato."
-      },
-      "tags": [
-        "renal_function",
-        "lab",
-        "aki"
-      ],
-      "is_signal": false,
-      "noise_type": "delayed_result",
-      "noise_class": "ruido_blanco",
-      "highlight_targets": [],
-      "safety_flags": {
-        "contraindication": false,
-        "lethal_risk": false,
-        "decision_critical": false
-      }
-    },
-    {
-      "evidence_id": "h06",
-      "block_index": 2,
-      "category": "labs",
-      "payload": {
-        "title": "Lactato sérico",
-        "text": "Lactato: 4.2 mmol/L. Marcador de hipoperfusión tisular severa. Confirma metabolismo anaerobio activo."
-      },
-      "tags": [
-        "lab",
-        "lactate",
-        "hypoperfusion",
-        "septic_shock"
-      ],
-      "is_signal": true,
-      "noise_type": "none",
-      "noise_class": "none",
-      "highlight_targets": [
-        {
-          "text": "4.2 mmol/L",
-          "start": 9,
-          "end": 19
-        }
-      ],
-      "safety_flags": {
-        "contraindication": false,
-        "lethal_risk": true,
-        "decision_critical": true
-      },
-      "triggers": [
-        {
-          "on_action": "keep",
-          "set_flag": "lactato_elevado",
-          "narration": "Lactato >2 mmol/L + hipotensión refractaria a fluidos = criterio de choque séptico según Sepsis-3. Vasopresores indicados."
-        }
-      ]
-    },
-    {
-      "evidence_id": "h07",
-      "block_index": 2,
-      "category": "labs",
-      "payload": {
-        "title": "Hemoglobina (duplicado de impresión)",
-        "text": "Hb: 9.0 g/dL — segunda impresión del mismo análisis. Valor idéntico al previo. Error de sistema."
-      },
-      "tags": [
-        "lab",
-        "hematology"
-      ],
-      "is_signal": false,
-      "noise_type": "duplicate",
-      "noise_class": "ruido_blanco",
-      "highlight_targets": [],
-      "safety_flags": {
-        "contraindication": false,
-        "lethal_risk": false,
-        "decision_critical": false
-      }
-    },
-    {
-      "evidence_id": "h08",
-      "block_index": 2,
-      "category": "meds",
-      "payload": {
-        "title": "Tratamiento habitual",
-        "text": "Metformina 850 mg c/12h y Enalapril 10 mg/día. Tratamiento vigente — relevante para ajustar dosis en falla renal."
-      },
-      "tags": [
-        "med_history",
-        "pharmacology",
-        "dm2",
-        "hta"
-      ],
-      "is_signal": true,
-      "noise_type": "none",
-      "noise_class": "none",
-      "highlight_targets": [
-        {
-          "text": "Metformina 850 mg",
-          "start": 0,
-          "end": 17
+            "card_id": "h03",
+            "ui_icon": "🧪",
+            "category": "labs",
+            "card_text": "Hb: 9.0 g/dL. Anemia leve, probablemente crónica por enfermedad (DM2, HTA). No es la causa del choque.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding"
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": false
+            }
         },
         {
-          "text": "ajustar dosis en falla renal",
-          "start": 72,
-          "end": 100
-        }
-      ],
-      "safety_flags": {
-        "contraindication": true,
-        "lethal_risk": false,
-        "decision_critical": true
-      },
-      "triggers": [
-        {
-          "on_action": "keep",
-          "set_flag": "metformina_contraindicada_sepsis",
-          "narration": "Metformina está contraindicada en sepsis con disfunción renal — acidosis láctica como complicación."
-        }
-      ]
-    },
-    {
-      "evidence_id": "h09",
-      "block_index": 2,
-      "category": "imaging",
-      "payload": {
-        "title": "Ecografía renal y de vías urinarias",
-        "text": "Riñón derecho con ectasia pielocalicial grado II. Vejiga con sedimento ecogénico. Compatible con proceso infeccioso urinario activo."
-      },
-      "tags": [
-        "imaging",
-        "urinary",
-        "infectious"
-      ],
-      "is_signal": true,
-      "noise_type": "none",
-      "noise_class": "none",
-      "highlight_targets": [
-        {
-          "text": "ectasia pielocalicial grado II",
-          "start": 22,
-          "end": 51
+            "card_id": "h04",
+            "ui_icon": "📄",
+            "category": "notes",
+            "card_text": "Paciente agitado durante el traslado en ambulancia, evento autolimitado. Cedió solo al llegar.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding"
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": false
+            }
         },
         {
-          "text": "proceso infeccioso urinario activo",
-          "start": 93,
-          "end": 127
+            "card_id": "h05",
+            "ui_icon": "🧪",
+            "category": "labs",
+            "card_text": "Cr: 2.4 mg/dL — resultado disponible 5 horas post-ingreso. La decisión de antibiótico ya fue tomada sin este dato.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding"
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "h06",
+            "ui_icon": "🧪",
+            "category": "labs",
+            "card_text": "Lactato: 4.2 mmol/L. Marcador de hipoperfusión tisular severa. Confirma metabolismo anaerobio activo.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "lethal_hazard",
+                "vazquez_comment": "¡Eso era una Red Flag letal! ¡El paciente está en choque por tu culpa!"
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "h07",
+            "ui_icon": "🧪",
+            "category": "labs",
+            "card_text": "Hb: 9.0 g/dL — segunda impresión del mismo análisis. Valor idéntico al previo. Error de sistema.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding"
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "h08",
+            "ui_icon": "💊",
+            "category": "meds",
+            "card_text": "Metformina 850 mg c/12h y Enalapril 10 mg/día. Tratamiento vigente — relevante para ajustar dosis en falla renal.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding"
+            },
+            "safety_flags": {
+                "contraindication": true,
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "h09",
+            "ui_icon": "☢️",
+            "category": "imaging",
+            "card_text": "Riñón derecho con ectasia pielocalicial grado II. Vejiga con sedimento ecogénico. Compatible con proceso infeccioso urinario activo.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding"
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "h10",
+            "ui_icon": "📄",
+            "category": "notes",
+            "card_text": "Número de póliza del seguro médico ilegible. Domicilio registrado en colonia con nombre incorrecto.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding"
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": false
+            }
         }
-      ],
-      "safety_flags": {
-        "contraindication": false,
-        "lethal_risk": false,
-        "decision_critical": true
-      }
-    },
-    {
-      "evidence_id": "h10",
-      "block_index": 2,
-      "category": "notes",
-      "payload": {
-        "title": "Datos administrativos incompletos",
-        "text": "Número de póliza del seguro médico ilegible. Domicilio registrado en colonia con nombre incorrecto."
-      },
-      "tags": [
-        "admin",
-        "administrative"
-      ],
-      "is_signal": false,
-      "noise_type": "irrelevant_true",
-      "noise_class": "ruido_blanco",
-      "highlight_targets": [],
-      "safety_flags": {
-        "contraindication": false,
-        "lethal_risk": false,
-        "decision_critical": false
-      }
-    }
-  ],
-  "checkpoint_triggers": [
-    {
-      "after_evidence_index": 4,
-      "checkpoint_sequence": 1
-    },
-    {
-      "after_evidence_index": 9,
-      "checkpoint_sequence": 2
-    }
-  ],
-  "checkpoint_quizzes": [
-    {
-      "checkpoint_sequence": 1,
-      "question": "TA 85/55 refractaria a 500 mL, FC 132, T° 39.5°C. ¿Cuál es el diagnóstico sindromático correcto según Sepsis-3?",
-      "options": [
-        "Choque séptico — hipotensión refractaria a fluidos + sospecha de causa infecciosa",
-        "Sepsis sin choque — SIRS + infección, sin compromiso hemodinámico",
-        "Choque cardiogénico — falla de bomba con hipotensión",
-        "SIRS no infeccioso — respuesta inflamatoria sin foco evidente"
-      ],
-      "correct_index": 0,
-      "required_evidence_ids": [
-        "h01",
-        "h02"
-      ]
-    },
-    {
-      "checkpoint_sequence": 2,
-      "question": "Con lactato 4.2 mmol/L, ecografía con ectasia pielocalicial y Metformina en uso, ¿cuál es la acción INMEDIATA más prioritaria?",
-      "options": [
-        "Vasopresores (norepinefrina) + suspender Metformina + antibióticos de amplio espectro empíricos",
-        "Reposición de volumen adicional con 2L más de cristaloides antes de vasopresores",
-        "Diálisis peritoneal urgente por la Cr elevada antes de antibióticos",
-        "Observación por 6 horas antes de decidir vasopresores para ver evolución"
-      ],
-      "correct_index": 0,
-      "required_evidence_ids": [
-        "h01",
-        "h06",
-        "h08"
-      ]
-    }
-  ],
-  "final_triad": [
-    {
-      "type": "diagnosis",
-      "question": "Hombre 68a, fiebre 39.5°C, TA 85/55 refractaria, FC 132, disuria, lactato 4.2, ecografía con ectasia pielocalicial. ¿Diagnóstico?",
-      "options": [
-        "Urosepsis (choque séptico de foco urinario — pielonefritis complicada con bacteriemia)",
-        "Endocarditis bacteriana con fenómenos embólicos renales",
-        "Insuficiencia suprarrenal aguda en contexto de DM2",
-        "Neoplasia vesical con infección sobreagregada"
-      ],
-      "correct_index": 0,
-      "required_evidence_ids": [
-        "h01",
-        "h02",
-        "h06",
-        "h09"
-      ]
-    },
-    {
-      "type": "gold_standard",
-      "question": "¿Cuál es el estudio microbiológico obligatorio ANTES de iniciar antibióticos en un choque séptico de foco urinario?",
-      "options": [
-        "Hemocultivos x2 (de sitios distintos) + urocultivo previo a antibióticos",
-        "Punción lumbar para descartar meningitis bacteriana",
-        "TAC de tórax para foco pulmonar oculto",
-        "Coprocultivo y antígeno urinario de Legionella"
-      ],
-      "correct_index": 0,
-      "required_evidence_ids": [
-        "h02",
-        "h09"
-      ]
-    },
-    {
-      "type": "treatment",
-      "question": "¿Cuál es el bundle de manejo en la primera hora del choque séptico (Surviving Sepsis Campaign)?",
-      "options": [
-        "Hemocultivos + antibióticos empíricos + cristaloides 30 mL/kg + lactato + vasopresores si persiste hipotensión",
-        "Corticoides IV + diuréticos para reducir edema + antibióticos orales en bolo único",
-        "Antibióticos después de confirmar germen con cultivo + coloides como primera línea de expansión",
-        "Observación 2 horas + antibióticos orales + alta con seguimiento en 24 horas"
-      ],
-      "correct_index": 0,
-      "required_evidence_ids": [
-        "h01",
-        "h02",
-        "h06",
-        "h08"
-      ]
-    }
-  ],
-  "perla_enarm": {
-    "title": "Urosepsis — Choque Séptico de Foco Urinario",
-    "text": "El choque séptico se define por hipotensión refractaria a fluidos (≥30 mL/kg) + lactato >2 mmol/L (Sepsis-3). El bundle de 1 hora de la SSC incluye: hemocultivos, antibióticos, 30 mL/kg de cristaloides y lactato. Norepinefrina es el vasopresor de primera línea. Metformina está CONTRAINDICADA en sepsis con disfunción renal por riesgo de acidosis láctica. Pielonefritis complicada + bacteriemia = urosepsis.",
-    "gpc_ref": "GPC IMSS-481-11: Diagnóstico y Tratamiento de Sepsis Grave y Choque Séptico — Surviving Sepsis Campaign 2021"
-  },
-  "synergy_rules": [
-    {
-      "id": "intuition_sepsis_triad",
-      "condition": {
-        "and": [
-          {
-            "in": [
-              "h01",
-              {
-                "var": "kept_ids"
-              }
-            ]
-          },
-          {
-            "in": [
-              "h02",
-              {
-                "var": "kept_ids"
-              }
-            ]
-          },
-          {
-            "in": [
-              "h06",
-              {
-                "var": "kept_ids"
-              }
-            ]
-          }
+    ],
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "question": "Hombre 68a, fiebre 39.5°C, TA 85/55 refractaria, FC 132, disuria, lactato 4.2, ecografía con ectasia pielocalicial. ¿Diagnóstico?",
+                "options": [
+                    "Urosepsis (choque séptico de foco urinario — pielonefritis complicada con bacteriemia)",
+                    "Endocarditis bacteriana con fenómenos embólicos renales",
+                    "Insuficiencia suprarrenal aguda en contexto de DM2",
+                    "Neoplasia vesical con infección sobreagregada"
+                ],
+                "correct_index": 0
+            },
+            {
+                "question": "¿Cuál es el estudio microbiológico obligatorio ANTES de iniciar antibióticos en un choque séptico de foco urinario?",
+                "options": [
+                    "Hemocultivos x2 (de sitios distintos) + urocultivo previo a antibióticos",
+                    "Punción lumbar para descartar meningitis bacteriana",
+                    "TAC de tórax para foco pulmonar oculto",
+                    "Coprocultivo y antígeno urinario de Legionella"
+                ],
+                "correct_index": 0
+            },
+            {
+                "question": "¿Cuál es el bundle de manejo en la primera hora del choque séptico (Surviving Sepsis Campaign)?",
+                "options": [
+                    "Hemocultivos + antibióticos empíricos + cristaloides 30 mL/kg + lactato + vasopresores si persiste hipotensión",
+                    "Corticoides IV + diuréticos para reducir edema + antibióticos orales en bolo único",
+                    "Antibióticos después de confirmar germen con cultivo + coloides como primera línea de expansión",
+                    "Observación 2 horas + antibióticos orales + alta con seguimiento en 24 horas"
+                ],
+                "correct_index": 0
+            }
         ]
-      },
-      "message": "🌟 Intuición: Reconociste la tríada de choque séptico — hipotensión + fiebre/taquicardia + lactato elevado. +150 neuronas.",
-      "bonus": 150
     },
-    {
-      "id": "intuition_metformina_ci",
-      "condition": {
-        "and": [
-          {
-            "==": [
-              {
-                "var": "world_state.metformina_contraindicada_sepsis"
-              },
-              true
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "world_state.lactato_elevado"
-              },
-              true
-            ]
-          }
-        ]
-      },
-      "message": "🌟 Intuición Avanzada: Detectaste la contraindicación de Metformina en sepsis con lactato elevado. ¡Excelente clínica! +175 neuronas.",
-      "bonus": 175
-    },
-    {
-      "id": "intuition_urosepsis_pattern",
-      "condition": {
-        "and": [
-          {
-            "==": [
-              {
-                "var": "world_state.criterios_sirs_cumplidos"
-              },
-              true
-            ]
-          },
-          {
-            "in": [
-              "h09",
-              {
-                "var": "kept_ids"
-              }
-            ]
-          }
-        ]
-      },
-      "message": "🌟 Intuición: SIRS + ectasia pielocalicial en ecografía = urosepsis identificado. Patrón clínico completo. +125 neuronas.",
-      "bonus": 125
+    "perla_enarm": {
+        "title": "Urosepsis — Choque Séptico de Foco Urinario",
+        "text": "El choque séptico se define por hipotensión refractaria a fluidos (≥30 mL/kg) + lactato >2 mmol/L (Sepsis-3). El bundle de 1 hora de la SSC incluye: hemocultivos, antibióticos, 30 mL/kg de cristaloides y lactato. Norepinefrina es el vasopresor de primera línea. Metformina está CONTRAINDICADA en sepsis con disfunción renal por riesgo de acidosis láctica. Pielonefritis complicada + bacteriemia = urosepsis.",
+        "gpc_ref": "GPC IMSS-481-11: Diagnóstico y Tratamiento de Sepsis Grave y Choque Séptico — Surviving Sepsis Campaign 2021"
     }
-  ]
 }

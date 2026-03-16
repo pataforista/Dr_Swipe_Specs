@@ -8,12 +8,26 @@ const ENGINE_STATE = {
     RESULTS: 'results',
     DOSSIER: 'dossier',
     GHOSTED: 'ghosted',
-    THE_CHAT: 'the_chat'
+    THE_CHAT: 'the_chat',
+    SHOCK_MODE: 'shock_mode',
+    CRITICAL_ALERT: 'critical_alert',
+    CODEX: 'codex'
 };
 
 export { ENGINE_STATE };
 
-// Noise types that should be discarded
+import { CodexManager } from './codex.js';
+
+let NLG_ENGINE;
+if (typeof require !== 'undefined') {
+    NLG_ENGINE = require('./nlg_engine.js').NLG_ENGINE;
+} else {
+    // In browser, assume it's loaded as a global or handling it via standard imports elsewhere
+    // This part is tricky if nlg_engine.js is an ES module too.
+    // Given the previous setup, let's keep the dynamic promise but better.
+    import('./nlg_engine.js').then(m => NLG_ENGINE = m.NLG_ENGINE).catch(e => console.warn("NLG_ENGINE failed to load:", e));
+}
+
 const NOISE_TYPES_DISCARD = new Set([
     'duplicate',
     'irrelevant_true',
@@ -21,6 +35,23 @@ const NOISE_TYPES_DISCARD = new Set([
     'delayed_result',
     'false_alarm'
 ]);
+
+const CATEGORY_ICONS = {
+    vitals: '🩺',
+    labs: '🧪',
+    imaging: '📸',
+    meds: '💊',
+    timeline: '📋',
+    notes: '🗒️',
+    admin: '📁',
+    psych: '🧠',
+    clock: '🕒',
+    thermometer: '🌡️',
+    stomach: '🤢',
+    money: '💸',
+    family: '🌳',
+    toxicity: '☢️'
+};
 
 export class SwipeEngine {
     constructor() {
@@ -67,8 +98,14 @@ export class SwipeEngine {
 
         // Gamification & Progression (Persisted)
         this.coins = 0;
+        this.playerRank = 'MIP'; // MIP, R1, R2, R3, Jefe
+        this.caseCount = 0;
+        this.casesPerShock = 5;
         this.inventory = [];
         this.challenge = { target: 3, progress: 0, completed: false };
+        
+        // Initialize Codex Manager
+        this.codexManager = new CodexManager(); 
         this.loadGamificationState();
     }
 
@@ -76,12 +113,14 @@ export class SwipeEngine {
         try {
             const state = JSON.parse(localStorage.getItem('drSwipeGameState')) || {};
             this.coins = state.coins || 0;
+            this.playerRank = state.playerRank || 'MIP';
+            this.playerRank = state.playerRank || 'MIP';
+            this.caseCount = state.caseCount || 0;
             this.inventory = state.inventory || [];
 
             // Basic daily challenge persistence
             const today = new Date().toDateString();
             if (state.challengeDate !== today) {
-                // New day, reset challenge
                 this.challenge = { target: 3, progress: 0, completed: false, date: today };
                 this.saveGamificationState();
             } else {
@@ -96,6 +135,8 @@ export class SwipeEngine {
         try {
             const state = {
                 coins: this.coins,
+                playerRank: this.playerRank,
+                caseCount: this.caseCount,
                 inventory: this.inventory,
                 challenge: this.challenge,
                 challengeDate: this.challenge.date
@@ -140,7 +181,10 @@ export class SwipeEngine {
     initializeSession(caseData) {
         this.currentCase = caseData;
         this.formatVersion = caseData.version || 'v1';
-        this.patientProfile = caseData.patient_profile || null;
+        
+        // v3 migration: arrival_scenario instead of bio
+        this.patientProfile = caseData.patient_intro || caseData.patient_profile || null;
+        
         this.state = ENGINE_STATE.INTRO;
         this.currentIndex = 0;
         this.keptItems = [];
@@ -159,8 +203,13 @@ export class SwipeEngine {
             streak: 0,
             bestStreak: 0,
             mistakes: [],
-            neuronas: 0  // FIX: was missing from reset
+            neuronas: 0
         };
+
+        // v3 support: use card_stream if evidence_stream is missing
+        if (!this.currentCase.evidence_stream && this.currentCase.card_stream) {
+            this.currentCase.evidence_stream = this.currentCase.card_stream;
+        }
 
         this.worldState = {
             paciente_estable: true,
@@ -170,13 +219,27 @@ export class SwipeEngine {
         this.confidence = 50;
         this.synergyRules = (caseData.synergy_rules || []).map(r => ({ ...r, active: false }));
         this.diagnosticBudget = {
-            points: this.formatVersion === 'v2' ? 6 : 0,
+            points: this.formatVersion === 'v3_swipe_action' ? 0 : (this.formatVersion === 'v2' ? 6 : 0),
             spent: 0,
-            enabled: this.formatVersion === 'v2'
+            enabled: this.formatVersion === 'v2' || this.formatVersion === 'v3_swipe_action'
         };
         this.consult = { tokens: 1, used: 0 };
 
-        console.log("Session initialized for:", caseData.case_id);
+        // Triage Fatal: Process evidence with NLG_ENGINE
+        if (NLG_ENGINE) {
+            this.currentCase.evidence_stream = this.currentCase.evidence_stream.map(card => {
+                return NLG_ENGINE.processCard(card);
+            });
+
+            // Inject occasional Mexican Noise if not a Boss Fight
+            if (this.state !== ENGINE_STATE.SHOCK_MODE && this.playerRank === 'MIP') {
+                 const noiseCard = NLG_ENGINE.getRandomNoise();
+                 const pos = Math.floor(Math.random() * this.currentCase.evidence_stream.length);
+                 this.currentCase.evidence_stream.splice(pos, 0, noiseCard);
+            }
+        }
+
+        console.log("Session initialized for:", caseData.case_id, "Rank:", this.playerRank, "v3:", this.formatVersion === 'v3_swipe_action');
     }
 
     startReview() {
@@ -340,12 +403,15 @@ export class SwipeEngine {
 
     // FIX: Extended to recognize all noise types from schema
     getExpectedAction(card) {
+        if (this.formatVersion === 'v3_swipe_action' && card.expected_action) {
+            return card.expected_action === 'keep' ? 'right' : 'left';
+        }
         if (this.formatVersion === 'v2') {
             return card.is_match ? 'right' : 'left';
         }
         const isNoise = card.noise_type && NOISE_TYPES_DISCARD.has(card.noise_type);
         const isAdmin = card.category === 'admin' ||
-            (card.tags && (card.tags.includes('admin') || card.tags.includes('administrative')));
+            (card.tags && Array.isArray(card.tags) && (card.tags.includes('admin') || card.tags.includes('administrative')));
         // Explicit is_signal override from schema
         if (card.is_signal === false) return 'left';
         if (card.is_signal === true && !isAdmin) return 'right';
@@ -369,7 +435,7 @@ export class SwipeEngine {
             return 'Falsa alarma: el evento fue autolimitado y no requiere acción. Registrarlo inflaría el expediente.';
         }
         const isAdmin = card.category === 'admin' ||
-            (card.tags && (card.tags.includes('admin') || card.tags.includes('administrative')));
+            (card.tags && Array.isArray(card.tags) && (card.tags.includes('admin') || card.tags.includes('administrative')));
         if (isAdmin) {
             return 'Dato administrativo: útil para contacto o logística, pero no para la decisión clínica.';
         }
@@ -437,9 +503,19 @@ export class SwipeEngine {
         const expected = this.getExpectedAction(card);
         const correct = direction === expected;
 
-        // Ghosting Logic for V2
-        if (this.formatVersion === 'v2' && card.safety_flags?.lethal_risk && !correct) {
+        // --- INTERCEPTOR DE VÁZQUEZ (A prueba de balas) ---
+        // ¿Guardó (right) algo que era basura (left) y además era letal?
+        const keptLethalNoise = (direction === 'right') && (expected === 'left') && card.safety_flags?.lethal_risk;
+
+        // ¿Descartó (left) algo que era vital (right) y no se podía perder?
+        const discardedLethalSignal = (direction === 'left') && (expected === 'right') && card.safety_flags?.lethal_if_discarded;
+
+        if (keptLethalNoise || discardedLethalSignal) {
             this.state = ENGINE_STATE.GHOSTED;
+            this.logLethalError(card);
+            if (card.scoring?.vazquez_comment) {
+                this.lastFeedback = { text: card.scoring.vazquez_comment, type: 'lethal' };
+            }
         }
 
         this.stats.total += 1;
@@ -450,8 +526,8 @@ export class SwipeEngine {
         } else {
             this.stats.streak = 0;
             this.stats.mistakes.push({
-                evidence_id: card.evidence_id,
-                title: card.payload.title,
+                evidence_id: card.evidence_id || card.card_id,
+                title: card.payload?.title || card.card_text || 'Evidencia',
                 category: card.category,
                 expected
             });
@@ -465,16 +541,18 @@ export class SwipeEngine {
             index: this.currentIndex
         });
 
-        this.lastFeedback = {
-            correct,
-            expected,
-            title: card.payload.title,
-            category: card.category,
-            noiseType: card.noise_type,
-            feedback_text: this.formatVersion === 'v2' ?
-                (direction === 'right' ? card.feedback?.match : card.feedback?.discard) :
-                this.getDecisionRationale(card)
-        };
+        if (this.state !== ENGINE_STATE.GHOSTED) {
+            this.lastFeedback = {
+                correct,
+                expected,
+                title: card.payload?.title || card.card_text || 'Evidencia',
+                category: card.category,
+                noiseType: card.noise_type,
+                feedback_text: (this.formatVersion === 'v1' || this.formatVersion === 'v2') ?
+                    (direction === 'right' ? card.feedback?.match : card.feedback?.discard) :
+                    this.getDecisionRationale(card)
+            };
+        }
 
         return correct;  // FIX: return correct for handleSwipe to use
     }
@@ -500,16 +578,69 @@ export class SwipeEngine {
         this.checkpointsPassed++;
         this.currentCheckpoint = null;
 
+        // Triage Fatal: If in Shock Mode, acing the checkpoint can unlock a Perla
+        if (this.state === ENGINE_STATE.SHOCK_MODE && this.stats.streak >= 5) {
+            this.unlockPerla();
+        }
+
         if (this.currentIndex < this.currentCase.evidence_stream.length) {
             this.state = ENGINE_STATE.STREAM;
         } else {
-            this.state = ENGINE_STATE.FINAL_TRIAD;
-            this.currentTriadIndex = 0;
+            // Check for Shock Mode trigger
+            if (this.currentCase.is_boss || (this.caseCount + 1) % this.casesPerShock === 0) {
+                this.triggerShockMode();
+            } else {
+                this.state = ENGINE_STATE.FINAL_TRIAD;
+                this.currentTriadIndex = 0;
+            }
+        }
+    }
+
+    triggerShockMode() {
+        this.state = ENGINE_STATE.CRITICAL_ALERT;
+        // The UI will handle the flash/vibration and then call proceedToShockInterrogation
+    }
+
+    proceedToShockInterrogation() {
+        this.state = ENGINE_STATE.SHOCK_MODE;
+        this.currentTriadIndex = 0;
+        this.shockTimer = 15; // 15 seconds real-time
+    }
+
+    unlockPerla() {
+        if (!this.currentCase.enarm_pearl) return;
+        const pearl = this.currentCase.enarm_pearl;
+        
+        if (this.codexManager) {
+            const isNew = this.codexManager.savePearl(
+                this.currentCase.theme_config,
+                pearl,
+                this.currentCase.case_id
+            );
+            
+            if (isNew) {
+                this.stats.unlockedPearl = pearl;
+            }
+        }
+    }
+
+    logLethalError(card) {
+        const error = {
+            case_id: this.currentCase.case_id,
+            evidence_id: card.evidence_id || card.card_id,
+            title: card.payload?.title || card.card_text || 'Evidencia Crítica',
+            reason: card.safety_flags?.rationale || card.scoring?.vazquez_comment || "Error crítico de seguridad",
+            timestamp: Date.now()
+        };
+        
+        if (this.codexManager) {
+            this.codexManager.saveError(error);
         }
     }
 
     handleTriadAnswer(answerIndex) {
-        const triad = this.currentCase.final_triad[this.currentTriadIndex];
+        const triadList = this.currentCase.boss_fight_triad?.questions || this.currentCase.final_triad;
+        const triad = triadList[this.currentTriadIndex];
         const isCorrect = answerIndex === triad.correct_index;
 
         if (isCorrect) {
@@ -526,13 +657,28 @@ export class SwipeEngine {
             question: triad.question
         });
 
+        // SHOCK MODE LETHAL FAILURE
+        if (!isCorrect && this.state === ENGINE_STATE.SHOCK_MODE) {
+            this.state = ENGINE_STATE.GHOSTED;
+            this.lastFeedback = { 
+                text: `¡DUDAR EN CHOQUE ES MATAR! ${triad.rationale || "Has fallado en la decisión crítica."}`,
+                type: 'lethal' 
+            };
+            return { action: 'ghosted' };
+        }
+
         this.currentTriadIndex++;
-        if (this.currentTriadIndex >= this.currentCase.final_triad.length) {
+        if (this.currentTriadIndex >= triadList.length) {
             this.calculateDossierScore();
+            if (this.state === ENGINE_STATE.SHOCK_MODE) {
+                // If they survived the shock mode, they win and unlock perla
+                this.unlockPerla();
+            }
             this.state = ENGINE_STATE.CONFIDENCE_CHECK;
             return { action: 'confidence_check' };
         }
-        return { action: 'next_triad' };
+
+        return { action: 'next_question' };
     }
 
 
@@ -601,6 +747,9 @@ export class SwipeEngine {
 
     calculateDossierScore() {
         const keptNoise = this.keptItems.filter(i => this.getExpectedAction(i) === 'left').length;
+        const keptSignals = this.keptItems.filter(i => this.getExpectedAction(i) === 'right').length;
+        const totalSignals = this.currentCase.evidence_stream.filter(e => this.getExpectedAction(e) === 'right').length;
+        
         this.stats.scoring_tags = [];
 
         // Penalties
@@ -612,15 +761,12 @@ export class SwipeEngine {
             this.stats.scoring_tags.push('false_positive');
         }
 
-        // Rewards
-        const utilityRatio = this.keptItems.length > 0 ? (this.keptItems.length - keptNoise) / this.keptItems.length : 0;
-        if (utilityRatio >= 0.8 && this.keptItems.length > 0) {
+        if (this.keptItems.length > 0) {
             this.stats.scoring_tags.push('precision');
             this.stats.neuronas += 50;
         }
 
-        const totalRightActions = this.currentCase.evidence_stream.filter(e => this.getExpectedAction(e) === 'right').length;
-        if (utilityRatio >= 0.8 && this.keptItems.length > 0 && this.keptItems.length <= totalRightActions) {
+        if (this.keptItems.length > 0 && this.keptItems.length <= totalSignals) {
             this.stats.scoring_tags.push('clean_dossier');
             this.stats.neuronas += 50;
         }
@@ -630,23 +776,66 @@ export class SwipeEngine {
             this.stats.neuronas += 75;
         }
 
-        // Gamification: Award Coins based on performance
+        // Calculate Rank
         const accuracy = this.getAccuracy();
-        let earnedCoins = 0;
-        if (accuracy >= 80 && this.stats.mistakes.filter(m => m.safety_flags?.lethal_risk).length === 0) {
-            earnedCoins = 10; // Base win
-            if (accuracy === 100) earnedCoins += 5; // Perfect match bonus
+        const totalKept = this.keptItems.length;
+        const isGhosted = this.state === ENGINE_STATE.GHOSTED;
+        
+        // Evitar NaN si el jugador descarta todo (Rango "Nihilista")
+        const utilityRatio = totalKept === 0 ? 0 : (totalKept - keptNoise) / totalKept;
+
+        if (isGhosted) {
+            this.stats.rank = 'F'; // Muerte súbita
+        } else if (totalKept === 0 && this.stats.total > 0) {
+            this.stats.rank = 'D'; // Descartó hasta al paciente
+        } else if (accuracy >= 90 && keptNoise === 0) {
+            this.stats.rank = 'S'; // El Francotirador
+        } else if (keptNoise >= 3 || accuracy < 60) {
+            this.stats.rank = 'D'; // El Residente Paranoico
+        } else {
+            this.stats.rank = 'B'; // El Dr. House de Presupuesto (Rango intermedio)
         }
+
+        // Gamification: Award Coins based on performance
+        let earnedCoins = 0;
+        if (this.stats.rank === 'S') earnedCoins = 25;
+        else if (this.stats.rank === 'B') earnedCoins = 10;
+        else if (this.stats.rank === 'D') earnedCoins = 5;
 
         if (earnedCoins > 0) {
             this.stats.earnedCoins = earnedCoins;
             this.addCoins(earnedCoins);
         }
 
-        // Update challenge (Considered "Perfect" for challenge if no ghosting and accuracy > 80%)
-        const isGhosted = this.state === ENGINE_STATE.GHOSTED;
+        // Rank Up Logic
+        if (this.stats.rank === 'S') {
+            this.updatePlayerRank();
+        }
+
+        this.incrementCaseCount();
+
+        // Update challenge
         const isPerfect = !isGhosted && accuracy >= 80;
         this.updateChallengeState(isPerfect, isGhosted);
+    }
+
+    updatePlayerRank() {
+        const ranks = ['MIP', 'R1', 'R2', 'R3', 'Jefe'];
+        const currentIndex = ranks.indexOf(this.playerRank);
+        if (currentIndex < ranks.length - 1) {
+            this.playerRank = ranks[currentIndex + 1];
+            this.stats.rankUp = true;
+            this.saveGamificationState();
+        }
+    }
+
+    incrementCaseCount() {
+        this.caseCount++;
+        this.saveGamificationState();
+    }
+
+    shouldTriggerShock() {
+        return this.caseCount > 0 && this.caseCount % this.casesPerShock === 0;
     }
 }
 

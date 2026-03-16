@@ -1,83 +1,82 @@
 {
-  "meta": {
-    "id": "PROC_INT_AMI_001_014",
-    "title": "INT AMI 001 (Var 14)",
-    "category": "Procedural",
+    "case_id": "PROC_INT_AMI_001_014",
+    "version": "v3_swipe_action",
+    "theme_config": "theme-default",
     "difficulty": "hard",
-    "tags": [
-      "procedural",
-      "clinical_reasoning"
-    ]
-  },
-  "version": "v2",
-  "format": "clinical_reasoning",
-  "patient_profile": {
-    "name": "Carmen",
-    "age": 67,
-    "sex": "Femenino",
-    "image_url": "https://api.dicebear.com/7.x/pixel-art/svg?seed=Carmen67&backgroundColor=c0aede,b6e3f4",
-    "mood": "angustiado",
-    "bio": "Paciente diabético llega con dolor torácico opresivo de 120 minutos. Irradia a mandíbula y brazo izquierdo.",
-    "vitals": {
-      "TA": "90/60 (tendencia al choque)",
-      "FC": "115 lpm",
-      "Temp": "36.8°C"
+    "patient_intro": {
+        "name": "Carmen",
+        "arrival_scenario": "Paciente diabético llega con dolor torácico opresivo de 120 minutos. Irradia a mandíbula y brazo izquierdo.",
+        "time_limit_sec": 30
     },
-    "details": "ECG muestra supra-desnivel del ST en derivaciones V1-V4 (Antero-septal). Tabaquista activo (20 paq/año)."
-  },
-  "evidence_stream": [
-    {
-      "type": "differential",
-      "is_match": true,
-      "payload": {
-        "title": "A) Infarto Agudo al Miocardio (SCACEST)",
-        "text": "Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      },
-      "feedback": {
-        "match": "¡Perfect Match! El cuadro clínico más el ECG con elevación del ST hacen el diagnóstico. ICP primaria en menos de 90 min ideal.",
-        "discard": "Error Crítico: El paciente tiene cambios isquémicos activos. Retrasar tratamiento aumenta mortalidad exponencialmente."
-      }
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "🩺",
+            "category": "vitals",
+            "card_text": "TA 90/60 (tendencia al choque), FC 115 lpm, Temp 36.8°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "¿Para qué guardas signos vitales normales, R1? No estamos en piso de medicina interna."
+            }
+        },
+        {
+            "card_id": "card_0",
+            "ui_icon": "📄",
+            "category": "Evidencia",
+            "card_text": "Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "¡Perfect Match! El cuadro clínico más el ECG con elevación del ST hacen el diagnóstico. ICP primaria en menos de 90 min ideal."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "card_1",
+            "ui_icon": "📄",
+            "category": "Evidencia",
+            "card_text": "Dolor torácico reproducible a la palpación de las articulaciones condrocostales, sin cambios en ECG.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Error. No explica la diaforesis, el ECG alterado ni la irradiación. Podría costar la vida."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "card_2",
+            "ui_icon": "📄",
+            "category": "Evidencia",
+            "card_text": "Disnea súbita, taquicardia, dolor pleurítico, hipoxia severa. S1Q3T3 raro pero posible.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "lethal_hazard",
+                "vazquez_comment": "Aunque es un dolor torácico letal, la presentación clásica del TEP es DISNEA SÚBITA profunda y desaturación, más que dolor opresivo."
+            },
+            "safety_flags": {
+                "red_flag": true,
+                "lethal_risk": true
+            }
+        }
+    ],
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": []
     },
-    {
-      "type": "differential",
-      "is_match": false,
-      "payload": {
-        "title": "B) Costocondritis (Síndrome de Tietze)",
-        "text": "Dolor torácico reproducible a la palpación de las articulaciones condrocostales, sin cambios en ECG."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
-      },
-      "feedback": {
-        "match": "Error. No explica la diaforesis, el ECG alterado ni la irradiación. Podría costar la vida.",
-        "discard": "¡Ojo clínico! El dolor reproducible a la palpación casi siempre descarta origen isquémico clásico, aquí el dolor es visceral."
-      }
-    },
-    {
-      "type": "differential",
-      "is_match": false,
-      "payload": {
-        "title": "C) Tromboembolia Pulmonar",
-        "text": "Disnea súbita, taquicardia, dolor pleurítico, hipoxia severa. S1Q3T3 raro pero posible."
-      },
-      "safety_flags": {
-        "red_flag": true,
-        "lethal_risk": true
-      },
-      "feedback": {
-        "match": "Aunque es un dolor torácico letal, la presentación clásica del TEP es DISNEA SÚBITA profunda y desaturación, más que dolor opresivo.",
-        "discard": "Felicidades por descartarlo. Los cambios ST y el tipo de dolor nos centran en las coronarias."
-      }
+    "perla_enarm": {
+        "title": "Cardiopatía Isquémica: Tiempo es Músculo",
+        "text": "En un SCACEST, el diagnóstico se hace con clínica + ECG (en <10 min). NO se debe esperar el resultado de las troponinas para activar código infarto ni trombolizar/ICP.",
+        "gpc_ref": "GPC Infarto Agudo al Miocardio con Elevación del ST"
     }
-  ],
-  "perla_enarm": {
-    "title": "Cardiopatía Isquémica: Tiempo es Músculo",
-    "text": "En un SCACEST, el diagnóstico se hace con clínica + ECG (en <10 min). NO se debe esperar el resultado de las troponinas para activar código infarto ni trombolizar/ICP.",
-    "gpc_ref": "GPC Infarto Agudo al Miocardio con Elevación del ST"
-  }
 }

@@ -1,80 +1,69 @@
 {
     "case_id": "psych_mania_001",
-    "version": "v2",
-    "mode": "clinical_reasoning",
+    "version": "v3_swipe_action",
+    "theme_config": "theme-psych",
     "difficulty": "standard",
-    "patient_profile": {
-        "name": "Mujer",
-        "age": "28 años",
-        "image_type": "avatar_8bit",
-        "mood": "expansive",
-        "bio": "Reporta energía excesiva, compras impulsivas y no ha dormido en 4 días. Sin antecedentes de consumo.",
-        "vitals": {
-            "TA": "120/80",
-            "FC": "95 lpm",
-            "Temp": "36.5°C"
-        },
-        "details": "Antecedentes heredofamiliares de trastorno afectivo bipolarl en rama materna. Personal no patológico: Licenciada en artes, tabaquismo social."
+    
+    "patient_intro": {
+        "name": "Mujer, 28 años",
+        "arrival_scenario": "Traída por familiares a Urgencias. Habla sin parar y no se queda quieta en la camilla.",
+        "time_limit_sec": 30
     },
-    "evidence_stream": [
+
+    "card_stream": [
         {
-            "evidence_id": "diff_01",
-            "type": "differential",
-            "category": "diagnosis",
-            "payload": {
-                "title": "A) Episodio Maníaco",
-                "text": "Cumple criterios de temporalidad (más de 1 semana) y funcionalidad afectada por impulsividad."
-            },
-            "is_match": true,
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": true
-            },
-            "feedback": {
-                "match": "¡Match! Cumple criterios de temporalidad y funcionalidad. Recuerda descartar siempre causa orgánica.",
-                "discard": "Error: Este es el diagnóstico principal. Ignorar estos síntomas pone en riesgo la estabilidad de la paciente."
+            "card_id": "c_01_timeline",
+            "ui_icon": "🧠",
+            "category": "Historia",
+            "nlg_trigger": "mania_energia", 
+            "card_text": "Lleva 4 días con energía desbordante y comprando cosas compulsivamente.",
+            "expected_action": "keep", 
+            "scoring": { "points": 100, "error_type": "none" }
+        },
+        {
+            "card_id": "c_02_vitals",
+            "ui_icon": "🩺",
+            "category": "Signos Vitales",
+            "nlg_trigger": "vitals_normal",
+            "card_text": "TA 120/80, FC 95 lpm, Temp 36.5°C",
+            "expected_action": "discard", 
+            "scoring": { 
+                "points": 50, 
+                "error_type": "hoarding", 
+                "vazquez_comment": "¿Para qué guardas signos vitales normales, R1? Estás llenando el expediente de basura." 
             }
         },
         {
-            "evidence_id": "diff_02",
-            "type": "differential",
-            "category": "diagnosis",
-            "payload": {
-                "title": "B) Crisis de Pánico",
-                "text": "Episodios súbitos de miedo intenso con síntomas autonómicos, duración breve."
-            },
-            "is_match": false,
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            },
-            "feedback": {
-                "match": "No es el diagnóstico. La crisis de pánico es paroxística y breve, no dura 4 días continuos.",
-                "discard": "¡Ojo clínico! Correcto. La duración y el aumento de energía descartan una crisis de pánico simple."
-            }
-        },
-        {
-            "evidence_id": "diff_03",
-            "type": "differential",
-            "category": "diagnosis",
-            "payload": {
-                "title": "C) Consumo de Sustancias",
-                "text": "Uso agudo de estimulantes (cocaína, anfetaminas) que mimetizan cuadros maníacos."
-            },
-            "is_match": false,
-            "safety_flags": {
-                "red_flag": true,
-                "lethal_risk": true
-            },
-            "feedback": {
-                "match": "Aunque es un diferencial, la paciente niega consumo y el cuadro es muy florido para ser solo tóxico.",
-                "discard": "¡Correcto! Siempre hay que considerarlo, pero aquí los antecedentes familiares orientan a algo primario."
+            "card_id": "c_03_tox_screen",
+            "ui_icon": "🧪",
+            "category": "Laboratorios",
+            "nlg_trigger": "tox_negativo",
+            "card_text": "Tamizaje toxicológico: NEGATIVO a cocaína y anfetaminas.",
+            "expected_action": "keep",
+            "safety_flags": { "is_critical_dxd": true, "lethal_if_discarded": true },
+            "scoring": { 
+                "points": 200, 
+                "error_type": "lethal_omission",
+                "vazquez_comment": "¡Descartaste el toxicológico! Podría haber estado en sobredosis y tú asumiendo que era psiquiátrico. ¡Estás fuera de mi guardia!"
             }
         }
     ],
+
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "question": "¿Cuál es el diagnóstico más probable?",
+                "options": ["Trastorno Bipolar I", "Esquizofrenia", "Intoxicación por estimulantes"],
+                "correct_index": 0
+            }
+        ]
+    },
+
     "perla_enarm": {
+        "id": "perla_psych_001",
         "title": "Trastorno Bipolar: Episodio Maníaco",
-        "text": "El diagnóstico de manía requiere al menos 1 semana de síntomas (o menos si requiere hospitalización). Los síntomas cardinales son el aumento de energía, disminución de necesidad de sueño y verborrea.",
-        "gpc_ref": "Guía de Práctica Clínica: Diagnóstico y Tratamiento del Trastorno Bipolar"
+        "text": "Se requiere al menos 1 semana de síntomas o necesidad de hospitalización. El tamizaje toxicológico es imperativo para descartar causas secundarias.",
+        "gpc_ref": "GPC-IMSS-044-08"
     }
 }

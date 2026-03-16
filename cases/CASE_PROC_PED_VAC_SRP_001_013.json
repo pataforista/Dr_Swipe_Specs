@@ -1,83 +1,82 @@
 {
-  "meta": {
-    "id": "PROC_PED_VAC_SRP_001_013",
-    "title": "PED VAC SRP 001 (Var 13)",
-    "category": "Procedural",
+    "case_id": "PROC_PED_VAC_SRP_001_013",
+    "version": "v3_swipe_action",
+    "theme_config": "theme-default",
     "difficulty": "hard",
-    "tags": [
-      "procedural",
-      "clinical_reasoning"
-    ]
-  },
-  "version": "v2",
-  "format": "clinical_reasoning",
-  "patient_profile": {
-    "name": "Elena",
-    "age": 18,
-    "sex": "Femenino",
-    "image_url": "https://api.dicebear.com/7.x/pixel-art/svg?seed=Elena18&backgroundColor=c0aede,b6e3f4",
-    "mood": "juguetón",
-    "bio": "Visita de rutina a los 18 meses. Peso y talla en percentil 50. Hitos del desarrollo (camina independiente) adecuados.",
-    "vitals": {
-      "TA": "N/A",
-      "FC": "110 lpm",
-      "Temp": "36.8°C"
+    "patient_intro": {
+        "name": "Elena",
+        "arrival_scenario": "Visita de rutina a los 18 meses. Peso y talla en percentil 50. Hitos del desarrollo (camina independiente) adecuados.",
+        "time_limit_sec": 30
     },
-    "details": "Esquema de vacunación al corriente hasta el año de vida. ¿Qué biológicos le corresponden en esta visita?"
-  },
-  "evidence_stream": [
-    {
-      "type": "differential",
-      "is_match": true,
-      "payload": {
-        "title": "A) Hexavalente Acelular + SRP (Dosis 2)",
-        "text": "Esquema actual: Refuerzo de Hexavalente a los 18 meses, y la SRP que históricamente era a los 6 años se adelantó a los 18 meses."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      },
-      "feedback": {
-        "match": "¡Excelente actualización! Normativa reciente: La 2da dosis de Triple Viral (SRP) se aplica a los 18 meses para cerrar brechas de inmunidad, además del refuerzo de Hexavalente.",
-        "discard": "Error de normativa. Dejaste pasar una 'Oportunidad Perdida de Vacunación' crucial en el esquema actualizado."
-      }
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "🩺",
+            "category": "vitals",
+            "card_text": "TA N/A, FC 110 lpm, Temp 36.8°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "¿Para qué guardas signos vitales normales, R1? No estamos en piso de medicina interna."
+            }
+        },
+        {
+            "card_id": "card_0",
+            "ui_icon": "📄",
+            "category": "Evidencia",
+            "card_text": "Esquema actual: Refuerzo de Hexavalente a los 18 meses, y la SRP que históricamente era a los 6 años se adelantó a los 18 meses.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "¡Excelente actualización! Normativa reciente: La 2da dosis de Triple Viral (SRP) se aplica a los 18 meses para cerrar brechas de inmunidad, además del refuerzo de Hexavalente."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "card_1",
+            "ui_icon": "📄",
+            "category": "Evidencia",
+            "card_text": "Se le aplica el biológico DPT tradicional y la SRP acorde a la nueva normativa.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Casi, pero la DPT (celular) como refuerzo único de los 4 años ya fue sustituida en esta edad por la Hexavalente (que incluye tétanos/difteria/acelular pertussis)."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "card_2",
+            "ui_icon": "📄",
+            "category": "Evidencia",
+            "card_text": "Se planea aplicar refuerzo de tuberculosis y vacuna oral viva de poliomielitis (gotitas).",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Error histórico. La BCG es Dosis Única al nacer (no se re-aplica a menos que no haya cicatriz y sea menor de 5 años bajo protocolos estrictos). Además, el OPV (Sabin bivalente) se aplica en Semanas Nacionales, el esquema basal usa IPV (Salk) en la Hexavalente."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        }
+    ],
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": []
     },
-    {
-      "type": "differential",
-      "is_match": false,
-      "payload": {
-        "title": "B) DPT + SRP (Dosis 2)",
-        "text": "Se le aplica el biológico DPT tradicional y la SRP acorde a la nueva normativa."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
-      },
-      "feedback": {
-        "match": "Casi, pero la DPT (celular) como refuerzo único de los 4 años ya fue sustituida en esta edad por la Hexavalente (que incluye tétanos/difteria/acelular pertussis).",
-        "discard": "¡Bien! Sabes que a los 18 meses toca la Hexavalente, no la DPT aislada."
-      }
-    },
-    {
-      "type": "differential",
-      "is_match": false,
-      "payload": {
-        "title": "C) 2da Dosis de BCG y Sabin (VOP)",
-        "text": "Se planea aplicar refuerzo de tuberculosis y vacuna oral viva de poliomielitis (gotitas)."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
-      },
-      "feedback": {
-        "match": "Error histórico. La BCG es Dosis Única al nacer (no se re-aplica a menos que no haya cicatriz y sea menor de 5 años bajo protocolos estrictos). Además, el OPV (Sabin bivalente) se aplica en Semanas Nacionales, el esquema basal usa IPV (Salk) en la Hexavalente.",
-        "discard": "¡Perfecto! No caíste en distractores obsoletos del esquema antiguo."
-      }
+    "perla_enarm": {
+        "title": "Actualización Cartilla SRP",
+        "text": "El cambio más preguntado recientemente: La Segunda Dosis de SRP (Sarampión, Rubéola, Parotiditis) ya NO es a los 6 años. Ahora es a los 18 MESES en la cartilla vigente.",
+        "gpc_ref": "Cartilla Nacional de Salud / Lineamientos de Vacunación Universal"
     }
-  ],
-  "perla_enarm": {
-    "title": "Actualización Cartilla SRP",
-    "text": "El cambio más preguntado recientemente: La Segunda Dosis de SRP (Sarampión, Rubéola, Parotiditis) ya NO es a los 6 años. Ahora es a los 18 MESES en la cartilla vigente.",
-    "gpc_ref": "Cartilla Nacional de Salud / Lineamientos de Vacunación Universal"
-  }
 }

@@ -1,83 +1,82 @@
 {
-  "meta": {
-    "id": "PROC_SURG_BILIARY_CHOLANGITIS_001_006",
-    "title": "SURG BILIARY CHOLANGITIS 001 (Var 6)",
-    "category": "Procedural",
+    "case_id": "PROC_SURG_BILIARY_CHOLANGITIS_001_006",
+    "version": "v3_swipe_action",
+    "theme_config": "theme-default",
     "difficulty": "standard",
-    "tags": [
-      "procedural",
-      "clinical_reasoning"
-    ]
-  },
-  "version": "v2",
-  "format": "clinical_reasoning",
-  "patient_profile": {
-    "name": "Pedro",
-    "age": 63,
-    "sex": "Masculino",
-    "image_url": "https://api.dicebear.com/7.x/pixel-art/svg?seed=Pedro63&backgroundColor=c0aede,b6e3f4",
-    "mood": "tóxico",
-    "bio": "Cuadro de 48 hrs de dolor en hipocondrio derecho irradiado a escápula, que se agregó fiebre (39°C) e ictericia.",
-    "vitals": {
-      "TA": "100/65",
-      "FC": "120 lpm",
-      "Temp": "39.0°C"
+    "patient_intro": {
+        "name": "Pedro",
+        "arrival_scenario": "Cuadro de 48 hrs de dolor en hipocondrio derecho irradiado a escápula, que se agregó fiebre (39°C) e ictericia.",
+        "time_limit_sec": 30
     },
-    "details": "Al interrogatorio la paciente se encuentra completamente orientada, respondiendo bien, aunque febril."
-  },
-  "evidence_stream": [
-    {
-      "type": "differential",
-      "is_match": true,
-      "payload": {
-        "title": "A) Colangitis Aguda",
-        "text": "Infección de la vía biliar secundaria a obstrucción (ej. coledocolitiasis). Presenta la Tríada de Charcot."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      },
-      "feedback": {
-        "match": "¡Perfect Match! Ictericia + Fiebre + Dolor en HD = Tríada de Charcot. El manejo empírico incluye antibióticos IV y CPRE precoz para drenaje.",
-        "discard": "Error: No reconociste la tríada clásica de infección biliar, la cual puede progresar a sepsis rápidamente si no se descomprime."
-      }
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "🩺",
+            "category": "vitals",
+            "card_text": "TA 100/65, FC 120 lpm, Temp 39.0°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "¿Para qué guardas signos vitales normales, R1? No estamos en piso de medicina interna."
+            }
+        },
+        {
+            "card_id": "card_0",
+            "ui_icon": "📄",
+            "category": "Evidencia",
+            "card_text": "Infección de la vía biliar secundaria a obstrucción (ej. coledocolitiasis). Presenta la Tríada de Charcot.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "¡Perfect Match! Ictericia + Fiebre + Dolor en HD = Tríada de Charcot. El manejo empírico incluye antibióticos IV y CPRE precoz para drenaje."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "card_1",
+            "ui_icon": "📄",
+            "category": "Evidencia",
+            "card_text": "Inflamación de la vesícula biliar por litiasis. Dolor en CSD, fiebre leve, Murphy positivo.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "La Colecistitis pura NO causa ictericia franca (bilirrubina >2.5). Si hay ictericia, el problema no está en la vesícula, sino en la Vía Biliar Principal."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "card_2",
+            "ui_icon": "📄",
+            "category": "Evidencia",
+            "card_text": "Progresión natural de la colangitis. Añade choque (hipotensión severa) y alteración del estado mental.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Cuidado clínico: La paciente está taquicárdica pero asintomática mentalmente y su TA está conservada. Aún no desarrolla la Péntada de Reynolds, solo Charcot."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        }
+    ],
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": []
     },
-    {
-      "type": "differential",
-      "is_match": false,
-      "payload": {
-        "title": "B) Colecistitis Aguda Litiásica",
-        "text": "Inflamación de la vesícula biliar por litiasis. Dolor en CSD, fiebre leve, Murphy positivo."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
-      },
-      "feedback": {
-        "match": "La Colecistitis pura NO causa ictericia franca (bilirrubina >2.5). Si hay ictericia, el problema no está en la vesícula, sino en la Vía Biliar Principal.",
-        "discard": "¡Bien hecho! Supiste que la ictericia marcada excluye inflamación puramente vesicular."
-      }
-    },
-    {
-      "type": "differential",
-      "is_match": false,
-      "payload": {
-        "title": "C) Péntada de Reynolds (Sepsis Biliar)",
-        "text": "Progresión natural de la colangitis. Añade choque (hipotensión severa) y alteración del estado mental."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
-      },
-      "feedback": {
-        "match": "Cuidado clínico: La paciente está taquicárdica pero asintomática mentalmente y su TA está conservada. Aún no desarrolla la Péntada de Reynolds, solo Charcot.",
-        "discard": "Excelente precisión diagnóstica. Al no haber choque ni confusión, se queda en Tríada de Charcot."
-      }
+    "perla_enarm": {
+        "title": "Tríada de Charcot",
+        "text": "Componentes: 1. Dolor en hipocondrio derecho, 2. Ictericia, 3. Fiebre (con escalofríos). Si se agrega Choque y Confusión, es Péntada de Reynolds (mortalidad extrema). Manejo definitivo: Drenaje biliar (CPRE).",
+        "gpc_ref": "GPC Diagnóstico y Manejo de Colangitis Aguda"
     }
-  ],
-  "perla_enarm": {
-    "title": "Tríada de Charcot",
-    "text": "Componentes: 1. Dolor en hipocondrio derecho, 2. Ictericia, 3. Fiebre (con escalofríos). Si se agrega Choque y Confusión, es Péntada de Reynolds (mortalidad extrema). Manejo definitivo: Drenaje biliar (CPRE).",
-    "gpc_ref": "GPC Diagnóstico y Manejo de Colangitis Aguda"
-  }
 }

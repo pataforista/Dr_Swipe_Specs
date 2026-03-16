@@ -10,7 +10,8 @@
 </head>
 
 <body>
-    <div id="app-container">
+    <div id="shock-mask"></div>
+    <div id="game-container">
 
         <!-- View: Intro -->
         <div id="view-intro" class="view active">
@@ -37,7 +38,10 @@
                     <span class="coin-icon">🪙</span>
                     <span id="coin-count">0</span>
                 </div>
-                <button id="btn-open-gacha" class="btn small gacha-btn">🎟️ Recompensas</button>
+                <div class="intro-extras">
+                    <button id="btn-show-gacha" class="btn secondary">Máquina de Recompensas</button>
+                    <button id="btn-show-codex" class="btn secondary">Códice de Guardia</button>
+                </div>
             </div>
 
             <!-- Daily Challenge Banner -->
@@ -245,7 +249,32 @@
                 </div>
             </main>
         </div>
+        <!-- View: Codex -->
+        <div id="view-codex" class="view hidden">
+            <header class="codex-header">
+                <button id="btn-codex-back" class="btn small secondary">⬅ Volver</button>
+                <h2 class="title">Códice de Guardia</h2>
+            </header>
+            <main class="codex-content">
+                <div class="codex-tabs">
+                    <button id="tab-perlas" class="tab-btn active">Perlas ENARM</button>
+                    <button id="tab-errores" class="tab-btn">Errores Memorables</button>
+                </div>
+                
+                <div id="codex-filters" class="codex-filters">
+                    <button class="filter-btn active" data-theme="all">Todos</button>
+                    <button class="filter-btn" data-theme="theme-psych">Psiq</button>
+                    <button class="filter-btn" data-theme="theme-im">Int</button>
+                    <button class="filter-btn" data-theme="theme-surg">Cir</button>
+                    <button class="filter-btn" data-theme="theme-peds">Ped</button>
+                    <button class="filter-btn" data-theme="theme-gyn">Gine</button>
+                </div>
 
+                <div id="codex-list" class="codex-grid">
+                    <!-- Loaded dynamically -->
+                </div>
+            </main>
+        </div>
 
         <div id="view-confidence-check" class="view hidden">
             <h2 class="title">Calibración de confianza</h2>

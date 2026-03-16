@@ -7,7 +7,17 @@ const CATEGORY_ICONS = {
     meds: '💊',
     timeline: '📋',
     notes: '🗒️',
-    admin: '📁'
+    admin: '📁',
+    psych: '🧠',
+    clock: '🕒',
+    thermometer: '🌡️',
+    stomach: '🤢',
+    money: '💸',
+    family: '🌳',
+    toxicity: '☢️',
+    SHOCK_MODE: 'shock_mode',
+    CRITICAL_ALERT: 'critical_alert',
+    CODEX: 'codex'
 };
 
 export class UIController {
@@ -21,7 +31,8 @@ export class UIController {
             confidenceCheck: document.getElementById('view-confidence-check'),
             results: document.getElementById('view-results'),
             chat: document.getElementById('view-chat'),
-            gacha: document.getElementById('view-gacha')
+            gacha: document.getElementById('view-gacha'),
+            codex: document.getElementById('view-codex')
         };
 
         this.elements = {
@@ -53,6 +64,8 @@ export class UIController {
             perlaText: document.getElementById('perla-text'),
             perlaGpc: document.getElementById('perla-gpc'),
             resultOutcome: document.getElementById('result-outcome'),
+            resultDossier: document.getElementById('result-dossier'),
+            shockMask: document.getElementById('shock-mask'),
             timeFill: document.getElementById('time-fill'),
             mentorText: document.getElementById('mentor-text'),
             btnTutorialNext: document.getElementById('btn-tutorial-next'),
@@ -80,7 +93,12 @@ export class UIController {
             confidenceInput: document.getElementById('confidence-input'),
             confidenceValue: document.getElementById('confidence-value'),
             btnConfirmConfidence: document.getElementById('btn-confirm-confidence'),
-            biasTags: document.getElementById('bias-tags')
+            biasTags: document.getElementById('bias-tags'),
+            codexList: document.getElementById('codex-list'),
+            btnCodexBack: document.getElementById('btn-codex-back'),
+            tabPerlas: document.getElementById('tab-perlas'),
+            tabErrores: document.getElementById('tab-errores'),
+            codexFilters: document.getElementById('codex-filters')
         };
 
         this.tutorialStep = 0;
@@ -108,6 +126,40 @@ export class UIController {
 
         if (this.elements.btnTutorialNext) {
             this.elements.btnTutorialNext.onclick = () => this.nextTutorialStep();
+        }
+
+        if (this.elements.btnShowCodex) {
+            this.elements.btnShowCodex.onclick = () => {
+                this.engine.state = ENGINE_STATE.CODEX;
+                this.update();
+            };
+        }
+
+        if (this.elements.btnCodexBack) {
+            this.elements.btnCodexBack.onclick = () => {
+                this.engine.state = ENGINE_STATE.INTRO;
+                this.update();
+            };
+        }
+
+        if (this.elements.tabPerlas) {
+            this.elements.tabPerlas.onclick = () => this.renderCodex('perlas');
+        }
+        if (this.elements.tabErrores) {
+            this.elements.tabErrores.onclick = () => this.renderCodex('errores');
+        }
+
+        if (this.elements.codexFilters) {
+            this.elements.codexFilters.addEventListener('click', (e) => {
+                const btn = e.target.closest('.filter-btn');
+                if (!btn) return;
+                
+                this.elements.codexFilters.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const activeTab = this.elements.tabPerlas?.classList.contains('active') ? 'perlas' : 'errores';
+                this.renderCodex(activeTab, btn.dataset.theme);
+            });
         }
     }
 
@@ -155,11 +207,22 @@ export class UIController {
                 this.showView('confidenceCheck');
                 this.renderConfidenceCheck();
                 break;
+            case ENGINE_STATE.CRITICAL_ALERT:
+                this.renderShockTrigger();
+                break;
+            case ENGINE_STATE.SHOCK_MODE:
+                this.showView('checkpoint');
+                this.renderShockTriad();
+                break;
             case ENGINE_STATE.RESULTS:
             case ENGINE_STATE.DOSSIER:
                 this.showView('results');
                 this.renderResults();
                 this.launchConfetti();
+                break;
+            case ENGINE_STATE.CODEX:
+                this.showView('codex');
+                this.renderCodex();
                 break;
             case ENGINE_STATE.GHOSTED:
                 this.showView('results'); // Use results view but render ghosted
@@ -203,7 +266,23 @@ export class UIController {
         }
         if (!framing) return;
 
-        if (this.engine.formatVersion === 'v2' && profile) {
+        if (this.engine.formatVersion === 'v3_swipe_action' && profile) {
+             framing.innerHTML = `
+                <div class="patient-card intro-v3">
+                    <div class="intro-header">
+                        <span class="patient-avatar">🏥</span>
+                        <h2 class="patient-name">${profile.name}</h2>
+                    </div>
+                    <div class="intro-body">
+                        <p class="arrival-scenario">"${profile.arrival_scenario}"</p>
+                        <div class="timer-warning">
+                            <span class="timer-label">⏰ Triage Rápido:</span>
+                            <span class="timer-value">${profile.time_limit_sec || 30}s</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else if (this.engine.formatVersion === 'v2' && profile) {
             framing.innerHTML = `
                 <div class="patient-card profile-card">
                     <div class="profile-header" style="background-image: url('${profile.image_url || ''}')">
@@ -252,21 +331,38 @@ export class UIController {
     }
 
     renderCurrentCard() {
-        const card = this.engine.getCurrentCard();
         const container = this.elements.cardStack;
+        // Keep only 3 cards in DOM: Current, Next, Preload
         container.innerHTML = '';
-
-        if (!card) return;
-
-        if (this.elements.learningTip) {
-            this.elements.learningTip.textContent = this.engine.getTeachingTip(card);
+        
+        const currentIdx = this.engine.currentIndex;
+        const stream = this.engine.currentCase?.card_stream || this.engine.currentCase?.evidence_stream || [];
+        
+        // Render 3 cards if they exist
+        for (let i = 0; i < 3; i++) {
+            const cardData = stream[currentIdx + i];
+            if (!cardData) break;
+            
+            const cardEl = this.createCardElement(cardData, i);
+            container.appendChild(cardEl);
+            
+            if (i === 0) {
+                this.initializeSwipe(cardEl);
+                if (this.elements.learningTip) {
+                    this.elements.learningTip.textContent = this.engine.getTeachingTip(cardData);
+                }
+            }
         }
+    }
 
+    createCardElement(card, stackIndex) {
         const cardEl = document.createElement('div');
-        cardEl.className = 'card';
-        cardEl.style.animation = 'fadeIn 0.3s ease';
-
-        const icon = CATEGORY_ICONS[card.category] || '📄';
+        cardEl.className = `card stack-level-${stackIndex}`;
+        if (stackIndex === 0) cardEl.style.animation = 'fadeIn 0.3s ease';
+        
+        // Hardware acceleration fix
+        cardEl.style.willChange = 'transform';
+        cardEl.style.transform = `translate3d(0, 0, 0)`;
 
         // Safety flag banner
         if (card.safety_flags && (card.safety_flags.lethal_risk || card.safety_flags.decision_critical)) {
@@ -277,46 +373,35 @@ export class UIController {
         }
 
         const category = document.createElement('div');
-        category.className = `card-category cat-${card.category}`;
-        category.textContent = `${icon} ${card.category.toUpperCase()}`;
+        category.className = 'card-category';
+        const categoryIcon = this.engine.CATEGORY_ICONS?.[card.category] || '📄';
+        const displayIcon = card.ui_icon || categoryIcon; 
+        const displayCategory = card.category || 'Evidencia';
+        category.innerHTML = `<span class="cat-icon">${displayIcon}</span> <span class="cat-name">${displayCategory}</span>`;
 
         const title = document.createElement('h3');
         title.className = 'card-title';
-        title.textContent = card.payload.title;
+        title.textContent = card.payload?.title || 'Sin Título';
 
         const text = document.createElement('p');
         text.className = 'card-text';
-        text.textContent = card.payload.text;
-
-        text.addEventListener('mouseup', () => {
-            const selection = window.getSelection();
-            if (!selection.isCollapsed && text.contains(selection.anchorNode)) {
-                try {
-                    const range = selection.getRangeAt(0);
-                    const mark = document.createElement('mark');
-                    mark.className = 'highlight-target';
-                    range.surroundContents(mark);
-                    selection.removeAllRanges();
-                    if (navigator.vibrate) navigator.vibrate(20);
-                } catch (e) {
-                    // Ignore complex selection errors spanning multiple nodes
-                }
-            }
-        });
+        text.textContent = card.payload?.text || card.card_text || 'Sin descripción';
 
         // Card index indicator
         const indexBadge = document.createElement('div');
         indexBadge.className = 'card-index';
-        const total = this.engine.currentCase?.evidence_stream?.length || '?';
-        indexBadge.textContent = `${this.engine.currentIndex + 1} / ${total}`;
+        const total = stream.length;
+        indexBadge.textContent = `${this.engine.currentIndex + stackIndex + 1} / ${total}`;
 
         cardEl.appendChild(category);
         cardEl.appendChild(title);
         cardEl.appendChild(text);
         cardEl.appendChild(indexBadge);
 
-        container.appendChild(cardEl);
-        this.initializeSwipe(cardEl);
+        if (this.engine.currentCase.case_id?.includes('psych')) cardEl.classList.add('theme-psych');
+        if (this.engine.currentCase.case_id?.includes('surg')) cardEl.classList.add('theme-surg');
+
+        return cardEl;
     }
 
     initializeSwipe(cardEl) {
@@ -327,7 +412,8 @@ export class UIController {
             cardEl.style.transition = 'none';
             const x = ev.deltaX;
             const rotate = x / 12;
-            cardEl.style.transform = `translateX(${x}px) rotate(${rotate}deg)`;
+            // hardware acceleration
+            cardEl.style.transform = `translate3d(${x}px, 0, 0) rotate(${rotate}deg)`;
 
             const leftHint = document.querySelector('.hint-left');
             const rightHint = document.querySelector('.hint-right');
@@ -362,12 +448,13 @@ export class UIController {
             if (Math.abs(ev.deltaX) > this.swipeThreshold) {
                 const direction = ev.deltaX > 0 ? 'right' : 'left';
                 const finalX = direction === 'right' ? 1200 : -1200;
-                cardEl.style.transform = `translateX(${finalX}px) rotate(${ev.deltaX / 5}deg)`;
+                // hardware acceleration
+                cardEl.style.transform = `translate3d(${finalX}px, 0, 0) rotate(${ev.deltaX / 5}deg)`;
                 setTimeout(() => {
                     if (this.onSwipeAction) this.onSwipeAction(direction);
                 }, 200);
             } else {
-                cardEl.style.transform = '';
+                cardEl.style.transform = `translate3d(0, 0, 0)`;
                 cardEl.style.borderColor = '';
                 cardEl.classList.remove('swipe-right-preview', 'swipe-left-preview');
             }
@@ -524,8 +611,20 @@ export class UIController {
 
         this.elements.btnCheckpointContinue.classList.remove('hidden');
         if (this.elements.btnInterconsult) this.elements.btnInterconsult.classList.add('hidden');
+        
+        // Clear shock interval if active
+        if (this.shockInterval) {
+            clearInterval(this.shockInterval);
+            this.shockInterval = null;
+        }
+
         this.elements.btnCheckpointContinue.onclick = () => {
-            this.engine.proceedFromCheckpoint(selectedIndex);
+            const state = this.engine.state;
+            if (state === ENGINE_STATE.SHOCK_MODE || state === ENGINE_STATE.FINAL_TRIAD) {
+                this.engine.handleTriadAnswer(selectedIndex);
+            } else {
+                this.engine.proceedFromCheckpoint(selectedIndex);
+            }
             this.update();
         };
     }
@@ -711,13 +810,29 @@ export class UIController {
             }
 
             this.elements.resultOutcome.className = `result-box outcome-box ${verdictClass}`;
+            
+            // Triage Fatal: Vazquez Feedback
+            const rank = this.engine.stats.rank || 'D';
+            const copy = this.engine.copyLibrary?.vazquez_feedback?.[`RANK_${rank}`] || { title: 'Feedback', text: 'Sigue practicando.' };
+            
             this.elements.resultOutcome.innerHTML = `
-                <div class="verdict-label">${verdict}</div>
+                <div class="vazquez-header">
+                    <div class="vazquez-avatar">👨‍⚕️</div>
+                    <div class="vazquez-dialogue">
+                        <span class="vazquez-rank">RANGO ${rank}: ${copy.title}</span>
+                        <p class="vazquez-text">"${copy.text}"</p>
+                    </div>
+                </div>
                 <div class="score-grid">
                     <div class="score-item"><span class="score-num">${accuracy}%</span><span class="score-label">Precisión</span></div>
                     <div class="score-item"><span class="score-num">${Math.round(this.engine.confidence)}%</span><span class="score-label">Confianza</span></div>
                     <div class="score-item"><span class="score-num">${neuronas} 🧠</span><span class="score-label">Neuronas</span></div>
                 </div>
+                ${this.engine.stats.rankUp ? `
+                    <div class="rank-up-banner animation-bounce">
+                        🎉 ¡ASCENSO! Ahora eres ${this.engine.playerRank}
+                    </div>
+                ` : ''}
             `;
 
             if (this.engine.stats.scoring_tags && this.engine.stats.scoring_tags.length > 0) {
@@ -893,7 +1008,7 @@ export class UIController {
                 <p>Ignoraste una <strong>Red Flag</strong> crítica y el paciente se ha complicado. La racha de estudio se ha perdido.</p>
                 <div class="feedback-card" style="margin-top: 20px; background: rgba(239, 68, 68, 0.1); border-color: var(--danger);">
                     <h4>¿Qué pasó?</h4>
-                    <p>${this.engine.lastFeedback?.feedback_text || "No identificaste un riesgo vital inminente."}</p>
+                    <p>${this.engine.lastFeedback?.text || this.engine.lastFeedback?.feedback_text || "No identificaste un riesgo vital inminente."}</p>
                 </div>
             </div>
         `;
@@ -1000,5 +1115,74 @@ export class UIController {
                 this.launchConfetti();
             }, 800);
         }, 100);
+    }
+
+    showShockAlert(message) {
+        if (this.elements.shockMask) {
+            this.elements.shockMask.classList.add('active');
+            this.showToast(`🚨 ${message}`, 'danger');
+            setTimeout(() => {
+                this.elements.shockMask.classList.remove('active');
+            }, 5000);
+        }
+    }
+
+    renderCodex(tab = 'perlas', themeFilter = 'all') {
+        const codexManager = this.engine.codexManager;
+        this.elements.codexList.innerHTML = '';
+        
+        if (this.elements.tabPerlas) this.elements.tabPerlas.classList.toggle('active', tab === 'perlas');
+        if (this.elements.tabErrores) this.elements.tabErrores.classList.toggle('active', tab === 'errores');
+
+        // Show/hide filters specifically for perlas
+        if (this.elements.codexFilters) {
+            this.elements.codexFilters.classList.toggle('hidden', tab !== 'perlas');
+        }
+
+        if (tab === 'perlas') {
+            const allThemes = ['theme-psych', 'theme-im', 'theme-surg', 'theme-peds', 'theme-gyn'];
+            const themesToShow = themeFilter === 'all' ? allThemes : [themeFilter];
+            
+            let totalShown = 0;
+
+            themesToShow.forEach(theme => {
+                const perlas = codexManager.getPerlasByTheme(theme);
+                perlas.forEach(entry => {
+                    const perla = entry.perla;
+                    const card = document.createElement('div');
+                    card.className = `codex-card perla-item ${theme}`;
+                    card.innerHTML = `
+                        <div class="perla-badge">✨</div>
+                        <h4>${perla.title}</h4>
+                        <p>${perla.text}</p>
+                        <span class="gpc-tag">${perla.source || 'GPC'}</span>
+                        <div class="perla-footer">Desbloqueado: ${new Date(entry.dateUnlocked).toLocaleDateString()}</div>
+                    `;
+                    this.elements.codexList.appendChild(card);
+                    totalShown++;
+                });
+            });
+
+            if (totalShown === 0) {
+                this.elements.codexList.innerHTML = `<p class="empty-msg">No hay perlas en esta categoría. Sobrevive a una Sala de Choque de ${themeFilter === 'all' ? 'cualquier especialidad' : themeFilter.replace('theme-', '')} para ganar una.</p>`;
+            }
+        } else {
+            const errors = codexManager.getErrors();
+            if (errors.length === 0) {
+                this.elements.codexList.innerHTML = '<p class="empty-msg">Tu historial está limpio. No has cometido errores letales (por ahora).</p>';
+                return;
+            }
+            errors.forEach(err => {
+                const card = document.createElement('div');
+                card.className = 'codex-card error-item';
+                card.innerHTML = `
+                    <div class="error-badge">💀</div>
+                    <h4>${err.title}</h4>
+                    <p><em>Vázquez dice:</em> ${err.reason}</p>
+                    <span class="case-id-tag">${err.case_id}</span>
+                `;
+                this.elements.codexList.appendChild(card);
+            });
+        }
     }
 }

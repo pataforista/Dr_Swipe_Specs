@@ -62,6 +62,24 @@
     "Conservaste {kept} de {total} elementos.",
     "El expediente final refleja tu manejo de la información."
   ],
+  "vazquez_feedback": {
+    "RANK_S": {
+      "title": "El Francotirador Junior",
+      "text": "Impresionante. Expediente limpio. Diagnóstico perfecto. Ahora, lárgate a ver al siguiente antes de que te acostumbres al éxito."
+    },
+    "RANK_B": {
+      "title": "El Doctor House de Presupuesto",
+      "text": "Acertaste el diagnóstico, pero tu expediente estaba lleno de basura. ¿Por qué guardas datos normales? Casi te mueres de aburrimiento tú solo."
+    },
+    "RANK_D": {
+      "title": "El Residente Paranoico",
+      "text": "¡Guardaste todo! Si el paciente estornudaba, lo apuntabas. Tu expediente es un caos y ahora no podemos decidir el tratamiento. Triage, aspirante, triage."
+    },
+    "RANK_F": {
+      "title": "El Fallo de Seguridad",
+      "text": "Acabas de descartar una alerta crítica. El paciente está en riesgo en el pasillo. No solo reprobaste la guardia, vas a ir a la cárcel."
+    }
+  },
   "forbidden_examples": [
     "Lo correcto habría sido...",
     "Debiste guardar...",
