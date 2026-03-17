@@ -1,10 +1,10 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { EvidenceCard } from '../../types/clinical';
+import { SwipeCard } from '../../types/clinical';
 import './SwipeDeck.css';
 
 interface SwipeDeckProps {
-    cards: EvidenceCard[];
+    cards: SwipeCard[];
     currentIndex: number;
     onSwipe: (direction: 'left' | 'right') => void;
 }
@@ -31,7 +31,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwi
                     const isTop = idx === activeCards.length - 1;
                     return (
                         <motion.div
-                            key={card.evidence_id}
+                            key={card.id}
                             className={`swipe-card ${isTop ? 'top-card' : 'back-card'}`}
                             initial={{ scale: 0.9, y: 20, opacity: 0 }}
                             animate={{ 
@@ -49,11 +49,8 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwi
                             <div className="card-content">
                                 <span className="card-category">{card.category}</span>
                                 <p className="card-text">{card.card_text}</p>
-                                {card.payload?.value && (
-                                    <div className="card-payload">
-                                        <span className="value">{card.payload.value}</span>
-                                        <span className="unit">{card.payload.unit}</span>
-                                    </div>
+                                {card.critical && (
+                                    <div className="card-critical-badge">⚠ CRÍTICO</div>
                                 )}
                             </div>
                         </motion.div>

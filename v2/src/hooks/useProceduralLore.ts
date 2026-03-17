@@ -22,7 +22,11 @@ export const useProceduralLore = () => {
         card_text: nlgEngine.generateSignal(sig.trigger, val, sig.range.unit),
         expected_action: 'keep',
         source: 'medical',
-        critical: sig.critical
+        critical: sig.critical,
+        safety_flags: sig.critical ? {
+          lethal_if_discarded: true,
+          rationale: `Descartar ${sig.trigger} es una decisión fatal. Este dato clínico crítico no puede ignorarse.`
+        } : undefined
       });
     });
 
