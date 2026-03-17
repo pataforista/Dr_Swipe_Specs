@@ -119,3 +119,80 @@
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* ── Intake View ─────────────────────────────────────────────────── */
+.intake-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 24px;
+}
+
+.intake-card {
+  background: var(--bg-card, #111);
+  border: 1px solid var(--border-color, #333);
+  border-radius: 20px;
+  padding: 40px 32px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 0.4s ease;
+}
+
+.intake-label {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--accent-alert, #e53e3e);
+  border: 1px solid var(--accent-alert, #e53e3e);
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.intake-patient-name {
+  font-size: 1.75rem;
+  font-weight: 900;
+  margin-bottom: 12px;
+  line-height: 1.1;
+}
+
+.intake-scenario {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.intake-vitals {
+  margin-bottom: 24px;
+}
+
+.btn-start-triage {
+  background: var(--accent-alert, #e53e3e);
+  color: white;
+  border: none;
+  padding: 14px 40px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 24px;
+  transition: opacity 0.2s;
+}
+
+.btn-start-triage:hover {
+  opacity: 0.85;
+}
+
+/* ── Card Critical Badge ─────────────────────────────────────────── */
+.card-critical-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent-alert, #e53e3e);
+  margin-top: 8px;
+}

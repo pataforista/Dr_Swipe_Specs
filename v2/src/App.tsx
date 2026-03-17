@@ -138,6 +138,31 @@ function App() {
           <CodexView totalPearlsInGame={24} />
         ) : (
           <>
+            {state.matches('intake') && state.context.currentCase && (
+              <div className="intake-view">
+                <div className="intake-card">
+                  <span className="intake-label">NUEVO INGRESO</span>
+                  <h2 className="intake-patient-name">
+                    {state.context.currentCase.patient_intro.name}, {state.context.currentCase.patient_intro.age}a
+                  </h2>
+                  <p className="intake-scenario italic opacity-80">
+                    {state.context.currentCase.patient_intro.arrival_scenario}
+                  </p>
+                  {state.context.currentCase.patient_intro.vitals_preview && (
+                    <p className="intake-vitals font-mono text-sm mt-2 opacity-60">
+                      {state.context.currentCase.patient_intro.vitals_preview}
+                    </p>
+                  )}
+                  <button
+                    className="btn-start-triage"
+                    onClick={() => send({ type: 'NEXT' })}
+                  >
+                    Iniciar Triage
+                  </button>
+                </div>
+              </div>
+            )}
+
             {state.matches('swiping') && state.context.currentCase && (
               <SwipeDeck 
                 cards={state.context.currentCase.card_stream}
@@ -173,12 +198,22 @@ function App() {
                 <div className="results-view p-8 text-center bg-white dark:bg-black rounded-3xl shadow-2xl">
                     <h1 className="text-4xl font-black text-emerald-900 dark:text-red-600 mb-4">GUARDIA TERMINADA</h1>
                     <p className="text-emerald-700 dark:text-gray-400 mb-8">Has salvado al paciente con éxito.</p>
-                    {state.context.currentCase?.perla_enarm && (
-                      <button 
-                        className="btn-reward" 
+                    <p className="text-sm opacity-60 mb-4">
+                      Aciertos: {state.context.stats.correct} / {state.context.stats.total}
+                    </p>
+                    {state.context.currentCase?.perla_enarm ? (
+                      <button
+                        className="btn-reward"
                         onClick={() => send({ type: 'CLAIM_REWARD', perla: state.context.currentCase!.perla_enarm! })}
                       >
                         Recuperar Residuo de Conocimiento
+                      </button>
+                    ) : (
+                      <button
+                        className="btn-retry uppercase tracking-tighter"
+                        onClick={() => send({ type: 'RESTART' })}
+                      >
+                        Nueva Guardia
                       </button>
                     )}
                 </div>
