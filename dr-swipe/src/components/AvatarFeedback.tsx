@@ -8,11 +8,11 @@ interface AvatarFeedbackProps {
   isVisible: boolean;
 }
 
-export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({ 
-  doctor, 
-  expression, 
-  dialogueText, 
-  isVisible 
+export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
+  doctor = 'mendoza',
+  expression = 'neutral',
+  dialogueText,
+  isVisible
 }) => {
   const mentorIcons = {
     mendoza: '👴',
@@ -27,6 +27,10 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
     shocked: 'contrast(1.2) brightness(1.2)'
   };
 
+  // Validate doctor and expression
+  const validDoctor = (doctor in mentorIcons) ? doctor : 'mendoza';
+  const validExpression = (expression in expressionFilters) ? expression : 'neutral';
+
   return (
     <AnimatePresence>
       {isVisible && (
@@ -39,24 +43,24 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
           {/* Character Glow Ring */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div className={`w-32 h-32 rounded-full blur-3xl opacity-20 ${
-              expression === 'happy' ? 'bg-medical-primary' : 
-              (expression === 'angry' ? 'bg-medical-danger' : 'bg-medical-info')
+              validExpression === 'happy' ? 'bg-medical-primary' :
+              (validExpression === 'angry' ? 'bg-medical-danger' : 'bg-medical-info')
             }`} />
           </div>
 
           <motion.div
-            animate={{ 
+            animate={{
               scale: dialogueText ? [1, 1.05, 1] : 1,
-              rotate: expression === 'angry' ? [0, -3, 3, 0] : 0
+              rotate: validExpression === 'angry' ? [0, -3, 3, 0] : 0
             }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
             className={`w-28 h-28 glass-panel !rounded-full flex items-center justify-center text-6xl shadow-2xl relative z-10 border-2 ${
-              expression === 'happy' ? 'border-medical-primary/40' : 
-              (expression === 'angry' ? 'border-medical-danger/40' : 'border-white/10')
+              validExpression === 'happy' ? 'border-medical-primary/40' :
+              (validExpression === 'angry' ? 'border-medical-danger/40' : 'border-white/10')
             }`}
-            style={{ filter: expressionFilters[expression] }}
+            style={{ filter: expressionFilters[validExpression] }}
           >
-            {mentorIcons[doctor]}
+            {mentorIcons[validDoctor]}
           </motion.div>
 
           {/* Premium Dialogue Bubble */}
