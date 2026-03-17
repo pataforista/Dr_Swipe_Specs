@@ -68,8 +68,68 @@
         "lethal_risk": false,
         "decision_critical": false
       }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "search",
+      "category": "Signos Patognomónicos",
+      "card_text": "D) Manchas de Koplik: Puntos blancos en mucosa yugal previos al exantema.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Exacto! Si ves Koplik, es Sarampión hasta no demostrar lo contrario."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "beaker",
+      "category": "Tratamiento",
+      "card_text": "E) Vitamina A: Administración inmediata para prevenir complicaciones como neumonía.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: Muy bien. La Vitamina A salva vidas en el contexto de Sarampión."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "shield",
+      "category": "Salud Pública",
+      "card_text": "F) Notificación Inmediata a Epidemiología: Reporte obligatorio por riesgo de brote.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Correcto. Como médico R1, tu responsabilidad social es alertar a las autoridades."
+      }
     }
   ],
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es la complicación más frecuente del sarampión?",
+        "options": ["Otitis media aguda", "Panencefalitis esclerosante subaguda", "Crup"],
+        "correct_index": 0
+      },
+      {
+        "question": "¿En qué periodo es contagioso el paciente?",
+        "options": ["Desde el pródromo hasta 4-5 días tras inicio de exantema", "Solo cuando tiene fiebre alta", "Durante toda la vida"],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es la causa más común de MUERTE por sarampión?",
+        "options": ["Neumonía", "Encefalitis", "Deshidratación"],
+        "correct_index": 0
+      }
+    ]
+  },
   "enarm_pearl": {
     "title": "Sarampión: Vitamina A",
     "text": "Tratamiento Clave: A TODO niño con sarampión se le debe administrar VITAMINA A para reducir complicaciones y mortalidad.",

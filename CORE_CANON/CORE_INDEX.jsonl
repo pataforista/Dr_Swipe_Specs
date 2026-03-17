@@ -1,6 +1,6 @@
 {"domain": "cardio", "topic": "core_acls", "path": "cardio/core_acls.json", "n_nodes": 6, "ids": ["CORE_ACLS_001", "CORE_ACLS_002", "CORE_ACLS_003", "CORE_ACLS_004", "CORE_ACLS_005", "CORE_ACLS_006"]}
 {"domain": "cardio", "topic": "core_iam", "path": "cardio/core_iam.json", "n_nodes": 10, "ids": ["CORE_STEMI_001", "CORE_STEMI_002", "CORE_STEMI_004", "CORE_AMI_001", "CORE_IAM_005", "CORE_IAM_006", "CORE_IAM_007", "CORE_IAM_008", "CORE_IAM_009", "CORE_IAM_010"]}
-{"domain": "cardio", "topic": "core_tep", "path": "cardio/core_tep.json", "n_nodes": 6, "ids": ["CORE_TEP_001", "CORE_TEP_002", "CORE_TEP_003", "CORE_TEP_004", "CORE_TEP_005", "CORE_TEP_006"]}
+{"domain": "cardio", "topic": "core_tep", "path": "cardio/core_tep.json", "n_nodes": 6, "ids": ["CORE_TEP_001", "CORE_TEP_002", "CORE_TEP_003", "CORE_TEP_004", "CORE_TEP_005", "CORE_TEP_006"], "status": "deprecated"}
 {"domain": "endocrino", "topic": "CORE_ENDO_LETAL_v1.0", "path": "endocrino/CORE_ENDO_LETAL_v1.0.json", "n_nodes": 6, "ids": ["CORE_ENDO_001", "CORE_ENDO_002", "CORE_ENDO_003", "CORE_ENDO_004", "CORE_ENDO_005", "CORE_ENDO_006"]}
 {"domain": "endocrino", "topic": "core_glucose", "path": "endocrino/core_glucose.json", "n_nodes": 2, "ids": ["CORE_GLU_001", "CORE_GLU_002"]}
 {"domain": "endocrino", "topic": "core_hipotiroidismo", "path": "endocrino/core_hipotiroidismo.json", "n_nodes": 3, "ids": ["CORE_HYPO_001", "CORE_HYPO_002", "CORE_HYPO_003"]}

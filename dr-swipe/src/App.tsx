@@ -11,6 +11,7 @@ import { useGameAudio } from './hooks/useGameAudio';
 import Aurora from './components/bits/Aurora';
 import DecryptedText from './components/bits/DecryptedText';
 import ShinyText from './components/bits/ShinyText';
+import ErrorBoundary from './components/ErrorBoundary';
 
 function App() {
   const [state, send] = useMachine(gameMachine);
@@ -250,12 +251,14 @@ function App() {
 
       {/* Mentor Feedback Area */}
       <div className="w-full h-40 flex justify-center -mt-8 pointer-events-none">
-        <AvatarFeedback 
-          doctor={currentCase?.case_id.toLowerCase().includes('ped') ? 'castillo' : (currentCase?.case_id.toLowerCase().includes('surg') ? 'mendoza' : 'navarro')} 
-          expression={expression} 
-          dialogueText={comment}
-          isVisible={!state.matches('idle') || showIntro}
-        />
+        <ErrorBoundary fallback={<div className="h-40 flex items-center justify-center text-red-400 font-bold bg-red-400/10 rounded-xl border border-red-400/20 px-8">Error en Feedback del Mentor</div>}>
+          <AvatarFeedback 
+            doctor={currentCase?.case_id.toLowerCase().includes('ped') ? 'castillo' : (currentCase?.case_id.toLowerCase().includes('surg') ? 'mendoza' : 'navarro')} 
+            expression={expression} 
+            dialogueText={comment}
+            isVisible={!state.matches('idle') || showIntro}
+          />
+        </ErrorBoundary>
       </div>
 
       {/* Content */}

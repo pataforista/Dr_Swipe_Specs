@@ -36,8 +36,84 @@
         "lethal_risk": false,
         "decision_critical": true
       }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "search",
+      "category": "Paraclínicos",
+      "card_text": "B) Dímero D elevado (1500 ng/mL). Alta sensibilidad, baja especificidad.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: Con Wells de 7, el Dímero D no descarta nada. Directo a imagen, R1."
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "camera",
+      "category": "Estudio de Imagen",
+      "card_text": "C) Angio-Tomografía Computarizada (AngioTAC) Pulmonar: Defectos de llenado en arterias segmentarias.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Exacto! Es el estándar de oro para confirmar la sospecha en pacientes estables."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "beaker",
+      "category": "Tratamiento",
+      "card_text": "D) Enoxaparina 1mg/kg SC cada 12 horas. Inicio inmediato tras confirmación.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: Bien. La anticoagulación es la piedra angular del tratamiento para prevenir recurrencias."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "clipboard",
+      "category": "Pronóstico",
+      "card_text": "E) Escala PESI simplificada: Evalúa riesgo de mortalidad a 30 días.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Importante. Nos ayuda a decidir si el manejo puede ser ambulatorio o requiere hospitalización."
+      }
     }
   ],
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es el hallazgo ECG clásico (aunque raro) en TEP?",
+        "options": ["S1Q3T3 (Patrón de McGinn-White)", "Elevación del ST en cara anterior", "Bloqueo de rama izquierda"],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Qué define a un TEP como 'Masivo'?",
+        "options": ["Inestabilidad hemodinámica (Hipotensión/Choque)", "Afectación de ambos pulmones", "Dímero D >5000"],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el tratamiento de elección en TEP masivo inestable?",
+        "options": ["Trombólisis sistémica", "Anticoagulación con warfarina", "Filtro de vena cava inferior"],
+        "correct_index": 0
+      }
+    ]
+  },
   "enarm_pearl": {
     "title": "Diagnóstico de TEP: AngioTAC",
     "text": "El estándar de oro para el diagnóstico de TEP es la Angio-Tomografía Computarizada. El ECG más común es la taquicardia sinusal.",
