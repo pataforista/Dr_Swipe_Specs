@@ -72,7 +72,10 @@
     {
       "path": "cardio/core_tep.json",
       "size_bytes": 4195,
-      "sha256": "2ab103b861371a7d93b37b72a62c350cbd3ddb57ee556d1cd8d01d6cb0fa922a"
+      "sha256": "2ab103b861371a7d93b37b72a62c350cbd3ddb57ee556d1cd8d01d6cb0fa922a",
+      "status": "deprecated",
+      "replaced_by": "respiratorio/CORE_TEP_v1.0.json",
+      "reason": "Tema transpulmonar. Reasignado a respiratorio como canonical source."
     },
     {
       "path": "endocrino/CORE_ENDO_LETAL_v1.0.json",

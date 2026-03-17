@@ -53,11 +53,65 @@
         "lethal_risk": false,
         "decision_critical": false
       }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "target",
+      "category": "Tratamiento",
+      "card_text": "C) ASA 300mg + Ticagrelor 180mg + Heparina IV: Doble antiagregación y anticoagulante inmediatos. SIN demora.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Excelente! Sin antitrombóticos, el trombo se agranda. Tu paciente hace shock cardiogénico."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true,
+        "lethal_if_discarded": true
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "shield",
+      "category": "Monitoreo",
+      "card_text": "D) Contactar ICP center y organizar traslado inmediato: IAMCEST anterior = alto riesgo de choque (VI disfunción). ICP es gold standard.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. Sin contacto previo con Hemodinamia, pierdes tiempo y el paciente se descompensa en tránsito."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true,
+        "lethal_if_discarded": false
+      }
     }
   ],
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿En qué derivaciones INDICA IAMCEST anterior?",
+        "options": ["V1-V4 (± aVL) con imagen recíproca en II, III, aVF", "II, III, aVF con imagen recíproca en I, aVL", "V5-V6 con aVL"],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es la prioridad si NO hay ICP disponible en <120 min?",
+        "options": ["Esperar fibrinolisis", "FIBRINOLIZAR ANTES de trasladar", "Monitoreo domiciliario"],
+        "correct_index": 1
+      },
+      {
+        "question": "¿Por qué IAMCEST anterior es más grave que inferior?",
+        "options": ["Afecta ventriculo izquierdo grande → mayor riesgo de choque", "Siempre requiere cirugía", "Es menos grave, es confusión"],
+        "correct_index": 0
+      }
+    ]
+  },
   "enarm_pearl": {
-    "title": "Tiempos en IAMCEST",
-    "text": "Puerta-Balón (ICP): <90 min (estándar). Puerta-Aguja (Fibrinolisis): <30 min. Si ICP >120 min de retraso total: FIBRINAR.",
+    "title": "IAMCEST Anterior: Urgencia Maximal",
+    "text": "V1-V4 elevado = VI → Choque cardiogénico probable. Puerta-Aguja <30min. Puerta-Balón <90min. Si >120min: FIBRINOLIZAR.",
     "gpc_ref": "GPC Diagnóstico y Tratamiento del Infarto Agudo de Miocardio"
   }
 }
