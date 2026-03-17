@@ -1,0 +1,46 @@
+{
+  "case_id": "PROC_OBS_RPM_001_009",
+  "version": "v3_swipe_action",
+  "theme_config": "obs",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Carmen, 29 años",
+    "arrival_scenario": "Reporta sensación de 'mojado' persistente desde hace 36 horas, sospecha ruptura de fuente. Cristalografía (test de helecho) positiva. FCF 140 lpm sin datos de pérdida de bienestar fetal.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 110/70, FC 85 lpm, Temp 36.8°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Ruptura Prematura de Membranas (RPM): Pérdida de la integridad de las membranas antes del inicio del trabajo de parto.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Correcto! El diagnóstico se confirma mediante especuloscopía estéril."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Diagnóstico de RPM: No Tacto Vaginal",
+    "text": "Ante sospecha de RPM, el tacto vaginal debe evitarse para no introducir bacterias.",
+    "gpc_ref": "GPC Diagnóstico y Manejo de Ruptura Prematura de Membranas"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "id": "PROC_OBS_HEM_DPPNI_001_004",
+    "title": "OBS HEM DPPNI 001 (Var 4)",
+    "category": "Procedural",
+    "difficulty": "standard",
+    "tags": [
+      "procedural",
+      "clinical_reasoning"
+    ]
+  },
+  "version": "v2",
+  "format": "clinical_reasoning",
+  "patient_profile": {
+    "name": "Marta",
+    "age": 26,
+    "sex": "Femenino",
+    "image_url": "https://api.dicebear.com/7.x/pixel-art/svg?seed=Marta26&backgroundColor=c0aede,b6e3f4",
+    "mood": "muy adolorida",
+    "bio": "Gestante de 37 SDG que presenta sangrado transvaginal oscuro y dolor abdominal muy intenso.",
+    "vitals": {
+      "TA": "150/100",
+      "FC": "110 lpm",
+      "Temp": "36.5°C"
+    },
+    "details": "A la palpación: Hipertonía uterina (útero leñoso). FCF en 90 lpm (bradicardia fetal)."
+  },
+  "evidence_stream": [
+    {
+      "type": "differential",
+      "is_match": true,
+      "payload": {
+        "title": "A) Desprendimiento Prematuro de Placenta (DPPNI)",
+        "text": "Surgimiento espontáneo de hipertonía, sangrado oscuro y dolor intenso. Frecuente sufrimiento fetal."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      },
+      "feedback": {
+        "match": "¡Perfecto! La suma de hipertonía uterina (útero leñoso) + sangrado oscuro = DPPNI hasta no demostrar lo contrario. Es indicación de CESÁREA URGENTE.",
+        "discard": "Pésimo error. Dudaste de la patología hemorrágica más clásica de dolor súbito e hipertonía del 3er trimestre."
+      }
+    },
+    {
+      "type": "differential",
+      "is_match": false,
+      "payload": {
+        "title": "B) Placenta Previa",
+        "text": "Sangrado vaginal rojo rutilante, abundante, indoloro y SIN actividad uterina."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      },
+      "feedback": {
+        "match": "La placenta previa se caracteriza por sangrado rojo rutilante e INDOLORO (útero blando). Esta paciente tiene hipertonía.",
+        "discard": "¡Bien hecho! Identificaste la diferencia clave: el dolor y la hipertonía descartan clínicamente una placenta previa pura."
+      }
+    },
+    {
+      "type": "differential",
+      "is_match": false,
+      "payload": {
+        "title": "C) Ruptura Uterina",
+        "text": "Dolor abdominal súbito y desgarrador, cese de contracciones uterinas, palpación fácil de partes fetales."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      },
+      "feedback": {
+        "match": "En la ruptura uterina se 'pierde' el tono (el útero ya no se palpa tenso porque se rompió) y el feto se va al abdomen, además aquí no hay antecedente de cesárea previa mencionado.",
+        "discard": "Correcto, la hipertonía sostenida descarta fisiológicamente una ruptura (que implicaría pérdida del tono)."
+      }
+    }
+  ],
+  "perla_enarm": {
+    "title": "DPPNI vs Placenta Previa",
+    "text": "El binomio diagnóstico diferencial clave en hemorragias de la 2da mitad. DPPNI = Doloroso, Sangrado Obscuro, Hipertonía (Útero leñoso). Placenta Previa = Indoloro, Rojo Rutilante, Útero Blando sin contracciones.",
+    "gpc_ref": "GPC Hemorragia Obstétrica de la Segunda Mitad del Embarazo"
+  }
+}

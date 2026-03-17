@@ -1,0 +1,46 @@
+{
+  "case_id": "PROC_PED_PYLORIC_SENOSIS_001_001",
+  "version": "v3_swipe_action",
+  "theme_config": "ped",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Luis, 5 años",
+    "arrival_scenario": "Varón primogénito de 4 semanas. Vómitos postprandiales inmediatos, abundantes y de contenido alimentario (leche). Se observa onda peristáltica gástrica de izquierda a derecha. Deshidratación leve. Labs con alcalosis metabólica hipoclorémica.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA N/A, FC 140 lpm, Temp 36.6°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Estenosis Hipertrófica del Píloro: Hipertrofia de la muscular del píloro. Vómito no biliar en proyectil. Signo de la Oliva patognomónico.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Perfecto! El estudio inicial es el Ultrasonido."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Vómito en Píloro: Alcalosis Hipoclorémica",
+    "text": "El trastorno ácido-base clásico de la Estenosis de Píloro es la ALCALOSIS METABÓLICA HIPOCLORÉMICA e hipokalémica.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de Estenosis Hipertrófica de Píloro"
+  }
+}

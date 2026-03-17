@@ -1,0 +1,78 @@
+{
+  "case_id": "PROC_PED_EXANT_MEASLES_001_009",
+  "version": "v3_swipe_action",
+  "theme_config": "ped",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Elena, 7 años",
+    "arrival_scenario": "Paciente preescolar de 6 años presenta manchas blancas de 1mm en mucosa yugal, seguidas de exantema confluente. Cuadro prodrómico de 'triple catarro' (tos, rinitis, conjuntivitis). Exantema morbiliforme confluente.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA N/A, FC 120 lpm, Temp 39.5°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Sarampión: Virus del Sarampión. Triada: Tos, coriza, conjuntivitis + Manchas de Koplik patognomónicas.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Excelente! El 'triple catarro' y las manchas de Koplik son oro puro en el ENARM para Sarampión."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "B) Rubéola: Exantema menos confluente, adenopatías retroauriculares dolorosas y manchas de Forchheimer.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: ¡Bien! Diferenciaste el cuadro severo del sarampión del más leve de la rubéola."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "C) Escarlatina: S. pyogenes. Lengua en fresa, líneas de Pastia y fascies de Filatov. Exantema en lija.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: Correcto. El cuadro respiratorio prodrómico es típico de virus, no de bacterias como el pyogenes."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Sarampión: Vitamina A",
+    "text": "Tratamiento Clave: A TODO niño con sarampión se le debe administrar VITAMINA A para reducir complicaciones y mortalidad.",
+    "gpc_ref": "GPC Prevención, Diagnóstico y Tratamiento del Sarampión"
+  }
+}

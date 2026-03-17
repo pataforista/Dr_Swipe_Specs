@@ -1,0 +1,62 @@
+{
+  "case_id": "PROC_STATS_DX_METRICS_001_001",
+  "version": "v3_swipe_action",
+  "theme_config": "stats",
+  "difficulty": "hard",
+  "patient_intro": {
+    "name": "Marta, 57 años",
+    "arrival_scenario": "La prueba tiene una Sensibilidad del 90% y una Especificidad del 90%. El resultado del paciente es POSITIVO. ¿Cuál es la probabilidad de que el paciente realmente tenga la enfermedad (VPP) en este escenario de baja prevalencia?",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA N/A, FC N/A, Temp N/A",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Probabilidad BAJA (<10%): En enfermedades raras, incluso pruebas 'buenas' tienen un Valor Predictivo Positivo (VPP) muy bajo por el peso de los FP.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Cerebro Matemático! Entiendes que el VPP depende críticamente de la prevalencia poblacional."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "B) Probabilidad ALTA (>90%): Confundiste la Sensibilidad con el VPP. La prueba es buena detectando enfermos, pero falla ante tantos sanos.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: ¡Bien! Notaste la trampa de la prevalencia."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "VPP y Prevalencia",
+    "text": "Si la Prevalencia sube → el VPP sube. Si la Prevalencia baja → el VPP baja. Sensibilidad y Especificidad NO cambian con la prevalencia.",
+    "gpc_ref": "Bioestadística Clínica para el ENARM"
+  }
+}

@@ -1,0 +1,69 @@
+{
+    "case_id": "psych_mania_001",
+    "version": "v3_swipe_action",
+    "theme_config": "theme-psych",
+    "difficulty": "standard",
+    
+    "patient_intro": {
+        "name": "Mujer, 28 años",
+        "arrival_scenario": "Traída por familiares a Urgencias. Habla sin parar y no se queda quieta en la camilla.",
+        "time_limit_sec": 30
+    },
+
+    "card_stream": [
+        {
+            "card_id": "c_01_timeline",
+            "ui_icon": "🧠",
+            "category": "Historia",
+            "nlg_trigger": "mania_energia", 
+            "card_text": "Lleva 4 días con energía desbordante y comprando cosas compulsivamente.",
+            "expected_action": "keep", 
+            "scoring": { "points": 100, "error_type": "none" }
+        },
+        {
+            "card_id": "c_02_vitals",
+            "ui_icon": "🩺",
+            "category": "Signos Vitales",
+            "nlg_trigger": "vitals_normal",
+            "card_text": "TA 120/80, FC 95 lpm, Temp 36.5°C",
+            "expected_action": "discard", 
+            "scoring": { 
+                "points": 50, 
+                "error_type": "hoarding", 
+                "vazquez_comment": "¿Para qué guardas signos vitales normales, R1? Estás llenando el expediente de basura." 
+            }
+        },
+        {
+            "card_id": "c_03_tox_screen",
+            "ui_icon": "🧪",
+            "category": "Laboratorios",
+            "nlg_trigger": "tox_negativo",
+            "card_text": "Tamizaje toxicológico: NEGATIVO a cocaína y anfetaminas.",
+            "expected_action": "keep",
+            "safety_flags": { "is_critical_dxd": true, "lethal_if_discarded": true },
+            "scoring": { 
+                "points": 200, 
+                "error_type": "lethal_omission",
+                "vazquez_comment": "¡Descartaste el toxicológico! Podría haber estado en sobredosis y tú asumiendo que era psiquiátrico. ¡Estás fuera de mi guardia!"
+            }
+        }
+    ],
+
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "question": "¿Cuál es el diagnóstico más probable?",
+                "options": ["Trastorno Bipolar I", "Esquizofrenia", "Intoxicación por estimulantes"],
+                "correct_index": 0
+            }
+        ]
+    },
+
+    "perla_enarm": {
+        "id": "perla_psych_001",
+        "title": "Trastorno Bipolar: Episodio Maníaco",
+        "text": "Se requiere al menos 1 semana de síntomas o necesidad de hospitalización. El tamizaje toxicológico es imperativo para descartar causas secundarias.",
+        "gpc_ref": "GPC-IMSS-044-08"
+    }
+}

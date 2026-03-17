@@ -1,0 +1,62 @@
+{
+  "case_id": "PROC_OBS_GDM_DX_001_010",
+  "version": "v3_swipe_action",
+  "theme_config": "obs",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Laura, 26 años",
+    "arrival_scenario": "Paciente cursando con 26 SDG. Se realiza curva de tolerancia a la glucosa de 75g (Estrategia de Un Paso). Ayuno reportado en 91 mg/dl. A la hora presenta 190 mg/dl. ¿Cuál es la conducta?",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 110/70, FC 80 lpm, Temp 36.5°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Diabetes Gestacional (Confirmada): Estrategia Un Paso (75g): Ayuno ≥92, 1h ≥180, o 2h ≥153. Solo se requiere un valor alterado.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Correcto! Cumple criterios de la ADA/GPC con un solo valor por encima del punto de corte."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "B) Tolerancia a la Glucosa Normal: Valores por debajo de 92, 180 y 153 respectivamente.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: ¡Bien! Reconociste el umbral diagnóstico riguroso para gestantes."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Tamizaje DG: Un Paso vs Dos Pasos",
+    "text": "Clave: Estrategia Un Paso (75g) usa puntos de corte 92-180-153. Con UN solo valor alterado se hace el diagnóstico.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Diabetes en el Embarazo"
+  }
+}
