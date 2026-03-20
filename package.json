@@ -1,0 +1,7 @@
+{
+  "name": "dr-swipe-specs-root",
+  "private": true,
+  "scripts": {
+    "build": "cd dr-swipe && npm install --legacy-peer-deps && npm run build"
+  }
+}
