@@ -6,14 +6,14 @@ import type { ClinicalCase } from '../types/game';
 export const dataLoader = {
   loadCase: async (caseId: string): Promise<ClinicalCase> => {
     const safeId = encodeURIComponent(caseId.toUpperCase());
-    const response = await fetch(`/cases/CASE_${safeId}.json`);
+    const response = await fetch(`${import.meta.env.BASE_URL}cases/CASE_${safeId}.json`);
     if (response.status === 404) throw new Error(`Case not found: ${caseId}`);
     if (!response.ok) throw new Error(`Failed to load case: ${response.status} - ${caseId}`);
     return await response.json();
   },
 
   loadRandomCase: async (specialty: string = 'all'): Promise<ClinicalCase> => {
-    const indexResponse = await fetch('/cases/case_index.json');
+    const indexResponse = await fetch(`${import.meta.env.BASE_URL}cases/case_index.json`);
     if (!indexResponse.ok) throw new Error('Failed to load case index');
 
     const index: string[] = await indexResponse.json();
