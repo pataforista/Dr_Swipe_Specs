@@ -95,6 +95,7 @@ function App() {
   const [showIntro, setShowIntro] = useState(false);
   const [expression, setExpression] = useState<'neutral' | 'happy' | 'angry' | 'shocked'>('neutral');
   const [comment, setComment] = useState<string | null>(null);
+  const [swipeFeedback, setSwipeFeedback] = useState<'correct' | 'wrong' | null>(null);
   const [timeLeft, setTimeLeft] = useState(60);
 
   // Time Tense Haptics (Variance)
@@ -145,7 +146,8 @@ function App() {
     if (!card) return;
 
     const isCorrect = isSwipeCorrect(direction, card.expected_action);
-
+    
+    setSwipeFeedback(isCorrect ? 'correct' : 'wrong');
     setExpression(isCorrect ? 'happy' : 'angry');
     const comment = card.scoring.vazquez_comment;
     setComment(comment ? (comment.split(':')[1]?.trim() || comment) : null);
@@ -155,7 +157,8 @@ function App() {
     setTimeout(() => {
       setExpression('neutral');
       setComment(null);
-    }, 2000);
+      setSwipeFeedback(null);
+    }, 3000);
   };
 
   const renderCurrentView = () => {
@@ -276,7 +279,18 @@ function App() {
             </div>
             <h2 className="text-3xl font-display font-black text-medical-primary mb-4 tracking-tighter">MÉRITO ALCANZADO</h2>
             <p className="text-slate-400 mb-8 font-medium italic">"Se ha estabilizado la situación clínica con precisión empírica."</p>
-            <button onClick={() => send({ type: 'CLAIM' })} className="btn-primary w-full">REGISTRAR EN BITÁCORA</button>
+            
+            <div className="flex flex-col gap-4">
+              <button onClick={startNewCase} className="btn-primary w-full py-5 !bg-medical-primary hover:!bg-teal-600">
+                SIGUIENTE CASO
+              </button>
+              <button 
+                onClick={() => send({ type: 'CLAIM' })} 
+                className="text-[10px] font-black tracking-[0.4em] text-slate-500 hover:text-white transition-colors uppercase"
+              >
+                Registrar y Salir
+              </button>
+            </div>
           </motion.div>
         );
 
@@ -370,6 +384,34 @@ function App() {
   return (
     <div className={`fixed inset-0 bg-[#070b14] flex flex-col items-center safe-top safe-bottom select-none overflow-hidden text-slate-100 crt-screen ${timeLeft <= 10 && state.matches('triage') ? 'destabilized-content' : ''}`}>
       <TelemetryHUD timeLeft={timeLeft} state={state.value as string} />
+      
+      {/* Swipe Feedback Flash */}
+      <AnimatePresence>
+        {swipeFeedback && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.2 }}
+            exit={{ opacity: 0 }}
+            className={`fixed inset-0 z-0 pointer-events-none ${swipeFeedback === 'correct' ? 'bg-green-500' : 'bg-red-500'}`}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Swipe Status Label */}
+      <AnimatePresence>
+        {swipeFeedback && (
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed top-1/4 left-1/2 -translate-x-1/2 z-[60] pointer-events-none"
+          >
+            <span className={`text-4xl font-display font-black uppercase tracking-[0.2em] ${swipeFeedback === 'correct' ? 'text-green-400' : 'text-red-400'} drop-shadow-lg`}>
+              {swipeFeedback === 'correct' ? 'CORRECTO' : 'FALLO'}
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
       
       {/* Red-Out Vignette Effect */}
       {timeLeft <= 15 && state.matches('triage') && (

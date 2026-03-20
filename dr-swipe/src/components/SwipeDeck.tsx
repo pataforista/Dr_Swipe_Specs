@@ -108,7 +108,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({ card, isTop, indexOffset,
   const handleDragEnd = async (_event: MouseEvent | TouchEvent | PointerEvent, info: { offset: { x: number }; velocity: { x: number } }) => {
     if (!isTop) return;
 
-    const threshold = 100;
+    const threshold = 60;
     const velocity = info.velocity.x;
 
     if (info.offset.x > threshold || velocity > 500) {
@@ -134,7 +134,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({ card, isTop, indexOffset,
       }}
       drag={isTop && !isLocked ? "x" : false}
       dragConstraints={{ left: 0, right: 0 }}
-      dragElastic={0.8}
+      dragElastic={1.0}
       onDragEnd={handleDragEnd}
       animate={isTop ? controls : "stacked"}
       variants={{
