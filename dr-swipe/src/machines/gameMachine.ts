@@ -1,5 +1,5 @@
 import { setup, assign } from 'xstate';
-import type { Card } from '../types/game';
+import type { Card, EnarmPearl } from '../types/game';
 
 interface GameContext {
   deck: Card[];
@@ -15,7 +15,7 @@ interface GameContext {
 }
 
 type GameEvent =
-  | { type: 'START_GUARD'; deck: Card[]; difficulty: string; pearl: any }
+  | { type: 'START_GUARD'; deck: Card[]; difficulty: string; pearl: EnarmPearl }
   | { type: 'SWIPE'; direction: 'left' | 'right' }
   | { type: 'TRIGGER_BOSS' }
   | { type: 'ANSWER_CORRECT' }
@@ -173,12 +173,20 @@ export const gameMachine = setup({
         ANSWER_CORRECT: { target: 'reward' },
         ANSWER_WRONG: {
           target: 'ghosted',
-          actions: assign({ 
-            fatalError: ({ event }) => (event.type === 'ANSWER_WRONG' ? event.error : "Error en el Shock Room"),
-            debriefData: ({ context, event }) => ({
-              ...context.debriefData!,
-              comment: event.type === 'ANSWER_WRONG' ? event.error : "Fallo en protocolo de choque."
-            })
+          actions: assign({
+            fatalError: ({ event }) => {
+              if (event.type === 'ANSWER_WRONG') {
+                return event.error;
+              }
+              return "Error en el Shock Room";
+            },
+            debriefData: ({ context, event }) => {
+              const errorMessage = event.type === 'ANSWER_WRONG' ? event.error : "Fallo en protocolo de choque.";
+              return {
+                ...context.debriefData!,
+                comment: errorMessage
+              };
+            }
           })
         }
       }

@@ -24,7 +24,10 @@ export const useGameAudio = () => {
 
   const startAlarm = () => {
     if (alarmId.current === null) {
-      alarmId.current = sfx.alarm.play() as unknown as number;
+      const id = sfx.alarm.play();
+      if (id !== null) {
+        alarmId.current = id;
+      }
     }
   };
 

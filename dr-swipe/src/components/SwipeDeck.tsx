@@ -85,10 +85,15 @@ const ICON_MAP: Record<string, string> = {
 
 const getIcon = (iconName: string) => {
   if (!iconName) return '📋';
-  // If it's already an emoji (approximated by length/special chars) or not in map, return it or fallback
+  // Check if it's in the icon map first
   if (ICON_MAP[iconName]) return ICON_MAP[iconName];
-  // Check if it's a direct emoji (length isn't 100% reliable for all emojis but good enough for common medical ones)
-  if (iconName.length > 1 || iconName.charCodeAt(0) > 127) return iconName; 
+  // Check if it's a direct emoji using Unicode property escapes
+  try {
+    if (/\p{Emoji}/u.test(iconName)) return iconName;
+  } catch {
+    // Fallback for older browsers that don't support Unicode property escapes
+    if (iconName.length > 1 || iconName.charCodeAt(0) > 127) return iconName;
+  }
   return '📋';
 };
 
@@ -100,7 +105,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({ card, isTop, indexOffset,
   const overlayOpacityLeft = useTransform(x, [0, -150], [0, 1]);
   const overlayOpacityRight = useTransform(x, [0, 150], [0, 1]);
 
-  const handleDragEnd = async (_: any, info: any) => {
+  const handleDragEnd = async (_event: MouseEvent | TouchEvent | PointerEvent, info: { offset: { x: number }; velocity: { x: number } }) => {
     if (!isTop) return;
 
     const threshold = 100;
