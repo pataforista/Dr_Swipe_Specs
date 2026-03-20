@@ -9,6 +9,7 @@ interface DecryptedTextProps {
   className?: string;
   parentClassName?: string;
   animateOn?: 'view' | 'hover';
+  revealMultiplier?: number;
 }
 
 export default function DecryptedText({
@@ -19,6 +20,7 @@ export default function DecryptedText({
   className = '',
   parentClassName = '',
   animateOn = 'view',
+  revealMultiplier = 1,
 }: DecryptedTextProps) {
   const [displayText, setDisplayText] = useState(text);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -34,25 +36,24 @@ export default function DecryptedText({
             .split('')
             .map((char, index) => {
               if (char === ' ') return ' ';
-              if (index < iteration / maxIterations) return char;
+              if (index < (iteration * revealMultiplier) / maxIterations) return char;
               return characters[Math.floor(Math.random() * characters.length)];
             })
             .join('')
         );
 
         iteration++;
-        if (iteration >= targetText.length * maxIterations) {
-          if (intervalRef.current) { // Clear interval only if it exists
+        if (iteration * revealMultiplier >= targetText.length * maxIterations) {
+          if (intervalRef.current) {
             clearInterval(intervalRef.current);
           }
           setDisplayText(targetText);
-          // setIsRevealed(true); // Uncomment if isRevealed is used
         }
       }, speed);
     }
     return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
 
-  }, [text, speed, maxIterations, animateOn, characters]);
+  }, [text, speed, maxIterations, animateOn, characters, revealMultiplier]);
 
   return (
     <motion.span className={`inline-block whitespace-pre-wrap ${parentClassName}`}>

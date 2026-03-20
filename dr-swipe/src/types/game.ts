@@ -73,8 +73,9 @@ export interface ClinicalCase {
   difficulty: 'standard' | 'hard' | 'extreme';
   patient_intro: PatientIntro;
   card_stream: Card[];
-  boss_fight_triad: BossFightTriad;
-  enarm_pearl: EnarmPearl;
+  boss_fight_triad?: BossFightTriad;
+  enarm_pearl?: EnarmPearl;
+  perla_enarm?: EnarmPearl; // legacy support
 }
 
 export interface PlayerStats {

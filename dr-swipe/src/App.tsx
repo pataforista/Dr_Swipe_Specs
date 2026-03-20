@@ -172,13 +172,13 @@ function App() {
           <span className="text-[10px] font-black tracking-[0.4em] text-medical-primary uppercase mb-6 block">BREVIARIO CLÍNICO</span>
           
           <h2 className="text-4xl font-display font-black text-white mb-6 leading-tight tracking-tighter">
-            <DecryptedText text={currentCase.patient_intro.name} animateOn="view" speed={80} />
+            <DecryptedText text={currentCase.patient_intro.name} animateOn="view" speed={30} maxIterations={5} />
           </h2>
           
           <div className="w-12 h-1 bg-medical-primary/30 mx-auto mb-8 rounded-full" />
           
           <p className="text-lg text-slate-300 leading-relaxed mb-10 italic font-medium px-4">
-            <DecryptedText text={currentCase.patient_intro.arrival_scenario} animateOn="view" speed={40} maxIterations={5} />
+            <DecryptedText text={currentCase.patient_intro.arrival_scenario} animateOn="view" speed={25} maxIterations={1} revealMultiplier={2} />
           </p>
           
           <button 
@@ -189,7 +189,7 @@ function App() {
                 type: 'START_GUARD', 
                 deck: currentCase.card_stream,
                 difficulty: currentCase.difficulty || 'standard',
-                pearl: currentCase.enarm_pearl
+                pearl: currentCase.enarm_pearl || currentCase.perla_enarm
               });
             }}
             className="btn-primary w-full py-5 text-base"
@@ -240,7 +240,11 @@ function App() {
         );
 
       case state.matches('boss_fight'):
-        return currentCase ? (
+        if (!currentCase?.boss_fight_triad?.questions?.length) {
+          send({ type: 'ANSWER_CORRECT' });
+          return null;
+        }
+        return (
           <ShockRoom 
             questions={currentCase.boss_fight_triad.questions}
             dossierItems={state.context.dossier}
@@ -254,7 +258,7 @@ function App() {
               send({ type: 'ANSWER_WRONG', error });
             }}
           />
-        ) : null;
+        );
 
       case state.matches('reward'):
         return (
