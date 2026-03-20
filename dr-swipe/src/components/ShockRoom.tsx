@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import type { BossQuestion } from '../types/game';
+import type { BossQuestion, Card } from '../types/game';
 import GlitchText from './bits/GlitchText';
 
 interface ShockRoomProps {
   questions: BossQuestion[];
-  dossierItems: any[];
+  dossierItems: Card[];
   onSurvive: () => void;
   onGhosted: (reason: string) => void;
 }
@@ -29,7 +29,8 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
       if (typeof navigator !== 'undefined' && navigator.vibrate) {
         navigator.vibrate([200, 100, 200, 100, 500]);
       }
-      onGhosted(`Fallo crítico en el Shock Room: ${q.q}`);
+      const errorMessage = q.q || 'Pregunta desconocida';
+      onGhosted(`Fallo crítico en el Shock Room: ${errorMessage}`);
     }
   };
 

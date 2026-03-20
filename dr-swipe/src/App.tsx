@@ -12,6 +12,11 @@ import DecryptedText from './components/bits/DecryptedText';
 import ShinyText from './components/bits/ShinyText';
 import ErrorBoundary from './components/ErrorBoundary';
 
+const isSwipeCorrect = (direction: 'left' | 'right', expectedAction: 'keep' | 'discard'): boolean => {
+  return (direction === 'right' && expectedAction === 'keep') ||
+         (direction === 'left' && expectedAction === 'discard');
+};
+
 const TelemetryHUD: React.FC<{ timeLeft: number; state: string }> = ({ timeLeft, state }) => {
   const [pulse, setPulse] = useState(72);
   
@@ -100,7 +105,7 @@ function App() {
         navigator.vibrate([100, 50, 100]); // Short warning pulse
       }
     }
-  }, [timeLeft, state.value]);
+  }, [timeLeft, state]);
 
   useEffect(() => {
     let timer: number;
@@ -115,14 +120,14 @@ function App() {
       send({ type: 'TIME_OUT' });
     }
     return () => clearInterval(timer);
-  }, [state.value, timeLeft, send]);
+  }, [state, timeLeft, send]);
 
   useEffect(() => {
     const isLethal = state.matches('ghosted') || state.matches('debrief');
     if (isLethal && typeof navigator !== 'undefined' && navigator.vibrate) {
       navigator.vibrate([200, 100, 200, 100, 500]); // Lethal mistake pattern
     }
-  }, [state.value]);
+  }, [state]);
 
   const startNewCase = async () => {
     try {
@@ -139,9 +144,8 @@ function App() {
     const card = state.context.deck[state.context.currentCardIndex];
     if (!card) return;
 
-    const isCorrect = (direction === 'right' && card.expected_action === 'keep') || 
-                      (direction === 'left' && card.expected_action === 'discard');
-    
+    const isCorrect = isSwipeCorrect(direction, card.expected_action);
+
     setExpression(isCorrect ? 'happy' : 'angry');
     const comment = card.scoring.vazquez_comment;
     setComment(comment ? (comment.split(':')[1]?.trim() || comment) : null);

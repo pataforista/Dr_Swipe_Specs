@@ -48,9 +48,14 @@
   .text-glow {
     text-shadow: 0 0 10px rgba(13, 148, 136, 0.5);
   }
-  
+
   .text-glow-danger {
     text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+  }
+
+  .italic-glow {
+    font-style: italic;
+    text-shadow: 0 0 8px rgba(13, 148, 136, 0.4);
   }
 
   .scanline {

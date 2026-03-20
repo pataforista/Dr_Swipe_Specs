@@ -80,7 +80,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
                     className="glass-panel p-6 max-w-sm text-center border-white/20 shadow-[0_10px_40px_rgba(0,0,0,0.4)] relative"
                   >
                     <span className="absolute -top-3 left-4 text-[8px] font-black text-white/30 tracking-[0.3em] uppercase bg-slate-900 px-2">FEEDBACK DIRECTO</span>
-                    <p className="text-base font-display font-black text-slate-100 leading-snug italic italic-glow">
+                    <p className="text-base font-display font-black text-slate-100 leading-snug italic-glow">
                       "{dialogueText}"
                     </p>
                     <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#1e293b]/80 rotate-45 border-l border-t border-white/10" />

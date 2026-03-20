@@ -22,7 +22,7 @@ const ShinyText: React.FC<ShinyTextProps> = ({
     transition: {
       repeat: Infinity,
       duration: speed,
-      ease: "linear" as any,
+      ease: "linear" as const,
     }
   };
 
