@@ -1,0 +1,46 @@
+{
+  "case_id": "PROC_INT_TEP_001_001",
+  "version": "v3_swipe_action",
+  "theme_config": "int",
+  "difficulty": "hard",
+  "patient_intro": {
+    "name": "Rosa, 47 años",
+    "arrival_scenario": "Acude por disnea súbita y dolor torácico pleurítico de 30 minutos. Antecedente de cirugía de cadera hace 2 semanas. Auscultación pulmonar normal. Taquicardia y taquipnea notables. Wells de 7 puntos (Alta probabilidad).",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 90/60 (tendencia al choque), FC 120 lpm, Temp 37.0°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Tromboembolia Pulmonar (TEP): Obstrucción del flujo arterial pulmonar por trombos. Triada de Virchow presente.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Excelente! La disnea súbita en un paciente con factores de riesgo (cirugía reciente/cáncer) y pulmones 'limpios' a la auscultación grita TEP."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Diagnóstico de TEP: AngioTAC",
+    "text": "El estándar de oro para el diagnóstico de TEP es la Angio-Tomografía Computarizada. El ECG más común es la taquicardia sinusal.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Tromboembolia Pulmonar"
+  }
+}

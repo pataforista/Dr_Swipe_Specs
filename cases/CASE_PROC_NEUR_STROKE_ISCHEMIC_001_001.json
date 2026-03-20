@@ -1,0 +1,63 @@
+{
+  "case_id": "PROC_NEUR_STROKE_ISCHEMIC_001_001",
+  "version": "v3_swipe_action",
+  "theme_config": "neur",
+  "difficulty": "hard",
+  "patient_intro": {
+    "name": "Carmen, 63 años",
+    "arrival_scenario": "Traído por familiares por presentar desviación de la comisura bucal y pérdida de fuerza en hemicuerpo derecho de 2 horas de evolución. Escala de Cincinnati positiva. TC de cráneo simple reporta ausencia de áreas hemorrágicas. Glucosa capilar 110 mg/dl.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 170/90 mmHg, FC 110 lpm (irregular), Temp 36.6°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) ACV Isquémico (Ventana de Fibrinolisis): Sintomatología focal <4.5 horas + TC sin hemorragia. Manejo: rTPA (Alteplase).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Excelente! La ventana de 4.5 horas es sagrada en el ENARM para el uso de fibrinolíticos."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true,
+        "lethal_if_discarded": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "B) Hemorragia Intracraneal: Clínica similar pero TC mostraría hiperdensidad súbita.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: ¡Bien! La TC negativa a sangre confirma el origen isquémico temprano."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Ventana de rTPA",
+    "text": "Tiempo es Cerebro: La ventana ideal es <3h, extendida hasta 4.5h en casos seleccionados. Contraindicación absoluta: TA >185/110 persistente.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de ACV Isquémico"
+  }
+}

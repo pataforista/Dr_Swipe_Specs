@@ -1,0 +1,63 @@
+{
+  "case_id": "PROC_OBS_HEM_ECTOPIC_001_014",
+  "version": "v3_swipe_action",
+  "theme_config": "obs",
+  "difficulty": "hard",
+  "patient_intro": {
+    "name": "Ana, 29 años",
+    "arrival_scenario": "Acude a urgencias por dolor abdominal súbito en fosa ilíaca derecha de intensidad 10/10. Refiere manchado vaginal escaso. Signos de irritación peritoneal (rebote positivo). USG transvaginal: Fondo uterino vacío, líquido libre en fondo de saco de Douglas.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 80/40 mmHg, FC 120 lpm, Temp 36.2°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Embarazo Ectópico Roto: Triada: Amenorrea + Dolor pélvico + Sangrado escaso. Evoluciona a choque hemoperitoneo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡Excelente! Es una emergencia quirúrgica (Salpingectomía). El dolor a la movilización cervical es clave."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true,
+        "lethal_if_discarded": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "B) Apendicitis Aguda: Puede simular el dolor en FID, pero no explica el choque súbito ni la amenorrea.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: ¡Bien! El contexto de amenorrea y el líquido libre sugieren origen obstétrico."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "HCG y USG: Zona de Discriminación",
+    "text": "Si HCG >1,500 y el útero está VACÍO en USG transvaginal, se sospecha de Embarazo Ectópico hasta no demostrar lo contrario.",
+    "gpc_ref": "GPC Diagnóstico y Manejo del Embarazo Ectópico"
+  }
+}

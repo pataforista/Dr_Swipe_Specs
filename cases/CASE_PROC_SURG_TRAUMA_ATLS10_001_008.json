@@ -1,0 +1,63 @@
+{
+  "case_id": "PROC_SURG_TRAUMA_ATLS10_001_008",
+  "version": "v3_swipe_action",
+  "theme_config": "surg",
+  "difficulty": "hard",
+  "patient_intro": {
+    "name": "Pedro, 30 años",
+    "arrival_scenario": "Paciente con trauma torácico penetrante. Se observa ingurgitación yugular, hipotensión (80/40) y timpanismo a la percusión del hemitórax derecho. Bajo estándares de ATLS 10ª Edición, se identifica Neumotórax a Tensión. ¿Cuál es el sitio de descompresión inmediata con aguja?",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 80/50 mmHg, FC 130 lpm, Temp 36.2°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Descompresión en 5º Espacio Intercostal (LAA/LAM): ATLS 10ª Edición (2024): El sitio preferido es el 5º espacio intercostal en la línea axilar anterior o media.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Excelente! Estás actualizado con el ATLS 10. El 5º espacio es ahora el estándar para evitar lesiones y asegurar éxito."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true,
+        "lethal_if_discarded": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "B) Descompresión en 2º Espacio Intercostal (LMC): Sitio recomendado en versiones antiguas (ATLS 9ª y previas). Menos efectivo por grosor de pared.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: ¡Bien! Notaste el cambio normativo crítico del ATLS 10."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "ATLS 10: El Cambio del Espacio",
+    "text": "Neumotórax a Tensión: Punción inmediata en 5º Espacio Intercostal (Línea Axilar Anterior/Media). NO esperar Rayos X.",
+    "gpc_ref": "ATLS 10th Edition Student Course Manual"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "case_id": "PROC_PSYC_DEP_SUICIDE_001_012",
+  "version": "v3_swipe_action",
+  "theme_config": "psyc",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Fernando, 34 años",
+    "arrival_scenario": "Acude por pérdida de interés en sus actividades desde hace 1 mes. Refiere insomnio de despertar temprano y sentimientos de culpa. Al interrogatorio directo admite tener un plan estructurado para quitarse la vida mediante ingesta de fármacos.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 120/80, FC 80 lpm, Temp 36.5°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Depresión Mayor con Riesgo Suicida Agudo: Sintomatología depresiva >2 semanas + Plan/Ideación suicida. Requiere hospitalización o vigilancia estrecha.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Correcto! La seguridad del paciente es prioridad. Si hay plan estructurado, no se debe enviar a casa solo."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true,
+        "lethal_if_discarded": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "B) Duelo Normal: Reacción a pérdida; la funcionalidad suele mantenerse y no hay ideación suicida estructurada.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: ¡Bien! Identificaste que el plan suicida marca la patología."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Pregunta por el Suicidio",
+    "text": "Mito ENARM: Preguntar sobre el suicidio NO incita al paciente a hacerlo; al contrario, reduce el riesgo al permitir intervención.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Depresión"
+  }
+}

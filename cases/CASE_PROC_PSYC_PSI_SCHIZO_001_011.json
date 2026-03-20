@@ -1,0 +1,62 @@
+{
+  "case_id": "PROC_PSYC_PSI_SCHIZO_001_011",
+  "version": "v3_swipe_action",
+  "theme_config": "psyc",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "María, 23 años",
+    "arrival_scenario": "Familiares refieren que el paciente escucha voces que le dan órdenes y se ha aislado socialmente desde hace 8 meses. Durante la entrevista presenta soliloquios y refiere que los comerciales de TV tienen mensajes dirigidos a él (referencia).",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 120/80, FC 90 lpm, Temp 36.8°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Esquizofrenia: Síntomas psicóticos (alucinaciones/delirios) con duración >6 meses y deterioro funcional.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Asiduo! El criterio temporal (>6 meses) es lo que define la esquizofrenia frente a otros trastornos psicóticos."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "B) Trastorno Psicótico Breve: Psicosis súbita con duración MENOR a 1 mes, usualmente tras evento estresante.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: ¡Bien! El factor tiempo fue el diferenciador."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Psicosis: El Reloj es Clave",
+    "text": "<1 mes = Psicótico Breve. 1-6 meses = Esquizofreniforme. >6 meses = Esquizofrenia.",
+    "gpc_ref": "Guía de Práctica Clínica Salud Mental"
+  }
+}

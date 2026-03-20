@@ -1,0 +1,63 @@
+{
+  "case_id": "PROC_ENDO_DM2_CAD_001_002",
+  "version": "v3_swipe_action",
+  "theme_config": "endo",
+  "difficulty": "hard",
+  "patient_intro": {
+    "name": "Miguel, 27 años",
+    "arrival_scenario": "Familiar refiere poliuria y polidipsia de 1 semana. El paciente presenta respiración profunda y rápida (Kussmaul) y aliento a frutas. Paciente con deshidratación grado 2. Se inicia protocolo de manejo metabólico urgente.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 90/60 mmHg, FC 120 lpm, Temp 37.5°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Cetoacidosis Diabética (CAD): Triada: Hiperglucemia + Acidosis Metabólica (Anion Gap ↑) + Cetonemia/Cetonuria.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Excelente! El manejo es hidratación agresiva seguida de insulina IV y monitoreo de potasio."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true,
+        "lethal_if_discarded": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "B) Estado Hiperosmolar Hiperglucémico (EHH): Hiperglucemia extrema (>600) + Osmolaridad ↑ (>320). Típico de DM2 ancianos SIN acidosis severa.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: ¡Bien! Diferenciaste los dos estados según el PH y las cetonas."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Manejo de Potasio en CAD",
+    "text": "Regla de Oro: Si el K <3.3 mEq/L, NO inicies insulina; repón K primero para evitar parálisis respiratoria o arritmias fatales.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la CAD y EHH"
+  }
+}

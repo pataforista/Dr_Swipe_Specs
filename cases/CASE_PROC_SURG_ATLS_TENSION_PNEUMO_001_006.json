@@ -1,0 +1,63 @@
+{
+  "case_id": "PROC_SURG_ATLS_TENSION_PNEUMO_001_006",
+  "version": "v3_swipe_action",
+  "theme_config": "surg",
+  "difficulty": "hard",
+  "patient_intro": {
+    "name": "Pedro, 47 años",
+    "arrival_scenario": "Masculino de 35 años tras accidente automovilístico. Presenta dificultad respiratoria severa y desviación traqueal. A la exploración: Ingurgitación yugular, ausencia de ruidos respiratorios a la derecha y timpanismo a la percusión.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 80/40 mmHg, FC 130 lpm, Temp 36.2°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Descompresión con aguja hoy (5º espacio): ATLS 10ª Edición: El sitio recomendado de descompresión es el 5º espacio intercostal, línea axilar anterior/media.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Excelente! Te actualizaste al ATLS 10ª. La descompresión en el 5º espacio es ahora el estándar."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true,
+        "lethal_if_discarded": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "B) Punción en 2º espacio intercostal: Sitio recomendado en guías anteriores (ATLS 9ª y normas mexicanas viejas).",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: ¡Bien! Reconociste que el 2º espacio ya no es el sitio preferido en las guías más recientes."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "ATLS 10ª: Neumotórax a Tensión",
+    "text": "Cambio Crítico: La descompresión inmediata se realiza en el 5º espacio intercostal, línea axilar anterior o media (mismo sitio del tubo de tórax).",
+    "gpc_ref": "Manual ATLS 10ª Edición"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "id": "PROC_SURG_TRAUMA_PNEUMO_001_006",
+    "title": "SURG TRAUMA PNEUMO 001 (Var 6)",
+    "category": "Procedural",
+    "difficulty": "hard",
+    "tags": [
+      "procedural",
+      "clinical_reasoning"
+    ]
+  },
+  "version": "v2",
+  "format": "clinical_reasoning",
+  "patient_profile": {
+    "name": "Laura",
+    "age": 30,
+    "sex": "Femenino",
+    "image_url": "https://api.dicebear.com/7.x/pixel-art/svg?seed=Laura30&backgroundColor=c0aede,b6e3f4",
+    "mood": "cianótico",
+    "bio": "Paciente con trauma torácico cerrado por caída de 3 metros. Ingresa con disnea intensa, cianosis y alteración de conciencia.",
+    "vitals": {
+      "TA": "70/40",
+      "FC": "140 lpm",
+      "Temp": "36.0°C"
+    },
+    "details": "Hemitórax izquierdo hipertimpánico sin ruidos ventilatorios. Venas del cuello distendidas. Saturación al 82%."
+  },
+  "evidence_stream": [
+    {
+      "type": "differential",
+      "is_match": true,
+      "payload": {
+        "title": "A) Descompresión inmediata con Aguja Gruesa",
+        "text": "Neumotórax a Tensión. Es un diagnóstico netamente CLÍNICO y una emergencia absoluta. ATLS 10a Ed: 5to espacio intercostal, línea axilar media/anterior."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      },
+      "feedback": {
+        "match": "¡Excelente! Ingurgitación yugular + ausencia de ruidos + choque = Neumotórax a Tensión. Se descomprime INMEDIATAMENTE de forma clínica, sin radiografía. La nueva norma ATLS (10a Ed) recomienda el 5to espacio intercostal.",
+        "discard": "Error Mortal: Retrasar o descartar la descompresión en un paciente con neumotórax a tensión en choque resulta en paro cardíaco inminente."
+      }
+    },
+    {
+      "type": "differential",
+      "is_match": false,
+      "payload": {
+        "title": "B) Solicitar Radiografía de Tórax Portátil",
+        "text": "Confirmar el diagnóstico radiológicamente antes de realizar cualquier procedimiento invasivo torácico."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": false
+      },
+      "feedback": {
+        "match": "¡Muerte por retraso! Un Neumotórax a Tensión es un diagnóstico clínico (A-B en el ATLS). Esperar una Rx compromete el retorno venoso y causa la muerte.",
+        "discard": "¡Bien hecho! Evitaste perder tiempo vital en estudios de gabinete ante una emergencia clínica clarísima."
+      }
+    },
+    {
+      "type": "differential",
+      "is_match": false,
+      "payload": {
+        "title": "C) Intubación Endotraqueal Inmediata",
+        "text": "Asegurar la Vía Aérea (Letra A) por hipoxia severa y alteración del estado de alerta."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      },
+      "feedback": {
+        "match": "Si bien la Aérea es prioridad, la ventilación a presión positiva de la intubación puede EMPEORAR el neumotórax a tensión llevándolo al paro. Primero se descomprime (Problema de la 'B').",
+        "discard": "Correcto, la prioridad de esta clínica es liberar la tensión torácica antes que nada."
+      }
+    }
+  ],
+  "perla_enarm": {
+    "title": "ATLS: Diagnóstico Clínico del Neumotórax a Tensión",
+    "text": "El Neumotórax a Tensión JAMÁS requiere Rx para su diagnóstico o tratamiento. La triada clínica (Ausencia de ruidos, desviación traqueal, ingurgitación yugular) ordena descompresión inmediata. (Ojo a la actualización del ATLS: 5to espacio).",
+    "gpc_ref": "Advanced Trauma Life Support (ATLS) 10ma Edición"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "case_id": "PROC_PED_EXANT_RUBEOLA_001_011",
+  "version": "v3_swipe_action",
+  "theme_config": "ped",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "María, 3 años",
+    "arrival_scenario": "Niña de 7 años con adenopatías retroauriculares y cervicales dolorosas, seguidas de exantema pálido. A la exploración: Manchas de Forchheimer (puntilleo rojo) en paladar blando. Adenopatías retroauriculares muy marcadas.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA N/A, FC 95 lpm, Temp 37.8°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Rubéola: Adenopatías retroauriculares + Manchas de Forchheimer + Exantema de 3 días.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Excelente! El dato pivote son las adenopatías dolorosas y las manchas de Forchheimer."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "B) Sarampión: Cuadro mucho más tóxico, conjuntivitis y manchas de Koplik.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: ¡Bien! Diferenciaste la rubéola (leve) del sarampión (severo)."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Rubéola: Manchas de Forchheimer",
+    "text": "Las manchas de Forchheimer (paladar) son sugerentes, pero las adenopatías retroauriculares/occipitales dolorosas son el 'clue' del examen.",
+    "gpc_ref": "GPC Diagnóstico de Enfermedades Exantemáticas"
+  }
+}

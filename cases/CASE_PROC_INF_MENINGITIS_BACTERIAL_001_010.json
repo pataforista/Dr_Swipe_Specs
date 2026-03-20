@@ -1,0 +1,63 @@
+{
+  "case_id": "PROC_INF_MENINGITIS_BACTERIAL_001_010",
+  "version": "v3_swipe_action",
+  "theme_config": "inf",
+  "difficulty": "hard",
+  "patient_intro": {
+    "name": "José, 43 años",
+    "arrival_scenario": "Acude por cefalea intensa, fiebre de 39°C y rigidez de nuca. Se observan petequias en extremidades inferiores. Se sospecha N. meningitidis. Se debe iniciar tratamiento y aislamiento de gotitas inmediatamente.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 110/70 mmHg, FC 105 lpm, Temp 39.4°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Ceftriaxona + Vancomicina + Dexametasona: Tratamiento empírico estándar para meningitis bacteriana comunitaria. Dexametasona previene secuelas (sordera).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Excelente! La administración de Dexametasona antes o con la primera dosis de AB es vital para el pronóstico."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true,
+        "lethal_if_discarded": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "B) Aciclovir IV: Tratamiento para Encefalitis herpética (hallazgos LCR suelen ser linfocitosis y glucosa normal).",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: ¡Bien! Diferenciaste la meningitis bacteriana de la viral/encefalitis."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "LCR: Bacterias vs Virus",
+    "text": "Bacterias: PMN ↑, Glucosa ↓, Proteínas ↑. Virus: Linfocitos ↑, Glucosa normal, Proteínas levemente ↑.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de Meningitis Bacteriana"
+  }
+}

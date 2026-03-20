@@ -1,0 +1,62 @@
+{
+  "case_id": "PROC_OBS_HEM_ABORTION_001_008",
+  "version": "v3_swipe_action",
+  "theme_config": "obs",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Isabel, 33 años",
+    "arrival_scenario": "Paciente con amenorrea de 12 semanas. Presenta sangrado rojo rutilante y expulsión de tejido blanquecino. Útero menor de lo esperado para amenorrea. USG reporta útero con ecos heterogéneos y ausencia de saco gestacional íntegro.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 110/70, FC 90 lpm, Temp 36.8°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Aborto Incompleto: Expulsión parcial de restos. Cérvix abierto + Sangrado persistente + Útero contraído.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Correcto! Requiere evacuación mediante AMEU o Legrado según estabilidad y semanas."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "B) Amenaza de Aborto: Sangrado vaginal SIN modificación cervical (cérvix cerrado).",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: ¡Bien! El cérvix abierto fue el dato clave para descartar la amenaza."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Clasificación de Aborto",
+    "text": "Clave ENARM: Cérvix CERRADO = Amenaza o Diferido. Cérvix ABIERTO = Inevitable, En Evolución o Incompleto.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento del Aborto"
+  }
+}

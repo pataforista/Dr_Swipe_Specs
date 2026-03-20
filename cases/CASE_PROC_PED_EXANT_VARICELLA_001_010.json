@@ -1,0 +1,78 @@
+{
+  "case_id": "PROC_PED_EXANT_VARICELLA_001_010",
+  "version": "v3_swipe_action",
+  "theme_config": "ped",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "María, 10 años",
+    "arrival_scenario": "Paciente de 8 años con lesiones cutáneas pruriginosas en diferentes estadios de evolución. A la exploración: máculas, pápulas, vesículas y costras que coexisten en la misma región abdominal.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA N/A, FC 90 lpm, Temp 38.2°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Varicela (Tratamiento: Paracetamol): Virus Varicela-Zóster. Pleomorfismo regional (mácula, pápula, vesícula, costra).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Perfecto! El 'pleomorfismo regional' o 'cielo estrellado' es el término técnico que buscarás en el examen."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "B) Viruela: Lesiones en el mismo estadio de evolución (monomórficas), centrífugas y umbilicadas.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: ¡Bien! Reconociste la diferencia clave en el estadio de las lesiones."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "C) Varicela (Tratamiento: Ácido Acetilsalicílico): Uso de Aspirina para mitigar la fiebre intensa en varicela.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "lethal_hazard",
+        "vazquez_comment": "Castillo: ¡Excelente! Evitaste el Síndrome de Reye por salicilatos."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": false
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Varicela: Contraindicado el ASA",
+    "text": "Prohibido: El uso de Ácido Acetilsalicílico en varicela aumenta el riesgo de SÍNDROME DE REYE. Usa Paracetamol.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Varicela en el Paciente Pediátrico"
+  }
+}

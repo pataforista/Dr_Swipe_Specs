@@ -1,0 +1,62 @@
+{
+  "case_id": "PROC_PED_STATS_TESTS_001_005",
+  "version": "v3_swipe_action",
+  "theme_config": "ped",
+  "difficulty": "hard",
+  "patient_intro": {
+    "name": "Carlos, 40 años",
+    "arrival_scenario": "En una comunidad se aplica una nueva prueba para cáncer gástrico. De 100 enfermos, 90 salen positivos. De 100 sanos, 80 salen negativos. ¿Cuál es el Valor Predictivo Negativo (VPN) si la prueba sale negativa en un paciente?",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA N/A, FC N/A, Temp N/A",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Alta Sensibilidad (SNNeg): Una prueba con alta sensibilidad es útil para DESCARTAR (SnNOut) porque tiene pocos falsos negativos.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Correcto! Sensibilidad = Capacidad de detectar enfermos (Positivos / Enfermos totales)."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "B) Especificidad (SpPos): Alta especificidad es útil para CONFIRMAR (SpPIn) porque tiene pocos falsos positivos.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Exacto. Especificidad = Negativos / Sanos totales."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "VPN vs VPP",
+    "text": "El VPP y VPN dependen de la PREVALENCIA. La Sensibilidad y Especificidad son propiedades intrínsecas de la prueba y NO cambian con la prevalencia.",
+    "gpc_ref": "Bioestadística Clínica ENARM"
+  }
+}
