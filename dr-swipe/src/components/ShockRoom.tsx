@@ -54,7 +54,7 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
         </div>
 
         <h2 className="text-2xl md:text-3xl font-display font-black text-white mb-10 leading-tight tracking-tight px-4 underline decoration-medical-danger/30 underline-offset-8">
-          <GlitchText text={q.q || q.question || ""} />
+          <GlitchText text={q.q || q.question || "URGENCIA: REQUIERE ACCIÓN INMEDIATA"} />
         </h2>
         
         <div className="w-full h-0.5 bg-white/5 mb-10 relative">

@@ -1,5 +1,6 @@
 import { setup, assign } from 'xstate';
 import type { Card, EnarmPearl } from '../types/game';
+import { cleanVazquezComment } from '../utils/formatters';
 
 interface GameContext {
   deck: Card[];
@@ -104,13 +105,15 @@ export const gameMachine = setup({
             actions: assign({
               fatalError: ({ context }) => {
                 const card = context.deck[context.currentCardIndex];
-                return card.scoring?.vazquez_comment || "Fallo crítico de seguridad.";
+                const cleanMsg = cleanVazquezComment(card.scoring?.vazquez_comment, false);
+                return `FALLO LETAL: ${cleanMsg || "Fallo crítico de seguridad."}`;
               },
               debriefData: ({ context }) => {
                 const card = context.deck[context.currentCardIndex];
+                const cleanMsg = cleanVazquezComment(card.scoring?.vazquez_comment, false);
                 return {
                   ...context.debriefData!,
-                  comment: card.scoring?.vazquez_comment || "Negligencia inexcusable."
+                  comment: `VÁZQUEZ: He detectado una desviación letal. ${cleanMsg}`
                 };
               }
             })
@@ -192,7 +195,10 @@ export const gameMachine = setup({
       }
     },
     reward: {
-      on: { CLAIM: { target: 'idle', actions: ['resetGame'] } }
+      on: { 
+        CLAIM: { target: 'idle', actions: ['resetGame'] },
+        RESTART: { target: 'idle', actions: ['resetGame'] } 
+      }
     },
     ghosted: {
       on: { 

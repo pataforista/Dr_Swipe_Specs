@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import type { ClinicalCase } from './types/game';
 import { dataLoader } from './utils/dataLoader';
 import { useGameAudio } from './hooks/useGameAudio';
+import { cleanVazquezComment } from './utils/formatters';
 import DecryptedText from './components/bits/DecryptedText';
 import ShinyText from './components/bits/ShinyText';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -132,6 +133,7 @@ function App() {
 
   const startNewCase = async () => {
     try {
+      send({ type: 'RESTART' }); // Reset machine to idle
       const caseData = await dataLoader.loadRandomCase();
       setCurrentCase(caseData);
       setShowIntro(true);
@@ -149,8 +151,9 @@ function App() {
     
     setSwipeFeedback(isCorrect ? 'correct' : 'wrong');
     setExpression(isCorrect ? 'happy' : 'angry');
-    const comment = card.scoring.vazquez_comment;
-    setComment(comment ? (comment.split(':')[1]?.trim() || comment) : null);
+    const rawComment = card.scoring.vazquez_comment;
+    const cleanComment = cleanVazquezComment(rawComment, isCorrect);
+    setComment(cleanComment || null);
 
     send({ type: 'SWIPE', direction });
 
