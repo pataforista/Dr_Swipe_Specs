@@ -1,18 +1,26 @@
 /**
- * Sanitizes feedback comments to avoid confusing "Excellent" praise during clinical errors.
+ * Creates contextual feedback comments based on whether the decision was correct or wrong.
+ * For errors, provides corrective feedback instead of showing incorrect praise.
  */
 export const cleanVazquezComment = (comment: string | undefined, isCorrect: boolean): string => {
   if (!comment) return "";
-  
-  // Remove prefix like "Castillo:" or "Vazquez:"
-  let clean = comment.includes(':') ? comment.split(':')[1].trim() : comment;
-  
-  // Remove leading/trailing quotes if present
+
+  // Extract base comment and doctor name
+  let clean = comment;
+  let doctorName = 'Vázquez';
+
+  if (comment.includes(':')) {
+    const [doctor, msg] = comment.split(':');
+    doctorName = doctor.trim();
+    clean = msg.trim();
+  }
+
+  // Remove surrounding quotes
   clean = clean.replace(/^"|"$/g, '').trim();
 
   if (!isCorrect) {
-    // List of positive prefixes in Spanish to strip during errors
-    const positivePrefixes = [
+    // Try to extract the actual clinical reasoning from positive feedback
+    const positiveMarkers = [
       /^¡?Excelente!?\s*/i,
       /^¡?Muy bien!?\s*/i,
       /^¡?Bien!?\s*/i,
@@ -23,22 +31,23 @@ export const cleanVazquezComment = (comment: string | undefined, isCorrect: bool
       /^¡?Fantástico!?\s*/i,
       /^¡?Logrado!?\s*/i
     ];
-    
-    let previousClean = "";
-    // Apply multiple times to handle things like "¡Excelente! ¡Muy bien! [text]"
-    while (clean !== previousClean) {
-      previousClean = clean;
-      positivePrefixes.forEach(regex => {
-        clean = clean.replace(regex, '');
-      });
-      clean = clean.trim();
-    }
-    
-    // Capitalize first letter of remaining text
-    if (clean.length > 0) {
-      clean = clean.charAt(0).toUpperCase() + clean.slice(1);
+
+    // Remove positive markers to get the reasoning
+    let reasoning = clean;
+    positiveMarkers.forEach(regex => {
+      reasoning = reasoning.replace(regex, '');
+    });
+    reasoning = reasoning.trim();
+
+    // If we found reasoning, use it to create corrective feedback
+    if (reasoning) {
+      // Create contextual error message
+      clean = `Fallo crítico: ${reasoning}`;
+    } else {
+      // Fallback for comments without reasoning
+      clean = "Revisá esta decisión - no fue la correcta en este contexto.";
     }
   }
-  
+
   return clean;
 };

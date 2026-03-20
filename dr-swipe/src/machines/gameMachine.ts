@@ -106,14 +106,14 @@ export const gameMachine = setup({
               fatalError: ({ context }) => {
                 const card = context.deck[context.currentCardIndex];
                 const cleanMsg = cleanVazquezComment(card.scoring?.vazquez_comment, false);
-                return `FALLO LETAL: ${cleanMsg || "Fallo crítico de seguridad."}`;
+                return cleanMsg || "Fallo crítico de seguridad.";
               },
               debriefData: ({ context }) => {
                 const card = context.deck[context.currentCardIndex];
                 const cleanMsg = cleanVazquezComment(card.scoring?.vazquez_comment, false);
                 return {
                   ...context.debriefData!,
-                  comment: `VÁZQUEZ: He detectado una desviación letal. ${cleanMsg}`
+                  comment: cleanMsg || "Fallo crítico de seguridad."
                 };
               }
             })
