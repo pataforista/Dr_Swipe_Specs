@@ -58,7 +58,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
                 scale: dialogueText ? [1, 1.05, 1] : 1,
                 rotate: validExpression === 'angry' ? [0, -3, 3, 0] : 0
               }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
               className={`w-28 h-28 glass-panel !rounded-full flex items-center justify-center text-6xl shadow-2xl relative z-10 border-2 ${
                 validExpression === 'happy' ? 'border-medical-primary/40' :
                 (validExpression === 'angry' ? 'border-medical-danger/40' : 'border-white/10')
@@ -74,12 +74,13 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
                 {dialogueText && (
                   <motion.div
                     key={dialogueText}
-                    initial={{ opacity: 0, y: 15, scale: 0.8 }}
+                    initial={{ opacity: 0, y: 20, scale: 0.85 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -10, scale: 0.8 }}
+                    exit={{ opacity: 0, y: -15, scale: 0.85 }}
+                    transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
                     className="glass-panel p-6 max-w-sm text-center border-white/20 shadow-[0_10px_40px_rgba(0,0,0,0.4)] relative"
                   >
-                    <span className="absolute -top-3 left-4 text-[8px] font-black text-white/30 tracking-[0.3em] uppercase bg-slate-900 px-2">FEEDBACK DIRECTO</span>
+                    <span className="absolute -top-3 left-4 text-[8px] font-black text-white/30 tracking-[0.3em] uppercase bg-slate-900 px-2">FEEDBACK</span>
                     <p className="text-base font-display font-black text-slate-100 leading-snug italic-glow">
                       "{dialogueText}"
                     </p>

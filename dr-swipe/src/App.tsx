@@ -388,39 +388,41 @@ function App() {
     <div className={`fixed inset-0 bg-[#070b14] flex flex-col items-center safe-top safe-bottom select-none overflow-hidden text-slate-100 crt-screen ${timeLeft <= 10 && state.matches('triage') ? 'destabilized-content' : ''}`}>
       <TelemetryHUD timeLeft={timeLeft} state={state.value as string} />
       
-      {/* Swipe Feedback Flash */}
+      {/* Swipe Feedback Flash - Short burst */}
       <AnimatePresence>
         {swipeFeedback && (
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.2 }}
+            animate={{ opacity: 0.15 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             className={`fixed inset-0 z-0 pointer-events-none ${swipeFeedback === 'correct' ? 'bg-green-500' : 'bg-red-500'}`}
           />
         )}
       </AnimatePresence>
 
-      {/* Swipe Status Label */}
+      {/* Swipe Status Label - Subtle and brief */}
       <AnimatePresence>
         {swipeFeedback && (
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: 30, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -15, scale: 0.9 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             className="fixed top-1/4 left-1/2 -translate-x-1/2 z-[60] pointer-events-none"
           >
-            <span className={`text-4xl font-display font-black uppercase tracking-[0.2em] ${swipeFeedback === 'correct' ? 'text-green-400' : 'text-red-400'} drop-shadow-lg`}>
+            <span className={`text-3xl font-display font-black uppercase tracking-[0.1em] ${swipeFeedback === 'correct' ? 'text-green-300' : 'text-red-300'} drop-shadow-lg`}>
               {swipeFeedback === 'correct' ? 'CORRECTO' : 'FALLO'}
             </span>
           </motion.div>
         )}
       </AnimatePresence>
       
-      {/* Red-Out Vignette Effect */}
+      {/* Red-Out Vignette Effect - Reduced intensity */}
       {timeLeft <= 15 && state.matches('triage') && (
-        <div 
-          className="red-out-overlay fixed inset-0" 
-          style={{ opacity: (1 - (timeLeft / 15)) * 1.5 }}
+        <div
+          className="red-out-overlay fixed inset-0"
+          style={{ opacity: (1 - (timeLeft / 15)) * 0.8 }}
         />
       )}
       
@@ -453,6 +455,7 @@ function App() {
               key={state.context.combo}
               initial={{ scale: 0.5, y: -20, opacity: 0 }}
               animate={{ scale: 1, y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
               className="flex flex-col items-end"
             >
               <span className="text-[9px] font-black text-white/40 uppercase tracking-[0.2em]">STREAK</span>
