@@ -40,52 +40,140 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "B) Colecistitis Aguda Litiásica: Inflamación de la vesícula biliar por litiasis. Dolor en CSD, fiebre leve, Murphy positivo.",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "B) Colecistitis Aguda Litiásica: Inflamación de la vesícula biliar. Dolor en hipocondrio derecho, fiebre leve, Murphy positivo, sin ictericia o muy leve.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: ¡Bien hecho! Supiste que la ictericia marcada excluye inflamación puramente vesicular."
+        "vazquez_comment": "Mendoza: ¡Bien hecho! La ictericia marcada nos indica que el problema está en la vía biliar principal (coledocolitiasis/colangitis)."
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "eye",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "C) Hepatitis Viral Aguda: Elevación marcada de transaminasas (>1000 U/L), ictericia, astenia y adinamia, sin dilatación de la vía biliar.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: Correcto. En la hepatitis no suele haber dolor abdominal tan intenso ni leucocitosis importante."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "alert-triangle",
+      "category": "Signo Clínico",
+      "card_text": "D) Péntada de Reynolds: Adición de choque (hipotensión) y alteración del estado mental a la tríada de Charcot.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Muy bien! Identificar la péntada es reconocer una urgencia quirúrgica/endoscópica inmediata."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "droplet",
+      "category": "Laboratorio",
+      "card_text": "E) Patrón Colestásico: Elevación de Bilirrubina Directa, Fosfatasa Alcalina (FA) y Gamma-Glutil Transpeptidasa (GGT).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Exacto. Es el perfil bioquímico típico de la obstrucción biliar."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "camera",
+      "category": "Gabinete",
+      "card_text": "F) Ultrasonido de Vía Biliar: Dilatación del conducto colédoco (>6 mm) y evidencia de lito o barro biliar.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. Es el estudio inicial de elección para confirmar la dilatación."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "beaker",
+      "category": "Etiología",
+      "card_text": "G) Escherichia coli: Es el microorganismo gramnegativo aislado con mayor frecuencia en los hemocultivos y cultivos de bilis.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Correcto. Junto con Klebsiella y Enterococcus, forman la flora bacteriana común de la colangitis."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "crosshair",
+      "category": "Tratamiento Definitivo",
+      "card_text": "H) CPRE: Descompresión urgente de la vía biliar mediante endoscopia, esfinterotomía y extracción de litos.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Vital! La CPRE es tanto diagnóstica como terapéutica y salva vidas en estos pacientes."
       },
       "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "pill",
+      "category": "Antibioticoterapia",
+      "card_text": "I) Antibióticos IV: Iniciar cobertura contra gramnegativos y anaerobios (ej. Ceftriaxona + Metronidazol o Piperacilina/Tazobactam).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Indispensable! El control de la infección es paralelo a la descompresión mecánica."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
       }
     }
   ],
   "enarm_pearl": {
-    "title": "Tríada de Charcot",
-    "text": "Componentes: 1. Dolor en hipocondrio derecho, 2. Ictericia, 3. Fiebre (con escalofríos). Si se agrega Choque y Confusión, es Péntada de Reynolds.",
+    "title": "Colangitis: Charcot y Reynolds",
+    "text": "Charcot: Dolor, fiebre, ictericia. Reynolds: + Choque, + Conciencia ↓. Manejo gold standard: CPRE precoz.",
     "gpc_ref": "GPC Diagnóstico y Manejo de Colangitis Aguda"
   },
   "boss_fight_triad": {
     "trigger": "after_cards",
     "questions": [
       {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
+        "question": "¿Qué par de hallazgos adicionales transforman la tríada de Charcot en la péntada de Reynolds?",
         "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
+          "Hipotensión arterial y alteración del estado mental",
+          "Diarrea y vómitos profusos",
+          "Bradicardia e hipotermia"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
+        "question": "¿Cuál es el procedimiento diagnóstico y terapéutico de elección en la colangitis aguda?",
         "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
+          "CPRE (Colangiopancreatografía Retrógrada Endoscópica)",
+          "Colecistectomía laparoscópica de urgencia",
+          "Gammagrafía HIDA"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
+        "question": "¿Cuál es el germen más frecuentemente aislado en esta patología?",
         "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
+          "Escherichia coli",
+          "Staphylococcus aureus",
+          "Bacteroides fragilis"
         ],
         "correct_index": 0
       }

@@ -8,10 +8,55 @@ import { useState, useEffect } from 'react';
 import type { ClinicalCase } from './types/game';
 import { dataLoader } from './utils/dataLoader';
 import { useGameAudio } from './hooks/useGameAudio';
-import Aurora from './components/bits/Aurora';
 import DecryptedText from './components/bits/DecryptedText';
 import ShinyText from './components/bits/ShinyText';
 import ErrorBoundary from './components/ErrorBoundary';
+
+const TelemetryHUD: React.FC<{ timeLeft: number; state: string }> = ({ timeLeft, state }) => {
+  const [pulse, setPulse] = useState(72);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPulse(p => p + (Math.random() > 0.5 ? 1 : -1));
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  if (state !== 'triage') return null;
+
+  return (
+    <div className="fixed left-6 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-8 pointer-events-none z-50">
+      <div className="telemetry-text text-[10px]">
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 bg-medical-primary rounded-full animate-pulse" />
+          <span>SYS_READY // V_0.4.1</span>
+        </div>
+        <div className="mt-2 text-white/40 font-mono">BP: 120/80 mmHg</div>
+        <div className="text-white/40 font-mono">O2: 98% (STABLE)</div>
+      </div>
+      
+      <div className="flex flex-col gap-1">
+        <span className="telemetry-text text-[8px] opacity-40">HR_MONITOR</span>
+        <div className="flex items-end gap-1 h-8">
+          {[...Array(10)].map((_, i) => (
+            <motion.div
+              key={i}
+              animate={{ height: [10, 25, 15, 20, 12] }}
+              transition={{ repeat: Infinity, duration: 1.5, delay: i * 0.1 }}
+              className="w-1 bg-medical-primary/30 rounded-full"
+            />
+          ))}
+        </div>
+        <span className="text-xl font-black text-medical-primary font-mono">{pulse} <small className="text-[10px]">BPM</small></span>
+      </div>
+
+      <div className="telemetry-text text-[8px] opacity-40">
+        TIME_REMAINING: {timeLeft}S
+      </div>
+    </div>
+  );
+};
+
 
 function App() {
   const [state, send] = useMachine(gameMachine);
@@ -26,7 +71,15 @@ function App() {
         surg: '185, 28, 28',
         obs: '139, 92, 246',
         gyn: '168, 85, 247',
-        im: '59, 130, 246'
+        im: '59, 130, 246',
+        gast: '234, 179, 8',
+        card: '225, 29, 72',
+        endo: '249, 115, 22',
+        inf: '34, 197, 94',
+        neur: '79, 70, 229',
+        prev: '20, 184, 166',
+        stats: '100, 116, 139',
+        engl: '51, 65, 85'
       };
       const key = Object.keys(colors).find(k => currentCase.case_id.toLowerCase().includes(k)) || 'default';
       const rgb = colors[key] || '13, 148, 136';
@@ -37,6 +90,39 @@ function App() {
   const [showIntro, setShowIntro] = useState(false);
   const [expression, setExpression] = useState<'neutral' | 'happy' | 'angry' | 'shocked'>('neutral');
   const [comment, setComment] = useState<string | null>(null);
+  const [timeLeft, setTimeLeft] = useState(60);
+
+  // Time Tense Haptics (Variance)
+  useEffect(() => {
+    if (!state.matches('triage')) return;
+    if (timeLeft === 10 || timeLeft === 5 || timeLeft === 3) {
+      if (typeof navigator !== 'undefined' && navigator.vibrate) {
+        navigator.vibrate([100, 50, 100]); // Short warning pulse
+      }
+    }
+  }, [timeLeft, state.value]);
+
+  useEffect(() => {
+    let timer: number;
+    if (state.matches('triage') && timeLeft > 0) {
+      timer = window.setInterval(() => {
+        setTimeLeft(prev => prev - 1);
+      }, 1000);
+    } else if (state.matches('triage') && timeLeft === 0) {
+      if (typeof navigator !== 'undefined' && navigator.vibrate) {
+        navigator.vibrate([500, 100, 500, 100, 1000]); // Lethal time-out pattern
+      }
+      send({ type: 'TIME_OUT' });
+    }
+    return () => clearInterval(timer);
+  }, [state.value, timeLeft, send]);
+
+  useEffect(() => {
+    const isLethal = state.matches('ghosted') || state.matches('debrief');
+    if (isLethal && typeof navigator !== 'undefined' && navigator.vibrate) {
+      navigator.vibrate([200, 100, 200, 100, 500]); // Lethal mistake pattern
+    }
+  }, [state.value]);
 
   const startNewCase = async () => {
     try {
@@ -57,7 +143,8 @@ function App() {
                       (direction === 'left' && card.expected_action === 'discard');
     
     setExpression(isCorrect ? 'happy' : 'angry');
-    setComment(card.scoring.vazquez_comment.split(':')[1]?.trim() || card.scoring.vazquez_comment);
+    const comment = card.scoring.vazquez_comment;
+    setComment(comment ? (comment.split(':')[1]?.trim() || comment) : null);
 
     send({ type: 'SWIPE', direction });
 
@@ -93,7 +180,13 @@ function App() {
           <button 
             onClick={() => {
               setShowIntro(false);
-              send({ type: 'START_GUARD', deck: currentCase.card_stream });
+              setTimeLeft(currentCase.patient_intro.time_limit_sec);
+              send({ 
+                type: 'START_GUARD', 
+                deck: currentCase.card_stream,
+                difficulty: currentCase.difficulty || 'standard',
+                pearl: currentCase.enarm_pearl
+              });
             }}
             className="btn-primary w-full py-5 text-base"
           >
@@ -129,6 +222,7 @@ function App() {
             cards={state.context.deck} 
             currentIndex={state.context.currentCardIndex} 
             onSwipe={handleSwipe} 
+            isLocked={!state.matches('triage')}
           />
         );
 
@@ -192,10 +286,66 @@ function App() {
             </div>
             
             <button 
+              onClick={() => send({ type: 'VIEW_DEBRIEF' })} 
+              className="btn-primary px-8 py-4 text-xs mb-4 !rounded-xl"
+            >
+              <ShinyText text="ABRIR CAJA NEGRA (DEBRIEF)" speed={3} />
+            </button>
+            <br />
+            <button 
               onClick={() => send({ type: 'RESTART' })} 
-              className="text-xs font-black tracking-[0.5em] text-slate-500 hover:text-white transition-colors uppercase border-b border-slate-800 pb-1"
+              className="text-[10px] font-black tracking-[0.4em] text-slate-500 hover:text-white transition-colors uppercase border-b border-white/5 pb-1"
             >
               Cerrar Expediente
+            </button>
+          </motion.div>
+        );
+
+      case state.matches('debrief'):
+        return (
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="cyber-panel p-8 max-w-sm text-left bg-black/80"
+          >
+            <div className="flex justify-between items-start mb-6">
+              <span className="telemetry-text text-[9px] text-medical-danger font-black tracking-[0.4em] uppercase">
+                ERROR_TYPE: {state.context.debriefData?.title.toUpperCase().replace(' ', '_')}
+              </span>
+              <span className="text-[8px] font-mono text-white/20">CASE ID: {currentCase?.case_id || 'UNKNOWN'}</span>
+            </div>
+
+            <div className="mb-6 p-4 bg-medical-danger/10 border-l-4 border-medical-danger">
+              <p className="text-xs text-medical-danger font-mono font-black mb-2 flex items-center gap-2">
+                <span className="w-2 h-2 bg-medical-danger rounded-full animate-ping" />
+                VÁZQUEZ_LOG_REPORT:
+              </p>
+              <p className="text-sm text-slate-100 italic font-medium leading-relaxed">
+                "{state.context.debriefData?.comment}"
+              </p>
+            </div>
+
+            <div className="mb-6">
+              <div className="text-[9px] text-white/40 mb-2 font-mono uppercase tracking-widest">Diagnostic_Correction:</div>
+              <p className="text-xs text-slate-300 leading-relaxed font-mono">
+                {state.context.debriefData?.text}
+              </p>
+            </div>
+
+            <div className="flex items-center justify-between mb-8 opacity-60">
+              <span className="text-[9px] font-mono text-medical-primary">GPC_SOURCE: {state.context.debriefData?.gpc}</span>
+              <div className="flex gap-1">
+                <div className="w-1 h-3 bg-medical-primary/20" />
+                <div className="w-1 h-3 bg-medical-primary/40" />
+                <div className="w-1 h-3 bg-medical-primary/60" />
+              </div>
+            </div>
+
+            <button 
+              onClick={() => send({ type: 'RESTART' })} 
+              className="btn-primary w-full py-4 !rounded-none !bg-medical-danger hover:!bg-red-700 text-xs tracking-widest border-t border-b border-white/20"
+            >
+              TERMINAR_REPORTE // VOLVER_A_GUARDIA
             </button>
           </motion.div>
         );
@@ -206,8 +356,16 @@ function App() {
   };
 
   return (
-    <div className="fixed inset-0 bg-[#070b14] flex flex-col items-center safe-top safe-bottom select-none overflow-hidden text-slate-100">
-      <Aurora speed={0.5} />
+    <div className={`fixed inset-0 bg-[#070b14] flex flex-col items-center safe-top safe-bottom select-none overflow-hidden text-slate-100 crt-screen ${timeLeft <= 10 && state.matches('triage') ? 'destabilized-content' : ''}`}>
+      <TelemetryHUD timeLeft={timeLeft} state={state.value as string} />
+      
+      {/* Red-Out Vignette Effect */}
+      {timeLeft <= 15 && state.matches('triage') && (
+        <div 
+          className="red-out-overlay fixed inset-0" 
+          style={{ opacity: (1 - (timeLeft / 15)) * 1.5 }}
+        />
+      )}
       
       {/* HUD */}
       <div className="w-full max-w-md flex justify-between items-start px-8 py-10 z-50">
@@ -248,6 +406,27 @@ function App() {
           )}
         </div>
       </div>
+
+      {/* Timer Bar */}
+      {state.matches('triage') && currentCase && (
+        <div className="w-full max-w-sm px-8 -mt-2 mb-4 z-50">
+          <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden shadow-inner flex mb-1">
+            <motion.div 
+              className={`h-full ${timeLeft <= 10 ? 'bg-medical-danger flex-grow h-full' : 'bg-medical-secondary flex-grow h-full'}`}
+              initial={{ width: '100%' }}
+              animate={{ width: `${(timeLeft / currentCase.patient_intro.time_limit_sec) * 100}%` }}
+              transition={{ duration: 1, ease: 'linear' }}
+              style={{ originX: 0 }}
+            />
+          </div>
+          <div className="flex justify-between w-full">
+            <span className={`text-[10px] uppercase font-black tracking-widest ${timeLeft <= 10 ? 'text-medical-danger animate-pulse' : 'text-slate-500'}`}>
+              TIEMPO DE RESPUESTA
+            </span>
+            <span className="text-[10px] text-white/80 font-mono font-black">{timeLeft}s</span>
+          </div>
+        </div>
+      )}
 
       {/* Mentor Feedback Area */}
       <div className="w-full h-40 flex justify-center -mt-8 pointer-events-none">

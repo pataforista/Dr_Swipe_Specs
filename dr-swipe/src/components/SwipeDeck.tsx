@@ -7,9 +7,10 @@ interface SwipeDeckProps {
   cards: Card[];
   currentIndex: number;
   onSwipe: (direction: 'left' | 'right') => void;
+  isLocked?: boolean;
 }
 
-export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwipe }) => {
+export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwipe, isLocked }) => {
   const { playSwipe } = useGameAudio();
   // Solo renderizamos 3 cartas al mismo tiempo por rendimiento (DOM ligero)
   const visibleCards = cards.slice(currentIndex, currentIndex + 3).reverse();
@@ -27,6 +28,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwi
             indexOffset={visibleCards.length - 1 - idx} 
             onSwipe={onSwipe} 
             playSwipe={playSwipe}
+            isLocked={isLocked}
           />
         );
       })}
@@ -40,9 +42,57 @@ interface DraggableCardProps {
   indexOffset: number;
   onSwipe: (direction: 'left' | 'right') => void;
   playSwipe: (direction: 'left' | 'right') => void;
+  isLocked?: boolean;
 }
 
-const DraggableCard: React.FC<DraggableCardProps> = ({ card, isTop, indexOffset, onSwipe, playSwipe }) => {
+const ICON_MAP: Record<string, string> = {
+  'heartbeat': '🩺',
+  'heart': '❤️',
+  'target': '🎯',
+  'slash': '⚠️',
+  'alert-triangle': '⚠️',
+  'alert-circle': '⚠️',
+  'eye': '👁️',
+  'pill': '💊',
+  'clock': '⏱️',
+  'zap': '⚡',
+  'activity': '📈',
+  'trending-up': '📈',
+  'users': '👨‍⚕️',
+  'user': '👨‍⚕️',
+  'search': '🔍',
+  'grid': '📊',
+  'bar-chart-2': '📉',
+  'maximize': '🔎',
+  'help-circle': '❓',
+  'frown': '🤕',
+  'rotate-cw': '🔄',
+  'brain': '🧠',
+  'message-square': '🗣️',
+  'alert-octagon': '🚨',
+  'shield': '🛡️',
+  'droplets': '💧',
+  'check-circle': '✅',
+  'link': '🔗',
+  'refresh-cw': '🔄',
+  'image': '🖼️',
+  'dna': '🧬',
+  'clipboard': '📋',
+  'file-text': '📄',
+  'thermometer': '🌡️',
+  'test-tube': '🧪'
+};
+
+const getIcon = (iconName: string) => {
+  if (!iconName) return '📋';
+  // If it's already an emoji (approximated by length/special chars) or not in map, return it or fallback
+  if (ICON_MAP[iconName]) return ICON_MAP[iconName];
+  // Check if it's a direct emoji (length isn't 100% reliable for all emojis but good enough for common medical ones)
+  if (iconName.length > 1 || iconName.charCodeAt(0) > 127) return iconName; 
+  return '📋';
+};
+
+const DraggableCard: React.FC<DraggableCardProps> = ({ card, isTop, indexOffset, onSwipe, playSwipe, isLocked }) => {
   const x = useMotionValue(0);
   const controls = useAnimation();
   
@@ -77,7 +127,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({ card, isTop, indexOffset,
         rotate,
         zIndex: 10 - indexOffset,
       }}
-      drag={isTop ? "x" : false}
+      drag={isTop && !isLocked ? "x" : false}
       dragConstraints={{ left: 0, right: 0 }}
       dragElastic={0.8}
       onDragEnd={handleDragEnd}
@@ -112,6 +162,16 @@ const DraggableCard: React.FC<DraggableCardProps> = ({ card, isTop, indexOffset,
       </motion.div>
 
       <div className="flex flex-col h-full relative z-10">
+        <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-medical-primary/40 pointer-events-none" />
+        <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-medical-primary/40 pointer-events-none" />
+        
+        {/* Metadata Label */}
+        <div className="absolute -right-4 top-1/2 -rotate-90 pointer-events-none opacity-20">
+          <span className="text-[7px] font-mono font-black tracking-[0.4em] text-white uppercase whitespace-nowrap">
+            MD_REF_{card.card_id.toUpperCase().slice(-4)}_LOG
+          </span>
+        </div>
+
         <div className="scanline opacity-20" />
         <div className="flex justify-between items-start mb-6">
           <div className="flex flex-col items-start">
@@ -121,7 +181,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({ card, isTop, indexOffset,
             </div>
           </div>
           <div className="w-12 h-12 glass-panel !rounded-2xl flex items-center justify-center text-2xl shadow-inner">
-            {card.ui_icon === 'heartbeat' ? '🩺' : '📋'}
+            {getIcon(card.ui_icon)}
           </div>
         </div>
 

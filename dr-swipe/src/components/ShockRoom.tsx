@@ -26,6 +26,9 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
         setCurrentQIndex(prev => prev + 1);
       }
     } else {
+      if (typeof navigator !== 'undefined' && navigator.vibrate) {
+        navigator.vibrate([200, 100, 200, 100, 500]);
+      }
       onGhosted(`Fallo crítico en el Shock Room: ${q.q}`);
     }
   };

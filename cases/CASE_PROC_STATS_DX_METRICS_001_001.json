@@ -39,53 +39,133 @@
     },
     {
       "card_id": "c_2",
-      "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "B) Probabilidad ALTA (>90%): Confundiste la Sensibilidad con el VPP. La prueba es buena detectando enfermos, pero falla ante tantos sanos.",
-      "expected_action": "discard",
+      "ui_icon": "percent",
+      "category": "Valor Predictivo (+)",
+      "card_text": "B) Valor Predictivo Positivo (VPP): Probabilidad de tener la enfermedad si el resultado es POSITIVO. (VP / VP + FP).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Bien! Es la métrica que más le importa al clínico en el consultorio."
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "search",
+      "category": "Sensibilidad",
+      "card_text": "C) Sensibilidad (Sn): Capacidad para detectar enfermos; tasa de verdaderos positivos (VP / VP + FN).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Exacto! Una prueba muy sensible es ideal para el tamizaje (screening) porque da pocos Falsos Negativos."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "check-square",
+      "category": "Especificidad",
+      "card_text": "D) Especificidad (Sp): Capacidad para detectar sanos; tasa de verdaderos negativos (VN / VN + FP).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Correcto! Una prueba muy específica es ideal para confirmar un diagnóstico (SpPIn)."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "trending-up",
+      "category": "Invarianza",
+      "card_text": "E) Sn y Sp vs Prevalencia: Son propiedades intrínsecas de la prueba y su valor NO se modifica por la prevalencia poblacional.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Muy bien. Esta es una pregunta clásica del ENARM que muchos fallan."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "minus-circle",
+      "category": "V.P. Negativo",
+      "card_text": "F) Valor Predictivo Negativo (VPN): Probabilidad de estar sano si la prueba es negativa. Se eleva cuando la prevalencia es baja.",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Bien! Notaste la trampa de la prevalencia."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Bien! Es la contraparte del VPP; si casi nadie está enfermo, un negativo es sumamente confiable."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "activity",
+      "category": "Verosimilitud",
+      "card_text": "G) LR (+) Razón de Verosimilitud: Relaciona Sn y Sp en un solo valor. Cálculo: Sensibilidad / (1 - Especificidad).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Correcto. Indica cuánto más probable es un resultado positivo en un enfermo que en un sano."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "trending-down",
+      "category": "Curva ROC",
+      "card_text": "H) Área bajo la curva (AUC): Gráfico de Sn vs (1-Sp). Un área de 1.0 indica una prueba perfecta, 0.5 indica puro azar.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Excelente! Permite comparar la discriminación de diferentes pruebas diagnósticas visualmente."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "scissors",
+      "category": "Punto de Corte",
+      "card_text": "I) Desplazamiento del Umbral: Si bajamos el punto de corte (hacemos la prueba más sensible), la Especificidad bajará obligatoriamente.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Perfecto! Es el trade-off fundamental de toda prueba diagnóstica continua."
       }
     }
   ],
   "enarm_pearl": {
-    "title": "VPP y Prevalencia",
-    "text": "Si la Prevalencia sube → el VPP sube. Si la Prevalencia baja → el VPP baja. Sensibilidad y Especificidad NO cambian con la prevalencia.",
-    "gpc_ref": "Bioestadística Clínica para el ENARM"
+    "title": "Bioestadística: Sn, Sp y VP",
+    "text": "Sn/Sp: Propiedades fijas. VP: Dependen de Prevalencia. +Prevalencia = +VPP. -Prevalencia = +VPN. Tamizaje = Sn. Confirmar = Sp.",
+    "gpc_ref": "Manual de Bioestadística Médica"
   },
   "boss_fight_triad": {
     "trigger": "after_cards",
     "questions": [
       {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
+        "question": "¿Qué sucede con el Valor Predictivo Positivo (VPP) de una prueba si la prevalencia de la enfermedad en la población disminuye?",
         "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
+          "El VPP disminuye",
+          "El VPP aumenta",
+          "El VPP permanece igual"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
+        "question": "¿Cuál es la definición matemática de Sensibilidad?",
         "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
+          "Verdaderos Positivos / Total de Enfermos (VP/VP+FN)",
+          "Verdaderos Negativos / Total de Sanos (VN/VN+FP)",
+          "Verdaderos Positivos / Total de Positivos (VP/VP+FP)"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
+        "question": "¿Cuál de las siguientes métricas NO se altera por cambios en la prevalencia de la enfermedad?",
         "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
+          "Especificidad",
+          "Valor Predictivo Positivo",
+          "Valor Predictivo Negativo"
         ],
         "correct_index": 0
       }

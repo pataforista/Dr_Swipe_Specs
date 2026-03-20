@@ -41,52 +41,136 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "B) Estado Hiperosmolar Hiperglucémico (EHH): Hiperglucemia extrema (>600) + Osmolaridad ↑ (>320). Típico de DM2 ancianos SIN acidosis severa.",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "B) Estado Hiperosmolar (EHH): Glucosa >600 + Osmolaridad >320; ausencia de acidosis severa. Común en DM2 adultos.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: ¡Bien! Diferenciaste los dos estados según el PH y las cetonas."
+        "vazquez_comment": "Mendoza: ¡Bien! El pH bajo y las cetonas elevadas te confirman que estamos ante una CAD, no un EHH."
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "droplets",
+      "category": "Hidratación",
+      "card_text": "C) Rehidratación Inicial: 1000-1500 ml de Solución Salina 0.9% en la primera hora para restaurar el volumen.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Correcto! La hidratación es el primer paso antes de la insulina para estabilizar la presión arterial."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "alert-triangle",
+      "category": "Seguridad",
+      "card_text": "D) Regla del Potasio: No iniciar insulina si el K+ es <3.3 mEq/L; repón potasio primero para prevenir arritmias fatales.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Vital! La insulina mete potasio a la célula y puede causar una hipokalemia mortal si no se vigila."
       },
       "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "pill",
+      "category": "Insulinoterapia",
+      "card_text": "E) Infusión de Insulina: 0.1 U/kg/h IV. El objetivo es frenar la cetogénesis, no solo bajar la glucosa.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Bien! Recuerda bajar la infusión a la mitad cuando la glucosa llegue a 200 mg/dl."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "activity",
+      "category": "Anion Gap",
+      "card_text": "F) Brecha Aniónica (Anion Gap): Valor >12 indica presencia de cetoácidos circulantes. Clave para el seguimiento.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Muy bien! El cierre de la brecha aniónica es el mejor marcador de resolución de la CAD."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "zap",
+      "category": "Manejo Bicarbonato",
+      "card_text": "G) Uso de Bicarbonato: Solo reservado si el pH es <6.9. Su uso rutinario aumenta las complicaciones.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Correcto! La mayoría de los pacientes corrigen la acidosis solo con hidratación e insulina."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "check-circle",
+      "category": "Resolución",
+      "card_text": "H) Criterios de Resolución: pH >7.3, HCO3 >=18 y Anion Gap normalizado. No depende solo del nivel de glucosa.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Excelente! Solo entonces podemos pasar a un esquema de insulina subcutánea."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "search",
+      "category": "Investigación",
+      "card_text": "I) Factor Precipitante: Investigar infecciones (IVU/Neumonía) u omisión de dosis como causa del descontrol.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. Identificar la causa evita que el paciente vuelva a caer en CAD en 48 horas."
       }
     }
   ],
   "enarm_pearl": {
-    "title": "Manejo de Potasio en CAD",
-    "text": "Regla de Oro: Si el K <3.3 mEq/L, NO inicies insulina; repón K primero para evitar parálisis respiratoria o arritmias fatales.",
+    "title": "CAD: K+ antes que Insulina",
+    "text": "Triada: Glucosa >250, pH <7.3, Cetonas (+). NUNCA dar insulina si K <3.3. Bicarbonato solo si pH <6.9.",
     "gpc_ref": "GPC Diagnóstico y Tratamiento de la CAD y EHH"
   },
   "boss_fight_triad": {
     "trigger": "after_cards",
     "questions": [
       {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
+        "question": "¿Cuál es el nivel de potasio sérico por debajo del cual está contraindicado iniciar la infusión de insulina en CAD?",
         "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
+          "Menos de 3.3 mEq/L",
+          "Menos de 4.5 mEq/L",
+          "Menos de 2.5 mEq/L"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
+        "question": "¿En qué situación clínica extrema se recomienda la administración de bicarbonato de sodio en un paciente con CAD?",
         "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
+          "pH arterial menor a 6.9",
+          "pH arterial menor a 7.2",
+          "Hiperglucemia mayor a 500 mg/dl"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
+        "question": "¿Cuál es el parámetro más confiable para determinar la resolución de la cetoacidosis diabética según la GPC?",
         "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
+          "Normalización de la brecha aniónica (Anion Gap)",
+          "Nivel de glucosa menor a 200 mg/dl",
+          "Ausencia total de glucosa en orina"
         ],
         "correct_index": 0
       }

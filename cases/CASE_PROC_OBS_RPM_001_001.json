@@ -13,7 +13,7 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 110/70, FC 85 lpm, Temp 36.8°C",
+      "card_text": "TA 115/75 mmHg, FC 82 lpm, Temp 36.8°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
@@ -24,52 +24,148 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "A) Ruptura Prematura de Membranas (RPM): Pérdida de la integridad de las membranas antes del inicio del trabajo de parto.",
+      "category": "Definición",
+      "card_text": "A) Ruptura Prematura de Membranas (RPM): Ruptura de las membranas ovulares ANTES del inicio del trabajo de parto.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Correcto! Si ocurre después de las 37 semanas es RPM a término; antes es RPM pretérmino."
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Auxiliares Diagnóstico",
+      "card_text": "B) Especuloscopía Estéril: Confirmación visual de salida de líquido tras maniobra de Valsalva o Tarnier. Evita el tacto vaginal.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Correcto! Es el primer paso diagnóstico. Meter los dedos antes de tiempo solo introduce bacterias."
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "droplets",
+      "category": "Pruebas de Consultorio",
+      "card_text": "C) Test de Nitrazina: El papel de tornasol vira a AZUL en presencia de líquido amniótico por su pH alcalino (>6.0).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Bien. Recuerda que el semen y la sangre pueden dar falsos positivos."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "microscope",
+      "category": "Pruebas de Laboratorio",
+      "card_text": "D) Test de Helecho (Cristalografía): Patrón de arborización al secar el líquido en un portaobjetos por las sales amnióticas.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Muy bien! Es una prueba altamente específica para confirmar ruptura de membranas."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "slash",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "E) Incontinencia Urinaria: Pérdida involuntaria de orina; pH ácido y ausencia de patrón en helecho.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: Bien. El Test de Helecho positivo en esta paciente descarta pérdidas urinarias."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "thermometer",
+      "category": "Prevención",
+      "card_text": "F) Control Térmico: Vigilancia estricta de temperatura materna c/4-6h para detección temprana de Corioamnionitis.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Correcto. En el manejo conservador de la RPM prematura, la infección es el principal riesgo."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "zap",
+      "category": "Manejo 24-34 SDG",
+      "card_text": "G) Esquema de Madurez Pulmonar: Indicar Betametasona 12mg IM cada 24h por 2 dosis para reducir distrés respiratorio neonatal.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Correcto! El diagnóstico se confirma mediante especuloscopía estéril."
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡Fundamental! Los esteroides son la intervención más rentable en el pretérmino."
       },
       "safety_flags": {
-        "lethal_risk": false,
+        "lethal_risk": true,
         "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "pill",
+      "category": "Esquema Antibiótico",
+      "card_text": "H) Antibióticos de Latencia: Ampicilina + Eritromicina IV. Prolongan el periodo de latencia y reducen riesgos infecciosos.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Bien. Ayudan a ganar tiempo valioso para que los esteroides actúen."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "refresh-cw",
+      "category": "Finalización",
+      "card_text": "I) Resolución en >34 SDG: Si la ruptura ocurre tras las 34 semanas, el riesgo de infección supera al de prematurez; inducción inmediata.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Correcto! Es el punto de corte actual para dejar el manejo conservador y pasar a la resolución."
       }
     }
   ],
   "enarm_pearl": {
-    "title": "Diagnóstico de RPM: No Tacto Vaginal",
-    "text": "Ante sospecha de RPM, el tacto vaginal debe evitarse para no introducir bacterias.",
+    "title": "RPM: ¡No Tacto Vaginal!",
+    "text": "Confirmación: Helecho/Nitrazina. <34 SDG: Conservador (Esteroides + ATB). >34 SDG: Inducción. Dx oro: Especuloscopía.",
     "gpc_ref": "GPC Diagnóstico y Manejo de Ruptura Prematura de Membranas"
   },
   "boss_fight_triad": {
     "trigger": "after_cards",
     "questions": [
       {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
+        "question": "¿Cuál es la maniobra exploratoria que debe EVITARSE ante la sospecha de ruptura prematura de membranas?",
         "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
+          "Tacto vaginal repetido",
+          "Especuloscopía estéril",
+          "Maniobra de Tarnier"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
+        "question": "¿Cuál es la conducta recomendada en una paciente con RPM de 32 semanas de gestación sin datos de infección?",
         "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
+          "Manejo conservador (Madurez pulmonar + Antibióticos)",
+          "Inducción inmediata del trabajo de parto",
+          "Cesárea de urgencia"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
+        "question": "¿Qué marcador bioquímico es el más sensible para diagnosticar ruptura de membranas (Amnisure)?",
         "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
+          "Microglobulina placentaria alfa-1 (PAMG-1)",
+          "Alfa-fetoproteína",
+          "Fibronectina fetal"
         ],
         "correct_index": 0
       }

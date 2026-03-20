@@ -40,52 +40,144 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "B) Diferir inicio hasta CD4 <200 (SIDA): Práctica obsoleta que aumentaba el riesgo de infecciones oportunistas y mortalidad.",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "B) Diferir inicio hasta CD4 <350: Práctica obsoleta. El retraso aumenta la mortalidad y la aparición de fallos virológicos.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Bien! Reconociste el cambio hacia el tratamiento universal proactivo."
+        "vazquez_comment": "Navarro: ¡Bien! Las guías actuales son claras: diagnóstico de VIH es igual a inicio de tratamiento."
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "slash",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "C) Mononucleosis Infecciosa: Fiebre, faringitis y linfadenopatía. Similar al síndrome agudo de VIH pero con prueba de Monospot positiva.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: Correcto. El periodo de ventana y los factores de riesgo son clave para diferenciar el síndrome retroviral agudo."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "activity",
+      "category": "Infección Aguda",
+      "card_text": "D) Síndrome Retroviral Agudo: Fase inicial con alta carga viral y síntomas inespecíficos; alto riesgo de transmisión.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Muy bien! Ocurre a las 2-4 semanas de la exposición. La sospecha clínica en esta fase es vital."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "shield-off",
+      "category": "Definición SIDA",
+      "card_text": "E) Conteo de CD4 <200 cél/µl: Umbral que define la etapa de SIDA y aumenta drásticamente el riesgo de infecciones oportunistas.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Exacto! Es el punto crítico donde la inmunidad celular se ve severamente comprometida."
       },
       "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "pill",
+      "category": "Profilaxis",
+      "card_text": "F) TMP/SMX (Trimetoprima/Sulfametoxazol): Indicado si CD4 <200 para prevenir Neumonía por Pneumocystis jirovecii.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Excelente! Esta profilaxis salvó miles de vidas antes de que el ART fuera universal."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "target",
+      "category": "Tratamiento de Elección",
+      "card_text": "G) Dolutegravir + Tenofovir + Emtricitabina (TDF/FTC/DTG): Esquema preferente por su alta eficacia y barrera genética.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Perfecto! Es el estándar de oro actual en las guías nacionales e internacionales."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "alert-triangle",
+      "category": "Efectos Secundarios",
+      "card_text": "H) Vigilar Función Renal (Tenofovir): Riesgo de toxicidad tubular proximal; requiere vigilar creatinina y fósforo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Bien. Especialmente con el TDF (Tenofovir Disoproxil), el TAF es más seguro para el riñón y hueso."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "alert-octagon",
+      "category": "Coinfección TB",
+      "card_text": "I) Co-infección VIH+TB: Iniciar primero el tratamiento antifímico y diferir el ART 2-8 semanas para evitar el IRIS.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Excelente perla! El Síndrome Inflamatorio de Reconstitución Inmune (IRIS) puede ser fatal."
       }
     }
   ],
   "enarm_pearl": {
-    "title": "VIH: Inicio de ART",
-    "text": "Regla ENARM: Inicio de ART en TODO paciente diagnosticado, sin importar CD4. Esquema preferente: 2 ITNR + 1 INSTI (Dolutegravir).",
+    "title": "VIH: Perlas ENARM",
+    "text": "SIDA = CD4 <200. Profilaxis P. jirovecii = TMP/SMX. Esquema preferido = 2 ITNR + 1 INSTI (Dolutegravir).",
     "gpc_ref": "GPC Tratamiento Antirretroviral del Adulto con VIH"
   },
   "boss_fight_triad": {
     "trigger": "after_cards",
     "questions": [
       {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
+        "question": "¿Cuál es el recuento de células CD4 por debajo del cual se define la etapa clínica de SIDA?",
         "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
+          "Menos de 200 cél/µl",
+          "Menos de 500 cél/µl",
+          "Menos de 50 cél/µl"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
+        "question": "¿Qué fármaco se utiliza de primera línea para la profilaxis de Pneumocystis jirovecii?",
         "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
+          "Trimetoprima/Sulfametoxazol",
+          "Linezolid",
+          "Clindamicina"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
+        "question": "¿A qué familia de antirretrovirales pertenece el Dolutegravir (DTG)?",
         "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
+          "Inhibidor de la Integrasa (INSTI)",
+          "Inhibidor de la Proteasa (IP)",
+          "Inhibidor de Nucleósidos (ITNR)"
         ],
         "correct_index": 0
       }

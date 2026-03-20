@@ -22,15 +22,16 @@ export interface PatientIntro {
 }
 
 export interface SafetyFlags {
-  lethal_risk: boolean;
-  decision_critical: boolean;
+  lethal_risk?: boolean;
+  decision_critical?: boolean;
   lethal_if_discarded?: boolean;
+  is_critical_dxd?: boolean;
 }
 
 export interface CardScoring {
   points: number;
-  error_type: 'omission' | 'hoarding' | 'lethal_omission' | 'lethal_hazard' | 'critical_dxd';
-  vazquez_comment: string;
+  error_type?: 'omission' | 'hoarding' | 'lethal_omission' | 'lethal_hazard' | 'lethal_commission' | 'critical_dxd';
+  vazquez_comment?: string;
 }
 
 export interface Card {
@@ -46,6 +47,7 @@ export interface Card {
 
 export interface BossQuestion {
   q: string;
+  question?: string; // legacy alias
   options: string[];
   correct_index: number;
 }

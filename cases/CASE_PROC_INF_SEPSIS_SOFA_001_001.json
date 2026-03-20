@@ -41,52 +41,152 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "B) Administrar Esteroide IV Inmediatamente: Solo se consideran en choque séptico REFRACTARIO a fluidos y vasopresores. No es manejo inicial.",
+      "category": "Maldonado: Errores Comunes",
+      "card_text": "B) Administrar Esteroide IV (Hidrocortisona): Indicado únicamente en choque séptico REFRACTARIO que no responde a fluidos ni vasopresores.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Bien! Priorizaste la resucitación con fluidos y antibióticos."
+        "vazquez_comment": "Navarro: ¡Bien! Priorizaste la resucitación inicial. Los esteroides no son el primer paso."
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "slash",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "C) Choque Cardiogénico: Hipotensión con evidencia de fallo de bomba (ritmo de galope, estertores pulmonares) sin foco infeccioso.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: Correcto. Aquí el antecedente quirúrgico y la fiebre gritan Sepsis."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "clipboard",
+      "category": "Tamizaje",
+      "card_text": "D) Escala qSOFA: Evalúa: FR >=22, Alteración mental (Glasgow <15) y TAS <=100 mmHg. Identifica pacientes graves fuera de UCI.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Muy bien! El qSOFA es una herramienta rápida 'a pie de cama' para alertar disfunción orgánica."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "activity",
+      "category": "Definición Sepsis-3",
+      "card_text": "E) Score SOFA >=2 puntos: Define Sepsis como una disfunción orgánica potencialmente mortal causada por una respuesta desregulada del huésped.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Exacto! Sepsis ya no es igual a SIRS; ahora es disfunción de órganos cuantificada por SOFA."
       },
       "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "droplet",
+      "category": "Bundle 1 Hora",
+      "card_text": "F) Medición de Lactato: Tomar muestra inicial de lactato sérico para guiar la terapia de resucitación hemodinámica.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: Vital. Un lactato >2 mmol/L es un predictor independiente de mortalidad."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "zap",
+      "category": "Manejo Urgente",
+      "card_text": "G) Antibióticos en <60 min: Administrar terapia empírica de amplio espectro tras la toma de hemocultivos.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Esencial! Por cada hora de retraso en el antibiótico, la supervivencia disminuye un 7-10%."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "battery-charging",
+      "category": "Resucitación",
+      "card_text": "H) Carga de Cristaloides (30 mL/kg): Iniciar en las primeras 3 horas ante hipotensión o lactato >=4 mmol/L.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Correcto! La meta es restaurar el volumen circulante efectivo."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "alert-triangle",
+      "category": "Choque Séptico",
+      "card_text": "I) Soporte Vasopresor: Iniciar Norepinefrina si la PAM persiste <65 mmHg a pesar de una adecuada reanimación volémica.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Vital! Norepinefrina es el vasopresor de primera elección en el choque séptico."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
       }
     }
   ],
   "enarm_pearl": {
-    "title": "Sepsis-3: Choque Séptico",
-    "text": "Definición: Sepsis + Necesidad de vasopresores para PAM ≥65 + Lactato >2 mmol/L pese a reanimación volémica.",
+    "title": "Sepsis-3 y Bundle",
+    "text": "Sepsis = ΔSOFA >=2. Bundle: Lactato, Hemocultivos, Antibióticos, Líquidos (30ml/kg), Vasopresores si PAM <65.",
     "gpc_ref": "Surviving Sepsis Campaign Guidelines 2021"
   },
   "boss_fight_triad": {
     "trigger": "after_cards",
     "questions": [
       {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
+        "question": "¿Cuál es la meta de Presión Arterial Media (PAM) tras la reanimación inicial?",
         "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
+          ">=65 mmHg",
+          ">=90 mmHg",
+          ">=50 mmHg"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
+        "question": "¿Cuál es el vasopresor de primera elección en el choque séptico?",
         "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
+          "Norepinefrina",
+          "Dopamina",
+          "Epinefrina"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
+        "question": "¿Qué par de criterios definen el Choque Séptico tras la reanimación con líquidos?",
         "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
+          "Necesidad de vasopresores y Lactato >2 mmol/L",
+          "Fiebre y Leucocitosis",
+          "TAS <100 y qSOFA de 3"
         ],
         "correct_index": 0
       }

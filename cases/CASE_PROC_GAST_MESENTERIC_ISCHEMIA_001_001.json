@@ -41,52 +41,140 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "B) Volvulus de Sigmoides: Causa obstrucción intestinal, distensión severa y signo de 'grano de café' en Rayos X. No suele ser súbito sin distensión.",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "B) Isquemia Mesentérica Crónica: Dolor postprandial (angina abdominal), miedo a comer y pérdida de peso importante.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: ¡Bien! El antecedente de FA te orientó correctamente hacia un evento vascular."
+        "vazquez_comment": "Mendoza: ¡Bien! Este cuadro es agudo. La isquemia crónica se presenta con dolor después de las comidas."
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "target",
+      "category": "Pivote Clínico",
+      "card_text": "C) Dolor Desproporcionado: Paciente con dolor 10/10 pero abdomen blando y depresible a la palpación inicial.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Muy bien! Es el hallazgo clínico más distintivo de la isquemia mesentérica temprana."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "alert-triangle",
+      "category": "Factores Riesgo",
+      "card_text": "D) Fibrilación Auricular (FA): Principal causa de embolismo a la Arteria Mesentérica Superior (AMS).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Correcto! La FA genera trombos en la orejuela izquierda que viajan directamente a la circulación mesentérica."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "search",
+      "category": "Prueba de Elección",
+      "card_text": "E) Angio-TC de Abdomen: Es el estudio de elección inicial por su rapidez y capacidad para detectar oclusiones vasculares.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Excelente! Permite visualizar la luz de los vasos y los signos de sufrimiento intestinal."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "zap",
+      "category": "Estándar de Oro",
+      "card_text": "F) Angiografía Convencional: Sigue siendo el estándar de oro y permite el tratamiento intervencionista directo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Correcto! Aunque la Angio-TC se usa más habitualmente, la angiografía es la prueba definitiva."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "activity",
+      "category": "Laboratorio",
+      "card_text": "G) Lactato Sérico: Su elevación (>2.0 mmol/L) indica hipoperfusión tisular y acidosis metabólica; es un signo de mal pronóstico.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Vital! Un lactato elevado nos habla de que el intestino ya está sufriendo necrosis."
       },
       "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "refresh-cw",
+      "category": "Manejo Quirúrgico",
+      "card_text": "H) Revascularización: Embolectomía o puentes arteriales de urgencia para restablecer el flujo antes de que la necrosis sea irreversible.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Perfecto! El objetivo inicial es salvar el intestino viable mediante el restablecimiento del flujo."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "image",
+      "category": "Imagenología",
+      "card_text": "I) Neumatosis Intestinal: Gas en la pared del intestino visible en Rx o TC. Indica isquemia transmural grave.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. Es un signo radiológico ominoso que indica muerte celular en la pared intestinal."
       }
     }
   ],
   "enarm_pearl": {
     "title": "Isquemia: El Gran Mismatch",
-    "text": "Clave ENARM: Dolor 10/10 + Abdomen depresible/asintomático a la palpación = ISQUEMIA MESENTÉRICA. Pedir Angio-TC.",
-    "gpc_ref": "GPC Diagnóstico de Abdomen Agudo Vascular"
+    "text": "Clave: Dolor 10/10 + Abdomen suave. Factor: FA (Embolo). Elección: Angio-TC. Oro: Angiografía. Marcador: Lactato.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Isquemia Mesentérica Aguda"
   },
   "boss_fight_triad": {
     "trigger": "after_cards",
     "questions": [
       {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
+        "question": "¿Cuál es el hallazgo clínico clásico ('mismatch') que define la fase temprana de la isquemia mesentérica aguda?",
         "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
+          "Dolor intenso desproporcionado a los hallazgos de la exploración física",
+          "Masa palpable en cuadrante superior derecho",
+          "Irritación peritoneal inmediata (rebote positivo)"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
+        "question": "¿Qué antecedente de la paciente es el factor de riesgo más importante para sospechar un origen embólico de la isquemia?",
         "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
+          "Fibrilación Auricular",
+          "Diabetes Mellitus",
+          "Colelitiasis"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
+        "question": "¿Cuál es el estudio de imagen inicial de elección para diagnosticar oclusión de la arteria mesentérica superior?",
         "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
+          "Angiotomografía Computarizada (Angio-TC)",
+          "Ultrasonido Doppler",
+          "Radiografía de tórax en bipedestación"
         ],
         "correct_index": 0
       }

@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   --bg-dark: #070b14;
   --bg-card: rgba(30, 41, 59, 0.7);
@@ -86,4 +87,100 @@
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
+}
+
+/* Gameplay Effects */
+.red-out-overlay {
+  background: radial-gradient(circle, transparent 20%, rgba(239, 68, 68, 0.15) 100%);
+  z-index: 40;
+  pointer-events: none;
+  transition: opacity 2s ease-in-out;
+}
+
+.destabilized-content {
+  filter: blur(2px) saturate(0.5) sepia(0.2);
+  transition: filter 1s ease-in-out;
+}
+
+/* Tactical HUD & CRT Effects */
+.crt-screen {
+  position: relative;
+  overflow: hidden;
+}
+
+.crt-screen::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+              linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 100;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+.crt-screen::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  z-index: 101;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.27861; }
+  5% { opacity: 0.34769; }
+  10% { opacity: 0.23604; }
+  15% { opacity: 0.90626; }
+  20% { opacity: 0.18128; }
+  100% { opacity: 0.10101; }
+}
+
+/* Arwes-inspired Cyber Panel */
+.cyber-panel {
+  position: relative;
+  background: rgba(13, 148, 136, 0.03);
+  border: 1px solid rgba(13, 148, 136, 0.2);
+  clip-path: polygon(
+    0 15px, 15px 0, 
+    calc(100% - 15px) 0, 100% 15px, 
+    100% calc(100% - 15px), calc(100% - 15px) 100%, 
+    15px 100%, 0 calc(100% - 15px)
+  );
+  backdrop-filter: blur(10px);
+}
+
+.cyber-panel::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 30px; height: 30px;
+  border-left: 2px solid var(--medical-primary);
+  border-top: 2px solid var(--medical-primary);
+}
+
+.cyber-panel::after {
+  content: "";
+  position: absolute;
+  bottom: 0; right: 0; width: 30px; height: 30px;
+  border-right: 2px solid var(--medical-primary);
+  border-bottom: 2px solid var(--medical-primary);
+}
+
+.telemetry-text {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--medical-primary);
+  opacity: 0.8;
+  animation: telemetry-pulse 2s infinite ease-in-out;
+}
+
+@keyframes telemetry-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.9; }
 }

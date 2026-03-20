@@ -40,68 +40,140 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "B) Costocondritis (Síndrome de Tietze): Dolor torácico reproducible a la palpación de las articulaciones condrocostales, sin cambios en ECG.",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "B) Costocondritis (Síndrome de Tietze): Dolor reproducible a la palpación de las articulaciones condrocostales, sin cambios en el ECG.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: ¡Ojo clínico! El dolor reproducible a la palpación casi siempre descarta origen isquémico clásico, aquí el dolor es visceral."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
+        "vazquez_comment": "Mendoza: ¡Bien! Un clásico distractor del ENARM. El dolor isquémico NO es reproducible a la palpación."
       }
     },
     {
       "card_id": "c_3",
       "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "C) Tromboembolia Pulmonar: Disnea súbita, taquicardia, dolor pleurítico, hipoxia severa. S1Q3T3 raro pero posible.",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "C) Tromboembolia Pulmonar: Disnea súbita, taquicardia, dolor pleurítico e hipoxia. ECG con taquicardia sinusal o S1Q3T3.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
-        "error_type": "lethal_hazard",
-        "vazquez_comment": "Mendoza: Felicidades por descartarlo. Los cambios ST y el tipo de dolor nos centran en las coronarias."
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: Correcto. Aunque la TEP es grave, los supra-desniveles del ST nos obligan a pensar primero en coronarias."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "heart",
+      "category": "Estudio Inicial",
+      "card_text": "D) ECG de 12 derivaciones: Realización e interpretación en menos de 10 minutos desde la llegada a urgencias.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Vital! El tiempo es músculo. Fallar en el tiempo del ECG es fallar al paciente."
       },
       "safety_flags": {
-        "red_flag": true,
-        "lethal_risk": true
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "pill",
+      "category": "Tratamiento Inicial",
+      "card_text": "E) Antiagregación Dual: Aspirina 300 mg (masticada) + Clopidogrel (dosis de carga: 300-600 mg).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Correcto. La antiagregación es la base del manejo inicial en el SCACEST."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "crosshair",
+      "category": "Reperfusión",
+      "card_text": "F) ICP Primaria (Angioplastia): Estrategia de elección si se puede realizar en menos de 90 minutos desde el primer contacto médico.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Excelente! Si no tienes sala de hemodinamia a menos de 120 min de traslado, tromboliza antes de 30 min."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "beaker",
+      "category": "Biomarcadores",
+      "card_text": "G) Troponina I / T: Marcadores de elección por su alta sensibilidad y especificidad de daño miocárdico.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. Recuerda que en SCACEST no esperas el resultado para actuar, pero sirven para seguimiento y pronóstico."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "thermometer",
+      "category": "Farmacoterapia",
+      "card_text": "H) Nitroglicerina Sublingual: Para control de síntomas anginosos, si la TA sistólica es >90 mmHg y no hay sospecha de infarto de ventrículo derecho.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Correcto. ¡Cuidado con los infartos inferiores! Pueden tener extensión a VD y la nitro causaría un choque obstructivo."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "zap",
+      "category": "Complicación",
+      "card_text": "I) Fibrilación Ventricular: Causa más frecuente de muerte súbita prehospitalaria en el infarto agudo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Dato fundamental! Por eso todo paciente con IAM debe estar monitorizado y con desfibrilador cerca."
       }
     }
   ],
   "enarm_pearl": {
-    "title": "Cardiopatía Isquémica: Tiempo es Músculo",
-    "text": "En un SCACEST, el diagnóstico se hace con clínica + ECG (en <10 min). NO se debe esperar el resultado de las troponinas para activar código infarto ni trombolizar/ICP.",
+    "title": "Tiempo es Músculo: SCACEST",
+    "text": "Diagnóstico: Clínica + ECG (<10 min). Tiempo puerta-balón (ICP): <90 min. Tiempo puerta-aguja (fibrinólisis): <30 min. Complicación letal temprana: Fibrilación ventricular.",
     "gpc_ref": "GPC Infarto Agudo al Miocardio con Elevación del ST"
   },
   "boss_fight_triad": {
     "trigger": "after_cards",
     "questions": [
       {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
+        "question": "¿Cuál es el tiempo meta establecido por las guías para la realización e interpretación del ECG?",
         "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
+          "Menos de 10 minutos",
+          "Menos de 30 minutos",
+          "A la brevedad posible sin tiempo límite"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
+        "question": "¿Cuál es la estrategia de reperfusión de elección si el hospital cuenta con sala de hemodinamia?",
         "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
+          "Intervención Coronaria Percutánea (ICP) primaria",
+          "Fibrinólisis farmacológica",
+          "Bypass de arteria coronaria urgente"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
+        "question": "¿Cuál es la principal causa de muerte prehospitalaria en un paciente con IAM?",
         "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
+          "Fibrilación Ventricular",
+          "Ruptura de pared libre",
+          "Choque cardiogénico"
         ],
         "correct_index": 0
       }

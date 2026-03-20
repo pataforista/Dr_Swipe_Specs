@@ -85,12 +85,64 @@
       "card_id": "c_5",
       "ui_icon": "clipboard",
       "category": "Pronóstico",
-      "card_text": "E) Escala PESI simplificada: Evalúa riesgo de mortalidad a 30 días.",
+      "card_text": "E) Escala PESI simplificada: Puntuación de 0 puntos indica bajo riesgo; permite considerar manejo ambulatorio.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: Importante. Nos ayuda a decidir si el manejo puede ser ambulatorio o requiere hospitalización."
+        "vazquez_comment": "Mendoza: Importante. La estratificación del riesgo dicta la agresividad del manejo y el destino del paciente."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "search",
+      "category": "Signo Clínico",
+      "card_text": "F) Signo de Homans: Dolor en la pantorrilla o región poplítea a la dorsiflexión pasiva del pie; sugiere Trombosis Venosa Profunda.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. Aunque poco específico, su presencia refuerza la sospecha de la fuente del émbolo."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "activity",
+      "category": "Electrocardiograma",
+      "card_text": "G) Patrón S1Q3T3: Signo de McGinn-White (Onda S profunda en I, Q profunda en III y T negativa en III).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Clásico! Refleja la sobrecarga aguda de cavidades derechas por la obstrucción pulmonar masiva."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "zap",
+      "category": "Tratamiento Avanzado",
+      "card_text": "H) Trombólisis con Alteplasa (r-TPA): Indicada para pacientes con TEP masivo y choque obstructivo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Vital! En TEP inestable, la anticoagulación no basta; hay que disolver el coágulo inmediatamente."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "shield",
+      "category": "Profilaxis Secundaria",
+      "card_text": "I) Filtro de Vena Cava Inferior: Opción para pacientes con TEP recurrente a pesar de anticoagulación o contraindicación para la misma.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Correcto. Es una medida mecánica de protección cuando falla la farmacológica."
       }
     }
   ],
@@ -98,25 +150,37 @@
     "trigger": "after_cards",
     "questions": [
       {
-        "question": "¿Cuál es el hallazgo ECG clásico (aunque raro) en TEP?",
-        "options": ["S1Q3T3 (Patrón de McGinn-White)", "Elevación del ST en cara anterior", "Bloqueo de rama izquierda"],
+        "question": "¿Cuál es el componente de la Triada de Virchow que describe la inmovilidad prolongada?",
+        "options": [
+          "Estasis venosa",
+          "Lesión endotelial",
+          "Hipercoagulabilidad"
+        ],
         "correct_index": 0
       },
       {
-        "question": "¿Qué define a un TEP como 'Masivo'?",
-        "options": ["Inestabilidad hemodinámica (Hipotensión/Choque)", "Afectación de ambos pulmones", "Dímero D >5000"],
+        "question": "¿Cuál es la puntuación de Wells que indica ALTA probabilidad clínica de TEP?",
+        "options": [
+          "Mayor a 6 puntos",
+          "Menor a 2 puntos",
+          "Entre 3 y 4 puntos"
+        ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el tratamiento de elección en TEP masivo inestable?",
-        "options": ["Trombólisis sistémica", "Anticoagulación con warfarina", "Filtro de vena cava inferior"],
+        "question": "¿Qué estudio de imagen es preferible en una mujer EMBARAZADA con sospecha de TEP ante una radiografía normal?",
+        "options": [
+          "Gammagrafía de ventilación/perfusión (V/Q)",
+          "AngioTAC (por dosis fetal baja)",
+          "Arteriografía pulmonar directa"
+        ],
         "correct_index": 0
       }
     ]
   },
   "enarm_pearl": {
-    "title": "Diagnóstico de TEP: AngioTAC",
-    "text": "El estándar de oro para el diagnóstico de TEP es la Angio-Tomografía Computarizada. El ECG más común es la taquicardia sinusal.",
+    "title": "TEP: Wells y Virchow",
+    "text": "Gold Standard: Angiotomografía. ECG más común: Taquicardia sinusal. ECG más específico: S1Q3T3. Masivo = Inestabilidad hemodinámica.",
     "gpc_ref": "GPC Diagnóstico y Tratamiento de la Tromboembolia Pulmonar"
   }
 }

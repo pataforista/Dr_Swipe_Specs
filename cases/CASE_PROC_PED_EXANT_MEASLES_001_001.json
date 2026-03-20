@@ -108,6 +108,42 @@
         "error_type": "omission",
         "vazquez_comment": "Castillo: Correcto. Como médico R1, tu responsabilidad social es alertar a las autoridades."
       }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "beaker",
+      "category": "Etiología",
+      "card_text": "G) Virus del Sarampión (Paramixovirus): Virus de ARN de cadena negativa, altamente contagioso vía aerosoles.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Bien! Es importante conocer a tu enemigo a nivel molecular."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "volume-2",
+      "category": "Complicación",
+      "card_text": "H) Otitis Media Aguda: Complicación más frecuente del sarampión en niños.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Así es. Muchos piensan en neumonía por ser la más letal, pero la otitis es la más común."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "brain",
+      "category": "Complicación Tardía",
+      "card_text": "I) Panencefalitis Esclerosante Subaguda (PEES): Degeneración progresiva del SNC que ocurre años después del cuadro agudo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Nivel experto! Una complicación rara pero devastadora que justifica la vacunación masiva."
+      }
     }
   ],
   "boss_fight_triad": {

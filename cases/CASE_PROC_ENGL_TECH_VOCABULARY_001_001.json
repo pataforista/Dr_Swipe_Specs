@@ -4,8 +4,8 @@
   "theme_config": "engl",
   "difficulty": "standard",
   "patient_intro": {
-    "name": "Laura, 37 años",
-    "arrival_scenario": "A patient presents with 'shortness of breath' and progressive 'fatigue' after walking two blocks. Term translation check: What is the correct medical equivalent for 'Shortness of Breath' and 'Wheezing' in Spanish?",
+    "name": "Alex, 37 years old",
+    "arrival_scenario": "A patient arrives at the Emergency Room with 'shortness of breath' and progressive 'fatigue' after walking just two blocks. Language test: What are the correct clinical terms in Spanish for the chief complaints and symptoms described?",
     "time_limit_sec": 45
   },
   "card_stream": [
@@ -24,33 +24,109 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias.",
+      "category": "Chief Complaint",
+      "card_text": "A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias (sonido silbante al respirar).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "omission",
         "vazquez_comment": "Navarro: ¡Correcto! Dominar estos términos es vital para la sección de inglés técnico del ENARM."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
       }
     },
     {
       "card_id": "c_2",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "B) Estreñimiento (Bowel movement issues): 'Constipation' es el falso amigo más común: significa Estreñimiento, NO congestión nasal.",
+      "ui_icon": "slash",
+      "category": "False Friends",
+      "card_text": "B) Estreñimiento (Bowel movement issues): 'Constipation' significa Estreñimiento, NO congestión nasal.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Excelente! Evitaste caer en el falso amigo. 'Constipated' nasal se dice 'Congested'."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
+        "vazquez_comment": "Navarro: ¡Excelente! Evitaste el falso amigo. 'Constipated' nasal se dice 'Congested'."
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "alert-circle",
+      "category": "Trauma terms",
+      "card_text": "C) Wound vs Injury: 'Wound' se refiere específicamente a una Herida abierta, mientras que 'Injury' es el término general para Lesión.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Bien! 'Injury' abarca desde fracturas hasta contusiones."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "frown",
+      "category": "Common symptoms",
+      "card_text": "D) Sore Throat: Término común para referirse a la Faringodinia o Dolor de garganta.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Correcto. Un síntoma básico que verás en consulta externa."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "activity",
+      "category": "Physical Signs",
+      "card_text": "E) Swelling: Traducción médica de Edema o Inflamación de una parte del cuerpo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Muy bien! Es un hallazgo fundamental en la exploración física."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "zap",
+      "category": "Neurological",
+      "card_text": "F) Numbness: Sensación de Entumecimiento o Parestesia. A menudo se acompaña de 'Tingling' (hormigueo).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Exacto! Datos cardinales para el interrogatorio neurológico."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "eye",
+      "category": "Visual",
+      "card_text": "G) Blurred Vision: Término para describir la Visión Borrosa, síntoma clave en patología oftalmológica o sistémica.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Bien. Puede indicar desde vicios de refracción hasta crisis hipertensivas."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "rotate-cw",
+      "category": "Dizziness",
+      "card_text": "H) Dizziness vs Vertigo: 'Dizziness' es el término laxo para Mareo, mientras que 'Vertigo' implica ilusión de movimiento.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: ¡Bien! Aunque se confunden, 'dizziness' es más inespecífico (aturdimiento)."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "trending-up",
+      "category": "Timeline",
+      "card_text": "I) Sudden Onset: Término que indica un Inicio Súbito o repentino de los síntomas.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Correcto! La temporalidad define muchas veces la gravedad del cuadro."
       }
     }
   ],
@@ -63,29 +139,29 @@
     "trigger": "after_cards",
     "questions": [
       {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
+        "question": "¿Cuál es la traducción correcta de 'Constipation' en un contexto médico?",
         "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
+          "Estreñimiento",
+          "Congestión nasal",
+          "Diarrea"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
+        "question": "¿Qué significa el término 'Shortness of breath'?",
         "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
+          "Disnea (falta de aire)",
+          "Dolor de pecho",
+          "Tos seca"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
+        "question": "¿Cuál es la diferencia entre 'Wound' e 'Injury'?",
         "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
+          "Wound es una herida abierta; Injury es cualquier lesión",
+          "Wound es una fractura; Injury es un moretón",
+          "Son sinónimos exactos en medicina"
         ],
         "correct_index": 0
       }

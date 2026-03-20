@@ -21,8 +21,7 @@ export default function DecryptedText({
   animateOn = 'view',
 }: DecryptedTextProps) {
   const [displayText, setDisplayText] = useState(text);
-  const [isRevealed, setIsRevealed] = useState(false);
-  const intervalRef = useRef<any>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     if (animateOn === 'view') {
@@ -51,7 +50,8 @@ export default function DecryptedText({
         }
       }, speed);
     }
-    return () => clearInterval(intervalRef.current);
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+
   }, [text, speed, maxIterations, animateOn, characters]);
 
   return (

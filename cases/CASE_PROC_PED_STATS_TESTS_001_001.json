@@ -2,10 +2,10 @@
   "case_id": "PROC_PED_STATS_TESTS_001_001",
   "version": "v3_swipe_action",
   "theme_config": "ped",
-  "difficulty": "hard",
+  "difficulty": "standard",
   "patient_intro": {
-    "name": "Ana, 44 años",
-    "arrival_scenario": "En una comunidad se aplica una nueva prueba para cáncer gástrico. De 100 enfermos, 90 salen positivos. De 100 sanos, 80 salen negativos. ¿Cuál es el Valor Predictivo Negativo (VPN) si la prueba sale negativa en un paciente?",
+    "name": "Dr. Martínez, R1 de Pediatría",
+    "arrival_scenario": "Estás analizando un estudio sobre la eficacia de un nuevo antibiótico en neumonía infantil. ¿Qué prueba estadística es la adecuada para cada tipo de variable y comparación?",
     "time_limit_sec": 45
   },
   "card_stream": [
@@ -13,79 +13,155 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA N/A, FC N/A, Temp N/A",
+      "card_text": "TA 110/70, FC 90 bpm, Temp 37.0°C. (Variables basales estables).",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "Navarro: En bioestadística, no te distraigas con los signos si el objetivo es el análisis de datos."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "A) Alta Sensibilidad (SNNeg): Una prueba con alta sensibilidad es útil para DESCARTAR (SnNOut) porque tiene pocos falsos negativos.",
+      "category": "Estadística Inf.",
+      "card_text": "A) t de Student: Prueba para comparar Medias de una variable continua entre 2 grupos independientes (Ej: Peso al nacer entre niños y niñas).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Correcto! Sensibilidad = Capacidad de detectar enfermos (Positivos / Enfermos totales)."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
+        "vazquez_comment": "Navarro: ¡Correcto! Es el pan de cada día en el ENARM."
       }
     },
     {
       "card_id": "c_2",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "B) Especificidad (SpPos): Alta especificidad es útil para CONFIRMAR (SpPIn) porque tiene pocos falsos positivos.",
+      "ui_icon": "grid",
+      "category": "Estadística Inf.",
+      "card_text": "B) Chi-Cuadrada (Pearson): Se usa para comparar proporciones o asociación entre variables Categóricas/Nominales (Ej: Sexo y Presencia de Tos).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "omission",
-        "vazquez_comment": "Castillo: Exacto. Especificidad = Negativos / Sanos totales."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
+        "vazquez_comment": "Navarro: ¡Excelente! Recuerda: cualitativa con cualitativa = Chi-cuadrada."
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "bar-chart-2",
+      "category": "Estadística Inf.",
+      "card_text": "C) ANOVA (Análisis de Varianza): Para comparar Medias de variable continua entre 3 o más grupos independientes.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Bien! Es como la t de Student pero para más de dos grupos."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "trending-up",
+      "category": "Relación",
+      "card_text": "D) Correlación de Pearson (r): Mide la fuerza y dirección de la relación lineal entre dos variables continuas.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Correcto. Cerca de +1 o -1 es una relación fuerte."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "help-circle",
+      "category": "Significancia",
+      "card_text": "E) Valor p < 0.05: Indica que hay menos del 5% de probabilidad de que el resultado sea por azar; se rechaza la Hipótesis Nula (H0).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Fundamental! Define si tus hallazgos son estadísticamente significativos."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "maximize",
+      "category": "Precisión",
+      "card_text": "F) Intervalo de Confianza (IC 95%): Rango donde se encuentra el verdadero valor poblacional con un 95% de certeza.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Exacto! Si el IC de un RR o OR incluye el 1, NO es significativo."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "alert-triangle",
+      "category": "Error",
+      "card_text": "G) Error Tipo I (Alfa): Rechazar la hipótesis nula cuando en realidad es verdadera (Falso Positivo).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Bien. Es el error de ver algo donde no hay nada."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "alert-circle",
+      "category": "Error",
+      "card_text": "H) Error Tipo II (Beta): No rechazar la hipótesis nula cuando es falsa (Falso Negativo).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Correcto. Se relaciona con el Poder Estadístico (1-beta)."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "users",
+      "category": "Muestreo",
+      "card_text": "I) Muestreo Aleatorio Simple: Cada individuo de la población tiene la misma probabilidad de ser elegido para el estudio.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: El ideal teórica para evitar sesgos de selección."
       }
     }
   ],
   "enarm_pearl": {
-    "title": "VPN vs VPP",
-    "text": "El VPP y VPN dependen de la PREVALENCIA. La Sensibilidad y Especificidad son propiedades intrínsecas de la prueba y NO cambian con la prevalencia.",
-    "gpc_ref": "Bioestadística Clínica ENARM"
+    "title": "Bioestadística: Tipos de Variables",
+    "text": "Nominal: Sin orden (Sexo). Ordinal: Con orden (Grado escolar). Continua: Medible (Peso). Discreta: Contable (N° hijos).",
+    "gpc_ref": "Metodología de la Investigación Clínica"
   },
   "boss_fight_triad": {
     "trigger": "after_cards",
     "questions": [
       {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
+        "question": "¿Qué prueba estadística utilizarías para comparar el promedio de peso al nacer entre niños y niñas?",
         "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
+          "t de Student para muestras independientes",
+          "Chi-cuadrada",
+          "Análisis de Varianza (ANOVA)"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
+        "question": "¿Qué indica un valor de p < 0.05 en un estudio clínico?",
         "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
+          "Que el resultado es estadísticamente significativo",
+          "Que no hay diferencia entre los grupos",
+          "Que el estudio tiene un error de diseño grave"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
+        "question": "¿Qué sucede si el Intervalo de Confianza del 95% para un Riesgo Relativo (RR) cruza el valor 1.0?",
         "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
+          "El resultado NO es estadísticamente significativo",
+          "El factor analizado es protector",
+          "El estudio es altamente preciso"
         ],
         "correct_index": 0
       }

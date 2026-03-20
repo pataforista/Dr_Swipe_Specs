@@ -10,16 +10,20 @@ interface GameContext {
   score: number;
   combo: number;
   multiplier: number;
+  difficulty: string;
+  debriefData: { title: string; text: string; gpc: string; comment: string } | null;
 }
 
 type GameEvent =
-  | { type: 'START_GUARD'; deck: Card[] }
+  | { type: 'START_GUARD'; deck: Card[]; difficulty: string; pearl: any }
   | { type: 'SWIPE'; direction: 'left' | 'right' }
   | { type: 'TRIGGER_BOSS' }
   | { type: 'ANSWER_CORRECT' }
   | { type: 'ANSWER_WRONG'; error: string }
   | { type: 'CLAIM' }
-  | { type: 'RESTART' };
+  | { type: 'RESTART' }
+  | { type: 'TIME_OUT' }
+  | { type: 'VIEW_DEBRIEF' };
 
 export const gameMachine = setup({
   types: {
@@ -35,7 +39,8 @@ export const gameMachine = setup({
       fatalError: null,
       score: 0,
       combo: 0,
-      multiplier: 1
+      multiplier: 1,
+      debriefData: null
     })
   }
 }).createMachine({
@@ -49,7 +54,9 @@ export const gameMachine = setup({
     fatalError: null,
     score: 0,
     combo: 0,
-    multiplier: 1
+    multiplier: 1,
+    difficulty: 'standard',
+    debriefData: null
   },
   states: {
     idle: {
@@ -64,7 +71,14 @@ export const gameMachine = setup({
             fatalError: null,
             score: 0,
             combo: 0,
-            multiplier: 1
+            multiplier: 1,
+            difficulty: ({ event }) => event.difficulty,
+            debriefData: ({ event }) => ({
+              title: event.pearl?.title || "Repaso Clínico",
+              text: event.pearl?.text || "",
+              gpc: event.pearl?.gpc_ref || "GPC en vigor",
+              comment: ""
+            })
           })
         }
       }
@@ -91,6 +105,13 @@ export const gameMachine = setup({
               fatalError: ({ context }) => {
                 const card = context.deck[context.currentCardIndex];
                 return card.scoring?.vazquez_comment || "Fallo crítico de seguridad.";
+              },
+              debriefData: ({ context }) => {
+                const card = context.deck[context.currentCardIndex];
+                return {
+                  ...context.debriefData!,
+                  comment: card.scoring?.vazquez_comment || "Negligencia inexcusable."
+                };
               }
             })
           },
@@ -118,7 +139,11 @@ export const gameMachine = setup({
                 const nextCombo = isCorrect ? context.combo + 1 : 0;
                 const nextMultiplier = isCorrect ? (1 + Math.floor(nextCombo / 5) * 0.5) : 1;
                 const points = isCorrect ? card.scoring.points : -Math.floor(card.scoring.points / 2);
-                return context.score + Math.floor(points * nextMultiplier);
+                
+                // Difficulty Scaling
+                const diffMultiplier = context.difficulty === 'extreme' ? 2 : (context.difficulty === 'hard' ? 1.5 : 1);
+                
+                return context.score + Math.floor(points * nextMultiplier * diffMultiplier);
               },
               dossier: ({ context, event }) => event.direction === 'right' 
                 ? [...context.dossier, context.deck[context.currentCardIndex]] 
@@ -129,7 +154,13 @@ export const gameMachine = setup({
               currentCardIndex: ({ context }) => context.currentCardIndex + 1
             })
           }
-        ]
+        ],
+        TIME_OUT: {
+          target: 'ghosted',
+          actions: assign({
+            fatalError: () => "Tiempo agotado. El paciente se desestabilizó por falta de atención rápida."
+          })
+        }
       }
     },
     critical_alert: {
@@ -142,7 +173,13 @@ export const gameMachine = setup({
         ANSWER_CORRECT: { target: 'reward' },
         ANSWER_WRONG: {
           target: 'ghosted',
-          actions: assign({ fatalError: ({ event }) => (event.type === 'ANSWER_WRONG' ? event.error : "Error en el Shock Room") })
+          actions: assign({ 
+            fatalError: ({ event }) => (event.type === 'ANSWER_WRONG' ? event.error : "Error en el Shock Room"),
+            debriefData: ({ context, event }) => ({
+              ...context.debriefData!,
+              comment: event.type === 'ANSWER_WRONG' ? event.error : "Fallo en protocolo de choque."
+            })
+          })
         }
       }
     },
@@ -150,6 +187,12 @@ export const gameMachine = setup({
       on: { CLAIM: { target: 'idle', actions: ['resetGame'] } }
     },
     ghosted: {
+      on: { 
+        VIEW_DEBRIEF: { target: 'debrief' },
+        RESTART: { target: 'idle', actions: ['resetGame'] } 
+      }
+    },
+    debrief: {
       on: { RESTART: { target: 'idle', actions: ['resetGame'] } }
     }
   }

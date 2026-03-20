@@ -41,51 +41,131 @@
       "card_id": "c_2",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "B) Vaginosis Bacteriana (Gardnerella): Flujo gris + Mal olor + PH >4.5 + Células Clave. Tx: Metronidazol.",
+      "card_text": "B) Vaginosis Bacteriana (Gardnerella): Flujo gris + Mal olor + PH >4.5 + 'Clue Cells'. Es la causa más común de flujo vaginal.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Correcto! Las Clue Cells son el dato patognomónico de la Vaginosis."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
+        "vazquez_comment": "Castillo: ¡Correcto! Las Clue Cells son el dato patognomónico producido por la adherencia de Gardnerella al epitelio."
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "list",
+      "category": "Criterios Amsel",
+      "card_text": "C) Criterios de Amsel: Flujo homogéneo, PH >4.5, Whiff test (+) y Clue cells. Se requieren 3 para diagnóstico clínico.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Muy bien! Es la herramienta diagnóstica estándar en el consultorio."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "microscope",
+      "category": "Estándar de Oro",
+      "card_text": "D) Puntuación de Nugent: Evaluación microscópica de Gram para cuantificar morfotipos bacterianos; es el estándar de oro.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Excelente! Un puntaje de 7-10 confirma Vaginosis Bacteriana."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "eye",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "E) Tricomoniasis: Flujo amarillento, espumoso, PH >5.0 y cérvix en fresa. Se ven protozoarios móviles en fresco.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: Bien. La Tricomoniasis es una ITS y presenta inflamación severa, a diferencia de la Vaginosis."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "pill",
+      "category": "Tratamiento Vaginosis",
+      "card_text": "F) Metronidazol (500mg VO c/12h x 7 días): Tratamiento de elección. NO se requiere tratar a la pareja sexual habitualmente.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Correcto! La Vaginosis es un desequilibrio de la flora, no necesariamente una ITS."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "users",
+      "category": "Tratamiento ITS",
+      "card_text": "G) Tratamiento de la Pareja: OBLIGATORIO en Tricomoniasis para evitar el efecto 'ping-pong' de reinfección.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Vital! En Tricomoniasis siempre se trata al contacto sexual, aunque sea asintomático."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "zap",
+      "category": "Tratamiento Candida",
+      "card_text": "H) Azoles (Fluconazol/Clotrimazol): Elección para Candidiasis. El tratamiento oral de dosis única es muy efectivo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Bien. Recuerda evitar Fluconazol en el primer trimestre del embarazo."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "alert-triangle",
+      "category": "Signo Clínico",
+      "card_text": "I) Cérvix en Fresa (Colpitis macularis): Punteado hemorrágico cervical patognomónico de la infección por Trichomonas.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Excelente! Es una perla visual clásica del examen físico ginecológico."
       }
     }
   ],
   "enarm_pearl": {
-    "title": "Diferencial de Vaginitis",
-    "text": "Clave PH: PH <4.5 = Candida. PH >4.5 = Vaginosis o Tricomoniasis. Clave Célula: Clue Cell = Vaginosis.",
-    "gpc_ref": "GPC Diagnóstico y Tratamiento de Infecciones Vaginales"
+    "title": "Triple Diferencial Vaginal",
+    "text": "Gardnerella: Clue cells + PH >4.5 + Fishy odor. Candida: Queso cottage + PH <4.5. Trichomonas: Fresa + PH >5.0.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de Vaginitis Infecciosa"
   },
   "boss_fight_triad": {
     "trigger": "after_cards",
     "questions": [
       {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
+        "question": "¿Cuál es el hallazgo microscópico considerado patognomónico de la Vaginosis Bacteriana?",
         "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
+          "Células guía (Clue Cells)",
+          "Hifas y esporas",
+          "Trofozoítos móviles piriformes"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
+        "question": "¿En cuál de las siguientes infecciones vaginales es OBLIGATORIO el tratamiento simultáneo a la pareja sexual?",
         "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
+          "Tricomoniasis",
+          "Candidiasis Vaginal",
+          "Vaginosis Bacteriana"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
+        "question": "¿Cuál es el conjunto de criterios clínicos utilizados para diagnosticar Vaginosis Bacteriana en el consultorio?",
         "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
+          "Criterios de Amsel",
+          "Criterios de Jones",
+          "Criterios de Centor"
         ],
         "correct_index": 0
       }
