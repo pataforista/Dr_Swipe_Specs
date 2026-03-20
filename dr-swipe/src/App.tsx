@@ -240,7 +240,11 @@ function App() {
         );
 
       case state.matches('boss_fight'):
-        if (!currentCase?.boss_fight_triad?.questions?.length) {
+        const hasQuestions = currentCase?.boss_fight_triad?.questions && 
+                           Array.isArray(currentCase.boss_fight_triad.questions) && 
+                           currentCase.boss_fight_triad.questions.length > 0;
+                           
+        if (!hasQuestions) {
           send({ type: 'ANSWER_CORRECT' });
           return null;
         }
