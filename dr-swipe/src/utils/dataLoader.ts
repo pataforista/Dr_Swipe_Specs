@@ -16,18 +16,26 @@ export const dataLoader = {
     const result = ClinicalCaseSchema.safeParse(raw);
 
     if (!result.success) {
-      console.warn(`Caso inválido [${raw?.case_id}]:`, result.error.flatten());
-      return raw as ClinicalCase;
+      const error = result.error.flatten();
+      console.error(`Caso inválido [${raw?.case_id}]:`, error);
+      throw new Error(`Case validation failed for ${caseId}: ${JSON.stringify(error.fieldErrors).slice(0, 100)}`);
     }
 
     return result.data as ClinicalCase;
   },
 
   loadRandomCase: async (specialty: string = 'all'): Promise<ClinicalCase> => {
-    const indexResponse = await fetch(`${import.meta.env.BASE_URL}cases/case_index.json`);
-    if (!indexResponse.ok) throw new Error('Failed to load case index');
+    let index: string[] = [];
 
-    const index: string[] = await indexResponse.json();
+    try {
+      const indexResponse = await fetch(`${import.meta.env.BASE_URL}cases/case_index.json`);
+      if (!indexResponse.ok) throw new Error('Failed to load case index');
+      index = await indexResponse.json();
+    } catch (err) {
+      console.error('Failed to load case index, attempting fallback:', err);
+      throw new Error('Unable to load case index. Please refresh the page.');
+    }
+
     let filtered = index;
 
     if (specialty !== 'all') {
@@ -40,7 +48,7 @@ export const dataLoader = {
 
     // Priority: Try to find a 'main' case (ending in _001_001) first, otherwise random
     const mainCases = filtered.filter(id => id.endsWith('_001_001'));
-    const finalId = mainCases.length > 0 
+    const finalId = mainCases.length > 0
       ? mainCases[Math.floor(Math.random() * mainCases.length)]
       : filtered[Math.floor(Math.random() * filtered.length)];
 
