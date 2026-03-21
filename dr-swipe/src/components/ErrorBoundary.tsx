@@ -7,15 +7,22 @@ interface Props {
 
 interface State {
   hasError: boolean;
+  errorMessage: string;
+  errorStack?: string;
 }
 
 class ErrorBoundary extends Component<Props, State> {
   public state: State = {
-    hasError: false
+    hasError: false,
+    errorMessage: ""
   };
 
-  public static getDerivedStateFromError(): State {
-    return { hasError: true };
+  public static getDerivedStateFromError(error: Error): State {
+    return {
+      hasError: true,
+      errorMessage: error.message,
+      errorStack: error.stack
+    };
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
@@ -26,11 +33,37 @@ class ErrorBoundary extends Component<Props, State> {
     });
   }
 
+  private handleReload = () => {
+    window.location.reload();
+  };
+
   public render() {
     if (this.state.hasError) {
       return this.props.fallback || (
-        <div className="p-4 border border-red-500/50 bg-red-500/10 rounded-lg text-red-200 text-sm">
-          <p className="font-bold">Algo salió mal en este componente.</p>
+        <div className="fixed inset-0 flex items-center justify-center bg-black/90 z-50">
+          <div className="max-w-md w-full mx-4 p-8 bg-slate-900 border border-red-500/50 rounded-lg text-center">
+            <div className="text-4xl mb-4">⚠️</div>
+            <h1 className="text-2xl font-black text-red-400 mb-4">Error de Aplicación</h1>
+            <p className="text-slate-300 mb-6 text-sm">
+              {this.state.errorMessage || "Algo salió mal. Por favor, intenta recargar la página."}
+            </p>
+            {process.env.NODE_ENV === "development" && this.state.errorStack && (
+              <details className="mb-6 text-left">
+                <summary className="text-xs text-slate-500 cursor-pointer hover:text-slate-400">
+                  Detalles técnicos
+                </summary>
+                <pre className="mt-2 text-xs bg-black/50 p-3 rounded overflow-auto max-h-40 text-slate-400">
+                  {this.state.errorStack}
+                </pre>
+              </details>
+            )}
+            <button
+              onClick={this.handleReload}
+              className="w-full bg-medical-primary hover:bg-medical-primary/80 text-white font-black py-3 rounded-lg transition-colors"
+            >
+              Recargar Aplicación
+            </button>
+          </div>
         </div>
       );
     }
