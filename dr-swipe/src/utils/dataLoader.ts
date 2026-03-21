@@ -1,7 +1,9 @@
 import type { ClinicalCase } from '../types/game';
+import { ClinicalCaseSchema } from './caseSchema';
 
 /**
  * React DataLoader: Handles fetching clinical cases from the public/cases directory.
+ * Validates data against ClinicalCaseSchema using Zod.
  */
 export const dataLoader = {
   loadCase: async (caseId: string): Promise<ClinicalCase> => {
@@ -9,7 +11,16 @@ export const dataLoader = {
     const response = await fetch(`${import.meta.env.BASE_URL}cases/CASE_${safeId}.json`);
     if (response.status === 404) throw new Error(`Case not found: ${caseId}`);
     if (!response.ok) throw new Error(`Failed to load case: ${response.status} - ${caseId}`);
-    return await response.json();
+
+    const raw = await response.json();
+    const result = ClinicalCaseSchema.safeParse(raw);
+
+    if (!result.success) {
+      console.warn(`Caso inválido [${raw?.case_id}]:`, result.error.flatten());
+      return raw as ClinicalCase;
+    }
+
+    return result.data as ClinicalCase;
   },
 
   loadRandomCase: async (specialty: string = 'all'): Promise<ClinicalCase> => {
