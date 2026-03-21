@@ -250,3 +250,34 @@
   filter: drop-shadow(0 0 20px #fbbf24) brightness(1.2);
   transition: filter 0.5s ease;
 }
+
+/* Score Flash Animations */
+@keyframes score-flash-speed {
+  0% { opacity: 0; transform: scale(0.8); }
+  50% { opacity: 1; }
+  100% { opacity: 0; transform: scale(1.2); }
+}
+
+@keyframes score-flash-dossier {
+  0% { opacity: 0; }
+  50% { opacity: 1; filter: drop-shadow(0 0 10px rgba(13, 148, 136, 0.8)); }
+  100% { opacity: 0; }
+}
+
+@keyframes score-flash-combo {
+  0% { opacity: 0; transform: translateY(10px); }
+  50% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+
+.score-flash-speed {
+  animation: score-flash-speed 0.6s ease-out forwards;
+}
+
+.score-flash-dossier {
+  animation: score-flash-dossier 0.6s ease-out forwards;
+}
+
+.score-flash-combo {
+  animation: score-flash-combo 0.6s ease-out forwards;
+}

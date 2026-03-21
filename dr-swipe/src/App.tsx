@@ -9,6 +9,8 @@ import type { ClinicalCase } from './types/game';
 import { dataLoader } from './utils/dataLoader';
 import { useGameAudio } from './hooks/useGameAudio';
 import { cleanVazquezComment } from './utils/formatters';
+import { triggerHaptic } from './utils/hapticFeedback';
+import { calculateCardScore } from './utils/scoringEngine';
 import DecryptedText from './components/bits/DecryptedText';
 import ShinyText from './components/bits/ShinyText';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -24,6 +26,35 @@ const AutoSkipBossFight: React.FC<{ send: any; stopAlarm: () => void }> = ({ sen
     send({ type: 'ANSWER_CORRECT' });
   }, [send, stopAlarm]);
   return null;
+};
+
+const VazquezInterruption: React.FC<{ onDismiss: () => void }> = ({ onDismiss }) => {
+  useEffect(() => {
+    const timer = setTimeout(onDismiss, 2000);
+    return () => clearTimeout(timer);
+  }, [onDismiss]);
+
+  return (
+    <div className="fixed inset-0 flex flex-col items-center justify-center z-[120] pointer-events-none">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.9, y: 20 }}
+        className="glass-panel p-8 max-w-sm border-medical-danger/40 text-center shadow-[0_0_50px_rgba(239,68,68,0.3)]"
+      >
+        <div className="w-20 h-20 flex items-center justify-center text-5xl mx-auto mb-4 filter drop-shadow-[0_0_10px_rgba(239,68,68,0.5)]">
+          👴
+        </div>
+        <h3 className="text-xl font-display font-black text-white mb-3 tracking-tight">
+          "Así que... ¿racha de aciertos?"
+        </h3>
+        <p className="text-sm text-slate-300 italic font-medium mb-4">
+          Déjame complicarte un poco las cosas, doctorcillo.
+        </p>
+        <div className="h-0.5 w-16 bg-medical-danger/40 mx-auto" />
+      </motion.div>
+    </div>
+  );
 };
 
 const TelemetryHUD: React.FC<{ timeLeft: number; state: string }> = ({ timeLeft, state }) => {
@@ -118,9 +149,7 @@ function App() {
   useEffect(() => {
     if (!state.matches('triage')) return;
     if (timeLeft === 10 || timeLeft === 5 || timeLeft === 3) {
-      if (typeof navigator !== 'undefined' && navigator.vibrate) {
-        navigator.vibrate([100, 50, 100]); // Short warning pulse
-      }
+      triggerHaptic('warning');
     }
   }, [timeLeft, state]);
 
@@ -131,9 +160,7 @@ function App() {
         setTimeLeft(prev => prev - 1);
       }, 1000);
     } else if (state.matches('triage') && timeLeft === 0) {
-      if (typeof navigator !== 'undefined' && navigator.vibrate) {
-        navigator.vibrate([500, 100, 500, 100, 1000]); // Lethal time-out pattern
-      }
+      triggerHaptic('timeoutAlarm');
       send({ type: 'TIME_OUT' });
     }
     return () => clearInterval(timer);
@@ -150,10 +177,21 @@ function App() {
     }
   }, [state, send]);
 
+  // QTE Timer countdown
+  useEffect(() => {
+    if (!state.matches('boss_fight') || !state.context.qteActive) return;
+
+    const timer = window.setInterval(() => {
+      send({ type: 'QTE_TIMER_TICK' });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [state, send]);
+
   useEffect(() => {
     const isLethal = state.matches('ghosted') || state.matches('debrief');
-    if (isLethal && typeof navigator !== 'undefined' && navigator.vibrate) {
-      navigator.vibrate([200, 100, 200, 100, 500]); // Lethal mistake pattern
+    if (isLethal) {
+      triggerHaptic('lethalError');
     }
   }, [state]);
 
@@ -311,10 +349,10 @@ function App() {
         );
 
       case state.matches('boss_fight'):
-        const hasQuestions = currentCase?.boss_fight_triad?.questions && 
-                           Array.isArray(currentCase.boss_fight_triad.questions) && 
+        const hasQuestions = currentCase?.boss_fight_triad?.questions &&
+                           Array.isArray(currentCase.boss_fight_triad.questions) &&
                            currentCase.boss_fight_triad.questions.length > 0;
-                           
+
         if (!hasQuestions) {
           return (
             <div className="telemetry-panel w-full max-w-xl h-full flex flex-col items-center justify-center gap-8 relative overflow-hidden bg-black/40">
@@ -342,14 +380,13 @@ function App() {
               {/* Stabilization Heart/Core */}
               <div className="relative group p-8">
                 <div className="absolute inset-0 bg-medical-danger/20 blur-3xl rounded-full animate-pulse group-hover:opacity-40 transition-opacity" />
-                <motion.div 
+                <motion.div
                   animate={{ scale: [1, 1.15, 1] }}
                   transition={{ repeat: Infinity, duration: 0.6 }}
                   className="w-40 h-40 rounded-full border-2 border-medical-danger/40 flex items-center justify-center relative z-10 cursor-pointer active:scale-95 transition-transform bg-black/20"
                   onClick={() => {
-                    const roll = Math.random();
-                    if (roll > 0.05) send({ type: 'ANSWER_CORRECT' });
-                    else send({ type: 'ANSWER_WRONG', error: "Falla miocárdica súbita: El paciente entró en asistolia." });
+                    triggerHaptic('qteInteract');
+                    send({ type: 'QTE_INTERACT' });
                   }}
                 >
                   <div className="flex flex-col items-center">
@@ -359,15 +396,19 @@ function App() {
                 </motion.div>
               </div>
 
+              {/* QTE Timer */}
               <div className="w-full max-w-xs space-y-2 text-center mt-4">
+                <div className="text-2xl font-black text-medical-danger font-mono mb-3">
+                  {state.context.qteTimeLeft}s
+                </div>
                 <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden border border-white/5">
-                  <motion.div 
-                    animate={{ width: ['0%', '100%'] }}
-                    transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                  <motion.div
+                    animate={{ width: [`${(state.context.qteTimeLeft / 5) * 100}%`] }}
+                    transition={{ duration: 0.3 }}
                     className="h-full bg-medical-danger shadow-[0_0_10px_#dc2626]"
                   />
                 </div>
-                <p className="text-[9px] font-black text-white/30 italic tracking-widest uppercase">Syncing Cardiac Rhythm...</p>
+                <p className="text-[9px] font-black text-white/30 italic tracking-widest uppercase">Mantén el ritmo cardíaco...</p>
               </div>
             </div>
           );
@@ -542,7 +583,27 @@ function App() {
       {state.context.isUrgent && <div className="fixed inset-0 z-[100] glitch-overlay pointer-events-none" />}
 
       <TelemetryHUD timeLeft={timeLeft} state={state.value as string} />
-      
+
+      {/* Lethal Error Red Flash */}
+      <AnimatePresence>
+        {state.context.showBloodVignette && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0.3, 0.5, 0.3, 0.4] }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8 }}
+            className="fixed inset-0 bg-medical-danger pointer-events-none z-[110]"
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Vazquez Interruption */}
+      <AnimatePresence>
+        {state.context.interruptionActive && (
+          <VazquezInterruption onDismiss={() => send({ type: 'RESOLVE_INTERRUPTION' })} />
+        )}
+      </AnimatePresence>
+
       {/* Swipe Feedback Flash - Short burst */}
       <AnimatePresence>
         {swipeFeedback && (
