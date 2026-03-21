@@ -213,8 +213,9 @@
 }
 
 @keyframes float-up {
-  0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(-40px); opacity: 0; }
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  30% { transform: translateY(-12px) scale(1.1); opacity: 1; }
+  100% { transform: translateY(-50px) scale(0.85); opacity: 0; }
 }
 
 /* Advanced Glitch Styles (Bebop/Hellsing Inspired) */
@@ -265,9 +266,10 @@
 }
 
 @keyframes score-flash-combo {
-  0% { opacity: 0; transform: translateY(10px); }
-  50% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(-20px); }
+  0% { opacity: 0; transform: translateY(10px) scale(0.8); }
+  35% { opacity: 1; transform: translateY(-5px) scale(1.15); }
+  70% { opacity: 1; transform: translateY(-12px) scale(1); }
+  100% { opacity: 0; transform: translateY(-28px) scale(0.9); }
 }
 
 .score-flash-speed {
@@ -284,13 +286,14 @@
 
 /* Card Entrance Animation */
 @keyframes card-enter {
-  0% { transform: translateY(40px) scale(0.88); opacity: 0; }
-  60% { transform: translateY(-6px) scale(1.02); opacity: 1; }
+  0% { transform: translateY(44px) scale(0.86); opacity: 0; }
+  55% { transform: translateY(-8px) scale(1.03); opacity: 1; }
+  78% { transform: translateY(2px) scale(0.99); }
   100% { transform: translateY(0) scale(1); opacity: 1; }
 }
 
 .card-enter {
-  animation: card-enter 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: card-enter 0.48s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 /* Answer Flash Feedback */
@@ -353,11 +356,44 @@
 /* Timer critical pulse */
 @keyframes timer-critical {
   0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
-  50% { box-shadow: 0 0 12px 4px rgba(239, 68, 68, 0.5); }
+  50% { box-shadow: 0 0 14px 5px rgba(239, 68, 68, 0.6); }
 }
 
 .timer-critical {
-  animation: timer-critical 0.8s ease-in-out infinite;
+  animation: timer-critical 0.65s ease-in-out infinite;
+}
+
+/* Score pop — used via Framer Motion key re-mount, but also exposed as CSS for emergencies */
+@keyframes score-pop {
+  0% { transform: scale(1.4); color: #14b8a6; }
+  60% { transform: scale(0.95); }
+  100% { transform: scale(1); color: #0d9488; }
+}
+
+.score-pop {
+  animation: score-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Card slide-up — played when the next card becomes the top */
+@keyframes card-slide-up {
+  0% { transform: translateY(20px) scale(0.96); opacity: 0.7; }
+  60% { transform: translateY(-4px) scale(1.01); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.card-slide-up {
+  animation: card-slide-up 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Milestone ring — radial burst around combo celebrations */
+@keyframes milestone-ring {
+  0% { transform: scale(0.5) translate(-50%, -50%); opacity: 0.9; }
+  100% { transform: scale(3) translate(-50%, -50%); opacity: 0; }
+}
+
+.milestone-ring {
+  animation: milestone-ring 0.8s ease-out forwards;
+  transform-origin: top left;
 }
 
 /* ===== PERFORMANCE: hardware acceleration hints ===== */

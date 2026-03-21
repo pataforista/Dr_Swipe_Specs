@@ -630,11 +630,32 @@ function App() {
       case state.matches('reward'):
         return (
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            initial={{ opacity: 0, scale: 0.88, y: 28 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ type: 'spring', stiffness: 280, damping: 20 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             className="glass-panel p-10 max-w-sm text-center border-medical-primary/30 shadow-[0_0_60px_rgba(13,148,136,0.15)] relative overflow-hidden"
           >
+            {/* Particle burst on reward */}
+            {[...Array(12)].map((_, i) => {
+              const angle = (i / 12) * 360;
+              const rad = (angle * Math.PI) / 180;
+              const dist = 80 + Math.random() * 60;
+              return (
+                <motion.div
+                  key={i}
+                  className="absolute top-1/2 left-1/2 w-2 h-2 rounded-full pointer-events-none"
+                  style={{ backgroundColor: i % 3 === 0 ? '#0d9488' : i % 3 === 1 ? '#14b8a6' : '#fbbf24' }}
+                  initial={{ x: 0, y: 0, scale: 1, opacity: 1 }}
+                  animate={{
+                    x: Math.cos(rad) * dist,
+                    y: Math.sin(rad) * dist,
+                    scale: 0,
+                    opacity: 0
+                  }}
+                  transition={{ duration: 0.7, delay: 0.1 + i * 0.02, ease: 'easeOut' }}
+                />
+              );
+            })}
             {/* Subtle shimmer background */}
             <motion.div
               className="absolute inset-0 bg-gradient-to-br from-medical-primary/5 to-transparent pointer-events-none"
@@ -927,17 +948,37 @@ function App() {
       <AnimatePresence>
         {showMilestoneCelebration > 0 && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.5, y: 50 }}
+            initial={{ opacity: 0, scale: 0.3, y: 60 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 1.5, y: -50 }}
+            exit={{ opacity: 0, scale: 1.3, y: -60 }}
+            transition={{ type: 'spring', stiffness: 500, damping: 22 }}
             className="fixed top-1/3 left-1/2 -translate-x-1/2 z-[70] pointer-events-none flex flex-col items-center gap-2"
           >
-            <span className="text-5xl font-display font-black text-yellow-400 drop-shadow-[0_0_20px_rgba(251,191,36,0.8)] tracking-tighter">
+            {/* Expanding rings behind text */}
+            {[0, 1, 2].map(i => (
+              <motion.div
+                key={i}
+                className="absolute w-24 h-24 rounded-full border-2 border-yellow-400/40"
+                initial={{ scale: 0.5, opacity: 0.8 }}
+                animate={{ scale: 3 + i, opacity: 0 }}
+                transition={{ duration: 0.9, delay: i * 0.18, ease: 'easeOut' }}
+              />
+            ))}
+            <motion.span
+              animate={{ scale: [1, 1.08, 1] }}
+              transition={{ duration: 0.6, repeat: 2 }}
+              className="text-5xl font-display font-black text-yellow-400 drop-shadow-[0_0_25px_rgba(251,191,36,0.9)] tracking-tighter relative"
+            >
               {showMilestoneCelebration >= 20 ? '🏅 LEYENDA' : showMilestoneCelebration >= 15 ? '💎 MAESTRO' : showMilestoneCelebration >= 10 ? '🔥 IMPARABLE' : '⚡ EN RACHA'}
-            </span>
-            <span className="text-lg font-black text-yellow-300/80 tracking-widest">
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-lg font-black text-yellow-300/90 tracking-widest"
+            >
               COMBO x{showMilestoneCelebration} — +{COMBO_MILESTONE_COINS[showMilestoneCelebration as keyof typeof COMBO_MILESTONE_COINS]} 🪙
-            </span>
+            </motion.span>
           </motion.div>
         )}
       </AnimatePresence>
@@ -990,14 +1031,22 @@ function App() {
         <div className="flex flex-col">
           <span className="text-[10px] uppercase font-black tracking-[0.3em] text-slate-500 mb-1">XP ACUMULADO</span>
           <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-display font-black text-medical-primary text-glow tracking-tighter">
+            <motion.span
+              key={state.context.score}
+              initial={{ scale: 1.35, color: '#14b8a6' }}
+              animate={{ scale: 1, color: '#0d9488' }}
+              transition={{ type: 'spring', stiffness: 400, damping: 14 }}
+              className="text-3xl font-display font-black text-glow tracking-tighter"
+            >
               {state.context.score}
-            </span>
+            </motion.span>
           </div>
             {state.context.multiplier > 1 && (
               <motion.span
-                initial={{ x: -10, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
+                key={state.context.multiplier}
+                initial={{ scale: 1.4, x: -6, opacity: 0 }}
+                animate={{ scale: 1, x: 0, opacity: 1 }}
+                transition={{ type: 'spring', stiffness: 500, damping: 18 }}
                 className="text-[10px] font-black text-medical-secondary bg-medical-secondary/10 px-2 py-0.5 rounded-full border border-medical-secondary/20 uppercase"
               >
                 x{state.context.multiplier.toFixed(1)}
@@ -1026,13 +1075,15 @@ function App() {
           {state.context.combo > 1 && (
             <motion.div
               key={state.context.combo}
-              initial={{ scale: 0.5, y: -20, opacity: 0 }}
-              animate={{ scale: 1, y: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+              initial={{ scale: 1.6, y: -15, opacity: 0, rotate: -8 }}
+              animate={{ scale: 1, y: 0, opacity: 1, rotate: 0 }}
+              transition={{ type: 'spring', stiffness: 600, damping: 16 }}
               className="flex flex-col items-end"
             >
               <span className="text-[9px] font-black text-white/40 uppercase tracking-[0.2em]">STREAK</span>
-              <span className="text-2xl font-display font-black text-medical-primary italic drop-shadow-[0_0_10px_rgba(13,148,136,0.5)]">
+              <span className={`text-2xl font-display font-black italic drop-shadow-[0_0_12px_rgba(13,148,136,0.6)] ${
+                state.context.combo >= 15 ? 'text-yellow-400' : state.context.combo >= 10 ? 'text-orange-400' : 'text-medical-primary'
+              }`}>
                 {state.context.combo}
               </span>
             </motion.div>
@@ -1043,11 +1094,16 @@ function App() {
       {/* Timer Bar */}
       {state.matches('triage') && currentCase && (
         <div className="w-full max-w-sm px-8 -mt-2 mb-4 z-50">
-          <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden shadow-inner flex mb-1">
+          <div className={`w-full h-1.5 bg-white/10 rounded-full overflow-hidden shadow-inner flex mb-1 transition-all ${timeLeft <= 10 ? 'timer-critical' : ''}`}>
             <motion.div
-              className={`h-full ${timeLeft <= 10 ? 'bg-medical-danger flex-grow h-full' : 'bg-medical-secondary flex-grow h-full'}`}
+              className={`h-full flex-grow ${timeLeft <= 10 ? 'bg-medical-danger' : 'bg-medical-secondary'}`}
               initial={{ width: '100%' }}
-              animate={{ width: `${(timeLeft / timeLimitRef.current) * 100}%` }}
+              animate={{
+                width: `${(timeLeft / timeLimitRef.current) * 100}%`,
+                boxShadow: timeLeft <= 10
+                  ? ['0 0 8px rgba(239,68,68,0.6)', '0 0 16px rgba(239,68,68,0.9)', '0 0 8px rgba(239,68,68,0.6)']
+                  : '0 0 4px rgba(20,184,166,0.3)'
+              }}
               transition={{ duration: 1, ease: 'linear' }}
               style={{ originX: 0 }}
             />
