@@ -13,7 +13,7 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 150/90 mmHg (HTA temprana), FC 100 lpm, Temp 36.7°C",
+      "card_text": "TA 120/80 mmHg, FC 88 lpm, Temp 36.6°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
@@ -24,17 +24,117 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "A) Mola Hidatidiforme Completa: Proliferación trofoblástica. Útero mayor a amenorrea + Tormenta de nieve + HCG >100,000.",
+      "category": "Genética",
+      "card_text": "A) Mola Completa: Generalmente 46,XX (origen paterno diploide). Ausencia de tejido fetal y vellosidades hidrópicas difusas.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Bien! Es la forma más común y la que más riesgo tiene de malignizar."
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "image",
+      "category": "Auxiliares Diagnóstico",
+      "card_text": "B) Imagen en 'Copo de Nieve': Patrón ultrasonográfico con múltiples ecos lineales que indican vesículas hidrópicas.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Correcto! Es el signo patognomónico clásico en el ultrasonido de una mola completa."
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "arrow-up-circle",
+      "category": "Clínica",
+      "card_text": "C) Discrepancia Uterina: Fondo uterino mucho mayor a lo esperado para las semanas de amenorrea refiere proliferación tumoral.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Muy bien! El crecimiento acelerado del útero es un dato pivote para sospechar enfermedad trofoblástica."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "slash",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "D) Mola Parcial: Triploidía (69XXX/XXY). Se observa feto (a menudo malformado) y niveles de hCG menos elevados.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: Bien. La ausencia de feto y la hCG masiva en este caso gritan 'Mola Completa'."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "zap",
+      "category": "Manejo Quirúrgico",
+      "card_text": "E) Evacuación por Aspiración (AMEU): Tratamiento de elección. Debe realizarse lo antes posible para evitar complicaciones.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Acertaste! El manejo inicial es la evacuación mediante AMEU."
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡Perfecto! La succión es más segura que el legrado instrumental para evitar perforar el útero reblandecido."
       },
       "safety_flags": {
-        "lethal_risk": false,
+        "lethal_risk": true,
         "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "activity",
+      "category": "Complicaciones",
+      "card_text": "F) Quistes Tecaluteínicos: Quistes ováricos bilaterales (>6cm) secundarios a la estimulación masiva de la hCG.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Bien. Generalmente involucionan solos tras la evacuación de la mola."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "alert-triangle",
+      "category": "Complicaciones",
+      "card_text": "G) Preeclampsia Temprana: Hipertensión inducida por el embarazo antes de las 20 semanas es sugestiva de Mola.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡Vital! Si ves HTA en el primer trimestre, busca una mola inmediatamente."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "copy",
+      "category": "Seguimiento",
+      "card_text": "H) hCG Semanal: Medir niveles cada semana hasta alcanzar tres valores negativos consecutivos.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Correcto! Es la única forma de vigilar la persistencia de tejido trofoblástico."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "shield",
+      "category": "Seguimiento",
+      "card_text": "I) Anticoncepción (6-12 meses): Indicar OCOs para evitar un embarazo que confunda el seguimiento de la hCG.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Excelente! Un embarazo nuevo haría imposible saber si la hCG sube por el bebé o por un cáncer."
       }
     }
   ],

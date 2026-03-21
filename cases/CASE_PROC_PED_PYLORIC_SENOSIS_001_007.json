@@ -22,19 +22,119 @@
       }
     },
     {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "A) Estenosis Hipertrófica del Píloro: Hipertrofia de la muscular del píloro. Vómito no biliar en proyectil. Signo de la Oliva patognomónico.",
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "B) Atresia Duodenal: Vómitos biliares precoces (primeras 24-48h). Radiografía con signo de la 'doble burbuja'. Frecuente en Síndrome de Down.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: ¡Bien! El vómito en la estenosis de píloro es característicamente NO biliar."
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "eye",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "C) Reflujo Gastroesofágico: Regurgitaciones frecuentes, no en proyectil, con ganancia ponderal adecuada inicialmente.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: Correcto. El vómito explosivo 'en proyectil' apunta fuertemente a una obstrucción mecánica."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "search",
+      "category": "Signo Clínico",
+      "card_text": "D) Oliva Pilórica: Masa firme, móvil, de unos 2 cm, palpable en el borde lateral del músculo recto abdominal derecho.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Excelente! Es el hallazgo patognomónico, aunque solo se palpa en el 60-80% de los casos."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "activity",
+      "category": "Signo Clínico",
+      "card_text": "E) Ondas Peristálticas Gástricas: Movimientos visibles de izquierda a derecha tras la alimentación que terminan en el vómito.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Bien. Representan el esfuerzo del estómago por vencer la obstrucción pilórica."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "beaker",
+      "category": "Laboratorio",
+      "card_text": "F) Alcalosis Metabólica Hipoclorémica: Producida por la pérdida masiva de ácido clorhídrico en el vómito gástrico.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡Vital! El desequilibrio ácido-base debe corregirse ANTES de cualquier intervención quirúrgica."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "camera",
+      "category": "Gabinete",
+      "card_text": "G) Ultrasonido Abdominal: Criterios: Grosor del músculo pilórico >3-4 mm y longitud del canal >15-17 mm.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Perfecto! Es el 'estándar de oro' diagnóstico actual por su alta sensibilidad."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "thermometer",
+      "category": "Manejo Inicial",
+      "card_text": "H) Ayuno e Hidratación Parenteral: Reposición de volumen y electrolitos (Sodio, Cloro y Potasio).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Correcto. Un niño con alcalosis grave tiene mayor riesgo de apnea postoperatoria."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "scissors",
+      "category": "Tratamiento Definitivo",
+      "card_text": "I) Piloromiotomía de Fredet-Ramstedt: Sección de las fibras musculares del píloro sin entrar a la luz mucosa.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Perfecto! El estudio inicial es el Ultrasonido."
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡Logrado! Es el tratamiento definitivo y curativo."
       },
       "safety_flags": {
-        "lethal_risk": false,
+        "lethal_risk": true,
         "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_10",
+      "ui_icon": "alert-circle",
+      "category": "Seguimiento",
+      "card_text": "J) Alimentación Postoperatoria: Iniciar dieta hídrica a las 4-6 horas tras la cirugía si no hay complicaciones.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Bien. La recuperación suele ser rápida y satisfactoria."
       }
     }
   ],
