@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, useMotionValue, useTransform, useAnimation, AnimatePresence } from 'framer-motion';
 import type { Card } from '../types/game';
 import { useGameAudio } from '../hooks/useGameAudio';
@@ -15,8 +15,20 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwi
   const visibleCards = cards.slice(currentIndex, currentIndex + 3).reverse();
   const totalCards = cards.length;
 
+  // Keyboard support (ArrowLeft / ArrowRight)
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (isLocked) return;
+      if (e.key === 'ArrowLeft') onSwipe('left');
+      if (e.key === 'ArrowRight') onSwipe('right');
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [isLocked, onSwipe]);
+
   return (
-    <div className="relative w-full max-w-sm h-80 mx-auto flex items-center justify-center perspective-1000">
+    <div className="flex flex-col items-center w-full max-w-sm mx-auto gap-6">
+    <div className="relative w-full h-80 flex items-center justify-center perspective-1000">
 
       {/* Swipe Direction Hints */}
       <div className="absolute -left-6 md:-left-16 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 opacity-50 pointer-events-none z-0">
@@ -66,6 +78,27 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwi
           );
         })}
       </AnimatePresence>
+    </div>
+
+    {/* Tap Zones — alternative to swiping on mobile */}
+    <div className="flex gap-3 w-full px-2">
+      <button
+        disabled={isLocked}
+        onPointerDown={(e) => { e.stopPropagation(); playSwipe('left'); onSwipe('left'); }}
+        className="flex-1 flex items-center justify-center gap-2 py-4 rounded-2xl border border-medical-danger/30 bg-medical-danger/10 active:bg-medical-danger/25 text-medical-danger font-black text-sm uppercase tracking-widest transition-colors disabled:opacity-30 select-none"
+        aria-label="Descartar"
+      >
+        ← Descartar
+      </button>
+      <button
+        disabled={isLocked}
+        onPointerDown={(e) => { e.stopPropagation(); playSwipe('right'); onSwipe('right'); }}
+        className="flex-1 flex items-center justify-center gap-2 py-4 rounded-2xl border border-medical-primary/30 bg-medical-primary/10 active:bg-medical-primary/25 text-medical-primary font-black text-sm uppercase tracking-widest transition-colors disabled:opacity-30 select-none"
+        aria-label="Mantener"
+      >
+        Mantener →
+      </button>
+    </div>
     </div>
   );
 };

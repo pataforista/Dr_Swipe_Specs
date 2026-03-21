@@ -92,4 +92,6 @@ export interface PlayerStats {
   correct_swipes: number;
   mistakes: number;
   cases_solved: number;
+  best_score: number;
+  total_sessions: number;
 }
