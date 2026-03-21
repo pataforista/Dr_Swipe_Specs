@@ -34,16 +34,24 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwi
     <div className="flex flex-col items-center w-full max-w-sm mx-auto gap-6 px-2 sm:px-4">
     <div className="relative w-full h-80 flex items-center justify-center perspective-1000 md:h-96">
 
-      {/* Swipe Direction Hints */}
-      <div className="absolute -left-4 md:-left-16 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 opacity-40 md:opacity-50 pointer-events-none z-0 hidden sm:flex">
-        <span className="text-2xl md:text-3xl animate-pulse drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]">⬅️</span>
-        <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-medical-danger -rotate-90 mt-6 md:mt-8 drop-shadow-lg bg-black/50 px-2 py-1 rounded">Descartar</span>
-      </div>
+      {/* Swipe Direction Hints - Now visible on all screen sizes */}
+      <motion.div
+        className="absolute left-0 sm:left-auto sm:-left-16 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 opacity-30 sm:opacity-50 pointer-events-none z-0"
+        animate={{ x: [-2, 2, -2] }}
+        transition={{ duration: 2, repeat: Infinity }}
+      >
+        <span className="text-xl sm:text-3xl drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]">⬅️</span>
+        <span className="text-[8px] sm:text-[10px] font-black uppercase tracking-widest text-medical-danger -rotate-90 mt-4 sm:mt-8 drop-shadow-lg bg-black/50 px-2 py-1 rounded">Descartar</span>
+      </motion.div>
 
-      <div className="absolute -right-4 md:-right-16 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 opacity-40 md:opacity-50 pointer-events-none z-0 hidden sm:flex">
-        <span className="text-2xl md:text-3xl animate-pulse drop-shadow-[0_0_8px_rgba(20,184,166,0.5)]">➡️</span>
-        <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-medical-primary rotate-90 mt-6 md:mt-8 drop-shadow-lg bg-black/50 px-2 py-1 rounded">Mantener</span>
-      </div>
+      <motion.div
+        className="absolute right-0 sm:right-auto sm:-right-16 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 opacity-30 sm:opacity-50 pointer-events-none z-0"
+        animate={{ x: [2, -2, 2] }}
+        transition={{ duration: 2, repeat: Infinity }}
+      >
+        <span className="text-xl sm:text-3xl drop-shadow-[0_0_8px_rgba(20,184,166,0.5)]">➡️</span>
+        <span className="text-[8px] sm:text-[10px] font-black uppercase tracking-widest text-medical-primary rotate-90 mt-4 sm:mt-8 drop-shadow-lg bg-black/50 px-2 py-1 rounded">Mantener</span>
+      </motion.div>
 
       {/* Deck Progress Pips */}
       <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-1 pointer-events-none z-10">
@@ -104,13 +112,14 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwi
       <motion.button
         disabled={isLocked}
         onPointerDown={(e) => { e.stopPropagation(); playSwipe('left'); onSwipe('left'); }}
-        whileHover={!isLocked ? { scale: 1.04, backgroundColor: 'rgba(239,68,68,0.18)' } : {}}
-        whileTap={!isLocked ? { scale: 0.93, x: -6 } : {}}
+        whileHover={!isLocked ? { scale: 1.06, backgroundColor: 'rgba(239,68,68,0.22)', boxShadow: '0 0 20px rgba(239,68,68,0.4)' } : {}}
+        whileTap={!isLocked ? { scale: 0.92, x: -8 } : {}}
         transition={{ type: 'spring', stiffness: 400, damping: 18 }}
-        className="flex-1 flex items-center justify-center gap-1 sm:gap-2 py-3 sm:py-4 px-2 sm:px-3 rounded-xl sm:rounded-2xl border border-medical-danger/30 bg-medical-danger/10 text-medical-danger font-black text-xs sm:text-sm uppercase tracking-widest disabled:opacity-30 select-none"
+        className="flex-1 flex items-center justify-center gap-1 sm:gap-2 py-3 sm:py-4 px-2 sm:px-3 rounded-xl sm:rounded-2xl border-2 border-medical-danger/40 bg-medical-danger/12 text-medical-danger font-black text-xs sm:text-sm uppercase tracking-widest disabled:opacity-30 select-none transition-all shadow-lg"
         aria-label="Descartar"
+        title="Desliza a la izquierda o toca aquí"
       >
-        <span className="hidden sm:inline">←</span> Descartar
+        <span className="text-base sm:text-lg">←</span> <span className="hidden sm:inline">Descartar</span>
       </motion.button>
 
       {/* Lifeline Button */}
@@ -118,10 +127,10 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwi
         <motion.button
           disabled={!canUseLifeline || isLocked}
           onClick={(e) => { e.stopPropagation(); onUseLifeline(); }}
-          whileHover={canUseLifeline && !isLocked ? { scale: 1.15, rotate: 10 } : {}}
+          whileHover={canUseLifeline && !isLocked ? { scale: 1.15, rotate: 10, boxShadow: '0 0 20px rgba(234,179,8,0.5)' } : {}}
           whileTap={canUseLifeline && !isLocked ? { scale: 0.9 } : {}}
           transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-          className="w-12 sm:w-14 flex items-center justify-center rounded-xl sm:rounded-2xl border border-yellow-500/30 bg-yellow-500/10 text-yellow-400 text-lg disabled:opacity-20 select-none flex-shrink-0"
+          className="w-12 sm:w-14 flex items-center justify-center rounded-xl sm:rounded-2xl border-2 border-yellow-500/40 bg-yellow-500/12 text-yellow-400 text-lg disabled:opacity-20 select-none flex-shrink-0 shadow-lg transition-all"
           aria-label="Usar pista (25 monedas)"
           title="Pista — 25 🪙"
         >
@@ -132,13 +141,14 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwi
       <motion.button
         disabled={isLocked}
         onPointerDown={(e) => { e.stopPropagation(); playSwipe('right'); onSwipe('right'); }}
-        whileHover={!isLocked ? { scale: 1.04, backgroundColor: 'rgba(13,148,136,0.18)' } : {}}
-        whileTap={!isLocked ? { scale: 0.93, x: 6 } : {}}
+        whileHover={!isLocked ? { scale: 1.06, backgroundColor: 'rgba(13,148,136,0.22)', boxShadow: '0 0 20px rgba(13,148,136,0.4)' } : {}}
+        whileTap={!isLocked ? { scale: 0.92, x: 8 } : {}}
         transition={{ type: 'spring', stiffness: 400, damping: 18 }}
-        className="flex-1 flex items-center justify-center gap-1 sm:gap-2 py-3 sm:py-4 px-2 sm:px-3 rounded-xl sm:rounded-2xl border border-medical-primary/30 bg-medical-primary/10 text-medical-primary font-black text-xs sm:text-sm uppercase tracking-widest disabled:opacity-30 select-none"
+        className="flex-1 flex items-center justify-center gap-1 sm:gap-2 py-3 sm:py-4 px-2 sm:px-3 rounded-xl sm:rounded-2xl border-2 border-medical-primary/40 bg-medical-primary/12 text-medical-primary font-black text-xs sm:text-sm uppercase tracking-widest disabled:opacity-30 select-none transition-all shadow-lg"
         aria-label="Mantener"
+        title="Desliza a la derecha o toca aquí"
       >
-        Mantener <span className="hidden sm:inline">→</span>
+        <span className="hidden sm:inline">Mantener</span> <span className="text-base sm:text-lg">→</span>
       </motion.button>
     </div>
     </div>
@@ -210,10 +220,17 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
 }) => {
   const x = useMotionValue(0);
   const controls = useAnimation();
+  const [showDragHint, setShowDragHint] = React.useState(true);
 
   const rotate = useTransform(x, [-250, 250], [-30, 30]);
   const overlayOpacityLeft = useTransform(x, [0, -80], [0, 1]);
   const overlayOpacityRight = useTransform(x, [0, 80], [0, 1]);
+
+  // Auto-hide the drag hint after first drag attempt
+  React.useEffect(() => {
+    const timer = setTimeout(() => setShowDragHint(false), 4000);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Safety level for border accent
   const isLethal = card.safety_flags?.lethal_risk || card.safety_flags?.lethal_if_discarded;
@@ -227,21 +244,31 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
   const handleDragEnd = async (_event: MouseEvent | TouchEvent | PointerEvent, info: { offset: { x: number }; velocity: { x: number } }) => {
     if (!isTop) return;
 
+    // Hide drag hint once interaction starts
+    setShowDragHint(false);
+
     const threshold = 30;
     const velocity = info.velocity.x;
 
-    if (info.offset.x > threshold || velocity > 350) {
-      playSwipe('right');
-      triggerHaptic('cardSwipe');
-      await controls.start({ x: 600, opacity: 0, rotate: 25, transition: { duration: 0.25 } });
-      onSwipe('right');
-    } else if (info.offset.x < -threshold || velocity < -350) {
-      playSwipe('left');
-      triggerHaptic('cardSwipe');
-      await controls.start({ x: -600, opacity: 0, rotate: -25, transition: { duration: 0.25 } });
-      onSwipe('left');
-    } else {
-      controls.start({ x: 0, y: 0, rotate: 0, transition: { type: 'spring', stiffness: 500, damping: 18, mass: 0.8 } });
+    try {
+      if (info.offset.x > threshold || velocity > 350) {
+        playSwipe('right');
+        triggerHaptic('cardSwipe');
+        await controls.start({ x: 600, opacity: 0, rotate: 25, transition: { duration: 0.25 } });
+        onSwipe('right');
+      } else if (info.offset.x < -threshold || velocity < -350) {
+        playSwipe('left');
+        triggerHaptic('cardSwipe');
+        await controls.start({ x: -600, opacity: 0, rotate: -25, transition: { duration: 0.25 } });
+        onSwipe('left');
+      } else {
+        // Bounce back to center
+        controls.start({ x: 0, y: 0, rotate: 0, transition: { type: 'spring', stiffness: 500, damping: 18, mass: 0.8 } });
+      }
+    } catch (error) {
+      // Safety fallback: reset card position if something goes wrong
+      console.error('Error during drag end:', error);
+      controls.start({ x: 0, y: 0, rotate: 0, transition: { type: 'spring', stiffness: 500, damping: 18 } });
     }
   };
 
@@ -269,6 +296,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
       }}
       initial={{ scale: 0.82, opacity: 0, y: 40 }}
       exit={{ opacity: 0, scale: 0.78, transition: { duration: 0.15 } }}
+      whileHover={isTop && !isLocked ? { scale: 1.02 } : {}}
     >
       {/* Decorative Fold-over Tab */}
       <div className="absolute top-0 right-10 w-24 h-6 bg-white/5 rounded-b-xl border-x border-b border-white/10 flex items-center justify-center">
@@ -292,6 +320,36 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
             style={{ backgroundColor: isLethal ? '#ef4444' : '#eab308' }}
           />
           {isLethal ? 'RIESGO LETAL' : 'DECISIÓN CRÍTICA'}
+        </motion.div>
+      )}
+
+      {/* Drag Hint - Shows on first load to guide users */}
+      {showDragHint && isTop && !isLocked && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          className="absolute -top-12 left-1/2 -translate-x-1/2 pointer-events-none z-40"
+        >
+          <div className="flex flex-col items-center gap-1">
+            <motion.div
+              animate={{ x: [-4, 4, -4] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="flex gap-1"
+            >
+              <span className="text-sm font-black text-medical-primary/80">⬅️</span>
+              <span className="text-xs font-black text-white/60">DESLIZA</span>
+              <span className="text-sm font-black text-medical-primary/80">➡️</span>
+            </motion.div>
+            <motion.div
+              animate={{ y: [0, 3, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, delay: 0.3 }}
+              className="text-lg"
+            >
+              👆
+            </motion.div>
+          </div>
         </motion.div>
       )}
 
@@ -349,8 +407,8 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
             </div>
           </div>
           <motion.div
-            animate={isTop ? { rotate: [0, -3, 3, 0] } : {}}
-            transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
+            animate={isTop ? { rotate: [0, -4, 4, 0], scale: [1, 1.05, 1.05, 1] } : {}}
+            transition={{ duration: 3.5, repeat: Infinity, repeatDelay: 1.5 }}
             className="w-12 h-12 glass-panel !rounded-2xl flex items-center justify-center text-2xl shadow-inner"
           >
             {getIcon(card.ui_icon)}
