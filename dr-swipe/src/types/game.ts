@@ -43,6 +43,7 @@ export interface Card {
   dynamic_value?: DynamicValue;
   safety_flags?: SafetyFlags;
   scoring: CardScoring;
+  related_diagnoses?: string[]; // For dossier synergy multiplier
 }
 
 export interface BossQuestion {
@@ -52,9 +53,15 @@ export interface BossQuestion {
   correct_index: number;
 }
 
+export interface QTEConfig {
+  enabled: boolean;
+  timeLimit: number; // seconds
+}
+
 export interface BossFightTriad {
   trigger: 'after_cards';
   questions: BossQuestion[];
+  qte_fallback?: QTEConfig; // Quick-Time Event if no questions provided
 }
 
 export interface EnarmPearl {

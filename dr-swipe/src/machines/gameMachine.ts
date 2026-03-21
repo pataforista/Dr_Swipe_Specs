@@ -1,6 +1,7 @@
 import { setup, assign } from 'xstate';
 import type { Card, EnarmPearl } from '../types/game';
 import { cleanVazquezComment } from '../utils/formatters';
+import { calculateCardScore } from '../utils/scoringEngine';
 
 interface GameContext {
   deck: Card[];
@@ -19,6 +20,12 @@ interface GameContext {
   isUrgent: boolean;
   showBloodVignette: boolean;
   debriefData: { title: string; text: string; gpc: string; comment: string } | null;
+  // QTE context
+  qteActive: boolean;
+  qteTimeLeft: number;
+  // Interruption context
+  interruptionActive: boolean;
+  lastInterruptionAt: number;
 }
 
 type GameEvent =
@@ -33,7 +40,11 @@ type GameEvent =
   | { type: 'TRIGGER_URGENCY' }
   | { type: 'RESOLVE_URGENCY' }
   | { type: 'CLEAR_VISUALS' }
-  | { type: 'VIEW_DEBRIEF' };
+  | { type: 'VIEW_DEBRIEF' }
+  | { type: 'QTE_TIMER_TICK' }
+  | { type: 'QTE_INTERACT' }
+  | { type: 'TRIGGER_INTERRUPTION' }
+  | { type: 'RESOLVE_INTERRUPTION' };
 
 export const gameMachine = setup({
   types: {
@@ -56,7 +67,11 @@ export const gameMachine = setup({
       showEureka: false,
       isUrgent: false,
       showBloodVignette: false,
-      debriefData: null
+      debriefData: null,
+      qteActive: false,
+      qteTimeLeft: 0,
+      interruptionActive: false,
+      lastInterruptionAt: 0
     }),
     clearVisuals: assign({
       showEureka: false,
@@ -67,21 +82,30 @@ export const gameMachine = setup({
       const card = context.deck[context.currentCardIndex];
       if (!card) return {};
 
-      const isCorrect = (event.direction === 'right' && card.expected_action === 'keep') || 
+      const isCorrect = (event.direction === 'right' && card.expected_action === 'keep') ||
                         (event.direction === 'left' && card.expected_action === 'discard');
-      
-      const nextCombo = isCorrect ? context.combo + 1 : 0;
-      const nextMultiplier = isCorrect ? (1 + Math.floor(nextCombo / 5) * 0.5) : 1;
-      const points = isCorrect ? card.scoring.points : -Math.floor(card.scoring.points / 2);
-      
-      // Perfect Swipe Logic (x1.2)
+
       const timeTaken = Date.now() - context.lastCardPresentedAt;
-      const speedBonus = (isCorrect && timeTaken < 1200) ? 1.2 : 1;
-      
+
+      // Use centralized scoring engine
+      const scoreBreakdown = calculateCardScore(
+        card,
+        {
+          combo: context.combo,
+          multiplier: context.multiplier,
+          difficulty: context.difficulty,
+          dossier: context.dossier,
+          lastCardPresentedAt: context.lastCardPresentedAt
+        },
+        isCorrect,
+        timeTaken
+      );
+
+      const nextCombo = isCorrect ? context.combo + 1 : 0;
+
       // Tactical Dossier Combo Logic
       let nextDossier = [...context.dossier];
       let hasEureka = false;
-      let tacticalBonus = 1;
 
       if (event.direction === 'right') {
         nextDossier.push(card);
@@ -90,22 +114,29 @@ export const gameMachine = setup({
           const last3 = nextDossier.slice(-3);
           if (last3.every(c => c.category === card.category)) {
             hasEureka = true;
-            tacticalBonus = 2.0; // Combo de Claridad
           }
         }
       }
 
-      const diffMultiplier = context.difficulty === 'extreme' ? 2 : (context.difficulty === 'hard' ? 1.5 : 1);
-      const finalPoints = Math.floor(points * nextMultiplier * diffMultiplier * speedBonus * tacticalBonus);
+      // Check for interruption trigger (combo >= 3 and 15% chance)
+      let shouldTriggerInterruption = false;
+      if (isCorrect && nextCombo >= 3 && Math.random() < 0.15) {
+        const timeSinceLastInterruption = Date.now() - context.lastInterruptionAt;
+        if (timeSinceLastInterruption > 30000) { // No more than one interruption per 30 seconds
+          shouldTriggerInterruption = true;
+        }
+      }
 
       return {
         combo: nextCombo,
-        multiplier: nextMultiplier,
-        score: context.score + finalPoints,
+        multiplier: scoreBreakdown.comboMultiplier,
+        score: context.score + scoreBreakdown.finalPoints,
         dossier: nextDossier,
         showEureka: hasEureka,
         currentCardIndex: context.currentCardIndex + 1,
-        lastCardPresentedAt: Date.now()
+        lastCardPresentedAt: Date.now(),
+        interruptionActive: shouldTriggerInterruption,
+        lastInterruptionAt: shouldTriggerInterruption ? Date.now() : context.lastInterruptionAt
       };
     })
   }
@@ -128,7 +159,11 @@ export const gameMachine = setup({
     showEureka: false,
     isUrgent: false,
     showBloodVignette: false,
-    debriefData: null
+    debriefData: null,
+    qteActive: false,
+    qteTimeLeft: 0,
+    interruptionActive: false,
+    lastInterruptionAt: 0
   },
   states: {
     idle: {
@@ -154,16 +189,24 @@ export const gameMachine = setup({
               text: event.pearl?.text || "",
               gpc: event.pearl?.gpc_ref || "GPC en vigor",
               comment: ""
-            })
+            }),
+            qteActive: false,
+            qteTimeLeft: 0,
+            interruptionActive: false,
+            lastInterruptionAt: 0
           })
         }
       }
     },
     triage: {
       always: [
-        { 
-          target: 'critical_alert', 
-          guard: ({ context }) => context.currentCardIndex >= context.deck.length && context.deck.length > 0 
+        {
+          target: 'interruption_active',
+          guard: ({ context }) => context.interruptionActive
+        },
+        {
+          target: 'critical_alert',
+          guard: ({ context }) => context.currentCardIndex >= context.deck.length && context.deck.length > 0
         }
       ],
       on: {
@@ -249,6 +292,21 @@ export const gameMachine = setup({
         3000: { target: 'triage', actions: assign({ showBloodVignette: false }) }
       }
     },
+    interruption_active: {
+      entry: assign({ showBloodVignette: false }),
+      on: {
+        RESOLVE_INTERRUPTION: {
+          target: 'triage',
+          actions: assign({ interruptionActive: false })
+        }
+      },
+      after: {
+        2000: {
+          target: 'triage',
+          actions: assign({ interruptionActive: false })
+        }
+      }
+    },
     urgent_triage: {
       entry: assign({ isUrgent: true, lastCardPresentedAt: Date.now() }),
       on: {
@@ -268,19 +326,52 @@ export const gameMachine = setup({
       }
     },
     boss_fight: {
+      entry: assign({
+        qteActive: ({ context }) => !context.qteActive ? true : false,
+        qteTimeLeft: ({ context }) => context.qteActive ? 5 : context.qteTimeLeft
+      }),
       on: {
-        ANSWER_CORRECT: { 
+        QTE_TIMER_TICK: {
+          actions: assign({
+            qteTimeLeft: ({ context }) => Math.max(0, context.qteTimeLeft - 1)
+          })
+        },
+        QTE_INTERACT: {
           target: 'reward',
           actions: assign({
             caseStreak: ({ context }) => context.caseStreak + 1,
-            score: ({ context }) => context.score + (context.caseStreak * 500) // Streak Bonus
+            score: ({ context }) => context.score + (context.caseStreak * 500),
+            qteActive: false,
+            qteTimeLeft: 0
+          })
+        },
+        ANSWER_CORRECT: {
+          target: 'reward',
+          actions: assign({
+            caseStreak: ({ context }) => context.caseStreak + 1,
+            score: ({ context }) => context.score + (context.caseStreak * 500), // Streak Bonus
+            qteActive: false,
+            qteTimeLeft: 0
           })
         },
         ANSWER_WRONG: {
           target: 'ghosted',
           actions: assign({
             fatalError: ({ event }) => event.type === 'ANSWER_WRONG' ? event.error : "Error en Shock Room",
-            caseStreak: 0
+            caseStreak: 0,
+            qteActive: false,
+            qteTimeLeft: 0
+          })
+        }
+      },
+      after: {
+        5000: {
+          guard: ({ context }) => context.qteActive && context.qteTimeLeft <= 0,
+          target: 'ghosted',
+          actions: assign({
+            fatalError: () => "QTE Fallido: El paciente se desestabilizó.",
+            caseStreak: 0,
+            qteActive: false
           })
         }
       }
