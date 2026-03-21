@@ -66,12 +66,12 @@ const BossFightTriadSchema = z.object({
 // ── EnarmPearl ────────────────────────────────────────────────────────────────
 
 export const EnarmPearlSchema = z.object({
-  id:       z.string().min(1),
-  category: z.string(),
-  rarity:   z.enum(['common', 'rare', 'epic', 'legendary']),
+  id:       z.string().min(1).optional(),
+  category: z.string().optional(),
+  rarity:   z.enum(['common', 'rare', 'epic', 'legendary']).optional(),
   title:    z.string().min(1),
   text:     z.string().min(1),
-  gpc_ref:  z.string(),
+  gpc_ref:  z.string().optional(),
 });
 
 // ── ClinicalCase  (el que importa para dataLoader) ────────────────────────────

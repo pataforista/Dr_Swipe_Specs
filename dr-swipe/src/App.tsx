@@ -473,32 +473,50 @@ function App() {
 
   const renderCurrentView = () => {
     if (showIntro && currentCase) {
+      const difficultyLabel = currentCase.difficulty === 'extreme' ? 'EXTREMO' : currentCase.difficulty === 'hard' ? 'DIFÍCIL' : 'NORMAL';
+      const difficultyColor = currentCase.difficulty === 'extreme' ? 'text-red-400 border-red-500/30 bg-red-500/10' : currentCase.difficulty === 'hard' ? 'text-orange-400 border-orange-500/30 bg-orange-500/10' : 'text-teal-400 border-teal-500/30 bg-teal-500/10';
       return (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          className="glass-panel p-10 max-w-md text-center border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden"
+          className="glass-panel p-8 max-w-md w-full text-center border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden mx-4"
         >
-          {/* Decorative Corner Accent */}
+          {/* Decorative Corner Accents */}
           <div className="absolute top-0 left-0 w-16 h-16 bg-medical-primary/10 -translate-x-8 -translate-y-8 rotate-45 border border-medical-primary/30" />
-          
-          <span className="text-[10px] font-black tracking-[0.4em] text-medical-primary uppercase mb-6 block">BREVIARIO CLÍNICO</span>
-          
-          <h2 className="text-4xl font-display font-black text-white mb-6 leading-tight tracking-tighter">
+          <div className="absolute bottom-0 right-0 w-16 h-16 bg-medical-primary/10 translate-x-8 translate-y-8 rotate-45 border border-medical-primary/30" />
+
+          {/* Header */}
+          <div className="flex items-center justify-between mb-5">
+            <span className="text-[9px] font-black tracking-[0.4em] text-medical-primary uppercase">NUEVO CASO</span>
+            <span className={`text-[9px] font-black tracking-widest uppercase px-2 py-0.5 rounded border ${difficultyColor}`}>
+              {difficultyLabel}
+            </span>
+          </div>
+
+          {/* Patient Name */}
+          <h2 className="text-3xl font-display font-black text-white mb-4 leading-tight tracking-tighter">
             <DecryptedText text={currentCase.patient_intro.name} animateOn="view" speed={30} maxIterations={5} />
           </h2>
-          
-          <div className="w-12 h-1 bg-medical-primary/30 mx-auto mb-8 rounded-full" />
-          
-          <p className="text-lg text-slate-300 leading-relaxed mb-10 italic font-medium px-4">
-            <DecryptedText text={currentCase.patient_intro.arrival_scenario} animateOn="view" speed={25} maxIterations={1} revealMultiplier={2} />
+
+          <div className="w-12 h-0.5 bg-medical-primary/40 mx-auto mb-5 rounded-full" />
+
+          {/* Lore / Arrival Scenario */}
+          <div className="bg-black/30 border border-white/5 rounded-lg p-4 mb-6 text-left">
+            <span className="text-[9px] font-black tracking-[0.3em] text-medical-primary/60 uppercase block mb-2">MOTIVO DE CONSULTA</span>
+            <p className="text-sm text-slate-200 leading-relaxed italic font-medium">
+              <DecryptedText text={currentCase.patient_intro.arrival_scenario} animateOn="view" speed={20} maxIterations={1} revealMultiplier={2} />
+            </p>
+          </div>
+
+          {/* Time limit hint */}
+          <p className="text-[9px] text-slate-600 font-black tracking-widest uppercase mb-6">
+            TIEMPO LÍMITE: {timeLimitRef.current}s
           </p>
-          
+
           <button
             onClick={() => {
               if (!currentCase) return;
               setShowIntro(false);
-              // Use precomputed timeLimit and shuffled deck from startNewCase
               setTimeLeft(timeLimitRef.current);
               setIsProcessing(false);
               send({
@@ -522,7 +540,7 @@ function App() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="flex flex-col items-center justify-center p-8 gap-6"
+            className="flex flex-col items-center justify-center p-8 gap-6 w-full min-h-full"
           >
             <div className="relative mb-6">
               <h1 className="text-7xl font-display font-black tracking-tighter text-medical-primary text-glow italic">
@@ -1341,7 +1359,7 @@ function App() {
       )}
 
       {/* Content Area */}
-      <div className="w-full flex-grow flex items-center justify-center">
+      <div className="w-full flex-grow flex items-center justify-center overflow-y-auto">
         {renderCurrentView()}
       </div>
 
