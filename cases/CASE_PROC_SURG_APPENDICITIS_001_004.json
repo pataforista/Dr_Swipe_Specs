@@ -62,11 +62,83 @@
       "scoring": {
         "points": 50,
         "error_type": "lethal_hazard",
-        "vazquez_comment": "Mendoza: ¡Correcto! TA normal y cuadro más compatible con foco infeccioso intestinal."
+        "vazquez_comment": "Mendoza: ¡Correcto! subrayas la importancia de descartar causas ginecológicas en mujeres en edad fértil."
       },
       "safety_flags": {
         "lethal_risk": true,
         "condition": "female"
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "alert-circle",
+      "category": "Signo Clínico",
+      "card_text": "D) Signo de Rebote (Blumberg): Dolor a la descompresión brusca de la fosa ilíaca derecha. Indica peritonitis local.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Exacto! Es un hallazgo de irritación peritoneal muy relevante."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "trending-up",
+      "category": "Anamnesis",
+      "card_text": "E) Migración del Dolor: Dolor que inicia en región periumbilical y se localiza en fosa ilíaca derecha horas después.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. La cronología de Murphy es la presentación clásica en el 50-60% de los casos."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "frown",
+      "category": "Síntoma",
+      "card_text": "F) Anorexia: Pérdida total del apetito. Clásicamente precede al inicio del dolor en muchos pacientes.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Correcto. Si el paciente tiene mucha hambre, duda del diagnóstico de apendicitis."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "test-tube",
+      "category": "Laboratorio",
+      "card_text": "G) Leucocitosis >10,500: Aumento de glóbulos blancos en la biometría hemática completa.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. Suma 2 puntos en la escala de Alvarado."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "thermometer",
+      "category": "Signo Vital",
+      "card_text": "H) Fiebre >38.3 °C: Presencia de temperatura elevada como parte de la respuesta inflamatoria.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Correcto. Suele ser una fiebre moderada inicialmente."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "activity",
+      "category": "Laboratorio",
+      "card_text": "I) Desviación a la izquierda (Neutrofilia): Presencia de formas jóvenes de neutrófilos en sangre periférica.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Bien! Indica la severidad del proceso infeccioso agudo."
       }
     }
   ],

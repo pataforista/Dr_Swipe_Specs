@@ -46,11 +46,107 @@
       "scoring": {
         "points": 50,
         "error_type": "lethal_hazard",
-        "vazquez_comment": "Castillo: ¡Bien! Reconociste la urgencia."
+        "vazquez_comment": "Castillo: ¡Bien! Reconociste la urgencia. Ante datos de severidad no se debe esperar."
       },
       "safety_flags": {
         "lethal_risk": true,
         "decision_critical": false
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "shield",
+      "category": "Manejo",
+      "card_text": "C) Sulfato de Magnesio: Inicio de esquema Zuspan para prevención de crisis convulsivas (eclampsia).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡Vital! La neuroprotección no es negociable en este cuadro."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "search-off",
+      "category": "Toxicidad",
+      "card_text": "D) Abolición del Reflejo Rotuliano: Signo clínico inicial de concentraciones elevadas de Magnesio (7-10 mEq/L).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Bien! Es la primera alarma antes de la depresión respiratoria."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "zap",
+      "category": "Antídoto",
+      "card_text": "E) Gluconato de Calcio: Administración inmediata de 1g IV si se detectan signos de intoxicación por Magnesio.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Exacto! Contrarresta los efectos depresores del magnesio a nivel neuromuscular."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "droplet",
+      "category": "Riesgo",
+      "card_text": "F) Oliguria (<30 ml/hr): Factor de riesgo principal para la acumulación tóxica de Magnesio.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: BIen. Si el riñón no filtra, el magnesio se queda en la sangre."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "wind",
+      "category": "Toxicidad Grave",
+      "card_text": "G) Frecuencia Respiratoria <12 rpm: Signo de intoxicación grave con riesgo de paro respiratorio inminente.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡CRÍTICO! La depresión respiratoria es una emergencia que requiere soporte inmediato."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "trending-up",
+      "category": "Madurez Fetal",
+      "card_text": "H) Esquema de Maduración Pulmonar: Betametasona 12mg IM cada 24h por 2 dosis dado que cursa con 34 SDG.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Correcto! 34 SDG es el límite superior para indicar inductores de madurez según la GPC."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "check-circle",
+      "category": "Resolución",
+      "card_text": "I) Interrupción del Embarazo: Se indica tras completar esquema de maduración y estabilizar a la paciente.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: Muy bien. En preeclampsia severa, postergar el nacimiento después de las 34 SDG rara vez beneficia."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
       }
     }
   ],

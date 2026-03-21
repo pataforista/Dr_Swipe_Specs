@@ -101,14 +101,14 @@ const DraggableCard: React.FC<DraggableCardProps> = ({ card, isTop, indexOffset,
   const x = useMotionValue(0);
   const controls = useAnimation();
   
-  const rotate = useTransform(x, [-200, 200], [-15, 15]);
-  const overlayOpacityLeft = useTransform(x, [0, -150], [0, 1]);
-  const overlayOpacityRight = useTransform(x, [0, 150], [0, 1]);
+  const rotate = useTransform(x, [-250, 250], [-30, 30]);
+  const overlayOpacityLeft = useTransform(x, [0, -100], [0, 1]);
+  const overlayOpacityRight = useTransform(x, [0, 100], [0, 1]);
 
   const handleDragEnd = async (_event: MouseEvent | TouchEvent | PointerEvent, info: { offset: { x: number }; velocity: { x: number } }) => {
     if (!isTop) return;
 
-    const threshold = 60;
+    const threshold = 40;
     const velocity = info.velocity.x;
 
     if (info.offset.x > threshold || velocity > 500) {
@@ -134,15 +134,15 @@ const DraggableCard: React.FC<DraggableCardProps> = ({ card, isTop, indexOffset,
       }}
       drag={isTop && !isLocked ? "x" : false}
       dragConstraints={{ left: 0, right: 0 }}
-      dragElastic={1.0}
+      dragElastic={0.7}
       onDragEnd={handleDragEnd}
       animate={isTop ? controls : "stacked"}
       variants={{
         stacked: { 
-          scale: 1 - indexOffset * 0.05, 
+          scale: 1 - indexOffset * 0.04, 
           opacity: 1, 
-          y: indexOffset * 15,
-          transition: { type: 'spring', stiffness: 300, damping: 30 }
+          y: indexOffset * 10,
+          transition: { type: 'spring', stiffness: 250, damping: 25 }
         }
       }}
       initial={{ scale: 0.8, opacity: 0 }}
@@ -154,16 +154,24 @@ const DraggableCard: React.FC<DraggableCardProps> = ({ card, isTop, indexOffset,
 
       {/* Indicadores visuales de Decisión */}
       <motion.div 
-        style={{ opacity: overlayOpacityLeft }} 
-        className="absolute inset-0 bg-medical-danger/20 rounded-[2.5rem] pointer-events-none flex items-center justify-center"
+        style={{ 
+          opacity: overlayOpacityLeft,
+          scale: useTransform(x, [0, -100], [0.8, 1.2]),
+          rotate: useTransform(x, [0, -100], [0, -20])
+        }} 
+        className="absolute inset-0 bg-medical-danger/20 rounded-[2.5rem] pointer-events-none flex items-center justify-center border-4 border-medical-danger/40 z-20"
       >
-        <span className="text-4xl font-black text-medical-danger border-4 border-medical-danger px-4 py-2 rotate-[-20deg] uppercase">DESCARTAR</span>
+        <span className="text-4xl font-black text-medical-danger border-4 border-medical-danger px-6 py-3 uppercase shadow-xl bg-black/40 backdrop-blur-sm">DESCARTAR</span>
       </motion.div>
       <motion.div 
-        style={{ opacity: overlayOpacityRight }} 
-        className="absolute inset-0 bg-medical-primary/20 rounded-[2.5rem] pointer-events-none flex items-center justify-center"
+        style={{ 
+          opacity: overlayOpacityRight,
+          scale: useTransform(x, [0, 100], [0.8, 1.2]),
+          rotate: useTransform(x, [0, 100], [0, 20])
+        }} 
+        className="absolute inset-0 bg-medical-primary/20 rounded-[2.5rem] pointer-events-none flex items-center justify-center border-4 border-medical-primary/40 z-20"
       >
-        <span className="text-4xl font-black text-medical-primary border-4 border-medical-primary px-4 py-2 rotate-[20deg] uppercase">MANTENER</span>
+        <span className="text-4xl font-black text-medical-primary border-4 border-medical-primary px-6 py-3 uppercase shadow-xl bg-black/40 backdrop-blur-sm">MANTENER</span>
       </motion.div>
 
       <div className="flex flex-col h-full relative z-10">

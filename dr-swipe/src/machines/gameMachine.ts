@@ -12,6 +12,8 @@ interface GameContext {
   combo: number;
   multiplier: number;
   difficulty: string;
+  warningCount: number;
+  caseStreak: number;
   debriefData: { title: string; text: string; gpc: string; comment: string } | null;
 }
 
@@ -41,6 +43,10 @@ export const gameMachine = setup({
       score: 0,
       combo: 0,
       multiplier: 1,
+      warningCount: 0,
+      // caseStreak persists until ghosted - don't reset in resetGame? 
+      // Actually, resetGame is for a fresh start.
+      caseStreak: 0,
       debriefData: null
     })
   }
@@ -57,6 +63,8 @@ export const gameMachine = setup({
     combo: 0,
     multiplier: 1,
     difficulty: 'standard',
+    warningCount: 0,
+    caseStreak: 0,
     debriefData: null
   },
   states: {
@@ -94,26 +102,56 @@ export const gameMachine = setup({
       on: {
         SWIPE: [
           {
+            target: 'critical_warning',
+            guard: ({ context, event }) => {
+              const card = context.deck[context.currentCardIndex];
+              if (!card) return false;
+              const isLethal = !!((event.direction === 'right' && card.safety_flags?.lethal_risk) || 
+                               (event.direction === 'left' && card.safety_flags?.lethal_if_discarded));
+              
+              // Learning Curve: Warning limit decreases as streak increases
+              let maxWarnings = 2; // R1: 2 Warnings (0-2 streak)
+              if (context.caseStreak >= 6) maxWarnings = 0; // Adscrito: 0 Warnings (6+ streak)
+              else if (context.caseStreak >= 3) maxWarnings = 1; // R2/R3: 1 Warning (3-5 streak)
+
+              return isLethal && context.warningCount < maxWarnings;
+            },
+            actions: assign({
+              warningCount: ({ context }) => context.warningCount + 1,
+              score: ({ context }) => context.score - 1000,
+              fatalError: ({ context }) => {
+                const card = context.deck[context.currentCardIndex];
+                const msg = cleanVazquezComment(card.scoring?.vazquez_comment, false);
+                return `¡ADVERTENCIA! ${msg || "Error de seguridad detectado."}`;
+              }
+            })
+          },
+          {
             target: 'ghosted',
             guard: ({ context, event }) => {
               const card = context.deck[context.currentCardIndex];
               if (!card) return false;
-              const isLethalKeep = event.direction === 'right' && card.safety_flags?.lethal_risk;
-              const isLethalDiscard = event.direction === 'left' && card.safety_flags?.lethal_if_discarded;
-              return !!(isLethalKeep || isLethalDiscard);
+              const isLethal = !!((event.direction === 'right' && card.safety_flags?.lethal_risk) || 
+                               (event.direction === 'left' && card.safety_flags?.lethal_if_discarded));
+              
+              let maxWarnings = 2;
+              if (context.caseStreak >= 6) maxWarnings = 0;
+              else if (context.caseStreak >= 3) maxWarnings = 1;
+
+              return isLethal && context.warningCount >= maxWarnings;
             },
             actions: assign({
               fatalError: ({ context }) => {
                 const card = context.deck[context.currentCardIndex];
-                const cleanMsg = cleanVazquezComment(card.scoring?.vazquez_comment, false);
-                return cleanMsg || "Fallo crítico de seguridad.";
+                const msg = cleanVazquezComment(card.scoring?.vazquez_comment, false);
+                return `FALLO LETAL REINCIDENTE: ${msg || "Negligencia inexcusable."}`;
               },
+              caseStreak: 0,
               debriefData: ({ context }) => {
                 const card = context.deck[context.currentCardIndex];
-                const cleanMsg = cleanVazquezComment(card.scoring?.vazquez_comment, false);
                 return {
                   ...context.debriefData!,
-                  comment: cleanMsg || "Fallo crítico de seguridad."
+                  comment: cleanVazquezComment(card.scoring?.vazquez_comment, false) || "Negligencia."
                 };
               }
             })
@@ -132,8 +170,7 @@ export const gameMachine = setup({
                 const isCorrect = (event.direction === 'right' && card.expected_action === 'keep') || 
                                   (event.direction === 'left' && card.expected_action === 'discard');
                 if (!isCorrect) return 1;
-                const newCombo = context.combo + 1;
-                return 1 + Math.floor(newCombo / 5) * 0.5; // X1.5 at 5, X2.0 at 10, etc.
+                return 1 + Math.floor((context.combo + 1) / 5) * 0.5;
               },
               score: ({ context, event }) => {
                 const card = context.deck[context.currentCardIndex];
@@ -142,18 +179,9 @@ export const gameMachine = setup({
                 const nextCombo = isCorrect ? context.combo + 1 : 0;
                 const nextMultiplier = isCorrect ? (1 + Math.floor(nextCombo / 5) * 0.5) : 1;
                 const points = isCorrect ? card.scoring.points : -Math.floor(card.scoring.points / 2);
-                
-                // Difficulty Scaling
                 const diffMultiplier = context.difficulty === 'extreme' ? 2 : (context.difficulty === 'hard' ? 1.5 : 1);
-                
                 return context.score + Math.floor(points * nextMultiplier * diffMultiplier);
               },
-              dossier: ({ context, event }) => event.direction === 'right' 
-                ? [...context.dossier, context.deck[context.currentCardIndex]] 
-                : context.dossier,
-              discarded: ({ context, event }) => event.direction === 'left' 
-                ? [...context.discarded, context.deck[context.currentCardIndex]] 
-                : context.discarded,
               currentCardIndex: ({ context }) => context.currentCardIndex + 1
             })
           }
@@ -161,9 +189,15 @@ export const gameMachine = setup({
         TIME_OUT: {
           target: 'ghosted',
           actions: assign({
-            fatalError: () => "Tiempo agotado. El paciente se desestabilizó por falta de atención rápida."
+            fatalError: () => "Tiempo agotado. El paciente se desestabilizó.",
+            caseStreak: 0
           })
         }
+      }
+    },
+    critical_warning: {
+      after: {
+        3000: { target: 'triage' }
       }
     },
     critical_alert: {
@@ -173,23 +207,18 @@ export const gameMachine = setup({
     },
     boss_fight: {
       on: {
-        ANSWER_CORRECT: { target: 'reward' },
+        ANSWER_CORRECT: { 
+          target: 'reward',
+          actions: assign({
+            caseStreak: ({ context }) => context.caseStreak + 1,
+            score: ({ context }) => context.score + (context.caseStreak * 500) // Streak Bonus
+          })
+        },
         ANSWER_WRONG: {
           target: 'ghosted',
           actions: assign({
-            fatalError: ({ event }) => {
-              if (event.type === 'ANSWER_WRONG') {
-                return event.error;
-              }
-              return "Error en el Shock Room";
-            },
-            debriefData: ({ context, event }) => {
-              const errorMessage = event.type === 'ANSWER_WRONG' ? event.error : "Fallo en protocolo de choque.";
-              return {
-                ...context.debriefData!,
-                comment: errorMessage
-              };
-            }
+            fatalError: ({ event }) => event.type === 'ANSWER_WRONG' ? event.error : "Error en Shock Room",
+            caseStreak: 0
           })
         }
       }

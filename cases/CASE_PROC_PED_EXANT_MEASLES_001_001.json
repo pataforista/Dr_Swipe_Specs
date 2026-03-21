@@ -144,6 +144,18 @@
         "error_type": "omission",
         "vazquez_comment": "Castillo: ¡Nivel experto! Una complicación rara pero devastadora que justifica la vacunación masiva."
       }
+    },
+    {
+      "card_id": "c_10",
+      "ui_icon": "alert-triangle",
+      "category": "Aislamiento",
+      "card_text": "J) Reglas de Aislamiento: El paciente debe permanecer aislado desde el inicio de la fiebre hasta 4-5 días DESPUÉS del inicio del exantema.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Correcto! Es vital para prevenir brotes en guarderías y salas de espera."
+      }
     }
   ],
   "boss_fight_triad": {

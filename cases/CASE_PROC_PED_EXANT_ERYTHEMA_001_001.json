@@ -141,6 +141,18 @@
         "error_type": "omission",
         "vazquez_comment": "Castillo: ¡Dato clave! Por eso el aislamiento respiratorio suele ser inútil una vez diagnosticado el exantema."
       }
+    },
+    {
+      "card_id": "c_10",
+      "ui_icon": "slash",
+      "category": "Prevención",
+      "card_text": "J) Vacuna contra Parvovirus B19: Inmunización universal recomendada en la Cartilla Nacional de Salud de México.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: ¡No! Aún no existe una vacuna comercial disponible para el Parvovirus B19."
+      }
     }
   ],
   "enarm_pearl": {

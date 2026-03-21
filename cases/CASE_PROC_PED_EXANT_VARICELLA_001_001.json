@@ -136,6 +136,18 @@
         "error_type": "omission",
         "vazquez_comment": "Castillo: La prevención es fundamental para evitar brotes escolares."
       }
+    },
+    {
+      "card_id": "c_10",
+      "ui_icon": "pill",
+      "category": "Tratamiento",
+      "card_text": "J) Aciclovir Oral de Rutina: Administrar a todo paciente inmunocompetente menor de 12 años con varicela no complicada.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: ¡No! El aciclovir solo se indica si hay riesgo (mayores de 12 años, enfermedad pulmonar crónica o uso de esteroides)."
+      }
     }
   ],
   "enarm_pearl": {

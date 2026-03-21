@@ -40,17 +40,109 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "B) Colecistitis Aguda Litiásica: Inflamación de la vesícula biliar por litiasis. Dolor en CSD, fiebre leve, Murphy positivo.",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "B) Péntada de Reynolds: Agregado de Choque (hipotensión) y Alteración del estado de alerta a la tríada de Charcot.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: ¡Bien hecho! Supiste que la ictericia marcada excluye inflamación puramente vesicular."
+        "vazquez_comment": "Mendoza: ¡Bien! El paciente está orientado y con TA estable, por lo que se queda solo en Tríada de Charcot."
       },
       "safety_flags": {
         "lethal_risk": false,
         "decision_critical": false
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "search",
+      "category": "Gabinete",
+      "card_text": "C) Ultrasonido de Vías Biliares: Buscar dilatación del colédoco (>6mm) o presencia de litos en su interior.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Exacto! Es el estudio de primera elección para evaluar la anatomía biliar obstructiva."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "pill",
+      "category": "Manejo",
+      "card_text": "D) Antibióticos IV (Ceftriaxona + Metronidazol): Cobertura para gramnegativos y anaerobios de la vía biliar.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Vital! El control de la sepsis es prioridad absoluta antes y durante el drenaje."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "zap",
+      "category": "Tratamiento",
+      "card_text": "E) CPRE de Urgencia: El estándar de oro para realizar el drenaje descompresivo de la vía biliar.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Excelente! Sin descompresión de la vía biliar infectada, la mortalidad es muy alta."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "droplet",
+      "category": "Manejo",
+      "card_text": "F) Hidratación con Cristaloides: Cargas de solución salina para mantener perfusión renal y estabilidad hemodinámica.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. Debemos prevenir la falla renal aguda (síndrome hepatorrenal)."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "trending-up",
+      "category": "Laboratorio",
+      "card_text": "G) Bilirrubina Total >2.5 mg/dL: Marcador bioquímico de colestasis que apoya el origen biliar obstructivo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Correcto. Junto con la elevación de FA y GGT completa el perfil colestásico."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "activity",
+      "category": "Laboratorio",
+      "card_text": "H) Leucocitosis con Neutrofilia: Indicador de respuesta inflamatoria sistémica ante la infección bacteriana.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. Refleja la severidad de la infección intraabdominal."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "slash",
+      "category": "Gabinete",
+      "card_text": "I) Gammagrafía HIDA: Estudio funcional para evaluar la contractilidad vesicular y obstrucción del conducto cístico.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: ¡Bien! Aunque es útil en colecistitis de difícil diagnóstico, en colangitis no es la prioridad inicial."
       }
     }
   ],

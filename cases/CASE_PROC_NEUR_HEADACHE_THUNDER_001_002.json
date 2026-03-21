@@ -53,6 +53,102 @@
         "lethal_risk": false,
         "decision_critical": false
       }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "zap",
+      "category": "Diagnóstico",
+      "card_text": "C) Punción Lumbar: Realizar si la TC es negativa pero la sospecha de HSA sigue siendo muy alta.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Exacto! Una TC negativa no descarta HSA al 100%. La PL es el siguiente paso lógico."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "droplet",
+      "category": "Gabinete/Lab",
+      "card_text": "D) Xantocromía: Coloración amarillenta del LCR confirmada por espectrofotometría tras 12 horas del inicio.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Bien. Es el indicador más fiable de degradación de hemoglobina en el LCR."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "pill",
+      "category": "Farmacoterapia",
+      "card_text": "E) Nimodipino (60 mg c/4h): Fármaco de elección para prevenir el vasoespasmo isquémico retardado.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Vital! El nimodipino reduce significativamente la morbilidad por isquemia secundaria."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "clipboard",
+      "category": "Escalas",
+      "card_text": "F) Escala de Hunt y Hess: Clasificación clínica que evalúa el estado neurológico y guía el pronóstico quirúrgico.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Correcto. Un Hunt-Hess bajo (I-III) sugiere mejor pronóstico para intervención temprana."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "camera",
+      "category": "Escalas",
+      "card_text": "G) Escala de Fisher: Clasificación basada en la cantidad de sangre vista en la TC para predecir riesgo de vasoespasmo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Bien. A mayor sangre en cisternas (Fisher 3), mayor riesgo de vasoespasmo."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "activity",
+      "category": "Manejo",
+      "card_text": "H) Reposo Absoluto y Cabecera a 30°: Medidas generales para mantener la estabilidad intracraneal.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Bien. Debemos evitar cualquier esfuerzo (Valsalva) que cause resangrado."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "crosshair",
+      "category": "Tratamiento Definitivo",
+      "card_text": "I) Embolización o Clipaje: Exclusión urgente del aneurisma para prevenir el resangrado agudo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Excelente! El tratamiento definitivo debe ocurrir en las primeras 24-72 horas."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
     }
   ],
   "enarm_pearl": {

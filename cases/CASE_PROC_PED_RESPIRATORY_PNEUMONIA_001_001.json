@@ -1,0 +1,194 @@
+{
+  "case_id": "PROC_PED_RESPIRATORY_PNEUMONIA_001_001",
+  "version": "v3_swipe_action",
+  "theme_config": "ped",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Valentina, 3 años",
+    "arrival_scenario": "Preescolar con tos productiva, fiebre de 39°C y dificultad respiratoria (taquipnea y aleteo nasal). A la auscultación se perciben estertores crepitantes localizados en base pulmonar derecha.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "FC 130 lpm, FR 45 rpm (Taquipnea), Temp 39.2°C, SatO2 91%.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: ¡Cuidado con esa saturación! Valentina necesita atención inmediata."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Neumonía Adquirida en la Comunidad (NAC): Presencia de consolidación en Rx o estertores + Síntomas de infección respiratoria aguda.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Correcto! Es una de las principales causas de morbimortalidad infantil."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "beaker",
+      "category": "Etiología",
+      "card_text": "B) Streptococcus pneumoniae: El patógeno bacteriano más frecuente de NAC en niños de todas las edades (excepto neonatos).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Pneumococo es el rey! Siempre hay que cubrirlo."
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "pill",
+      "category": "Tratamiento Ambulatorio",
+      "card_text": "C) Amoxicilina (Altas dosis): 80-90 mg/kg/día por 7-10 días. Tratamiento de primera elección para NAC no complicada.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Excelente! Superas la resistencia parcial del neumococo con dosis altas de amoxi."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "alert-triangle",
+      "category": "Criterios Ingreso",
+      "card_text": "D) SatO2 <92% (Aire ambiente): Indicación absoluta de ingreso hospitalario para oxigenoterapia y manejo IV.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Vital! Una hipoxemia no tratada puede llevar a falla respiratoria rápida."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "info",
+      "category": "Neumonía Atípica",
+      "card_text": "E) Mycoplasma pneumoniae: Etiología común en niños mayores (>5 años) con tos persistente, seca y escasa fiebre.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Bien. En estos casos los macrólidos (Azitromicina) son la elección."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "camera",
+      "category": "Imagen",
+      "card_text": "F) Radiografía de Tórax: Hallazgo típico de NAC bacteriana: Consolidación lobar o segmentaria con broncograma aéreo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Efectivamente! Ayuda a localizar la lesión y descartar complicaciones (derrame)."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "droplet",
+      "category": "Complicación",
+      "card_text": "G) Derrame Paraneumónico: Si la fiebre persiste >48-72h tras iniciar antibióticos, sospecha ocupación pleural.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Excelente ojo clínico! La persistencia de fiebre obliga a re-evaluar."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "zap",
+      "category": "Prevención",
+      "card_text": "H) Vacuna Conjugada 13-valente: Ha reducido drásticamente la incidencia de neumonía invasiva por neumococo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Fundamental! La prevención es la mejor medicina."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "slash",
+      "category": "Manejo",
+      "card_text": "I) Jarabes para la Tos (Antitusígenos): Recomendados en preescolares para mejorar el descanso nocturno durante la NAC.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: ¡No! Los antitusígenos están contraindicados en niños pequeños; pueden inhibir la eliminación de secreciones."
+      }
+    },
+    {
+      "card_id": "c_10",
+      "ui_icon": "pill",
+      "category": "Tratamiento Hospitalario",
+      "card_text": "J) Ampicilina o Penicilina G Sódica: Tratamiento IV de elección para NAC bacteriana en el paciente hospitalizado con esquema de vacunación completo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Correcto. Si el niño está vacunado, no necesitamos cefalosporinas de 3ra generación de entrada."
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Neumonía Ped: Pilares Tx",
+    "text": "1ra línea Ambulatorio: Amoxicilina (High dose). Hospital: Ampicilina IV. Atípica (>5a): Azitromicina. Criterios: Sat <92% o dificultad grave.",
+    "gpc_ref": "GPC Prevención, Diagnóstico y Tratamiento de la Neumonía Adquirida en la Comunidad"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es el agente etiológico bacteriano más frecuente de neumonía adquirida en la comunidad en niños mayores de 3 meses?",
+        "options": [
+          "Streptococcus pneumoniae",
+          "Staphylococcus aureus",
+          "Haemophilus influenzae"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el tratamiento antibiótico de elección para una NAC no complicada en el manejo ambulatorio?",
+        "options": [
+          "Amoxicilina a dosis de 80-90 mg/kg/día",
+          "Ceftriaxona intramuscular",
+          "Eritromicina oral"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿A partir de qué nivel de saturación de oxígeno por oximetría de pulso se indica el ingreso hospitalario?",
+        "options": [
+          "Menor a 92%",
+          "Menor a 95%",
+          "Menor a 88%"
+        ],
+        "correct_index": 0
+      }
+    ]
+  }
+}

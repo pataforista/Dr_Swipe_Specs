@@ -136,6 +136,18 @@
         "lethal_risk": true,
         "decision_critical": true
       }
+    },
+    {
+      "card_id": "c_10",
+      "ui_icon": "shield",
+      "category": "Manejo",
+      "card_text": "J) Antibióticos Profílácticos: Administrar cobertura contra gramnegativos y anaerobios si se decide manejo quirúrgico.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. La profilaxis preoperatoria reduce drásticamente la infección de sitio quirúrgico."
+      }
     }
   ],
   "enarm_pearl": {

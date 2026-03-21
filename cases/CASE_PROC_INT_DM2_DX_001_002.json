@@ -52,6 +52,94 @@
         "lethal_risk": false,
         "decision_critical": false
       }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "activity",
+      "category": "Gabinete",
+      "card_text": "C) Hemoglobina Glucosilada (HbA1c) ≥6.5%: Estándar para el diagnóstico y seguimiento crónico. Refleja los últimos 3 meses.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Correcto! Es el parámetro más robusto para evaluar el control glucémico a largo plazo."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "D) Glucosa en Ayuno (≥126 mg/dL): Requiere al menos 8 horas de ayuno calórico. Debe repetirse para confirmar si no hay síntomas.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. La confirmación es vital para evitar falsos positivos por estrés o ayuno mal realizado."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "beaker",
+      "category": "Diagnóstico",
+      "card_text": "E) Curva de Tolerancia (CTOG 75g) ≥200: Medición a las 2 horas tras carga de glucosa anhidra.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Correcto. Es la prueba más sensible para detectar diabetes en etapas tempranas."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "alert-circle",
+      "category": "Diagnóstico",
+      "card_text": "F) Glucosa al Azar ≥200 + Síntomas Plenos: Diagnóstico directo sin necesidad de repetición si hay poliuria/polidipsia.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Exacto! Los síntomas clásicos ('las 4 P') dan el valor diagnóstico a la cifra aislada."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "search",
+      "category": "Tamizaje",
+      "card_text": "G) Iniciar Tamizaje a los 35 años: Edad de inicio recomendada por la ADA para toda la población, incluso sin factores de riesgo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. Recuerda que en México solemos iniciar tamizaje desde los 20 años en personas con sobrepeso."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "pill",
+      "category": "Tratamiento",
+      "card_text": "H) Metformina: Fármaco de primera elección. Disminuye la gluconeogénesis hepática y mejora la sensibilidad a la insulina.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Fundamental! Sigue siendo el pilar del tratamiento farmacológico inicial según todas las guías."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "calendar",
+      "category": "Manejo Crónico",
+      "card_text": "I) Microalbuminuria Anual: Detección necesaria para prevenir la progresión de la enfermedad renal crónica.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. El control de la albuminuria es tan importante como el control de la glucemia."
+      }
     }
   ],
   "enarm_pearl": {

@@ -132,6 +132,18 @@
         "error_type": "omission",
         "vazquez_comment": "Navarro: ¡Exacto! Identificar el problema a tiempo cambia radicalmente el pronóstico."
       }
+    },
+    {
+      "card_id": "c_10",
+      "ui_icon": "globe",
+      "category": "Prevención Primordial",
+      "card_text": "J) Prevención Primordial: Acciones sobre la población total para evitar que se establezcan patrones de vida sociales que aumenten el riesgo de enfermedad.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Excelente profundidad! Es ir un paso antes de la prevención primaria tradicional."
+      }
     }
   ],
   "enarm_pearl": {

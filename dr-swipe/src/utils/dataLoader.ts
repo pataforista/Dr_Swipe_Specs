@@ -27,7 +27,12 @@ export const dataLoader = {
       throw new Error(`No cases found for specialty: ${specialty}`);
     }
 
-    const randomId = filtered[Math.floor(Math.random() * filtered.length)];
-    return await dataLoader.loadCase(randomId);
+    // Priority: Try to find a 'main' case (ending in _001_001) first, otherwise random
+    const mainCases = filtered.filter(id => id.endsWith('_001_001'));
+    const finalId = mainCases.length > 0 
+      ? mainCases[Math.floor(Math.random() * mainCases.length)]
+      : filtered[Math.floor(Math.random() * filtered.length)];
+
+    return await dataLoader.loadCase(finalId);
   }
 };

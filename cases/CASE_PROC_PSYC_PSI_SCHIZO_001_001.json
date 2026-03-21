@@ -136,6 +136,18 @@
         "error_type": "omission",
         "vazquez_comment": "Navarro: Correcto. El inicio temprano y los síntomas negativos suelen asociarse a un curso más crónico y deteriorante."
       }
+    },
+    {
+      "card_id": "c_10",
+      "ui_icon": "alert-circle",
+      "category": "Seguimiento",
+      "card_text": "J) Monitorización Metabólica: Vigilar peso, glucosa y perfil de lípidos, especialmente en pacientes que reciben Olanzapina o Clozapina.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Excelente! El síndrome metabólico es la principal causa de muerte prematura en estos pacientes."
+      }
     }
   ],
   "enarm_pearl": {

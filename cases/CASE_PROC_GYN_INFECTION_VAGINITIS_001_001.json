@@ -132,6 +132,18 @@
         "error_type": "omission",
         "vazquez_comment": "Castillo: ¡Excelente! Es una perla visual clásica del examen físico ginecológico."
       }
+    },
+    {
+      "card_id": "c_10",
+      "ui_icon": "calendar",
+      "category": "Seguimiento",
+      "card_text": "J) Candidiasis Recurrente: Definida como ≥4 episodios en un año. Requiere tratamiento de inducción y mantenimiento con Fluconazol semanal por 6 meses.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Excelente nivel! El manejo de la recurrencia es una pregunta clásica de dificultad alta."
+      }
     }
   ],
   "enarm_pearl": {

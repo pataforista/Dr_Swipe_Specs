@@ -140,6 +140,18 @@
         "error_type": "omission",
         "vazquez_comment": "Castillo: ¡Exacto! La agitación empeora la obstrucción dinámica de la laringe."
       }
+    },
+    {
+      "card_id": "c_10",
+      "ui_icon": "slash",
+      "category": "Diferencial",
+      "card_text": "J) Crup Espasmódico: Similar al viral pero recurrente y sin pródromo de catarro; de causa presumiblemente alérgica.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: ¡Bien! Es el 'Crup nocturno' que se resuelve espontáneamente."
+      }
     }
   ],
   "enarm_pearl": {

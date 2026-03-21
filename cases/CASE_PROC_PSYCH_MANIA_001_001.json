@@ -132,6 +132,18 @@
         "error_type": "omission",
         "vazquez_comment": "Navarro: Bien. Nos permite objetivar la mejoría del paciente."
       }
+    },
+    {
+      "card_id": "c_10",
+      "ui_icon": "calendar",
+      "category": "Mantenimiento",
+      "card_text": "J) Tratamiento de Mantenimiento: Tras el primer episodio, se recomienda continuar el estabilizador por al menos 12-24 meses.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Bien. La prevención de recaídas es el objetivo a largo plazo."
+      }
     }
   ],
   "enarm_pearl": {

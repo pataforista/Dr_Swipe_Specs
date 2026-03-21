@@ -68,6 +68,86 @@
         "red_flag": true,
         "lethal_risk": true
       }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "activity",
+      "category": "Estudio Inicial",
+      "card_text": "D) Electrocardiograma de 12 derivaciones: Meta institucional de realizar e interpretar en menos de 10 minutos.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Vital! El tiempo es músculo. Sin ECG no hay diagnóstico oportuno."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "pill",
+      "category": "Tratamiento",
+      "card_text": "E) Aspirina 325 mg masticada: Antiagregación plaquetaria inmediata para limitar el tamaño del infarto.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. La piedra angular del tratamiento farmacológico inicial."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "slash",
+      "category": "Complicación Mecánica",
+      "card_text": "F) Ruptura de Pared Libre: Complicación catastrófica que ocurre típicamente entre el 3er y 5to día post-infarto.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Vital! El cuadro súbito de choque con disociación electromecánica sugiere esta tragedia."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "user-minus",
+      "category": "Complicación",
+      "card_text": "G) Taponamiento Cardíaco: Consecuencia de la ruptura de pared libre o hemopericardio post-procedimiento.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. Requiere diagnóstico agudo mediante ecocardiograma y manejo quirúrgico."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "monitor",
+      "category": "Gabinete",
+      "card_text": "H) Ecocardiograma Transtorácico: Estudio de elección ante la sospecha de cualquier complicación mecánica post-AMI.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Exacto! Nos permite ver defectos septales, rupturas o aneurismas ventriculares."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "shield-alert",
+      "category": "Complicación Tardía",
+      "card_text": "I) Síndrome de Dressler: Pericarditis autoinmune que se presenta de 2 a 10 semanas después del infarto.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. Se maneja con aspirina a dosis altas o colchicina."
+      }
     }
   ],
   "enarm_pearl": {

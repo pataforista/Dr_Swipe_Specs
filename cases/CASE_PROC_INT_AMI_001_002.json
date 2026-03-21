@@ -68,6 +68,86 @@
         "red_flag": true,
         "lethal_risk": true
       }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "activity",
+      "category": "Estudio Inicial",
+      "card_text": "D) Electrocardiograma de 12 derivaciones: Realizar e interpretar en menos de 10 minutos desde el primer contacto.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Vital! El tiempo es músculo. Sin ECG no hay diagnóstico oportuno."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "pill",
+      "category": "Tratamiento",
+      "card_text": "E) Aspirina 325 mg (masticada): Antiagregación inicial obligatoria para reducir mortalidad.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. La aspirina es el fármaco con mayor evidencia de beneficio inicial."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "pill",
+      "category": "Tratamiento",
+      "card_text": "F) Clopidogrel 300 mg: Segundo antiagregante (DAPT) para potenciar la inhibición plaquetaria.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Correcto. La doble antiagregación es estándar de oro."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "droplet",
+      "category": "Farmacología",
+      "card_text": "G) Nitroglicerina Sublingual: Administrar para control del dolor retroesternal en este infarto inferior.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_hazard",
+        "vazquez_comment": "Mendoza: ¡PELIGRO! En el infarto inferior con sospecha de extension a ventrículo derecho, los nitratos pueden causar colapso circulatorio."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "clock",
+      "category": "Reperfusión",
+      "card_text": "H) Tiempo Puerta-Balón <90 min: Meta de tiempo para realizar angioplastia primaria desde la llegada.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Exacto! Cada minuto de retraso aumenta la mortalidad."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "zap",
+      "category": "Complicación",
+      "card_text": "I) Bloqueo AV de Tercer Grado: Complicación eléctrica frecuente en infartos de la cara inferior.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Muy bien. La arteria coronaria derecha suele irrigar el nodo AV."
+      }
     }
   ],
   "enarm_pearl": {

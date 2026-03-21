@@ -68,6 +68,94 @@
         "red_flag": true,
         "lethal_risk": true
       }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "activity",
+      "category": "Estudio Inicial",
+      "card_text": "D) Electrocardiograma de 12 derivaciones: Meta institucional de realizar e interpretar en menos de 10 minutos.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Vital! El retraso en el ECG es retraso en la reperfusión."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "zap",
+      "category": "Reperfusión",
+      "card_text": "E) Fibrinólisis Farmacológica: Estrategia de elección si la ICP no está disponible en menos de 120 minutos.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Bien! Si no hay sala de hemodinamia cerca, la trombolisis es la salvación."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "alert-triangle",
+      "category": "Seguridad",
+      "card_text": "F) Antecedente de Hemorragia Intracraneal: Contraindicación absoluta para la administración de fibrinolíticos.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_hazard",
+        "vazquez_comment": "Mendoza: ¡EXCELENTE! Trombolizar a alguien con este antecedente es un error fatal garantizado."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "alert-circle",
+      "category": "Seguridad",
+      "card_text": "G) Hemorragia Digestiva Activa: Contraindicación absoluta para el uso de terapia fibrinolítica.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_hazard",
+        "vazquez_comment": "Mendoza: Correcto. Siempre hay que realizar el checklist de seguridad antes de la 'aguja'."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "clock",
+      "category": "Metas de Tiempo",
+      "card_text": "H) Tiempo Puerta-Aguja <30 min: Meta de tiempo desde la llegada al hospital hasta el inicio del fibrinolítico.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Exacto! Los tiempos son los que evaluamos en el triage de alta especialidad."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "move",
+      "category": "Manejo Post-Fibrinólisis",
+      "card_text": "I) Traslado a centro con ICP: Todos los pacientes post-fibrinólisis deben ser referidos para estrategia fármaco-invasiva.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. La fibrinólisis fallida o exitosa requiere una evaluación hemodinámica posterior."
+      }
     }
   ],
   "enarm_pearl": {

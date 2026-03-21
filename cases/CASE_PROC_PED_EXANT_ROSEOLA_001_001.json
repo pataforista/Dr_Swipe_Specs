@@ -132,6 +132,18 @@
         "error_type": "omission",
         "vazquez_comment": "Castillo: La comunicación médico-paciente es medicina de calidad."
       }
+    },
+    {
+      "card_id": "c_10",
+      "ui_icon": "help-circle",
+      "category": "Complicación",
+      "card_text": "J) Encefalitis: Complicación neurológica rara que puede ocurrir tras la infección por VHH-6 en lactantes.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Bien. Aunque el curso es benigno, siempre vigila signos de irritación meníngea."
+      }
     }
   ],
   "enarm_pearl": {

@@ -131,12 +131,38 @@ function App() {
     }
   }, [state]);
 
-  const startNewCase = async () => {
+  const startNewCase = async (skipIntro = false) => {
     try {
       send({ type: 'RESTART' }); // Reset machine to idle
       const caseData = await dataLoader.loadRandomCase();
       setCurrentCase(caseData);
-      setShowIntro(true);
+      
+      if (skipIntro) {
+        setShowIntro(false);
+        // Adaptive Learning Curve: Time per card decreases as streak increases
+        let timePerCard = 15; // R1
+        if (state.context.caseStreak >= 6) timePerCard = 8; // Adscrito
+        else if (state.context.caseStreak >= 3) timePerCard = 12; // R2/R3
+
+        const timeLimit = Math.max(60, Math.min(180, caseData.card_stream.length * timePerCard));
+        setTimeLeft(timeLimit);
+        
+        // Shuffle logic
+        const fullDeck = [...caseData.card_stream];
+        const vitals = fullDeck.shift();
+        const shuffledCards = vitals 
+          ? [vitals, ...fullDeck.sort(() => Math.random() - 0.5)]
+          : fullDeck.sort(() => Math.random() - 0.5);
+
+        send({ 
+          type: 'START_GUARD', 
+          deck: shuffledCards,
+          difficulty: caseData.difficulty || 'standard',
+          pearl: (caseData.enarm_pearl || caseData.perla_enarm) as any
+        });
+      } else {
+        setShowIntro(true);
+      }
     } catch (err) {
       console.error(err);
       alert("Error al cargar caso.");
@@ -189,13 +215,24 @@ function App() {
           
           <button 
             onClick={() => {
+              if (!currentCase) return;
               setShowIntro(false);
-              setTimeLeft(currentCase.patient_intro.time_limit_sec);
+              // Dynamic Time Buff: 12s per card (min 60s, max 150s)
+              const timeLimit = Math.max(60, Math.min(150, currentCase.card_stream.length * 12));
+              setTimeLeft(timeLimit);
+              
+              // Quick Round Shuffling: Randomize all cards except initial vitals
+              const fullDeck = [...currentCase.card_stream];
+              const vitals = fullDeck.shift();
+              const shuffledCards = vitals 
+                ? [vitals, ...fullDeck.sort(() => Math.random() - 0.5)]
+                : fullDeck.sort(() => Math.random() - 0.5);
+
               send({ 
                 type: 'START_GUARD', 
-                deck: currentCase.card_stream,
+                deck: shuffledCards,
                 difficulty: currentCase.difficulty || 'standard',
-                pearl: currentCase.enarm_pearl || currentCase.perla_enarm
+                pearl: (currentCase.enarm_pearl || currentCase.perla_enarm) as any
               });
             }}
             className="btn-primary w-full py-5 text-base"
@@ -220,7 +257,7 @@ function App() {
               </h1>
               <span className="absolute -bottom-4 right-0 text-[10px] font-black tracking-[0.5em] text-white/20 uppercase">MEDICAL TRUTH SYSTEM</span>
             </div>
-            <button onClick={startNewCase} className="btn-primary px-16 py-6 text-xl">
+            <button onClick={() => startNewCase(false)} className="btn-primary px-16 py-6 text-xl">
               <ShinyText text="INICIAR GUARDIA" speed={3} />
             </button>
           </motion.div>
@@ -278,14 +315,31 @@ function App() {
             className="glass-panel p-10 max-w-sm text-center border-medical-primary/30 shadow-[0_0_50px_rgba(13,148,136,0.1)]"
           >
             <div className="w-20 h-20 bg-medical-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
-              <span className="text-4xl">🏆</span>
+              <span className="text-4xl text-glow-medical">🏆</span>
             </div>
-            <h2 className="text-3xl font-display font-black text-medical-primary mb-4 tracking-tighter">MÉRITO ALCANZADO</h2>
+            
+            {state.context.caseStreak > 1 && (
+              <motion.div 
+                initial={{ y: -10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                className="mb-4 inline-block bg-medical-secondary/20 text-medical-secondary px-4 py-1 rounded-full text-[10px] font-black tracking-widest border border-medical-secondary/30"
+              >
+                STREAK DE CASOS: x{state.context.caseStreak}
+              </motion.div>
+            )}
+
+            <h2 className="text-3xl font-display font-black text-medical-primary mb-4 tracking-tighter uppercase">MÉRITO ALCANZADO</h2>
             <p className="text-slate-400 mb-8 font-medium italic">"Se ha estabilizado la situación clínica con precisión empírica."</p>
             
             <div className="flex flex-col gap-4">
-              <button onClick={startNewCase} className="btn-primary w-full py-5 !bg-medical-primary hover:!bg-teal-600">
-                SIGUIENTE CASO
+              <button 
+                onClick={() => startNewCase(true)} // Skip Intro for Rapid Play
+                className="btn-primary w-full py-5 !bg-medical-primary hover:!bg-teal-600 group"
+              >
+                <div className="flex items-center justify-center gap-2">
+                  <ShinyText text="SIGUIENTE CASO" speed={3} />
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </div>
               </button>
               <button 
                 onClick={() => send({ type: 'CLAIM' })} 
@@ -295,6 +349,18 @@ function App() {
               </button>
             </div>
           </motion.div>
+        );
+
+      case state.matches('critical_warning'):
+        return (
+          <div className="fixed inset-0 bg-red-600/20 backdrop-blur-sm flex flex-col items-center justify-center z-[100] animate-pulse">
+            <div className="text-6xl mb-6">⚠️</div>
+            <h2 className="text-5xl font-display font-black text-white text-glow-danger uppercase tracking-tighter">ADVERTENCIA CRÍTICA</h2>
+            <p className="text-lg text-white/80 mt-4 px-12 text-center font-bold italic">
+              {state.context.fatalError}
+            </p>
+            <p className="mt-8 text-[10px] text-white/40 tracking-[0.5em] font-black uppercase">REINTENTANDO ESTABILIZACIÓN...</p>
+          </div>
         );
 
       case state.matches('ghosted'):
@@ -448,7 +514,7 @@ function App() {
 
         <div className="flex flex-col items-end gap-3">
           <div className="h-12 w-12 glass-panel !rounded-2xl flex items-center justify-center font-black text-sm border-white/20 shadow-lg scale-110">
-            R1
+            {state.context.caseStreak >= 6 ? 'ADSC' : (state.context.caseStreak >= 4 ? 'R3' : (state.context.caseStreak >= 2 ? 'R2' : 'R1'))}
           </div>
           {state.context.combo > 1 && (
             <motion.div

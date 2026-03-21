@@ -46,11 +46,103 @@
       "scoring": {
         "points": 50,
         "error_type": "lethal_hazard",
-        "vazquez_comment": "Castillo: ¡Bien! Reconociste la urgencia."
+        "vazquez_comment": "Castillo: ¡Bien! Reconociste la urgencia. Ante datos de severidad no se debe esperar."
       },
       "safety_flags": {
         "lethal_risk": true,
         "decision_critical": false
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "shield",
+      "category": "Manejo",
+      "card_text": "C) Sulfato de Magnesio: Administración de dosis de impregnación (4g IV) y mantenimiento para prevenir eclampsia.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡Vital! Es el medicamento que salva vidas previniendo las convulsiones."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "stethoscope",
+      "category": "Monitoreo",
+      "card_text": "D) Vigilancia de Reflejos y Diuresis: Control estricto para detectar signos tempranos de toxicidad por Magnesio.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Bien. La diuresis es clave porque el magnesio se excreta por riñón."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "zap",
+      "category": "Antídoto",
+      "card_text": "E) Gluconato de Calcio: Debe estar disponible en la cabecera de la cama de toda paciente con MgSO4.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Exacto! Es la red de seguridad ante una sobredosis."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "pill",
+      "category": "Antihipertensivo",
+      "card_text": "F) Hidralazina IV: Bolo inicial de 5mg si la TA es persistente mente alta (>160/110).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Bien. El control de la crisis hipertensiva previene el daño a órgano blanco."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "beaker",
+      "category": "Gabinete/Labs",
+      "card_text": "G) Perfil Toxémico: Solicitar biometría, pruebas de función hepática, creatinina y tiempos de coagulación.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Correcto. Necesitamos descartar formalmente un síndrome de HELLP."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "check-circle",
+      "category": "Resolución",
+      "card_text": "H) Interrupción del Embarazo: Indicada de manera inmediata tras la estabilización hemodinámica.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡Perfecto! Con 36 SDG y datos de severidad, el beneficio del nacimiento supera los riesgos."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "slash",
+      "category": "Manejo",
+      "card_text": "I) Inducción de Madurez Fetal con Esteroides: Administración de Betametasona para prevenir membrana hialina.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 100,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: ¡Bien razonado! A las 36 SDG ya no se indica la maduración pulmonar según la GPC (límite 34 SDG)."
       }
     }
   ],

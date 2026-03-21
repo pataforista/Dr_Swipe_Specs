@@ -124,6 +124,18 @@
         "lethal_risk": true,
         "decision_critical": true
       }
+    },
+    {
+      "card_id": "c_10",
+      "ui_icon": "alert-circle",
+      "category": "Seguimiento",
+      "card_text": "J) Alimentación Postoperatoria: Iniciar dieta hídrica a las 4-6 horas tras la cirugía si no hay complicaciones.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Bien. La recuperación suele ser rápida y satisfactoria."
+      }
     }
   ],
   "enarm_pearl": {

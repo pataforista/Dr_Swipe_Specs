@@ -128,6 +128,18 @@
         "error_type": "omission",
         "vazquez_comment": "Navarro: El ideal teórica para evitar sesgos de selección."
       }
+    },
+    {
+      "card_id": "c_10",
+      "ui_icon": "target",
+      "category": "Métricas",
+      "card_text": "J) Sensibilidad vs Especificidad: Sensibilidad = Capacidad de detectar enfermos (pocos falsos negativos). Especificidad = Capacidad de detectar sanos (pocos falsos positivos).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Oro puro! Recuerda que las pruebas de tamizaje deben ser altamente sensibles."
+      }
     }
   ],
   "enarm_pearl": {
