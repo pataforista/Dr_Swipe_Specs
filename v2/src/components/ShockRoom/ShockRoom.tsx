@@ -20,13 +20,17 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
   const [timeLeft, setTimeLeft] = useState(15);
   const currentQ = questions[currentIndex];
 
+  // Timer que decrementa el tiempo cada segundo
+  useEffect(() => {
+    const timer = setInterval(() => setTimeLeft((t) => t - 1), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Efecto separado que verifica si el tiempo se agotó
   useEffect(() => {
     if (timeLeft <= 0) {
       onGhosted("El tiempo se agotó. El paciente entró en paro mientras dudabas.");
-      return;
     }
-    const timer = setInterval(() => setTimeLeft((t) => t - 1), 1000);
-    return () => clearInterval(timer);
   }, [timeLeft, onGhosted]);
 
   const handleAnswer = (selectedIndex: number) => {
