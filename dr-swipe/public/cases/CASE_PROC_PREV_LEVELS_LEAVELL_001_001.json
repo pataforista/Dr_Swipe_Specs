@@ -39,24 +39,148 @@
     },
     {
       "card_id": "c_2",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "B) Realización de Citología Cervical / Pap (Secundaria): Prevención Secundaria: Detección precoz de lesiones en etapas asintomáticas (Tamizaje).",
+      "ui_icon": "search",
+      "category": "Prevención 2aria",
+      "card_text": "B) Tamizaje y Diagnóstico Precoz (Secundaria): Acciones dirigidas a detectar la enfermedad en etapas iniciales (Ej: Papanicolaou).",
       "expected_action": "keep",
       "scoring": {
-        "points": 150,
+        "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Logrado! El Papanicolaou busca detectar la enfermedad ya establecida pero incipiente."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
+        "vazquez_comment": "Navarro: ¡Muy bien! El tamizaje es el corazón de la prevención secundaria."
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "users",
+      "category": "Prevención 1aria",
+      "card_text": "C) Educación para la Salud: Promoción de estilos de vida saludables, uso de preservativo y orientación nutricional.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Bien. La promoción de la salud es el primer peldaño para evitar que el agente contacte al huésped."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "heart",
+      "category": "Prevención 3aria",
+      "card_text": "D) Rehabilitación y Tratamiento: Procedimientos (cono leep) para tratar lesiones y evitar la discapacidad o progresión fatal.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Exacto! Una vez que la enfermedad avanzó, buscamos limitar el daño y rehabilitar."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "shield-off",
+      "category": "Prevención 4aria",
+      "card_text": "E) Prevención Cuaternaria: Evitar intervenciones médicas innecesarias o dañinas (sobre-diagnóstico) en pacientes sanos.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Excelente! El principio 'Primum non nocere' define este nivel de prevención."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "help-circle",
+      "category": "Historia Natural",
+      "card_text": "F) Período Prepatogénico: Interacción entre Agente, Huésped y Ambiente previa a la ruptura del equilibrio.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Bien! Es aquí donde las medidas primarias tienen su máximo impacto."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "activity",
+      "category": "Historia Natural",
+      "card_text": "G) Período Patogénico (Etapa Subclínica): Presencia de enfermedad sin síntomas aparentes (detectable solo por tamizaje).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Correcto! Es el momento ideal para la prevención secundaria."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "zap",
+      "category": "Mecanismo",
+      "card_text": "H) Protección Específica: Acciones como inmunizaciones o uso de equipo de protección personal para evitar riesgos puntuales.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Muy bien. Es el segundo subnivel de la prevención primaria."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "alert-circle",
+      "category": "Mecanismo",
+      "card_text": "I) Diagnóstico Precoz: Punto central de la prevención secundaria para reducir la letalidad de la patología.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Exacto! Identificar el problema a tiempo cambia radicalmente el pronóstico."
+      }
+    },
+    {
+      "card_id": "c_10",
+      "ui_icon": "globe",
+      "category": "Prevención Primordial",
+      "card_text": "J) Prevención Primordial: Acciones sobre la población total para evitar que se establezcan patrones de vida sociales que aumenten el riesgo de enfermedad.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Excelente profundidad! Es ir un paso antes de la prevención primaria tradicional."
       }
     }
   ],
   "enarm_pearl": {
-    "title": "Leavell y Clark",
-    "text": "P1: Vacunas/Estilo Vida. P2: Detección/Tamizaje (Pap, Mastografía). P3: Rehabilitación/Evitar complicaciones.",
-    "gpc_ref": "Fundamentos de Salud Pública"
+    "title": "Leavell & Clark: Niveles",
+    "text": "P1: Antes de enfermar (Vacunas/Dieta). P2: Al inicio (Tamizaje/Pap). P3: Limitar daño (Rehab). P4: No dañar (Evitar exceso).",
+    "gpc_ref": "Fundamentos de Salud Pública y Epidemiología"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿En qué nivel de prevención de Leavell y Clark se ubica el Tamizaje (descubrimiento de casos)?",
+        "options": [
+          "Prevención Secundaria",
+          "Prevención Primaria",
+          "Prevención Terciaria"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cómo se llama el periodo de la historia natural donde ocurre la interacción entre la Triada Ecológica antes del daño?",
+        "options": [
+          "Período Prepatogénico",
+          "Período Patogénico",
+          "Período de Resolución"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es un ejemplo de Protección Específica dentro de la Prevención Primaria?",
+        "options": [
+          "Aplicación de inmunizaciones (vacunas)",
+          "Realización de una Mastografía",
+          "Fisioterapia post-EVC"
+        ],
+        "correct_index": 0
+      }
+    ]
   }
 }

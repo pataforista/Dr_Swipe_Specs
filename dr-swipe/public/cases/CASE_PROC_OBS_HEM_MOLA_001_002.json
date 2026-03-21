@@ -30,11 +30,115 @@
       "scoring": {
         "points": 150,
         "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Acertaste! El manejo inicial es la evacuación mediante AMEU."
+        "vazquez_comment": "Castillo: ¡Acertaste! El diagnóstico definitivo requiere estudio histopatológico tras la evacuación."
       },
       "safety_flags": {
         "lethal_risk": false,
         "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "trending-up",
+      "category": "Laboratorio",
+      "card_text": "B) Niveles de hCG >100,000 mIU/mL: Hallazgo bioquímico característico secundario a la proliferación excesiva del trofoblasto.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Bien. Niveles tan altos en el primer trimestre obligan a descartar enfermedad trofoblástica."
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "search",
+      "category": "Gabinete",
+      "card_text": "C) Ultrasonido: Imagen en 'Tormenta de Nieve' o 'Panal de Abejas'. Ausencia de saco gestacional o feto.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Exacto! Es el patrón ultrasonográfico patognomónico de la mola completa."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "zap",
+      "category": "Manejo",
+      "card_text": "D) Aspiración Manual Endouterina (AMEU): Método de elección para la evacuación uterina en pacientes con paridad no satisfecha.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡Fundamental! La evacuación temprana previene complicaciones como hemorragia o perforación."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "calendar",
+      "category": "Seguimiento",
+      "card_text": "E) Niveles de hCG Semanales: Monitoreo estricto hasta obtener tres resultados negativos consecutivos.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Correcto. El seguimiento es vital para detectar oportunamente la persistencia o malignización."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "shield",
+      "category": "Manejo",
+      "card_text": "F) Anticoncepción por 6-12 meses: Indispensable para no confundir un nuevo embarazo con una persistencia de la enfermedad.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Bien! Es una de las recomendaciones más estrictas de la GPC."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "alert-triangle",
+      "category": "Complicación",
+      "card_text": "G) Quistes Tecaluteínicos: Quistes ováricos bilaterales secundarios a la estimulación masiva por hCG.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Bien. Suelen involucionar espontáneamente tras la evacuación de la mola."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "activity",
+      "category": "Clínica",
+      "card_text": "H) Preeclampsia en Primer Trimestre: Aparición de hipertensión y proteinuria antes de la semana 20 de gestación.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Excelente! Si ves preeclampsia antes de las 20 semanas, PIENSA EN MOLA hasta demostrar lo contrario."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "camera",
+      "category": "Gabinete",
+      "card_text": "I) Radiografía de Tórax: Estudio inicial para descartar metástasis pulmonares (sitio más frecuente de diseminación).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Vital! Debes iniciar tratamiento antes de la resolución del embarazo para reducir sepsis neonatal."
       }
     }
   ],
@@ -42,5 +146,37 @@
     "title": "Mola: Tormenta de Nieve",
     "text": "Descriptor clave: Imagen en 'Copo de Nieve' o 'Panal de Abejas'. Dato clínico: Útero mayor a amenorrea e hiperemesis severa.",
     "gpc_ref": "GPC Diagnóstico y Tratamiento de la Enfermedad Trofoblástica"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
+        "options": [
+          "Estabilización hemodinámica (ABC)",
+          "Traslado inmediato sin manejo",
+          "Esperar laboratoriales de control"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
+        "options": [
+          "Estudio de imagen específico (TC/USG)",
+          "Solo clínica",
+          "Cualquier paraclínico al azar"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
+        "options": [
+          "Reducir morbi-mortalidad y complicaciones",
+          "Solo control de dolor",
+          "Ninguna de las anteriores"
+        ],
+        "correct_index": 0
+      }
+    ]
   }
 }

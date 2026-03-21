@@ -18,23 +18,147 @@
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Escarlatina: S. pyogenes. Toxina eritrogénica. Lengua en fresa + Líneas de Pastia.",
+      "card_text": "A) Escarlatina: S. pyogenes. Toxina eritrogénica. Lengua en fresa + Líneas de Pastia + Fascies de Filatov.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Logrado! El tratamiento es Penicilina benzatínica para prevenir Fiebre Reumática."
+        "vazquez_comment": "Castillo: ¡Logrado! El diagnóstico es clínico y el tratamiento es preventivo para complicaciones."
       },
       "safety_flags": {
         "lethal_risk": false,
         "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "B) Enfermedad de Kawasaki: Fiebre prolongada (>5 días), inyección conjuntival bilateral, labios fisurados y edema de manos/pies.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: ¡Bien! Aunque ambos pueden tener 'lengua en fresa', Kawasaki no tiene faringitis exudativa ni líneas de Pastia típicas."
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "eye",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "C) Sarampión: Exantema morbiliforme confluente encabezado por prodrómos respiratorios intensos (Tos, Coriza, Conjuntivitis).",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: Correcto. El sarampión no tiene la textura de 'lija' característica de la escarlatina."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "search",
+      "category": "Signo Clínico",
+      "card_text": "D) Lengua en Fresa: Papilas linguales prominentes tras la descamación de una capa blanquecina inicial.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Exacto! Primero es lengua 'saburral' (blanca) y luego 'en fresa' (roja)."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "grid",
+      "category": "Signo Clínico",
+      "card_text": "E) Líneas de Pastia: Hiperpigmentación lineal que no desaparece a la vitropresión en pliegues flexores (codo, axila, ingle).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Excelente! Es un signo clásico de la toxina eritrogénica."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "user",
+      "category": "Signo Clínico",
+      "card_text": "F) Fascies de Filatov: Palidez alrededor de la boca (circumoral) que contrasta con el eritema de las mejillas.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Muy bien. Otro detalle visual clave en el triage pediátrico."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "beaker",
+      "category": "Etiología",
+      "card_text": "G) Streptococcus pyogenes (GABHS): Bacteria productora de exotoxinas pirogénicas (eritrogénicas).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Correcto. Es la misma bacteria de la faringoamigdalitis estreptocócica."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "pill",
+      "category": "Tratamiento",
+      "card_text": "H) Penicilina V o Amoxicilina: Tratamiento de elección por 10 días para erradicar el estado de portador.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡Vital! El objetivo primordial es prevenir la Fiebre Reumática Aguda."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "shield-alert",
+      "category": "Complicación",
+      "card_text": "I) Fiebre Reumática Aguda: Complicación no supurativa post-estreptocócica que afecta corazón, articulaciones y SNC.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Correcto! Por esto nunca descuides el tratamiento completo."
+      }
+    },
+    {
+      "card_id": "c_10",
+      "ui_icon": "calendar",
+      "category": "Seguimiento",
+      "card_text": "J) Regreso Escolar: El paciente puede reintegrarse a la escuela 24 horas después de haber iniciado el tratamiento antibiótico efectivo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Bien. La infectividad cesa rápidamente tras la primera dosis de penicilina."
+      }
+    },
+    {
+      "card_id": "c_10",
+      "ui_icon": "slash",
+      "category": "Prevención",
+      "card_text": "J) Vacuna contra Parvovirus B19: Inmunización universal recomendada en la Cartilla Nacional de Salud de México.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: ¡No! Aún no existe una vacuna comercial disponible para el Parvovirus B19."
       }
     }
   ],
@@ -42,5 +166,37 @@
     "title": "Pastia y Filatov",
     "text": "Escarlatina: Exantema en lija, Líneas de Pastia (pliegues), Fascies de Filatov (boca blanca/mejillas rojas) y Lengua en Fresa.",
     "gpc_ref": "GPC Prevención de Fiebre Reumática"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
+        "options": [
+          "Estabilización hemodinámica (ABC)",
+          "Traslado inmediato sin manejo",
+          "Esperar laboratoriales de control"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
+        "options": [
+          "Estudio de imagen específico (TC/USG)",
+          "Solo clínica",
+          "Cualquier paraclínico al azar"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
+        "options": [
+          "Reducir morbi-mortalidad y complicaciones",
+          "Solo control de dolor",
+          "Ninguna de las anteriores"
+        ],
+        "correct_index": 0
+      }
+    ]
   }
 }

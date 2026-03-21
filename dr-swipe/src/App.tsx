@@ -18,6 +18,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import { useCodexStore, type SessionProgress } from './store/useCodexStore';
 import { TutorialOverlay } from './components/TutorialOverlay';
 import { StatsDashboard } from './components/StatsDashboard';
+import { RetrospectiveView } from './components/RetrospectiveView';
 
 const isSwipeCorrect = (direction: 'left' | 'right', expectedAction: 'keep' | 'discard'): boolean => {
   return (direction === 'right' && expectedAction === 'keep') ||
@@ -167,6 +168,8 @@ function App() {
   // Loading state for case fetching
   const [isLoadingCase, setIsLoadingCase] = useState(false);
   const [loadError, setLoadError] = useState<string | null>(null);
+  // Retrospective view toggle
+  const [showRetro, setShowRetro] = useState(false);
 
   // Dynamic Background Theming
   useEffect(() => {
@@ -838,6 +841,17 @@ function App() {
               </motion.div>
             )}
 
+            {/* Retrospective Trigger (Victory) */}
+            <div className="absolute top-4 right-4 z-20">
+              <button
+                onClick={() => setShowRetro(true)}
+                className="w-10 h-10 rounded-full bg-medical-primary/10 border border-medical-primary/30 flex items-center justify-center text-xl hover:bg-medical-primary/20 transition-colors"
+                title="Ver Retrospectiva"
+              >
+                 📋
+              </button>
+            </div>
+
             <h2 className="text-3xl font-display font-black text-medical-primary mb-2 tracking-tighter uppercase relative z-10">
               MÉRITO ALCANZADO
             </h2>
@@ -909,6 +923,12 @@ function App() {
                   <ShinyText text="SIGUIENTE CASO" speed={3} />
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                 </div>
+              </button>
+              <button
+                onClick={() => setShowRetro(true)}
+                className="btn-primary w-full py-4 !bg-white/5 border-white/10 hover:!bg-white/10 !text-slate-300"
+              >
+                ANÁLISIS DE GUARDIA (RETRO)
               </button>
               <button
                 onClick={() => send({ type: 'CLAIM' })}
@@ -989,7 +1009,7 @@ function App() {
                 onClick={() => send({ type: 'VIEW_DEBRIEF' })}
                 className="btn-primary px-8 py-4 text-xs !rounded-xl !bg-medical-danger hover:!bg-red-700"
               >
-                <ShinyText text="ABRIR CAJA NEGRA (DEBRIEF)" speed={3} />
+                <ShinyText text="ANÁLISIS DE FALLO (RETRO)" speed={3} />
               </button>
               <button
                 onClick={() => send({ type: 'RESTART' })}
@@ -1040,6 +1060,13 @@ function App() {
                 <div className="w-1 h-3 bg-medical-primary/60" />
               </div>
             </div>
+
+            <button
+               onClick={() => setShowRetro(true)}
+               className="btn-primary w-full py-4 mb-4 !bg-medical-danger/20 border-medical-danger/40 !text-red-200"
+            >
+              VER HISTORIAL COMPLETO
+            </button>
 
             <button 
               onClick={() => send({ type: 'RESTART' })} 
@@ -1196,7 +1223,6 @@ function App() {
             >
               {state.context.score}
             </motion.span>
-          </div>
             {state.context.multiplier > 1 && (
               <motion.span
                 key={state.context.multiplier}
@@ -1345,6 +1371,19 @@ function App() {
         {showStats && (
           <div className="fixed inset-0 z-[150] flex items-center justify-center bg-black/70 backdrop-blur-sm p-6">
             <StatsDashboard onClose={() => setShowStats(false)} />
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Retrospective Modal */}
+      <AnimatePresence>
+        {showRetro && (
+          <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 backdrop-blur-md p-6">
+            <RetrospectiveView 
+              history={state.context.feedbackHistory} 
+              onClose={() => setShowRetro(false)}
+              caseId={currentCase?.case_id}
+            />
           </div>
         )}
       </AnimatePresence>

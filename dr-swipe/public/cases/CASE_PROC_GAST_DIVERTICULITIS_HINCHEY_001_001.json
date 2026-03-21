@@ -18,7 +18,7 @@
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "Mendoza: No te detengas en estos signos de fiebre, R1. El reloj no se detiene."
       }
     },
     {
@@ -40,24 +40,143 @@
     {
       "card_id": "c_2",
       "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "B) Diverticulitis Hinchey III/IV (Cirugía - Hartmann): Peritonitis purulenta o fecaloide requiere cirugía de urgencia (Procedimiento de Hartmann).",
+      "category": "Manejo Hinchey III/IV",
+      "card_text": "B) Hinchey III/IV (Cirugía): Peritonitis purulenta o fecal. Requiere laparotomía urgente y procedimiento de Hartmann.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Mendoza: ¡Manejo correcto de urgencia! La peritonitis generalizada es una indicación quirúrgica absoluta."
+        "vazquez_comment": "Mendoza: ¡Vital! Ante datos de irritación peritoneal generalizada, la cirugía no puede esperar."
       },
       "safety_flags": {
         "lethal_risk": true,
-        "decision_critical": true,
-        "lethal_if_discarded": true
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "target",
+      "category": "Estándar de Oro",
+      "card_text": "C) Tomografía (TC) de Abdomen: Es el estudio de elección para el diagnóstico y la clasificación de Hinchey.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Correcto! La TC permite ver la extensión de la inflamación y la presencia de abscesos o aire libre."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "slash",
+      "category": "Contraindicación",
+      "card_text": "D) Colonoscopía en Agudo: Está contraindicada en la fase aguda por el alto riesgo de perforación iatrogénica.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 100,
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: ¡Bien! Nunca pidas una colonoscopía en un paciente con diverticulitis aguda; espera al menos 6 semanas."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "activity",
+      "category": "Clínica",
+      "card_text": "E) Dolor en FII: El dolor en la fosa ilíaca izquierda es el síntoma pivote; se le llama la 'apendicitis del lado izquierdo'.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. En pacientes asiáticos, puede presentarse en el lado derecho por divertículos cecales."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "pill",
+      "category": "Manejo Hinchey I",
+      "card_text": "F) Hinchey I (Manejo Médico): Absceso pericólico pequeño o solo inflamación. Requiere antibióticos IV y reposo intestinal.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Correcto! La mayoría de los casos grado I resuelven con manejo médico conservador."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "zap",
+      "category": "Manejo Quirúrgico",
+      "card_text": "G) Cirugía de Hartmann: Resección del segmento afectado + colostomía. Es el estándar en Hinchey IV (Fecal).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Exacto! En presencia de pus o heces libres, no se debe realizar anastomosis primaria."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "link",
+      "category": "Complicaciones",
+      "card_text": "H) Fístula Colovesical: Es la fístula más común; sospechar ante neumaturia (aire en orina) o fecaluria.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Muy bien! El aire en la orina es un dato clásico de comunicación entre colon y vejiga."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "shield",
+      "category": "Tratamiento ATB",
+      "card_text": "I) Antibióticos Combinados: Esquema que cubra gramnegativos y anaerobios (e.g. Ciprofloxacino + Metronidazol).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Correcto! La cobertura anaerobia es vital debido a la microbiota colonica."
       }
     }
   ],
   "enarm_pearl": {
-    "title": "Hinchey y Manejo",
-    "text": "Hinchey I: Médico. Hinchey II: Drenaje (>4cm). Hinchey III/IV: Cirugía (Hartmann).",
-    "gpc_ref": "GPC Diagnóstico y Tratamiento de Enfermedad Diverticular"
+    "title": "Hinchey: TC y Hartmann",
+    "text": "Estándar Oro: TC Abdomen. Contraindicación: Colonoscopía. Hinchey III/IV: Hartmann. Fístula más común: Colovesical.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Enfermedad Diverticular del Colon"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es el estudio de imagen con mayor sensibilidad y especificidad (Estándar de Oro) para el diagnóstico de diverticulitis?",
+        "options": [
+          "Tomografía Axial Computarizada (TC)",
+          "Ultrasonido Abdominal",
+          "Radiografía de Abdomen"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el manejo de elección para un absceso diverticular >5 cm (Hinchey II) según la GPC?",
+        "options": [
+          "Drenaje percutáneo guiado por imagen",
+          "Antibióticos orales únicamente",
+          "Resección intestinal inmediata"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál de los siguientes estudios está CONTRAINDICADO durante la fase aguda de una diverticulitis por riesgo de perforación?",
+        "options": [
+          "Colonoscopía",
+          "Tomografía Computada",
+          "Resonancia Magnética"
+        ],
+        "correct_index": 0
+      }
+    ]
   }
 }

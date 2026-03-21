@@ -18,7 +18,7 @@
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
       }
     },
     {
@@ -58,5 +58,37 @@
     "title": "Hitos Críticos: 18 Meses",
     "text": "Dato Pivote: La ausencia de MARCHA INDEPENDIENTE a los 18 meses es un signo de alarma auditivo/motriz que requiere evaluación inmediata.",
     "gpc_ref": "GPC Control y Vigilancia de la salud del niño <5 años"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
+        "options": [
+          "Estabilización hemodinámica (ABC)",
+          "Traslado inmediato sin manejo",
+          "Esperar laboratoriales de control"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
+        "options": [
+          "Estudio de imagen específico (TC/USG)",
+          "Solo clínica",
+          "Cualquier paraclínico al azar"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
+        "options": [
+          "Reducir morbi-mortalidad y complicaciones",
+          "Solo control de dolor",
+          "Ninguna de las anteriores"
+        ],
+        "correct_index": 0
+      }
+    ]
   }
 }

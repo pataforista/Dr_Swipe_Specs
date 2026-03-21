@@ -18,7 +18,7 @@
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
       }
     },
     {
@@ -163,17 +163,29 @@
     "questions": [
       {
         "question": "¿Cuál es la complicación más frecuente del sarampión?",
-        "options": ["Otitis media aguda", "Panencefalitis esclerosante subaguda", "Crup"],
+        "options": [
+          "Otitis media aguda",
+          "Panencefalitis esclerosante subaguda",
+          "Crup"
+        ],
         "correct_index": 0
       },
       {
         "question": "¿En qué periodo es contagioso el paciente?",
-        "options": ["Desde el pródromo hasta 4-5 días tras inicio de exantema", "Solo cuando tiene fiebre alta", "Durante toda la vida"],
+        "options": [
+          "Desde el pródromo hasta 4-5 días tras inicio de exantema",
+          "Solo cuando tiene fiebre alta",
+          "Durante toda la vida"
+        ],
         "correct_index": 0
       },
       {
         "question": "¿Cuál es la causa más común de MUERTE por sarampión?",
-        "options": ["Neumonía", "Encefalitis", "Deshidratación"],
+        "options": [
+          "Neumonía",
+          "Encefalitis",
+          "Deshidratación"
+        ],
         "correct_index": 0
       }
     ]

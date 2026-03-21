@@ -18,7 +18,7 @@
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
       }
     },
     {
@@ -40,23 +40,143 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "B) Deshidratación Grave / Choque (Plan C): Falla orgánica, llenado capilar >3s, pulsos débiles, alteración de conciencia.",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "B) Deshidratación Grave / Choque (Plan C): Llenado capilar >3s, pulsos débiles, letargia o coma. Requiere manejo IV inmediato.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡Bien! Diferenciaste la irritabilidad (B) de la letargia (C)."
+        "vazquez_comment": "Castillo: ¡Bien! Este paciente está irritable (B), no letárgico (C); sus pulsos aún son palpables."
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "slash",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "C) Sin Deshidratación (Plan A): Paciente alerta, bebe normal, mucosas húmedas, ojos normales. Manejo en el hogar.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: Correcto. En el Plan A solo prevenimos; aquí ya hay signos clínicos que requieren tratar la deshidratación."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "alert-triangle",
+      "category": "Signo Clínico",
+      "card_text": "D) Sed Ávida: El niño busca el agua o el suero con desesperación; es un signo clave de deshidratación moderada (Plan B).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Exacto! Es el signo pivote que inclina la balanza hacia el Plan B según la OMS."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "hand",
+      "category": "Signo Clínico",
+      "card_text": "E) Signo del Lienzo: Desaparición lenta del pliegue cutáneo al pellizcar la piel del abdomen (>2 segundos).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Muy bien. Refleja una pérdida importante de la turgencia cutánea por déficit de líquidos."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "battery-charging",
+      "category": "Plan B",
+      "card_text": "F) VSO 100 mL/kg en 4 horas: Administrar Vida Suero Oral fraccionado cada 30 min con taza y cuchara.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡Correcto! Es el volumen estándar para la rehidratación oral supervisada en la clínica."
       },
       "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "zap",
+      "category": "Plan C (Choque)",
+      "card_text": "G) Carga de Solución Hartmann/Salina 0.9%: Administrar 20 mL/kg de forma inmediata ante signos de choque circulatorio.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡Vital! El Plan C salva vidas. Si el niño no bebe o vomita todo, el acceso IV es obligatorio."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "clock",
+      "category": "Fracaso Plan B",
+      "card_text": "H) Gatroclisis: Si el paciente vomita persistemente (>3 vómitos/hora), usar sonda nasogástrica (20-30 mL/kg/h).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Bien! Es la alternativa cuando la vía oral falla antes de pasar a la vía intravenosa."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "alert-octagon",
+      "category": "Complicación",
+      "card_text": "I) Ileo Paralítico por Hipopotasemia: Vigilar distensión abdominal y ausencia de ruidos intestinales tras diarrea profusa.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Excelente! La pérdida de electrolitos puede causar complicaciones motoras intestinales graves."
       }
     }
   ],
   "enarm_pearl": {
-    "title": "Plan ABC de Hidratación",
-    "text": "Plan A: Casa (VSO tras cada evacuación). Plan B: Clínica (100 ml/kg VSO en 4h). Plan C: Hospital (Hartmann/Salina IV 60 ml/kg en 1h o esquema fraccionado).",
+    "title": "Escala de Deshidratación OMS",
+    "text": "Plan A: Home. Plan B (100 ml/kg): Sed ávida, pliegue lento, inquieto. Plan C (IV): Letargia, pulso débil, choque.",
     "gpc_ref": "GPC Prevención y Manejo de la Diarrea Aguda"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es el volumen total de Vida Suero Oral (VSO) a administrar en el Plan B?",
+        "options": [
+          "100 mL/kg en 4 horas",
+          "50 mL/kg en 1 hora",
+          "200 mL/kg en 8 horas"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Qué solución intravenosa es la de elección para el Plan C (Choque séptico/hipovolémico)?",
+        "options": [
+          "Hartmann o Salina 0.9%",
+          "Glucosada al 5%",
+          "Solución Mixta"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Qué signo clínico define el paso del Plan B al Plan C?",
+        "options": [
+          "Alteración del estado de conciencia (letargia/coma)",
+          "Aumento de la sed",
+          "Fiebre de 38.5°C"
+        ],
+        "correct_index": 0
+      }
+    ]
   }
 }

@@ -25,7 +25,7 @@
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Varicela (Tratamiento: Paracetamol): Virus Varicela-Zóster. Pleomorfismo regional (mácula, pápula, vesícula, costra).",
+      "card_text": "A) Varicela: Virus Varicela-Zóster. Pleomorfismo regional (mácula, pápula, vesícula, costra). 'Cielo estrellado'.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -40,39 +40,151 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "B) Viruela: Lesiones en el mismo estadio de evolución (monomórficas), centrífugas y umbilicadas.",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "B) Viruela: Lesiones en el mismo estadio de evolución (monomórficas), centrífugas y umbilicadas. Ausente en la actualidad.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡Bien! Reconociste la diferencia clave en el estadio de las lesiones."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
+        "vazquez_comment": "Castillo: ¡Bien! Reconociste la diferencia clave en el estadio de las lesiones (monomórficas vs polimórficas)."
       }
     },
     {
       "card_id": "c_3",
-      "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "C) Varicela (Tratamiento: Ácido Acetilsalicílico): Uso de Aspirina para mitigar la fiebre intensa en varicela.",
+      "ui_icon": "slash",
+      "category": "Contraindicación",
+      "card_text": "C) Ácido Acetilsalicílico: Uso de Aspirina para la fiebre en varicela.",
       "expected_action": "discard",
       "scoring": {
-        "points": 50,
+        "points": 150,
         "error_type": "lethal_hazard",
-        "vazquez_comment": "Castillo: ¡Excelente! Evitaste el Síndrome de Reye por salicilatos."
+        "vazquez_comment": "Castillo: ¡CRÍTICO! El uso de salicilatos en varicela e influenza se asocia a Síndrome de Reye (insuficiencia hepática hepática aguda)."
       },
       "safety_flags": {
         "lethal_risk": true,
-        "decision_critical": false
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "search",
+      "category": "Signo Clínico",
+      "card_text": "D) Gota de Rocío sobre Pétalo de Rosa: Vesículas de contenido hialino sobre una base eritematosa.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Excelente! Es la descripción morfológica clásica de la vesícula por VZV."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "beaker",
+      "category": "Etiología",
+      "card_text": "E) Virus Varicela-Zóster (VHH-3): Familia Herpesviridae, virus con capacidad de latencia en ganglios nerviosos.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Correcto. No olvides que puede reactivarse como Herpes Zóster."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "test-tube",
+      "category": "Diagnóstico",
+      "card_text": "F) Citodiagnóstico de Tzanck: Hallazgo de células gigantes multinucleadas con inclusiones intranucleares.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Bien, aunque el diagnóstico suele ser clínico, el Tzanck es un dato histórico-médico común."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "thermometer",
+      "category": "Tratamiento",
+      "card_text": "G) Paracetamol y Antihistamínicos: Control de fiebre y prurito para evitar el rascado y sobreinfección.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Correcto. Evita el Ibuprofeno, se ha asociado a mayor riesgo de fasciitis necrotizante por S. pyogenes."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "alert-circle",
+      "category": "Complicación",
+      "card_text": "H) Cerebelitis / Ataxia Cerebelosa Aguda: Complicación neurológica frecuente en niños (pronóstico favorable).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Excelente! La ataxia tras varicela es una pregunta clásica."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "shield-check",
+      "category": "Prevención",
+      "card_text": "I) Vacuna Varicela: Virus vivos atenuados. Incluida como refuerzo de la SRP (SRPV) o individual.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: La prevención es fundamental para evitar brotes escolares."
+      }
+    },
+    {
+      "card_id": "c_10",
+      "ui_icon": "pill",
+      "category": "Tratamiento",
+      "card_text": "J) Aciclovir Oral de Rutina: Administrar a todo paciente inmunocompetente menor de 12 años con varicela no complicada.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: ¡No! El aciclovir solo se indica si hay riesgo (mayores de 12 años, enfermedad pulmonar crónica o uso de esteroides)."
       }
     }
   ],
   "enarm_pearl": {
-    "title": "Varicela: Contraindicado el ASA",
-    "text": "Prohibido: El uso de Ácido Acetilsalicílico en varicela aumenta el riesgo de SÍNDROME DE REYE. Usa Paracetamol.",
+    "title": "Varicela: Pleomorfismo y Reye",
+    "text": "Clave: Lesiones en todos los estadios (Cielo estrellado). Nunca des Aspirina (Síndrome de Reye) ni Ibuprofeno (Infección de tejidos blandos).",
     "gpc_ref": "GPC Diagnóstico y Tratamiento de la Varicela en el Paciente Pediátrico"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es el hallazgo dermatológico patognomónico de la varicela?",
+        "options": [
+          "Pleomorfismo regional (mácula a costra)",
+          "Exantema monomórfico centrífugo",
+          "Manchas de Forchheimer"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Qué medicamento está estrictamente contraindicado en varicela pediátrica por riesgo de S. de Reye?",
+        "options": [
+          "Ácido Acetilsalicílico",
+          "Paracetamol",
+          "Aciclovir"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es la complicación neurológica más frecuente en niños con varicela?",
+        "options": [
+          "Ataxia cerebelosa aguda",
+          "Encefalitis por inclusión",
+          "Mielitis transversa"
+        ],
+        "correct_index": 0
+      }
+    ]
   }
 }

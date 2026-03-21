@@ -10,69 +10,173 @@
   },
   "card_stream": [
     {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
-      "card_text": "TA N/A, FC 110 lpm, Temp 36.7°C",
+      "card_id": "c_1",
+      "ui_icon": "slash",
+      "category": "Manejo",
+      "card_text": "A) Diferir inmunización por cuadro respiratorio leve: Posponer vacunas hasta que el niño esté completamente asintomático.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "A) Adelantar SRP 2ª dosis hoy (18 meses): Normativa 2024: La 2ª dosis de SRP se aplica a los 18 meses para cerrar brechas de inmunidad.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Correcto! Este es el cambio más rentable del 2025. La SRP ya no se espera a los 6 años."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
+        "vazquez_comment": "Castillo: ¡Falso! Una infección leve (catarro) NO es contraindicación para vacunar. No pierdas oportunidades."
       }
     },
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "B) Diferir SRP hasta los 6 años de edad: Esquema antiguo previo a la actualización 2024-2025.",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "B) Diferir SRP hasta los 6 años de edad: Esquema obsoleto. El retraso en la 2ª dosis aumenta el riesgo de brotes escolares.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡Bien! Reconociste que el esquema antiguo ya no es vigente."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
+        "vazquez_comment": "Castillo: ¡Bien! Las guías 2024 son taxativas: la protección debe completarse lo antes posible."
       }
     },
     {
       "card_id": "c_3",
       "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "C) Aplicar Hexavalente de refuerzo (18 meses): La Hexavalente tiene dosis a los 2, 4, 6 y 18 meses (refuerzo acelular).",
+      "category": "Esquema 18 Meses",
+      "card_text": "C) Aplicar Hexavalente (4ª dosis): Dosis de refuerzo que protege contra Difteria, Tétanos, Tos ferina, Hepatitis B, HiB y Polio.",
       "expected_action": "keep",
       "scoring": {
-        "points": 150,
+        "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Castillo: Exacto. A los 18 meses coinciden la 2ª de SRP y la 4ª de Hexavalente."
+        "vazquez_comment": "Castillo: ¡Correcto! A los 18 meses el niño debe recibir el refuerzo de la hexavalente acelular."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "slash",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "D) Vacuna Varicela: Aunque recomendada, NO está incluida en el esquema básico nacional gratuito de México (Cartilla 2024).",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: Correcto. En el ENARM debes basarte en el esquema oficial de la Cartilla Nacional de Salud."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "shield",
+      "category": "Nacimiento",
+      "card_text": "E) Vacuna BCG (Dosis Única): Se aplica al nacer; previene las formas GRAVES de Tuberculosis (Meníngea y Miliar).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡Vital! Recuerda que no previene la tuberculosis pulmonar del adulto, sino las formas diseminadas infantiles."
       },
       "safety_flags": {
-        "lethal_risk": false,
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "rotate-cw",
+      "category": "Rotavirus",
+      "card_text": "F) Vacuna Rotavirus: Se aplica a los 2, 4 y 6 meses. Límite: No iniciar tras los 4 meses ni terminar tras los 8 meses.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Muy bien! Respetar los límites de edad previene la asociación con invaginación intestinal."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "zap",
+      "category": "Neumococo",
+      "card_text": "G) Neumococo Conjugada: Se aplica en esquema 2 + 1 (2, 4 y 12 meses de edad).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡Excelente! La dosis de los 12 meses es el refuerzo crítico para la inmunidad de grupo."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "thermometer",
+      "category": "Influenza",
+      "card_text": "H) Influenza Estacional: Aplicación anual a partir de los 6 meses de edad (invierno).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Bien. La primovacunación requiere dos dosis con un mes de diferencia."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "award",
+      "category": "VPH",
+      "card_text": "I) Vacuna VPH: Aplicación en niñas de 5º grado o 11 años. Protege contra cáncer cervicouterino (serotipos 16 y 18).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Perfecto! El esquema actual en México se ha simplificado a una dosis única masiva."
+      }
+    },
+    {
+      "card_id": "c_10",
+      "ui_icon": "alert-triangle",
+      "category": "Seguridad",
+      "card_text": "J) Contraindicación de Vacunas Vivas (SRP): No aplicar en pacientes con inmunodeficiencia grave o antecedente de anafilaxia a neomicina.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_hazard",
+        "vazquez_comment": "Castillo: ¡Vital! Conocer las contraindicaciones reales es tan importante como conocer el esquema."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
         "decision_critical": true
       }
     }
   ],
   "enarm_pearl": {
-    "title": "Cambio SRP 2024: 18 Meses",
-    "text": "Dato Clave ENARM 2025: La segunda dosis de SRP (Triple Viral) se adelantó de los 6 años a los 18 meses de edad.",
-    "gpc_ref": "Cartilla Nacional de Salud 2024-2025"
+    "title": "Cartilla 2024: Novedades",
+    "text": "SRP 2ª dosis: 18 meses. Hexavalente: 2, 4, 6, 18m. BCG: Previene TB Miliar/Meníngea. Rotavirus: No dar >8 meses.",
+    "gpc_ref": "Manual de Vacunación 2024, México"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es la principal forma de tuberculosis que previene la vacuna BCG?",
+        "options": [
+          "TBC Meníngea y Miliar",
+          "TBC Pulmonar Cavitaria",
+          "TBC Renal"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿A qué edad debe aplicarse actualmente la SEGUNDA dosis de SRP (Sarampión, Rubeola, Parotiditis)?",
+        "options": [
+          "18 meses",
+          "6 años",
+          "4 años"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el límite superior de edad para completar el esquema de vacunación contra Rotavirus?",
+        "options": [
+          "8 meses de edad",
+          "12 meses de edad",
+          "6 meses de edad"
+        ],
+        "correct_index": 0
+      }
+    ]
   }
 }

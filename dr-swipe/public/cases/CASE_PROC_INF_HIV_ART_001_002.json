@@ -52,11 +52,131 @@
         "lethal_risk": false,
         "decision_critical": false
       }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "pill",
+      "category": "Tratamiento",
+      "card_text": "C) Esquema Preferente (Biktarvy): Bictegravir + Emtricitabina + Tenofovir Alafenamida (B/F/TAF) en tableta única.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Excelente! Es el esquema de primera línea por su alta barrera genética y pocos efectos secundarios."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "beaker",
+      "category": "Estudio Inicial",
+      "card_text": "D) Genotropificación de Resistencia: Realizar antes de iniciar tratamiento para guiar la elección de fármacos.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Bien. Conocer la resistencia basal es fundamental en el manejo moderno."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "alert-triangle",
+      "category": "Complicación",
+      "card_text": "E) Síndrome de Reconstitución Inmune (IRIS): Empeoramiento paradójico de infecciones tras iniciar ART.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Exacto! Especialmente peligroso en TB o meningitis criptocócica."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "info",
+      "category": "Tratamiento Dual",
+      "card_text": "F) Esquema Dovato (DTG/3TC): Dolutegravir + Lamivudina. Opción válida en pacientes sin hepatitis B y carga viral <500,000.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Bien. La terapia dual ya es una realidad segura en casos seleccionados."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "shield",
+      "category": "Profilaxis",
+      "card_text": "G) TMP-SMX (Primaria): Iniciar en todo paciente con CD4 <200 para prevenir neumonía por Pneumocystis jirovecii.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Vital! El Bactrim salva vidas mientras el ART hace efecto."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "eye",
+      "category": "Seguimiento",
+      "card_text": "H) Carga Viral Indetectable: Meta del tratamiento a los 6 meses de inicio (Indetectable = Intransmisible).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Correcto! El lema I=I es pilar de la salud pública actual."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "activity",
+      "category": "Efectos Adversos",
+      "card_text": "I) Toxicidad por Efavirenz: Causa sueños vívidos, depresión y mareos (síntomas neuropsiquiátricos).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Muy bien. Por eso ya no es el fármaco de primera elección."
+      }
     }
   ],
   "enarm_pearl": {
     "title": "VIH: Inicio de ART",
     "text": "Regla ENARM: Inicio de ART en TODO paciente diagnosticado, sin importar CD4. Esquema preferente: 2 ITNR + 1 INSTI (Dolutegravir).",
     "gpc_ref": "GPC Tratamiento Antirretroviral del Adulto con VIH"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
+        "options": [
+          "Estabilización hemodinámica (ABC)",
+          "Traslado inmediato sin manejo",
+          "Esperar laboratoriales de control"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
+        "options": [
+          "Estudio de imagen específico (TC/USG)",
+          "Solo clínica",
+          "Cualquier paraclínico al azar"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
+        "options": [
+          "Reducir morbi-mortalidad y complicaciones",
+          "Solo control de dolor",
+          "Ninguna de las anteriores"
+        ],
+        "correct_index": 0
+      }
+    ]
   }
 }

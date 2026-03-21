@@ -18,7 +18,7 @@
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "Mendoza: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
       }
     },
     {
@@ -68,11 +68,119 @@
         "lethal_risk": true,
         "condition": "female"
       }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "clipboard",
+      "category": "Escalas",
+      "card_text": "D) Escala de Alvarado: 7 puntos. Sugiere alta probabilidad de apendicitis.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Correcto. La escala de Alvarado es una herramienta clínica fundamental para el triage."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "camera",
+      "category": "Gabinete",
+      "card_text": "E) Ultrasonido de FID: Imagen tubular no compresible >6mm, pared engrosada y líquido periapendicular.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. Aunque el diagnóstico sea clínico, el USG es la primera línea en niños y embarazadas."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "beaker",
+      "category": "Tratamiento",
+      "card_text": "F) Antibiótico Profiláctico: Cefalosporina de 2da generación (Cefoxitina) o Cefazolina + Metronidazol.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Vital! La profilaxis reduce drásticamente las infecciones de sitio quirúrgico."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "search",
+      "category": "Signo Clínico",
+      "card_text": "G) Signo de Rovsing: Dolor en la fosa iliaca derecha al realizar presión en la fosa iliaca izquierda.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Bien! Es un signo de irritación peritoneal indirecta muy útil."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "move",
+      "category": "Signo Clínico",
+      "card_text": "H) Signo del Psoas: Dolor al realizar la extensión de la cadera derecha (sugiere posición retrocecal).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Correcto. Estos signos nos ayudan a sospechar posiciones atípicas del apéndice."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "alert-triangle",
+      "category": "Complicación",
+      "card_text": "I) Plastrón Apendicular: Masa palpable en FID tras varios días de evolución; manejo inicial suele ser conservador (antibióticos).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Muy bien! En el plastrón, la cirugía inmediata se asocia a mayor riesgo de lesiones intestinales."
+      }
     }
   ],
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es la causa más frecuente de apendicitis en la edad PEDIÁTRICA?",
+        "options": [
+          "Hiperplasia linfoidea (Folículos de Roux)",
+          "Fecalito",
+          "Cuerpos extraños"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Qué componente de la Escala de Alvarado otorga 2 puntos?",
+        "options": [
+          "Dolor en FID y Leucocitosis (>10k)",
+          "Anorexia y Náuseas",
+          "Fiebre y Shift a la izquierda"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el tratamiento de elección definitivo para la apendicitis aguda no complicada?",
+        "options": [
+          "Apendicectomía laparoscópica",
+          "Antibioticoterapia exclusiva",
+          "Drenaje percutáneo"
+        ],
+        "correct_index": 0
+      }
+    ]
+  },
   "enarm_pearl": {
-    "title": "Diagnóstico Clínico de Apendicitis",
-    "text": "El diagnóstico de apendicitis aguda es fundamentalmente CLÍNICO (Escala de Alvarado). La TAC se reserva para casos dudosos, no para cuadros típicos como este.",
+    "title": "Apendicitis: Escala de Alvarado",
+    "text": "MANTRELS: Migración (1), Anorexia (1), Náuseas (1), Ternura en FID (2), Rebote (1), Elevación Temp (1), Leucocitosis (2), Shift a la izquierda (1). ≥7 ptos = Cirugía.",
     "gpc_ref": "GPC Diagnóstico y Tratamiento de Apendicitis Aguda"
   }
 }

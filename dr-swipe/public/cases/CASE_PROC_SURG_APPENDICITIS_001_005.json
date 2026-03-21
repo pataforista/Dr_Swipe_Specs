@@ -18,7 +18,7 @@
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "Mendoza: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
       }
     },
     {
@@ -62,11 +62,83 @@
       "scoring": {
         "points": 50,
         "error_type": "lethal_hazard",
-        "vazquez_comment": "Mendoza: ¡Correcto! TA normal y cuadro más compatible con foco infeccioso intestinal."
+        "vazquez_comment": "Mendoza: ¡Correcto! subrayas la importancia de descartar causas ginecológicas en mujeres en edad fértil."
       },
       "safety_flags": {
         "lethal_risk": true,
         "condition": "female"
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "alert-circle",
+      "category": "Signo Clínico",
+      "card_text": "D) Signo de Blumberg: Dolor a la descompresión brusca en FID. Indica irritación peritoneal.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Bien! Es el signo clásico de peritonitis local."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "search",
+      "category": "Signo Clínico",
+      "card_text": "E) Signo de Rovsing: Dolor en FID al presionar la FII. Útil para apoyar la sospecha clínica.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Exacto! Refuerza el diagnóstico clínico inicial."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "move",
+      "category": "Signo Clínico",
+      "card_text": "F) Signo del Psoas: Dolor al extender la pierna derecha. Sugiere apéndice retrocecal.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Muy bien. Ayuda a predecir la localización anatómica del apéndice."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "refresh-cw",
+      "category": "Signo Clínico",
+      "card_text": "G) Signo del Obturador: Dolor al rotar internamente el muslo flexionado. Sugiere apéndice pélvico.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. La variedad de signos clínicos es fundamental en el examen físico."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "camera",
+      "category": "Gabinete",
+      "card_text": "H) Ultrasonido Abdominal: Estudio inicial útil para confirmar inflamación apendicular.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Correcto. Recordar que es operador dependiente."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "monitor",
+      "category": "Gabinete",
+      "card_text": "I) Tomografía Axial Computarizada (TAC): Estudio con mayor sensibilidad y especificidad (>95%) en adultos.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Excelente! En adultos es el estándar de oro si el USG no es concluyente."
       }
     }
   ],
@@ -74,5 +146,37 @@
     "title": "Diagnóstico Clínico de Apendicitis",
     "text": "El diagnóstico de apendicitis aguda es fundamentalmente CLÍNICO (Escala de Alvarado). La TAC se reserva para casos dudosos, no para cuadros típicos como este.",
     "gpc_ref": "GPC Diagnóstico y Tratamiento de Apendicitis Aguda"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
+        "options": [
+          "Estabilización hemodinámica (ABC)",
+          "Traslado inmediato sin manejo",
+          "Esperar laboratoriales de control"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
+        "options": [
+          "Estudio de imagen específico (TC/USG)",
+          "Solo clínica",
+          "Cualquier paraclínico al azar"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
+        "options": [
+          "Reducir morbi-mortalidad y complicaciones",
+          "Solo control de dolor",
+          "Ninguna de las anteriores"
+        ],
+        "correct_index": 0
+      }
+    ]
   }
 }

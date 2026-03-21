@@ -18,7 +18,7 @@
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "Mendoza: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
       }
     },
     {
@@ -68,11 +68,119 @@
         "red_flag": true,
         "lethal_risk": true
       }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "activity",
+      "category": "Estudio Inicial",
+      "card_text": "D) Electrocardiograma de 12 derivaciones: Meta institucional de realizar e interpretar en menos de 10 minutos.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Vital! El tiempo es músculo. Sin ECG no hay diagnóstico oportuno."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "pill",
+      "category": "Tratamiento",
+      "card_text": "E) Aspirina 325 mg masticada: Antiagregación plaquetaria inmediata para limitar el tamaño del infarto.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. La piedra angular del tratamiento farmacológico inicial."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "clipboard",
+      "category": "Clasificación",
+      "card_text": "F) Escala de Killip y Kimball: Evaluación clínica de la severidad del daño miocárdico y falla cardiaca izquierda.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Bien! Es el predictor pronóstico clínico más utilizado en el SCACEST."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "smile",
+      "category": "Pronóstico",
+      "card_text": "G) Killip I: Ausencia de signos de falla cardiaca (sin estertores ni S3). Mortalidad baja (<6%).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Correcto. Representa al paciente estable sin compromiso hemodinámico notable."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "umbrella",
+      "category": "Severidad",
+      "card_text": "H) Killip III: Edema agudo pulmonar (estertores en más del 50% de campos pulmonares).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Exacto! Indica falla ventricular izquierda severa y requiere manejo urgente con diuréticos y nitratos."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "zap",
+      "category": "Farmacoterapia",
+      "card_text": "I) Nitroglicerina IV: Para reducir la precarga y aliviar la congestión pulmonar en pacientes hipertensos con falla cardiaca.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. Ayuda a 'vaciar' el pulmón desplazando el volumen hacia el sistema venoso."
+      }
     }
   ],
   "enarm_pearl": {
     "title": "Cardiopatía Isquémica: Tiempo es Músculo",
     "text": "En un SCACEST, el diagnóstico se hace con clínica + ECG (en <10 min). NO se debe esperar el resultado de las troponinas para activar código infarto ni trombolizar/ICP.",
     "gpc_ref": "GPC Infarto Agudo al Miocardio con Elevación del ST"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
+        "options": [
+          "Estabilización hemodinámica (ABC)",
+          "Traslado inmediato sin manejo",
+          "Esperar laboratoriales de control"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
+        "options": [
+          "Estudio de imagen específico (TC/USG)",
+          "Solo clínica",
+          "Cualquier paraclínico al azar"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
+        "options": [
+          "Reducir morbi-mortalidad y complicaciones",
+          "Solo control de dolor",
+          "Ninguna de las anteriores"
+        ],
+        "correct_index": 0
+      }
+    ]
   }
 }

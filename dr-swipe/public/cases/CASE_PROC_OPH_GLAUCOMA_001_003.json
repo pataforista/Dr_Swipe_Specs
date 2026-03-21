@@ -1,0 +1,90 @@
+{
+  "case_id": "PROC_OPH_GLAUCOMA_001_003",
+  "version": "v3_swipe_action",
+  "theme_config": "med",
+  "difficulty": "hard",
+  "patient_intro": {
+    "name": "Sra. Teresa, 58 años",
+    "arrival_scenario": "Paciente con antecedente de glaucoma crónico en manejo con latanoprost. Consulta porque en la última semana nota pérdida del campo visual periférico en ojo izquierdo a pesar del tratamiento. Campimetría muestra progresión del escotoma.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 150/90, FC 100 lpm, Temp 36.6°C.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "López: El dolor justifica la presión alta, pero el problema real está en el ojo."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Glaucoma Agudo de Ángulo Cerrado: Emergencia oftalmológica caracterizada por aumento súbito de la PIO (>40-50 mmHg).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "López: ¡Exacto! Si no se trata en horas, el daño al nervio óptico es irreversible."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "B) Conjuntivitis Bacteriana: Ojo rojo con secreción purulenta y sensación de cuerpo extraño; no causa dolor intenso ni midriasis.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "López: ¡Bien! La midriasis arreactiva descarta cualquier proceso superficial."
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Glaucoma Agudo vs Crónico",
+    "text": "Agudo: Dolor + Midriasis + Ojo pétreo. Tx: Pilocarpina + Acetazolamida + Láser. Crónico: Escotomas periféricos + PIO >21. Tx: Análogos PG (Latanoprost).",
+    "gpc_ref": "GPC Diagnóstico y Manejo del Glaucoma de Ángulo Cerrado"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es el tratamiento quirúrgico/definitivo de elección para prevenir recurrencias en glaucoma primario de ángulo cerrado?",
+        "options": [
+          "Iridotomía con láser YAG",
+          "Trabeculectomía",
+          "Extracción de catarata"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Qué hallazgo pupilar es característico del ataque agudo de glaucoma de ángulo cerrado?",
+        "options": [
+          "Midriasis media arreactiva",
+          "Miosis puntiforme",
+          "Pupila de Argyll Robertson"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál de estas opciones farmacológicas está CONTRAINDICADA en la fase aguda del glaucoma de ángulo cerrado?",
+        "options": [
+          "Midriáticos (Atropina)",
+          "Mióticos (Pilocarpina)",
+          "Anhídrasa carbónica (Acetazolamida)"
+        ],
+        "correct_index": 0
+      }
+    ]
+  }
+}

@@ -1,83 +1,187 @@
 {
-  "meta": {
-    "id": "PROC_SURG_TRAUMA_PNEUMO_001_011",
-    "title": "SURG TRAUMA PNEUMO 001 (Var 11)",
-    "category": "Procedural",
-    "difficulty": "hard",
-    "tags": [
-      "procedural",
-      "clinical_reasoning"
-    ]
+  "case_id": "PROC_SURG_TRAUMA_PNEUMO_001_011",
+  "version": "v3_swipe_action",
+  "theme_config": "surg",
+  "difficulty": "hard",
+  "patient_intro": {
+    "name": "José, 41 años",
+    "arrival_scenario": "Traído por paramédicos tras choque automovilístico frontal. Presenta dificultad respiratoria severa y taquicardia. A la EF: Ausencia de ruidos respiratorios en hemitórax derecho e ingurgitación yugular evidente. Tráquea desviada a la izquierda.",
+    "time_limit_sec": 45
   },
-  "version": "v2",
-  "format": "clinical_reasoning",
-  "patient_profile": {
-    "name": "José",
-    "age": 41,
-    "sex": "Masculino",
-    "image_url": "https://api.dicebear.com/7.x/pixel-art/svg?seed=José41&backgroundColor=c0aede,b6e3f4",
-    "mood": "cianótico",
-    "bio": "Traído por paramédicos tras choque automovilístico frontal. Presenta dificultad respiratoria severa y taquicardia.",
-    "vitals": {
-      "TA": "70/40",
-      "FC": "130 lpm",
-      "Temp": "36.0°C"
-    },
-    "details": "A la EF: Ausencia de ruidos respiratorios en hemitórax derecho e ingurgitación yugular evidente. Tráquea desviada a la izquierda."
-  },
-  "evidence_stream": [
+  "card_stream": [
     {
-      "type": "differential",
-      "is_match": true,
-      "payload": {
-        "title": "A) Descompresión inmediata con Aguja Gruesa",
-        "text": "Neumotórax a Tensión. Es un diagnóstico netamente CLÍNICO y una emergencia absoluta. ATLS 10a Ed: 5to espacio intercostal, línea axilar media/anterior."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      },
-      "feedback": {
-        "match": "¡Excelente! Ingurgitación yugular + ausencia de ruidos + choque = Neumotórax a Tensión. Se descomprime INMEDIATAMENTE de forma clínica, sin radiografía. La nueva norma ATLS (10a Ed) recomienda el 5to espacio intercostal.",
-        "discard": "Error Mortal: Retrasar o descartar la descompresión en un paciente con neumotórax a tensión en choque resulta en paro cardíaco inminente."
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 80/50 mmHg, FC 140 lpm, Temp 36.0°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Mendoza: No te detengas en estos signos de hipotensión/choque, R1. El reloj no se detiene."
       }
     },
     {
-      "type": "differential",
-      "is_match": false,
-      "payload": {
-        "title": "B) Solicitar Radiografía de Tórax Portátil",
-        "text": "Confirmar el diagnóstico radiológicamente antes de realizar cualquier procedimiento invasivo torácico."
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Neumotórax a Tensión: Emergencia quirúrgica por entrada de aire al espacio pleural sin salida. Colapso cardiovascular inminente.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Vital! Identificar esto salva la vida del paciente en segundos."
       },
       "safety_flags": {
         "lethal_risk": true,
-        "decision_critical": false
-      },
-      "feedback": {
-        "match": "¡Muerte por retraso! Un Neumotórax a Tensión es un diagnóstico clínico (A-B en el ATLS). Esperar una Rx compromete el retorno venoso y causa la muerte.",
-        "discard": "¡Bien hecho! Evitaste perder tiempo vital en estudios de gabinete ante una emergencia clínica clarísima."
+        "decision_critical": true
       }
     },
     {
-      "type": "differential",
-      "is_match": false,
-      "payload": {
-        "title": "C) Intubación Endotraqueal Inmediata",
-        "text": "Asegurar la Vía Aérea (Letra A) por hipoxia severa y alteración del estado de alerta."
+      "card_id": "c_2",
+      "ui_icon": "zap",
+      "category": "Manejo Inmediato",
+      "card_text": "B) Descompresión con Aguja Gruesa (5º Espacio): Punción inmediata en 5º espacio intercostal, línea axilar anterior o media.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 200,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Excelente! Te actualizaste al ATLS 10a Ed. El 5º espacio es el sitio preferido actual."
       },
       "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
+        "lethal_risk": true,
+        "decision_critical": true,
+        "lethal_if_discarded": true
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "camera-off",
+      "category": "Error Crítico",
+      "card_text": "C) Radiografía de Tórax Portátil: Solicitar placa urgente para confirmar el diagnóstico antes de intervenir.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_hazard",
+        "vazquez_comment": "Mendoza: ¡ASESINO! El neumotórax a tensión es CLÍNICO. Esperar la placa es sentenciar al paciente a muerte."
       },
-      "feedback": {
-        "match": "Si bien la Aérea es prioridad, la ventilación a presión positiva de la intubación puede EMPEORAR el neumotórax a tensión llevándolo al paro. Primero se descomprime (Problema de la 'B').",
-        "discard": "Correcto, la prioridad de esta clínica es liberar la tensión torácica antes que nada."
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "eye",
+      "category": "Signo Clínico",
+      "card_text": "D) Ausencia de Ruidos Respiratorios: Lado derecho silencioso a la auscultación pulmonar.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. Es un hallazgo clave que guía la descompresión."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "arrow-up",
+      "category": "Signo Clínico",
+      "card_text": "E) Ingurgitación Yugular: Distensión venosa por obstrucción del retorno venoso al corazón.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Correcto. Indica el componente obstructivo del choque."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "alert-triangle",
+      "category": "Signo Clínico",
+      "card_text": "F) Desviación Traqueal: Desplazamiento de la tráquea hacia el lado contralateral (izquierdo).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. Aunque es tardío, es un signo clásico de tensión extrema."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "activity",
+      "category": "Fisiopatología",
+      "card_text": "G) Choque Obstructivo: El mecanismo de choque no es por sangrado, sino por colapso de venas cavas.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: ¡Exacto! Entender la fisiología es vital para el manejo en trauma."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "grid",
+      "category": "Signo Clínico",
+      "card_text": "H) Hiperresonancia (Timpanismo): Sonido hueco a la percusión del hemitórax derecho.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Mendoza: Bien. Ayuda a distinguir el neumotórax del hemotórax (que da matidez)."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "beaker",
+      "category": "Tratamiento Definitivo",
+      "card_text": "I) Sonda de Tórax (Pleurostomía): Colocación de tubo endotorácico tras la descompresión inicial.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Mendoza: ¡Indispensable! La aguja gana tiempo, el tubo es el tratamiento definitivo."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
       }
     }
   ],
-  "perla_enarm": {
-    "title": "ATLS: Diagnóstico Clínico del Neumotórax a Tensión",
-    "text": "El Neumotórax a Tensión JAMÁS requiere Rx para su diagnóstico o tratamiento. La triada clínica (Ausencia de ruidos, desviación traqueal, ingurgitación yugular) ordena descompresión inmediata. (Ojo a la actualización del ATLS: 5to espacio).",
-    "gpc_ref": "Advanced Trauma Life Support (ATLS) 10ma Edición"
+  "enarm_pearl": {
+    "title": "Neumotórax a Tensión: Regla de Oro",
+    "text": "DIAGNÓSTICO 100% CLÍNICO. No esperes Rx. Triada: Ausencia ruidos, ingurgitación yugular y choque. Manejo: Aguja (5º espacio) -> Tubo.",
+    "gpc_ref": "ATLS 10a Edición / GPC Trauma de Tórax"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es el sitio de punción preferido actual según ATLS 10a Edición?",
+        "options": [
+          "5º espacio intercostal (LAA/LAM)",
+          "2º espacio intercostal (LMC)",
+          "4º espacio intercostal (LAA)"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Qué tipo de choque presenta este paciente?",
+        "options": [
+          "Choque obstructivo",
+          "Choque hipovolémico",
+          "Choque distributivo"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Qué hallazgo a la percusión diferencia un neumotórax de un hemotórax masivo?",
+        "options": [
+          "Hiperresonancia vs Matidez",
+          "Desviación traqueal vs Crepitación",
+          "Dolor pleurítico vs IVY"
+        ],
+        "correct_index": 0
+      }
+    ]
   }
 }

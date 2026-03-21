@@ -18,7 +18,7 @@
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "Castillo: No te detengas en estos signos de hipotensión/choque, R1. El reloj no se detiene."
       }
     },
     {
@@ -53,11 +53,131 @@
         "lethal_risk": false,
         "decision_critical": false
       }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "C) Zona de Discriminación: Nivel de hCG (usualmente >1,500 mUI/ml) donde DEBE verse un saco intrauterino por USG TV.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Correcto! Si no hay saco con este nivel de hormona, el embarazo es ectópico hasta no demostrar lo contrario."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "zap",
+      "category": "Manejo Quirúrgico",
+      "card_text": "D) Salpingectomía: Extirpación de la trompa. Indicada ante inestabilidad hemodinámica, ruptura o paridad satisfecha.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡Vital! En una paciente chocada con hemoperitoneo, la cirugía urgente salva la vida."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "pill",
+      "category": "Manejo Médico",
+      "card_text": "E) Metotrexato (MTX): Elección si la paciente está ESTABLE, saco <3.5 cm, sin latido y hCG <5,000 mUI/ml.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Bien. Permite un manejo conservador no quirúrgico si se cumplen los criterios de la GPC."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "alert-circle",
+      "category": "Exploración Física",
+      "card_text": "F) Grito de Douglas: Dolor exquisito en el fondo de saco posterior a la movilización cervical.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Correcto! Es un signo clásico de irritación peritoneal por sangre en la cavidad pélvica."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "map",
+      "category": "Anatomía",
+      "card_text": "G) Localización en el Ámpula (95%): Es el sitio anatómico más común para la implantación fuera del útero.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Bien. Es una perla frecuente en el ENARM."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "alert-triangle",
+      "category": "Factores de Riesgo",
+      "card_text": "H) Antecedente de EPI: La enfermedad pélvica inflamatoria previa daña los cilios tubáricos y es el principal factor de riesgo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Correcto. Otros factores incluyen tabaquismo, cirugía previa y reproducción asistida."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "search",
+      "category": "Gabinete",
+      "card_text": "I) Ultrasonido Transvaginal: Estudio de elección inicial para localizar la gestación y evaluar líquido libre.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Exacto! Es la piedra angular del diagnóstico en urgencias obstétricas."
+      }
     }
   ],
   "enarm_pearl": {
     "title": "HCG y USG: Zona de Discriminación",
     "text": "Si HCG >1,500 y el útero está VACÍO en USG transvaginal, se sospecha de Embarazo Ectópico hasta no demostrar lo contrario.",
     "gpc_ref": "GPC Diagnóstico y Manejo del Embarazo Ectópico"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
+        "options": [
+          "Estabilización hemodinámica (ABC)",
+          "Traslado inmediato sin manejo",
+          "Esperar laboratoriales de control"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
+        "options": [
+          "Estudio de imagen específico (TC/USG)",
+          "Solo clínica",
+          "Cualquier paraclínico al azar"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
+        "options": [
+          "Reducir morbi-mortalidad y complicaciones",
+          "Solo control de dolor",
+          "Ninguna de las anteriores"
+        ],
+        "correct_index": 0
+      }
+    ]
   }
 }

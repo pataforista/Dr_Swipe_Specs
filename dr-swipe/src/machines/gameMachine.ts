@@ -31,6 +31,15 @@ interface GameContext {
   mistakesThisCase: number;
   lifelineActive: boolean; // true = hint is currently showing
   comboMilestoneHit: number; // last milestone combo reached (5,10,15,20), 0 if none
+  feedbackHistory: Array<{
+    cardId: string;
+    cardText: string;
+    isCorrect: boolean;
+    feedback: string;
+    category: string;
+    points: number;
+    expectedAction: 'keep' | 'discard';
+  }>;
 }
 
 type GameEvent =
@@ -83,7 +92,8 @@ export const gameMachine = setup({
       coinsEarnedThisCase: 0,
       mistakesThisCase: 0,
       lifelineActive: false,
-      comboMilestoneHit: 0
+      comboMilestoneHit: 0,
+      feedbackHistory: []
     }),
     clearVisuals: assign({
       showEureka: false,
@@ -157,6 +167,30 @@ export const gameMachine = setup({
         lifelineActive: false, // Reset lifeline after swipe
         comboMilestoneHit: milestoneHit
       };
+    }),
+    recordFeedback: assign(({ context, event }) => {
+      if (event.type !== 'SWIPE') return {};
+      const card = context.deck[context.currentCardIndex];
+      if (!card) return {};
+
+      // Map 'right' to 'keep' and 'left' to 'discard'
+      const isCorrect = (event.direction === 'right' && card.expected_action === 'keep') || 
+                        (event.direction === 'left' && card.expected_action === 'discard');
+      
+      return {
+        feedbackHistory: [
+          ...context.feedbackHistory,
+          {
+            cardId: card.card_id,
+            cardText: card.card_text,
+            isCorrect,
+            feedback: cleanVazquezComment(card.scoring?.vazquez_comment, isCorrect),
+            category: card.category,
+            points: isCorrect ? 500 : -1000, 
+            expectedAction: card.expected_action
+          }
+        ]
+      };
     })
   }
 }).createMachine({
@@ -186,7 +220,8 @@ export const gameMachine = setup({
     coinsEarnedThisCase: 0,
     mistakesThisCase: 0,
     lifelineActive: false,
-    comboMilestoneHit: 0
+    comboMilestoneHit: 0,
+    feedbackHistory: []
   },
   states: {
     idle: {
@@ -220,7 +255,8 @@ export const gameMachine = setup({
             coinsEarnedThisCase: 0,
             mistakesThisCase: 0,
             lifelineActive: false,
-            comboMilestoneHit: 0
+            comboMilestoneHit: 0,
+            feedbackHistory: []
           })
         }
       }
@@ -253,15 +289,18 @@ export const gameMachine = setup({
 
               return isLethal && context.warningCount < maxWarnings;
             },
-            actions: assign({
-              warningCount: ({ context }) => context.warningCount + 1,
-              score: ({ context }) => context.score - 1000,
-              fatalError: ({ context }) => {
-                const card = context.deck[context.currentCardIndex];
-                const msg = cleanVazquezComment(card.scoring?.vazquez_comment, false);
-                return `¡ADVERTENCIA! ${msg || "Error de seguridad detectado."}`;
-              }
-            })
+            actions: [
+              assign({
+                warningCount: ({ context }) => context.warningCount + 1,
+                score: ({ context }) => context.score - 1000,
+                fatalError: ({ context }) => {
+                  const card = context.deck[context.currentCardIndex];
+                  const msg = cleanVazquezComment(card.scoring?.vazquez_comment, false);
+                  return `¡ADVERTENCIA! ${msg || "Error de seguridad detectado."}`;
+                }
+              }),
+              'recordFeedback'
+            ]
           },
           {
             target: 'ghosted',
@@ -277,26 +316,29 @@ export const gameMachine = setup({
 
               return isLethal && context.warningCount >= maxWarnings;
             },
-            actions: assign({
-              fatalError: ({ context }) => {
-                const card = context.deck[context.currentCardIndex];
-                const msg = cleanVazquezComment(card.scoring?.vazquez_comment, false);
-                return `FALLO LETAL REINCIDENTE: ${msg || "Negligencia inexcusable."}`;
-              },
-              showBloodVignette: true,
-              caseStreak: 0,
-              debriefData: ({ context }) => {
-                const card = context.deck[context.currentCardIndex];
-                return {
-                  ...context.debriefData!,
-                  comment: cleanVazquezComment(card.scoring?.vazquez_comment, false) || "Negligencia."
-                };
-              }
-            })
+            actions: [
+              assign({
+                fatalError: ({ context }) => {
+                  const card = context.deck[context.currentCardIndex];
+                  const msg = cleanVazquezComment(card.scoring?.vazquez_comment, false);
+                  return `FALLO LETAL REINCIDENTE: ${msg || "Negligencia inexcusable."}`;
+                },
+                showBloodVignette: true,
+                caseStreak: 0,
+                debriefData: ({ context }) => {
+                  const card = context.deck[context.currentCardIndex];
+                  return {
+                    ...context.debriefData!,
+                    comment: cleanVazquezComment(card.scoring?.vazquez_comment, false) || "Negligencia."
+                  };
+                }
+              }),
+              'recordFeedback'
+            ]
           },
           {
             target: 'triage',
-            actions: 'handleCardSwipe'
+            actions: ['handleCardSwipe', 'recordFeedback']
           }
         ],
         TIME_OUT: {
@@ -348,7 +390,7 @@ export const gameMachine = setup({
       on: {
         SWIPE: {
           target: 'triage',
-          actions: ['handleCardSwipe', assign({ isUrgent: false })]
+          actions: ['handleCardSwipe', 'recordFeedback', assign({ isUrgent: false })]
         },
         TIME_OUT: {
           target: 'ghosted',

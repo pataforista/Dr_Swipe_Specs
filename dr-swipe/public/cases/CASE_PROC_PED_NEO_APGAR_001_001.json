@@ -41,22 +41,150 @@
       "card_id": "c_2",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "B) Silverman-Andersen 2 (Dificultad Leve): Aleteo (1) + Tiraje (1) = 2. A diferencia del APGAR, a mayor puntaje Silverman, mayor gravedad.",
+      "card_text": "B) Silverman-Andersen 2 (Dificultad Leve): Aleteo nasal (1) + Tiraje intercostal (1) = 2. A mayor puntaje en esta escala, peor es la dificultad respiratoria.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Correcto! El Silverman es preventivo: 1-3 leve, 4-6 moderada, >7 grave."
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "slash",
+      "category": "Diagnóstico Diferencial",
+      "card_text": "C) Asfixia Neonatal: Requiere pH arterial de cordón <7.0, déficit de base >=12, APGAR 0-3 tras 5 min y daño a órganos.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: ¡Bien! Este es un caso de depresión neonatal leve/moderada, no cumple criterios de asfixia severa."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "thermometer",
+      "category": "Pasos Iniciales",
+      "card_text": "D) Calentar, Secar y Estimular: Proporcionar calor, posicionar vía aérea, succionar secreciones y estimular para iniciar llanto.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡Fundamental! Son los primeros 30 segundos (Minuto de Oro). Evitar la hipotermia es prioridad."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "zap",
+      "category": "Manejo Urgente",
+      "card_text": "E) VPP (Ventilación a Presión Positiva): Iniciar si FC <100 lpm, Apnea o Boqueo. Es la acción más importante en reanimación.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Correcto! El Silverman mide dificultad respiratoria. 1-3 es leve."
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡Correcto! La ventilación efectiva es el pilar para revertir la bradicardia neonatal."
       },
       "safety_flags": {
-        "lethal_risk": false,
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "help-circle",
+      "category": "Corrección",
+      "card_text": "F) MR. SOPA: Pasos correctivos de la ventilación: Máscara, Reposición, Succión, Open mouth, Pressure, Alternative airway.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Muy bien! Si el pecho no se expande con VPP, debemos corregir antes de avanzar."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "heart",
+      "category": "Compresiones",
+      "card_text": "G) Compresiones Torácicas: Iniciar si la FC es <60 lpm después de 30 segundos de VPP efectiva con O2 al 100%.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡Vital! Solo iniciamos masaje cardiaco si la ventilación efectiva no logró subir la frecuencia."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "activity",
+      "category": "Coordinación",
+      "card_text": "H) Relación 3:1 (Manejo 3-1): 90 compresiones y 30 ventilaciones por minuto (120 eventos totales).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: Bien. La sincronización es clave para asegurar la perfusión y oxigenación simultánea."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "pill",
+      "category": "Farmacológico",
+      "card_text": "I) Adrenalina Umbilical: Indicada si la FC se mantiene <60 lpm tras VPP y compresiones bien ejecutadas.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Castillo: ¡Correcto! Es el último recurso del algoritmo de reanimación neonatal avanzado."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
         "decision_critical": true
       }
     }
   ],
   "enarm_pearl": {
-    "title": "APGAR vs Silverman",
-    "text": "APGAR: Evalúa vitalidad (1 y 5 min). Silverman: Evalúa dificultad respiratoria. RECUERDA: Silverman 0 es el éxito, APGAR 10 es el éxito.",
-    "gpc_ref": "GPC Reanimación Neonatal"
+    "title": "Minuto de Oro Neonatal",
+    "text": "FC <100 = VPP. FC <60 = Compresiones (3:1). Silverman 0 = Éxito. APGAR 10 = Éxito.",
+    "gpc_ref": "GPC Reanimación Neonatal / NRP 8th Edition"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es la frecuencia cardiaca por debajo de la cual se debe iniciar Ventilación a Presión Positiva (VPP)?",
+        "options": [
+          "<100 lpm",
+          "<60 lpm",
+          "<120 lpm"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿En qué momento se deben iniciar las COMPRESIONES torácicas en el recién nacido?",
+        "options": [
+          "Si la FC es <60 lpm pese a VPP efectiva",
+          "Si el APGAR inicial es <3",
+          "Inmediatamente al nacer si no llora"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Qué evalúa la escala de Silverman-Andersen en el periodo neonatal?",
+        "options": [
+          "Dificultad Respiratoria",
+          "Vitalidad y Adaptación",
+          "Madurez Gestacional"
+        ],
+        "correct_index": 0
+      }
+    ]
   }
 }

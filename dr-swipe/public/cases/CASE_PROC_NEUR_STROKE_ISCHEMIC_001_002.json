@@ -18,7 +18,7 @@
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "Navarro: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
       }
     },
     {
@@ -42,16 +42,116 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Hemorragia Intracraneal: Clínica similar pero TC mostraría hiperdensidad súbita.",
+      "card_text": "B) Hemorragia Intracraneal: Clínica similar pero TC mostraría hiperdensidad súbita. Contraindica rTPA.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Bien! La TC negativa a sangre confirma el origen isquémico temprano."
+        "vazquez_comment": "Navarro: ¡Bien! La TC negativa a sangre confirma el origen isquémico temprano y permite avanzar al tratamiento."
       },
       "safety_flags": {
         "lethal_risk": false,
         "decision_critical": false
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "zap",
+      "category": "Manejo Inicial",
+      "card_text": "C) Glucometría Capilar: Siempre descartar hipoglucemia, ya que puede simular síntomas de focalidad neurológica.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Fundamental! La hipoglucemia es el gran imitador del EVC. Nunca fibrinólisis sin glucosa normal."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "clipboard",
+      "category": "Gravedad",
+      "card_text": "D) Escala NIHSS: Cuantificar el déficit neurológico para guiar la decisión terapéutica y el pronóstico.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Muy bien. Una escala NIHSS entre 4 y 25 puntos suele ser la ventana ideal para rTPA."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "search",
+      "category": "Imagenología",
+      "card_text": "E) TC Cráneo Simple: Objetivo primordial: Descartar hemorragia intracraneal en los primeros 25 min.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Correcto! El tiempo puerta-tomografía es un indicador de calidad vital."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "alert-triangle",
+      "category": "Contraindicación",
+      "card_text": "F) Control de TA: Mantener la TA por debajo de 185/110 mmHg para iniciar rTPA de forma segura.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: Vital. Fibrinolar con TA >185/110 aumenta drásticamente el riesgo de hemorragia fatal."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "activity",
+      "category": "Fisiología",
+      "card_text": "G) Penumbra Isquémica: Tejido cerebral con riesgo de infarto que aún es rescatable mediante reperfusión.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Exacto! Todo el esfuerzo es para salvar la zona de penumbra."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "slash",
+      "category": "Complicación",
+      "card_text": "H) Transformación Hemorrágica: Vigilar cefalea intensa, náuseas o deterioro neurológico súbito post-rTPA.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Bien! Si sospechas esto, suspende la infusión y solicita TC de control de inmediato."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "calendar",
+      "category": "Seguimiento",
+      "card_text": "I) Iniciar Antiagregación (ASA): Administrar 160-325 mg de Aspirina tras 24 horas de la fibrinólisis.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Correcto. Nunca antes de las 24 horas para evitar sangrado."
       }
     }
   ],
@@ -59,5 +159,37 @@
     "title": "Ventana de rTPA",
     "text": "Tiempo es Cerebro: La ventana ideal es <3h, extendida hasta 4.5h en casos seleccionados. Contraindicación absoluta: TA >185/110 persistente.",
     "gpc_ref": "GPC Diagnóstico y Tratamiento de ACV Isquémico"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
+        "options": [
+          "Estabilización hemodinámica (ABC)",
+          "Traslado inmediato sin manejo",
+          "Esperar laboratoriales de control"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
+        "options": [
+          "Estudio de imagen específico (TC/USG)",
+          "Solo clínica",
+          "Cualquier paraclínico al azar"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
+        "options": [
+          "Reducir morbi-mortalidad y complicaciones",
+          "Solo control de dolor",
+          "Ninguna de las anteriores"
+        ],
+        "correct_index": 0
+      }
+    ]
   }
 }
