@@ -359,3 +359,52 @@
 .timer-critical {
   animation: timer-critical 0.8s ease-in-out infinite;
 }
+
+/* ===== PERFORMANCE: hardware acceleration hints ===== */
+.swipe-card {
+  will-change: transform;
+  contain: layout style;
+}
+
+.glass-panel {
+  transform: translateZ(0); /* promote to own GPU layer */
+}
+
+/* ===== ACCESSIBILITY: reduced motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  /* Disable CRT scanline flicker */
+  .crt-screen::before,
+  .scanline {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+
+  /* Disable glitch / blood vignette animations */
+  .glitch-overlay,
+  .blood-vignette,
+  .destabilized-content,
+  .shake-lite {
+    animation: none !important;
+    filter: none !important;
+  }
+
+  /* Slow down / stop Framer Motion via CSS custom property */
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Keep swipe card draggable but no entrance animation */
+  .swipe-card {
+    will-change: auto;
+  }
+}
+
+/* ===== PERFORMANCE: reduce repaints on background gradient ===== */
+@supports (background-attachment: local) {
+  body {
+    background-attachment: local; /* avoids expensive fixed repaint on mobile scroll */
+  }
+}

@@ -15,6 +15,8 @@ import DecryptedText from './components/bits/DecryptedText';
 import ShinyText from './components/bits/ShinyText';
 import ErrorBoundary from './components/ErrorBoundary';
 import { useCodexStore } from './store/useCodexStore';
+import { TutorialOverlay } from './components/TutorialOverlay';
+import { StatsDashboard } from './components/StatsDashboard';
 
 const isSwipeCorrect = (direction: 'left' | 'right', expectedAction: 'keep' | 'discard'): boolean => {
   return (direction === 'right' && expectedAction === 'keep') ||
@@ -145,11 +147,18 @@ function App() {
   const [state, send] = useMachine(gameMachine);
   const { playGhosted, startAlarm, stopAlarm } = useGameAudio();
   const [currentCase, setCurrentCase] = useState<ClinicalCase | null>(null);
-  const { addXp, registerCaseSolved, unlockPearl } = useCodexStore();
+  const { addXp, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions } = useCodexStore();
   // Stores the calculated time limit so timer bar uses consistent denominator
   const timeLimitRef = useRef<number>(60);
   // Stores the precomputed shuffled deck for when intro → START_GUARD
   const pendingDeckRef = useRef<any[]>([]);
+
+  // Tutorial: shown once on first visit
+  const [showTutorial, setShowTutorial] = useState(() => !localStorage.getItem('dr_swipe_tutorial_seen'));
+  // Stats dashboard toggle
+  const [showStats, setShowStats] = useState(false);
+  // Pause state — managed entirely in App (no machine change needed)
+  const [isPaused, setIsPaused] = useState(false);
   
   // Dynamic Background Theming
   useEffect(() => {
@@ -193,7 +202,7 @@ function App() {
 
   useEffect(() => {
     let timer: number;
-    if (state.matches('triage') && timeLeft > 0) {
+    if (state.matches('triage') && timeLeft > 0 && !isPaused) {
       timer = window.setInterval(() => {
         setTimeLeft(prev => prev - 1);
       }, 1000);
@@ -202,7 +211,7 @@ function App() {
       send({ type: 'TIME_OUT' });
     }
     return () => clearInterval(timer);
-  }, [state, timeLeft, send]);
+  }, [state, timeLeft, send, isPaused]);
 
   useEffect(() => {
     if (state.matches('triage') && !state.context.isUrgent) {
@@ -244,7 +253,7 @@ function App() {
   useEffect(() => {
     if (state.matches('reward') && currentCase) {
       addXp(state.context.score);
-      registerCaseSolved(currentCase.case_id);
+      registerCaseSolved(currentCase.case_id, state.context.score);
       const pearl = currentCase.enarm_pearl || (currentCase as any).perla_enarm;
       if (pearl) unlockPearl(pearl);
     }
@@ -254,6 +263,8 @@ function App() {
   const startNewCase = async (skipIntro = false) => {
     // Capture caseStreak before RESTART resets it, so adaptive difficulty works correctly
     const savedStreak = state.context.caseStreak;
+    setIsPaused(false);
+    incrementSessions();
     try {
       send({ type: 'RESTART' }); // Reset machine to idle
       const caseData = await dataLoader.loadRandomCase();
@@ -295,12 +306,13 @@ function App() {
   };
 
   const handleSwipe = (direction: 'left' | 'right') => {
-    if (isProcessing) return;
+    if (isProcessing || isPaused) return;
     const card = state.context.deck[state.context.currentCardIndex];
     if (!card) return;
 
     setIsProcessing(true);
     const isCorrect = isSwipeCorrect(direction, card.expected_action);
+    updateSwipeResult(isCorrect);
 
     setSwipeFeedback(isCorrect ? 'correct' : 'wrong');
     setExpression(isCorrect ? 'happy' : 'angry');
@@ -368,12 +380,12 @@ function App() {
     switch (true) {
       case state.matches('idle'):
         return (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="flex flex-col items-center justify-center p-8"
+            className="flex flex-col items-center justify-center p-8 gap-6"
           >
-            <div className="relative mb-12">
+            <div className="relative mb-6">
               <h1 className="text-7xl font-display font-black tracking-tighter text-medical-primary text-glow italic">
                 <DecryptedText text="DR. SWIPE" animateOn="view" speed={100} />
               </h1>
@@ -382,16 +394,22 @@ function App() {
             <button onClick={() => startNewCase(false)} className="btn-primary px-16 py-6 text-xl">
               <ShinyText text="INICIAR GUARDIA" speed={3} />
             </button>
+            <button
+              onClick={() => setShowStats(true)}
+              className="text-[10px] font-black tracking-[0.4em] text-slate-500 hover:text-medical-primary transition-colors uppercase"
+            >
+              📊 Ver Estadísticas
+            </button>
           </motion.div>
         );
 
       case state.matches('triage'):
         return (
-          <SwipeDeck 
-            cards={state.context.deck} 
+          <SwipeDeck
+            cards={state.context.deck}
             currentIndex={state.context.currentCardIndex}
             onSwipe={handleSwipe}
-            isLocked={isProcessing}
+            isLocked={isProcessing || isPaused}
           />
         );
 
@@ -886,7 +904,7 @@ function App() {
       {state.matches('triage') && currentCase && (
         <div className="w-full max-w-sm px-8 -mt-2 mb-4 z-50">
           <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden shadow-inner flex mb-1">
-            <motion.div 
+            <motion.div
               className={`h-full ${timeLeft <= 10 ? 'bg-medical-danger flex-grow h-full' : 'bg-medical-secondary flex-grow h-full'}`}
               initial={{ width: '100%' }}
               animate={{ width: `${(timeLeft / timeLimitRef.current) * 100}%` }}
@@ -894,11 +912,20 @@ function App() {
               style={{ originX: 0 }}
             />
           </div>
-          <div className="flex justify-between w-full">
+          <div className="flex justify-between items-center w-full">
             <span className={`text-[10px] uppercase font-black tracking-widest ${timeLeft <= 10 ? 'text-medical-danger animate-pulse' : 'text-slate-500'}`}>
               TIEMPO DE RESPUESTA
             </span>
-            <span className="text-[10px] text-white/80 font-mono font-black">{timeLeft}s</span>
+            <div className="flex items-center gap-3">
+              <span className="text-[10px] text-white/80 font-mono font-black">{timeLeft}s</span>
+              <button
+                onClick={() => setIsPaused(p => !p)}
+                className="text-[10px] font-black text-slate-500 hover:text-white transition-colors uppercase tracking-widest"
+                aria-label={isPaused ? 'Reanudar' : 'Pausar'}
+              >
+                {isPaused ? '▶ REANUDAR' : '⏸ PAUSA'}
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -948,6 +975,56 @@ function App() {
           </p>
         </div>
       )}
+
+      {/* Tutorial overlay — first launch only */}
+      <AnimatePresence>
+        {showTutorial && (
+          <TutorialOverlay
+            onComplete={() => {
+              localStorage.setItem('dr_swipe_tutorial_seen', '1');
+              setShowTutorial(false);
+            }}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Stats dashboard — accessible from idle */}
+      <AnimatePresence>
+        {showStats && (
+          <div className="fixed inset-0 z-[150] flex items-center justify-center bg-black/70 backdrop-blur-sm p-6">
+            <StatsDashboard onClose={() => setShowStats(false)} />
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Pause overlay */}
+      <AnimatePresence>
+        {isPaused && state.matches('triage') && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[130] flex flex-col items-center justify-center bg-black/60 backdrop-blur-sm"
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              className="glass-panel p-10 max-w-xs w-full text-center border-white/20 shadow-2xl"
+            >
+              <span className="text-[9px] font-black tracking-[0.4em] text-medical-primary uppercase block mb-4">GUARDIA EN PAUSA</span>
+              <p className="text-4xl mb-6">⏸</p>
+              <p className="text-slate-400 text-sm font-medium mb-8">El tiempo está detenido. El paciente espera.</p>
+              <button
+                onClick={() => setIsPaused(false)}
+                className="btn-primary w-full py-4"
+              >
+                REANUDAR GUARDIA
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

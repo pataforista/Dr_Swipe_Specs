@@ -6,12 +6,14 @@ interface CodexState {
   stats: PlayerStats;
   unlockedPearls: EnarmPearl[];
   history: string[]; // case ids solved
-  
+
   // Actions
   addXp: (amount: number) => void;
   addCoins: (amount: number) => void;
   unlockPearl: (pearl: EnarmPearl) => void;
-  registerCaseSolved: (caseId: string) => void;
+  registerCaseSolved: (caseId: string, score?: number) => void;
+  updateSwipeResult: (isCorrect: boolean) => void;
+  incrementSessions: () => void;
 }
 
 export const useCodexStore = create<CodexState>()(
@@ -23,7 +25,9 @@ export const useCodexStore = create<CodexState>()(
         coins: 0,
         correct_swipes: 0,
         mistakes: 0,
-        cases_solved: 0
+        cases_solved: 0,
+        best_score: 0,
+        total_sessions: 0,
       },
       unlockedPearls: [],
       history: [],
@@ -41,10 +45,26 @@ export const useCodexStore = create<CodexState>()(
         return { unlockedPearls: [...state.unlockedPearls, pearl] };
       }),
 
-      registerCaseSolved: (caseId) => set((state) => ({
+      registerCaseSolved: (caseId, score = 0) => set((state) => ({
         history: [...state.history, caseId],
-        stats: { ...state.stats, cases_solved: state.stats.cases_solved + 1 }
-      }))
+        stats: {
+          ...state.stats,
+          cases_solved: state.stats.cases_solved + 1,
+          best_score: Math.max(state.stats.best_score ?? 0, score),
+        }
+      })),
+
+      updateSwipeResult: (isCorrect) => set((state) => ({
+        stats: {
+          ...state.stats,
+          correct_swipes: isCorrect ? state.stats.correct_swipes + 1 : state.stats.correct_swipes,
+          mistakes: !isCorrect ? state.stats.mistakes + 1 : state.stats.mistakes,
+        }
+      })),
+
+      incrementSessions: () => set((state) => ({
+        stats: { ...state.stats, total_sessions: (state.stats.total_sessions ?? 0) + 1 }
+      })),
     }),
     {
       name: 'dr-swipe-codex',
