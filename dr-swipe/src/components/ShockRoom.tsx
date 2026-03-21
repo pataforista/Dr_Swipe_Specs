@@ -129,7 +129,7 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
             </span>
             <motion.div
               animate={{ scale: [1, 1.5, 1] }}
-              transition={{ duration: 1, repeat: Infinity, delay: 0.5 }}
+              transition={{ duration: 1, repeat: Infinity }}
               className="w-2 h-2 rounded-full bg-medical-danger"
             />
           </div>
