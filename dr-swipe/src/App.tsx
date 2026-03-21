@@ -164,7 +164,10 @@ function App() {
   const [selectedDifficulty, setSelectedDifficulty] = useState<'standard' | 'hard' | 'extreme' | null>(null);
   // Combo milestone celebration
   const [showMilestoneCelebration, setShowMilestoneCelebration] = useState<number>(0);
-  
+  // Loading state for case fetching
+  const [isLoadingCase, setIsLoadingCase] = useState(false);
+  const [loadError, setLoadError] = useState<string | null>(null);
+
   // Dynamic Background Theming
   useEffect(() => {
     if (currentCase) {
@@ -285,11 +288,22 @@ function App() {
     const savedStreak = state.context.caseStreak;
     setIsPaused(false);
     setShowMilestoneCelebration(0);
+    setLoadError(null);
+    setIsLoadingCase(true);
     incrementSessions();
     updateDailyStreak();
     try {
       send({ type: 'RESTART' }); // Reset machine to idle
       const caseData = await dataLoader.loadRandomCase();
+
+      // Validate case has required fields
+      if (!caseData.card_stream || caseData.card_stream.length < 1) {
+        throw new Error('Caso inválido: no contiene cartas.');
+      }
+      if (!caseData.patient_intro) {
+        throw new Error('Caso inválido: falta información del paciente.');
+      }
+
       // Apply difficulty override if player selected one
       if (selectedDifficulty) {
         (caseData as any).difficulty = selectedDifficulty;
@@ -305,9 +319,12 @@ function App() {
       // Shuffle logic: keep first vitals card anchored
       const fullDeck = [...caseData.card_stream];
       const vitals = fullDeck.shift();
-      const shuffledCards = vitals
-        ? [vitals, ...fullDeck.sort(() => Math.random() - 0.5)]
-        : fullDeck.sort(() => Math.random() - 0.5);
+
+      if (!vitals) {
+        throw new Error('Caso inválido: primera carta no encontrada.');
+      }
+
+      const shuffledCards = [vitals, ...fullDeck.sort(() => Math.random() - 0.5)];
 
       timeLimitRef.current = timeLimit;
       pendingDeckRef.current = shuffledCards;
@@ -326,8 +343,13 @@ function App() {
         setShowIntro(true);
       }
     } catch (err) {
-      console.error(err);
-      alert("Error al cargar caso.");
+      const errorMsg = err instanceof Error ? err.message : 'Error desconocido al cargar caso.';
+      console.error('Case loading error:', err);
+      setLoadError(errorMsg);
+      send({ type: 'RESTART' });
+      setCurrentCase(null);
+    } finally {
+      setIsLoadingCase(false);
     }
   };
 
@@ -480,12 +502,36 @@ function App() {
               ))}
             </div>
 
-            <button onClick={() => startNewCase(false)} className="btn-primary px-16 py-6 text-xl">
-              <ShinyText text="INICIAR GUARDIA" speed={3} />
+            {loadError && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-red-500/10 border border-red-500/50 rounded-lg p-4 mb-4 text-center max-w-md"
+              >
+                <p className="text-red-400 text-sm font-medium">⚠️ {loadError}</p>
+                <p className="text-red-300/70 text-xs mt-2">Por favor, intenta de nuevo.</p>
+              </motion.div>
+            )}
+
+            <button
+              onClick={() => startNewCase(false)}
+              disabled={isLoadingCase}
+              className={`btn-primary px-16 py-6 text-xl ${isLoadingCase ? 'opacity-50 cursor-not-allowed' : ''}`}
+            >
+              {isLoadingCase ? (
+                <span className="inline-flex items-center gap-2">
+                  <span className="inline-block animate-spin">⟳</span> Cargando caso...
+                </span>
+              ) : (
+                <ShinyText text="INICIAR GUARDIA" speed={3} />
+              )}
             </button>
             <button
               onClick={() => setShowStats(true)}
-              className="text-[10px] font-black tracking-[0.4em] text-slate-500 hover:text-medical-primary transition-colors uppercase"
+              disabled={isLoadingCase}
+              className={`text-[10px] font-black tracking-[0.4em] transition-colors uppercase ${
+                isLoadingCase ? 'text-slate-600 cursor-not-allowed' : 'text-slate-500 hover:text-medical-primary'
+              }`}
             >
               📊 Ver Estadísticas
             </button>
