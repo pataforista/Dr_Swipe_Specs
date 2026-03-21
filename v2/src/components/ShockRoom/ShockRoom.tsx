@@ -10,14 +10,16 @@ export interface ShockRoomProps {
   onGhosted: (reason: string) => void;
 }
 
-export const ShockRoom: React.FC<ShockRoomProps> = ({ 
-  questions, 
-  dossierItems, 
-  onSurvive, 
-  onGhosted 
+export const ShockRoom: React.FC<ShockRoomProps> = ({
+  questions,
+  dossierItems,
+  onSurvive,
+  onGhosted
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [heartbeats, setHeartbeats] = useState(0); // Contador de golpes por pregunta
   const [timeLeft, setTimeLeft] = useState(15);
+  const HEARTBEATS_NEEDED = 4; // Número de golpes requeridos por pregunta
   const currentQ = questions[currentIndex];
 
   // Timer que decrementa el tiempo cada segundo
@@ -39,10 +41,21 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
       return;
     }
 
-    if (currentIndex + 1 >= questions.length) {
-      onSurvive();
+    const newHeartbeats = heartbeats + 1;
+
+    if (newHeartbeats >= HEARTBEATS_NEEDED) {
+      // Completaste los latidos requeridos para esta pregunta
+      if (currentIndex + 1 >= questions.length) {
+        // Fue la última pregunta
+        onSurvive();
+      } else {
+        // Pasamos a la siguiente pregunta
+        setCurrentIndex((prev) => prev + 1);
+        setHeartbeats(0);
+      }
     } else {
-      setCurrentIndex((prev) => prev + 1);
+      // Actualiza el contador de latidos
+      setHeartbeats(newHeartbeats);
     }
   };
 
@@ -60,9 +73,14 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
 
       <div className="shock-header">
         <h2 className="alarm-title glitch-text">¡BRECHA DETECTADA!</h2>
-        <p className="timer-display font-mono text-red-500">
-          DESTIERRO EN: 00:{timeLeft.toString().padStart(2, '0')}
-        </p>
+        <div className="heartbeat-indicator">
+          <p className="timer-display font-mono text-red-500">
+            DESTIERRO EN: 00:{timeLeft.toString().padStart(2, '0')}
+          </p>
+          <p className="heartbeat-counter font-mono text-yellow-400">
+            LATIDOS: {heartbeats}/{HEARTBEATS_NEEDED}
+          </p>
+        </div>
       </div>
 
       <AnimatePresence mode="wait">
