@@ -148,7 +148,7 @@ function App() {
   const [state, send] = useMachine(gameMachine);
   const { playGhosted, startAlarm, stopAlarm } = useGameAudio();
   const [currentCase, setCurrentCase] = useState<ClinicalCase | null>(null);
-  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, stats, dailyStreak } = useCodexStore();
+  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, stats, dailyStreak, sessionProgress } = useCodexStore();
   // Stores the calculated time limit so timer bar uses consistent denominator
   const timeLimitRef = useRef<number>(60);
   // Stores the precomputed shuffled deck for when intro → START_GUARD
@@ -433,6 +433,41 @@ function App() {
     }
   };
 
+  const resumeGame = async () => {
+    if (!sessionProgress?.caseId) return;
+
+    setLoadError(null);
+    setIsLoadingCase(true);
+    try {
+      const caseData = await dataLoader.loadRandomCase();
+      if (caseData.case_id !== sessionProgress.caseId) {
+        // If somehow different case, load the exact one
+        const exactCase = await dataLoader.loadCase(sessionProgress.caseId);
+        setCurrentCase(exactCase);
+      } else {
+        setCurrentCase(caseData);
+      }
+
+      // Restore game state
+      send({ type: 'RESTART' });
+      setTimeout(() => {
+        send({
+          type: 'START_GUARD',
+          deck: pendingDeckRef.current,
+          difficulty: sessionProgress.difficulty || 'standard',
+          pearl: (currentCase?.enarm_pearl || currentCase?.perla_enarm) as any
+        });
+        setTimeLeft(Math.max(5, timeLimitRef.current - Math.floor((Date.now() - sessionProgress.savedAt) / 1000)));
+      }, 0);
+    } catch (err) {
+      const errorMsg = err instanceof Error ? err.message : 'Error al reanudar juego.';
+      console.error('Resume game error:', err);
+      setLoadError(errorMsg);
+    } finally {
+      setIsLoadingCase(false);
+    }
+  };
+
   const renderCurrentView = () => {
     if (showIntro && currentCase) {
       return (
@@ -512,6 +547,32 @@ function App() {
               <span className="text-sm font-black text-yellow-400/80 tracking-widest">{stats.coins}</span>
             </div>
 
+            {/* Quick Progress Stats */}
+            {stats.cases_solved > 0 && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="grid grid-cols-3 gap-3 mb-6 w-full max-w-xs"
+              >
+                <div className="bg-white/5 border border-white/10 rounded-lg p-3 text-center">
+                  <div className="text-2xl font-display font-black text-medical-primary">{stats.cases_solved}</div>
+                  <div className="text-[8px] font-black text-slate-500 uppercase tracking-widest mt-1">Casos</div>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded-lg p-3 text-center">
+                  <div className="text-2xl font-display font-black text-medical-secondary">
+                    {stats.correct_swipes + stats.mistakes > 0
+                      ? Math.round((stats.correct_swipes / (stats.correct_swipes + stats.mistakes)) * 100)
+                      : 0}%
+                  </div>
+                  <div className="text-[8px] font-black text-slate-500 uppercase tracking-widest mt-1">Precisión</div>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded-lg p-3 text-center">
+                  <div className="text-2xl font-display font-black text-yellow-400">{(stats.xp || 0).toLocaleString()}</div>
+                  <div className="text-[8px] font-black text-slate-500 uppercase tracking-widest mt-1">XP</div>
+                </div>
+              </motion.div>
+            )}
+
             {/* Difficulty Selector */}
             <div className="flex gap-2 mb-6">
               {(['standard', 'hard', 'extreme'] as const).map(diff => (
@@ -542,19 +603,39 @@ function App() {
               </motion.div>
             )}
 
-            <button
-              onClick={() => startNewCase(false)}
-              disabled={isLoadingCase}
-              className={`btn-primary px-16 py-6 text-xl ${isLoadingCase ? 'opacity-50 cursor-not-allowed' : ''}`}
-            >
-              {isLoadingCase ? (
-                <span className="inline-flex items-center gap-2">
-                  <span className="inline-block animate-spin">⟳</span> Cargando caso...
-                </span>
-              ) : (
-                <ShinyText text="INICIAR GUARDIA" speed={3} />
-              )}
-            </button>
+            {sessionProgress && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4 mb-4 text-center max-w-md"
+              >
+                <p className="text-blue-400 text-sm font-medium">💾 Juego interrumpido detectado</p>
+                <p className="text-blue-300/70 text-xs mt-1">Hay una partida en progreso. ¿Deseas reanudarla?</p>
+                <button
+                  onClick={resumeGame}
+                  disabled={isLoadingCase}
+                  className="mt-3 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white font-black px-4 py-2 rounded transition-colors text-sm"
+                >
+                  Reanudar Partida
+                </button>
+              </motion.div>
+            )}
+
+            <div className="flex gap-3 w-full max-w-xs justify-center">
+              <button
+                onClick={() => startNewCase(false)}
+                disabled={isLoadingCase}
+                className={`btn-primary px-12 py-6 text-lg flex-1 ${isLoadingCase ? 'opacity-50 cursor-not-allowed' : ''}`}
+              >
+                {isLoadingCase ? (
+                  <span className="inline-flex items-center gap-2">
+                    <span className="inline-block animate-spin">⟳</span> Cargando...
+                  </span>
+                ) : (
+                  <ShinyText text="NUEVA GUARDIA" speed={3} />
+                )}
+              </button>
+            </div>
             <button
               onClick={() => setShowStats(true)}
               disabled={isLoadingCase}
