@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Isabel, 2 años",
     "arrival_scenario": "Paciente de 2 años en control de niño sano. Reporta dieta basada en carbohidratos, poca proteína. Peso para Edad: -1.5 DE. Talla para Edad: -2.5 DE. Peso para Talla: -0.5 DE.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

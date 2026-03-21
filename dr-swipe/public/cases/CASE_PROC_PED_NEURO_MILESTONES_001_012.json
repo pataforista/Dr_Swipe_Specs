@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Miguel, 0.5 años",
     "arrival_scenario": "Evaluación de rutina para niño de 9 meses. Se observa su interacción en el consultorio. A los 9 meses: Realiza pinza fina, se mantiene sentado sin apoyo y busca objetos ocultos.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

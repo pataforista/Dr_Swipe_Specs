@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Rosa, 35 años",
     "arrival_scenario": "Reporta sensación de 'mojado' persistente desde hace 36 horas, sospecha ruptura de fuente. Especuloscopía: maniobra de Valsalva positiva con salida de líquido amniótico. Papel de Nitrazina vira a color azul (alcalino).",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

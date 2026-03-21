@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Pedro, 2 años",
     "arrival_scenario": "Paciente de 4 años con lesiones cutáneas pruriginosas en diferentes estadios de evolución. Fiebre moderada. Las vesículas tienen aspecto de 'gota de rocío'. Prurito intenso referido por la madre.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

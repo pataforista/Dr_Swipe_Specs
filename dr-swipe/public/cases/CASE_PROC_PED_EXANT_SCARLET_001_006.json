@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Laura, 10 años",
     "arrival_scenario": "Escolar con fiebre alta y faringitis severa. Presenta exantema eritematoso de textura rugosa (lija). Líneas de Pastia (hiperpigmentación en pliegues) y Fascies de Filatov (palidez perioral) presentes.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

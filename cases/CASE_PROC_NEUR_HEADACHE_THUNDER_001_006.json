@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Juan, 44 años",
     "arrival_scenario": "Presenta la 'peor cefalea de su vida', de inicio súbito tras realizar esfuerzo físico (maniobra de Valsalva). Examen físico: Signos de Kerning y Brudzinski positivos. Fondo de ojo sin papiledema inicial.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

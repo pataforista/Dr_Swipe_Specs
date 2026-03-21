@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Luis, 14 años",
     "arrival_scenario": "Adolescente con pústulas inflamatorias en nariz y mentón desde hace 8 meses. Los síntomas empeoran en temporada de exámenes. Su madre relata antecedente familiar de acné quístico severo.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Sofía, 24 años",
     "arrival_scenario": "Mujer con úlcera vulvar única, de fondo limpio, bordes indurados e indolora desde hace 10 días. Niega dolor. Refiere múltiples parejas en los últimos 3 meses. Adenopatías inguinales bilaterales no dolorosas al tacto.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

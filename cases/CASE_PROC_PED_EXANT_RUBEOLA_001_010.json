@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Elena, 7 años",
     "arrival_scenario": "Niña de 5 años con adenopatías retroauriculares y cervicales dolorosas, seguidas de exantema pálido. Exantema que no confluye, desaparece al tercer día. Madre gestante en primer trimestre (contacto de riesgo).",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

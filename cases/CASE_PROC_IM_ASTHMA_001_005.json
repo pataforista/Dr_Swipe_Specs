@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Lucía, 17 años",
     "arrival_scenario": "Deportista de alto rendimiento con opresión torácica y sibilancias que aparecen 5-10 min después del ejercicio intenso. Sin síntomas en reposo. La espirometría basal es normal; la prueba de esfuerzo reproduce los síntomas.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

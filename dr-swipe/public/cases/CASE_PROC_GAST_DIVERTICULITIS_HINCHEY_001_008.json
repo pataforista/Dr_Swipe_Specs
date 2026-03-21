@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "María, 59 años",
     "arrival_scenario": "Paciente con antecedente de enfermedad diverticular. Presenta dolor punzante en cuadrante inferior izquierdo y leucocitosis. TC de abdomen reporta inflamación pericólica con presencia de un absceso de 5cm localizado (Hinchey II).",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

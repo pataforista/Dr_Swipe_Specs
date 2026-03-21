@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "María, 26 años",
     "arrival_scenario": "Presenta verborrea, fuga de ideas y grandiosidad. Afirma ser el 'nuevo director del hospital' sin tener formación médica. Muestra disminución de la necesidad de dormir. Hipersexualidad y conducta de riesgo (compras impulsivas).",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

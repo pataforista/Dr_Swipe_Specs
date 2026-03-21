@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Rosa, 28 años",
     "arrival_scenario": "Paciente con amenorrea de 10 semanas. Presenta sangrado rojo rutilante y expulsión de tejido blanquecino. Útero menor de lo esperado para amenorrea. USG reporta útero con ecos heterogéneos y ausencia de saco gestacional íntegro.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

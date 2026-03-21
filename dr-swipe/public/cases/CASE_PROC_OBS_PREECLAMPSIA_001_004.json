@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Isabel, 36 años",
     "arrival_scenario": "Embarazo de 34 SDG, nota edema facial y en manos. Refiere dolor en epigastrio (en barra). Tira reactiva con proteínas ++. Reflejos osteotendinosos hiperactivos (+++/++++).",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

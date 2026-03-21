@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Antonio, 63 años",
     "arrival_scenario": "Cuadro de diaforesis profusa y dolor retroesternal intenso que inició estando en reposo hace 90 mins. ECG muestra supra-desnivel del ST en derivaciones II, III, aVF (Inferior). Tabaquista activo (20 paq/año).",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

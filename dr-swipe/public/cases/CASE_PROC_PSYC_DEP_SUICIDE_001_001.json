@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "José, 70 años",
     "arrival_scenario": "Paciente que ha regalado sus pertenencias y refiere que 'su familia estaría mejor sin él'. Presenta anhedonia severa. Al interrogatorio directo admite tener un plan estructurado para quitarse la vida mediante ingesta de fármacos.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

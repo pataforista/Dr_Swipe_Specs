@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Antonio, 2 años",
     "arrival_scenario": "Varón primogénito de 5 semanas. Vómitos postprandiales inmediatos, abundantes y de contenido alimentario (leche). Se observa onda peristáltica gástrica de izquierda a derecha. Deshidratación leve. Labs con alcalosis metabólica hipoclorémica.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

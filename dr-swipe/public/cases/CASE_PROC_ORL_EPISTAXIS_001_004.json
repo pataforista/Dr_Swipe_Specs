@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Don Rafael, 67 años",
     "arrival_scenario": "Tras cirugía endoscópica de senos paranasales hace 48 horas, presenta epistaxis posterior abundante que no cede con taponamiento anterior. TA 160/95. Se aprecia sangrado activo al fondo de la cavidad nasal bilateral.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

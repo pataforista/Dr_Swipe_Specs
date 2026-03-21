@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Marta, 8 años",
     "arrival_scenario": "Paciente con mejillas muy rojas 'como si lo hubieran golpeado', seguidas de exantema reticulado en brazos. Exantema en extremidades con aspecto de 'encaje' o reticulado. No presenta fiebre ni malestar general.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

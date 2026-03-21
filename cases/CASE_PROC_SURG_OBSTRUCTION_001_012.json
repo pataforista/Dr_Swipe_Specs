@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Juan, 61 años",
     "arrival_scenario": "Cuadro de vómitos fecaloideos, dolor abdominal difuso intenso y gran distensión abdominal progresiva desde hace 48 hrs. Gran distensión timpánica. Ampolla rectal vacía al tacto.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

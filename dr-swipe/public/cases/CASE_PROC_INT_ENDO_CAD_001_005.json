@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Antonio, 21 años",
     "arrival_scenario": "Familiar reporta poliuria y polidipsia intensa desde hace 48 días, hoy amanece letárgico. Respiración de Kussmaul evidente. Mucosas muy secas. Glucosa reportada en 480 mg/dl. Gasometría con pH 7.15, HCO3 12.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

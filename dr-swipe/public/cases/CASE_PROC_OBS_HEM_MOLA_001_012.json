@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Marta, 35 años",
     "arrival_scenario": "Paciente de 14 semanas con sangrado vaginal intermitente, refiere haber expulsado 'bolitas como uvas'. HCG reportada en 250,000 mUI/ml. Presencia de quistes tecaluteínicos bilaterales en ovarios.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

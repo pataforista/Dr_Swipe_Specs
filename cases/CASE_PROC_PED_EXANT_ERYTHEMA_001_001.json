@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Elena, 11 años",
     "arrival_scenario": "Paciente con mejillas muy rojas 'como si lo hubieran golpeado', seguidas de exantema reticulado en brazos. Paciente con esferocitosis hereditaria (complicación latente por Parvovirus B19).",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

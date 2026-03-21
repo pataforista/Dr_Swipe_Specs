@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Carlos, 29 años",
     "arrival_scenario": "Familiares refieren que el paciente escucha voces que le dan órdenes y se ha aislado socialmente desde hace 8 meses. No se identifican causas médicas ni consumo de sustancias tras toxicología negativa. Deterioro evidente de la funcionalidad.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

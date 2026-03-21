@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Elena, 26 años",
     "arrival_scenario": "Gestante de 28 semanas de gestación acude para tamizaje de diabetes gestacional. Antecedente de IMC 30. Resultados de CTGO 75g: Ayuno 95 mg/dl, 1 hora 185 mg/dl, 2 horas 140 mg/dl.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

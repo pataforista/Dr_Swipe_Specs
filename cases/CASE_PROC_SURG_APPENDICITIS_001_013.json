@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Miguel, 17 años",
     "arrival_scenario": "Refiere dolor punzante en cuadrante inferior derecho desde hace 48 hrs. Acompañado de náuseas y anorexia. Psoas y Obturador positivos. Sin antecedentes quirúrgicos. Labs: 16 leucos con neutrofilia.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Marta, 21 años",
     "arrival_scenario": "Acude por fiebre y dolor uterino a la palpación. El líquido amniótico se observa turbio y con mal olor. Útero sensible a la palpación. Diagnóstico clínico de Corioamnionitis (Criterios de Gibbs).",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Camila, 8 meses",
     "arrival_scenario": "Lactante con lactancia materna exclusiva sin suplementación de hierro desde los 4 meses. La madre no ha introducido papillas con hierro. Al examen: palidez mucocutánea, taquicardia. BHC: Hb 8.5 g/dl, VCM 68 fl.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

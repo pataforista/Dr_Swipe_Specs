@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Fernando, 69 años",
     "arrival_scenario": "Paciente con antecedente de FA que súbitamente presenta dificultad para hablar y debilidad en brazo izquierdo. Inició con los síntomas hace exactamente 2.5 horas. El paciente es candidato potencial a terapia de reperfusión.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

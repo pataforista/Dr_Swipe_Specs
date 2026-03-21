@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Pedro, 49 años",
     "arrival_scenario": "Paciente con diagnóstico reciente de VIH. Acude para inicio de tratamiento. Se encuentra asintomático actualmente. Independientemente del conteo de CD4, el paciente solicita iniciar tratamiento. No tiene antecedentes de ERC.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

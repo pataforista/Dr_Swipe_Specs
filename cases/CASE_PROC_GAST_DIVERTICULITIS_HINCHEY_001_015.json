@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Marta, 51 años",
     "arrival_scenario": "Paciente con antecedente de enfermedad diverticular. Presenta dolor punzante en cuadrante inferior izquierdo y leucocitosis. Se observa aire libre subdiafragmático y datos de irritación peritoneal generalizada (Hinchey III/IV).",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

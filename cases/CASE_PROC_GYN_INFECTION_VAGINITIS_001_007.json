@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Ana, 44 años",
     "arrival_scenario": "Consulta por flujo vaginal blanquecino, espeso, tipo 'queso cottage' y prurito intenso de 3 días. PH vaginal de 4.0. Al microscopio se observan hifas y levaduras. Cérvix normal.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

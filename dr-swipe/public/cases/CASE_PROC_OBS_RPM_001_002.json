@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Laura, 32 años",
     "arrival_scenario": "Reporta sensación de 'mojado' persistente desde hace 32 horas, sospecha ruptura de fuente. Cristalografía (test de helecho) positiva. FCF 140 lpm sin datos de pérdida de bienestar fetal.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

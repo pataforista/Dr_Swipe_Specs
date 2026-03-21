@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "José, 24 años",
     "arrival_scenario": "Presenta delirios de persecución, afirma que el gobierno le ha implantado un chip. Habla incoherencias y tiene afecto aplanado. No se identifican causas médicas ni consumo de sustancias tras toxicología negativa. Deterioro evidente de la funcionalidad.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

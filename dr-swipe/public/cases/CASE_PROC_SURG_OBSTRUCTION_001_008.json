@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Rosa, 61 años",
     "arrival_scenario": "Paciente con antecedente de 3 cirugías abdominales. Presenta dolor abdominal tipo cólico, distensión y ausencia de canalización de gases de 72 horas. Auscultación: ruidos peristálticos de lucha (metálicos) seguidos de silencio. Rx de abdomen con niveles hidroaéreos y 'pila de monedas'.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

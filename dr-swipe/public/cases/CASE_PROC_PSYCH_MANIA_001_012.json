@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Miguel, 32 años",
     "arrival_scenario": "Presenta verborrea, fuga de ideas y grandiosidad. Afirma ser el 'nuevo director del hospital' sin tener formación médica. Afecto expansivo, pobre juicio de realidad. Escala DIGFAST positiva.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

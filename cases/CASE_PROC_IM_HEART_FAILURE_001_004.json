@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Rosa, 65 años",
     "arrival_scenario": "Mujer con fibrilación auricular crónica y HAS. Presenta disnea con esfuerzos moderados (subir un piso de escaleras) y aumento de peso de 4 kg en 2 semanas. Ecocardiograma: FEVI 60%, disfunción diastólica Grado II.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

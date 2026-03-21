@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Diego, 2 años",
     "arrival_scenario": "Preescolar con cuadro de 3 días de diarrea sin moco ni sangre y vómitos que mejoraron ayer. Actualmente: sed, mucosas semisecas, orina concentrada, pero alerta y activo. Pérdida de peso estimada: 6%. Decide hidratación en casa.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

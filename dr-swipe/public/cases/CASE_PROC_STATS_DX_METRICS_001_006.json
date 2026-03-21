@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Pedro, 51 años",
     "arrival_scenario": "La prueba tiene una Sensibilidad del 90% y una Especificidad del 90%. El resultado del paciente es POSITIVO. Cálculo: De 1000 personas, 10 están enfermas. La prueba detecta 9 (VP). De 990 sanos, falla en 99 (FP). VPP = 9 / (9 + 99).",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

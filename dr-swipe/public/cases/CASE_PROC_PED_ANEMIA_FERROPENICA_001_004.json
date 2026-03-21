@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Sara, 13 años",
     "arrival_scenario": "Adolescente con menarquía hace 1 año y ciclos menstruales abundantes (7 días, uso de 8 toallas/día). Refiere cansancio extremo y dificultad para concentrarse. Hb 9.2 g/dl, VCM 70, ferritina 8 ng/ml.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Marta, 57 años",
     "arrival_scenario": "Paciente con DM2 de 5 años de evolución en manejo con Metformina 850 mg c/12h. Su HbA1c actual es de 8.2%. TFG reportada en 75 mL/min/1.73m². El paciente desea un fármaco que le ayude a bajar de peso y proteja su corazón.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

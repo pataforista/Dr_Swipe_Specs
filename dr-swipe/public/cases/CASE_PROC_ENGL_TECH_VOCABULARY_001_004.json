@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Carmen, 27 años",
     "arrival_scenario": "Examination reveals a 'rash' on the upper limbs and 'wheezing' upon lung auscultation. Term translation check: What is the correct medical equivalent for 'Shortness of Breath' and 'Wheezing' in Spanish?",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

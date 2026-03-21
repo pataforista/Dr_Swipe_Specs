@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Sofía, 16 años",
     "arrival_scenario": "Acude por lesiones en cara de 6 meses de evolución. Presenta comedones abiertos y cerrados, pápulas y algunas pústulas inflamatorias en frente y mejillas. Refiere que le genera gran inseguridad social.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

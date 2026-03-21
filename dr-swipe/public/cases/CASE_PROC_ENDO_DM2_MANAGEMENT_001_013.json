@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Fernando, 62 años",
     "arrival_scenario": "Paciente con DM2 de 5 años de evolución en manejo con Metformina 850 mg c/12h. Su HbA1c actual es de 8.2%. No tiene antecedentes de pancreatitis. Se busca intensificar tratamiento según las últimas guías ADA/GPC.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

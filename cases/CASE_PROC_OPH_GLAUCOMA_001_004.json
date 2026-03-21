@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Don Jorge, 62 años",
     "arrival_scenario": "Diabético tipo 2 con retinopatía conocida. En revisión de rutina se detecta PIO 28 mmHg bilateral, excavación papilar 0.8 y defectos campimétricos en arcada superior. Asintomático. ¿Cuál es el diagnóstico y el manejo?",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

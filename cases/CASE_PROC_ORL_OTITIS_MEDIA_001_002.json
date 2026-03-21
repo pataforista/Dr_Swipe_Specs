@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Isabella, 18 meses",
     "arrival_scenario": "Lactante en guardería con tercer episodio de otitis media en 4 meses. Fiebre de 38.8°C, otorrea purulenta en oído izquierdo desde ayer. Mal estado general. Los padres preguntan si es candidata a colocación de tubos de ventilación.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

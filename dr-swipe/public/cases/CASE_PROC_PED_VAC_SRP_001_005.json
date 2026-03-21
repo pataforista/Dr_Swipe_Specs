@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Elena, 18 años",
     "arrival_scenario": "Visita de rutina a los 18 meses. Peso y talla en percentil 50. Hitos del desarrollo (camina independiente) adecuados. Todo normal. La madre pregunta qué vacunas le tocan hoy que acaba de cumplir año y medio.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

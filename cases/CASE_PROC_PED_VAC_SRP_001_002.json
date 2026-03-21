@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Luis, 18 años",
     "arrival_scenario": "Visita de rutina a los 18 meses. Peso y talla en percentil 50. Hitos del desarrollo (camina independiente) adecuados. Esquema de vacunación al corriente hasta el año de vida. ¿Qué biológicos le corresponden en esta visita?",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

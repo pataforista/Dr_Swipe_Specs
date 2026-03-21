@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "María, 16 años",
     "arrival_scenario": "Paciente de 12 semanas con sangrado vaginal intermitente, refiere haber expulsado 'bolitas como uvas'. USG obstétrico revela imagen en 'tormenta de nieve' o 'panal de abejas'. Ausencia de feto.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

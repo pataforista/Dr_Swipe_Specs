@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Isabel, 27 años",
     "arrival_scenario": "Paciente con retraso menstrual de 8 semanas. Presenta síncope y dolor a la movilización cervical intenso. Signos de irritación peritoneal (rebote positivo). USG transvaginal: Fondo uterino vacío, líquido libre en fondo de saco de Douglas.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

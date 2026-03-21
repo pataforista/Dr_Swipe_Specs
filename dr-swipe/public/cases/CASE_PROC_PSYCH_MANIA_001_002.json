@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Rosa, 31 años",
     "arrival_scenario": "Ingresa por agitación psicomotriz. Familia refiere que lleva 14 días sin dormir, gastando dinero excesivamente y hablando sin parar. Muestra disminución de la necesidad de dormir. Hipersexualidad y conducta de riesgo (compras impulsivas).",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

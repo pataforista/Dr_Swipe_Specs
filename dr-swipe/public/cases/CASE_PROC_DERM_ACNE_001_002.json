@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Diego, 19 años",
     "arrival_scenario": "Acude por brotes recurrentes en frente y espalda, especialmente al final del semestre universitario. Presenta comedones cerrados y pápulas eritematosas. Refiere haber usado antibióticos tópicos sin receta durante 6 meses sin mejora.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

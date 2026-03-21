@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Ana, 33 años",
     "arrival_scenario": "Acude por resultado de citología cervical (Papanicolaou) de rutina. Inicio de VSA a los 16 años. Citología reporta HSIL (Lesión de Alto Grado). Durante colposcopia se observa zona de transformación tipo 2 con epitelio acetoblanco denso.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Elena, 5.5 años",
     "arrival_scenario": "Paciente de 20 meses traído a consulta. Esquema previo completo para su edad anterior, pero no ha recibido dosis desde los 12 meses. La madre pregunta si debe esperar a los 6 años para la segunda dosis de SRP, como le dijeron con su hijo mayor.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

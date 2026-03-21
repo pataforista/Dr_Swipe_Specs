@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "José, 13 años",
     "arrival_scenario": "Paciente de 9 años con lengua en fresa, palidez perioral y exantema que inició en cuello y axilas. Líneas de Pastia (hiperpigmentación en pliegues) y Fascies de Filatov (palidez perioral) presentes.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Andrea, 25 años",
     "arrival_scenario": "Mujer adulta con acné de inicio tardío, predominio en mandíbula y cuello, que se exacerba en la semana premenstrual. Niega comedones; predominan las lesiones inflamatorias profundas.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

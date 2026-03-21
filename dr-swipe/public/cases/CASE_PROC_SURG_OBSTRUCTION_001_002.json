@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Miguel, 41 años",
     "arrival_scenario": "Paciente con antecedente de 3 cirugías abdominales. Presenta dolor abdominal tipo cólico, distensión y ausencia de canalización de gases de 24 horas. Gran distensión timpánica. Ampolla rectal vacía al tacto.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Sebastián, 4 meses",
     "arrival_scenario": "Lactante con 5 días de diarrea acuosa profusa y vómitos tras introducción de fórmula nueva. Al examen: en estado de choque compensado: TA 70/40, FC 185, mala perfusión periférica. Pérdida de >12% del peso. Requiere manejo de urgencia.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

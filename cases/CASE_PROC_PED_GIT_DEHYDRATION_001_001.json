@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Miguel, 3.5 años",
     "arrival_scenario": "Paciente preescolar con diarrea profusa. Se encuentra muy inquieto, bebe agua con avidez, pero sus mucosas están secas. Fontanela anterior ligeramente hundida. El paciente está consciente pero muy irritable.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

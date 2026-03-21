@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Miguel, 27 años",
     "arrival_scenario": "Presenta signos de Kernig y Brudzinski positivos. Al interrogatorio refiere haber estado en un dormitorio militar recientemente. LCR: Aspecto turbio, 1500 leucos (90% PMN), Glucosa 20 mg/dl, Proteínas 150 mg/dl. ¿Cuál es el manejo empírico?",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Carlos, 37 años",
     "arrival_scenario": "Acude por cefalea intensa, fiebre de 39°C y rigidez de nuca. Se observan petequias en extremidades inferiores. Se sospecha N. meningitidis. Se debe iniciar tratamiento y aislamiento de gotitas inmediatamente.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

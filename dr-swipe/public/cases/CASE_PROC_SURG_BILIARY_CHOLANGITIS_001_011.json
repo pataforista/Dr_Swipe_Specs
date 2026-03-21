@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Pedro, 54 años",
     "arrival_scenario": "Cuadro de 2 días de dolor en hipocondrio derecho irradiado a escápula, que se agregó fiebre (39°C) e ictericia. Escleras con tinte ictérico +++. Abdomen con Murphy negativo pero doloroso a palpación profunda en CSD. Leucos 18,000.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "María, 3 años",
     "arrival_scenario": "Niña de 7 años con adenopatías retroauriculares y cervicales dolorosas, seguidas de exantema pálido. A la exploración: Manchas de Forchheimer (puntilleo rojo) en paladar blando. Adenopatías retroauriculares muy marcadas.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

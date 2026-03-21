@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Marta, 64 años",
     "arrival_scenario": "Paciente anciano con antecedente de tabaquismo y cardiopatía isquémica. Presenta dolor abdominal atroz que no mejora con analgésicos. Se sospecha etiología embólica. Se solicita Angio-TC de abdomen de forma urgente.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

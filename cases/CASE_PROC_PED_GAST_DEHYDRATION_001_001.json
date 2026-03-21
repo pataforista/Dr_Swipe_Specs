@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Iker, 9 meses",
     "arrival_scenario": "Lactante con cuadro de diarrea y vómitos constantes. Al examen: Sed intensa, llanto sin lágrimas, ojos hundidos y llenado capilar de 4 segundos. Ha perdido el 11% de su peso corporal.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

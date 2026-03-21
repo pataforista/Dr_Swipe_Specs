@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "María, 27 años",
     "arrival_scenario": "Multigesta de 30 semanas con dolor abdominal súbito e intenso. Refiere sangrado vaginal oscuro. Frecuencia cardiaca fetal con desaceleraciones tardías. La paciente refiere que el abdomen 'se le puso duro' de golpe.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

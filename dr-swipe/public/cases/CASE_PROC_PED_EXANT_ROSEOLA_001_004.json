@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Carlos, 0.5 años",
     "arrival_scenario": "Tras 4 días de fiebre alta difícil de controlar, el niño amanece sin fiebre pero con manchas rosadas en tronco y cuello. Antecedente de crisis convulsiva febril hace 24 horas durante el pico máximo de temperatura.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

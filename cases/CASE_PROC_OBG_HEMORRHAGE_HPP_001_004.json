@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Sra. Laura, 30 años",
     "arrival_scenario": "Gran multípara (G5P4) tras parto domiciliario. Acude a urgencias con sangrado transvaginal masivo. Al examen: TA 70/40, FC 140 lpm, útero blando y mal contraído. Presenta coagulopatía clínica (petequias, sangrado de venopuntura).",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Ramón, 35 años",
     "arrival_scenario": "Portero de escuela con tos seca nocturna y disnea recurrente que empeora al inicio del otoño. Antecedente de rinitis alérgica. Espirometría previa muestra reversibilidad del 15%. Pregunta si puede usar SABA como único tratamiento.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

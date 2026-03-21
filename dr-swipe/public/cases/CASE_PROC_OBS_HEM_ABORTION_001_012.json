@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Marta, 28 años",
     "arrival_scenario": "Gestante de 10 semanas acude por sangrado vaginal transcurrente y dolor tipo cólico en hipogastrio. Útero menor de lo esperado para amenorrea. USG reporta útero con ecos heterogéneos y ausencia de saco gestacional íntegro.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

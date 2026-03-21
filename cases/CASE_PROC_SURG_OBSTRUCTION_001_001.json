@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Laura, 61 años",
     "arrival_scenario": "Cuadro de vómitos fecaloideos, dolor abdominal difuso intenso y gran distensión abdominal progresiva desde hace 24 hrs. Auscultación: ruidos peristálticos de lucha (metálicos) seguidos de silencio. Rx de abdomen con niveles hidroaéreos y 'pila de monedas'.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

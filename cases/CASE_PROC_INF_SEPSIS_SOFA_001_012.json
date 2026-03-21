@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Laura, 70 años",
     "arrival_scenario": "Ingresa por cuadro de neumonía. Presenta alteración del estado de alerta, FR 24 y TA sistólica de 90 mmHg (qSOFA positivo). Se han administrado 30 mL/kg de cristaloides y persiste hipotensión sistólica. Requiere soporte vasopresor.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

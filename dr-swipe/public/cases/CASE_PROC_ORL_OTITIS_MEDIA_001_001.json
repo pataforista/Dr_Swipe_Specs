@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Santi, 3 años",
     "arrival_scenario": "Lactante con antecedente de infección respiratoria superior hace 3 días. Inicia con irritabilidad, llanto inconsolable y fiebre de 38.5°C. Se toca frecuentemente la oreja derecha. La madre nota que 'no escucha bien' de ese lado.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Laura, 24 años",
     "arrival_scenario": "Paciente cursando con 28 SDG. Se realiza curva de tolerancia a la glucosa de 75g (Estrategia de Un Paso). Ayuno reportado en 91 mg/dl. A la hora presenta 190 mg/dl. ¿Cuál es la conducta?",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

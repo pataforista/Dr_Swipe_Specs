@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Carmen, 48 años",
     "arrival_scenario": "Presenta choque séptico: hipotensión y alteración del estado de alerta, sumado a la tríada de Charcot (Pentada de Reynolds). Leucocitosis de 22,000, Bilirrubina Total 5.2 mg/dl a expensas de Directa. ¿Cuál es el tratamiento definitivo urgente?",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

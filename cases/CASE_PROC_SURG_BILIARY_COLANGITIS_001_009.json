@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Marta, 41 años",
     "arrival_scenario": "Paciente con antecedente de colelitiasis que acude por fiebre, dolor en hipocondrio derecho e ictericia (Tríada de Charcot). Leucocitosis de 22,000, Bilirrubina Total 5.2 mg/dl a expensas de Directa. ¿Cuál es el tratamiento definitivo urgente?",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

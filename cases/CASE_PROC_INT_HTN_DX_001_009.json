@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Elena, 53 años",
     "arrival_scenario": "Paciente con antecedente de tabaquismo. En campañas de salud le detectan TA 150/100 mmHg. Acude para corroborar diagnóstico. Se registran bitácoras de TA en casa (AMPA) con promedio de 138/88 mmHg. En consultorio hoy: 146/94 mmHg.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

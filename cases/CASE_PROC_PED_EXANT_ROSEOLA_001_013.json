@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Antonio, 2.5 años",
     "arrival_scenario": "Lactante de 18 meses con fiebre de 39.5°C por 3 días sin foco aparente. Hoy la fiebre desaparece y brota exantema rosado. Exantema maculopapular no pruriginoso que afecta principalmente tronco. El niño luce bien tras la caída de la fiebre.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Valeria, 22 años",
     "arrival_scenario": "Estudiante universitaria con lesiones quísticas y nodulares en mejillas y mentón. El cuadro inició con su embarazo hace 1 año y persiste en la lactancia. Solicita orientación sobre opciones de tratamiento seguras.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

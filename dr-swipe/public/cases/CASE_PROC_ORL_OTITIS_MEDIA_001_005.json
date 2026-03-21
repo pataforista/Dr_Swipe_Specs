@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Lucas, 4 años",
     "arrival_scenario": "Acude 72 horas después de diagnóstico de OMA tratada con amoxicilina. Presenta dolor retroauricular, eritema y edema de apófisis mastoides con desplazamiento anterior del pabellón auricular derecho.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Miguel, 41 años",
     "arrival_scenario": "VIH positivo en TARV. En control semestral el VDRL resulta reactivo 1:8, cuando en el control anterior fue 1:4. Niega síntomas neurológicos. Se solicita criterio para interpretación del caso y necesidad de PL.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

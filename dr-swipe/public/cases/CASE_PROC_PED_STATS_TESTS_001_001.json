@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Dr. Martínez, R1 de Pediatría",
     "arrival_scenario": "Estás analizando un estudio sobre la eficacia de un nuevo antibiótico en neumonía infantil. ¿Qué prueba estadística es la adecuada para cada tipo de variable y comparación?",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

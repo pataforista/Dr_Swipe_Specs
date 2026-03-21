@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Carlos, 47 años",
     "arrival_scenario": "Masculino de 24 años tras accidente automovilístico. Presenta dificultad respiratoria severa y desviación traqueal. A la exploración: Ingurgitación yugular, ausencia de ruidos respiratorios a la derecha y timpanismo a la percusión.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

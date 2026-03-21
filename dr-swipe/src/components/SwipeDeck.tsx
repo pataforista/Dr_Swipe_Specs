@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { motion, useMotionValue, useTransform, useAnimation, AnimatePresence } from 'framer-motion';
 import type { Card } from '../types/game';
 import { useGameAudio } from '../hooks/useGameAudio';
+import { triggerHaptic } from '../utils/hapticFeedback';
 
 interface SwipeDeckProps {
   cards: Card[];
@@ -231,10 +232,12 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
 
     if (info.offset.x > threshold || velocity > 350) {
       playSwipe('right');
+      triggerHaptic('cardSwipe');
       await controls.start({ x: 600, opacity: 0, rotate: 25, transition: { duration: 0.25 } });
       onSwipe('right');
     } else if (info.offset.x < -threshold || velocity < -350) {
       playSwipe('left');
+      triggerHaptic('cardSwipe');
       await controls.start({ x: -600, opacity: 0, rotate: -25, transition: { duration: 0.25 } });
       onSwipe('left');
     } else {

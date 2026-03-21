@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Marta, 3.5 años",
     "arrival_scenario": "Lactante de 19 meses que acude para regularizar esquema de vacunación tras periodo de desabasto. Se revisa cartilla anterior: recibió Pentavalente, Neumococo y Rotavirus a los 2, 4 y 6 meses. Primera dosis de SRP al año de vida.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

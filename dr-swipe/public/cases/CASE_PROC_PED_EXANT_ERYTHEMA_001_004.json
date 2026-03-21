@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Fernando, 7 años",
     "arrival_scenario": "Escolar de 6 años que presenta eritema súbito en ambas mejillas, con aspecto de 'bofetada'. Exantema en extremidades con aspecto de 'encaje' o reticulado. No presenta fiebre ni malestar general.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

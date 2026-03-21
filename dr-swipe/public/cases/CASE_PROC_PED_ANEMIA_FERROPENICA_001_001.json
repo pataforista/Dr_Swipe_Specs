@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Mateo, 14 meses",
     "arrival_scenario": "Lactante que es alimentado predominantemente con leche de vaca (1 litro al día) y pocos sólidos. La madre nota palidez y mayor cansancio de lo habitual. No tiene antecedentes de sangrado ni parásitos.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

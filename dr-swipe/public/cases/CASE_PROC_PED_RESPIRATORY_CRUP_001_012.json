@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Luis, 3 años",
     "arrival_scenario": "Paciente de 2 años con fiebre leve y dificultad respiratoria progresiva. A la auscultación estridor laríngeo. Rx lateral de cuello muestra estrechamiento subglótico (Signo de la torre o del lápiz).",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

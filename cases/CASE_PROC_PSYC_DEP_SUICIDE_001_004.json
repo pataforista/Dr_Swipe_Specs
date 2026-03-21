@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Juan, 52 años",
     "arrival_scenario": "Acude por pérdida de interés en sus actividades desde hace 1 mes. Refiere insomnio de despertar temprano y sentimientos de culpa. Antecedente de intento suicida previo. Presenta descuido en su higiene personal y falta de energía (aprovechamiento).",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

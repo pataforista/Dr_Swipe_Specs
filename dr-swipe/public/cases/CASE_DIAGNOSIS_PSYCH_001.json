@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Mujer, 28 años",
     "arrival_scenario": "Traída por familiares a Urgencias. Habla sin parar y no se queda quieta en la camilla.",
-    "time_limit_sec": 30
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

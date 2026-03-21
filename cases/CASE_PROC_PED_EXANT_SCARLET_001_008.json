@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Elena, 12 años",
     "arrival_scenario": "Paciente de 6 años con lengua en fresa, palidez perioral y exantema que inició en cuello y axilas. Al tercer día el exantema descama en finas láminas. Faringe hiperémica con exudado purulento.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

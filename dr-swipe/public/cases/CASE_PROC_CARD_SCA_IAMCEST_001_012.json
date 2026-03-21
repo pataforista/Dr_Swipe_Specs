@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Miguel, 65 años",
     "arrival_scenario": "Paciente con antecedente de tabaquismo y HAS. Refiere dolor retroesternal intenso que no cede con el reposo. Se encuentra en un centro de salud sin sala de hemodinamia. El hospital con ICP más cercano está a 3 horas de distancia.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

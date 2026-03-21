@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "José, 12 años",
     "arrival_scenario": "Niño de 5 años presenta exantema que inició en tronco y se extendió a cara. Presenta 'cielo estrellado'. Fiebre moderada. Las vesículas tienen aspecto de 'gota de rocío'. Prurito intenso referido por la madre.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

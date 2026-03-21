@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Fernando, 5 años",
     "arrival_scenario": "Evaluación antropométrica de rutina para preescolar de 2 años. Se observa talla baja persistente. El peso actual es adecuado para su talla baja, pero insuficiente para su edad cronológica.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Laura, 35 años",
     "arrival_scenario": "Mujer de 25 años acude a su Unidad de Medicina Familiar para asesoría preventiva. No tiene antecedentes de importancia. ¿Cuál sería un ejemplo de Prevención PRIMARIA en esta paciente respecto al virus del papiloma humano (VPH)?",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

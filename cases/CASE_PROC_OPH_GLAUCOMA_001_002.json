@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Sr. Manuel, 70 años",
     "arrival_scenario": "Acude a urgencias con ojo derecho rojo, disminución súbita de agudeza visual y cefalea hemicraneal derecha intensa. Relata que el dolor inició tras estar en una sala de cine oscura. Pupila en midriasis media y córnea turbia.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

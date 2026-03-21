@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Ana, 22 años",
     "arrival_scenario": "Gestante de 12 semanas acude por sangrado vaginal transcurrente y dolor tipo cólico en hipogastrio. Especuloscopía: Cérvix con orificios abiertos, se observa presencia de restos ovulares en canal vaginal.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Fernando, 5 años",
     "arrival_scenario": "Lactante de 5 semanas de vida, traído por vómitos no biliar en proyectil tras cada toma. Se muestra muy hambriento después de vomitar. A la palpación abdominal profunda: masa móvil, firme en forma de oliva en cuadrante superior derecho.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

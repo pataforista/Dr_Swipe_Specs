@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Estela, 35 años",
     "arrival_scenario": "Gestante de 28 semanas con epistaxis anterior recurrente en las últimas 2 semanas. Sin antecedentes hemorrágicos. Se sospecha como causa la hipervascularización de la mucosa nasal propia del embarazo. TA 130/85.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

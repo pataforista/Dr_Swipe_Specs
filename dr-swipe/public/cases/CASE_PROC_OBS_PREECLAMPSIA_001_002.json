@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "María, 38 años",
     "arrival_scenario": "Gestante de 36 SDG Acude por cefalea pulsátil, fosfenos y acúfenos. Laboratorios muestran plaquetas en 85,000 y AST/ALT al doble del límite superior.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

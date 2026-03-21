@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Rosa, 31 años",
     "arrival_scenario": "Paciente con antecedente de Preeclampsia, acude por sangrado vaginal oscuro escaso y dolor continuo tipo cólico muy fuerte. A la palpación: Hipertonía uterina (útero leñoso). FCF en 90 lpm (bradicardia fetal).",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

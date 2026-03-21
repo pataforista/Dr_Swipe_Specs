@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Elena, 8 años",
     "arrival_scenario": "Escolar de 5 años presenta exantema rosado que inició en cara y se generalizó en 24 horas. Febricula persistente. Exantema que no confluye, desaparece al tercer día. Madre gestante en primer trimestre (contacto de riesgo).",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

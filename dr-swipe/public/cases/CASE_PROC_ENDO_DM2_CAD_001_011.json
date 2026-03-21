@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "María, 24 años",
     "arrival_scenario": "Familiar refiere poliuria y polidipsia de 1 semana. El paciente presenta respiración profunda y rápida (Kussmaul) y aliento a frutas. Paciente con deshidratación grado 2. Se inicia protocolo de manejo metabólico urgente.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

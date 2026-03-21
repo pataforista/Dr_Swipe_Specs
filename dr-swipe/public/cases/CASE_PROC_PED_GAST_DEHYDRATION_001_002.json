@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Valentina, 6 meses",
     "arrival_scenario": "Lactante con diarrea acuosa (8 evacuaciones en 24h) y vómitos desde ayer por gastroenteritis viral. Al examen: ojos hundidos, llanto sin lágrimas, pliegue cutáneo lento (>2 seg), fontanela deprimida. Ha perdido 8% de su peso.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

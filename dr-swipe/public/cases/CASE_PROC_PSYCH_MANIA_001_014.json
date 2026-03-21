@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Fernando, 21 años",
     "arrival_scenario": "Ingresa por agitación psicomotriz. Familia refiere que lleva 7 días sin dormir, gastando dinero excesivamente y hablando sin parar. Afecto expansivo, pobre juicio de realidad. Escala DIGFAST positiva.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

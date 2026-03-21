@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Don Carlos, 55 años",
     "arrival_scenario": "Acude a urgencias por sangrado nasal activo abundante por narina derecha. Refiere que inició hace 20 minutos tras estornudo. Antecedente de HAS mal controlada. Se observa sangre fresca fluyendo al examinar la orofaringe.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "María, 84 años",
     "arrival_scenario": "Paciente post-operado de apendicectomía con fiebre, taquicardia y oliguria. Presenta lactato sérico de 4.5 mmol/L. Se han administrado 30 mL/kg de cristaloides y persiste hipotensión sistólica. Requiere soporte vasopresor.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

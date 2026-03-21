@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Miguel, 25 años",
     "arrival_scenario": "A patient presents with 'shortness of breath' and progressive 'fatigue' after walking two blocks. False Friend Alert: The patient reports 'Constipation'. Does this refer to nasal congestion or bowel movement issues?",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

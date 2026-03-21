@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Sra. Fernanda, 27 años",
     "arrival_scenario": "Parturienta con parto vaginal y alumbramiento natural hace 45 minutos. El sangrado continúa y la placenta aún no ha sido expulsada. Útero contraído y firme. Se sospecha retención de placenta acreta o percreta.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

@@ -10,7 +10,7 @@ import { dataLoader } from './utils/dataLoader';
 import { useGameAudio } from './hooks/useGameAudio';
 import { cleanVazquezComment } from './utils/formatters';
 import { triggerHaptic } from './utils/hapticFeedback';
-import { calculateCardScore, calculatePerfectRoundBonus, getDailyStreakMultiplier, COMBO_MILESTONE_COINS } from './utils/scoringEngine';
+import { calculatePerfectRoundBonus, getDailyStreakMultiplier, COMBO_MILESTONE_COINS } from './utils/scoringEngine';
 import { LIFELINE_COST } from './store/useCodexStore';
 import DecryptedText from './components/bits/DecryptedText';
 import ShinyText from './components/bits/ShinyText';
@@ -1210,7 +1210,7 @@ function App() {
       )}
       
       {/* HUD */}
-      <div className="w-full max-w-md flex justify-between items-start px-8 py-10 z-50">
+      <div className="w-full max-w-md flex justify-between items-start px-4 sm:px-8 py-6 sm:py-10 z-50">
         <div className="flex flex-col">
           <span className="text-[10px] uppercase font-black tracking-[0.3em] text-slate-500 mb-1">XP ACUMULADO</span>
           <div className="flex items-baseline gap-2">

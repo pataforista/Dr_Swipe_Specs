@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Laura, 0 años",
     "arrival_scenario": "Recién nacido a término. Tras el nacimiento presenta FC de 90 lpm, llanto débil, cierta flexión de extremidades e irritabilidad reflexiva (mueca). Se evalúa APGAR al primer minuto. El cuerpo está rosado pero las manos y pies están azules.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

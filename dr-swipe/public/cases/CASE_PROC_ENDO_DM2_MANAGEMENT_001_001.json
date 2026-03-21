@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Laura, 61 años",
     "arrival_scenario": "Acude a control. Presenta antecedente de infarto previo y tiene IMC de 32. Su tratamiento actual es insuficiente. TFG reportada en 75 mL/min/1.73m². El paciente desea un fármaco que le ayude a bajar de peso y proteja su corazón.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

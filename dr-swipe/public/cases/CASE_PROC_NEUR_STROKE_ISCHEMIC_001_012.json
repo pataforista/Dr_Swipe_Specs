@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Marta, 66 años",
     "arrival_scenario": "Traído por familiares por presentar desviación de la comisura bucal y pérdida de fuerza en hemicuerpo derecho de 3 horas de evolución. Inició con los síntomas hace exactamente 2.5 horas. El paciente es candidato potencial a terapia de reperfusión.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

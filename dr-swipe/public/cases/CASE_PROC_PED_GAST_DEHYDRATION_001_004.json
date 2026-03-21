@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Mariana, 1 año",
     "arrival_scenario": "Lactante con diarrea sanguinolenta (shigelosis) y fiebre de 39°C por 2 días. Al examen: fontanela normotensa, mucosas ligeramente secas, llenado capilar 2 segundos. Pérdida de peso 5%. Está irritable pero consolable.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

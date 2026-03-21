@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Marta, 80 años",
     "arrival_scenario": "Acude por dolor abdominal de inicio súbito, periumbilical, de intensidad 10/10. Tiene antecedente de Fibrilación Auricular. Se sospecha etiología embólica. Se solicita Angio-TC de abdomen de forma urgente.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

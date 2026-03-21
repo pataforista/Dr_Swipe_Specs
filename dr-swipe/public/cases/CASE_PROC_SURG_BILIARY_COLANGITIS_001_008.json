@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Elena, 60 años",
     "arrival_scenario": "Presenta choque séptico: hipotensión y alteración del estado de alerta, sumado a la tríada de Charcot (Pentada de Reynolds). USG de hígado y vías biliares muestra colédoco de 12mm con imagen hiperecoica que proyecta sombra acústica en su interior.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Carmen, 10 años",
     "arrival_scenario": "Escolar asmática con exacerbación de tos y sibilancias. Rx tórax: atelectasia de lóbulo medio derecho compatible con neumonía + broncoespasmo. SatO2 92%. No ha respondido al salbutamol en casa. Se plantea manejo combinado.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

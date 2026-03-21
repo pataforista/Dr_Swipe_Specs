@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Miguel, 35 años",
     "arrival_scenario": "Paciente con dolor abdominal agudo. Al examen: Punto de McBurney (+) y signo de Rovsing (+). Leucocitosis de 14,000 con neutrofilia. Cálculo de Escala de Alvarado: Migración (1), Anorexia (1), Náusea (1), McBurney (2), Rebote (1), Fiebre (1), Leucocitosis (2). Total: 9/10.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Laura, 36 años",
     "arrival_scenario": "Paciente con diagnóstico reciente de VIH. Acude para inicio de tratamiento. Se encuentra asintomático actualmente. Conteo de CD4: 350 cél/mm³. Carga viral: 50,000 copias/mL. ¿Cuál es la conducta recomendada respecto al inicio de ART?",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

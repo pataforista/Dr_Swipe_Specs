@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Emilio, 18 meses",
     "arrival_scenario": "Lactante con fiebre de 39.5°C, taquipnea y retracción subcostal. Rx de tórax: consolidación en lóbulo superior derecho. SatO2 88% en aire ambiente. No recibió vacuna antineumocócica completa. Requiere hospitalización urgente.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

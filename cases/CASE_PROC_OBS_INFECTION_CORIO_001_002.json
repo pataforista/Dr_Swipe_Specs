@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Rosa, 23 años",
     "arrival_scenario": "Gestante de 36 semanas con ruptura de membranas de 18 horas de evolución. Presenta fiebre de 38.5°C y taquicardia fetal. FCF de 170 lpm (taquicardia fetal persistente). Leucocitosis de 18,000 con neutrofilia.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

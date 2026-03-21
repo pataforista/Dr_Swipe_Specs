@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Fernando, 34 años",
     "arrival_scenario": "Acude por pérdida de interés en sus actividades desde hace 1 mes. Refiere insomnio de despertar temprano y sentimientos de culpa. Al interrogatorio directo admite tener un plan estructurado para quitarse la vida mediante ingesta de fármacos.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

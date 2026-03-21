@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Isabel, 32 años",
     "arrival_scenario": "Mujer de 28 años con reporte de citología reciente que indica Lesión Intraepitelial Escamosa de Bajo Grado (LSIL). Citología reporta HSIL (Lesión de Alto Grado). Durante colposcopia se observa zona de transformación tipo 2 con epitelio acetoblanco denso.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

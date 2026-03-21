@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Rosa, 17 años",
     "arrival_scenario": "Paciente con DM conocido que suspende insulina. Llega con dolor abdominal, náuseas y vómito. Laboratorio: Glucosa 450 mg/dl, PH 7.15, HCO3 12 mEq/L. Cetonas en orina ++++. Brecha aniónica aumentada.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

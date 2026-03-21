@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "María, 24 años",
     "arrival_scenario": "Gestante de 26 semanas de gestación acude para tamizaje de diabetes gestacional. Antecedente de IMC 30. Ayuno reportado en 91 mg/dl. A la hora presenta 190 mg/dl. ¿Cuál es la conducta?",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

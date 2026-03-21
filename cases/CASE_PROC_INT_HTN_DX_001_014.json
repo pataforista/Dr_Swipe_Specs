@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Juan, 59 años",
     "arrival_scenario": "Paciente con antecedente de tabaquismo. En campañas de salud le detectan TA 150/100 mmHg. Acude para corroborar diagnóstico. Se realiza diagnóstico tras tres mediciones en días distintos con promedio ≥140/90 mmHg.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

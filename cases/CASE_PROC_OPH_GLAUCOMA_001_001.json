@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Sra. Gloria, 65 años",
     "arrival_scenario": "Acude por dolor ocular súbito e intensísimo en ojo derecho, visión de 'halos de colores' y náuseas. Al examen: Ojo rojo, pupila en midriasis media arreactiva y globo ocular pétreo al tacto.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

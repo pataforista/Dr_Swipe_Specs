@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Luis, 1.5 años",
     "arrival_scenario": "Lactante de 9 meses traído a control. La madre pregunta si su desarrollo es normal para su edad. A los 18 meses: Camina solo, dice 15 palabras claras y señala lo que quiere. No sube escaleras sin apoyo aún.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

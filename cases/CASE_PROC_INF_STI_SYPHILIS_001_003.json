@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Roberto, 32 años",
     "arrival_scenario": "HSH acude por erupción maculopapular generalizada, incluyendo palmas y plantas, que apareció hace 2 semanas. Niega úlceras actuales pero recuerda una \"llaguita indolora\" en el recto que desapareció sola hace 6 semanas.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

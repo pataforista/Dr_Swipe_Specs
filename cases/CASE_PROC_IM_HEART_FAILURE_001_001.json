@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Don Pedro, 68 años",
     "arrival_scenario": "Paciente con antecedente de infarto previo y DM2. Acude por disnea de medianos esfuerzos (NYHA II) que ha progresado a pequeños esfuerzos, ortopnea y edema de miembros inferiores. Al examen: Ingurgitación yugular y tercer ruido (S3).",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

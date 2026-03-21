@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Pedro, 30 años",
     "arrival_scenario": "Paciente con trauma torácico penetrante. Se observa ingurgitación yugular, hipotensión (80/40) y timpanismo a la percusión del hemitórax derecho. Bajo estándares de ATLS 10ª Edición, se identifica Neumotórax a Tensión. ¿Cuál es el sitio de descompresión inmediata con aguja?",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

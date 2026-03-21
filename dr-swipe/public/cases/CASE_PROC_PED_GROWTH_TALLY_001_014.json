@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Isabel, 2 años",
     "arrival_scenario": "Paciente de 3 años en control de niño sano. Reporta dieta basada en carbohidratos, poca proteína. Se observa talla baja persistente. El peso actual es adecuado para su talla baja, pero insuficiente para su edad cronológica.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Carmen, 51 años",
     "arrival_scenario": "Paciente con obesidad grado I, refiere poliuria y polidipsia ocasional. Glucosa al azar de 210 mg/dl. Glucosa plasmática a las 2 horas de carga de 75g: 205 mg/dl.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Isabel, 6 años",
     "arrival_scenario": "Niño de 4 años presenta exantema que inició en tronco y se extendió a cara. Presenta 'cielo estrellado'. A la exploración: máculas, pápulas, vesículas y costras que coexisten en la misma región abdominal.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

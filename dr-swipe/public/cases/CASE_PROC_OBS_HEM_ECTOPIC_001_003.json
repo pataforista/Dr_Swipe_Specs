@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Laura, 40 años",
     "arrival_scenario": "Acude a urgencias por dolor abdominal súbito en fosa ilíaca derecha de intensidad 10/10. Refiere manchado vaginal escaso. Signos de irritación peritoneal (rebote positivo). USG transvaginal: Fondo uterino vacío, líquido libre en fondo de saco de Douglas.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

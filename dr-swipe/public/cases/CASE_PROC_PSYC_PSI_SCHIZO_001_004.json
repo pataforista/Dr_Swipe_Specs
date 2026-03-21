@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Isabel, 25 años",
     "arrival_scenario": "Presenta delirios de persecución, afirma que el gobierno le ha implantado un chip. Habla incoherencias y tiene afecto aplanado. Durante la entrevista presenta soliloquios y refiere que los comerciales de TV tienen mensajes dirigidos a él (referencia).",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

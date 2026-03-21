@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Fernando, 60 años",
     "arrival_scenario": "Refiere dolor biliar antiguo. Hoy acude por fiebre con escalofríos, dolor en CSD y tinte ictérico franco. Escleras con tinte ictérico +++. Abdomen con Murphy negativo pero doloroso a palpación profunda en CSD. Leucos 18,000.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

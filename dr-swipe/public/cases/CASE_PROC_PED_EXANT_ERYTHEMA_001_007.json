@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Miguel, 10 años",
     "arrival_scenario": "Escolar de 8 años que presenta eritema súbito en ambas mejillas, con aspecto de 'bofetada'. Paciente con esferocitosis hereditaria (complicación latente por Parvovirus B19).",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Luis, 18 años",
     "arrival_scenario": "Lactante sano, asintomático. Acude a su revisión de niño sano a los 18 meses de edad. Todo normal. La madre pregunta qué vacunas le tocan hoy que acaba de cumplir año y medio.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

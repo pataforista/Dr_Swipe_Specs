@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Carlos, 67 años",
     "arrival_scenario": "Paciente con antecedente de tabaquismo y HAS. Refiere dolor retroesternal intenso que no cede con el reposo. ECG muestra elevación del segmento ST de 3mm en V1, V2, V3 y V4. Imagen recíproca en II, III y aVF.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {
@@ -94,17 +94,29 @@
     "questions": [
       {
         "question": "¿En qué derivaciones INDICA IAMCEST anterior?",
-        "options": ["V1-V4 (± aVL) con imagen recíproca en II, III, aVF", "II, III, aVF con imagen recíproca en I, aVL", "V5-V6 con aVL"],
+        "options": [
+          "V1-V4 (± aVL) con imagen recíproca en II, III, aVF",
+          "II, III, aVF con imagen recíproca en I, aVL",
+          "V5-V6 con aVL"
+        ],
         "correct_index": 0
       },
       {
         "question": "¿Cuál es la prioridad si NO hay ICP disponible en <120 min?",
-        "options": ["Esperar fibrinolisis", "FIBRINOLIZAR ANTES de trasladar", "Monitoreo domiciliario"],
+        "options": [
+          "Esperar fibrinolisis",
+          "FIBRINOLIZAR ANTES de trasladar",
+          "Monitoreo domiciliario"
+        ],
         "correct_index": 1
       },
       {
         "question": "¿Por qué IAMCEST anterior es más grave que inferior?",
-        "options": ["Afecta ventriculo izquierdo grande → mayor riesgo de choque", "Siempre requiere cirugía", "Es menos grave, es confusión"],
+        "options": [
+          "Afecta ventriculo izquierdo grande → mayor riesgo de choque",
+          "Siempre requiere cirugía",
+          "Es menos grave, es confusión"
+        ],
         "correct_index": 0
       }
     ]

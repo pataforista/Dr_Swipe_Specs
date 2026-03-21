@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Juan, 70 años",
     "arrival_scenario": "Acude por dolor precordial opresivo irradiado a mandíbula de 60 minutos de evolución. Presenta náuseas y sudoración fría. Se encuentra en un centro de salud sin sala de hemodinamia. El hospital con ICP más cercano está a 3 horas de distancia.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {
@@ -94,17 +94,29 @@
     "questions": [
       {
         "question": "¿Cuál es el TIEMPO MÁXIMO puerta-aguja para fibrinolisis en IAMCEST?",
-        "options": ["30 minutos", "60 minutos", "90 minutos"],
+        "options": [
+          "30 minutos",
+          "60 minutos",
+          "90 minutos"
+        ],
         "correct_index": 0
       },
       {
         "question": "¿Qué indica ELEVACIÓN de ST nuevamente 30 min post-fibrinolisis?",
-        "options": ["Éxito del tratamiento", "Reoclusión del vaso → Rescate ICP", "Arritmia reperfusión"],
+        "options": [
+          "Éxito del tratamiento",
+          "Reoclusión del vaso → Rescate ICP",
+          "Arritmia reperfusión"
+        ],
         "correct_index": 1
       },
       {
         "question": "¿En qué orden se dan: ASA, Ticagrelor, y Fibrinolítico?",
-        "options": ["Fibrinolítico → ASA → Ticagrelor", "ASA + Ticagrelor → Fibrinolítico", "Ticagrelor → Fibrinolítico → ASA"],
+        "options": [
+          "Fibrinolítico → ASA → Ticagrelor",
+          "ASA + Ticagrelor → Fibrinolítico",
+          "Ticagrelor → Fibrinolítico → ASA"
+        ],
         "correct_index": 1
       }
     ]

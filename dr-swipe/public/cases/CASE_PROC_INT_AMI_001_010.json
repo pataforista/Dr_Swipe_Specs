@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Juan, 53 años",
     "arrival_scenario": "Paciente diabético llega con dolor torácico opresivo de 90 minutos. Irradia a mandíbula y brazo izquierdo. Elevación del ST en II, III, aVF (Inferior). Refiere que 'siente que se va a morir' (angor animi). DM2 de 15 años de evolución.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

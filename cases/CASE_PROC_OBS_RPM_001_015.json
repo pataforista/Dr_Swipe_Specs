@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Elena, 34 años",
     "arrival_scenario": "Gestante de 34 SDG Acude por salida brusca de abundantes líquidos transparentes transvaginales con olor a cloro. Cristalografía (test de helecho) positiva. FCF 140 lpm sin datos de pérdida de bienestar fetal.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

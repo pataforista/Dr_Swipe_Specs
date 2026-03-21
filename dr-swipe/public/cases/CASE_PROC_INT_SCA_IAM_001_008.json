@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Luis, 46 años",
     "arrival_scenario": "Paciente de 62 años con dolor torácico opresivo de gran intensidad, irradiado a mandíbula y brazo izquierdo. Refiere que el dolor inició hace 2 horas y no cede con el reposo. Se observa elevación de Biomarcadores (Troponinas).",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

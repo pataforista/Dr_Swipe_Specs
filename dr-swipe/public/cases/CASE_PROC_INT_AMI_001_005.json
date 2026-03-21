@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Luis, 52 años",
     "arrival_scenario": "Paciente diabético llega con dolor torácico opresivo de 90 minutos. Irradia a mandíbula y brazo izquierdo. ECG muestra supra-desnivel del ST en derivaciones V1-V4 (Antero-septal). Tabaquista activo (20 paq/año).",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

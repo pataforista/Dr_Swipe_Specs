@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Rosa, 0 años",
     "arrival_scenario": "Recién nacido a término. Tras el nacimiento presenta FC de 90 lpm, llanto débil, cierta flexión de extremidades e irritabilidad reflexiva (mueca). Se observa Silverman-Andersen: aleteo nasal leve, tiraje intercostal discreto. Resto normal.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

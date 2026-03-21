@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Luis, 41 años",
     "arrival_scenario": "Paciente que ha regalado sus pertenencias y refiere que 'su familia estaría mejor sin él'. Presenta anhedonia severa. Antecedente de intento suicida previo. Presenta descuido en su higiene personal y falta de energía (aprovechamiento).",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

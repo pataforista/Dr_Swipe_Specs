@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Marta, 41 años",
     "arrival_scenario": "Paciente de 35 semanas con antecedente de hipertensión crónica. Presenta útero hipertónico y dolor intenso. Frecuencia cardiaca fetal con desaceleraciones tardías. La paciente refiere que el abdomen 'se le puso duro' de golpe.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

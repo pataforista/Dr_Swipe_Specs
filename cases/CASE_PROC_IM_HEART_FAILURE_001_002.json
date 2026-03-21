@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Doña Carmen, 72 años",
     "arrival_scenario": "Hipertensa de larga data y diabética tipo 2. Acude por empeoramiento de la disnea en las últimas 2 semanas hasta hacerse de reposo, con edema bilateral de miembros inferiores hasta la rodilla. Al examen: crepitantes bibasales, R3 presente.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

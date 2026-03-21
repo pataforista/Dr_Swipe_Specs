@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "María, 7 años",
     "arrival_scenario": "Paciente preescolar de 4 años presenta manchas blancas de 1mm en mucosa yugal, seguidas de exantema confluente. Cuadro prodrómico de 'triple catarro' (tos, rinitis, conjuntivitis). Exantema morbiliforme confluente.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

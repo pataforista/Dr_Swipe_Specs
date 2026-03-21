@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "María, 27 años",
     "arrival_scenario": "Gestante de 34 SDG Acude por cefalea pulsátil, fosfenos y acúfenos. Tira reactiva con proteínas ++. Reflejos osteotendinosos hiperactivos (+++/++++).",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

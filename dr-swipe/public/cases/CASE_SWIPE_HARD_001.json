@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Paciente",
     "arrival_scenario": "Ingresa al servicio de urgencias.",
-    "time_limit_sec": 30
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

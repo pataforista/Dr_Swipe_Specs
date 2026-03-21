@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Alex, 28 años",
     "arrival_scenario": "Acude por úlcera única en el glande, de bordes elevados, indurada y totalmente INDOLORA. Refiere contacto sexual de riesgo hace 3 semanas. Presenta adenopatías inguinales bilaterales no dolorosas.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

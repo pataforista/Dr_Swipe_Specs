@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Marta, 34 años",
     "arrival_scenario": "Paciente de 32 semanas con antecedente de hipertensión crónica. Presenta útero hipertónico y dolor intenso. A la exploración: Útero de consistencia leñosa (hipertonía). Sangrado transvaginal oscuro, escaso para el nivel de dolor.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

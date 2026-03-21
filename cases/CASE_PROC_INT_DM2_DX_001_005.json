@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "María, 53 años",
     "arrival_scenario": "Paciente con obesidad grado I, refiere poliuria y polidipsia ocasional. Glucosa al azar de 210 mg/dl. Se realiza segunda medición de glucosa en ayuno: 128 mg/dl. HbA1c reportada en 6.7%.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

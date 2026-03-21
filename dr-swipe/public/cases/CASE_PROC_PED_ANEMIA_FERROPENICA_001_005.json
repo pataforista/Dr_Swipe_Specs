@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Andrés, 2 años",
     "arrival_scenario": "Lactante adoptado con desnutrición moderada. Ingesta dietética: más de 800 ml de leche de vaca entera al día, sin consumo de carnes ni leguminosas. Palidez intensa, apatía. Hb 7.1 g/dl, reticulocitos bajos.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

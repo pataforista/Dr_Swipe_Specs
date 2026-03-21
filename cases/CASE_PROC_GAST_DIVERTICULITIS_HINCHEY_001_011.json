@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Carlos, 58 años",
     "arrival_scenario": "Acude por dolor en fosa ilíaca izquierda, fiebre de 38.3°C y estreñimiento de 3 días. TC de abdomen reporta inflamación pericólica con presencia de un absceso de 5cm localizado (Hinchey II).",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

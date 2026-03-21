@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "María, 57 años",
     "arrival_scenario": "Refiere dolor biliar antiguo. Hoy acude por fiebre con escalofríos, dolor en CSD y tinte ictérico franco. Al interrogatorio la paciente se encuentra completamente orientada, respondiendo bien, aunque febril.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

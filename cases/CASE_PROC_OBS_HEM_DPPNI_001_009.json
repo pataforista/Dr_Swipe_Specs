@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Ana, 27 años",
     "arrival_scenario": "Gestante de 35 SDG que presenta sangrado transvaginal oscuro y dolor abdominal muy intenso. Hipertonía uterina notable. Registro tococardiográfico muestra sufrimiento fetal agudo.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

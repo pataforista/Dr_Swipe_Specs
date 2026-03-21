@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Carmen, 52 años",
     "arrival_scenario": "Acude a revisión tras hallazgo casual de glucosa de 135 mg/dl en ayuno. Niega síntomas cardinales. Se realiza segunda medición de glucosa en ayuno: 128 mg/dl. HbA1c reportada en 6.7%.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

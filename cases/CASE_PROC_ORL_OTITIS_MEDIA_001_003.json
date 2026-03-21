@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Matías, 5 años",
     "arrival_scenario": "Preescolar con dolor de oído bilateral, hipoacusia y fiebre de 38°C desde hace 2 días. Al examen: membranas timpánicas abombadas, eritematosas y sin movilidad bilateral. Toma amoxicilina desde hace 10 días sin mejora.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Miguel, 64 años",
     "arrival_scenario": "Acude a control. Presenta antecedente de infarto previo y tiene IMC de 32. Su tratamiento actual es insuficiente. No tiene antecedentes de pancreatitis. Se busca intensificar tratamiento según las últimas guías ADA/GPC.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

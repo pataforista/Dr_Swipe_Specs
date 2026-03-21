@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Tomás, 5 años",
     "arrival_scenario": "Preescolar con fiebre de 40°C, escalofríos, tos productiva y dolor pleurítico en hemitórax derecho. Rx: derrame pleural + consolidación. SatO2 90%. Antecedente de neumonía hace 6 meses. Requiere decisión sobre toracocentesis.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Daniela, 19 años",
     "arrival_scenario": "Gestante de 14 semanas en control prenatal. Tamizaje VDRL reporta 1:32. Niega síntomas actuales. La pareja fue tratada por sífilis el año pasado. Se requiere interpretación del resultado y definición del tratamiento.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

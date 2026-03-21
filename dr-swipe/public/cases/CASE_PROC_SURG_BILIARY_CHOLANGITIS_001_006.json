@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Carmen, 65 años",
     "arrival_scenario": "Cuadro de 48 hrs de dolor en hipocondrio derecho irradiado a escápula, que se agregó fiebre (39°C) e ictericia. Al interrogatorio la paciente se encuentra completamente orientada, respondiendo bien, aunque febril.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

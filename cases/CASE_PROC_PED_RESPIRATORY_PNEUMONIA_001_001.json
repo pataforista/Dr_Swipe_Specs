@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Valentina, 3 años",
     "arrival_scenario": "Preescolar con tos productiva, fiebre de 39°C y dificultad respiratoria (taquipnea y aleteo nasal). A la auscultación se perciben estertores crepitantes localizados en base pulmonar derecha.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

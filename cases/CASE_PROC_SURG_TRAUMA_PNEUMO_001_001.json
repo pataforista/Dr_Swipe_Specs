@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Fernando, 36 años",
     "arrival_scenario": "Traído por paramédicos tras choque automovilístico frontal. Presenta dificultad respiratoria severa, cianosis y taquicardia. Las venas del cuello están distendidas.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

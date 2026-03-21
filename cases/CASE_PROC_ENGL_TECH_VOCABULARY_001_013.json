@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Isabel, 24 años",
     "arrival_scenario": "Examination reveals a 'rash' on the upper limbs and 'wheezing' upon lung auscultation. False Friend Alert: The patient reports 'Constipation'. Does this refer to nasal congestion or bowel movement issues?",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

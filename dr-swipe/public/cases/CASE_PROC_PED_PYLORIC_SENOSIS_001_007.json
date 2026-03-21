@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Miguel, 2 años",
     "arrival_scenario": "Lactante de 5 semanas de vida, traído por vómitos no biliar en proyectil tras cada toma. Se muestra muy hambriento después de vomitar. Se observa onda peristáltica gástrica de izquierda a derecha. Deshidratación leve. Labs con alcalosis metabólica hipoclorémica.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

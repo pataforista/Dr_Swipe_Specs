@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Marta, 67 años",
     "arrival_scenario": "Paciente con antecedente de colelitiasis que acude por fiebre, dolor en hipocondrio derecho e ictericia (Tríada de Charcot). USG de hígado y vías biliares muestra colédoco de 12mm con imagen hiperecoica que proyecta sombra acústica en su interior.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

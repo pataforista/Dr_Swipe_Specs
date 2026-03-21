@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Carlos, 23 años",
     "arrival_scenario": "Acude por vómitos persistentes de 24 horas, dolor abdominal difuso y alteración del sensorio. Diaforesis, aliento afrutado (cetónico) y respiración rápida/profunda (Kussmaul). Glucosa capilar 'HI' (>500 mg/dl).",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

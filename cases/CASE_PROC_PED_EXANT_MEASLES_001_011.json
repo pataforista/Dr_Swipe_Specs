@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Pedro, 7 años",
     "arrival_scenario": "Niño de 6 años con fiebre alta, tos, coriza y conjuntivitis. Aparece exantema maculopapular cefalocaudal. A la exploración: Manchas de Koplik presentes. Exantema que inicia tras las orejas y se extiende al tronco. Tos persistente.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

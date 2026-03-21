@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Isabel, 59 años",
     "arrival_scenario": "Se evalúa una nueva prueba diagnóstica para una enfermedad con prevalencia del 1% en la población general. Cálculo: De 1000 personas, 10 están enfermas. La prueba detecta 9 (VP). De 990 sanos, falla en 99 (FP). VPP = 9 / (9 + 99).",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

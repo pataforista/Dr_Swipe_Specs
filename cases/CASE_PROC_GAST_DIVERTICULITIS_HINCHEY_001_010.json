@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Laura, 62 años",
     "arrival_scenario": "Acude por dolor en fosa ilíaca izquierda, fiebre de 38.3°C y estreñimiento de 3 días. Se observa aire libre subdiafragmático y datos de irritación peritoneal generalizada (Hinchey III/IV).",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

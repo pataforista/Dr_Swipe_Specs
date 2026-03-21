@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Carmen, 43 años",
     "arrival_scenario": "Traído por paramédicos tras choque automovilístico frontal. Presenta dificultad respiratoria severa y taquicardia. A la EF: Ausencia de ruidos respiratorios en hemitórax derecho e ingurgitación yugular evidente. Tráquea desviada a la izquierda.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

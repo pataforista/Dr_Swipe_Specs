@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Fernando, 34 años",
     "arrival_scenario": "Usuario de drogas IV con pérdida de peso y candidiasis oral persistente. ELISA y Western Blot positivos para VIH. Independientemente del conteo de CD4, el paciente solicita iniciar tratamiento. No tiene antecedentes de ERC.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

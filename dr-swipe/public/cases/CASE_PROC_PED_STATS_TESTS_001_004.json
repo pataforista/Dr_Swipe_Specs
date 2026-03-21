@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Fernando, 41 años",
     "arrival_scenario": "Análisis de prueba diagnóstica: Sensibilidad 90%, Especificidad 80%. Prevalencia de la enfermedad 10%. Si la sensibilidad aumenta al 100%, ¿qué parámetro se vuelve máximo?",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

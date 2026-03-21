@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Sra. Teresa, 58 años",
     "arrival_scenario": "Paciente con antecedente de glaucoma crónico en manejo con latanoprost. Consulta porque en la última semana nota pérdida del campo visual periférico en ojo izquierdo a pesar del tratamiento. Campimetría muestra progresión del escotoma.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

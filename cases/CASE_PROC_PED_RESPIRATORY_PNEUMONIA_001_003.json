@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Ana, 7 años",
     "arrival_scenario": "Escolar con tos seca y fiebre de 38°C de inicio insidioso hace 5 días. Al examen: tiraje leve, sibilancias dispersas. Rx tórax: infiltrados intersticiales bilaterales. Responde parcialmente a amoxicilina. Se sospecha etiología atípica.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

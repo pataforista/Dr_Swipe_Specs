@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Carlos, 45 años",
     "arrival_scenario": "Panadero con disnea y tos seca que empeora en el trabajo y mejora los fines de semana. Lleva 3 años con síntomas que atribuía a \"bronquitis crónica\". Peak flow muestra variabilidad diurna >20%.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

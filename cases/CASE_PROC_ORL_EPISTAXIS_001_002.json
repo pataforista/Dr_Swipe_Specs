@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Sra. Beatriz, 42 años",
     "arrival_scenario": "Anticoagulada con warfarina por FA. Acude por epistaxis unilateral derecha que no cede con compresión manual tras 20 minutos. El INR del día es 3.8. La epistaxis es posterior, con sangre fluyendo por la orofaringe.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "María, 7 años",
     "arrival_scenario": "Paciente de 4 años con lesiones cutáneas pruriginosas en diferentes estadios de evolución. A la exploración: máculas, pápulas, vesículas y costras que coexisten en la misma región abdominal.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

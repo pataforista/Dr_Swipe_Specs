@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Marta, 37 años",
     "arrival_scenario": "Paciente con trauma torácico cerrado por caída de 3 metros. Ingresa con disnea intensa, cianosis y alteración de conciencia. A la EF: Ausencia de ruidos respiratorios en hemitórax derecho e ingurgitación yugular evidente. Tráquea desviada a la izquierda.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

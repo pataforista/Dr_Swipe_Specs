@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "María, 41 años",
     "arrival_scenario": "Acude por disnea súbita y dolor torácico pleurítico de 15 minutos. Antecedente de cirugía de cadera hace 2 semanas. Saturación de O2 al 85% al aire ambiente. Miembro inferior derecho con edema y dolor (TVP). ECG con taquicardia sinusal.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

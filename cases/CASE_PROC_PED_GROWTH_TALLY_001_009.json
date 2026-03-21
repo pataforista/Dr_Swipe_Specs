@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Isabel, 4 años",
     "arrival_scenario": "Evaluación antropométrica de rutina para preescolar de 3 años. Peso para Edad: -1.5 DE. Talla para Edad: -2.5 DE. Peso para Talla: -0.5 DE.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

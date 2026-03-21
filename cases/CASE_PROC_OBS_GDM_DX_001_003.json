@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Isabel, 29 años",
     "arrival_scenario": "Paciente cursando con 24 SDG. Se realiza curva de tolerancia a la glucosa de 75g (Estrategia de Un Paso). Resultados de CTGO 75g: Ayuno 95 mg/dl, 1 hora 185 mg/dl, 2 horas 140 mg/dl.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

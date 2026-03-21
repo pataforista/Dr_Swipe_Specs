@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Ana, 61 años",
     "arrival_scenario": "Ingresa por cuadro de neumonía. Presenta alteración del estado de alerta, FR 24 y TA sistólica de 90 mmHg (qSOFA positivo). Sepsis-3: Se identifica disfunción orgánica mediante aumento de ≥2 puntos en escala SOFA. ¿Cuál es el primer paso en el manejo?",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

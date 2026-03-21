@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Carmen, 48 años",
     "arrival_scenario": "Acude por disnea súbita y dolor torácico pleurítico de 60 minutos. Antecedente de cirugía de cadera hace 2 semanas. Auscultación pulmonar normal. Taquicardia y taquipnea notables. Wells de 7 puntos (Alta probabilidad).",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

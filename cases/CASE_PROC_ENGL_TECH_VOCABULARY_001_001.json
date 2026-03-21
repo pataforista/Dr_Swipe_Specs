@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Alex, 37 years old",
     "arrival_scenario": "A patient arrives at the Emergency Room with 'shortness of breath' and progressive 'fatigue' after walking just two blocks. Language test: What are the correct clinical terms in Spanish for the chief complaints and symptoms described?",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

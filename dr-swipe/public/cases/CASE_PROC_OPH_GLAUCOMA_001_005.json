@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Sra. Rosa, 50 años",
     "arrival_scenario": "Mujer con antecedente familiar de glaucoma. Refiere ver \"manchas\" en su campo visual periférico desde hace meses. PIO 24 mmHg, papila con relación C/D 0.7 y campo visual con escotoma paracentral superior. Sin dolor ocular.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

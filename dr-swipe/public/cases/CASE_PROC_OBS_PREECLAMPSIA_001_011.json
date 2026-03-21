@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Rosa, 22 años",
     "arrival_scenario": "Embarazo de 34 SDG, nota edema facial y en manos. Refiere dolor en epigastrio (en barra). Laboratorios muestran plaquetas en 85,000 y AST/ALT al doble del límite superior.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "María, 0 años",
     "arrival_scenario": "Neonato de 39 SDG. Al minuto: acrocianosis, FC 110, muecas al estimular, respiración irregular y flacidez. Se evalúa APGAR al primer minuto. El cuerpo está rosado pero las manos y pies están azules.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

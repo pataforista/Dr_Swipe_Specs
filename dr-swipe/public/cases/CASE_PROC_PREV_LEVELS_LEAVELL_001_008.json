@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Marta, 38 años",
     "arrival_scenario": "Se presenta para control de salud. Pregunta por las acciones necesarias para evitar el cáncer cervicouterino. ¿Cuál sería un ejemplo de Prevención SECUNDARIA en esta paciente respecto al cáncer cervicouterino?",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

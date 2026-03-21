@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "José, 5.5 años",
     "arrival_scenario": "Lactante de 18 meses que acude para regularizar esquema de vacunación tras periodo de desabasto. La madre pregunta si debe esperar a los 6 años para la segunda dosis de SRP, como le dijeron con su hijo mayor.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

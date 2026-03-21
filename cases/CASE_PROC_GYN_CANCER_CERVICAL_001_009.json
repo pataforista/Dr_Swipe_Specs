@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Ana, 29 años",
     "arrival_scenario": "Acude por resultado de citología cervical (Papanicolaou) de rutina. Inicio de VSA a los 16 años. Reporte de Papanicolaou con NIC 2 (Neoplasia Intraepitelial Grado 2). ¿Cuál es la conducta terapéutica?",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Pedro, 39 años",
     "arrival_scenario": "Paciente de 24 años con herida por arma blanca en tórax. Presenta hipotensión, ruidos respiratorios ausentes en hemitórax derecho. A la exploración: Ingurgitación yugular, ausencia de ruidos respiratorios a la derecha y timpanismo a la percusión.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

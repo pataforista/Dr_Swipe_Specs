@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Sofía, 22 años",
     "arrival_scenario": "Estudiante de medicina con antecedente de atopia. Acude por sibilancias, tos seca predominio nocturno y opresión torácica recidivante. Refiere que los síntomas empeoran con el ejercicio y el frío. GINA 2024: ¿Cuál es el manejo inicial?",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Elena, 3 años",
     "arrival_scenario": "Lactante de 18 meses que inicia súbitamente por la noche con tos 'perruna', estridor inspiratorio y disfonía. Antecedente de coriza leve. Rx lateral de cuello muestra estrechamiento subglótico (Signo de la torre o del lápiz).",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

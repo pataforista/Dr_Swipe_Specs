@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Rodrigo, 8 años",
     "arrival_scenario": "Escolar con epistaxis anterior recurrente (3-4 episodios por semana). Sin antecedentes de traumatismo. La madre relata que el niño tiene hábito de rascarse la nariz. Al examen: área de Little con vasos prominentes y costra.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

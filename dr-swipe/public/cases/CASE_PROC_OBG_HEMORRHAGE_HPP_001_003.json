@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Sra. Patricia, 25 años",
     "arrival_scenario": "Postcesárea de urgencia por placenta previa. A los 30 minutos del cierre se detecta sangrado persistente por drenaje. El útero está bien contraído pero la paciente presenta signos de choque. Se sospecha retención de restos placentarios.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

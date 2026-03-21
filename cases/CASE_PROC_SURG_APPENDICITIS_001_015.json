@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Antonio, 18 años",
     "arrival_scenario": "Acude por dolor abdominal de 12 horas de evolución. Inició periumbilical y migró a Fosa Ilíaca Derecha. Psoas y Obturador positivos. Sin antecedentes quirúrgicos. Labs: 12 leucos con neutrofilia.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

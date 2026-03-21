@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Rosa, 40 años",
     "arrival_scenario": "Paciente con cáncer de pulmón en tratamiento, presenta disnea de inicio abrupto y taquipnea importante desde hace 15 mins. Saturación de O2 al 85% al aire ambiente. Miembro inferior derecho con edema y dolor (TVP). ECG con taquicardia sinusal.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

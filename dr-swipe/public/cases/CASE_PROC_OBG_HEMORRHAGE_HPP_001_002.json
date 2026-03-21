@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Sra. Ana, 32 años",
     "arrival_scenario": "Primípara con parto vaginal instrumental (fórceps) tras expulsivo prolongado de 3 horas. Inmediatamente postparto presenta sangrado activo con coágulos. El útero está bien contraído. Al explorar el canal del parto se observa desgarro cervical de 4 cm.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

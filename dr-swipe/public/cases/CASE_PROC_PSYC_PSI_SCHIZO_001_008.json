@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Elena, 27 años",
     "arrival_scenario": "Familiares refieren que el paciente escucha voces que le dan órdenes y se ha aislado socialmente desde hace 8 meses. Durante la entrevista presenta soliloquios y refiere que los comerciales de TV tienen mensajes dirigidos a él (referencia).",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Isabel, 41 años",
     "arrival_scenario": "En una comunidad se aplica una nueva prueba para cáncer gástrico. De 100 enfermos, 90 salen positivos. De 100 sanos, 80 salen negativos. Si la sensibilidad aumenta al 100%, ¿qué parámetro se vuelve máximo?",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

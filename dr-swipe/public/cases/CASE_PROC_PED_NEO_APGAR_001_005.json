@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Laura, 0 años",
     "arrival_scenario": "Neonato de 39 SDG. Al minuto: acrocianosis, FC 110, muecas al estimular, respiración irregular y flacidez. Se observa Silverman-Andersen: aleteo nasal leve, tiraje intercostal discreto. Resto normal.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

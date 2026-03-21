@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Fernando, 1 años",
     "arrival_scenario": "Paciente de 18 meses con fiebre leve y dificultad respiratoria progresiva. A la auscultación estridor laríngeo. El paciente mejora notablemente al contacto con el aire frío de la noche.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

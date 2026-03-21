@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Juan, 3 años",
     "arrival_scenario": "Lactante de 2 años que inicia súbitamente por la noche con tos 'perruna', estridor inspiratorio y disfonía. Antecedente de coriza leve. El paciente mejora notablemente al contacto con el aire frío de la noche.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Antonio, 22 años",
     "arrival_scenario": "Paciente con dolor abdominal agudo. Al examen: Punto de McBurney (+) y signo de Rovsing (+). Leucocitosis de 14,000 con neutrofilia. Puntuación de Alvarado ≥8. ¿Cuál es la conducta recomendada en un hombre adulto?",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

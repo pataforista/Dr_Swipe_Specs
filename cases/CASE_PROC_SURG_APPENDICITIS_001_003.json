@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Marta, 20 años",
     "arrival_scenario": "Refiere dolor punzante en cuadrante inferior derecho desde hace 24 hrs. Acompañado de náuseas y anorexia. Signo de McBurney Positivo. Rebote dudoso. Leucocitosis de 12 mil.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

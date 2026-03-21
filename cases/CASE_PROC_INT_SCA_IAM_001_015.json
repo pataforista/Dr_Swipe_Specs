@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Carlos, 66 años",
     "arrival_scenario": "Paciente de 68 años con dolor torácico opresivo de gran intensidad, irradiado a mandíbula y brazo izquierdo. ECG: Elevación del segmento ST ≥1mm en V1-V4. El paciente se encuentra pálido y sudoroso.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

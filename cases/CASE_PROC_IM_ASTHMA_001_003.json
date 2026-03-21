@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Mariana, 8 años",
     "arrival_scenario": "Escolar con episodios de sibilancias y tos post-ejercicio en clase de educación física. Su madre tuvo asma en la infancia. Al examen: leve tiraje subcostal, sibilancias espiratorias bilaterales. Sat O2 96%.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

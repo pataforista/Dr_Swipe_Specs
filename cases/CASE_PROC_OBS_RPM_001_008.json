@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Ana, 29 años",
     "arrival_scenario": "Gestante de 36 SDG Acude por salida brusca de abundantes líquidos transparentes transvaginales con olor a cloro. Especuloscopía: maniobra de Valsalva positiva con salida de líquido amniótico. Papel de Nitrazina vira a color azul (alcalino).",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

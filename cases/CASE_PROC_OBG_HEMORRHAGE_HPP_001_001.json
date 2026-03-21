@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Sra. Elena, 28 años",
     "arrival_scenario": "Multípara que acaba de tener un parto vaginal de neonato macrosómico (4.2 kg). Tras el alumbramiento, presenta sangrado transvaginal abundante (estimado >1000 ml) de sangre roja brillante. Al tacto el útero se palpa blando, por arriba de la cicatriz umbilical.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

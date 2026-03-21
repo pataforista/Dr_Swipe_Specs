@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Sofía, 2 años",
     "arrival_scenario": "Preescolar con antecedente de IVAS hace 1 semana. Los padres notan que la niña no responde bien a su nombre y jala la oreja derecha. Sin fiebre actual. Al examen: membrana timpánica opaca y con nivel hidroaéreo.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

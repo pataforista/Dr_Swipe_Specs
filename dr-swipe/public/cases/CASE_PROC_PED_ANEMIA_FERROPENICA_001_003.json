@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Pablo, 4 años",
     "arrival_scenario": "Preescolar con antecedente de Giardia tratada hace 2 meses. Pica (come tierra) desde hace 3 meses. Dieta rica en leche y baja en carnes. Al examen: palidez y queilitis angular. Hb 7.8 g/dl, ferritina 6 ng/ml.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

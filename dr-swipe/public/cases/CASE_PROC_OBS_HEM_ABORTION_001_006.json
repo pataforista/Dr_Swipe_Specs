@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Laura, 24 años",
     "arrival_scenario": "Paciente con amenorrea de 12 semanas. Presenta sangrado rojo rutilante y expulsión de tejido blanquecino. Especuloscopía: Cérvix con orificios abiertos, se observa presencia de restos ovulares en canal vaginal.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

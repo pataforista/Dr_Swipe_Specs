@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Juan, 2.5 años",
     "arrival_scenario": "Lactante con 5 evacuaciones líquidas y 2 vómitos. Presenta ojos hundidos, llanto sin lágrimas y signo del lienzo húmedo (desaparece lento). Se observa que el paciente acepta bien el Vida Suero Oral (VSO) en la sala de urgencias.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

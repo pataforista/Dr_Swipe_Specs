@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Miguel, 36 años",
     "arrival_scenario": "Llega tras accidente automovilístico a alta velocidad. Presenta dificultad respiratoria severa, desviación traqueal a la derecha y ausencia de murmullo vesicular izquierdo. Bajo estándares de ATLS 10ª Edición, se identifica Neumotórax a Tensión. ¿Cuál es el sitio de descompresión inmediata con aguja?",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

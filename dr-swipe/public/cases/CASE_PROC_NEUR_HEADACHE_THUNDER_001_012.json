@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Fernando, 39 años",
     "arrival_scenario": "Presenta la 'peor cefalea de su vida', de inicio súbito tras realizar esfuerzo físico (maniobra de Valsalva). TC simple de cráneo muestra hiperdensidad en cisternas de la base y polígono de Willis.",
-    "time_limit_sec": 45
+    "time_limit_sec": 50
   },
   "card_stream": [
     {

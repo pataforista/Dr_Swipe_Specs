@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Laura, 32 años",
     "arrival_scenario": "Paciente con antecedente de Preeclampsia, acude por sangrado vaginal oscuro escaso y dolor continuo tipo cólico muy fuerte. Hipertonía uterina notable. Registro tococardiográfico muestra sufrimiento fetal agudo.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Fernando, 0.5 años",
     "arrival_scenario": "Tras 4 días de fiebre alta difícil de controlar, el niño amanece sin fiebre pero con manchas rosadas en tronco y cuello. Exantema maculopapular no pruriginoso que afecta principalmente tronco. El niño luce bien tras la caída de la fiebre.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

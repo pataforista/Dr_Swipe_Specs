@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Ana, 28 años",
     "arrival_scenario": "Consulta por flujo vaginal blanquecino, espeso, tipo 'queso cottage' y prurito intenso de 5 días. PH vaginal de 5.5. Prueba de KOH (Whiff test) positiva. Se observan 'Células Clave' (Clue Cells).",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {

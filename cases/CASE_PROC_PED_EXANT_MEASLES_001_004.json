@@ -6,7 +6,7 @@
   "patient_intro": {
     "name": "Rosa, 10 años",
     "arrival_scenario": "Niño de 5 años con fiebre alta, tos, coriza y conjuntivitis. Aparece exantema maculopapular cefalocaudal. Cuadro prodrómico de 'triple catarro' (tos, rinitis, conjuntivitis). Exantema morbiliforme confluente.",
-    "time_limit_sec": 45
+    "time_limit_sec": 60
   },
   "card_stream": [
     {
