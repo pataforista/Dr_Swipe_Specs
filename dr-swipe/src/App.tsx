@@ -28,6 +28,14 @@ const VAZQUEZ_LINES = [
   { title: "Impresionante. Para ser estudiante.", body: "Ahora muéstrame que puedes mantenerlo bajo presión real." },
   { title: "Buena racha... de momento.", body: "El siguiente caso no será tan amable contigo." },
   { title: "Noto seguridad en ti.", body: "Recuerda: la medicina te humillará cuando menos lo esperes." },
+  { title: "Eso estuvo bien.", body: "Pero en urgencias, el segundo caso siempre es peor que el primero." },
+  { title: "¿Cuántas horas llevas despierto?", body: "Porque tus decisiones son demasiado limpias para ser de guardia." },
+  { title: "Correcto. Ahora hazlo más rápido.", body: "En el mundo real, el paciente no espera a que pienses." },
+  { title: "Vas bien.", body: "Demasiado bien. Algo estás pasando por alto." },
+  { title: "La GPC dice una cosa.", body: "El paciente frente a ti puede decir otra. Aprende a distinguir." },
+  { title: "Tú y yo sabemos que tuviste suerte.", body: "La próxima vez, no cuentes con eso." },
+  { title: "R2 ya te estarías quedando dormido.", body: "¿Puedes sostener esto tres horas más sin equivocarte?" },
+  { title: "Diagnóstico correcto.", body: "Pero el tratamiento a tiempo es lo que salva vidas, no el diagnóstico solo." },
 ];
 
 const VazquezInterruption: React.FC<{ onDismiss: () => void }> = ({ onDismiss }) => {
@@ -40,19 +48,38 @@ const VazquezInterruption: React.FC<{ onDismiss: () => void }> = ({ onDismiss })
 
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center z-[120] pointer-events-none">
+      {/* Backdrop vignette */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        className="absolute inset-0 bg-black/30"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.88, y: 30 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.9, y: 20 }}
-        className="glass-panel p-8 max-w-sm border-medical-danger/40 text-center shadow-[0_0_50px_rgba(239,68,68,0.3)]"
+        exit={{ opacity: 0, scale: 0.88, y: 30 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+        className="glass-panel p-8 max-w-sm border-medical-danger/40 text-center shadow-[0_0_60px_rgba(239,68,68,0.4)] relative"
       >
-        <div className="w-20 h-20 flex items-center justify-center text-5xl mx-auto mb-4 filter drop-shadow-[0_0_10px_rgba(239,68,68,0.5)]">
+        {/* Corner accent */}
+        <div className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-medical-danger/40" />
+        <div className="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-medical-danger/40" />
+
+        <motion.div
+          animate={{ scale: [1, 1.08, 1] }}
+          transition={{ duration: 1.8, repeat: Infinity }}
+          className="w-20 h-20 flex items-center justify-center text-5xl mx-auto mb-4 filter drop-shadow-[0_0_12px_rgba(239,68,68,0.6)]"
+        >
           👴
-        </div>
+        </motion.div>
+        <span className="text-[9px] font-black tracking-[0.4em] text-medical-danger/60 uppercase mb-2 block">
+          DR. VÁZQUEZ — INTERRUPCIÓN
+        </span>
         <h3 className="text-xl font-display font-black text-white mb-3 tracking-tight">
           "{line.title}"
         </h3>
-        <p className="text-sm text-slate-300 italic font-medium mb-4">
+        <p className="text-sm text-slate-300 italic font-medium mb-4 leading-relaxed">
           {line.body}
         </p>
         <div className="h-0.5 w-16 bg-medical-danger/40 mx-auto" />
@@ -370,10 +397,43 @@ function App() {
 
       case state.matches('critical_alert'):
         return (
-          <div className="fixed inset-0 bg-medical-danger/20 flex flex-col items-center justify-center animate-pulse">
-            <h2 className="text-4xl font-display font-black text-medical-danger">CÓDIGO ROJO</h2>
-            <p className="text-sm font-bold tracking-[0.3em] mt-4 opacity-60">SHOCK ROOM REQUERIDO</p>
-          </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="fixed inset-0 flex flex-col items-center justify-center overflow-hidden"
+          >
+            {/* Pulsing background layers */}
+            <motion.div
+              className="absolute inset-0 bg-medical-danger/15"
+              animate={{ opacity: [0.3, 0.7, 0.3] }}
+              transition={{ duration: 0.6, repeat: Infinity }}
+            />
+            <div className="absolute inset-0 pointer-events-none">
+              {[...Array(4)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute inset-0 border-2 border-medical-danger/20 rounded-full"
+                  initial={{ scale: 0.5, opacity: 0.8 }}
+                  animate={{ scale: 2 + i * 0.5, opacity: 0 }}
+                  transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.3 }}
+                  style={{ margin: 'auto', width: '80px', height: '80px', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
+                />
+              ))}
+            </div>
+            <motion.div
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ duration: 0.5, repeat: Infinity }}
+              className="text-8xl mb-6 filter drop-shadow-[0_0_20px_rgba(239,68,68,0.8)]"
+            >
+              🚨
+            </motion.div>
+            <h2 className="text-5xl font-display font-black text-medical-danger tracking-tighter text-glow-danger">
+              CÓDIGO ROJO
+            </h2>
+            <p className="text-sm font-black tracking-[0.4em] mt-4 text-white/50 uppercase">
+              SHOCK ROOM REQUERIDO
+            </p>
+          </motion.div>
         );
 
       case state.matches('boss_fight'):
@@ -459,31 +519,79 @@ function App() {
 
       case state.matches('reward'):
         return (
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="glass-panel p-10 max-w-sm text-center border-medical-primary/30 shadow-[0_0_50px_rgba(13,148,136,0.1)]"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ type: 'spring', stiffness: 280, damping: 20 }}
+            className="glass-panel p-10 max-w-sm text-center border-medical-primary/30 shadow-[0_0_60px_rgba(13,148,136,0.15)] relative overflow-hidden"
           >
-            <div className="w-20 h-20 bg-medical-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
-              <span className="text-4xl text-glow-medical">🏆</span>
-            </div>
-            
+            {/* Subtle shimmer background */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-br from-medical-primary/5 to-transparent pointer-events-none"
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 3, repeat: Infinity }}
+            />
+
+            <motion.div
+              animate={{ scale: [1, 1.12, 1], rotate: [0, 5, -5, 0] }}
+              transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
+              className="w-20 h-20 bg-medical-primary/20 rounded-full flex items-center justify-center mx-auto mb-6 relative z-10"
+            >
+              <span className="text-4xl drop-shadow-[0_0_15px_rgba(13,148,136,0.8)]">🏆</span>
+            </motion.div>
+
             {state.context.caseStreak > 1 && (
-              <motion.div 
-                initial={{ y: -10, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                className="mb-4 inline-block bg-medical-secondary/20 text-medical-secondary px-4 py-1 rounded-full text-[10px] font-black tracking-widest border border-medical-secondary/30"
+              <motion.div
+                initial={{ y: -15, opacity: 0, scale: 0.8 }}
+                animate={{ y: 0, opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2, type: 'spring' }}
+                className="mb-4 inline-block bg-medical-secondary/20 text-medical-secondary px-4 py-1 rounded-full text-[10px] font-black tracking-widest border border-medical-secondary/30 relative z-10"
               >
-                STREAK DE CASOS: x{state.context.caseStreak}
+                🔥 RACHA DE CASOS: x{state.context.caseStreak}
               </motion.div>
             )}
 
-            <h2 className="text-3xl font-display font-black text-medical-primary mb-4 tracking-tighter uppercase">MÉRITO ALCANZADO</h2>
-            <p className="text-slate-400 mb-8 font-medium italic">"Se ha estabilizado la situación clínica con precisión empírica."</p>
-            
-            <div className="flex flex-col gap-4">
-              <button 
-                onClick={() => startNewCase(true)} // Skip Intro for Rapid Play
+            <h2 className="text-3xl font-display font-black text-medical-primary mb-2 tracking-tighter uppercase relative z-10">
+              MÉRITO ALCANZADO
+            </h2>
+            <p className="text-slate-400 mb-6 font-medium italic text-sm relative z-10">
+              "Se ha estabilizado la situación clínica con precisión empírica."
+            </p>
+
+            {/* Score breakdown */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35 }}
+              className="bg-white/5 border border-white/10 rounded-2xl p-4 mb-8 text-left relative z-10"
+            >
+              <div className="flex justify-between items-center mb-3">
+                <span className="text-[9px] font-black text-white/40 uppercase tracking-widest">REPORTE DE GUARDIA</span>
+                <span className="text-[9px] font-mono text-medical-primary/60">{currentCase?.case_id?.slice(-8) || '---'}</span>
+              </div>
+              <div className="flex justify-between items-baseline">
+                <span className="text-xs text-slate-400 uppercase tracking-widest">Puntuación total</span>
+                <span className="text-2xl font-display font-black text-medical-primary text-glow">
+                  {state.context.score.toLocaleString()}
+                </span>
+              </div>
+              {state.context.multiplier > 1 && (
+                <div className="flex justify-between items-baseline mt-1">
+                  <span className="text-xs text-slate-500 uppercase tracking-widest">Multiplicador combo</span>
+                  <span className="text-sm font-black text-medical-secondary">x{state.context.multiplier.toFixed(1)}</span>
+                </div>
+              )}
+              {state.context.combo > 0 && (
+                <div className="flex justify-between items-baseline mt-1">
+                  <span className="text-xs text-slate-500 uppercase tracking-widest">Racha máx. cartas</span>
+                  <span className="text-sm font-black text-white/70">{state.context.combo} seguidas</span>
+                </div>
+              )}
+            </motion.div>
+
+            <div className="flex flex-col gap-4 relative z-10">
+              <button
+                onClick={() => startNewCase(true)}
                 className="btn-primary w-full py-5 !bg-medical-primary hover:!bg-teal-600 group"
               >
                 <div className="flex items-center justify-center gap-2">
@@ -491,8 +599,8 @@ function App() {
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                 </div>
               </button>
-              <button 
-                onClick={() => send({ type: 'CLAIM' })} 
+              <button
+                onClick={() => send({ type: 'CLAIM' })}
                 className="text-[10px] font-black tracking-[0.4em] text-slate-500 hover:text-white transition-colors uppercase"
               >
                 Registrar y Salir
@@ -515,34 +623,70 @@ function App() {
 
       case state.matches('ghosted'):
         return (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="flex flex-col items-center justify-center p-12 text-center"
+            transition={{ duration: 0.5 }}
+            className="flex flex-col items-center justify-center p-12 text-center relative"
           >
+            {/* Ambient danger glow */}
+            <motion.div
+              className="absolute inset-0 pointer-events-none"
+              animate={{ opacity: [0.1, 0.25, 0.1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              style={{ background: 'radial-gradient(circle at center, rgba(239,68,68,0.15) 0%, transparent 70%)' }}
+            />
+
             <div className="relative mb-6">
-              <h2 className="text-6xl font-display font-black text-medical-danger text-glow-danger italic tracking-tighter">GHOSTED</h2>
+              <motion.h2
+                initial={{ scale: 1.3, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+                className="text-6xl font-display font-black text-medical-danger text-glow-danger italic tracking-tighter relative z-10"
+              >
+                GHOSTED
+              </motion.h2>
               <div className="absolute top-0 left-0 w-full h-full bg-medical-danger opacity-20 animate-pulse blur-2xl" />
             </div>
-            
-            <div className="glass-panel p-6 border-medical-danger/20 mb-8 max-w-xs bg-medical-danger/5">
-              <p className="text-sm font-mono text-medical-danger uppercase tracking-[0.2em] mb-2 font-black">FALLO SISTÉMICO</p>
-              <p className="text-slate-400 font-medium leading-relaxed">{state.context.fatalError || "Negligencia o fallo preventivo en el triage."}</p>
-            </div>
-            
-            <button 
-              onClick={() => send({ type: 'VIEW_DEBRIEF' })} 
-              className="btn-primary px-8 py-4 text-xs mb-4 !rounded-xl"
+
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="glass-panel p-6 border-medical-danger/20 mb-8 max-w-xs bg-medical-danger/5 relative z-10"
             >
-              <ShinyText text="ABRIR CAJA NEGRA (DEBRIEF)" speed={3} />
-            </button>
-            <br />
-            <button 
-              onClick={() => send({ type: 'RESTART' })} 
-              className="text-[10px] font-black tracking-[0.4em] text-slate-500 hover:text-white transition-colors uppercase border-b border-white/5 pb-1"
+              <div className="flex items-center gap-2 mb-2">
+                <motion.span
+                  animate={{ opacity: [1, 0, 1] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                  className="w-2 h-2 rounded-full bg-medical-danger inline-block"
+                />
+                <p className="text-sm font-mono text-medical-danger uppercase tracking-[0.2em] font-black">FALLO SISTÉMICO</p>
+              </div>
+              <p className="text-slate-400 font-medium leading-relaxed text-sm">
+                {state.context.fatalError || "Negligencia o fallo preventivo en el triage."}
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="flex flex-col gap-4 relative z-10"
             >
-              Cerrar Expediente
-            </button>
+              <button
+                onClick={() => send({ type: 'VIEW_DEBRIEF' })}
+                className="btn-primary px-8 py-4 text-xs !rounded-xl !bg-medical-danger hover:!bg-red-700"
+              >
+                <ShinyText text="ABRIR CAJA NEGRA (DEBRIEF)" speed={3} />
+              </button>
+              <button
+                onClick={() => send({ type: 'RESTART' })}
+                className="text-[10px] font-black tracking-[0.4em] text-slate-500 hover:text-white transition-colors uppercase border-b border-white/5 pb-1"
+              >
+                Cerrar Expediente
+              </button>
+            </motion.div>
           </motion.div>
         );
 

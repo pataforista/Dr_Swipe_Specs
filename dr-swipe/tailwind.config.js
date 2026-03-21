@@ -8,11 +8,12 @@ export default {
     extend: {
       colors: {
         medical: {
-          primary: '#0D9488', // Teal 600
-          danger: '#EF4444',  // Red 500
-          warning: '#F59E0B', // Amber 500
-          info: '#3B82F6',    // Blue 500
-          dark: '#0F172A',    // Slate 900
+          primary: '#0D9488',   // Teal 600
+          secondary: '#14B8A6', // Teal 500 (accent)
+          danger: '#EF4444',    // Red 500
+          warning: '#F59E0B',   // Amber 500
+          info: '#3B82F6',      // Blue 500
+          dark: '#0F172A',      // Slate 900
           glass: 'rgba(255, 255, 255, 0.1)',
         },
         specialty: {
