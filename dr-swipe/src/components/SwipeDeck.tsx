@@ -8,9 +8,12 @@ interface SwipeDeckProps {
   currentIndex: number;
   onSwipe: (direction: 'left' | 'right') => void;
   isLocked?: boolean;
+  lifelineActive?: boolean;
+  canUseLifeline?: boolean;
+  onUseLifeline?: () => void;
 }
 
-export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwipe, isLocked }) => {
+export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwipe, isLocked, lifelineActive, canUseLifeline, onUseLifeline }) => {
   const { playSwipe } = useGameAudio();
   const visibleCards = cards.slice(currentIndex, currentIndex + 3).reverse();
   const totalCards = cards.length;
@@ -80,6 +83,21 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwi
       </AnimatePresence>
     </div>
 
+    {/* Lifeline Hint Overlay */}
+    {lifelineActive && cards[currentIndex] && (
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        className={`w-full max-w-sm mx-auto mb-2 px-4 py-3 rounded-2xl border text-center text-sm font-black uppercase tracking-widest ${
+          cards[currentIndex].expected_action === 'keep'
+            ? 'bg-medical-primary/15 border-medical-primary/40 text-medical-primary'
+            : 'bg-medical-danger/15 border-medical-danger/40 text-medical-danger'
+        }`}
+      >
+        {cards[currentIndex].expected_action === 'keep' ? '➡️ MANTENER esta carta' : '⬅️ DESCARTAR esta carta'}
+      </motion.div>
+    )}
+
     {/* Tap Zones — alternative to swiping on mobile */}
     <div className="flex gap-3 w-full px-2">
       <button
@@ -90,6 +108,20 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwi
       >
         ← Descartar
       </button>
+
+      {/* Lifeline Button */}
+      {onUseLifeline && (
+        <button
+          disabled={!canUseLifeline || isLocked}
+          onClick={(e) => { e.stopPropagation(); onUseLifeline(); }}
+          className="w-14 flex items-center justify-center rounded-2xl border border-yellow-500/30 bg-yellow-500/10 active:bg-yellow-500/25 text-yellow-400 text-lg transition-all disabled:opacity-20 select-none hover:scale-105"
+          aria-label="Usar pista (25 monedas)"
+          title="Pista — 25 🪙"
+        >
+          💡
+        </button>
+      )}
+
       <button
         disabled={isLocked}
         onPointerDown={(e) => { e.stopPropagation(); playSwipe('right'); onSwipe('right'); }}

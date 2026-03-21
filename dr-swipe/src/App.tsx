@@ -10,7 +10,8 @@ import { dataLoader } from './utils/dataLoader';
 import { useGameAudio } from './hooks/useGameAudio';
 import { cleanVazquezComment } from './utils/formatters';
 import { triggerHaptic } from './utils/hapticFeedback';
-import { calculateCardScore } from './utils/scoringEngine';
+import { calculateCardScore, calculatePerfectRoundBonus, getDailyStreakMultiplier, COMBO_MILESTONE_COINS } from './utils/scoringEngine';
+import { LIFELINE_COST } from './store/useCodexStore';
 import DecryptedText from './components/bits/DecryptedText';
 import ShinyText from './components/bits/ShinyText';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -147,7 +148,7 @@ function App() {
   const [state, send] = useMachine(gameMachine);
   const { playGhosted, startAlarm, stopAlarm } = useGameAudio();
   const [currentCase, setCurrentCase] = useState<ClinicalCase | null>(null);
-  const { addXp, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions } = useCodexStore();
+  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, stats, dailyStreak } = useCodexStore();
   // Stores the calculated time limit so timer bar uses consistent denominator
   const timeLimitRef = useRef<number>(60);
   // Stores the precomputed shuffled deck for when intro → START_GUARD
@@ -159,6 +160,10 @@ function App() {
   const [showStats, setShowStats] = useState(false);
   // Pause state — managed entirely in App (no machine change needed)
   const [isPaused, setIsPaused] = useState(false);
+  // Difficulty override — player can choose from idle screen
+  const [selectedDifficulty, setSelectedDifficulty] = useState<'standard' | 'hard' | 'extreme' | null>(null);
+  // Combo milestone celebration
+  const [showMilestoneCelebration, setShowMilestoneCelebration] = useState<number>(0);
   
   // Dynamic Background Theming
   useEffect(() => {
@@ -252,7 +257,22 @@ function App() {
   // Save persistent progression when a case is won
   useEffect(() => {
     if (state.matches('reward') && currentCase) {
-      addXp(state.context.score);
+      // Apply daily streak multiplier to XP
+      const streakMult = getDailyStreakMultiplier(dailyStreak);
+      const xpGained = Math.floor(state.context.score * streakMult);
+      addXp(xpGained);
+
+      // Award coins earned during the case
+      let totalCoins = state.context.coinsEarnedThisCase;
+      // Perfect round bonus
+      if (state.context.mistakesThisCase === 0) {
+        totalCoins += calculatePerfectRoundBonus(
+          state.context.deck.length,
+          state.context.difficulty
+        );
+      }
+      addCoins(totalCoins);
+
       registerCaseSolved(currentCase.case_id, state.context.score);
       const pearl = currentCase.enarm_pearl || (currentCase as any).perla_enarm;
       if (pearl) unlockPearl(pearl);
@@ -264,10 +284,16 @@ function App() {
     // Capture caseStreak before RESTART resets it, so adaptive difficulty works correctly
     const savedStreak = state.context.caseStreak;
     setIsPaused(false);
+    setShowMilestoneCelebration(0);
     incrementSessions();
+    updateDailyStreak();
     try {
       send({ type: 'RESTART' }); // Reset machine to idle
       const caseData = await dataLoader.loadRandomCase();
+      // Apply difficulty override if player selected one
+      if (selectedDifficulty) {
+        (caseData as any).difficulty = selectedDifficulty;
+      }
       setCurrentCase(caseData);
 
       // Adaptive Learning Curve: Time per card decreases as streak increases
@@ -332,6 +358,30 @@ function App() {
     }, 1500);
   };
 
+  // Combo milestone celebration effect
+  useEffect(() => {
+    const milestone = state.context.comboMilestoneHit;
+    if (milestone > 0) {
+      setShowMilestoneCelebration(milestone);
+      triggerHaptic('qteInteract');
+      const timer = setTimeout(() => {
+        setShowMilestoneCelebration(0);
+        send({ type: 'CLEAR_MILESTONE' });
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [state.context.comboMilestoneHit, send]);
+
+  // Handle lifeline purchase
+  const handleLifeline = () => {
+    if (isProcessing || isPaused) return;
+    const success = spendCoins(LIFELINE_COST);
+    if (success) {
+      send({ type: 'USE_LIFELINE' });
+      triggerHaptic('warning');
+    }
+  };
+
   const renderCurrentView = () => {
     if (showIntro && currentCase) {
       return (
@@ -391,6 +441,45 @@ function App() {
               </h1>
               <span className="absolute -bottom-4 right-0 text-[10px] font-black tracking-[0.5em] text-white/20 uppercase">MEDICAL TRUTH SYSTEM</span>
             </div>
+            {/* Daily Streak Badge */}
+            {dailyStreak > 0 && (
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                className="flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 px-4 py-1.5 rounded-full mb-2"
+              >
+                <span className="text-orange-400 text-sm">🔥</span>
+                <span className="text-[10px] font-black text-orange-400 tracking-widest uppercase">
+                  RACHA DIARIA: {dailyStreak} {dailyStreak >= 7 ? '(x2.0 XP)' : `(x${getDailyStreakMultiplier(dailyStreak).toFixed(1)} XP)`}
+                </span>
+              </motion.div>
+            )}
+
+            {/* Coin Balance */}
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-yellow-400 text-lg">🪙</span>
+              <span className="text-sm font-black text-yellow-400/80 tracking-widest">{stats.coins}</span>
+            </div>
+
+            {/* Difficulty Selector */}
+            <div className="flex gap-2 mb-6">
+              {(['standard', 'hard', 'extreme'] as const).map(diff => (
+                <button
+                  key={diff}
+                  onClick={() => setSelectedDifficulty(selectedDifficulty === diff ? null : diff)}
+                  className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border transition-all ${
+                    selectedDifficulty === diff
+                      ? diff === 'extreme' ? 'bg-red-500/20 border-red-500/50 text-red-400'
+                        : diff === 'hard' ? 'bg-orange-500/20 border-orange-500/50 text-orange-400'
+                        : 'bg-teal-500/20 border-teal-500/50 text-teal-400'
+                      : 'bg-white/5 border-white/10 text-slate-500 hover:border-white/20'
+                  }`}
+                >
+                  {diff === 'standard' ? 'Normal' : diff === 'hard' ? 'Difícil' : 'Extremo'}
+                </button>
+              ))}
+            </div>
+
             <button onClick={() => startNewCase(false)} className="btn-primary px-16 py-6 text-xl">
               <ShinyText text="INICIAR GUARDIA" speed={3} />
             </button>
@@ -410,6 +499,9 @@ function App() {
             currentIndex={state.context.currentCardIndex}
             onSwipe={handleSwipe}
             isLocked={isProcessing || isPaused}
+            lifelineActive={state.context.lifelineActive}
+            canUseLifeline={stats.coins >= LIFELINE_COST && !state.context.lifelineActive}
+            onUseLifeline={handleLifeline}
           />
         );
 
@@ -572,9 +664,21 @@ function App() {
             <h2 className="text-3xl font-display font-black text-medical-primary mb-2 tracking-tighter uppercase relative z-10">
               MÉRITO ALCANZADO
             </h2>
-            <p className="text-slate-400 mb-6 font-medium italic text-sm relative z-10">
+            <p className="text-slate-400 mb-4 font-medium italic text-sm relative z-10">
               "Se ha estabilizado la situación clínica con precisión empírica."
             </p>
+
+            {/* Perfect Round Badge */}
+            {state.context.mistakesThisCase === 0 && (
+              <motion.div
+                initial={{ scale: 0, rotate: -10 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ delay: 0.4, type: 'spring' }}
+                className="mb-4 inline-block bg-yellow-500/20 text-yellow-400 px-5 py-2 rounded-full text-xs font-black tracking-widest border border-yellow-500/30 relative z-10"
+              >
+                ⭐ RONDA PERFECTA — 0 ERRORES ⭐
+              </motion.div>
+            )}
 
             {/* Score breakdown */}
             <motion.div
@@ -603,6 +707,18 @@ function App() {
                 <div className="flex justify-between items-baseline mt-1">
                   <span className="text-xs text-slate-500 uppercase tracking-widest">Racha máx. cartas</span>
                   <span className="text-sm font-black text-white/70">{state.context.combo} seguidas</span>
+                </div>
+              )}
+              <div className="flex justify-between items-baseline mt-2 pt-2 border-t border-white/5">
+                <span className="text-xs text-yellow-500/80 uppercase tracking-widest">Monedas ganadas</span>
+                <span className="text-sm font-black text-yellow-400">
+                  🪙 +{state.context.coinsEarnedThisCase + (state.context.mistakesThisCase === 0 ? calculatePerfectRoundBonus(state.context.deck.length, state.context.difficulty) : 0)}
+                </span>
+              </div>
+              {dailyStreak > 1 && (
+                <div className="flex justify-between items-baseline mt-1">
+                  <span className="text-xs text-orange-500/80 uppercase tracking-widest">Bonus racha diaria</span>
+                  <span className="text-sm font-black text-orange-400">x{getDailyStreakMultiplier(dailyStreak).toFixed(1)} XP</span>
                 </div>
               )}
             </motion.div>
@@ -807,6 +923,25 @@ function App() {
         )}
       </AnimatePresence>
 
+      {/* Combo Milestone Celebration */}
+      <AnimatePresence>
+        {showMilestoneCelebration > 0 && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5, y: 50 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 1.5, y: -50 }}
+            className="fixed top-1/3 left-1/2 -translate-x-1/2 z-[70] pointer-events-none flex flex-col items-center gap-2"
+          >
+            <span className="text-5xl font-display font-black text-yellow-400 drop-shadow-[0_0_20px_rgba(251,191,36,0.8)] tracking-tighter">
+              {showMilestoneCelebration >= 20 ? '🏅 LEYENDA' : showMilestoneCelebration >= 15 ? '💎 MAESTRO' : showMilestoneCelebration >= 10 ? '🔥 IMPARABLE' : '⚡ EN RACHA'}
+            </span>
+            <span className="text-lg font-black text-yellow-300/80 tracking-widest">
+              COMBO x{showMilestoneCelebration} — +{COMBO_MILESTONE_COINS[showMilestoneCelebration as keyof typeof COMBO_MILESTONE_COINS]} 🪙
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Swipe Status Label - Subtle and brief */}
       <AnimatePresence>
         {swipeFeedback && (
@@ -858,8 +993,9 @@ function App() {
             <span className="text-3xl font-display font-black text-medical-primary text-glow tracking-tighter">
               {state.context.score}
             </span>
+          </div>
             {state.context.multiplier > 1 && (
-              <motion.span 
+              <motion.span
                 initial={{ x: -10, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 className="text-[10px] font-black text-medical-secondary bg-medical-secondary/10 px-2 py-0.5 rounded-full border border-medical-secondary/20 uppercase"
@@ -867,6 +1003,10 @@ function App() {
                 x{state.context.multiplier.toFixed(1)}
               </motion.span>
             )}
+          </div>
+          <div className="flex items-center gap-1 mt-1">
+            <span className="text-yellow-400 text-xs">🪙</span>
+            <span className="text-[10px] font-black text-yellow-400/70 tracking-widest">{stats.coins}</span>
           </div>
         </div>
 
