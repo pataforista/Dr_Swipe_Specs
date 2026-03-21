@@ -22,6 +22,7 @@ export interface PatientIntro {
 }
 
 export interface SafetyFlags {
+  contraindication?: boolean;
   lethal_risk?: boolean;
   decision_critical?: boolean;
   lethal_if_discarded?: boolean;
@@ -47,8 +48,8 @@ export interface Card {
 }
 
 export interface BossQuestion {
-  q: string;
-  question?: string; // legacy alias
+  question: string;
+  q?: string; // legacy alias
   options: string[];
   correct_index: number;
 }
@@ -65,12 +66,12 @@ export interface BossFightTriad {
 }
 
 export interface EnarmPearl {
-  id: string;
-  category: string;
-  rarity: 'common' | 'rare' | 'epic' | 'legendary';
+  id?: string;
+  category?: string;
+  rarity?: 'common' | 'rare' | 'epic' | 'legendary';
   title: string;
   text: string;
-  gpc_ref: string;
+  gpc_ref?: string;
 }
 
 export interface ClinicalCase {
