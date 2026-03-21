@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@xstate/react": "^6.1.0",
+    "dexie": "^4.0.10",
+    "dexie-react-hooks": "^1.1.7",
     "framer-motion": "^12.37.0",
     "lucide-react": "^0.577.0",
     "react": "^18.3.1",
