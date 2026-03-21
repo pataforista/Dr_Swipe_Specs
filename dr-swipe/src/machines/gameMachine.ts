@@ -62,7 +62,8 @@ export const gameMachine = setup({
       combo: 0,
       multiplier: 1,
       warningCount: 0,
-      caseStreak: 0,
+      // caseStreak is intentionally NOT reset here so consecutive victories
+      // keep raising difficulty (adaptive learning curve). It only resets on failure.
       lastCardPresentedAt: 0,
       showEureka: false,
       isUrgent: false,
@@ -279,6 +280,9 @@ export const gameMachine = setup({
             caseStreak: 0
           })
         },
+        TRIGGER_URGENCY: {
+          target: 'urgent_triage'
+        },
         CLEAR_VISUALS: {
           actions: 'clearVisuals'
         }
@@ -327,8 +331,8 @@ export const gameMachine = setup({
     },
     boss_fight: {
       entry: assign({
-        qteActive: ({ context }) => !context.qteActive ? true : false,
-        qteTimeLeft: ({ context }) => context.qteActive ? 5 : context.qteTimeLeft
+        qteActive: true,
+        qteTimeLeft: 5
       }),
       on: {
         QTE_TIMER_TICK: {

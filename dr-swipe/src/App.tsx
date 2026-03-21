@@ -4,7 +4,7 @@ import { gameMachine } from './machines/gameMachine';
 import { SwipeDeck } from './components/SwipeDeck';
 import { AvatarFeedback } from './components/AvatarFeedback';
 import { ShockRoom } from './components/ShockRoom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import type { ClinicalCase } from './types/game';
 import { dataLoader } from './utils/dataLoader';
 import { useGameAudio } from './hooks/useGameAudio';
@@ -14,23 +14,27 @@ import { calculateCardScore } from './utils/scoringEngine';
 import DecryptedText from './components/bits/DecryptedText';
 import ShinyText from './components/bits/ShinyText';
 import ErrorBoundary from './components/ErrorBoundary';
+import { useCodexStore } from './store/useCodexStore';
 
 const isSwipeCorrect = (direction: 'left' | 'right', expectedAction: 'keep' | 'discard'): boolean => {
   return (direction === 'right' && expectedAction === 'keep') ||
          (direction === 'left' && expectedAction === 'discard');
 };
 
-const AutoSkipBossFight: React.FC<{ send: any; stopAlarm: () => void }> = ({ send, stopAlarm }) => {
-  useEffect(() => {
-    stopAlarm();
-    send({ type: 'ANSWER_CORRECT' });
-  }, [send, stopAlarm]);
-  return null;
-};
+const VAZQUEZ_LINES = [
+  { title: "Así que... ¿racha de aciertos?", body: "Déjame complicarte un poco las cosas, doctorcillo." },
+  { title: "No te confíes.", body: "El exceso de confianza mata más pacientes que la ignorancia." },
+  { title: "¿Crees que ya lo sabes todo?", body: "Los R1 que sonríen así son los primeros en cometer errores fatales." },
+  { title: "Impresionante. Para ser estudiante.", body: "Ahora muéstrame que puedes mantenerlo bajo presión real." },
+  { title: "Buena racha... de momento.", body: "El siguiente caso no será tan amable contigo." },
+  { title: "Noto seguridad en ti.", body: "Recuerda: la medicina te humillará cuando menos lo esperes." },
+];
 
 const VazquezInterruption: React.FC<{ onDismiss: () => void }> = ({ onDismiss }) => {
+  const line = VAZQUEZ_LINES[Math.floor(Math.random() * VAZQUEZ_LINES.length)];
+
   useEffect(() => {
-    const timer = setTimeout(onDismiss, 2000);
+    const timer = setTimeout(onDismiss, 2500);
     return () => clearTimeout(timer);
   }, [onDismiss]);
 
@@ -46,10 +50,10 @@ const VazquezInterruption: React.FC<{ onDismiss: () => void }> = ({ onDismiss })
           👴
         </div>
         <h3 className="text-xl font-display font-black text-white mb-3 tracking-tight">
-          "Así que... ¿racha de aciertos?"
+          "{line.title}"
         </h3>
         <p className="text-sm text-slate-300 italic font-medium mb-4">
-          Déjame complicarte un poco las cosas, doctorcillo.
+          {line.body}
         </p>
         <div className="h-0.5 w-16 bg-medical-danger/40 mx-auto" />
       </motion.div>
@@ -114,6 +118,11 @@ function App() {
   const [state, send] = useMachine(gameMachine);
   const { playGhosted, startAlarm, stopAlarm } = useGameAudio();
   const [currentCase, setCurrentCase] = useState<ClinicalCase | null>(null);
+  const { addXp, registerCaseSolved, unlockPearl } = useCodexStore();
+  // Stores the calculated time limit so timer bar uses consistent denominator
+  const timeLimitRef = useRef<number>(60);
+  // Stores the precomputed shuffled deck for when intro → START_GUARD
+  const pendingDeckRef = useRef<any[]>([]);
   
   // Dynamic Background Theming
   useEffect(() => {
@@ -144,6 +153,8 @@ function App() {
   const [comment, setComment] = useState<string | null>(null);
   const [swipeFeedback, setSwipeFeedback] = useState<'correct' | 'wrong' | null>(null);
   const [timeLeft, setTimeLeft] = useState(60);
+  // Prevents double-swiping during the feedback animation window
+  const [isProcessing, setIsProcessing] = useState(false);
 
   // Time Tense Haptics (Variance)
   useEffect(() => {
@@ -195,31 +206,54 @@ function App() {
     }
   }, [state]);
 
+  // Fix: startAlarm must be a side-effect, not a render call
+  useEffect(() => {
+    if (state.matches('critical_alert')) {
+      startAlarm();
+    }
+  }, [state.value, startAlarm]);
+
+  // Save persistent progression when a case is won
+  useEffect(() => {
+    if (state.matches('reward') && currentCase) {
+      addXp(state.context.score);
+      registerCaseSolved(currentCase.case_id);
+      const pearl = currentCase.enarm_pearl || (currentCase as any).perla_enarm;
+      if (pearl) unlockPearl(pearl);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.matches('reward')]);
+
   const startNewCase = async (skipIntro = false) => {
+    // Capture caseStreak before RESTART resets it, so adaptive difficulty works correctly
+    const savedStreak = state.context.caseStreak;
     try {
       send({ type: 'RESTART' }); // Reset machine to idle
       const caseData = await dataLoader.loadRandomCase();
       setCurrentCase(caseData);
-      
+
+      // Adaptive Learning Curve: Time per card decreases as streak increases
+      let timePerCard = 15; // R1
+      if (savedStreak >= 6) timePerCard = 8; // Adscrito
+      else if (savedStreak >= 3) timePerCard = 12; // R2/R3
+      const timeLimit = Math.max(60, Math.min(180, caseData.card_stream.length * timePerCard));
+
+      // Shuffle logic: keep first vitals card anchored
+      const fullDeck = [...caseData.card_stream];
+      const vitals = fullDeck.shift();
+      const shuffledCards = vitals
+        ? [vitals, ...fullDeck.sort(() => Math.random() - 0.5)]
+        : fullDeck.sort(() => Math.random() - 0.5);
+
+      timeLimitRef.current = timeLimit;
+      pendingDeckRef.current = shuffledCards;
+
       if (skipIntro) {
         setShowIntro(false);
-        // Adaptive Learning Curve: Time per card decreases as streak increases
-        let timePerCard = 15; // R1
-        if (state.context.caseStreak >= 6) timePerCard = 8; // Adscrito
-        else if (state.context.caseStreak >= 3) timePerCard = 12; // R2/R3
-
-        const timeLimit = Math.max(60, Math.min(180, caseData.card_stream.length * timePerCard));
         setTimeLeft(timeLimit);
-        
-        // Shuffle logic
-        const fullDeck = [...caseData.card_stream];
-        const vitals = fullDeck.shift();
-        const shuffledCards = vitals 
-          ? [vitals, ...fullDeck.sort(() => Math.random() - 0.5)]
-          : fullDeck.sort(() => Math.random() - 0.5);
-
-        send({ 
-          type: 'START_GUARD', 
+        setIsProcessing(false);
+        send({
+          type: 'START_GUARD',
           deck: shuffledCards,
           difficulty: caseData.difficulty || 'standard',
           pearl: (caseData.enarm_pearl || caseData.perla_enarm) as any
@@ -234,11 +268,13 @@ function App() {
   };
 
   const handleSwipe = (direction: 'left' | 'right') => {
+    if (isProcessing) return;
     const card = state.context.deck[state.context.currentCardIndex];
     if (!card) return;
 
+    setIsProcessing(true);
     const isCorrect = isSwipeCorrect(direction, card.expected_action);
-    
+
     setSwipeFeedback(isCorrect ? 'correct' : 'wrong');
     setExpression(isCorrect ? 'happy' : 'angry');
     const rawComment = card.scoring.vazquez_comment;
@@ -252,8 +288,9 @@ function App() {
       setExpression('neutral');
       setComment(null);
       setSwipeFeedback(null);
+      setIsProcessing(false);
       send({ type: 'CLEAR_VISUALS' });
-    }, 1500); // Faster feedback loop (1.5s)
+    }, 1500);
   };
 
   const renderCurrentView = () => {
@@ -279,24 +316,16 @@ function App() {
             <DecryptedText text={currentCase.patient_intro.arrival_scenario} animateOn="view" speed={25} maxIterations={1} revealMultiplier={2} />
           </p>
           
-          <button 
+          <button
             onClick={() => {
               if (!currentCase) return;
               setShowIntro(false);
-              // Dynamic Time Buff: 12s per card (min 60s, max 150s)
-              const timeLimit = Math.max(60, Math.min(150, currentCase.card_stream.length * 12));
-              setTimeLeft(timeLimit);
-              
-              // Quick Round Shuffling: Randomize all cards except initial vitals
-              const fullDeck = [...currentCase.card_stream];
-              const vitals = fullDeck.shift();
-              const shuffledCards = vitals 
-                ? [vitals, ...fullDeck.sort(() => Math.random() - 0.5)]
-                : fullDeck.sort(() => Math.random() - 0.5);
-
-              send({ 
-                type: 'START_GUARD', 
-                deck: shuffledCards,
+              // Use precomputed timeLimit and shuffled deck from startNewCase
+              setTimeLeft(timeLimitRef.current);
+              setIsProcessing(false);
+              send({
+                type: 'START_GUARD',
+                deck: pendingDeckRef.current,
                 difficulty: currentCase.difficulty || 'standard',
                 pearl: (currentCase.enarm_pearl || currentCase.perla_enarm) as any
               });
@@ -333,14 +362,13 @@ function App() {
         return (
           <SwipeDeck 
             cards={state.context.deck} 
-            currentIndex={state.context.currentCardIndex} 
-            onSwipe={handleSwipe} 
-            isLocked={!state.matches('triage')}
+            currentIndex={state.context.currentCardIndex}
+            onSwipe={handleSwipe}
+            isLocked={isProcessing}
           />
         );
 
       case state.matches('critical_alert'):
-        startAlarm();
         return (
           <div className="fixed inset-0 bg-medical-danger/20 flex flex-col items-center justify-center animate-pulse">
             <h2 className="text-4xl font-display font-black text-medical-danger">CÓDIGO ROJO</h2>
@@ -684,6 +712,15 @@ function App() {
           <div className="h-12 w-12 glass-panel !rounded-2xl flex items-center justify-center font-black text-sm border-white/20 shadow-lg scale-110">
             {state.context.caseStreak >= 6 ? 'ADSC' : (state.context.caseStreak >= 4 ? 'R3' : (state.context.caseStreak >= 2 ? 'R2' : 'R1'))}
           </div>
+          {state.matches('triage') && state.context.deck.length > 0 && (
+            <div className="flex flex-col items-end">
+              <span className="text-[9px] font-black text-white/40 uppercase tracking-[0.2em]">CARTAS</span>
+              <span className="text-lg font-display font-black text-slate-300">
+                {state.context.currentCardIndex + 1}
+                <span className="text-slate-600">/{state.context.deck.length}</span>
+              </span>
+            </div>
+          )}
           {state.context.combo > 1 && (
             <motion.div
               key={state.context.combo}
@@ -708,7 +745,7 @@ function App() {
             <motion.div 
               className={`h-full ${timeLeft <= 10 ? 'bg-medical-danger flex-grow h-full' : 'bg-medical-secondary flex-grow h-full'}`}
               initial={{ width: '100%' }}
-              animate={{ width: `${(timeLeft / currentCase.patient_intro.time_limit_sec) * 100}%` }}
+              animate={{ width: `${(timeLeft / timeLimitRef.current) * 100}%` }}
               transition={{ duration: 1, ease: 'linear' }}
               style={{ originX: 0 }}
             />
