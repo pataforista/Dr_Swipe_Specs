@@ -1,0 +1,90 @@
+{
+  "case_id": "PROC_IM_HEART_FAILURE_001_003",
+  "version": "v3_swipe_action",
+  "theme_config": "med",
+  "difficulty": "hard",
+  "patient_intro": {
+    "name": "Héctor, 58 años",
+    "arrival_scenario": "Paciente que sufrió infarto hace 4 años y no continuó el seguimiento. Consulta por ortopnea de 3 almohadas, tos nocturna y fatiga. Ecocardiograma reciente reporta FEVI del 30%. Solicita orientación sobre el tratamiento óptimo.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 145/90 mmHg, FC 92 lpm, FR 22 rpm, SatO2 93%.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: Presión un poco alta, pero lo importante es la insuficiencia cardíaca."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Insuficiencia Cardíaca con FE reducida (ICFEr): Presencia de síntomas típicos + FEVI <40%. Don Pedro cumple criterios de Framingham.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Excelente! La distinción por FEVI es vital para el tratamiento."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "beaker",
+      "category": "Gabinete",
+      "card_text": "B) Péptidos Natriuréticos (NT-proBNP): Útiles para el diagnóstico por su alto valor predictivo negativo (descartar IC en urgencias).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Correcto! Si es normal, es muy poco probable que sea IC."
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "IC: Los 4 Fantásticos",
+    "text": "1. ARNI (Sacubitrilo). 2. BB (Carvedilol). 3. ARM (Espironolactona). 4. iSGLT2 (Dapa/Empa). Framingham: 2 mayores o 1 mayor + 2 menores.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Insuficiencia Cardíaca Crónica"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál de estos grupos de fármacos NO forma parte de la 'terapia cuádruple' estándar para ICFEr?",
+        "options": [
+          "Calcioantagonistas no dihidropiridínicos",
+          "iSGLT2 (Dapagliflozina)",
+          "Antagonistas de Mineralocorticoides"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿A qué clase de la NYHA corresponde un paciente con disnea a pequeños esfuerzos que limita la actividad normal?",
+        "options": [
+          "NYHA III",
+          "NYHA I",
+          "NYHA IV"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el estudio de imagen de elección para confirmar el diagnóstico y clasificar la FEVI en IC?",
+        "options": [
+          "Ecocardiograma",
+          "Radiografía de tórax",
+          "Resonancia magnética"
+        ],
+        "correct_index": 0
+      }
+    ]
+  }
+}

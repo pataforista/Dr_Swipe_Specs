@@ -1,0 +1,90 @@
+{
+  "case_id": "PROC_ORL_EPISTAXIS_001_003",
+  "version": "v3_swipe_action",
+  "theme_config": "med",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Rodrigo, 8 años",
+    "arrival_scenario": "Escolar con epistaxis anterior recurrente (3-4 episodios por semana). Sin antecedentes de traumatismo. La madre relata que el niño tiene hábito de rascarse la nariz. Al examen: área de Little con vasos prominentes y costra.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 170/100 mmHg, FC 95 lpm, FR 18 rpm. (Hipertensión significativa).",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Vázquez: La presión está alta, probablemente por el estrés del sangrado. Controlémoslo."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Anatomía",
+      "card_text": "A) Plexo de Kiesselbach (Área de Little): Sitio anatómico donde ocurre el 90% de las epistaxis anteriores.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Vázquez: ¡Bien! Es la zona de anastomosis de 5 arterias en el tabique anterior."
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "zap",
+      "category": "Manejo Inicial",
+      "card_text": "B) Presión Digital Directa: Comprimir las alas nasales de forma continua durante 5 a 15 minutos con el paciente inclinado hacia ADELANTE.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Vázquez: ¡Correcto! Es la medida inicial más efectiva. Nunca inclines la cabeza hacia atrás (riesgo de aspiración).",
+        "safety_flags": {
+          "lethal_risk": false,
+          "decision_critical": true
+        }
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Epistaxis: Anterior vs Posterior",
+    "text": "Anterior: 90%, Plexo Kiesselbach. Tx: Presión -> Cauterización. Posterior: 10%, Esfenopalatina. Tx: Taponamiento posterior + Hospital.",
+    "gpc_ref": "GPC Diagnóstico y Manejo de la Epistaxis"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es el sitio anatómico más frecuente de origen de la epistaxis anterior?",
+        "options": [
+          "Plexo de Kiesselbach",
+          "Arteria esfenopalatina",
+          "Arterias etmoidales anteriores"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es la conducta inicial recomendada para el manejo de la epistaxis aguda?",
+        "options": [
+          "Presión digital directa con cabeza hacia adelante",
+          "Cauterización eléctrica inmediata",
+          "Taponamiento posterior con sonda Foley"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Qué arteria se asocia principalmente con la epistaxis posterior grave?",
+        "options": [
+          "Arteria esfenopalatina",
+          "Arteria labial superior",
+          "Arteria palatina mayor"
+        ],
+        "correct_index": 0
+      }
+    ]
+  }
+}
