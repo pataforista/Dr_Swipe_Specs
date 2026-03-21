@@ -15,7 +15,7 @@ import { LIFELINE_COST } from './store/useCodexStore';
 import DecryptedText from './components/bits/DecryptedText';
 import ShinyText from './components/bits/ShinyText';
 import ErrorBoundary from './components/ErrorBoundary';
-import { useCodexStore } from './store/useCodexStore';
+import { useCodexStore, type SessionProgress } from './store/useCodexStore';
 import { TutorialOverlay } from './components/TutorialOverlay';
 import { StatsDashboard } from './components/StatsDashboard';
 
@@ -148,7 +148,7 @@ function App() {
   const [state, send] = useMachine(gameMachine);
   const { playGhosted, startAlarm, stopAlarm } = useGameAudio();
   const [currentCase, setCurrentCase] = useState<ClinicalCase | null>(null);
-  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, stats, dailyStreak } = useCodexStore();
+  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, stats, dailyStreak } = useCodexStore();
   // Stores the calculated time limit so timer bar uses consistent denominator
   const timeLimitRef = useRef<number>(60);
   // Stores the precomputed shuffled deck for when intro → START_GUARD
@@ -191,6 +191,35 @@ function App() {
       document.documentElement.style.setProperty('--specialty-rgb', rgb);
     }
   }, [currentCase]);
+
+  // Auto-save session progress every second during active gameplay
+  useEffect(() => {
+    const isActiveGame = state.matches('triage') || state.matches('urgent_triage') || state.matches('boss_fight');
+
+    if (isActiveGame && currentCase) {
+      const sessionProgress: SessionProgress = {
+        caseId: currentCase.case_id,
+        currentCardIndex: state.context.currentCardIndex,
+        score: state.context.score,
+        combo: state.context.combo,
+        multiplier: state.context.multiplier,
+        caseStreak: state.context.caseStreak,
+        coinsEarnedThisCase: state.context.coinsEarnedThisCase,
+        mistakesThisCase: state.context.mistakesThisCase,
+        warningCount: state.context.warningCount,
+        difficulty: state.context.difficulty,
+        savedAt: Date.now()
+      };
+      saveSessionProgress(sessionProgress);
+    }
+  }, [state.context, state.value, currentCase, saveSessionProgress]);
+
+  // Clear session progress when game ends (reward or ghosted)
+  useEffect(() => {
+    if (state.matches('reward') || state.matches('ghosted') || state.matches('debrief')) {
+      clearSessionProgress();
+    }
+  }, [state.value, clearSessionProgress]);
 
   const [showIntro, setShowIntro] = useState(false);
   const [expression, setExpression] = useState<'neutral' | 'happy' | 'angry' | 'shocked'>('neutral');

@@ -2,12 +2,27 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import type { PlayerStats, EnarmPearl } from '../types/game';
 
+export interface SessionProgress {
+  caseId?: string;
+  currentCardIndex: number;
+  score: number;
+  combo: number;
+  multiplier: number;
+  caseStreak: number;
+  coinsEarnedThisCase: number;
+  mistakesThisCase: number;
+  warningCount: number;
+  difficulty: string;
+  savedAt: number; // timestamp
+}
+
 interface CodexState {
   stats: PlayerStats;
   unlockedPearls: EnarmPearl[];
   history: string[]; // case ids solved
   dailyStreak: number;
   lastPlayedDate: string | null; // ISO date string (YYYY-MM-DD)
+  sessionProgress: SessionProgress | null; // Active game session state
 
   // Actions
   addXp: (amount: number) => void;
@@ -18,6 +33,8 @@ interface CodexState {
   updateSwipeResult: (isCorrect: boolean) => void;
   incrementSessions: () => void;
   updateDailyStreak: () => void;
+  saveSessionProgress: (progress: SessionProgress) => void;
+  clearSessionProgress: () => void;
 }
 
 export const LIFELINE_COST = 25;
@@ -39,6 +56,7 @@ export const useCodexStore = create<CodexState>()(
       history: [],
       dailyStreak: 0,
       lastPlayedDate: null,
+      sessionProgress: null,
 
       addXp: (amount) => set((state) => ({
         stats: { ...state.stats, xp: state.stats.xp + amount }
@@ -89,6 +107,10 @@ export const useCodexStore = create<CodexState>()(
         const newStreak = state.lastPlayedDate === yesterday ? state.dailyStreak + 1 : 1;
         return { dailyStreak: newStreak, lastPlayedDate: today };
       }),
+
+      saveSessionProgress: (progress) => set({ sessionProgress: progress }),
+
+      clearSessionProgress: () => set({ sessionProgress: null }),
     }),
     {
       name: 'dr-swipe-codex',
