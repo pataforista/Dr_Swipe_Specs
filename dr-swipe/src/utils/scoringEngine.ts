@@ -15,7 +15,31 @@ export interface ScoreBreakdown {
   speedBonus: number;
   dossierMultiplier: number;
   finalPoints: number;
+  coinsEarned: number;
   bonusType: 'speed' | 'dossier' | 'combo' | 'none';
+}
+
+/**
+ * Coin thresholds for combo milestones.
+ * Reaching these combo counts awards bonus coins.
+ */
+export const COMBO_MILESTONES = [5, 10, 15, 20] as const;
+export const COMBO_MILESTONE_COINS = { 5: 5, 10: 15, 15: 30, 20: 50 } as const;
+
+/**
+ * Calculate bonus coins for perfect round (zero mistakes across all cards).
+ */
+export function calculatePerfectRoundBonus(totalCards: number, difficulty: string): number {
+  const base = totalCards * 10;
+  const mult = difficulty === 'extreme' ? 3 : difficulty === 'hard' ? 2 : 1;
+  return base * mult;
+}
+
+/**
+ * Calculate daily streak multiplier (caps at x2.0 after 7 consecutive days).
+ */
+export function getDailyStreakMultiplier(streak: number): number {
+  return Math.min(2.0, 1 + streak * 0.1);
 }
 
 /**
@@ -52,6 +76,7 @@ export function calculateCardScore(
       speedBonus: 1,
       dossierMultiplier: 1,
       finalPoints: basePoints,
+      coinsEarned: 0,
       bonusType: 'none'
     };
   }
@@ -103,6 +128,14 @@ export function calculateCardScore(
     basePoints * comboMultiplier * difficultyMultiplier * speedBonus * dossierMultiplier
   );
 
+  // Coin calculation: 1 base + bonus for speed/combo milestones
+  let coinsEarned = 1;
+  if (speedBonus > 1) coinsEarned += 2; // Speed bonus coins
+  if (comboMultiplier > 1) coinsEarned += Math.floor(comboMultiplier); // Combo coins
+  // Milestone bonus coins
+  const milestone = COMBO_MILESTONES.find(m => m === nextCombo);
+  if (milestone) coinsEarned += COMBO_MILESTONE_COINS[milestone];
+
   return {
     basePoints,
     comboMultiplier,
@@ -110,6 +143,7 @@ export function calculateCardScore(
     speedBonus,
     dossierMultiplier,
     finalPoints,
+    coinsEarned,
     bonusType
   };
 }

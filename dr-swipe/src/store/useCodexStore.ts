@@ -6,15 +6,21 @@ interface CodexState {
   stats: PlayerStats;
   unlockedPearls: EnarmPearl[];
   history: string[]; // case ids solved
+  dailyStreak: number;
+  lastPlayedDate: string | null; // ISO date string (YYYY-MM-DD)
 
   // Actions
   addXp: (amount: number) => void;
   addCoins: (amount: number) => void;
+  spendCoins: (amount: number) => boolean; // returns false if insufficient
   unlockPearl: (pearl: EnarmPearl) => void;
   registerCaseSolved: (caseId: string, score?: number) => void;
   updateSwipeResult: (isCorrect: boolean) => void;
   incrementSessions: () => void;
+  updateDailyStreak: () => void;
 }
+
+export const LIFELINE_COST = 25;
 
 export const useCodexStore = create<CodexState>()(
   persist(
@@ -31,6 +37,8 @@ export const useCodexStore = create<CodexState>()(
       },
       unlockedPearls: [],
       history: [],
+      dailyStreak: 0,
+      lastPlayedDate: null,
 
       addXp: (amount) => set((state) => ({
         stats: { ...state.stats, xp: state.stats.xp + amount }
@@ -39,6 +47,13 @@ export const useCodexStore = create<CodexState>()(
       addCoins: (amount) => set((state) => ({
         stats: { ...state.stats, coins: state.stats.coins + amount }
       })),
+
+      spendCoins: (amount) => {
+        const state = useCodexStore.getState();
+        if (state.stats.coins < amount) return false;
+        set({ stats: { ...state.stats, coins: state.stats.coins - amount } });
+        return true;
+      },
 
       unlockPearl: (pearl) => set((state) => {
         if (state.unlockedPearls.find(p => p.id === pearl.id)) return state;
@@ -65,6 +80,15 @@ export const useCodexStore = create<CodexState>()(
       incrementSessions: () => set((state) => ({
         stats: { ...state.stats, total_sessions: (state.stats.total_sessions ?? 0) + 1 }
       })),
+
+      updateDailyStreak: () => set((state) => {
+        const today = new Date().toISOString().slice(0, 10);
+        if (state.lastPlayedDate === today) return state; // Already updated today
+
+        const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+        const newStreak = state.lastPlayedDate === yesterday ? state.dailyStreak + 1 : 1;
+        return { dailyStreak: newStreak, lastPlayedDate: today };
+      }),
     }),
     {
       name: 'dr-swipe-codex',

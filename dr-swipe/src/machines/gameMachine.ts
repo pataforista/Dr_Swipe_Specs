@@ -1,7 +1,7 @@
 import { setup, assign } from 'xstate';
 import type { Card, EnarmPearl } from '../types/game';
 import { cleanVazquezComment } from '../utils/formatters';
-import { calculateCardScore } from '../utils/scoringEngine';
+import { calculateCardScore, COMBO_MILESTONES } from '../utils/scoringEngine';
 
 interface GameContext {
   deck: Card[];
@@ -26,6 +26,11 @@ interface GameContext {
   // Interruption context
   interruptionActive: boolean;
   lastInterruptionAt: number;
+  // Coin & lifeline context
+  coinsEarnedThisCase: number;
+  mistakesThisCase: number;
+  lifelineActive: boolean; // true = hint is currently showing
+  comboMilestoneHit: number; // last milestone combo reached (5,10,15,20), 0 if none
 }
 
 type GameEvent =
@@ -44,7 +49,9 @@ type GameEvent =
   | { type: 'QTE_TIMER_TICK' }
   | { type: 'QTE_INTERACT' }
   | { type: 'TRIGGER_INTERRUPTION' }
-  | { type: 'RESOLVE_INTERRUPTION' };
+  | { type: 'RESOLVE_INTERRUPTION' }
+  | { type: 'USE_LIFELINE' }
+  | { type: 'CLEAR_MILESTONE' };
 
 export const gameMachine = setup({
   types: {
@@ -72,7 +79,11 @@ export const gameMachine = setup({
       qteActive: false,
       qteTimeLeft: 0,
       interruptionActive: false,
-      lastInterruptionAt: 0
+      lastInterruptionAt: 0,
+      coinsEarnedThisCase: 0,
+      mistakesThisCase: 0,
+      lifelineActive: false,
+      comboMilestoneHit: 0
     }),
     clearVisuals: assign({
       showEureka: false,
@@ -128,6 +139,9 @@ export const gameMachine = setup({
         }
       }
 
+      // Track combo milestone hits
+      const milestoneHit = (COMBO_MILESTONES as readonly number[]).includes(nextCombo) ? nextCombo : 0;
+
       return {
         combo: nextCombo,
         multiplier: scoreBreakdown.comboMultiplier,
@@ -137,7 +151,11 @@ export const gameMachine = setup({
         currentCardIndex: context.currentCardIndex + 1,
         lastCardPresentedAt: Date.now(),
         interruptionActive: shouldTriggerInterruption,
-        lastInterruptionAt: shouldTriggerInterruption ? Date.now() : context.lastInterruptionAt
+        lastInterruptionAt: shouldTriggerInterruption ? Date.now() : context.lastInterruptionAt,
+        coinsEarnedThisCase: context.coinsEarnedThisCase + scoreBreakdown.coinsEarned,
+        mistakesThisCase: isCorrect ? context.mistakesThisCase : context.mistakesThisCase + 1,
+        lifelineActive: false, // Reset lifeline after swipe
+        comboMilestoneHit: milestoneHit
       };
     })
   }
@@ -164,7 +182,11 @@ export const gameMachine = setup({
     qteActive: false,
     qteTimeLeft: 0,
     interruptionActive: false,
-    lastInterruptionAt: 0
+    lastInterruptionAt: 0,
+    coinsEarnedThisCase: 0,
+    mistakesThisCase: 0,
+    lifelineActive: false,
+    comboMilestoneHit: 0
   },
   states: {
     idle: {
@@ -194,7 +216,11 @@ export const gameMachine = setup({
             qteActive: false,
             qteTimeLeft: 0,
             interruptionActive: false,
-            lastInterruptionAt: 0
+            lastInterruptionAt: 0,
+            coinsEarnedThisCase: 0,
+            mistakesThisCase: 0,
+            lifelineActive: false,
+            comboMilestoneHit: 0
           })
         }
       }
@@ -285,6 +311,12 @@ export const gameMachine = setup({
         },
         CLEAR_VISUALS: {
           actions: 'clearVisuals'
+        },
+        USE_LIFELINE: {
+          actions: assign({ lifelineActive: true })
+        },
+        CLEAR_MILESTONE: {
+          actions: assign({ comboMilestoneHit: 0 })
         }
       }
     },
