@@ -25,8 +25,9 @@
             "ui_icon": "heartbeat",
             "category": "Signos Vitales",
             "nlg_trigger": "hipotension_severa",
+            "card_text": "TA 75-85 mmHg, FC 115 lpm, Respiración rápida y superficial.",
             "dynamic_value": { "min": 70, "max": 85, "unit": "mmHg", "isBorderline": false },
-            "expected_action": "keep", 
+            "expected_action": "keep",
             "scoring": { "points": 100 }
         },
         {
@@ -99,17 +100,17 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "q": "Con la evidencia guardada, ¿cuál es el diagnóstico clínico primario?",
+                "question": "Con la evidencia guardada, ¿cuál es el diagnóstico clínico primario?",
                 "options": ["Taponamiento Cardíaco", "Neumotórax a Tensión Derecho", "Hemotórax Masivo"],
                 "correct_index": 1
             },
             {
-                "q": "El paciente sigue inestable. ¿Cuál es el manejo INMEDIATO de elección?",
+                "question": "El paciente sigue inestable. ¿Cuál es el manejo INMEDIATO de elección?",
                 "options": ["Toracotomía de reanimación", "Radiografía portátil", "Punción en 5º espacio intercostal (LAA/LAM)"],
                 "correct_index": 2
             },
             {
-                "q": "¿Cuál es el tratamiento DEFINITIVO para esta patología?",
+                "question": "¿Cuál es el tratamiento DEFINITIVO para esta patología?",
                 "options": ["Sonda endopleural (Tubo de tórax)", "Cierre del defecto con parche de tres vías", "Intubación orotraqueal"],
                 "correct_index": 0
             }
