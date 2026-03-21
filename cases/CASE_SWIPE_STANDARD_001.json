@@ -1,214 +1,219 @@
 {
-    "case_id": "swipe_standard_001",
-    "version": "v3_swipe_action",
-    "theme_config": "theme-default",
-    "difficulty": "standard",
-    "patient_intro": {
-        "name": "Paciente",
-        "arrival_scenario": "Ingresa al servicio de urgencias.",
-        "time_limit_sec": 30
+  "case_id": "swipe_standard_001",
+  "version": "v3_swipe_action",
+  "theme_config": "theme-default",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Paciente",
+    "arrival_scenario": "Ingresa al servicio de urgencias.",
+    "time_limit_sec": 30
+  },
+  "card_stream": [
+    {
+      "card_id": "ev_001",
+      "ui_icon": "🩺",
+      "category": "vitals",
+      "card_text": "TA: 90/60 mmHg en triage. Palidez de tegumentos. Llenado capilar de 3 segundos.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "lethal_hazard",
+        "vazquez_comment": "¡Eso era una Red Flag letal! ¡El paciente está en choque por tu culpa!"
+      },
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": true,
+        "decision_critical": true
+      }
     },
-    "card_stream": [
-        {
-            "card_id": "ev_001",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "TA: 90/60 mmHg en triage. Palidez de tegumentos. Llenado capilar de 3 segundos.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "lethal_hazard",
-                "vazquez_comment": "¡Eso era una Red Flag letal! ¡El paciente está en choque por tu culpa!"
-            },
-            "safety_flags": {
-                "contraindication": false,
-                "lethal_risk": true,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "ev_002",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "FC: 120 lpm. Taquicardia sinusal compensatoria. Indica hipovolemia aguda.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding"
-            },
-            "safety_flags": {
-                "contraindication": false,
-                "lethal_risk": false,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "ev_003",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Hb: 8.1 g/dL. Anemia moderada. Confirma pérdida hemática significativa activa o reciente.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding"
-            },
-            "safety_flags": {
-                "contraindication": false,
-                "lethal_risk": false,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "ev_004",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Paciente ansioso y diaforético al ingreso. Estado de ánimo alterado por la situación aguda.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding"
-            },
-            "safety_flags": {
-                "contraindication": false,
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "ev_005",
-            "ui_icon": "☢️",
-            "category": "imaging",
-            "card_text": "Sin hallazgos agudos pulmonares. No neumotórax, no cardiomegalia. Reporte preliminar normal.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding"
-            },
-            "safety_flags": {
-                "contraindication": false,
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "ev_006",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Hb: 8.1 g/dL — copia exacta del mismo laboratorio enviada por doble impresión. Valor idéntico.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding"
-            },
-            "safety_flags": {
-                "contraindication": false,
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "ev_007",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Glucosa: 98 mg/dL. Normal. No diabetes ni hipoglucemia en este contexto agudo.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding"
-            },
-            "safety_flags": {
-                "contraindication": false,
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "ev_008",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Cr: 1.1 mg/dL — disponible 4 horas después del ingreso a urgencias. Normal para la edad.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding"
-            },
-            "safety_flags": {
-                "contraindication": false,
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "ev_009",
-            "ui_icon": "💊",
-            "category": "meds",
-            "card_text": "Ibuprofeno 400 mg c/8h por lumbalgia, consumido durante 10 días previos al ingreso.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding"
-            },
-            "safety_flags": {
-                "contraindication": true,
-                "lethal_risk": false,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "ev_010",
-            "ui_icon": "📄",
-            "category": "timeline",
-            "card_text": "Refiere dolor torácico leve hace 3 días que cedió espontáneamente en 10 minutos. Sin recurrencia.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding"
-            },
-            "safety_flags": {
-                "contraindication": false,
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        }
-    ],
-    "boss_fight_triad": {
-        "trigger": "after_cards",
-        "questions": [
-            {
-                "question": "Hombre 55 años, melena 2 días, síncope, TA 90/60, Hb 8.1, uso de AINEs 10 días. ¿Diagnóstico más probable?",
-                "options": [
-                    "Hemorragia de tubo digestivo alto por úlcera péptica inducida por AINEs",
-                    "Hemorragia de tubo digestivo bajo por diverticulosis",
-                    "Tromboembolismo pulmonar con hemoptisis",
-                    "Anemia hemolítica autoinmune"
-                ],
-                "correct_index": 0
-            },
-            {
-                "question": "¿Cuál es el estudio diagnóstico de elección para confirmar y tratar la hemorragia de TDA en urgencias?",
-                "options": [
-                    "Endoscopia alta urgente (dentro de las primeras 24 horas según ASGE)",
-                    "TAC de abdomen y pelvis con contraste",
-                    "Arteriografía mesentérica",
-                    "Colonoscopia urgente"
-                ],
-                "correct_index": 0
-            },
-            {
-                "question": "Previo a la endoscopia, ¿cuál es el manejo inicial correcto según la GPC de hemorragia TDA?",
-                "options": [
-                    "IBP IV en bolo + infusión continua, reposición de volumen y suspender AINEs",
-                    "Transfusión inmediata y traslado a quirófano sin endoscopia previa",
-                    "Sucralfato oral y observación por 24 horas sin reposición hídrica",
-                    "Omeprazol oral y colonoscopia electiva en 72 horas"
-                ],
-                "correct_index": 0
-            }
-        ]
+    {
+      "card_id": "ev_002",
+      "ui_icon": "🩺",
+      "category": "vitals",
+      "card_text": "FC: 120 lpm. Taquicardia sinusal compensatoria. Indica hipovolemia aguda.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding"
+      },
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": true
+      }
     },
-    "perla_enarm": {
-        "title": "Hemorragia de Tubo Digestivo Alto por AINEs",
-        "text": "La tríada: melena + TA baja + FC elevada + uso de AINEs es la presentación clásica de úlcera péptica complicada con hemorragia. La GPC indica IBP IV (pantoprazol 80 mg bolo + infusión 8 mg/h) y endoscopia urgente dentro de 24h como estándar de oro. El score de Glasgow-Blatchford predice necesidad de intervención. Transfundir si Hb < 7 g/dL o inestabilidad hemodinámica persistente.",
-        "gpc_ref": "GPC IMSS-188-09: Diagnóstico y Tratamiento de la Hemorragia de Tubo Digestivo Alto"
+    {
+      "card_id": "ev_003",
+      "ui_icon": "🧪",
+      "category": "labs",
+      "card_text": "Hb: 8.1 g/dL. Anemia moderada. Confirma pérdida hemática significativa activa o reciente.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding"
+      },
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "ev_004",
+      "ui_icon": "📄",
+      "category": "notes",
+      "card_text": "Paciente ansioso y diaforético al ingreso. Estado de ánimo alterado por la situación aguda.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding"
+      },
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    },
+    {
+      "card_id": "ev_005",
+      "ui_icon": "☢️",
+      "category": "imaging",
+      "card_text": "Sin hallazgos agudos pulmonares. No neumotórax, no cardiomegalia. Reporte preliminar normal.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding"
+      },
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    },
+    {
+      "card_id": "ev_006",
+      "ui_icon": "🧪",
+      "category": "labs",
+      "card_text": "Hb: 8.1 g/dL — copia exacta del mismo laboratorio enviada por doble impresión. Valor idéntico.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding"
+      },
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    },
+    {
+      "card_id": "ev_007",
+      "ui_icon": "🧪",
+      "category": "labs",
+      "card_text": "Glucosa: 98 mg/dL. Normal. No diabetes ni hipoglucemia en este contexto agudo.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding"
+      },
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    },
+    {
+      "card_id": "ev_008",
+      "ui_icon": "🧪",
+      "category": "labs",
+      "card_text": "Cr: 1.1 mg/dL — disponible 4 horas después del ingreso a urgencias. Normal para la edad.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding"
+      },
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    },
+    {
+      "card_id": "ev_009",
+      "ui_icon": "💊",
+      "category": "meds",
+      "card_text": "Ibuprofeno 400 mg c/8h por lumbalgia, consumido durante 10 días previos al ingreso.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding"
+      },
+      "safety_flags": {
+        "contraindication": true,
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "ev_010",
+      "ui_icon": "📄",
+      "category": "timeline",
+      "card_text": "Refiere dolor torácico leve hace 3 días que cedió espontáneamente en 10 minutos. Sin recurrencia.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding"
+      },
+      "safety_flags": {
+        "contraindication": false,
+        "lethal_risk": false,
+        "decision_critical": false
+      }
     }
+  ],
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "Hombre 55 años, melena 2 días, síncope, TA 90/60, Hb 8.1, uso de AINEs 10 días. ¿Diagnóstico más probable?",
+        "options": [
+          "Hemorragia de tubo digestivo alto por úlcera péptica inducida por AINEs",
+          "Hemorragia de tubo digestivo bajo por diverticulosis",
+          "Tromboembolismo pulmonar con hemoptisis",
+          "Anemia hemolítica autoinmune"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el estudio diagnóstico de elección para confirmar y tratar la hemorragia de TDA en urgencias?",
+        "options": [
+          "Endoscopia alta urgente (dentro de las primeras 24 horas según ASGE)",
+          "TAC de abdomen y pelvis con contraste",
+          "Arteriografía mesentérica",
+          "Colonoscopia urgente"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "Previo a la endoscopia, ¿cuál es el manejo inicial correcto según la GPC de hemorragia TDA?",
+        "options": [
+          "IBP IV en bolo + infusión continua, reposición de volumen y suspender AINEs",
+          "Transfusión inmediata y traslado a quirófano sin endoscopia previa",
+          "Sucralfato oral y observación por 24 horas sin reposición hídrica",
+          "Omeprazol oral y colonoscopia electiva en 72 horas"
+        ],
+        "correct_index": 0
+      }
+    ]
+  },
+  "perla_enarm": {
+    "title": "Hemorragia de Tubo Digestivo Alto por AINEs",
+    "text": "La tríada: melena + TA baja + FC elevada + uso de AINEs es la presentación clásica de úlcera péptica complicada con hemorragia. La GPC indica IBP IV (pantoprazol 80 mg bolo + infusión 8 mg/h) y endoscopia urgente dentro de 24h como estándar de oro. El score de Glasgow-Blatchford predice necesidad de intervención. Transfundir si Hb < 7 g/dL o inestabilidad hemodinámica persistente.",
+    "gpc_ref": "GPC IMSS-188-09: Diagnóstico y Tratamiento de la Hemorragia de Tubo Digestivo Alto"
+  },
+  "enarm_pearl": {
+    "title": "Hemorragia de Tubo Digestivo Alto (HTDA) por AINEs",
+    "text": "Hemorragia de tubo digestivo alto = origen proximal al ángulo de Treitz. Melena (sangre digerida negra/alquitranada) orienta a HTDA. AINEs + anticoagulantes = principal causa de úlcera péptica hemorrágica. Manejo: Estabilización → Endoscopía en <24 horas.",
+    "gpc_ref": "GPC Hemorragia del Tubo Digestivo / Consenso Mexicano de Hemorragia de Tubo Digestivo"
+  }
 }
