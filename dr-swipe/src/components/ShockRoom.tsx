@@ -93,10 +93,15 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
               text-4xl font-display font-black tracking-widest uppercase
               ${answerState === 'correct' ? 'text-medical-primary' : 'text-medical-danger'}
             `}
-            initial={{ scale: 0.6, opacity: 0, y: 0 }}
-            animate={{ scale: [0.6, 1.2, 1], opacity: [0, 1, 0.8], y: -20 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.6 }}
+            style={{
+              textShadow: answerState === 'correct'
+                ? '0 0 30px rgba(13,148,136,0.9), 0 0 60px rgba(13,148,136,0.4)'
+                : '0 0 30px rgba(239,68,68,0.9), 0 0 60px rgba(239,68,68,0.4)'
+            }}
+            initial={{ scale: 0.4, opacity: 0, y: 20, rotate: -5 }}
+            animate={{ scale: [0.4, 1.3, 1], opacity: [0, 1, 0.9], y: [-10, -28], rotate: [0, 0] }}
+            exit={{ opacity: 0, scale: 0.7, y: -40 }}
+            transition={{ duration: 0.55, ease: [0.34, 1.56, 0.64, 1] }}
           >
             {answerState === 'correct' ? '✓ CORRECTO' : '✗ FALLO CRÍTICO'}
           </motion.div>
@@ -157,9 +162,20 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
 
               return (
                 <motion.button
-                  key={idx}
-                  whileHover={answerState === null ? { scale: 1.02, x: 6 } : {}}
-                  whileTap={answerState === null ? { scale: 0.97 } : {}}
+                  key={`${currentQIndex}-${idx}`}
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={
+                    showResult && answerState === 'wrong'
+                      ? { opacity: 1, x: [0, -8, 8, -6, 6, -3, 0] }
+                      : { opacity: 1, x: 0 }
+                  }
+                  transition={
+                    showResult && answerState === 'wrong'
+                      ? { duration: 0.45, delay: 0 }
+                      : { duration: 0.3, delay: idx * 0.07, ease: 'easeOut' }
+                  }
+                  whileHover={answerState === null ? { scale: 1.02, x: 8, transition: { type: 'spring', stiffness: 400, damping: 20 } } : {}}
+                  whileTap={answerState === null ? { scale: 0.96 } : {}}
                   onClick={() => handleAnswer(idx)}
                   disabled={answerState !== null}
                   className={`w-full text-left p-6 glass-panel !rounded-3xl transition-all flex justify-between items-center group

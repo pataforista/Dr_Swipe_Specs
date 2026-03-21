@@ -100,36 +100,45 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwi
 
     {/* Tap Zones — alternative to swiping on mobile */}
     <div className="flex gap-3 w-full px-2">
-      <button
+      <motion.button
         disabled={isLocked}
         onPointerDown={(e) => { e.stopPropagation(); playSwipe('left'); onSwipe('left'); }}
-        className="flex-1 flex items-center justify-center gap-2 py-4 rounded-2xl border border-medical-danger/30 bg-medical-danger/10 active:bg-medical-danger/25 text-medical-danger font-black text-sm uppercase tracking-widest transition-colors disabled:opacity-30 select-none"
+        whileHover={!isLocked ? { scale: 1.04, backgroundColor: 'rgba(239,68,68,0.18)' } : {}}
+        whileTap={!isLocked ? { scale: 0.93, x: -6 } : {}}
+        transition={{ type: 'spring', stiffness: 400, damping: 18 }}
+        className="flex-1 flex items-center justify-center gap-2 py-4 rounded-2xl border border-medical-danger/30 bg-medical-danger/10 text-medical-danger font-black text-sm uppercase tracking-widest disabled:opacity-30 select-none"
         aria-label="Descartar"
       >
         ← Descartar
-      </button>
+      </motion.button>
 
       {/* Lifeline Button */}
       {onUseLifeline && (
-        <button
+        <motion.button
           disabled={!canUseLifeline || isLocked}
           onClick={(e) => { e.stopPropagation(); onUseLifeline(); }}
-          className="w-14 flex items-center justify-center rounded-2xl border border-yellow-500/30 bg-yellow-500/10 active:bg-yellow-500/25 text-yellow-400 text-lg transition-all disabled:opacity-20 select-none hover:scale-105"
+          whileHover={canUseLifeline && !isLocked ? { scale: 1.15, rotate: 10 } : {}}
+          whileTap={canUseLifeline && !isLocked ? { scale: 0.9 } : {}}
+          transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+          className="w-14 flex items-center justify-center rounded-2xl border border-yellow-500/30 bg-yellow-500/10 text-yellow-400 text-lg disabled:opacity-20 select-none"
           aria-label="Usar pista (25 monedas)"
           title="Pista — 25 🪙"
         >
           💡
-        </button>
+        </motion.button>
       )}
 
-      <button
+      <motion.button
         disabled={isLocked}
         onPointerDown={(e) => { e.stopPropagation(); playSwipe('right'); onSwipe('right'); }}
-        className="flex-1 flex items-center justify-center gap-2 py-4 rounded-2xl border border-medical-primary/30 bg-medical-primary/10 active:bg-medical-primary/25 text-medical-primary font-black text-sm uppercase tracking-widest transition-colors disabled:opacity-30 select-none"
+        whileHover={!isLocked ? { scale: 1.04, backgroundColor: 'rgba(13,148,136,0.18)' } : {}}
+        whileTap={!isLocked ? { scale: 0.93, x: 6 } : {}}
+        transition={{ type: 'spring', stiffness: 400, damping: 18 }}
+        className="flex-1 flex items-center justify-center gap-2 py-4 rounded-2xl border border-medical-primary/30 bg-medical-primary/10 text-medical-primary font-black text-sm uppercase tracking-widest disabled:opacity-30 select-none"
         aria-label="Mantener"
       >
         Mantener →
-      </button>
+      </motion.button>
     </div>
     </div>
   );
@@ -229,7 +238,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
       await controls.start({ x: -600, opacity: 0, rotate: -25, transition: { duration: 0.25 } });
       onSwipe('left');
     } else {
-      controls.start({ x: 0, y: 0, rotate: 0, transition: { type: 'spring', stiffness: 350, damping: 22 } });
+      controls.start({ x: 0, y: 0, rotate: 0, transition: { type: 'spring', stiffness: 500, damping: 18, mass: 0.8 } });
     }
   };
 
@@ -252,11 +261,11 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
           scale: 1 - indexOffset * 0.04,
           opacity: 1 - indexOffset * 0.15,
           y: indexOffset * 10,
-          transition: { type: 'spring', stiffness: 250, damping: 25 }
+          transition: { type: 'spring', stiffness: 320, damping: 22, mass: 0.9 }
         }
       }}
-      initial={{ scale: 0.85, opacity: 0, y: 30 }}
-      exit={{ opacity: 0, scale: 0.8, transition: { duration: 0.15 } }}
+      initial={{ scale: 0.82, opacity: 0, y: 40 }}
+      exit={{ opacity: 0, scale: 0.78, transition: { duration: 0.15 } }}
     >
       {/* Decorative Fold-over Tab */}
       <div className="absolute top-0 right-10 w-24 h-6 bg-white/5 rounded-b-xl border-x border-b border-white/10 flex items-center justify-center">
