@@ -17,6 +17,18 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwi
 
   return (
     <div className="relative w-full max-w-sm h-80 mx-auto flex items-center justify-center perspective-1000">
+      
+      {/* Permanent Swipe Helper Text */}
+      <div className="absolute -left-6 md:-left-16 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 opacity-50 pointer-events-none z-0">
+        <span className="text-3xl animate-pulse drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]">⬅️</span>
+        <span className="text-[10px] font-black uppercase tracking-widest text-medical-danger -rotate-90 mt-8 drop-shadow-lg bg-black/50 px-2 py-1 rounded">Descartar</span>
+      </div>
+      
+      <div className="absolute -right-6 md:-right-16 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 opacity-50 pointer-events-none z-0">
+        <span className="text-3xl animate-pulse drop-shadow-[0_0_8px_rgba(20,184,166,0.5)]">➡️</span>
+        <span className="text-[10px] font-black uppercase tracking-widest text-medical-primary rotate-90 mt-8 drop-shadow-lg bg-black/50 px-2 py-1 rounded">Mantener</span>
+      </div>
+
       {visibleCards.map((card, idx) => {
         // La tarjeta de hasta arriba es la única interactiva (isTop)
         const isTop = idx === visibleCards.length - 1;

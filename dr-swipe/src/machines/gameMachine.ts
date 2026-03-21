@@ -14,6 +14,10 @@ interface GameContext {
   difficulty: string;
   warningCount: number;
   caseStreak: number;
+  lastCardPresentedAt: number;
+  showEureka: boolean;
+  isUrgent: boolean;
+  showBloodVignette: boolean;
   debriefData: { title: string; text: string; gpc: string; comment: string } | null;
 }
 
@@ -26,6 +30,9 @@ type GameEvent =
   | { type: 'CLAIM' }
   | { type: 'RESTART' }
   | { type: 'TIME_OUT' }
+  | { type: 'TRIGGER_URGENCY' }
+  | { type: 'RESOLVE_URGENCY' }
+  | { type: 'CLEAR_VISUALS' }
   | { type: 'VIEW_DEBRIEF' };
 
 export const gameMachine = setup({
@@ -44,10 +51,62 @@ export const gameMachine = setup({
       combo: 0,
       multiplier: 1,
       warningCount: 0,
-      // caseStreak persists until ghosted - don't reset in resetGame? 
-      // Actually, resetGame is for a fresh start.
       caseStreak: 0,
+      lastCardPresentedAt: 0,
+      showEureka: false,
+      isUrgent: false,
+      showBloodVignette: false,
       debriefData: null
+    }),
+    clearVisuals: assign({
+      showEureka: false,
+      showBloodVignette: false
+    }),
+    handleCardSwipe: assign(({ context, event }) => {
+      if (event.type !== 'SWIPE') return {};
+      const card = context.deck[context.currentCardIndex];
+      if (!card) return {};
+
+      const isCorrect = (event.direction === 'right' && card.expected_action === 'keep') || 
+                        (event.direction === 'left' && card.expected_action === 'discard');
+      
+      const nextCombo = isCorrect ? context.combo + 1 : 0;
+      const nextMultiplier = isCorrect ? (1 + Math.floor(nextCombo / 5) * 0.5) : 1;
+      const points = isCorrect ? card.scoring.points : -Math.floor(card.scoring.points / 2);
+      
+      // Perfect Swipe Logic (x1.2)
+      const timeTaken = Date.now() - context.lastCardPresentedAt;
+      const speedBonus = (isCorrect && timeTaken < 1200) ? 1.2 : 1;
+      
+      // Tactical Dossier Combo Logic
+      let nextDossier = [...context.dossier];
+      let hasEureka = false;
+      let tacticalBonus = 1;
+
+      if (event.direction === 'right') {
+        nextDossier.push(card);
+        // Check if last 3 match category
+        if (nextDossier.length >= 3) {
+          const last3 = nextDossier.slice(-3);
+          if (last3.every(c => c.category === card.category)) {
+            hasEureka = true;
+            tacticalBonus = 2.0; // Combo de Claridad
+          }
+        }
+      }
+
+      const diffMultiplier = context.difficulty === 'extreme' ? 2 : (context.difficulty === 'hard' ? 1.5 : 1);
+      const finalPoints = Math.floor(points * nextMultiplier * diffMultiplier * speedBonus * tacticalBonus);
+
+      return {
+        combo: nextCombo,
+        multiplier: nextMultiplier,
+        score: context.score + finalPoints,
+        dossier: nextDossier,
+        showEureka: hasEureka,
+        currentCardIndex: context.currentCardIndex + 1,
+        lastCardPresentedAt: Date.now()
+      };
     })
   }
 }).createMachine({
@@ -65,6 +124,10 @@ export const gameMachine = setup({
     difficulty: 'standard',
     warningCount: 0,
     caseStreak: 0,
+    lastCardPresentedAt: 0,
+    showEureka: false,
+    isUrgent: false,
+    showBloodVignette: false,
     debriefData: null
   },
   states: {
@@ -82,6 +145,10 @@ export const gameMachine = setup({
             combo: 0,
             multiplier: 1,
             difficulty: ({ event }) => event.difficulty,
+            lastCardPresentedAt: Date.now(),
+            showEureka: false,
+            isUrgent: false,
+            showBloodVignette: false,
             debriefData: ({ event }) => ({
               title: event.pearl?.title || "Repaso Clínico",
               text: event.pearl?.text || "",
@@ -146,6 +213,7 @@ export const gameMachine = setup({
                 const msg = cleanVazquezComment(card.scoring?.vazquez_comment, false);
                 return `FALLO LETAL REINCIDENTE: ${msg || "Negligencia inexcusable."}`;
               },
+              showBloodVignette: true,
               caseStreak: 0,
               debriefData: ({ context }) => {
                 const card = context.deck[context.currentCardIndex];
@@ -158,32 +226,7 @@ export const gameMachine = setup({
           },
           {
             target: 'triage',
-            actions: assign({
-              combo: ({ context, event }) => {
-                const card = context.deck[context.currentCardIndex];
-                const isCorrect = (event.direction === 'right' && card.expected_action === 'keep') || 
-                                  (event.direction === 'left' && card.expected_action === 'discard');
-                return isCorrect ? context.combo + 1 : 0;
-              },
-              multiplier: ({ context, event }) => {
-                const card = context.deck[context.currentCardIndex];
-                const isCorrect = (event.direction === 'right' && card.expected_action === 'keep') || 
-                                  (event.direction === 'left' && card.expected_action === 'discard');
-                if (!isCorrect) return 1;
-                return 1 + Math.floor((context.combo + 1) / 5) * 0.5;
-              },
-              score: ({ context, event }) => {
-                const card = context.deck[context.currentCardIndex];
-                const isCorrect = (event.direction === 'right' && card.expected_action === 'keep') || 
-                                  (event.direction === 'left' && card.expected_action === 'discard');
-                const nextCombo = isCorrect ? context.combo + 1 : 0;
-                const nextMultiplier = isCorrect ? (1 + Math.floor(nextCombo / 5) * 0.5) : 1;
-                const points = isCorrect ? card.scoring.points : -Math.floor(card.scoring.points / 2);
-                const diffMultiplier = context.difficulty === 'extreme' ? 2 : (context.difficulty === 'hard' ? 1.5 : 1);
-                return context.score + Math.floor(points * nextMultiplier * diffMultiplier);
-              },
-              currentCardIndex: ({ context }) => context.currentCardIndex + 1
-            })
+            actions: 'handleCardSwipe'
           }
         ],
         TIME_OUT: {
@@ -192,17 +235,36 @@ export const gameMachine = setup({
             fatalError: () => "Tiempo agotado. El paciente se desestabilizó.",
             caseStreak: 0
           })
+        },
+        CLEAR_VISUALS: {
+          actions: 'clearVisuals'
         }
       }
     },
     critical_warning: {
+      on: {
+        CLEAR_VISUALS: { actions: assign({ showBloodVignette: false }) }
+      },
       after: {
-        3000: { target: 'triage' }
+        3000: { target: 'triage', actions: assign({ showBloodVignette: false }) }
+      }
+    },
+    urgent_triage: {
+      entry: assign({ isUrgent: true, lastCardPresentedAt: Date.now() }),
+      on: {
+        SWIPE: {
+          target: 'triage',
+          actions: ['handleCardSwipe', assign({ isUrgent: false })]
+        },
+        TIME_OUT: {
+          target: 'ghosted',
+          actions: assign({ fatalError: () => "Código Rojo Fallido: El paciente no resistió.", caseStreak: 0 })
+        }
       }
     },
     critical_alert: {
       after: {
-        2000: { target: 'boss_fight' }
+        1000: { target: 'boss_fight' }
       }
     },
     boss_fight: {

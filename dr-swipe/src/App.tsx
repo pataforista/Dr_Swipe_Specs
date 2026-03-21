@@ -18,6 +18,14 @@ const isSwipeCorrect = (direction: 'left' | 'right', expectedAction: 'keep' | 'd
          (direction === 'left' && expectedAction === 'discard');
 };
 
+const AutoSkipBossFight: React.FC<{ send: any; stopAlarm: () => void }> = ({ send, stopAlarm }) => {
+  useEffect(() => {
+    stopAlarm();
+    send({ type: 'ANSWER_CORRECT' });
+  }, [send, stopAlarm]);
+  return null;
+};
+
 const TelemetryHUD: React.FC<{ timeLeft: number; state: string }> = ({ timeLeft, state }) => {
   const [pulse, setPulse] = useState(72);
   
@@ -31,33 +39,40 @@ const TelemetryHUD: React.FC<{ timeLeft: number; state: string }> = ({ timeLeft,
   if (state !== 'triage') return null;
 
   return (
-    <div className="fixed left-6 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-8 pointer-events-none z-50">
-      <div className="telemetry-text text-[10px]">
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 bg-medical-primary rounded-full animate-pulse" />
-          <span>SYS_READY // V_0.4.1</span>
-        </div>
-        <div className="mt-2 text-white/40 font-mono">BP: 120/80 mmHg</div>
-        <div className="text-white/40 font-mono">O2: 98% (STABLE)</div>
+    <div className="fixed left-6 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-6 pointer-events-none z-50 glass-panel p-6 border-white/10 shadow-2xl bg-slate-900/60 backdrop-blur-md rounded-3xl">
+      <div className="flex items-center gap-3 border-b border-white/10 pb-4 mb-2">
+        <div className="w-3 h-3 bg-medical-primary rounded-full animate-pulse shadow-[0_0_10px_rgba(20,184,166,0.8)]" />
+        <span className="text-xs font-black tracking-widest text-medical-primary uppercase">MONITOR DE PACIENTE</span>
       </div>
       
       <div className="flex flex-col gap-1">
-        <span className="telemetry-text text-[8px] opacity-40">HR_MONITOR</span>
-        <div className="flex items-end gap-1 h-8">
+        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Presión Arterial</span>
+        <div className="text-lg text-slate-200 font-mono font-black">120/80 <span className="text-[10px] text-slate-500">mmHg</span></div>
+      </div>
+      
+      <div className="flex flex-col gap-1">
+        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Saturación O2</span>
+        <div className="text-lg text-slate-200 font-mono font-black">98% <span className="text-[10px] text-medical-primary">(ESTABLE)</span></div>
+      </div>
+
+      <div className="flex flex-col gap-2 mt-2 pt-4 border-t border-white/10">
+        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Frecuencia Cardíaca</span>
+        <div className="flex items-end gap-1 h-8 opacity-80">
           {[...Array(10)].map((_, i) => (
             <motion.div
               key={i}
               animate={{ height: [10, 25, 15, 20, 12] }}
               transition={{ repeat: Infinity, duration: 1.5, delay: i * 0.1 }}
-              className="w-1 bg-medical-primary/30 rounded-full"
+              className="w-1.5 bg-medical-primary/50 rounded-full"
             />
           ))}
         </div>
-        <span className="text-xl font-black text-medical-primary font-mono">{pulse} <small className="text-[10px]">BPM</small></span>
+        <span className="text-3xl font-black text-medical-primary font-mono mt-1">{pulse} <small className="text-xs text-medical-primary/70 mb-1 inline-block">LPM</small></span>
       </div>
 
-      <div className="telemetry-text text-[8px] opacity-40">
-        TIME_REMAINING: {timeLeft}S
+      <div className="mt-4 pt-4 border-t border-white/10">
+        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Tiempo de Reacción</span>
+        <div className="text-xl text-slate-100 font-mono font-black">{timeLeft} <span className="text-[10px] text-slate-500">SEG</span></div>
       </div>
     </div>
   );
@@ -125,6 +140,17 @@ function App() {
   }, [state, timeLeft, send]);
 
   useEffect(() => {
+    if (state.matches('triage') && !state.context.isUrgent) {
+      const timer = window.setInterval(() => {
+        if (Math.random() < 0.15) { // 15% chance every 15s
+          send({ type: 'TRIGGER_URGENCY' });
+        }
+      }, 15000);
+      return () => clearInterval(timer);
+    }
+  }, [state, send]);
+
+  useEffect(() => {
     const isLethal = state.matches('ghosted') || state.matches('debrief');
     if (isLethal && typeof navigator !== 'undefined' && navigator.vibrate) {
       navigator.vibrate([200, 100, 200, 100, 500]); // Lethal mistake pattern
@@ -179,7 +205,8 @@ function App() {
     setExpression(isCorrect ? 'happy' : 'angry');
     const rawComment = card.scoring.vazquez_comment;
     const cleanComment = cleanVazquezComment(rawComment, isCorrect);
-    setComment(cleanComment || null);
+    const feedbackIcon = isCorrect ? "✅ " : "❌ ";
+    setComment(cleanComment ? feedbackIcon + cleanComment : null);
 
     send({ type: 'SWIPE', direction });
 
@@ -187,7 +214,8 @@ function App() {
       setExpression('neutral');
       setComment(null);
       setSwipeFeedback(null);
-    }, 3000);
+      send({ type: 'CLEAR_VISUALS' });
+    }, 1500); // Faster feedback loop (1.5s)
   };
 
   const renderCurrentView = () => {
@@ -288,12 +316,65 @@ function App() {
                            currentCase.boss_fight_triad.questions.length > 0;
                            
         if (!hasQuestions) {
-          send({ type: 'ANSWER_CORRECT' });
-          return null;
+          return (
+            <div className="telemetry-panel w-full max-w-xl h-full flex flex-col items-center justify-center gap-8 relative overflow-hidden bg-black/40">
+              {/* Background ECG pulse effect */}
+              <div className="absolute inset-0 opacity-10 pointer-events-none">
+                <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                  <motion.path
+                    d="M 0 50 L 20 50 L 25 30 L 30 70 L 35 50 L 50 50"
+                    fill="transparent"
+                    stroke="#dc2626"
+                    strokeWidth="2"
+                    initial={{ pathLength: 0, x: -100 }}
+                    animate={{ pathLength: 1, x: 200 }}
+                    transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                  />
+                </svg>
+              </div>
+
+              <div className="text-center z-10">
+                <h2 className="text-2xl font-black text-white italic tracking-tighter animate-pulse mb-1">PROTOCOLO DE ESTABILIZACIÓN</h2>
+                <div className="h-0.5 w-32 bg-medical-danger mx-auto mb-4" />
+                <p className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.3em] px-4">Pulsa rítmicamente para mantener el gasto cardíaco</p>
+              </div>
+
+              {/* Stabilization Heart/Core */}
+              <div className="relative group p-8">
+                <div className="absolute inset-0 bg-medical-danger/20 blur-3xl rounded-full animate-pulse group-hover:opacity-40 transition-opacity" />
+                <motion.div 
+                  animate={{ scale: [1, 1.15, 1] }}
+                  transition={{ repeat: Infinity, duration: 0.6 }}
+                  className="w-40 h-40 rounded-full border-2 border-medical-danger/40 flex items-center justify-center relative z-10 cursor-pointer active:scale-95 transition-transform bg-black/20"
+                  onClick={() => {
+                    const roll = Math.random();
+                    if (roll > 0.05) send({ type: 'ANSWER_CORRECT' });
+                    else send({ type: 'ANSWER_WRONG', error: "Falla miocárdica súbita: El paciente entró en asistolia." });
+                  }}
+                >
+                  <div className="flex flex-col items-center">
+                    <span className="text-6xl filter drop-shadow-[0_0_15px_rgba(220,38,38,0.8)]">❤️</span>
+                    <span className="text-[8px] font-black text-medical-danger mt-4 animate-bounce">PULSAR</span>
+                  </div>
+                </motion.div>
+              </div>
+
+              <div className="w-full max-w-xs space-y-2 text-center mt-4">
+                <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                  <motion.div 
+                    animate={{ width: ['0%', '100%'] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                    className="h-full bg-medical-danger shadow-[0_0_10px_#dc2626]"
+                  />
+                </div>
+                <p className="text-[9px] font-black text-white/30 italic tracking-widest uppercase">Syncing Cardiac Rhythm...</p>
+              </div>
+            </div>
+          );
         }
         return (
           <ShockRoom 
-            questions={currentCase.boss_fight_triad.questions}
+            questions={currentCase!.boss_fight_triad!.questions}
             dossierItems={state.context.dossier}
             onSurvive={() => {
               stopAlarm();
@@ -451,7 +532,15 @@ function App() {
   };
 
   return (
-    <div className={`fixed inset-0 bg-[#070b14] flex flex-col items-center safe-top safe-bottom select-none overflow-hidden text-slate-100 crt-screen ${timeLeft <= 10 && state.matches('triage') ? 'destabilized-content' : ''}`}>
+    <div className={`fixed inset-0 bg-[#070b14] flex flex-col items-center safe-top safe-bottom select-none overflow-hidden text-slate-100 crt-screen 
+      ${timeLeft <= 10 && state.matches('triage') ? 'destabilized-content' : ''} 
+      ${swipeFeedback === 'wrong' ? 'shake-lite' : ''}
+      ${state.context.combo >= 15 ? 'combo-glow-3' : (state.context.combo >= 10 ? 'combo-glow-2' : (state.context.combo >= 5 ? 'combo-glow-1' : ''))}
+      ${state.context.showBloodVignette ? 'blood-vignette' : ''}
+    `}>
+      {/* Glitch Overlay (Urgency) */}
+      {state.context.isUrgent && <div className="fixed inset-0 z-[100] glitch-overlay pointer-events-none" />}
+
       <TelemetryHUD timeLeft={timeLeft} state={state.value as string} />
       
       {/* Swipe Feedback Flash - Short burst */}
@@ -475,11 +564,29 @@ function App() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -15, scale: 0.9 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="fixed top-1/4 left-1/2 -translate-x-1/2 z-[60] pointer-events-none"
+            className="fixed top-1/4 left-1/2 -translate-x-1/2 z-[60] pointer-events-none flex flex-col items-center gap-2"
           >
             <span className={`text-3xl font-display font-black uppercase tracking-[0.1em] ${swipeFeedback === 'correct' ? 'text-green-300' : 'text-red-300'} drop-shadow-lg`}>
               {swipeFeedback === 'correct' ? 'CORRECTO' : 'FALLO'}
             </span>
+            {swipeFeedback === 'correct' && (Date.now() - state.context.lastCardPresentedAt < 1200) && (
+              <motion.span 
+                initial={{ scale: 0 }}
+                animate={{ scale: [0, 1.2, 1] }}
+                className="perfect-swipe-text"
+              >
+                ⚡ ¡PERFECTO! +20% ⚡
+              </motion.span>
+            )}
+            {state.context.showEureka && (
+              <motion.span 
+                initial={{ scale: 0, rotate: -10 }}
+                animate={{ scale: [0, 1.5, 1], rotate: 0 }}
+                className="text-yellow-400 font-black text-2xl drop-shadow-[0_0_10px_rgba(251,191,36,0.8)] mt-2"
+              >
+                💡 COMBO DE CLARIDAD x2 💡
+              </motion.span>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
@@ -558,7 +665,7 @@ function App() {
       <div className="w-full h-40 flex justify-center -mt-8 pointer-events-none">
         <ErrorBoundary fallback={<div className="h-40 flex items-center justify-center text-red-400 font-bold bg-red-400/10 rounded-xl border border-red-400/20 px-8">Error en Feedback del Mentor</div>}>
           <AvatarFeedback 
-            doctor={currentCase?.case_id.toLowerCase().includes('ped') ? 'castillo' : (currentCase?.case_id.toLowerCase().includes('surg') ? 'mendoza' : 'navarro')} 
+            doctor={currentCase ? (currentCase.case_id.toLowerCase().includes('ped') ? 'castillo' : (currentCase.case_id.toLowerCase().includes('surg') ? 'mendoza' : 'navarro')) : 'navarro'} 
             expression={expression} 
             dialogueText={comment}
             isVisible={!state.matches('idle') || showIntro}
@@ -566,7 +673,27 @@ function App() {
         </ErrorBoundary>
       </div>
 
-      {/* Content */}
+      {/* Tactical Dossier (Dossier Médico) */}
+      {!state.matches('idle') && (
+        <div className="fixed right-4 top-1/4 bottom-1/4 w-32 hidden lg:flex flex-col gap-2 overflow-y-auto pr-2 custom-scrollbar pointer-events-none opacity-60 hover:opacity-100 transition-opacity z-10">
+          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2 border-b border-slate-800 pb-1">Dossier</span>
+          <AnimatePresence>
+            {state.context.dossier.map((card, idx) => (
+              <motion.div 
+                key={`${card.card_id}-${idx}`}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className={`p-2 rounded bg-slate-900/40 border border-slate-800/50 text-[9px] flex flex-col gap-1 ${state.context.showEureka && idx >= state.context.dossier.length - 3 ? 'eureka-glow ring-1 ring-yellow-400/50' : ''}`}
+              >
+                <span className="text-slate-400 font-bold">{card.category}</span>
+                <span className="text-slate-200 line-clamp-2">{card.card_text}</span>
+              </motion.div>
+            )).reverse()}
+          </AnimatePresence>
+        </div>
+      )}
+
+      {/* Content Area */}
       <div className="w-full flex-grow flex items-center justify-center">
         {renderCurrentView()}
       </div>
