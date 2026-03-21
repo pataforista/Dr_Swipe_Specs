@@ -1,0 +1,90 @@
+{
+  "case_id": "PROC_PED_ANEMIA_FERROPENICA_001_003",
+  "version": "v3_swipe_action",
+  "theme_config": "ped",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Pablo, 4 años",
+    "arrival_scenario": "Preescolar con antecedente de Giardia tratada hace 2 meses. Pica (come tierra) desde hace 3 meses. Dieta rica en leche y baja en carnes. Al examen: palidez y queilitis angular. Hb 7.8 g/dl, ferritina 6 ng/ml.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "FC 120 lpm, FR 28 rpm, Temp 36.7°C. (Signos estables para la edad).",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: Paciente estable pero pálido. Procedamos con el diagnóstico."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Anemia Ferropénica: La causa más común de anemia nutricional en el mundo, por deficiencia de hierro.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Exacto! El consumo excesivo de leche de vaca es un factor de riesgo clásico."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "beaker",
+      "category": "Laboratorio",
+      "card_text": "B) Cinética de Hierro: Ferritina baja (<12 ng/ml) es el parámetro más sensible y temprano de deficiencia.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Excelente! La ferritina refleja fielmente los depósitos de hierro."
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Anemia Ferropénica",
+    "text": "Micro/Hipo + Ferritina <12. Tx: Hierro 3-6 mg/kg. Primer cambio: Reticulocitos (10 días). Duración: normalizar Hb + 3 meses.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de Anemia por Deficiencia de Hierro"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es el parámetro de laboratorio más sensible y temprano para diagnosticar la deficiencia de hierro?",
+        "options": [
+          "Ferritina sérica",
+          "Hemoglobina total",
+          "Hierro sérico"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es la dosis recomendada de hierro elemental para el tratamiento de la anemia ferropénica en niños?",
+        "options": [
+          "3 a 6 mg/kg/día",
+          "10 a 15 mg/kg/día",
+          "1 mg/kg/día"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿A los cuántos días de iniciado el tratamiento se observa el pico máximo de reticulocitosis?",
+        "options": [
+          "7 a 10 días",
+          "2 a 3 días",
+          "30 días"
+        ],
+        "correct_index": 0
+      }
+    ]
+  }
+}

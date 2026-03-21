@@ -1,0 +1,90 @@
+{
+  "case_id": "PROC_INF_STI_SYPHILIS_001_005",
+  "version": "v3_swipe_action",
+  "theme_config": "med",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Miguel, 41 años",
+    "arrival_scenario": "VIH positivo en TARV. En control semestral el VDRL resulta reactivo 1:8, cuando en el control anterior fue 1:4. Niega síntomas neurológicos. Se solicita criterio para interpretación del caso y necesidad de PL.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "TA 120/80, FC 70 lpm, Temp 36.6°C.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: Paciente estable. Analicemos la lesión."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Sífilis Primaria (Chancro Sifilítico): Úlcera única, limpia, indurada e indolora. Es el sello de la infección inicial.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Exacto! Si no duele, sospecha Treponema pallidum primero."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "scissors",
+      "category": "Diferencial",
+      "card_text": "B) Chancroide (H. ducreyi): Úlceras múltiples, con bordes sucios, base necrótica y MUY DOLOROSAS.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: ¡Bien! Ducreyi duele (Do-cry)."
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "Sífilis: El ABC",
+    "text": "Primaria: Chancro indoloro. Secundaria: Palmas/Plantas. Tx: Penicilina Benzatínica 2.4 M. Seguimiento: Descenso de 4 diluciones en VDRL.",
+    "gpc_ref": "GPC Diagnóstico y tratamiento de la sífilis"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es la característica clínica definitiva del chancro sifilítico primario?",
+        "options": [
+          "Úlcera indolora de base indurada",
+          "Múltiples vesículas dolorosas",
+          "Úlcera sucia con base friable"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el tratamiento de primera elección para un paciente con diagnóstico de sífilis primaria?",
+        "options": [
+          "Penicilina G benzatínica 2.4 millones UI IM",
+          "Ceftriaxona 250 mg IM dosis única",
+          "Doxiciclina 100 mg c/12h por 14 días"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál de las siguientes pruebas se utiliza para evaluar la respuesta al tratamiento y detectar reinfecciones?",
+        "options": [
+          "Pruebas no treponémicas (VDRL/RPR)",
+          "Pruebas treponémicas (FTA-ABS)",
+          "Inmunotransferencia (Western Blot)"
+        ],
+        "correct_index": 0
+      }
+    ]
+  }
+}

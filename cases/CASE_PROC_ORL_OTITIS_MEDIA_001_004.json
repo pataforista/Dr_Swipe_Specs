@@ -1,0 +1,90 @@
+{
+  "case_id": "PROC_ORL_OTITIS_MEDIA_001_004",
+  "version": "v3_swipe_action",
+  "theme_config": "ped",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Sofía, 2 años",
+    "arrival_scenario": "Preescolar con antecedente de IVAS hace 1 semana. Los padres notan que la niña no responde bien a su nombre y jala la oreja derecha. Sin fiebre actual. Al examen: membrana timpánica opaca y con nivel hidroaéreo.",
+    "time_limit_sec": 45
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "FC 115 lpm, FR 24 rpm, Temp 38.8°C.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Castillo: Fiebre confirmada. Pasemos a la otoscopia."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Otitis Media Aguda (OMA): Presencia de efusión en oído medio + inicio súbito de signos y síntomas de inflamación local.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Correcto! Es la infección bacteriana más común en pediatría que justifica el uso de antibióticos."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Otoscopia",
+      "card_text": "B) Membrana Timpánica Abombada: Es el signo clínico más sensible y específico para el diagnóstico de efusión en el oído medio.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Castillo: ¡Excelente! Si la membrana no está abombada, el diagnóstico de OMA es dudoso."
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "OMA: Signos y Dosis",
+    "text": "Signo clave: Abombamiento MT. Tx: Amoxicilina 80-90 mg/kg. Complicación #1: Mastoiditis. Etiología: Neumococo.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Otitis Media Aguda en la Edad Pediátrica"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es el hallazgo en la otoscopia más sugestivo de otitis media aguda?",
+        "options": [
+          "Abombamiento de la membrana timpánica",
+          "Membrana timpánica íntegra y nacarada",
+          "Presencia de cerumen obstructivo"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el antibiótico de primera elección y su dosis para el tratamiento de la OMA?",
+        "options": [
+          "Amoxicilina a 80-90 mg/kg/día",
+          "Ceftriaxona 50 mg/kg IM dosis única",
+          "Eritromicina 40 mg/kg/día"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es la complicación intratemporal supurativa más frecuente de la OMA?",
+        "options": [
+          "Mastoiditis aguda",
+          "Laberintitis",
+          "Meningitis supurativa"
+        ],
+        "correct_index": 0
+      }
+    ]
+  }
+}
