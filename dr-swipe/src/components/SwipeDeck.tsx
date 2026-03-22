@@ -35,10 +35,10 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
   }, [isLocked, onSwipe]);
 
   return (
-    <div className="flex flex-col items-center w-full max-w-sm mx-auto gap-8 px-2 relative">
-      
+    <div className="flex flex-col items-center w-full max-w-sm mx-auto gap-8 px-2 relative overflow-hidden">
+
       {/* Deck Vertical Spacer/Container */}
-      <div className="relative w-full aspect-[3/4.2] flex items-center justify-center">
+      <div className="relative w-full aspect-[3/4.2] flex items-center justify-center overflow-hidden">
         {/* Progress Dots inside the deck area for focus */}
         <div className="absolute -top-12 left-1/2 -translate-x-1/2 flex gap-1.5 pointer-events-none z-50 w-full justify-center">
           {cards.map((_, i) => (
@@ -108,7 +108,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
         <div className="flex flex-col items-center gap-2">
           <motion.button
             disabled={isLocked}
-            onPointerDown={(e) => { e.stopPropagation(); if(!isLocked) { playSwipe('left'); onSwipe('left'); } }}
+            onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); if(!isLocked) { playSwipe('left'); onSwipe('left'); } }}
             whileHover={!isLocked ? { scale: 1.12, y: -3 } : {}}
             whileTap={!isLocked ? { scale: 0.85 } : {}}
             className="w-16 h-16 rounded-full bg-white border-4 border-moomin-accent/20 text-moomin-accent shadow-xl flex items-center justify-center text-3xl hover:bg-moomin-accent hover:text-white transition-all disabled:opacity-20 select-none"
@@ -122,7 +122,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
         <div className="flex flex-col items-center gap-2">
           <motion.button
             disabled={!canUseLifeline || isLocked}
-            onClick={(e) => { e.stopPropagation(); onUseLifeline?.(); }}
+            onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); onUseLifeline?.(); }}
             whileHover={canUseLifeline && !isLocked ? { scale: 1.15, rotate: 15 } : {}}
             whileTap={canUseLifeline && !isLocked ? { scale: 0.85 } : {}}
             className={`w-14 h-14 rounded-full border-4 shadow-lg flex items-center justify-center text-2xl transition-all ${
@@ -139,7 +139,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
         <div className="flex flex-col items-center gap-2">
           <motion.button
             disabled={isLocked}
-            onPointerDown={(e) => { e.stopPropagation(); if(!isLocked) { playSwipe('right'); onSwipe('right'); } }}
+            onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); if(!isLocked) { playSwipe('right'); onSwipe('right'); } }}
             whileHover={!isLocked ? { scale: 1.12, y: -3 } : {}}
             whileTap={!isLocked ? { scale: 0.85 } : {}}
             className="w-16 h-16 rounded-full bg-white border-4 border-moomin-primary/20 text-moomin-primary shadow-xl flex items-center justify-center text-3xl hover:bg-moomin-primary hover:text-white transition-all disabled:opacity-20 select-none"
@@ -222,10 +222,10 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
 
   const handleDragEnd = async (_event: any, info: { offset: { x: number }; velocity: { x: number } }) => {
     if (!isTop || isLocked) return;
-    const threshold = 100;
+    const threshold = 80;
     const velocity = info.velocity.x;
 
-    if (Math.abs(info.offset.x) > threshold || Math.abs(velocity) > 600) {
+    if (Math.abs(info.offset.x) > threshold || Math.abs(velocity) > 500) {
       const direction = info.offset.x > 0 ? 'right' : 'left';
       playSwipe(direction);
       triggerHaptic('cardSwipe');
@@ -233,7 +233,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
       await controls.start({ x: exitX, opacity: 0, rotate: direction === 'right' ? 60 : -60, transition: { duration: 0.3 } });
       onSwipe(direction);
     } else {
-      controls.start({ x: 0, y: 0, rotate: 0, scale: 1, transition: { type: 'spring', stiffness: 400, damping: 30 } });
+      controls.start({ x: 0, y: 0, rotate: 0, scale: 1, transition: { type: 'spring', stiffness: 500, damping: 35 } });
     }
   };
 
@@ -247,10 +247,11 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
         opacity: 1,
         zIndex: 1000 - (indexOffset * 100),
         isolation: 'isolate',
+        touchAction: isTop && !isLocked ? 'pan-y' : 'auto',
       }}
       drag={isTop && !isLocked ? "x" : false}
-      dragConstraints={{ left: 0, right: 0 }}
-      dragElastic={0.9}
+      dragConstraints={{ left: -500, right: 500 }}
+      dragElastic={0.3}
       onDragEnd={handleDragEnd}
       initial={isTop ? { opacity: 0, scale: 0.95, y: 30 } : false}
       animate={isTop ? controls : undefined}
