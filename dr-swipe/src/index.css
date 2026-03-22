@@ -46,7 +46,8 @@
 
 @layer components {
   .glass-panel {
-    @apply bg-white/80 backdrop-blur-md border border-moomin-text/10 rounded-[3rem] shadow-premium;
+    @apply bg-white/80 backdrop-blur-md border border-moomin-text/10 rounded-[3rem];
+    box-shadow: var(--shadow-premium);
     background-image: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 100%);
   }
   
