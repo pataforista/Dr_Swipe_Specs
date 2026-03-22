@@ -4,11 +4,17 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, rgba(155, 223, 244, 0.4) 0%, rgba(255, 182, 193, 0.3) 100%);
+  background: linear-gradient(135deg, rgba(155, 223, 244, 0.35) 0%, rgba(255, 182, 193, 0.3) 100%);
   z-index: 500;
   position: fixed;
   inset: 0;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px);
+  animation: gachaBg 3s ease-in-out infinite;
+}
+
+@keyframes gachaBg {
+  0%, 100% { background: linear-gradient(135deg, rgba(155, 223, 244, 0.35) 0%, rgba(255, 182, 193, 0.3) 100%); }
+  50% { background: linear-gradient(135deg, rgba(155, 223, 244, 0.4) 0%, rgba(255, 182, 193, 0.35) 100%); }
 }
 
 .results-view {
@@ -43,8 +49,8 @@
   height: 240px;
   background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   border: 3px solid white;
-  border-radius: 16px;
-  box-shadow: var(--shadow-premium);
+  border-radius: 20px;
+  box-shadow: 0 16px 32px rgba(92, 64, 51, 0.15), inset 0 1px 3px rgba(255, 255, 255, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,22 +59,31 @@
   cursor: pointer;
   outline: none;
   transform: rotate(-3deg);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .decrypt-text {
   color: white;
   font-weight: 800;
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   font-size: 0.75rem;
   text-transform: uppercase;
+  position: relative;
+  z-index: 2;
 }
 
 .dossier-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.4s;
+  z-index: 1;
+}
+
+.dossier-sealed:hover {
+  transform: rotate(-3deg) scale(1.08);
+  box-shadow: 0 20px 40px rgba(92, 64, 51, 0.2), inset 0 1px 3px rgba(255, 255, 255, 0.4);
 }
 
 .dossier-sealed:hover .dossier-glow {
@@ -88,14 +103,29 @@
 .perla-card {
   width: 100%;
   max-width: 420px;
-  background: linear-gradient(135deg, #FFFCF9 0%, rgba(255, 212, 229, 0.3) 100%);
-  border-radius: 24px;
-  padding: 36px;
-  box-shadow: var(--shadow-premium);
+  background: linear-gradient(135deg, #FFFCF9 0%, rgba(255, 212, 229, 0.35) 100%);
+  border-radius: 28px;
+  padding: 40px 36px;
+  box-shadow: 0 20px 48px rgba(92, 64, 51, 0.15), 0 0 40px rgba(152, 216, 200, 0.1);
   position: relative;
   border: 3px solid var(--tertiary);
   color: var(--text-main);
   transform: rotate(1deg);
+  animation: revealGlow 2s ease-in-out;
+}
+
+@keyframes revealGlow {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) rotate(1deg);
+  }
+  50% {
+    box-shadow: 0 20px 48px rgba(92, 64, 51, 0.15), 0 0 60px rgba(152, 216, 200, 0.15);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(1deg);
+  }
 }
 
 .perla-card.rarity-common { border-color: #98D8C8; }
@@ -178,19 +208,42 @@
 }
 
 .btn-save-codex {
-  margin-top: 28px;
+  margin-top: 32px;
   width: 100%;
-  background: var(--secondary);
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--accent-alert) 100%);
   color: white;
   border: 2px solid white;
-  padding: 14px;
-  border-radius: 16px;
-  font-weight: 700;
+  padding: 16px 20px;
+  border-radius: 18px;
+  font-weight: 800;
   cursor: pointer;
-  transition: transform 0.2s;
-  box-shadow: var(--shadow-premium);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 8px 20px rgba(255, 182, 193, 0.25);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-save-codex::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.btn-save-codex:hover::before {
+  transform: translateX(100%);
 }
 
 .btn-save-codex:hover {
-  transform: scale(1.02);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(255, 182, 193, 0.35);
+}
+
+.btn-save-codex:active {
+  transform: translateY(0);
 }

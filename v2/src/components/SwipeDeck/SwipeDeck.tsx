@@ -34,8 +34,8 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwi
                             key={card.id}
                             className={`swipe-card ${isTop ? 'top-card' : 'back-card'}`}
                             initial={{ scale: 0.9, y: 20, opacity: 0 }}
-                            animate={{ 
-                                scale: 1 - (activeCards.length - 1 - idx) * 0.05, 
+                            animate={{
+                                scale: 1 - (activeCards.length - 1 - idx) * 0.05,
                                 y: (activeCards.length - 1 - idx) * 10,
                                 opacity: 1,
                                 rotate: 0
@@ -53,6 +53,44 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwi
                                     <div className="card-critical-badge">⚠ CRÍTICO</div>
                                 )}
                             </div>
+                            {isTop && (
+                                <>
+                                    <div style={{
+                                        position: 'absolute',
+                                        top: 12,
+                                        right: 12,
+                                        width: 36,
+                                        height: 36,
+                                        background: 'linear-gradient(135deg, #98D8C8, #87CEEB)',
+                                        borderRadius: '50%',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        color: 'white',
+                                        fontWeight: 900,
+                                        fontSize: '1.2rem',
+                                        opacity: 0.6,
+                                        pointerEvents: 'none'
+                                    }}>✓</div>
+                                    <div style={{
+                                        position: 'absolute',
+                                        top: 12,
+                                        left: 12,
+                                        width: 36,
+                                        height: 36,
+                                        background: 'linear-gradient(135deg, #FF9F7F, #FF6B6B)',
+                                        borderRadius: '50%',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        color: 'white',
+                                        fontWeight: 900,
+                                        fontSize: '1.2rem',
+                                        opacity: 0.6,
+                                        pointerEvents: 'none'
+                                    }}>✕</div>
+                                </>
+                            )}
                         </motion.div>
                     );
                 })}
