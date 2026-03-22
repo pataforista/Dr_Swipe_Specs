@@ -115,11 +115,11 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -40, scale: 0.96 }}
           transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-          className="glass-panel p-10 w-full max-w-lg border-4 border-moomin-accent/10 shadow-2xl relative overflow-hidden bg-white rounded-[3rem]"
+          className="glass-panel p-6 md:p-10 w-full max-w-lg border-4 border-moomin-accent/10 shadow-2xl relative bg-white rounded-[2rem] md:rounded-[3rem] max-h-[90vh] overflow-y-auto"
         >
-          {/* Boss Avatar (Aggretsuko Style) */}
-          <div className="relative mb-8 mt-2 flex justify-center">
-            {/* Rage fire background if angry */}
+          {/* Boss Avatar */}
+          <div className="relative mb-6 mt-2 flex justify-center">
+            {/* Rage fire background */}
             {answerState === 'wrong' && (
               <motion.div
                 className="absolute inset-0 rounded-full bg-red-600/40 blur-2xl z-0"
@@ -128,7 +128,7 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
               />
             )}
             <motion.div
-              className={`w-32 h-32 rounded-full flex items-center justify-center text-8xl border-4 shadow-xl z-20 relative transition-colors duration-300 ${
+              className={`w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center text-6xl md:text-8xl border-4 shadow-xl z-20 relative transition-colors duration-300 ${
                 answerState === 'wrong' 
                   ? 'border-red-600 bg-red-100 shadow-[0_0_50px_rgba(220,38,38,0.8)]' 
                   : 'border-moomin-primary/40 bg-white shadow-[0_15px_30px_rgba(135,206,235,0.2)]'
@@ -145,16 +145,16 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
           </div>
 
           {/* Question Index */}
-          <p className={`text-[11px] font-black tracking-[0.4em] mb-4 uppercase italic text-center ${answerState === 'wrong' ? 'text-red-600 animate-pulse' : 'text-moomin-muted/80'}`}>
+          <p className={`text-[9px] md:text-[11px] font-black tracking-[0.4em] mb-4 uppercase italic text-center ${answerState === 'wrong' ? 'text-red-600 animate-pulse' : 'text-moomin-muted/80'}`}>
             {answerState === 'wrong' ? '¡INACEPTABLE!' : `JEFA DE GUARDIA - DESAFÍO ${currentQIndex + 1}/${questions.length}`}
           </p>
 
-          <h2 className="text-2xl md:text-3xl font-display font-black text-moomin-text mb-10 leading-tight tracking-tight px-4 italic">
+          <h2 className="text-xl md:text-2xl font-display font-black text-moomin-text mb-6 md:mb-10 leading-tight tracking-tight px-2 md:px-4 italic">
             <GlitchText text={q.q || q.question || "¿QUÉ SIGUE AHORA?"} />
           </h2>
 
           {/* Progress bar */}
-          <div className="w-full h-2 bg-moomin-bg rounded-full mb-10 relative overflow-hidden">
+          <div className="w-full h-1.5 md:h-2 bg-moomin-bg rounded-full mb-8 md:mb-10 relative overflow-hidden">
             <motion.div
               className="absolute top-0 left-0 h-full bg-moomin-accent"
               initial={{ width: `${(currentQIndex / questions.length) * 100}%` }}
@@ -164,7 +164,7 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
           </div>
 
           {/* Answer Options */}
-          <div className="grid grid-cols-1 gap-4">
+          <div className="grid grid-cols-1 gap-3 md:gap-4">
             {q.options.map((opt, idx) => {
               const isSelected = selectedIdx === idx;
               const isCorrectAnswer = idx === q.correct_index;
@@ -184,11 +184,11 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
                       ? { duration: 0.45, delay: 0 }
                       : { duration: 0.3, delay: idx * 0.07, ease: 'easeOut' }
                   }
-                  whileHover={answerState === null ? { scale: 1.02, x: 8, transition: { type: 'spring', stiffness: 400, damping: 20 } } : {}}
-                  whileTap={answerState === null ? { scale: 0.96 } : {}}
+                  whileHover={answerState === null ? { scale: 1.01, x: 4, transition: { type: 'spring', stiffness: 400, damping: 20 } } : {}}
+                  whileTap={answerState === null ? { scale: 0.98 } : {}}
                   onClick={() => handleAnswer(idx)}
                   disabled={answerState !== null}
-                  className={`w-full text-left p-6 glass-panel !rounded-[2rem] transition-all flex justify-between items-center group border-2
+                  className={`w-full text-left p-4 md:p-6 glass-panel !rounded-[1.5rem] md:!rounded-[2rem] transition-all flex justify-between items-center group border-2
                     ${showResult && answerState === 'correct' ? 'border-moomin-primary/40 bg-moomin-primary/5' :
                       showResult && answerState === 'wrong' ? 'border-moomin-accent/40 bg-moomin-accent/5' :
                       answerState !== null && isCorrectAnswer ? 'border-moomin-primary/20 bg-moomin-primary/5' :
@@ -196,9 +196,9 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
                     }
                   `}
                 >
-                  <div className="flex gap-4 items-center">
-                    <span className="text-[10px] font-black text-moomin-muted/30 uppercase italic">0{idx + 1}</span>
-                    <span className={`text-base font-black pr-4 transition-colors italic
+                  <div className="flex gap-3 md:gap-4 items-center flex-1">
+                    <span className="text-[9px] md:text-[10px] font-black text-moomin-muted/30 uppercase italic">0{idx + 1}</span>
+                    <span className={`text-sm md:text-base font-black pr-2 transition-colors italic leading-snug
                       ${showResult && answerState === 'correct' ? 'text-moomin-primary' :
                         showResult && answerState === 'wrong' ? 'text-moomin-accent' :
                         'text-moomin-text group-hover:text-moomin-primary'
@@ -207,7 +207,7 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
                       {opt}
                     </span>
                   </div>
-                  <div className={`w-8 h-8 rounded-2xl border-2 flex items-center justify-center transition-all
+                  <div className={`w-6 h-6 md:w-8 md:h-8 rounded-xl md:rounded-2xl border-2 flex items-center justify-center shrink-0 transition-all
                     ${showResult && answerState === 'correct' ? 'border-moomin-primary/40 bg-moomin-primary/10' :
                       showResult && answerState === 'wrong' ? 'border-moomin-accent/40 bg-moomin-accent/10' :
                       'bg-moomin-bg border-moomin-text/5 group-hover:border-moomin-primary/40 group-hover:bg-moomin-primary/5'

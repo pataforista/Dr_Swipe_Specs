@@ -58,6 +58,9 @@ interface GameContext {
     points: number;
     expectedAction: 'keep' | 'discard';
   }>;
+  // Shift (Guardia) context
+  totalCasesInShift: number;
+  casesCompleted: number;
 }
 
 type GameEvent =
@@ -79,6 +82,7 @@ type GameEvent =
   | { type: 'RESOLVE_INTERRUPTION' }
   | { type: 'USE_LIFELINE' }
   | { type: 'APPLY_REWARD_HEAL'; value: number }
+  | { type: 'CONTINUE_SHIFT'; deck: Card[]; puzzle: any } // deck of the NEXT case
   | { type: 'CLEAR_MILESTONE' };
 
 export const gameMachine = setup({
@@ -118,6 +122,8 @@ export const gameMachine = setup({
       activePenalty: null,
       activeEvent: null,
       feedbackHistory: []
+      // casesCompleted is NOT reset here to keep track during the shift
+      // totalCasesInShift is kept
     }),
     clearVisuals: assign({
       showEureka: false,
@@ -301,7 +307,9 @@ export const gameMachine = setup({
     activePenalty: null,
     lootBoxReward: null,
     activeEvent: null,
-    feedbackHistory: []
+    feedbackHistory: [],
+    totalCasesInShift: 1,
+    casesCompleted: 0
   },
   states: {
     idle: {
@@ -338,7 +346,9 @@ export const gameMachine = setup({
             comboMilestoneHit: 0,
             vitality: 100,
             lootBoxReward: null,
-            feedbackHistory: []
+            feedbackHistory: [],
+            totalCasesInShift: 3, // Default to 3 cases for a full shift
+            casesCompleted: 0
           })
         }
       }
@@ -481,7 +491,35 @@ export const gameMachine = setup({
     },
     reward: {
       on: { 
-        CLAIM: { target: 'idle', actions: ['resetGame'] },
+        CLAIM: [
+          {
+            guard: ({ context }) => context.casesCompleted + 1 < context.totalCasesInShift,
+            target: 'triage',
+            actions: assign({
+              casesCompleted: ({ context }) => context.casesCompleted + 1,
+              // We'll need to inject the new deck here or wait for CONTINUE_SHIFT
+            })
+          },
+          { target: 'idle', actions: ['resetGame'] }
+        ],
+        CONTINUE_SHIFT: {
+          target: 'triage',
+          actions: assign({
+            deck: ({ event }) => event.deck,
+            currentCardIndex: 0,
+            casesCompleted: ({ context }) => context.casesCompleted + 1,
+            debriefData: ({ event }) => ({
+              title: event.puzzle?.title || "Siguiente Paciente",
+              text: event.puzzle?.text || "",
+              gpc: event.puzzle?.gpc_ref || "GPC en vigor",
+              comment: ""
+            }),
+            lastCardPresentedAt: Date.now(),
+            feedbackHistory: [],
+            mistakesThisCase: 0,
+            coinsEarnedThisCase: 0
+          })
+        },
         RESTART: { target: 'idle', actions: ['resetGame'] } 
       }
     },

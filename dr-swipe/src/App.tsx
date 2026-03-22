@@ -8,7 +8,7 @@ import { useState, useEffect, useRef } from 'react';
 import type { ClinicalCase } from './types/game';
 import { dataLoader } from './utils/dataLoader';
 import { useGameAudio } from './hooks/useGameAudio';
-import { cleanVazquezComment } from './utils/formatters';
+import { cleanVazquezComment, shuffleBossQuestion } from './utils/formatters';
 import { triggerHaptic } from './utils/hapticFeedback';
 import { calculatePerfectRoundBonus, getDailyStreakMultiplier } from './utils/scoringEngine';
 import { LIFELINE_COST } from './store/useCodexStore';
@@ -70,6 +70,26 @@ const VazquezInterruption: React.FC<{ onDismiss: () => void }> = ({ onDismiss })
         <div className="h-1 w-12 bg-moomin-accent/20 mx-auto rounded-full" />
       </motion.div>
     </div>
+  );
+};
+
+const RewardToast: React.FC<{ toast: { show: boolean; text: string; type: string } }> = ({ toast }) => {
+  return (
+    <AnimatePresence>
+      {toast.show && (
+        <motion.div
+          initial={{ opacity: 0, y: 50, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8, y: -20 }}
+          className={`fixed bottom-24 left-1/2 -translate-x-1/2 z-[200] px-8 py-4 rounded-full shadow-2xl border-2 flex items-center gap-3 font-black italic tracking-tight whitespace-nowrap
+            ${toast.type === 'milestone' ? 'bg-moomin-secondary border-white text-white' : 'bg-white border-moomin-secondary/20 text-moomin-secondary'}
+          `}
+        >
+          <span className="text-xl">{toast.type === 'milestone' ? '🏆' : '🪙'}</span>
+          {toast.text}
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
@@ -328,6 +348,13 @@ function App() {
   const [loadError, setLoadError] = useState<string | null>(null);
   // Retrospective view toggle
   const [showRetro, setShowRetro] = useState(false);
+  const [caseQueue, setCaseQueue] = useState<ClinicalCase[]>([]);
+  const [isShiftMode, setIsShiftMode] = useState(false);
+  const [rewardToast, setRewardToast] = useState<{ show: boolean; text: string; type: 'coins' | 'xp' | 'milestone' }>({
+    show: false,
+    text: '',
+    type: 'coins'
+  });
 
   // Dynamic Background Theming — Softer Moomin-inspired palette
   useEffect(() => {
@@ -459,12 +486,17 @@ function App() {
       let totalCoins = state.context.coinsEarnedThisCase;
       // Perfect round bonus
       if (state.context.mistakesThisCase === 0) {
-        totalCoins += calculatePerfectRoundBonus(
+        const bonus = calculatePerfectRoundBonus(
           state.context.deck.length,
           state.context.difficulty
         );
+        totalCoins += bonus;
+        showToast(`¡GUARDIA PERFECTA! +${bonus} 🪙`, 'milestone');
       }
       addCoins(totalCoins);
+      if (totalCoins > 0 && state.context.mistakesThisCase > 0) {
+        showToast(`+${totalCoins} 🪙`, 'coins');
+      }
 
       registerCaseSolved(currentCase.case_id, state.context.score);
       const pearl = currentCase.enarm_pearl || (currentCase as any).perla_enarm;
@@ -473,47 +505,59 @@ function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.matches('reward')]);
 
-  const startNewCase = async (skipIntro = false) => {
+  const startNewCase = async (skipIntro = false, isFullShift = true) => {
     // Capture caseStreak before RESTART resets it, so adaptive difficulty works correctly
     const savedStreak = state.context.caseStreak;
     setIsPaused(false);
     setShowMilestoneCelebration(0);
     setLoadError(null);
     setIsLoadingCase(true);
+    setIsShiftMode(isFullShift);
     incrementSessions();
     updateDailyStreak();
+    
     try {
       send({ type: 'RESTART' }); // Reset machine to idle
-      const caseData = await dataLoader.loadRandomCase();
+      
+      const numCases = isFullShift ? 3 : 1;
+      const loadedCases: ClinicalCase[] = [];
+      
+      for (let i = 0; i < numCases; i++) {
+        const caseData = await dataLoader.loadRandomCase();
+        
+        // Validate case has required fields
+        if (!caseData.card_stream || caseData.card_stream.length < 1) {
+          throw new Error('Caso inválido: no contiene cartas.');
+        }
 
-      // Validate case has required fields
-      if (!caseData.card_stream || caseData.card_stream.length < 1) {
-        throw new Error('Caso inválido: no contiene cartas.');
-      }
-      if (!caseData.patient_intro) {
-        throw new Error('Caso inválido: falta información del paciente.');
+        // Shuffle boss questions if they exist
+        if (caseData.boss_fight_triad?.questions) {
+          caseData.boss_fight_triad.questions = caseData.boss_fight_triad.questions.map(q => shuffleBossQuestion(q));
+        }
+
+        // Apply difficulty override
+        if (selectedDifficulty) {
+          (caseData as any).difficulty = selectedDifficulty;
+        }
+        
+        loadedCases.push(caseData);
       }
 
-      // Apply difficulty override if player selected one
-      if (selectedDifficulty) {
-        (caseData as any).difficulty = selectedDifficulty;
-      }
+      const caseData = loadedCases[0];
+      const remainingCases = loadedCases.slice(1);
+
       setCurrentCase(caseData);
+      setCaseQueue(remainingCases);
 
-      // Adaptive Learning Curve: Time per card decreases as streak increases
-      let timePerCard = 15; // R1
-      if (savedStreak >= 6) timePerCard = 8; // Adscrito
-      else if (savedStreak >= 3) timePerCard = 12; // R2/R3
+      // Adaptive Learning Curve
+      let timePerCard = 15; 
+      if (savedStreak >= 6) timePerCard = 8; 
+      else if (savedStreak >= 3) timePerCard = 12; 
       const timeLimit = Math.max(60, Math.min(180, caseData.card_stream.length * timePerCard));
 
-      // Shuffle logic: keep first vitals card anchored
+      // Shuffle cards logic
       const fullDeck = [...caseData.card_stream];
-      const vitals = fullDeck.shift();
-
-      if (!vitals) {
-        throw new Error('Caso inválido: primera carta no encontrada.');
-      }
-
+      const vitals = fullDeck.shift()!;
       const shuffledCards = [vitals, ...fullDeck.sort(() => Math.random() - 0.5)];
 
       timeLimitRef.current = timeLimit;
@@ -541,6 +585,11 @@ function App() {
     } finally {
       setIsLoadingCase(false);
     }
+  };
+
+  const showToast = (text: string, type: 'coins' | 'xp' | 'milestone' = 'coins') => {
+    setRewardToast({ show: true, text, type });
+    setTimeout(() => setRewardToast(prev => ({ ...prev, show: false })), 2500);
   };
 
   const handleSwipe = (direction: 'left' | 'right') => {
@@ -571,6 +620,38 @@ function App() {
       setIsPaused(false); // Reanudar tiempo
       send({ type: 'CLEAR_VISUALS' });
     }, 1800); // 1.8s para dar tiempo a leer tranquilamente
+  };
+
+
+  const handleCaseTransition = () => {
+    if (caseQueue.length === 0) {
+      send({ type: 'RESTART' });
+      return;
+    }
+
+    const nextCase = caseQueue[0];
+    const remaining = caseQueue.slice(1);
+    
+    // Prepare deck
+    const fullDeck = [...nextCase.card_stream];
+    const vitals = fullDeck.shift()!;
+    const shuffledCards = [vitals, ...fullDeck.sort(() => Math.random() - 0.5)];
+    
+    // Update state
+    setCurrentCase(nextCase);
+    setCaseQueue(remaining);
+    
+    // Reset timer
+    const timeLimit = Math.max(60, Math.min(180, nextCase.card_stream.length * 15));
+    setTimeLeft(timeLimit);
+    timeLimitRef.current = timeLimit;
+    pendingDeckRef.current = shuffledCards;
+
+    send({ 
+       type: 'CONTINUE_SHIFT', 
+       deck: shuffledCards, 
+       puzzle: nextCase.enarm_pearl || (nextCase as any).perla_enarm 
+    });
   };
 
   // Combo milestone celebration effect
@@ -998,11 +1079,15 @@ function App() {
             <button
               onClick={() => {
                 triggerHaptic('criticalSuccess');
-                send({ type: 'RESTART' });
+                if (caseQueue.length > 0) {
+                  handleCaseTransition();
+                } else {
+                  send({ type: 'RESTART' });
+                }
               }}
               className="btn-primary w-full py-6 text-xl shadow-[0_10px_0_rgba(135,206,235,0.3)]"
             >
-              CONTINUAR GUARDIA
+              {caseQueue.length > 0 ? `SIGUIENTE PACIENTE (${caseQueue.length} restantes)` : 'FINALIZAR GUARDIA'}
             </button>
           </motion.div>
         );
@@ -1361,6 +1446,9 @@ function App() {
         )}
       </AnimatePresence>
 
+      <RewardToast toast={rewardToast} />
+
+
       {/* Pause overlay */}
       <AnimatePresence>
         {isPaused && !isProcessing && state.matches('triage') && (
@@ -1379,12 +1467,23 @@ function App() {
               <span className="text-[9px] font-black tracking-[0.4em] text-medical-primary uppercase block mb-4">GUARDIA EN PAUSA</span>
               <p className="text-4xl mb-6">⏸</p>
               <p className="text-slate-400 text-sm font-medium mb-8">El expediente sigue abierto.</p>
-              <button
-                onClick={() => setIsPaused(false)}
-                className="btn-primary w-full py-4"
-              >
-                REANUDAR GUARDIA
-              </button>
+              <div className="flex flex-col gap-4 w-full">
+                <button
+                  onClick={() => setIsPaused(false)}
+                  className="btn-primary w-full py-4"
+                >
+                  REANUDAR GUARDIA
+                </button>
+                <button
+                  onClick={() => {
+                    setIsPaused(false);
+                    send({ type: 'RESTART' });
+                  }}
+                  className="btn-primary w-full py-4 !bg-moomin-accent/10 !text-moomin-accent border-2 border-moomin-accent/20 shadow-none !italic"
+                >
+                  ABANDONAR GUARDIA
+                </button>
+              </div>
             </motion.div>
           </motion.div>
         )}

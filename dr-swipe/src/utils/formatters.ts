@@ -1,3 +1,5 @@
+import type { BossQuestion } from '../types/game';
+
 /**
  * Creates contextual feedback comments based on whether the decision was correct or wrong.
  * Implements the "Institución de Salud Verde" tone: specific, dry, clinical, not moralizing.
@@ -54,3 +56,26 @@ export const cleanVazquezComment = (comment: string | undefined, isCorrect: bool
     }
   }
 };
+
+/**
+ * Shuffles the options of a boss question and updates the correct_index.
+ * Returns a NEW object to avoid mutations.
+ */
+export function shuffleBossQuestion(q: BossQuestion): BossQuestion {
+  const optionsWithMeta = q.options.map((opt, idx) => ({
+    text: opt,
+    isCorrect: idx === q.correct_index
+  }));
+
+  // Fisher-Yates shuffle
+  for (let i = optionsWithMeta.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [optionsWithMeta[i], optionsWithMeta[j]] = [optionsWithMeta[j], optionsWithMeta[i]];
+  }
+
+  return {
+    ...q,
+    options: optionsWithMeta.map(o => o.text),
+    correct_index: optionsWithMeta.findIndex(o => o.isCorrect)
+  };
+}

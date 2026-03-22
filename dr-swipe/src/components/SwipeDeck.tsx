@@ -34,24 +34,8 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwi
     <div className="flex flex-col items-center w-full max-w-sm mx-auto gap-10 px-2 sm:px-4">
     <div className="relative w-full h-[24rem] flex items-center justify-center perspective-1000 md:h-[28rem]">
 
-      {/* Swipe Direction Hints - Playful Floating Arrows */}
-      <motion.div
-        className="absolute left-0 sm:-left-20 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 opacity-40 sm:opacity-70 pointer-events-none z-0"
-        animate={{ x: [-4, 4, -4], y: [-2, 2, -2] }}
-        transition={{ duration: 3, repeat: Infinity }}
-      >
-        <span className="text-3xl sm:text-5xl drop-shadow-md">⬅️</span>
-        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-moomin-accent -rotate-90 mt-10 sm:mt-14 drop-shadow-sm bg-white/80 px-4 py-2 rounded-full border border-moomin-accent/5">DESCARTAR</span>
-      </motion.div>
-
-      <motion.div
-        className="absolute right-0 sm:-right-20 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 opacity-40 sm:opacity-70 pointer-events-none z-0"
-        animate={{ x: [4, -4, 4], y: [2, -2, 2] }}
-        transition={{ duration: 3, repeat: Infinity }}
-      >
-        <span className="text-3xl sm:text-5xl drop-shadow-md">➡️</span>
-        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-moomin-primary rotate-90 mt-10 sm:mt-14 drop-shadow-sm bg-white/80 px-4 py-2 rounded-full border border-moomin-primary/5">MANTENER</span>
-      </motion.div>
+      {/* Swipe Direction Hints - Simplified to reduce clutter */}
+      {/* Informational overlays appear on drag, no static side arrows needed */}
 
       {/* Deck Progress Pips - Playful rounded bars */}
       <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 flex gap-1.5 pointer-events-none z-10 w-full justify-center max-w-[200px]">
@@ -99,7 +83,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwi
           initial={{ opacity: 0, y: 15, scale: 0.8 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
-          className={`w-full max-w-sm mx-auto mb-4 px-6 py-4 rounded-[2rem] border-2 text-center text-[11px] font-black uppercase tracking-[0.2em] shadow-xl relative backdrop-blur-md ${
+          className={`w-full max-w-sm mx-auto mb-4 px-6 py-4 rounded-[2rem] border-2 text-center shadow-xl relative backdrop-blur-md flex items-center justify-between gap-4 ${
             cards[currentIndex].expected_action === 'keep'
               ? 'bg-moomin-primary/10 border-moomin-primary/30 text-moomin-text'
               : 'bg-moomin-accent/10 border-moomin-accent/30 text-moomin-text'
@@ -110,9 +94,18 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwi
             cards[currentIndex].expected_action === 'keep' ? 'bg-[#F0FAFF] border-moomin-primary/30' : 'bg-[#FFF5F2] border-moomin-accent/30'
           }`} />
 
-          <span className="relative z-10 italic">
+          <button 
+            onClick={(e) => { e.stopPropagation(); onUseLifeline?.(); }}
+            className="w-8 h-8 rounded-full bg-white/50 flex items-center justify-center hover:bg-white/80 transition-colors z-20 flex-shrink-0"
+            title="Cerrar pista"
+          >
+            ✕
+          </button>
+
+          <span className="relative z-10 italic text-[11px] font-black uppercase tracking-[0.2em] flex-grow">
             {cards[currentIndex].expected_action === 'keep' ? '✨ MANTENER ESTA CARTA ➡️' : '⚠️ DESCARTAR ESTA CARTA ⬅️'}
           </span>
+          <div className="w-8 h-8" />
         </motion.div>
       )}
     </AnimatePresence>
@@ -139,7 +132,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwi
           whileHover={canUseLifeline && !isLocked ? { scale: 1.15, rotate: 15 } : {}}
           whileTap={canUseLifeline && !isLocked ? { scale: 0.9 } : {}}
           transition={{ type: 'spring', stiffness: 500, damping: 15 }}
-          className="w-14 sm:w-16 h-14 sm:h-16 flex items-center justify-center rounded-full border-2 border-moomin-secondary/30 bg-white text-moomin-secondary text-2xl disabled:opacity-30 select-none flex-shrink-0 shadow-lg transition-all hover:bg-moomin-secondary/10"
+          className={`w-14 sm:w-16 h-14 sm:h-16 flex items-center justify-center rounded-full border-2 transition-all shadow-lg ${lifelineActive ? 'bg-moomin-secondary border-white text-white' : 'bg-white border-moomin-secondary/30 text-moomin-secondary hover:bg-moomin-secondary/10'}`}
           aria-label="Usar pista (25 monedas)"
           title="Pista — 25 🪙"
         >
@@ -379,7 +372,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
         </motion.div>
       </motion.div>
 
-      <div className="flex flex-col h-full p-8 relative z-10">
+      <div className="flex flex-col h-full p-8 relative z-10 overflow-hidden">
         {/* Card Header */}
         <div className="flex justify-between items-start mb-8">
           <div className="flex flex-col">
@@ -400,9 +393,15 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
           </motion.div>
         </div>
 
-        {/* Card Text - High Legibility Playful Type */}
-        <div className="flex-grow flex flex-col justify-center">
-          <p className="text-2xl md:text-3xl font-display font-black text-moomin-text leading-[1.3] tracking-tight italic">
+        {/* Card Text - High Legibility Playful Type with content-aware sizing and scroll */}
+        <div className="flex-grow flex flex-col justify-center overflow-hidden">
+          <p className={`
+            font-display font-black text-moomin-text leading-[1.3] tracking-tight italic text-center
+            ${card.card_text.length > 140 ? 'text-lg sm:text-xl' : 
+              card.card_text.length > 80 ? 'text-xl sm:text-2xl' : 
+              'text-2xl sm:text-3xl'}
+            max-h-full overflow-y-auto custom-scrollbar pr-1
+          `}>
             {card.card_text}
           </p>
         </div>
