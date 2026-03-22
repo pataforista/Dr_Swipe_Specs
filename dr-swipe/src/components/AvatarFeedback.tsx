@@ -64,7 +64,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.92 }}
             transition={{ duration: 0.35, ease: [0.34, 1.56, 0.64, 1] }}
-            className="flex flex-col items-center gap-6 py-6 relative"
+            className="flex flex-col items-center gap-3 py-2 relative"
           >
             {/* Ambient Glow Ring */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -80,7 +80,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
               key={`avatar-${validExpression}`}
               animate={avatarMotion[validExpression]}
               transition={{ duration: 0.5, ease: 'easeInOut' }}
-              className={`w-28 h-28 glass-panel !rounded-full flex items-center justify-center text-6xl shadow-2xl relative z-10 border-2 ${borderColors[validExpression]}`}
+              className={`w-20 h-20 glass-panel !rounded-full flex items-center justify-center text-4xl shadow-2xl relative z-10 border-2 ${borderColors[validExpression]}`}
               style={{ filter: expressionFilters[validExpression] }}
             >
               {mentorIcons[validDoctor]}
@@ -98,7 +98,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
             </motion.div>
 
             {/* Dialogue Bubble */}
-            <div className="h-24 flex flex-col items-center relative z-20">
+            <div className="h-20 flex flex-col items-center relative z-20">
               <AnimatePresence mode="wait">
                 {dialogueText && (
                   <motion.div
@@ -107,7 +107,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -12, scale: 0.88 }}
                     transition={{ duration: 0.4, delay: 0.15, ease: [0.34, 1.56, 0.64, 1] }}
-                    className={`glass-panel p-8 max-w-md text-center shadow-2xl relative border-4 bg-white/95 ${
+                    className={`glass-panel p-4 max-w-md text-center shadow-2xl relative border-2 bg-white/95 ${
                       validExpression === 'angry' ? 'border-moomin-accent/50' :
                       validExpression === 'happy' ? 'border-moomin-primary/50' :
                       validExpression === 'shocked' ? 'border-moomin-secondary/50' :
@@ -117,7 +117,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
                     <span className="absolute -top-3 left-4 text-[9px] font-black text-moomin-muted/50 tracking-[0.3em] uppercase bg-white px-3 py-0.5 rounded-full border border-moomin-text/5">
                       {validExpression === 'angry' ? 'PISTA' : validExpression === 'happy' ? '¡GENIAL!' : validExpression === 'shocked' ? '¡CUIDADO!' : 'DOCTOR'}
                     </span>
-                    <p className={`text-xl md:text-2xl font-display font-black leading-snug italic tracking-tight ${
+                    <p className={`text-sm md:text-base font-display font-black leading-snug italic tracking-tight ${
                       validExpression === 'angry' ? 'text-moomin-accent' :
                       validExpression === 'happy' ? 'text-moomin-primary' :
                       validExpression === 'shocked' ? 'text-moomin-secondary' :
