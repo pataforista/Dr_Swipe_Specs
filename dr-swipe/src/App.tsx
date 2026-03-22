@@ -12,8 +12,6 @@ import { cleanVazquezComment } from './utils/formatters';
 import { triggerHaptic } from './utils/hapticFeedback';
 import { calculatePerfectRoundBonus, getDailyStreakMultiplier, COMBO_MILESTONE_COINS } from './utils/scoringEngine';
 import { LIFELINE_COST } from './store/useCodexStore';
-import DecryptedText from './components/bits/DecryptedText';
-import ShinyText from './components/bits/ShinyText';
 import ErrorBoundary from './components/ErrorBoundary';
 import { useCodexStore, type SessionProgress } from './store/useCodexStore';
 import { TutorialOverlay } from './components/TutorialOverlay';
@@ -64,81 +62,62 @@ const VazquezInterruption: React.FC<{ onDismiss: () => void }> = ({ onDismiss })
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.88, y: 30 }}
         transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-        className="glass-panel p-8 max-w-sm border-medical-danger/40 text-center shadow-[0_0_60px_rgba(239,68,68,0.4)] relative"
+        className="glass-panel p-8 max-w-sm border-moomin-accent/40 text-center shadow-[0_15px_45px_rgba(255,159,127,0.2)] relative bg-white/90"
       >
-        {/* Corner accent */}
-        <div className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-medical-danger/40" />
-        <div className="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-medical-danger/40" />
-
         <motion.div
-          animate={{ scale: [1, 1.08, 1] }}
-          transition={{ duration: 1.8, repeat: Infinity }}
-          className="w-20 h-20 flex items-center justify-center text-5xl mx-auto mb-4 filter drop-shadow-[0_0_12px_rgba(239,68,68,0.6)]"
+          animate={{ scale: [1, 1.05, 1], rotate: [0, 3, -3, 0] }}
+          transition={{ duration: 2.5, repeat: Infinity }}
+          className="w-24 h-24 flex items-center justify-center text-6xl mx-auto mb-4 filter drop-shadow-[0_8px_16px_rgba(92,64,51,0.1)]"
         >
           👴
         </motion.div>
-        <span className="text-[9px] font-black tracking-[0.4em] text-medical-danger/60 uppercase mb-2 block">
+        <span className="text-[10px] font-black tracking-[0.4em] text-moomin-accent uppercase mb-2 block">
           DR. VÁZQUEZ — INTERRUPCIÓN
         </span>
-        <h3 className="text-xl font-display font-black text-white mb-3 tracking-tight">
+        <h3 className="text-xl font-display font-black text-moomin-text mb-3 tracking-tight">
           "{line.title}"
         </h3>
-        <p className="text-sm text-slate-300 italic font-medium mb-4 leading-relaxed">
+        <p className="text-sm text-moomin-muted italic font-medium mb-4 leading-relaxed">
           {line.body}
         </p>
-        <div className="h-0.5 w-16 bg-medical-danger/40 mx-auto" />
+        <div className="h-1 w-12 bg-moomin-accent/20 mx-auto rounded-full" />
       </motion.div>
     </div>
   );
 };
 
-const TelemetryHUD: React.FC<{ timeLeft: number; state: string }> = ({ timeLeft, state }) => {
+const TelemetryHUD: React.FC<{ timeLeft: number; state: string; evidenceCount: number }> = ({ timeLeft, state, evidenceCount }) => {
   const [pulse, setPulse] = useState(72);
   
   useEffect(() => {
     const interval = setInterval(() => {
-      setPulse(p => p + (Math.random() > 0.5 ? 1 : -1));
+      setPulse(p => p + (Math.random() > 0.5 ? 2 : -2));
     }, 2000);
     return () => clearInterval(interval);
   }, []);
 
-  if (state !== 'triage') return null;
+  if (state !== 'triage' && state !== 'boss_fight') return null;
 
   return (
-    <div className="fixed left-6 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-6 pointer-events-none z-50 glass-panel p-6 border-white/10 shadow-2xl bg-slate-900/60 backdrop-blur-md rounded-3xl">
-      <div className="flex items-center gap-3 border-b border-white/10 pb-4 mb-2">
-        <div className="w-3 h-3 bg-medical-primary rounded-full animate-pulse shadow-[0_0_10px_rgba(20,184,166,0.8)]" />
-        <span className="text-xs font-black tracking-widest text-medical-primary uppercase">MONITOR DE PACIENTE</span>
-      </div>
-      
-      <div className="flex flex-col gap-1">
-        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Presión Arterial</span>
-        <div className="text-lg text-slate-200 font-mono font-black">120/80 <span className="text-[10px] text-slate-500">mmHg</span></div>
-      </div>
-      
-      <div className="flex flex-col gap-1">
-        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Saturación O2</span>
-        <div className="text-lg text-slate-200 font-mono font-black">98% <span className="text-[10px] text-medical-primary">(ESTABLE)</span></div>
-      </div>
-
-      <div className="flex flex-col gap-2 mt-2 pt-4 border-t border-white/10">
-        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Frecuencia Cardíaca</span>
-        <div className="flex items-end gap-1 h-8 opacity-80">
-          {[...Array(10)].map((_, i) => (
-            <motion.div
-              key={i}
-              animate={{ height: [10, 25, 15, 20, 12] }}
-              transition={{ repeat: Infinity, duration: 1.5, delay: i * 0.1 }}
-              className="w-1.5 bg-medical-primary/50 rounded-full"
-            />
-          ))}
+    <div className="fixed top-4 left-4 right-4 z-50 flex items-center justify-between glass-panel p-3 px-6 border-moomin-text/10 shadow-lg bg-white/80 backdrop-blur-md rounded-full">
+      {/* Evidence Counter */}
+      <div className="flex items-center gap-2">
+        <span className="text-xl">💼</span>
+        <div className="flex flex-col">
+          <span className="text-[8px] font-black tracking-widest text-moomin-muted uppercase leading-none">Evidencia</span>
+          <span className="text-sm font-black text-moomin-text leading-none">{evidenceCount}</span>
         </div>
-        <span className="text-3xl font-black text-medical-primary font-mono mt-1">{pulse} <small className="text-xs text-medical-primary/70 mb-1 inline-block">LPM</small></span>
       </div>
 
-      <div className="mt-4 pt-4 border-t border-white/10">
-        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Tiempo de Reacción</span>
-        <div className="text-xl text-slate-100 font-mono font-black">{timeLeft} <span className="text-[10px] text-slate-500">SEG</span></div>
+      {/* Timer */}
+      <div className="flex items-center gap-3">
+        <div className="flex flex-col text-right">
+          <span className="text-[8px] font-black tracking-widest text-moomin-muted uppercase leading-none">Tiempo</span>
+          <span className={`text-xl font-mono font-black leading-none ${timeLeft <= 10 ? 'text-moomin-accent animate-pulse' : 'text-moomin-text'}`}>
+            0:{timeLeft.toString().padStart(2, '0')}
+          </span>
+        </div>
+        <div className={`w-3 h-3 rounded-full shadow-inner ${timeLeft <= 10 ? 'bg-moomin-accent animate-ping' : 'bg-moomin-primary'}`} />
       </div>
     </div>
   );
@@ -171,26 +150,26 @@ function App() {
   // Retrospective view toggle
   const [showRetro, setShowRetro] = useState(false);
 
-  // Dynamic Background Theming
+  // Dynamic Background Theming — Softer Moomin-inspired palette
   useEffect(() => {
     if (currentCase) {
       const colors: Record<string, string> = {
-        ped: '244, 114, 182',
-        surg: '185, 28, 28',
-        obs: '139, 92, 246',
-        gyn: '168, 85, 247',
-        im: '59, 130, 246',
-        gast: '234, 179, 8',
-        card: '225, 29, 72',
-        endo: '249, 115, 22',
-        inf: '34, 197, 94',
-        neur: '79, 70, 229',
-        prev: '20, 184, 166',
-        stats: '100, 116, 139',
-        engl: '51, 65, 85'
+        ped: '255, 182, 193', // Moomin Secondary (Pink)
+        surg: '255, 159, 127', // Moomin Accent (Coral)
+        obs: '176, 229, 216',  // Moomin Tertiary (Soft Green)
+        gyn: '200, 162, 200',  // Lilac
+        im: '135, 206, 235',   // Moomin Primary (Sky Blue)
+        gast: '255, 223, 186', // Peach
+        card: '255, 127, 127', // Soft Red
+        endo: '255, 218, 185', // Papaya Whip
+        inf: '152, 216, 200',  // Seafoam
+        neur: '230, 230, 250', // Lavender
+        prev: '175, 238, 238', // Pale Turquoise
+        stats: '245, 230, 211', // Moomin Dark BG
+        engl: '240, 248, 255'  // Alice Blue
       };
       const key = Object.keys(colors).find(k => currentCase.case_id.toLowerCase().includes(k)) || 'default';
-      const rgb = colors[key] || '13, 148, 136';
+      const rgb = colors[key] || '135, 206, 235';
       document.documentElement.style.setProperty('--specialty-rgb', rgb);
     }
   }, [currentCase]);
@@ -391,6 +370,8 @@ function App() {
     if (!card) return;
 
     setIsProcessing(true);
+    setIsPaused(true); // Pausar tiempo durante feedback
+    
     const isCorrect = isSwipeCorrect(direction, card.expected_action);
     updateSwipeResult(isCorrect);
 
@@ -398,7 +379,7 @@ function App() {
     setExpression(isCorrect ? 'happy' : 'angry');
     const rawComment = card.scoring.vazquez_comment;
     const cleanComment = cleanVazquezComment(rawComment, isCorrect);
-    const feedbackIcon = isCorrect ? "✅ " : "❌ ";
+    const feedbackIcon = isCorrect ? "✨ " : "⚠️ ";
     setComment(cleanComment ? feedbackIcon + cleanComment : null);
 
     send({ type: 'SWIPE', direction });
@@ -408,8 +389,9 @@ function App() {
       setComment(null);
       setSwipeFeedback(null);
       setIsProcessing(false);
+      setIsPaused(false); // Reanudar tiempo
       send({ type: 'CLEAR_VISUALS' });
-    }, 1500);
+    }, 1800); // 1.8s para dar tiempo a leer tranquilamente
   };
 
   // Combo milestone celebration effect
@@ -472,45 +454,41 @@ function App() {
   };
 
   const renderCurrentView = () => {
-    if (showIntro && currentCase) {
+     if (showIntro && currentCase) {
       const difficultyLabel = currentCase.difficulty === 'extreme' ? 'EXTREMO' : currentCase.difficulty === 'hard' ? 'DIFÍCIL' : 'NORMAL';
-      const difficultyColor = currentCase.difficulty === 'extreme' ? 'text-red-400 border-red-500/30 bg-red-500/10' : currentCase.difficulty === 'hard' ? 'text-orange-400 border-orange-500/30 bg-orange-500/10' : 'text-teal-400 border-teal-500/30 bg-teal-500/10';
+      const difficultyColor = currentCase.difficulty === 'extreme' ? 'text-moomin-accent border-moomin-accent/20 bg-moomin-accent/5' : currentCase.difficulty === 'hard' ? 'text-orange-400 border-orange-200 bg-orange-50' : 'text-moomin-primary border-moomin-primary/20 bg-moomin-primary/5';
       return (
         <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          className="glass-panel p-8 max-w-md w-full text-center border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden mx-4"
+          className="glass-panel p-8 max-w-md w-full text-center border-moomin-text/5 shadow-2xl relative overflow-hidden mx-4 bg-white/95"
         >
-          {/* Decorative Corner Accents */}
-          <div className="absolute top-0 left-0 w-16 h-16 bg-medical-primary/10 -translate-x-8 -translate-y-8 rotate-45 border border-medical-primary/30" />
-          <div className="absolute bottom-0 right-0 w-16 h-16 bg-medical-primary/10 translate-x-8 translate-y-8 rotate-45 border border-medical-primary/30" />
-
           {/* Header */}
-          <div className="flex items-center justify-between mb-5">
-            <span className="text-[9px] font-black tracking-[0.4em] text-medical-primary uppercase">NUEVO CASO</span>
-            <span className={`text-[9px] font-black tracking-widest uppercase px-2 py-0.5 rounded border ${difficultyColor}`}>
+          <div className="flex items-center justify-between mb-6">
+            <span className="text-[10px] font-black tracking-[0.4em] text-moomin-primary uppercase">NUEVO CASO</span>
+            <span className={`text-[9px] font-black tracking-widest uppercase px-3 py-1 rounded-full border ${difficultyColor}`}>
               {difficultyLabel}
             </span>
           </div>
 
           {/* Patient Name */}
-          <h2 className="text-3xl font-display font-black text-white mb-4 leading-tight tracking-tighter">
-            <DecryptedText text={currentCase.patient_intro.name} animateOn="view" speed={30} maxIterations={5} />
+          <h2 className="text-4xl font-display font-black text-moomin-text mb-4 leading-tight tracking-tighter">
+            {currentCase.patient_intro.name}
           </h2>
 
-          <div className="w-12 h-0.5 bg-medical-primary/40 mx-auto mb-5 rounded-full" />
+          <div className="w-16 h-1.5 bg-moomin-primary/20 mx-auto mb-6 rounded-full" />
 
           {/* Lore / Arrival Scenario */}
-          <div className="bg-black/30 border border-white/5 rounded-lg p-4 mb-6 text-left">
-            <span className="text-[9px] font-black tracking-[0.3em] text-medical-primary/60 uppercase block mb-2">MOTIVO DE CONSULTA</span>
-            <p className="text-sm text-slate-200 leading-relaxed italic font-medium">
-              <DecryptedText text={currentCase.patient_intro.arrival_scenario} animateOn="view" speed={20} maxIterations={1} revealMultiplier={2} />
+          <div className="bg-moomin-bg/50 border border-moomin-text/5 rounded-3xl p-6 mb-8 text-left shadow-inner">
+            <span className="text-[10px] font-black tracking-[0.3em] text-moomin-muted uppercase block mb-3">HISTORIA CLÍNICA</span>
+            <p className="text-base text-moomin-text leading-relaxed italic font-medium">
+              {currentCase.patient_intro.arrival_scenario}
             </p>
           </div>
 
           {/* Time limit hint */}
-          <p className="text-[9px] text-slate-600 font-black tracking-widest uppercase mb-6">
-            TIEMPO LÍMITE: {timeLimitRef.current}s
+          <p className="text-[10px] text-moomin-muted font-black tracking-[0.2em] uppercase mb-8">
+            RELOJ DE GUARDIA: {timeLimitRef.current}s
           </p>
 
           <button
@@ -526,9 +504,9 @@ function App() {
                 pearl: (currentCase.enarm_pearl || currentCase.perla_enarm) as any
               });
             }}
-            className="btn-primary w-full py-5 text-base"
+            className="btn-primary w-full py-5 text-lg"
           >
-            <ShinyText text="INGRESAR A URGENCIAS" speed={3} />
+             COMENZAR CONSULTA
           </button>
         </motion.div>
       );
@@ -540,32 +518,34 @@ function App() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="flex flex-col items-center justify-center p-8 gap-6 w-full min-h-full"
+            className="flex flex-col items-center justify-center p-8 gap-8 w-full min-h-full"
           >
-            <div className="relative mb-6">
-              <h1 className="text-7xl font-display font-black tracking-tighter text-medical-primary text-glow italic">
-                <DecryptedText text="DR. SWIPE" animateOn="view" speed={100} />
+            <div className="relative mb-4 text-center">
+              <span className="text-[12px] font-black tracking-[0.6em] text-moomin-muted uppercase mb-2 block">SISTEMA MÉDICO</span>
+              <h1 className="text-7xl font-display font-black tracking-tighter text-moomin-text italic leading-none">
+                DR. SWIPE
               </h1>
-              <span className="absolute -bottom-4 right-0 text-[10px] font-black tracking-[0.5em] text-white/20 uppercase">MEDICAL TRUTH SYSTEM</span>
+              <div className="h-2 w-24 bg-moomin-primary mx-auto mt-4 rounded-full opacity-30" />
             </div>
+
             {/* Daily Streak Badge */}
             {dailyStreak > 0 && (
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                className="flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 px-4 py-1.5 rounded-full mb-2"
+                className="flex items-center gap-2 bg-moomin-accent/10 border border-moomin-accent/20 px-5 py-2 rounded-full mb-2"
               >
-                <span className="text-orange-400 text-sm">🔥</span>
-                <span className="text-[10px] font-black text-orange-400 tracking-widest uppercase">
-                  RACHA DIARIA: {dailyStreak} {dailyStreak >= 7 ? '(x2.0 XP)' : `(x${getDailyStreakMultiplier(dailyStreak).toFixed(1)} XP)`}
+                <span className="text-moomin-accent text-lg">🔥</span>
+                <span className="text-[11px] font-black text-moomin-text/80 tracking-widest uppercase">
+                  RACHA: {dailyStreak} DÍAS {dailyStreak >= 7 ? '(x2.0 XP)' : `(x${getDailyStreakMultiplier(dailyStreak).toFixed(1)} XP)`}
                 </span>
               </motion.div>
             )}
 
             {/* Coin Balance */}
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-yellow-400 text-lg">🪙</span>
-              <span className="text-sm font-black text-yellow-400/80 tracking-widest">{stats.coins}</span>
+            <div className="flex items-center gap-2 mb-2 bg-white/50 px-4 py-2 rounded-full shadow-sm">
+              <span className="text-xl">🪙</span>
+              <span className="text-base font-black text-moomin-text tracking-widest">{stats.coins}</span>
             </div>
 
             {/* Quick Progress Stats */}
@@ -573,42 +553,42 @@ function App() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="grid grid-cols-3 gap-3 mb-6 w-full max-w-xs"
+                className="grid grid-cols-3 gap-4 mb-4 w-full max-w-sm"
               >
-                <div className="bg-white/5 border border-white/10 rounded-lg p-3 text-center">
-                  <div className="text-2xl font-display font-black text-medical-primary">{stats.cases_solved}</div>
-                  <div className="text-[8px] font-black text-slate-500 uppercase tracking-widest mt-1">Casos</div>
+                <div className="bg-white/80 border border-moomin-text/5 rounded-3xl p-4 text-center shadow-sm">
+                  <div className="text-3xl font-display font-black text-moomin-primary">{stats.cases_solved}</div>
+                  <div className="text-[9px] font-black text-moomin-muted uppercase tracking-widest mt-1">Casos</div>
                 </div>
-                <div className="bg-white/5 border border-white/10 rounded-lg p-3 text-center">
-                  <div className="text-2xl font-display font-black text-medical-secondary">
+                <div className="bg-white/80 border border-moomin-text/5 rounded-3xl p-4 text-center shadow-sm">
+                  <div className="text-3xl font-display font-black text-moomin-secondary">
                     {stats.correct_swipes + stats.mistakes > 0
                       ? Math.round((stats.correct_swipes / (stats.correct_swipes + stats.mistakes)) * 100)
                       : 0}%
                   </div>
-                  <div className="text-[8px] font-black text-slate-500 uppercase tracking-widest mt-1">Precisión</div>
+                  <div className="text-[9px] font-black text-moomin-muted uppercase tracking-widest mt-1">Precisión</div>
                 </div>
-                <div className="bg-white/5 border border-white/10 rounded-lg p-3 text-center">
-                  <div className="text-2xl font-display font-black text-yellow-400">{(stats.xp || 0).toLocaleString()}</div>
-                  <div className="text-[8px] font-black text-slate-500 uppercase tracking-widest mt-1">XP</div>
+                <div className="bg-white/80 border border-moomin-text/5 rounded-3xl p-4 text-center shadow-sm">
+                  <div className="text-3xl font-display font-black text-moomin-accent">{(stats.xp || 0).toLocaleString()}</div>
+                  <div className="text-[9px] font-black text-moomin-muted uppercase tracking-widest mt-1">Puntos</div>
                 </div>
               </motion.div>
             )}
 
             {/* Difficulty Selector */}
-            <div className="flex gap-2 mb-6">
+            <div className="flex gap-3 mb-4">
               {(['standard', 'hard', 'extreme'] as const).map(diff => (
                 <button
                   key={diff}
                   onClick={() => setSelectedDifficulty(selectedDifficulty === diff ? null : diff)}
-                  className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border transition-all ${
+                  className={`px-5 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-widest border-2 transition-all ${
                     selectedDifficulty === diff
-                      ? diff === 'extreme' ? 'bg-red-500/20 border-red-500/50 text-red-400'
-                        : diff === 'hard' ? 'bg-orange-500/20 border-orange-500/50 text-orange-400'
-                        : 'bg-teal-500/20 border-teal-500/50 text-teal-400'
-                      : 'bg-white/5 border-white/10 text-slate-500 hover:border-white/20'
+                      ? diff === 'extreme' ? 'bg-moomin-accent/20 border-moomin-accent text-moomin-text shadow-lg scale-105'
+                        : diff === 'hard' ? 'bg-orange-500/20 border-orange-500 text-moomin-text shadow-lg scale-105'
+                        : 'bg-moomin-primary/20 border-moomin-primary text-moomin-text shadow-lg scale-105'
+                      : 'bg-white/50 border-moomin-text/10 text-moomin-muted hover:border-moomin-text/20'
                   }`}
                 >
-                  {diff === 'standard' ? 'Normal' : diff === 'hard' ? 'Difícil' : 'Extremo'}
+                  {diff === 'standard' ? 'Médico General' : diff === 'hard' ? 'Residente' : 'Especialista'}
                 </button>
               ))}
             </div>
@@ -617,54 +597,36 @@ function App() {
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-red-500/10 border border-red-500/50 rounded-lg p-4 mb-4 text-center max-w-md"
+                className="bg-moomin-accent/10 border-2 border-moomin-accent/30 rounded-3xl p-5 mb-4 text-center max-w-md shadow-lg"
               >
-                <p className="text-red-400 text-sm font-medium">⚠️ {loadError}</p>
-                <p className="text-red-300/70 text-xs mt-2">Por favor, intenta de nuevo.</p>
+                <p className="text-moomin-text text-sm font-bold">⚠️ {loadError}</p>
+                <p className="text-moomin-muted text-xs mt-2">Hubo un pequeño error. ¿Intentamos otra vez?</p>
               </motion.div>
             )}
 
-            {sessionProgress && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4 mb-4 text-center max-w-md"
-              >
-                <p className="text-blue-400 text-sm font-medium">💾 Juego interrumpido detectado</p>
-                <p className="text-blue-300/70 text-xs mt-1">Hay una partida en progreso. ¿Deseas reanudarla?</p>
-                <button
-                  onClick={resumeGame}
-                  disabled={isLoadingCase}
-                  className="mt-3 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white font-black px-4 py-2 rounded transition-colors text-sm"
-                >
-                  Reanudar Partida
-                </button>
-              </motion.div>
-            )}
-
-            <div className="flex gap-3 w-full max-w-xs justify-center">
+            <div className="flex gap-4 w-full max-w-xs justify-center">
               <button
                 onClick={() => startNewCase(false)}
                 disabled={isLoadingCase}
-                className={`btn-primary px-12 py-6 text-lg flex-1 ${isLoadingCase ? 'opacity-50 cursor-not-allowed' : ''}`}
+                className={`btn-primary px-12 py-6 text-xl flex-1 ${isLoadingCase ? 'opacity-50 cursor-not-allowed' : ''} shadow-[0_10px_0_rgba(135,206,235,0.3)]`}
               >
                 {isLoadingCase ? (
                   <span className="inline-flex items-center gap-2">
-                    <span className="inline-block animate-spin">⟳</span> Cargando...
+                    <span className="inline-block animate-spin">🕒</span> Cargando...
                   </span>
                 ) : (
-                  <ShinyText text="NUEVA GUARDIA" speed={3} />
+                  "NUEVA GUARDIA"
                 )}
               </button>
             </div>
             <button
               onClick={() => setShowStats(true)}
               disabled={isLoadingCase}
-              className={`text-[10px] font-black tracking-[0.4em] transition-colors uppercase ${
-                isLoadingCase ? 'text-slate-600 cursor-not-allowed' : 'text-slate-500 hover:text-medical-primary'
+              className={`text-[11px] font-black tracking-[0.4em] transition-colors uppercase py-2 px-4 rounded-full border border-transparent ${
+                isLoadingCase ? 'text-moomin-muted cursor-not-allowed' : 'text-moomin-muted hover:text-moomin-primary hover:bg-white/50'
               }`}
             >
-              📊 Ver Estadísticas
+              📊 ARCHIVOS MÉDICOS
             </button>
           </motion.div>
         );
@@ -687,38 +649,26 @@ function App() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="fixed inset-0 flex flex-col items-center justify-center overflow-hidden"
+            className="fixed inset-0 flex flex-col items-center justify-center overflow-hidden z-[100]"
           >
             {/* Pulsing background layers */}
             <motion.div
-              className="absolute inset-0 bg-medical-danger/15"
-              animate={{ opacity: [0.3, 0.7, 0.3] }}
-              transition={{ duration: 0.6, repeat: Infinity }}
+              className="absolute inset-0 bg-moomin-accent/10"
+              animate={{ opacity: [0.2, 0.5, 0.2] }}
+              transition={{ duration: 0.8, repeat: Infinity }}
             />
-            <div className="absolute inset-0 pointer-events-none">
-              {[...Array(4)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute inset-0 border-2 border-medical-danger/20 rounded-full"
-                  initial={{ scale: 0.5, opacity: 0.8 }}
-                  animate={{ scale: 2 + i * 0.5, opacity: 0 }}
-                  transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.3 }}
-                  style={{ margin: 'auto', width: '80px', height: '80px', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
-                />
-              ))}
-            </div>
             <motion.div
-              animate={{ scale: [1, 1.05, 1] }}
-              transition={{ duration: 0.5, repeat: Infinity }}
-              className="text-8xl mb-6 filter drop-shadow-[0_0_20px_rgba(239,68,68,0.8)]"
+              animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }}
+              transition={{ duration: 0.6, repeat: Infinity }}
+              className="text-9xl mb-8 filter drop-shadow-[0_10px_20px_rgba(255,159,127,0.4)]"
             >
               🚨
             </motion.div>
-            <h2 className="text-5xl font-display font-black text-medical-danger tracking-tighter text-glow-danger">
+            <h2 className="text-6xl font-display font-black text-moomin-accent tracking-tighter text-glow-danger uppercase italic">
               CÓDIGO ROJO
             </h2>
-            <p className="text-sm font-black tracking-[0.4em] mt-4 text-white/50 uppercase">
-              SHOCK ROOM REQUERIDO
+            <p className="text-sm font-black tracking-[0.5em] mt-6 text-moomin-text/60 uppercase">
+              PACIENTE EN ESTADO CRÍTICO
             </p>
           </motion.div>
         );
@@ -730,60 +680,45 @@ function App() {
 
         if (!hasQuestions) {
           return (
-            <div className="telemetry-panel w-full max-w-xl h-full flex flex-col items-center justify-center gap-8 relative overflow-hidden bg-black/40">
-              {/* Background ECG pulse effect */}
-              <div className="absolute inset-0 opacity-10 pointer-events-none">
-                <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                  <motion.path
-                    d="M 0 50 L 20 50 L 25 30 L 30 70 L 35 50 L 50 50"
-                    fill="transparent"
-                    stroke="#dc2626"
-                    strokeWidth="2"
-                    initial={{ pathLength: 0, x: -100 }}
-                    animate={{ pathLength: 1, x: 200 }}
-                    transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-                  />
-                </svg>
-              </div>
-
-              <div className="text-center z-10">
-                <h2 className="text-2xl font-black text-white italic tracking-tighter animate-pulse mb-1">PROTOCOLO DE ESTABILIZACIÓN</h2>
-                <div className="h-0.5 w-32 bg-medical-danger mx-auto mb-4" />
-                <p className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.3em] px-4">Pulsa rítmicamente para mantener el gasto cardíaco</p>
+            <div className="w-full max-w-xl h-full flex flex-col items-center justify-center gap-10 relative overflow-hidden">
+              <div className="text-center z-10 px-6">
+                <span className="text-[11px] font-black tracking-[0.4em] text-moomin-accent uppercase mb-2 block">PROTOCOLO DE EMERGENCIA</span>
+                <h2 className="text-3xl font-display font-black text-moomin-text italic tracking-tighter mb-4">ESTABILIZACIÓN MANUAL</h2>
+                <div className="h-1.5 w-32 bg-moomin-accent mx-auto mb-6 rounded-full opacity-30" />
+                <p className="text-sm text-moomin-muted font-bold uppercase tracking-widest leading-relaxed">Mantén el ritmo pulsando el centro</p>
               </div>
 
               {/* Stabilization Heart/Core */}
-              <div className="relative group p-8">
-                <div className="absolute inset-0 bg-medical-danger/20 blur-3xl rounded-full animate-pulse group-hover:opacity-40 transition-opacity" />
+              <div className="relative group p-12">
+                <div className="absolute inset-0 bg-moomin-accent/15 blur-[60px] rounded-full animate-pulse group-hover:opacity-40 transition-opacity" />
                 <motion.div
-                  animate={{ scale: [1, 1.15, 1] }}
+                  animate={{ scale: [1, 1.1, 1] }}
                   transition={{ repeat: Infinity, duration: 0.6 }}
-                  className="w-40 h-40 rounded-full border-2 border-medical-danger/40 flex items-center justify-center relative z-10 cursor-pointer active:scale-95 transition-transform bg-black/20"
+                  className="w-48 h-48 rounded-full border-4 border-moomin-accent/30 flex items-center justify-center relative z-10 cursor-pointer active:scale-90 transition-transform"
                   onClick={() => {
                     triggerHaptic('qteInteract');
                     send({ type: 'QTE_INTERACT' });
                   }}
                 >
                   <div className="flex flex-col items-center">
-                    <span className="text-6xl filter drop-shadow-[0_0_15px_rgba(220,38,38,0.8)]">❤️</span>
-                    <span className="text-[8px] font-black text-medical-danger mt-4 animate-bounce">PULSAR</span>
+                    <span className="text-7xl filter drop-shadow-[0_10px_15px_rgba(255,159,127,0.5)]">❤️</span>
+                    <span className="text-[10px] font-black text-moomin-accent mt-6 animate-gentle-bounce tracking-widest uppercase">PULSAR</span>
                   </div>
                 </motion.div>
               </div>
 
               {/* QTE Timer */}
-              <div className="w-full max-w-xs space-y-2 text-center mt-4">
-                <div className="text-2xl font-black text-medical-danger font-mono mb-3">
+              <div className="w-full max-w-xs space-y-4 text-center mt-4">
+                <div className="text-4xl font-black text-moomin-text font-mono mb-2">
                   {state.context.qteTimeLeft}s
                 </div>
-                <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                <div className="w-full h-3 bg-white/50 rounded-full overflow-hidden border border-moomin-text/5 shadow-inner">
                   <motion.div
                     animate={{ width: [`${(state.context.qteTimeLeft / 5) * 100}%`] }}
                     transition={{ duration: 0.3 }}
-                    className="h-full bg-medical-danger shadow-[0_0_10px_#dc2626]"
+                    className="h-full bg-moomin-accent rounded-full shadow-[0_0_15px_rgba(255,159,127,0.4)]"
                   />
                 </div>
-                <p className="text-[9px] font-black text-white/30 italic tracking-widest uppercase">Mantén el ritmo cardíaco...</p>
               </div>
             </div>
           );
@@ -807,21 +742,21 @@ function App() {
       case state.matches('reward'):
         return (
           <motion.div
-            initial={{ opacity: 0, scale: 0.88, y: 28 }}
+            initial={{ opacity: 0, scale: 0.88, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            className="glass-panel p-10 max-w-sm text-center border-medical-primary/30 shadow-[0_0_60px_rgba(13,148,136,0.15)] relative overflow-hidden"
+            transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+            className="glass-panel p-10 max-w-md text-center border-moomin-text/5 shadow-2xl relative overflow-hidden bg-white/95"
           >
-            {/* Particle burst on reward */}
-            {[...Array(12)].map((_, i) => {
-              const angle = (i / 12) * 360;
+            {/* Particle burst on reward - More pastel */}
+            {[...Array(15)].map((_, i) => {
+              const angle = (i / 15) * 360;
               const rad = (angle * Math.PI) / 180;
-              const dist = 80 + Math.random() * 60;
+              const dist = 100 + Math.random() * 80;
               return (
                 <motion.div
                   key={i}
-                  className="absolute top-1/2 left-1/2 w-2 h-2 rounded-full pointer-events-none"
-                  style={{ backgroundColor: i % 3 === 0 ? '#0d9488' : i % 3 === 1 ? '#14b8a6' : '#fbbf24' }}
+                  className="absolute top-1/2 left-1/2 w-3 h-3 rounded-full pointer-events-none"
+                  style={{ backgroundColor: i % 3 === 0 ? '#87CEEB' : i % 3 === 1 ? '#FFB6C1' : '#98D8C8' }}
                   initial={{ x: 0, y: 0, scale: 1, opacity: 1 }}
                   animate={{
                     x: Math.cos(rad) * dist,
@@ -829,23 +764,17 @@ function App() {
                     scale: 0,
                     opacity: 0
                   }}
-                  transition={{ duration: 0.7, delay: 0.1 + i * 0.02, ease: 'easeOut' }}
+                  transition={{ duration: 0.8, delay: 0.1 + i * 0.02, ease: 'easeOut' }}
                 />
               );
             })}
-            {/* Subtle shimmer background */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-br from-medical-primary/5 to-transparent pointer-events-none"
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 3, repeat: Infinity }}
-            />
 
             <motion.div
-              animate={{ scale: [1, 1.12, 1], rotate: [0, 5, -5, 0] }}
-              transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
-              className="w-20 h-20 bg-medical-primary/20 rounded-full flex items-center justify-center mx-auto mb-6 relative z-10"
+              animate={{ scale: [1, 1.15, 1], rotate: [0, 5, -5, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-24 h-24 bg-moomin-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 relative z-10"
             >
-              <span className="text-4xl drop-shadow-[0_0_15px_rgba(13,148,136,0.8)]">🏆</span>
+              <span className="text-5xl filter drop-shadow-[0_8px_16px_rgba(135,206,235,0.4)]">🌈</span>
             </motion.div>
 
             {state.context.caseStreak > 1 && (
@@ -853,106 +782,165 @@ function App() {
                 initial={{ y: -15, opacity: 0, scale: 0.8 }}
                 animate={{ y: 0, opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2, type: 'spring' }}
-                className="mb-4 inline-block bg-medical-secondary/20 text-medical-secondary px-4 py-1 rounded-full text-[10px] font-black tracking-widest border border-medical-secondary/30 relative z-10"
+                className="mb-4 inline-block bg-moomin-secondary/10 text-moomin-muted px-5 py-2 rounded-full text-[11px] font-black tracking-widest border border-moomin-secondary/20 relative z-10"
               >
                 🔥 RACHA DE CASOS: x{state.context.caseStreak}
               </motion.div>
             )}
 
-            {/* Retrospective Trigger (Victory) */}
-            <div className="absolute top-4 right-4 z-20">
+            <div className="absolute top-6 right-6 z-20">
               <button
                 onClick={() => setShowRetro(true)}
-                className="w-10 h-10 rounded-full bg-medical-primary/10 border border-medical-primary/30 flex items-center justify-center text-xl hover:bg-medical-primary/20 transition-colors"
-                title="Ver Retrospectiva"
+                className="w-12 h-12 rounded-full bg-moomin-primary/10 border border-moomin-primary/20 flex items-center justify-center text-2xl hover:bg-moomin-primary/20 transition-all hover:scale-110 shadow-sm"
+                title="Ver Resumen de Guardia"
               >
-                 📋
+                 📔
               </button>
             </div>
 
-            <h2 className="text-3xl font-display font-black text-medical-primary mb-2 tracking-tighter uppercase relative z-10">
-              MÉRITO ALCANZADO
+            <h2 className="text-4xl font-display font-black text-moomin-text mb-2 tracking-tighter italic relative z-10">
+              ¡EXCELENTE TRABAJO!
             </h2>
-            <p className="text-slate-400 mb-4 font-medium italic text-sm relative z-10">
-              "Se ha estabilizado la situación clínica con precisión empírica."
+            <p className="text-moomin-muted mb-6 font-medium italic text-base leading-relaxed relative z-10 px-4">
+              "El paciente se encuentra estable y agradecido. ¡Eres un gran médico!"
             </p>
 
-            {/* Perfect Round Badge */}
+            {/* Perfect Round Badge - More golden/playful */}
             {state.context.mistakesThisCase === 0 && (
               <motion.div
-                initial={{ scale: 0, rotate: -10 }}
+                initial={{ scale: 0, rotate: -15 }}
                 animate={{ scale: 1, rotate: 0 }}
                 transition={{ delay: 0.4, type: 'spring' }}
-                className="mb-4 inline-block bg-yellow-500/20 text-yellow-400 px-5 py-2 rounded-full text-xs font-black tracking-widest border border-yellow-500/30 relative z-10"
+                className="mb-8 inline-block bg-[#FFD700]/10 text-[#B8860B] px-6 py-3 rounded-full text-xs font-black tracking-[0.2em] border-2 border-[#FFD700]/30 relative z-10 shadow-lg"
               >
-                ⭐ RONDA PERFECTA — 0 ERRORES ⭐
+                ✨ GUARDIA PERFECTA ✨
               </motion.div>
             )}
 
-            {/* Score breakdown */}
+            {/* Score breakdown - Card style */}
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35 }}
-              className="bg-white/5 border border-white/10 rounded-2xl p-4 mb-8 text-left relative z-10"
+              className="bg-moomin-bg/50 border border-moomin-text/5 rounded-[2rem] p-6 mb-8 text-left relative z-10 shadow-inner"
             >
-              <div className="flex justify-between items-center mb-3">
-                <span className="text-[9px] font-black text-white/40 uppercase tracking-widest">REPORTE DE GUARDIA</span>
-                <span className="text-[9px] font-mono text-medical-primary/60">{currentCase?.case_id?.slice(-8) || '---'}</span>
+              <div className="flex justify-between items-center mb-4">
+                <span className="text-[10px] font-black text-moomin-muted uppercase tracking-[0.3em]">REPORTE MÉDICO</span>
+                <span className="text-[10px] font-mono font-bold text-moomin-primary">{currentCase?.case_id?.slice(-8) || '---'}</span>
               </div>
-              <div className="flex justify-between items-baseline">
-                <span className="text-xs text-slate-400 uppercase tracking-widest">Puntuación total</span>
-                <span className="text-2xl font-display font-black text-medical-primary text-glow">
-                  {state.context.score.toLocaleString()}
-                </span>
+              <div className="space-y-4">
+                <div className="flex justify-between items-end">
+                  <span className="text-xs font-bold text-moomin-muted uppercase tracking-widest">Experiencia</span>
+                  <span className="text-2xl font-display font-black text-moomin-primary">+{state.context.score}</span>
+                </div>
+                <div className="flex justify-between items-end">
+                  <span className="text-xs font-bold text-moomin-muted uppercase tracking-widest">Monedas</span>
+                  <span className="text-2xl font-display font-black text-moomin-secondary">+{state.context.coinsEarnedThisCase}</span>
+                </div>
               </div>
-              {state.context.multiplier > 1 && (
-                <div className="flex justify-between items-baseline mt-1">
-                  <span className="text-xs text-slate-500 uppercase tracking-widest">Multiplicador combo</span>
-                  <span className="text-sm font-black text-medical-secondary">x{state.context.multiplier.toFixed(1)}</span>
-                </div>
-              )}
-              {state.context.combo > 0 && (
-                <div className="flex justify-between items-baseline mt-1">
-                  <span className="text-xs text-slate-500 uppercase tracking-widest">Racha máx. cartas</span>
-                  <span className="text-sm font-black text-white/70">{state.context.combo} seguidas</span>
-                </div>
-              )}
-              <div className="flex justify-between items-baseline mt-2 pt-2 border-t border-white/5">
-                <span className="text-xs text-yellow-500/80 uppercase tracking-widest">Monedas ganadas</span>
-                <span className="text-sm font-black text-yellow-400">
-                  🪙 +{state.context.coinsEarnedThisCase + (state.context.mistakesThisCase === 0 ? calculatePerfectRoundBonus(state.context.deck.length, state.context.difficulty) : 0)}
-                </span>
-              </div>
-              {dailyStreak > 1 && (
-                <div className="flex justify-between items-baseline mt-1">
-                  <span className="text-xs text-orange-500/80 uppercase tracking-widest">Bonus racha diaria</span>
-                  <span className="text-sm font-black text-orange-400">x{getDailyStreakMultiplier(dailyStreak).toFixed(1)} XP</span>
-                </div>
-              )}
             </motion.div>
 
-            <div className="flex flex-col gap-4 relative z-10">
+            <button
+              onClick={() => {
+                triggerHaptic('criticalSuccess');
+                send({ type: 'RESTART' });
+              }}
+              className="btn-primary w-full py-6 text-xl shadow-[0_10px_0_rgba(135,206,235,0.3)]"
+            >
+              CONTINUAR GUARDIA
+            </button>
+          </motion.div>
+        );
+
+      case state.matches('ghosted'):
+        return (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            className="glass-panel p-10 max-w-md text-center border-moomin-accent/20 shadow-2xl relative overflow-hidden bg-white/95"
+          >
+            <motion.div
+              animate={{ rotate: [0, -5, 5, 0], scale: [1, 1.1, 1] }}
+              transition={{ duration: 3, repeat: Infinity }}
+              className="w-24 h-24 bg-moomin-accent/10 rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <span className="text-5xl filter drop-shadow-[0_8px_16px_rgba(255,159,127,0.4)]">👻</span>
+            </motion.div>
+
+            <h2 className="text-5xl font-display font-black text-moomin-accent mb-2 tracking-tighter italic uppercase">
+              DESERTADO
+            </h2>
+            <p className="text-moomin-muted mb-8 font-medium italic text-base leading-relaxed px-4">
+              "El paciente ha abandonado la sala por falta de atención oportuna."
+            </p>
+
+            <div className="bg-moomin-bg/50 border border-moomin-text/5 rounded-[2rem] p-6 mb-8 text-left shadow-inner">
+               <span className="text-[10px] font-black text-moomin-muted uppercase tracking-[0.3em] block mb-2">MOTIVO DEL FALLO</span>
+               <p className="text-sm text-moomin-text font-medium italic leading-relaxed">
+                 {state.context.fatalError || "El tiempo de guardia ha expirado sin una resolución clínica adecuada."}
+               </p>
+            </div>
+
+            <button
+              onClick={() => {
+                triggerHaptic('lethalError');
+                send({ type: 'RESTART' });
+              }}
+              className="btn-primary w-full py-6 text-xl bg-moomin-accent hover:bg-orange-400 border-orange-600/30 shadow-[0_10px_0_rgba(255,159,127,0.3)]"
+            >
+              REINTENTAR CONSULTA
+            </button>
+          </motion.div>
+        );
+
+      case state.matches('debrief'):
+        return (
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            className="glass-panel p-10 max-w-md text-left bg-white/95 border-moomin-accent/20 shadow-2xl relative overflow-hidden"
+          >
+            <div className="flex justify-between items-start mb-6">
+              <span className="text-[10px] text-moomin-accent font-black tracking-[0.3em] uppercase">
+                ERROR DETECTADO
+              </span>
+              <span className="text-[10px] font-mono font-bold text-moomin-muted">ID: {currentCase?.case_id?.slice(-8) || '---'}</span>
+            </div>
+
+            <div className="mb-6 p-6 bg-moomin-accent/5 border-l-4 border-moomin-accent rounded-r-[2rem]">
+              <p className="text-[10px] text-moomin-accent font-black mb-3 flex items-center gap-2 tracking-widest uppercase">
+                <span className="w-2.5 h-2.5 bg-moomin-accent rounded-full animate-pulse" />
+                NOTA DE SUPERVISIÓN:
+              </p>
+              <p className="text-base text-moomin-text italic font-medium leading-relaxed">
+                "{state.context.debriefData?.comment}"
+              </p>
+            </div>
+
+            <div className="mb-8">
+              <div className="text-[10px] text-moomin-muted mb-3 font-black uppercase tracking-[0.2em]">Explicación Médica:</div>
+              <p className="text-sm text-moomin-text leading-relaxed font-medium bg-moomin-bg/30 p-4 rounded-2xl border border-moomin-text/5 italic">
+                {state.context.debriefData?.text}
+              </p>
+            </div>
+
+            <div className="flex items-center justify-between mb-8">
+              <span className="text-[11px] font-bold text-moomin-primary underline decoration-2 underline-offset-4">GPC: {state.context.debriefData?.gpc}</span>
+            </div>
+
+            <div className="flex flex-col gap-4">
               <button
-                onClick={() => startNewCase(true)}
-                className="btn-primary w-full py-5 !bg-medical-primary hover:!bg-teal-600 group"
+                 onClick={() => setShowRetro(true)}
+                 className="btn-primary w-full py-5 !bg-white border-2 border-moomin-primary/20 !text-moomin-primary shadow-sm hover:!bg-moomin-bg transition-all"
               >
-                <div className="flex items-center justify-center gap-2">
-                  <ShinyText text="SIGUIENTE CASO" speed={3} />
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-                </div>
+                VER HISTORIAL COMPLETO
               </button>
-              <button
-                onClick={() => setShowRetro(true)}
-                className="btn-primary w-full py-4 !bg-white/5 border-white/10 hover:!bg-white/10 !text-slate-300"
+
+              <button 
+                onClick={() => send({ type: 'RESTART' })} 
+                className="btn-primary w-full py-6 text-xl shadow-[0_10px_0_rgba(135,206,235,0.3)]"
               >
-                ANÁLISIS DE GUARDIA (RETRO)
-              </button>
-              <button
-                onClick={() => send({ type: 'CLAIM' })}
-                className="text-[10px] font-black tracking-[0.4em] text-slate-500 hover:text-white transition-colors uppercase"
-              >
-                Registrar y Salir
+                VOLVER A GUARDIA
               </button>
             </div>
           </motion.div>
@@ -960,143 +948,14 @@ function App() {
 
       case state.matches('critical_warning'):
         return (
-          <div className="fixed inset-0 bg-red-600/20 backdrop-blur-sm flex flex-col items-center justify-center z-[100] animate-pulse">
-            <div className="text-6xl mb-6">⚠️</div>
-            <h2 className="text-5xl font-display font-black text-white text-glow-danger uppercase tracking-tighter">ADVERTENCIA CRÍTICA</h2>
-            <p className="text-lg text-white/80 mt-4 px-12 text-center font-bold italic">
+          <div className="fixed inset-0 bg-moomin-accent/20 backdrop-blur-md flex flex-col items-center justify-center z-[100] animate-pulse">
+            <div className="text-8xl mb-8 filter drop-shadow-[0_10px_20px_rgba(255,159,127,0.4)]">⚠️</div>
+            <h2 className="text-5xl font-display font-black text-moomin-accent italic tracking-tighter uppercase">ADVERTENCIA CRÍTICA</h2>
+            <p className="text-xl text-moomin-text mt-6 px-12 text-center font-bold italic max-w-lg leading-relaxed">
               {state.context.fatalError}
             </p>
-            <p className="mt-8 text-[10px] text-white/40 tracking-[0.5em] font-black uppercase">REINTENTANDO ESTABILIZACIÓN...</p>
+            <p className="mt-12 text-[10px] text-moomin-muted tracking-[0.5em] font-black uppercase">REINTENTANDO ESTABILIZACIÓN...</p>
           </div>
-        );
-
-      case state.matches('ghosted'):
-        return (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-col items-center justify-center p-12 text-center relative"
-          >
-            {/* Ambient danger glow */}
-            <motion.div
-              className="absolute inset-0 pointer-events-none"
-              animate={{ opacity: [0.1, 0.25, 0.1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              style={{ background: 'radial-gradient(circle at center, rgba(239,68,68,0.15) 0%, transparent 70%)' }}
-            />
-
-            <div className="relative mb-6">
-              <motion.h2
-                initial={{ scale: 1.3, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-                className="text-6xl font-display font-black text-medical-danger text-glow-danger italic tracking-tighter relative z-10"
-              >
-                GHOSTED
-              </motion.h2>
-              <motion.div
-                className="absolute top-0 left-0 w-full h-full bg-medical-danger opacity-10"
-                animate={{ opacity: [0, 0.15, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-            </div>
-
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="glass-panel p-6 border-medical-danger/20 mb-8 max-w-xs bg-medical-danger/5 relative z-10"
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <motion.span
-                  animate={{ opacity: [1, 0, 1] }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                  className="w-2 h-2 rounded-full bg-medical-danger inline-block"
-                />
-                <p className="text-sm font-mono text-medical-danger uppercase tracking-[0.2em] font-black">FALLO SISTÉMICO</p>
-              </div>
-              <p className="text-slate-400 font-medium leading-relaxed text-sm">
-                {state.context.fatalError || "Negligencia o fallo preventivo en el triage."}
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="flex flex-col gap-4 relative z-10"
-            >
-              <button
-                onClick={() => send({ type: 'VIEW_DEBRIEF' })}
-                className="btn-primary px-8 py-4 text-xs !rounded-xl !bg-medical-danger hover:!bg-red-700"
-              >
-                <ShinyText text="ANÁLISIS DE FALLO (RETRO)" speed={3} />
-              </button>
-              <button
-                onClick={() => send({ type: 'RESTART' })}
-                className="text-[10px] font-black tracking-[0.4em] text-slate-500 hover:text-white transition-colors uppercase border-b border-white/5 pb-1"
-              >
-                Cerrar Expediente
-              </button>
-            </motion.div>
-          </motion.div>
-        );
-
-      case state.matches('debrief'):
-        return (
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="cyber-panel p-8 max-w-sm text-left bg-black/80"
-          >
-            <div className="flex justify-between items-start mb-6">
-              <span className="telemetry-text text-[9px] text-medical-danger font-black tracking-[0.4em] uppercase">
-                ERROR_TYPE: {state.context.debriefData?.title.toUpperCase().replace(' ', '_')}
-              </span>
-              <span className="text-[8px] font-mono text-white/20">CASE ID: {currentCase?.case_id || 'UNKNOWN'}</span>
-            </div>
-
-            <div className="mb-6 p-4 bg-medical-danger/10 border-l-4 border-medical-danger">
-              <p className="text-xs text-medical-danger font-mono font-black mb-2 flex items-center gap-2">
-                <span className="w-2 h-2 bg-medical-danger rounded-full animate-ping" />
-                VÁZQUEZ_LOG_REPORT:
-              </p>
-              <p className="text-sm text-slate-100 italic font-medium leading-relaxed">
-                "{state.context.debriefData?.comment}"
-              </p>
-            </div>
-
-            <div className="mb-6">
-              <div className="text-[9px] text-white/40 mb-2 font-mono uppercase tracking-widest">Diagnostic_Correction:</div>
-              <p className="text-xs text-slate-300 leading-relaxed font-mono">
-                {state.context.debriefData?.text}
-              </p>
-            </div>
-
-            <div className="flex items-center justify-between mb-8 opacity-60">
-              <span className="text-[9px] font-mono text-medical-primary">GPC_SOURCE: {state.context.debriefData?.gpc}</span>
-              <div className="flex gap-1">
-                <div className="w-1 h-3 bg-medical-primary/20" />
-                <div className="w-1 h-3 bg-medical-primary/40" />
-                <div className="w-1 h-3 bg-medical-primary/60" />
-              </div>
-            </div>
-
-            <button
-               onClick={() => setShowRetro(true)}
-               className="btn-primary w-full py-4 mb-4 !bg-medical-danger/20 border-medical-danger/40 !text-red-200"
-            >
-              VER HISTORIAL COMPLETO
-            </button>
-
-            <button 
-              onClick={() => send({ type: 'RESTART' })} 
-              className="btn-primary w-full py-4 !rounded-none !bg-medical-danger hover:!bg-red-700 text-xs tracking-widest border-t border-b border-white/20"
-            >
-              TERMINAR_REPORTE // VOLVER_A_GUARDIA
-            </button>
-          </motion.div>
         );
 
       default:
@@ -1105,29 +964,17 @@ function App() {
   };
 
   return (
-    <div className={`fixed inset-0 bg-[#070b14] flex flex-col items-center safe-top safe-bottom select-none overflow-hidden text-slate-100 crt-screen 
+    <div className={`fixed inset-0 bg-moomin-bg flex flex-col items-center safe-top safe-bottom select-none overflow-hidden text-moomin-text 
       ${timeLeft <= 10 && state.matches('triage') ? 'destabilized-content' : ''} 
       ${swipeFeedback === 'wrong' ? 'shake-lite' : ''}
       ${state.context.combo >= 15 ? 'combo-glow-3' : (state.context.combo >= 10 ? 'combo-glow-2' : (state.context.combo >= 5 ? 'combo-glow-1' : ''))}
-      ${state.context.showBloodVignette ? 'blood-vignette' : ''}
     `}>
-      {/* Glitch Overlay (Urgency) */}
-      {state.context.isUrgent && <div className="fixed inset-0 z-[100] glitch-overlay pointer-events-none" />}
+      {/* Background Ambience Layers */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div className="absolute inset-x-0 top-0 h-[40vh] bg-gradient-to-b from-moomin-primary/10 to-transparent opacity-40" />
+      </div>
 
-      <TelemetryHUD timeLeft={timeLeft} state={state.value as string} />
-
-      {/* Lethal Error Red Flash */}
-      <AnimatePresence>
-        {state.context.showBloodVignette && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0.3, 0.5, 0.3, 0.4] }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className="fixed inset-0 bg-medical-danger pointer-events-none z-[110]"
-          />
-        )}
-      </AnimatePresence>
+      <TelemetryHUD timeLeft={timeLeft} state={state.value as string} evidenceCount={state.context.dossier.length} />
 
       {/* Vazquez Interruption */}
       <AnimatePresence>
@@ -1141,10 +988,10 @@ function App() {
         {swipeFeedback && (
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.15 }}
+            animate={{ opacity: 0.1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className={`fixed inset-0 z-0 pointer-events-none ${swipeFeedback === 'correct' ? 'bg-green-500' : 'bg-red-500'}`}
+            className={`fixed inset-0 z-0 pointer-events-none ${swipeFeedback === 'correct' ? 'bg-moomin-primary' : 'bg-moomin-accent'}`}
           />
         )}
       </AnimatePresence>
@@ -1163,7 +1010,7 @@ function App() {
             {[0, 1, 2].map(i => (
               <motion.div
                 key={i}
-                className="absolute w-24 h-24 rounded-full border-2 border-yellow-400/40"
+                className="absolute w-24 h-24 rounded-full border-2 border-moomin-secondary/30"
                 initial={{ scale: 0.5, opacity: 0.8 }}
                 animate={{ scale: 3 + i, opacity: 0 }}
                 transition={{ duration: 0.9, delay: i * 0.18, ease: 'easeOut' }}
@@ -1172,17 +1019,17 @@ function App() {
             <motion.span
               animate={{ scale: [1, 1.08, 1] }}
               transition={{ duration: 0.6, repeat: 2 }}
-              className="text-5xl font-display font-black text-yellow-400 drop-shadow-[0_0_25px_rgba(251,191,36,0.9)] tracking-tighter relative"
+              className="text-5xl font-display font-black text-moomin-text drop-shadow-[0_8px_16px_rgba(0,0,0,0.1)] tracking-tighter relative italic"
             >
-              {showMilestoneCelebration >= 20 ? '🏅 LEYENDA' : showMilestoneCelebration >= 15 ? '💎 MAESTRO' : showMilestoneCelebration >= 10 ? '🔥 IMPARABLE' : '⚡ EN RACHA'}
+              {showMilestoneCelebration >= 20 ? '🌈 MÉDICO LEGENDARIO' : showMilestoneCelebration >= 15 ? '✨ MAESTRO' : showMilestoneCelebration >= 10 ? '🔥 IMPARABLE' : '⚡ ¡NICE!'}
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-lg font-black text-yellow-300/90 tracking-widest"
+              className="text-lg font-black text-moomin-primary tracking-widest uppercase italic"
             >
-              COMBO x{showMilestoneCelebration} — +{COMBO_MILESTONE_COINS[showMilestoneCelebration as keyof typeof COMBO_MILESTONE_COINS]} 🪙
+              RACHA x{showMilestoneCelebration}
             </motion.span>
           </motion.div>
         )}
@@ -1198,50 +1045,51 @@ function App() {
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="fixed top-1/4 left-1/2 -translate-x-1/2 z-[60] pointer-events-none flex flex-col items-center gap-2"
           >
-            <span className={`text-3xl font-display font-black uppercase tracking-[0.1em] ${swipeFeedback === 'correct' ? 'text-green-300' : 'text-red-300'} drop-shadow-lg`}>
-              {swipeFeedback === 'correct' ? 'CORRECTO' : 'FALLO'}
+            <span className={`text-4xl font-display font-black italic tracking-[0.1em] ${swipeFeedback === 'correct' ? 'text-moomin-primary' : 'text-moomin-accent'} drop-shadow-md`}>
+              {swipeFeedback === 'correct' ? '¡SÍ!' : '¡OUCH!'}
             </span>
             {swipeFeedback === 'correct' && (Date.now() - state.context.lastCardPresentedAt < 1200) && (
               <motion.span 
                 initial={{ scale: 0 }}
                 animate={{ scale: [0, 1.2, 1] }}
-                className="perfect-swipe-text"
+                className="text-moomin-secondary font-black text-xl italic tracking-wider drop-shadow-sm"
               >
-                ⚡ ¡PERFECTO! +20% ⚡
+                ✨ ¡REACCIÓN RÁPIDA! ✨
               </motion.span>
             )}
             {state.context.showEureka && (
               <motion.span 
                 initial={{ scale: 0, rotate: -10 }}
                 animate={{ scale: [0, 1.5, 1], rotate: 0 }}
-                className="text-yellow-400 font-black text-2xl drop-shadow-[0_0_10px_rgba(251,191,36,0.8)] mt-2"
+                className="text-moomin-primary font-black text-2xl drop-shadow-md mt-2 italic"
               >
-                💡 COMBO DE CLARIDAD x2 💡
+                💡 DOBLE CLARIDAD 💡
               </motion.span>
             )}
           </motion.div>
         )}
       </AnimatePresence>
       
-      {/* Red-Out Vignette Effect - Reduced intensity */}
+      {/* Red-Out Vignette Effect - Now Moomin Accent (Soft Orange/Rose) */}
       {timeLeft <= 15 && state.matches('triage') && (
         <div
-          className="red-out-overlay fixed inset-0"
-          style={{ opacity: (1 - (timeLeft / 15)) * 0.8 }}
+          className="fixed inset-0 pointer-events-none z-[80]"
+          style={{ 
+            background: `radial-gradient(circle, transparent 40%, rgba(255, 159, 127, ${(1 - (timeLeft / 15)) * 0.4}) 100%)` 
+          }}
         />
       )}
       
-      {/* HUD */}
       <div className="w-full max-w-md flex justify-between items-start px-4 sm:px-8 py-6 sm:py-10 z-50">
         <div className="flex flex-col">
-          <span className="text-[10px] uppercase font-black tracking-[0.3em] text-slate-500 mb-1">XP ACUMULADO</span>
+          <span className="text-[10px] uppercase font-black tracking-[0.3em] text-moomin-muted mb-1">PUNTOS</span>
           <div className="flex items-baseline gap-2">
             <motion.span
               key={state.context.score}
-              initial={{ scale: 1.35, color: '#14b8a6' }}
-              animate={{ scale: 1, color: '#0d9488' }}
+              initial={{ scale: 1.35, color: '#87CEEB' }}
+              animate={{ scale: 1, color: '#2C3E50' }}
               transition={{ type: 'spring', stiffness: 400, damping: 14 }}
-              className="text-3xl font-display font-black text-glow tracking-tighter"
+              className="text-4xl font-display font-black tracking-tighter italic"
             >
               {state.context.score}
             </motion.span>
@@ -1251,28 +1099,28 @@ function App() {
                 initial={{ scale: 1.4, x: -6, opacity: 0 }}
                 animate={{ scale: 1, x: 0, opacity: 1 }}
                 transition={{ type: 'spring', stiffness: 500, damping: 18 }}
-                className="text-[10px] font-black text-medical-secondary bg-medical-secondary/10 px-2 py-0.5 rounded-full border border-medical-secondary/20 uppercase"
+                className="text-[10px] font-black text-moomin-secondary bg-moomin-secondary/10 px-3 py-1 rounded-full border border-moomin-secondary/20 uppercase italic"
               >
                 x{state.context.multiplier.toFixed(1)}
               </motion.span>
             )}
           </div>
-          <div className="flex items-center gap-1 mt-1">
-            <span className="text-yellow-400 text-xs">🪙</span>
-            <span className="text-[10px] font-black text-yellow-400/70 tracking-widest">{stats.coins}</span>
+          <div className="flex items-center gap-1.5 mt-2 bg-white/40 px-3 py-1 rounded-full w-fit shadow-sm">
+            <span className="text-sm">🪙</span>
+            <span className="text-[11px] font-black text-moomin-text tracking-widest">{stats.coins}</span>
           </div>
         </div>
 
         <div className="flex flex-col items-end gap-3">
-          <div className="h-12 w-12 glass-panel !rounded-2xl flex items-center justify-center font-black text-sm border-white/20 shadow-lg scale-110">
+          <div className="h-12 w-12 glass-panel !rounded-2xl flex items-center justify-center font-black text-sm border-moomin-text/5 shadow-md scale-110 italic bg-white/80">
             {state.context.caseStreak >= 6 ? 'ADSC' : (state.context.caseStreak >= 4 ? 'R3' : (state.context.caseStreak >= 2 ? 'R2' : 'R1'))}
           </div>
           {state.matches('triage') && state.context.deck.length > 0 && (
             <div className="flex flex-col items-end">
-              <span className="text-[9px] font-black text-white/40 uppercase tracking-[0.2em]">CARTAS</span>
-              <span className="text-lg font-display font-black text-slate-300">
+              <span className="text-[9px] font-black text-moomin-muted uppercase tracking-[0.2em]">CASO</span>
+              <span className="text-xl font-display font-black text-moomin-text italic">
                 {state.context.currentCardIndex + 1}
-                <span className="text-slate-600">/{state.context.deck.length}</span>
+                <span className="text-moomin-muted/40">/{state.context.deck.length}</span>
               </span>
             </div>
           )}
@@ -1284,9 +1132,9 @@ function App() {
               transition={{ type: 'spring', stiffness: 600, damping: 16 }}
               className="flex flex-col items-end"
             >
-              <span className="text-[9px] font-black text-white/40 uppercase tracking-[0.2em]">STREAK</span>
-              <span className={`text-2xl font-display font-black italic drop-shadow-[0_0_12px_rgba(13,148,136,0.6)] ${
-                state.context.combo >= 15 ? 'text-yellow-400' : state.context.combo >= 10 ? 'text-orange-400' : 'text-medical-primary'
+              <span className="text-[9px] font-black text-moomin-muted uppercase tracking-[0.2em]">RACHA</span>
+              <span className={`text-2xl font-display font-black italic drop-shadow-sm ${
+                state.context.combo >= 15 ? 'text-moomin-accent' : state.context.combo >= 10 ? 'text-orange-400' : 'text-moomin-primary'
               }`}>
                 {state.context.combo}
               </span>
@@ -1298,29 +1146,26 @@ function App() {
       {/* Timer Bar */}
       {state.matches('triage') && currentCase && (
         <div className="w-full max-w-sm px-8 -mt-2 mb-4 z-50">
-          <div className={`w-full h-1.5 bg-white/10 rounded-full overflow-hidden shadow-inner flex mb-1 transition-all ${timeLeft <= 10 ? 'timer-critical' : ''}`}>
+          <div className={`w-full h-3 bg-white/50 rounded-full overflow-hidden shadow-inner flex mb-2 border border-moomin-text/5`}>
             <motion.div
-              className={`h-full flex-grow ${timeLeft <= 10 ? 'bg-medical-danger' : 'bg-medical-secondary'}`}
+              className={`h-full ${timeLeft <= 10 ? 'bg-moomin-accent shadow-[0_0_15px_rgba(255,159,127,0.4)]' : 'bg-moomin-secondary shadow-[0_0_10px_rgba(255,182,193,0.3)]'}`}
               initial={{ width: '100%' }}
               animate={{
                 width: `${(timeLeft / timeLimitRef.current) * 100}%`,
-                boxShadow: timeLeft <= 10
-                  ? ['0 0 8px rgba(239,68,68,0.6)', '0 0 16px rgba(239,68,68,0.9)', '0 0 8px rgba(239,68,68,0.6)']
-                  : '0 0 4px rgba(20,184,166,0.3)'
               }}
               transition={{ duration: 1, ease: 'linear' }}
               style={{ originX: 0 }}
             />
           </div>
-          <div className="flex justify-between items-center w-full">
-            <span className={`text-[10px] uppercase font-black tracking-widest ${timeLeft <= 10 ? 'text-medical-danger animate-pulse' : 'text-slate-500'}`}>
-              TIEMPO DE RESPUESTA
+          <div className="flex justify-between items-center w-full px-1">
+            <span className={`text-[10px] uppercase font-black tracking-widest ${timeLeft <= 10 ? 'text-moomin-accent animate-pulse' : 'text-moomin-muted'}`}>
+              RELOJ DE GUARDIA
             </span>
-            <div className="flex items-center gap-3">
-              <span className="text-[10px] text-white/80 font-mono font-black">{timeLeft}s</span>
+            <div className="flex items-center gap-4">
+              <span className="text-[10px] text-moomin-text font-mono font-black">{timeLeft}s</span>
               <button
                 onClick={() => setIsPaused(p => !p)}
-                className="text-[10px] font-black text-slate-500 hover:text-white transition-colors uppercase tracking-widest"
+                className="text-[10px] font-black text-moomin-primary hover:text-moomin-secondary transition-colors uppercase tracking-[0.2em] italic"
                 aria-label={isPaused ? 'Reanudar' : 'Pausar'}
               >
                 {isPaused ? '▶ REANUDAR' : '⏸ PAUSA'}
@@ -1344,18 +1189,18 @@ function App() {
 
       {/* Tactical Dossier (Dossier Médico) */}
       {!state.matches('idle') && (
-        <div className="fixed right-4 top-1/4 bottom-1/4 w-32 hidden lg:flex flex-col gap-2 overflow-y-auto pr-2 custom-scrollbar pointer-events-none opacity-60 hover:opacity-100 transition-opacity z-10">
-          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2 border-b border-slate-800 pb-1">Dossier</span>
+        <div className="fixed right-6 top-1/4 bottom-1/4 w-40 hidden lg:flex flex-col gap-3 overflow-y-auto pr-2 custom-scrollbar pointer-events-none opacity-80 hover:opacity-100 transition-opacity z-10">
+          <span className="text-[10px] font-black text-moomin-muted uppercase tracking-[0.3em] mb-3 border-b border-moomin-text/5 pb-2 italic">Dossier</span>
           <AnimatePresence>
             {state.context.dossier.map((card, idx) => (
               <motion.div 
                 key={`${card.card_id}-${idx}`}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className={`p-2 rounded bg-slate-900/40 border border-slate-800/50 text-[9px] flex flex-col gap-1 ${state.context.showEureka && idx >= state.context.dossier.length - 3 ? 'eureka-glow ring-1 ring-yellow-400/50' : ''}`}
+                className={`p-3 rounded-2xl bg-white/60 border border-moomin-text/5 text-[10px] flex flex-col gap-1.5 shadow-sm ${state.context.showEureka && idx >= state.context.dossier.length - 3 ? 'eureka-glow ring-2 ring-moomin-primary/40' : ''}`}
               >
-                <span className="text-slate-400 font-bold">{card.category}</span>
-                <span className="text-slate-200 line-clamp-2">{card.card_text}</span>
+                <span className="text-moomin-primary font-black uppercase tracking-widest text-[8px]">{card.category}</span>
+                <span className="text-moomin-text font-medium italic leading-relaxed line-clamp-2">{card.card_text}</span>
               </motion.div>
             )).reverse()}
           </AnimatePresence>

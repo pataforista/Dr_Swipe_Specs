@@ -8,13 +8,22 @@ export default {
     extend: {
       colors: {
         medical: {
-          primary: '#0D9488',   // Teal 600
-          secondary: '#14B8A6', // Teal 500 (accent)
-          danger: '#EF4444',    // Red 500
-          warning: '#F59E0B',   // Amber 500
-          info: '#3B82F6',      // Blue 500
-          dark: '#0F172A',      // Slate 900
-          glass: 'rgba(255, 255, 255, 0.1)',
+          primary: 'var(--primary)',   // Now dynamic
+          secondary: 'var(--secondary)',
+          danger: 'var(--accent-alert)',
+          warning: '#F59E0B',
+          info: 'var(--primary)',
+          dark: 'var(--bg-app)',
+          glass: 'var(--surface)',
+        },
+        'moomin': {
+          primary: '#87CEEB',
+          secondary: '#FFB6C1',
+          tertiary: '#98D8C8',
+          accent: '#FF9F7F',
+          bg: '#FFF8F0',
+          text: '#5C4033',
+          muted: '#9D8280',
         },
         specialty: {
           ped: '#F472B6', // Pink
@@ -27,8 +36,13 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         display: ['Outfit', 'sans-serif'],
+        playful: ['Comic Sans MS', 'Trebuchet MS', 'cursive', 'system-ui'],
       },
       keyframes: {
+        'gentle-bounce': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-4px)' },
+        },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
