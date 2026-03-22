@@ -1,0 +1,60 @@
+{
+  "archiveEvents": [
+    {
+      "id": "no_encuentro_expediente",
+      "nombre": "No encuentro ese expediente",
+      "efecto": { "tipo": "no_history", "duracion": 1 },
+      "texto": "Está. En alguna caja. De algún año. Sigue sin ella.",
+      "tipo": "negativo"
+    },
+    {
+      "id": "ya_se_lo_llevo",
+      "nombre": "Ya se lo llevó otro servicio",
+      "efecto": { "tipo": "hide_category", "duracion": 1 },
+      "texto": "Medicina Interna lo pidió primero. O eso dice.",
+      "tipo": "negativo"
+    },
+    {
+      "id": "falta_firma_jefe",
+      "nombre": "Falta la firma del jefe de servicio",
+      "efecto": { "tipo": "extra_card_required", "duracion": 1 },
+      "texto": "Regresa cuando esté completo. Él no hace excepciones.",
+      "tipo": "negativo"
+    },
+    {
+      "id": "sistema_caido",
+      "nombre": "El sistema se cayó",
+      "efecto": { "tipo": "blackout", "duracion": 5 },
+      "texto": "Desde las 9. Ya levantaron reporte. Ya nadie espera que lo arreglen hoy.",
+      "tipo": "negativo"
+    },
+    {
+      "id": "caes_bien_archivo",
+      "nombre": "Le caes bien al de archivo",
+      "efecto": { "tipo": "free_retry", "duracion": 1 },
+      "texto": "Te lo puso en el escritorio sin que lo pidieras. Ni preguntes.",
+      "tipo": "positivo"
+    },
+    {
+      "id": "encontro_anterior",
+      "nombre": "Encontró el expediente anterior",
+      "efecto": { "tipo": "extra_history", "duracion": 1 },
+      "texto": "Estaba en una caja del 2019. No preguntes cómo la encontró.",
+      "tipo": "positivo"
+    },
+    {
+      "id": "sella_sin_fila",
+      "nombre": "Te sella todo sin fila",
+      "efecto": { "tipo": "remove_penalty", "duracion": 1 },
+      "texto": "Llegaste en el momento exacto en que nadie más estaba. Suerte o karma, no sé.",
+      "tipo": "positivo"
+    },
+    {
+      "id": "fotocopias_de_mas",
+      "nombre": "Te dejó fotocopias de más",
+      "efecto": { "tipo": "reveal_next_two", "duracion": 1 },
+      "texto": "Extra. Sin razón aparente. Así funciona el archivo a veces.",
+      "tipo": "positivo"
+    }
+  ]
+}

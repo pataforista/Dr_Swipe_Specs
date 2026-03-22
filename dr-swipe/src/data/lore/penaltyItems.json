@@ -1,0 +1,28 @@
+{
+  "penaltyItems": [
+    {
+      "id": "te_toca_invitar",
+      "nombre": "Te toca invitar",
+      "efecto": { "tipo": "lose_coins", "valor": 10 },
+      "texto": "Todos te vieron. Ya saben. Mañana llevas."
+    },
+    {
+      "id": "sin_conductor",
+      "nombre": "Sin conductor",
+      "efecto": { "tipo": "no_hint", "duracion": 1 },
+      "texto": "Se acabó el frasco. Tú sabes por qué."
+    },
+    {
+      "id": "jefa_acordo_de_ti",
+      "nombre": "La jefa se acordó de ti",
+      "efecto": { "tipo": "double_damage", "duracion": 1 },
+      "texto": "Y no de buena manera."
+    },
+    {
+      "id": "guardia_revuelta",
+      "nombre": "Guardia revuelta",
+      "efecto": { "tipo": "hide_category", "duracion": 1 },
+      "texto": "Alguien dijo que estaba tranquila. Fue culpa tuya."
+    }
+  ]
+}

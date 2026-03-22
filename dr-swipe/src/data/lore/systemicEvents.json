@@ -1,0 +1,66 @@
+{
+  "systemicEvents": [
+    {
+      "id": "subdirector_noche",
+      "nombre": "Subdirector de la noche",
+      "duracion": 3,
+      "reglas": ["double_penalty_reject"],
+      "frases": {
+        "start": "Todos saben que está. Nadie lo dice en voz alta.",
+        "trigger": "Dijo textual: 'Súbelo y ya lo ven arriba.'",
+        "end": "Se fue a su oficina. Mañana no recordará nada de esto. Tú sí."
+      }
+    },
+    {
+      "id": "supervision",
+      "nombre": "Vienen a hacer supervisión",
+      "duracion": 2,
+      "reglas": ["three_errors_extra_case"],
+      "frases": {
+        "start": "Todos saben que están. Nadie lo dice en voz alta.",
+        "error_1": "Observación registrada. El supervisor no levantó la vista. Peor así.",
+        "error_2": "Segunda observación. Ya te ubican.",
+        "error_3": "Te van a pedir que expliques esto por escrito. Mañana. En frío.",
+        "end_clean": "El supervisor cerró su carpeta. Asintió una vez. En este hospital, eso es un elogio."
+      }
+    },
+    {
+      "id": "examen_puem",
+      "nombre": "Examen del PUEM",
+      "duracion": 1,
+      "reglas": ["timer_reduced_20", "errors_cost_35", "no_npc_rewards"],
+      "frases": {
+        "start": "No hay con quién consultar. No hay a quién pasarle el caso. Eres tú y el paciente.",
+        "mid": "Tres horas solo. Cero errores. Eso no te lo van a reconocer en ningún informe.",
+        "error": "Con residentes esto no hubiera pasado. Pero no están. Siguiente.",
+        "end": "Regresaron con cara de haber reprobado. Tú ya terminaste la guardia. Sin decir nada."
+      }
+    },
+    {
+      "id": "fin_mes_reporte",
+      "nombre": "Fin de mes / Reporte",
+      "duracion": 1,
+      "reglas": ["report_progress_bar", "penalty_incomplete_20_coins"],
+      "frases": {
+        "start": "El formato tiene doce columnas. Tres no tienen sentido. Todas son obligatorias.",
+        "mid": "El reporte va a la mitad. Los pacientes no saben eso ni les importa.",
+        "late": "La coordinadora te mandó un mensaje. Solo dice: 'El reporte.'",
+        "vazquez_fail": "¿Sabes cuántos expedientes se pierden por reportes incompletos? Más de los que crees.",
+        "end_success": "Listo. Doce columnas. Nadie lo va a leer completo. Lo entregaste igual."
+      }
+    },
+    {
+      "id": "enfermera_comida",
+      "nombre": "Enfermera de comida",
+      "duracion": 0,
+      "reglas": ["instant_heal"],
+      "frases": {
+        "normal": "Enchiladas, torta o quesadillas. No hay menú escrito. Ya sabes qué hay.",
+        "streak": "'¿Cómo vas?' No espera respuesta. Ya te está sirviendo.",
+        "bad_night": "Te miró dos segundos. Sirvió doble sin decir nada. Cobró normal.",
+        "broke": "'Luego me pagas.' Lo dice en serio. También lo dice en serio que sí te cobra.",
+        "vazquez_comment": "Hasta el Dr. Vázquez baja a comprarle. Nunca lo admitirá."
+      }
+    }
+  ]
+}

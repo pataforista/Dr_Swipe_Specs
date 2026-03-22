@@ -1,0 +1,26 @@
+{
+  "vazquezDialogs": [
+    { "id": 1, "titulo": "Buen instinto.", "cuerpo": "Lástima que el instinto no tiene código CIE-11." },
+    { "id": 2, "titulo": "¿Cuántas horas llevas de guardia?", "cuerpo": "Tus respuestas son demasiado limpias. Los cansados cometen errores elegantes." },
+    { "id": 3, "titulo": "Acertaste.", "cuerpo": "Ahora dime por qué. No para mí — para cuando el paciente te pregunte." },
+    { "id": 4, "titulo": "Racha limpia.", "cuerpo": "Recuérdala. Las guardias del viernes en urgencias no se parecen a esto." },
+    { "id": 5, "titulo": "Correcto.", "cuerpo": "El siguiente tiene tres comorbilidades y la familia afuera. No te distraigas." },
+    { "id": 6, "titulo": "Bien.", "cuerpo": "Eso. Sin fanfarria. Así se trabaja aquí." },
+    { "id": 7, "titulo": "La GPC lo dice así.", "cuerpo": "El paciente de la cama 4 no leyó la GPC. Sigue." },
+    { "id": 8, "titulo": "Demasiado seguro.", "cuerpo": "Vi a un R3 con esa cara antes de un error que casi le cuesta la cédula." },
+    { "id": 9, "titulo": "Impecable hasta ahora.", "cuerpo": "En la Institución de Salud Verde, 'hasta ahora' no es suficiente. Aguanta." },
+    { "id": 10, "titulo": "Correcto otra vez.", "cuerpo": "¿Lo sabes o lo reconociste? No es lo mismo." },
+    { "id": 11, "titulo": "Vas bien.", "cuerpo": "El siguiente caso cambió el diagnóstico dos veces. Abre los ojos." },
+    { "id": 12, "titulo": "Ese lo sabías de memoria.", "cuerpo": "Bien. Ahora aplícalo cuando el paciente llegue sin expediente y con tres testigos." },
+    { "id": 13, "titulo": "Sin errores en quince minutos.", "cuerpo": "Inusual. O estás muy despierto o estás soñando que estás despierto." },
+    { "id": 14, "titulo": "Diagnóstico correcto.", "cuerpo": "El tratamiento a tiempo es lo que sale en el acta, no el diagnóstico." },
+    { "id": 15, "titulo": "Te estás mandrakeando.", "cuerpo": "Llevas diez aciertos y ya te creo que eres el mejor de la generación. Cuidado." },
+    { "id": 16, "titulo": "No digas que está tranquila la guardia.", "cuerpo": "Nunca. Lo que acabas de hacer es invocarlos a todos." },
+    { "id": 17, "titulo": "Eso lo aprendiste en el libro.", "cuerpo": "El paciente no sabe que lo dice el Harrison. Síguele." },
+    { "id": 18, "titulo": "¿Ya checaste la cama 3?", "cuerpo": "No. Claro que no. Estabas aquí sintiéndote brillante." },
+    { "id": 19, "titulo": "Aquí no hay lugar para héroes.", "cuerpo": "Hay lugar para quien termina la guardia sin firmar un incidente." },
+    { "id": 20, "titulo": "Bonito diagnóstico.", "cuerpo": "Ahora búscate el conductor para el electro tú solo. Suerte." },
+    { "id": 21, "titulo": "¿Cuántos aciertos llevas?", "cuerpo": "Bien. Cuando llegue el batazo de las 3 AM, me cuentas." },
+    { "id": 22, "titulo": "No te me vayas a atontar.", "cuerpo": "Aquí el que se atonta, invita. Y no son tacos baratos." }
+  ]
+}

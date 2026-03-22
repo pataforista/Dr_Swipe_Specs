@@ -1,0 +1,46 @@
+{
+  "rewardItems": [
+    {
+      "id": "conductor_electro",
+      "nombre": "Conductor para el electro",
+      "efecto": { "tipo": "hint_visual", "duracion": 1 },
+      "texto": "Alguien dejó el frasco casi lleno. No preguntes dónde estaba."
+    },
+    {
+      "id": "pase_carro",
+      "nombre": "Pase al carrito de enfermería",
+      "efecto": { "tipo": "elimina_error", "duracion": 1 },
+      "texto": "La jefa te volteó a ver y no dijo nada. Toma lo que necesitas, rápido."
+    },
+    {
+      "id": "tacos_invitan",
+      "nombre": "Te invitaron los tacos — con salsa",
+      "efecto": { "tipo": "heal", "valor": 30 },
+      "texto": "El R3 de cirugía pasó de buenas. Aprovecha antes de que cambie de humor."
+    },
+    {
+      "id": "gato_alreves",
+      "nombre": "Gato al revés",
+      "efecto": { "tipo": "freeze", "duracion": 5 },
+      "texto": "Nadie sabe cómo llegó aquí. Nadie pregunta. Úsalo."
+    },
+    {
+      "id": "visto_bueno_jefa",
+      "nombre": "Visto bueno de la Jefa de Enfermeras",
+      "efecto": { "tipo": "shield", "duracion": 3 },
+      "texto": "Esto no se da fácil. No la decepciones."
+    },
+    {
+      "id": "cafe_noche",
+      "nombre": "Café del turno nocturno",
+      "efecto": { "tipo": "reduce_interrupciones", "duracion": 2 },
+      "texto": "Oscuro, aguado, tibio. Es lo que hay. Funciona igual."
+    },
+    {
+      "id": "hoja_extra",
+      "nombre": "Hoja extra del expediente",
+      "efecto": { "tipo": "reveal_category", "duracion": 1 },
+      "texto": "Alguien archivó mal. Tu ganancia."
+    }
+  ]
+}

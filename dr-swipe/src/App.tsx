@@ -10,7 +10,7 @@ import { dataLoader } from './utils/dataLoader';
 import { useGameAudio } from './hooks/useGameAudio';
 import { cleanVazquezComment } from './utils/formatters';
 import { triggerHaptic } from './utils/hapticFeedback';
-import { calculatePerfectRoundBonus, getDailyStreakMultiplier, COMBO_MILESTONE_COINS } from './utils/scoringEngine';
+import { calculatePerfectRoundBonus, getDailyStreakMultiplier } from './utils/scoringEngine';
 import { LIFELINE_COST } from './store/useCodexStore';
 import ErrorBoundary from './components/ErrorBoundary';
 import { useCodexStore, type SessionProgress } from './store/useCodexStore';
@@ -23,22 +23,9 @@ const isSwipeCorrect = (direction: 'left' | 'right', expectedAction: 'keep' | 'd
          (direction === 'left' && expectedAction === 'discard');
 };
 
-const VAZQUEZ_LINES = [
-  { title: "Así que... ¿racha de aciertos?", body: "Déjame complicarte un poco las cosas, doctorcillo." },
-  { title: "No te confíes.", body: "El exceso de confianza mata más pacientes que la ignorancia." },
-  { title: "¿Crees que ya lo sabes todo?", body: "Los R1 que sonríen así son los primeros en cometer errores fatales." },
-  { title: "Impresionante. Para ser estudiante.", body: "Ahora muéstrame que puedes mantenerlo bajo presión real." },
-  { title: "Buena racha... de momento.", body: "El siguiente caso no será tan amable contigo." },
-  { title: "Noto seguridad en ti.", body: "Recuerda: la medicina te humillará cuando menos lo esperes." },
-  { title: "Eso estuvo bien.", body: "Pero en urgencias, el segundo caso siempre es peor que el primero." },
-  { title: "¿Cuántas horas llevas despierto?", body: "Porque tus decisiones son demasiado limpias para ser de guardia." },
-  { title: "Correcto. Ahora hazlo más rápido.", body: "En el mundo real, el paciente no espera a que pienses." },
-  { title: "Vas bien.", body: "Demasiado bien. Algo estás pasando por alto." },
-  { title: "La GPC dice una cosa.", body: "El paciente frente a ti puede decir otra. Aprende a distinguir." },
-  { title: "Tú y yo sabemos que tuviste suerte.", body: "La próxima vez, no cuentes con eso." },
-  { title: "R2 ya te estarías quedando dormido.", body: "¿Puedes sostener esto tres horas más sin equivocarte?" },
-  { title: "Diagnóstico correcto.", body: "Pero el tratamiento a tiempo es lo que salva vidas, no el diagnóstico solo." },
-];
+import vazquezData from './data/lore/vazquezDialogs.json';
+
+const VAZQUEZ_LINES = vazquezData.vazquezDialogs;
 
 const VazquezInterruption: React.FC<{ onDismiss: () => void }> = ({ onDismiss }) => {
   const line = VAZQUEZ_LINES[Math.floor(Math.random() * VAZQUEZ_LINES.length)];
@@ -75,10 +62,10 @@ const VazquezInterruption: React.FC<{ onDismiss: () => void }> = ({ onDismiss })
           DR. VÁZQUEZ — INTERRUPCIÓN
         </span>
         <h3 className="text-xl font-display font-black text-moomin-text mb-3 tracking-tight">
-          "{line.title}"
+          "{line.titulo}"
         </h3>
         <p className="text-sm text-moomin-muted italic font-medium mb-4 leading-relaxed">
-          {line.body}
+          {line.cuerpo}
         </p>
         <div className="h-1 w-12 bg-moomin-accent/20 mx-auto rounded-full" />
       </motion.div>
@@ -86,7 +73,140 @@ const VazquezInterruption: React.FC<{ onDismiss: () => void }> = ({ onDismiss })
   );
 };
 
-const TelemetryHUD: React.FC<{ timeLeft: number; state: string; evidenceCount: number }> = ({ timeLeft, state, evidenceCount }) => {
+const LootBoxOverlay: React.FC<{ 
+  reward: { active: boolean; item: any }; 
+  onClaim: () => void 
+}> = ({ reward, onClaim }) => {
+  return (
+    <div className="fixed inset-0 flex flex-col items-center justify-center z-[160] p-6">
+      <motion.div
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      />
+      
+      <motion.div
+        initial={{ scale: 0.5, rotate: -15, opacity: 0 }}
+        animate={{ scale: 1, rotate: 0, opacity: 1 }}
+        exit={{ scale: 1.5, opacity: 0 }}
+        className="glass-panel p-10 max-w-xs w-full text-center border-moomin-primary/40 shadow-2xl bg-white relative overflow-hidden loot-box-shine"
+      >
+        <motion.div 
+          className="text-8xl mb-6 loot-box-shake inline-block"
+        >
+          📦
+        </motion.div>
+        
+        <span className="text-[10px] font-black tracking-[0.5em] text-moomin-primary uppercase block mb-2">¡CAJA DE SUMINISTROS!</span>
+        <h3 className="text-2xl font-display font-black text-moomin-text mb-4 mt-2">{reward.item.nombre}</h3>
+        
+        <div className="bg-moomin-bg/50 rounded-2xl p-4 mb-8 border border-moomin-text/5">
+          <p className="text-sm font-medium text-moomin-muted italic mb-1">"{reward.item.texto}"</p>
+        </div>
+
+        <button
+          onClick={onClaim}
+          className="btn-primary w-full py-4 text-base"
+        >
+          ¡LO TOMO!
+        </button>
+      </motion.div>
+    </div>
+  );
+};
+
+const PenaltyOverlay: React.FC<{ 
+  penalty: { active: boolean; item: any }; 
+  onAccept: () => void 
+}> = ({ penalty, onAccept }) => {
+  return (
+    <div className="fixed inset-0 flex flex-col items-center justify-center z-[160] p-6">
+      <motion.div
+        className="absolute inset-0 bg-red-900/60 backdrop-blur-md mix-blend-multiply"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      />
+      <motion.div
+        initial={{ scale: 0.8, y: 50, opacity: 0 }}
+        animate={{ scale: 1, y: 0, opacity: 1 }}
+        exit={{ scale: 0.8, opacity: 0 }}
+        className="glass-panel p-8 max-w-sm w-full text-center border-moomin-accent/40 shadow-2xl bg-white relative overflow-hidden"
+      >
+        <span className="text-[10px] font-black tracking-[0.5em] text-moomin-accent uppercase block mb-2">CONSECUENCIA</span>
+        <h3 className="text-2xl font-display font-black text-moomin-text mb-4 mt-2 leading-tight">{penalty.item.nombre}</h3>
+        
+        <div className="bg-moomin-accent/10 rounded-xl p-4 mb-6 border border-moomin-accent/20">
+          <p className="text-sm font-medium text-moomin-text italic mb-1">"{penalty.item.texto}"</p>
+        </div>
+
+        <button
+          onClick={onAccept}
+          className="w-full py-4 text-base font-bold text-white bg-moomin-accent rounded-full shadow-[0_4px_12px_rgba(235,87,87,0.3)] hover:bg-red-600 transition-colors"
+        >
+           ENTENDIDO
+        </button>
+      </motion.div>
+    </div>
+  );
+};
+
+const EventOverlay: React.FC<{ 
+  event: { type: 'lab' | 'archive' | 'systemic'; item: any }; 
+  onAccept: () => void 
+}> = ({ event, onAccept }) => {
+  const getStyle = () => {
+    switch(event.type) {
+      case 'lab': return { bg: 'bg-blue-900/60', border: 'border-blue-500/40', title: 'TÉCNICO DE LABORATORIO', button: 'bg-blue-600 shadow-[0_4px_12px_rgba(37,99,235,0.3)] hover:bg-blue-700', icon: '🧪' };
+      case 'archive': return { bg: 'bg-yellow-900/60', border: 'border-yellow-500/40', title: 'ENCARGADO DE ARCHIVO', button: 'bg-yellow-600 shadow-[0_4px_12px_rgba(202,138,4,0.3)] hover:bg-yellow-700', icon: '🗄️' };
+      default: return { bg: 'bg-purple-900/60', border: 'border-purple-500/40', title: 'SISTEMA INSTITUCIONAL', button: 'bg-purple-600 shadow-[0_4px_12px_rgba(147,51,234,0.3)] hover:bg-purple-700', icon: '⚠️' };
+    }
+  };
+  
+  const style = getStyle();
+
+  return (
+    <div className="fixed inset-0 flex flex-col items-center justify-center z-[160] p-6">
+      <motion.div
+        className={`absolute inset-0 ${style.bg} backdrop-blur-md mix-blend-multiply`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      />
+      <motion.div
+        initial={{ scale: 0.8, y: 50, opacity: 0 }}
+        animate={{ scale: 1, y: 0, opacity: 1 }}
+        exit={{ scale: 0.8, opacity: 0 }}
+        className={`glass-panel p-8 max-w-sm w-full text-center bg-white relative overflow-hidden shadow-2xl ${style.border}`}
+      >
+        <span className="text-4xl mb-4 block">{style.icon}</span>
+        <span className="text-[10px] font-black tracking-[0.5em] uppercase block mb-2">{style.title}</span>
+        <h3 className="text-2xl font-display font-black text-moomin-text mb-4 mt-2 leading-tight">{event.item.nombre}</h3>
+        
+        <div className={`rounded-xl p-4 mb-6 border ${style.border} bg-black/5`}>
+          <p className="text-sm font-medium text-moomin-text italic mb-1">"{event.item.texto || (event.item.frases && event.item.frases.start) || '...'}"</p>
+        </div>
+
+        <button
+          onClick={onAccept}
+          className={`w-full py-4 text-base font-bold text-white rounded-full transition-colors ${style.button}`}
+        >
+           CONTINUAR
+        </button>
+      </motion.div>
+    </div>
+  );
+};
+
+
+const TelemetryHUD: React.FC<{ 
+  timeLeft: number; 
+  state: string; 
+  score: number;
+  combo: number;
+  vitality: number;
+}> = ({ timeLeft, state, score, combo, vitality }) => {
   const [pulse, setPulse] = useState(72);
   
   useEffect(() => {
@@ -96,32 +216,91 @@ const TelemetryHUD: React.FC<{ timeLeft: number; state: string; evidenceCount: n
     return () => clearInterval(interval);
   }, []);
 
-  if (state !== 'triage' && state !== 'boss_fight') return null;
+  if (state !== 'triage' && state !== 'boss_fight' && state !== 'urgent_triage') return null;
 
   return (
-    <div className="fixed top-4 left-4 right-4 z-50 flex items-center justify-between glass-panel p-3 px-6 border-moomin-text/10 shadow-lg bg-white/80 backdrop-blur-md rounded-full">
-      {/* Evidence Counter */}
-      <div className="flex items-center gap-2">
-        <span className="text-xl">💼</span>
+    <div className="fixed top-4 left-4 right-4 z-[100] flex items-center justify-between glass-panel p-3 px-6 border-moomin-text/10 shadow-xl bg-white/90 backdrop-blur-md rounded-full">
+      {/* Left: Score & Vitality (Life) */}
+      <div className="flex items-center gap-6">
         <div className="flex flex-col">
-          <span className="text-[8px] font-black tracking-widest text-moomin-muted uppercase leading-none">Evidencia</span>
-          <span className="text-sm font-black text-moomin-text leading-none">{evidenceCount}</span>
+          <span className="text-[9px] font-black tracking-[0.3em] text-moomin-muted uppercase leading-none mb-1 text-center">Gestión</span>
+          <div className="flex items-baseline gap-2">
+            <motion.span 
+              key={score}
+              initial={{ scale: 1.2, color: '#87CEEB' }}
+              animate={{ scale: 1, color: '#5C4033' }}
+              className="text-xl font-display font-black leading-none"
+            >
+              {score}
+            </motion.span>
+          </div>
+        </div>
+
+        <div className="w-px h-8 bg-moomin-text/5" />
+
+        <div className="flex flex-col gap-1 sm:w-32">
+          <span className="text-[8px] font-black tracking-widest text-moomin-muted uppercase leading-none">VITALIDAD</span>
+          <div className="h-2.5 w-full bg-moomin-bg/60 rounded-full overflow-hidden border border-moomin-text/5 shadow-inner">
+            <motion.div
+              initial={{ width: '100%' }}
+              animate={{ 
+                width: `${vitality}%`,
+                backgroundColor: vitality > 50 ? '#98D8C8' : vitality > 25 ? '#FFD700' : '#FF9F7F'
+              }}
+              className="h-full transition-colors duration-500"
+            />
+          </div>
         </div>
       </div>
 
-      {/* Timer */}
-      <div className="flex items-center gap-3">
-        <div className="flex flex-col text-right">
-          <span className="text-[8px] font-black tracking-widest text-moomin-muted uppercase leading-none">Tiempo</span>
-          <span className={`text-xl font-mono font-black leading-none ${timeLeft <= 10 ? 'text-moomin-accent animate-pulse' : 'text-moomin-text'}`}>
-            0:{timeLeft.toString().padStart(2, '0')}
-          </span>
+      {/* Center: Combo Pill (Only if > 1) */}
+      <AnimatePresence>
+        {combo > 1 && (
+          <motion.div
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -20, opacity: 0 }}
+            className={`px-4 py-1.5 rounded-full border-2 text-[11px] font-black italic tracking-widest shadow-sm ${
+              combo >= 15 ? 'bg-moomin-accent/10 border-moomin-accent text-moomin-accent' : 
+              combo >= 10 ? 'bg-orange-100 border-orange-400 text-orange-600' : 
+              'bg-moomin-primary/10 border-moomin-primary text-moomin-primary'
+            }`}
+          >
+            APILADO x{combo}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Right: Timer & Info */}
+      <div className="flex items-center gap-6">
+        <div className="hidden sm:flex items-center gap-2">
+           <div className="flex flex-col text-right">
+            <span className="text-[8px] font-black tracking-widest text-moomin-muted uppercase leading-none">PULSO</span>
+            <span className="text-sm font-black text-moomin-text leading-none">{pulse}</span>
+          </div>
+          <motion.span 
+            animate={{ scale: [1, 1.2, 1] }} 
+            transition={{ duration: 0.8, repeat: Infinity }}
+            className="text-xl"
+          >
+            💓
+          </motion.span>
         </div>
-        <div className={`w-3 h-3 rounded-full shadow-inner ${timeLeft <= 10 ? 'bg-moomin-accent animate-ping' : 'bg-moomin-primary'}`} />
+
+        <div className="flex items-center gap-3 bg-moomin-bg/40 px-4 py-1.5 rounded-full border border-moomin-text/5">
+          <div className="flex flex-col text-right">
+            <span className="text-[8px] font-black tracking-widest text-moomin-muted uppercase leading-none">TIEMPO</span>
+            <span className={`text-lg font-mono font-black leading-none ${timeLeft <= 10 ? 'text-moomin-accent animate-pulse' : 'text-moomin-text'}`}>
+              0:{timeLeft.toString().padStart(2, '0')}
+            </span>
+          </div>
+          <div className={`w-2.5 h-2.5 rounded-full ${timeLeft <= 10 ? 'bg-moomin-accent animate-ping' : 'bg-moomin-primary'}`} />
+        </div>
       </div>
     </div>
   );
 };
+
 
 
 function App() {
@@ -418,40 +597,7 @@ function App() {
     }
   };
 
-  const resumeGame = async () => {
-    if (!sessionProgress?.caseId) return;
 
-    setLoadError(null);
-    setIsLoadingCase(true);
-    try {
-      const caseData = await dataLoader.loadRandomCase();
-      if (caseData.case_id !== sessionProgress.caseId) {
-        // If somehow different case, load the exact one
-        const exactCase = await dataLoader.loadCase(sessionProgress.caseId);
-        setCurrentCase(exactCase);
-      } else {
-        setCurrentCase(caseData);
-      }
-
-      // Restore game state
-      send({ type: 'RESTART' });
-      setTimeout(() => {
-        send({
-          type: 'START_GUARD',
-          deck: pendingDeckRef.current,
-          difficulty: sessionProgress.difficulty || 'standard',
-          pearl: (currentCase?.enarm_pearl || currentCase?.perla_enarm) as any
-        });
-        setTimeLeft(Math.max(5, timeLimitRef.current - Math.floor((Date.now() - sessionProgress.savedAt) / 1000)));
-      }, 0);
-    } catch (err) {
-      const errorMsg = err instanceof Error ? err.message : 'Error al reanudar juego.';
-      console.error('Resume game error:', err);
-      setLoadError(errorMsg);
-    } finally {
-      setIsLoadingCase(false);
-    }
-  };
 
   const renderCurrentView = () => {
      if (showIntro && currentCase) {
@@ -480,10 +626,15 @@ function App() {
 
           {/* Lore / Arrival Scenario */}
           <div className="bg-moomin-bg/50 border border-moomin-text/5 rounded-3xl p-6 mb-8 text-left shadow-inner">
-            <span className="text-[10px] font-black tracking-[0.3em] text-moomin-muted uppercase block mb-3">HISTORIA CLÍNICA</span>
+            <span className="text-[10px] font-black tracking-[0.3em] text-moomin-muted uppercase block mb-3">CONSIGNA MÉDICA</span>
             <p className="text-base text-moomin-text leading-relaxed italic font-medium">
-              {currentCase.patient_intro.arrival_scenario}
+              "{currentCase.patient_intro.arrival_scenario}"
             </p>
+            <div className="mt-4 pt-4 border-t border-moomin-text/5">
+              <p className="text-[10px] font-black text-moomin-primary tracking-widest uppercase">
+                ⚙️ RESPONSABILIDAD: Apila cada tarjeta en el lado adecuado. Los errores debilitan al paciente.
+              </p>
+            </div>
           </div>
 
           {/* Time limit hint */}
@@ -506,7 +657,7 @@ function App() {
             }}
             className="btn-primary w-full py-5 text-lg"
           >
-             COMENZAR CONSULTA
+             ABRIR EXPEDIENTE
           </button>
         </motion.div>
       );
@@ -633,15 +784,19 @@ function App() {
 
       case state.matches('triage'):
         return (
-          <SwipeDeck
-            cards={state.context.deck}
-            currentIndex={state.context.currentCardIndex}
-            onSwipe={handleSwipe}
-            isLocked={isProcessing || isPaused}
-            lifelineActive={state.context.lifelineActive}
-            canUseLifeline={stats.coins >= LIFELINE_COST && !state.context.lifelineActive}
-            onUseLifeline={handleLifeline}
-          />
+          <div className="flex flex-col items-center justify-center w-full max-w-sm gap-8 px-4 h-full">
+            {currentCase && (
+              <SwipeDeck
+                cards={state.context.deck}
+                currentIndex={state.context.currentCardIndex}
+                onSwipe={handleSwipe}
+                isLocked={isProcessing || isPaused}
+                lifelineActive={state.context.lifelineActive}
+                canUseLifeline={stats.coins >= LIFELINE_COST && !state.context.lifelineActive}
+                onUseLifeline={handleLifeline}
+              />
+            )}
+          </div>
         );
 
       case state.matches('critical_alert'):
@@ -974,7 +1129,13 @@ function App() {
         <div className="absolute inset-x-0 top-0 h-[40vh] bg-gradient-to-b from-moomin-primary/10 to-transparent opacity-40" />
       </div>
 
-      <TelemetryHUD timeLeft={timeLeft} state={state.value as string} evidenceCount={state.context.dossier.length} />
+      <TelemetryHUD 
+        timeLeft={timeLeft} 
+        state={state.value as string} 
+        score={state.context.score}
+        combo={state.context.combo}
+        vitality={state.context.vitality}
+      />
 
       {/* Vazquez Interruption */}
       <AnimatePresence>
@@ -1021,7 +1182,7 @@ function App() {
               transition={{ duration: 0.6, repeat: 2 }}
               className="text-5xl font-display font-black text-moomin-text drop-shadow-[0_8px_16px_rgba(0,0,0,0.1)] tracking-tighter relative italic"
             >
-              {showMilestoneCelebration >= 20 ? '🌈 MÉDICO LEGENDARIO' : showMilestoneCelebration >= 15 ? '✨ MAESTRO' : showMilestoneCelebration >= 10 ? '🔥 IMPARABLE' : '⚡ ¡NICE!'}
+              {showMilestoneCelebration >= 20 ? '🌈 Leyenda de guardia' : showMilestoneCelebration >= 15 ? '✨ La jefa te sonrió' : showMilestoneCelebration >= 10 ? '🔥 No te mandrakeas' : '⚡ Interno funcional'}
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 8 }}
@@ -1046,7 +1207,7 @@ function App() {
             className="fixed top-1/4 left-1/2 -translate-x-1/2 z-[60] pointer-events-none flex flex-col items-center gap-2"
           >
             <span className={`text-4xl font-display font-black italic tracking-[0.1em] ${swipeFeedback === 'correct' ? 'text-moomin-primary' : 'text-moomin-accent'} drop-shadow-md`}>
-              {swipeFeedback === 'correct' ? '¡SÍ!' : '¡OUCH!'}
+              {swipeFeedback === 'correct' ? 'CORRECTO' : 'ERROR'}
             </span>
             {swipeFeedback === 'correct' && (Date.now() - state.context.lastCardPresentedAt < 1200) && (
               <motion.span 
@@ -1054,7 +1215,7 @@ function App() {
                 animate={{ scale: [0, 1.2, 1] }}
                 className="text-moomin-secondary font-black text-xl italic tracking-wider drop-shadow-sm"
               >
-                ✨ ¡REACCIÓN RÁPIDA! ✨
+                ✦ DECISIÓN OPORTUNA ✦
               </motion.span>
             )}
             {state.context.showEureka && (
@@ -1063,7 +1224,7 @@ function App() {
                 animate={{ scale: [0, 1.5, 1], rotate: 0 }}
                 className="text-moomin-primary font-black text-2xl drop-shadow-md mt-2 italic"
               >
-                💡 DOBLE CLARIDAD 💡
+                💡 CRITERIO DOBLE 💡
               </motion.span>
             )}
           </motion.div>
@@ -1080,103 +1241,8 @@ function App() {
         />
       )}
       
-      <div className="w-full max-w-md flex justify-between items-start px-4 sm:px-8 py-6 sm:py-10 z-50">
-        <div className="flex flex-col">
-          <span className="text-[10px] uppercase font-black tracking-[0.3em] text-moomin-muted mb-1">PUNTOS</span>
-          <div className="flex items-baseline gap-2">
-            <motion.span
-              key={state.context.score}
-              initial={{ scale: 1.35, color: '#87CEEB' }}
-              animate={{ scale: 1, color: '#2C3E50' }}
-              transition={{ type: 'spring', stiffness: 400, damping: 14 }}
-              className="text-4xl font-display font-black tracking-tighter italic"
-            >
-              {state.context.score}
-            </motion.span>
-            {state.context.multiplier > 1 && (
-              <motion.span
-                key={state.context.multiplier}
-                initial={{ scale: 1.4, x: -6, opacity: 0 }}
-                animate={{ scale: 1, x: 0, opacity: 1 }}
-                transition={{ type: 'spring', stiffness: 500, damping: 18 }}
-                className="text-[10px] font-black text-moomin-secondary bg-moomin-secondary/10 px-3 py-1 rounded-full border border-moomin-secondary/20 uppercase italic"
-              >
-                x{state.context.multiplier.toFixed(1)}
-              </motion.span>
-            )}
-          </div>
-          <div className="flex items-center gap-1.5 mt-2 bg-white/40 px-3 py-1 rounded-full w-fit shadow-sm">
-            <span className="text-sm">🪙</span>
-            <span className="text-[11px] font-black text-moomin-text tracking-widest">{stats.coins}</span>
-          </div>
-        </div>
-
-        <div className="flex flex-col items-end gap-3">
-          <div className="h-12 w-12 glass-panel !rounded-2xl flex items-center justify-center font-black text-sm border-moomin-text/5 shadow-md scale-110 italic bg-white/80">
-            {state.context.caseStreak >= 6 ? 'ADSC' : (state.context.caseStreak >= 4 ? 'R3' : (state.context.caseStreak >= 2 ? 'R2' : 'R1'))}
-          </div>
-          {state.matches('triage') && state.context.deck.length > 0 && (
-            <div className="flex flex-col items-end">
-              <span className="text-[9px] font-black text-moomin-muted uppercase tracking-[0.2em]">CASO</span>
-              <span className="text-xl font-display font-black text-moomin-text italic">
-                {state.context.currentCardIndex + 1}
-                <span className="text-moomin-muted/40">/{state.context.deck.length}</span>
-              </span>
-            </div>
-          )}
-          {state.context.combo > 1 && (
-            <motion.div
-              key={state.context.combo}
-              initial={{ scale: 1.6, y: -15, opacity: 0, rotate: -8 }}
-              animate={{ scale: 1, y: 0, opacity: 1, rotate: 0 }}
-              transition={{ type: 'spring', stiffness: 600, damping: 16 }}
-              className="flex flex-col items-end"
-            >
-              <span className="text-[9px] font-black text-moomin-muted uppercase tracking-[0.2em]">RACHA</span>
-              <span className={`text-2xl font-display font-black italic drop-shadow-sm ${
-                state.context.combo >= 15 ? 'text-moomin-accent' : state.context.combo >= 10 ? 'text-orange-400' : 'text-moomin-primary'
-              }`}>
-                {state.context.combo}
-              </span>
-            </motion.div>
-          )}
-        </div>
-      </div>
-
-      {/* Timer Bar */}
-      {state.matches('triage') && currentCase && (
-        <div className="w-full max-w-sm px-8 -mt-2 mb-4 z-50">
-          <div className={`w-full h-3 bg-white/50 rounded-full overflow-hidden shadow-inner flex mb-2 border border-moomin-text/5`}>
-            <motion.div
-              className={`h-full ${timeLeft <= 10 ? 'bg-moomin-accent shadow-[0_0_15px_rgba(255,159,127,0.4)]' : 'bg-moomin-secondary shadow-[0_0_10px_rgba(255,182,193,0.3)]'}`}
-              initial={{ width: '100%' }}
-              animate={{
-                width: `${(timeLeft / timeLimitRef.current) * 100}%`,
-              }}
-              transition={{ duration: 1, ease: 'linear' }}
-              style={{ originX: 0 }}
-            />
-          </div>
-          <div className="flex justify-between items-center w-full px-1">
-            <span className={`text-[10px] uppercase font-black tracking-widest ${timeLeft <= 10 ? 'text-moomin-accent animate-pulse' : 'text-moomin-muted'}`}>
-              RELOJ DE GUARDIA
-            </span>
-            <div className="flex items-center gap-4">
-              <span className="text-[10px] text-moomin-text font-mono font-black">{timeLeft}s</span>
-              <button
-                onClick={() => setIsPaused(p => !p)}
-                className="text-[10px] font-black text-moomin-primary hover:text-moomin-secondary transition-colors uppercase tracking-[0.2em] italic"
-                aria-label={isPaused ? 'Reanudar' : 'Pausar'}
-              >
-                {isPaused ? '▶ REANUDAR' : '⏸ PAUSA'}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Mentor Feedback Area */}
-      <div className="w-full h-40 flex justify-center -mt-8 pointer-events-none">
+      <div className="w-full flex justify-center z-[60] pointer-events-none mb-4">
         <ErrorBoundary fallback={<div className="h-40 flex items-center justify-center text-red-400 font-bold bg-red-400/10 rounded-xl border border-red-400/20 px-8">Error en Feedback del Mentor</div>}>
           <AvatarFeedback 
             doctor={currentCase ? (currentCase.case_id.toLowerCase().includes('ped') ? 'castillo' : (currentCase.case_id.toLowerCase().includes('surg') ? 'mendoza' : 'navarro')) : 'navarro'} 
@@ -1189,7 +1255,7 @@ function App() {
 
       {/* Tactical Dossier (Dossier Médico) */}
       {!state.matches('idle') && (
-        <div className="fixed right-6 top-1/4 bottom-1/4 w-40 hidden lg:flex flex-col gap-3 overflow-y-auto pr-2 custom-scrollbar pointer-events-none opacity-80 hover:opacity-100 transition-opacity z-10">
+        <div className="fixed right-6 top-24 bottom-24 w-40 hidden lg:flex flex-col gap-3 overflow-y-auto pr-2 custom-scrollbar pointer-events-none opacity-80 hover:opacity-100 transition-opacity z-10">
           <span className="text-[10px] font-black text-moomin-muted uppercase tracking-[0.3em] mb-3 border-b border-moomin-text/5 pb-2 italic">Dossier</span>
           <AnimatePresence>
             {state.context.dossier.map((card, idx) => (
@@ -1242,10 +1308,50 @@ function App() {
         )}
       </AnimatePresence>
 
-      {/* Retrospective Modal */}
+      {/* Critical Game Overlays (High priority z-index) */}
+      <AnimatePresence>
+        {state.context.activePenalty?.active && state.context.activePenalty.item && (
+          <PenaltyOverlay 
+            penalty={{ active: true, item: state.context.activePenalty.item }} 
+            onAccept={() => {
+              send({ type: 'CLEAR_VISUALS' });
+            }}
+          />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {state.context.activeEvent?.item && (
+          <EventOverlay 
+            event={{ type: state.context.activeEvent.type, item: state.context.activeEvent.item }} 
+            onAccept={() => {
+              send({ type: 'CLEAR_VISUALS' });
+            }}
+          />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {state.context.lootBoxReward?.active && state.context.lootBoxReward.item && (
+          <LootBoxOverlay 
+            reward={{ active: true, item: state.context.lootBoxReward.item }} 
+            onClaim={() => {
+              const efecto = state.context.lootBoxReward?.item?.efecto;
+              if (efecto && efecto.tipo === 'heal' && efecto.valor) {
+                send({ type: 'APPLY_REWARD_HEAL', value: efecto.valor });
+              } else {
+                addCoins(50);
+                send({ type: 'CLEAR_VISUALS' });
+              }
+            }}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Narrative & History Overlays (Lower priority than critical gameplay) */}
       <AnimatePresence>
         {showRetro && (
-          <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 backdrop-blur-md p-6">
+          <div className="fixed inset-0 z-[150] flex items-center justify-center bg-black/80 backdrop-blur-md p-6">
             <RetrospectiveView 
               history={state.context.feedbackHistory} 
               onClose={() => setShowRetro(false)}
@@ -1257,7 +1363,7 @@ function App() {
 
       {/* Pause overlay */}
       <AnimatePresence>
-        {isPaused && state.matches('triage') && (
+        {isPaused && !isProcessing && state.matches('triage') && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -1272,7 +1378,7 @@ function App() {
             >
               <span className="text-[9px] font-black tracking-[0.4em] text-medical-primary uppercase block mb-4">GUARDIA EN PAUSA</span>
               <p className="text-4xl mb-6">⏸</p>
-              <p className="text-slate-400 text-sm font-medium mb-8">El tiempo está detenido. El paciente espera.</p>
+              <p className="text-slate-400 text-sm font-medium mb-8">El expediente sigue abierto.</p>
               <button
                 onClick={() => setIsPaused(false)}
                 className="btn-primary w-full py-4"

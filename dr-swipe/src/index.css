@@ -320,6 +320,48 @@
   transform-origin: top left;
 }
 
+/* Loot Box Animations */
+@keyframes loot-box-bounce {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  25% { transform: translateY(-10px) rotate(-5deg); }
+  50% { transform: translateY(0) rotate(5deg); }
+  75% { transform: translateY(-5px) rotate(-3deg); }
+}
+
+@keyframes loot-shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.loot-box-shake {
+  animation: loot-box-bounce 0.6s ease-in-out infinite;
+}
+
+.loot-box-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.loot-box-shine::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 45%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.4) 55%,
+    transparent 100%
+  );
+  animation: loot-shine 2s infinite;
+  transform: rotate(45deg);
+}
+
+
 /* ===== PERFORMANCE: hardware acceleration hints ===== */
 .swipe-card {
   will-change: transform;

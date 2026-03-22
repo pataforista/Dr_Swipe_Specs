@@ -1,0 +1,60 @@
+{
+  "labEvents": [
+    {
+      "id": "falto_muestra",
+      "nombre": "Faltó muestra",
+      "efecto": { "tipo": "score_penalty", "valor": -10 },
+      "texto": "El técnico levantó el tubito y te miró. No dijo más. No necesitó.",
+      "tipo": "negativo"
+    },
+    {
+      "id": "muestra_hemolizada",
+      "nombre": "Muestra hemolizada",
+      "efecto": { "tipo": "hide_lab_data", "duracion": 1 },
+      "texto": "Alguien jaló el émbolo muy rápido. No señaló a nadie. Todos saben.",
+      "tipo": "negativo"
+    },
+    {
+      "id": "no_coincide_nombre",
+      "nombre": "No coincide el nombre",
+      "efecto": { "tipo": "freeze_ui", "duracion": 8 },
+      "texto": "El técnico no procesa nada hasta que llegues a aclarar. Él no corre. Tú sí.",
+      "tipo": "negativo"
+    },
+    {
+      "id": "analizador_mantenimiento",
+      "nombre": "El analizador está en mantenimiento",
+      "efecto": { "tipo": "missing_key_data", "duracion": 1 },
+      "texto": "Desde las 6 AM. Nadie avisó. Bienvenido.",
+      "tipo": "negativo"
+    },
+    {
+      "id": "centrifugaron",
+      "nombre": "¿Esto lo centrifugaron?",
+      "efecto": { "tipo": "double_penalty_next", "duracion": 1 },
+      "texto": "Tono neutro. Pregunta retórica. Mala señal.",
+      "tipo": "negativo"
+    },
+    {
+      "id": "proceso_de_volada",
+      "nombre": "Te lo proceso de volada",
+      "efecto": { "tipo": "full_labs_start", "duracion": 1 },
+      "texto": "No preguntes por qué va primero que los de arriba. Agradece y ya.",
+      "tipo": "positivo"
+    },
+    {
+      "id": "aviso_antes",
+      "nombre": "Te aviso antes de que suba el resultado",
+      "efecto": { "tipo": "early_warning", "duracion": 1 },
+      "texto": "Te mandó un mensaje raro al bíper. Descífralo.",
+      "tipo": "positivo"
+    },
+    {
+      "id": "repetimos_sin_cobrar",
+      "nombre": "Repetimos sin cobrar la segunda muestra",
+      "efecto": { "tipo": "forgive_error", "duracion": 1 },
+      "texto": "Una vez. No se lo digas a nadie.",
+      "tipo": "positivo"
+    }
+  ]
+}

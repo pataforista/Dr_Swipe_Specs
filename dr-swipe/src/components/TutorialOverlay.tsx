@@ -7,22 +7,22 @@ interface TutorialOverlayProps {
 
 const SLIDES = [
   {
-    emoji: '🎨',
-    title: 'Pinceladas de Decisión',
-    body: 'Desliza a la derecha para MANTENER un hallazgo. Desliza a la izquierda para DESCARTAR. También puedes usar los hermosos botones de abajo.',
-    hint: '← Descartar  |  Mantener →',
+    emoji: '📝',
+    title: 'El expediente no se organiza solo.',
+    body: 'Cada tarjeta es una decisión. Desliza a la derecha para ACEPTAR lo que corresponde al caso, a la izquierda para RECHAZAR lo que no aplica. El orden importa. El caos en el expediente es caos en la atención.',
+    hint: '← Rechaza  |  Acepta →',
   },
   {
-    emoji: '✨',
-    title: 'Cuidado con el Bosque',
-    body: 'Las cartas con borde naranja o coral son IMPORTANTES o de RIESGO ALTO. ¡Sé valiente pero precavido, pequeño sanador!',
-    hint: 'Nivel 1: Mucha ayuda  ·  Nivel 5: Toda tu sabiduría',
+    emoji: '❤️',
+    title: 'El monitor no miente.',
+    body: 'Cada error drena la Vitalidad del paciente. Cada acierto la recupera, pero nunca al mismo ritmo. En medicina tampoco.',
+    hint: 'Error: -25 Vitalidad  ·  Acierto: +5 Vitalidad',
   },
   {
-    emoji: '🏡',
-    title: 'El Final del Camino',
-    body: 'Al terminar las cartas, llegarás a la Sala de Choque. Encuentra la solución correcta para proteger el Valle y ganar muchas monedas.',
-    hint: 'Amor + Precisión = ¡Gran Victoria!',
+    emoji: '📦',
+    title: 'Las guardias limpias tienen recompensa.',
+    body: 'Mantén una racha sin errores y el sistema te entrega una Caja de Suministros — monedas, beneficios, lo que necesitas para aguantar la noche.',
+    hint: 'Racha x10 = Caja de Suministros',
   },
 ];
 
