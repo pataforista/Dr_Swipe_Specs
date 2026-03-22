@@ -391,6 +391,12 @@ function App() {
     if (state.matches('reward') || state.matches('ghosted') || state.matches('debrief')) {
       clearSessionProgress();
     }
+    // Automatically clear swipe feedback elements when exiting triage
+    if (!state.matches('triage') && !state.matches('urgent_triage')) {
+      setComment(null);
+      setExpression('neutral');
+      setSwipeFeedback(null);
+    }
   }, [state.value, clearSessionProgress]);
 
   const [showIntro, setShowIntro] = useState(false);
@@ -411,9 +417,11 @@ function App() {
 
   useEffect(() => {
     let timer: number;
-    if (state.matches('triage') && timeLeft > 0 && !isPaused) {
+    const isOverlayActive = !!(state.context.activeEvent || state.context.activePenalty || state.context.lootBoxReward);
+    
+    if (!isPaused && !isOverlayActive && timeLeft > 0 && (state.matches('triage') || state.matches('urgent_triage'))) {
       timer = window.setInterval(() => {
-        setTimeLeft(prev => prev - 1);
+        setTimeLeft(t => t - 1);
       }, 1000);
     } else if (state.matches('triage') && timeLeft === 0) {
       triggerHaptic('timeoutAlarm');
@@ -847,10 +855,10 @@ function App() {
           </motion.div>
         );
 
-      case state.matches('triage'):
+      case state.matches('triage') || state.matches('urgent_triage'):
         return (
-          <div className="flex flex-col items-center justify-center w-full max-w-sm gap-8 px-4 h-full">
-            {currentCase && (
+          <div className="flex flex-col items-center justify-center w-full max-w-sm gap-4 px-4 h-full mt-12 pb-12 min-h-[42rem]">
+            {state.context.deck.length > 0 ? (
               <SwipeDeck
                 cards={state.context.deck}
                 currentIndex={state.context.currentCardIndex}
@@ -860,6 +868,11 @@ function App() {
                 canUseLifeline={stats.coins >= LIFELINE_COST && !state.context.lifelineActive}
                 onUseLifeline={handleLifeline}
               />
+            ) : (
+              <div className="flex flex-col items-center gap-4 text-moomin-muted/40 animate-pulse">
+                <span className="text-6xl">📋</span>
+                <span className="text-[10px] font-black uppercase tracking-widest">Sincronizando Expediente...</span>
+              </div>
             )}
           </div>
         );
@@ -1188,7 +1201,7 @@ function App() {
   };
 
   return (
-    <div className={`fixed inset-0 bg-moomin-bg flex flex-col items-center select-none overflow-hidden text-moomin-text pt-14
+    <div className={`fixed inset-0 bg-moomin-bg flex flex-col items-center select-none overflow-hidden text-moomin-text pt-6
       ${timeLeft <= 10 && state.matches('triage') ? 'destabilized-content' : ''}
       ${swipeFeedback === 'wrong' ? 'shake-lite' : ''}
       ${state.context.combo >= 15 ? 'combo-glow-3' : (state.context.combo >= 10 ? 'combo-glow-2' : (state.context.combo >= 5 ? 'combo-glow-1' : ''))}
@@ -1343,13 +1356,13 @@ function App() {
       )}
 
       {/* Content Area */}
-      <div className="w-full flex-grow flex items-center justify-center overflow-y-auto">
+      <div className="w-full flex-grow flex items-center justify-center overflow-y-auto relative z-[70]">
         {renderCurrentView()}
       </div>
 
       {/* Footer */}
       {!state.matches('boss_fight') && (
-        <div className="w-full max-w-md text-center opacity-30 py-8">
+        <div className="w-full max-w-md text-center opacity-30 py-4">
           <p className="text-[10px] font-bold tracking-[0.4em] uppercase">
             HGC ARCHIVE · Dr. Swipe v3
           </p>
@@ -1383,7 +1396,7 @@ function App() {
           <PenaltyOverlay 
             penalty={{ active: true, item: state.context.activePenalty.item }} 
             onAccept={() => {
-              send({ type: 'CLEAR_VISUALS' });
+              send({ type: 'CLEAR_OVERLAYS' });
             }}
           />
         )}
@@ -1394,7 +1407,7 @@ function App() {
           <EventOverlay 
             event={{ type: state.context.activeEvent.type, item: state.context.activeEvent.item }} 
             onAccept={() => {
-              send({ type: 'CLEAR_VISUALS' });
+              send({ type: 'CLEAR_OVERLAYS' });
             }}
           />
         )}
@@ -1410,7 +1423,7 @@ function App() {
                 send({ type: 'APPLY_REWARD_HEAL', value: efecto.valor });
               } else {
                 addCoins(50);
-                send({ type: 'CLEAR_VISUALS' });
+                send({ type: 'CLEAR_OVERLAYS' });
               }
             }}
           />

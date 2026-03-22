@@ -75,6 +75,7 @@ type GameEvent =
   | { type: 'TRIGGER_URGENCY' }
   | { type: 'RESOLVE_URGENCY' }
   | { type: 'CLEAR_VISUALS' }
+  | { type: 'CLEAR_OVERLAYS' }
   | { type: 'VIEW_DEBRIEF' }
   | { type: 'QTE_TIMER_TICK' }
   | { type: 'QTE_INTERACT' }
@@ -127,7 +128,9 @@ export const gameMachine = setup({
     }),
     clearVisuals: assign({
       showEureka: false,
-      showBloodVignette: false,
+      showBloodVignette: false
+    }),
+    clearOverlays: assign({
       lootBoxReward: null,
       activePenalty: null,
       activeEvent: null
@@ -225,8 +228,19 @@ export const gameMachine = setup({
         }
       }
 
-      // Track combo milestone hits
       const milestoneHit = (COMBO_MILESTONES as readonly number[]).includes(nextCombo) ? nextCombo : 0;
+
+      // Calculate feedback for history
+      const feedbackText = cleanVazquezComment(card.scoring?.vazquez_comment, isCorrect);
+      const newHistoryItem = {
+        cardId: card.card_id,
+        cardText: card.card_text,
+        isCorrect,
+        feedback: feedbackText,
+        category: card.category,
+        points: isCorrect ? 500 : -1000, 
+        expectedAction: card.expected_action
+      };
 
       return {
         combo: nextCombo,
@@ -246,31 +260,8 @@ export const gameMachine = setup({
         coinsEarnedThisCase: context.coinsEarnedThisCase + scoreBreakdown.coinsEarned,
         mistakesThisCase: isCorrect ? context.mistakesThisCase : context.mistakesThisCase + 1,
         lifelineActive: false, // Reset lifeline after swipe
-        comboMilestoneHit: milestoneHit
-      };
-    }),
-    recordFeedback: assign(({ context, event }) => {
-      if (event.type !== 'SWIPE') return {};
-      const card = context.deck[context.currentCardIndex];
-      if (!card) return {};
-
-      // Map 'right' to 'keep' and 'left' to 'discard'
-      const isCorrect = (event.direction === 'right' && card.expected_action === 'keep') || 
-                        (event.direction === 'left' && card.expected_action === 'discard');
-      
-      return {
-        feedbackHistory: [
-          ...context.feedbackHistory,
-          {
-            cardId: card.card_id,
-            cardText: card.card_text,
-            isCorrect,
-            feedback: cleanVazquezComment(card.scoring?.vazquez_comment, isCorrect),
-            category: card.category,
-            points: isCorrect ? 500 : -1000, 
-            expectedAction: card.expected_action
-          }
-        ]
+        comboMilestoneHit: milestoneHit,
+        feedbackHistory: [...context.feedbackHistory, newHistoryItem]
       };
     })
   }
@@ -374,7 +365,7 @@ export const gameMachine = setup({
       on: {
         SWIPE: {
           target: 'triage',
-          actions: ['handleCardSwipe', 'recordFeedback']
+          actions: ['handleCardSwipe']
         },
         TIME_OUT: {
           target: 'ghosted',
@@ -388,6 +379,9 @@ export const gameMachine = setup({
         },
         CLEAR_VISUALS: {
           actions: 'clearVisuals'
+        },
+        CLEAR_OVERLAYS: {
+          actions: 'clearOverlays'
         },
         USE_LIFELINE: {
           actions: assign({ lifelineActive: true })
@@ -425,7 +419,7 @@ export const gameMachine = setup({
       on: {
         SWIPE: {
           target: 'triage',
-          actions: ['handleCardSwipe', 'recordFeedback', assign({ isUrgent: false })]
+          actions: ['handleCardSwipe', assign({ isUrgent: false })]
         },
         TIME_OUT: {
           target: 'ghosted',

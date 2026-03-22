@@ -45,10 +45,10 @@ export const cleanVazquezComment = (comment: string | undefined, isCorrect: bool
     // "Formato: [Confirmación breve]. [Dato adicional que amplía la comprensión.]"
     return reasoning ? `Correcto. ${reasoning}` : "Correcto.";
   } else {
-    // No moralizing. Clinical correction.
+    // Neutral correction. Focus on the clinical fact.
     if (reasoning) {
       // Pick prefix deterministically based on reasoning length
-      const prefixes = ["Error de criterio:", "Revisión necesaria:", "Atención:"];
+      const prefixes = ["Nota clínica:", "Punto clave:", "Recordatorio:"];
       const prefix = prefixes[reasoning.length % prefixes.length];
       return `${prefix} ${reasoning}`;
     } else {

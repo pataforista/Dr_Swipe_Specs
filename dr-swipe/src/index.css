@@ -59,12 +59,12 @@
     @apply content-[''] absolute inset-0 bg-white/30 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-500;
   }
 
-  .swipe-card {
-    @apply relative w-full max-w-sm aspect-[3/4.5] bg-white border-2 border-moomin-text/5 rounded-[2.5rem] p-8 flex flex-col justify-between;
-    box-shadow: 
-      0 15px 35px rgba(92, 64, 51, 0.08), 
-      0 5px 15px rgba(92, 64, 51, 0.04),
-      inset 0 -8px 0 rgba(92, 64, 51, 0.02);
+  .swipe-card, 
+  [className*="DraggableCard"],
+  .card-content-area {
+    background-color: #ffffff !important;
+    opacity: 1 !important;
+    isolation: isolate;
   }
 
   .text-glow {

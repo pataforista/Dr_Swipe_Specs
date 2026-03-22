@@ -14,10 +14,14 @@ interface SwipeDeckProps {
   onUseLifeline?: () => void;
 }
 
-export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwipe, isLocked, lifelineActive, canUseLifeline, onUseLifeline }) => {
+export const SwipeDeck: React.FC<SwipeDeckProps> = ({ 
+  cards, currentIndex, onSwipe, isLocked, lifelineActive, canUseLifeline, onUseLifeline 
+}) => {
   const { playSwipe } = useGameAudio();
+  const topX = useMotionValue(0);
+
+  // Take current + 2 more for the stack
   const visibleCards = cards.slice(currentIndex, currentIndex + 3).reverse();
-  const totalCards = cards.length;
 
   // Keyboard support (ArrowLeft / ArrowRight)
   useEffect(() => {
@@ -31,11 +35,12 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwi
   }, [isLocked, onSwipe]);
 
   return (
-    <div className="flex flex-col items-center w-full max-w-sm mx-auto gap-6 px-2 sm:px-4">
-      <div className="relative w-full h-[28rem] flex items-center justify-center md:h-[30rem]">
-
-        {/* Deck Progress Pips */}
-        <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-1.5 pointer-events-none z-10 w-full justify-center max-w-[200px]">
+    <div className="flex flex-col items-center w-full max-w-sm mx-auto gap-8 px-2 relative">
+      
+      {/* Deck Vertical Spacer/Container */}
+      <div className="relative w-full aspect-[3/4.2] flex items-center justify-center">
+        {/* Progress Dots inside the deck area for focus */}
+        <div className="absolute -top-12 left-1/2 -translate-x-1/2 flex gap-1.5 pointer-events-none z-50 w-full justify-center">
           {cards.map((_, i) => (
             <motion.div
               key={i}
@@ -48,113 +53,100 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({ cards, currentIndex, onSwi
                   : 'rgba(92,64,51,0.05)'
               }}
               transition={{ duration: 0.4, type: 'spring' }}
-              className="h-2 rounded-full"
+              className="h-1.5 rounded-full"
             />
           ))}
         </div>
 
-        <AnimatePresence mode="popLayout">
+        <AnimatePresence initial={false}>
           {visibleCards.map((card, idx) => {
+            const keyIndex = currentIndex + (visibleCards.length - 1 - idx);
             const isTop = idx === visibleCards.length - 1;
+            
             return (
-              <DraggableCard
-                key={card.card_id}
+              <DraggableCard 
+                // CRITICAL: Key includes isTop to force re-mount when becoming top card.
+                // This resets Framer Motion drag handlers for the new top card.
+                key={`${card.card_id}-${isTop}`}
                 card={card}
                 isTop={isTop}
-                indexOffset={visibleCards.length - 1 - idx}
+                indexOffset={keyIndex - currentIndex}
                 onSwipe={onSwipe}
                 playSwipe={playSwipe}
                 isLocked={isLocked}
-                cardNumber={currentIndex + (visibleCards.length - 1 - idx) + 1}
-                totalCards={totalCards}
+                cardNumber={keyIndex + 1}
+                totalCards={cards.length}
+                topX={topX}
               />
             );
           })}
         </AnimatePresence>
       </div>
 
-      {/* Lifeline Hint Overlay */}
+      {/* Lifeline Hint Area - Floating above actions */}
       <AnimatePresence>
         {lifelineActive && cards[currentIndex] && (
           <motion.div
-            initial={{ opacity: 0, y: 15, scale: 0.8 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            className={`w-full max-w-sm mx-auto px-6 py-4 rounded-[2rem] border-2 text-center shadow-xl relative backdrop-blur-md flex items-center justify-between gap-4 ${
-              cards[currentIndex].expected_action === 'keep'
-                ? 'bg-moomin-primary/10 border-moomin-primary/30 text-moomin-text'
-                : 'bg-moomin-accent/10 border-moomin-accent/30 text-moomin-text'
+            initial={{ opacity: 0, scale: 0.9, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className={`mt-4 px-8 py-4 rounded-[2rem] border-2 italic text-[11px] font-black tracking-[0.2em] uppercase shadow-2xl z-50 relative ${
+              cards[currentIndex].expected_action === 'keep' 
+                ? 'bg-sky-50 border-sky-200 text-sky-700' 
+                : 'bg-orange-50 border-orange-200 text-orange-700'
             }`}
           >
-            <div className={`absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 rotate-45 border-l-2 border-t-2 ${
-              cards[currentIndex].expected_action === 'keep' ? 'bg-[#F0FAFF] border-moomin-primary/30' : 'bg-[#FFF5F2] border-moomin-accent/30'
-            }`} />
-            <button
-              onClick={(e) => { e.stopPropagation(); onUseLifeline?.(); }}
-              className="w-8 h-8 rounded-full bg-white/50 flex items-center justify-center hover:bg-white/80 transition-colors z-20 flex-shrink-0"
-              title="Cerrar pista"
-            >
-              ✕
-            </button>
-            <span className="relative z-10 italic text-[11px] font-black uppercase tracking-[0.2em] flex-grow">
-              {cards[currentIndex].expected_action === 'keep' ? '✨ MANTENER ESTA CARTA ➡️' : '⚠️ DESCARTAR ESTA CARTA ⬅️'}
-            </span>
-            <div className="w-8 h-8" />
+            <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 rotate-45 border-l-2 border-t-2 bg-inherit border-inherit" />
+            {cards[currentIndex].expected_action === 'keep' ? '✨ MANTENER ESTA CARTA ➡️' : '⚠️ DESCARTAR ESTA CARTA ⬅️'}
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Tinder-style circular action buttons */}
-      <div className="flex items-center justify-center gap-5 w-full">
-        {/* Discard — X */}
-        <div className="flex flex-col items-center gap-1.5">
+      {/* Action Buttons Hub */}
+      <div className="flex items-center justify-center gap-10 w-full mt-2 relative z-[60]">
+        {/* Discard */}
+        <div className="flex flex-col items-center gap-2">
           <motion.button
             disabled={isLocked}
-            onPointerDown={(e) => { e.stopPropagation(); playSwipe('left'); onSwipe('left'); }}
+            onPointerDown={(e) => { e.stopPropagation(); if(!isLocked) { playSwipe('left'); onSwipe('left'); } }}
             whileHover={!isLocked ? { scale: 1.12, y: -3 } : {}}
-            whileTap={!isLocked ? { scale: 0.9, rotate: -5 } : {}}
-            transition={{ type: 'spring', stiffness: 400, damping: 18 }}
-            className="w-16 h-16 rounded-full bg-white border-2 border-moomin-accent/40 text-moomin-accent flex items-center justify-center shadow-lg text-2xl disabled:opacity-30 hover:bg-moomin-accent hover:text-white hover:border-moomin-accent transition-colors select-none"
-            aria-label="Descartar"
+            whileTap={!isLocked ? { scale: 0.85 } : {}}
+            className="w-16 h-16 rounded-full bg-white border-4 border-moomin-accent/20 text-moomin-accent shadow-xl flex items-center justify-center text-3xl hover:bg-moomin-accent hover:text-white transition-all disabled:opacity-20 select-none"
           >
             ✕
           </motion.button>
-          <span className="text-[9px] font-black text-moomin-accent/60 uppercase tracking-widest">Descartar</span>
+          <span className="text-[10px] font-black text-moomin-accent/40 uppercase tracking-widest">DESCARTAR</span>
         </div>
 
-        {/* Lifeline */}
-        {onUseLifeline && (
-          <div className="flex flex-col items-center gap-1.5">
-            <motion.button
-              disabled={!canUseLifeline || isLocked}
-              onClick={(e) => { e.stopPropagation(); onUseLifeline(); }}
-              whileHover={canUseLifeline && !isLocked ? { scale: 1.15, rotate: 15 } : {}}
-              whileTap={canUseLifeline && !isLocked ? { scale: 0.9 } : {}}
-              transition={{ type: 'spring', stiffness: 500, damping: 15 }}
-              className={`w-12 h-12 rounded-full border-2 flex items-center justify-center shadow-md transition-colors text-lg ${lifelineActive ? 'bg-moomin-secondary border-moomin-secondary text-white' : 'bg-white border-moomin-secondary/40 text-moomin-secondary hover:bg-moomin-secondary/10 disabled:opacity-30'}`}
-              aria-label="Usar pista (25 monedas)"
-              title="Pista — 25 🪙"
-            >
-              💡
-            </motion.button>
-            <span className="text-[9px] font-black text-moomin-secondary/60 uppercase tracking-widest">Pista</span>
-          </div>
-        )}
+        {/* Hint */}
+        <div className="flex flex-col items-center gap-2">
+          <motion.button
+            disabled={!canUseLifeline || isLocked}
+            onClick={(e) => { e.stopPropagation(); onUseLifeline?.(); }}
+            whileHover={canUseLifeline && !isLocked ? { scale: 1.15, rotate: 15 } : {}}
+            whileTap={canUseLifeline && !isLocked ? { scale: 0.85 } : {}}
+            className={`w-14 h-14 rounded-full border-4 shadow-lg flex items-center justify-center text-2xl transition-all ${
+              lifelineActive ? 'bg-moomin-secondary border-moomin-secondary/30 text-white' : 'bg-white border-moomin-secondary/20 text-moomin-secondary hover:bg-moomin-secondary/10 disabled:opacity-20'
+            }`}
+             title="Pista (25 🪙)"
+          >
+            💡
+          </motion.button>
+          <span className="text-[10px] font-black text-moomin-secondary/40 uppercase tracking-widest">PISTA</span>
+        </div>
 
-        {/* Keep — Heart */}
-        <div className="flex flex-col items-center gap-1.5">
+        {/* Keep */}
+        <div className="flex flex-col items-center gap-2">
           <motion.button
             disabled={isLocked}
-            onPointerDown={(e) => { e.stopPropagation(); playSwipe('right'); onSwipe('right'); }}
+            onPointerDown={(e) => { e.stopPropagation(); if(!isLocked) { playSwipe('right'); onSwipe('right'); } }}
             whileHover={!isLocked ? { scale: 1.12, y: -3 } : {}}
-            whileTap={!isLocked ? { scale: 0.9, rotate: 5 } : {}}
-            transition={{ type: 'spring', stiffness: 400, damping: 18 }}
-            className="w-16 h-16 rounded-full bg-white border-2 border-moomin-primary/40 text-moomin-primary flex items-center justify-center shadow-lg text-2xl disabled:opacity-30 hover:bg-moomin-primary hover:text-white hover:border-moomin-primary transition-colors select-none"
-            aria-label="Mantener"
+            whileTap={!isLocked ? { scale: 0.85 } : {}}
+            className="w-16 h-16 rounded-full bg-white border-4 border-moomin-primary/20 text-moomin-primary shadow-xl flex items-center justify-center text-3xl hover:bg-moomin-primary hover:text-white transition-all disabled:opacity-20 select-none"
           >
             ♥
           </motion.button>
-          <span className="text-[9px] font-black text-moomin-primary/60 uppercase tracking-widest">Mantener</span>
+          <span className="text-[10px] font-black text-moomin-primary/40 uppercase tracking-widest">MANTENER</span>
         </div>
       </div>
     </div>
@@ -170,261 +162,145 @@ interface DraggableCardProps {
   isLocked?: boolean;
   cardNumber: number;
   totalCards: number;
+  topX: any;
 }
 
 const ICON_MAP: Record<string, string> = {
-  'heartbeat': '🩺',
-  'heart': '❤️',
-  'target': '🎯',
-  'slash': '⚠️',
-  'alert-triangle': '⚠️',
-  'alert-circle': '⚠️',
-  'eye': '👁️',
-  'pill': '💊',
-  'clock': '⏱️',
-  'zap': '⚡',
-  'activity': '📈',
-  'trending-up': '📈',
-  'users': '👨‍⚕️',
-  'user': '👨‍⚕️',
-  'search': '🔍',
-  'grid': '📊',
-  'bar-chart-2': '📉',
-  'maximize': '🔎',
-  'help-circle': '❓',
-  'frown': '🤕',
-  'rotate-cw': '🔄',
-  'brain': '🧠',
-  'message-square': '🗣️',
-  'alert-octagon': '🚨',
-  'shield': '🛡️',
-  'droplets': '💧',
-  'check-circle': '✅',
-  'link': '🔗',
-  'refresh-cw': '🔄',
-  'image': '🖼️',
-  'dna': '🧬',
-  'clipboard': '📋',
-  'file-text': '📄',
-  'thermometer': '🌡️',
-  'test-tube': '🧪'
+  'heartbeat': '🩺', 'heart': '❤️', 'target': '🎯', 'slash': '⚠️',
+  'alert-triangle': '⚠️', 'alert-circle': '⚠️', 'eye': '👁️', 'pill': '💊',
+  'clock': '⏱️', 'zap': '⚡', 'activity': '📈', 'trending-up': '📈',
+  'users': '👨‍⚕️', 'user': '👨‍⚕️', 'search': '🔍', 'grid': '📊',
+  'bar-chart-2': '📉', 'maximize': '🔎', 'help-circle': '❓', 'frown': '🤕',
+  'rotate-cw': '🔄', 'brain': '🧠', 'message-square': '🗣️', 'alert-octagon': '🚨',
+  'shield': '🛡️', 'droplets': '💧', 'check-circle': '✅', 'link': '🔗',
+  'refresh-cw': '🔄', 'image': '🖼️', 'dna': '🧬', 'clipboard': '📋',
+  'file-text': '📄', 'thermometer': '🌡️', 'test-tube': '🧪'
 };
 
 const getIcon = (iconName: string) => {
   if (!iconName) return '📋';
-  if (ICON_MAP[iconName]) return ICON_MAP[iconName];
-  try {
-    if (/\p{Emoji}/u.test(iconName)) return iconName;
-  } catch {
-    if (iconName.length > 1 || iconName.charCodeAt(0) > 127) return iconName;
-  }
-  return '📋';
+  return ICON_MAP[iconName] || (/\p{Emoji}/u.test(iconName) ? iconName : '📋');
 };
 
 const DraggableCard: React.FC<DraggableCardProps> = ({
-  card, isTop, indexOffset, onSwipe, playSwipe, isLocked, cardNumber, totalCards
+  card, isTop, indexOffset, onSwipe, playSwipe, isLocked, cardNumber, totalCards, topX
 }) => {
-  const x = useMotionValue(0);
+  const fallbackX = useMotionValue(0);
+  const x = isTop ? topX : fallbackX;
   const controls = useAnimation();
-  const [showDragHint, setShowDragHint] = React.useState(true);
 
-  const rotate = useTransform(x, [-250, 250], [-25, 25]);
-  const overlayOpacityLeft = useTransform(x, [0, -80], [0, 1]);
-  const overlayOpacityRight = useTransform(x, [0, 80], [0, 1]);
+  useEffect(() => {
+    if (isTop) {
+      controls.start({ opacity: 1, scale: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } });
+    }
+  }, [isTop, controls]);
 
-  React.useEffect(() => {
-    const timer = setTimeout(() => setShowDragHint(false), 4000);
-    return () => clearTimeout(timer);
-  }, []);
+  // Dynamic font scaling logic for dense clinical cases
+  const getFontSizeClass = (text: string) => {
+    const len = text.length;
+    if (len < 50) return 'text-3xl md:text-4xl';
+    if (len < 100) return 'text-xl md:text-2xl';
+    if (len < 150) return 'text-lg md:text-xl';
+    return 'text-base md:text-lg';
+  };
+
+  const rotate = useTransform(x, [-300, 300], [-35, 35]);
+  const scaleTop = useTransform(x, [-200, 0, 200], [1.08, 1, 1.08]);
+  const yOffset = useTransform(x, [-200, 0, 200], [-20, 0, -20]);
+  
+  const stackScale = useTransform(x, [-300, 0, 300], [1 - (indexOffset - 1) * 0.05, 1 - indexOffset * 0.05, 1 - (indexOffset - 1) * 0.05]);
+  const stackY = useTransform(x, [-300, 0, 300], [(indexOffset - 1) * 12, indexOffset * 12, (indexOffset - 1) * 12]);
+
+  const overlayOpacityLeft = useTransform(x, [0, -120], [0, 1]);
+  const overlayOpacityRight = useTransform(x, [0, 120], [0, 1]);
 
   const isLethal = card.safety_flags?.lethal_risk || card.safety_flags?.lethal_if_discarded;
   const isCritical = card.safety_flags?.decision_critical;
 
-  // Header gradient based on safety level
-  const headerGradient = isLethal
-    ? 'from-red-50 via-moomin-accent/20 to-moomin-accent/30'
-    : isCritical
-    ? 'from-orange-50 via-orange-100 to-orange-200'
-    : 'from-sky-50 via-moomin-primary/15 to-moomin-primary/25';
+  const headerGradient = isLethal ? 'from-red-200 to-red-300' : isCritical ? 'from-orange-200 to-orange-300' : 'from-sky-200 to-sky-300';
+  const cardBorderColor = isLethal ? 'border-red-500' : isCritical ? 'border-orange-500' : 'border-moomin-primary/60';
 
-  const cardBorderColor = isLethal
-    ? 'border-moomin-accent/30'
-    : isCritical
-    ? 'border-orange-300/40'
-    : 'border-moomin-primary/10';
-
-  const handleDragEnd = async (_event: MouseEvent | TouchEvent | PointerEvent, info: { offset: { x: number }; velocity: { x: number } }) => {
-    if (!isTop) return;
-
-    setShowDragHint(false);
-    const threshold = 50;
+  const handleDragEnd = async (_event: any, info: { offset: { x: number }; velocity: { x: number } }) => {
+    if (!isTop || isLocked) return;
+    const threshold = 100;
     const velocity = info.velocity.x;
 
-    try {
-      if (info.offset.x > threshold || velocity > 400) {
-        playSwipe('right');
-        triggerHaptic('cardSwipe');
-        await controls.start({ x: 600, opacity: 0, rotate: 20, transition: { duration: 0.3 } });
-        onSwipe('right');
-      } else if (info.offset.x < -threshold || velocity < -400) {
-        playSwipe('left');
-        triggerHaptic('cardSwipe');
-        await controls.start({ x: -600, opacity: 0, rotate: -20, transition: { duration: 0.3 } });
-        onSwipe('left');
-      } else {
-        controls.start({ x: 0, y: 0, rotate: 0, transition: { type: 'spring', stiffness: 400, damping: 20 } });
-      }
-    } catch (error) {
-      console.error('Error during drag end:', error);
-      controls.start({ x: 0, y: 0, rotate: 0, transition: { type: 'spring', stiffness: 500, damping: 18 } });
+    if (Math.abs(info.offset.x) > threshold || Math.abs(velocity) > 600) {
+      const direction = info.offset.x > 0 ? 'right' : 'left';
+      playSwipe(direction);
+      triggerHaptic('cardSwipe');
+      const exitX = direction === 'right' ? 1200 : -1200;
+      await controls.start({ x: exitX, opacity: 0, rotate: direction === 'right' ? 60 : -60, transition: { duration: 0.3 } });
+      onSwipe(direction);
+    } else {
+      controls.start({ x: 0, y: 0, rotate: 0, scale: 1, transition: { type: 'spring', stiffness: 400, damping: 30 } });
     }
   };
 
   return (
     <motion.div
-      className={`absolute w-full h-[28rem] swipe-card cursor-grab active:cursor-grabbing bg-white rounded-[2rem] border-2 ${cardBorderColor} overflow-hidden md:h-[30rem]`}
+      className={`absolute w-full h-full rounded-[3.5rem] border-4 ${cardBorderColor} overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.12)] flex flex-col bg-white select-none`}
       style={{
-        x,
-        rotate,
-        zIndex: 10 - indexOffset,
-        boxShadow: isTop
-          ? '0 20px 60px -10px rgba(135,206,235,0.3), 0 4px 16px -4px rgba(0,0,0,0.08)'
-          : '0 4px 12px rgba(0,0,0,0.04)',
+        x, rotate,
+        scale: isTop ? scaleTop : stackScale,
+        y: isTop ? yOffset : stackY,
+        opacity: 1,
+        zIndex: 1000 - (indexOffset * 100),
+        isolation: 'isolate',
       }}
       drag={isTop && !isLocked ? "x" : false}
       dragConstraints={{ left: 0, right: 0 }}
-      dragElastic={0.7}
+      dragElastic={0.9}
       onDragEnd={handleDragEnd}
-      animate={isTop ? controls : "stacked"}
-      variants={{
-        stacked: {
-          scale: 1 - indexOffset * 0.04,
-          opacity: 1 - indexOffset * 0.15,
-          y: indexOffset * 10,
-          transition: { type: 'spring', stiffness: 300, damping: 25 }
-        }
-      }}
-      initial={{ scale: 0.85, opacity: 0, y: 40 }}
-      exit={{ opacity: 0, scale: 0.8, transition: { duration: 0.2 } }}
-      whileHover={isTop && !isLocked ? { scale: 1.01, y: -3 } : {}}
+      initial={isTop ? { opacity: 0, scale: 0.95, y: 30 } : false}
+      animate={isTop ? controls : undefined}
+      exit={{ opacity: 0, scale: 0.8 }}
+      whileDrag={{ scale: 1.05, cursor: 'grabbing' }}
     >
-      {/* ── Swipe stamps — top corners, Tinder style ── */}
-      <motion.div
-        style={{ opacity: overlayOpacityLeft }}
-        className="absolute top-6 left-5 z-30 pointer-events-none"
-      >
-        <div className="border-[3px] border-moomin-accent text-moomin-accent font-black text-base px-4 py-1.5 rounded-xl uppercase tracking-[0.2em] rotate-[-18deg] bg-white/80 shadow-md">
-          DESCARTAR
-        </div>
+      {/* Swipe Stamps */}
+      <motion.div style={{ opacity: overlayOpacityLeft }} className="absolute top-12 left-10 z-50 pointer-events-none">
+        <div className="border-[6px] border-red-600/80 text-red-600 font-extrabold text-2xl px-6 py-2 rounded-2xl uppercase tracking-[0.2em] rotate-[-12deg] bg-white/90 shadow-2xl backdrop-blur-sm">DESCARTAR</div>
+      </motion.div>
+      <motion.div style={{ opacity: overlayOpacityRight }} className="absolute top-12 right-10 z-50 pointer-events-none">
+        <div className="border-[6px] border-sky-600/80 text-sky-600 font-extrabold text-2xl px-6 py-2 rounded-2xl uppercase tracking-[0.2em] rotate-[12deg] bg-white/90 shadow-2xl backdrop-blur-sm">MANTENER</div>
       </motion.div>
 
-      <motion.div
-        style={{ opacity: overlayOpacityRight }}
-        className="absolute top-6 right-5 z-30 pointer-events-none"
-      >
-        <div className="border-[3px] border-moomin-primary text-moomin-primary font-black text-base px-4 py-1.5 rounded-xl uppercase tracking-[0.2em] rotate-[18deg] bg-white/80 shadow-md">
-          MANTENER
+      {/* Header */}
+      <div className="relative h-[32%] flex items-center justify-center border-b-4 border-slate-100 overflow-hidden">
+        <div className={`absolute inset-0 bg-gradient-to-br ${headerGradient}`} />
+        <div className="absolute top-5 left-1/2 -translate-x-1/2 z-30 px-5 py-1.5 bg-white rounded-full border border-slate-200/50 shadow-sm">
+          <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em] whitespace-nowrap">{card?.category || 'DOC'}</span>
         </div>
-      </motion.div>
-
-      {/* ── Visual header area (~45% height) — replaces Tinder photo ── */}
-      <div className={`relative h-[45%] bg-gradient-to-br ${headerGradient} flex items-center justify-center overflow-hidden`}>
-
-        {/* Safety badge — top-left */}
+        <div className="absolute bottom-4 right-6 z-30 px-3 py-1 bg-white/60 backdrop-blur-sm rounded-xl border border-white/40">
+          <span className="text-[10px] font-black text-slate-500/60 tracking-widest">{cardNumber} / {totalCards}</span>
+        </div>
         {(isLethal || isCritical) && isTop && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            className={`absolute top-3 left-3 z-20 px-2.5 py-1 rounded-full text-[10px] font-black tracking-widest uppercase flex items-center gap-1.5 shadow-sm backdrop-blur-sm border ${
-              isLethal
-                ? 'bg-white/80 text-moomin-accent border-moomin-accent/20'
-                : 'bg-white/80 text-orange-500 border-orange-200'
-            }`}
-          >
-            <span
-              className="animate-pulse w-2 h-2 rounded-full inline-block"
-              style={{ backgroundColor: isLethal ? '#FF9F7F' : '#F6AD55' }}
-            />
-            {isLethal ? 'RIESGO ALTO' : 'IMPORTANTE'}
+          <motion.div initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className={`absolute bottom-4 left-6 z-30 px-4 py-1.5 rounded-full text-[9px] font-black tracking-widest uppercase flex items-center gap-2 shadow-lg ${isLethal ? 'bg-red-600 text-white' : 'bg-orange-500 text-white'}`}>
+            <span className="relative z-10">{isLethal ? 'RIESGO LETAL' : 'CRÍTICO'}</span>
           </motion.div>
         )}
-
-        {/* Card counter — top-right */}
-        <div className="absolute top-3 right-3 z-20 px-2.5 py-1 bg-white/50 backdrop-blur-sm rounded-full border border-white/40">
-          <span className="text-[9px] font-black text-moomin-text/50 uppercase tracking-widest">
-            {cardNumber} / {totalCards}
-          </span>
-        </div>
-
-        {/* Big icon — center */}
-        <motion.div
-          animate={isTop ? {
-            rotate: [0, -5, 5, 0],
-            y: [0, -3, 3, 0]
-          } : {}}
-          transition={{ duration: 4, repeat: Infinity }}
-          className="text-6xl drop-shadow-sm select-none"
-        >
-          {getIcon(card.ui_icon)}
-        </motion.div>
-
-        {/* Category overlay — bottom of header, like Tinder name/age */}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/25 to-transparent pt-10 pb-3 px-5">
-          <span className="text-white font-black text-sm uppercase tracking-wider drop-shadow-sm">
-            {card.category}
-          </span>
-        </div>
-
-        {/* Drag hint */}
-        {showDragHint && isTop && !isLocked && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 pointer-events-none z-10 hidden sm:flex"
-          >
-            <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/60 shadow-md">
-              <motion.span
-                animate={{ x: [-6, 6, -6] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="flex items-center gap-2 text-[10px] font-black text-moomin-muted uppercase tracking-[0.2em]"
-              >
-                ⬅️ desliza ➡️
-              </motion.span>
-            </div>
-          </motion.div>
-        )}
+        <div className="text-7xl drop-shadow-2xl relative z-20 flex items-center justify-center h-24 w-24">{getIcon(card?.ui_icon || '')}</div>
       </div>
 
-      {/* ── Content area (~55% height) ── */}
-      <div className="flex flex-col h-[55%] px-6 pt-5 pb-4 relative z-10">
-
-        {/* Card text */}
-        <div className="flex-1 flex items-center justify-center overflow-hidden">
-          <p className={`
-            font-display font-black text-moomin-text leading-[1.3] tracking-tight italic text-center
-            ${card.card_text.length > 140 ? 'text-base sm:text-lg' :
-              card.card_text.length > 80 ? 'text-lg sm:text-xl' :
-              'text-xl sm:text-2xl'}
-            max-h-full overflow-y-auto custom-scrollbar pr-1
-          `}>
-            {card.card_text}
+      {/* Body */}
+      <div className="flex-1 flex flex-col px-10 pt-10 pb-8 bg-white relative">
+        <div className="flex-1 flex items-center justify-center text-center">
+          <p className={`font-display font-black text-moomin-text leading-[1.05] tracking-tighter italic ${getFontSizeClass(card?.card_text || '')} overflow-y-auto custom-scrollbar h-full flex items-center justify-center pr-2 break-words text-balance w-full`} style={{ textShadow: '0 1px 0 rgba(255,255,255,0.8)' }}>
+            {card?.card_text || ''}
           </p>
         </div>
-
-        {/* Footer: priority bars + reference */}
-        <div className="flex justify-between items-center pt-3 border-t border-moomin-text/5 mt-2 flex-shrink-0">
-          <div className="flex flex-col gap-1.5">
-            <span className="text-[8px] font-black text-moomin-muted uppercase tracking-[0.2em] italic">PRIORIDAD</span>
-            <div className="flex gap-1">
-              <div className={`w-6 h-1.5 rounded-full ${isLethal ? 'bg-moomin-accent shadow-[0_0_6px_rgba(255,159,127,0.5)]' : isCritical ? 'bg-orange-400' : 'bg-moomin-primary shadow-[0_0_6px_rgba(135,206,235,0.4)]'}`} />
-              <div className={`w-6 h-1.5 rounded-full ${isCritical || isLethal ? (isLethal ? 'bg-moomin-accent/30' : 'bg-orange-200') : 'bg-moomin-muted/10'}`} />
-              <div className={`w-6 h-1.5 rounded-full ${isLethal ? 'bg-moomin-accent/10' : 'bg-moomin-muted/5'}`} />
+        <div className="flex justify-between items-end pt-8 mt-6 border-t-2 border-slate-50">
+          <div className="flex flex-col gap-2">
+            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">TRIAGE SCORE</span>
+            <div className="flex gap-1.5">
+              <div className={`w-12 h-2.5 rounded-full ${isLethal ? 'bg-red-600' : isCritical ? 'bg-orange-500' : 'bg-sky-500'}`} />
+              <div className={`w-12 h-2.5 rounded-full ${isCritical || isLethal ? (isLethal ? 'bg-red-100' : 'bg-orange-100') : 'bg-slate-100'}`} />
             </div>
           </div>
-          <span className="text-[8px] font-black text-moomin-muted/30 tracking-widest">
-            REF: {card.card_id.toUpperCase().slice(-6)}
-          </span>
+          <div className="text-right">
+             <span className="text-[10px] font-black text-slate-300 block tracking-widest uppercase mb-0.5">ESTADO VITAL</span>
+             <span className="text-xs font-black text-slate-200">#DATA-{card?.card_id?.slice(-4).toUpperCase() || 'SYS'}</span>
+          </div>
         </div>
       </div>
     </motion.div>

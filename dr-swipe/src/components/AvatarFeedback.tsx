@@ -98,7 +98,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
             </motion.div>
 
             {/* Dialogue Bubble */}
-            <div className="h-14 flex flex-col items-center relative z-20">
+            <div className="flex flex-col items-center relative z-20">
               <AnimatePresence mode="wait">
                 {dialogueText && (
                   <motion.div
