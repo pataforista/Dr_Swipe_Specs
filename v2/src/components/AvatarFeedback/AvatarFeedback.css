@@ -11,22 +11,18 @@
 }
 
 .speech-bubble {
-  background-color: var(--surface);
+  background-color: var(--secondary);
   color: var(--text-main);
-  padding: 16px;
-  border-radius: 16px;
+  padding: 18px;
+  border-radius: 18px;
   box-shadow: var(--shadow-premium);
   margin-bottom: 20px;
   margin-right: 20px;
   max-width: 240px;
-  border: 2px solid var(--text-main);
+  border: 2px solid white;
   position: relative;
-}
-
-/* Modal dark theme highlight */
-[data-theme='dark'] .speech-bubble {
-  border-color: var(--primary);
-  color: var(--primary);
+  transform: rotate(2deg);
+  font-weight: 500;
 }
 
 .speech-bubble::after {
@@ -36,16 +32,12 @@
   right: 20px;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-top: 10px solid var(--text-main);
-}
-
-[data-theme='dark'] .speech-bubble::after {
-  border-top-color: var(--primary);
+  border-top: 10px solid var(--secondary);
 }
 
 .avatar-sprite {
-  width: 200px;
-  height: 200px;
+  width: 160px;
+  height: 160px;
   object-fit: contain;
-  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+  filter: drop-shadow(0 4px 8px rgba(92, 64, 51, 0.15));
 }

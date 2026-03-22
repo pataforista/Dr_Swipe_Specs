@@ -1,12 +1,8 @@
 .codex-container {
   min-height: 100vh;
   padding: 2rem;
-  background-color: var(--background);
+  background: linear-gradient(135deg, #FFF8F0 0%, #FFFCF9 100%);
   transition: background-color 0.3s ease;
-}
-
-[data-theme='dark'] .codex-container {
-  background-color: #010409; /* Deep static black */
 }
 
 .codex-header {
@@ -14,177 +10,185 @@
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 2.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid var(--text-main);
-}
-
-[data-theme='dark'] .codex-header {
-  border-color: #f85149; /* Brutalist red border */
+  padding-bottom: 1.5rem;
+  border-bottom: 3px solid var(--tertiary);
 }
 
 .codex-header h1 {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 900;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   color: var(--text-main);
   margin: 0;
 }
 
-[data-theme='dark'] .codex-header h1 {
-  color: #f85149;
-  text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
-}
-
 .codex-subtitle {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Comic Sans MS', 'Trebuchet MS', cursive;
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
   margin-top: 0.5rem;
 }
 
 .filter-pill-group {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.6rem;
+  flex-wrap: wrap;
 }
 
 .filter-pill {
-  padding: 0.4rem 1rem;
-  border-radius: 99px;
-  border: 1px solid var(--border-subtle);
-  background: transparent;
-  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  border-radius: 16px;
+  border: 2px solid var(--primary);
+  background: white;
+  font-size: 0.7rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
+  color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transform: rotate(-1deg);
+}
+
+.filter-pill:nth-child(even) {
+  border-color: var(--secondary);
+  transform: rotate(1deg);
+}
+
+.filter-pill:nth-child(3n) {
+  border-color: var(--tertiary);
+  transform: rotate(-0.5deg);
 }
 
 .filter-pill.active {
-  background-color: var(--text-main);
-  color: var(--background);
-}
-
-[data-theme='dark'] .filter-pill {
-  border-color: #30363d;
-  color: #8b949e;
-}
-
-[data-theme='dark'] .filter-pill.active {
-  background-color: #388bfd;
+  background-color: var(--primary);
   color: white;
-  border-color: #388bfd;
+  border-color: white;
+}
+
+.filter-pill.active:nth-child(even) {
+  background-color: var(--secondary);
+}
+
+.filter-pill.active:nth-child(3n) {
+  background-color: var(--tertiary);
 }
 
 .codex-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.8rem;
 }
 
 .codex-card {
-  background-color: var(--surface);
-  border: 2px solid var(--border-subtle);
-  border-radius: 1rem;
-  padding: 1.25rem;
+  background: linear-gradient(135deg, #FFFCF9 0%, rgba(152, 216, 200, 0.08) 100%);
+  border: 2px solid var(--primary);
+  border-radius: 16px;
+  padding: 1.3rem;
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-premium);
+  transform: rotate(-2deg);
+  transition: transform 0.2s;
 }
 
-[data-theme='dark'] .codex-card {
-  background-color: #0d1117;
-  border-color: #30363d;
+.codex-card:nth-child(even) {
+  border-color: var(--secondary);
+  transform: rotate(1deg);
+}
+
+.codex-card:nth-child(3n) {
+  border-color: var(--tertiary);
+  transform: rotate(-1deg);
+}
+
+.codex-card:hover {
+  transform: var(--rot, rotate(-2deg)) scale(1.02);
 }
 
 .codex-card.rarity-legendary {
-  background-color: #fff8e1;
-  border-color: #ffc107;
-}
-
-[data-theme='dark'] .codex-card.rarity-legendary {
-  background-color: #1a1401;
-  border-color: #d29922;
-  box-shadow: 0 0 15px rgba(210, 153, 34, 0.2);
+  background: linear-gradient(135deg, #FFD4E5 0%, rgba(255, 182, 193, 0.2) 100%);
+  border-color: #FFB6C1;
+  box-shadow: 0 0 15px rgba(255, 182, 193, 0.2);
 }
 
 .card-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.8rem;
 }
 
 .card-category {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 800;
-  color: var(--text-muted);
+  color: white;
   text-transform: uppercase;
+  background: var(--primary);
+  padding: 3px 8px;
+  border-radius: 8px;
+  letter-spacing: 0.5px;
+  border: 1px solid white;
 }
 
 .rarity-indicator {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background-color: #2ea44f;
+  background-color: #98D8C8;
+  border: 2px solid white;
 }
 
-.rarity-rare .rarity-indicator { background-color: #0969da; }
-.rarity-legendary .rarity-indicator { background-color: #d29922; }
+.rarity-rare .rarity-indicator { background-color: #87CEEB; }
+.rarity-legendary .rarity-indicator { background-color: #FFB6C1; }
 
 .card-title {
-  font-size: 1.1rem;
-  font-weight: 800;
-  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 900;
+  margin: 0 0 0.6rem 0;
   line-height: 1.2;
+  color: var(--text-main);
 }
 
 .card-snippet {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
-  line-height: 1.4;
+  line-height: 1.5;
   margin-bottom: 1rem;
+  font-weight: 500;
 }
 
 .card-ref {
-  font-family: monospace;
-  font-size: 0.65rem;
-  color: var(--text-muted);
-  background: rgba(0,0,0,0.05);
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-
-[data-theme='dark'] .card-ref {
-  background: rgba(255,255,255,0.05);
+  font-family: 'Courier New', monospace;
+  font-size: 0.6rem;
+  color: white;
+  background: var(--primary);
+  padding: 3px 8px;
+  border-radius: 8px;
+  border: 1px solid white;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .codex-card-locked {
-  background-color: rgba(255,255,255,0.5);
-  border: 2px dashed var(--border-subtle);
-  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 212, 229, 0.2) 100%);
+  border: 2px dashed var(--primary);
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  opacity: 0.6;
-}
-
-[data-theme='dark'] .codex-card-locked {
-  background-color: #0d1117;
-  border-color: #21262d;
-  background-image: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 10px,
-    rgba(255, 0, 0, 0.03) 10px,
-    rgba(255, 0, 0, 0.03) 20px
-  );
+  opacity: 0.7;
+  transform: rotate(-1deg);
 }
 
 .lock-icon {
   color: var(--text-muted);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
+  font-size: 2rem;
 }
 
 .lock-text {
@@ -192,4 +196,5 @@
   font-weight: 800;
   letter-spacing: 1px;
   color: var(--text-muted);
+  text-transform: uppercase;
 }

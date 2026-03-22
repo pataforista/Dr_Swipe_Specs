@@ -1,9 +1,11 @@
 .app-header {
-  padding: 20px 0;
+  padding: 16px 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  border-bottom: 1px solid var(--border);
+  gap: 12px;
+  border-bottom: 2px solid var(--tertiary);
+  background: linear-gradient(135deg, rgba(152, 216, 200, 0.1) 0%, rgba(155, 223, 244, 0.1) 100%);
+  border-radius: 0 0 16px 16px;
 }
 
 .header-meta {
@@ -14,20 +16,30 @@
 
 .rank-badge {
   background: var(--primary);
-  color: var(--bg-app);
-  padding: 4px 12px;
-  border-radius: 100px;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
   font-weight: 700;
   font-size: 0.75rem;
+  box-shadow: var(--shadow-premium);
+  border: 2px solid white;
+  transform: rotate(-2deg);
 }
 
 .theme-toggle {
-  background: none;
-  border: 1px solid var(--border);
+  background: var(--secondary);
+  border: 2px solid white;
   cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 8px;
+  padding: 6px 10px;
+  border-radius: 12px;
   font-size: 1rem;
+  box-shadow: var(--shadow-premium);
+  transition: transform 0.2s;
+  transform: rotate(1deg);
+}
+
+.theme-toggle:hover {
+  transform: rotate(1deg) scale(1.05);
 }
 
 .patient-summary h2 {
@@ -61,58 +73,91 @@
 }
 
 .stat-pill {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  padding: 8px 16px;
-  border-radius: 12px;
+  background: var(--primary);
+  border: 2px solid white;
+  padding: 10px 18px;
+  border-radius: 16px;
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  gap: 4px;
   align-items: center;
   box-shadow: var(--shadow-premium);
+  flex: 1;
+  text-align: center;
+  transform: rotate(-1deg);
+  transition: transform 0.2s;
+}
+
+.stat-pill:nth-child(2) {
+  background: var(--secondary);
+  transform: rotate(0deg);
+}
+
+.stat-pill:nth-child(3) {
+  background: var(--tertiary);
+  transform: rotate(1deg);
+}
+
+.stat-pill:hover {
+  transform: rotate(var(--rot, -1deg)) scale(1.02);
 }
 
 .stat-pill .label {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  color: var(--text-muted);
+  color: white;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .stat-pill .value {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--primary-dark);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: white;
 }
 
 .ghosted-view {
   text-align: center;
   animation: fadeIn 0.5s ease-out;
+  padding: 40px 20px;
 }
 
 .ghosted-view h1 {
-  font-size: 4rem;
+  font-size: 3rem;
   color: var(--accent-alert);
-  letter-spacing: 4px;
+  letter-spacing: 2px;
   margin-bottom: 20px;
+  font-weight: 900;
 }
 
 .lethal-reason {
   background: var(--accent-alert);
   color: white;
-  padding: 16px;
-  border-radius: 12px;
+  padding: 20px;
+  border-radius: 16px;
   margin-bottom: 32px;
   font-style: italic;
+  border: 2px solid white;
+  box-shadow: var(--shadow-premium);
 }
 
 .btn-retry {
-  background: var(--text-main);
-  color: var(--bg-app);
-  border: none;
-  padding: 12px 32px;
-  border-radius: 12px;
+  background: var(--primary);
+  color: white;
+  border: 2px solid white;
+  padding: 14px 36px;
+  border-radius: 16px;
   font-weight: 700;
   cursor: pointer;
+  box-shadow: var(--shadow-premium);
+  transition: transform 0.2s;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  transform: rotate(-1deg);
+}
+
+.btn-retry:hover {
+  transform: rotate(-1deg) scale(1.05);
 }
 
 @keyframes fadeIn {
@@ -130,69 +175,89 @@
 }
 
 .intake-card {
-  background: var(--bg-card, #111);
-  border: 1px solid var(--border-color, #333);
-  border-radius: 20px;
-  padding: 40px 32px;
+  background: linear-gradient(135deg, rgba(155, 223, 244, 0.2) 0%, rgba(255, 182, 193, 0.2) 100%);
+  border: 3px solid var(--primary);
+  border-radius: 24px;
+  padding: 44px 36px;
   max-width: 420px;
   width: 100%;
   text-align: center;
   animation: fadeIn 0.4s ease;
+  box-shadow: var(--shadow-premium);
+  transform: rotate(-1deg);
 }
 
 .intake-label {
   display: inline-block;
   font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 3px;
-  color: var(--accent-alert, #e53e3e);
-  border: 1px solid var(--accent-alert, #e53e3e);
-  padding: 3px 10px;
-  border-radius: 4px;
+  letter-spacing: 2px;
+  color: white;
+  background: var(--secondary);
+  border: 2px solid white;
+  padding: 5px 12px;
+  border-radius: 12px;
   margin-bottom: 20px;
+  transform: rotate(-1deg);
 }
 
 .intake-patient-name {
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-weight: 900;
   margin-bottom: 12px;
   line-height: 1.1;
+  color: var(--text-main);
 }
 
 .intake-scenario {
-  font-size: 0.9rem;
-  margin-bottom: 8px;
-  line-height: 1.5;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  line-height: 1.6;
+  color: var(--text-muted);
 }
 
 .intake-vitals {
-  margin-bottom: 24px;
+  margin-bottom: 28px;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--primary);
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: var(--text-main);
 }
 
 .btn-start-triage {
-  background: var(--accent-alert, #e53e3e);
+  background: var(--accent-alert);
   color: white;
-  border: none;
-  padding: 14px 40px;
-  border-radius: 12px;
+  border: 2px solid white;
+  padding: 16px 40px;
+  border-radius: 16px;
   font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 2px;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
   text-transform: uppercase;
   cursor: pointer;
   margin-top: 24px;
-  transition: opacity 0.2s;
+  transition: transform 0.2s;
+  box-shadow: var(--shadow-premium);
+  transform: rotate(1deg);
 }
 
 .btn-start-triage:hover {
-  opacity: 0.85;
+  transform: rotate(1deg) scale(1.05);
 }
 
 /* ── Card Critical Badge ─────────────────────────────────────────── */
 .card-critical-badge {
   font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 2px;
-  color: var(--accent-alert, #e53e3e);
+  letter-spacing: 1px;
+  color: white;
+  background: var(--accent-alert);
+  padding: 4px 10px;
+  border-radius: 10px;
   margin-top: 8px;
+  display: inline-block;
+  border: 1px solid white;
 }
