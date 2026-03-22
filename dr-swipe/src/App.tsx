@@ -239,31 +239,29 @@ const TelemetryHUD: React.FC<{
   if (state !== 'triage' && state !== 'boss_fight' && state !== 'urgent_triage') return null;
 
   return (
-    <div className="fixed top-4 left-4 right-4 z-[100] flex items-center justify-between glass-panel p-3 px-6 border-moomin-text/10 shadow-xl bg-white/90 backdrop-blur-md rounded-full">
+    <div className="fixed top-2 left-3 right-3 z-[100] flex items-center justify-between glass-panel p-2 px-4 border-moomin-text/10 shadow-xl bg-white/90 backdrop-blur-md rounded-full">
       {/* Left: Score & Vitality (Life) */}
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-3">
         <div className="flex flex-col">
-          <span className="text-[9px] font-black tracking-[0.3em] text-moomin-muted uppercase leading-none mb-1 text-center">Gestión</span>
-          <div className="flex items-baseline gap-2">
-            <motion.span 
-              key={score}
-              initial={{ scale: 1.2, color: '#87CEEB' }}
-              animate={{ scale: 1, color: '#5C4033' }}
-              className="text-xl font-display font-black leading-none"
-            >
-              {score}
-            </motion.span>
-          </div>
+          <span className="text-[8px] font-black tracking-[0.2em] text-moomin-muted uppercase leading-none mb-0.5">Gestión</span>
+          <motion.span
+            key={score}
+            initial={{ scale: 1.2, color: '#87CEEB' }}
+            animate={{ scale: 1, color: '#5C4033' }}
+            className="text-base font-display font-black leading-none"
+          >
+            {score}
+          </motion.span>
         </div>
 
-        <div className="w-px h-8 bg-moomin-text/5" />
+        <div className="w-px h-6 bg-moomin-text/5" />
 
-        <div className="flex flex-col gap-1 sm:w-32">
-          <span className="text-[8px] font-black tracking-widest text-moomin-muted uppercase leading-none">VITALIDAD</span>
-          <div className="h-2.5 w-full bg-moomin-bg/60 rounded-full overflow-hidden border border-moomin-text/5 shadow-inner">
+        <div className="flex flex-col gap-0.5 w-20">
+          <span className="text-[7px] font-black tracking-widest text-moomin-muted uppercase leading-none">VITALIDAD</span>
+          <div className="h-2 w-full bg-moomin-bg/60 rounded-full overflow-hidden border border-moomin-text/5 shadow-inner">
             <motion.div
               initial={{ width: '100%' }}
-              animate={{ 
+              animate={{
                 width: `${vitality}%`,
                 backgroundColor: vitality > 50 ? '#98D8C8' : vitality > 25 ? '#FFD700' : '#FF9F7F'
               }}
@@ -280,41 +278,27 @@ const TelemetryHUD: React.FC<{
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -20, opacity: 0 }}
-            className={`px-4 py-1.5 rounded-full border-2 text-[11px] font-black italic tracking-widest shadow-sm ${
-              combo >= 15 ? 'bg-moomin-accent/10 border-moomin-accent text-moomin-accent' : 
-              combo >= 10 ? 'bg-orange-100 border-orange-400 text-orange-600' : 
+            className={`px-3 py-1 rounded-full border-2 text-[10px] font-black tracking-widest shadow-sm ${
+              combo >= 15 ? 'bg-moomin-accent/10 border-moomin-accent text-moomin-accent' :
+              combo >= 10 ? 'bg-orange-100 border-orange-400 text-orange-600' :
               'bg-moomin-primary/10 border-moomin-primary text-moomin-primary'
             }`}
           >
-            APILADO x{combo}
+            x{combo}
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Right: Timer & Info */}
-      <div className="flex items-center gap-6">
-        <div className="hidden sm:flex items-center gap-2">
-           <div className="flex flex-col text-right">
-            <span className="text-[8px] font-black tracking-widest text-moomin-muted uppercase leading-none">PULSO</span>
-            <span className="text-sm font-black text-moomin-text leading-none">{pulse}</span>
-          </div>
-          <motion.span 
-            animate={{ scale: [1, 1.2, 1] }} 
-            transition={{ duration: 0.8, repeat: Infinity }}
-            className="text-xl"
-          >
-            💓
-          </motion.span>
-        </div>
-
-        <div className="flex items-center gap-3 bg-moomin-bg/40 px-4 py-1.5 rounded-full border border-moomin-text/5">
+      {/* Right: Timer */}
+      <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 bg-moomin-bg/40 px-3 py-1 rounded-full border border-moomin-text/5">
           <div className="flex flex-col text-right">
-            <span className="text-[8px] font-black tracking-widest text-moomin-muted uppercase leading-none">TIEMPO</span>
-            <span className={`text-lg font-mono font-black leading-none ${timeLeft <= 10 ? 'text-moomin-accent animate-pulse' : 'text-moomin-text'}`}>
+            <span className="text-[7px] font-black tracking-widest text-moomin-muted uppercase leading-none">TIEMPO</span>
+            <span className={`text-sm font-mono font-black leading-none ${timeLeft <= 10 ? 'text-moomin-accent animate-pulse' : 'text-moomin-text'}`}>
               0:{timeLeft.toString().padStart(2, '0')}
             </span>
           </div>
-          <div className={`w-2.5 h-2.5 rounded-full ${timeLeft <= 10 ? 'bg-moomin-accent animate-ping' : 'bg-moomin-primary'}`} />
+          <div className={`w-2 h-2 rounded-full ${timeLeft <= 10 ? 'bg-moomin-accent animate-ping' : 'bg-moomin-primary'}`} />
         </div>
       </div>
     </div>
@@ -1204,8 +1188,8 @@ function App() {
   };
 
   return (
-    <div className={`fixed inset-0 bg-moomin-bg flex flex-col items-center safe-top safe-bottom select-none overflow-hidden text-moomin-text 
-      ${timeLeft <= 10 && state.matches('triage') ? 'destabilized-content' : ''} 
+    <div className={`fixed inset-0 bg-moomin-bg flex flex-col items-center select-none overflow-hidden text-moomin-text pt-14
+      ${timeLeft <= 10 && state.matches('triage') ? 'destabilized-content' : ''}
       ${swipeFeedback === 'wrong' ? 'shake-lite' : ''}
       ${state.context.combo >= 15 ? 'combo-glow-3' : (state.context.combo >= 10 ? 'combo-glow-2' : (state.context.combo >= 5 ? 'combo-glow-1' : ''))}
     `}>
