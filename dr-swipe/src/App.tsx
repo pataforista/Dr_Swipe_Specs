@@ -995,7 +995,11 @@ function App() {
               >
                 GHOSTED
               </motion.h2>
-              <div className="absolute top-0 left-0 w-full h-full bg-medical-danger opacity-20 animate-pulse blur-2xl" />
+              <motion.div
+                className="absolute top-0 left-0 w-full h-full bg-medical-danger opacity-10"
+                animate={{ opacity: [0, 0.15, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
             </div>
 
             <motion.div
