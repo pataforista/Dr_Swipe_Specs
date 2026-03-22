@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.95);
+  background: linear-gradient(135deg, rgba(255, 159, 127, 0.15) 0%, rgba(255, 182, 193, 0.15) 100%);
   padding: 24px;
   overflow: hidden;
 }
@@ -14,7 +14,7 @@
 .alarm-hue {
   position: absolute;
   inset: 0;
-  background-color: #ff0000;
+  background-color: transparent;
   pointer-events: none;
   z-index: 1;
 }
@@ -23,41 +23,45 @@
   position: relative;
   z-index: 10;
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .alarm-title {
-  color: #ff4d4d;
+  color: var(--accent-alert);
   font-weight: 900;
   letter-spacing: 2px;
   text-transform: uppercase;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   animation: pulse 1s infinite;
 }
 
 .heartbeat-indicator {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   align-items: center;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 .timer-display {
-  color: white;
+  color: var(--accent-alert);
   font-family: 'Courier New', Courier, monospace;
-  font-size: 4rem;
-  font-weight: 700;
+  font-size: 3.5rem;
+  font-weight: 900;
   margin: 0;
 }
 
 .heartbeat-counter {
-  color: #fbbf24;
+  color: var(--secondary);
   font-family: 'Courier New', Courier, monospace;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 1px;
   animation: heartbeat-pulse 0.5s ease-in-out;
+  background: rgba(255, 182, 193, 0.3);
+  padding: 6px 16px;
+  border-radius: 10px;
+  border: 2px solid var(--secondary);
 }
 
 @keyframes heartbeat-pulse {
@@ -69,51 +73,67 @@
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 400px;
-  background-color: #1a1a1a;
-  border: 2px solid #ff4d4d;
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 0 30px rgba(255, 77, 77, 0.3);
+  max-width: 380px;
+  background: linear-gradient(135deg, #FFFCF9 0%, rgba(255, 212, 229, 0.2) 100%);
+  border: 3px solid var(--accent-alert);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 8px 20px rgba(255, 159, 127, 0.2);
+  transform: rotate(0.5deg);
 }
 
 .step-indicator {
-  color: #888;
-  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-size: 0.75rem;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .question-text {
-  color: white;
-  font-size: 1.25rem;
-  font-weight: 600;
+  color: var(--text-main);
+  font-size: 1.15rem;
+  font-weight: 700;
   margin-bottom: 24px;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .options-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .option-btn {
-  background-color: #262626;
-  border: 1px solid #404040;
-  color: #e5e5e5;
-  padding: 16px;
+  background-color: white;
+  border: 2px solid var(--primary);
+  color: var(--text-main);
+  padding: 14px 16px;
   text-align: left;
-  border-radius: 8px;
-  font-size: 1rem;
+  border-radius: 14px;
+  font-size: 0.95rem;
   cursor: pointer;
   transition: all 0.2s;
+  font-weight: 600;
+  transform: rotate(-0.5deg);
+}
+
+.option-btn:nth-child(even) {
+  border-color: var(--secondary);
+  transform: rotate(0.5deg);
 }
 
 .option-btn:hover {
-  background-color: #ff4d4d;
+  background-color: var(--primary);
   color: white;
-  border-color: #ff4d4d;
+  border-color: white;
+  transform: rotate(-0.5deg) scale(1.02);
+}
+
+.option-btn:nth-child(even):hover {
+  background-color: var(--secondary);
+  transform: rotate(0.5deg) scale(1.02);
 }
 
 .option-btn:active {
@@ -123,17 +143,18 @@
 .dossier-preview {
   position: relative;
   z-index: 10;
-  margin-top: 40px;
+  margin-top: 32px;
   width: 100%;
-  max-width: 400px;
+  max-width: 380px;
 }
 
 .dossier-label {
-  color: #666;
-  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  font-weight: 700;
 }
 
 .dossier-pills {
@@ -143,11 +164,15 @@
 }
 
 .dossier-pill {
-  background-color: #333;
-  color: #ccc;
-  padding: 4px 10px;
-  border-radius: 4px;
-  font-size: 0.7rem;
+  background-color: var(--primary);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 10px;
+  font-size: 0.65rem;
+  border: 1px solid white;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 @keyframes pulse {

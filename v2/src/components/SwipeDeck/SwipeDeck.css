@@ -5,23 +5,36 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .swipe-card {
   position: absolute;
-  width: 300px;
-  height: 400px;
-  background-color: var(--surface);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-premium);
-  border: 1px solid var(--border);
-  padding: 32px;
+  width: 280px;
+  height: 380px;
+  background: linear-gradient(135deg, rgba(252, 248, 249, 0.95) 0%, rgba(255, 252, 249, 0.95) 100%);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(92, 64, 51, 0.1), 0 2px 4px rgba(92, 64, 51, 0.05);
+  border: 2px solid white;
+  padding: 28px;
   cursor: grab;
   user-select: none;
   touch-action: none;
   display: flex;
   flex-direction: column;
+  transform: rotate(var(--card-rotation, 0deg));
+}
+
+.swipe-card:nth-child(1) {
+  --card-rotation: -2deg;
+}
+
+.swipe-card:nth-child(2) {
+  --card-rotation: 1deg;
+}
+
+.swipe-card:nth-child(3) {
+  --card-rotation: -1deg;
 }
 
 .swipe-card:active {
@@ -29,36 +42,47 @@
 }
 
 .card-category {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--primary-dark);
+  color: white;
   letter-spacing: 1px;
-  margin-bottom: 16px;
-  display: block;
+  margin-bottom: 14px;
+  display: inline-block;
+  background: var(--primary);
+  padding: 4px 10px;
+  border-radius: 10px;
+  border: 1px solid white;
+  width: fit-content;
 }
 
 .card-text {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   line-height: 1.5;
   color: var(--text-main);
   flex-grow: 1;
+  font-weight: 600;
 }
 
 .card-payload {
   margin-top: 16px;
   display: flex;
   align-items: baseline;
-  gap: 4px;
+  gap: 6px;
+  background: rgba(152, 216, 200, 0.15);
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--tertiary);
 }
 
 .card-payload .value {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--primary-dark);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--text-main);
 }
 
 .card-payload .unit {
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
+  font-weight: 600;
 }
