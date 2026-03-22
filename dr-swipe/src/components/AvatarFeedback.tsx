@@ -64,7 +64,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.92 }}
             transition={{ duration: 0.35, ease: [0.34, 1.56, 0.64, 1] }}
-            className="flex flex-col items-center gap-3 py-2 relative"
+            className="flex flex-col items-center gap-1 py-0 relative"
           >
             {/* Ambient Glow Ring */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -80,7 +80,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
               key={`avatar-${validExpression}`}
               animate={avatarMotion[validExpression]}
               transition={{ duration: 0.5, ease: 'easeInOut' }}
-              className={`w-20 h-20 glass-panel !rounded-full flex items-center justify-center text-4xl shadow-2xl relative z-10 border-2 ${borderColors[validExpression]}`}
+              className={`w-12 h-12 glass-panel !rounded-full flex items-center justify-center text-2xl shadow-2xl relative z-10 border-2 ${borderColors[validExpression]}`}
               style={{ filter: expressionFilters[validExpression] }}
             >
               {mentorIcons[validDoctor]}
@@ -98,7 +98,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
             </motion.div>
 
             {/* Dialogue Bubble */}
-            <div className="h-20 flex flex-col items-center relative z-20">
+            <div className="h-14 flex flex-col items-center relative z-20">
               <AnimatePresence mode="wait">
                 {dialogueText && (
                   <motion.div

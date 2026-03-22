@@ -1311,7 +1311,7 @@ function App() {
       )}
       
       {/* Mentor Feedback Area */}
-      <div className="w-full flex justify-center z-[60] pointer-events-none mb-4">
+      <div className="w-full flex justify-center z-[60] pointer-events-none mb-1">
         <ErrorBoundary fallback={<div className="h-40 flex items-center justify-center text-red-400 font-bold bg-red-400/10 rounded-xl border border-red-400/20 px-8">Error en Feedback del Mentor</div>}>
           <AvatarFeedback 
             doctor={currentCase ? (currentCase.case_id.toLowerCase().includes('ped') ? 'castillo' : (currentCase.case_id.toLowerCase().includes('surg') ? 'mendoza' : 'navarro')) : 'navarro'} 
