@@ -61,6 +61,7 @@ interface GameContext {
   // Shift (Guardia) context
   totalCasesInShift: number;
   casesCompleted: number;
+  lives: number; // Number of interns left (max 5)
 }
 
 type GameEvent =
@@ -84,6 +85,7 @@ type GameEvent =
   | { type: 'USE_LIFELINE' }
   | { type: 'APPLY_REWARD_HEAL'; value: number }
   | { type: 'CONTINUE_SHIFT'; deck: Card[]; puzzle: any } // deck of the NEXT case
+  | { type: 'RESCUE' }
   | { type: 'CLEAR_MILESTONE' };
 
 export const gameMachine = setup({
@@ -300,7 +302,8 @@ export const gameMachine = setup({
     activeEvent: null,
     feedbackHistory: [],
     totalCasesInShift: 1,
-    casesCompleted: 0
+    casesCompleted: 0,
+    lives: 5
   },
   states: {
     idle: {
@@ -339,7 +342,8 @@ export const gameMachine = setup({
             lootBoxReward: null,
             feedbackHistory: [],
             totalCasesInShift: 3, // Default to 3 cases for a full shift
-            casesCompleted: 0
+            casesCompleted: 0,
+            lives: 5
           })
         }
       }
@@ -351,10 +355,10 @@ export const gameMachine = setup({
           guard: ({ context }) => context.interruptionActive
         },
         {
-          target: 'ghosted',
+          target: 'fail_protection',
           guard: ({ context }) => context.vitality <= 0,
           actions: assign({
-            fatalError: () => "VITALIDAD AGOTADA: El paciente ha sucumbido por errores técnicos acumulados."
+            fatalError: () => "VITALIDAD AGOTADA: El paciente se ha desestabilizado."
           })
         },
         {
@@ -368,10 +372,9 @@ export const gameMachine = setup({
           actions: ['handleCardSwipe']
         },
         TIME_OUT: {
-          target: 'ghosted',
+          target: 'fail_protection',
           actions: assign({
             fatalError: () => "Tiempo agotado. El paciente se desestabilizó.",
-            caseStreak: 0
           })
         },
         TRIGGER_URGENCY: {
@@ -422,8 +425,8 @@ export const gameMachine = setup({
           actions: ['handleCardSwipe', assign({ isUrgent: false })]
         },
         TIME_OUT: {
-          target: 'ghosted',
-          actions: assign({ fatalError: () => "Código Rojo Fallido: El paciente no resistió.", caseStreak: 0 })
+          target: 'fail_protection',
+          actions: assign({ fatalError: () => "Código Rojo Fallido: El paciente no resistió." })
         }
       }
     },
@@ -462,7 +465,7 @@ export const gameMachine = setup({
           })
         },
         ANSWER_WRONG: {
-          target: 'ghosted',
+          target: 'fail_protection',
           actions: assign({
             fatalError: ({ event }) => event.type === 'ANSWER_WRONG' ? event.error : "Error en Shock Room",
             caseStreak: 0,
@@ -474,7 +477,7 @@ export const gameMachine = setup({
       after: {
         5000: {
           guard: ({ context }) => context.qteActive && context.qteTimeLeft <= 0,
-          target: 'ghosted',
+          target: 'fail_protection',
           actions: assign({
             fatalError: () => "QTE Fallido: El paciente se desestabilizó.",
             caseStreak: 0,
@@ -515,6 +518,26 @@ export const gameMachine = setup({
           })
         },
         RESTART: { target: 'idle', actions: ['resetGame'] } 
+      }
+    },
+    fail_protection: {
+      always: [
+        {
+          target: 'ghosted',
+          guard: ({ context }) => context.lives <= 1
+        }
+      ],
+      on: {
+        RESCUE: {
+          target: 'triage',
+          actions: assign({
+            lives: ({ context }) => context.lives - 1,
+            vitality: 100,
+            currentCardIndex: 0, // Restart current case cards for learning
+            caseStreak: 0
+          })
+        },
+        RESTART: { target: 'idle', actions: ['resetGame'] }
       }
     },
     ghosted: {

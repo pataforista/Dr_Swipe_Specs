@@ -13,7 +13,7 @@ import { triggerHaptic } from './utils/hapticFeedback';
 import { calculatePerfectRoundBonus, getDailyStreakMultiplier } from './utils/scoringEngine';
 import { LIFELINE_COST } from './store/useCodexStore';
 import ErrorBoundary from './components/ErrorBoundary';
-import { useCodexStore, type SessionProgress } from './store/useCodexStore';
+import { useCodexStore } from './store/useCodexStore';
 import { TutorialOverlay } from './components/TutorialOverlay';
 import { StatsDashboard } from './components/StatsDashboard';
 import { RetrospectiveView } from './components/RetrospectiveView';
@@ -219,6 +219,69 @@ const EventOverlay: React.FC<{
   );
 };
 
+const FailProtectionOverlay: React.FC<{ 
+  error: string; 
+  livesRemaining: number; 
+  onRescue: () => void;
+  onRestart: () => void;
+}> = ({ error, livesRemaining, onRescue, onRestart }) => {
+  return (
+    <div className="fixed inset-0 flex flex-col items-center justify-center z-[180] p-6">
+      <motion.div
+        className="absolute inset-0 bg-slate-900/80 backdrop-blur-md"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      />
+      <motion.div
+        initial={{ scale: 0.9, y: 20, opacity: 0 }}
+        animate={{ scale: 1, y: 0, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        className="glass-panel p-10 max-w-md w-full text-center border-moomin-accent/40 shadow-2xl bg-white relative overflow-hidden"
+      >
+        <div className="absolute top-0 left-0 w-full h-2 bg-moomin-accent/20" />
+        
+        <div className="text-6xl mb-6">🚑</div>
+        
+        <span className="text-[10px] font-black tracking-[0.5em] text-moomin-accent uppercase block mb-2">INCIDENTE CRÍTICO</span>
+        <h3 className="text-2xl font-display font-black text-moomin-text mb-4 mt-2 leading-tight">INTERNO RELEVADO</h3>
+        
+        <div className="bg-moomin-accent/5 rounded-2xl p-6 mb-8 border border-moomin-accent/10 text-left">
+          <p className="text-xs font-black text-moomin-accent uppercase tracking-widest mb-2">MOTIVO DEL RELEVO:</p>
+          <p className="text-sm font-medium text-moomin-text italic leading-relaxed">"{error}"</p>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <button
+            onClick={onRescue}
+            className="btn-primary w-full py-5 text-lg flex flex-col items-center justify-center gap-1 shadow-[0_6px_0_rgba(135,206,235,0.3)]"
+          >
+            <span className="text-sm font-black tracking-widest">LLAMAR REFUERZO</span>
+            <span className="text-[10px] opacity-70">QUEDAN {livesRemaining - 1} INTERNOS DISPONIBLES</span>
+          </button>
+          
+          <button
+            onClick={onRestart}
+            className="text-[11px] font-black text-moomin-muted hover:text-moomin-accent uppercase tracking-[0.3em] py-2 transition-colors"
+          >
+            Finalizar Guardia
+          </button>
+        </div>
+
+        {/* Intern icons representation */}
+        <div className="mt-8 pt-6 border-t border-slate-100 flex justify-center gap-3">
+            {[...Array(5)].map((_, i) => (
+                <div 
+                    key={i}
+                    className={`w-3 h-3 rounded-full ${i < livesRemaining ? 'bg-moomin-primary' : 'bg-slate-200'} ${i === livesRemaining - 1 ? 'animate-pulse' : ''}`}
+                />
+            ))}
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
 
 const TelemetryHUD: React.FC<{ 
   timeLeft: number; 
@@ -226,16 +289,8 @@ const TelemetryHUD: React.FC<{
   score: number;
   combo: number;
   vitality: number;
-}> = ({ timeLeft, state, score, combo, vitality }) => {
-  const [pulse, setPulse] = useState(72);
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPulse(p => p + (Math.random() > 0.5 ? 2 : -2));
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-
+  lives: number;
+}> = ({ timeLeft, state, score, combo, vitality, lives }) => {
   if (state !== 'triage' && state !== 'boss_fight' && state !== 'urgent_triage') return null;
 
   return (
@@ -268,6 +323,26 @@ const TelemetryHUD: React.FC<{
               className="h-full transition-colors duration-500"
             />
           </div>
+        </div>
+      </div>
+
+      {/* Interns (Lives) display */}
+      <div className="flex items-center gap-1.5 ml-4">
+        <div className="flex flex-col items-center mr-2">
+            <span className="text-[7px] font-black text-moomin-muted tracking-widest uppercase">Internos</span>
+            <div className="flex gap-1 items-center">
+                {[...Array(5)].map((_, i) => (
+                    <motion.div 
+                        key={i}
+                        animate={{ 
+                            scale: i < lives ? [1, 1.2, 1] : 1,
+                            opacity: i < lives ? 1 : 0.2,
+                            backgroundColor: i < lives ? '#87CEEB' : '#ccc'
+                        }}
+                        className="w-2.5 h-2.5 rounded-full border border-white shadow-sm"
+                    />
+                ))}
+            </div>
         </div>
       </div>
 
@@ -311,7 +386,7 @@ function App() {
   const [state, send] = useMachine(gameMachine);
   const { playGhosted, startAlarm, stopAlarm } = useGameAudio();
   const [currentCase, setCurrentCase] = useState<ClinicalCase | null>(null);
-  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, stats, dailyStreak, sessionProgress } = useCodexStore();
+  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, clearSessionProgress, stats, dailyStreak } = useCodexStore();
   // Stores the calculated time limit so timer bar uses consistent denominator
   const timeLimitRef = useRef<number>(60);
   // Stores the precomputed shuffled deck for when intro → START_GUARD
@@ -333,7 +408,6 @@ function App() {
   // Retrospective view toggle
   const [showRetro, setShowRetro] = useState(false);
   const [caseQueue, setCaseQueue] = useState<ClinicalCase[]>([]);
-  const [isShiftMode, setIsShiftMode] = useState(false);
   const [rewardToast, setRewardToast] = useState<{ show: boolean; text: string; type: 'coins' | 'xp' | 'milestone' }>({
     show: false,
     text: '',
@@ -364,27 +438,7 @@ function App() {
     }
   }, [currentCase]);
 
-  // Auto-save session progress every second during active gameplay
-  useEffect(() => {
-    const isActiveGame = state.matches('triage') || state.matches('urgent_triage') || state.matches('boss_fight');
 
-    if (isActiveGame && currentCase) {
-      const sessionProgress: SessionProgress = {
-        caseId: currentCase.case_id,
-        currentCardIndex: state.context.currentCardIndex,
-        score: state.context.score,
-        combo: state.context.combo,
-        multiplier: state.context.multiplier,
-        caseStreak: state.context.caseStreak,
-        coinsEarnedThisCase: state.context.coinsEarnedThisCase,
-        mistakesThisCase: state.context.mistakesThisCase,
-        warningCount: state.context.warningCount,
-        difficulty: state.context.difficulty,
-        savedAt: Date.now()
-      };
-      saveSessionProgress(sessionProgress);
-    }
-  }, [state.context, state.value, currentCase, saveSessionProgress]);
 
   // Clear session progress when game ends (reward or ghosted)
   useEffect(() => {
@@ -504,7 +558,6 @@ function App() {
     setShowMilestoneCelebration(0);
     setLoadError(null);
     setIsLoadingCase(true);
-    setIsShiftMode(isFullShift);
     incrementSessions();
     updateDailyStreak();
     
@@ -1217,6 +1270,7 @@ function App() {
         score={state.context.score}
         combo={state.context.combo}
         vitality={state.context.vitality}
+        lives={state.context.lives}
       />
 
       {/* Vazquez Interruption */}
@@ -1398,6 +1452,17 @@ function App() {
             onAccept={() => {
               send({ type: 'CLEAR_OVERLAYS' });
             }}
+          />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {state.matches('fail_protection') && (
+          <FailProtectionOverlay 
+            error={state.context.fatalError || "Error Clínico Crítico"}
+            livesRemaining={state.context.lives}
+            onRescue={() => send({ type: 'RESCUE' })}
+            onRestart={() => send({ type: 'RESTART' })}
           />
         )}
       </AnimatePresence>

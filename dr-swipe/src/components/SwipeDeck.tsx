@@ -233,7 +233,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
       await controls.start({ x: exitX, opacity: 0, rotate: direction === 'right' ? 60 : -60, transition: { duration: 0.3 } });
       onSwipe(direction);
     } else {
-      controls.start({ x: 0, y: 0, rotate: 0, scale: 1, transition: { type: 'spring', stiffness: 500, damping: 35 } });
+      controls.start({ x: 0, y: 0, rotate: 0, scale: 1, transition: { type: 'spring', stiffness: 600, damping: 30 } });
     }
   };
 
@@ -251,7 +251,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
       }}
       drag={isTop && !isLocked ? "x" : false}
       dragConstraints={{ left: -500, right: 500 }}
-      dragElastic={0.3}
+      dragElastic={0.6}
       onDragEnd={handleDragEnd}
       initial={isTop ? { opacity: 0, scale: 0.95, y: 30 } : false}
       animate={isTop ? controls : undefined}
