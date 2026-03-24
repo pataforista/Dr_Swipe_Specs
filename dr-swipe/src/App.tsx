@@ -294,86 +294,85 @@ const TelemetryHUD: React.FC<{
   if (state !== 'triage' && state !== 'boss_fight' && state !== 'urgent_triage') return null;
 
   return (
-    <div className="fixed top-2 left-3 right-3 z-[100] flex items-center justify-between glass-panel p-2 px-4 border-moomin-text/10 shadow-xl bg-white/90 backdrop-blur-md rounded-full">
-      {/* Left: Score & Vitality (Life) */}
-      <div className="flex items-center gap-3">
-        <div className="flex flex-col">
-          <span className="text-[8px] font-black tracking-[0.2em] text-moomin-muted uppercase leading-none mb-0.5">Gestión</span>
+    <div className="fixed top-4 left-4 right-4 z-[100] flex items-center justify-between glass-panel p-3 px-5 border-moomin-text/10 shadow-xl bg-white/90 backdrop-blur-md rounded-2xl">
+      {/* Left: Score & Vitality (Life) - Better spacing to avoid overlap */}
+      <div className="flex items-center gap-5 flex-1">
+        <div className="flex flex-col gap-1 min-w-fit">
+          <span className="text-[7px] font-black tracking-[0.3em] text-moomin-muted uppercase leading-none">Pts</span>
           <motion.span
             key={score}
             initial={{ scale: 1.2, color: '#87CEEB' }}
             animate={{ scale: 1, color: '#5C4033' }}
-            className="text-base font-display font-black leading-none"
+            className="text-lg font-display font-black leading-none"
           >
             {score}
           </motion.span>
         </div>
 
-        <div className="w-px h-6 bg-moomin-text/5" />
+        <div className="w-px h-8 bg-moomin-text/10" />
 
-        <div className="flex flex-col gap-0.5 w-20">
-          <span className="text-[7px] font-black tracking-widest text-moomin-muted uppercase leading-none">VITALIDAD</span>
-          <div className="h-2 w-full bg-moomin-bg/60 rounded-full overflow-hidden border border-moomin-text/5 shadow-inner">
+        <div className="flex flex-col gap-1 flex-1 min-w-[120px]">
+          <span className="text-[7px] font-black tracking-[0.3em] text-moomin-muted uppercase leading-none">Salud</span>
+          <div className="h-2.5 w-full bg-moomin-bg/60 rounded-full overflow-hidden border border-moomin-text/10 shadow-inner">
             <motion.div
               initial={{ width: '100%' }}
               animate={{
                 width: `${vitality}%`,
-                backgroundColor: vitality > 50 ? '#98D8C8' : vitality > 25 ? '#FFD700' : '#FF9F7F'
+                backgroundColor: vitality > 60 ? '#98D8C8' : vitality > 30 ? '#FFD700' : '#FF9F7F'
               }}
               className="h-full transition-colors duration-500"
             />
           </div>
+          <span className="text-[7px] text-moomin-muted/50 font-black">{vitality}%</span>
         </div>
       </div>
 
-      {/* Interns (Lives) display */}
-      <div className="flex items-center gap-1.5 ml-4">
-        <div className="flex flex-col items-center mr-2">
-            <span className="text-[7px] font-black text-moomin-muted tracking-widest uppercase">Internos</span>
-            <div className="flex gap-1 items-center">
+      {/* Interns (Lives) display - Cleaner layout */}
+      <div className="flex items-center gap-3 ml-2">
+        <div className="flex flex-col items-center gap-1">
+            <span className="text-[7px] font-black text-moomin-muted tracking-[0.3em] uppercase">Equipo</span>
+            <div className="flex gap-1.5 items-center">
                 {[...Array(5)].map((_, i) => (
-                    <motion.div 
+                    <motion.div
                         key={i}
-                        animate={{ 
-                            scale: i < lives ? [1, 1.2, 1] : 1,
-                            opacity: i < lives ? 1 : 0.2,
+                        animate={{
+                            scale: i < lives ? 1 : 0.7,
+                            opacity: i < lives ? 1 : 0.3,
                             backgroundColor: i < lives ? '#87CEEB' : '#ccc'
                         }}
-                        className="w-2.5 h-2.5 rounded-full border border-white shadow-sm"
+                        className="w-2 h-2 rounded-full border border-white shadow-sm"
                     />
                 ))}
             </div>
         </div>
       </div>
 
-      {/* Center: Combo Pill (Only if > 1) */}
+      {/* Center: Combo Pill (Only if > 1) - Better visibility */}
       <AnimatePresence>
         {combo > 1 && (
           <motion.div
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -20, opacity: 0 }}
-            className={`px-3 py-1 rounded-full border-2 text-[10px] font-black tracking-widest shadow-sm ${
-              combo >= 15 ? 'bg-moomin-accent/10 border-moomin-accent text-moomin-accent' :
-              combo >= 10 ? 'bg-orange-100 border-orange-400 text-orange-600' :
-              'bg-moomin-primary/10 border-moomin-primary text-moomin-primary'
+            initial={{ y: -15, opacity: 0, scale: 0.9 }}
+            animate={{ y: 0, opacity: 1, scale: 1 }}
+            exit={{ y: -15, opacity: 0, scale: 0.9 }}
+            className={`px-4 py-2 rounded-full border-2 text-[11px] font-black tracking-widest shadow-lg ${
+              combo >= 15 ? 'bg-moomin-accent/15 border-moomin-accent text-moomin-accent animate-pulse' :
+              combo >= 10 ? 'bg-orange-100/80 border-orange-400 text-orange-700 font-black' :
+              'bg-moomin-primary/15 border-moomin-primary text-moomin-primary'
             }`}
           >
-            x{combo}
+            🔥 {combo} ACIERTOS
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Right: Timer */}
-      <div className="flex items-center gap-2">
-        <div className="flex items-center gap-2 bg-moomin-bg/40 px-3 py-1 rounded-full border border-moomin-text/5">
-          <div className="flex flex-col text-right">
-            <span className="text-[7px] font-black tracking-widest text-moomin-muted uppercase leading-none">TIEMPO</span>
-            <span className={`text-sm font-mono font-black leading-none ${timeLeft <= 10 ? 'text-moomin-accent animate-pulse' : 'text-moomin-text'}`}>
-              0:{timeLeft.toString().padStart(2, '0')}
-            </span>
-          </div>
-          <div className={`w-2 h-2 rounded-full ${timeLeft <= 10 ? 'bg-moomin-accent animate-ping' : 'bg-moomin-primary'}`} />
+      {/* Right: Timer - Cleaner, more visible */}
+      <div className="flex items-center gap-2 ml-2">
+        <div className="flex items-center gap-3 bg-moomin-bg/50 px-4 py-2 rounded-full border-2 border-moomin-text/10">
+          <span className="text-[7px] font-black tracking-[0.3em] text-moomin-muted uppercase leading-none">⏱️</span>
+          <span className={`text-base font-mono font-black leading-none tabular-nums ${timeLeft <= 10 ? 'text-moomin-accent animate-pulse' : 'text-moomin-text'}`}>
+            {timeLeft.toString().padStart(2, '0')}s
+          </span>
+          {timeLeft <= 10 && <div className={`w-2 h-2 rounded-full bg-moomin-accent animate-ping`} />}
         </div>
       </div>
     </div>
@@ -594,11 +593,13 @@ function App() {
       setCurrentCase(caseData);
       setCaseQueue(remainingCases);
 
-      // Adaptive Learning Curve
-      let timePerCard = 15; 
-      if (savedStreak >= 6) timePerCard = 8; 
-      else if (savedStreak >= 3) timePerCard = 12; 
-      const timeLimit = Math.max(60, Math.min(180, caseData.card_stream.length * timePerCard));
+      // Adaptive Learning Curve (más suave para permitir aprendizaje)
+      // Progresión: Principiante (18s) → Competente (15s) → Ágil (12s) → Experto (10s)
+      let timePerCard = 18; // Inicio más generoso
+      if (savedStreak >= 8) timePerCard = 10;  // Experto
+      else if (savedStreak >= 6) timePerCard = 12;  // Ágil
+      else if (savedStreak >= 3) timePerCard = 15;  // Competente
+      const timeLimit = Math.max(90, Math.min(180, caseData.card_stream.length * timePerCard));
 
       // Shuffle cards logic
       const fullDeck = [...caseData.card_stream];
@@ -1314,39 +1315,63 @@ function App() {
               />
             ))}
             <motion.span
-              animate={{ scale: [1, 1.08, 1] }}
-              transition={{ duration: 0.6, repeat: 2 }}
-              className="text-5xl font-display font-black text-moomin-text drop-shadow-[0_8px_16px_rgba(0,0,0,0.1)] tracking-tighter relative italic"
+              animate={{ scale: [1, 1.15, 1], y: [0, -10, 0] }}
+              transition={{ duration: 0.7, repeat: 2, type: 'spring' }}
+              className="text-6xl font-display font-black text-moomin-text drop-shadow-[0_12px_20px_rgba(135,206,235,0.3)] tracking-tighter relative italic"
             >
-              {showMilestoneCelebration >= 20 ? '🌈 Leyenda de guardia' : showMilestoneCelebration >= 15 ? '✨ La jefa te sonrió' : showMilestoneCelebration >= 10 ? '🔥 No te mandrakeas' : '⚡ Interno funcional'}
+              {showMilestoneCelebration >= 20 ? '🌈✨ LEYENDA' : showMilestoneCelebration >= 15 ? '⭐✨ SOÑADA' : showMilestoneCelebration >= 10 ? '🔥💪 IMPARABLE' : '⚡ ¡GENIAL!'}
             </motion.span>
             <motion.span
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-lg font-black text-moomin-primary tracking-widest uppercase italic"
+              initial={{ opacity: 0, y: 8, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.3, type: 'spring' }}
+              className="text-2xl font-black text-moomin-accent tracking-widest italic font-display"
             >
-              RACHA x{showMilestoneCelebration}
+              {showMilestoneCelebration} ✨
             </motion.span>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Swipe Status Label - Subtle and brief */}
+      {/* Swipe Status Label - Better visual feedback */}
       <AnimatePresence>
         {swipeFeedback && (
           <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.9 }}
+            initial={{ opacity: 0, y: 40, scale: 0.7 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -15, scale: 0.9 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="fixed top-1/4 left-1/2 -translate-x-1/2 z-[60] pointer-events-none flex flex-col items-center gap-2"
+            exit={{ opacity: 0, y: -20, scale: 0.8 }}
+            transition={{ duration: 0.3, ease: "backOut" }}
+            className="fixed top-1/3 left-1/2 -translate-x-1/2 z-[60] pointer-events-none flex flex-col items-center gap-3"
           >
-            <span className={`text-4xl font-display font-black italic tracking-[0.1em] ${swipeFeedback === 'correct' ? 'text-moomin-primary' : 'text-moomin-accent'} drop-shadow-md`}>
-              {swipeFeedback === 'correct' ? 'CORRECTO' : 'ERROR'}
-            </span>
+            {swipeFeedback === 'correct' ? (
+              <>
+                <motion.span
+                  animate={{ scale: [1, 1.2, 1], rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 0.5 }}
+                  className="text-6xl drop-shadow-[0_10px_15px_rgba(135,206,235,0.4)]"
+                >
+                  ✨
+                </motion.span>
+                <span className="text-5xl font-display font-black italic text-moomin-primary drop-shadow-lg tracking-tighter">
+                  CORRECTO
+                </span>
+              </>
+            ) : (
+              <>
+                <motion.span
+                  animate={{ scale: [1, 1.1, 1], shake: [0, -5, 5, 0] }}
+                  transition={{ duration: 0.5 }}
+                  className="text-6xl drop-shadow-[0_10px_15px_rgba(255,159,127,0.4)]"
+                >
+                  ⚠️
+                </motion.span>
+                <span className="text-4xl font-display font-black italic text-moomin-accent drop-shadow-lg tracking-tighter">
+                  REVISÁ
+                </span>
+              </>
+            )}
             {swipeFeedback === 'correct' && (Date.now() - state.context.lastCardPresentedAt < 1200) && (
-              <motion.span 
+              <motion.span
                 initial={{ scale: 0 }}
                 animate={{ scale: [0, 1.2, 1] }}
                 className="text-moomin-secondary font-black text-xl italic tracking-wider drop-shadow-sm"
