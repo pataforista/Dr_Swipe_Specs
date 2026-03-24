@@ -294,86 +294,85 @@ const TelemetryHUD: React.FC<{
   if (state !== 'triage' && state !== 'boss_fight' && state !== 'urgent_triage') return null;
 
   return (
-    <div className="fixed top-2 left-3 right-3 z-[100] flex items-center justify-between glass-panel p-2 px-4 border-moomin-text/10 shadow-xl bg-white/90 backdrop-blur-md rounded-full">
-      {/* Left: Score & Vitality (Life) */}
-      <div className="flex items-center gap-3">
-        <div className="flex flex-col">
-          <span className="text-[8px] font-black tracking-[0.2em] text-moomin-muted uppercase leading-none mb-0.5">Gestión</span>
+    <div className="fixed top-4 left-4 right-4 z-[100] flex items-center justify-between glass-panel p-3 px-5 border-moomin-text/10 shadow-xl bg-white/90 backdrop-blur-md rounded-2xl">
+      {/* Left: Score & Vitality (Life) - Better spacing to avoid overlap */}
+      <div className="flex items-center gap-5 flex-1">
+        <div className="flex flex-col gap-1 min-w-fit">
+          <span className="text-[7px] font-black tracking-[0.3em] text-moomin-muted uppercase leading-none">Pts</span>
           <motion.span
             key={score}
             initial={{ scale: 1.2, color: '#87CEEB' }}
             animate={{ scale: 1, color: '#5C4033' }}
-            className="text-base font-display font-black leading-none"
+            className="text-lg font-display font-black leading-none"
           >
             {score}
           </motion.span>
         </div>
 
-        <div className="w-px h-6 bg-moomin-text/5" />
+        <div className="w-px h-8 bg-moomin-text/10" />
 
-        <div className="flex flex-col gap-0.5 w-20">
-          <span className="text-[7px] font-black tracking-widest text-moomin-muted uppercase leading-none">VITALIDAD</span>
-          <div className="h-2 w-full bg-moomin-bg/60 rounded-full overflow-hidden border border-moomin-text/5 shadow-inner">
+        <div className="flex flex-col gap-1 flex-1 min-w-[120px]">
+          <span className="text-[7px] font-black tracking-[0.3em] text-moomin-muted uppercase leading-none">Salud</span>
+          <div className="h-2.5 w-full bg-moomin-bg/60 rounded-full overflow-hidden border border-moomin-text/10 shadow-inner">
             <motion.div
               initial={{ width: '100%' }}
               animate={{
                 width: `${vitality}%`,
-                backgroundColor: vitality > 50 ? '#98D8C8' : vitality > 25 ? '#FFD700' : '#FF9F7F'
+                backgroundColor: vitality > 60 ? '#98D8C8' : vitality > 30 ? '#FFD700' : '#FF9F7F'
               }}
               className="h-full transition-colors duration-500"
             />
           </div>
+          <span className="text-[7px] text-moomin-muted/50 font-black">{vitality}%</span>
         </div>
       </div>
 
-      {/* Interns (Lives) display */}
-      <div className="flex items-center gap-1.5 ml-4">
-        <div className="flex flex-col items-center mr-2">
-            <span className="text-[7px] font-black text-moomin-muted tracking-widest uppercase">Internos</span>
-            <div className="flex gap-1 items-center">
+      {/* Interns (Lives) display - Cleaner layout */}
+      <div className="flex items-center gap-3 ml-2">
+        <div className="flex flex-col items-center gap-1">
+            <span className="text-[7px] font-black text-moomin-muted tracking-[0.3em] uppercase">Equipo</span>
+            <div className="flex gap-1.5 items-center">
                 {[...Array(5)].map((_, i) => (
-                    <motion.div 
+                    <motion.div
                         key={i}
-                        animate={{ 
-                            scale: i < lives ? [1, 1.2, 1] : 1,
-                            opacity: i < lives ? 1 : 0.2,
+                        animate={{
+                            scale: i < lives ? 1 : 0.7,
+                            opacity: i < lives ? 1 : 0.3,
                             backgroundColor: i < lives ? '#87CEEB' : '#ccc'
                         }}
-                        className="w-2.5 h-2.5 rounded-full border border-white shadow-sm"
+                        className="w-2 h-2 rounded-full border border-white shadow-sm"
                     />
                 ))}
             </div>
         </div>
       </div>
 
-      {/* Center: Combo Pill (Only if > 1) */}
+      {/* Center: Combo Pill (Only if > 1) - Better visibility */}
       <AnimatePresence>
         {combo > 1 && (
           <motion.div
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -20, opacity: 0 }}
-            className={`px-3 py-1 rounded-full border-2 text-[10px] font-black tracking-widest shadow-sm ${
-              combo >= 15 ? 'bg-moomin-accent/10 border-moomin-accent text-moomin-accent' :
-              combo >= 10 ? 'bg-orange-100 border-orange-400 text-orange-600' :
-              'bg-moomin-primary/10 border-moomin-primary text-moomin-primary'
+            initial={{ y: -15, opacity: 0, scale: 0.9 }}
+            animate={{ y: 0, opacity: 1, scale: 1 }}
+            exit={{ y: -15, opacity: 0, scale: 0.9 }}
+            className={`px-4 py-2 rounded-full border-2 text-[11px] font-black tracking-widest shadow-lg ${
+              combo >= 15 ? 'bg-moomin-accent/15 border-moomin-accent text-moomin-accent animate-pulse' :
+              combo >= 10 ? 'bg-orange-100/80 border-orange-400 text-orange-700 font-black' :
+              'bg-moomin-primary/15 border-moomin-primary text-moomin-primary'
             }`}
           >
-            x{combo}
+            🔥 {combo} ACIERTOS
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Right: Timer */}
-      <div className="flex items-center gap-2">
-        <div className="flex items-center gap-2 bg-moomin-bg/40 px-3 py-1 rounded-full border border-moomin-text/5">
-          <div className="flex flex-col text-right">
-            <span className="text-[7px] font-black tracking-widest text-moomin-muted uppercase leading-none">TIEMPO</span>
-            <span className={`text-sm font-mono font-black leading-none ${timeLeft <= 10 ? 'text-moomin-accent animate-pulse' : 'text-moomin-text'}`}>
-              0:{timeLeft.toString().padStart(2, '0')}
-            </span>
-          </div>
-          <div className={`w-2 h-2 rounded-full ${timeLeft <= 10 ? 'bg-moomin-accent animate-ping' : 'bg-moomin-primary'}`} />
+      {/* Right: Timer - Cleaner, more visible */}
+      <div className="flex items-center gap-2 ml-2">
+        <div className="flex items-center gap-3 bg-moomin-bg/50 px-4 py-2 rounded-full border-2 border-moomin-text/10">
+          <span className="text-[7px] font-black tracking-[0.3em] text-moomin-muted uppercase leading-none">⏱️</span>
+          <span className={`text-base font-mono font-black leading-none tabular-nums ${timeLeft <= 10 ? 'text-moomin-accent animate-pulse' : 'text-moomin-text'}`}>
+            {timeLeft.toString().padStart(2, '0')}s
+          </span>
+          {timeLeft <= 10 && <div className={`w-2 h-2 rounded-full bg-moomin-accent animate-ping`} />}
         </div>
       </div>
     </div>

@@ -169,15 +169,17 @@ export const gameMachine = setup({
       );
 
       const nextCombo = isCorrect ? context.combo + 1 : 0;
-      
-      // Vitality Logic: +5 on correct, -20 on wrong
-      const vitalityChange = isCorrect ? 5 : -25;
+
+      // Vitality Logic: +8 on correct, -15 on wrong (more forgiving, rewards learning)
+      // Ratio changed from 5:1 negative to 1.88:1 to prevent frustration while keeping challenge
+      const vitalityChange = isCorrect ? 8 : -15;
       const nextVitality = Math.max(0, Math.min(100, context.vitality + vitalityChange));
 
       // Error Tracking
+      // Changed from 3 to 5 consecutive errors to avoid frustration during learning phase
       const nextConsecutiveErrors = isCorrect ? 0 : context.consecutiveErrors + 1;
       let nextPenalty = context.activePenalty;
-      if (nextConsecutiveErrors >= 3) {
+      if (nextConsecutiveErrors >= 5) {
         nextPenalty = {
           active: true,
           item: penaltyItemsList[Math.floor(Math.random() * penaltyItemsList.length)]
