@@ -593,11 +593,13 @@ function App() {
       setCurrentCase(caseData);
       setCaseQueue(remainingCases);
 
-      // Adaptive Learning Curve
-      let timePerCard = 15; 
-      if (savedStreak >= 6) timePerCard = 8; 
-      else if (savedStreak >= 3) timePerCard = 12; 
-      const timeLimit = Math.max(60, Math.min(180, caseData.card_stream.length * timePerCard));
+      // Adaptive Learning Curve (más suave para permitir aprendizaje)
+      // Progresión: Principiante (18s) → Competente (15s) → Ágil (12s) → Experto (10s)
+      let timePerCard = 18; // Inicio más generoso
+      if (savedStreak >= 8) timePerCard = 10;  // Experto
+      else if (savedStreak >= 6) timePerCard = 12;  // Ágil
+      else if (savedStreak >= 3) timePerCard = 15;  // Competente
+      const timeLimit = Math.max(90, Math.min(180, caseData.card_stream.length * timePerCard));
 
       // Shuffle cards logic
       const fullDeck = [...caseData.card_stream];
@@ -1313,39 +1315,63 @@ function App() {
               />
             ))}
             <motion.span
-              animate={{ scale: [1, 1.08, 1] }}
-              transition={{ duration: 0.6, repeat: 2 }}
-              className="text-5xl font-display font-black text-moomin-text drop-shadow-[0_8px_16px_rgba(0,0,0,0.1)] tracking-tighter relative italic"
+              animate={{ scale: [1, 1.15, 1], y: [0, -10, 0] }}
+              transition={{ duration: 0.7, repeat: 2, type: 'spring' }}
+              className="text-6xl font-display font-black text-moomin-text drop-shadow-[0_12px_20px_rgba(135,206,235,0.3)] tracking-tighter relative italic"
             >
-              {showMilestoneCelebration >= 20 ? '🌈 Leyenda de guardia' : showMilestoneCelebration >= 15 ? '✨ La jefa te sonrió' : showMilestoneCelebration >= 10 ? '🔥 No te mandrakeas' : '⚡ Interno funcional'}
+              {showMilestoneCelebration >= 20 ? '🌈✨ LEYENDA' : showMilestoneCelebration >= 15 ? '⭐✨ SOÑADA' : showMilestoneCelebration >= 10 ? '🔥💪 IMPARABLE' : '⚡ ¡GENIAL!'}
             </motion.span>
             <motion.span
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-lg font-black text-moomin-primary tracking-widest uppercase italic"
+              initial={{ opacity: 0, y: 8, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.3, type: 'spring' }}
+              className="text-2xl font-black text-moomin-accent tracking-widest italic font-display"
             >
-              RACHA x{showMilestoneCelebration}
+              {showMilestoneCelebration} ✨
             </motion.span>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Swipe Status Label - Subtle and brief */}
+      {/* Swipe Status Label - Better visual feedback */}
       <AnimatePresence>
         {swipeFeedback && (
           <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.9 }}
+            initial={{ opacity: 0, y: 40, scale: 0.7 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -15, scale: 0.9 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="fixed top-1/4 left-1/2 -translate-x-1/2 z-[60] pointer-events-none flex flex-col items-center gap-2"
+            exit={{ opacity: 0, y: -20, scale: 0.8 }}
+            transition={{ duration: 0.3, ease: "backOut" }}
+            className="fixed top-1/3 left-1/2 -translate-x-1/2 z-[60] pointer-events-none flex flex-col items-center gap-3"
           >
-            <span className={`text-4xl font-display font-black italic tracking-[0.1em] ${swipeFeedback === 'correct' ? 'text-moomin-primary' : 'text-moomin-accent'} drop-shadow-md`}>
-              {swipeFeedback === 'correct' ? 'CORRECTO' : 'ERROR'}
-            </span>
+            {swipeFeedback === 'correct' ? (
+              <>
+                <motion.span
+                  animate={{ scale: [1, 1.2, 1], rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 0.5 }}
+                  className="text-6xl drop-shadow-[0_10px_15px_rgba(135,206,235,0.4)]"
+                >
+                  ✨
+                </motion.span>
+                <span className="text-5xl font-display font-black italic text-moomin-primary drop-shadow-lg tracking-tighter">
+                  CORRECTO
+                </span>
+              </>
+            ) : (
+              <>
+                <motion.span
+                  animate={{ scale: [1, 1.1, 1], shake: [0, -5, 5, 0] }}
+                  transition={{ duration: 0.5 }}
+                  className="text-6xl drop-shadow-[0_10px_15px_rgba(255,159,127,0.4)]"
+                >
+                  ⚠️
+                </motion.span>
+                <span className="text-4xl font-display font-black italic text-moomin-accent drop-shadow-lg tracking-tighter">
+                  REVISÁ
+                </span>
+              </>
+            )}
             {swipeFeedback === 'correct' && (Date.now() - state.context.lastCardPresentedAt < 1200) && (
-              <motion.span 
+              <motion.span
                 initial={{ scale: 0 }}
                 animate={{ scale: [0, 1.2, 1] }}
                 className="text-moomin-secondary font-black text-xl italic tracking-wider drop-shadow-sm"
