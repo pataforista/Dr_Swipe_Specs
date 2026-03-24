@@ -186,9 +186,10 @@ export const gameMachine = setup({
         };
       }
 
-      // Loot Box logic: Trigger every 10 combo hits
+      // Loot Box logic: Trigger every 8 combo hits (más frecuente para permitir recuperación)
+      // Cambio: 10 → 8 para dar más oportunidades de curación y motivar racha positiva
       let nextLootBox = context.lootBoxReward;
-      if (isCorrect && nextCombo > 0 && nextCombo % 10 === 0) {
+      if (isCorrect && nextCombo > 0 && nextCombo % 8 === 0) {
         nextLootBox = {
           active: true,
           item: rewardItemsList[Math.floor(Math.random() * rewardItemsList.length)]
@@ -210,11 +211,12 @@ export const gameMachine = setup({
         }
       }
 
-      // Check for interruption trigger (combo >= 3 and 15% chance)
+      // Check for interruption trigger (combo >= 5 y 8% chance para menos disrupción)
+      // Cambio: Combo >= 3 → 5, Chance 15% → 8% para mantener el flow del jugador
       let shouldTriggerInterruption = false;
-      if (isCorrect && nextCombo >= 3 && Math.random() < 0.15) {
+      if (isCorrect && nextCombo >= 5 && Math.random() < 0.08) {
         const timeSinceLastInterruption = Date.now() - context.lastInterruptionAt;
-        if (timeSinceLastInterruption > 30000) { // No more than one interruption per 30 seconds
+        if (timeSinceLastInterruption > 45000) { // Increased cooldown from 30s to 45s
           shouldTriggerInterruption = true;
         }
       }

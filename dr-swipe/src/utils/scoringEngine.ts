@@ -22,9 +22,10 @@ export interface ScoreBreakdown {
 /**
  * Coin thresholds for combo milestones.
  * Reaching these combo counts awards bonus coins.
+ * Reducido de [5,10,15,20] a [5,8,12,16] para celebraciones más frecuentes
  */
-export const COMBO_MILESTONES = [5, 10, 15, 20] as const;
-export const COMBO_MILESTONE_COINS = { 5: 5, 10: 15, 15: 30, 20: 50 } as const;
+export const COMBO_MILESTONES = [5, 8, 12, 16, 20] as const;
+export const COMBO_MILESTONE_COINS = { 5: 8, 8: 15, 12: 25, 16: 40, 20: 60 } as const;
 
 /**
  * Calculate bonus coins for perfect round (zero mistakes across all cards).
