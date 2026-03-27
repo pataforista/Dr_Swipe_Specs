@@ -13,24 +13,24 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 120/80, FC 100 lpm, Temp 38.3°C",
+      "card_text": "Evidencia clínica: Ruido en el expediente: TA 120/80, FC 100 lpm, Temp 38.3°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en estos signos de fiebre, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de fiebre, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Apendicectomía (Sin necesidad de imagen extra): En hombres adultos con Alvarado ≥8, la probabilidad es >95%. Indicación quirúrgica directa.",
+      "card_text": "Evidencia clínica: A) Apendicectomía (Sin necesidad de imagen extra): En hombres adultos con Alvarado â‰¥8, la probabilidad es >95%. Indicación quirúrgica directa.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Correcto! En hombres con cuadro clásico, la cirugía directa es costo-efectiva. En mujeres se prefiere USG inicial."
+        "vazquez_comment": "¡Correcto! En hombres con cuadro clásico, la cirugía directa es costo-efectiva. En mujeres se prefiere USG inicial."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -41,12 +41,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Observación y Antibióticos: No es la conducta estándar ante una sospecha tan alta de apendicitis aguda no complicada.",
+      "card_text": "Evidencia clínica: Ruido en el expediente: B) Observación y Antibióticos: No es la conducta estándar ante una sospecha tan alta de apendicitis aguda no complicada.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: ¡Bien! El manejo expectante en apendicitis confirmada es arriesgado."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! El manejo expectante en apendicitis confirmada es arriesgado."
       },
       "safety_flags": {
         "lethal_risk": false,

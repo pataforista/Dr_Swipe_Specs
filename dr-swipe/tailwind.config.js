@@ -17,13 +17,13 @@ export default {
           glass: 'var(--surface)',
         },
         'moomin': {
-          primary: '#87CEEB',
-          secondary: '#FFB6C1',
-          tertiary: '#98D8C8',
-          accent: '#FF9F7F',
-          bg: '#FFF8F0',
-          text: '#5C4033',
-          muted: '#9D8280',
+          primary: 'var(--primary)',
+          secondary: 'var(--secondary)',
+          tertiary: 'var(--tertiary)',
+          accent: 'var(--accent-alert)',
+          bg: 'var(--bg-app)',
+          text: 'var(--text-main)',
+          muted: 'var(--text-muted)',
         },
         specialty: {
           ped: '#F472B6', // Pink

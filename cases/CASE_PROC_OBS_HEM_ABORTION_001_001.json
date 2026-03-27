@@ -5,7 +5,7 @@
   "difficulty": "standard",
   "patient_intro": {
     "name": "Elena, 19 años",
-    "arrival_scenario": "Paciente con amenorrea de 10 semanas. Presenta sangrado rojo rutilante y expulsión de tejido blanquecino. Útero menor de lo esperado para amenorrea. USG reporta útero con ecos heterogéneos y ausencia de saco gestacional íntegro.",
+    "arrival_scenario": "Paciente con amenorrea de 10 semanas. Presenta sangrado rojo rutilante y expulsión de tejido blanquecino. Ãštero menor de lo esperado para amenorrea. USG reporta útero con ecos heterogéneos y ausencia de saco gestacional íntegro.",
     "time_limit_sec": 60
   },
   "card_stream": [
@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 110/70, FC 90 lpm, Temp 36.8°C",
+      "card_text": "Hallazgo: Información redundante: TA 110/70, FC 90 lpm, Temp 36.8°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Aborto Incompleto: Expulsión parcial de restos. Cérvix abierto + Sangrado persistente + Útero contraído.",
+      "card_text": "Evidencia: A) Aborto Incompleto: Expulsión parcial de restos. Cérvix abierto + Sangrado persistente + Ãštero contraído.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,31 +41,31 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico Diferencial",
-      "card_text": "B) Amenaza de Aborto: Sangrado vaginal SIN modificación cervical (cérvix cerrado) con vitalidad fetal presente por USG.",
+      "card_text": "Información redundante: B) Amenaza de Aborto: Sangrado vaginal SIN modificación cervical (cérvix cerrado) con vitalidad fetal presente por USG.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡Bien! El cérvix abierto y la expulsión de tejido confirman que ya no es solo una amenaza."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! El cérvix abierto y la expulsión de tejido confirman que ya no es solo una amenaza."
       }
     },
     {
       "card_id": "c_3",
       "ui_icon": "slash",
       "category": "Diagnóstico Diferencial",
-      "card_text": "C) Aborto Diferido: Huevo muerto y retenido; ausencia de latido fetal en USG con cérvix CERRADO y sin sangrado.",
+      "card_text": "Hallazgo: Dato anecdótico: C) Aborto Diferido: Huevo muerto y retenido; ausencia de latido fetal en USG con cérvix CERRADO y sin sangrado.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: Correcto. Aquí hay sangrado profuso y el cérvix ya dilató."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. Aquí hay sangrado profuso y el cérvix ya dilató."
       }
     },
     {
       "card_id": "c_4",
       "ui_icon": "alert-circle",
       "category": "Definición",
-      "card_text": "D) Definición de Aborto: Terminación del embarazo antes de la semana 22 o expulsión de producto de <500g.",
+      "card_text": "Hallazgo: D) Definición de Aborto: Terminación del embarazo antes de la semana 22 o expulsión de producto de <500g.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -77,7 +77,7 @@
       "card_id": "c_5",
       "ui_icon": "zap",
       "category": "Tratamiento Quirúrgico",
-      "card_text": "E) AMEU (Aspiración Manual Endouterina): Elección en <11 semanas o cuando el útero sea menor de 12cm de altura.",
+      "card_text": "Hallazgo: E) AMEU (Aspiración Manual Endouterina): Elección en <11 semanas o cuando el útero sea menor de 12cm de altura.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -89,7 +89,7 @@
       "card_id": "c_6",
       "ui_icon": "hammer",
       "category": "Tratamiento Urgente",
-      "card_text": "F) LUI (Legrado Uterino Instrumental): Reservado para inestabilidad hemodinámica, abortos sépticos o úteros >=12 SDG.",
+      "card_text": "Hallazgo: F) LUI (Legrado Uterino Instrumental): Reservado para inestabilidad hemodinámica, abortos sépticos o úteros >=12 SDG.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -105,7 +105,7 @@
       "card_id": "c_7",
       "ui_icon": "pill",
       "category": "Tratamiento Médico",
-      "card_text": "G) Misoprostol: Alternativa farmacológica para evacuación uterina en abortos no complicados de <12 SDG.",
+      "card_text": "Evidencia: G) Misoprostol: Alternativa farmacológica para evacuación uterina en abortos no complicados de <12 SDG.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -117,7 +117,7 @@
       "card_id": "c_8",
       "ui_icon": "frown",
       "category": "Complicaciones",
-      "card_text": "H) Aborto Séptico: Presencia de fiebre (>38°C), fetidez, hipersensibilidad uterina y descarga purulenta.",
+      "card_text": "Hallazgo: H) Aborto Séptico: Presencia de fiebre (>38°C), fetidez, hipersensibilidad uterina y descarga purulenta.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -133,7 +133,7 @@
       "card_id": "c_9",
       "ui_icon": "shield-check",
       "category": "Prevención",
-      "card_text": "I) Inmunoglobulina Anti-D: Administrar en pacientes Rh negativas no sensibilizadas para evitar isoinmunización futura.",
+      "card_text": "Hallazgo: I) Inmunoglobulina Anti-D: Administrar en pacientes Rh negativas no sensibilizadas para evitar isoinmunización futura.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,

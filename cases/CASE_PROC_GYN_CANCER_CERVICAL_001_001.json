@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 110/70, FC 72 lpm, Temp 36.4°C",
+      "card_text": "Evidencia clínica: Ruido en el expediente: TA 110/70, FC 72 lpm, Temp 36.4°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Colposcopia con Biopsia Dirigida: Ante HSIL o LSIL persistente, el estándar de oro es la visualización colposcópica y toma de biopsia.",
+      "card_text": "Evidencia: A) Colposcopia con Biopsia Dirigida: Ante HSIL o LSIL persistente, el estándar de oro es la visualización colposcópica y toma de biopsia.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,7 +41,7 @@
       "card_id": "c_2",
       "ui_icon": "slash",
       "category": "Manejo Quirúrgico",
-      "card_text": "B) Conización Cervical (LLETZ/Frío): Tratamiento de elección para NIC 2 y NIC 3 (lesiones de alto grado) para asegurar márgenes libres.",
+      "card_text": "Hallazgo: B) Conización Cervical (LLETZ/Frío): Tratamiento de elección para NIC 2 y NIC 3 (lesiones de alto grado) para asegurar márgenes libres.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -53,7 +53,7 @@
       "card_id": "c_3",
       "ui_icon": "alert-circle",
       "category": "Bethesda",
-      "card_text": "C) HSIL (Lesión de Alto Grado): Agrupa NIC 2 y NIC 3. Tiene un alto potencial de progresión a cáncer invasor.",
+      "card_text": "Hallazgo clínico: C) HSIL (Lesión de Alto Grado): Agrupa NIC 2 y NIC 3. Tiene un alto potencial de progresión a cáncer invasor.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -65,19 +65,19 @@
       "card_id": "c_4",
       "ui_icon": "slash",
       "category": "Diagnóstico Diferencial",
-      "card_text": "D) LSIL (Lesión de Bajo Grado): Refleja infección por VPH; alta tasa de regresión espontánea (60-80%) especialmente en jóvenes.",
+      "card_text": "Información redundante: D) LSIL (Lesión de Bajo Grado): Refleja infección por VPH; alta tasa de regresión espontánea (60-80%) especialmente en jóvenes.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: Bien. La paciente tiene una citología de HSIL, lo que obliga a actuar, no a vigilar como en LSIL."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Bien. La paciente tiene una citología de HSIL, lo que obliga a actuar, no a vigilar como en LSIL."
       }
     },
     {
       "card_id": "c_5",
       "ui_icon": "eye",
       "category": "Colposcopia",
-      "card_text": "E) Signos Colposcópicos: Epitelio acetoblanco denso, mosaico grueso y puntilleo atípico sugieren lesiones severas.",
+      "card_text": "Dato de importancia: E) Signos Colposcópicos: Epitelio acetoblanco denso, mosaico grueso y puntilleo atípico sugieren lesiones severas.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -89,7 +89,7 @@
       "card_id": "c_6",
       "ui_icon": "alert-triangle",
       "category": "Etiología",
-      "card_text": "F) VPH 16 y 18: Genotipos de alto riesgo oncogénico responsables de la mayoría de los casos de cáncer cervicouterino.",
+      "card_text": "Hallazgo: F) VPH 16 y 18: Genotipos de alto riesgo oncogénico responsables de la mayoría de los casos de cáncer cervicouterino.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -101,7 +101,7 @@
       "card_id": "c_7",
       "ui_icon": "search",
       "category": "Tamizaje Citológico",
-      "card_text": "G) Citología Cervical (Pap): Tamizaje inicial a los 25 años. Tras dos resultados anuales negativos, se realiza cada 3 años.",
+      "card_text": "Evidencia: G) Citología Cervical (Pap): Tamizaje inicial a los 25 años. Tras dos resultados anuales negativos, se realiza cada 3 años.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -113,7 +113,7 @@
       "card_id": "c_8",
       "ui_icon": "dna",
       "category": "Tamizaje Biomolecular",
-      "card_text": "H) Prueba de ADN para VPH: Tamizaje preferido en mujeres >=35 años por su altísimo valor predictivo negativo.",
+      "card_text": "Hallazgo: H) Prueba de ADN para VPH: Tamizaje preferido en mujeres >=35 años por su altísimo valor predictivo negativo.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -125,7 +125,7 @@
       "card_id": "c_9",
       "ui_icon": "activity",
       "category": "Histología",
-      "card_text": "I) Carcinoma Epidermoide (Escamoso): Es el tipo histológico más frecuente de cáncer de cérvix (85% de los casos).",
+      "card_text": "Hallazgo: I) Carcinoma Epidermoide (Escamoso): Es el tipo histológico más frecuente de cáncer de cérvix (85% de los casos).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,

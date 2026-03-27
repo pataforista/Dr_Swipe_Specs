@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 130/85, FC 105 lpm, Temp 36.8°C",
+      "card_text": "Información redundante: TA 130/85, FC 105 lpm, Temp 36.8°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Episodio Maníaco (Trastorno Bipolar I): Estado de ánimo elevado/expansivo por al menos 1 semana. Criterios DIGFAST presentes.",
+      "card_text": "Hallazgo: A) Episodio Maníaco (Trastorno Bipolar I): Estado de ánimo elevado/expansivo por al menos 1 semana. Criterios DIGFAST presentes.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,31 +41,31 @@
       "card_id": "c_2",
       "ui_icon": "slash",
       "category": "Diagnóstico Diferencial",
-      "card_text": "B) Hipomanía: Duración mínima de 4 días, sin compromiso funcional grave y SIN síntomas psicóticos ni necesidad de hospitalización.",
+      "card_text": "Hallazgo clínico: Dato anecdótico: B) Hipomanía: Duración mínima de 4 días, sin compromiso funcional grave y SIN síntomas psicóticos ni necesidad de hospitalización.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Bien! Este paciente afirma ser el director y tiene fuga de ideas marcada; eso es manía pura."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Este paciente afirma ser el director y tiene fuga de ideas marcada; eso es manía pura."
       }
     },
     {
       "card_id": "c_3",
       "ui_icon": "user-x",
       "category": "Diagnóstico Diferencial",
-      "card_text": "C) Trastorno Esquizoafectivo: Síntomas psicóticos (delirios/alucinaciones) por >=2 semanas en ausencia de síntomas afectivos.",
+      "card_text": "Información redundante: C) Trastorno Esquizoafectivo: Síntomas psicóticos (delirios/alucinaciones) por >=2 semanas en ausencia de síntomas afectivos.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: Correcto. Aquí la psicosis coincide con la exaltación del ánimo, orientando a Trastorno Bipolar."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: Correcto. Aquí la psicosis coincide con la exaltación del ánimo, orientando a Trastorno Bipolar."
       }
     },
     {
       "card_id": "c_4",
       "ui_icon": "pill",
       "category": "Manejo de Primera Línea",
-      "card_text": "D) Carbonato de Litio: Estabilizador del ánimo de elección. Requiere monitoreo de niveles séricos (litemia).",
+      "card_text": "Hallazgo: D) Carbonato de Litio: Estabilizador del ánimo de elección. Requiere monitoreo de niveles séricos (litemia).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -77,7 +77,7 @@
       "card_id": "c_5",
       "ui_icon": "shield",
       "category": "Manejo Alternativo",
-      "card_text": "E) Valproato de Magnesio: Alternativa eficaz al litio, especialmente en episodios mixtos.",
+      "card_text": "Hallazgo clínico: E) Valproato de Magnesio: Alternativa eficaz al litio, especialmente en episodios mixtos.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -89,7 +89,7 @@
       "card_id": "c_6",
       "ui_icon": "zap",
       "category": "Manejo Agudo",
-      "card_text": "F) Antipsicóticos Atípicos: Útiles para el control rápido de la agitación psicomotriz en la manía.",
+      "card_text": "Hallazgo clínico: F) Antipsicóticos Atípicos: Ãštiles para el control rápido de la agitación psicomotriz en la manía.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -101,7 +101,7 @@
       "card_id": "c_7",
       "ui_icon": "alert-triangle",
       "category": "Seguridad",
-      "card_text": "G) Toxicidad por Litio: Temblor grueso, ataxia, confusión y alteraciones del ECG.",
+      "card_text": "Hallazgo: G) Toxicidad por Litio: Temblor grueso, ataxia, confusión y alteraciones del ECG.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -113,7 +113,7 @@
       "card_id": "c_8",
       "ui_icon": "frown",
       "category": "Contraindicaciones",
-      "card_text": "H) Anomalía de Ebstein: Riesgo teratogénico asociado al uso de litio en el embarazo.",
+      "card_text": "Hallazgo clínico: H) Anomalía de Ebstein: Riesgo teratogénico asociado al uso de litio en el embarazo.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -125,7 +125,7 @@
       "card_id": "c_9",
       "ui_icon": "activity",
       "category": "Escalas",
-      "card_text": "I) Escala de Young (YMRS): Herramienta clínica estándar para cuantificar la severidad de los síntomas maníacos.",
+      "card_text": "Evidencia: I) Escala de Young (YMRS): Herramienta clínica estándar para cuantificar la severidad de los síntomas maníacos.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -137,7 +137,7 @@
       "card_id": "c_10",
       "ui_icon": "calendar",
       "category": "Mantenimiento",
-      "card_text": "J) Tratamiento de Mantenimiento: Tras el primer episodio, se recomienda continuar el estabilizador por al menos 12-24 meses.",
+      "card_text": "Evidencia: J) Tratamiento de Mantenimiento: Tras el primer episodio, se recomienda continuar el estabilizador por al menos 12-24 meses.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,

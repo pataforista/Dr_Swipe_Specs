@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 120/80, FC 78 bpm, Temp 37.0°C",
+      "card_text": "Dato de importancia: Dato anecdótico: TA 120/80, FC 78 bpm, Temp 37.0°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias.",
+      "card_text": "Hallazgo: A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,7 +41,7 @@
       "card_id": "c_2",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "B) Estreñimiento (Bowel movement issues): 'Constipation' es el falso amigo más común: significa Estreñimiento, NO congestión nasal.",
+      "card_text": "Hallazgo: B) Estreñimiento (Bowel movement issues): 'Constipation' es el falso amigo más común: significa Estreñimiento, NO congestión nasal.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,

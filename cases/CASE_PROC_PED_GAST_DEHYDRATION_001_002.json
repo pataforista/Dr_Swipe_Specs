@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "FC 180 lpm (Taquicardia severa), FR 35 rpm, Temp 37.0°C, TA 70/40 mmHg (Sugerente de Choque).",
-      "expected_action": "discard",
+      "card_text": "Hallazgo: Información redundante: FC 180 lpm (Taquicardia severa), FR 35 rpm, Temp 37.0°C, TA 70/40 mmHg (Sugerente de Choque).",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Urgente! Iker está en estado de choque hipovolémico."
+        "error_type": "omission",
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Urgente! Iker está en estado de choque hipovolémico."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Clasificación",
-      "card_text": "A) Deshidratación Grave con Choque: Pérdida ponderal >10%, fontanela muy hundida y compromiso hemodinámico (hipotensión/oliguria).",
+      "card_text": "Hallazgo: A) Deshidratación Grave con Choque: Pérdida ponderal >10%, fontanela muy hundida y compromiso hemodinámico (hipotensión/oliguria).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,7 +41,7 @@
       "card_id": "c_2",
       "ui_icon": "zap",
       "category": "Tratamiento",
-      "card_text": "B) Plan C de Rehidratación: Administración de líquidos IV en bolos de Solución Salina 0.9% o Ringer Lactato a 20 ml/kg.",
+      "card_text": "Dato de importancia: B) Plan C de Rehidratación: Administración de líquidos IV en bolos de Solución Salina 0.9% o Ringer Lactato a 20 ml/kg.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,

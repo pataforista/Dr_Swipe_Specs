@@ -13,24 +13,24 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 110/70, FC 115 lpm, Temp 39.5°C",
-      "expected_action": "discard",
+      "card_text": "Información redundante: TA 110/70, FC 115 lpm, Temp 39.5°C",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+        "error_type": "omission",
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Colangitis Aguda: Infección de la vía biliar secundaria a obstrucción (ej. coledocolitiasis). Presenta la Tríada de Charcot.",
+      "card_text": "Hallazgo: A) Colangitis Aguda: Infección de la vía biliar secundaria a obstrucción (ej. coledocolitiasis). Presenta la Tríada de Charcot.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Perfect Match! Ictericia + Fiebre + Dolor en HD = Tríada de Charcot. El manejo empírico incluye antibióticos IV y CPRE precoz para drenaje."
+        "vazquez_comment": "¡Perfect Match! Ictericia + Fiebre + Dolor en HD = Tríada de Charcot. El manejo empírico incluye antibióticos IV y CPRE precoz para drenaje."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -41,12 +41,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Colecistitis Aguda Litiásica: Inflamación de la vesícula biliar por litiasis. Dolor en CSD, fiebre leve, Murphy positivo.",
+      "card_text": "Evidencia clínica: Ruido en el expediente: B) Colecistitis Aguda Litiásica: Inflamación de la vesícula biliar por litiasis. Dolor en CSD, fiebre leve, Murphy positivo.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: ¡Bien hecho! Supiste que la ictericia marcada excluye inflamación puramente vesicular."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien hecho! Supiste que la ictericia marcada excluye inflamación puramente vesicular."
       },
       "safety_flags": {
         "lethal_risk": false,

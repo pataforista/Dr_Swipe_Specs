@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 120/80, FC 70 lpm, Temp 36.5°C",
+      "card_text": "Hallazgo clínico: Dato anecdótico: TA 120/80, FC 70 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Biopsia Percutánea (Trucut): BI-RADS 4 y 5 requieren confirmación histopatológica inmediata mediante biopsia con aguja gruesa.",
+      "card_text": "Evidencia: A) Biopsia Percutánea (Trucut): BI-RADS 4 y 5 requieren confirmación histopatológica inmediata mediante biopsia con aguja gruesa.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,12 +41,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Seguimiento en 6 meses (BI-RADS 3): Conducta ante hallazgos probablemente benignos (<2% riesgo de malignidad).",
+      "card_text": "Evidencia clínica: Dato anecdótico: B) Seguimiento en 6 meses (BI-RADS 3): Conducta ante hallazgos probablemente benignos (<2% riesgo de malignidad).",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡Bien! Diferenciaste el seguimiento (BI-RADS 3) de la acción agresiva (BI-RADS 4+)."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Diferenciaste el seguimiento (BI-RADS 3) de la acción agresiva (BI-RADS 4+)."
       },
       "safety_flags": {
         "lethal_risk": false,

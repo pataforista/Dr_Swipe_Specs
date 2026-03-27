@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "FC 88 lpm, Temp 36.6°C, SatO2 97% (Aire ambiente).",
+      "card_text": "Dato de importancia: Ruido en el expediente: FC 88 lpm, Temp 36.6°C, SatO2 97% (Aire ambiente).",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: Signos estables por ahora, Sofía no está en crisis aguda."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: Signos estables por ahora, Sofía no está en crisis aguda."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Asma Bronquial: Enfermedad inflamatoria crónica de la vía aérea con obstrucción reversible (clínica + espirometría).",
+      "card_text": "Hallazgo: A) Asma Bronquial: Enfermedad inflamatoria crónica de la vía aérea con obstrucción reversible (clínica + espirometría).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,7 +41,7 @@
       "card_id": "c_2",
       "ui_icon": "pill",
       "category": "Tratamiento GINA",
-      "card_text": "B) ICS-Formoterol (Rescate y Mantenimiento): Vía preferente (Step 1 y 2). El uso de SABA solo ha quedado relegado.",
+      "card_text": "Evidencia: B) ICS-Formoterol (Rescate y Mantenimiento): Vía preferente (Step 1 y 2). El uso de SABA solo ha quedado relegado.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,

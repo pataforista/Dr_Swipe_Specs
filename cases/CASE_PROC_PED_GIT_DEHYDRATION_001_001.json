@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 90/60 mmHg, FC 125 lpm, Temp 37.5°C",
-      "expected_action": "discard",
+      "card_text": "Información redundante: TA 90/60 mmHg, FC 125 lpm, Temp 37.5°C",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+        "error_type": "omission",
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Deshidratación Moderada (Plan B): Paciente con signos de deshidratación pero SIN choque. Manejo con VSO 100 ml/kg en 4 horas.",
+      "card_text": "Evidencia: A) Deshidratación Moderada (Plan B): Paciente con signos de deshidratación pero SIN choque. Manejo con VSO 100 ml/kg en 4 horas.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,31 +41,31 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico Diferencial",
-      "card_text": "B) Deshidratación Grave / Choque (Plan C): Llenado capilar >3s, pulsos débiles, letargia o coma. Requiere manejo IV inmediato.",
+      "card_text": "Hallazgo: Dato anecdótico: B) Deshidratación Grave / Choque (Plan C): Llenado capilar >3s, pulsos débiles, letargia o coma. Requiere manejo IV inmediato.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡Bien! Este paciente está irritable (B), no letárgico (C); sus pulsos aún son palpables."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Este paciente está irritable (B), no letárgico (C); sus pulsos aún son palpables."
       }
     },
     {
       "card_id": "c_3",
       "ui_icon": "slash",
       "category": "Diagnóstico Diferencial",
-      "card_text": "C) Sin Deshidratación (Plan A): Paciente alerta, bebe normal, mucosas húmedas, ojos normales. Manejo en el hogar.",
+      "card_text": "Hallazgo: Dato anecdótico: C) Sin Deshidratación (Plan A): Paciente alerta, bebe normal, mucosas húmedas, ojos normales. Manejo en el hogar.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: Correcto. En el Plan A solo prevenimos; aquí ya hay signos clínicos que requieren tratar la deshidratación."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. En el Plan A solo prevenimos; aquí ya hay signos clínicos que requieren tratar la deshidratación."
       }
     },
     {
       "card_id": "c_4",
       "ui_icon": "alert-triangle",
       "category": "Signo Clínico",
-      "card_text": "D) Sed Ávida: El niño busca el agua o el suero con desesperación; es un signo clave de deshidratación moderada (Plan B).",
+      "card_text": "Dato de importancia: D) Sed Ãvida: El niño busca el agua o el suero con desesperación; es un signo clave de deshidratación moderada (Plan B).",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -77,7 +77,7 @@
       "card_id": "c_5",
       "ui_icon": "hand",
       "category": "Signo Clínico",
-      "card_text": "E) Signo del Lienzo: Desaparición lenta del pliegue cutáneo al pellizcar la piel del abdomen (>2 segundos).",
+      "card_text": "Hallazgo: E) Signo del Lienzo: Desaparición lenta del pliegue cutáneo al pellizcar la piel del abdomen (>2 segundos).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -89,7 +89,7 @@
       "card_id": "c_6",
       "ui_icon": "battery-charging",
       "category": "Plan B",
-      "card_text": "F) VSO 100 mL/kg en 4 horas: Administrar Vida Suero Oral fraccionado cada 30 min con taza y cuchara.",
+      "card_text": "Evidencia: F) VSO 100 mL/kg en 4 horas: Administrar Vida Suero Oral fraccionado cada 30 min con taza y cuchara.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -105,7 +105,7 @@
       "card_id": "c_7",
       "ui_icon": "zap",
       "category": "Plan C (Choque)",
-      "card_text": "G) Carga de Solución Hartmann/Salina 0.9%: Administrar 20 mL/kg de forma inmediata ante signos de choque circulatorio.",
+      "card_text": "Hallazgo: G) Carga de Solución Hartmann/Salina 0.9%: Administrar 20 mL/kg de forma inmediata ante signos de choque circulatorio.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -121,7 +121,7 @@
       "card_id": "c_8",
       "ui_icon": "clock",
       "category": "Fracaso Plan B",
-      "card_text": "H) Gatroclisis: Si el paciente vomita persistemente (>3 vómitos/hora), usar sonda nasogástrica (20-30 mL/kg/h).",
+      "card_text": "Hallazgo: H) Gatroclisis: Si el paciente vomita persistemente (>3 vómitos/hora), usar sonda nasogástrica (20-30 mL/kg/h).",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -133,7 +133,7 @@
       "card_id": "c_9",
       "ui_icon": "alert-octagon",
       "category": "Complicación",
-      "card_text": "I) Ileo Paralítico por Hipopotasemia: Vigilar distensión abdominal y ausencia de ruidos intestinales tras diarrea profusa.",
+      "card_text": "Hallazgo: I) Ileo Paralítico por Hipopotasemia: Vigilar distensión abdominal y ausencia de ruidos intestinales tras diarrea profusa.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,

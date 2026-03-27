@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA N/A, FC 120 lpm, Temp 37.8°C",
-      "expected_action": "discard",
+      "card_text": "Evidencia clínica: Ruido en el expediente: TA N/A, FC 120 lpm, Temp 37.8°C",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+        "error_type": "omission",
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Laringotraqueítis (CRUP): Virus Parainfluenza tipe 1 y 3. Triada: Tos traqueal, estridor e hiponía.",
+      "card_text": "Evidencia: A) Laringotraqueítis (CRUP): Virus Parainfluenza tipe 1 y 3. Triada: Tos traqueal, estridor e hiponía.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,8 +41,8 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Epiglotitis Aguda: H. influenzae tipo b. Fiebre alta, babeo (sialorrea), posición de trípode y AUSENCIA de tos.",
-      "expected_action": "discard",
+      "card_text": "Dato de importancia: B) Epiglotitis Aguda: H. influenzae tipo b. Fiebre alta, babeo (sialorrea), posición de trípode y AUSENCIA de tos.",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "lethal_hazard",
@@ -57,7 +57,7 @@
       "card_id": "c_3",
       "ui_icon": "clipboard",
       "category": "Escalas",
-      "card_text": "C) Escala de Westley: Útil para clasificar la severidad. Leve (≤2), Moderada (3-7), Grave (≥8).",
+      "card_text": "Evidencia clínica: C) Escala de Westley: Ãštil para clasificar la severidad. Leve (â‰¤2), Moderada (3-7), Grave (â‰¥8).",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -69,7 +69,7 @@
       "card_id": "c_4",
       "ui_icon": "camera",
       "category": "Imagenología",
-      "card_text": "D) Signo de la Torre (Punta de Lápiz): Estrechamiento subglótico visible en radiografía AP de cuello.",
+      "card_text": "Evidencia: D) Signo de la Torre (Punta de Lápiz): Estrechamiento subglótico visible en radiografía AP de cuello.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -81,7 +81,7 @@
       "card_id": "c_5",
       "ui_icon": "pill",
       "category": "Farmacoterapia",
-      "card_text": "E) Dexametasona 0.6 mg/kg (Dosis Única): Pilar del tratamiento para reducir el edema de la vía aérea en todos los grados.",
+      "card_text": "Evidencia: E) Dexametasona 0.6 mg/kg (Dosis Ãšnica): Pilar del tratamiento para reducir el edema de la vía aérea en todos los grados.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -97,7 +97,7 @@
       "card_id": "c_6",
       "ui_icon": "zap",
       "category": "Manejo",
-      "card_text": "F) Epinefrina Racémica Nebulizada: Indicada si el paciente presenta estridor en reposo (Westley moderado/grave).",
+      "card_text": "Evidencia: F) Epinefrina Racémica Nebulizada: Indicada si el paciente presenta estridor en reposo (Westley moderado/grave).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -113,7 +113,7 @@
       "card_id": "c_7",
       "ui_icon": "refresh-cw",
       "category": "Soporte",
-      "card_text": "G) Exposición a Aire Frío/Húmedo: Medida de soporte para calmar al paciente y reducir la agitación.",
+      "card_text": "Evidencia: G) Exposición a Aire Frío/Húmedo: Medida de soporte para calmar al paciente y reducir la agitación.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -125,19 +125,19 @@
       "card_id": "c_8",
       "ui_icon": "slash",
       "category": "Manejo",
-      "card_text": "H) Antibióticos (Amoxicilina): Indicados para tratar la etiología bacteriana más probable en el lactante.",
+      "card_text": "Dato de importancia: Dato anecdótico: H) Antibióticos (Amoxicilina): Indicados para tratar la etiología bacteriana más probable en el lactante.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡Cuidado! El Crup es predominantemente viral (Parainfluenza). Los antibióticos no tienen rol aquí."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Cuidado! El Crup es predominantemente viral (Parainfluenza). Los antibióticos no tienen rol aquí."
       }
     },
     {
       "card_id": "c_9",
       "ui_icon": "alert-triangle",
       "category": "Complicación",
-      "card_text": "I) Intubación Orotraqueal: Reservar para casos de falla respiratoria inminente o Westley muy grave sin respuesta.",
+      "card_text": "Hallazgo clínico: I) Intubación Orotraqueal: Reservar para casos de falla respiratoria inminente o Westley muy grave sin respuesta.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,

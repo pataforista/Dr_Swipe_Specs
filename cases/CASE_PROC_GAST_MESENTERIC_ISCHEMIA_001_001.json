@@ -13,24 +13,24 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 100/60 mmHg, FC 120 lpm (arrítmico), Temp 37.0°C",
-      "expected_action": "discard",
+      "card_text": "Hallazgo clínico: Ruido en el expediente: TA 100/60 mmHg, FC 120 lpm (arrítmico), Temp 37.0°C",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+        "error_type": "omission",
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Isquemia Mesentérica Aguda: Dolor desproporcionado a la exploración física + Factores de riesgo embólico (FA).",
+      "card_text": "Evidencia: A) Isquemia Mesentérica Aguda: Dolor desproporcionado a la exploración física + Factores de riesgo embólico (FA).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Mendoza: ¡Excelente ojo clínico! El 'abdomen blando' con dolor 10/10 es la pista clásica para Isquemia Mesentérica."
+        "vazquez_comment": "¡Excelente ojo clínico! El 'abdomen blando' con dolor 10/10 es la pista clásica para Isquemia Mesentérica."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -42,72 +42,72 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico Diferencial",
-      "card_text": "B) Isquemia Mesentérica Crónica: Dolor postprandial (angina abdominal), miedo a comer y pérdida de peso importante.",
+      "card_text": "Hallazgo: Dato anecdótico: B) Isquemia Mesentérica Crónica: Dolor postprandial (angina abdominal), miedo a comer y pérdida de peso importante.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: ¡Bien! Este cuadro es agudo. La isquemia crónica se presenta con dolor después de las comidas."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! Este cuadro es agudo. La isquemia crónica se presenta con dolor después de las comidas."
       }
     },
     {
       "card_id": "c_3",
       "ui_icon": "target",
       "category": "Pivote Clínico",
-      "card_text": "C) Dolor Desproporcionado: Paciente con dolor 10/10 pero abdomen blando y depresible a la palpación inicial.",
+      "card_text": "Hallazgo: C) Dolor Desproporcionado: Paciente con dolor 10/10 pero abdomen blando y depresible a la palpación inicial.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Muy bien! Es el hallazgo clínico más distintivo de la isquemia mesentérica temprana."
+        "vazquez_comment": "¡Muy bien! Es el hallazgo clínico más distintivo de la isquemia mesentérica temprana."
       }
     },
     {
       "card_id": "c_4",
       "ui_icon": "alert-triangle",
       "category": "Factores Riesgo",
-      "card_text": "D) Fibrilación Auricular (FA): Principal causa de embolismo a la Arteria Mesentérica Superior (AMS).",
+      "card_text": "Evidencia: D) Fibrilación Auricular (FA): Principal causa de embolismo a la Arteria Mesentérica Superior (AMS).",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Correcto! La FA genera trombos en la orejuela izquierda que viajan directamente a la circulación mesentérica."
+        "vazquez_comment": "¡Correcto! La FA genera trombos en la orejuela izquierda que viajan directamente a la circulación mesentérica."
       }
     },
     {
       "card_id": "c_5",
       "ui_icon": "search",
       "category": "Prueba de Elección",
-      "card_text": "E) Angio-TC de Abdomen: Es el estudio de elección inicial por su rapidez y capacidad para detectar oclusiones vasculares.",
+      "card_text": "Evidencia clínica: E) Angio-TC de Abdomen: Es el estudio de elección inicial por su rapidez y capacidad para detectar oclusiones vasculares.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Excelente! Permite visualizar la luz de los vasos y los signos de sufrimiento intestinal."
+        "vazquez_comment": "¡Excelente! Permite visualizar la luz de los vasos y los signos de sufrimiento intestinal."
       }
     },
     {
       "card_id": "c_6",
       "ui_icon": "zap",
       "category": "Estándar de Oro",
-      "card_text": "F) Angiografía Convencional: Sigue siendo el estándar de oro y permite el tratamiento intervencionista directo.",
+      "card_text": "Evidencia: F) Angiografía Convencional: Sigue siendo el estándar de oro y permite el tratamiento intervencionista directo.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Correcto! Aunque la Angio-TC se usa más habitualmente, la angiografía es la prueba definitiva."
+        "vazquez_comment": "¡Correcto! Aunque la Angio-TC se usa más habitualmente, la angiografía es la prueba definitiva."
       }
     },
     {
       "card_id": "c_7",
       "ui_icon": "activity",
       "category": "Laboratorio",
-      "card_text": "G) Lactato Sérico: Su elevación (>2.0 mmol/L) indica hipoperfusión tisular y acidosis metabólica; es un signo de mal pronóstico.",
+      "card_text": "Hallazgo: G) Lactato Sérico: Su elevación (>2.0 mmol/L) indica hipoperfusión tisular y acidosis metabólica; es un signo de mal pronóstico.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Mendoza: ¡Vital! Un lactato elevado nos habla de que el intestino ya está sufriendo necrosis."
+        "vazquez_comment": "¡Vital! Un lactato elevado nos habla de que el intestino ya está sufriendo necrosis."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -118,12 +118,12 @@
       "card_id": "c_8",
       "ui_icon": "refresh-cw",
       "category": "Manejo Quirúrgico",
-      "card_text": "H) Revascularización: Embolectomía o puentes arteriales de urgencia para restablecer el flujo antes de que la necrosis sea irreversible.",
+      "card_text": "Evidencia: H) Revascularización: Embolectomía o puentes arteriales de urgencia para restablecer el flujo antes de que la necrosis sea irreversible.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Mendoza: ¡Perfecto! El objetivo inicial es salvar el intestino viable mediante el restablecimiento del flujo."
+        "vazquez_comment": "¡Perfecto! El objetivo inicial es salvar el intestino viable mediante el restablecimiento del flujo."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -134,12 +134,12 @@
       "card_id": "c_9",
       "ui_icon": "image",
       "category": "Imagenología",
-      "card_text": "I) Neumatosis Intestinal: Gas en la pared del intestino visible en Rx o TC. Indica isquemia transmural grave.",
+      "card_text": "Hallazgo: I) Neumatosis Intestinal: Gas en la pared del intestino visible en Rx o TC. Indica isquemia transmural grave.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: Bien. Es un signo radiológico ominoso que indica muerte celular en la pared intestinal."
+        "vazquez_comment": "Bien. Es un signo radiológico ominoso que indica muerte celular en la pared intestinal."
       }
     }
   ],

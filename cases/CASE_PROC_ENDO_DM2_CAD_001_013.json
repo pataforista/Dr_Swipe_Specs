@@ -13,24 +13,24 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 90/60 mmHg, FC 120 lpm, Temp 37.5°C",
-      "expected_action": "discard",
+      "card_text": "Dato de importancia: Dato anecdótico: TA 90/60 mmHg, FC 120 lpm, Temp 37.5°C",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+        "error_type": "omission",
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Cetoacidosis Diabética (CAD): Triada: Hiperglucemia + Acidosis Metabólica (Anion Gap ↑) + Cetonemia/Cetonuria.",
+      "card_text": "Hallazgo: A) Cetoacidosis Diabética (CAD): Triada: Hiperglucemia + Acidosis Metabólica (Anion Gap â†‘) + Cetonemia/Cetonuria.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Mendoza: ¡Excelente! El manejo es hidratación agresiva seguida de insulina IV y monitoreo de potasio."
+        "vazquez_comment": "¡Excelente! El manejo es hidratación agresiva seguida de insulina IV y monitoreo de potasio."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -42,12 +42,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Estado Hiperosmolar Hiperglucémico (EHH): Hiperglucemia extrema (>600) + Osmolaridad ↑ (>320). Típico de DM2 ancianos SIN acidosis severa.",
+      "card_text": "Evidencia clínica: Ruido en el expediente: B) Estado Hiperosmolar Hiperglucémico (EHH): Hiperglucemia extrema (>600) + Osmolaridad â†‘ (>320). Típico de DM2 ancianos SIN acidosis severa.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: ¡Bien! Diferenciaste los dos estados según el PH y las cetonas."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! Diferenciaste los dos estados según el PH y las cetonas."
       },
       "safety_flags": {
         "lethal_risk": false,

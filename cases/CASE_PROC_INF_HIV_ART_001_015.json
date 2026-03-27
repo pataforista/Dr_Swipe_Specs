@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 120/80, FC 72 lpm, Temp 36.7°C",
+      "card_text": "Información redundante: TA 120/80, FC 72 lpm, Temp 36.7°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Iniciar ART Inmediatamente (Tratamiento Universal): Guías actuales (GPC/WHO): Se recomienda iniciar ART en TODOS los pacientes, sin importar el nivel de CD4.",
+      "card_text": "Evidencia clínica: A) Iniciar ART Inmediatamente (Tratamiento Universal): Guías actuales (GPC/WHO): Se recomienda iniciar ART en TODOS los pacientes, sin importar el nivel de CD4.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,12 +41,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Diferir inicio hasta CD4 <200 (SIDA): Práctica obsoleta que aumentaba el riesgo de infecciones oportunistas y mortalidad.",
+      "card_text": "Dato de importancia: Ruido en el expediente: B) Diferir inicio hasta CD4 <200 (SIDA): Práctica obsoleta que aumentaba el riesgo de infecciones oportunistas y mortalidad.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Bien! Reconociste el cambio hacia el tratamiento universal proactivo."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Reconociste el cambio hacia el tratamiento universal proactivo."
       },
       "safety_flags": {
         "lethal_risk": false,

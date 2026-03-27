@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 100/60 mmHg, FC 110 lpm (materna), Temp 38.8°C",
-      "expected_action": "discard",
+      "card_text": "Evidencia clínica: Ruido en el expediente: TA 100/60 mmHg, FC 110 lpm (materna), Temp 38.8°C",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+        "error_type": "omission",
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Corioamnionitis (Criterios de Gibbs): Fiebre + Taquicardia (materna/fetal) + Sensibilidad uterina + Leucocitosis.",
+      "card_text": "Evidencia clínica: A) Corioamnionitis (Criterios de Gibbs): Fiebre + Taquicardia (materna/fetal) + Sensibilidad uterina + Leucocitosis.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -42,7 +42,7 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Criterios Gibbs",
-      "card_text": "B) Líquido Amniótico Fétido: Hallazgo clínico que refuerza el diagnóstico de infección intraamniótica.",
+      "card_text": "Evidencia: B) Líquido Amniótico Fétido: Hallazgo clínico que refuerza el diagnóstico de infección intraamniótica.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -54,7 +54,7 @@
       "card_id": "c_3",
       "ui_icon": "alert-circle",
       "category": "Exploración",
-      "card_text": "C) Sensibilidad Uterina: Dolor a la palpación del fondo uterino durante las contracciones o el reposo.",
+      "card_text": "Evidencia: C) Sensibilidad Uterina: Dolor a la palpación del fondo uterino durante las contracciones o el reposo.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -66,7 +66,7 @@
       "card_id": "c_4",
       "ui_icon": "pill",
       "category": "Antibioticoterapia",
-      "card_text": "D) Ampicilina + Gentamicina IV: Esquema antibiótico de elección para cobertura de flora vaginal y entérica.",
+      "card_text": "Hallazgo clínico: D) Ampicilina + Gentamicina IV: Esquema antibiótico de elección para cobertura de flora vaginal y entérica.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -82,7 +82,7 @@
       "card_id": "c_5",
       "ui_icon": "refresh-cw",
       "category": "Manejo Obstétrico",
-      "card_text": "E) Inducción del Trabajo de Parto: Meta de resolución en un periodo idealmente menor a 6-12 horas tras el diagnóstico.",
+      "card_text": "Evidencia: E) Inducción del Trabajo de Parto: Meta de resolución en un periodo idealmente menor a 6-12 horas tras el diagnóstico.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -98,19 +98,19 @@
       "card_id": "c_6",
       "ui_icon": "slash",
       "category": "Manejo",
-      "card_text": "F) Cesárea Urgente: Realizar de inmediato por diagnóstico de corioamnionitis para evitar infección neonatal.",
+      "card_text": "Hallazgo: Información redundante: F) Cesárea Urgente: Realizar de inmediato por diagnóstico de corioamnionitis para evitar infección neonatal.",
       "expected_action": "discard",
       "scoring": {
         "points": 100,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡Cuidado! La corioamnionitis NO es indicación de cesárea. El parto vaginal es preferible si las condiciones obstétricas lo permiten."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Cuidado! La corioamnionitis NO es indicación de cesárea. El parto vaginal es preferible si las condiciones obstétricas lo permiten."
       }
     },
     {
       "card_id": "c_7",
       "ui_icon": "activity",
       "category": "Monitoreo",
-      "card_text": "G) Taquicardia Fetal (>160 lpm): Signo precoz de respuesta inflamatoria sistémica fetal.",
+      "card_text": "Hallazgo: G) Taquicardia Fetal (>160 lpm): Signo precoz de respuesta inflamatoria sistémica fetal.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -122,7 +122,7 @@
       "card_id": "c_8",
       "ui_icon": "user-check",
       "category": "Neonatología",
-      "card_text": "H) Aviso a Pediatría: Notificar la sospecha de sepsis neonatal para vigilancia estrecha y posible manejo antibiótico del RN.",
+      "card_text": "Evidencia: H) Aviso a Pediatría: Notificar la sospecha de sepsis neonatal para vigilancia estrecha y posible manejo antibiótico del RN.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -134,7 +134,7 @@
       "card_id": "c_9",
       "ui_icon": "trending-up",
       "category": "Clínica",
-      "card_text": "I) Taquicardia Materna (>100 lpm): Signo sistémico de infección que completa el cuadro de severidad.",
+      "card_text": "Hallazgo: I) Taquicardia Materna (>100 lpm): Signo sistémico de infección que completa el cuadro de severidad.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -145,7 +145,7 @@
   ],
   "enarm_pearl": {
     "title": "Criterios de Gibbs",
-    "text": "Indispensable: Fiebre materna ≥38°C + 2 de: Taquicardia Materna, Taquicardia Fetal, Sensibilidad Uterina, Líquido fétido.",
+    "text": "Indispensable: Fiebre materna â‰¥38°C + 2 de: Taquicardia Materna, Taquicardia Fetal, Sensibilidad Uterina, Líquido fétido.",
     "gpc_ref": "GPC Diagnóstico y Tratamiento de Corioamnionitis"
   },
   "boss_fight_triad": {

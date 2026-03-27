@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 170/115, FC 90 lpm, Temp 37.0°C",
+      "card_text": "Hallazgo: Ruido en el expediente: TA 170/115, FC 90 lpm, Temp 37.0°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Preeclampsia con Datos de Severidad: PA ≥160/110 + Síntomas neurológicos (fosfenos, cefalea) + Trombocitopenia.",
+      "card_text": "Hallazgo: A) Preeclampsia con Datos de Severidad: PA â‰¥160/110 + Síntomas neurológicos (fosfenos, cefalea) + Trombocitopenia.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,8 +41,8 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Manejo Expectante hasta Término: Control ambulatorio hasta las 38 SDG.",
-      "expected_action": "discard",
+      "card_text": "Evidencia: B) Manejo Expectante hasta Término: Control ambulatorio hasta las 38 SDG.",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "lethal_hazard",
@@ -57,7 +57,7 @@
       "card_id": "c_3",
       "ui_icon": "shield",
       "category": "Manejo",
-      "card_text": "C) Sulfato de Magnesio: Inicio de esquema Zuspan para prevención de crisis convulsivas (eclampsia).",
+      "card_text": "Hallazgo clínico: C) Sulfato de Magnesio: Inicio de esquema Zuspan para prevención de crisis convulsivas (eclampsia).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -73,7 +73,7 @@
       "card_id": "c_4",
       "ui_icon": "search-off",
       "category": "Toxicidad",
-      "card_text": "D) Abolición del Reflejo Rotuliano: Signo clínico inicial de concentraciones elevadas de Magnesio (7-10 mEq/L).",
+      "card_text": "Hallazgo: D) Abolición del Reflejo Rotuliano: Signo clínico inicial de concentraciones elevadas de Magnesio (7-10 mEq/L).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -85,7 +85,7 @@
       "card_id": "c_5",
       "ui_icon": "zap",
       "category": "Antídoto",
-      "card_text": "E) Gluconato de Calcio: Administración inmediata de 1g IV si se detectan signos de intoxicación por Magnesio.",
+      "card_text": "Dato de importancia: E) Gluconato de Calcio: Administración inmediata de 1g IV si se detectan signos de intoxicación por Magnesio.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -97,7 +97,7 @@
       "card_id": "c_6",
       "ui_icon": "droplet",
       "category": "Riesgo",
-      "card_text": "F) Oliguria (<30 ml/hr): Factor de riesgo principal para la acumulación tóxica de Magnesio.",
+      "card_text": "Evidencia clínica: F) Oliguria (<30 ml/hr): Factor de riesgo principal para la acumulación tóxica de Magnesio.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -109,12 +109,12 @@
       "card_id": "c_7",
       "ui_icon": "wind",
       "category": "Toxicidad Grave",
-      "card_text": "G) Frecuencia Respiratoria <12 rpm: Signo de intoxicación grave con riesgo de paro respiratorio inminente.",
+      "card_text": "Hallazgo: G) Frecuencia Respiratoria <12 rpm: Signo de intoxicación grave con riesgo de paro respiratorio inminente.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Castillo: ¡CRÍTICO! La depresión respiratoria es una emergencia que requiere soporte inmediato."
+        "vazquez_comment": "Castillo: ¡CRÃTICO! La depresión respiratoria es una emergencia que requiere soporte inmediato."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -125,7 +125,7 @@
       "card_id": "c_8",
       "ui_icon": "trending-up",
       "category": "Madurez Fetal",
-      "card_text": "H) Esquema de Maduración Pulmonar: Betametasona 12mg IM cada 24h por 2 dosis dado que cursa con 34 SDG.",
+      "card_text": "Hallazgo: H) Esquema de Maduración Pulmonar: Betametasona 12mg IM cada 24h por 2 dosis dado que cursa con 34 SDG.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -137,7 +137,7 @@
       "card_id": "c_9",
       "ui_icon": "check-circle",
       "category": "Resolución",
-      "card_text": "I) Interrupción del Embarazo: Se indica tras completar esquema de maduración y estabilizar a la paciente.",
+      "card_text": "Hallazgo clínico: I) Interrupción del Embarazo: Se indica tras completar esquema de maduración y estabilizar a la paciente.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,

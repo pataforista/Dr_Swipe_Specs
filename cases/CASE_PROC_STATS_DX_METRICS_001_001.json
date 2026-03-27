@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA N/A, FC N/A, Temp N/A",
+      "card_text": "Hallazgo clínico: Dato anecdótico: TA N/A, FC N/A, Temp N/A",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Probabilidad BAJA (<10%): En enfermedades raras, incluso pruebas 'buenas' tienen un Valor Predictivo Positivo (VPP) muy bajo por el peso de los FP.",
+      "card_text": "Hallazgo: A) Probabilidad BAJA (<10%): En enfermedades raras, incluso pruebas 'buenas' tienen un Valor Predictivo Positivo (VPP) muy bajo por el peso de los FP.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,7 +41,7 @@
       "card_id": "c_2",
       "ui_icon": "percent",
       "category": "Valor Predictivo (+)",
-      "card_text": "B) Valor Predictivo Positivo (VPP): Probabilidad de tener la enfermedad si el resultado es POSITIVO. (VP / VP + FP).",
+      "card_text": "Dato de importancia: B) Valor Predictivo Positivo (VPP): Probabilidad de tener la enfermedad si el resultado es POSITIVO. (VP / VP + FP).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -53,7 +53,7 @@
       "card_id": "c_3",
       "ui_icon": "search",
       "category": "Sensibilidad",
-      "card_text": "C) Sensibilidad (Sn): Capacidad para detectar enfermos; tasa de verdaderos positivos (VP / VP + FN).",
+      "card_text": "Evidencia: C) Sensibilidad (Sn): Capacidad para detectar enfermos; tasa de verdaderos positivos (VP / VP + FN).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -65,7 +65,7 @@
       "card_id": "c_4",
       "ui_icon": "check-square",
       "category": "Especificidad",
-      "card_text": "D) Especificidad (Sp): Capacidad para detectar sanos; tasa de verdaderos negativos (VN / VN + FP).",
+      "card_text": "Hallazgo: D) Especificidad (Sp): Capacidad para detectar sanos; tasa de verdaderos negativos (VN / VN + FP).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -77,7 +77,7 @@
       "card_id": "c_5",
       "ui_icon": "trending-up",
       "category": "Invarianza",
-      "card_text": "E) Sn y Sp vs Prevalencia: Son propiedades intrínsecas de la prueba y su valor NO se modifica por la prevalencia poblacional.",
+      "card_text": "Evidencia: E) Sn y Sp vs Prevalencia: Son propiedades intrínsecas de la prueba y su valor NO se modifica por la prevalencia poblacional.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -89,7 +89,7 @@
       "card_id": "c_6",
       "ui_icon": "minus-circle",
       "category": "V.P. Negativo",
-      "card_text": "F) Valor Predictivo Negativo (VPN): Probabilidad de estar sano si la prueba es negativa. Se eleva cuando la prevalencia es baja.",
+      "card_text": "Evidencia: F) Valor Predictivo Negativo (VPN): Probabilidad de estar sano si la prueba es negativa. Se eleva cuando la prevalencia es baja.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -101,7 +101,7 @@
       "card_id": "c_7",
       "ui_icon": "activity",
       "category": "Verosimilitud",
-      "card_text": "G) LR (+) Razón de Verosimilitud: Relaciona Sn y Sp en un solo valor. Cálculo: Sensibilidad / (1 - Especificidad).",
+      "card_text": "Evidencia: G) LR (+) Razón de Verosimilitud: Relaciona Sn y Sp en un solo valor. Cálculo: Sensibilidad / (1 - Especificidad).",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -113,7 +113,7 @@
       "card_id": "c_8",
       "ui_icon": "trending-down",
       "category": "Curva ROC",
-      "card_text": "H) Área bajo la curva (AUC): Gráfico de Sn vs (1-Sp). Un área de 1.0 indica una prueba perfecta, 0.5 indica puro azar.",
+      "card_text": "Hallazgo: H) Ãrea bajo la curva (AUC): Gráfico de Sn vs (1-Sp). Un área de 1.0 indica una prueba perfecta, 0.5 indica puro azar.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -125,7 +125,7 @@
       "card_id": "c_9",
       "ui_icon": "scissors",
       "category": "Punto de Corte",
-      "card_text": "I) Desplazamiento del Umbral: Si bajamos el punto de corte (hacemos la prueba más sensible), la Especificidad bajará obligatoriamente.",
+      "card_text": "Hallazgo: I) Desplazamiento del Umbral: Si bajamos el punto de corte (hacemos la prueba más sensible), la Especificidad bajará obligatoriamente.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,

@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA N/A, FC 90 lpm, Temp 38.2°C",
+      "card_text": "Dato de importancia: Ruido en el expediente: TA N/A, FC 90 lpm, Temp 38.2°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Varicela (Tratamiento: Paracetamol): Virus Varicela-Zóster. Pleomorfismo regional (mácula, pápula, vesícula, costra).",
+      "card_text": "Hallazgo: A) Varicela (Tratamiento: Paracetamol): Virus Varicela-Zóster. Pleomorfismo regional (mácula, pápula, vesícula, costra).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,12 +41,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Viruela: Lesiones en el mismo estadio de evolución (monomórficas), centrífugas y umbilicadas.",
+      "card_text": "Hallazgo: Ruido en el expediente: B) Viruela: Lesiones en el mismo estadio de evolución (monomórficas), centrífugas y umbilicadas.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡Bien! Reconociste la diferencia clave en el estadio de las lesiones."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Reconociste la diferencia clave en el estadio de las lesiones."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -57,8 +57,8 @@
       "card_id": "c_3",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "C) Varicela (Tratamiento: Ácido Acetilsalicílico): Uso de Aspirina para mitigar la fiebre intensa en varicela.",
-      "expected_action": "discard",
+      "card_text": "Evidencia: C) Varicela (Tratamiento: Ãcido Acetilsalicílico): Uso de Aspirina para mitigar la fiebre intensa en varicela.",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "lethal_hazard",
@@ -72,7 +72,7 @@
   ],
   "enarm_pearl": {
     "title": "Varicela: Contraindicado el ASA",
-    "text": "Prohibido: El uso de Ácido Acetilsalicílico en varicela aumenta el riesgo de SÍNDROME DE REYE. Usa Paracetamol.",
+    "text": "Prohibido: El uso de Ãcido Acetilsalicílico en varicela aumenta el riesgo de SÃNDROME DE REYE. Usa Paracetamol.",
     "gpc_ref": "GPC Diagnóstico y Tratamiento de la Varicela en el Paciente Pediátrico"
   },
   "boss_fight_triad": {

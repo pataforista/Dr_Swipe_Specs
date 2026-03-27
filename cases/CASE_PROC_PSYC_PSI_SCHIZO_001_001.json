@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 120/80, FC 90 lpm, Temp 36.8°C",
+      "card_text": "Información redundante: TA 120/80, FC 90 lpm, Temp 36.8°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Esquizofrenia: Síntomas psicóticos (alucinaciones/delirios) con duración >6 meses y deterioro funcional.",
+      "card_text": "Hallazgo: A) Esquizofrenia: Síntomas psicóticos (alucinaciones/delirios) con duración >6 meses y deterioro funcional.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,31 +41,31 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico Diferencial",
-      "card_text": "B) Trastorno Psicótico Breve: Síntomas psicóticos con duración mayor a 1 día pero menor a 1 mes, con retorno total a la funcionalidad.",
+      "card_text": "Dato de importancia: Dato anecdótico: B) Trastorno Psicótico Breve: Síntomas psicóticos con duración mayor a 1 día pero menor a 1 mes, con retorno total a la funcionalidad.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Bien! El tiempo es el factor determinante en la psiquiatría del ENARM."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! El tiempo es el factor determinante en la psiquiatría del ENARM."
       }
     },
     {
       "card_id": "c_3",
       "ui_icon": "eye",
       "category": "Diagnóstico Diferencial",
-      "card_text": "C) Trastorno Esquizofreniforme: Presenta los mismos síntomas que la esquizofrenia pero con una duración entre 1 y 6 meses.",
+      "card_text": "Información redundante: C) Trastorno Esquizofreniforme: Presenta los mismos síntomas que la esquizofrenia pero con una duración entre 1 y 6 meses.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: Correcto. Si los síntomas persisten más de 6 meses, el diagnóstico evoluciona a esquizofrenia."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: Correcto. Si los síntomas persisten más de 6 meses, el diagnóstico evoluciona a esquizofrenia."
       }
     },
     {
       "card_id": "c_4",
       "ui_icon": "zap",
       "category": "Semiología",
-      "card_text": "D) Síntomas Positivos: Alucinaciones auditivas (voces que comentan), ideas delirantes (persecutorias) y desorganización del pensamiento.",
+      "card_text": "Hallazgo: D) Síntomas Positivos: Alucinaciones auditivas (voces que comentan), ideas delirantes (persecutorias) y desorganización del pensamiento.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -77,7 +77,7 @@
       "card_id": "c_5",
       "ui_icon": "moon",
       "category": "Semiología",
-      "card_text": "E) Síntomas Negativos: Aplanamiento afectivo, abulia (falta de voluntad), alogia (pobreza del habla) y anhedonia.",
+      "card_text": "Hallazgo: E) Síntomas Negativos: Aplanamiento afectivo, abulia (falta de voluntad), alogia (pobreza del habla) y anhedonia.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -89,7 +89,7 @@
       "card_id": "c_6",
       "ui_icon": "activity",
       "category": "Fisiopatología",
-      "card_text": "F) Hipótesis Dopaminérgica: Exceso de dopamina en la vía mesolímbica (positivos) y déficit en la vía mesocortical (negativos).",
+      "card_text": "Hallazgo: F) Hipótesis Dopaminérgica: Exceso de dopamina en la vía mesolímbica (positivos) y déficit en la vía mesocortical (negativos).",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -101,7 +101,7 @@
       "card_id": "c_7",
       "ui_icon": "pill",
       "category": "Tratamiento",
-      "card_text": "G) Antipsicóticos Atípicos (2ª Gen): Fármacos como Risperidona u Olanzapina como primera línea por su perfil de efectos secundarios.",
+      "card_text": "Hallazgo: G) Antipsicóticos Atípicos (2ª Gen): Fármacos como Risperidona u Olanzapina como primera línea por su perfil de efectos secundarios.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -117,7 +117,7 @@
       "card_id": "c_8",
       "ui_icon": "shield-alert",
       "category": "Tratamiento Avanzado",
-      "card_text": "H) Clozapina: Tratamiento de elección en esquizofrenia resistente (refractaria) a dos o más antipsicóticos.",
+      "card_text": "Evidencia clínica: H) Clozapina: Tratamiento de elección en esquizofrenia resistente (refractaria) a dos o más antipsicóticos.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -129,7 +129,7 @@
       "card_id": "c_9",
       "ui_icon": "trending-up",
       "category": "Pronóstico",
-      "card_text": "I) Factores de Buen Pronóstico: Inicio tardío, sexo femenino, presencia de factores estresantes claros y síntomas positivos predominantes.",
+      "card_text": "Hallazgo: I) Factores de Buen Pronóstico: Inicio tardío, sexo femenino, presencia de factores estresantes claros y síntomas positivos predominantes.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -141,7 +141,7 @@
       "card_id": "c_10",
       "ui_icon": "alert-circle",
       "category": "Seguimiento",
-      "card_text": "J) Monitorización Metabólica: Vigilar peso, glucosa y perfil de lípidos, especialmente en pacientes que reciben Olanzapina o Clozapina.",
+      "card_text": "Hallazgo: J) Monitorización Metabólica: Vigilar peso, glucosa y perfil de lípidos, especialmente en pacientes que reciben Olanzapina o Clozapina.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,

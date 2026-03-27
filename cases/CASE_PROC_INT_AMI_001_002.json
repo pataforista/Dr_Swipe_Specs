@@ -13,24 +13,24 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 90/60 (tendencia al choque), FC 50 lpm (bloqueo), Temp 36.5°C",
-      "expected_action": "discard",
+      "card_text": "Evidencia clínica: Ruido en el expediente: TA 90/60 (tendencia al choque), FC 50 lpm (bloqueo), Temp 36.5°C",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en estos signos de bradicardia, R1. El reloj no se detiene."
+        "error_type": "omission",
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de bradicardia, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Infarto Agudo al Miocardio (SCACEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
+      "card_text": "Hallazgo: A) Infarto Agudo al Miocardio (SCACEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Perfect Match! El cuadro clínico más el ECG con elevación del ST hacen el diagnóstico. ICP primaria en menos de 90 min ideal."
+        "vazquez_comment": "¡Perfect Match! El cuadro clínico más el ECG con elevación del ST hacen el diagnóstico. ICP primaria en menos de 90 min ideal."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -41,12 +41,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Costocondritis (Síndrome de Tietze): Dolor torácico reproducible a la palpación de las articulaciones condrocostales, sin cambios en ECG.",
+      "card_text": "Dato de importancia: Dato anecdótico: B) Costocondritis (Síndrome de Tietze): Dolor torácico reproducible a la palpación de las articulaciones condrocostales, sin cambios en ECG.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: ¡Ojo clínico! El dolor reproducible a la palpación casi siempre descarta origen isquémico clásico, aquí el dolor es visceral."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Ojo clínico! El dolor reproducible a la palpación casi siempre descarta origen isquémico clásico, aquí el dolor es visceral."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -57,12 +57,12 @@
       "card_id": "c_3",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "C) Tromboembolia Pulmonar: Disnea súbita, taquicardia, dolor pleurítico, hipoxia severa. S1Q3T3 raro pero posible.",
-      "expected_action": "discard",
+      "card_text": "Evidencia: C) Tromboembolia Pulmonar: Disnea súbita, taquicardia, dolor pleurítico, hipoxia severa. S1Q3T3 raro pero posible.",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "lethal_hazard",
-        "vazquez_comment": "Mendoza: Felicidades por descartarlo. Los cambios ST y el tipo de dolor nos centran en las coronarias."
+        "vazquez_comment": "Felicidades por descartarlo. Los cambios ST y el tipo de dolor nos centran en las coronarias."
       },
       "safety_flags": {
         "red_flag": true,
@@ -73,12 +73,12 @@
       "card_id": "c_4",
       "ui_icon": "activity",
       "category": "Estudio Inicial",
-      "card_text": "D) Electrocardiograma de 12 derivaciones: Realizar e interpretar en menos de 10 minutos desde el primer contacto.",
+      "card_text": "Hallazgo: D) Electrocardiograma de 12 derivaciones: Realizar e interpretar en menos de 10 minutos desde el primer contacto.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Mendoza: ¡Vital! El tiempo es músculo. Sin ECG no hay diagnóstico oportuno."
+        "vazquez_comment": "¡Vital! El tiempo es músculo. Sin ECG no hay diagnóstico oportuno."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -89,36 +89,36 @@
       "card_id": "c_5",
       "ui_icon": "pill",
       "category": "Tratamiento",
-      "card_text": "E) Aspirina 325 mg (masticada): Antiagregación inicial obligatoria para reducir mortalidad.",
+      "card_text": "Hallazgo clínico: E) Aspirina 325 mg (masticada): Antiagregación inicial obligatoria para reducir mortalidad.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: Bien. La aspirina es el fármaco con mayor evidencia de beneficio inicial."
+        "vazquez_comment": "Bien. La aspirina es el fármaco con mayor evidencia de beneficio inicial."
       }
     },
     {
       "card_id": "c_6",
       "ui_icon": "pill",
       "category": "Tratamiento",
-      "card_text": "F) Clopidogrel 300 mg: Segundo antiagregante (DAPT) para potenciar la inhibición plaquetaria.",
+      "card_text": "Evidencia: F) Clopidogrel 300 mg: Segundo antiagregante (DAPT) para potenciar la inhibición plaquetaria.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: Correcto. La doble antiagregación es estándar de oro."
+        "vazquez_comment": "Correcto. La doble antiagregación es estándar de oro."
       }
     },
     {
       "card_id": "c_7",
       "ui_icon": "droplet",
       "category": "Farmacología",
-      "card_text": "G) Nitroglicerina Sublingual: Administrar para control del dolor retroesternal en este infarto inferior.",
-      "expected_action": "discard",
+      "card_text": "Evidencia: G) Nitroglicerina Sublingual: Administrar para control del dolor retroesternal en este infarto inferior.",
+      "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "lethal_hazard",
-        "vazquez_comment": "Mendoza: ¡PELIGRO! En el infarto inferior con sospecha de extension a ventrículo derecho, los nitratos pueden causar colapso circulatorio."
+        "vazquez_comment": "¡PELIGRO! En el infarto inferior con sospecha de extension a ventrículo derecho, los nitratos pueden causar colapso circulatorio."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -129,24 +129,24 @@
       "card_id": "c_8",
       "ui_icon": "clock",
       "category": "Reperfusión",
-      "card_text": "H) Tiempo Puerta-Balón <90 min: Meta de tiempo para realizar angioplastia primaria desde la llegada.",
+      "card_text": "Evidencia clínica: H) Tiempo Puerta-Balón <90 min: Meta de tiempo para realizar angioplastia primaria desde la llegada.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Exacto! Cada minuto de retraso aumenta la mortalidad."
+        "vazquez_comment": "¡Exacto! Cada minuto de retraso aumenta la mortalidad."
       }
     },
     {
       "card_id": "c_9",
       "ui_icon": "zap",
       "category": "Complicación",
-      "card_text": "I) Bloqueo AV de Tercer Grado: Complicación eléctrica frecuente en infartos de la cara inferior.",
+      "card_text": "Evidencia: I) Bloqueo AV de Tercer Grado: Complicación eléctrica frecuente en infartos de la cara inferior.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: Muy bien. La arteria coronaria derecha suele irrigar el nodo AV."
+        "vazquez_comment": "Muy bien. La arteria coronaria derecha suele irrigar el nodo AV."
       }
     }
   ],

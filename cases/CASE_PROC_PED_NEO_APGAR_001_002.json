@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA N/A, FC 90 lpm, Temp 36.5°C",
+      "card_text": "Hallazgo: Ruido en el expediente: TA N/A, FC 90 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) APGAR 5 (Depresión Moderada): FC <100 (1) + Llanto débil (1) + Mueca (1) + Flexión (1) + Acrocianosis (1).",
+      "card_text": "Hallazgo: A) APGAR 5 (Depresión Moderada): FC <100 (1) + Llanto débil (1) + Mueca (1) + Flexión (1) + Acrocianosis (1).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,7 +41,7 @@
       "card_id": "c_2",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "B) Silverman-Andersen 2 (Dificultad Leve): Aleteo (1) + Tiraje (1) = 2. A diferencia del APGAR, a mayor puntaje Silverman, mayor gravedad.",
+      "card_text": "Evidencia: B) Silverman-Andersen 2 (Dificultad Leve): Aleteo (1) + Tiraje (1) = 2. A diferencia del APGAR, a mayor puntaje Silverman, mayor gravedad.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -57,7 +57,7 @@
       "card_id": "c_3",
       "ui_icon": "clipboard",
       "category": "Criterios",
-      "card_text": "C) Signos del APGAR: Evalúa Frecuencia Cardiaca, Respiración, Tono Muscular, Irritabilidad Refleja y Coloración.",
+      "card_text": "Hallazgo: C) Signos del APGAR: Evalúa Frecuencia Cardiaca, Respiración, Tono Muscular, Irritabilidad Refleja y Coloración.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -69,7 +69,7 @@
       "card_id": "c_4",
       "ui_icon": "activity",
       "category": "Criterios",
-      "card_text": "D) Signos de Silverman: Disociación Toraco-abdominal, Tiraje Intercostal, Retracción Xifoidea, Aleteo Nasal y Quejido Respiratorio.",
+      "card_text": "Evidencia: D) Signos de Silverman: Disociación Toraco-abdominal, Tiraje Intercostal, Retracción Xifoidea, Aleteo Nasal y Quejido Respiratorio.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -81,7 +81,7 @@
       "card_id": "c_5",
       "ui_icon": "thermometer",
       "category": "Procedimiento",
-      "card_text": "E) Pasos Iniciales de Reanimación: Proveer calor, posicionar vía aérea, aspirar (si es necesario) y secar/estimular.",
+      "card_text": "Hallazgo clínico: E) Pasos Iniciales de Reanimación: Proveer calor, posicionar vía aérea, aspirar (si es necesario) y secar/estimular.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -97,7 +97,7 @@
       "card_id": "c_6",
       "ui_icon": "zap",
       "category": "Manejo",
-      "card_text": "F) Ventilación a Presión Positiva (VPP): Indicada si FC <100 lpm, apnea o boqueo tras los pasos iniciales.",
+      "card_text": "Dato de importancia: F) Ventilación a Presión Positiva (VPP): Indicada si FC <100 lpm, apnea o boqueo tras los pasos iniciales.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -113,7 +113,7 @@
       "card_id": "c_7",
       "ui_icon": "heart",
       "category": "Manejo",
-      "card_text": "G) Compresiones Torácicas: Iniciar si FC <60 lpm después de al menos 30 segundos de VPP efectiva.",
+      "card_text": "Evidencia: G) Compresiones Torácicas: Iniciar si FC <60 lpm después de al menos 30 segundos de VPP efectiva.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -129,7 +129,7 @@
       "card_id": "c_8",
       "ui_icon": "pill",
       "category": "Manejo",
-      "card_text": "H) Adrenalina: Aplicar si la FC persiste <60 lpm tras 60 seg de ventilación y compresiones coordinadas.",
+      "card_text": "Dato de importancia: H) Adrenalina: Aplicar si la FC persiste <60 lpm tras 60 seg de ventilación y compresiones coordinadas.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -145,12 +145,12 @@
       "card_id": "c_9",
       "ui_icon": "slash",
       "category": "Manejo",
-      "card_text": "I) Nutrición Parenteral: Iniciar de forma rutinaria e inmediata en todo neonato que requirió pasos iniciales.",
+      "card_text": "Información redundante: I) Nutrición Parenteral: Iniciar de forma rutinaria e inmediata en todo neonato que requirió pasos iniciales.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡No! Se debe priorizar el apego inmediato y la lactancia materna si el neonato está estable."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡No! Se debe priorizar el apego inmediato y la lactancia materna si el neonato está estable."
       }
     }
   ],

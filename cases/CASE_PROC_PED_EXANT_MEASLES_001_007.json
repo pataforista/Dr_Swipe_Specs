@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA N/A, FC 120 lpm, Temp 39.5°C",
-      "expected_action": "discard",
+      "card_text": "Información redundante: TA N/A, FC 120 lpm, Temp 39.5°C",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+        "error_type": "omission",
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Sarampión: Virus del Sarampión. Triada: Tos, coriza, conjuntivitis + Manchas de Koplik patognomónicas.",
+      "card_text": "Evidencia: A) Sarampión: Virus del Sarampión. Triada: Tos, coriza, conjuntivitis + Manchas de Koplik patognomónicas.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,12 +41,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Rubéola: Exantema menos confluente, adenopatías retroauriculares dolorosas y manchas de Forchheimer.",
+      "card_text": "Dato de importancia: Dato anecdótico: B) Rubéola: Exantema menos confluente, adenopatías retroauriculares dolorosas y manchas de Forchheimer.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡Bien! Diferenciaste el cuadro severo del sarampión del más leve de la rubéola."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Diferenciaste el cuadro severo del sarampión del más leve de la rubéola."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -57,12 +57,12 @@
       "card_id": "c_3",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "C) Escarlatina: S. pyogenes. Lengua en fresa, líneas de Pastia y fascies de Filatov. Exantema en lija.",
+      "card_text": "Hallazgo clínico: Dato anecdótico: C) Escarlatina: S. pyogenes. Lengua en fresa, líneas de Pastia y fascies de Filatov. Exantema en lija.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: Correcto. El cuadro respiratorio prodrómico es típico de virus, no de bacterias como el pyogenes."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. El cuadro respiratorio prodrómico es típico de virus, no de bacterias como el pyogenes."
       },
       "safety_flags": {
         "lethal_risk": false,

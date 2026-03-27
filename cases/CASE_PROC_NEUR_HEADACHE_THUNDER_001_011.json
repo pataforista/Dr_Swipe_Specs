@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 160/100 mmHg, FC 95 lpm, Temp 37.2°C",
+      "card_text": "Dato de importancia: Dato anecdótico: TA 160/100 mmHg, FC 95 lpm, Temp 37.2°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Hemorragia Subaracnoidea (HSA): Cefalea en trueno + Irritación meníngea. Causa principal: Rotura de aneurisma sacular.",
+      "card_text": "Evidencia: A) Hemorragia Subaracnoidea (HSA): Cefalea en trueno + Irritación meníngea. Causa principal: Rotura de aneurisma sacular.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -42,12 +42,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Migraña con Aura: Dolor pulsátil de inicio gradual, precedido por escotomas. No es súbito ni 'en trueno'.",
+      "card_text": "Hallazgo: Dato anecdótico: B) Migraña con Aura: Dolor pulsátil de inicio gradual, precedido por escotomas. No es súbito ni 'en trueno'.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Bien! El inicio súbito es el red flag que descarta la migraña."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! El inicio súbito es el red flag que descarta la migraña."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -57,7 +57,7 @@
   ],
   "enarm_pearl": {
     "title": "Cefalea en Trueno",
-    "text": "Si la TC es NEGATIVA pero la sospecha de HSA es alta, el siguiente paso es la PUNCIÓN LUMBAR buscando xantocromía.",
+    "text": "Si la TC es NEGATIVA pero la sospecha de HSA es alta, el siguiente paso es la PUNCIÃ“N LUMBAR buscando xantocromía.",
     "gpc_ref": "GPC Manejo de la Hemorragia Subaracnoidea"
   },
   "boss_fight_triad": {

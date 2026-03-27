@@ -49,25 +49,25 @@ const VazquezInterruption: React.FC<{ onDismiss: () => void }> = ({ onDismiss })
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.88, y: 30 }}
         transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-        className="glass-panel p-8 max-w-sm border-moomin-accent/40 text-center shadow-[0_15px_45px_rgba(255,159,127,0.2)] relative bg-white/90"
+        className="glass-panel p-8 max-w-sm border-accent/40 text-center shadow-[0_0_50px_rgba(34,211,238,0.15)] relative bg-slate-900/90"
       >
         <motion.div
           animate={{ scale: [1, 1.05, 1], rotate: [0, 3, -3, 0] }}
           transition={{ duration: 2.5, repeat: Infinity }}
-          className="w-24 h-24 flex items-center justify-center text-6xl mx-auto mb-4 filter drop-shadow-[0_8px_16px_rgba(92,64,51,0.1)]"
+          className="w-24 h-24 flex items-center justify-center text-6xl mx-auto mb-4 filter drop-shadow-[0_0_20px_rgba(34,211,238,0.3)]"
         >
           👴
         </motion.div>
-        <span className="text-[10px] font-black tracking-[0.4em] text-moomin-accent uppercase mb-2 block">
+        <span className="text-[10px] font-black tracking-[0.4em] text-accent uppercase mb-2 block">
           DR. VÁZQUEZ — INTERRUPCIÓN
         </span>
-        <h3 className="text-xl font-display font-black text-moomin-text mb-3 tracking-tight">
+        <h3 className="text-xl font-display font-black text-white mb-3 tracking-tight">
           "{line.titulo}"
         </h3>
-        <p className="text-sm text-moomin-muted italic font-medium mb-4 leading-relaxed">
+        <p className="text-sm text-slate-400 italic font-medium mb-4 leading-relaxed">
           {line.cuerpo}
         </p>
-        <div className="h-1 w-12 bg-moomin-accent/20 mx-auto rounded-full" />
+        <div className="h-1 w-12 bg-accent/20 mx-auto rounded-full" />
       </motion.div>
     </div>
   );
@@ -81,8 +81,8 @@ const RewardToast: React.FC<{ toast: { show: boolean; text: string; type: string
           initial={{ opacity: 0, y: 50, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8, y: -20 }}
-          className={`fixed bottom-24 left-1/2 -translate-x-1/2 z-[200] px-8 py-4 rounded-full shadow-2xl border-2 flex items-center gap-3 font-black italic tracking-tight whitespace-nowrap
-            ${toast.type === 'milestone' ? 'bg-moomin-secondary border-white text-white' : 'bg-white border-moomin-secondary/20 text-moomin-secondary'}
+          className={`fixed bottom-24 left-1/2 -translate-x-1/2 z-[200] px-8 py-4 rounded-full shadow-2xl border-2 flex items-center gap-3 font-black italic tracking-tight whitespace-nowrap backdrop-blur-md
+            ${toast.type === 'milestone' ? 'bg-secondary border-white/20 text-white' : 'bg-slate-900 border-primary/20 text-primary'}
           `}
         >
           <span className="text-xl">{toast.type === 'milestone' ? '🏆' : '🪙'}</span>
@@ -110,7 +110,7 @@ const LootBoxOverlay: React.FC<{
         initial={{ scale: 0.5, rotate: -15, opacity: 0 }}
         animate={{ scale: 1, rotate: 0, opacity: 1 }}
         exit={{ scale: 1.5, opacity: 0 }}
-        className="glass-panel p-10 max-w-xs w-full text-center border-moomin-primary/40 shadow-2xl bg-white relative overflow-hidden loot-box-shine"
+        className="glass-panel p-10 max-w-xs w-full text-center border-primary/40 shadow-[0_0_50px_rgba(34,211,238,0.2)] bg-slate-900 relative overflow-hidden loot-box-shine"
       >
         <motion.div 
           className="text-8xl mb-6 loot-box-shake inline-block"
@@ -118,11 +118,11 @@ const LootBoxOverlay: React.FC<{
           📦
         </motion.div>
         
-        <span className="text-[10px] font-black tracking-[0.5em] text-moomin-primary uppercase block mb-2">¡CAJA DE SUMINISTROS!</span>
-        <h3 className="text-2xl font-display font-black text-moomin-text mb-4 mt-2">{reward.item.nombre}</h3>
+        <span className="text-[10px] font-black tracking-[0.5em] text-primary uppercase block mb-2">¡CAJA DE SUMINISTROS!</span>
+        <h3 className="text-2xl font-display font-black text-white mb-4 mt-2">{reward.item.nombre}</h3>
         
-        <div className="bg-moomin-bg/50 rounded-2xl p-4 mb-8 border border-moomin-text/5">
-          <p className="text-sm font-medium text-moomin-muted italic mb-1">"{reward.item.texto}"</p>
+        <div className="bg-slate-800/50 rounded-2xl p-4 mb-8 border border-white/5">
+          <p className="text-sm font-medium text-slate-400 italic mb-1">"{reward.item.texto}"</p>
         </div>
 
         <button
@@ -194,27 +194,27 @@ const EventOverlay: React.FC<{
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       />
-      <motion.div
-        initial={{ scale: 0.8, y: 50, opacity: 0 }}
-        animate={{ scale: 1, y: 0, opacity: 1 }}
-        exit={{ scale: 0.8, opacity: 0 }}
-        className={`glass-panel p-8 max-w-sm w-full text-center bg-white relative overflow-hidden shadow-2xl ${style.border}`}
-      >
-        <span className="text-4xl mb-4 block">{style.icon}</span>
-        <span className="text-[10px] font-black tracking-[0.5em] uppercase block mb-2">{style.title}</span>
-        <h3 className="text-2xl font-display font-black text-moomin-text mb-4 mt-2 leading-tight">{event.item.nombre}</h3>
-        
-        <div className={`rounded-xl p-4 mb-6 border ${style.border} bg-black/5`}>
-          <p className="text-sm font-medium text-moomin-text italic mb-1">"{event.item.texto || (event.item.frases && event.item.frases.start) || '...'}"</p>
-        </div>
-
-        <button
-          onClick={onAccept}
-          className={`w-full py-4 text-base font-bold text-white rounded-full transition-colors ${style.button}`}
+        <motion.div
+          initial={{ scale: 0.8, y: 50, opacity: 0 }}
+          animate={{ scale: 1, y: 0, opacity: 1 }}
+          exit={{ scale: 0.8, opacity: 0 }}
+          className={`glass-panel p-8 max-w-sm w-full text-center bg-slate-900 relative overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.4)] border-white/10`}
         >
-           CONTINUAR
-        </button>
-      </motion.div>
+          <span className="text-4xl mb-6 block drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">{style.icon}</span>
+          <span className="text-[10px] font-black tracking-[0.6em] text-slate-500 uppercase block mb-2">{style.title}</span>
+          <h3 className="text-2xl font-display font-black text-white mb-6 mt-2 leading-tight tracking-tight">{event.item.nombre}</h3>
+          
+          <div className={`rounded-3xl p-6 mb-8 border border-white/5 bg-black/40 backdrop-blur-sm`}>
+            <p className="text-base font-medium text-slate-300 italic mb-1 leading-relaxed">"{event.item.texto || (event.item.frases && event.item.frases.start) || '...'}"</p>
+          </div>
+
+          <button
+            onClick={onAccept}
+            className={`w-full py-5 text-sm font-black tracking-widest text-slate-950 rounded-2xl transition-all active:scale-95 uppercase ${event.type === 'lab' ? 'bg-primary' : event.type === 'archive' ? 'bg-amber-400' : 'bg-purple-400'}`}
+          >
+             CONFIRMAR RECEPCIÓN
+          </button>
+        </motion.div>
     </div>
   );
 };
@@ -734,40 +734,52 @@ function App() {
         <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          className="glass-panel p-8 max-w-md w-full text-center border-moomin-text/5 shadow-2xl relative overflow-hidden mx-4 bg-white/95"
+          className="glass-panel p-10 max-w-md w-full text-center border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden mx-4 bg-slate-900/90 medical-grid"
         >
           {/* Header */}
-          <div className="flex items-center justify-between mb-6">
-            <span className="text-[10px] font-black tracking-[0.4em] text-moomin-primary uppercase">NUEVO CASO</span>
-            <span className={`text-[9px] font-black tracking-widest uppercase px-3 py-1 rounded-full border ${difficultyColor}`}>
-              {difficultyLabel}
+          <div className="flex items-center justify-between mb-8">
+            <span className="text-[10px] font-black tracking-[0.5em] text-primary uppercase">EXPEDIENTE MÉDICO</span>
+            <span className={`text-[9px] font-black tracking-[0.2em] uppercase px-4 py-1.5 rounded-full border ${difficultyColor} backdrop-blur-md`}>
+              NIVEL: {difficultyLabel}
             </span>
           </div>
 
-          {/* Patient Name */}
-          <h2 className="text-4xl font-display font-black text-moomin-text mb-4 leading-tight tracking-tighter">
-            {currentCase.patient_intro.name}
-          </h2>
+          {/* Patient Name Area */}
+          <div className="mb-8 group">
+             <div className="text-[11px] font-bold text-primary/60 tracking-widest uppercase mb-1">IDENTIDAD DEL PACIENTE</div>
+             <h2 className="text-5xl font-display font-black text-white leading-tight tracking-tighter drop-shadow-sm">
+               {currentCase.patient_intro.name}
+             </h2>
+          </div>
 
-          <div className="w-16 h-1.5 bg-moomin-primary/20 mx-auto mb-6 rounded-full" />
-
-          {/* Lore / Arrival Scenario */}
-          <div className="bg-moomin-bg/50 border border-moomin-text/5 rounded-3xl p-6 mb-8 text-left shadow-inner">
-            <span className="text-[10px] font-black tracking-[0.3em] text-moomin-muted uppercase block mb-3">CONSIGNA MÉDICA</span>
-            <p className="text-base text-moomin-text leading-relaxed italic font-medium">
+          {/* Clinical Consign */}
+          <div className="bg-black/40 backdrop-blur-md border border-white/5 rounded-[2.5rem] p-8 mb-10 text-left relative">
+            <div className="absolute top-0 right-10 -translate-y-1/2 bg-primary px-3 py-1 rounded-full text-[9px] font-black text-slate-950 uppercase tracking-widest">
+              CONSIGNA
+            </div>
+            <p className="text-lg text-slate-200 leading-relaxed font-medium">
               "{currentCase.patient_intro.arrival_scenario}"
             </p>
-            <div className="mt-4 pt-4 border-t border-moomin-text/5">
-              <p className="text-[10px] font-black text-moomin-primary tracking-widest uppercase">
-                ⚙️ RESPONSABILIDAD: Apila cada tarjeta en el lado adecuado. Los errores debilitan al paciente.
+            <div className="mt-6 pt-6 border-t border-white/5 flex items-start gap-3">
+              <span className="text-primary text-lg">💡</span>
+              <p className="text-[10px] font-bold text-slate-400 tracking-wider uppercase leading-snug">
+                REGLA DE GUARDIA: Clasifica cada dato. No permitas que el ruido clínico sature el sistema.
               </p>
             </div>
           </div>
 
-          {/* Time limit hint */}
-          <p className="text-[10px] text-moomin-muted font-black tracking-[0.2em] uppercase mb-8">
-            RELOJ DE GUARDIA: {timeLimitRef.current}s
-          </p>
+          {/* Footer stats */}
+          <div className="flex items-center justify-center gap-12 mb-10">
+             <div className="text-center">
+                <div className="text-[9px] font-black text-slate-500 tracking-[0.3em] uppercase mb-1">RELOJ</div>
+                <div className="text-xl font-display font-black text-white">{timeLimitRef.current}s</div>
+             </div>
+             <div className="w-px h-8 bg-white/5" />
+             <div className="text-center">
+                <div className="text-[9px] font-black text-slate-500 tracking-[0.3em] uppercase mb-1">ESTADO</div>
+                <div className="text-xl font-display font-black text-primary">TRIAGE</div>
+             </div>
+          </div>
 
           <button
             onClick={() => {
@@ -782,9 +794,12 @@ function App() {
                 pearl: (currentCase.enarm_pearl || currentCase.perla_enarm) as any
               });
             }}
-            className="btn-primary w-full py-5 text-lg"
+            className="btn-primary w-full py-6 text-xl group"
           >
-             ABRIR EXPEDIENTE
+             <span className="flex items-center justify-center gap-3">
+                ABRIR EXPEDIENTE
+                <span className="group-hover:translate-x-1 transition-transform">➡️</span>
+             </span>
           </button>
         </motion.div>
       );
@@ -796,14 +811,18 @@ function App() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="flex flex-col items-center justify-center p-8 gap-8 w-full min-h-full"
+            className="flex flex-col items-center justify-center p-8 gap-8 w-full min-h-screen relative overflow-hidden medical-grid"
           >
-            <div className="relative mb-4 text-center">
-              <span className="text-[12px] font-black tracking-[0.6em] text-moomin-muted uppercase mb-2 block">SISTEMA MÉDICO</span>
-              <h1 className="text-7xl font-display font-black tracking-tighter text-moomin-text italic leading-none">
+            {/* Ambient background glows */}
+            <div className="absolute top-1/4 -left-20 w-80 h-80 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-secondary/10 rounded-full blur-[100px] pointer-events-none" />
+
+            <div className="relative mb-8 text-center z-10">
+              <span className="text-[14px] font-black tracking-[0.8em] text-primary/60 uppercase mb-4 block animate-pulse">TERMINAL MÉDICO v4.0</span>
+              <h1 className="text-8xl md:text-9xl font-display font-black tracking-tighter text-white italic leading-none drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">
                 DR. SWIPE
               </h1>
-              <div className="h-2 w-24 bg-moomin-primary mx-auto mt-4 rounded-full opacity-30" />
+              <div className="h-1.5 w-48 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mt-6 rounded-full" />
             </div>
 
             {/* Daily Streak Badge */}
@@ -811,101 +830,92 @@ function App() {
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                className="flex items-center gap-2 bg-moomin-accent/10 border border-moomin-accent/20 px-5 py-2 rounded-full mb-2"
+                className="flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-3 rounded-full mb-4 backdrop-blur-xl z-10"
               >
-                <span className="text-moomin-accent text-lg">🔥</span>
-                <span className="text-[11px] font-black text-moomin-text/80 tracking-widest uppercase">
-                  RACHA: {dailyStreak} DÍAS {dailyStreak >= 7 ? '(x2.0 XP)' : `(x${getDailyStreakMultiplier(dailyStreak).toFixed(1)} XP)`}
+                <span className="text-accent text-xl animate-bounce">🔥</span>
+                <span className="text-[12px] font-black text-white tracking-[0.2em] uppercase">
+                  RACHA ACTIVA: {dailyStreak} DÍAS {dailyStreak >= 7 ? '— BONUS MAX' : ''}
                 </span>
               </motion.div>
             )}
-
-            {/* Coin Balance */}
-            <div className="flex items-center gap-2 mb-2 bg-white/50 px-4 py-2 rounded-full shadow-sm">
-              <span className="text-xl">🪙</span>
-              <span className="text-base font-black text-moomin-text tracking-widest">{stats.coins}</span>
-            </div>
 
             {/* Quick Progress Stats */}
             {stats.cases_solved > 0 && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="grid grid-cols-3 gap-4 mb-4 w-full max-w-sm"
+                className="grid grid-cols-3 gap-6 mb-8 w-full max-w-md z-10"
               >
-                <div className="bg-white/80 border border-moomin-text/5 rounded-3xl p-4 text-center shadow-sm">
-                  <div className="text-3xl font-display font-black text-moomin-primary">{stats.cases_solved}</div>
-                  <div className="text-[9px] font-black text-moomin-muted uppercase tracking-widest mt-1">Casos</div>
+                <div className="glass-panel p-6 text-center border-white/5 bg-slate-900/40">
+                  <div className="text-4xl font-display font-black text-primary">{stats.cases_solved}</div>
+                  <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest mt-2">Expedientes</div>
                 </div>
-                <div className="bg-white/80 border border-moomin-text/5 rounded-3xl p-4 text-center shadow-sm">
-                  <div className="text-3xl font-display font-black text-moomin-secondary">
+                <div className="glass-panel p-6 text-center border-white/5 bg-slate-900/40">
+                  <div className="text-4xl font-display font-black text-secondary">
                     {stats.correct_swipes + stats.mistakes > 0
                       ? Math.round((stats.correct_swipes / (stats.correct_swipes + stats.mistakes)) * 100)
                       : 0}%
                   </div>
-                  <div className="text-[9px] font-black text-moomin-muted uppercase tracking-widest mt-1">Precisión</div>
+                  <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest mt-2">Efectividad</div>
                 </div>
-                <div className="bg-white/80 border border-moomin-text/5 rounded-3xl p-4 text-center shadow-sm">
-                  <div className="text-3xl font-display font-black text-moomin-accent">{(stats.xp || 0).toLocaleString()}</div>
-                  <div className="text-[9px] font-black text-moomin-muted uppercase tracking-widest mt-1">Puntos</div>
+                <div className="glass-panel p-6 text-center border-white/5 bg-slate-900/40">
+                  <div className="text-4xl font-display font-black text-accent">{Math.floor((stats.xp || 0) / 1000)}k</div>
+                  <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest mt-2">Puntos</div>
                 </div>
               </motion.div>
             )}
 
             {/* Difficulty Selector */}
-            <div className="flex gap-3 mb-4">
-              {(['standard', 'hard', 'extreme'] as const).map(diff => (
-                <button
-                  key={diff}
-                  onClick={() => setSelectedDifficulty(selectedDifficulty === diff ? null : diff)}
-                  className={`px-5 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-widest border-2 transition-all ${
-                    selectedDifficulty === diff
-                      ? diff === 'extreme' ? 'bg-moomin-accent/20 border-moomin-accent text-moomin-text shadow-lg scale-105'
-                        : diff === 'hard' ? 'bg-orange-500/20 border-orange-500 text-moomin-text shadow-lg scale-105'
-                        : 'bg-moomin-primary/20 border-moomin-primary text-moomin-text shadow-lg scale-105'
-                      : 'bg-white/50 border-moomin-text/10 text-moomin-muted hover:border-moomin-text/20'
-                  }`}
-                >
-                  {diff === 'standard' ? 'Médico General' : diff === 'hard' ? 'Residente' : 'Especialista'}
-                </button>
-              ))}
+            <div className="flex flex-col items-center gap-4 mb-8 z-10">
+              <span className="text-[10px] font-black tracking-[0.5em] text-slate-500 uppercase">SELECCIONAR RANGO</span>
+              <div className="flex gap-4">
+                {(['standard', 'hard', 'extreme'] as const).map(diff => (
+                  <button
+                    key={diff}
+                    onClick={() => setSelectedDifficulty(selectedDifficulty === diff ? null : diff)}
+                    className={`px-6 py-4 rounded-[1.5rem] text-[11px] font-black uppercase tracking-widest border transition-all duration-300 ${
+                      selectedDifficulty === diff
+                        ? diff === 'extreme' ? 'bg-accent/20 border-accent text-white shadow-[0_0_30px_rgba(251,113,133,0.3)] scale-105'
+                          : diff === 'hard' ? 'bg-amber-500/20 border-amber-500 text-white shadow-[0_0_30px_rgba(245,158,11,0.3)] scale-105'
+                          : 'bg-primary/20 border-primary text-white shadow-[0_0_30px_rgba(34,211,238,0.3)] scale-105'
+                        : 'bg-white/5 border-white/10 text-slate-500 hover:border-white/30 hover:text-white'
+                    }`}
+                  >
+                    {diff === 'standard' ? 'Médico' : diff === 'hard' ? 'Residente' : 'Director'}
+                  </button>
+                ))}
+              </div>
             </div>
 
-            {loadError && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="bg-moomin-accent/10 border-2 border-moomin-accent/30 rounded-3xl p-5 mb-4 text-center max-w-md shadow-lg"
-              >
-                <p className="text-moomin-text text-sm font-bold">⚠️ {loadError}</p>
-                <p className="text-moomin-muted text-xs mt-2">Hubo un pequeño error. ¿Intentamos otra vez?</p>
-              </motion.div>
-            )}
-
-            <div className="flex gap-4 w-full max-w-xs justify-center">
+            <div className="flex flex-col gap-6 w-full max-w-xs justify-center z-10">
               <button
                 onClick={() => startNewCase(false)}
                 disabled={isLoadingCase}
-                className={`btn-primary px-12 py-6 text-xl flex-1 ${isLoadingCase ? 'opacity-50 cursor-not-allowed' : ''} shadow-[0_10px_0_rgba(135,206,235,0.3)]`}
+                className={`btn-primary py-7 text-2xl group ${isLoadingCase ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 {isLoadingCase ? (
-                  <span className="inline-flex items-center gap-2">
-                    <span className="inline-block animate-spin">🕒</span> Cargando...
+                  <span className="flex items-center justify-center gap-3">
+                    <span className="w-5 h-5 border-2 border-slate-950/20 border-t-slate-950 rounded-full animate-spin" />
+                    INICIANDO...
                   </span>
                 ) : (
-                  "NUEVA GUARDIA"
+                  <span className="flex items-center justify-center gap-3">
+                    NUEVA GUARDIA
+                    <span className="group-hover:translate-x-1 transition-transform">⚡</span>
+                  </span>
                 )}
               </button>
+
+              <button
+                onClick={() => setShowStats(true)}
+                disabled={isLoadingCase}
+                className="text-[12px] font-black tracking-[0.5em] text-slate-500 hover:text-primary transition-colors uppercase flex items-center justify-center gap-2 group"
+              >
+                <span className="w-8 h-px bg-slate-800 group-hover:bg-primary/40 transition-all" />
+                CENTRO DE DATOS
+                <span className="w-8 h-px bg-slate-800 group-hover:bg-primary/40 transition-all" />
+              </button>
             </div>
-            <button
-              onClick={() => setShowStats(true)}
-              disabled={isLoadingCase}
-              className={`text-[11px] font-black tracking-[0.4em] transition-colors uppercase py-2 px-4 rounded-full border border-transparent ${
-                isLoadingCase ? 'text-moomin-muted cursor-not-allowed' : 'text-moomin-muted hover:text-moomin-primary hover:bg-white/50'
-              }`}
-            >
-              📊 ARCHIVOS MÉDICOS
-            </button>
           </motion.div>
         );
 

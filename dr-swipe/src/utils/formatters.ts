@@ -47,9 +47,21 @@ export const cleanVazquezComment = (comment: string | undefined, isCorrect: bool
   } else {
     // Neutral correction. Focus on the clinical fact.
     if (reasoning) {
-      // Pick prefix deterministically based on reasoning length
-      const prefixes = ["Nota clínica:", "Punto clave:", "Recordatorio:"];
-      const prefix = prefixes[reasoning.length % prefixes.length];
+      // Pick prefix based on the context of the reasoning or error type
+      let prefix = "Nota clínica:";
+      const lowerReasoning = reasoning.toLowerCase();
+      
+      if (lowerReasoning.includes("red flag") || lowerReasoning.includes("letal") || lowerReasoning.includes("vital")) {
+        prefix = "🚨 ¡ERROR CRÍTICO!";
+      } else if (lowerReasoning.includes("ruido") || lowerReasoning.includes("irrelevante") || lowerReasoning.includes("basura")) {
+        prefix = "🧹 DESCARTE RECOMENDADO:";
+      } else if (lowerReasoning.includes("importante") || lowerReasoning.includes("clave")) {
+        prefix = "🎯 DATO CLAVE OMITIDO:";
+      } else {
+        const prefixes = ["Nota clínica:", "Punto clave:", "Recordatorio:"];
+        prefix = prefixes[reasoning.length % prefixes.length];
+      }
+      
       return `${prefix} ${reasoning}`;
     } else {
       return "Esta decisión no sostiene. Revísala antes de cerrar el caso.";

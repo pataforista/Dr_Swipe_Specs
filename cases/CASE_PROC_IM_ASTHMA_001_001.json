@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "FC 88 lpm, Temp 36.6°C, SatO2 97% (Aire ambiente).",
+      "card_text": "Información redundante: FC 88 lpm, Temp 36.6°C, SatO2 97% (Aire ambiente).",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: Signos estables por ahora, Sofía no está en crisis aguda."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: Signos estables por ahora, Sofía no está en crisis aguda."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Asma Bronquial: Enfermedad inflamatoria crónica de la vía aérea con obstrucción reversible (clínica + espirometría).",
+      "card_text": "Hallazgo: A) Asma Bronquial: Enfermedad inflamatoria crónica de la vía aérea con obstrucción reversible (clínica + espirometría).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,7 +41,7 @@
       "card_id": "c_2",
       "ui_icon": "pill",
       "category": "Tratamiento GINA",
-      "card_text": "B) ICS-Formoterol (Rescate y Mantenimiento): Vía preferente (Step 1 y 2). El uso de SABA solo ha quedado relegado.",
+      "card_text": "Hallazgo: B) ICS-Formoterol (Rescate y Mantenimiento): Vía preferente (Step 1 y 2). El uso de SABA solo ha quedado relegado.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -57,19 +57,19 @@
       "card_id": "c_3",
       "ui_icon": "eye",
       "category": "Rescate",
-      "card_text": "C) Salbutamol (SABA) a demanda: Única terapia necesaria para pacientes con síntomas ocasionales (Step 1 antiguo).",
+      "card_text": "Dato de importancia: Dato anecdótico: C) Salbutamol (SABA) a demanda: Ãšnica terapia necesaria para pacientes con síntomas ocasionales (Step 1 antiguo).",
       "expected_action": "discard",
       "scoring": {
         "points": 100,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Incorrecto! La GINA ya no recomienda SABA solo por el riesgo de exacerbaciones graves. ¡Usa ICS-Formoterol!"
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Incorrecto! La GINA ya no recomienda SABA solo por el riesgo de exacerbaciones graves. ¡Usa ICS-Formoterol!"
       }
     },
     {
       "card_id": "c_4",
       "ui_icon": "activity",
       "category": "Control",
-      "card_text": "D) Cuestionario ACT / ACQ: Herramientas validadas para evaluar el nivel de control de los síntomas en las últimas 4 semanas.",
+      "card_text": "Evidencia: D) Cuestionario ACT / ACQ: Herramientas validadas para evaluar el nivel de control de los síntomas en las últimas 4 semanas.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -81,7 +81,7 @@
       "card_id": "c_5",
       "ui_icon": "thermometer",
       "category": "Crisis Aguda",
-      "card_text": "E) Prednisona Oral: Indicada en exacerbaciones moderadas-graves para reducir la inflamación sistémica.",
+      "card_text": "Evidencia: E) Prednisona Oral: Indicada en exacerbaciones moderadas-graves para reducir la inflamación sistémica.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -93,7 +93,7 @@
       "card_id": "c_6",
       "ui_icon": "info",
       "category": "Factores Riesgo",
-      "card_text": "F) Atopia y Obesidad: Factores que dificultan el control del asma e incrementan la severidad del cuadro.",
+      "card_text": "Hallazgo: F) Atopia y Obesidad: Factores que dificultan el control del asma e incrementan la severidad del cuadro.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -105,7 +105,7 @@
       "card_id": "c_7",
       "ui_icon": "alert-circle",
       "category": "Función Pulmonar",
-      "card_text": "G) Flujometría (PEF): Útil para el auto-monitoreo del paciente en casa y detección temprana de crisis.",
+      "card_text": "Dato de importancia: G) Flujometría (PEF): Ãštil para el auto-monitoreo del paciente en casa y detección temprana de crisis.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -117,7 +117,7 @@
       "card_id": "c_8",
       "ui_icon": "zap",
       "category": "Manejo Step 3",
-      "card_text": "H) Aumentar dosis de ICS-Formoterol: Si los síntomas persisten a pesar del manejo inicial adecuado.",
+      "card_text": "Hallazgo: H) Aumentar dosis de ICS-Formoterol: Si los síntomas persisten a pesar del manejo inicial adecuado.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -129,7 +129,7 @@
       "card_id": "c_9",
       "ui_icon": "slash",
       "category": "Diagnóstico",
-      "card_text": "I) Prueba de Provocación con Metacolina: Usada si la espirometría es normal pero la sospecha clínica es muy alta.",
+      "card_text": "Hallazgo: I) Prueba de Provocación con Metacolina: Usada si la espirometría es normal pero la sospecha clínica es muy alta.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -141,7 +141,7 @@
       "card_id": "c_10",
       "ui_icon": "check-circle",
       "category": "Técnica",
-      "card_text": "J) Evaluación de Técnica Inhalatoria: Paso obligatorio en CADA consulta antes de escalar el tratamiento.",
+      "card_text": "Dato de importancia: J) Evaluación de Técnica Inhalatoria: Paso obligatorio en CADA consulta antes de escalar el tratamiento.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,

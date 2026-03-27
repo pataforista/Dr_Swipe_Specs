@@ -21,24 +21,24 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
   };
 
   const expressionFilters = {
-    neutral: 'saturate(0.8)',
-    happy: 'drop-shadow(0 0 15px rgba(135,206,235,0.4)) saturate(1.1)',
-    angry: 'drop-shadow(0 0 15px rgba(255,159,127,0.5)) saturate(1.5) contrast(1.1)',
-    shocked: 'drop-shadow(0 0 20px rgba(255,182,193,0.5)) contrast(1.2) brightness(1.1)'
+    neutral: 'saturate(0.4) contrast(0.9)',
+    happy: 'drop-shadow(0 0 15px rgba(34,211,238,0.4)) saturate(1.1)',
+    angry: 'drop-shadow(0 0 15px rgba(251,113,133,0.5)) saturate(1.5)',
+    shocked: 'drop-shadow(0 0 20px rgba(251,191,36,0.5)) contrast(1.2) brightness(1.1)'
   };
 
   const glowColors = {
-    neutral: 'bg-moomin-muted/20',
-    happy: 'bg-moomin-primary/30',
-    angry: 'bg-moomin-accent/30',
-    shocked: 'bg-moomin-secondary/30'
+    neutral: 'bg-slate-500/10',
+    happy: 'bg-primary/20',
+    angry: 'bg-accent-alert/20',
+    shocked: 'bg-accent-warning/20'
   };
 
   const borderColors = {
-    neutral: 'border-moomin-text/5',
-    happy: 'border-moomin-primary/40',
-    angry: 'border-moomin-accent/40',
-    shocked: 'border-moomin-secondary/40'
+    neutral: 'border-white/5',
+    happy: 'border-primary/40',
+    angry: 'border-accent-alert/40',
+    shocked: 'border-accent-warning/40'
   };
 
   const validDoctor = (doctor in mentorIcons) ? doctor : 'mendoza';
@@ -53,8 +53,8 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
 
   return (
     <ErrorBoundary fallback={
-      <div className="glass-panel p-4 border-moomin-accent/30 text-center animate-pulse">
-        <p className="text-moomin-accent font-display font-black text-xs tracking-widest uppercase">CONEXIÓN INTERRUMPIDA</p>
+      <div className="glass-panel p-4 border-accent-alert/30 text-center animate-pulse bg-slate-950">
+        <p className="text-accent-alert font-display font-black text-[10px] tracking-widest uppercase">CONEXIÓN PERDIDA</p>
       </div>
     }>
       <AnimatePresence>
@@ -80,7 +80,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
               key={`avatar-${validExpression}`}
               animate={avatarMotion[validExpression]}
               transition={{ duration: 0.5, ease: 'easeInOut' }}
-              className={`w-12 h-12 glass-panel !rounded-full flex items-center justify-center text-2xl shadow-2xl relative z-10 border-2 ${borderColors[validExpression]}`}
+              className={`w-14 h-14 glass-panel !rounded-full flex items-center justify-center text-3xl shadow-2xl relative z-10 border bg-slate-900 border-white/10 ${borderColors[validExpression]}`}
               style={{ filter: expressionFilters[validExpression] }}
             >
               {mentorIcons[validDoctor]}
@@ -89,7 +89,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
               {(validExpression === 'angry' || validExpression === 'shocked') && (
                 <motion.div
                   className="absolute inset-0 rounded-full border-2"
-                  style={{ borderColor: validExpression === 'angry' ? '#ef4444' : '#fbbf24' }}
+                  style={{ borderColor: validExpression === 'angry' ? '#fb7185' : '#fbbf24' }}
                   initial={{ scale: 1, opacity: 0.8 }}
                   animate={{ scale: 1.5, opacity: 0 }}
                   transition={{ duration: 0.6, repeat: 2 }}
@@ -107,26 +107,27 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -12, scale: 0.88 }}
                     transition={{ duration: 0.4, delay: 0.15, ease: [0.34, 1.56, 0.64, 1] }}
-                    className={`glass-panel p-4 max-w-md text-center shadow-2xl relative border-2 bg-white/95 ${
-                      validExpression === 'angry' ? 'border-moomin-accent/50' :
-                      validExpression === 'happy' ? 'border-moomin-primary/50' :
-                      validExpression === 'shocked' ? 'border-moomin-secondary/50' :
-                      'border-moomin-text/10'
+                    className={`glass-panel p-5 max-w-sm text-center shadow-[0_0_50px_rgba(0,0,0,0.5)] relative border bg-slate-950/95 overflow-hidden ${
+                      validExpression === 'angry' ? 'border-accent-alert/50' :
+                      validExpression === 'happy' ? 'border-primary/50' :
+                      validExpression === 'shocked' ? 'border-accent-warning/50' :
+                      'border-white/10'
                     }`}
                   >
-                    <span className="absolute -top-3 left-4 text-[9px] font-black text-moomin-muted/50 tracking-[0.3em] uppercase bg-white px-3 py-0.5 rounded-full border border-moomin-text/5">
-                      {validExpression === 'angry' ? 'PISTA' : validExpression === 'happy' ? '¡GENIAL!' : validExpression === 'shocked' ? '¡CUIDADO!' : 'DOCTOR'}
+                    <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+                    <span className="absolute -top-3 left-6 text-[9px] font-black text-white/40 tracking-[0.4em] uppercase bg-slate-950 px-4 py-1 rounded-full border border-white/5">
+                      {validExpression === 'angry' ? 'ALERTA' : validExpression === 'happy' ? 'CORRECTO' : validExpression === 'shocked' ? 'ANOMALÍA' : 'DR. COM'}
                     </span>
-                    <p className={`text-sm md:text-base font-display font-black leading-snug italic tracking-tight ${
-                      validExpression === 'angry' ? 'text-moomin-accent' :
-                      validExpression === 'happy' ? 'text-moomin-primary' :
-                      validExpression === 'shocked' ? 'text-moomin-secondary' :
-                      'text-moomin-text'
+                    <p className={`text-sm md:text-base font-display font-black leading-relaxed italic tracking-tight ${
+                      validExpression === 'angry' ? 'text-accent-alert' :
+                      validExpression === 'happy' ? 'text-primary' :
+                      validExpression === 'shocked' ? 'text-accent-warning' :
+                      'text-white'
                     }`}>
                       "{dialogueText}"
                     </p>
                     {/* Bubble tail */}
-                    <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-5 h-5 bg-white rotate-45 border-l-2 border-t-2 border-inherit" />
+                    <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-5 h-5 bg-slate-950 rotate-45 border-l border-t border-inherit" />
                   </motion.div>
                 )}
               </AnimatePresence>

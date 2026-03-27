@@ -13,24 +13,24 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 130/85 mmHg, FC 92 lpm, Temp 38.5°C",
-      "expected_action": "discard",
+      "card_text": "Hallazgo: Información redundante: TA 130/85 mmHg, FC 92 lpm, Temp 38.5°C",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en estos signos de fiebre, R1. El reloj no se detiene."
+        "error_type": "omission",
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de fiebre, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Diverticulitis Hinchey II (Drenaje Percutáneo): Absceso >4cm requiere drenaje guiado por imagen + antibióticos IV.",
+      "card_text": "Evidencia clínica: A) Diverticulitis Hinchey II (Drenaje Percutáneo): Absceso >4cm requiere drenaje guiado por imagen + antibióticos IV.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Correcto! Los abscesos pequeños se manejan con antibióticos, pero >4cm requieren drenaje percutáneo."
+        "vazquez_comment": "¡Correcto! Los abscesos pequeños se manejan con antibióticos, pero >4cm requieren drenaje percutáneo."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -41,24 +41,24 @@
       "card_id": "c_3",
       "ui_icon": "beaker",
       "category": "Tratamiento",
-      "card_text": "C) Esquema Antibiótico: Ciprofloxacino + Metronidazol por 10-14 días es el esquema ambulatorio/hospitalario estándar.",
+      "card_text": "Hallazgo clínico: C) Esquema Antibiótico: Ciprofloxacino + Metronidazol por 10-14 días es el esquema ambulatorio/hospitalario estándar.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Bien! Cubrir gramnegativos y anaerobios es la base del tratamiento."
+        "vazquez_comment": "¡Bien! Cubrir gramnegativos y anaerobios es la base del tratamiento."
       }
     },
     {
       "card_id": "c_4",
       "ui_icon": "search",
       "category": "Diagnóstico",
-      "card_text": "D) Colonoscopia en Agudo: Realizar inmediatamente para descartar neoplasia durante el proceso inflamatorio agudo.",
-      "expected_action": "discard",
+      "card_text": "Hallazgo: D) Colonoscopia en Agudo: Realizar inmediatamente para descartar neoplasia durante el proceso inflamatorio agudo.",
+      "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "lethal_hazard",
-        "vazquez_comment": "Mendoza: ¡PELIGRO! Nunca realices colonoscopia en fase aguda por alto riesgo de PERFORACIÓN. Espera 6-8 semanas."
+        "vazquez_comment": "¡PELIGRO! Nunca realices colonoscopia en fase aguda por alto riesgo de PERFORACIÃ“N. Espera 6-8 semanas."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -69,72 +69,72 @@
       "card_id": "c_5",
       "ui_icon": "info",
       "category": "Hinchey I",
-      "card_text": "E) Hinchey IA/IB: Inflamación pericólica o absceso <4cm. Manejo conservador con antibióticos oral o IV.",
+      "card_text": "Hallazgo: E) Hinchey IA/IB: Inflamación pericólica o absceso <4cm. Manejo conservador con antibióticos oral o IV.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: Correcto. No todo absceso se drena, el tamaño importa."
+        "vazquez_comment": "Correcto. No todo absceso se drena, el tamaño importa."
       }
     },
     {
       "card_id": "c_6",
       "ui_icon": "alert-circle",
       "category": "Complicación",
-      "card_text": "F) Fístula Colovesical: Causa neumaturia y fecaluria. Es la fístula más común en enfermedad diverticular crónica.",
+      "card_text": "Dato de importancia: F) Fístula Colovesical: Causa neumaturia y fecaluria. Es la fístula más común en enfermedad diverticular crónica.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Exacto! Si el paciente orina aire o materia fecal, piensa en esta complicación."
+        "vazquez_comment": "¡Exacto! Si el paciente orina aire o materia fecal, piensa en esta complicación."
       }
     },
     {
       "card_id": "c_7",
       "ui_icon": "beaker",
       "category": "Tratamiento",
-      "card_text": "G) Fibra en la Dieta: Aumentar ingesta de fibra inmediatamente durante el episodio de dolor agudo para mejorar el tránsito.",
+      "card_text": "Hallazgo clínico: Dato anecdótico: G) Fibra en la Dieta: Aumentar ingesta de fibra inmediatamente durante el episodio de dolor agudo para mejorar el tránsito.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: ¡No! En la fase aguda se indica ayuno o dieta líquida. La fibra es para la prevención secundaria."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡No! En la fase aguda se indica ayuno o dieta líquida. La fibra es para la prevención secundaria."
       }
     },
     {
       "card_id": "c_8",
       "ui_icon": "activity",
       "category": "Signo Clínico",
-      "card_text": "H) Signo de Blumberg: Dolor a la descompresión en FII. Sugiere irritación peritoneal localizada.",
+      "card_text": "Hallazgo clínico: H) Signo de Blumberg: Dolor a la descompresión en FII. Sugiere irritación peritoneal localizada.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: Bien. Es el 'apéndice del lado izquierdo'."
+        "vazquez_comment": "Bien. Es el 'apéndice del lado izquierdo'."
       }
     },
     {
       "card_id": "c_9",
       "ui_icon": "scissors",
       "category": "Cirugía Electiva",
-      "card_text": "I) Indicación de Cirugía: Recomendada tras el primer episodio complicado (Hinchey II drenado) para prevenir recurrencia.",
+      "card_text": "Hallazgo: I) Indicación de Cirugía: Recomendada tras el primer episodio complicado (Hinchey II drenado) para prevenir recurrencia.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Así es! Tras un Hinchey II, el riesgo de falla del tratamiento conservador es alto."
+        "vazquez_comment": "¡Así es! Tras un Hinchey II, el riesgo de falla del tratamiento conservador es alto."
       }
     },
     {
       "card_id": "c_2",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "B) Diverticulitis Hinchey III/IV (Cirugía - Hartmann): Peritonitis purulenta o fecaloide requiere cirugía de urgencia (Procedimiento de Hartmann).",
+      "card_text": "Evidencia: B) Diverticulitis Hinchey III/IV (Cirugía - Hartmann): Peritonitis purulenta o fecaloide requiere cirugía de urgencia (Procedimiento de Hartmann).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Mendoza: ¡Manejo correcto de urgencia! La peritonitis generalizada es una indicación quirúrgica absoluta."
+        "vazquez_comment": "¡Manejo correcto de urgencia! La peritonitis generalizada es una indicación quirúrgica absoluta."
       },
       "safety_flags": {
         "lethal_risk": true,

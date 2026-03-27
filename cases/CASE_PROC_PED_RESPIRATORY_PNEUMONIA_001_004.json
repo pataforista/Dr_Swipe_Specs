@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "FC 130 lpm, FR 45 rpm (Taquipnea), Temp 39.2°C, SatO2 91%.",
-      "expected_action": "discard",
+      "card_text": "Hallazgo: Dato anecdótico: FC 130 lpm, FR 45 rpm (Taquipnea), Temp 39.2°C, SatO2 91%.",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Cuidado con esa saturación! Valentina necesita atención inmediata."
+        "error_type": "omission",
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Cuidado con esa saturación! Valentina necesita atención inmediata."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Neumonía Adquirida en la Comunidad (NAC): Presencia de consolidación en Rx o estertores + Síntomas de infección respiratoria aguda.",
+      "card_text": "Hallazgo: A) Neumonía Adquirida en la Comunidad (NAC): Presencia de consolidación en Rx o estertores + Síntomas de infección respiratoria aguda.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,7 +41,7 @@
       "card_id": "c_2",
       "ui_icon": "beaker",
       "category": "Etiología",
-      "card_text": "B) Streptococcus pneumoniae: El patógeno bacteriano más frecuente de NAC en niños de todas las edades (excepto neonatos).",
+      "card_text": "Hallazgo: B) Streptococcus pneumoniae: El patógeno bacteriano más frecuente de NAC en niños de todas las edades (excepto neonatos).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,

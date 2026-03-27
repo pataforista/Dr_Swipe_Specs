@@ -13,24 +13,24 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 130/80 mmHg, FC 72 lpm, Temp 36.5°C",
+      "card_text": "Hallazgo clínico: Dato anecdótico: TA 130/80 mmHg, FC 72 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Agregar Agonista GLP-1 (Liraglutida/Semaglutida): Indicado en DM2 con riesgo cardiovascular establecido y obesidad. Excelente control de HbA1c.",
+      "card_text": "Hallazgo: A) Agregar Agonista GLP-1 (Liraglutida/Semaglutida): Indicado en DM2 con riesgo cardiovascular establecido y obesidad. Excelente control de HbA1c.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Correcto! En pacientes con enfermedad CV o deseo de bajar de peso, los GLP-1 son la elección actual sobre las sulfonilureas."
+        "vazquez_comment": "¡Correcto! En pacientes con enfermedad CV o deseo de bajar de peso, los GLP-1 son la elección actual sobre las sulfonilureas."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -41,12 +41,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Agregar Sulfonilurea (Glibenclamida): Eficaz para bajar glucosa, pero causa ganancia de peso y riesgo alto de hipoglucemia. No tiene beneficio CV.",
+      "card_text": "Información redundante: B) Agregar Sulfonilurea (Glibenclamida): Eficaz para bajar glucosa, pero causa ganancia de peso y riesgo alto de hipoglucemia. No tiene beneficio CV.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: ¡Bien! Evitaste el riesgo de hipoglucemia y la ganancia de peso innecesaria."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! Evitaste el riesgo de hipoglucemia y la ganancia de peso innecesaria."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -56,7 +56,7 @@
   ],
   "enarm_pearl": {
     "title": "Algoritmo ADA: Cardio-Nefroprotección",
-    "text": "Si hay ECV establecida → GLP-1 o iSGLT2. Si hay Falla Cardíaca o ERC (Nefropatía) → iSGLT2 (Empagliflozina).",
+    "text": "Si hay ECV establecida â†’ GLP-1 o iSGLT2. Si hay Falla Cardíaca o ERC (Nefropatía) â†’ iSGLT2 (Empagliflozina).",
     "gpc_ref": "ADA Standards of Care in Diabetes"
   },
   "boss_fight_triad": {

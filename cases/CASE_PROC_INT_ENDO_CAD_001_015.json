@@ -13,24 +13,24 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 100/65, FC 115 lpm, Temp 36.5°C",
+      "card_text": "Hallazgo: Información redundante: TA 100/65, FC 115 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Cetoacidosis Diabética (CAD): Descompensación diabética aguda (típica en pacientes jóvenes/DM1). Triada: Hiperglucemia, Cetonemia/Cetonuria y Acidosis Metabólica.",
+      "card_text": "Hallazgo: A) Cetoacidosis Diabética (CAD): Descompensación diabética aguda (típica en pacientes jóvenes/DM1). Triada: Hiperglucemia, Cetonemia/Cetonuria y Acidosis Metabólica.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Correcto! Paciente joven con dolor abdominal, Kussmaul y aliento afrutado. La piedra angular inicial es la hidratación IV agresiva y medición de potasio ANTES de iniciar insulina."
+        "vazquez_comment": "¡Correcto! Paciente joven con dolor abdominal, Kussmaul y aliento afrutado. La piedra angular inicial es la hidratación IV agresiva y medición de potasio ANTES de iniciar insulina."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -41,12 +41,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Estado Hiperosmolar Hiperglucémico (EHH): Suele presentarse en adultos mayores (DM2) con hiperglucemias extremas (>600), deshidratación profunda y SIN acidosis significativa.",
+      "card_text": "Hallazgo: Información redundante: B) Estado Hiperosmolar Hiperglucémico (EHH): Suele presentarse en adultos mayores (DM2) con hiperglucemias extremas (>600), deshidratación profunda y SIN acidosis significativa.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: ¡Buen ojo! La presencia de acidosis franca y Kussmaul hace la diferencia entre EHH y CAD."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Buen ojo! La presencia de acidosis franca y Kussmaul hace la diferencia entre EHH y CAD."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -56,7 +56,7 @@
   ],
   "enarm_pearl": {
     "title": "Manejo de la CAD: Líquidos Primero",
-    "text": "En la Cetoacidosis Diabética, lo principal es la REPOSICIÓN DE LÍQUIDOS (Sol. Salina al 0.9%). Nunca se debe iniciar Insulina si el Potasio está bajo (<3.3 mEq/L) para evitar arritmias fatales.",
+    "text": "En la Cetoacidosis Diabética, lo principal es la REPOSICIÃ“N DE LÃQUIDOS (Sol. Salina al 0.9%). Nunca se debe iniciar Insulina si el Potasio está bajo (<3.3 mEq/L) para evitar arritmias fatales.",
     "gpc_ref": "GPC Manejo de Cetoacidosis Diabética"
   },
   "boss_fight_triad": {

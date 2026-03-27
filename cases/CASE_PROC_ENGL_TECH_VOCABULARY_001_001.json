@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 120/80, FC 78 bpm, Temp 37.0°C",
+      "card_text": "Hallazgo clínico: Ruido en el expediente: TA 120/80, FC 78 bpm, Temp 37.0°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Chief Complaint",
-      "card_text": "A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias (sonido silbante al respirar).",
+      "card_text": "Evidencia: A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias (sonido silbante al respirar).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -37,7 +37,7 @@
       "card_id": "c_2",
       "ui_icon": "slash",
       "category": "False Friends",
-      "card_text": "B) Estreñimiento (Bowel movement issues): 'Constipation' significa Estreñimiento, NO congestión nasal.",
+      "card_text": "Hallazgo: B) Estreñimiento (Bowel movement issues): 'Constipation' significa Estreñimiento, NO congestión nasal.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -49,7 +49,7 @@
       "card_id": "c_3",
       "ui_icon": "alert-circle",
       "category": "Trauma terms",
-      "card_text": "C) Wound vs Injury: 'Wound' se refiere específicamente a una Herida abierta, mientras que 'Injury' es el término general para Lesión.",
+      "card_text": "Evidencia clínica: C) Wound vs Injury: 'Wound' se refiere específicamente a una Herida abierta, mientras que 'Injury' es el término general para Lesión.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -61,7 +61,7 @@
       "card_id": "c_4",
       "ui_icon": "frown",
       "category": "Common symptoms",
-      "card_text": "D) Sore Throat: Término común para referirse a la Faringodinia o Dolor de garganta.",
+      "card_text": "Hallazgo: D) Sore Throat: Término común para referirse a la Faringodinia o Dolor de garganta.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -73,7 +73,7 @@
       "card_id": "c_5",
       "ui_icon": "activity",
       "category": "Physical Signs",
-      "card_text": "E) Swelling: Traducción médica de Edema o Inflamación de una parte del cuerpo.",
+      "card_text": "Dato de importancia: E) Swelling: Traducción médica de Edema o Inflamación de una parte del cuerpo.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -85,7 +85,7 @@
       "card_id": "c_6",
       "ui_icon": "zap",
       "category": "Neurological",
-      "card_text": "F) Numbness: Sensación de Entumecimiento o Parestesia. A menudo se acompaña de 'Tingling' (hormigueo).",
+      "card_text": "Hallazgo: F) Numbness: Sensación de Entumecimiento o Parestesia. A menudo se acompaña de 'Tingling' (hormigueo).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -97,7 +97,7 @@
       "card_id": "c_7",
       "ui_icon": "eye",
       "category": "Visual",
-      "card_text": "G) Blurred Vision: Término para describir la Visión Borrosa, síntoma clave en patología oftalmológica o sistémica.",
+      "card_text": "Hallazgo: G) Blurred Vision: Término para describir la Visión Borrosa, síntoma clave en patología oftalmológica o sistémica.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -109,19 +109,19 @@
       "card_id": "c_8",
       "ui_icon": "rotate-cw",
       "category": "Dizziness",
-      "card_text": "H) Dizziness vs Vertigo: 'Dizziness' es el término laxo para Mareo, mientras que 'Vertigo' implica ilusión de movimiento.",
+      "card_text": "Hallazgo: Información redundante: H) Dizziness vs Vertigo: 'Dizziness' es el término laxo para Mareo, mientras que 'Vertigo' implica ilusión de movimiento.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Bien! Aunque se confunden, 'dizziness' es más inespecífico (aturdimiento)."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Aunque se confunden, 'dizziness' es más inespecífico (aturdimiento)."
       }
     },
     {
       "card_id": "c_9",
       "ui_icon": "trending-up",
       "category": "Timeline",
-      "card_text": "I) Sudden Onset: Término que indica un Inicio Súbito o repentino de los síntomas.",
+      "card_text": "Evidencia: I) Sudden Onset: Término que indica un Inicio Súbito o repentino de los síntomas.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,

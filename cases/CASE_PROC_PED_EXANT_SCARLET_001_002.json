@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA N/A, FC 110 lpm, Temp 39.0°C",
-      "expected_action": "discard",
+      "card_text": "Dato de importancia: Ruido en el expediente: TA N/A, FC 110 lpm, Temp 39.0°C",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+        "error_type": "omission",
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Escarlatina: Infección por S. pyogenes productor de toxina eritrogénica. Se caracteriza por exantema micropapular y faringoamigdalitis.",
+      "card_text": "Evidencia: A) Escarlatina: Infección por S. pyogenes productor de toxina eritrogénica. Se caracteriza por exantema micropapular y faringoamigdalitis.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,19 +41,19 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico Diferencial",
-      "card_text": "B) Sarampión: Fiebre alta, tos, coriza, conjuntivitis y manchas de Koplik. El exantema es maculopapular morbiliforme.",
+      "card_text": "Información redundante: B) Sarampión: Fiebre alta, tos, coriza, conjuntivitis y manchas de Koplik. El exantema es maculopapular morbiliforme.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡Bien! La ausencia de síntomas catarrales y las facies de Filatov nos alejan del sarampión."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! La ausencia de síntomas catarrales y las facies de Filatov nos alejan del sarampión."
       }
     },
     {
       "card_id": "c_3",
       "ui_icon": "test-tube",
       "category": "Diagnóstico",
-      "card_text": "C) Exudado Faríngeo (Cultivo): Estándar de oro para confirmar la presencia de Estreptococo beta-hemolítico del grupo A.",
+      "card_text": "Evidencia: C) Exudado Faríngeo (Cultivo): Estándar de oro para confirmar la presencia de Estreptococo beta-hemolítico del grupo A.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -65,7 +65,7 @@
       "card_id": "c_4",
       "ui_icon": "activity",
       "category": "Signo Patognomónico",
-      "card_text": "D) Líneas de Pastia: Hiperpigmentación lineal en pliegues flexores (codo, axilas) que no blanquea a la presión.",
+      "card_text": "Hallazgo: D) Líneas de Pastia: Hiperpigmentación lineal en pliegues flexores (codo, axilas) que no blanquea a la presión.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -77,7 +77,7 @@
       "card_id": "c_5",
       "ui_icon": "user",
       "category": "Signo Clínico",
-      "card_text": "E) Triángulo de Filatov: Palidez perioral que contrasta con el eritema de las mejillas.",
+      "card_text": "Evidencia: E) Triángulo de Filatov: Palidez perioral que contrasta con el eritema de las mejillas.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -89,7 +89,7 @@
       "card_id": "c_6",
       "ui_icon": "refresh-cw",
       "category": "Signo Clínico",
-      "card_text": "F) Lengua en Frambuesa: Inicialmente saburral (blanca) y posteriormente roja brillante con papilas prominentes.",
+      "card_text": "Hallazgo: F) Lengua en Frambuesa: Inicialmente saburral (blanca) y posteriormente roja brillante con papilas prominentes.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -101,7 +101,7 @@
       "card_id": "c_7",
       "ui_icon": "alert-triangle",
       "category": "Exploración",
-      "card_text": "G) Exantema en Lija: Piel con sensación rugosa al tacto, similar a una lija fina, más acentuado en tronco.",
+      "card_text": "Hallazgo: G) Exantema en Lija: Piel con sensación rugosa al tacto, similar a una lija fina, más acentuado en tronco.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -113,7 +113,7 @@
       "card_id": "c_8",
       "ui_icon": "beaker",
       "category": "Tratamiento",
-      "card_text": "H) Penicilina V o Amoxicilina: Tratamiento de elección por 10 días para erradicar el S. pyogenes.",
+      "card_text": "Hallazgo: H) Penicilina V o Amoxicilina: Tratamiento de elección por 10 días para erradicar el S. pyogenes.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -129,7 +129,7 @@
       "card_id": "c_9",
       "ui_icon": "shield-check",
       "category": "Prevención",
-      "card_text": "I) Prevención de Fiebre Reumática: El objetivo primordial del uso de antibióticos en esta patología.",
+      "card_text": "Hallazgo: I) Prevención de Fiebre Reumática: El objetivo primordial del uso de antibióticos en esta patología.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,

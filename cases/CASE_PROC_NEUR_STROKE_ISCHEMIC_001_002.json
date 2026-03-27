@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 170/90 mmHg, FC 110 lpm (irregular), Temp 36.6°C",
+      "card_text": "Dato de importancia: Ruido en el expediente: TA 170/90 mmHg, FC 110 lpm (irregular), Temp 36.6°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) ACV Isquémico (Ventana de Fibrinolisis): Sintomatología focal <4.5 horas + TC sin hemorragia. Manejo: rTPA (Alteplase).",
+      "card_text": "Hallazgo clínico: A) ACV Isquémico (Ventana de Fibrinolisis): Sintomatología focal <4.5 horas + TC sin hemorragia. Manejo: rTPA (Alteplase).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -42,12 +42,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Hemorragia Intracraneal: Clínica similar pero TC mostraría hiperdensidad súbita. Contraindica rTPA.",
+      "card_text": "Hallazgo: Información redundante: B) Hemorragia Intracraneal: Clínica similar pero TC mostraría hiperdensidad súbita. Contraindica rTPA.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Bien! La TC negativa a sangre confirma el origen isquémico temprano y permite avanzar al tratamiento."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! La TC negativa a sangre confirma el origen isquémico temprano y permite avanzar al tratamiento."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -58,7 +58,7 @@
       "card_id": "c_3",
       "ui_icon": "zap",
       "category": "Manejo Inicial",
-      "card_text": "C) Glucometría Capilar: Siempre descartar hipoglucemia, ya que puede simular síntomas de focalidad neurológica.",
+      "card_text": "Evidencia clínica: C) Glucometría Capilar: Siempre descartar hipoglucemia, ya que puede simular síntomas de focalidad neurológica.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -74,7 +74,7 @@
       "card_id": "c_4",
       "ui_icon": "clipboard",
       "category": "Gravedad",
-      "card_text": "D) Escala NIHSS: Cuantificar el déficit neurológico para guiar la decisión terapéutica y el pronóstico.",
+      "card_text": "Evidencia: D) Escala NIHSS: Cuantificar el déficit neurológico para guiar la decisión terapéutica y el pronóstico.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -86,7 +86,7 @@
       "card_id": "c_5",
       "ui_icon": "search",
       "category": "Imagenología",
-      "card_text": "E) TC Cráneo Simple: Objetivo primordial: Descartar hemorragia intracraneal en los primeros 25 min.",
+      "card_text": "Evidencia: E) TC Cráneo Simple: Objetivo primordial: Descartar hemorragia intracraneal en los primeros 25 min.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -102,7 +102,7 @@
       "card_id": "c_6",
       "ui_icon": "alert-triangle",
       "category": "Contraindicación",
-      "card_text": "F) Control de TA: Mantener la TA por debajo de 185/110 mmHg para iniciar rTPA de forma segura.",
+      "card_text": "Hallazgo: F) Control de TA: Mantener la TA por debajo de 185/110 mmHg para iniciar rTPA de forma segura.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -118,7 +118,7 @@
       "card_id": "c_7",
       "ui_icon": "activity",
       "category": "Fisiología",
-      "card_text": "G) Penumbra Isquémica: Tejido cerebral con riesgo de infarto que aún es rescatable mediante reperfusión.",
+      "card_text": "Hallazgo clínico: G) Penumbra Isquémica: Tejido cerebral con riesgo de infarto que aún es rescatable mediante reperfusión.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -130,7 +130,7 @@
       "card_id": "c_8",
       "ui_icon": "slash",
       "category": "Complicación",
-      "card_text": "H) Transformación Hemorrágica: Vigilar cefalea intensa, náuseas o deterioro neurológico súbito post-rTPA.",
+      "card_text": "Evidencia: H) Transformación Hemorrágica: Vigilar cefalea intensa, náuseas o deterioro neurológico súbito post-rTPA.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -146,7 +146,7 @@
       "card_id": "c_9",
       "ui_icon": "calendar",
       "category": "Seguimiento",
-      "card_text": "I) Iniciar Antiagregación (ASA): Administrar 160-325 mg de Aspirina tras 24 horas de la fibrinólisis.",
+      "card_text": "Hallazgo: I) Iniciar Antiagregación (ASA): Administrar 160-325 mg de Aspirina tras 24 horas de la fibrinólisis.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,

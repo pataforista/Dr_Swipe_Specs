@@ -45,12 +45,12 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
             <motion.div
               key={i}
               animate={{
-                width: i === currentIndex ? '32px' : '8px',
+                width: i === currentIndex ? '48px' : '8px',
                 backgroundColor: i < currentIndex
-                  ? 'rgba(135,206,235,0.2)'
+                  ? 'rgba(34, 211, 238, 0.2)'
                   : i === currentIndex
-                  ? '#87CEEB'
-                  : 'rgba(92,64,51,0.05)'
+                  ? '#22D3EE'
+                  : 'rgba(255, 255, 255, 0.1)'
               }}
               transition={{ duration: 0.4, type: 'spring' }}
               className="h-1.5 rounded-full"
@@ -90,14 +90,16 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
             initial={{ opacity: 0, scale: 0.9, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className={`mt-4 px-8 py-4 rounded-[2rem] border-2 italic text-[11px] font-black tracking-[0.2em] uppercase shadow-2xl z-50 relative ${
+            className={`mt-4 px-8 py-5 rounded-3xl border/10 italic text-[11px] font-black tracking-[0.2em] uppercase shadow-[0_0_30px_rgba(0,0,0,0.5)] z-50 relative backdrop-blur-xl border ${
               cards[currentIndex].expected_action === 'keep' 
-                ? 'bg-sky-50 border-sky-200 text-sky-700' 
-                : 'bg-orange-50 border-orange-200 text-orange-700'
+                ? 'bg-primary/10 border-primary/20 text-primary' 
+                : 'bg-accent-alert/10 border-accent-alert/20 text-accent-alert'
             }`}
           >
-            <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 rotate-45 border-l-2 border-t-2 bg-inherit border-inherit" />
-            {cards[currentIndex].expected_action === 'keep' ? '✨ MANTENER ESTA CARTA ➡️' : '⚠️ DESCARTAR ESTA CARTA ⬅️'}
+            <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 rotate-45 border-l border-t bg-inherit border-inherit" />
+            <span className="flex items-center gap-3">
+               {cards[currentIndex].expected_action === 'keep' ? '⚡ DATO CRÍTICO CONFIRMADO ➡️' : '🛡️ DESCARTAR: INTERFERENCIA DETECTADA ⬅️'}
+            </span>
           </motion.div>
         )}
       </AnimatePresence>
@@ -105,48 +107,48 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
       {/* Action Buttons Hub */}
       <div className="flex items-center justify-center gap-10 w-full mt-2 relative z-[60]">
         {/* Discard */}
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-3">
           <motion.button
             disabled={isLocked}
             onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); if(!isLocked) { playSwipe('left'); onSwipe('left'); } }}
-            whileHover={!isLocked ? { scale: 1.12, y: -3 } : {}}
-            whileTap={!isLocked ? { scale: 0.85 } : {}}
-            className="w-16 h-16 rounded-full bg-white border-4 border-moomin-accent/20 text-moomin-accent shadow-xl flex items-center justify-center text-3xl hover:bg-moomin-accent hover:text-white transition-all disabled:opacity-20 select-none"
+            whileHover={!isLocked ? { scale: 1.15, y: -4 } : {}}
+            whileTap={!isLocked ? { scale: 0.9 } : {}}
+            className="w-20 h-20 rounded-full bg-slate-900 border border-white/10 text-accent-alert shadow-[0_0_40px_rgba(0,0,0,0.4)] flex items-center justify-center text-3xl hover:bg-accent-alert hover:text-slate-950 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner"
           >
-            ✕
+            <span className="relative z-10">✕</span>
           </motion.button>
-          <span className="text-[10px] font-black text-moomin-accent/40 uppercase tracking-widest">DESCARTAR</span>
+          <span className="text-[9px] font-black text-slate-500 uppercase tracking-[0.3em]">DESCARTAR</span>
         </div>
 
         {/* Hint */}
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-3">
           <motion.button
             disabled={!canUseLifeline || isLocked}
             onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); onUseLifeline?.(); }}
-            whileHover={canUseLifeline && !isLocked ? { scale: 1.15, rotate: 15 } : {}}
+            whileHover={canUseLifeline && !isLocked ? { scale: 1.15, rotate: 180, shadow: '0_0_30px_rgba(129,140,248,0.4)' } : {}}
             whileTap={canUseLifeline && !isLocked ? { scale: 0.85 } : {}}
-            className={`w-14 h-14 rounded-full border-4 shadow-lg flex items-center justify-center text-2xl transition-all ${
-              lifelineActive ? 'bg-moomin-secondary border-moomin-secondary/30 text-white' : 'bg-white border-moomin-secondary/20 text-moomin-secondary hover:bg-moomin-secondary/10 disabled:opacity-20'
+            className={`w-16 h-16 rounded-full border shadow-2xl flex items-center justify-center text-2xl transition-all ${
+              lifelineActive ? 'bg-secondary border-white/20 text-white' : 'bg-slate-900 border-white/5 text-secondary hover:bg-white/5 disabled:opacity-20'
             }`}
-             title="Pista (25 🪙)"
+             title="Escanear (25 🪙)"
           >
-            💡
+            🧬
           </motion.button>
-          <span className="text-[10px] font-black text-moomin-secondary/40 uppercase tracking-widest">PISTA</span>
+          <span className="text-[9px] font-black text-slate-500 uppercase tracking-[0.3em]">{lifelineActive ? 'ACTIVO' : 'ESCANEO'}</span>
         </div>
 
         {/* Keep */}
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-3">
           <motion.button
             disabled={isLocked}
             onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); if(!isLocked) { playSwipe('right'); onSwipe('right'); } }}
-            whileHover={!isLocked ? { scale: 1.12, y: -3 } : {}}
-            whileTap={!isLocked ? { scale: 0.85 } : {}}
-            className="w-16 h-16 rounded-full bg-white border-4 border-moomin-primary/20 text-moomin-primary shadow-xl flex items-center justify-center text-3xl hover:bg-moomin-primary hover:text-white transition-all disabled:opacity-20 select-none"
+            whileHover={!isLocked ? { scale: 1.15, y: -4 } : {}}
+            whileTap={!isLocked ? { scale: 0.9 } : {}}
+            className="w-20 h-20 rounded-full bg-slate-900 border border-white/10 text-primary shadow-[0_0_40px_rgba(0,0,0,0.4)] flex items-center justify-center text-3xl hover:bg-primary hover:text-slate-950 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner"
           >
-            ♥
+             <span className="relative z-10">♥</span>
           </motion.button>
-          <span className="text-[10px] font-black text-moomin-primary/40 uppercase tracking-widest">MANTENER</span>
+          <span className="text-[9px] font-black text-slate-500 uppercase tracking-[0.3em]">MANTENER</span>
         </div>
       </div>
     </div>
@@ -217,8 +219,8 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
   const isLethal = card.safety_flags?.lethal_risk || card.safety_flags?.lethal_if_discarded;
   const isCritical = card.safety_flags?.decision_critical;
 
-  const headerGradient = isLethal ? 'from-red-200 to-red-300' : isCritical ? 'from-orange-200 to-orange-300' : 'from-sky-200 to-sky-300';
-  const cardBorderColor = isLethal ? 'border-red-500' : isCritical ? 'border-orange-500' : 'border-moomin-primary/60';
+  const headerGradient = isLethal ? 'from-rose-500/80 to-slate-950' : isCritical ? 'from-amber-500/80 to-slate-950' : 'from-primary/40 to-slate-950';
+  const cardBorderColor = isLethal ? 'border-accent-alert/60' : isCritical ? 'bg-amber-500/20 border-amber-500/40' : 'border-white/10';
 
   const handleDragEnd = async (_event: any, info: { offset: { x: number }; velocity: { x: number } }) => {
     if (!isTop || isLocked) return;
@@ -239,7 +241,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
 
   return (
     <motion.div
-      className={`absolute w-full h-full rounded-[3.5rem] border-4 ${cardBorderColor} overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.12)] flex flex-col bg-white select-none`}
+      className={`absolute w-full h-full rounded-[3.5rem] border ${cardBorderColor} overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.5)] flex flex-col bg-slate-950 select-none medical-grid`}
       style={{
         x, rotate,
         scale: isTop ? scaleTop : stackScale,
@@ -260,47 +262,47 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
     >
       {/* Swipe Stamps */}
       <motion.div style={{ opacity: overlayOpacityLeft }} className="absolute top-12 left-10 z-50 pointer-events-none">
-        <div className="border-[6px] border-red-600/80 text-red-600 font-extrabold text-2xl px-6 py-2 rounded-2xl uppercase tracking-[0.2em] rotate-[-12deg] bg-white/90 shadow-2xl backdrop-blur-sm">DESCARTAR</div>
+        <div className="border border-accent-alert/50 text-accent-alert font-black text-xl px-6 py-2 rounded-2xl uppercase tracking-[0.4em] rotate-[-12deg] bg-slate-950/80 backdrop-blur-md shadow-[0_0_20px_rgba(251,113,133,0.3)]">DESCARTAR</div>
       </motion.div>
       <motion.div style={{ opacity: overlayOpacityRight }} className="absolute top-12 right-10 z-50 pointer-events-none">
-        <div className="border-[6px] border-sky-600/80 text-sky-600 font-extrabold text-2xl px-6 py-2 rounded-2xl uppercase tracking-[0.2em] rotate-[12deg] bg-white/90 shadow-2xl backdrop-blur-sm">MANTENER</div>
+        <div className="border border-primary/50 text-primary font-black text-xl px-6 py-2 rounded-2xl uppercase tracking-[0.4em] rotate-[12deg] bg-slate-950/80 backdrop-blur-md shadow-[0_0_20px_rgba(34,211,238,0.3)]">MANTENER</div>
       </motion.div>
 
       {/* Header */}
-      <div className="relative h-[32%] flex items-center justify-center border-b-4 border-slate-100 overflow-hidden">
-        <div className={`absolute inset-0 bg-gradient-to-br ${headerGradient}`} />
-        <div className="absolute top-5 left-1/2 -translate-x-1/2 z-30 px-5 py-1.5 bg-white rounded-full border border-slate-200/50 shadow-sm">
-          <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em] whitespace-nowrap">{card?.category || 'DOC'}</span>
+      <div className="relative h-[32%] flex items-center justify-center border-b border-white/10 overflow-hidden">
+        <div className={`absolute inset-0 bg-gradient-to-br ${headerGradient} opacity-60`} />
+        <div className="absolute top-6 left-1/2 -translate-x-1/2 z-30 px-5 py-1.5 bg-slate-900/80 backdrop-blur-md rounded-full border border-white/10 shadow-lg">
+          <span className="text-[9px] font-black text-slate-300 uppercase tracking-[0.5em] whitespace-nowrap">{card?.category || 'DATA'}</span>
         </div>
-        <div className="absolute bottom-4 right-6 z-30 px-3 py-1 bg-white/60 backdrop-blur-sm rounded-xl border border-white/40">
-          <span className="text-[10px] font-black text-slate-500/60 tracking-widest">{cardNumber} / {totalCards}</span>
+        <div className="absolute bottom-5 right-8 z-30 px-3 py-1 bg-black/40 backdrop-blur-sm rounded-xl border border-white/5">
+          <span className="text-[9px] font-black text-slate-500 tracking-[0.2em] uppercase">{cardNumber} OF {totalCards}</span>
         </div>
         {(isLethal || isCritical) && isTop && (
-          <motion.div initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className={`absolute bottom-4 left-6 z-30 px-4 py-1.5 rounded-full text-[9px] font-black tracking-widest uppercase flex items-center gap-2 shadow-lg ${isLethal ? 'bg-red-600 text-white' : 'bg-orange-500 text-white'}`}>
-            <span className="relative z-10">{isLethal ? 'RIESGO LETAL' : 'CRÍTICO'}</span>
+          <motion.div initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className={`absolute bottom-5 left-8 z-30 px-4 py-1.5 rounded-full text-[8px] font-black tracking-[0.2em] uppercase flex items-center gap-2 shadow-[0_0_20px_rgba(0,0,0,0.4)] ${isLethal ? 'bg-rose-600 text-white' : 'bg-amber-500 text-slate-950'}`}>
+            <span className="relative z-10">{isLethal ? 'RIESGO LETAL' : 'ESTADO CRÍTICO'}</span>
           </motion.div>
         )}
-        <div className="text-7xl drop-shadow-2xl relative z-20 flex items-center justify-center h-24 w-24">{getIcon(card?.ui_icon || '')}</div>
+        <div className="text-7xl drop-shadow-[0_0_25px_rgba(255,255,255,0.2)] relative z-20 flex items-center justify-center h-24 w-24 brightness-125">{getIcon(card?.ui_icon || '')}</div>
       </div>
 
       {/* Body */}
-      <div className="flex-1 flex flex-col px-10 pt-10 pb-8 bg-white relative">
+      <div className="flex-1 flex flex-col px-10 pt-10 pb-8 bg-slate-950 relative">
         <div className="flex-1 flex items-center justify-center text-center">
-          <p className={`font-display font-black text-moomin-text leading-[1.05] tracking-tighter italic ${getFontSizeClass(card?.card_text || '')} overflow-y-auto custom-scrollbar h-full flex items-center justify-center pr-2 break-words text-balance w-full`} style={{ textShadow: '0 1px 0 rgba(255,255,255,0.8)' }}>
+          <p className={`font-display font-black text-white leading-[1.1] tracking-tighter italic ${getFontSizeClass(card?.card_text || '')} overflow-y-auto custom-scrollbar h-full flex items-center justify-center pr-2 break-words text-balance w-full drop-shadow-lg`}>
             {card?.card_text || ''}
           </p>
         </div>
-        <div className="flex justify-between items-end pt-8 mt-6 border-t-2 border-slate-50">
+        <div className="flex justify-between items-end pt-8 mt-6 border-t border-white/5">
           <div className="flex flex-col gap-2">
-            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">TRIAGE SCORE</span>
+            <span className="text-[8px] font-black text-slate-500 uppercase tracking-[0.3em]">TRIAGE ANALYTICS</span>
             <div className="flex gap-1.5">
-              <div className={`w-12 h-2.5 rounded-full ${isLethal ? 'bg-red-600' : isCritical ? 'bg-orange-500' : 'bg-sky-500'}`} />
-              <div className={`w-12 h-2.5 rounded-full ${isCritical || isLethal ? (isLethal ? 'bg-red-100' : 'bg-orange-100') : 'bg-slate-100'}`} />
+              <div className={`w-14 h-1.5 rounded-full shadow-[0_0_10px_rgba(0,0,0,1)] ${isLethal ? 'bg-rose-500' : isCritical ? 'bg-amber-500' : 'bg-primary'}`} />
+              <div className={`w-14 h-1.5 rounded-full ${isCritical || isLethal ? (isLethal ? 'bg-rose-500/20' : 'bg-amber-500/20') : 'bg-white/5'}`} />
             </div>
           </div>
           <div className="text-right">
-             <span className="text-[10px] font-black text-slate-300 block tracking-widest uppercase mb-0.5">ESTADO VITAL</span>
-             <span className="text-xs font-black text-slate-200">#DATA-{card?.card_id?.slice(-4).toUpperCase() || 'SYS'}</span>
+             <span className="text-[9px] font-black text-slate-600 block tracking-[0.3em] uppercase mb-1">DATA SOURCE</span>
+             <span className="text-[10px] font-black text-primary/60 tracking-widest uppercase">ID-{card?.card_id?.slice(-4).toUpperCase() || 'CORE'}</span>
           </div>
         </div>
       </div>

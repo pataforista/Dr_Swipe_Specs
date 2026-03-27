@@ -13,24 +13,24 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 130/85, FC 80 lpm, Temp 36.5°C",
+      "card_text": "Evidencia clínica: Dato anecdótico: TA 130/85, FC 80 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Diabetes Mellitus Tipo 2 (Confirmada): Criterios: Glucosa ayuno ≥126, HbA1c ≥6.5%, o Glucosa azar ≥200 con síntomas.",
+      "card_text": "Hallazgo clínico: A) Diabetes Mellitus Tipo 2 (Confirmada): Criterios: Glucosa ayuno â‰¥126, HbA1c â‰¥6.5%, o Glucosa azar â‰¥200 con síntomas.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Correcto! Cumple criterios de la NOM-015 para diagnóstico definitivo."
+        "vazquez_comment": "¡Correcto! Cumple criterios de la NOM-015 para diagnóstico definitivo."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -41,12 +41,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Prediabetes (Glucosa Alterada en Ayuno): Glucosa en ayuno entre 100 y 125 mg/dl.",
+      "card_text": "Evidencia clínica: Ruido en el expediente: B) Prediabetes (Glucosa Alterada en Ayuno): Glucosa en ayuno entre 100 y 125 mg/dl.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: ¡Bien! Reconociste que ya es un cuadro franco de Diabetes."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! Reconociste que ya es un cuadro franco de Diabetes."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -56,7 +56,7 @@
   ],
   "enarm_pearl": {
     "title": "Criterios Diagnósticos DM2 (NOM-015)",
-    "text": "1. Glucosa ayuno ≥126 (x2), 2. HbA1c ≥6.5%, 3. Curva (75g) ≥200 a las 2h, 4. Azar ≥200 + síntomas clásicos.",
+    "text": "1. Glucosa ayuno â‰¥126 (x2), 2. HbA1c â‰¥6.5%, 3. Curva (75g) â‰¥200 a las 2h, 4. Azar â‰¥200 + síntomas clásicos.",
     "gpc_ref": "NOM-015-SSA2-2010"
   },
   "boss_fight_triad": {

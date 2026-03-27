@@ -13,24 +13,24 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 160/100, FC 115 lpm, Temp 36.5°C",
+      "card_text": "Información redundante: TA 160/100, FC 115 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Infarto Agudo al Miocardio (SCACEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
+      "card_text": "Evidencia clínica: A) Infarto Agudo al Miocardio (SCACEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Perfect Match! El cuadro clínico más el ECG con elevación del ST hacen el diagnóstico. ICP primaria en menos de 90 min ideal."
+        "vazquez_comment": "¡Perfect Match! El cuadro clínico más el ECG con elevación del ST hacen el diagnóstico. ICP primaria en menos de 90 min ideal."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -41,12 +41,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Costocondritis (Síndrome de Tietze): Dolor torácico reproducible a la palpación de las articulaciones condrocostales, sin cambios en ECG.",
+      "card_text": "Hallazgo: Ruido en el expediente: B) Costocondritis (Síndrome de Tietze): Dolor torácico reproducible a la palpación de las articulaciones condrocostales, sin cambios en ECG.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: ¡Ojo clínico! El dolor reproducible a la palpación casi siempre descarta origen isquémico clásico, aquí el dolor es visceral."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Ojo clínico! El dolor reproducible a la palpación casi siempre descarta origen isquémico clásico, aquí el dolor es visceral."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -57,12 +57,12 @@
       "card_id": "c_3",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "C) Tromboembolia Pulmonar: Disnea súbita, taquicardia, dolor pleurítico, hipoxia severa. S1Q3T3 raro pero posible.",
-      "expected_action": "discard",
+      "card_text": "Hallazgo clínico: C) Tromboembolia Pulmonar: Disnea súbita, taquicardia, dolor pleurítico, hipoxia severa. S1Q3T3 raro pero posible.",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "lethal_hazard",
-        "vazquez_comment": "Mendoza: Felicidades por descartarlo. Los cambios ST y el tipo de dolor nos centran en las coronarias."
+        "vazquez_comment": "Felicidades por descartarlo. Los cambios ST y el tipo de dolor nos centran en las coronarias."
       },
       "safety_flags": {
         "red_flag": true,
@@ -73,12 +73,12 @@
       "card_id": "c_4",
       "ui_icon": "activity",
       "category": "Estudio Inicial",
-      "card_text": "D) Electrocardiograma de 12 derivaciones: Meta institucional de realizar e interpretar en menos de 10 minutos.",
+      "card_text": "Hallazgo: D) Electrocardiograma de 12 derivaciones: Meta institucional de realizar e interpretar en menos de 10 minutos.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Mendoza: ¡Vital! El tiempo es músculo. Sin ECG no hay diagnóstico oportuno."
+        "vazquez_comment": "¡Vital! El tiempo es músculo. Sin ECG no hay diagnóstico oportuno."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -89,60 +89,60 @@
       "card_id": "c_5",
       "ui_icon": "pill",
       "category": "Tratamiento",
-      "card_text": "E) Aspirina 325 mg masticada: Antiagregación plaquetaria inmediata para limitar el tamaño del infarto.",
+      "card_text": "Hallazgo: E) Aspirina 325 mg masticada: Antiagregación plaquetaria inmediata para limitar el tamaño del infarto.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: Bien. La piedra angular del tratamiento farmacológico inicial."
+        "vazquez_comment": "Bien. La piedra angular del tratamiento farmacológico inicial."
       }
     },
     {
       "card_id": "c_6",
       "ui_icon": "clipboard",
       "category": "Clasificación",
-      "card_text": "F) Escala de Killip y Kimball: Evaluación clínica de la severidad del daño miocárdico y falla cardiaca izquierda.",
+      "card_text": "Evidencia clínica: F) Escala de Killip y Kimball: Evaluación clínica de la severidad del daño miocárdico y falla cardiaca izquierda.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Bien! Es el predictor pronóstico clínico más utilizado en el SCACEST."
+        "vazquez_comment": "¡Bien! Es el predictor pronóstico clínico más utilizado en el SCACEST."
       }
     },
     {
       "card_id": "c_7",
       "ui_icon": "smile",
       "category": "Pronóstico",
-      "card_text": "G) Killip I: Ausencia de signos de falla cardiaca (sin estertores ni S3). Mortalidad baja (<6%).",
+      "card_text": "Hallazgo: G) Killip I: Ausencia de signos de falla cardiaca (sin estertores ni S3). Mortalidad baja (<6%).",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: Correcto. Representa al paciente estable sin compromiso hemodinámico notable."
+        "vazquez_comment": "Correcto. Representa al paciente estable sin compromiso hemodinámico notable."
       }
     },
     {
       "card_id": "c_8",
       "ui_icon": "umbrella",
       "category": "Severidad",
-      "card_text": "H) Killip III: Edema agudo pulmonar (estertores en más del 50% de campos pulmonares).",
+      "card_text": "Dato de importancia: H) Killip III: Edema agudo pulmonar (estertores en más del 50% de campos pulmonares).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Exacto! Indica falla ventricular izquierda severa y requiere manejo urgente con diuréticos y nitratos."
+        "vazquez_comment": "¡Exacto! Indica falla ventricular izquierda severa y requiere manejo urgente con diuréticos y nitratos."
       }
     },
     {
       "card_id": "c_9",
       "ui_icon": "zap",
       "category": "Farmacoterapia",
-      "card_text": "I) Nitroglicerina IV: Para reducir la precarga y aliviar la congestión pulmonar en pacientes hipertensos con falla cardiaca.",
+      "card_text": "Hallazgo: I) Nitroglicerina IV: Para reducir la precarga y aliviar la congestión pulmonar en pacientes hipertensos con falla cardiaca.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: Bien. Ayuda a 'vaciar' el pulmón desplazando el volumen hacia el sistema venoso."
+        "vazquez_comment": "Bien. Ayuda a 'vaciar' el pulmón desplazando el volumen hacia el sistema venoso."
       }
     }
   ],

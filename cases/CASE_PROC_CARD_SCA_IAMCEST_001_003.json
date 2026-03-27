@@ -13,24 +13,24 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 100/60 mmHg (en descenso), FC 95 lpm, Temp 36.5°C",
+      "card_text": "Hallazgo: Información redundante: TA 100/60 mmHg (en descenso), FC 95 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) IAMCEST (Fibrinolisis Sistémica): IAMCEST Cara Anterior. Si la ICP >120 min de retraso, se opta por Fibrinolisis (Alteplase).",
+      "card_text": "Hallazgo: A) IAMCEST (Fibrinolisis Sistémica): IAMCEST Cara Anterior. Si la ICP >120 min de retraso, se opta por Fibrinolisis (Alteplase).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Mendoza: ¡Correcto! En el ENARM, si el tiempo a ICP es >120 min (o 90 min en centros grandes), la FIBRINOLISIS es la respuesta correcta."
+        "vazquez_comment": "¡Correcto! En el ENARM, si el tiempo a ICP es >120 min (o 90 min en centros grandes), la FIBRINOLISIS es la respuesta correcta."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -42,12 +42,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Angina Inestable: Dolor isquémico SIN elevación del ST y SIN elevación de troponinas.",
+      "card_text": "Hallazgo clínico: Ruido en el expediente: B) Angina Inestable: Dolor isquémico SIN elevación del ST y SIN elevación de troponinas.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: ¡Bien! El ST elevado marca la pauta de tratamiento invasivo inmediato."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! El ST elevado marca la pauta de tratamiento invasivo inmediato."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -58,12 +58,12 @@
       "card_id": "c_3",
       "ui_icon": "target",
       "category": "Tratamiento",
-      "card_text": "C) ASA 300mg + Ticagrelor 180mg + Heparina IV: Doble antiagregación y anticoagulante inmediatos. SIN demora.",
+      "card_text": "Dato de importancia: C) ASA 300mg + Ticagrelor 180mg + Heparina IV: Doble antiagregación y anticoagulante inmediatos. SIN demora.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Mendoza: ¡Excelente! Sin antitrombóticos, el trombo se agranda. Tu paciente hace shock cardiogénico."
+        "vazquez_comment": "¡Excelente! Sin antitrombóticos, el trombo se agranda. Tu paciente hace shock cardiogénico."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -75,12 +75,12 @@
       "card_id": "c_4",
       "ui_icon": "shield",
       "category": "Monitoreo",
-      "card_text": "D) Contactar ICP center y organizar traslado inmediato: IAMCEST anterior = alto riesgo de choque (VI disfunción). ICP es gold standard.",
+      "card_text": "Evidencia: D) Contactar ICP center y organizar traslado inmediato: IAMCEST anterior = alto riesgo de choque (VI disfunción). ICP es gold standard.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: Bien. Sin contacto previo con Hemodinamia, pierdes tiempo y el paciente se descompensa en tránsito."
+        "vazquez_comment": "Bien. Sin contacto previo con Hemodinamia, pierdes tiempo y el paciente se descompensa en tránsito."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -113,7 +113,7 @@
       {
         "question": "¿Por qué IAMCEST anterior es más grave que inferior?",
         "options": [
-          "Afecta ventriculo izquierdo grande → mayor riesgo de choque",
+          "Afecta ventriculo izquierdo grande â†’ mayor riesgo de choque",
           "Siempre requiere cirugía",
           "Es menos grave, es confusión"
         ],
@@ -123,7 +123,7 @@
   },
   "enarm_pearl": {
     "title": "IAMCEST Anterior: Urgencia Maximal",
-    "text": "V1-V4 elevado = VI → Choque cardiogénico probable. Puerta-Aguja <30min. Puerta-Balón <90min. Si >120min: FIBRINOLIZAR.",
+    "text": "V1-V4 elevado = VI â†’ Choque cardiogénico probable. Puerta-Aguja <30min. Puerta-Balón <90min. Si >120min: FIBRINOLIZAR.",
     "gpc_ref": "GPC Diagnóstico y Tratamiento del Infarto Agudo de Miocardio"
   }
 }

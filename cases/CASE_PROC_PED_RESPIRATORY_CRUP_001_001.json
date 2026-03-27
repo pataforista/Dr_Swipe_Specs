@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA N/A, FC 120 lpm, Temp 37.8°C",
-      "expected_action": "discard",
+      "card_text": "Hallazgo: Información redundante: TA N/A, FC 120 lpm, Temp 37.8°C",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+        "error_type": "omission",
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Laringotraqueítis (CRUP): Virus Parainfluenza tipe 1 y 3. Triada: Tos traqueal, estridor e hiponía.",
+      "card_text": "Hallazgo: A) Laringotraqueítis (CRUP): Virus Parainfluenza tipe 1 y 3. Triada: Tos traqueal, estridor e hiponía.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,8 +41,8 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico Diferencial",
-      "card_text": "B) Epiglotitis Aguda: H. influenzae tipo b. Fiebre alta, babeo, posición de trípode y ausencia de tos perruna.",
-      "expected_action": "discard",
+      "card_text": "Hallazgo clínico: B) Epiglotitis Aguda: H. influenzae tipo b. Fiebre alta, babeo, posición de trípode y ausencia de tos perruna.",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "lethal_hazard",
@@ -53,19 +53,19 @@
       "card_id": "c_3",
       "ui_icon": "slash",
       "category": "Diagnóstico Diferencial",
-      "card_text": "C) Aspiración de Cuerpo Extraño: Inicio súbito tras jugar con objetos pequeños, sin fiebre ni síntomas gripales previos.",
+      "card_text": "Dato de importancia: Dato anecdótico: C) Aspiración de Cuerpo Extraño: Inicio súbito tras jugar con objetos pequeños, sin fiebre ni síntomas gripales previos.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: Correcto. El antecedente de coriza (catarro) orienta más a una causa viral infecciosa."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. El antecedente de coriza (catarro) orienta más a una causa viral infecciosa."
       }
     },
     {
       "card_id": "c_4",
       "ui_icon": "clipboard",
       "category": "Evaluación",
-      "card_text": "D) Escala de Westley: Herramienta clínica para clasificar la gravedad del Crup (Leve, Moderado, Grave).",
+      "card_text": "Evidencia clínica: D) Escala de Westley: Herramienta clínica para clasificar la gravedad del Crup (Leve, Moderado, Grave).",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -77,7 +77,7 @@
       "card_id": "c_5",
       "ui_icon": "camera",
       "category": "Imagenología",
-      "card_text": "E) Signo de la Torre (Punta de Lápiz): Estrechamiento de la vía aérea subglótica en radiografía AP de cuello.",
+      "card_text": "Hallazgo: E) Signo de la Torre (Punta de Lápiz): Estrechamiento de la vía aérea subglótica en radiografía AP de cuello.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -89,7 +89,7 @@
       "card_id": "c_6",
       "ui_icon": "pill",
       "category": "Manejo Inicial",
-      "card_text": "F) Dexametasona 0.6 mg/kg (Dosis única): Es el pilar del tratamiento; reduce el edema laríngeo y la necesidad de hospitalización.",
+      "card_text": "Evidencia: F) Dexametasona 0.6 mg/kg (Dosis única): Es el pilar del tratamiento; reduce el edema laríngeo y la necesidad de hospitalización.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -105,7 +105,7 @@
       "card_id": "c_7",
       "ui_icon": "zap",
       "category": "Manejo de Urgencias",
-      "card_text": "G) Epinefrina Racémica Nebulizada: Indicada si hay estridor inspiratorio en reposo o retracciones moderadas-graves.",
+      "card_text": "Evidencia: G) Epinefrina Racémica Nebulizada: Indicada si hay estridor inspiratorio en reposo o retracciones moderadas-graves.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -121,7 +121,7 @@
       "card_id": "c_8",
       "ui_icon": "clock",
       "category": "Seguridad",
-      "card_text": "H) Observación Post-Nebulización: Mantener al niño en urgencias 2-4 horas para vigilar el efecto 'rebote' de la obstrucción.",
+      "card_text": "Hallazgo: H) Observación Post-Nebulización: Mantener al niño en urgencias 2-4 horas para vigilar el efecto 'rebote' de la obstrucción.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -133,7 +133,7 @@
       "card_id": "c_9",
       "ui_icon": "home",
       "category": "Cuidados",
-      "card_text": "I) Manejo Conservador: Mantener al niño tranquilo en brazos de sus padres y evitar exploraciones orales innecesarias.",
+      "card_text": "Hallazgo: I) Manejo Conservador: Mantener al niño tranquilo en brazos de sus padres y evitar exploraciones orales innecesarias.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -145,12 +145,12 @@
       "card_id": "c_10",
       "ui_icon": "slash",
       "category": "Diferencial",
-      "card_text": "J) Crup Espasmódico: Similar al viral pero recurrente y sin pródromo de catarro; de causa presumiblemente alérgica.",
+      "card_text": "Información redundante: J) Crup Espasmódico: Similar al viral pero recurrente y sin pródromo de catarro; de causa presumiblemente alérgica.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡Bien! Es el 'Crup nocturno' que se resuelve espontáneamente."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Es el 'Crup nocturno' que se resuelve espontáneamente."
       }
     }
   ],

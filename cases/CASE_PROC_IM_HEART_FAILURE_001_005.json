@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 145/90 mmHg, FC 92 lpm, FR 22 rpm, SatO2 93%.",
+      "card_text": "Hallazgo clínico: Dato anecdótico: TA 145/90 mmHg, FC 92 lpm, FR 22 rpm, SatO2 93%.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: Presión un poco alta, pero lo importante es la insuficiencia cardíaca."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: Presión un poco alta, pero lo importante es la insuficiencia cardíaca."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Insuficiencia Cardíaca con FE reducida (ICFEr): Presencia de síntomas típicos + FEVI <40%. Don Pedro cumple criterios de Framingham.",
+      "card_text": "Hallazgo: A) Insuficiencia Cardíaca con FE reducida (ICFEr): Presencia de síntomas típicos + FEVI <40%. Don Pedro cumple criterios de Framingham.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,7 +41,7 @@
       "card_id": "c_2",
       "ui_icon": "beaker",
       "category": "Gabinete",
-      "card_text": "B) Péptidos Natriuréticos (NT-proBNP): Útiles para el diagnóstico por su alto valor predictivo negativo (descartar IC en urgencias).",
+      "card_text": "Evidencia: B) Péptidos Natriuréticos (NT-proBNP): Ãštiles para el diagnóstico por su alto valor predictivo negativo (descartar IC en urgencias).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,

@@ -13,24 +13,24 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 130/85, FC 100 lpm, Temp 38.5°C",
-      "expected_action": "discard",
+      "card_text": "Dato de importancia: Ruido en el expediente: TA 130/85, FC 100 lpm, Temp 38.5°C",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en estos signos de fiebre, R1. El reloj no se detiene."
+        "error_type": "omission",
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de fiebre, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Apendicitis Aguda: Cuadro clásico de migración del dolor (Cronología de Murphy) y febrícula o fiebre. Requiere abordaje quirúrgico.",
+      "card_text": "Evidencia: A) Apendicitis Aguda: Cuadro clásico de migración del dolor (Cronología de Murphy) y febrícula o fiebre. Requiere abordaje quirúrgico.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Match! La cronología, fiebre y signos focales apuntan a apendicitis. La conducta es interconsulta a cirugía."
+        "vazquez_comment": "¡Match! La cronología, fiebre y signos focales apuntan a apendicitis. La conducta es interconsulta a cirugía."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -41,12 +41,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Gastroenteritis Infecciosa: Dolor abdominal generalizado, fiebre y náuseas. Frecuentemente autolimitado.",
+      "card_text": "Dato de importancia: Ruido en el expediente: B) Gastroenteritis Infecciosa: Dolor abdominal generalizado, fiebre y náuseas. Frecuentemente autolimitado.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: ¡Buen ojo! La focalización (McBurney) y la leucocitosis alejan el diagnóstico de algo viral autolimitado."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Buen ojo! La focalización (McBurney) y la leucocitosis alejan el diagnóstico de algo viral autolimitado."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -57,12 +57,12 @@
       "card_id": "c_3",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "C) Embarazo Ectópico Roto: Dolor pélvico agudo, sangrado transvaginal y datos de choque hipovolémico.",
-      "expected_action": "discard",
+      "card_text": "Evidencia: C) Embarazo Ectópico Roto: Dolor pélvico agudo, sangrado transvaginal y datos de choque hipovolémico.",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "lethal_hazard",
-        "vazquez_comment": "Mendoza: ¡Correcto! TA normal y cuadro más compatible con foco infeccioso intestinal."
+        "vazquez_comment": "¡Correcto! TA normal y cuadro más compatible con foco infeccioso intestinal."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -72,7 +72,7 @@
   ],
   "enarm_pearl": {
     "title": "Diagnóstico Clínico de Apendicitis",
-    "text": "El diagnóstico de apendicitis aguda es fundamentalmente CLÍNICO (Escala de Alvarado). La TAC se reserva para casos dudosos, no para cuadros típicos como este.",
+    "text": "El diagnóstico de apendicitis aguda es fundamentalmente CLÃNICO (Escala de Alvarado). La TAC se reserva para casos dudosos, no para cuadros típicos como este.",
     "gpc_ref": "GPC Diagnóstico y Tratamiento de Apendicitis Aguda"
   },
   "boss_fight_triad": {

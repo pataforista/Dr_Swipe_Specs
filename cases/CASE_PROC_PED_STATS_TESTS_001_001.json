@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 110/70, FC 90 bpm, Temp 37.0°C. (Variables basales estables).",
+      "card_text": "Evidencia clínica: Ruido en el expediente: TA 110/70, FC 90 bpm, Temp 37.0°C. (Variables basales estables).",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: En bioestadística, no te distraigas con los signos si el objetivo es el análisis de datos."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: En bioestadística, no te distraigas con los signos si el objetivo es el análisis de datos."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Estadística Inf.",
-      "card_text": "A) t de Student: Prueba para comparar Medias de una variable continua entre 2 grupos independientes (Ej: Peso al nacer entre niños y niñas).",
+      "card_text": "Evidencia: A) t de Student: Prueba para comparar Medias de una variable continua entre 2 grupos independientes (Ej: Peso al nacer entre niños y niñas).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -37,7 +37,7 @@
       "card_id": "c_2",
       "ui_icon": "grid",
       "category": "Estadística Inf.",
-      "card_text": "B) Chi-Cuadrada (Pearson): Se usa para comparar proporciones o asociación entre variables Categóricas/Nominales (Ej: Sexo y Presencia de Tos).",
+      "card_text": "Hallazgo: B) Chi-Cuadrada (Pearson): Se usa para comparar proporciones o asociación entre variables Categóricas/Nominales (Ej: Sexo y Presencia de Tos).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -49,7 +49,7 @@
       "card_id": "c_3",
       "ui_icon": "bar-chart-2",
       "category": "Estadística Inf.",
-      "card_text": "C) ANOVA (Análisis de Varianza): Para comparar Medias de variable continua entre 3 o más grupos independientes.",
+      "card_text": "Hallazgo: C) ANOVA (Análisis de Varianza): Para comparar Medias de variable continua entre 3 o más grupos independientes.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -61,7 +61,7 @@
       "card_id": "c_4",
       "ui_icon": "trending-up",
       "category": "Relación",
-      "card_text": "D) Correlación de Pearson (r): Mide la fuerza y dirección de la relación lineal entre dos variables continuas.",
+      "card_text": "Evidencia: D) Correlación de Pearson (r): Mide la fuerza y dirección de la relación lineal entre dos variables continuas.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -73,7 +73,7 @@
       "card_id": "c_5",
       "ui_icon": "help-circle",
       "category": "Significancia",
-      "card_text": "E) Valor p < 0.05: Indica que hay menos del 5% de probabilidad de que el resultado sea por azar; se rechaza la Hipótesis Nula (H0).",
+      "card_text": "Hallazgo clínico: E) Valor p < 0.05: Indica que hay menos del 5% de probabilidad de que el resultado sea por azar; se rechaza la Hipótesis Nula (H0).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -85,7 +85,7 @@
       "card_id": "c_6",
       "ui_icon": "maximize",
       "category": "Precisión",
-      "card_text": "F) Intervalo de Confianza (IC 95%): Rango donde se encuentra el verdadero valor poblacional con un 95% de certeza.",
+      "card_text": "Evidencia: F) Intervalo de Confianza (IC 95%): Rango donde se encuentra el verdadero valor poblacional con un 95% de certeza.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -97,7 +97,7 @@
       "card_id": "c_7",
       "ui_icon": "alert-triangle",
       "category": "Error",
-      "card_text": "G) Error Tipo I (Alfa): Rechazar la hipótesis nula cuando en realidad es verdadera (Falso Positivo).",
+      "card_text": "Hallazgo: G) Error Tipo I (Alfa): Rechazar la hipótesis nula cuando en realidad es verdadera (Falso Positivo).",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -109,7 +109,7 @@
       "card_id": "c_8",
       "ui_icon": "alert-circle",
       "category": "Error",
-      "card_text": "H) Error Tipo II (Beta): No rechazar la hipótesis nula cuando es falsa (Falso Negativo).",
+      "card_text": "Evidencia: H) Error Tipo II (Beta): No rechazar la hipótesis nula cuando es falsa (Falso Negativo).",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -121,7 +121,7 @@
       "card_id": "c_9",
       "ui_icon": "users",
       "category": "Muestreo",
-      "card_text": "I) Muestreo Aleatorio Simple: Cada individuo de la población tiene la misma probabilidad de ser elegido para el estudio.",
+      "card_text": "Hallazgo: I) Muestreo Aleatorio Simple: Cada individuo de la población tiene la misma probabilidad de ser elegido para el estudio.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -133,7 +133,7 @@
       "card_id": "c_10",
       "ui_icon": "target",
       "category": "Métricas",
-      "card_text": "J) Sensibilidad vs Especificidad: Sensibilidad = Capacidad de detectar enfermos (pocos falsos negativos). Especificidad = Capacidad de detectar sanos (pocos falsos positivos).",
+      "card_text": "Hallazgo: J) Sensibilidad vs Especificidad: Sensibilidad = Capacidad de detectar enfermos (pocos falsos negativos). Especificidad = Capacidad de detectar sanos (pocos falsos positivos).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,

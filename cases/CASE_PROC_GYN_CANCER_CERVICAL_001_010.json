@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 110/70, FC 72 lpm, Temp 36.4°C",
+      "card_text": "Hallazgo: Información redundante: TA 110/70, FC 72 lpm, Temp 36.4°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Colposcopia con Biopsia Dirigida: Ante HSIL o LSIL persistente, el estándar de oro es la visualización colposcópica y toma de biopsia.",
+      "card_text": "Evidencia: A) Colposcopia con Biopsia Dirigida: Ante HSIL o LSIL persistente, el estándar de oro es la visualización colposcópica y toma de biopsia.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,7 +41,7 @@
       "card_id": "c_2",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "B) Conización Cervical (LLETZ/Frío): Tratamiento de elección para NIC 2 y NIC 3 (lesiones de alto grado) para asegurar márgenes libres.",
+      "card_text": "Evidencia: B) Conización Cervical (LLETZ/Frío): Tratamiento de elección para NIC 2 y NIC 3 (lesiones de alto grado) para asegurar márgenes libres.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,

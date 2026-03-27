@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 150/90, FC 100 lpm, Temp 36.6°C.",
+      "card_text": "Dato de importancia: Dato anecdótico: TA 150/90, FC 100 lpm, Temp 36.6°C.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "López: El dolor justifica la presión alta, pero el problema real está en el ojo."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: López: El dolor justifica la presión alta, pero el problema real está en el ojo."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Glaucoma Agudo de Ángulo Cerrado: Emergencia oftalmológica caracterizada por aumento súbito de la PIO (>40-50 mmHg).",
+      "card_text": "Hallazgo: A) Glaucoma Agudo de Ãngulo Cerrado: Emergencia oftalmológica caracterizada por aumento súbito de la PIO (>40-50 mmHg).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,19 +41,19 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Conjuntivitis Bacteriana: Ojo rojo con secreción purulenta y sensación de cuerpo extraño; no causa dolor intenso ni midriasis.",
+      "card_text": "Hallazgo: Información redundante: B) Conjuntivitis Bacteriana: Ojo rojo con secreción purulenta y sensación de cuerpo extraño; no causa dolor intenso ni midriasis.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "López: ¡Bien! La midriasis arreactiva descarta cualquier proceso superficial."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: López: ¡Bien! La midriasis arreactiva descarta cualquier proceso superficial."
       }
     }
   ],
   "enarm_pearl": {
     "title": "Glaucoma Agudo vs Crónico",
     "text": "Agudo: Dolor + Midriasis + Ojo pétreo. Tx: Pilocarpina + Acetazolamida + Láser. Crónico: Escotomas periféricos + PIO >21. Tx: Análogos PG (Latanoprost).",
-    "gpc_ref": "GPC Diagnóstico y Manejo del Glaucoma de Ángulo Cerrado"
+    "gpc_ref": "GPC Diagnóstico y Manejo del Glaucoma de Ãngulo Cerrado"
   },
   "boss_fight_triad": {
     "trigger": "after_cards",

@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "FC 120 lpm, FR 28 rpm, Temp 36.7°C. (Signos estables para la edad).",
-      "expected_action": "discard",
+      "card_text": "Información redundante: FC 120 lpm, FR 28 rpm, Temp 36.7°C. (Signos estables para la edad).",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Navarro: Paciente estable pero pálido. Procedamos con el diagnóstico."
+        "error_type": "omission",
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: Paciente estable pero pálido. Procedamos con el diagnóstico."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Anemia Ferropénica: La causa más común de anemia nutricional en el mundo, por deficiencia de hierro.",
+      "card_text": "Hallazgo: A) Anemia Ferropénica: La causa más común de anemia nutricional en el mundo, por deficiencia de hierro.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,7 +41,7 @@
       "card_id": "c_2",
       "ui_icon": "beaker",
       "category": "Laboratorio",
-      "card_text": "B) Cinética de Hierro: Ferritina baja (<12 ng/ml) es el parámetro más sensible y temprano de deficiencia.",
+      "card_text": "Dato de importancia: B) Cinética de Hierro: Ferritina baja (<12 ng/ml) es el parámetro más sensible y temprano de deficiencia.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,

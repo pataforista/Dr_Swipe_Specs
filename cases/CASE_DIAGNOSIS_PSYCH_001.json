@@ -11,10 +11,10 @@
   "card_stream": [
     {
       "card_id": "c_01_timeline",
-      "ui_icon": "🧠",
+      "ui_icon": "ðŸ§ ",
       "category": "Historia",
       "nlg_trigger": "mania_energia",
-      "card_text": "Lleva 4 días con energía desbordante y comprando cosas compulsivamente.",
+      "card_text": "Hallazgo: Lleva 4 días con energía desbordante y comprando cosas compulsivamente.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -23,23 +23,23 @@
     },
     {
       "card_id": "c_02_vitals",
-      "ui_icon": "🩺",
+      "ui_icon": "ðŸ©º",
       "category": "Signos Vitales",
       "nlg_trigger": "vitals_normal",
-      "card_text": "TA 120/80, FC 95 lpm, Temp 36.5°C",
+      "card_text": "Información redundante: TA 120/80, FC 95 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "¿Para qué guardas signos vitales normales, R1? Estás llenando el expediente de basura."
+        "vazquez_comment": "🧹 DESCARTE RECOMENDADO: ¿Para qué guardas signos vitales normales, R1? Estás llenando el expediente de basura."
       }
     },
     {
       "card_id": "c_03_tox_screen",
-      "ui_icon": "🧪",
+      "ui_icon": "ðŸ§ª",
       "category": "Laboratorios",
       "nlg_trigger": "tox_negativo",
-      "card_text": "Tamizaje toxicológico: NEGATIVO a cocaína y anfetaminas.",
+      "card_text": "Hallazgo: Tamizaje toxicológico: NEGATIVO a cocaína y anfetaminas.",
       "expected_action": "keep",
       "safety_flags": {
         "is_critical_dxd": true,
@@ -92,7 +92,7 @@
   },
   "enarm_pearl": {
     "title": "Trastorno Bipolar I: Criterios Diagnósticos",
-    "text": "El episodio maníaco requiere ≥7 días de estado de ánimo elevado/expansivo/irritable + ≥3 síntomas DIGFAST (Distractibilidad, Impulsividad, Grandiosidad, Flight of ideas, Actividad aumentada, Sueño reducido, Taquilalia). El Litio sigue siendo primera línea.",
+    "text": "El episodio maníaco requiere â‰¥7 días de estado de ánimo elevado/expansivo/irritable + â‰¥3 síntomas DIGFAST (Distractibilidad, Impulsividad, Grandiosidad, Flight of ideas, Actividad aumentada, Sueño reducido, Taquilalia). El Litio sigue siendo primera línea.",
     "gpc_ref": "DSM-5-TR / GPC Trastorno Bipolar México"
   }
 }

@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA N/A, FC N/A, Temp N/A",
+      "card_text": "Dato de importancia: Ruido en el expediente: TA N/A, FC N/A, Temp N/A",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Probabilidad BAJA (<10%): En enfermedades raras, incluso pruebas 'buenas' tienen un Valor Predictivo Positivo (VPP) muy bajo por el peso de los FP.",
+      "card_text": "Evidencia: A) Probabilidad BAJA (<10%): En enfermedades raras, incluso pruebas 'buenas' tienen un Valor Predictivo Positivo (VPP) muy bajo por el peso de los FP.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,12 +41,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Probabilidad ALTA (>90%): Confundiste la Sensibilidad con el VPP. La prueba es buena detectando enfermos, pero falla ante tantos sanos.",
+      "card_text": "Hallazgo: Ruido en el expediente: B) Probabilidad ALTA (>90%): Confundiste la Sensibilidad con el VPP. La prueba es buena detectando enfermos, pero falla ante tantos sanos.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Bien! Notaste la trampa de la prevalencia."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Notaste la trampa de la prevalencia."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -56,7 +56,7 @@
   ],
   "enarm_pearl": {
     "title": "VPP y Prevalencia",
-    "text": "Si la Prevalencia sube → el VPP sube. Si la Prevalencia baja → el VPP baja. Sensibilidad y Especificidad NO cambian con la prevalencia.",
+    "text": "Si la Prevalencia sube â†’ el VPP sube. Si la Prevalencia baja â†’ el VPP baja. Sensibilidad y Especificidad NO cambian con la prevalencia.",
     "gpc_ref": "Bioestadística Clínica para el ENARM"
   },
   "boss_fight_triad": {

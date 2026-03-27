@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 110/70, FC 75 lpm, Temp 36.5°C",
+      "card_text": "Evidencia clínica: Ruido en el expediente: TA 110/70, FC 75 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Candidiasis Vaginal: Flujo grumoso + PH <4.5 + Prurito. Tx: Azoles (Miconazol/Fluconazol).",
+      "card_text": "Hallazgo: A) Candidiasis Vaginal: Flujo grumoso + PH <4.5 + Prurito. Tx: Azoles (Miconazol/Fluconazol).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,7 +41,7 @@
       "card_id": "c_2",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "B) Vaginosis Bacteriana (Gardnerella): Flujo gris + Mal olor + PH >4.5 + Células Clave. Tx: Metronidazol.",
+      "card_text": "Dato de importancia: B) Vaginosis Bacteriana (Gardnerella): Flujo gris + Mal olor + PH >4.5 + Células Clave. Tx: Metronidazol.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,

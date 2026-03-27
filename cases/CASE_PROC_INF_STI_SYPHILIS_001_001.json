@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 120/80, FC 70 lpm, Temp 36.6°C.",
+      "card_text": "Dato de importancia: Ruido en el expediente: TA 120/80, FC 70 lpm, Temp 36.6°C.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: Paciente estable. Analicemos la lesión."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: Paciente estable. Analicemos la lesión."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Sífilis Primaria (Chancro Sifilítico): Úlcera única, limpia, indurada e indolora. Es el sello de la infección inicial.",
+      "card_text": "Evidencia: A) Sífilis Primaria (Chancro Sifilítico): Ãšlcera única, limpia, indurada e indolora. Es el sello de la infección inicial.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,19 +41,19 @@
       "card_id": "c_2",
       "ui_icon": "scissors",
       "category": "Diferencial",
-      "card_text": "B) Chancroide (H. ducreyi): Úlceras múltiples, con bordes sucios, base necrótica y MUY DOLOROSAS.",
+      "card_text": "Hallazgo clínico: Dato anecdótico: B) Chancroide (H. ducreyi): Ãšlceras múltiples, con bordes sucios, base necrótica y MUY DOLOROSAS.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Bien! Ducreyi duele (Do-cry)."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Ducreyi duele (Do-cry)."
       }
     },
     {
       "card_id": "c_3",
       "ui_icon": "microscope",
       "category": "Diagnóstico",
-      "card_text": "C) Microscopia de Campo Oscuro: Técnica para visualizar espiroquetas móviles directamente de la lesión (Chancro).",
+      "card_text": "Evidencia: C) Microscopia de Campo Oscuro: Técnica para visualizar espiroquetas móviles directamente de la lesión (Chancro).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -65,7 +65,7 @@
       "card_id": "c_4",
       "ui_icon": "search",
       "category": "Tamizaje",
-      "card_text": "D) Pruebas No Treponémicas (VDRL/RPR): Baratas, útiles para tamizaje y seguimiento del tratamiento. Tienen falsos positivos.",
+      "card_text": "Evidencia: D) Pruebas No Treponémicas (VDRL/RPR): Baratas, útiles para tamizaje y seguimiento del tratamiento. Tienen falsos positivos.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -77,7 +77,7 @@
       "card_id": "c_5",
       "ui_icon": "check-circle",
       "category": "Confirmación",
-      "card_text": "E) Pruebas Treponémicas (FTA-ABS): Confirmatorias. Permanecen positivas de por vida (cicatriz serológica).",
+      "card_text": "Hallazgo: E) Pruebas Treponémicas (FTA-ABS): Confirmatorias. Permanecen positivas de por vida (cicatriz serológica).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -89,7 +89,7 @@
       "card_id": "c_6",
       "ui_icon": "pill",
       "category": "Tratamiento",
-      "card_text": "F) Penicilina G Benzatínica (2.4 Millones UI IM - Dosis Única): Tratamiento de elección para sífilis primaria, secundaria y latente temprana.",
+      "card_text": "Hallazgo: F) Penicilina G Benzatínica (2.4 Millones UI IM - Dosis Ãšnica): Tratamiento de elección para sífilis primaria, secundaria y latente temprana.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -105,7 +105,7 @@
       "card_id": "c_7",
       "ui_icon": "alert-triangle",
       "category": "Complicación Tx",
-      "card_text": "G) Reacción de Jarisch-Herxheimer: Episodio febril agudo tras la primera dosis de penicilina por liberación de antígenos del treponema moribundo.",
+      "card_text": "Evidencia clínica: G) Reacción de Jarisch-Herxheimer: Episodio febril agudo tras la primera dosis de penicilina por liberación de antígenos del treponema moribundo.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -117,7 +117,7 @@
       "card_id": "c_8",
       "ui_icon": "moon",
       "category": "Sífilis Secundaria",
-      "card_text": "H) Roséola Sifilítica y Condiloma Lata: Manifestaciones sistémicas. Típico el exantema en palmas y plantas.",
+      "card_text": "Dato de importancia: H) Roséola Sifilítica y Condiloma Lata: Manifestaciones sistémicas. Típico el exantema en palmas y plantas.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -129,7 +129,7 @@
       "card_id": "c_9",
       "ui_icon": "users",
       "category": "Salud Pública",
-      "card_text": "I) Tratamiento de Parejas Sexuales: Notificar y tratar a todos los contactos de los últimos 90 días, incluso si son seronegativos.",
+      "card_text": "Evidencia: I) Tratamiento de Parejas Sexuales: Notificar y tratar a todos los contactos de los últimos 90 días, incluso si son seronegativos.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -141,7 +141,7 @@
       "card_id": "c_10",
       "ui_icon": "activity",
       "category": "Neurosífilis",
-      "card_text": "J) Punción Lumbar: Obligatoria en todo paciente con sífilis y síntomas neurológicos, o sífilis terciaria para descartar neurosífilis.",
+      "card_text": "Hallazgo: J) Punción Lumbar: Obligatoria en todo paciente con sífilis y síntomas neurológicos, o sífilis terciaria para descartar neurosífilis.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -161,9 +161,9 @@
       {
         "question": "¿Cuál es la característica clínica definitiva del chancro sifilítico primario?",
         "options": [
-          "Úlcera indolora de base indurada",
+          "Ãšlcera indolora de base indurada",
           "Múltiples vesículas dolorosas",
-          "Úlcera sucia con base friable"
+          "Ãšlcera sucia con base friable"
         ],
         "correct_index": 0
       },

@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA N/A, FC 90 lpm, Temp 38.2°C",
+      "card_text": "Información redundante: TA N/A, FC 90 lpm, Temp 38.2°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Varicela: Virus Varicela-Zóster. Pleomorfismo regional (mácula, pápula, vesícula, costra). 'Cielo estrellado'.",
+      "card_text": "Hallazgo: A) Varicela: Virus Varicela-Zóster. Pleomorfismo regional (mácula, pápula, vesícula, costra). 'Cielo estrellado'.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,24 +41,24 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico Diferencial",
-      "card_text": "B) Viruela: Lesiones en el mismo estadio de evolución (monomórficas), centrífugas y umbilicadas. Ausente en la actualidad.",
+      "card_text": "Hallazgo clínico: Ruido en el expediente: B) Viruela: Lesiones en el mismo estadio de evolución (monomórficas), centrífugas y umbilicadas. Ausente en la actualidad.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡Bien! Reconociste la diferencia clave en el estadio de las lesiones (monomórficas vs polimórficas)."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Reconociste la diferencia clave en el estadio de las lesiones (monomórficas vs polimórficas)."
       }
     },
     {
       "card_id": "c_3",
       "ui_icon": "slash",
       "category": "Contraindicación",
-      "card_text": "C) Ácido Acetilsalicílico: Uso de Aspirina para la fiebre en varicela.",
-      "expected_action": "discard",
+      "card_text": "Hallazgo: C) Ãcido Acetilsalicílico: Uso de Aspirina para la fiebre en varicela.",
+      "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "lethal_hazard",
-        "vazquez_comment": "Castillo: ¡CRÍTICO! El uso de salicilatos en varicela e influenza se asocia a Síndrome de Reye (insuficiencia hepática hepática aguda)."
+        "vazquez_comment": "Castillo: ¡CRÃTICO! El uso de salicilatos en varicela e influenza se asocia a Síndrome de Reye (insuficiencia hepática hepática aguda)."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -69,7 +69,7 @@
       "card_id": "c_4",
       "ui_icon": "search",
       "category": "Signo Clínico",
-      "card_text": "D) Gota de Rocío sobre Pétalo de Rosa: Vesículas de contenido hialino sobre una base eritematosa.",
+      "card_text": "Evidencia clínica: D) Gota de Rocío sobre Pétalo de Rosa: Vesículas de contenido hialino sobre una base eritematosa.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -81,7 +81,7 @@
       "card_id": "c_5",
       "ui_icon": "beaker",
       "category": "Etiología",
-      "card_text": "E) Virus Varicela-Zóster (VHH-3): Familia Herpesviridae, virus con capacidad de latencia en ganglios nerviosos.",
+      "card_text": "Evidencia: E) Virus Varicela-Zóster (VHH-3): Familia Herpesviridae, virus con capacidad de latencia en ganglios nerviosos.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -93,7 +93,7 @@
       "card_id": "c_6",
       "ui_icon": "test-tube",
       "category": "Diagnóstico",
-      "card_text": "F) Citodiagnóstico de Tzanck: Hallazgo de células gigantes multinucleadas con inclusiones intranucleares.",
+      "card_text": "Evidencia: F) Citodiagnóstico de Tzanck: Hallazgo de células gigantes multinucleadas con inclusiones intranucleares.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -105,7 +105,7 @@
       "card_id": "c_7",
       "ui_icon": "thermometer",
       "category": "Tratamiento",
-      "card_text": "G) Paracetamol y Antihistamínicos: Control de fiebre y prurito para evitar el rascado y sobreinfección.",
+      "card_text": "Evidencia clínica: G) Paracetamol y Antihistamínicos: Control de fiebre y prurito para evitar el rascado y sobreinfección.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -117,7 +117,7 @@
       "card_id": "c_8",
       "ui_icon": "alert-circle",
       "category": "Complicación",
-      "card_text": "H) Cerebelitis / Ataxia Cerebelosa Aguda: Complicación neurológica frecuente en niños (pronóstico favorable).",
+      "card_text": "Evidencia: H) Cerebelitis / Ataxia Cerebelosa Aguda: Complicación neurológica frecuente en niños (pronóstico favorable).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -129,7 +129,7 @@
       "card_id": "c_9",
       "ui_icon": "shield-check",
       "category": "Prevención",
-      "card_text": "I) Vacuna Varicela: Virus vivos atenuados. Incluida como refuerzo de la SRP (SRPV) o individual.",
+      "card_text": "Evidencia: I) Vacuna Varicela: Virus vivos atenuados. Incluida como refuerzo de la SRP (SRPV) o individual.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -141,12 +141,12 @@
       "card_id": "c_10",
       "ui_icon": "pill",
       "category": "Tratamiento",
-      "card_text": "J) Aciclovir Oral de Rutina: Administrar a todo paciente inmunocompetente menor de 12 años con varicela no complicada.",
+      "card_text": "Hallazgo: Dato anecdótico: J) Aciclovir Oral de Rutina: Administrar a todo paciente inmunocompetente menor de 12 años con varicela no complicada.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡No! El aciclovir solo se indica si hay riesgo (mayores de 12 años, enfermedad pulmonar crónica o uso de esteroides)."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡No! El aciclovir solo se indica si hay riesgo (mayores de 12 años, enfermedad pulmonar crónica o uso de esteroides)."
       }
     }
   ],
@@ -170,7 +170,7 @@
       {
         "question": "¿Qué medicamento está estrictamente contraindicado en varicela pediátrica por riesgo de S. de Reye?",
         "options": [
-          "Ácido Acetilsalicílico",
+          "Ãcido Acetilsalicílico",
           "Paracetamol",
           "Aciclovir"
         ],

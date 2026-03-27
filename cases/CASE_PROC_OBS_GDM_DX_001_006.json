@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 110/70, FC 80 lpm, Temp 36.5°C",
+      "card_text": "Evidencia clínica: Dato anecdótico: TA 110/70, FC 80 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Diabetes Gestacional (Confirmada): Estrategia Un Paso (75g): Ayuno ≥92, 1h ≥180, o 2h ≥153. Solo se requiere un valor alterado.",
+      "card_text": "Evidencia: A) Diabetes Gestacional (Confirmada): Estrategia Un Paso (75g): Ayuno â‰¥92, 1h â‰¥180, o 2h â‰¥153. Solo se requiere un valor alterado.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,12 +41,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Tolerancia a la Glucosa Normal: Valores por debajo de 92, 180 y 153 respectivamente.",
+      "card_text": "Hallazgo clínico: Dato anecdótico: B) Tolerancia a la Glucosa Normal: Valores por debajo de 92, 180 y 153 respectivamente.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡Bien! Reconociste el umbral diagnóstico riguroso para gestantes."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Reconociste el umbral diagnóstico riguroso para gestantes."
       },
       "safety_flags": {
         "lethal_risk": false,

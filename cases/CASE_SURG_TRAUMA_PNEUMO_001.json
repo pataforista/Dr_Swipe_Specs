@@ -14,7 +14,7 @@
       "ui_icon": "wound",
       "category": "Inspección",
       "nlg_trigger": "trauma_penetrante",
-      "card_text": "Herida punzocortante visible en hemitórax derecho.",
+      "card_text": "Evidencia: Herida punzocortante visible en hemitórax derecho.",
       "expected_action": "keep",
       "scoring": {
         "points": 100
@@ -25,7 +25,7 @@
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
       "nlg_trigger": "hipotension_severa",
-      "card_text": "TA 75-85 mmHg, FC 115 lpm, Respiración rápida y superficial.",
+      "card_text": "Dato de importancia: TA 75-85 mmHg, FC 115 lpm, Respiración rápida y superficial.",
       "dynamic_value": {
         "min": 70,
         "max": 85,
@@ -42,12 +42,12 @@
       "ui_icon": "eye",
       "category": "Notas de Paramédico",
       "nlg_trigger": "lore_delirium",
-      "card_text": "El paciente murmura frenéticamente que las sombras del callejón lo empujaron hacia el cuchillo.",
+      "card_text": "Hallazgo clínico: Dato anecdótico: El paciente murmura frenéticamente que las sombras del callejón lo empujaron hacia el cuchillo.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: Deja de escuchar historias de fantasmas, R1. Concéntrate en la física de sus pulmones."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Deja de escuchar historias de fantasmas, R1. Concéntrate en la física de sus pulmones."
       }
     },
     {
@@ -55,7 +55,7 @@
       "ui_icon": "vein",
       "category": "Exploración",
       "nlg_trigger": "ingurgitacion_yugular",
-      "card_text": "Ingurgitación yugular evidente y timpanismo a la percusión derecha.",
+      "card_text": "Hallazgo: Ingurgitación yugular evidente y timpanismo a la percusión derecha.",
       "expected_action": "keep",
       "scoring": {
         "points": 150
@@ -66,8 +66,8 @@
       "ui_icon": "xray",
       "category": "Gabinete",
       "nlg_trigger": "rx_torax",
-      "card_text": "Solicitar Radiografía de Tórax portátil urgente para confirmar el diagnóstico.",
-      "expected_action": "discard",
+      "card_text": "Hallazgo: Solicitar Radiografía de Tórax portátil urgente para confirmar el diagnóstico.",
+      "expected_action": "keep",
       "safety_flags": {
         "is_critical_dxd": false,
         "lethal_risk": true
@@ -75,7 +75,7 @@
       "scoring": {
         "points": 0,
         "error_type": "lethal_commission",
-        "vazquez_comment": "Navarro: ¡Estaba inestable y lo mandaste a Rayos X! El neumotórax a tensión es un diagnóstico CLÍNICO. Lo mataste en el pasillo."
+        "vazquez_comment": "Navarro: ¡Estaba inestable y lo mandaste a Rayos X! El neumotórax a tensión es un diagnóstico CLÃNICO. Lo mataste en el pasillo."
       }
     },
     {
@@ -83,8 +83,8 @@
       "ui_icon": "needle",
       "category": "Manejo",
       "nlg_trigger": "descompresion_2do_espacio",
-      "card_text": "Realizar descompresión con aguja en el 2º Espacio Intercostal (LMC).",
-      "expected_action": "discard",
+      "card_text": "Hallazgo: Realizar descompresión con aguja en el 2° Espacio Intercostal (LMC).",
+      "expected_action": "keep",
       "safety_flags": {
         "is_critical_dxd": false,
         "lethal_risk": true
@@ -92,7 +92,7 @@
       "scoring": {
         "points": 0,
         "error_type": "lethal_commission",
-        "vazquez_comment": "Mendoza: ¡Esa guía es de hace 10 años, R1! La pared es más gruesa ahí, fallaste la pleura y ahora se nos va."
+        "vazquez_comment": "¡Esa guía es de hace 10 años, R1! La pared es más gruesa ahí, fallaste la pleura y ahora se nos va."
       }
     },
     {
@@ -100,7 +100,7 @@
       "ui_icon": "needle_correct",
       "category": "Manejo",
       "nlg_trigger": "descompresion_5to_espacio",
-      "card_text": "Descompresión inmediata en 5º Espacio Intercostal (LAA/LAM).",
+      "card_text": "Evidencia: Descompresión inmediata en 5° Espacio Intercostal (LAA/LAM).",
       "expected_action": "keep",
       "safety_flags": {
         "is_critical_dxd": true,
@@ -130,7 +130,7 @@
         "options": [
           "Toracotomía de reanimación",
           "Radiografía portátil",
-          "Punción en 5º espacio intercostal (LAA/LAM)"
+          "Punción en 5° espacio intercostal (LAA/LAM)"
         ],
         "correct_index": 2
       },
@@ -150,7 +150,7 @@
     "category": "Cirugía / Trauma",
     "rarity": "legendary",
     "title": "ATLS 10: El Cambio del Espacio",
-    "text": "Ante un Neumotórax a Tensión, la punción inmediata es clínica y debe ser en el 5º Espacio Intercostal (LAA o LAM). El 2º espacio (LMC) se abandonó como primera línea por mayor riesgo de falla (grosor de pared) y lesión. JAMÁS retrasar manejo inestable por una Rx.",
+    "text": "Ante un Neumotórax a Tensión, la punción inmediata es clínica y debe ser en el 5° Espacio Intercostal (LAA o LAM). El 2° espacio (LMC) se abandonó como primera línea por mayor riesgo de falla (grosor de pared) y lesión. JAMÃS retrasar manejo inestable por una Rx.",
     "gpc_ref": "ATLS 10th Ed / GPC Trauma de Tórax"
   }
 }

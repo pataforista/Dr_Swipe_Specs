@@ -54,35 +54,33 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
   if (!q) return null;
 
   return (
-    <div className="fixed inset-0 flex flex-col items-center justify-center p-6 text-center z-[100] backdrop-blur-sm">
+    <div className="fixed inset-0 flex flex-col items-center justify-center p-6 text-center z-[100] backdrop-blur-xl medical-grid overflow-hidden">
+      {/* Ambient background glows */}
+      <div className="absolute top-0 left-0 w-full h-full bg-slate-950/40 pointer-events-none" />
+      <div className="absolute -top-40 -left-40 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none animate-pulse" />
+      <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-accent-alert/5 rounded-full blur-[120px] pointer-events-none" />
+
       {/* Answer feedback overlay flash */}
       <AnimatePresence>
         {answerState === 'correct' && (
           <motion.div
             key="correct-flash"
-            className="absolute inset-0 bg-moomin-primary/10 pointer-events-none z-[150]"
+            className="absolute inset-0 bg-primary/10 pointer-events-none z-[150] shadow-[inset_0_0_100px_rgba(34,211,238,0.2)]"
             initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0.4, 0] }}
+            animate={{ opacity: [0, 1, 0] }}
             transition={{ duration: 0.6 }}
           />
         )}
         {answerState === 'wrong' && (
           <motion.div
             key="wrong-flash"
-            className="absolute inset-0 bg-moomin-accent/20 pointer-events-none z-[150]"
+            className="absolute inset-0 bg-accent-alert/20 pointer-events-none z-[150] shadow-[inset_0_0_100px_rgba(251,113,133,0.3)]"
             initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0.6, 0.2] }}
+            animate={{ opacity: [0, 1, 0.4] }}
             transition={{ duration: 0.7 }}
           />
         )}
       </AnimatePresence>
-
-      {/* Background soft pulse */}
-      <motion.div
-        className="absolute inset-0 bg-moomin-accent/5 pointer-events-none"
-        animate={{ opacity: [0.2, 0.4, 0.2] }}
-        transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-      />
 
       {/* Answer result banner */}
       <AnimatePresence>
@@ -90,18 +88,18 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
           <motion.div
             key={answerState}
             className={`absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[160] pointer-events-none
-              text-4xl font-display font-black tracking-widest uppercase italic
-              ${answerState === 'correct' ? 'text-moomin-primary' : 'text-moomin-accent'}
+              text-5xl font-display font-black tracking-[0.2em] uppercase italic
+              ${answerState === 'correct' ? 'text-primary' : 'text-accent-alert'}
             `}
             style={{
               textShadow: answerState === 'correct'
-                ? '0 0 30px rgba(135,206,235,0.6)'
-                : '0 0 30px rgba(255,159,127,0.6)'
+                ? '0 0 40px rgba(34,211,238,0.8)'
+                : '0 0 40px rgba(251,113,133,0.8)'
             }}
-            initial={{ scale: 0.4, opacity: 0, y: 20, rotate: -10 }}
-            animate={{ scale: [0.4, 1.2, 1], opacity: [0, 1, 0.9], y: [-10, -30], rotate: [-5, 0] }}
-            exit={{ opacity: 0, scale: 0.7, y: -50 }}
-            transition={{ duration: 0.55, ease: [0.34, 1.56, 0.64, 1] }}
+            initial={{ scale: 0.4, opacity: 0, y: 20, rotate: -5 }}
+            animate={{ scale: [0.4, 1.1, 1], opacity: [0, 1, 0.9], y: [-10, -40], rotate: [-2, 0] }}
+            exit={{ opacity: 0, scale: 0.7, y: -60 }}
+            transition={{ duration: 0.5, ease: "circOut" }}
           >
             {answerState === 'correct' ? '✨ ¡EXCELENTE!' : '⚠️ CASI...'}
           </motion.div>
@@ -111,12 +109,18 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
       <AnimatePresence mode="wait">
         <motion.div
           key={currentQIndex}
-          initial={{ opacity: 0, y: 40, scale: 0.96 }}
+          initial={{ opacity: 0, y: 40, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: -40, scale: 0.96 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-          className="glass-panel p-6 md:p-10 w-full max-w-lg border-4 border-moomin-accent/10 shadow-2xl relative bg-white rounded-[2rem] md:rounded-[3rem] max-h-[90vh] overflow-y-auto"
+          exit={{ opacity: 0, y: -40, scale: 0.98 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+          className="glass-panel p-6 md:p-12 w-full max-w-xl border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.6)] relative bg-slate-900 overflow-hidden"
         >
+          {/* Scanning Line Animation */}
+          <motion.div 
+             animate={{ top: ['0%', '100%'] }}
+             transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+             className="absolute left-0 right-0 h-px bg-primary/20 z-10 pointer-events-none"
+          />
           {/* Boss Avatar */}
           <div className="relative mb-6 mt-2 flex justify-center">
             {/* Rage fire background */}
@@ -128,35 +132,37 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
               />
             )}
             <motion.div
-              className={`w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center text-6xl md:text-8xl border-4 shadow-xl z-20 relative transition-colors duration-300 ${
+              className={`w-28 h-28 md:w-40 md:h-40 rounded-full flex items-center justify-center text-6xl md:text-8xl border shadow-[0_0_30px_rgba(0,0,0,0.5)] z-20 relative transition-all duration-300 ${
                 answerState === 'wrong' 
-                  ? 'border-red-600 bg-red-100 shadow-[0_0_50px_rgba(220,38,38,0.8)]' 
-                  : 'border-moomin-primary/40 bg-white shadow-[0_15px_30px_rgba(135,206,235,0.2)]'
+                  ? 'border-accent-alert bg-slate-950 shadow-[0_0_60px_rgba(251,113,133,0.4)]' 
+                  : 'border-primary/30 bg-slate-950 shadow-[0_0_40px_rgba(34,211,238,0.2)]'
               }`}
               animate={{ 
-                scale: answerState === 'wrong' ? [1, 1.1, 1] : 1,
-                rotate: answerState === 'wrong' ? [-8, 8, -6, 6, -4, 4] : 0,
-                y: answerState === 'wrong' ? [-2, 2, -2] : 0
+                scale: answerState === 'wrong' ? [1, 1.05, 1] : 1,
+                rotate: answerState === 'wrong' ? [-4, 4, -4, 4, 0] : 0,
               }}
-              transition={{ repeat: answerState === 'wrong' ? Infinity : 0, duration: 0.15 }}
+              transition={{ repeat: answerState === 'wrong' ? Infinity : 0, duration: 0.2 }}
             >
-              {answerState === 'wrong' ? '🦊🔥' : '🦊💖'}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+              <span className="relative z-10 pt-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                {answerState === 'wrong' ? '🦊💢' : '🦊💻'}
+              </span>
             </motion.div>
           </div>
 
           {/* Question Index */}
-          <p className={`text-[9px] md:text-[11px] font-black tracking-[0.4em] mb-4 uppercase italic text-center ${answerState === 'wrong' ? 'text-red-600 animate-pulse' : 'text-moomin-muted/80'}`}>
-            {answerState === 'wrong' ? '¡INACEPTABLE!' : `JEFA DE GUARDIA - DESAFÍO ${currentQIndex + 1}/${questions.length}`}
+          <p className={`text-[10px] md:text-[12px] font-black tracking-[0.6em] mb-6 uppercase text-center ${answerState === 'wrong' ? 'text-accent-alert animate-pulse' : 'text-slate-500'}`}>
+            {answerState === 'wrong' ? 'ANOMALÍA DETECTADA' : `PROTOCOL ESTABILIZACIÓN • R-${currentQIndex + 1}/${questions.length}`}
           </p>
 
-          <h2 className="text-xl md:text-2xl font-display font-black text-moomin-text mb-6 md:mb-10 leading-tight tracking-tight px-2 md:px-4 italic">
-            <GlitchText text={q.q || q.question || "¿QUÉ SIGUE AHORA?"} />
+          <h2 className="text-2xl md:text-3xl font-display font-black text-white mb-8 md:mb-12 leading-tight tracking-tight px-2 md:px-4 italic drop-shadow-[0_0_10px_rgba(255,255,255,0.1)]">
+            <GlitchText text={q.q || q.question || "¿DIAGNÓSTICO FINAL?"} />
           </h2>
 
           {/* Progress bar */}
-          <div className="w-full h-1.5 md:h-2 bg-moomin-bg rounded-full mb-8 md:mb-10 relative overflow-hidden">
+          <div className="w-full h-1 bg-white/5 rounded-full mb-10 md:mb-12 relative overflow-hidden">
             <motion.div
-              className="absolute top-0 left-0 h-full bg-moomin-accent"
+              className={`absolute top-0 left-0 h-full ${answerState === 'wrong' ? 'bg-accent-alert shadow-[0_0_15px_rgba(251,113,133,0.5)]' : 'bg-primary shadow-[0_0_20px_rgba(34,211,238,0.5)]'}`}
               initial={{ width: `${(currentQIndex / questions.length) * 100}%` }}
               animate={{ width: `${((currentQIndex + 1) / questions.length) * 100}%` }}
               transition={{ type: 'spring', stiffness: 200, damping: 20 }}
@@ -188,37 +194,38 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
                   whileTap={answerState === null ? { scale: 0.98 } : {}}
                   onClick={() => handleAnswer(idx)}
                   disabled={answerState !== null}
-                  className={`w-full text-left p-4 md:p-6 glass-panel !rounded-[1.5rem] md:!rounded-[2rem] transition-all flex justify-between items-center group border-2
-                    ${showResult && answerState === 'correct' ? 'border-moomin-primary/40 bg-moomin-primary/5' :
-                      showResult && answerState === 'wrong' ? 'border-moomin-accent/40 bg-moomin-accent/5' :
-                      answerState !== null && isCorrectAnswer ? 'border-moomin-primary/20 bg-moomin-primary/5' :
-                      'border-moomin-text/5 hover:bg-moomin-bg hover:border-moomin-primary/30'
+                  className={`w-full text-left p-5 md:p-8 glass-panel !rounded-3xl md:!rounded-[2.5rem] transition-all flex justify-between items-center group border border-white/5 relative overflow-hidden active:scale-[0.98]
+                    ${showResult && answerState === 'correct' ? 'border-primary/40 bg-primary/10 shadow-[0_0_30px_rgba(34,211,238,0.1)]' :
+                      showResult && answerState === 'wrong' ? 'border-accent-alert/40 bg-accent-alert/10 shadow-[0_0_30px_rgba(251,113,133,0.1)]' :
+                      answerState !== null && isCorrectAnswer ? 'border-primary/20 bg-primary/5' :
+                      'bg-slate-950/40 hover:bg-slate-800/60 hover:border-primary/40'
                     }
                   `}
                 >
-                  <div className="flex gap-3 md:gap-4 items-center flex-1">
-                    <span className="text-[9px] md:text-[10px] font-black text-moomin-muted/30 uppercase italic">0{idx + 1}</span>
-                    <span className={`text-sm md:text-base font-black pr-2 transition-colors italic leading-snug
-                      ${showResult && answerState === 'correct' ? 'text-moomin-primary' :
-                        showResult && answerState === 'wrong' ? 'text-moomin-accent' :
-                        'text-moomin-text group-hover:text-moomin-primary'
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                  <div className="flex gap-4 md:gap-6 items-center flex-1 relative z-10">
+                    <span className="text-[10px] md:text-[11px] font-black text-slate-600 uppercase italic tracking-wider">MOD_0{idx + 1}</span>
+                    <span className={`text-base md:text-lg font-black pr-4 transition-colors italic leading-relaxed tracking-tight
+                      ${showResult && answerState === 'correct' ? 'text-primary' :
+                        showResult && answerState === 'wrong' ? 'text-accent-alert' :
+                        'text-slate-200 group-hover:text-primary'
                       }
                     `}>
                       {opt}
                     </span>
                   </div>
-                  <div className={`w-6 h-6 md:w-8 md:h-8 rounded-xl md:rounded-2xl border-2 flex items-center justify-center shrink-0 transition-all
-                    ${showResult && answerState === 'correct' ? 'border-moomin-primary/40 bg-moomin-primary/10' :
-                      showResult && answerState === 'wrong' ? 'border-moomin-accent/40 bg-moomin-accent/10' :
-                      'bg-moomin-bg border-moomin-text/5 group-hover:border-moomin-primary/40 group-hover:bg-moomin-primary/5'
+                  <div className={`w-8 h-8 md:w-12 md:h-12 rounded-2xl md:rounded-[1.5rem] border flex items-center justify-center shrink-0 transition-all relative z-10
+                    ${showResult && answerState === 'correct' ? 'border-primary/40 bg-primary/20' :
+                      showResult && answerState === 'wrong' ? 'border-accent-alert/40 bg-accent-alert/20 font-black' :
+                      'bg-slate-900 border-white/5 group-hover:border-primary/40 group-hover:bg-primary/10'
                     }
                   `}>
                     {showResult && answerState === 'correct' ? (
-                      <span className="text-moomin-primary text-sm font-black">✨</span>
+                      <span className="text-primary text-xl font-black">✔</span>
                     ) : showResult && answerState === 'wrong' ? (
-                      <span className="text-moomin-accent text-sm font-black">⚠️</span>
+                      <span className="text-accent-alert text-xl font-black">!</span>
                     ) : (
-                      <div className="w-1.5 h-1.5 rounded-full bg-moomin-muted/20 group-hover:bg-moomin-primary transition-colors" />
+                      <div className="w-2 h-2 rounded-full bg-slate-800 group-hover:bg-primary/60 transition-colors" />
                     )}
                   </div>
                 </motion.button>
@@ -229,20 +236,23 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
       </AnimatePresence>
 
       {/* Progress Bubbles */}
-      <div className="mt-12 flex gap-4">
+      <div className="mt-16 flex gap-6">
         {questions.map((_, idx) => (
           <motion.div
             key={idx}
             animate={{
-              scale: idx === currentQIndex ? [1, 1.3, 1] : 1,
+              scale: idx === currentQIndex ? [1, 1.4, 1] : 1,
               backgroundColor: idx < currentQIndex
-                ? '#87CEEB'
+                ? '#22D3EE'
                 : idx === currentQIndex
-                ? '#FF9F7F'
-                : 'rgba(92,64,51,0.05)'
+                ? (answerState === 'wrong' ? '#FB7185' : '#22D3EE')
+                : 'rgba(255,255,255,0.05)',
+              boxShadow: idx === currentQIndex 
+                ? (answerState === 'wrong' ? '0 0 20px rgba(251,113,133,0.5)' : '0 0 20px rgba(34,211,238,0.5)')
+                : 'none'
             }}
             transition={{ repeat: idx === currentQIndex ? Infinity : 0, duration: 2 }}
-            className="w-4 h-4 rounded-full border-2 border-white shadow-lg"
+            className="w-3 h-3 rounded-full border border-white/20"
           />
         ))}
       </div>

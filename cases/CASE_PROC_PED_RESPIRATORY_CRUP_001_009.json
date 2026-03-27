@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA N/A, FC 120 lpm, Temp 37.8°C",
-      "expected_action": "discard",
+      "card_text": "Evidencia clínica: Ruido en el expediente: TA N/A, FC 120 lpm, Temp 37.8°C",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+        "error_type": "omission",
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Laringotraqueítis (CRUP): Virus Parainfluenza tipe 1 y 3. Triada: Tos traqueal, estridor e hiponía.",
+      "card_text": "Evidencia: A) Laringotraqueítis (CRUP): Virus Parainfluenza tipe 1 y 3. Triada: Tos traqueal, estridor e hiponía.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,8 +41,8 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Epiglotitis Aguda: H. influenzae tipo b. Fiebre alta, babeo (sialorrea), posición de trípode y AUSENCIA de tos.",
-      "expected_action": "discard",
+      "card_text": "Hallazgo: B) Epiglotitis Aguda: H. influenzae tipo b. Fiebre alta, babeo (sialorrea), posición de trípode y AUSENCIA de tos.",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "lethal_hazard",

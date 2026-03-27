@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 120/80, FC 72 lpm, Temp 36.7°C",
+      "card_text": "Hallazgo: Ruido en el expediente: TA 120/80, FC 72 lpm, Temp 36.7°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Iniciar ART Inmediatamente (Tratamiento Universal): Guías actuales (GPC/WHO): Se recomienda iniciar ART en TODOS los pacientes, sin importar el nivel de CD4.",
+      "card_text": "Evidencia: A) Iniciar ART Inmediatamente (Tratamiento Universal): Guías actuales (GPC/WHO): Se recomienda iniciar ART en TODOS los pacientes, sin importar el nivel de CD4.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,12 +41,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Diferir inicio hasta CD4 <200 (SIDA): Práctica obsoleta que aumentaba el riesgo de infecciones oportunistas y mortalidad.",
+      "card_text": "Hallazgo: Dato anecdótico: B) Diferir inicio hasta CD4 <200 (SIDA): Práctica obsoleta que aumentaba el riesgo de infecciones oportunistas y mortalidad.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Bien! Reconociste el cambio hacia el tratamiento universal proactivo."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Reconociste el cambio hacia el tratamiento universal proactivo."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -57,7 +57,7 @@
       "card_id": "c_3",
       "ui_icon": "pill",
       "category": "Tratamiento",
-      "card_text": "C) Esquema Preferente (Biktarvy): Bictegravir + Emtricitabina + Tenofovir Alafenamida (B/F/TAF) en tableta única.",
+      "card_text": "Dato de importancia: C) Esquema Preferente (Biktarvy): Bictegravir + Emtricitabina + Tenofovir Alafenamida (B/F/TAF) en tableta única.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -69,7 +69,7 @@
       "card_id": "c_4",
       "ui_icon": "beaker",
       "category": "Estudio Inicial",
-      "card_text": "D) Genotropificación de Resistencia: Realizar antes de iniciar tratamiento para guiar la elección de fármacos.",
+      "card_text": "Evidencia: D) Genotropificación de Resistencia: Realizar antes de iniciar tratamiento para guiar la elección de fármacos.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -81,7 +81,7 @@
       "card_id": "c_5",
       "ui_icon": "alert-triangle",
       "category": "Complicación",
-      "card_text": "E) Síndrome de Reconstitución Inmune (IRIS): Empeoramiento paradójico de infecciones tras iniciar ART.",
+      "card_text": "Evidencia: E) Síndrome de Reconstitución Inmune (IRIS): Empeoramiento paradójico de infecciones tras iniciar ART.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -93,7 +93,7 @@
       "card_id": "c_6",
       "ui_icon": "info",
       "category": "Tratamiento Dual",
-      "card_text": "F) Esquema Dovato (DTG/3TC): Dolutegravir + Lamivudina. Opción válida en pacientes sin hepatitis B y carga viral <500,000.",
+      "card_text": "Evidencia: F) Esquema Dovato (DTG/3TC): Dolutegravir + Lamivudina. Opción válida en pacientes sin hepatitis B y carga viral <500,000.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -105,7 +105,7 @@
       "card_id": "c_7",
       "ui_icon": "shield",
       "category": "Profilaxis",
-      "card_text": "G) TMP-SMX (Primaria): Iniciar en todo paciente con CD4 <200 para prevenir neumonía por Pneumocystis jirovecii.",
+      "card_text": "Hallazgo: G) TMP-SMX (Primaria): Iniciar en todo paciente con CD4 <200 para prevenir neumonía por Pneumocystis jirovecii.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -121,7 +121,7 @@
       "card_id": "c_8",
       "ui_icon": "eye",
       "category": "Seguimiento",
-      "card_text": "H) Carga Viral Indetectable: Meta del tratamiento a los 6 meses de inicio (Indetectable = Intransmisible).",
+      "card_text": "Hallazgo: H) Carga Viral Indetectable: Meta del tratamiento a los 6 meses de inicio (Indetectable = Intransmisible).",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -133,7 +133,7 @@
       "card_id": "c_9",
       "ui_icon": "activity",
       "category": "Efectos Adversos",
-      "card_text": "I) Toxicidad por Efavirenz: Causa sueños vívidos, depresión y mareos (síntomas neuropsiquiátricos).",
+      "card_text": "Hallazgo: I) Toxicidad por Efavirenz: Causa sueños vívidos, depresión y mareos (síntomas neuropsiquiátricos).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,

@@ -13,24 +13,24 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 160/100, FC 110 lpm, Temp 36.5°C",
+      "card_text": "Hallazgo: Información redundante: TA 160/100, FC 110 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Infarto Agudo al Miocardio (SCACEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
+      "card_text": "Evidencia: A) Infarto Agudo al Miocardio (SCACEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Perfect Match! El cuadro clínico más el ECG con elevación del ST hacen el diagnóstico. ICP primaria en menos de 90 min ideal."
+        "vazquez_comment": "¡Perfect Match! El cuadro clínico más el ECG con elevación del ST hacen el diagnóstico. ICP primaria en menos de 90 min ideal."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -41,12 +41,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Costocondritis (Síndrome de Tietze): Dolor torácico reproducible a la palpación de las articulaciones condrocostales, sin cambios en ECG.",
+      "card_text": "Hallazgo: Ruido en el expediente: B) Costocondritis (Síndrome de Tietze): Dolor torácico reproducible a la palpación de las articulaciones condrocostales, sin cambios en ECG.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: ¡Ojo clínico! El dolor reproducible a la palpación casi siempre descarta origen isquémico clásico, aquí el dolor es visceral."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Ojo clínico! El dolor reproducible a la palpación casi siempre descarta origen isquémico clásico, aquí el dolor es visceral."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -57,12 +57,12 @@
       "card_id": "c_3",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "C) Tromboembolia Pulmonar: Disnea súbita, taquicardia, dolor pleurítico, hipoxia severa. S1Q3T3 raro pero posible.",
-      "expected_action": "discard",
+      "card_text": "Evidencia clínica: C) Tromboembolia Pulmonar: Disnea súbita, taquicardia, dolor pleurítico, hipoxia severa. S1Q3T3 raro pero posible.",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "lethal_hazard",
-        "vazquez_comment": "Mendoza: Felicidades por descartarlo. Los cambios ST y el tipo de dolor nos centran en las coronarias."
+        "vazquez_comment": "Felicidades por descartarlo. Los cambios ST y el tipo de dolor nos centran en las coronarias."
       },
       "safety_flags": {
         "red_flag": true,
@@ -73,12 +73,12 @@
       "card_id": "c_4",
       "ui_icon": "activity",
       "category": "Estudio Inicial",
-      "card_text": "D) Electrocardiograma de 12 derivaciones: Meta institucional de realizar e interpretar en menos de 10 minutos.",
+      "card_text": "Hallazgo: D) Electrocardiograma de 12 derivaciones: Meta institucional de realizar e interpretar en menos de 10 minutos.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Mendoza: ¡Vital! El tiempo es músculo. Sin ECG no hay diagnóstico oportuno."
+        "vazquez_comment": "¡Vital! El tiempo es músculo. Sin ECG no hay diagnóstico oportuno."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -89,24 +89,24 @@
       "card_id": "c_5",
       "ui_icon": "pill",
       "category": "Tratamiento",
-      "card_text": "E) Aspirina 325 mg masticada: Antiagregación plaquetaria inmediata para limitar el tamaño del infarto.",
+      "card_text": "Hallazgo clínico: E) Aspirina 325 mg masticada: Antiagregación plaquetaria inmediata para limitar el tamaño del infarto.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: Bien. La piedra angular del tratamiento farmacológico inicial."
+        "vazquez_comment": "Bien. La piedra angular del tratamiento farmacológico inicial."
       }
     },
     {
       "card_id": "c_6",
       "ui_icon": "slash",
       "category": "Complicación Mecánica",
-      "card_text": "F) Ruptura de Pared Libre: Complicación catastrófica que ocurre típicamente entre el 3er y 5to día post-infarto.",
+      "card_text": "Dato de importancia: F) Ruptura de Pared Libre: Complicación catastrófica que ocurre típicamente entre el 3er y 5to día post-infarto.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Mendoza: ¡Vital! El cuadro súbito de choque con disociación electromecánica sugiere esta tragedia."
+        "vazquez_comment": "¡Vital! El cuadro súbito de choque con disociación electromecánica sugiere esta tragedia."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -117,36 +117,36 @@
       "card_id": "c_7",
       "ui_icon": "user-minus",
       "category": "Complicación",
-      "card_text": "G) Taponamiento Cardíaco: Consecuencia de la ruptura de pared libre o hemopericardio post-procedimiento.",
+      "card_text": "Hallazgo: G) Taponamiento Cardíaco: Consecuencia de la ruptura de pared libre o hemopericardio post-procedimiento.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: Bien. Requiere diagnóstico agudo mediante ecocardiograma y manejo quirúrgico."
+        "vazquez_comment": "Bien. Requiere diagnóstico agudo mediante ecocardiograma y manejo quirúrgico."
       }
     },
     {
       "card_id": "c_8",
       "ui_icon": "monitor",
       "category": "Gabinete",
-      "card_text": "H) Ecocardiograma Transtorácico: Estudio de elección ante la sospecha de cualquier complicación mecánica post-AMI.",
+      "card_text": "Hallazgo: H) Ecocardiograma Transtorácico: Estudio de elección ante la sospecha de cualquier complicación mecánica post-AMI.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Exacto! Nos permite ver defectos septales, rupturas o aneurismas ventriculares."
+        "vazquez_comment": "¡Exacto! Nos permite ver defectos septales, rupturas o aneurismas ventriculares."
       }
     },
     {
       "card_id": "c_9",
       "ui_icon": "shield-alert",
       "category": "Complicación Tardía",
-      "card_text": "I) Síndrome de Dressler: Pericarditis autoinmune que se presenta de 2 a 10 semanas después del infarto.",
+      "card_text": "Evidencia: I) Síndrome de Dressler: Pericarditis autoinmune que se presenta de 2 a 10 semanas después del infarto.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "omission",
-        "vazquez_comment": "Mendoza: Bien. Se maneja con aspirina a dosis altas o colchicina."
+        "vazquez_comment": "Bien. Se maneja con aspirina a dosis altas o colchicina."
       }
     }
   ],

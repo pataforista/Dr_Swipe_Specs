@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 120/80, FC 80 lpm, Temp 36.5°C",
+      "card_text": "Dato de importancia: Dato anecdótico: TA 120/80, FC 80 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Depresión Mayor con Riesgo Suicida Agudo: Sintomatología depresiva >2 semanas + Plan/Ideación suicida. Requiere hospitalización o vigilancia estrecha.",
+      "card_text": "Hallazgo: A) Depresión Mayor con Riesgo Suicida Agudo: Sintomatología depresiva >2 semanas + Plan/Ideación suicida. Requiere hospitalización o vigilancia estrecha.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -42,12 +42,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Duelo Normal: Reacción a pérdida; la funcionalidad suele mantenerse y no hay ideación suicida estructurada.",
+      "card_text": "Hallazgo clínico: Dato anecdótico: B) Duelo Normal: Reacción a pérdida; la funcionalidad suele mantenerse y no hay ideación suicida estructurada.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Bien! Identificaste que el plan suicida marca la patología."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Identificaste que el plan suicida marca la patología."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -58,7 +58,7 @@
       "card_id": "c_3",
       "ui_icon": "help-circle",
       "category": "Interrogatorio",
-      "card_text": "C) Preguntar Directamente sobre el Suicidio: Contrario al mito, preguntar sobre planes suicidas reduce la ansiedad y permite la intervención.",
+      "card_text": "Hallazgo: C) Preguntar Directamente sobre el Suicidio: Contrario al mito, preguntar sobre planes suicidas reduce la ansiedad y permite la intervención.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -70,7 +70,7 @@
       "card_id": "c_4",
       "ui_icon": "clipboard",
       "category": "Evaluación",
-      "card_text": "D) Escala SAD PERSONS: Herramienta nemotécnica para evaluar factores de riesgo (Sexo, Edad, Depresión, Previos, etc.).",
+      "card_text": "Evidencia: D) Escala SAD PERSONS: Herramienta nemotécnica para evaluar factores de riesgo (Sexo, Edad, Depresión, Previos, etc.).",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -82,7 +82,7 @@
       "card_id": "c_5",
       "ui_icon": "pill",
       "category": "Tratamiento",
-      "card_text": "E) ISRS (Sertralina/Fluoxetina): Fármacos de primera línea para el episodio depresivo mayor. Tardan 2-4 semanas en actuar.",
+      "card_text": "Evidencia: E) ISRS (Sertralina/Fluoxetina): Fármacos de primera línea para el episodio depresivo mayor. Tardan 2-4 semanas en actuar.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -94,7 +94,7 @@
       "card_id": "c_6",
       "ui_icon": "alert-triangle",
       "category": "Seguridad",
-      "card_text": "F) Hospitalización Psiquiátrica: Indicada si hay plan estructurado, intento reciente o falta de red de apoyo social.",
+      "card_text": "Hallazgo: F) Hospitalización Psiquiátrica: Indicada si hay plan estructurado, intento reciente o falta de red de apoyo social.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -110,7 +110,7 @@
       "card_id": "c_7",
       "ui_icon": "zap",
       "category": "Emergencia",
-      "card_text": "G) Terapia Electroconvulsiva (TEC): Indicada en depresión con riesgo suicida inminente o refractaria a fármacos.",
+      "card_text": "Hallazgo: G) Terapia Electroconvulsiva (TEC): Indicada en depresión con riesgo suicida inminente o refractaria a fármacos.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -122,7 +122,7 @@
       "card_id": "c_8",
       "ui_icon": "scissors",
       "category": "Diferencial",
-      "card_text": "H) Trastorno Bipolar (Fase Maníaca): El inicio de antidepresivos en un paciente bipolar no diagnosticado puede inducir viraje a manía.",
+      "card_text": "Hallazgo: H) Trastorno Bipolar (Fase Maníaca): El inicio de antidepresivos en un paciente bipolar no diagnosticado puede inducir viraje a manía.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -134,7 +134,7 @@
       "card_id": "c_9",
       "ui_icon": "alert-circle",
       "category": "Riesgo",
-      "card_text": "I) Ancianos y Varones: Tienen mayor tasa de suicidio consumado (éxito) en comparación con jóvenes y mujeres.",
+      "card_text": "Hallazgo: I) Ancianos y Varones: Tienen mayor tasa de suicidio consumado (éxito) en comparación con jóvenes y mujeres.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,

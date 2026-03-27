@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "FC 180 lpm (Taquicardia severa), FR 35 rpm, Temp 37.0°C, TA 70/40 mmHg (Sugerente de Choque).",
-      "expected_action": "discard",
+      "card_text": "Dato de importancia: Ruido en el expediente: FC 180 lpm (Taquicardia severa), FR 35 rpm, Temp 37.0°C, TA 70/40 mmHg (Sugerente de Choque).",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Urgente! Iker está en estado de choque hipovolémico."
+        "error_type": "omission",
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Urgente! Iker está en estado de choque hipovolémico."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Clasificación",
-      "card_text": "A) Deshidratación Grave con Choque: Pérdida ponderal >10%, fontanela muy hundida y compromiso hemodinámico (hipotensión/oliguria).",
+      "card_text": "Hallazgo: A) Deshidratación Grave con Choque: Pérdida ponderal >10%, fontanela muy hundida y compromiso hemodinámico (hipotensión/oliguria).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,7 +41,7 @@
       "card_id": "c_2",
       "ui_icon": "zap",
       "category": "Tratamiento",
-      "card_text": "B) Plan C de Rehidratación: Administración de líquidos IV en bolos de Solución Salina 0.9% o Ringer Lactato a 20 ml/kg.",
+      "card_text": "Hallazgo clínico: B) Plan C de Rehidratación: Administración de líquidos IV en bolos de Solución Salina 0.9% o Ringer Lactato a 20 ml/kg.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -57,7 +57,7 @@
       "card_id": "c_3",
       "ui_icon": "droplet",
       "category": "VHG",
-      "card_text": "C) Vida Suero Oral (VSO): Pilar del Plan A y B. Contiene la osmolaridad ideal (75 mEq de sodio) recomendada por la OMS.",
+      "card_text": "Hallazgo: C) Vida Suero Oral (VSO): Pilar del Plan A y B. Contiene la osmolaridad ideal (75 mEq de sodio) recomendada por la OMS.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -69,7 +69,7 @@
       "card_id": "c_4",
       "ui_icon": "info",
       "category": "Plan A",
-      "card_text": "D) Plan A: Prevención de deshidratación en casa. Menores de 1 año: 75 ml de VSO tras cada evacuación líquida.",
+      "card_text": "Hallazgo: D) Plan A: Prevención de deshidratación en casa. Menores de 1 año: 75 ml de VSO tras cada evacuación líquida.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -81,7 +81,7 @@
       "card_id": "c_5",
       "ui_icon": "activity",
       "category": "Plan B",
-      "card_text": "E) Plan B: Deshidratación moderada. Administrar VSO 100 ml/kg en 4 horas (en dosis pequeñas/cucharadas).",
+      "card_text": "Evidencia clínica: E) Plan B: Deshidratación moderada. Administrar VSO 100 ml/kg en 4 horas (en dosis pequeñas/cucharadas).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -93,7 +93,7 @@
       "card_id": "c_6",
       "ui_icon": "search",
       "category": "Signo Clínico",
-      "card_text": "F) Signo del Lienzo Húmedo: Persistencia del pliegue cutáneo tras pinchar la piel. Indica deshidratación grave.",
+      "card_text": "Evidencia: F) Signo del Lienzo Húmedo: Persistencia del pliegue cutáneo tras pinchar la piel. Indica deshidratación grave.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -105,8 +105,8 @@
       "card_id": "c_7",
       "ui_icon": "slash",
       "category": "Gastroenteritis",
-      "card_text": "G) Loperamida: Recomendada en lactantes para reducir el número de evacuciones y evitar la pérdida de líquidos.",
-      "expected_action": "discard",
+      "card_text": "Evidencia: G) Loperamida: Recomendada en lactantes para reducir el número de evacuciones y evitar la pérdida de líquidos.",
+      "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "lethal_hazard",
@@ -121,7 +121,7 @@
       "card_id": "c_8",
       "ui_icon": "pill",
       "category": "Suplementación",
-      "card_text": "H) Zinc Elemental: Administrar 10-20 mg al día por 10-14 días para reducir duración y recurrencia de la diarrea.",
+      "card_text": "Hallazgo: H) Zinc Elemental: Administrar 10-20 mg al día por 10-14 días para reducir duración y recurrencia de la diarrea.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -133,7 +133,7 @@
       "card_id": "c_9",
       "ui_icon": "thermometer",
       "category": "Laboratorio",
-      "card_text": "I) Electrolitos Séricos: Monitorizar niveles de potasio (K+), ya que la diarrea causa pérdidas masivas y riesgo de íleo.",
+      "card_text": "Hallazgo clínico: I) Electrolitos Séricos: Monitorizar niveles de potasio (K+), ya que la diarrea causa pérdidas masivas y riesgo de íleo.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -145,7 +145,7 @@
       "card_id": "c_10",
       "ui_icon": "alert-triangle",
       "category": "Intraósea",
-      "card_text": "J) Vía Intraósea: Alternativa inmediata de acceso vascular si no se logra canalización venosa en 3 intentos o 90 segundos durante el choque.",
+      "card_text": "Hallazgo: J) Vía Intraósea: Alternativa inmediata de acceso vascular si no se logra canalización venosa en 3 intentos o 90 segundos durante el choque.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,

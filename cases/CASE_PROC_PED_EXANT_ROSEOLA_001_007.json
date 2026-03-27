@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA N/A, FC 130 lpm (durante fiebre), Temp 36.6°C (post-fiebre)",
-      "expected_action": "discard",
+      "card_text": "Evidencia clínica: Dato anecdótico: TA N/A, FC 130 lpm (durante fiebre), Temp 36.6°C (post-fiebre)",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+        "error_type": "omission",
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Exantema Súbito (6ta Enfermedad): Fiebre ALTA que desaparece → Aparece exantema. Virus Herpes Humano 6.",
+      "card_text": "Hallazgo clínico: A) Exantema Súbito (6ta Enfermedad): Fiebre ALTA que desaparece â†’ Aparece exantema. Virus Herpes Humano 6.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,31 +41,31 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico Diferencial",
-      "card_text": "B) Rubéola: Exantema similar pero con fiebre leve/moderada y adenopatías retroauriculares. El niño no luce tan sano.",
+      "card_text": "Hallazgo: Dato anecdótico: B) Rubéola: Exantema similar pero con fiebre leve/moderada y adenopatías retroauriculares. El niño no luce tan sano.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡Bien! En Roseola la fiebre es mucho más alta que en Rubéola."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! En Roseola la fiebre es mucho más alta que en Rubéola."
       }
     },
     {
       "card_id": "c_3",
       "ui_icon": "eye",
       "category": "Diagnóstico Diferencial",
-      "card_text": "C) Sarampión: Requiere prodrómos respiratorios intensos (tos, coriza) y el exantema suele ser más 'sucio' y confluente.",
+      "card_text": "Dato de importancia: Ruido en el expediente: C) Sarampión: Requiere prodrómos respiratorios intensos (tos, coriza) y el exantema suele ser más 'sucio' y confluente.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: Correcto. Aquí no hay 'triple catarro', solo fiebre y luego el brote."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. Aquí no hay 'triple catarro', solo fiebre y luego el brote."
       }
     },
     {
       "card_id": "c_4",
       "ui_icon": "search",
       "category": "Signo Clínico",
-      "card_text": "D) Manchas de Nagayama: Pequeñas pápulas eritematosas en el paladar blando y úvula.",
+      "card_text": "Hallazgo clínico: D) Manchas de Nagayama: Pequeñas pápulas eritematosas en el paladar blando y úvula.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -77,7 +77,7 @@
       "card_id": "c_5",
       "ui_icon": "beaker",
       "category": "Etiología",
-      "card_text": "E) Virus Herpes Humano 6 (VHH-6): Agente causal más frecuente (90% de los casos).",
+      "card_text": "Hallazgo clínico: E) Virus Herpes Humano 6 (VHH-6): Agente causal más frecuente (90% de los casos).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -89,7 +89,7 @@
       "card_id": "c_6",
       "ui_icon": "clipboard-list",
       "category": "Diagnóstico",
-      "card_text": "F) Diagnóstico Clínico: El patrón fiebre-exantema es suficiente. No requiere serología ni PCR de rutina.",
+      "card_text": "Hallazgo clínico: F) Diagnóstico Clínico: El patrón fiebre-exantema es suficiente. No requiere serología ni PCR de rutina.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -101,7 +101,7 @@
       "card_id": "c_7",
       "ui_icon": "thermometer",
       "category": "Tratamiento",
-      "card_text": "G) Sostén y Antipiréticos: Paracetamol y control térmico físico son suficientes en pacientes sanos.",
+      "card_text": "Evidencia: G) Sostén y Antipiréticos: Paracetamol y control térmico físico son suficientes en pacientes sanos.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -113,7 +113,7 @@
       "card_id": "c_8",
       "ui_icon": "zap",
       "category": "Complicación",
-      "card_text": "H) Convulsión Febril: Es la exantemática que más se asocia a crisis convulsivas por la fiebre tan alta.",
+      "card_text": "Hallazgo clínico: H) Convulsión Febril: Es la exantemática que más se asocia a crisis convulsivas por la fiebre tan alta.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -125,7 +125,7 @@
       "card_id": "c_9",
       "ui_icon": "users",
       "category": "Consejería",
-      "card_text": "I) Curso Benigno y Autolimitado: Explicar que el exantema desaparecerá en 1-2 días sin dejar secuelas.",
+      "card_text": "Hallazgo: I) Curso Benigno y Autolimitado: Explicar que el exantema desaparecerá en 1-2 días sin dejar secuelas.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -137,7 +137,7 @@
       "card_id": "c_10",
       "ui_icon": "help-circle",
       "category": "Complicación",
-      "card_text": "J) Encefalitis: Complicación neurológica rara que puede ocurrir tras la infección por VHH-6 en lactantes.",
+      "card_text": "Hallazgo: J) Encefalitis: Complicación neurológica rara que puede ocurrir tras la infección por VHH-6 en lactantes.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,

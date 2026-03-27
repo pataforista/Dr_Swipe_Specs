@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 170/100 mmHg, FC 95 lpm, FR 18 rpm. (Hipertensión significativa).",
+      "card_text": "Hallazgo clínico: Ruido en el expediente: TA 170/100 mmHg, FC 95 lpm, FR 18 rpm. (Hipertensión significativa).",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Vázquez: La presión está alta, probablemente por el estrés del sangrado. Controlémoslo."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Vázquez: La presión está alta, probablemente por el estrés del sangrado. Controlémoslo."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Anatomía",
-      "card_text": "A) Plexo de Kiesselbach (Área de Little): Sitio anatómico donde ocurre el 90% de las epistaxis anteriores.",
+      "card_text": "Hallazgo: A) Plexo de Kiesselbach (Ãrea de Little): Sitio anatómico donde ocurre el 90% de las epistaxis anteriores.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -37,7 +37,7 @@
       "card_id": "c_2",
       "ui_icon": "zap",
       "category": "Manejo Inicial",
-      "card_text": "B) Presión Digital Directa: Comprimir las alas nasales de forma continua durante 5 a 15 minutos con el paciente inclinado hacia ADELANTE.",
+      "card_text": "Hallazgo: B) Presión Digital Directa: Comprimir las alas nasales de forma continua durante 5 a 15 minutos con el paciente inclinado hacia ADELANTE.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,

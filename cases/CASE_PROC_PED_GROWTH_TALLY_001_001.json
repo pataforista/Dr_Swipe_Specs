@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA N/A, FC 100 lpm, Temp 36.6°C",
+      "card_text": "Información redundante: TA N/A, FC 100 lpm, Temp 36.6°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Desnutrición Crónica (Talla Baja): Talla para Edad < -2 DE indica desnutrición crónica o retraso en el crecimiento longitudinal.",
+      "card_text": "Hallazgo: A) Desnutrición Crónica (Talla Baja): Talla para Edad < -2 DE indica desnutrición crónica o retraso en el crecimiento longitudinal.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,19 +41,19 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Desnutrición Aguda (Emaciación): Se define por el indicador Peso para Talla (P/T) < -2 DE.",
+      "card_text": "Dato de importancia: Ruido en el expediente: B) Desnutrición Aguda (Emaciación): Se define por el indicador Peso para Talla (P/T) < -2 DE.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡Bien! Diferenciaste agudo de crónico. El P/T normal descarta emaciación actual."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Diferenciaste agudo de crónico. El P/T normal descarta emaciación actual."
       }
     },
     {
       "card_id": "c_3",
       "ui_icon": "info",
       "category": "Desnutrición",
-      "card_text": "C) Desnutrición Global: El indicador Peso para Edad (P/E) < -2 DE sugiere desnutrición global. Es útil en menores de 1 año.",
+      "card_text": "Evidencia: C) Desnutrición Global: El indicador Peso para Edad (P/E) < -2 DE sugiere desnutrición global. Es útil en menores de 1 año.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -65,7 +65,7 @@
       "card_id": "c_4",
       "ui_icon": "target",
       "category": "Crecimiento",
-      "card_text": "D) Velocidad de Crecimiento: Es el parámetro más sensible para detectar alteraciones del crecimiento de forma temprana.",
+      "card_text": "Evidencia: D) Velocidad de Crecimiento: Es el parámetro más sensible para detectar alteraciones del crecimiento de forma temprana.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -77,7 +77,7 @@
       "card_id": "c_5",
       "ui_icon": "calendar",
       "category": "Gabinete",
-      "card_text": "E) Edad Ósea (Radiografía de Mano Izquierda): Gold standar para evaluar el potencial de crecimiento remanente.",
+      "card_text": "Hallazgo: E) Edad Ã“sea (Radiografía de Mano Izquierda): Gold standar para evaluar el potencial de crecimiento remanente.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -89,7 +89,7 @@
       "card_id": "c_6",
       "ui_icon": "activity",
       "category": "Cálculo",
-      "card_text": "F) Talla Blanco Familiar: (Talla Padre + Talla Madre + 13)/2 para niños; (-13) para niñas. Predice la talla adulta final.",
+      "card_text": "Hallazgo: F) Talla Blanco Familiar: (Talla Padre + Talla Madre + 13)/2 para niños; (-13) para niñas. Predice la talla adulta final.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -101,7 +101,7 @@
       "card_id": "c_7",
       "ui_icon": "shield",
       "category": "Diagnóstico",
-      "card_text": "G) Talla Baja Familiar: Edad ósea coincide con la cronológica, velocidad de crecimiento normal y talla final acorde a padres.",
+      "card_text": "Hallazgo: G) Talla Baja Familiar: Edad ósea coincide con la cronológica, velocidad de crecimiento normal y talla final acorde a padres.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -113,7 +113,7 @@
       "card_id": "c_8",
       "ui_icon": "alert-circle",
       "category": "Diagnóstico",
-      "card_text": "H) Retraso Constitucional del Crecimiento: Edad ósea retrasada, inicio de pubertad tardío, pero talla final normal.",
+      "card_text": "Evidencia: H) Retraso Constitucional del Crecimiento: Edad ósea retrasada, inicio de pubertad tardío, pero talla final normal.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -125,7 +125,7 @@
       "card_id": "c_9",
       "ui_icon": "search",
       "category": "Signo Clínico",
-      "card_text": "I) Perímetro Cefálico: Su medición es obligatoria hasta los 2 años de edad para monitorizar el desarrollo neurológico.",
+      "card_text": "Hallazgo: I) Perímetro Cefálico: Su medición es obligatoria hasta los 2 años de edad para monitorizar el desarrollo neurológico.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -136,7 +136,7 @@
   ],
   "enarm_pearl": {
     "title": "Indicadores OMS: T/E = Crónico",
-    "text": "Indicador Talla para Edad (T/E) evalúa desnutrición CRÓNICA. Peso para Talla (P/T) evalúa desnutrición AGUDA (emaciación).",
+    "text": "Indicador Talla para Edad (T/E) evalúa desnutrición CRÃ“NICA. Peso para Talla (P/T) evalúa desnutrición AGUDA (emaciación).",
     "gpc_ref": "NOM-031-SSA2-1999 Para la salud del niño"
   },
   "boss_fight_triad": {

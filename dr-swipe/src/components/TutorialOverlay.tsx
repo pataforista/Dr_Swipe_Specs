@@ -36,10 +36,11 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({ onComplete }) 
       <motion.div
         initial={{ opacity: 0, scale: 0.9, y: 30 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        className="glass-panel p-10 max-w-sm w-full text-center border-4 border-moomin-primary/10 shadow-2xl bg-white rounded-[3rem]"
+        className="glass-panel p-10 max-w-sm w-full text-center border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.6)] bg-slate-900 rounded-[3rem] overflow-hidden relative"
       >
-        <span className="text-[9px] font-black tracking-[0.4em] text-moomin-primary uppercase mb-8 block italic">
-          BIENVENIDA AL VALLE · {current + 1}/{SLIDES.length}
+        <div className="absolute top-0 left-0 w-full h-1 bg-primary opacity-50" />
+        <span className="text-[9px] font-black tracking-[0.5em] text-primary uppercase mb-10 block">
+          INICIALIZACIÓN DE PROTOCOLO · {current + 1}/{SLIDES.length}
         </span>
 
         <AnimatePresence mode="wait">
@@ -50,14 +51,14 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({ onComplete }) 
             exit={{ opacity: 0, y: -20 }}
             transition={{ type: 'spring', stiffness: 300, damping: 25 }}
           >
-            <div className="text-7xl mb-8 animate-bounce-slow filter drop-shadow-xl">{slide.emoji}</div>
-            <h3 className="text-2xl font-display font-black text-moomin-text mb-4 tracking-tight italic">
+            <div className="text-7xl mb-8 animate-pulse filter drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">{slide.emoji}</div>
+            <h3 className="text-2xl font-display font-black text-white mb-4 tracking-tight italic">
               {slide.title}
             </h3>
-            <p className="text-moomin-muted leading-relaxed mb-6 text-sm font-black italic">
+            <p className="text-slate-400 leading-relaxed mb-8 text-sm font-black italic">
               {slide.body}
             </p>
-            <p className="text-[10px] font-black text-moomin-primary/60 uppercase tracking-[0.3em] bg-moomin-bg/30 py-2 rounded-full border border-moomin-primary/10 italic">
+            <p className="text-[10px] font-black text-primary uppercase tracking-[0.3em] bg-slate-950/60 py-3 rounded-2xl border border-white/5 italic">
               {slide.hint}
             </p>
           </motion.div>
@@ -68,8 +69,8 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({ onComplete }) 
           {SLIDES.map((_, i) => (
             <div
               key={i}
-              className={`h-2 rounded-full transition-all duration-500 ${
-                i === current ? 'w-10 bg-moomin-primary shadow-[0_0_10px_rgba(135,206,235,0.4)]' : 'w-2 bg-moomin-bg'
+              className={`h-1.5 rounded-full transition-all duration-500 ${
+                i === current ? 'w-10 bg-primary shadow-[0_0_15px_rgba(34,211,238,0.5)]' : 'w-2 bg-slate-800'
               }`}
             />
           ))}
@@ -77,17 +78,17 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({ onComplete }) 
 
         <button
           onClick={() => (isLast ? onComplete() : setCurrent((s) => s + 1))}
-          className="bg-moomin-primary hover:bg-moomin-primary/90 text-white font-black text-[10px] tracking-[0.4em] uppercase py-5 px-8 rounded-full shadow-lg transition-all transform hover:scale-105 active:scale-95 italic w-full"
+          className="bg-primary hover:bg-white text-slate-950 font-black text-[11px] tracking-[0.5em] uppercase py-6 px-8 rounded-2xl shadow-lg transition-all active:scale-95 w-full"
         >
-          {isLast ? '¡EMPEZAR!' : 'CONTINUAR'}
+          {isLast ? 'INICIAR GUARDIA' : 'SIGUIENTE PASO'}
         </button>
 
         {current === 0 && (
           <button
             onClick={onComplete}
-            className="mt-6 text-[10px] font-black tracking-[0.3em] text-moomin-muted/40 hover:text-moomin-primary transition-colors uppercase italic"
+            className="mt-6 text-[10px] font-black tracking-[0.3em] text-slate-600 hover:text-primary transition-colors uppercase italic"
           >
-            Ya conozco el camino
+            SALTAR PROTOCOLO
           </button>
         )}
       </motion.div>

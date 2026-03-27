@@ -13,24 +13,24 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 100/60 mmHg (en descenso), FC 95 lpm, Temp 36.5°C",
+      "card_text": "Evidencia clínica: Ruido en el expediente: TA 100/60 mmHg (en descenso), FC 95 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) IAMCEST (Fibrinolisis Sistémica): IAMCEST Cara Anterior. Si la ICP >120 min de retraso, se opta por Fibrinolisis (Alteplase).",
+      "card_text": "Evidencia: A) IAMCEST (Fibrinolisis Sistémica): IAMCEST Cara Anterior. Si la ICP >120 min de retraso, se opta por Fibrinolisis (Alteplase).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Mendoza: ¡Correcto! En el ENARM, si el tiempo a ICP es >120 min (o 90 min en centros grandes), la FIBRINOLISIS es la respuesta correcta."
+        "vazquez_comment": "¡Correcto! En el ENARM, si el tiempo a ICP es >120 min (o 90 min en centros grandes), la FIBRINOLISIS es la respuesta correcta."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -42,12 +42,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Angina Inestable: Dolor isquémico SIN elevación del ST y SIN elevación de troponinas.",
+      "card_text": "Evidencia clínica: Ruido en el expediente: B) Angina Inestable: Dolor isquémico SIN elevación del ST y SIN elevación de troponinas.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: ¡Bien! El ST elevado marca la pauta de tratamiento invasivo inmediato."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! El ST elevado marca la pauta de tratamiento invasivo inmediato."
       },
       "safety_flags": {
         "lethal_risk": false,

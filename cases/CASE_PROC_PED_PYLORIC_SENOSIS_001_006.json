@@ -13,43 +13,43 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA N/A, FC 140 lpm, Temp 36.6°C",
-      "expected_action": "discard",
+      "card_text": "Evidencia clínica: Ruido en el expediente: TA N/A, FC 140 lpm, Temp 36.6°C",
+      "expected_action": "keep",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+        "error_type": "omission",
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico Diferencial",
-      "card_text": "B) Atresia Duodenal: Vómitos biliares precoces (primeras 24-48h). Radiografía con signo de la 'doble burbuja'. Frecuente en Síndrome de Down.",
+      "card_text": "Información redundante: B) Atresia Duodenal: Vómitos biliares precoces (primeras 24-48h). Radiografía con signo de la 'doble burbuja'. Frecuente en Síndrome de Down.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡Bien! El vómito en la estenosis de píloro es característicamente NO biliar."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! El vómito en la estenosis de píloro es característicamente NO biliar."
       }
     },
     {
       "card_id": "c_3",
       "ui_icon": "eye",
       "category": "Diagnóstico Diferencial",
-      "card_text": "C) Reflujo Gastroesofágico: Regurgitaciones frecuentes, no en proyectil, con ganancia ponderal adecuada inicialmente.",
+      "card_text": "Hallazgo: Dato anecdótico: C) Reflujo Gastroesofágico: Regurgitaciones frecuentes, no en proyectil, con ganancia ponderal adecuada inicialmente.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Castillo: Correcto. El vómito explosivo 'en proyectil' apunta fuertemente a una obstrucción mecánica."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. El vómito explosivo 'en proyectil' apunta fuertemente a una obstrucción mecánica."
       }
     },
     {
       "card_id": "c_4",
       "ui_icon": "search",
       "category": "Signo Clínico",
-      "card_text": "D) Oliva Pilórica: Masa firme, móvil, de unos 2 cm, palpable en el borde lateral del músculo recto abdominal derecho.",
+      "card_text": "Hallazgo: D) Oliva Pilórica: Masa firme, móvil, de unos 2 cm, palpable en el borde lateral del músculo recto abdominal derecho.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -61,7 +61,7 @@
       "card_id": "c_5",
       "ui_icon": "activity",
       "category": "Signo Clínico",
-      "card_text": "E) Ondas Peristálticas Gástricas: Movimientos visibles de izquierda a derecha tras la alimentación que terminan en el vómito.",
+      "card_text": "Hallazgo clínico: E) Ondas Peristálticas Gástricas: Movimientos visibles de izquierda a derecha tras la alimentación que terminan en el vómito.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -73,7 +73,7 @@
       "card_id": "c_6",
       "ui_icon": "beaker",
       "category": "Laboratorio",
-      "card_text": "F) Alcalosis Metabólica Hipoclorémica: Producida por la pérdida masiva de ácido clorhídrico en el vómito gástrico.",
+      "card_text": "Hallazgo: F) Alcalosis Metabólica Hipoclorémica: Producida por la pérdida masiva de ácido clorhídrico en el vómito gástrico.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -89,7 +89,7 @@
       "card_id": "c_7",
       "ui_icon": "camera",
       "category": "Gabinete",
-      "card_text": "G) Ultrasonido Abdominal: Criterios: Grosor del músculo pilórico >3-4 mm y longitud del canal >15-17 mm.",
+      "card_text": "Hallazgo: G) Ultrasonido Abdominal: Criterios: Grosor del músculo pilórico >3-4 mm y longitud del canal >15-17 mm.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -101,7 +101,7 @@
       "card_id": "c_8",
       "ui_icon": "thermometer",
       "category": "Manejo Inicial",
-      "card_text": "H) Ayuno e Hidratación Parenteral: Reposición de volumen y electrolitos (Sodio, Cloro y Potasio).",
+      "card_text": "Evidencia: H) Ayuno e Hidratación Parenteral: Reposición de volumen y electrolitos (Sodio, Cloro y Potasio).",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -113,7 +113,7 @@
       "card_id": "c_9",
       "ui_icon": "scissors",
       "category": "Tratamiento Definitivo",
-      "card_text": "I) Piloromiotomía de Fredet-Ramstedt: Sección de las fibras musculares del píloro sin entrar a la luz mucosa.",
+      "card_text": "Evidencia: I) Piloromiotomía de Fredet-Ramstedt: Sección de las fibras musculares del píloro sin entrar a la luz mucosa.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -129,7 +129,7 @@
       "card_id": "c_10",
       "ui_icon": "alert-circle",
       "category": "Seguimiento",
-      "card_text": "J) Alimentación Postoperatoria: Iniciar dieta hídrica a las 4-6 horas tras la cirugía si no hay complicaciones.",
+      "card_text": "Evidencia clínica: J) Alimentación Postoperatoria: Iniciar dieta hídrica a las 4-6 horas tras la cirugía si no hay complicaciones.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -140,7 +140,7 @@
   ],
   "enarm_pearl": {
     "title": "Vómito en Píloro: Alcalosis Hipoclorémica",
-    "text": "El trastorno ácido-base clásico de la Estenosis de Píloro es la ALCALOSIS METABÓLICA HIPOCLORÉMICA e hipokalémica.",
+    "text": "El trastorno ácido-base clásico de la Estenosis de Píloro es la ALCALOSIS METABÃ“LICA HIPOCLORÃ‰MICA e hipokalémica.",
     "gpc_ref": "GPC Diagnóstico y Tratamiento de Estenosis Hipertrófica de Píloro"
   },
   "boss_fight_triad": {

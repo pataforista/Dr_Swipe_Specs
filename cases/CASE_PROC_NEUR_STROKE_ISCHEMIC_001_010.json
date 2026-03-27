@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 170/90 mmHg, FC 110 lpm (irregular), Temp 36.6°C",
+      "card_text": "Información redundante: TA 170/90 mmHg, FC 110 lpm (irregular), Temp 36.6°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) ACV Isquémico (Ventana de Fibrinolisis): Sintomatología focal <4.5 horas + TC sin hemorragia. Manejo: rTPA (Alteplase).",
+      "card_text": "Hallazgo clínico: A) ACV Isquémico (Ventana de Fibrinolisis): Sintomatología focal <4.5 horas + TC sin hemorragia. Manejo: rTPA (Alteplase).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -42,12 +42,12 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico",
-      "card_text": "B) Hemorragia Intracraneal: Clínica similar pero TC mostraría hiperdensidad súbita.",
+      "card_text": "Información redundante: B) Hemorragia Intracraneal: Clínica similar pero TC mostraría hiperdensidad súbita.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Bien! La TC negativa a sangre confirma el origen isquémico temprano."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! La TC negativa a sangre confirma el origen isquémico temprano."
       },
       "safety_flags": {
         "lethal_risk": false,

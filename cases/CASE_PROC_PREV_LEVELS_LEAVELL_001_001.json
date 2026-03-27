@@ -13,19 +13,19 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "TA 110/70, FC 68 lpm, Temp 36.5°C",
+      "card_text": "Hallazgo: Información redundante: TA 110/70, FC 68 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "A) Aplicación de Vacuna contra VPH (Primaria): Prevención Primaria: Acciones dirigidas a evitar la aparición de la enfermedad (vacunación).",
+      "card_text": "Evidencia: A) Aplicación de Vacuna contra VPH (Primaria): Prevención Primaria: Acciones dirigidas a evitar la aparición de la enfermedad (vacunación).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,7 +41,7 @@
       "card_id": "c_2",
       "ui_icon": "search",
       "category": "Prevención 2aria",
-      "card_text": "B) Tamizaje y Diagnóstico Precoz (Secundaria): Acciones dirigidas a detectar la enfermedad en etapas iniciales (Ej: Papanicolaou).",
+      "card_text": "Hallazgo clínico: B) Tamizaje y Diagnóstico Precoz (Secundaria): Acciones dirigidas a detectar la enfermedad en etapas iniciales (Ej: Papanicolaou).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -53,7 +53,7 @@
       "card_id": "c_3",
       "ui_icon": "users",
       "category": "Prevención 1aria",
-      "card_text": "C) Educación para la Salud: Promoción de estilos de vida saludables, uso de preservativo y orientación nutricional.",
+      "card_text": "Hallazgo clínico: C) Educación para la Salud: Promoción de estilos de vida saludables, uso de preservativo y orientación nutricional.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -65,7 +65,7 @@
       "card_id": "c_4",
       "ui_icon": "heart",
       "category": "Prevención 3aria",
-      "card_text": "D) Rehabilitación y Tratamiento: Procedimientos (cono leep) para tratar lesiones y evitar la discapacidad o progresión fatal.",
+      "card_text": "Hallazgo: D) Rehabilitación y Tratamiento: Procedimientos (cono leep) para tratar lesiones y evitar la discapacidad o progresión fatal.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -77,7 +77,7 @@
       "card_id": "c_5",
       "ui_icon": "shield-off",
       "category": "Prevención 4aria",
-      "card_text": "E) Prevención Cuaternaria: Evitar intervenciones médicas innecesarias o dañinas (sobre-diagnóstico) en pacientes sanos.",
+      "card_text": "Evidencia: E) Prevención Cuaternaria: Evitar intervenciones médicas innecesarias o dañinas (sobre-diagnóstico) en pacientes sanos.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -89,7 +89,7 @@
       "card_id": "c_6",
       "ui_icon": "help-circle",
       "category": "Historia Natural",
-      "card_text": "F) Período Prepatogénico: Interacción entre Agente, Huésped y Ambiente previa a la ruptura del equilibrio.",
+      "card_text": "Evidencia: F) Período Prepatogénico: Interacción entre Agente, Huésped y Ambiente previa a la ruptura del equilibrio.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -101,7 +101,7 @@
       "card_id": "c_7",
       "ui_icon": "activity",
       "category": "Historia Natural",
-      "card_text": "G) Período Patogénico (Etapa Subclínica): Presencia de enfermedad sin síntomas aparentes (detectable solo por tamizaje).",
+      "card_text": "Evidencia: G) Período Patogénico (Etapa Subclínica): Presencia de enfermedad sin síntomas aparentes (detectable solo por tamizaje).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -113,7 +113,7 @@
       "card_id": "c_8",
       "ui_icon": "zap",
       "category": "Mecanismo",
-      "card_text": "H) Protección Específica: Acciones como inmunizaciones o uso de equipo de protección personal para evitar riesgos puntuales.",
+      "card_text": "Hallazgo: H) Protección Específica: Acciones como inmunizaciones o uso de equipo de protección personal para evitar riesgos puntuales.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -125,7 +125,7 @@
       "card_id": "c_9",
       "ui_icon": "alert-circle",
       "category": "Mecanismo",
-      "card_text": "I) Diagnóstico Precoz: Punto central de la prevención secundaria para reducir la letalidad de la patología.",
+      "card_text": "Hallazgo: I) Diagnóstico Precoz: Punto central de la prevención secundaria para reducir la letalidad de la patología.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -137,7 +137,7 @@
       "card_id": "c_10",
       "ui_icon": "globe",
       "category": "Prevención Primordial",
-      "card_text": "J) Prevención Primordial: Acciones sobre la población total para evitar que se establezcan patrones de vida sociales que aumenten el riesgo de enfermedad.",
+      "card_text": "Evidencia: J) Prevención Primordial: Acciones sobre la población total para evitar que se establezcan patrones de vida sociales que aumenten el riesgo de enfermedad.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,

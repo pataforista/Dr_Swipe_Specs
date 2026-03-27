@@ -1,412 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;700;900&family=Inter:wght@400;700;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
-  /* Theme: Scrapbook Playful (Moomin-Inspired) */
-  --bg-app: #FFF8F0;
-  --surface: #FFFCF9;
-  --text-main: #5C4033;
-  --text-muted: #9D8280;
-  --primary: #87CEEB;
-  --secondary: #FFB6C1;
-  --tertiary: #98D8C8;
-  --accent-alert: #FF9F7F;
-  --border: rgba(92, 64, 51, 0.12);
-  --shadow-premium: 0 8px 24px rgba(92, 64, 51, 0.08);
+  /* Theme: Medical Tech Premium (Dark Default) */
+  --bg-app: #020617; /* Darkest Navy */
+  --surface: rgba(15, 23, 42, 0.8);
+  --text-main: #F8FAFC;
+  --text-muted: #64748B;
+  --primary: #22D3EE; /* Cyber Cyan */
+  --secondary: #818CF8; /* Vitality Purple */
+  --tertiary: #2DD4BF; /* Medical Teal */
+  --accent-alert: #FB7185; /* Neon Rose */
+  --border: rgba(255, 255, 255, 0.08);
+  --shadow-premium: 0 25px 60px -12px rgba(0, 0, 0, 0.5);
   
   --medical-primary: var(--primary);
   --medical-danger: var(--accent-alert);
-  --medical-glow: rgba(var(--specialty-rgb, 135, 206, 235), 0.1);
+  --medical-glow: rgba(34, 211, 238, 0.12);
 }
 
-[data-theme='dark'] {
-  --bg-app: #F5E6D3;
-  --surface: #FFFCF9;
-  --text-main: #6B5344;
-  --text-muted: #A89080;
-  --primary: #9BDFF4;
-  --secondary: #FFD4E5;
-  --tertiary: #B0E5D8;
-  --accent-alert: #FFAA88;
+[data-theme='light'] {
+  --bg-app: #F8FAFC;
+  --surface: rgba(255, 255, 255, 0.9);
+  --text-main: #0F172A;
+  --text-muted: #64748B;
+  --primary: #0EA5E9;
+  --secondary: #6366F1;
+  --tertiary: #14B8A6;
+  --accent-alert: #F43F5E;
 }
 
 @layer base {
   body {
-    @apply bg-moomin-bg text-moomin-text font-sans antialiased overflow-hidden select-none;
-    background-image: 
-      radial-gradient(circle at 50% 0%, var(--medical-glow) 0%, transparent 60%),
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    background-blend-mode: soft-light;
+    @apply bg-slate-950 text-slate-100 font-sans antialiased overflow-hidden select-none;
+    background: 
+      radial-gradient(circle at 0% 0%, rgba(34, 211, 238, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 100% 100%, rgba(129, 140, 248, 0.08) 0%, transparent 50%),
+      var(--bg-app);
     background-attachment: fixed;
-    transition: background-image 1s ease, background-color 0.5s ease;
+    font-family: 'Outfit', sans-serif;
   }
 }
 
 @layer components {
   .glass-panel {
-    @apply bg-white/80 backdrop-blur-md border border-moomin-text/10 rounded-[3rem];
-    box-shadow: var(--shadow-premium);
-    background-image: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 100%);
+    @apply backdrop-blur-2xl border border-white/10 rounded-[2rem] relative overflow-hidden;
+    background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+    box-shadow: var(--shadow-premium), inset 0 1px 1px rgba(255,255,255,0.05);
   }
-  
+
   .btn-primary {
-    @apply relative overflow-hidden bg-moomin-primary hover:bg-sky-400 text-moomin-text font-black py-4 px-8 rounded-full transition-all duration-300 shadow-lg active:scale-95 uppercase tracking-widest text-sm border-b-4 border-sky-600/30;
+    @apply relative overflow-hidden bg-primary text-slate-950 font-black py-4 px-8 rounded-2xl transition-all duration-300 active:scale-95 uppercase tracking-widest text-xs border-t border-white/20;
+    box-shadow: 0 4px 0 #0891b2, 0 8px 20px rgba(34, 211, 238, 0.2);
   }
 
-  .btn-primary::after {
-    @apply content-[''] absolute inset-0 bg-white/30 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-500;
+  .btn-primary:hover {
+    @apply brightness-110 -translate-y-0.5 shadow-[0_0_30px_rgba(34,211,238,0.4)];
   }
 
-  .swipe-card, 
-  [className*="DraggableCard"],
+  .swipe-card {
+    @apply rounded-[2.5rem] border border-white/10 shadow-2xl relative overflow-hidden;
+    background: linear-gradient(180deg, #1e293b 0%, #020617 100%);
+  }
+
   .card-content-area {
-    background-color: #ffffff !important;
-    opacity: 1 !important;
-    isolation: isolate;
+    @apply bg-black/20 backdrop-blur-sm rounded-3xl p-6 border border-white/5;
   }
 
   .text-glow {
-    text-shadow: 2px 2px 0px rgba(135, 206, 235, 0.2);
+    text-shadow: 0 0 15px rgba(34, 211, 238, 0.4);
   }
 
   .text-glow-danger {
-    text-shadow: 2px 2px 0px rgba(255, 159, 127, 0.2);
+    text-shadow: 0 0 15px rgba(251, 113, 133, 0.4);
   }
-
-  .scanline {
-    display: none;
-  }
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-app);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 10px;
 }
 
 /* Gameplay Effects */
 .red-out-overlay {
-  background: radial-gradient(circle, transparent 20%, rgba(255, 159, 127, 0.1) 100%);
-  z-index: 40;
-  pointer-events: none;
+  background: radial-gradient(circle, transparent 20%, rgba(251, 113, 133, 0.15) 100%);
+  @apply fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity duration-300;
 }
 
-.destabilized-content {
-  filter: sepia(0.2) saturate(0.8);
-  transition: filter 1s ease-in-out;
+.lethal-error .red-out-overlay {
+  @apply opacity-100;
+  animation: pulse-danger 2s infinite alternate;
 }
 
-/* State transition wipe */
+@keyframes pulse-danger {
+  from { opacity: 0.2; }
+  to { opacity: 0.6; }
+}
+
 @keyframes wipe-in {
   from { clip-path: inset(0 100% 0 0); }
   to { clip-path: inset(0 0% 0 0); }
 }
 
 .wipe-in {
-  animation: wipe-in 0.4s cubic-bezier(0.77, 0, 0.175, 1) forwards;
-}
-
-/* Shake Effect */
-.shake-lite {
-  animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+  animation: wipe-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes shake {
   10%, 90% { transform: translate3d(-1px, 0, 0); }
   20%, 80% { transform: translate3d(2px, 0, 0); }
-  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
-  40%, 60% { transform: translate3d(4px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-3px, 0, 0); }
+  40%, 60% { transform: translate3d(3px, 0, 0); }
 }
 
-/* Combo Intensity */
-.combo-glow-1 { filter: drop-shadow(0 0 5px rgba(135, 206, 235, 0.3)); }
-.combo-glow-2 { filter: drop-shadow(0 0 15px rgba(135, 206, 235, 0.5)); }
-.combo-glow-3 { filter: drop-shadow(0 0 30px rgba(135, 206, 235, 0.8)) saturate(1.2); }
-
-.perfect-swipe-text {
-  animation: float-up 1s ease-out forwards;
-  @apply text-medical-secondary font-black text-xs uppercase tracking-tighter;
+.shake-lite {
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
 }
 
-@keyframes float-up {
-  0% { transform: translateY(0) scale(1); opacity: 1; }
-  30% { transform: translateY(-12px) scale(1.1); opacity: 1; }
-  100% { transform: translateY(-50px) scale(0.85); opacity: 0; }
-}
-
-/* Advanced Glitch Styles (Bebop/Hellsing Inspired) */
-.glitch-overlay {
-  background: rgba(255, 0, 0, 0.05);
-  mix-blend-mode: color-dodge;
-  animation: glitch-anim 0.2s infinite;
-}
-
-@keyframes glitch-anim {
-  0% { clip-path: inset(10% 0 30% 0); transform: translate(-5px, 2px); }
-  20% { clip-path: inset(40% 0 10% 0); transform: translate(5px, -2px); }
-  40% { clip-path: inset(50% 0 5% 0); transform: translate(-2px, 5px); }
-  60% { clip-path: inset(15% 0 45% 0); transform: translate(2px, -5px); }
-  80% { clip-path: inset(25% 0 35% 0); transform: translate(-5px, 2px); }
-  100% { clip-path: inset(10% 0 30% 0); transform: translate(5px, -2px); }
-}
-
-/* Soft Danger Vignette (Lethal Error) */
-.blood-vignette {
-  box-shadow: inset 0 0 150px 50px rgba(255, 159, 127, 0.3);
-  animation: pulse-danger 1.5s infinite alternate;
-  pointer-events: none;
-}
-
-@keyframes pulse-danger {
-  from { opacity: 0.3; }
-  to { opacity: 0.8; }
-}
-
-/* Eureka Highlight (Tactical Combo) */
-.eureka-glow {
-  filter: drop-shadow(0 0 20px #fbbf24) brightness(1.2);
-  transition: filter 0.5s ease;
-}
-
-/* Score Flash Animations */
-@keyframes score-flash-speed {
-  0% { opacity: 0; transform: scale(0.8); }
-  50% { opacity: 1; }
-  100% { opacity: 0; transform: scale(1.2); }
-}
-
-@keyframes score-flash-dossier {
-  0% { opacity: 0; }
-  50% { opacity: 1; filter: drop-shadow(0 0 10px rgba(135, 206, 235, 0.8)); }
-  100% { opacity: 0; }
-}
-
-@keyframes score-flash-combo {
-  0% { opacity: 0; transform: translateY(10px) scale(0.8); }
-  35% { opacity: 1; transform: translateY(-5px) scale(1.15); }
-  70% { opacity: 1; transform: translateY(-12px) scale(1); }
-  100% { opacity: 0; transform: translateY(-28px) scale(0.9); }
-}
-
-.score-flash-speed {
-  animation: score-flash-speed 0.6s ease-out forwards;
-}
-
-.score-flash-dossier {
-  animation: score-flash-dossier 0.6s ease-out forwards;
-}
-
-.score-flash-combo {
-  animation: score-flash-combo 0.6s ease-out forwards;
-}
-
-/* Card Entrance Animation */
 @keyframes card-enter {
-  0% { transform: translateY(44px) scale(0.86); opacity: 0; }
-  55% { transform: translateY(-8px) scale(1.03); opacity: 1; }
-  78% { transform: translateY(2px) scale(0.99); }
-  100% { transform: translateY(0) scale(1); opacity: 1; }
+  0% { transform: translateY(80px) rotate(8deg) scale(0.8); opacity: 0; filter: blur(12px); }
+  100% { transform: translateY(0) rotate(0) scale(1); opacity: 1; filter: blur(0); }
 }
 
 .card-enter {
-  animation: card-enter 0.48s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: card-enter 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
-/* Answer Flash Feedback */
-@keyframes answer-correct-flash {
-  0% { opacity: 0; }
-  30% { opacity: 0.6; background: rgba(20, 184, 166, 0.15); }
-  100% { opacity: 0; }
+/* Custom UI Elements */
+.hud-label {
+  @apply text-[9px] font-black uppercase tracking-[0.4em] text-slate-500 mb-1;
 }
 
-@keyframes answer-wrong-flash {
-  0% { opacity: 0; }
-  20% { opacity: 0.9; background: rgba(239, 68, 68, 0.25); }
-  100% { opacity: 0; }
+.hud-value {
+  @apply text-xl font-display font-black text-white leading-none;
 }
 
-/* Heartbeat line (flatline → pulse) */
-@keyframes heartbeat-line {
-  0%, 35% { transform: scaleX(1); }
-  40% { transform: scaleX(1.05) scaleY(2.5); }
-  45% { transform: scaleX(0.98) scaleY(0.7); }
-  50% { transform: scaleX(1.02) scaleY(1.8); }
-  55%, 100% { transform: scaleX(1); }
-}
-
-.heartbeat-bar {
-  animation: heartbeat-line 1.2s ease-in-out infinite;
-  transform-origin: left center;
-}
-
-/* Ping slow for safety badges */
-@keyframes ping-slow {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
-
-.animate-ping-slow {
-  animation: ping-slow 1.4s ease-in-out infinite;
-}
-
-/* Combo burst particle */
-@keyframes combo-burst {
-  0% { transform: translate(0, 0) scale(1); opacity: 1; }
-  100% { transform: translate(var(--dx, 0), var(--dy, -50px)) scale(0); opacity: 0; }
-}
-
-.combo-burst-particle {
-  animation: combo-burst 0.6s ease-out forwards;
-}
-
-/* State transition wipe */
-@keyframes wipe-in {
-  from { clip-path: inset(0 100% 0 0); }
-  to { clip-path: inset(0 0% 0 0); }
-}
-
-.wipe-in {
-  animation: wipe-in 0.4s cubic-bezier(0.77, 0, 0.175, 1) forwards;
-}
-
-/* Timer critical pulse */
-@keyframes timer-critical {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
-  50% { box-shadow: 0 0 14px 5px rgba(239, 68, 68, 0.6); }
-}
-
-.timer-critical {
-  animation: timer-critical 0.65s ease-in-out infinite;
-}
-
-/* Score pop — used via Framer Motion key re-mount, but also exposed as CSS for emergencies */
-@keyframes score-pop {
-  0% { transform: scale(1.4); color: var(--primary); }
-  60% { transform: scale(0.95); }
-  100% { transform: scale(1); color: var(--text-main); }
-}
-
-.score-pop {
-  animation: score-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-/* Card slide-up — played when the next card becomes the top */
-@keyframes card-slide-up {
-  0% { transform: translateY(20px) scale(0.96); opacity: 0.7; }
-  60% { transform: translateY(-4px) scale(1.01); opacity: 1; }
-  100% { transform: translateY(0) scale(1); opacity: 1; }
-}
-
-.card-slide-up {
-  animation: card-slide-up 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-/* Milestone ring — radial burst around combo celebrations */
-@keyframes milestone-ring {
-  0% { transform: scale(0.5) translate(-50%, -50%); opacity: 0.9; }
-  100% { transform: scale(3) translate(-50%, -50%); opacity: 0; }
-}
-
-.milestone-ring {
-  animation: milestone-ring 0.8s ease-out forwards;
-  transform-origin: top left;
-}
-
-/* Loot Box Animations */
-@keyframes loot-box-bounce {
-  0%, 100% { transform: translateY(0) rotate(0); }
-  25% { transform: translateY(-10px) rotate(-5deg); }
-  50% { transform: translateY(0) rotate(5deg); }
-  75% { transform: translateY(-5px) rotate(-3deg); }
-}
-
-@keyframes loot-shine {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
-
-.loot-box-shake {
-  animation: loot-box-bounce 0.6s ease-in-out infinite;
-}
-
-.loot-box-shine {
-  position: relative;
-  overflow: hidden;
-}
-
-.loot-box-shine::after {
-  content: "";
-  position: absolute;
-  top: -100%;
-  left: -100%;
-  width: 300%;
-  height: 300%;
-  background: linear-gradient(
-    45deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.4) 45%,
-    rgba(255, 255, 255, 0.6) 50%,
-    rgba(255, 255, 255, 0.4) 55%,
-    transparent 100%
-  );
-  animation: loot-shine 2s infinite;
-  transform: rotate(45deg);
-}
-
-
-/* ===== PERFORMANCE: hardware acceleration hints ===== */
-.swipe-card {
-  will-change: transform;
-  contain: layout style;
-}
-
-.glass-panel {
-  transform: translateZ(0); /* promote to own GPU layer */
-}
-
-/* ===== ACCESSIBILITY: reduced motion ===== */
-@media (prefers-reduced-motion: reduce) {
-  /* Disable CRT scanline flicker */
-  .crt-screen::before,
-  .scanline {
-    animation: none !important;
-    opacity: 0 !important;
-  }
-
-  /* Disable glitch / blood vignette animations */
-  .glitch-overlay,
-  .blood-vignette,
-  .destabilized-content,
-  .shake-lite {
-    animation: none !important;
-    filter: none !important;
-  }
-
-  /* Slow down / stop Framer Motion via CSS custom property */
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-
-  /* Keep swipe card draggable but no entrance animation */
-  .swipe-card {
-    will-change: auto;
-  }
-}
-
-/* ===== PERFORMANCE: reduce repaints on background gradient ===== */
-@supports (background-attachment: local) {
-  body {
-    background-attachment: local; /* avoids expensive fixed repaint on mobile scroll */
-  }
+.medical-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
 }
