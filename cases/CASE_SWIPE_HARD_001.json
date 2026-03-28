@@ -11,7 +11,7 @@
   "card_stream": [
     {
       "card_id": "h01",
-      "ui_icon": "ðŸ©º",
+      "ui_icon": "🩺",
       "category": "vitals",
       "card_text": "Enfermería reporta: TA: 85/55 mmHg. Hipotensión severa a pesar de 500 mL de cristaloides en urgencias. Persistente.",
       "expected_action": "keep",
@@ -28,7 +28,7 @@
     },
     {
       "card_id": "h02",
-      "ui_icon": "ðŸ©º",
+      "ui_icon": "🩺",
       "category": "vitals",
       "card_text": "El monitor muestra: FC: 132 lpm. T°: 39.5°C. Taquicardia sinusal. Fiebre alta compatible con respuesta inflamatoria sistémica activa.",
       "expected_action": "keep",
@@ -44,7 +44,7 @@
     },
     {
       "card_id": "h03",
-      "ui_icon": "ðŸ§ª",
+      "ui_icon": "🧪",
       "category": "labs",
       "card_text": "Laboratorio entregó reporte: Un técnico te entrega un resultado ajeno: Hb: 9.0 g/dL. Anemia leve, probablemente crónica por enfermedad (DM2, HTA). No es la causa del choque.",
       "expected_action": "discard",
@@ -60,7 +60,7 @@
     },
     {
       "card_id": "h04",
-      "ui_icon": "ðŸ“„",
+      "ui_icon": "📄",
       "category": "notes",
       "card_text": "Al interrogar al paciente: Un familiar menciona haber oído que: Paciente agitado durante el traslado en ambulancia, evento autolimitado. Cedió solo al llegar.",
       "expected_action": "discard",
@@ -76,9 +76,9 @@
     },
     {
       "card_id": "h05",
-      "ui_icon": "ðŸ§ª",
+      "ui_icon": "🧪",
       "category": "labs",
-      "card_text": "Revisaste los resultados: Recordaste que ayer la cifra era: Cr: 2.4 mg/dL â€” resultado disponible 5 horas post-ingreso. La decisión de antibiótico ya fue tomada sin este dato.",
+      "card_text": "Revisaste los resultados: Recordaste que ayer la cifra era: Cr: 2.4 mg/dL — resultado disponible 5 horas post-ingreso. La decisión de antibiótico ya fue tomada sin este dato.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
@@ -92,7 +92,7 @@
     },
     {
       "card_id": "h06",
-      "ui_icon": "ðŸ§ª",
+      "ui_icon": "🧪",
       "category": "labs",
       "card_text": "Revisaste los resultados: Lactato: 4.2 mmol/L. Marcador de hipoperfusión tisular severa. Confirma metabolismo anaerobio activo.",
       "expected_action": "keep",
@@ -109,9 +109,9 @@
     },
     {
       "card_id": "h07",
-      "ui_icon": "ðŸ§ª",
+      "ui_icon": "🧪",
       "category": "labs",
-      "card_text": "Laboratorio entregó reporte: Un técnico te entrega un resultado ajeno: Hb: 9.0 g/dL â€” segunda impresión del mismo análisis. Valor idéntico al previo. Error de sistema.",
+      "card_text": "Laboratorio entregó reporte: Un técnico te entrega un resultado ajeno: Hb: 9.0 g/dL — segunda impresión del mismo análisis. Valor idéntico al previo. Error de sistema.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
@@ -125,9 +125,9 @@
     },
     {
       "card_id": "h08",
-      "ui_icon": "ðŸ’Š",
+      "ui_icon": "💊",
       "category": "meds",
-      "card_text": "Refiere automedicarse con: Metformina 850 mg c/12h y Enalapril 10 mg/día. Tratamiento vigente â€” relevante para ajustar dosis en falla renal.",
+      "card_text": "Refiere automedicarse con: Metformina 850 mg c/12h y Enalapril 10 mg/día. Tratamiento vigente — relevante para ajustar dosis en falla renal.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -141,7 +141,7 @@
     },
     {
       "card_id": "h09",
-      "ui_icon": "â˜¢ï¸",
+      "ui_icon": "☢️",
       "category": "imaging",
       "card_text": "En el ultrasonido se ve: Riñón derecho con ectasia pielocalicial grado II. Vejiga con sedimento ecogénico. Compatible con proceso infeccioso urinario activo.",
       "expected_action": "keep",
@@ -157,7 +157,7 @@
     },
     {
       "card_id": "h10",
-      "ui_icon": "ðŸ“„",
+      "ui_icon": "📄",
       "category": "notes",
       "card_text": "A la exploración física: Un familiar menciona haber oído que: Número de póliza del seguro médico ilegible. Domicilio registrado en colonia con nombre incorrecto.",
       "expected_action": "discard",
@@ -178,7 +178,7 @@
       {
         "question": "Hombre 68a, fiebre 39.5°C, TA 85/55 refractaria, FC 132, disuria, lactato 4.2, ecografía con ectasia pielocalicial. ¿Diagnóstico?",
         "options": [
-          "Urosepsis (choque séptico de foco urinario â€” pielonefritis complicada con bacteriemia)",
+          "Urosepsis (choque séptico de foco urinario — pielonefritis complicada con bacteriemia)",
           "Endocarditis bacteriana con fenómenos embólicos renales",
           "Insuficiencia suprarrenal aguda en contexto de DM2",
           "Neoplasia vesical con infección sobreagregada"
@@ -208,13 +208,13 @@
     ]
   },
   "perla_enarm": {
-    "title": "Urosepsis â€” Choque Séptico de Foco Urinario",
-    "text": "El choque séptico se define por hipotensión refractaria a fluidos (â‰¥30 mL/kg) + lactato >2 mmol/L (Sepsis-3). El bundle de 1 hora de la SSC incluye: hemocultivos, antibióticos, 30 mL/kg de cristaloides y lactato. Norepinefrina es el vasopresor de primera línea. Metformina está CONTRAINDICADA en sepsis con disfunción renal por riesgo de acidosis láctica. Pielonefritis complicada + bacteriemia = urosepsis.",
-    "gpc_ref": "GPC IMSS-481-11: Diagnóstico y Tratamiento de Sepsis Grave y Choque Séptico â€” Surviving Sepsis Campaign 2021"
+    "title": "Urosepsis — Choque Séptico de Foco Urinario",
+    "text": "El choque séptico se define por hipotensión refractaria a fluidos (≥30 mL/kg) + lactato >2 mmol/L (Sepsis-3). El bundle de 1 hora de la SSC incluye: hemocultivos, antibióticos, 30 mL/kg de cristaloides y lactato. Norepinefrina es el vasopresor de primera línea. Metformina está CONTRAINDICADA en sepsis con disfunción renal por riesgo de acidosis láctica. Pielonefritis complicada + bacteriemia = urosepsis.",
+    "gpc_ref": "GPC IMSS-481-11: Diagnóstico y Tratamiento de Sepsis Grave y Choque Séptico — Surviving Sepsis Campaign 2021"
   },
   "enarm_pearl": {
     "title": "Urosepsis / Choque Séptico de Foco Urinario",
-    "text": "Urosepsis = Sepsis + foco urinario. Criterios de choque: TA <90/60 refractaria + lactato >2 mmol/L. Manejo: Hemocultivos â†’ Antibióticos de amplio espectro <1 hora â†’ Líquidos 30 mL/kg â†’ UCI. No retrasar antibióticos por esperar cultivos.",
+    "text": "Urosepsis = Sepsis + foco urinario. Criterios de choque: TA <90/60 refractaria + lactato >2 mmol/L. Manejo: Hemocultivos → Antibióticos de amplio espectro <1 hora → Líquidos 30 mL/kg → UCI. No retrasar antibióticos por esperar cultivos.",
     "gpc_ref": "Surviving Sepsis Campaign 2021 / GPC Infección de Vías Urinarias Complicada"
   }
 }

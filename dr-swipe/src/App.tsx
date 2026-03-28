@@ -688,7 +688,12 @@ function App() {
     setCaseQueue(remaining);
     
     // Reset timer
-    const timeLimit = Math.max(60, Math.min(180, nextCase.card_stream.length * 15));
+    const streak = state.context.caseStreak;
+    let timePerCard = 18;
+    if (streak >= 8) timePerCard = 10;
+    else if (streak >= 6) timePerCard = 12;
+    else if (streak >= 3) timePerCard = 15;
+    const timeLimit = Math.max(90, Math.min(180, nextCase.card_stream.length * timePerCard));
     setTimeLeft(timeLimit);
     timeLimitRef.current = timeLimit;
     pendingDeckRef.current = shuffledCards;
@@ -1182,6 +1187,12 @@ function App() {
                </p>
             </div>
 
+            <button
+              onClick={() => setShowRetro(true)}
+              className="btn-primary w-full py-5 !bg-white border-2 border-moomin-accent/20 !text-moomin-accent shadow-sm hover:!bg-moomin-bg transition-all"
+            >
+              VER HISTORIAL DE GUARDIA
+            </button>
             <button
               onClick={() => {
                 triggerHaptic('lethalError');

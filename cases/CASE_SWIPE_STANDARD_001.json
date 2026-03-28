@@ -11,7 +11,7 @@
   "card_stream": [
     {
       "card_id": "ev_001",
-      "ui_icon": "ðŸ©º",
+      "ui_icon": "🩺",
       "category": "vitals",
       "card_text": "El monitor muestra: Enfermería reporta: TA 90/60 mmHg en triage, palidez marcada y llenado capilar de 3 segundos.",
       "expected_action": "keep",
@@ -28,7 +28,7 @@
     },
     {
       "card_id": "ev_002",
-      "ui_icon": "ðŸ©º",
+      "ui_icon": "🩺",
       "category": "vitals",
       "card_text": "El monitor muestra: En el triage se anotó: El monitor muestra: FC 120 lpm. Taquicardia sinusal persistente. El paciente intenta compensar la pérdida de volumen.",
       "expected_action": "keep",
@@ -45,7 +45,7 @@
     },
     {
       "card_id": "ev_003",
-      "ui_icon": "ðŸ§ª",
+      "ui_icon": "🧪",
       "category": "labs",
       "card_text": "Revisaste los resultados: Laboratorio entrega reporte: Hb 8.1 g/dL. Confirma una pérdida hemática significativa que requiere estabilización.",
       "expected_action": "keep",
@@ -62,7 +62,7 @@
     },
     {
       "card_id": "ev_004",
-      "ui_icon": "ðŸ“„",
+      "ui_icon": "📄",
       "category": "notes",
       "card_text": "A la exploración física: A la exploración física: El paciente se nota ansioso y diaforético. Su estado de alerta empieza a deteriorarse.",
       "expected_action": "keep",
@@ -79,7 +79,7 @@
     },
     {
       "card_id": "ev_005",
-      "ui_icon": "â˜¢ï¸",
+      "ui_icon": "☢️",
       "category": "imaging",
       "card_text": "En el ultrasonido se ve: Viste una radiografía de otro servicio de: Recordaste haber visto una placa previa: Pulmones limpios, sin cardiomegalia. Reporte de hace 2 años.",
       "expected_action": "discard",
@@ -96,7 +96,7 @@
     },
     {
       "card_id": "ev_006",
-      "ui_icon": "ðŸ§ª",
+      "ui_icon": "🧪",
       "category": "labs",
       "card_text": "Laboratorio entregó reporte: Viste un resultado normal previo de: Un interno te entrega por error: Copia idéntica de la Hb 8.1 g/dL. Es el mismo resultado que ya habías verificado.",
       "expected_action": "discard",
@@ -113,7 +113,7 @@
     },
     {
       "card_id": "ev_007",
-      "ui_icon": "ðŸ§ª",
+      "ui_icon": "🧪",
       "category": "labs",
       "card_text": "Viste en el sistema: Recordaste que ayer la cifra era: Encontraste un resultado de glucosa: 98 mg/dL. El nivel es normal y no explica el estado de choque del paciente.",
       "expected_action": "discard",
@@ -130,7 +130,7 @@
     },
     {
       "card_id": "ev_008",
-      "ui_icon": "ðŸ§ª",
+      "ui_icon": "🧪",
       "category": "labs",
       "card_text": "El técnico de lab informa: Recordaste que ayer la cifra era: Viste en el sistema una Creatinina: 1.1 mg/dL. Es un reporte de hace 24 horas cuando el paciente estaba sano.",
       "expected_action": "discard",
@@ -147,7 +147,7 @@
     },
     {
       "card_id": "ev_009",
-      "ui_icon": "ðŸ’Š",
+      "ui_icon": "💊",
       "category": "meds",
       "card_text": "Refiere automedicarse con: El paciente admite: 'He tomado Ibuprofeno cada 8 horas por 10 días para mi espalda'. Causa probable de la úlcera.",
       "expected_action": "keep",
@@ -164,7 +164,7 @@
     },
     {
       "card_id": "ev_010",
-      "ui_icon": "ðŸ“„",
+      "ui_icon": "📄",
       "category": "timeline",
       "card_text": "Evidencia clínica: Dato anecdótico: Un familiar menciona: 'Tuvo un dolor torácico hace 3 días que se le quitó solo'. No hay recurrencia ni otros datos.",
       "expected_action": "discard",
@@ -222,7 +222,7 @@
   },
   "enarm_pearl": {
     "title": "Hemorragia de Tubo Digestivo Alto (HTDA) por AINEs",
-    "text": "Hemorragia de tubo digestivo alto = origen proximal al ángulo de Treitz. Melena (sangre digerida negra/alquitranada) orienta a HTDA. AINEs + anticoagulantes = principal causa de úlcera péptica hemorrágica. Manejo: Estabilización â†’ Endoscopía en <24 horas.",
+    "text": "Hemorragia de tubo digestivo alto = origen proximal al ángulo de Treitz. Melena (sangre digerida negra/alquitranada) orienta a HTDA. AINEs + anticoagulantes = principal causa de úlcera péptica hemorrágica. Manejo: Estabilización → Endoscopía en <24 horas.",
     "gpc_ref": "GPC Hemorragia del Tubo Digestivo / Consenso Mexicano de Hemorragia de Tubo Digestivo"
   }
 }

@@ -11,7 +11,7 @@
   "card_stream": [
     {
       "card_id": "c_01_timeline",
-      "ui_icon": "ðŸ§ ",
+      "ui_icon": "🧠",
       "category": "Historia",
       "nlg_trigger": "mania_energia",
       "card_text": "Hallazgo: Lleva 4 días con energía desbordante y comprando cosas compulsivamente.",
@@ -23,7 +23,7 @@
     },
     {
       "card_id": "c_02_vitals",
-      "ui_icon": "ðŸ©º",
+      "ui_icon": "🩺",
       "category": "Signos Vitales",
       "nlg_trigger": "vitals_normal",
       "card_text": "Información redundante: TA 120/80, FC 95 lpm, Temp 36.5°C",
@@ -36,7 +36,7 @@
     },
     {
       "card_id": "c_03_tox_screen",
-      "ui_icon": "ðŸ§ª",
+      "ui_icon": "🧪",
       "category": "Laboratorios",
       "nlg_trigger": "tox_negativo",
       "card_text": "Hallazgo: Tamizaje toxicológico: NEGATIVO a cocaína y anfetaminas.",
@@ -92,7 +92,7 @@
   },
   "enarm_pearl": {
     "title": "Trastorno Bipolar I: Criterios Diagnósticos",
-    "text": "El episodio maníaco requiere â‰¥7 días de estado de ánimo elevado/expansivo/irritable + â‰¥3 síntomas DIGFAST (Distractibilidad, Impulsividad, Grandiosidad, Flight of ideas, Actividad aumentada, Sueño reducido, Taquilalia). El Litio sigue siendo primera línea.",
+    "text": "El episodio maníaco requiere ≥7 días de estado de ánimo elevado/expansivo/irritable + ≥3 síntomas DIGFAST (Distractibilidad, Impulsividad, Grandiosidad, Flight of ideas, Actividad aumentada, Sueño reducido, Taquilalia). El Litio sigue siendo primera línea.",
     "gpc_ref": "DSM-5-TR / GPC Trastorno Bipolar México"
   }
 }

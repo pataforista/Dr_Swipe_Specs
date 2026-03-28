@@ -13,12 +13,16 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "Dato de importancia: Ruido en el expediente: TA 100/60 mmHg (en descenso), FC 95 lpm, Temp 36.5°C",
-      "expected_action": "discard",
+      "card_text": "Signos de alarma: TA 100/60 mmHg en descenso, FC 95 lpm. Hipotensión activa en contexto de IAMCEST anterior.",
+      "expected_action": "keep",
       "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en signos estables, R1. El reloj no se detiene."
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "¡Correcto! Hipotensión en IAMCEST = posible choque cardiogénico. Este dato es mandatorio en el expediente."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
       }
     },
     {
