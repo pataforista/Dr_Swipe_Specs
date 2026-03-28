@@ -11,7 +11,7 @@
   "card_stream": [
     {
       "card_id": "e01",
-      "ui_icon": "ðŸ“„",
+      "ui_icon": "📄",
       "category": "timeline",
       "card_text": "Hallazgo: Dato anecdótico: Mujer de 34 años, acude por fatiga progresiva de 3 semanas. Niega fiebre, pérdida de peso o sangrado. No antecedentes de enfermedad crónica conocida.",
       "expected_action": "discard",
@@ -27,7 +27,7 @@
     },
     {
       "card_id": "e02",
-      "ui_icon": "ðŸ©º",
+      "ui_icon": "🩺",
       "category": "vitals",
       "card_text": "Enfermería reporta: Recordaste una cifra previa de: 88 lpm en reposo. Ritmo regular. No palpitaciones reportadas.",
       "expected_action": "discard",
@@ -43,7 +43,7 @@
     },
     {
       "card_id": "e03",
-      "ui_icon": "ðŸ©º",
+      "ui_icon": "🩺",
       "category": "vitals",
       "card_text": "Enfermería reporta: Un interno te entrega por error: 120/75 mmHg. Normovolemia. Sin signos de hipoperfusión periférica.",
       "expected_action": "discard",
@@ -59,7 +59,7 @@
     },
     {
       "card_id": "e04",
-      "ui_icon": "ðŸ§ª",
+      "ui_icon": "🧪",
       "category": "labs",
       "card_text": "El técnico de lab informa: Un técnico te entrega un resultado ajeno: Hb: 14.2 g/dL (valor normal para mujer adulta). Serie roja sin alteraciones significativas.",
       "expected_action": "discard",
@@ -75,9 +75,9 @@
     },
     {
       "card_id": "e05",
-      "ui_icon": "ðŸ§ª",
+      "ui_icon": "🧪",
       "category": "labs",
-      "card_text": "Laboratorio entregó reporte: Recordaste que ayer la cifra era: Hb: 14.2 g/dL â€” segunda impresión del mismo laboratorio enviada al sistema por error de captura.",
+      "card_text": "Laboratorio entregó reporte: Recordaste que ayer la cifra era: Hb: 14.2 g/dL — segunda impresión del mismo laboratorio enviada al sistema por error de captura.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
@@ -91,7 +91,7 @@
     },
     {
       "card_id": "e06",
-      "ui_icon": "ðŸ“„",
+      "ui_icon": "📄",
       "category": "notes",
       "card_text": "Notas en el expediente: Recordaste un rumor sobre el paciente: Paciente cooperadora al ingreso, sin ansiedad aparente. Estado de ánimo tranquilo.",
       "expected_action": "discard",
@@ -107,7 +107,7 @@
     },
     {
       "card_id": "e07",
-      "ui_icon": "â˜¢ï¸",
+      "ui_icon": "☢️",
       "category": "imaging",
       "card_text": "La radiografía muestra: Recordaste una placa de hace 2 años: Sin infiltrados, derrames ni cardiomegalia. Silueta cardíaca normal. Campos pulmonares limpios.",
       "expected_action": "discard",
@@ -123,7 +123,7 @@
     },
     {
       "card_id": "e08",
-      "ui_icon": "ðŸ’Š",
+      "ui_icon": "💊",
       "category": "meds",
       "card_text": "Refiere automedicarse con: Viste una nota de una vitamina irrelevante: Sin tratamiento farmacológico previo. No usa anticonceptivos ni suplementos. Niega uso de AINEs.",
       "expected_action": "discard",
@@ -139,7 +139,7 @@
     },
     {
       "card_id": "e09",
-      "ui_icon": "ðŸ’Š",
+      "ui_icon": "💊",
       "category": "meds",
       "card_text": "La receta previa indica: Viste una nota de una vitamina irrelevante: Sin alergias medicamentosas conocidas. No reacciones previas a penicilina, sulfas ni AINEs.",
       "expected_action": "discard",
@@ -155,7 +155,7 @@
     },
     {
       "card_id": "e10",
-      "ui_icon": "ðŸ“„",
+      "ui_icon": "📄",
       "category": "notes",
       "card_text": "A la exploración física: Un amigo del paciente te dice que: Número de expediente: MG-2024-001. Número de seguro médico y domicilio para facturación registrados.",
       "expected_action": "discard",

@@ -244,14 +244,14 @@ export const gameMachine = setup({
         isCorrect,
         feedback: feedbackText,
         category: card.category,
-        points: isCorrect ? 500 : -1000, 
+        points: scoreBreakdown.finalPoints,
         expectedAction: card.expected_action
       };
 
       return {
         combo: nextCombo,
         vitality: nextVitality,
-        consecutiveErrors: nextConsecutiveErrors >= 3 ? 0 : nextConsecutiveErrors,
+        consecutiveErrors: nextConsecutiveErrors >= 5 ? 0 : nextConsecutiveErrors,
         lootBoxReward: nextLootBox,
         activePenalty: nextPenalty,
         activeEvent: nextEvent,
