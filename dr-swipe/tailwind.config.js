@@ -7,8 +7,11 @@ export default {
   theme: {
     extend: {
       colors: {
+        primary: 'var(--primary)',
+        secondary: 'var(--secondary)',
+        'accent-alert': 'var(--accent-alert)',
         medical: {
-          primary: 'var(--primary)',   // Now dynamic
+          primary: 'var(--primary)',
           secondary: 'var(--secondary)',
           danger: 'var(--accent-alert)',
           warning: '#F59E0B',

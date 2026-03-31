@@ -14,21 +14,36 @@ interface SwipeDeckProps {
   onUseLifeline?: () => void;
 }
 
+export interface DraggableCardHandle {
+  swipeOut: (direction: 'left' | 'right') => Promise<void>;
+}
+
 export const SwipeDeck: React.FC<SwipeDeckProps> = ({ 
   cards, currentIndex, onSwipe, isLocked, lifelineActive, canUseLifeline, onUseLifeline 
 }) => {
   const { playSwipe } = useGameAudio();
   const topX = useMotionValue(0);
+  const topCardRef = React.useRef<DraggableCardHandle>(null);
 
   // Take current + 2 more for the stack
   const visibleCards = cards.slice(currentIndex, currentIndex + 3).reverse();
+
+  const handleActionSwipe = async (direction: 'left' | 'right') => {
+    if (isLocked || visibleCards.length === 0) return;
+    if (topCardRef.current) {
+      await topCardRef.current.swipeOut(direction);
+    } else {
+      playSwipe(direction);
+      onSwipe(direction);
+    }
+  };
 
   // Keyboard support (ArrowLeft / ArrowRight)
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (isLocked) return;
-      if (e.key === 'ArrowLeft') onSwipe('left');
-      if (e.key === 'ArrowRight') onSwipe('right');
+      if (e.key === 'ArrowLeft') handleActionSwipe('left');
+      if (e.key === 'ArrowRight') handleActionSwipe('right');
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
@@ -68,6 +83,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
                 // CRITICAL: Key includes isTop to force re-mount when becoming top card.
                 // This resets Framer Motion drag handlers for the new top card.
                 key={`${card.card_id}-${isTop}`}
+                ref={isTop ? topCardRef : undefined}
                 card={card}
                 isTop={isTop}
                 indexOffset={keyIndex - currentIndex}
@@ -107,17 +123,23 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
       {/* Action Buttons Hub */}
       <div className="flex items-center justify-center gap-10 w-full mt-2 relative z-[60]">
         {/* Discard */}
-        <div className="flex flex-col items-center gap-3">
+        <div className="flex flex-col items-center gap-3 relative group">
+          <div className="absolute inset-0 bg-accent-alert/20 rounded-full blur-xl scale-90 group-hover:scale-110 group-hover:bg-accent-alert/40 transition-all opacity-0 group-hover:opacity-100" />
           <motion.button
-            disabled={isLocked}
-            onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); if(!isLocked) { playSwipe('left'); onSwipe('left'); } }}
+            disabled={isLocked || visibleCards.length === 0}
+            onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); handleActionSwipe('left'); }}
             whileHover={!isLocked ? { scale: 1.15, y: -4 } : {}}
             whileTap={!isLocked ? { scale: 0.9 } : {}}
-            className="w-20 h-20 rounded-full bg-slate-900 border border-white/10 text-accent-alert shadow-[0_0_40px_rgba(0,0,0,0.4)] flex items-center justify-center text-3xl hover:bg-accent-alert hover:text-slate-950 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner"
+            className={`w-20 h-20 rounded-full bg-slate-900 border text-accent-alert shadow-[0_0_40px_rgba(0,0,0,0.4)] flex items-center justify-center text-3xl hover:bg-slate-800 hover:border-accent-alert/50 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner relative ${
+              lifelineActive && cards[currentIndex]?.expected_action === 'discard' ? 'glow-border-alert border-accent-alert/100 animate-pulse' : 'border-white/10'
+            }`}
           >
-            <span className="relative z-10">✕</span>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,theme(colors.accent-alert/10),transparent)] opacity-0 hover:opacity-100 transition-opacity" />
+            <span className="relative z-10 drop-shadow-[0_0_10px_rgba(251,113,133,0.8)]">✕</span>
           </motion.button>
-          <span className="text-[9px] font-black text-slate-500 uppercase tracking-[0.3em]">DESCARTAR</span>
+          <span className={`text-[9px] font-black uppercase tracking-[0.3em] transition-colors ${
+            lifelineActive && cards[currentIndex]?.expected_action === 'discard' ? 'text-accent-alert' : 'text-slate-500 group-hover:text-accent-alert'
+          }`}>DESCARTAR</span>
         </div>
 
         {/* Hint */}
@@ -125,30 +147,36 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
           <motion.button
             disabled={!canUseLifeline || isLocked}
             onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); onUseLifeline?.(); }}
-            whileHover={canUseLifeline && !isLocked ? { scale: 1.15, rotate: 180, shadow: '0_0_30px_rgba(129,140,248,0.4)' } : {}}
+            whileHover={canUseLifeline && !isLocked ? { scale: 1.15, rotate: 180, boxShadow: '0 0 30px rgba(129,140,248,0.4)' } : {}}
             whileTap={canUseLifeline && !isLocked ? { scale: 0.85 } : {}}
             className={`w-16 h-16 rounded-full border shadow-2xl flex items-center justify-center text-2xl transition-all ${
-              lifelineActive ? 'bg-secondary border-white/20 text-white' : 'bg-slate-900 border-white/5 text-secondary hover:bg-white/5 disabled:opacity-20'
+              lifelineActive ? 'bg-secondary/20 border-secondary text-white glow-border-primary' : 'bg-slate-900 border-white/5 text-secondary hover:bg-white/5 hover:border-white/20 disabled:opacity-20'
             }`}
              title="Escanear (25 🪙)"
           >
-            🧬
+            {lifelineActive ? '✨' : '🧬'}
           </motion.button>
-          <span className="text-[9px] font-black text-slate-500 uppercase tracking-[0.3em]">{lifelineActive ? 'ACTIVO' : 'ESCANEO'}</span>
+          <span className={`text-[9px] font-black uppercase tracking-[0.3em] ${lifelineActive ? 'text-secondary' : 'text-slate-500'}`}>{lifelineActive ? 'ACTIVO' : 'ESCANEO'}</span>
         </div>
 
         {/* Keep */}
-        <div className="flex flex-col items-center gap-3">
+        <div className="flex flex-col items-center gap-3 relative group">
+          <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl scale-90 group-hover:scale-110 group-hover:bg-primary/40 transition-all opacity-0 group-hover:opacity-100" />
           <motion.button
-            disabled={isLocked}
-            onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); if(!isLocked) { playSwipe('right'); onSwipe('right'); } }}
+            disabled={isLocked || visibleCards.length === 0}
+            onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); handleActionSwipe('right'); }}
             whileHover={!isLocked ? { scale: 1.15, y: -4 } : {}}
             whileTap={!isLocked ? { scale: 0.9 } : {}}
-            className="w-20 h-20 rounded-full bg-slate-900 border border-white/10 text-primary shadow-[0_0_40px_rgba(0,0,0,0.4)] flex items-center justify-center text-3xl hover:bg-primary hover:text-slate-950 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner"
+            className={`w-20 h-20 rounded-full bg-slate-900 border text-primary shadow-[0_0_40px_rgba(0,0,0,0.4)] flex items-center justify-center text-3xl hover:bg-slate-800 hover:border-primary/50 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner relative ${
+              lifelineActive && cards[currentIndex]?.expected_action === 'keep' ? 'glow-border-primary border-primary/100 animate-pulse' : 'border-white/10'
+            }`}
           >
-             <span className="relative z-10">♥</span>
+             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,theme(colors.primary/10),transparent)] opacity-0 hover:opacity-100 transition-opacity" />
+             <span className="relative z-10 drop-shadow-[0_0_10px_rgba(34,211,238,0.8)]">♥</span>
           </motion.button>
-          <span className="text-[9px] font-black text-slate-500 uppercase tracking-[0.3em]">MANTENER</span>
+          <span className={`text-[9px] font-black uppercase tracking-[0.3em] transition-colors ${
+            lifelineActive && cards[currentIndex]?.expected_action === 'keep' ? 'text-primary' : 'text-slate-500 group-hover:text-primary'
+          }`}>MANTENER</span>
         </div>
       </div>
     </div>
@@ -184,12 +212,27 @@ const getIcon = (iconName: string) => {
   return ICON_MAP[iconName] || (/\p{Emoji}/u.test(iconName) ? iconName : '📋');
 };
 
-const DraggableCard: React.FC<DraggableCardProps> = ({
+const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(({
   card, isTop, indexOffset, onSwipe, playSwipe, isLocked, cardNumber, totalCards, topX
-}) => {
+}, ref) => {
   const fallbackX = useMotionValue(0);
   const x = isTop ? topX : fallbackX;
   const controls = useAnimation();
+
+  React.useImperativeHandle(ref, () => ({
+    swipeOut: async (direction: 'left' | 'right') => {
+      playSwipe(direction);
+      triggerHaptic('cardSwipe');
+      const exitX = direction === 'right' ? 1200 : -1200;
+      await controls.start({ 
+        x: exitX, 
+        opacity: 0, 
+        rotate: direction === 'right' ? 60 : -60, 
+        transition: { duration: 0.3 } 
+      });
+      onSwipe(direction);
+    }
+  }));
 
   useEffect(() => {
     if (isTop) {
@@ -308,4 +351,4 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
       </div>
     </motion.div>
   );
-};
+});

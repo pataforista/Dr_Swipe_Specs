@@ -49,25 +49,26 @@ const VazquezInterruption: React.FC<{ onDismiss: () => void }> = ({ onDismiss })
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.88, y: 30 }}
         transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-        className="glass-panel p-8 max-w-sm border-accent/40 text-center shadow-[0_0_50px_rgba(34,211,238,0.15)] relative bg-slate-900/90"
+        className="glass-panel-dark p-10 max-w-sm border border-primary/20 text-center shadow-[0_0_100px_rgba(0,0,0,0.8)] relative"
       >
+        <div className="absolute top-0 left-0 w-full h-1.5 bg-primary/20 glow-border-primary" />
         <motion.div
           animate={{ scale: [1, 1.05, 1], rotate: [0, 3, -3, 0] }}
           transition={{ duration: 2.5, repeat: Infinity }}
-          className="w-24 h-24 flex items-center justify-center text-6xl mx-auto mb-4 filter drop-shadow-[0_0_20px_rgba(34,211,238,0.3)]"
+          className="w-24 h-24 flex items-center justify-center text-7xl mx-auto mb-6 filter drop-shadow-[0_0_20px_rgba(0,229,255,0.4)]"
         >
           👴
         </motion.div>
-        <span className="text-[10px] font-black tracking-[0.4em] text-accent uppercase mb-2 block">
+        <span className="neon-text-primary block mb-3 text-[10px]">
           DR. VÁZQUEZ — INTERRUPCIÓN
         </span>
-        <h3 className="text-xl font-display font-black text-white mb-3 tracking-tight">
+        <h3 className="text-2xl font-display font-black text-white mb-4 tracking-tighter italic shadow-text uppercase">
           "{line.titulo}"
         </h3>
-        <p className="text-sm text-slate-400 italic font-medium mb-4 leading-relaxed">
-          {line.cuerpo}
+        <p className="text-base text-slate-300 italic font-medium mb-6 leading-relaxed px-2">
+          "{line.cuerpo}"
         </p>
-        <div className="h-1 w-12 bg-accent/20 mx-auto rounded-full" />
+        <div className="h-1.5 w-16 bg-primary/20 mx-auto rounded-full" />
       </motion.div>
     </div>
   );
@@ -81,12 +82,12 @@ const RewardToast: React.FC<{ toast: { show: boolean; text: string; type: string
           initial={{ opacity: 0, y: 50, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8, y: -20 }}
-          className={`fixed bottom-24 left-1/2 -translate-x-1/2 z-[200] px-8 py-4 rounded-full shadow-2xl border-2 flex items-center gap-3 font-black italic tracking-tight whitespace-nowrap backdrop-blur-md
-            ${toast.type === 'milestone' ? 'bg-secondary border-white/20 text-white' : 'bg-slate-900 border-primary/20 text-primary'}
+          className={`fixed bottom-24 left-1/2 -translate-x-1/2 z-[200] px-10 py-5 rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.6)] border-2 flex items-center gap-4 font-black italic tracking-tighter whitespace-nowrap backdrop-blur-xl
+            ${toast.type === 'milestone' ? 'bg-secondary/40 border-secondary/60 text-white glow-border-primary' : 'bg-black/60 border-primary/40 text-primary glow-border-primary'}
           `}
         >
-          <span className="text-xl">{toast.type === 'milestone' ? '🏆' : '🪙'}</span>
-          {toast.text}
+          <span className="text-2xl filter drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">{toast.type === 'milestone' ? '🏆' : '🪙'}</span>
+          <span className="uppercase text-sm tracking-widest">{toast.text}</span>
         </motion.div>
       )}
     </AnimatePresence>
@@ -100,7 +101,7 @@ const LootBoxOverlay: React.FC<{
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center z-[160] p-6">
       <motion.div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        className="absolute inset-0 bg-slate-950/80 backdrop-blur-md"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -110,26 +111,33 @@ const LootBoxOverlay: React.FC<{
         initial={{ scale: 0.5, rotate: -15, opacity: 0 }}
         animate={{ scale: 1, rotate: 0, opacity: 1 }}
         exit={{ scale: 1.5, opacity: 0 }}
-        className="glass-panel p-10 max-w-xs w-full text-center border-primary/40 shadow-[0_0_50px_rgba(34,211,238,0.2)] bg-slate-900 relative overflow-hidden loot-box-shine"
+        className="glass-panel-dark p-12 max-w-sm w-full text-center border-primary/30 shadow-[0_0_80px_rgba(0,229,255,0.2)] relative overflow-hidden"
       >
+        <div className="absolute top-0 left-0 w-full h-1.5 bg-primary/20 glow-border-primary" />
         <motion.div 
-          className="text-8xl mb-6 loot-box-shake inline-block"
+          animate={{ y: [0, -10, 0], rotate: [0, 5, -5, 0] }}
+          transition={{ repeat: Infinity, duration: 4 }}
+          className="text-8xl mb-8 inline-block filter drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]"
         >
-          📦
+          🎁
         </motion.div>
         
-        <span className="text-[10px] font-black tracking-[0.5em] text-primary uppercase block mb-2">¡CAJA DE SUMINISTROS!</span>
-        <h3 className="text-2xl font-display font-black text-white mb-4 mt-2">{reward.item.nombre}</h3>
+        <span className="neon-text-primary block mb-3 text-[10px]">SUMINISTROS TÉCNICOS</span>
+        <h3 className="text-3xl font-display font-black text-white mb-6 uppercase tracking-tight italic">{reward.item.nombre}</h3>
         
-        <div className="bg-slate-800/50 rounded-2xl p-4 mb-8 border border-white/5">
-          <p className="text-sm font-medium text-slate-400 italic mb-1">"{reward.item.texto}"</p>
+        <div className="bg-primary/5 rounded-2xl p-6 mb-10 border border-primary/10 backdrop-blur-sm relative">
+          <div className="absolute top-0 left-0 w-full h-full medical-grid opacity-10" />
+          <p className="text-base font-medium text-slate-300 italic mb-1 leading-relaxed relative z-10">"{reward.item.texto}"</p>
         </div>
 
         <button
           onClick={onClaim}
-          className="btn-primary w-full py-4 text-base"
+          className="btn-primary w-full py-5 text-lg group"
         >
-          ¡LO TOMO!
+          <span className="flex items-center justify-center gap-3">
+             INSTALAR MEJORA
+             <span className="group-hover:translate-x-1 transition-transform">➡️</span>
+          </span>
         </button>
       </motion.div>
     </div>
@@ -143,7 +151,7 @@ const PenaltyOverlay: React.FC<{
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center z-[160] p-6">
       <motion.div
-        className="absolute inset-0 bg-red-900/60 backdrop-blur-md mix-blend-multiply"
+        className="absolute inset-0 bg-red-950/80 backdrop-blur-md"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -152,20 +160,22 @@ const PenaltyOverlay: React.FC<{
         initial={{ scale: 0.8, y: 50, opacity: 0 }}
         animate={{ scale: 1, y: 0, opacity: 1 }}
         exit={{ scale: 0.8, opacity: 0 }}
-        className="glass-panel p-8 max-w-sm w-full text-center border-moomin-accent/40 shadow-2xl bg-white relative overflow-hidden"
+        className="glass-panel-dark p-10 max-w-sm w-full text-center border-accent-alert/50 shadow-2xl relative overflow-hidden"
       >
-        <span className="text-[10px] font-black tracking-[0.5em] text-moomin-accent uppercase block mb-2">CONSECUENCIA</span>
-        <h3 className="text-2xl font-display font-black text-moomin-text mb-4 mt-2 leading-tight">{penalty.item.nombre}</h3>
+        <div className="absolute top-0 left-0 w-full h-1.5 bg-accent-alert/30 glow-border-alert" />
+        <span className="neon-text-accent block mb-2 text-[10px]">CONSECUENCIA</span>
+        <h3 className="text-3xl font-display font-black text-white mb-6 mt-2 leading-tight italic">{penalty.item.nombre}</h3>
         
-        <div className="bg-moomin-accent/10 rounded-xl p-4 mb-6 border border-moomin-accent/20">
-          <p className="text-sm font-medium text-moomin-text italic mb-1">"{penalty.item.texto}"</p>
+        <div className="bg-accent-alert/10 rounded-2xl p-6 mb-8 border border-accent-alert/20 backdrop-blur-sm">
+          <p className="text-base font-medium text-slate-200 italic mb-2 leading-relaxed">"{penalty.item.texto}"</p>
+          <div className="h-1 w-8 bg-accent-alert/40 mx-auto rounded-full" />
         </div>
 
         <button
           onClick={onAccept}
-          className="w-full py-4 text-base font-bold text-white bg-moomin-accent rounded-full shadow-[0_4px_12px_rgba(235,87,87,0.3)] hover:bg-red-600 transition-colors"
+          className="btn-primary w-full py-5 text-base !bg-accent-alert !shadow-[0_0_40px_rgba(255,45,85,0.4)] !text-white"
         >
-           ENTENDIDO
+           ENTENDIDO <span className="ml-2">☠️</span>
         </button>
       </motion.div>
     </div>
@@ -178,43 +188,45 @@ const EventOverlay: React.FC<{
 }> = ({ event, onAccept }) => {
   const getStyle = () => {
     switch(event.type) {
-      case 'lab': return { bg: 'bg-blue-900/60', border: 'border-blue-500/40', title: 'TÉCNICO DE LABORATORIO', button: 'bg-blue-600 shadow-[0_4px_12px_rgba(37,99,235,0.3)] hover:bg-blue-700', icon: '🧪' };
-      case 'archive': return { bg: 'bg-yellow-900/60', border: 'border-yellow-500/40', title: 'ENCARGADO DE ARCHIVO', button: 'bg-yellow-600 shadow-[0_4px_12px_rgba(202,138,4,0.3)] hover:bg-yellow-700', icon: '🗄️' };
-      default: return { bg: 'bg-purple-900/60', border: 'border-purple-500/40', title: 'SISTEMA INSTITUCIONAL', button: 'bg-purple-600 shadow-[0_4px_12px_rgba(147,51,234,0.3)] hover:bg-purple-700', icon: '⚠️' };
+      case 'lab': return { accent: 'text-primary', glow: 'shadow-[0_0_30px_rgba(0,229,255,0.3)]', title: 'TÉCNICO DE LABORATORIO', icon: '🧪' };
+      case 'archive': return { accent: 'text-secondary', glow: 'shadow-[0_0_30px_rgba(167,139,250,0.3)]', title: 'ENCARGADO DE ARCHIVO', icon: '🗄️' };
+      default: return { accent: 'text-accent-alert', glow: 'shadow-[0_0_30px_rgba(255,45,85,0.3)]', title: 'SISTEMA INSTITUCIONAL', icon: '⚠️' };
     }
   };
   
   const style = getStyle();
 
   return (
-    <div className="fixed inset-0 flex flex-col items-center justify-center z-[160] p-6">
+    <div className="fixed inset-0 flex flex-col items-center justify-center z-[160] p-6 bg-black/60 backdrop-blur-sm">
       <motion.div
-        className={`absolute inset-0 ${style.bg} backdrop-blur-md mix-blend-multiply`}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-      />
-        <motion.div
-          initial={{ scale: 0.8, y: 50, opacity: 0 }}
-          animate={{ scale: 1, y: 0, opacity: 1 }}
-          exit={{ scale: 0.8, opacity: 0 }}
-          className={`glass-panel p-8 max-w-sm w-full text-center bg-slate-900 relative overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.4)] border-white/10`}
-        >
-          <span className="text-4xl mb-6 block drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">{style.icon}</span>
-          <span className="text-[10px] font-black tracking-[0.6em] text-slate-500 uppercase block mb-2">{style.title}</span>
-          <h3 className="text-2xl font-display font-black text-white mb-6 mt-2 leading-tight tracking-tight">{event.item.nombre}</h3>
-          
-          <div className={`rounded-3xl p-6 mb-8 border border-white/5 bg-black/40 backdrop-blur-sm`}>
-            <p className="text-base font-medium text-slate-300 italic mb-1 leading-relaxed">"{event.item.texto || (event.item.frases && event.item.frases.start) || '...'}"</p>
-          </div>
+        initial={{ scale: 0.88, y: 30, opacity: 0 }}
+        animate={{ scale: 1, y: 0, opacity: 1 }}
+        exit={{ scale: 0.88, opacity: 0 }}
+        className="glass-panel-dark p-12 max-w-sm w-full text-center border-white/10 shadow-[0_0_100px_rgba(0,0,0,0.8)] relative"
+      >
+        <div className={`absolute top-0 left-0 w-full h-1.5 opacity-50 ${event.type === 'lab' ? 'bg-primary' : event.type === 'archive' ? 'bg-secondary' : 'bg-accent-alert'}`} />
+        
+        <span className={`text-5xl mb-8 block filter drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]`}>{style.icon}</span>
+        <span className="text-[10px] font-black tracking-[0.5em] text-slate-500 uppercase block mb-4 italic">PROCEDIMIENTO: {style.title}</span>
+        
+        <h3 className="text-2xl font-display font-black text-white mb-8 mt-2 italic shadow-text uppercase tracking-tight leading-tight px-2">
+          {event.item.nombre}
+        </h3>
+        
+        <div className="rounded-[2.5rem] p-8 mb-10 border border-white/5 bg-black/40 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full medical-grid opacity-5" />
+          <p className="text-base font-medium text-slate-300 italic mb-1 leading-relaxed relative z-10">
+            "{event.item.texto || (event.item.frases && event.item.frases.start) || '...'}"
+          </p>
+        </div>
 
-          <button
-            onClick={onAccept}
-            className={`w-full py-5 text-sm font-black tracking-widest text-slate-950 rounded-2xl transition-all active:scale-95 uppercase ${event.type === 'lab' ? 'bg-primary' : event.type === 'archive' ? 'bg-amber-400' : 'bg-purple-400'}`}
-          >
-             CONFIRMAR RECEPCIÓN
-          </button>
-        </motion.div>
+        <button
+          onClick={onAccept}
+          className={`btn-primary w-full py-6 text-base ${event.type === 'lab' ? '' : event.type === 'archive' ? '!bg-secondary shadow-[0_4px_0_#7c3aed,0_8px_30px_rgba(167,139,250,0.4)]' : '!bg-accent-alert shadow-[0_4px_0_#e11d48,0_8px_30px_rgba(255,45,85,0.4)]'}`}
+        >
+           CONFIRMAR RECEPCIÓN <span className="ml-2 font-serif">→</span>
+        </button>
+      </motion.div>
     </div>
   );
 };
@@ -228,7 +240,7 @@ const FailProtectionOverlay: React.FC<{
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center z-[180] p-6">
       <motion.div
-        className="absolute inset-0 bg-slate-900/80 backdrop-blur-md"
+        className="absolute inset-0 bg-slate-950/90 backdrop-blur-xl"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -237,43 +249,46 @@ const FailProtectionOverlay: React.FC<{
         initial={{ scale: 0.9, y: 20, opacity: 0 }}
         animate={{ scale: 1, y: 0, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
-        className="glass-panel p-10 max-w-md w-full text-center border-moomin-accent/40 shadow-2xl bg-white relative overflow-hidden"
+        className="glass-panel-dark p-10 max-w-md w-full text-center border-accent-alert/40 shadow-[0_0_100px_rgba(255,45,85,0.2)] relative overflow-hidden"
       >
-        <div className="absolute top-0 left-0 w-full h-2 bg-moomin-accent/20" />
+        <div className="absolute top-0 left-0 w-full h-2 bg-accent-alert/20 glow-border-alert" />
         
-        <div className="text-6xl mb-6">🚑</div>
+        <div className="text-7xl mb-8 filter drop-shadow-[0_0_20px_rgba(255,45,85,0.5)]">🚑</div>
         
-        <span className="text-[10px] font-black tracking-[0.5em] text-moomin-accent uppercase block mb-2">INCIDENTE CRÍTICO</span>
-        <h3 className="text-2xl font-display font-black text-moomin-text mb-4 mt-2 leading-tight">INTERNO RELEVADO</h3>
+        <span className="neon-text-accent block mb-2 text-xs">INCIDENTE CRÍTICO</span>
+        <h3 className="text-4xl font-display font-black text-white mb-6 mt-2 leading-tight tracking-tighter italic shadow-text">INTERNO RELEVADO</h3>
         
-        <div className="bg-moomin-accent/5 rounded-2xl p-6 mb-8 border border-moomin-accent/10 text-left">
-          <p className="text-xs font-black text-moomin-accent uppercase tracking-widest mb-2">MOTIVO DEL RELEVO:</p>
-          <p className="text-sm font-medium text-moomin-text italic leading-relaxed">"{error}"</p>
+        <div className="bg-black/40 rounded-[2rem] p-8 mb-10 border border-accent-alert/10 text-left relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-full h-full medical-grid opacity-10" />
+          <p className="text-[11px] font-black text-accent-alert uppercase tracking-[0.3em] mb-3 relative z-10">MOTIVO DEL RELEVO:</p>
+          <p className="text-lg font-medium text-slate-200 italic leading-relaxed relative z-10">"{error}"</p>
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-5 relative z-10">
           <button
             onClick={onRescue}
-            className="btn-primary w-full py-5 text-lg flex flex-col items-center justify-center gap-1 shadow-[0_6px_0_rgba(135,206,235,0.3)]"
+            className="btn-primary w-full py-6 text-xl flex flex-col items-center justify-center gap-2 group"
           >
-            <span className="text-sm font-black tracking-widest">LLAMAR REFUERZO</span>
-            <span className="text-[10px] opacity-70">QUEDAN {livesRemaining - 1} INTERNOS DISPONIBLES</span>
+            <span className="text-sm font-black tracking-[0.3em]">LLAMAR REFUERZO</span>
+            <span className="text-[11px] opacity-70 font-bold tracking-widest uppercase">QUEDAN {livesRemaining - 1} INTERNOS DISPONIBLES</span>
           </button>
           
           <button
             onClick={onRestart}
-            className="text-[11px] font-black text-moomin-muted hover:text-moomin-accent uppercase tracking-[0.3em] py-2 transition-colors"
+            className="text-[12px] font-black text-slate-500 hover:text-accent-alert uppercase tracking-[0.4em] py-3 transition-all hover:scale-105"
           >
-            Finalizar Guardia
+            — Finalizar Guardia —
           </button>
         </div>
 
         {/* Intern icons representation */}
-        <div className="mt-8 pt-6 border-t border-slate-100 flex justify-center gap-3">
+        <div className="mt-12 pt-8 border-t border-white/5 flex justify-center gap-5 relative z-10">
             {[...Array(5)].map((_, i) => (
-                <div 
+                <motion.div 
                     key={i}
-                    className={`w-3 h-3 rounded-full ${i < livesRemaining ? 'bg-moomin-primary' : 'bg-slate-200'} ${i === livesRemaining - 1 ? 'animate-pulse' : ''}`}
+                    animate={i === livesRemaining - 1 ? { scale: [1, 1.3, 1], opacity: [1, 0.5, 1] } : {}}
+                    transition={{ repeat: Infinity, duration: 1.5 }}
+                    className={`w-4 h-4 rounded-full shadow-[0_0_15px_rgba(0,0,0,0.5)] border ${i < livesRemaining ? 'bg-primary border-primary/40 glow-border-primary' : 'bg-slate-800 border-white/5'}`}
                 />
             ))}
         </div>
@@ -294,70 +309,72 @@ const TelemetryHUD: React.FC<{
   if (state !== 'triage' && state !== 'boss_fight' && state !== 'urgent_triage') return null;
 
   return (
-    <div className="fixed top-4 left-4 right-4 z-[100] flex items-center justify-between glass-panel p-3 px-5 border-moomin-text/10 shadow-xl bg-white/90 backdrop-blur-md rounded-2xl">
-      {/* Left: Score & Vitality (Life) - Better spacing to avoid overlap */}
+    <div className="fixed top-4 left-4 right-4 z-[100] flex items-center justify-between glass-panel p-3 px-5 border-primary/20 shadow-[0_10px_30px_rgba(0,0,0,0.5)] bg-slate-900/80 backdrop-blur-xl rounded-2xl glow-border-primary">
+      {/* Left: Score & Vitality (Life) */}
       <div className="flex items-center gap-5 flex-1">
         <div className="flex flex-col gap-1 min-w-fit">
-          <span className="text-[7px] font-black tracking-[0.3em] text-moomin-muted uppercase leading-none">Pts</span>
+          <span className="text-[7px] font-black tracking-[0.3em] text-primary/60 uppercase leading-none">Pts</span>
           <motion.span
             key={score}
-            initial={{ scale: 1.2, color: '#87CEEB' }}
-            animate={{ scale: 1, color: '#5C4033' }}
-            className="text-lg font-display font-black leading-none"
+            initial={{ scale: 1.5, color: '#22D3EE' }}
+            animate={{ scale: 1, color: '#F8FAFC' }}
+            className="text-xl font-display font-black leading-none drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]"
           >
-            {score}
+            {Math.max(0, score)}
           </motion.span>
         </div>
 
-        <div className="w-px h-8 bg-moomin-text/10" />
+        <div className="w-px h-8 bg-white/10" />
 
         <div className="flex flex-col gap-1 flex-1 min-w-[120px]">
-          <span className="text-[7px] font-black tracking-[0.3em] text-moomin-muted uppercase leading-none">Salud</span>
-          <div className="h-2.5 w-full bg-moomin-bg/60 rounded-full overflow-hidden border border-moomin-text/10 shadow-inner">
+          <span className="text-[7px] font-black tracking-[0.3em] text-primary/60 uppercase leading-none">Salud</span>
+          <div className="h-2.5 w-full bg-slate-950 rounded-full overflow-hidden border border-white/10 shadow-inner relative">
+            <div className="absolute inset-0 bg-primary/20 blur-[2px]" />
             <motion.div
               initial={{ width: '100%' }}
               animate={{
                 width: `${vitality}%`,
-                backgroundColor: vitality > 60 ? '#98D8C8' : vitality > 30 ? '#FFD700' : '#FF9F7F'
+                backgroundColor: vitality > 60 ? '#22D3EE' : vitality > 30 ? '#F59E0B' : '#FB7185'
               }}
-              className="h-full transition-colors duration-500"
+              className="h-full transition-colors duration-500 relative z-10 shadow-[0_0_10px_rgba(255,255,255,0.5)]"
             />
           </div>
-          <span className="text-[7px] text-moomin-muted/50 font-black">{vitality}%</span>
+          <span className="text-[7px] text-white/50 font-black">{vitality}%</span>
         </div>
       </div>
 
-      {/* Interns (Lives) display - Cleaner layout */}
+      {/* Interns (Lives) display */}
       <div className="flex items-center gap-3 ml-2">
         <div className="flex flex-col items-center gap-1">
-            <span className="text-[7px] font-black text-moomin-muted tracking-[0.3em] uppercase">Equipo</span>
+            <span className="text-[7px] font-black text-primary/60 tracking-[0.3em] uppercase">Equipo</span>
             <div className="flex gap-1.5 items-center">
                 {[...Array(5)].map((_, i) => (
                     <motion.div
                         key={i}
                         animate={{
                             scale: i < lives ? 1 : 0.7,
-                            opacity: i < lives ? 1 : 0.3,
-                            backgroundColor: i < lives ? '#87CEEB' : '#ccc'
+                            opacity: i < lives ? 1 : 0.2,
+                            backgroundColor: i < lives ? '#22D3EE' : '#334155',
+                            boxShadow: i < lives ? '0 0 10px rgba(34,211,238,0.6)' : 'none'
                         }}
-                        className="w-2 h-2 rounded-full border border-white shadow-sm"
+                        className="w-2 h-2 rounded-full border border-white/20"
                     />
                 ))}
             </div>
         </div>
       </div>
 
-      {/* Center: Combo Pill (Only if > 1) - Better visibility */}
+      {/* Center: Combo Pill (Only if > 1) */}
       <AnimatePresence>
         {combo > 1 && (
           <motion.div
             initial={{ y: -15, opacity: 0, scale: 0.9 }}
             animate={{ y: 0, opacity: 1, scale: 1 }}
             exit={{ y: -15, opacity: 0, scale: 0.9 }}
-            className={`px-4 py-2 rounded-full border-2 text-[11px] font-black tracking-widest shadow-lg ${
-              combo >= 15 ? 'bg-moomin-accent/15 border-moomin-accent text-moomin-accent animate-pulse' :
-              combo >= 10 ? 'bg-orange-100/80 border-orange-400 text-orange-700 font-black' :
-              'bg-moomin-primary/15 border-moomin-primary text-moomin-primary'
+            className={`px-4 py-2 rounded-full border-2 text-[11px] font-black tracking-widest shadow-lg backdrop-blur-md ${
+              combo >= 15 ? 'bg-primary/20 border-primary text-primary animate-pulse glow-border-primary' :
+              combo >= 10 ? 'bg-amber-500/20 border-amber-500 text-amber-500 font-black glow-border-primary' :
+              'bg-secondary/20 border-secondary text-secondary'
             }`}
           >
             🔥 {combo} ACIERTOS
@@ -365,16 +382,18 @@ const TelemetryHUD: React.FC<{
         )}
       </AnimatePresence>
 
-      {/* Right: Timer - Cleaner, more visible */}
-      <div className="flex items-center gap-2 ml-2">
-        <div className="flex items-center gap-3 bg-moomin-bg/50 px-4 py-2 rounded-full border-2 border-moomin-text/10">
-          <span className="text-[7px] font-black tracking-[0.3em] text-moomin-muted uppercase leading-none">⏱️</span>
-          <span className={`text-base font-mono font-black leading-none tabular-nums ${timeLeft <= 10 ? 'text-moomin-accent animate-pulse' : 'text-moomin-text'}`}>
-            {timeLeft.toString().padStart(2, '0')}s
-          </span>
-          {timeLeft <= 10 && <div className={`w-2 h-2 rounded-full bg-moomin-accent animate-ping`} />}
+      {/* Right: Timer */}
+      {state !== 'boss_fight' && (
+        <div className="flex items-center gap-2 ml-2">
+          <div className="flex items-center gap-3 bg-slate-950/50 px-4 py-2 rounded-full border border-white/10 shadow-inner">
+            <span className="text-[7px] font-black tracking-[0.3em] text-primary/60 uppercase leading-none">⏱️</span>
+            <span className={`text-base font-mono font-black leading-none tabular-nums ${timeLeft <= 10 ? 'text-accent-alert animate-pulse drop-shadow-[0_0_8px_rgba(251,113,133,0.8)]' : 'text-white'}`}>
+              {timeLeft.toString().padStart(2, '0')}s
+            </span>
+            {timeLeft <= 10 && <div className={`w-2 h-2 rounded-full bg-accent-alert animate-ping shadow-[0_0_10px_rgba(251,113,133,1)]`} />}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
@@ -403,7 +422,6 @@ function App() {
   const [showMilestoneCelebration, setShowMilestoneCelebration] = useState<number>(0);
   // Loading state for case fetching
   const [isLoadingCase, setIsLoadingCase] = useState(false);
-  const [loadError, setLoadError] = useState<string | null>(null);
   // Retrospective view toggle
   const [showRetro, setShowRetro] = useState(false);
   const [caseQueue, setCaseQueue] = useState<ClinicalCase[]>([]);
@@ -412,27 +430,29 @@ function App() {
     text: '',
     type: 'coins'
   });
+  const [loadError, setLoadError] = useState<string | null>(null);
+  if (loadError) console.error("Critical Load Error:", loadError);
 
-  // Dynamic Background Theming — Softer Moomin-inspired palette
+  // Dynamic Background Theming — High-Intensity Doc-Punk Palette
   useEffect(() => {
     if (currentCase) {
       const colors: Record<string, string> = {
-        ped: '255, 182, 193', // Moomin Secondary (Pink)
-        surg: '255, 159, 127', // Moomin Accent (Coral)
-        obs: '176, 229, 216',  // Moomin Tertiary (Soft Green)
-        gyn: '200, 162, 200',  // Lilac
-        im: '135, 206, 235',   // Moomin Primary (Sky Blue)
-        gast: '255, 223, 186', // Peach
-        card: '255, 127, 127', // Soft Red
-        endo: '255, 218, 185', // Papaya Whip
-        inf: '152, 216, 200',  // Seafoam
-        neur: '230, 230, 250', // Lavender
-        prev: '175, 238, 238', // Pale Turquoise
-        stats: '245, 230, 211', // Moomin Dark BG
-        engl: '240, 248, 255'  // Alice Blue
+        ped: '255, 45, 85',   // Neon Rose/Pink
+        surg: '255, 115, 0',  // Neon Orange
+        obs: '0, 229, 255',   // Neon Cyan
+        gyn: '217, 70, 239',  // Neon Fuchsia
+        im: '129, 140, 248',  // Indigo Medical
+        gast: '251, 191, 36', // Neon Amber
+        card: '239, 68, 68',  // Pure Red
+        endo: '249, 115, 22', // Orange Red
+        inf: '16, 185, 129',  // Emerald Green
+        neur: '139, 92, 246', // Deep Violet
+        prev: '45, 212, 191', // Teal
+        stats: '15, 23, 42',  // Dark Slate
+        engl: '248, 250, 252' // Polar Blue
       };
       const key = Object.keys(colors).find(k => currentCase.case_id.toLowerCase().includes(k)) || 'default';
-      const rgb = colors[key] || '135, 206, 235';
+      const rgb = colors[key] || '0, 229, 255';
       document.documentElement.style.setProperty('--specialty-rgb', rgb);
     }
   }, [currentCase]);
@@ -467,6 +487,18 @@ function App() {
       triggerHaptic('warning');
     }
   }, [timeLeft, state]);
+
+  // Auto-dismiss Avatar Feedback after 6 seconds
+  useEffect(() => {
+    if (comment) {
+      const dismissTimer = setTimeout(() => {
+        setComment(null);
+        setSwipeFeedback(null);
+        setExpression('neutral');
+      }, 6000);
+      return () => clearTimeout(dismissTimer);
+    }
+  }, [comment]);
 
   useEffect(() => {
     let timer: number;
@@ -734,7 +766,7 @@ function App() {
   const renderCurrentView = () => {
      if (showIntro && currentCase) {
       const difficultyLabel = currentCase.difficulty === 'extreme' ? 'EXTREMO' : currentCase.difficulty === 'hard' ? 'DIFÍCIL' : 'NORMAL';
-      const difficultyColor = currentCase.difficulty === 'extreme' ? 'text-moomin-accent border-moomin-accent/20 bg-moomin-accent/5' : currentCase.difficulty === 'hard' ? 'text-orange-400 border-orange-200 bg-orange-50' : 'text-moomin-primary border-moomin-primary/20 bg-moomin-primary/5';
+      const difficultyColor = currentCase.difficulty === 'extreme' ? 'text-accent-alert border-accent-alert/20 bg-accent-alert/5' : currentCase.difficulty === 'hard' ? 'text-orange-400 border-orange-200 bg-orange-50' : 'text-primary border-primary/20 bg-primary/5';
       return (
         <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -938,9 +970,9 @@ function App() {
                 onUseLifeline={handleLifeline}
               />
             ) : (
-              <div className="flex flex-col items-center gap-4 text-moomin-muted/40 animate-pulse">
-                <span className="text-6xl">📋</span>
-                <span className="text-[10px] font-black uppercase tracking-widest">Sincronizando Expediente...</span>
+              <div className="flex flex-col items-center gap-4 text-slate-500/40 animate-pulse">
+                <span className="text-6xl filter drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">📋</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.4em]">Sincronizando Expediente...</span>
               </div>
             )}
           </div>
@@ -955,21 +987,21 @@ function App() {
           >
             {/* Pulsing background layers */}
             <motion.div
-              className="absolute inset-0 bg-moomin-accent/10"
-              animate={{ opacity: [0.2, 0.5, 0.2] }}
+              className="absolute inset-0 bg-accent-alert/20"
+              animate={{ opacity: [0.3, 0.6, 0.3] }}
               transition={{ duration: 0.8, repeat: Infinity }}
             />
             <motion.div
-              animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }}
+              animate={{ scale: [1, 1.2, 1], rotate: [0, 5, -5, 0] }}
               transition={{ duration: 0.6, repeat: Infinity }}
-              className="text-9xl mb-8 filter drop-shadow-[0_10px_20px_rgba(255,159,127,0.4)]"
+              className="text-[10rem] mb-12 filter drop-shadow-[0_0_40px_rgba(255,45,85,0.6)]"
             >
               🚨
             </motion.div>
-            <h2 className="text-6xl font-display font-black text-moomin-accent tracking-tighter text-glow-danger uppercase italic">
+            <h2 className="text-7xl font-display font-black text-white tracking-tighter text-glow-danger uppercase italic shadow-text">
               CÓDIGO ROJO
             </h2>
-            <p className="text-sm font-black tracking-[0.5em] mt-6 text-moomin-text/60 uppercase">
+            <p className="neon-text-accent mt-8 text-sm">
               PACIENTE EN ESTADO CRÍTICO
             </p>
           </motion.div>
@@ -983,42 +1015,42 @@ function App() {
         if (!hasQuestions) {
           return (
             <div className="w-full max-w-xl h-full flex flex-col items-center justify-center gap-10 relative overflow-hidden">
-              <div className="text-center z-10 px-6">
-                <span className="text-[11px] font-black tracking-[0.4em] text-moomin-accent uppercase mb-2 block">PROTOCOLO DE EMERGENCIA</span>
-                <h2 className="text-3xl font-display font-black text-moomin-text italic tracking-tighter mb-4">ESTABILIZACIÓN MANUAL</h2>
-                <div className="h-1.5 w-32 bg-moomin-accent mx-auto mb-6 rounded-full opacity-30" />
-                <p className="text-sm text-moomin-muted font-bold uppercase tracking-widest leading-relaxed">Mantén el ritmo pulsando el centro</p>
+              <div className="text-center z-10 px-8">
+                <span className="neon-text-accent block mb-3 text-[10px]">PROTOCOLO DE EMERGENCIA</span>
+                <h2 className="text-4xl font-display font-black text-white italic tracking-tighter mb-4 shadow-text uppercase">ESTABILIZACIÓN MANUAL</h2>
+                <div className="h-1.5 w-40 bg-accent-alert/30 mx-auto mb-8 rounded-full glow-border-alert" />
+                <p className="text-[11px] text-slate-500 font-black uppercase tracking-[0.4em] leading-relaxed">Mantén el ritmo pulsando el núcleo</p>
               </div>
 
               {/* Stabilization Heart/Core */}
-              <div className="relative group p-12">
-                <div className="absolute inset-0 bg-moomin-accent/15 blur-[60px] rounded-full animate-pulse group-hover:opacity-40 transition-opacity" />
+              <div className="relative group p-14">
+                <div className="absolute inset-0 bg-accent-alert/10 blur-[80px] rounded-full animate-pulse group-hover:opacity-30 transition-opacity" />
                 <motion.div
-                  animate={{ scale: [1, 1.1, 1] }}
+                  animate={{ scale: [1, 1.1, 1], boxShadow: ['0 0 20px rgba(255,45,85,0)', '0 0 40px rgba(255,45,85,0.3)', '0 0 20px rgba(255,45,85,0)'] }}
                   transition={{ repeat: Infinity, duration: 0.6 }}
-                  className="w-48 h-48 rounded-full border-4 border-moomin-accent/30 flex items-center justify-center relative z-10 cursor-pointer active:scale-90 transition-transform"
+                  className="w-56 h-56 rounded-full border-4 border-accent-alert/40 flex items-center justify-center relative z-10 cursor-pointer active:scale-95 transition-all bg-black/20 backdrop-blur-md"
                   onClick={() => {
                     triggerHaptic('qteInteract');
                     send({ type: 'QTE_INTERACT' });
                   }}
                 >
                   <div className="flex flex-col items-center">
-                    <span className="text-7xl filter drop-shadow-[0_10px_15px_rgba(255,159,127,0.5)]">❤️</span>
-                    <span className="text-[10px] font-black text-moomin-accent mt-6 animate-gentle-bounce tracking-widest uppercase">PULSAR</span>
+                    <span className="text-8xl filter drop-shadow-[0_0_20px_rgba(255,45,85,0.6)]">❤️</span>
+                    <span className="neon-text-accent mt-8 text-[11px] animate-gentle-bounce">PULSAR</span>
                   </div>
                 </motion.div>
               </div>
 
               {/* QTE Timer */}
-              <div className="w-full max-w-xs space-y-4 text-center mt-4">
-                <div className="text-4xl font-black text-moomin-text font-mono mb-2">
-                  {state.context.qteTimeLeft}s
+              <div className="w-full max-w-xs space-y-6 text-center mt-6">
+                <div className="text-5xl font-black text-white font-mono mb-2 tracking-tighter">
+                  {state.context.qteTimeLeft}<span className="text-2xl text-slate-600">s</span>
                 </div>
-                <div className="w-full h-3 bg-white/50 rounded-full overflow-hidden border border-moomin-text/5 shadow-inner">
+                <div className="w-full h-3 bg-black/60 rounded-full overflow-hidden border border-white/10 p-0.5 shadow-inner">
                   <motion.div
                     animate={{ width: [`${(state.context.qteTimeLeft / 5) * 100}%`] }}
                     transition={{ duration: 0.3 }}
-                    className="h-full bg-moomin-accent rounded-full shadow-[0_0_15px_rgba(255,159,127,0.4)]"
+                    className="h-full bg-accent-alert rounded-full shadow-[0_0_20px_rgba(255,45,85,0.6)]"
                   />
                 </div>
               </div>
@@ -1047,18 +1079,18 @@ function App() {
             initial={{ opacity: 0, scale: 0.88, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-            className="glass-panel p-10 max-w-md text-center border-moomin-text/5 shadow-2xl relative overflow-hidden bg-white/95"
+            className="glass-panel-dark p-12 max-w-md text-center border-primary/20 shadow-[0_0_100px_rgba(34,211,238,0.15)] relative overflow-hidden"
           >
-            {/* Particle burst on reward - More pastel */}
-            {[...Array(15)].map((_, i) => {
-              const angle = (i / 15) * 360;
+            {/* Particle burst on reward - High Intensity */}
+            {[...Array(20)].map((_, i) => {
+              const angle = (i / 20) * 360;
               const rad = (angle * Math.PI) / 180;
-              const dist = 100 + Math.random() * 80;
+              const dist = 120 + Math.random() * 100;
               return (
                 <motion.div
                   key={i}
-                  className="absolute top-1/2 left-1/2 w-3 h-3 rounded-full pointer-events-none"
-                  style={{ backgroundColor: i % 3 === 0 ? '#87CEEB' : i % 3 === 1 ? '#FFB6C1' : '#98D8C8' }}
+                  className="absolute top-1/2 left-1/2 w-2 h-2 rounded-full pointer-events-none"
+                  style={{ backgroundColor: i % 3 === 0 ? '#00E5FF' : i % 3 === 1 ? '#FF2D55' : '#00F5D4' }}
                   initial={{ x: 0, y: 0, scale: 1, opacity: 1 }}
                   animate={{
                     x: Math.cos(rad) * dist,
@@ -1066,7 +1098,7 @@ function App() {
                     scale: 0,
                     opacity: 0
                   }}
-                  transition={{ duration: 0.8, delay: 0.1 + i * 0.02, ease: 'easeOut' }}
+                  transition={{ duration: 1.2, delay: 0.1 + i * 0.02, ease: 'easeOut' }}
                 />
               );
             })}
@@ -1074,9 +1106,9 @@ function App() {
             <motion.div
               animate={{ scale: [1, 1.15, 1], rotate: [0, 5, -5, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="w-24 h-24 bg-moomin-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 relative z-10"
+              className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-8 relative z-10 border border-primary/20 shadow-[0_0_30px_rgba(0,229,255,0.2)]"
             >
-              <span className="text-5xl filter drop-shadow-[0_8px_16px_rgba(135,206,235,0.4)]">🌈</span>
+              <span className="text-5xl filter drop-shadow-[0_0_15px_rgba(0,229,255,0.6)]">🌈</span>
             </motion.div>
 
             {state.context.caseStreak > 1 && (
@@ -1084,60 +1116,61 @@ function App() {
                 initial={{ y: -15, opacity: 0, scale: 0.8 }}
                 animate={{ y: 0, opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2, type: 'spring' }}
-                className="mb-4 inline-block bg-moomin-secondary/10 text-moomin-muted px-5 py-2 rounded-full text-[11px] font-black tracking-widest border border-moomin-secondary/20 relative z-10"
+                className="mb-6 inline-block bg-primary/10 text-primary px-6 py-2 rounded-full text-[11px] font-black tracking-[0.3em] border border-primary/20 relative z-10 uppercase"
               >
-                🔥 RACHA DE CASOS: x{state.context.caseStreak}
+                🔥 RACHA ACTIVA: x{state.context.caseStreak}
               </motion.div>
             )}
 
-            <div className="absolute top-6 right-6 z-20">
+            <div className="absolute top-8 right-8 z-20">
               <button
                 onClick={() => setShowRetro(true)}
-                className="w-12 h-12 rounded-full bg-moomin-primary/10 border border-moomin-primary/20 flex items-center justify-center text-2xl hover:bg-moomin-primary/20 transition-all hover:scale-110 shadow-sm"
+                className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-2xl hover:bg-white/10 transition-all hover:scale-110 shadow-lg backdrop-blur-md"
                 title="Ver Resumen de Guardia"
               >
                  📔
               </button>
             </div>
 
-            <h2 className="text-4xl font-display font-black text-moomin-text mb-2 tracking-tighter italic relative z-10">
-              ¡EXCELENTE TRABAJO!
+            <h2 className="text-5xl font-display font-black text-white mb-4 tracking-tighter italic relative z-10 shadow-text">
+              ¡EXCELENTE!
             </h2>
-            <p className="text-moomin-muted mb-6 font-medium italic text-base leading-relaxed relative z-10 px-4">
-              "El paciente se encuentra estable y agradecido. ¡Eres un gran médico!"
+            <p className="text-slate-400 mb-8 font-medium italic text-lg leading-relaxed relative z-10 px-6">
+              "El paciente se encuentra estable. Tu razonamiento clínico ha sido impecable."
             </p>
 
-            {/* Perfect Round Badge - More golden/playful */}
+            {/* Perfect Round Badge - High Tech */}
             {state.context.mistakesThisCase === 0 && (
               <motion.div
                 initial={{ scale: 0, rotate: -15 }}
                 animate={{ scale: 1, rotate: 0 }}
                 transition={{ delay: 0.4, type: 'spring' }}
-                className="mb-8 inline-block bg-[#FFD700]/10 text-[#B8860B] px-6 py-3 rounded-full text-xs font-black tracking-[0.2em] border-2 border-[#FFD700]/30 relative z-10 shadow-lg"
+                className="mb-10 inline-block bg-primary/15 text-primary px-8 py-3 rounded-2xl text-[10px] font-black tracking-[0.4em] border border-primary/40 relative z-10 shadow-[0_0_30px_rgba(0,229,255,0.2)] uppercase"
               >
-                ✨ GUARDIA PERFECTA ✨
+                ✨ Guardia Perfecta ✨
               </motion.div>
             )}
 
-            {/* Score breakdown - Card style */}
+            {/* Score breakdown - Tech Card style */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35 }}
-              className="bg-moomin-bg/50 border border-moomin-text/5 rounded-[2rem] p-6 mb-8 text-left relative z-10 shadow-inner"
+              className="bg-black/40 border border-white/5 rounded-[2.5rem] p-8 mb-10 text-left relative z-10 shadow-inner overflow-hidden"
             >
-              <div className="flex justify-between items-center mb-4">
-                <span className="text-[10px] font-black text-moomin-muted uppercase tracking-[0.3em]">REPORTE MÉDICO</span>
-                <span className="text-[10px] font-mono font-bold text-moomin-primary">{currentCase?.case_id?.slice(-8) || '---'}</span>
+              <div className="absolute top-0 right-0 w-full h-full medical-grid opacity-5" />
+              <div className="flex justify-between items-center mb-6 relative z-10">
+                <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">REPORTE DE SESIÓN</span>
+                <span className="text-[10px] font-mono font-bold text-primary/60">{currentCase?.case_id?.slice(-8) || '---'}</span>
               </div>
-              <div className="space-y-4">
+              <div className="space-y-6 relative z-10">
                 <div className="flex justify-between items-end">
-                  <span className="text-xs font-bold text-moomin-muted uppercase tracking-widest">Experiencia</span>
-                  <span className="text-2xl font-display font-black text-moomin-primary">+{state.context.score}</span>
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-[0.3em]">Experiencia</span>
+                  <span className="text-3xl font-display font-black text-primary">+{Math.max(0, state.context.score)}</span>
                 </div>
-                <div className="flex justify-between items-end">
-                  <span className="text-xs font-bold text-moomin-muted uppercase tracking-widest">Monedas</span>
-                  <span className="text-2xl font-display font-black text-moomin-secondary">+{state.context.coinsEarnedThisCase}</span>
+                <div className="flex justify-between items-end border-t border-white/5 pt-6">
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-[0.3em]">Monedas GDC</span>
+                  <span className="text-3xl font-display font-black text-secondary">+{state.context.coinsEarnedThisCase}</span>
                 </div>
               </div>
             </motion.div>
@@ -1163,45 +1196,48 @@ function App() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            className="glass-panel p-10 max-w-md text-center border-moomin-accent/20 shadow-2xl relative overflow-hidden bg-white/95"
+            className="glass-panel-dark p-12 max-w-md text-center border-accent-alert/30 shadow-[0_0_100px_rgba(255,45,85,0.15)] relative overflow-hidden"
           >
             <motion.div
               animate={{ rotate: [0, -5, 5, 0], scale: [1, 1.1, 1] }}
               transition={{ duration: 3, repeat: Infinity }}
-              className="w-24 h-24 bg-moomin-accent/10 rounded-full flex items-center justify-center mx-auto mb-6"
+              className="w-24 h-24 bg-accent-alert/10 rounded-full flex items-center justify-center mx-auto mb-8 border border-accent-alert/20"
             >
-              <span className="text-5xl filter drop-shadow-[0_8px_16px_rgba(255,159,127,0.4)]">👻</span>
+              <span className="text-5xl filter drop-shadow-[0_0_20px_rgba(255,45,85,0.6)]">👻</span>
             </motion.div>
 
-            <h2 className="text-5xl font-display font-black text-moomin-accent mb-2 tracking-tighter italic uppercase">
+            <h2 className="text-5xl font-display font-black text-white mb-4 tracking-tighter italic uppercase shadow-text">
               DESERTADO
             </h2>
-            <p className="text-moomin-muted mb-8 font-medium italic text-base leading-relaxed px-4">
+            <p className="text-slate-400 mb-10 font-medium italic text-lg leading-relaxed px-6">
               "El paciente ha abandonado la sala por falta de atención oportuna."
             </p>
 
-            <div className="bg-moomin-bg/50 border border-moomin-text/5 rounded-[2rem] p-6 mb-8 text-left shadow-inner">
-               <span className="text-[10px] font-black text-moomin-muted uppercase tracking-[0.3em] block mb-2">MOTIVO DEL FALLO</span>
-               <p className="text-sm text-moomin-text font-medium italic leading-relaxed">
+            <div className="bg-black/40 border border-white/5 rounded-[2.5rem] p-8 mb-10 text-left shadow-inner relative overflow-hidden">
+               <div className="absolute top-0 right-0 w-full h-full medical-grid opacity-5" />
+               <span className="neon-text-accent block mb-3 text-[10px]">MOTIVO DEL FALLO</span>
+               <p className="text-base text-slate-200 font-medium italic leading-relaxed relative z-10">
                  {state.context.fatalError || "El tiempo de guardia ha expirado sin una resolución clínica adecuada."}
                </p>
             </div>
 
-            <button
-              onClick={() => setShowRetro(true)}
-              className="btn-primary w-full py-5 !bg-white border-2 border-moomin-accent/20 !text-moomin-accent shadow-sm hover:!bg-moomin-bg transition-all"
-            >
-              VER HISTORIAL DE GUARDIA
-            </button>
-            <button
-              onClick={() => {
-                triggerHaptic('lethalError');
-                send({ type: 'RESTART' });
-              }}
-              className="btn-primary w-full py-6 text-xl bg-moomin-accent hover:bg-orange-400 border-orange-600/30 shadow-[0_10px_0_rgba(255,159,127,0.3)]"
-            >
-              REINTENTAR CONSULTA
-            </button>
+            <div className="flex flex-col gap-4">
+              <button
+                onClick={() => setShowRetro(true)}
+                className="w-full py-5 text-[11px] font-black tracking-[0.4em] text-slate-400 bg-black/20 border border-white/10 rounded-2xl hover:bg-black/40 transition-all uppercase"
+              >
+                VER HISTORIAL DE GUARDIA
+              </button>
+              <button
+                onClick={() => {
+                  triggerHaptic('lethalError');
+                  send({ type: 'RESTART' });
+                }}
+                className="btn-primary w-full py-6 text-xl !bg-accent-alert !shadow-[0_0_40px_rgba(255,45,85,0.4)] !text-white"
+              >
+                REINTENTAR CONSULTA
+              </button>
+            </div>
           </motion.div>
         );
 
@@ -1210,47 +1246,48 @@ function App() {
           <motion.div 
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            className="glass-panel p-10 max-w-md text-left bg-white/95 border-moomin-accent/20 shadow-2xl relative overflow-hidden"
+            className="glass-panel-dark p-12 max-w-md text-left border-accent-alert/20 shadow-[0_0_100px_rgba(0,0,0,0.8)] relative overflow-hidden"
           >
-            <div className="flex justify-between items-start mb-6">
-              <span className="text-[10px] text-moomin-accent font-black tracking-[0.3em] uppercase">
+            <div className="flex justify-between items-start mb-8">
+              <span className="neon-text-accent text-[10px]">
                 ERROR DETECTADO
               </span>
-              <span className="text-[10px] font-mono font-bold text-moomin-muted">ID: {currentCase?.case_id?.slice(-8) || '---'}</span>
+              <span className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest tracking-tighter">REF-ID: {currentCase?.case_id?.slice(-8) || '---'}</span>
             </div>
 
-            <div className="mb-6 p-6 bg-moomin-accent/5 border-l-4 border-moomin-accent rounded-r-[2rem]">
-              <p className="text-[10px] text-moomin-accent font-black mb-3 flex items-center gap-2 tracking-widest uppercase">
-                <span className="w-2.5 h-2.5 bg-moomin-accent rounded-full animate-pulse" />
+            <div className="mb-10 p-8 bg-accent-alert/5 border-l-4 border-accent-alert rounded-r-[2.5rem] relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-full h-full medical-grid opacity-5" />
+              <p className="text-[10px] text-accent-alert font-black mb-4 flex items-center gap-3 tracking-[0.3em] uppercase relative z-10">
+                <span className="w-2.5 h-2.5 bg-accent-alert rounded-full animate-pulse shadow-[0_0_10px_rgba(255,45,85,0.6)]" />
                 NOTA DE SUPERVISIÓN:
               </p>
-              <p className="text-base text-moomin-text italic font-medium leading-relaxed">
+              <p className="text-lg text-white italic font-medium leading-[1.6] relative z-10">
                 "{state.context.debriefData?.comment}"
               </p>
             </div>
 
-            <div className="mb-8">
-              <div className="text-[10px] text-moomin-muted mb-3 font-black uppercase tracking-[0.2em]">Explicación Médica:</div>
-              <p className="text-sm text-moomin-text leading-relaxed font-medium bg-moomin-bg/30 p-4 rounded-2xl border border-moomin-text/5 italic">
+            <div className="mb-10 pb-8 border-b border-white/5">
+              <div className="text-[10px] text-slate-500 mb-4 font-black uppercase tracking-[0.4em]">EXPLICACIÓN CLÍNICA:</div>
+              <p className="text-base text-slate-300 leading-relaxed font-medium bg-black/40 p-6 rounded-3xl border border-white/5 italic">
                 {state.context.debriefData?.text}
               </p>
             </div>
 
-            <div className="flex items-center justify-between mb-8">
-              <span className="text-[11px] font-bold text-moomin-primary underline decoration-2 underline-offset-4">GPC: {state.context.debriefData?.gpc}</span>
+            <div className="flex items-center justify-between mb-10">
+              <span className="text-sm font-black text-primary italic border-b-2 border-primary/40 pb-1 tracking-widest uppercase">GPC: {state.context.debriefData?.gpc}</span>
             </div>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-5">
               <button
                  onClick={() => setShowRetro(true)}
-                 className="btn-primary w-full py-5 !bg-white border-2 border-moomin-primary/20 !text-moomin-primary shadow-sm hover:!bg-moomin-bg transition-all"
+                 className="w-full py-5 text-[11px] font-black tracking-[0.4em] text-slate-400 bg-black/20 border border-white/10 rounded-2xl hover:bg-black/40 transition-all uppercase"
               >
                 VER HISTORIAL COMPLETO
               </button>
 
               <button 
                 onClick={() => send({ type: 'RESTART' })} 
-                className="btn-primary w-full py-6 text-xl shadow-[0_10px_0_rgba(135,206,235,0.3)]"
+                className="btn-primary w-full py-6 text-xl shadow-[0_10px_0_rgba(0,229,255,0.2)]"
               >
                 VOLVER A GUARDIA
               </button>
@@ -1260,13 +1297,19 @@ function App() {
 
       case state.matches('critical_warning'):
         return (
-          <div className="fixed inset-0 bg-moomin-accent/20 backdrop-blur-md flex flex-col items-center justify-center z-[100] animate-pulse">
-            <div className="text-8xl mb-8 filter drop-shadow-[0_10px_20px_rgba(255,159,127,0.4)]">⚠️</div>
-            <h2 className="text-5xl font-display font-black text-moomin-accent italic tracking-tighter uppercase">ADVERTENCIA CRÍTICA</h2>
-            <p className="text-xl text-moomin-text mt-6 px-12 text-center font-bold italic max-w-lg leading-relaxed">
-              {state.context.fatalError}
+          <div className="fixed inset-0 bg-accent-alert/20 backdrop-blur-3xl flex flex-col items-center justify-center z-[100]">
+            <motion.div
+              animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
+              transition={{ repeat: Infinity, duration: 1 }}
+              className="text-9xl mb-12 filter drop-shadow-[0_0_30px_rgba(255,45,85,0.6)]"
+            >
+              ⚠️
+            </motion.div>
+            <h2 className="text-6xl font-display font-black text-white italic tracking-tighter uppercase shadow-text">ADVERTENCIA CRÍTICA</h2>
+            <p className="text-2xl text-slate-200 mt-8 px-16 text-center font-bold italic max-w-2xl leading-relaxed">
+              "{state.context.fatalError}"
             </p>
-            <p className="mt-12 text-[10px] text-moomin-muted tracking-[0.5em] font-black uppercase">REINTENTANDO ESTABILIZACIÓN...</p>
+            <p className="mt-16 neon-text-primary text-xs tracking-[0.6em] animate-pulse">REINTENTANDO ESTABILIZACIÓN...</p>
           </div>
         );
 
@@ -1276,14 +1319,15 @@ function App() {
   };
 
   return (
-    <div className={`fixed inset-0 bg-moomin-bg flex flex-col items-center select-none overflow-hidden text-moomin-text pt-6
+    <div className={`fixed inset-0 bg-slate-950 flex flex-col items-center select-none overflow-hidden text-white pt-6
       ${timeLeft <= 10 && state.matches('triage') ? 'destabilized-content' : ''}
       ${swipeFeedback === 'wrong' ? 'shake-lite' : ''}
       ${state.context.combo >= 15 ? 'combo-glow-3' : (state.context.combo >= 10 ? 'combo-glow-2' : (state.context.combo >= 5 ? 'combo-glow-1' : ''))}
     `}>
       {/* Background Ambience Layers */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute inset-x-0 top-0 h-[40vh] bg-gradient-to-b from-moomin-primary/10 to-transparent opacity-40" />
+        <div className="absolute inset-x-0 top-0 h-[50vh] bg-gradient-to-b from-primary/10 to-transparent opacity-30" />
+        <div className="absolute inset-0 medical-grid opacity-[0.03]" />
       </div>
 
       <TelemetryHUD 
@@ -1310,7 +1354,7 @@ function App() {
             animate={{ opacity: 0.1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className={`fixed inset-0 z-0 pointer-events-none ${swipeFeedback === 'correct' ? 'bg-moomin-primary' : 'bg-moomin-accent'}`}
+            className={`fixed inset-0 z-0 pointer-events-none ${swipeFeedback === 'correct' ? 'bg-primary' : 'bg-accent-alert'}`}
           />
         )}
       </AnimatePresence>
@@ -1329,7 +1373,7 @@ function App() {
             {[0, 1, 2].map(i => (
               <motion.div
                 key={i}
-                className="absolute w-24 h-24 rounded-full border-2 border-moomin-secondary/30"
+                className="absolute w-24 h-24 rounded-full border-2 border-secondary/30"
                 initial={{ scale: 0.5, opacity: 0.8 }}
                 animate={{ scale: 3 + i, opacity: 0 }}
                 transition={{ duration: 0.9, delay: i * 0.18, ease: 'easeOut' }}
@@ -1338,7 +1382,7 @@ function App() {
             <motion.span
               animate={{ scale: [1, 1.15, 1], y: [0, -10, 0] }}
               transition={{ duration: 0.7, repeat: 2, type: 'spring' }}
-              className="text-6xl font-display font-black text-moomin-text drop-shadow-[0_12px_20px_rgba(135,206,235,0.3)] tracking-tighter relative italic"
+              className="text-6xl font-display font-black text-white drop-shadow-[0_12px_20px_rgba(0,229,255,0.4)] tracking-tighter relative italic"
             >
               {showMilestoneCelebration >= 20 ? '🌈✨ LEYENDA' : showMilestoneCelebration >= 15 ? '⭐✨ SOÑADA' : showMilestoneCelebration >= 10 ? '🔥💪 IMPARABLE' : '⚡ ¡GENIAL!'}
             </motion.span>
@@ -1346,7 +1390,7 @@ function App() {
               initial={{ opacity: 0, y: 8, scale: 0.8 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ delay: 0.3, type: 'spring' }}
-              className="text-2xl font-black text-moomin-accent tracking-widest italic font-display"
+              className="text-2xl font-black text-accent-alert tracking-widest italic font-display"
             >
               {showMilestoneCelebration} ✨
             </motion.span>
@@ -1369,24 +1413,24 @@ function App() {
                 <motion.span
                   animate={{ scale: [1, 1.2, 1], rotate: [0, 10, -10, 0] }}
                   transition={{ duration: 0.5 }}
-                  className="text-6xl drop-shadow-[0_10px_15px_rgba(135,206,235,0.4)]"
+                  className="text-6xl drop-shadow-[0_10px_15px_rgba(34,211,238,0.6)]"
                 >
                   ✨
                 </motion.span>
-                <span className="text-5xl font-display font-black italic text-moomin-primary drop-shadow-lg tracking-tighter">
+                <span className="text-5xl font-display font-black italic text-primary drop-shadow-[0_0_10px_rgba(34,211,238,0.8)] tracking-tighter">
                   CORRECTO
                 </span>
               </>
             ) : (
               <>
                 <motion.span
-                  animate={{ scale: [1, 1.1, 1], shake: [0, -5, 5, 0] }}
+                  animate={{ scale: [1, 1.1, 1], x: [0, -5, 5, -5, 5, 0] }}
                   transition={{ duration: 0.5 }}
-                  className="text-6xl drop-shadow-[0_10px_15px_rgba(255,159,127,0.4)]"
+                  className="text-6xl drop-shadow-[0_10px_15px_rgba(251,113,133,0.6)]"
                 >
                   ⚠️
                 </motion.span>
-                <span className="text-4xl font-display font-black italic text-moomin-accent drop-shadow-lg tracking-tighter">
+                <span className="text-4xl font-display font-black italic text-accent-alert drop-shadow-[0_0_10px_rgba(251,113,133,0.8)] tracking-tighter">
                   REVISÁ
                 </span>
               </>
@@ -1395,7 +1439,7 @@ function App() {
               <motion.span
                 initial={{ scale: 0 }}
                 animate={{ scale: [0, 1.2, 1] }}
-                className="text-moomin-secondary font-black text-xl italic tracking-wider drop-shadow-sm"
+                className="text-secondary font-black text-xl italic tracking-wider drop-shadow-sm"
               >
                 ✦ DECISIÓN OPORTUNA ✦
               </motion.span>
@@ -1404,7 +1448,7 @@ function App() {
               <motion.span 
                 initial={{ scale: 0, rotate: -10 }}
                 animate={{ scale: [0, 1.5, 1], rotate: 0 }}
-                className="text-moomin-primary font-black text-2xl drop-shadow-md mt-2 italic"
+                className="text-primary font-black text-2xl drop-shadow-md mt-2 italic shadow-text"
               >
                 💡 CRITERIO DOBLE 💡
               </motion.span>
@@ -1413,7 +1457,7 @@ function App() {
         )}
       </AnimatePresence>
       
-      {/* Red-Out Vignette Effect - Now Moomin Accent (Soft Orange/Rose) */}
+      {/* Red-Out Vignette Effect - Now Neon Accent (Rose) */}
       {timeLeft <= 15 && state.matches('triage') && (
         <div
           className="fixed inset-0 pointer-events-none z-[80]"
@@ -1438,17 +1482,18 @@ function App() {
       {/* Tactical Dossier (Dossier Médico) */}
       {!state.matches('idle') && (
         <div className="fixed right-6 top-24 bottom-24 w-40 hidden lg:flex flex-col gap-3 overflow-y-auto pr-2 custom-scrollbar pointer-events-none opacity-80 hover:opacity-100 transition-opacity z-10">
-          <span className="text-[10px] font-black text-moomin-muted uppercase tracking-[0.3em] mb-3 border-b border-moomin-text/5 pb-2 italic">Dossier</span>
+          <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em] mb-4 border-b border-white/5 pb-2 italic text-center">Dossier Clínico</span>
           <AnimatePresence>
             {state.context.dossier.map((card, idx) => (
               <motion.div 
                 key={`${card.card_id}-${idx}`}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className={`p-3 rounded-2xl bg-white/60 border border-moomin-text/5 text-[10px] flex flex-col gap-1.5 shadow-sm ${state.context.showEureka && idx >= state.context.dossier.length - 3 ? 'eureka-glow ring-2 ring-moomin-primary/40' : ''}`}
+                className={`p-4 rounded-2xl bg-black/60 border border-white/5 text-[10px] flex flex-col gap-2 shadow-lg relative overflow-hidden backdrop-blur-md ${state.context.showEureka && idx >= state.context.dossier.length - 3 ? 'eureka-glow ring-2 ring-primary/40 shadow-[0_0_20px_rgba(34,211,238,0.2)]' : ''}`}
               >
-                <span className="text-moomin-primary font-black uppercase tracking-widest text-[8px]">{card.category}</span>
-                <span className="text-moomin-text font-medium italic leading-relaxed line-clamp-2">{card.card_text}</span>
+                <div className="absolute top-0 left-0 w-full h-full medical-grid opacity-5 pointer-events-none" />
+                <span className="text-primary font-black uppercase tracking-widest text-[8px] relative z-10">{card.category}</span>
+                <span className="text-slate-200 font-medium italic leading-loose line-clamp-2 relative z-10">{card.card_text}</span>
               </motion.div>
             )).reverse()}
           </AnimatePresence>
@@ -1570,24 +1615,25 @@ function App() {
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
-              className="glass-panel p-10 max-w-xs w-full text-center border-white/20 shadow-2xl"
+              className="glass-panel-dark p-12 max-w-xs w-full text-center border-primary/20 shadow-[0_0_100px_rgba(0,0,0,0.8)] relative"
             >
-              <span className="text-[9px] font-black tracking-[0.4em] text-medical-primary uppercase block mb-4">GUARDIA EN PAUSA</span>
-              <p className="text-4xl mb-6">⏸</p>
-              <p className="text-slate-400 text-sm font-medium mb-8">El expediente sigue abierto.</p>
-              <div className="flex flex-col gap-4 w-full">
+              <div className="absolute top-0 left-0 w-full h-1.5 bg-primary/20 glow-border-primary" />
+              <span className="neon-text-primary block mb-6 text-[11px]">INTERRUPCIÓN DE GUARDIA</span>
+              <p className="text-5xl mb-8 filter drop-shadow-[0_0_15px_rgba(0,229,255,0.4)]">⏸</p>
+              <p className="text-slate-400 text-sm font-medium mb-10 italic">El expediente clínico permanece abierto. Los protocolos están en espera.</p>
+              <div className="flex flex-col gap-5 w-full">
                 <button
                   onClick={() => setIsPaused(false)}
-                  className="btn-primary w-full py-4"
+                  className="btn-primary w-full py-5 text-sm"
                 >
-                  REANUDAR GUARDIA
+                  REANUDAR PROTOCOLO
                 </button>
                 <button
                   onClick={() => {
                     setIsPaused(false);
                     send({ type: 'RESTART' });
                   }}
-                  className="btn-primary w-full py-4 !bg-moomin-accent/10 !text-moomin-accent border-2 border-moomin-accent/20 shadow-none !italic"
+                  className="w-full py-4 text-[11px] font-black tracking-[0.4em] text-slate-500 hover:text-accent-alert transition-all uppercase italic border border-white/5 hover:border-accent-alert/30 rounded-2xl"
                 >
                   ABANDONAR GUARDIA
                 </button>

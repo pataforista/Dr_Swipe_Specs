@@ -107,11 +107,11 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -12, scale: 0.88 }}
                     transition={{ duration: 0.4, delay: 0.15, ease: [0.34, 1.56, 0.64, 1] }}
-                    className={`glass-panel p-5 max-w-sm text-center shadow-[0_0_50px_rgba(0,0,0,0.5)] relative border bg-slate-950/95 overflow-hidden ${
-                      validExpression === 'angry' ? 'border-accent-alert/50' :
-                      validExpression === 'happy' ? 'border-primary/50' :
-                      validExpression === 'shocked' ? 'border-accent-warning/50' :
-                      'border-white/10'
+                    className={`glass-panel p-5 max-w-sm text-center relative border bg-slate-950/95 overflow-hidden ${
+                      validExpression === 'angry' ? 'border-accent-alert/50 glow-border-alert' :
+                      validExpression === 'happy' ? 'border-primary/50 glow-border-primary' :
+                      validExpression === 'shocked' ? 'border-amber-500/50 shadow-[0_0_20px_rgba(245,158,11,0.3)]' :
+                      'border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)]'
                     }`}
                   >
                     <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-white/5 to-transparent" />

@@ -35,6 +35,10 @@ export const cleanVazquezComment = (comment: string | undefined, isCorrect: bool
   positiveMarkers.forEach(regex => {
     reasoning = reasoning.replace(regex, '');
   });
+  
+  // Clean leading punctuation and spaces (fixes "Nota clínica: . Es un criterio...")
+  reasoning = reasoning.replace(/^[\s.]+/, '');
+  
   // Capitalize first letter of reasoning
   if (reasoning.length > 0) {
      reasoning = reasoning.charAt(0).toUpperCase() + reasoning.slice(1);

@@ -32,63 +32,72 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({ onComplete }) 
   const slide = SLIDES[current];
 
   return (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 backdrop-blur-md p-6">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-slate-950/90 backdrop-blur-xl p-6">
       <motion.div
         initial={{ opacity: 0, scale: 0.9, y: 30 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        className="glass-panel p-10 max-w-sm w-full text-center border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.6)] bg-slate-900 rounded-[3rem] overflow-hidden relative"
+        className="glass-panel-dark p-12 max-w-md w-full text-center border border-primary/20 shadow-[0_0_100px_rgba(0,0,0,0.8)] relative overflow-hidden"
       >
-        <div className="absolute top-0 left-0 w-full h-1 bg-primary opacity-50" />
-        <span className="text-[9px] font-black tracking-[0.5em] text-primary uppercase mb-10 block">
-          INICIALIZACIÓN DE PROTOCOLO · {current + 1}/{SLIDES.length}
+        <div className="absolute top-0 left-0 w-full h-1.5 bg-primary/30 glow-border-primary" />
+        <span className="neon-text-primary block mb-12 text-[10px] tracking-[0.6em]">
+          PROTOCOLO DE INDUCCIÓN · {current + 1}/{SLIDES.length}
         </span>
 
         <AnimatePresence mode="wait">
           <motion.div
             key={current}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+            initial={{ opacity: 0, x: 50, filter: 'blur(10px)' }}
+            animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+            exit={{ opacity: 0, x: -50, filter: 'blur(10px)' }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           >
-            <div className="text-7xl mb-8 animate-pulse filter drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">{slide.emoji}</div>
-            <h3 className="text-2xl font-display font-black text-white mb-4 tracking-tight italic">
+            <div className="text-8xl mb-10 animate-pulse filter drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">{slide.emoji}</div>
+            <h3 className="text-3xl font-display font-black text-white mb-6 tracking-tighter italic shadow-text uppercase">
               {slide.title}
             </h3>
-            <p className="text-slate-400 leading-relaxed mb-8 text-sm font-black italic">
-              {slide.body}
+            <p className="text-slate-300 leading-relaxed mb-10 text-base font-medium italic px-4">
+              "{slide.body}"
             </p>
-            <p className="text-[10px] font-black text-primary uppercase tracking-[0.3em] bg-slate-950/60 py-3 rounded-2xl border border-white/5 italic">
-              {slide.hint}
-            </p>
+            <div className="relative overflow-hidden rounded-2xl p-4 bg-black/40 border border-primary/10">
+              <div className="absolute top-0 left-0 w-full h-full medical-grid opacity-10 pointer-events-none" />
+              <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em] italic relative z-10">
+                {slide.hint}
+              </p>
+            </div>
           </motion.div>
         </AnimatePresence>
 
         {/* Progress pips */}
-        <div className="flex gap-2.5 justify-center mt-8 mb-8">
+        <div className="flex gap-4 justify-center mt-12 mb-12">
           {SLIDES.map((_, i) => (
-            <div
+            <motion.div
               key={i}
-              className={`h-1.5 rounded-full transition-all duration-500 ${
-                i === current ? 'w-10 bg-primary shadow-[0_0_15px_rgba(34,211,238,0.5)]' : 'w-2 bg-slate-800'
-              }`}
+              animate={{
+                width: i === current ? 40 : 12,
+                backgroundColor: i === current ? '#00E5FF' : 'rgba(255,255,255,0.05)',
+                boxShadow: i === current ? '0 0 15px rgba(0, 229, 255, 0.6)' : 'none'
+              }}
+              className="h-2 rounded-full transition-all duration-500 border border-white/5"
             />
           ))}
         </div>
 
         <button
           onClick={() => (isLast ? onComplete() : setCurrent((s) => s + 1))}
-          className="bg-primary hover:bg-white text-slate-950 font-black text-[11px] tracking-[0.5em] uppercase py-6 px-8 rounded-2xl shadow-lg transition-all active:scale-95 w-full"
+          className="btn-primary w-full py-6 text-lg group"
         >
-          {isLast ? 'INICIAR GUARDIA' : 'SIGUIENTE PASO'}
+          <span className="flex items-center justify-center gap-3">
+            {isLast ? 'INICIAR GUARDIA' : 'SIGUIENTE PASO'}
+            <span className="group-hover:translate-x-1 transition-transform">➡️</span>
+          </span>
         </button>
 
         {current === 0 && (
           <button
             onClick={onComplete}
-            className="mt-6 text-[10px] font-black tracking-[0.3em] text-slate-600 hover:text-primary transition-colors uppercase italic"
+            className="mt-8 text-[11px] font-black tracking-[0.4em] text-slate-600 hover:text-primary transition-all uppercase italic hover:scale-105"
           >
-            SALTAR PROTOCOLO
+            — SALTAR PROTOCOLO —
           </button>
         )}
       </motion.div>

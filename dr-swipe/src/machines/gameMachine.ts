@@ -256,7 +256,7 @@ export const gameMachine = setup({
         activePenalty: nextPenalty,
         activeEvent: nextEvent,
         multiplier: scoreBreakdown.comboMultiplier,
-        score: context.score + scoreBreakdown.finalPoints,
+        score: Math.max(0, context.score + scoreBreakdown.finalPoints),
         dossier: nextDossier,
         showEureka: hasEureka,
         currentCardIndex: context.currentCardIndex + 1,
