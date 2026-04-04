@@ -8,21 +8,21 @@ interface TutorialOverlayProps {
 const SLIDES = [
   {
     emoji: '📝',
-    title: 'El expediente no se organiza solo.',
-    body: 'Cada tarjeta es una decisión. Desliza a la derecha para ACEPTAR lo que corresponde al caso, a la izquierda para RECHAZAR lo que no aplica. El orden importa. El caos en el expediente es caos en la atención.',
-    hint: '← Rechaza  |  Acepta →',
+    title: 'Tu Diario de Guardia.',
+    body: 'Cada paciente es una historia. Desliza a la derecha para ACEPTAR los hallazgos que explican el caso, y a la izquierda para DESCARTAR lo irrelevante. Tu criterio es la mejor medicina.',
+    hint: '← Descartar  |  Aceptar →',
   },
   {
-    emoji: '❤️',
-    title: 'El monitor no miente.',
-    body: 'Cada error drena la Vitalidad del paciente. Cada acierto la recupera, pero nunca al mismo ritmo. En medicina tampoco.',
+    emoji: '💖',
+    title: 'Cuida tus Notas.',
+    body: 'Los errores en el diagnóstico drenan la Vitalidad del paciente. Mantén tu enfoque: las notas impecables salvan vidas y mantienen tu guardia bajo control.',
     hint: 'Error: -25 Vitalidad  ·  Acierto: +5 Vitalidad',
   },
   {
-    emoji: '📦',
-    title: 'Las guardias limpias tienen recompensa.',
-    body: 'Mantén una racha sin errores y el sistema te entrega una Caja de Suministros — monedas, beneficios, lo que necesitas para aguantar la noche.',
-    hint: 'Racha x10 = Caja de Suministros',
+    emoji: '✨',
+    title: 'Colecciona Logros.',
+    body: 'Una racha de aciertos te premia con Caja de Suministros. Úsalas para obtener ventajas y demostrar que eres el mejor del servicio.',
+    hint: 'Racha x10 = Premio Especial',
   },
 ];
 
@@ -32,72 +32,76 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({ onComplete }) 
   const slide = SLIDES[current];
 
   return (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-slate-950/90 backdrop-blur-xl p-6">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-md p-6">
+      {/* Paper texture overlay (Dot Grid) */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.03] medical-grid z-0" />
+
       <motion.div
         initial={{ opacity: 0, scale: 0.9, y: 30 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        className="glass-panel-dark p-12 max-w-md w-full text-center border border-primary/20 shadow-[0_0_100px_rgba(0,0,0,0.8)] relative overflow-hidden"
+        className="paper-sheet p-12 max-w-md w-full text-center shadow-2xl relative overflow-hidden bg-white"
       >
-        <div className="absolute top-0 left-0 w-full h-1.5 bg-primary/30 glow-border-primary" />
-        <span className="neon-text-primary block mb-12 text-[10px] tracking-[0.6em]">
-          PROTOCOLO DE INDUCCIÓN · {current + 1}/{SLIDES.length}
+        {/* Washi Tape Header */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-10 washi-tape-pink -rotate-1 shadow-sm border-x-2 border-white/40 z-20" />
+
+        <span className="text-primary/60 block mb-10 text-[12px] font-black tracking-[0.4em] lettering uppercase">
+          Guía de Estudio ✨ {current + 1}/{SLIDES.length}
         </span>
 
         <AnimatePresence mode="wait">
           <motion.div
             key={current}
-            initial={{ opacity: 0, x: 50, filter: 'blur(10px)' }}
-            animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-            exit={{ opacity: 0, x: -50, filter: 'blur(10px)' }}
+            initial={{ opacity: 0, x: 50, rotate: 5 }}
+            animate={{ opacity: 1, x: 0, rotate: 0 }}
+            exit={{ opacity: 0, x: -50, rotate: -5 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            className="px-2"
           >
-            <div className="text-8xl mb-10 animate-pulse filter drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">{slide.emoji}</div>
-            <h3 className="text-3xl font-display font-black text-white mb-6 tracking-tighter italic shadow-text uppercase">
+            <div className="text-8xl mb-8 filter drop-shadow-sm animate-pulse">{slide.emoji}</div>
+            <h3 className="text-4xl font-bold text-slate-800 mb-6 tracking-tighter lettering leading-tight">
               {slide.title}
             </h3>
-            <p className="text-slate-300 leading-relaxed mb-10 text-base font-medium italic px-4">
+            <p className="text-slate-500 leading-relaxed mb-10 text-xl font-bold lettering italic px-4">
               "{slide.body}"
             </p>
-            <div className="relative overflow-hidden rounded-2xl p-4 bg-black/40 border border-primary/10">
-              <div className="absolute top-0 left-0 w-full h-full medical-grid opacity-10 pointer-events-none" />
-              <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em] italic relative z-10">
+            
+            <div className="relative py-6 px-4 bg-slate-50 border-2 border-dashed border-slate-200 rounded-3xl mb-8">
+              <p className="text-[12px] font-black text-primary uppercase tracking-[0.3em] font-bold lettering relative z-10">
                 {slide.hint}
               </p>
             </div>
           </motion.div>
         </AnimatePresence>
 
-        {/* Progress pips */}
-        <div className="flex gap-4 justify-center mt-12 mb-12">
+        {/* Progress Dots */}
+        <div className="flex gap-3 justify-center mb-10">
           {SLIDES.map((_, i) => (
             <motion.div
               key={i}
               animate={{
-                width: i === current ? 40 : 12,
-                backgroundColor: i === current ? '#00E5FF' : 'rgba(255,255,255,0.05)',
-                boxShadow: i === current ? '0 0 15px rgba(0, 229, 255, 0.6)' : 'none'
+                scale: i === current ? 1.2 : 1,
+                backgroundColor: i === current ? '#22D3EE' : '#E2E8F0'
               }}
-              className="h-2 rounded-full transition-all duration-500 border border-white/5"
+              className="w-3 h-3 rounded-full transition-all duration-300"
             />
           ))}
         </div>
 
         <button
           onClick={() => (isLast ? onComplete() : setCurrent((s) => s + 1))}
-          className="btn-primary w-full py-6 text-lg group"
+          className="marker-btn w-full py-6 text-xl group"
         >
           <span className="flex items-center justify-center gap-3">
-            {isLast ? 'INICIAR GUARDIA' : 'SIGUIENTE PASO'}
-            <span className="group-hover:translate-x-1 transition-transform">➡️</span>
+            {isLast ? '¡VAMOS A LA GUARDIA! 🚀' : 'SIGUIENTE NOTA ✨'}
           </span>
         </button>
 
         {current === 0 && (
           <button
             onClick={onComplete}
-            className="mt-8 text-[11px] font-black tracking-[0.4em] text-slate-600 hover:text-primary transition-all uppercase italic hover:scale-105"
+            className="mt-8 text-[11px] font-black tracking-[0.4em] text-slate-400 hover:text-rose-500 transition-colors uppercase lettering italic"
           >
-            — SALTAR PROTOCOLO —
+            — SALTAR TUTORIAL —
           </button>
         )}
       </motion.div>

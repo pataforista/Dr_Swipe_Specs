@@ -130,8 +130,8 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
             onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); handleActionSwipe('left'); }}
             whileHover={!isLocked ? { scale: 1.15, y: -4 } : {}}
             whileTap={!isLocked ? { scale: 0.9 } : {}}
-            className={`w-20 h-20 rounded-full bg-slate-900 border text-accent-alert shadow-[0_0_40px_rgba(0,0,0,0.4)] flex items-center justify-center text-3xl hover:bg-slate-800 hover:border-accent-alert/50 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner relative ${
-              lifelineActive && cards[currentIndex]?.expected_action === 'discard' ? 'glow-border-alert border-accent-alert/100 animate-pulse' : 'border-white/10'
+            className={`w-20 h-20 rounded-full bg-white border text-accent-alert shadow-[0_0_40px_rgba(0,0,0,0.4)] flex items-center justify-center text-3xl hover:bg-slate-800 hover:border-accent-alert/50 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner relative ${
+              lifelineActive && cards[currentIndex]?.expected_action === 'discard' ? 'sticker-glow border-accent-alert/100 animate-pulse' : 'border-white/10'
             }`}
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,theme(colors.accent-alert/10),transparent)] opacity-0 hover:opacity-100 transition-opacity" />
@@ -139,7 +139,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
           </motion.button>
           <span className={`text-[9px] font-black uppercase tracking-[0.3em] transition-colors ${
             lifelineActive && cards[currentIndex]?.expected_action === 'discard' ? 'text-accent-alert' : 'text-slate-500 group-hover:text-accent-alert'
-          }`}>DESCARTAR</span>
+          }`}>PÉRDIDA DE TIEMPO</span>
         </div>
 
         {/* Hint */}
@@ -150,7 +150,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
             whileHover={canUseLifeline && !isLocked ? { scale: 1.15, rotate: 180, boxShadow: '0 0 30px rgba(129,140,248,0.4)' } : {}}
             whileTap={canUseLifeline && !isLocked ? { scale: 0.85 } : {}}
             className={`w-16 h-16 rounded-full border shadow-2xl flex items-center justify-center text-2xl transition-all ${
-              lifelineActive ? 'bg-secondary/20 border-secondary text-white glow-border-primary' : 'bg-slate-900 border-white/5 text-secondary hover:bg-white/5 hover:border-white/20 disabled:opacity-20'
+              lifelineActive ? 'bg-secondary/20 border-secondary text-white sticker-glow' : 'bg-white border-white/5 text-secondary hover:bg-white/5 hover:border-white/20 disabled:opacity-20'
             }`}
              title="Escanear (25 🪙)"
           >
@@ -167,8 +167,8 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
             onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); handleActionSwipe('right'); }}
             whileHover={!isLocked ? { scale: 1.15, y: -4 } : {}}
             whileTap={!isLocked ? { scale: 0.9 } : {}}
-            className={`w-20 h-20 rounded-full bg-slate-900 border text-primary shadow-[0_0_40px_rgba(0,0,0,0.4)] flex items-center justify-center text-3xl hover:bg-slate-800 hover:border-primary/50 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner relative ${
-              lifelineActive && cards[currentIndex]?.expected_action === 'keep' ? 'glow-border-primary border-primary/100 animate-pulse' : 'border-white/10'
+            className={`w-20 h-20 rounded-full bg-white border text-primary shadow-[0_0_40px_rgba(0,0,0,0.4)] flex items-center justify-center text-3xl hover:bg-slate-800 hover:border-primary/50 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner relative ${
+              lifelineActive && cards[currentIndex]?.expected_action === 'keep' ? 'sticker-glow border-primary/100 animate-pulse' : 'border-white/10'
             }`}
           >
              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,theme(colors.primary/10),transparent)] opacity-0 hover:opacity-100 transition-opacity" />
@@ -176,7 +176,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
           </motion.button>
           <span className={`text-[9px] font-black uppercase tracking-[0.3em] transition-colors ${
             lifelineActive && cards[currentIndex]?.expected_action === 'keep' ? 'text-primary' : 'text-slate-500 group-hover:text-primary'
-          }`}>MANTENER</span>
+          }`}>ESTO CAMBIA TODO</span>
         </div>
       </div>
     </div>
@@ -195,22 +195,24 @@ interface DraggableCardProps {
   topX: any;
 }
 
-const ICON_MAP: Record<string, string> = {
-  'heartbeat': '🩺', 'heart': '❤️', 'target': '🎯', 'slash': '⚠️',
-  'alert-triangle': '⚠️', 'alert-circle': '⚠️', 'eye': '👁️', 'pill': '💊',
-  'clock': '⏱️', 'zap': '⚡', 'activity': '📈', 'trending-up': '📈',
-  'users': '👨‍⚕️', 'user': '👨‍⚕️', 'search': '🔍', 'grid': '📊',
-  'bar-chart-2': '📉', 'maximize': '🔎', 'help-circle': '❓', 'frown': '🤕',
-  'rotate-cw': '🔄', 'brain': '🧠', 'message-square': '🗣️', 'alert-octagon': '🚨',
-  'shield': '🛡️', 'droplets': '💧', 'check-circle': '✅', 'link': '🔗',
-  'refresh-cw': '🔄', 'image': '🖼️', 'dna': '🧬', 'clipboard': '📋',
-  'file-text': '📄', 'thermometer': '🌡️', 'test-tube': '🧪'
+// Icon helper for scrapbook categories
+
+const getIconForCategory = (category: string) => {
+  const cat = category?.toLowerCase() || '';
+  if (cat.includes('cardio')) return '❤️';
+  if (cat.includes('derma')) return '🩹';
+  if (cat.includes('gastro')) return '🍏';
+  if (cat.includes('neuro')) return '🧠';
+  if (cat.includes('psic')) return '🗣️';
+  if (cat.includes('ped')) return '👶';
+  if (cat.includes('sur')) return '🔪';
+  if (cat.includes('inf')) return '🦠';
+  if (cat.includes('endo')) return '🧪';
+  if (cat.includes('gyn') || cat.includes('obs')) return '🤰';
+  return '📋';
 };
 
-const getIcon = (iconName: string) => {
-  if (!iconName) return '📋';
-  return ICON_MAP[iconName] || (/\p{Emoji}/u.test(iconName) ? iconName : '📋');
-};
+import { calculateExitPosition, SWIPE_CONFIG } from '../utils/swipePhysics';
 
 const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(({
   card, isTop, indexOffset, onSwipe, playSwipe, isLocked, cardNumber, totalCards, topX
@@ -223,12 +225,13 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
     swipeOut: async (direction: 'left' | 'right') => {
       playSwipe(direction);
       triggerHaptic('cardSwipe');
-      const exitX = direction === 'right' ? 1200 : -1200;
+      const exitPos = calculateExitPosition(direction, 0); // No velocity on button click
       await controls.start({ 
-        x: exitX, 
+        x: exitPos.x, 
+        y: exitPos.y,
         opacity: 0, 
-        rotate: direction === 'right' ? 60 : -60, 
-        transition: { duration: 0.3 } 
+        rotate: exitPos.rotate, 
+        transition: { duration: SWIPE_CONFIG.EXIT_DURATION, ease: "easeOut" } 
       });
       onSwipe(direction);
     }
@@ -249,33 +252,45 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
     return 'text-base md:text-lg';
   };
 
-  const rotate = useTransform(x, [-300, 300], [-35, 35]);
-  const scaleTop = useTransform(x, [-200, 0, 200], [1.08, 1, 1.08]);
-  const yOffset = useTransform(x, [-200, 0, 200], [-20, 0, -20]);
+  const rotate = useTransform(x, [-300, 300], [-10, 10]);
+  const scaleTop = useTransform(x, [-200, 0, 200], [1.02, 1, 1.02]);
   
-  const stackScale = useTransform(x, [-300, 0, 300], [1 - (indexOffset - 1) * 0.05, 1 - indexOffset * 0.05, 1 - (indexOffset - 1) * 0.05]);
-  const stackY = useTransform(x, [-300, 0, 300], [(indexOffset - 1) * 12, indexOffset * 12, (indexOffset - 1) * 12]);
+  // Stack visibility: gentle paper stacking
+  const stackScale = useTransform(x, [-300, 0, 300], [1, 0.96, 1]);
+  const stackY = useTransform(x, [-300, 0, 300], [0, 12, 0]);
+  const stackOpacity = useTransform(x, [-300, 0, 300], [1, 0.5, 1]);
+  const stackRotate = useTransform(x, [-300, 0, 300], [0, (indexOffset % 2 === 0 ? 1.5 : -1.5), 0]);
 
-  const overlayOpacityLeft = useTransform(x, [0, -120], [0, 1]);
-  const overlayOpacityRight = useTransform(x, [0, 120], [0, 1]);
+  const overlayOpacityLeft = useTransform(x, [0, -100], [0, 1]);
+  const overlayOpacityRight = useTransform(x, [0, 100], [0, 1]);
 
   const isLethal = card.safety_flags?.lethal_risk || card.safety_flags?.lethal_if_discarded;
   const isCritical = card.safety_flags?.decision_critical;
 
-  const headerGradient = isLethal ? 'from-rose-500/80 to-slate-950' : isCritical ? 'from-amber-500/80 to-slate-950' : 'from-primary/40 to-slate-950';
-  const cardBorderColor = isLethal ? 'border-accent-alert/60' : isCritical ? 'bg-amber-500/20 border-amber-500/40' : 'border-white/10';
+  const cardBg = isLethal ? 'bg-rose-50' : isCritical ? 'bg-amber-50' : 'bg-white';
+  const accentColor = isLethal ? 'border-accent-alert/40 shadow-rose-100' : isCritical ? 'border-secondary/40 shadow-amber-100' : 'border-slate-100 shadow-slate-200/50';
 
   const handleDragEnd = async (_event: any, info: { offset: { x: number }; velocity: { x: number } }) => {
     if (!isTop || isLocked) return;
-    const threshold = 80;
+    const threshold = SWIPE_CONFIG.CARD_WIDTH * SWIPE_CONFIG.DRAG_THRESHOLD;
     const velocity = info.velocity.x;
 
-    if (Math.abs(info.offset.x) > threshold || Math.abs(velocity) > 500) {
+    if (Math.abs(info.offset.x) > threshold || Math.abs(velocity) > SWIPE_CONFIG.VELOCITY_THRESHOLD * 1000) {
       const direction = info.offset.x > 0 ? 'right' : 'left';
+      
+      // IMMEDIATE FEEDBACK (T+0)
       playSwipe(direction);
       triggerHaptic('cardSwipe');
-      const exitX = direction === 'right' ? 1200 : -1200;
-      await controls.start({ x: exitX, opacity: 0, rotate: direction === 'right' ? 60 : -60, transition: { duration: 0.3 } });
+      
+      const exitPos = calculateExitPosition(direction, velocity / 1000);
+      
+      await controls.start({ 
+        x: exitPos.x, 
+        y: exitPos.y,
+        opacity: 0, 
+        rotate: exitPos.rotate, 
+        transition: { duration: SWIPE_CONFIG.EXIT_DURATION, ease: "easeOut" } 
+      });
       onSwipe(direction);
     } else {
       controls.start({ x: 0, y: 0, rotate: 0, scale: 1, transition: { type: 'spring', stiffness: 600, damping: 30 } });
@@ -284,69 +299,77 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
 
   return (
     <motion.div
-      className={`absolute w-full h-full rounded-[3.5rem] border ${cardBorderColor} overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.5)] flex flex-col bg-slate-950 select-none medical-grid`}
+      className={`absolute w-full h-full rounded-[2.5rem] border-2 ${accentColor} shadow-2xl flex flex-col ${cardBg} select-none overflow-hidden index-card`}
       style={{
-        x, rotate,
+        x, rotate: isTop ? rotate : stackRotate,
         scale: isTop ? scaleTop : stackScale,
-        y: isTop ? yOffset : stackY,
-        opacity: 1,
+        y: isTop ? 0 : stackY,
+        opacity: isTop ? 1 : stackOpacity,
         zIndex: 1000 - (indexOffset * 100),
         isolation: 'isolate',
         touchAction: isTop && !isLocked ? 'pan-y' : 'auto',
       }}
       drag={isTop && !isLocked ? "x" : false}
       dragConstraints={{ left: -500, right: 500 }}
-      dragElastic={0.6}
+      dragElastic={0.4}
       onDragEnd={handleDragEnd}
-      initial={isTop ? { opacity: 0, scale: 0.95, y: 30 } : false}
+      initial={isTop ? { opacity: 0, scale: 0.9, y: 30 } : false}
       animate={isTop ? controls : undefined}
       exit={{ opacity: 0, scale: 0.8 }}
-      whileDrag={{ scale: 1.05, cursor: 'grabbing' }}
     >
-      {/* Swipe Stamps */}
-      <motion.div style={{ opacity: overlayOpacityLeft }} className="absolute top-12 left-10 z-50 pointer-events-none">
-        <div className="border border-accent-alert/50 text-accent-alert font-black text-xl px-6 py-2 rounded-2xl uppercase tracking-[0.4em] rotate-[-12deg] bg-slate-950/80 backdrop-blur-md shadow-[0_0_20px_rgba(251,113,133,0.3)]">DESCARTAR</div>
+      {/* Red line margin effect (Notebook style) */}
+      <div className="absolute left-10 top-0 bottom-0 w-px bg-rose-200/40 z-10" />
+
+      {/* Swipe Stamps - Marker Style */}
+      <motion.div style={{ opacity: overlayOpacityLeft }} className="absolute top-12 left-12 z-50 pointer-events-none">
+        <div className="bg-rose-500 text-white font-bold lettering text-3xl px-8 py-3 rounded-xl -rotate-12 shadow-lg border-2 border-white/20">NO SIRVE 🖍️</div>
       </motion.div>
-      <motion.div style={{ opacity: overlayOpacityRight }} className="absolute top-12 right-10 z-50 pointer-events-none">
-        <div className="border border-primary/50 text-primary font-black text-xl px-6 py-2 rounded-2xl uppercase tracking-[0.4em] rotate-[12deg] bg-slate-950/80 backdrop-blur-md shadow-[0_0_20px_rgba(34,211,238,0.3)]">MANTENER</div>
+      <motion.div style={{ opacity: overlayOpacityRight }} className="absolute top-12 right-12 z-50 pointer-events-none">
+        <div className="bg-cyan-500 text-white font-bold lettering text-3xl px-8 py-3 rounded-xl rotate-12 shadow-lg border-2 border-white/20">¡QUÉ NIVEL! ✨</div>
       </motion.div>
 
-      {/* Header */}
-      <div className="relative h-[32%] flex items-center justify-center border-b border-white/10 overflow-hidden">
-        <div className={`absolute inset-0 bg-gradient-to-br ${headerGradient} opacity-60`} />
-        <div className="absolute top-6 left-1/2 -translate-x-1/2 z-30 px-5 py-1.5 bg-slate-900/80 backdrop-blur-md rounded-full border border-white/10 shadow-lg">
-          <span className="text-[9px] font-black text-slate-300 uppercase tracking-[0.5em] whitespace-nowrap">{card?.category || 'DATA'}</span>
+      {/* Header (Subject Tab) */}
+      <div className={`p-6 pl-14 flex justify-between items-center border-b border-slate-100 ${isLethal ? 'bg-rose-100/40' : isCritical ? 'bg-amber-100/40' : 'bg-slate-50/60'}`}>
+        <div className="flex flex-col">
+          <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Materia</span>
+          <span className="bg-white px-3 py-1 rounded-lg text-xs font-bold text-slate-600 shadow-sm border border-slate-100 flex items-center gap-2">
+            <span>{getIconForCategory(card.category)}</span>
+            {card.category}
+          </span>
         </div>
-        <div className="absolute bottom-5 right-8 z-30 px-3 py-1 bg-black/40 backdrop-blur-sm rounded-xl border border-white/5">
-          <span className="text-[9px] font-black text-slate-500 tracking-[0.2em] uppercase">{cardNumber} OF {totalCards}</span>
+        <div className="bg-white/80 px-3 py-1 rounded-lg border border-slate-100">
+           <span className="text-[10px] font-black text-slate-400 tracking-tighter">#{card.card_id.split('_').pop()}</span>
         </div>
-        {(isLethal || isCritical) && isTop && (
-          <motion.div initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className={`absolute bottom-5 left-8 z-30 px-4 py-1.5 rounded-full text-[8px] font-black tracking-[0.2em] uppercase flex items-center gap-2 shadow-[0_0_20px_rgba(0,0,0,0.4)] ${isLethal ? 'bg-rose-600 text-white' : 'bg-amber-500 text-slate-950'}`}>
-            <span className="relative z-10">{isLethal ? 'RIESGO LETAL' : 'ESTADO CRÍTICO'}</span>
-          </motion.div>
-        )}
-        <div className="text-7xl drop-shadow-[0_0_25px_rgba(255,255,255,0.2)] relative z-20 flex items-center justify-center h-24 w-24 brightness-125">{getIcon(card?.ui_icon || '')}</div>
       </div>
 
-      {/* Body */}
-      <div className="flex-1 flex flex-col px-10 pt-10 pb-8 bg-slate-950 relative">
-        <div className="flex-1 flex items-center justify-center text-center">
-          <p className={`font-display font-black text-white leading-[1.1] tracking-tighter italic ${getFontSizeClass(card?.card_text || '')} overflow-y-auto custom-scrollbar h-full flex items-center justify-center pr-2 break-words text-balance w-full drop-shadow-lg`}>
-            {card?.card_text || ''}
-          </p>
-        </div>
-        <div className="flex justify-between items-end pt-8 mt-6 border-t border-white/5">
-          <div className="flex flex-col gap-2">
-            <span className="text-[8px] font-black text-slate-500 uppercase tracking-[0.3em]">TRIAGE ANALYTICS</span>
-            <div className="flex gap-1.5">
-              <div className={`w-14 h-1.5 rounded-full shadow-[0_0_10px_rgba(0,0,0,1)] ${isLethal ? 'bg-rose-500' : isCritical ? 'bg-amber-500' : 'bg-primary'}`} />
-              <div className={`w-14 h-1.5 rounded-full ${isCritical || isLethal ? (isLethal ? 'bg-rose-500/20' : 'bg-amber-500/20') : 'bg-white/5'}`} />
+      {/* Main Content Area */}
+      <div className="flex-grow p-10 pl-16 flex flex-col justify-center relative">
+         <p className={`font-medium leading-relaxed text-slate-700 text-center ${getFontSizeClass(card.card_text)} px-2`}>
+          {card.card_text}
+        </p>
+      </div>
+
+      {/* Highlighter Labels */}
+      {(isLethal || isCritical) && (
+        <div className="p-6 pt-0 pl-14 flex justify-center gap-3">
+          {isLethal && (
+            <div className="bg-rose-500 text-white text-[10px] font-bold px-4 py-1.5 rounded-full shadow-sm lettering tracking-wider">
+              ⚠️ ¡Ojo, es letal!
             </div>
-          </div>
-          <div className="text-right">
-             <span className="text-[9px] font-black text-slate-600 block tracking-[0.3em] uppercase mb-1">DATA SOURCE</span>
-             <span className="text-[10px] font-black text-primary/60 tracking-widest uppercase">ID-{card?.card_id?.slice(-4).toUpperCase() || 'CORE'}</span>
-          </div>
+          )}
+          {isCritical && (
+             <div className="bg-amber-400 text-slate-800 text-[10px] font-bold px-4 py-1.5 rounded-full shadow-sm lettering tracking-wider">
+              👀 ¡Pregunta ENARM!
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Card Footer */}
+      <div className="p-5 pl-14 bg-slate-50/40 border-t border-slate-100 flex justify-between items-center text-[10px] font-bold text-slate-400">
+        <span className="lettering text-lg text-slate-300">Guardia nocturna...</span>
+        <div className="bg-white px-3 py-1 rounded-full border border-slate-100 text-slate-500">
+          Tarjeta {cardNumber} de {totalCards}
         </div>
       </div>
     </motion.div>

@@ -7,11 +7,11 @@ interface StatsDashboardProps {
 }
 
 const RANK_THRESHOLDS = [
-  { min: 0, label: '🩺 ESTUDIANTE DE MEDICINA' },
-  { min: 500, label: '🧪 MÉDICO INTERNO' },
+  { min: 0, label: '🩺 ESTUDIANTE MÉDICO' },
+  { min: 500, label: '🧪 INTERNO DE GUARDIA' },
   { min: 2000, label: '🏥 MÉDICO RESIDENTE' },
-  { min: 5000, label: '⚡ MÉDICO ADSCRITO' },
-  { min: 10000, label: '👑 JEFE DE GUARDIA' },
+  { min: 5000, label: '⚡ ESPECIALISTA' },
+  { min: 10000, label: '👑 JEFE DE ENSEÑANZA' },
   { min: 25000, label: '🌟 DIRECTOR MÉDICO' },
 ];
 
@@ -42,93 +42,96 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
       initial={{ opacity: 0, scale: 0.9, y: 40 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.9, y: 40 }}
-      className="glass-panel-dark p-12 max-w-md w-full text-left border border-primary/20 shadow-[0_0_100px_rgba(0,0,0,0.8)] relative overflow-hidden"
+      className="paper-sheet p-10 md:p-14 max-w-md w-full text-left shadow-2xl relative overflow-hidden bg-white"
     >
-      <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary via-secondary to-accent-alert opacity-40 shadow-[0_0_15px_rgba(0,229,255,0.3)]" />
+      {/* Paper texture overlay (Dot Grid) */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.03] medical-grid z-0" />
+      
+      {/* Washi Tape Header */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-10 washi-tape-pink -rotate-1 shadow-sm border-x-2 border-white/40 z-20" />
       
       {/* Header */}
-      <div className="flex justify-between items-center mb-12">
+      <div className="flex justify-between items-center mb-10 pt-6 relative z-10">
         <div className="flex flex-col gap-1">
-          <span className="text-[10px] font-black tracking-[0.5em] text-primary uppercase italic">
-            CENTRO DE DATOS OPERATIVOS
+          <span className="text-[12px] font-black tracking-[0.4em] text-primary/60 uppercase lettering">
+            LIBRETA DE LOGROS 📔
           </span>
-          <div className="h-0.5 w-12 bg-primary/30 rounded-full" />
+          <div className="h-1 w-24 bg-cyan-100 rounded-full" />
         </div>
         <button
           onClick={onClose}
-          className="w-12 h-12 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-slate-500 hover:text-white"
+          className="w-12 h-12 flex items-center justify-center rounded-2xl bg-slate-50 border-2 border-white shadow-sm text-slate-400 hover:text-rose-400 transition-colors"
           aria-label="Cerrar"
         >
-          <span className="text-xl font-black">✕</span>
+          <span className="text-xl font-bold">✕</span>
         </button>
       </div>
 
       {/* Rank badge */}
-      <div className="flex items-center gap-6 mb-12 p-8 bg-black/40 rounded-[2.5rem] border border-white/5 shadow-inner relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-full h-full medical-grid opacity-10 pointer-events-none" />
+      <div className="flex items-center gap-6 mb-10 p-8 bg-slate-50 rounded-[2.5rem] border-2 border-white shadow-inner relative overflow-hidden">
         <motion.div 
-          animate={{ rotate: [0, 5, -5, 0] }}
-          transition={{ repeat: Infinity, duration: 2.5 }}
-          className="text-5xl filter drop-shadow-[0_0_15px_rgba(0,229,255,0.4)] relative z-10"
+          animate={{ scale: [1, 1.15, 1], rotate: [0, 5, -5, 0] }}
+          transition={{ repeat: Infinity, duration: 3 }}
+          className="text-6xl filter drop-shadow-sm relative z-10"
         >
-          🧬
+          🎓
         </motion.div>
         <div className="relative z-10">
-          <span className="text-[9px] font-black text-slate-500 uppercase tracking-[0.3em] block mb-2">CREDENCIAL ACTIVA</span>
-          <span className="text-xl font-display font-black text-white italic tracking-tighter shadow-text">{rank}</span>
-        </div>
-        <div className="ml-auto text-right relative z-10">
-          <span className="text-[9px] font-black text-slate-500 uppercase tracking-[0.3em] block mb-2">XP TOTAL</span>
-          <span className="text-2xl font-black text-primary drop-shadow-[0_0_15px_rgba(0,229,255,0.4)]">{stats.xp.toLocaleString()}</span>
+          <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] block mb-2 lettering">RANGO ACTUAL:</span>
+          <span className="text-xl font-bold text-slate-800 lettering tracking-tight">{rank}</span>
         </div>
       </div>
 
       {/* XP progress */}
       {nextThreshold && (
-        <div className="mb-12 px-2">
+        <div className="mb-10 px-2 relative z-10">
           <div className="flex justify-between mb-4 items-end">
-            <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">SIGUIENTE ASCENSO</span>
-            <span className="text-[11px] font-black text-primary italic tracking-[0.2em]">{stats.xp} / {nextThreshold.min} <span className="text-[8px] opacity-60">PTS</span></span>
+            <span className="text-[11px] font-black text-slate-400 uppercase tracking-[0.4em] lettering">EXPERIENCIA ACUMULADA</span>
+            <span className="text-[12px] font-bold text-primary italic lettering">{stats.xp} / {nextThreshold.min} <span className="text-[10px]">pts</span></span>
           </div>
-          <div className="w-full h-3 bg-black/60 rounded-full overflow-hidden border border-white/5 p-0.5">
+          <div className="w-full h-4 bg-slate-100 rounded-full overflow-hidden border-2 border-white p-0.5 shadow-inner">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${xpProgress}%` }}
               transition={{ duration: 1.5, type: 'spring', bounce: 0.2 }}
-              className="h-full bg-primary rounded-full shadow-[0_0_20px_rgba(0,229,255,0.6)]"
+              className="h-full bg-cyan-400 rounded-full shadow-sm"
             />
           </div>
         </div>
       )}
 
       {/* Stats grid */}
-      <div className="grid grid-cols-2 gap-5 mb-12">
-        <StatCard label="CASOS RESUELTOS" value={stats.cases_solved} unit="EXP" color="primary" />
-        <StatCard label="TURNOS" value={stats.total_sessions ?? 0} unit="GDS" color="secondary" />
-        <StatCard label="ACIERTOS" value={stats.correct_swipes} unit="ops" color="primary" />
-        <StatCard label="FALLOS" value={stats.mistakes} unit="err" color="accent-alert" />
+      <div className="grid grid-cols-2 gap-5 mb-10 relative z-10">
+        <StatCard label="CASOS RESUELTOS" value={stats.cases_solved} emoji="📑" color="primary" />
+        <StatCard label="PUNTOS TOTALES" value={stats.xp} emoji="⭐" color="secondary" />
+        <StatCard label="ACIERTOS" value={stats.correct_swipes} emoji="📈" color="primary" />
+        <StatCard label="FALLOS" value={stats.mistakes} emoji="🖍️" color="accent-alert" />
       </div>
 
       {/* Accuracy Metric */}
-      <div className="bg-black/40 border border-white/5 rounded-[2.5rem] p-8">
-        <div className="flex justify-between items-center mb-5 px-1">
+      <div className="bg-slate-50 border-2 border-dashed border-slate-200 rounded-[2.5rem] p-8 relative z-10">
+        <div className="flex justify-between items-center mb-6 px-1">
           <div className="flex items-center gap-3">
-            <div className={`w-3 h-3 rounded-full animate-pulse ${accuracy >= 80 ? 'bg-primary shadow-[0_0_10px_rgba(0,229,255,0.8)]' : accuracy >= 60 ? 'bg-secondary' : 'bg-accent-alert'}`} />
-            <span className="text-[10px] text-slate-500 uppercase tracking-[0.4em] font-black">PRECISIÓN DIAGNÓSTICA</span>
+            <span className="text-2xl filter drop-shadow-sm">{accuracy >= 80 ? '🎯' : '🚧'}</span>
+            <span className="text-[11px] text-slate-500 uppercase tracking-[0.4em] font-black lettering">PRECISIÓN MÉDICA</span>
           </div>
-          <span className="text-xl text-white font-black italic">{accuracy}%</span>
+          <span className="text-3xl text-slate-700 font-bold lettering italic">{accuracy}%</span>
         </div>
-        <div className="w-full h-3 bg-black/60 rounded-full overflow-hidden border border-white/5 p-0.5">
+        <div className="w-full h-4 bg-slate-100 rounded-full overflow-hidden border-2 border-white p-0.5 shadow-inner">
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: `${accuracy}%` }}
             transition={{ duration: 2, delay: 0.5, type: 'spring' }}
             className={`h-full rounded-full ${
-              accuracy >= 80 ? 'bg-primary shadow-[0_0_20px_rgba(0,229,255,0.6)]' :
-              accuracy >= 60 ? 'bg-secondary shadow-[0_0_20px_rgba(167,139,250,0.6)]' : 'bg-accent-alert shadow-[0_0_20px_rgba(255,45,85,0.6)]'
+              accuracy >= 80 ? 'bg-emerald-400' :
+              accuracy >= 60 ? 'bg-amber-400' : 'bg-rose-400'
             }`}
           />
         </div>
+      </div>
+
+      <div className="mt-10 flex justify-center relative z-10">
+         <button onClick={onClose} className="marker-btn py-5 px-16 text-xl">DESPRENDER RANGO ✨</button>
       </div>
     </motion.div>
   );
@@ -137,22 +140,19 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
 const StatCard: React.FC<{
   label: string;
   value: string | number;
-  unit: string;
+  emoji: string;
   color: 'primary' | 'secondary' | 'accent-alert';
-}> = ({ label, value, unit, color }) => {
-  const colorClass = {
-    'primary': 'text-primary drop-shadow-[0_0_10px_rgba(0,229,255,0.3)]',
-    'secondary': 'text-secondary drop-shadow-[0_0_10px_rgba(167,139,250,0.3)]',
-    'accent-alert': 'text-accent-alert drop-shadow-[0_0_10px_rgba(255,45,85,0.3)]',
-  }[color];
-
+}> = ({ label, value, emoji, color }) => {
   return (
-    <div className="bg-black/60 border border-white/5 rounded-[2.2rem] p-6 flex flex-col justify-between shadow-lg relative overflow-hidden transition-all hover:border-white/10 group cursor-default">
-      <div className="absolute top-0 right-0 w-full h-full medical-grid opacity-5 pointer-events-none" />
-      <span className="text-[8px] font-black text-slate-500 uppercase tracking-[0.4em] block mb-4 leading-tight group-hover:text-slate-300 transition-colors uppercase">{label}</span>
-      <div className="flex items-baseline gap-2 relative z-10">
-        <span className={`text-3xl font-display font-black italic tracking-tighter ${colorClass}`}>{value}</span>
-        {unit && <span className="text-[9px] text-slate-600 font-black italic uppercase tracking-widest">{unit}</span>}
+    <div className="bg-white border-2 border-slate-100 rounded-[2.2rem] p-6 flex flex-col justify-between shadow-sm relative overflow-hidden transition-all hover:border-primary/20 group cursor-default">
+      <div className="flex justify-between items-start mb-3">
+        <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.3em] lettering leading-tight">{label}</span>
+        <span className="text-xl opacity-60 group-hover:opacity-100 transition-opacity">{emoji}</span>
+      </div>
+      <div className="flex items-baseline gap-1.5 relative z-10">
+        <span className={`text-3xl font-bold lettering tracking-tighter ${
+          color === 'primary' ? 'text-primary' : color === 'secondary' ? 'text-cyan-600' : 'text-rose-500'
+        }`}>{value.toLocaleString()}</span>
       </div>
     </div>
   );

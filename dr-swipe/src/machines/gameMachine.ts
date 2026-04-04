@@ -59,14 +59,28 @@ interface GameContext {
     expectedAction: 'keep' | 'discard';
   }>;
   // Shift (Guardia) context
+  isSandiaMode: boolean;
   totalCasesInShift: number;
   casesCompleted: number;
   lives: number; // Number of interns left (max 5)
+  // Rewind (Undo) context
+  undoCharges: number;
+  lastAction: {
+    vitality: number;
+    score: number;
+    combo: number;
+    multiplier: number;
+    dossier: Card[];
+    feedbackHistory: any[];
+    coinsEarnedThisCase: number;
+    mistakesThisCase: number;
+  } | null;
 }
 
 type GameEvent =
-  | { type: 'START_GUARD'; deck: Card[]; difficulty: string; pearl: EnarmPearl }
+  | { type: 'START_GUARD'; deck: Card[]; difficulty: string; pearl: EnarmPearl; isSandiaMode?: boolean }
   | { type: 'SWIPE'; direction: 'left' | 'right' }
+  | { type: 'UNDO_SWIPE' }
   | { type: 'TRIGGER_BOSS' }
   | { type: 'ANSWER_CORRECT' }
   | { type: 'ANSWER_WRONG'; error: string }
@@ -84,7 +98,7 @@ type GameEvent =
   | { type: 'RESOLVE_INTERRUPTION' }
   | { type: 'USE_LIFELINE' }
   | { type: 'APPLY_REWARD_HEAL'; value: number }
-  | { type: 'CONTINUE_SHIFT'; deck: Card[]; puzzle: any } // deck of the NEXT case
+  | { type: 'CONTINUE_SHIFT'; deck: Card[]; puzzle: any; isSandiaMode?: boolean } // deck of the NEXT case
   | { type: 'RESCUE' }
   | { type: 'CLEAR_MILESTONE' };
 
@@ -104,8 +118,6 @@ export const gameMachine = setup({
       combo: 0,
       multiplier: 1,
       warningCount: 0,
-      // caseStreak is intentionally NOT reset here so consecutive victories
-      // keep raising difficulty (adaptive learning curve). It only resets on failure.
       lastCardPresentedAt: 0,
       showEureka: false,
       isUrgent: false,
@@ -124,9 +136,9 @@ export const gameMachine = setup({
       lootBoxReward: null,
       activePenalty: null,
       activeEvent: null,
-      feedbackHistory: []
-      // casesCompleted is NOT reset here to keep track during the shift
-      // totalCasesInShift is kept
+      feedbackHistory: [],
+      undoCharges: 5,
+      lastAction: null
     }),
     clearVisuals: assign({
       showEureka: false,
@@ -139,6 +151,7 @@ export const gameMachine = setup({
     }),
     applyRewardHeal: assign(({ context, event }) => {
       if (event.type !== 'APPLY_REWARD_HEAL') return {};
+      // Sandia mode: no heal needed as there is no damage, but we allow it for consistency
       return {
         vitality: Math.min(100, context.vitality + event.value),
         lootBoxReward: null
@@ -148,6 +161,18 @@ export const gameMachine = setup({
       if (event.type !== 'SWIPE') return {};
       const card = context.deck[context.currentCardIndex];
       if (!card) return {};
+
+      // Store current state for Undo
+      const lastActionState = {
+        vitality: context.vitality,
+        score: context.score,
+        combo: context.combo,
+        multiplier: context.multiplier,
+        dossier: [...context.dossier],
+        feedbackHistory: [...context.feedbackHistory],
+        coinsEarnedThisCase: context.coinsEarnedThisCase,
+        mistakesThisCase: context.mistakesThisCase
+      };
 
       const isCorrect = (event.direction === 'right' && card.expected_action === 'keep') ||
                         (event.direction === 'left' && card.expected_action === 'discard');
@@ -171,8 +196,8 @@ export const gameMachine = setup({
       const nextCombo = isCorrect ? context.combo + 1 : 0;
 
       // Vitality Logic: +8 on correct, -15 on wrong (more forgiving, rewards learning)
-      // Ratio changed from 5:1 negative to 1.88:1 to prevent frustration while keeping challenge
-      const vitalityChange = isCorrect ? 8 : -15;
+      // SANDIA MODE: No health reduction
+      const vitalityChange = isCorrect ? 8 : (context.isSandiaMode ? 0 : -15);
       const nextVitality = Math.max(0, Math.min(100, context.vitality + vitalityChange));
 
       // Error Tracking
@@ -256,18 +281,19 @@ export const gameMachine = setup({
         activePenalty: nextPenalty,
         activeEvent: nextEvent,
         multiplier: scoreBreakdown.comboMultiplier,
-        score: Math.max(0, context.score + scoreBreakdown.finalPoints),
+        score: Math.max(0, context.score + (context.isSandiaMode ? Math.floor(scoreBreakdown.finalPoints * 0.5) : scoreBreakdown.finalPoints)),
         dossier: nextDossier,
         showEureka: hasEureka,
         currentCardIndex: context.currentCardIndex + 1,
         lastCardPresentedAt: Date.now(),
         interruptionActive: shouldTriggerInterruption,
         lastInterruptionAt: shouldTriggerInterruption ? Date.now() : context.lastInterruptionAt,
-        coinsEarnedThisCase: context.coinsEarnedThisCase + scoreBreakdown.coinsEarned,
+        coinsEarnedThisCase: context.coinsEarnedThisCase + (context.isSandiaMode ? Math.floor(scoreBreakdown.coinsEarned * 0.5) : scoreBreakdown.coinsEarned),
         mistakesThisCase: isCorrect ? context.mistakesThisCase : context.mistakesThisCase + 1,
         lifelineActive: false, // Reset lifeline after swipe
         comboMilestoneHit: milestoneHit,
-        feedbackHistory: [...context.feedbackHistory, newHistoryItem]
+        feedbackHistory: [...context.feedbackHistory, newHistoryItem],
+        lastAction: lastActionState
       };
     })
   }
@@ -307,7 +333,10 @@ export const gameMachine = setup({
     feedbackHistory: [],
     totalCasesInShift: 1,
     casesCompleted: 0,
-    lives: 5
+    lives: 5,
+    isSandiaMode: false,
+    undoCharges: 5,
+    lastAction: null
   },
   states: {
     idle: {
@@ -347,7 +376,8 @@ export const gameMachine = setup({
             feedbackHistory: [],
             totalCasesInShift: 3, // Default to 3 cases for a full shift
             casesCompleted: 0,
-            lives: 5
+            lives: 5,
+            isSandiaMode: ({ event }) => event.type === 'START_GUARD' ? !!event.isSandiaMode : false
           })
         }
       }
@@ -374,6 +404,26 @@ export const gameMachine = setup({
         SWIPE: {
           target: 'triage',
           actions: ['handleCardSwipe']
+        },
+        UNDO_SWIPE: {
+          target: 'triage',
+          guard: ({ context }) => context.undoCharges > 0 && context.currentCardIndex > 0 && context.lastAction !== null,
+          actions: assign(({ context }) => {
+            if (!context.lastAction) return {};
+            return {
+              currentCardIndex: Math.max(0, context.currentCardIndex - 1),
+              vitality: context.lastAction.vitality,
+              score: context.lastAction.score,
+              combo: context.lastAction.combo,
+              multiplier: context.lastAction.multiplier,
+              dossier: context.lastAction.dossier,
+              feedbackHistory: context.lastAction.feedbackHistory,
+              coinsEarnedThisCase: context.lastAction.coinsEarnedThisCase,
+              mistakesThisCase: context.lastAction.mistakesThisCase,
+              undoCharges: context.undoCharges - 1,
+              lastAction: null
+            };
+          })
         },
         TIME_OUT: {
           target: 'fail_protection',

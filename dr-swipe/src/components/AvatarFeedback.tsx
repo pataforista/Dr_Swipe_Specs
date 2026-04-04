@@ -20,114 +20,89 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
     navarro: '👩‍⚕️'
   };
 
-  const expressionFilters = {
-    neutral: 'saturate(0.4) contrast(0.9)',
-    happy: 'drop-shadow(0 0 15px rgba(34,211,238,0.4)) saturate(1.1)',
-    angry: 'drop-shadow(0 0 15px rgba(251,113,133,0.5)) saturate(1.5)',
-    shocked: 'drop-shadow(0 0 20px rgba(251,191,36,0.5)) contrast(1.2) brightness(1.1)'
+  const expressionColors = {
+    neutral: 'text-slate-400',
+    happy: 'text-emerald-500',
+    angry: 'text-rose-500',
+    shocked: 'text-amber-500'
   };
 
-  const glowColors = {
-    neutral: 'bg-slate-500/10',
-    happy: 'bg-primary/20',
-    angry: 'bg-accent-alert/20',
-    shocked: 'bg-accent-warning/20'
-  };
-
-  const borderColors = {
-    neutral: 'border-white/5',
-    happy: 'border-primary/40',
-    angry: 'border-accent-alert/40',
-    shocked: 'border-accent-warning/40'
+  const bubbleColors = {
+    neutral: 'border-slate-100 bg-white',
+    happy: 'border-emerald-100 bg-emerald-50/50',
+    angry: 'border-rose-100 bg-rose-50/50',
+    shocked: 'border-amber-100 bg-amber-50/50'
   };
 
   const validDoctor = (doctor in mentorIcons) ? doctor : 'mendoza';
-  const validExpression = (expression in expressionFilters) ? expression : 'neutral';
+  const validExpression = (expression in expressionColors) ? expression : 'neutral';
 
   const avatarMotion = {
     neutral: { scale: 1, rotate: 0 },
-    happy: { scale: [1, 1.08, 1], rotate: [0, 2, -2, 0] },
-    angry: { scale: [1, 1.05, 0.97, 1], rotate: [0, -4, 4, -2, 0] },
-    shocked: { scale: [1, 1.15, 1.05], rotate: [0, -5, 5, 0] }
+    happy: { scale: [1, 1.15, 1], rotate: [0, 5, -5, 0] },
+    angry: { scale: [1, 1.05, 1.1, 1], rotate: [0, -8, 8, -4, 0] },
+    shocked: { scale: [1, 1.25, 1.1], rotate: [0, -10, 10, 0] }
   };
 
   return (
     <ErrorBoundary fallback={
-      <div className="glass-panel p-4 border-accent-alert/30 text-center animate-pulse bg-slate-950">
-        <p className="text-accent-alert font-display font-black text-[10px] tracking-widest uppercase">CONEXIÓN PERDIDA</p>
+      <div className="paper-sheet p-4 border-rose-200 text-center animate-pulse bg-rose-50">
+        <p className="text-rose-500 font-bold text-[10px] uppercase lettering">Notas Perdidas...</p>
       </div>
     }>
       <AnimatePresence>
         {isVisible && (
           <motion.div
-            initial={{ opacity: 0, y: -20, scale: 0.92 }}
+            initial={{ opacity: 0, y: -20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.92 }}
-            transition={{ duration: 0.35, ease: [0.34, 1.56, 0.64, 1] }}
-            className="flex flex-col items-center gap-1 py-0 relative"
+            exit={{ opacity: 0, y: -20, scale: 0.9 }}
+            transition={{ duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
+            className="flex flex-col items-center gap-2 py-0 relative pointer-events-none"
           >
-            {/* Ambient Glow Ring */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <motion.div
-                animate={{ scale: validExpression === 'shocked' ? [1, 1.4, 1] : [1, 1.15, 1] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-                className={`w-32 h-32 rounded-full blur-3xl opacity-25 ${glowColors[validExpression]}`}
-              />
-            </div>
-
-            {/* Avatar Circle */}
+            {/* Avatar Circle - Styled as a circular sticker */}
             <motion.div
               key={`avatar-${validExpression}`}
               animate={avatarMotion[validExpression]}
-              transition={{ duration: 0.5, ease: 'easeInOut' }}
-              className={`w-14 h-14 glass-panel !rounded-full flex items-center justify-center text-3xl shadow-2xl relative z-10 border bg-slate-900 border-white/10 ${borderColors[validExpression]}`}
-              style={{ filter: expressionFilters[validExpression] }}
+              transition={{ duration: 0.6, ease: 'easeInOut' }}
+              className={`w-16 h-16 rounded-full flex items-center justify-center text-4xl shadow-xl relative z-10 border-4 border-white bg-slate-50 transition-colors duration-500`}
             >
-              {mentorIcons[validDoctor]}
+              <span className="relative z-10 filter drop-shadow-sm">
+                {mentorIcons[validDoctor]}
+              </span>
 
-              {/* Expression ring pulse for angry/shocked */}
+              {/* Playful ring pulse for high emotion */}
               {(validExpression === 'angry' || validExpression === 'shocked') && (
                 <motion.div
-                  className="absolute inset-0 rounded-full border-2"
-                  style={{ borderColor: validExpression === 'angry' ? '#fb7185' : '#fbbf24' }}
-                  initial={{ scale: 1, opacity: 0.8 }}
-                  animate={{ scale: 1.5, opacity: 0 }}
-                  transition={{ duration: 0.6, repeat: 2 }}
+                  className={`absolute inset-0 rounded-full border-4 ${validExpression === 'angry' ? 'border-rose-300' : 'border-amber-300'}`}
+                  initial={{ scale: 1, opacity: 0.6 }}
+                  animate={{ scale: 1.6, opacity: 0 }}
+                  transition={{ duration: 0.8, repeat: Infinity }}
                 />
               )}
             </motion.div>
 
-            {/* Dialogue Bubble */}
+            {/* Dialogue Bubble - Styled as a handwritten note bubble */}
             <div className="flex flex-col items-center relative z-20">
               <AnimatePresence mode="wait">
                 {dialogueText && (
                   <motion.div
                     key={dialogueText}
-                    initial={{ opacity: 0, y: 18, scale: 0.88 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -12, scale: 0.88 }}
-                    transition={{ duration: 0.4, delay: 0.15, ease: [0.34, 1.56, 0.64, 1] }}
-                    className={`glass-panel p-5 max-w-sm text-center relative border bg-slate-950/95 overflow-hidden ${
-                      validExpression === 'angry' ? 'border-accent-alert/50 glow-border-alert' :
-                      validExpression === 'happy' ? 'border-primary/50 glow-border-primary' :
-                      validExpression === 'shocked' ? 'border-amber-500/50 shadow-[0_0_20px_rgba(245,158,11,0.3)]' :
-                      'border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)]'
-                    }`}
+                    initial={{ opacity: 0, y: 15, scale: 0.85, rotate: -2 }}
+                    animate={{ opacity: 1, y: 0, scale: 1, rotate: 1 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.85, rotate: 2 }}
+                    transition={{ duration: 0.45, delay: 0.1, ease: 'easeOut' }}
+                    className={`paper-sheet p-6 max-w-sm text-center relative border-2 shadow-lg overflow-hidden ${bubbleColors[validExpression]}`}
                   >
-                    <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-                    <span className="absolute -top-3 left-6 text-[9px] font-black text-white/40 tracking-[0.4em] uppercase bg-slate-950 px-4 py-1 rounded-full border border-white/5">
-                      {validExpression === 'angry' ? 'ALERTA' : validExpression === 'happy' ? 'CORRECTO' : validExpression === 'shocked' ? 'ANOMALÍA' : 'DR. COM'}
+                    {/* Washi Tape Accent */}
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 washi-tape-pink opacity-60 -rotate-2" />
+                    
+                    <span className="block text-[10px] font-black opacity-30 tracking-[0.3em] uppercase mb-3 lettering">
+                      {validExpression === 'angry' ? '¡OJO!' : validExpression === 'happy' ? 'CORRECTO' : validExpression === 'shocked' ? '¡PELIGRO!' : 'CONSEJO'}
                     </span>
-                    <p className={`text-sm md:text-base font-display font-black leading-relaxed italic tracking-tight ${
-                      validExpression === 'angry' ? 'text-accent-alert' :
-                      validExpression === 'happy' ? 'text-primary' :
-                      validExpression === 'shocked' ? 'text-accent-warning' :
-                      'text-white'
-                    }`}>
+                    
+                    <p className={`text-base md:text-xl font-bold leading-relaxed italic lettering ${expressionColors[validExpression]}`}>
                       "{dialogueText}"
                     </p>
-                    {/* Bubble tail */}
-                    <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-5 h-5 bg-slate-950 rotate-45 border-l border-t border-inherit" />
                   </motion.div>
                 )}
               </AnimatePresence>
