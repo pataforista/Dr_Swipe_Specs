@@ -88,8 +88,9 @@ export const ClinicalCaseSchema = z.object({
   }),
   card_stream:      z.array(CardSchema).min(3, 'Un caso necesita al menos 3 cartas'),
   boss_fight_triad: BossFightTriadSchema.optional(),
+  // Consolidating pearl fields: enarm_pearl is the primary, perla_enarm is legacy
   enarm_pearl:      EnarmPearlSchema.optional(),
-  perla_enarm:      EnarmPearlSchema.optional(), // soporte legacy
+  perla_enarm:      EnarmPearlSchema.optional(),
 });
 
 // Tipo inferido — úsalo en lugar de la interfaz manual si quieres

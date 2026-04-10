@@ -67,10 +67,15 @@ export const useCodexStore = create<CodexState>()(
       })),
 
       spendCoins: (amount) => {
-        const state = useCodexStore.getState();
-        if (state.stats.coins < amount) return false;
-        set({ stats: { ...state.stats, coins: state.stats.coins - amount } });
-        return true;
+        let success = false;
+        set((state) => {
+          if (state.stats.coins >= amount) {
+            success = true;
+            return { stats: { ...state.stats, coins: state.stats.coins - amount } };
+          }
+          return state;
+        });
+        return success;
       },
 
       unlockPearl: (pearl) => set((state) => {
@@ -108,9 +113,9 @@ export const useCodexStore = create<CodexState>()(
         return { dailyStreak: newStreak, lastPlayedDate: today };
       }),
 
-      saveSessionProgress: (progress) => set({ sessionProgress: progress }),
+      saveSessionProgress: (progress) => set(() => ({ sessionProgress: progress })),
 
-      clearSessionProgress: () => set({ sessionProgress: null }),
+      clearSessionProgress: () => set(() => ({ sessionProgress: null })),
     }),
     {
       name: 'dr-swipe-codex',
