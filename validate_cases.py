@@ -224,7 +224,7 @@ class CaseValidator:
         return self.validated_count, self.errors, self.warnings
 
 def main():
-    validator = CaseValidator("/home/user/Dr_Swipe_Specs/cases")
+    validator = CaseValidator("c:/Users/Admin/Desktop/Juegos ENARM/Dr_Swipe_Specs/dr-swipe/public/cases")
     validated, errors, warnings = validator.validate_all()
 
     # Exit with appropriate code

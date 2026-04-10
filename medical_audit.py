@@ -4,7 +4,7 @@ import re
 
 # Use forward slashes for broader compatibility
 base_dir = "c:/Users/Admin/Desktop/Juegos ENARM/Dr_Swipe_Specs"
-cases_dir = base_dir + "/cases"
+cases_dir = base_dir + "/dr-swipe/public/cases"
 
 def is_unstable(text):
     text = text.replace(',', '.').replace(':', ' ')
