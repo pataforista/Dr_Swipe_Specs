@@ -62,10 +62,10 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
               animate={{
                 width: i === currentIndex ? '48px' : '8px',
                 backgroundColor: i < currentIndex
-                  ? 'rgba(34, 211, 238, 0.2)'
+                  ? 'rgba(34, 211, 238, 0.35)'
                   : i === currentIndex
                   ? '#22D3EE'
-                  : 'rgba(255, 255, 255, 0.1)'
+                  : 'rgba(148, 163, 184, 0.4)'
               }}
               transition={{ duration: 0.4, type: 'spring' }}
               className="h-1.5 rounded-full"
@@ -106,7 +106,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
             initial={{ opacity: 0, scale: 0.9, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className={`mt-4 px-8 py-5 rounded-3xl border/10 italic text-[11px] font-black tracking-[0.2em] uppercase shadow-[0_0_30px_rgba(0,0,0,0.5)] z-50 relative backdrop-blur-xl border ${
+            className={`mt-4 px-8 py-5 rounded-3xl italic text-[11px] font-black tracking-[0.2em] uppercase shadow-[0_0_30px_rgba(0,0,0,0.5)] z-50 relative backdrop-blur-xl border ${
               cards[currentIndex].expected_action === 'keep' 
                 ? 'bg-primary/10 border-primary/20 text-primary' 
                 : 'bg-accent-alert/10 border-accent-alert/20 text-accent-alert'

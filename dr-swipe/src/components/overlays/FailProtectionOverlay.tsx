@@ -23,7 +23,7 @@ export const FailProtectionOverlay: React.FC<FailProtectionOverlayProps> = ({
         initial={{ scale: 0.9, y: 20, opacity: 0 }}
         animate={{ scale: 1, y: 0, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
-        className="paper-sheet p-10 max-md w-full text-center border-rose-200 shadow-2xl relative overflow-hidden"
+        className="paper-sheet p-10 max-w-md w-full text-center border-rose-200 shadow-2xl relative overflow-hidden"
       >
         <div className="absolute top-0 left-0 w-full h-2 bg-rose-400 sticker-glow" />
         <div className="text-7xl mb-6">🚑</div>
