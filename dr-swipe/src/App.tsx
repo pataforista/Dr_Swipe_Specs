@@ -3,13 +3,13 @@ import { useMachine } from '@xstate/react';
 import { gameMachine } from './machines/gameMachine';
 import { SwipeDeck } from './components/SwipeDeck';
 import { ShockRoom } from './components/ShockRoom';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import type { ClinicalCase } from './types/game';
 import { dataLoader } from './utils/dataLoader';
 import { useGameAudio } from './hooks/useGameAudio';
 import { shuffleBossQuestion } from './utils/formatters';
 import { triggerHaptic } from './utils/hapticFeedback';
-import { calculatePerfectRoundBonus, getDailyStreakMultiplier } from './utils/scoringEngine';
+import { calculatePerfectRoundBonus, getDailyStreakMultiplier, calculateCardScore } from './utils/scoringEngine';
 import { LIFELINE_COST } from './store/useCodexStore';
 import { useCodexStore } from './store/useCodexStore';
 import { TutorialOverlay } from './components/TutorialOverlay';
@@ -46,7 +46,6 @@ export function App() {
   const [swipeFeedback, setSwipeFeedback] = useState<'correct' | 'wrong' | null>(null);
   const [lastSwipePoints, setLastSwipePoints] = useState<number>(0);
   const [timeLeft, setTimeLeft] = useState(60);
-  const isProcessing = false;
 
   useEffect(() => {
     if (state.matches('reward') || state.matches('ghosted') || state.matches('debrief')) clearSessionProgress();
@@ -125,7 +124,20 @@ export function App() {
     if (!card) return;
     const isCorrect = isSwipeCorrect(direction, card.expected_action);
     updateSwipeResult(isCorrect);
-    setLastSwipePoints(isCorrect ? 50 : -25);
+    const timeTaken = Date.now() - state.context.lastCardPresentedAt;
+    const scoreBreakdown = calculateCardScore(
+      card,
+      {
+        combo: state.context.combo,
+        multiplier: state.context.multiplier,
+        difficulty: state.context.difficulty,
+        dossier: state.context.dossier,
+        lastCardPresentedAt: state.context.lastCardPresentedAt,
+      },
+      isCorrect,
+      timeTaken
+    );
+    setLastSwipePoints(scoreBreakdown.finalPoints);
     setSwipeFeedback(isCorrect ? 'correct' : 'wrong');
     triggerHaptic(isCorrect ? 'criticalSuccess' : 'warning');
     send({ type: 'SWIPE', direction });
@@ -154,12 +166,18 @@ export function App() {
   };
 
   const handleLifeline = () => {
-    if (isProcessing || isPaused) return;
+    if (isLoadingCase || isPaused) return;
     if (spendCoins(LIFELINE_COST)) {
       send({ type: 'USE_LIFELINE' });
       triggerHaptic('warning');
     }
   };
+
+  const handleBossGhosted = useCallback((error: string) => {
+    stopTriageAlarm();
+    playFeedback('wrong');
+    send({ type: 'ANSWER_WRONG', error });
+  }, [stopTriageAlarm, playFeedback, send]);
 
   const renderCurrentView = () => {
     if (showIntro && currentCase) {
@@ -195,7 +213,7 @@ export function App() {
         return (
           <div className="flex flex-col items-center justify-center w-full max-w-sm gap-4 px-4 h-full pt-16 pb-12">
             <div className="relative w-full h-full flex flex-col items-center">
-              <SwipeDeck cards={state.context.deck} currentIndex={state.context.currentCardIndex} onSwipe={handleSwipe} isLocked={isProcessing || isPaused} lifelineActive={state.context.lifelineActive} canUseLifeline={stats.coins >= LIFELINE_COST && !state.context.lifelineActive} onUseLifeline={handleLifeline} />
+              <SwipeDeck cards={state.context.deck} currentIndex={state.context.currentCardIndex} onSwipe={handleSwipe} isLocked={isLoadingCase || isPaused} lifelineActive={state.context.lifelineActive} canUseLifeline={stats.coins >= LIFELINE_COST && !state.context.lifelineActive} onUseLifeline={handleLifeline} />
               <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-[110]">
                 <button disabled={state.context.undoCharges === 0 || state.context.currentCardIndex === 0} onClick={handleUndo} className="w-12 h-12 rounded-full border-2 border-white bg-secondary/80 flex items-center justify-center text-xl shadow-md disabled:opacity-20 transition-all">⏪</button>
                 <span className="text-[9px] font-black text-slate-400 uppercase lettering tracking-tighter">{state.context.undoCharges}/5</span>
@@ -204,7 +222,7 @@ export function App() {
           </div>
         );
       case state.matches('boss_fight'):
-        return <ShockRoom questions={currentCase!.boss_fight_triad!.questions} dossierItems={state.context.dossier} onSurvive={() => { stopTriageAlarm(); send({ type: 'ANSWER_CORRECT' }); }} onGhosted={(error) => { stopTriageAlarm(); playFeedback('wrong'); send({ type: 'ANSWER_WRONG', error }); }} />;
+        return <ShockRoom questions={currentCase!.boss_fight_triad!.questions} dossierItems={state.context.dossier} onSurvive={() => { stopTriageAlarm(); send({ type: 'ANSWER_CORRECT' }); }} onGhosted={handleBossGhosted} />;
       case state.matches('reward'):
         return (
           <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-10 max-w-md text-center shadow-xl relative">

@@ -27,7 +27,9 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
     return () => clearInterval(timer);
   }, [timeLeft, onGhosted]);
 
-  const handleAnswer = (isCorrect: boolean) => {
+  const handleAnswer = (selectedIndex: number) => {
+    const question = questions[currentStep];
+    const isCorrect = selectedIndex === question.correct_index;
     if (isCorrect) {
       if (currentStep + 1 >= totalSteps) {
         onSurvive();
@@ -86,20 +88,20 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
             className="mb-12 relative z-10"
           >
             <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-8 leading-tight lettering tracking-tight">
-              {questions[currentStep].texto}
+              {questions[currentStep].question || questions[currentStep].q}
             </h3>
 
             <div className="grid gap-4">
-              {questions[currentStep].opciones.map((opt: any, idx: number) => (
+              {questions[currentStep].options.map((opt: string, idx: number) => (
                 <button
                   key={idx}
-                  onClick={() => handleAnswer(opt.correcta)}
+                  onClick={() => handleAnswer(idx)}
                   className="paper-sheet p-6 text-left hover:border-emerald-300 hover:bg-emerald-50/30 transition-all group flex items-center gap-4 border-2 border-slate-50"
                 >
                   <span className="w-8 h-8 rounded-full border-2 border-slate-200 flex items-center justify-center font-bold text-slate-400 group-hover:border-emerald-300 group-hover:text-emerald-500 transition-colors">
                     {String.fromCharCode(65 + idx)}
                   </span>
-                  <span className="text-xl font-bold text-slate-600 group-hover:text-slate-800 lettering">{opt.texto}</span>
+                  <span className="text-xl font-bold text-slate-600 group-hover:text-slate-800 lettering">{opt}</span>
                 </button>
               ))}
             </div>
@@ -111,7 +113,7 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
             <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest block w-full mb-2 lettering italic">Hallazgos registrados en el diario:</span>
             {dossierItems.slice(-3).map((item, idx) => (
                 <span key={idx} className="bg-slate-50 px-4 py-1 rounded-full text-[10px] lowercase lettering font-bold border-2 border-white">
-                   #{item.nombre}
+                   #{item.card_id || item.category}
                 </span>
             ))}
         </div>
