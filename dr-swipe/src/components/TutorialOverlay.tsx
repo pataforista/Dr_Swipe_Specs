@@ -66,7 +66,7 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({ onComplete }) 
             </p>
             
             <div className="relative py-6 px-4 bg-slate-50 border-2 border-dashed border-slate-200 rounded-3xl mb-8">
-              <p className="text-[12px] font-black text-primary uppercase tracking-[0.3em] font-bold lettering relative z-10">
+              <p className="text-[12px] font-black text-primary uppercase tracking-[0.3em] lettering relative z-10">
                 {slide.hint}
               </p>
             </div>

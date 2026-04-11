@@ -235,6 +235,22 @@ export function App() {
             <button onClick={() => { if (caseQueue.length > 0) handleCaseTransition(); else send({ type: 'RESTART' }); }} className="marker-btn w-full py-5 text-xl">{caseQueue.length > 0 ? `Siguiente Px (${caseQueue.length})` : 'Terminar Turno'}</button>
           </motion.div>
         );
+      case state.matches('ghosted'):
+        return (
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-10 max-w-md text-center shadow-xl relative">
+            <div className="absolute top-0 left-0 w-full h-2 bg-rose-400" />
+            <div className="text-7xl mb-6 mt-4">💀</div>
+            <span className="lettering text-rose-500 font-bold block mb-2 text-[10px] uppercase">Turno Terminado</span>
+            <h2 className="text-5xl font-black text-slate-800 mb-4 lettering">Sin más internos</h2>
+            <div className="bg-rose-50 p-6 rounded-2xl mb-8 border-2 border-dashed border-rose-100 italic lettering text-lg">
+              "{state.context.fatalError || 'El servicio no sobrevivió.'}"
+            </div>
+            <div className="flex flex-col gap-4">
+              <button onClick={() => send({ type: 'VIEW_DEBRIEF' })} className="marker-btn w-full py-5 text-xl !bg-slate-700">VER NOTAS 📝</button>
+              <button onClick={() => send({ type: 'RESTART' })} className="text-[10px] font-bold text-slate-300 hover:text-rose-400 uppercase tracking-widest py-2 transition-all lettering">— Nueva Guardia —</button>
+            </div>
+          </motion.div>
+        );
       case state.matches('debrief'):
         return (
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-10 max-w-md text-left shadow-xl relative">

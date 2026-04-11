@@ -137,6 +137,7 @@ export const gameMachine = setup({
       activePenalty: null,
       activeEvent: null,
       feedbackHistory: [],
+      isSandiaMode: false,
       undoCharges: 5,
       lastAction: null
     }),
