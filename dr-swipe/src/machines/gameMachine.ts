@@ -223,6 +223,7 @@ export const gameMachine = setup({
 
       // Tactical Dossier Combo Logic
       let nextDossier = [...context.dossier];
+      let nextDiscarded = [...context.discarded];
       let hasEureka = false;
 
       if (event.direction === 'right') {
@@ -234,6 +235,8 @@ export const gameMachine = setup({
             hasEureka = true;
           }
         }
+      } else {
+        nextDiscarded.push(card);
       }
 
       // Check for interruption trigger (combo >= 5 y 8% chance para menos disrupción)
@@ -283,6 +286,7 @@ export const gameMachine = setup({
         multiplier: scoreBreakdown.comboMultiplier,
         score: Math.max(0, context.score + (context.isSandiaMode ? Math.floor(scoreBreakdown.finalPoints * 0.5) : scoreBreakdown.finalPoints)),
         dossier: nextDossier,
+        discarded: nextDiscarded,
         showEureka: hasEureka,
         currentCardIndex: context.currentCardIndex + 1,
         lastCardPresentedAt: Date.now(),
@@ -568,7 +572,19 @@ export const gameMachine = setup({
             lastCardPresentedAt: Date.now(),
             feedbackHistory: [],
             mistakesThisCase: 0,
-            coinsEarnedThisCase: 0
+            coinsEarnedThisCase: 0,
+            // Reset per-case state for the new patient
+            vitality: 100,
+            combo: 0,
+            multiplier: 1,
+            consecutiveErrors: 0,
+            dossier: [],
+            undoCharges: 5,
+            lootBoxReward: null,
+            activePenalty: null,
+            activeEvent: null,
+            lifelineActive: false,
+            comboMilestoneHit: 0
           })
         },
         RESTART: { target: 'idle', actions: ['resetGame'] } 
@@ -578,7 +594,7 @@ export const gameMachine = setup({
       always: [
         {
           target: 'ghosted',
-          guard: ({ context }) => context.lives <= 1
+          guard: ({ context }) => context.lives <= 0
         }
       ],
       on: {
