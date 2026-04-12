@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 80/50 mmHg, FC 130 lpm, Temp 36.2°C",
       "expected_action": "discard",
       "scoring": {
@@ -41,7 +41,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Historia Estándar",
+      "category": "meds",
       "card_text": "B) Descompresión en 2º Espacio Intercostal (LMC): Sitio recomendado en versiones antiguas (ATLS 9ª y previas). Menos efectivo por el grosor de la pared torácica.",
       "expected_action": "discard",
       "scoring": {
@@ -133,7 +133,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "activity",
-      "category": "Breathing",
+      "category": "imaging",
       "card_text": "I) Signos de Tensión: Desviación traqueal, ausencia de ruidos respiratorios e ingurgitación yugular.",
       "expected_action": "keep",
       "scoring": {

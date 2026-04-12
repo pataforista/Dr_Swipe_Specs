@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 120/80, FC 72 lpm, Temp 36.7°C",
       "expected_action": "discard",
       "scoring": {
@@ -24,7 +24,7 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "meds",
       "card_text": "A) Iniciar ART Inmediatamente (Tratamiento Universal): Guías actuales (GPC/WHO): Se recomienda iniciar ART en TODOS los pacientes, sin importar el nivel de CD4.",
       "expected_action": "keep",
       "scoring": {
@@ -52,7 +52,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "slash",
-      "category": "Diagnóstico Diferencial",
+      "category": "meds",
       "card_text": "C) Mononucleosis Infecciosa: Fiebre, faringitis y linfadenopatía. Similar al síndrome agudo de VIH pero con prueba de Monospot positiva.",
       "expected_action": "discard",
       "scoring": {

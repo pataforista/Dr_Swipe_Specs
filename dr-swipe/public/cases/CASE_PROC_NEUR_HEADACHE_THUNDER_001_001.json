@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 160/100 mmHg, FC 95 lpm, Temp 37.2°C",
       "expected_action": "discard",
       "scoring": {
@@ -24,7 +24,7 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "imaging",
       "card_text": "A) Hemorragia Subaracnoidea (HSA): Cefalea en trueno + Irritación meníngea. Causa principal: Rotura de aneurisma sacular.",
       "expected_action": "keep",
       "scoring": {
@@ -53,7 +53,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "slash",
-      "category": "Diagnóstico Diferencial",
+      "category": "vitals",
       "card_text": "C) Meningitis Bacteriana Súbita: Fiebre alta, rigidez de nuca y cefalea, pero de progresión en horas, no en segundos.",
       "expected_action": "discard",
       "scoring": {
@@ -89,7 +89,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "droplet",
-      "category": "Punción Lumbar",
+      "category": "meds",
       "card_text": "F) Búsqueda de Xantocromía: Si la TC es negativa, realizar punción lumbar para detectar líquido citrino/amarillento por bilirrubina.",
       "expected_action": "keep",
       "scoring": {

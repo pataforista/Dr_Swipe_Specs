@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 90/60 (tendencia al choque), FC 120 lpm, Temp 37.0°C",
       "expected_action": "discard",
       "scoring": {
@@ -52,7 +52,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "camera",
-      "category": "Estudio de Imagen",
+      "category": "imaging",
       "card_text": "C) Angio-Tomografía Computarizada (AngioTAC) Pulmonar: Defectos de llenado en arterias segmentarias.",
       "expected_action": "keep",
       "scoring": {
@@ -68,7 +68,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "beaker",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "D) Enoxaparina 1mg/kg SC cada 12 horas. Inicio inmediato tras confirmación.",
       "expected_action": "keep",
       "scoring": {
@@ -96,7 +96,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "search",
-      "category": "Signo Clínico",
+      "category": "meds",
       "card_text": "F) Signo de Homans: Dolor en la pantorrilla o región poplítea a la dorsiflexión pasiva del pie; sugiere Trombosis Venosa Profunda.",
       "expected_action": "keep",
       "scoring": {
@@ -108,7 +108,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "activity",
-      "category": "Electrocardiograma",
+      "category": "meds",
       "card_text": "G) Patrón S1Q3T3: Signo de McGinn-White (Onda S profunda en I, Q profunda en III y T negativa en III).",
       "expected_action": "keep",
       "scoring": {
@@ -120,7 +120,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "zap",
-      "category": "Tratamiento Avanzado",
+      "category": "meds",
       "card_text": "H) Trombólisis con Alteplasa (r-TPA): Indicada para pacientes con TEP masivo y choque obstructivo.",
       "expected_action": "keep",
       "scoring": {

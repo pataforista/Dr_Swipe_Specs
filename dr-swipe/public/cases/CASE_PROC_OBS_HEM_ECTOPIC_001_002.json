@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 80/40 mmHg, FC 120 lpm, Temp 36.2°C",
       "expected_action": "discard",
       "scoring": {
@@ -24,7 +24,7 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "meds",
       "card_text": "A) Embarazo Ectópico Roto: Triada: Amenorrea + Dolor pélvico + Sangrado escaso. Evoluciona a choque hemoperitoneo.",
       "expected_action": "keep",
       "scoring": {
@@ -57,7 +57,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "imaging",
       "card_text": "C) Zona de Discriminación: Nivel de hCG (usualmente >1,500 mUI/ml) donde DEBE verse un saco intrauterino por USG TV.",
       "expected_action": "keep",
       "scoring": {
@@ -109,7 +109,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "map",
-      "category": "Anatomía",
+      "category": "imaging",
       "card_text": "G) Localización en el Ámpula (95%): Es el sitio anatómico más común para la implantación fuera del útero.",
       "expected_action": "keep",
       "scoring": {
@@ -133,7 +133,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "search",
-      "category": "Gabinete",
+      "category": "imaging",
       "card_text": "I) Ultrasonido Transvaginal: Estudio de elección inicial para localizar la gestación y evaluar líquido libre.",
       "expected_action": "keep",
       "scoring": {

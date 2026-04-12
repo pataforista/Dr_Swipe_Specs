@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA N/A, FC 90 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -80,7 +80,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "zap",
-      "category": "Manejo Urgente",
+      "category": "meds",
       "card_text": "E) VPP (Ventilación a Presión Positiva): Iniciar si FC <100 lpm, Apnea o Boqueo. Es la acción más importante en reanimación.",
       "expected_action": "keep",
       "scoring": {
@@ -96,7 +96,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "help-circle",
-      "category": "Corrección",
+      "category": "meds",
       "card_text": "F) MR. SOPA: Pasos correctivos de la ventilación: Máscara, Reposición, Succión, Open mouth, Pressure, Alternative airway.",
       "expected_action": "keep",
       "scoring": {
@@ -108,7 +108,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "heart",
-      "category": "Compresiones",
+      "category": "meds",
       "card_text": "G) Compresiones Torácicas: Iniciar si la FC es <60 lpm después de 30 segundos de VPP efectiva con O2 al 100%.",
       "expected_action": "keep",
       "scoring": {

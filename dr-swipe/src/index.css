@@ -34,7 +34,17 @@ h1, h2, h3, .lettering {
   position: relative;
   overflow: hidden;
   box-shadow: 0 15px 35px rgba(0,0,0,0.04);
+  /* Layering Defaults */
+  isolation: isolate;
 }
+
+/* Z-INDEX HIERARCHY */
+.z-hud { z-index: 100; }
+.z-deck { z-index: 200; }
+.z-avatar { z-index: 300; }
+.z-overlay { z-index: 400; }
+.z-fail-protection { z-index: 500; }
+.z-global-toast { z-index: 600; }
 
 .index-card {
   background-color: white;

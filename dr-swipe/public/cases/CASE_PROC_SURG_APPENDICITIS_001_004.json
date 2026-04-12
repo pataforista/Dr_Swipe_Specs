@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 110/70, FC 100 lpm, Temp 38.2°C",
       "expected_action": "discard",
       "scoring": {
@@ -56,7 +56,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "eye",
-      "category": "Diagnóstico",
+      "category": "meds",
       "card_text": "C) Embarazo Ectópico Roto: Dolor pélvico agudo, sangrado transvaginal y datos de choque hipovolémico.",
       "expected_action": "discard",
       "scoring": {
@@ -84,7 +84,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "trending-up",
-      "category": "Anamnesis",
+      "category": "notes",
       "card_text": "E) Migración del Dolor: Dolor que inicia en región periumbilical y se localiza en fosa ilíaca derecha horas después.",
       "expected_action": "keep",
       "scoring": {
@@ -108,7 +108,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "test-tube",
-      "category": "Laboratorio",
+      "category": "labs",
       "card_text": "G) Leucocitosis >10,500: Aumento de glóbulos blancos en la biometría hemática completa.",
       "expected_action": "keep",
       "scoring": {
@@ -120,7 +120,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "thermometer",
-      "category": "Signo Vital",
+      "category": "vitals",
       "card_text": "H) Fiebre >38.3 °C: Presencia de temperatura elevada como parte de la respuesta inflamatoria.",
       "expected_action": "keep",
       "scoring": {
@@ -132,7 +132,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "activity",
-      "category": "Laboratorio",
+      "category": "labs",
       "card_text": "I) Desviación a la izquierda (Neutrofilia): Presencia de formas jóvenes de neutrófilos en sangre periférica.",
       "expected_action": "keep",
       "scoring": {

@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 100/60, FC 110 lpm, Temp 37.2°C",
       "expected_action": "discard",
       "scoring": {
@@ -24,7 +24,7 @@
     {
       "card_id": "c_1",
       "ui_icon": "eye",
-      "category": "Diagnóstico Diferencial",
+      "category": "imaging",
       "card_text": "A) Vólvulo de Sigmoides: Imagen en 'grano de café', ausencia de gas rectal y gran distensión de colon en paciente anciano.",
       "expected_action": "discard",
       "scoring": {
@@ -36,7 +36,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "image",
-      "category": "Signografía Rx",
+      "category": "imaging",
       "card_text": "B) Pila de Monedas: Imagen de asas de intestino delgado dilatadas con válvulas conniventes visibles en la radiografía.",
       "expected_action": "keep",
       "scoring": {
@@ -48,7 +48,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "activity",
-      "category": "Signografía Rx",
+      "category": "meds",
       "card_text": "C) Niveles Hidroaéreos: Presencia de aire y líquido en asas dilatadas, adoptando una disposición 'en escalera'.",
       "expected_action": "keep",
       "scoring": {
@@ -72,7 +72,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "frown",
-      "category": "Clínica",
+      "category": "meds",
       "card_text": "E) Vómitos Fecaloideos: Indican una obstrucción de larga evolución con sobrecrecimiento bacteriano en el contenido estancado.",
       "expected_action": "keep",
       "scoring": {
@@ -84,7 +84,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "zap",
-      "category": "Manejo Inicial",
+      "category": "meds",
       "card_text": "F) Sonda Nasogástrica (SNG): Colocación de SNG a derivación para descompresión gástrica y alivio de síntomas.",
       "expected_action": "keep",
       "scoring": {
@@ -100,7 +100,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "clock",
-      "category": "Manejo Conservador",
+      "category": "meds",
       "card_text": "G) Ayuno y Líquidos IV: Piedra angular del manejo médico inicial por 48-72h si no hay datos de estrangulación.",
       "expected_action": "keep",
       "scoring": {
@@ -124,7 +124,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "alert-circle",
-      "category": "Urgencia Quirúrgica",
+      "category": "imaging",
       "card_text": "I) Datos de Estrangulación: Fiebre, leucocitosis, taquicardia o irritación peritoneal obligan a cirugía inmediata.",
       "expected_action": "keep",
       "scoring": {
@@ -140,7 +140,7 @@
     {
       "card_id": "c_10",
       "ui_icon": "shield",
-      "category": "Manejo",
+      "category": "meds",
       "card_text": "J) Antibióticos Profílácticos: Administrar cobertura contra gramnegativos y anaerobios si se decide manejo quirúrgico.",
       "expected_action": "keep",
       "scoring": {

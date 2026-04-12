@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA N/A, FC 110 lpm, Temp 39.0°C",
       "expected_action": "discard",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico Diferencial",
+      "category": "meds",
       "card_text": "B) Sarampión: Fiebre alta, tos, coriza, conjuntivitis y manchas de Koplik. El exantema es maculopapular morbiliforme.",
       "expected_action": "discard",
       "scoring": {
@@ -52,7 +52,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "test-tube",
-      "category": "Diagnóstico",
+      "category": "meds",
       "card_text": "C) Exudado Faríngeo (Cultivo): Estándar de oro para confirmar la presencia de Estreptococo beta-hemolítico del grupo A.",
       "expected_action": "keep",
       "scoring": {
@@ -64,7 +64,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "activity",
-      "category": "Signo Patognomónico",
+      "category": "imaging",
       "card_text": "D) Líneas de Pastia: Hiperpigmentación lineal en pliegues flexores (codo, axilas) que no blanquea a la presión.",
       "expected_action": "keep",
       "scoring": {
@@ -100,7 +100,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "alert-triangle",
-      "category": "Exploración",
+      "category": "imaging",
       "card_text": "G) Exantema en Lija: Piel con sensación rugosa al tacto, similar a una lija fina, más acentuado en tronco.",
       "expected_action": "keep",
       "scoring": {
@@ -112,7 +112,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "beaker",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "H) Penicilina V o Amoxicilina: Tratamiento de elección por 10 días para erradicar el S. pyogenes.",
       "expected_action": "keep",
       "scoring": {
@@ -128,7 +128,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "shield-check",
-      "category": "Prevención",
+      "category": "meds",
       "card_text": "I) Prevención de Fiebre Reumática: El objetivo primordial del uso de antibióticos en esta patología.",
       "expected_action": "keep",
       "scoring": {

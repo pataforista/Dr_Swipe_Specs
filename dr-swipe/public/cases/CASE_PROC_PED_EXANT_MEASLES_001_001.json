@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA N/A, FC 120 lpm, Temp 39.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -24,7 +24,7 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "meds",
       "card_text": "A) Sarampión: Virus del Sarampión. Triada: Tos, coriza, conjuntivitis + Manchas de Koplik patognomónicas.",
       "expected_action": "keep",
       "scoring": {
@@ -84,7 +84,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "beaker",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "E) Vitamina A: Administración inmediata para prevenir complicaciones como neumonía.",
       "expected_action": "keep",
       "scoring": {
@@ -112,7 +112,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "beaker",
-      "category": "Etiología",
+      "category": "meds",
       "card_text": "G) Virus del Sarampión (Paramixovirus): Virus de ARN de cadena negativa, altamente contagioso vía aerosoles.",
       "expected_action": "keep",
       "scoring": {
@@ -136,7 +136,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "brain",
-      "category": "Complicación Tardía",
+      "category": "meds",
       "card_text": "I) Panencefalitis Esclerosante Subaguda (PEES): Degeneración progresiva del SNC que ocurre años después del cuadro agudo.",
       "expected_action": "keep",
       "scoring": {

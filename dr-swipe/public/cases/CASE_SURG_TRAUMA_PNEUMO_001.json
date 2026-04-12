@@ -17,13 +17,15 @@
       "card_text": "Herida punzocortante visible en hemitórax derecho.",
       "expected_action": "keep",
       "scoring": {
-        "points": 100
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
       }
     },
     {
       "card_id": "c_02_vitals_rng",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "nlg_trigger": "hipotension_severa",
       "card_text": "TA 75-85 mmHg, FC 115 lpm, Respiración rápida y superficial.",
       "dynamic_value": {
@@ -34,7 +36,9 @@
       },
       "expected_action": "keep",
       "scoring": {
-        "points": 100
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
       }
     },
     {
@@ -53,12 +57,14 @@
     {
       "card_id": "c_04_signal_jvd",
       "ui_icon": "vein",
-      "category": "Exploración",
+      "category": "imaging",
       "nlg_trigger": "ingurgitacion_yugular",
       "card_text": "Ingurgitación yugular evidente y timpanismo a la percusión derecha.",
       "expected_action": "keep",
       "scoring": {
-        "points": 150
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
       }
     },
     {
@@ -110,6 +116,42 @@
         "points": 300,
         "error_type": "lethal_omission",
         "vazquez_comment": "Navarro: ¡Descartaste la punción en el 5to espacio! Era la única forma de liberar la presión. Hora de muerte: 03:15 AM."
+      }
+    },
+    {
+      "card_id": "pad_008",
+      "ui_icon": "☢️",
+      "category": "imaging",
+      "card_text": "Niveles hidroaéreos en radiografía simple de abdomen de pie.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
+      }
+    },
+    {
+      "card_id": "pad_009",
+      "ui_icon": "🧪",
+      "category": "labs",
+      "card_text": "Glucosa capilar 95 mg/dL en ayuno de 4 horas.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
+      }
+    },
+    {
+      "card_id": "pad_010",
+      "ui_icon": "🩺",
+      "category": "vitals",
+      "card_text": "Rebote (+) en fosa ilíaca derecha. Signo de McBurney positivo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
       }
     }
   ],

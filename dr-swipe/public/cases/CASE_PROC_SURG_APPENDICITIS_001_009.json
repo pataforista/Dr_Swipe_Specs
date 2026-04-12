@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 120/80, FC 110 lpm, Temp 38.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -56,7 +56,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "eye",
-      "category": "Diagnóstico",
+      "category": "meds",
       "card_text": "C) Embarazo Ectópico Roto: Dolor pélvico agudo, sangrado transvaginal y datos de choque hipovolémico.",
       "expected_action": "discard",
       "scoring": {
@@ -67,6 +67,78 @@
       "safety_flags": {
         "lethal_risk": true,
         "condition": "female"
+      }
+    },
+    {
+      "card_id": "pad_005",
+      "ui_icon": "🩺",
+      "category": "vitals",
+      "card_text": "Rebote (+) en fosa ilíaca derecha. Signo de McBurney positivo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
+      }
+    },
+    {
+      "card_id": "pad_006",
+      "ui_icon": "📄",
+      "category": "notes",
+      "card_text": "Antecedente de cirugía de túnel carpiano hace 5 años sin complicaciones.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
+      }
+    },
+    {
+      "card_id": "pad_007",
+      "ui_icon": "🩸",
+      "category": "labs",
+      "card_text": "PCR 45 mg/L (elevado). Sugiere proceso inflamatorio agudo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
+      }
+    },
+    {
+      "card_id": "pad_008",
+      "ui_icon": "📄",
+      "category": "notes",
+      "card_text": "Antecedente de cirugía de túnel carpiano hace 5 años sin complicaciones.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
+      }
+    },
+    {
+      "card_id": "pad_009",
+      "ui_icon": "🩸",
+      "category": "labs",
+      "card_text": "PCR 45 mg/L (elevado). Sugiere proceso inflamatorio agudo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
+      }
+    },
+    {
+      "card_id": "pad_010",
+      "ui_icon": "🧪",
+      "category": "labs",
+      "card_text": "Glucosa capilar 95 mg/dL en ayuno de 4 horas.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
       }
     }
   ],

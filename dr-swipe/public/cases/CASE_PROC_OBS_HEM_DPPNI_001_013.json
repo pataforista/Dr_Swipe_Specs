@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 90/50 (Signos de choque), FC 120 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "target",
-      "category": "Diagnóstico Diferencial",
+      "category": "meds",
       "card_text": "B) Placenta Previa: Sangrado vaginal rojo rutilante, abundante, indoloro y SIN actividad uterina.",
       "expected_action": "discard",
       "scoring": {
@@ -67,6 +67,78 @@
       "safety_flags": {
         "lethal_risk": false,
         "decision_critical": false
+      }
+    },
+    {
+      "card_id": "pad_005",
+      "ui_icon": "🩺",
+      "category": "vitals",
+      "card_text": "TA 145/95 mmHg. Cifras tensionales elevadas en dos tomas.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
+      }
+    },
+    {
+      "card_id": "pad_006",
+      "ui_icon": "📄",
+      "category": "notes",
+      "card_text": "Refiere consumo de ácido fólico antes de la concepción de forma irregular.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
+      }
+    },
+    {
+      "card_id": "pad_007",
+      "ui_icon": "🩸",
+      "category": "labs",
+      "card_text": "Proteinuria en tira reactiva (++) en muestra al azar.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
+      }
+    },
+    {
+      "card_id": "pad_008",
+      "ui_icon": "📄",
+      "category": "notes",
+      "card_text": "Refiere consumo de ácido fólico antes de la concepción de forma irregular.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
+      }
+    },
+    {
+      "card_id": "pad_009",
+      "ui_icon": "🩺",
+      "category": "vitals",
+      "card_text": "TA 145/95 mmHg. Cifras tensionales elevadas en dos tomas.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
+      }
+    },
+    {
+      "card_id": "pad_010",
+      "ui_icon": "📄",
+      "category": "notes",
+      "card_text": "Refiere consumo de ácido fólico antes de la concepción de forma irregular.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
       }
     }
   ],

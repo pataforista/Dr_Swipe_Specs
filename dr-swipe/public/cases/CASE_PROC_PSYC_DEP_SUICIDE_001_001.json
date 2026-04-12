@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 120/80, FC 80 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -24,7 +24,7 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "meds",
       "card_text": "A) Depresión Mayor con Riesgo Suicida Agudo: Sintomatología depresiva >2 semanas + Plan/Ideación suicida. Requiere hospitalización o vigilancia estrecha.",
       "expected_action": "keep",
       "scoring": {
@@ -57,7 +57,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "help-circle",
-      "category": "Interrogatorio",
+      "category": "notes",
       "card_text": "C) Preguntar Directamente sobre el Suicidio: Contrario al mito, preguntar sobre planes suicidas reduce la ansiedad y permite la intervención.",
       "expected_action": "keep",
       "scoring": {
@@ -81,7 +81,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "pill",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "E) ISRS (Sertralina/Fluoxetina): Fármacos de primera línea para el episodio depresivo mayor. Tardan 2-4 semanas en actuar.",
       "expected_action": "keep",
       "scoring": {
@@ -109,7 +109,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "zap",
-      "category": "Emergencia",
+      "category": "meds",
       "card_text": "G) Terapia Electroconvulsiva (TEC): Indicada en depresión con riesgo suicida inminente o refractaria a fármacos.",
       "expected_action": "keep",
       "scoring": {
@@ -121,7 +121,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "scissors",
-      "category": "Diferencial",
+      "category": "meds",
       "card_text": "H) Trastorno Bipolar (Fase Maníaca): El inicio de antidepresivos en un paciente bipolar no diagnosticado puede inducir viraje a manía.",
       "expected_action": "keep",
       "scoring": {

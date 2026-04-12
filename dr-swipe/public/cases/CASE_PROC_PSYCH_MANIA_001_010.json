@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 130/85, FC 105 lpm, Temp 36.8°C",
       "expected_action": "discard",
       "scoring": {
@@ -24,7 +24,7 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "meds",
       "card_text": "A) Episodio Maníaco (Trastorno Bipolar I): Estado de ánimo elevado/expansivo por al menos 1 semana. Criterios DIGFAST presentes.",
       "expected_action": "keep",
       "scoring": {
@@ -52,7 +52,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "user-x",
-      "category": "Diagnóstico Diferencial",
+      "category": "meds",
       "card_text": "C) Trastorno Esquizoafectivo: Síntomas psicóticos (delirios/alucinaciones) por >=2 semanas en ausencia de síntomas afectivos.",
       "expected_action": "discard",
       "scoring": {
@@ -64,7 +64,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "pill",
-      "category": "Manejo de Primera Línea",
+      "category": "meds",
       "card_text": "D) Carbonato de Litio: Estabilizador del ánimo de elección. Requiere monitoreo de niveles séricos (litemia).",
       "expected_action": "keep",
       "scoring": {
@@ -76,7 +76,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "shield",
-      "category": "Manejo Alternativo",
+      "category": "meds",
       "card_text": "E) Valproato de Magnesio: Alternativa eficaz al litio, especialmente en episodios mixtos.",
       "expected_action": "keep",
       "scoring": {
@@ -88,7 +88,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "zap",
-      "category": "Manejo Agudo",
+      "category": "imaging",
       "card_text": "F) Antipsicóticos Atípicos: Útiles para el control rápido de la agitación psicomotriz en la manía.",
       "expected_action": "keep",
       "scoring": {

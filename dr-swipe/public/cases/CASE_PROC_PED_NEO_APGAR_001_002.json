@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA N/A, FC 90 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -96,7 +96,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "zap",
-      "category": "Manejo",
+      "category": "meds",
       "card_text": "F) Ventilación a Presión Positiva (VPP): Indicada si FC <100 lpm, apnea o boqueo tras los pasos iniciales.",
       "expected_action": "keep",
       "scoring": {
@@ -112,7 +112,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "heart",
-      "category": "Manejo",
+      "category": "meds",
       "card_text": "G) Compresiones Torácicas: Iniciar si FC <60 lpm después de al menos 30 segundos de VPP efectiva.",
       "expected_action": "keep",
       "scoring": {

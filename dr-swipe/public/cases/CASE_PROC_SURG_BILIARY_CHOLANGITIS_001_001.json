@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 100/65, FC 120 lpm, Temp 39.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico Diferencial",
+      "category": "meds",
       "card_text": "B) Colecistitis Aguda Litiásica: Inflamación de la vesícula biliar. Dolor en hipocondrio derecho, fiebre leve, Murphy positivo, sin ictericia o muy leve.",
       "expected_action": "discard",
       "scoring": {
@@ -52,7 +52,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "eye",
-      "category": "Diagnóstico Diferencial",
+      "category": "imaging",
       "card_text": "C) Hepatitis Viral Aguda: Elevación marcada de transaminasas (>1000 U/L), ictericia, astenia y adinamia, sin dilatación de la vía biliar.",
       "expected_action": "discard",
       "scoring": {
@@ -76,7 +76,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "droplet",
-      "category": "Laboratorio",
+      "category": "labs",
       "card_text": "E) Patrón Colestásico: Elevación de Bilirrubina Directa, Fosfatasa Alcalina (FA) y Gamma-Glutil Transpeptidasa (GGT).",
       "expected_action": "keep",
       "scoring": {
@@ -88,7 +88,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "camera",
-      "category": "Gabinete",
+      "category": "imaging",
       "card_text": "F) Ultrasonido de Vía Biliar: Dilatación del conducto colédoco (>6 mm) y evidencia de lito o barro biliar.",
       "expected_action": "keep",
       "scoring": {
@@ -100,7 +100,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "beaker",
-      "category": "Etiología",
+      "category": "meds",
       "card_text": "G) Escherichia coli: Es el microorganismo gramnegativo aislado con mayor frecuencia en los hemocultivos y cultivos de bilis.",
       "expected_action": "keep",
       "scoring": {
@@ -128,7 +128,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "pill",
-      "category": "Antibioticoterapia",
+      "category": "meds",
       "card_text": "I) Antibióticos IV: Iniciar cobertura contra gramnegativos y anaerobios (ej. Ceftriaxona + Metronidazol o Piperacilina/Tazobactam).",
       "expected_action": "keep",
       "scoring": {

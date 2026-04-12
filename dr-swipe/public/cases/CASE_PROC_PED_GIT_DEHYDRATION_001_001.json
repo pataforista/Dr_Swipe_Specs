@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 90/60 mmHg, FC 125 lpm, Temp 37.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -24,7 +24,7 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "imaging",
       "card_text": "A) Deshidratación Moderada (Plan B): Paciente con signos de deshidratación pero SIN choque. Manejo con VSO 100 ml/kg en 4 horas.",
       "expected_action": "keep",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico Diferencial",
+      "category": "imaging",
       "card_text": "B) Deshidratación Grave / Choque (Plan C): Llenado capilar >3s, pulsos débiles, letargia o coma. Requiere manejo IV inmediato.",
       "expected_action": "discard",
       "scoring": {
@@ -52,7 +52,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "slash",
-      "category": "Diagnóstico Diferencial",
+      "category": "imaging",
       "card_text": "C) Sin Deshidratación (Plan A): Paciente alerta, bebe normal, mucosas húmedas, ojos normales. Manejo en el hogar.",
       "expected_action": "discard",
       "scoring": {
@@ -64,7 +64,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "alert-triangle",
-      "category": "Signo Clínico",
+      "category": "imaging",
       "card_text": "D) Sed Ávida: El niño busca el agua o el suero con desesperación; es un signo clave de deshidratación moderada (Plan B).",
       "expected_action": "keep",
       "scoring": {
@@ -88,7 +88,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "battery-charging",
-      "category": "Plan B",
+      "category": "meds",
       "card_text": "F) VSO 100 mL/kg en 4 horas: Administrar Vida Suero Oral fraccionado cada 30 min con taza y cuchara.",
       "expected_action": "keep",
       "scoring": {
@@ -104,7 +104,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "zap",
-      "category": "Plan C (Choque)",
+      "category": "meds",
       "card_text": "G) Carga de Solución Hartmann/Salina 0.9%: Administrar 20 mL/kg de forma inmediata ante signos de choque circulatorio.",
       "expected_action": "keep",
       "scoring": {
@@ -120,7 +120,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "clock",
-      "category": "Fracaso Plan B",
+      "category": "meds",
       "card_text": "H) Gatroclisis: Si el paciente vomita persistemente (>3 vómitos/hora), usar sonda nasogástrica (20-30 mL/kg/h).",
       "expected_action": "keep",
       "scoring": {

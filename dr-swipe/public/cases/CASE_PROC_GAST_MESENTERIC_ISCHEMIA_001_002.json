@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 100/60 mmHg, FC 120 lpm (arrítmico), Temp 37.0°C",
       "expected_action": "discard",
       "scoring": {
@@ -41,7 +41,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico",
+      "category": "meds",
       "card_text": "B) Volvulus de Sigmoides: Causa obstrucción intestinal, distensión severa y signo de 'grano de café' en Rayos X. No suele ser súbito sin distensión.",
       "expected_action": "discard",
       "scoring": {
@@ -81,7 +81,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "beaker",
-      "category": "Laboratorio",
+      "category": "labs",
       "card_text": "E) Elevación de Lactato: Marcador tardío que indica necrosis intestinal y mal pronóstico.",
       "expected_action": "keep",
       "scoring": {
@@ -105,7 +105,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "scissors",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "G) Embolectomía Quirúrgica: Tratamiento de elección en isquemia embólica aguda con peritonitis.",
       "expected_action": "keep",
       "scoring": {
@@ -121,7 +121,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "pill",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "H) Anticoagulación con Heparina: Iniciar inmediatamente para prevenir propagación del trombo.",
       "expected_action": "keep",
       "scoring": {
@@ -133,7 +133,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "x-circle",
-      "category": "Contraindicación",
+      "category": "meds",
       "card_text": "I) Uso de Vasopresores: Administrar dosis altas de adrenalina para mejorar la perfusión intestinal.",
       "expected_action": "discard",
       "scoring": {

@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 110/60, FC 70 lpm, Temp 36.4°C.",
       "expected_action": "discard",
       "scoring": {
@@ -104,7 +104,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "shield-off",
-      "category": "Contraindicación",
+      "category": "meds",
       "card_text": "G) Isotretinoína en Embarazo: Absolutamente contraindicada. Requiere dos métodos anticonceptivos y prueba de embarazo mensual.",
       "expected_action": "keep",
       "scoring": {
@@ -120,7 +120,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "user-check",
-      "category": "Hormonal",
+      "category": "meds",
       "card_text": "H) Anticonceptivos Orales: Útiles en mujeres con acné que presentan hiperandrogenismo clínico o síndrome de ovario poliquístico.",
       "expected_action": "keep",
       "scoring": {

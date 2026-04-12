@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 120/80, FC 78 bpm, Temp 37.0°C",
       "expected_action": "discard",
       "scoring": {
@@ -120,7 +120,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "trending-up",
-      "category": "Timeline",
+      "category": "timeline",
       "card_text": "I) Sudden Onset: Término que indica un Inicio Súbito o repentino de los síntomas.",
       "expected_action": "keep",
       "scoring": {

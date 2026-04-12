@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 110/70, FC 68 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -52,7 +52,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "users",
-      "category": "Prevención 1aria",
+      "category": "imaging",
       "card_text": "C) Educación para la Salud: Promoción de estilos de vida saludables, uso de preservativo y orientación nutricional.",
       "expected_action": "keep",
       "scoring": {
@@ -64,7 +64,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "heart",
-      "category": "Prevención 3aria",
+      "category": "imaging",
       "card_text": "D) Rehabilitación y Tratamiento: Procedimientos (cono leep) para tratar lesiones y evitar la discapacidad o progresión fatal.",
       "expected_action": "keep",
       "scoring": {

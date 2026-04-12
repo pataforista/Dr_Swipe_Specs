@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 110/70, FC 90 lpm, Temp 36.8°C",
       "expected_action": "discard",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico Diferencial",
+      "category": "imaging",
       "card_text": "B) Amenaza de Aborto: Sangrado vaginal SIN modificación cervical (cérvix cerrado) con vitalidad fetal presente por USG.",
       "expected_action": "discard",
       "scoring": {
@@ -52,7 +52,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "slash",
-      "category": "Diagnóstico Diferencial",
+      "category": "imaging",
       "card_text": "C) Aborto Diferido: Huevo muerto y retenido; ausencia de latido fetal en USG con cérvix CERRADO y sin sangrado.",
       "expected_action": "discard",
       "scoring": {
@@ -104,7 +104,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "pill",
-      "category": "Tratamiento Médico",
+      "category": "meds",
       "card_text": "G) Misoprostol: Alternativa farmacológica para evacuación uterina en abortos no complicados de <12 SDG.",
       "expected_action": "keep",
       "scoring": {
@@ -132,7 +132,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "shield-check",
-      "category": "Prevención",
+      "category": "meds",
       "card_text": "I) Inmunoglobulina Anti-D: Administrar en pacientes Rh negativas no sensibilizadas para evitar isoinmunización futura.",
       "expected_action": "keep",
       "scoring": {

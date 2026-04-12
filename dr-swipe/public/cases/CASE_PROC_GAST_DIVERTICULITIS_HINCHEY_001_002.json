@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 130/85 mmHg, FC 92 lpm, Temp 38.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -24,7 +24,7 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "imaging",
       "card_text": "A) Diverticulitis Hinchey II (Drenaje Percutáneo): Absceso >4cm requiere drenaje guiado por imagen + antibióticos IV.",
       "expected_action": "keep",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "beaker",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "C) Esquema Antibiótico: Ciprofloxacino + Metronidazol por 10-14 días es el esquema ambulatorio/hospitalario estándar.",
       "expected_action": "keep",
       "scoring": {
@@ -68,7 +68,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "info",
-      "category": "Hinchey I",
+      "category": "meds",
       "card_text": "E) Hinchey IA/IB: Inflamación pericólica o absceso <4cm. Manejo conservador con antibióticos oral o IV.",
       "expected_action": "keep",
       "scoring": {
@@ -80,7 +80,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "alert-circle",
-      "category": "Complicación",
+      "category": "meds",
       "card_text": "F) Fístula Colovesical: Causa neumaturia y fecaluria. Es la fístula más común en enfermedad diverticular crónica.",
       "expected_action": "keep",
       "scoring": {
@@ -92,7 +92,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "beaker",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "G) Fibra en la Dieta: Aumentar ingesta de fibra inmediatamente durante el episodio de dolor agudo para mejorar el tránsito.",
       "expected_action": "discard",
       "scoring": {
@@ -104,7 +104,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "activity",
-      "category": "Signo Clínico",
+      "category": "imaging",
       "card_text": "H) Signo de Blumberg: Dolor a la descompresión en FII. Sugiere irritación peritoneal localizada.",
       "expected_action": "keep",
       "scoring": {
@@ -128,7 +128,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "meds",
       "card_text": "B) Diverticulitis Hinchey III/IV (Cirugía - Hartmann): Peritonitis purulenta o fecaloide requiere cirugía de urgencia (Procedimiento de Hartmann).",
       "expected_action": "keep",
       "scoring": {

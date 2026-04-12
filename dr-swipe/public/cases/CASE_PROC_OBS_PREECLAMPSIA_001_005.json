@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 170/115, FC 90 lpm, Temp 37.0°C",
       "expected_action": "discard",
       "scoring": {
@@ -56,7 +56,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "shield",
-      "category": "Manejo",
+      "category": "meds",
       "card_text": "C) Sulfato de Magnesio: Inicio inmediato para evitar la progresión a eclampsia (crisis convulsivas).",
       "expected_action": "keep",
       "scoring": {
@@ -72,7 +72,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "pill",
-      "category": "Antihipertensivo",
+      "category": "meds",
       "card_text": "D) Hidralazina o Labetalol: Tratamiento para el control de la crisis hipertensiva (PA ≥160/110).",
       "expected_action": "keep",
       "scoring": {
@@ -96,7 +96,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "slash",
-      "category": "Manejo",
+      "category": "meds",
       "card_text": "F) Corticoides para elevar Conteo Plaquetario: Uso de Dexametasona dosis altas (10mg/12h) para tratar el HELLP.",
       "expected_action": "discard",
       "scoring": {
@@ -124,7 +124,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "activity",
-      "category": "Manejo",
+      "category": "meds",
       "card_text": "H) Ingreso a Unidad de Cuidados Intensivos (UCI): Vigilancia estrecha de parámetros vitales y laboratorios.",
       "expected_action": "keep",
       "scoring": {

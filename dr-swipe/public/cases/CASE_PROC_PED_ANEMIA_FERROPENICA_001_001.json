@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "FC 120 lpm, FR 28 rpm, Temp 36.7°C. (Signos estables para la edad).",
       "expected_action": "discard",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "beaker",
-      "category": "Laboratorio",
+      "category": "labs",
       "card_text": "B) Cinética de Hierro: Ferritina baja (<12 ng/ml) es el parámetro más sensible y temprano de deficiencia.",
       "expected_action": "keep",
       "scoring": {
@@ -52,7 +52,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "pill",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "C) Sulfato Ferroso (Hierra Elemental): 3-6 mg/kg/día dividido en 1-3 dosis. Es el tratamiento de elección.",
       "expected_action": "keep",
       "scoring": {
@@ -92,7 +92,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "droplet",
-      "category": "Pica",
+      "category": "meds",
       "card_text": "F) Pica y Geofagia: Comportamiento de comer tierra, hielo o sustancias no nutritivas asociado a ferropenia severa.",
       "expected_action": "keep",
       "scoring": {
@@ -116,7 +116,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "slash",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "H) Hierro Intramuscular: Recomendado como primera línea en pacientes con intolerancia gástrica leve.",
       "expected_action": "discard",
       "scoring": {

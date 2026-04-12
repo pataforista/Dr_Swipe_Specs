@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "FC 180 lpm (Taquicardia severa), FR 35 rpm, Temp 37.0°C, TA 70/40 mmHg (Sugerente de Choque).",
       "expected_action": "discard",
       "scoring": {
@@ -24,7 +24,7 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Clasificación",
+      "category": "imaging",
       "card_text": "A) Deshidratación Grave con Choque: Pérdida ponderal >10%, fontanela muy hundida y compromiso hemodinámico (hipotensión/oliguria).",
       "expected_action": "keep",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "zap",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "B) Plan C de Rehidratación: Administración de líquidos IV en bolos de Solución Salina 0.9% o Ringer Lactato a 20 ml/kg.",
       "expected_action": "keep",
       "scoring": {
@@ -68,7 +68,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "info",
-      "category": "Plan A",
+      "category": "imaging",
       "card_text": "D) Plan A: Prevención de deshidratación en casa. Menores de 1 año: 75 ml de VSO tras cada evacuación líquida.",
       "expected_action": "keep",
       "scoring": {
@@ -80,7 +80,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "activity",
-      "category": "Plan B",
+      "category": "imaging",
       "card_text": "E) Plan B: Deshidratación moderada. Administrar VSO 100 ml/kg en 4 horas (en dosis pequeñas/cucharadas).",
       "expected_action": "keep",
       "scoring": {
@@ -92,7 +92,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "search",
-      "category": "Signo Clínico",
+      "category": "imaging",
       "card_text": "F) Signo del Lienzo Húmedo: Persistencia del pliegue cutáneo tras pinchar la piel. Indica deshidratación grave.",
       "expected_action": "keep",
       "scoring": {
@@ -120,7 +120,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "pill",
-      "category": "Suplementación",
+      "category": "meds",
       "card_text": "H) Zinc Elemental: Administrar 10-20 mg al día por 10-14 días para reducir duración y recurrencia de la diarrea.",
       "expected_action": "keep",
       "scoring": {
@@ -132,7 +132,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "thermometer",
-      "category": "Laboratorio",
+      "category": "labs",
       "card_text": "I) Electrolitos Séricos: Monitorizar niveles de potasio (K+), ya que la diarrea causa pérdidas masivas y riesgo de íleo.",
       "expected_action": "keep",
       "scoring": {
@@ -144,7 +144,7 @@
     {
       "card_id": "c_10",
       "ui_icon": "alert-triangle",
-      "category": "Intraósea",
+      "category": "meds",
       "card_text": "J) Vía Intraósea: Alternativa inmediata de acceso vascular si no se logra canalización venosa en 3 intentos o 90 segundos durante el choque.",
       "expected_action": "keep",
       "scoring": {

@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA N/A, FC 95 lpm, Temp 37.8°C",
       "expected_action": "discard",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico Diferencial",
+      "category": "meds",
       "card_text": "B) Sarampión: Cuadro mucho más tóxico, conjuntivitis y manchas de Koplik. Exantema que dura 7 días.",
       "expected_action": "discard",
       "scoring": {
@@ -76,7 +76,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "beaker",
-      "category": "Etiología",
+      "category": "meds",
       "card_text": "E) Virus de la Rubéola (Togavirus): Virus de ARN, único miembro del género Rubivirus.",
       "expected_action": "keep",
       "scoring": {
@@ -100,7 +100,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "thermometer",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "G) Tratamiento de Sostén: Reposo e hidratación. No existe antiviral específico.",
       "expected_action": "keep",
       "scoring": {
@@ -112,7 +112,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "alert-triangle",
-      "category": "Riesgo / Salud Pública",
+      "category": "vitals",
       "card_text": "H) Riesgo de Rubéola Congénita: Infección en el 1er trimestre del embarazo conlleva alto riesgo de malformaciones (Tríada de Gregg).",
       "expected_action": "keep",
       "scoring": {

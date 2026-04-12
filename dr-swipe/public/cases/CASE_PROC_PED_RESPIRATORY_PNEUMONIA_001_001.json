@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "FC 130 lpm, FR 45 rpm (Taquipnea), Temp 39.2°C, SatO2 91%.",
       "expected_action": "discard",
       "scoring": {
@@ -24,7 +24,7 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "imaging",
       "card_text": "A) Neumonía Adquirida en la Comunidad (NAC): Presencia de consolidación en Rx o estertores + Síntomas de infección respiratoria aguda.",
       "expected_action": "keep",
       "scoring": {
@@ -52,7 +52,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "pill",
-      "category": "Tratamiento Ambulatorio",
+      "category": "meds",
       "card_text": "C) Amoxicilina (Altas dosis): 80-90 mg/kg/día por 7-10 días. Tratamiento de primera elección para NAC no complicada.",
       "expected_action": "keep",
       "scoring": {
@@ -68,7 +68,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "alert-triangle",
-      "category": "Criterios Ingreso",
+      "category": "meds",
       "card_text": "D) SatO2 <92% (Aire ambiente): Indicación absoluta de ingreso hospitalario para oxigenoterapia y manejo IV.",
       "expected_action": "keep",
       "scoring": {
@@ -96,7 +96,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "camera",
-      "category": "Imagen",
+      "category": "imaging",
       "card_text": "F) Radiografía de Tórax: Hallazgo típico de NAC bacteriana: Consolidación lobar o segmentaria con broncograma aéreo.",
       "expected_action": "keep",
       "scoring": {
@@ -120,7 +120,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "zap",
-      "category": "Prevención",
+      "category": "meds",
       "card_text": "H) Vacuna Conjugada 13-valente: Ha reducido drásticamente la incidencia de neumonía invasiva por neumococo.",
       "expected_action": "keep",
       "scoring": {
@@ -144,7 +144,7 @@
     {
       "card_id": "c_10",
       "ui_icon": "pill",
-      "category": "Tratamiento Hospitalario",
+      "category": "meds",
       "card_text": "J) Ampicilina o Penicilina G Sódica: Tratamiento IV de elección para NAC bacteriana en el paciente hospitalizado con esquema de vacunación completo.",
       "expected_action": "keep",
       "scoring": {

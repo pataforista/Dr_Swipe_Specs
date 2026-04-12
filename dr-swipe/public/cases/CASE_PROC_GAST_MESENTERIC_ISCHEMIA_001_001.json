@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 100/60 mmHg, FC 120 lpm (arrítmico), Temp 37.0°C",
       "expected_action": "discard",
       "scoring": {
@@ -101,7 +101,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "activity",
-      "category": "Laboratorio",
+      "category": "labs",
       "card_text": "G) Lactato Sérico: Su elevación (>2.0 mmol/L) indica hipoperfusión tisular y acidosis metabólica; es un signo de mal pronóstico.",
       "expected_action": "keep",
       "scoring": {
@@ -133,7 +133,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "image",
-      "category": "Imagenología",
+      "category": "imaging",
       "card_text": "I) Neumatosis Intestinal: Gas en la pared del intestino visible en Rx o TC. Indica isquemia transmural grave.",
       "expected_action": "keep",
       "scoring": {

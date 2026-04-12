@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA N/A, FC 140 lpm, Temp 36.6°C",
       "expected_action": "discard",
       "scoring": {
@@ -36,7 +36,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "eye",
-      "category": "Diagnóstico Diferencial",
+      "category": "imaging",
       "card_text": "C) Reflujo Gastroesofágico: Regurgitaciones frecuentes, no en proyectil, con ganancia ponderal adecuada inicialmente.",
       "expected_action": "discard",
       "scoring": {
@@ -48,7 +48,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "search",
-      "category": "Signo Clínico",
+      "category": "meds",
       "card_text": "D) Oliva Pilórica: Masa firme, móvil, de unos 2 cm, palpable en el borde lateral del músculo recto abdominal derecho.",
       "expected_action": "keep",
       "scoring": {
@@ -60,7 +60,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "activity",
-      "category": "Signo Clínico",
+      "category": "imaging",
       "card_text": "E) Ondas Peristálticas Gástricas: Movimientos visibles de izquierda a derecha tras la alimentación que terminan en el vómito.",
       "expected_action": "keep",
       "scoring": {
@@ -72,7 +72,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "beaker",
-      "category": "Laboratorio",
+      "category": "labs",
       "card_text": "F) Alcalosis Metabólica Hipoclorémica: Producida por la pérdida masiva de ácido clorhídrico en el vómito gástrico.",
       "expected_action": "keep",
       "scoring": {
@@ -100,7 +100,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "thermometer",
-      "category": "Manejo Inicial",
+      "category": "imaging",
       "card_text": "H) Ayuno e Hidratación Parenteral: Reposición de volumen y electrolitos (Sodio, Cloro y Potasio).",
       "expected_action": "keep",
       "scoring": {
@@ -128,7 +128,7 @@
     {
       "card_id": "c_10",
       "ui_icon": "alert-circle",
-      "category": "Seguimiento",
+      "category": "imaging",
       "card_text": "J) Alimentación Postoperatoria: Iniciar dieta hídrica a las 4-6 horas tras la cirugía si no hay complicaciones.",
       "expected_action": "keep",
       "scoring": {

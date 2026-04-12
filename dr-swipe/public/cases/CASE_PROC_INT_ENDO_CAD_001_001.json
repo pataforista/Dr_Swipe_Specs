@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 100/65, FC 115 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico Diferencial",
+      "category": "labs",
       "card_text": "B) Estado Hiperosmolar Hiperglucémico (EHH): Glucosa >600, osmolaridad >320, SIN acidosis significativa y deshidratación muy profunda.",
       "expected_action": "discard",
       "scoring": {
@@ -52,7 +52,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "slash",
-      "category": "Manejo",
+      "category": "meds",
       "card_text": "C) Bicarbonato de Sodio IV: Indicado para corregir la acidosis metabólica en todos los pacientes con pH <7.2.",
       "expected_action": "discard",
       "scoring": {
@@ -68,7 +68,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "droplet",
-      "category": "Líquidos",
+      "category": "imaging",
       "card_text": "D) Hidratación Inicial: Solución Salina 0.9% a razón de 1,000 ml en la primera hora para restaurar el volumen circulante.",
       "expected_action": "keep",
       "scoring": {
@@ -84,7 +84,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "zap",
-      "category": "Insulinoterapia",
+      "category": "meds",
       "card_text": "E) Insulina Rápida IV: Infusión continua a 0.1 U/kg/hora tras asegurar que el Potasio sea >3.3 mEq/L.",
       "expected_action": "keep",
       "scoring": {
@@ -100,7 +100,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "activity",
-      "category": "Electrolitos",
+      "category": "labs",
       "card_text": "F) Reposición de Potasio: Añadir 20-30 mEq por litro de solución si el potasio sérico es <5.2 mEq/L.",
       "expected_action": "keep",
       "scoring": {
@@ -112,7 +112,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "search",
-      "category": "Seguimiento",
+      "category": "meds",
       "card_text": "G) Cierre de Anion Gap: El objetivo del tratamiento es la resolución de la acidosis y el cierre de la brecha aniónica.",
       "expected_action": "keep",
       "scoring": {
@@ -136,7 +136,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "clipboard",
-      "category": "Laboratorio",
+      "category": "labs",
       "card_text": "I) Gasometría: Diagnóstico de pH <7.30 y Bicarbonato <18 mEq/L para confirmar la severidad de la acidosis.",
       "expected_action": "keep",
       "scoring": {

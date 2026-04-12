@@ -22,6 +22,7 @@ import { LootBoxOverlay } from './components/overlays/LootBoxOverlay';
 import { PenaltyOverlay } from './components/overlays/PenaltyOverlay';
 import { FailProtectionOverlay } from './components/overlays/FailProtectionOverlay';
 import { TelemetryHUD } from './components/TelemetryHUD';
+import { AvatarFeedback } from './components/AvatarFeedback';
 
 const isSwipeCorrect = (direction: 'left' | 'right', expectedAction: 'keep' | 'discard'): boolean => {
   return (direction === 'right' && expectedAction === 'keep') ||
@@ -43,8 +44,10 @@ export function App() {
   const [caseQueue, setCaseQueue] = useState<ClinicalCase[]>([]);
   const [rewardToast, setRewardToast] = useState<{ show: boolean; text: string; type: 'coins' | 'xp' | 'milestone' }>({ show: false, text: '', type: 'coins' });
   const [showIntro, setShowIntro] = useState(false);
-  const [swipeFeedback, setSwipeFeedback] = useState<'correct' | 'wrong' | null>(null);
   const [lastSwipePoints, setLastSwipePoints] = useState<number>(0);
+  const [swipeFeedback, setSwipeFeedback] = useState<'correct' | 'wrong' | null>(null);
+  const [vazquezDialogue, setVazquezDialogue] = useState<string | null>(null);
+  const [vazquezExpression, setVazquezExpression] = useState<'neutral' | 'happy' | 'angry' | 'shocked'>('neutral');
   const [timeLeft, setTimeLeft] = useState(60);
 
   useEffect(() => {
@@ -141,8 +144,28 @@ export function App() {
     setSwipeFeedback(isCorrect ? 'correct' : 'wrong');
     triggerHaptic(isCorrect ? 'criticalSuccess' : 'warning');
     send({ type: 'SWIPE', direction });
+    
+    // Update Vazquez Feedback immediately on swipe
+    const lastFeedback = state.context.feedbackHistory[state.context.feedbackHistory.length - 1];
+    // Note: Since 'send' is async in terms of context update, we might need to wait for the next render
+    // or use the 'isCorrect' calculated here.
     setTimeout(() => setSwipeFeedback(null), 1000);
   };
+
+  useEffect(() => {
+    const history = state.context.feedbackHistory;
+    if (history.length > 0) {
+      const last = history[history.length - 1];
+      setVazquezDialogue(last.feedback);
+      setVazquezExpression(last.isCorrect ? 'happy' : 'angry');
+      
+      const timer = setTimeout(() => {
+        setVazquezDialogue(null);
+        setVazquezExpression('neutral');
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [state.context.feedbackHistory]);
 
   const handleUndo = () => {
     if (state.context.undoCharges > 0 && state.context.currentCardIndex > 0) {
@@ -268,6 +291,17 @@ export function App() {
     <div className={`fixed inset-0 bg-[#FDFBF7] flex flex-col items-center select-none overflow-hidden text-slate-800 pt-4 ${timeLeft <= 10 && state.matches('triage') ? 'destabilized-content' : ''} ${swipeFeedback === 'wrong' ? 'shake-lite' : ''}`}>
       <div className="absolute inset-0 pointer-events-none opacity-[0.02] medical-grid" />
       <TelemetryHUD timeLeft={timeLeft} state={state.value as string} score={state.context.score} combo={state.context.combo} vitality={state.context.vitality} />
+      
+      {/* Background Avatar Feedback Layer */}
+      <div className="fixed top-28 left-0 right-0 z-avatar pointer-events-none flex justify-center">
+        <AvatarFeedback 
+          doctor="mendoza" 
+          expression={vazquezExpression} 
+          dialogueText={vazquezDialogue} 
+          isVisible={!!vazquezDialogue && (state.matches('triage') || state.matches('urgent_triage'))} 
+        />
+      </div>
+
       <div className="w-full flex-grow flex items-center justify-center relative z-10">{renderCurrentView()}</div>
       <AnimatePresence>{showTutorial && <TutorialOverlay onComplete={() => setShowTutorial(false)} />}</AnimatePresence>
       <AnimatePresence>{showStats && <div className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-6 overflow-hidden"><StatsDashboard onClose={() => setShowStats(false)} /></div>}</AnimatePresence>

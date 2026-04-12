@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 100/60 mmHg (en descenso), FC 95 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -53,7 +53,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "activity",
-      "category": "Criterios EKG",
+      "category": "meds",
       "card_text": "C) Elevación del ST: Elevación >=1 mm en 2 o más derivadas contiguas (o >=2 mm en V2-V3 en varones) es diagnóstica.",
       "expected_action": "keep",
       "scoring": {
@@ -105,7 +105,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "alert-triangle",
-      "category": "Contraindicación",
+      "category": "meds",
       "card_text": "G) Contraindica Fibrinolisis: EVC hemorrágico previo, neoplasia intracraneal conocida o sangrado interno activo.",
       "expected_action": "keep",
       "scoring": {
@@ -121,7 +121,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "check-circle",
-      "category": "Éxito Clínico",
+      "category": "meds",
       "card_text": "H) Criterios de Reperfusión: Descenso del ST >50% a los 60-90 min de la fibrinólisis y alivio del dolor.",
       "expected_action": "keep",
       "scoring": {

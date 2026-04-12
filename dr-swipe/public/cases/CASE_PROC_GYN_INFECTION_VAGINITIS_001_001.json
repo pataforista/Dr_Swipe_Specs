@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 110/70, FC 75 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -88,7 +88,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "pill",
-      "category": "Tratamiento Vaginosis",
+      "category": "meds",
       "card_text": "F) Metronidazol (500mg VO c/12h x 7 días): Tratamiento de elección. NO se requiere tratar a la pareja sexual habitualmente.",
       "expected_action": "keep",
       "scoring": {
@@ -112,7 +112,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "zap",
-      "category": "Tratamiento Candida",
+      "category": "meds",
       "card_text": "H) Azoles (Fluconazol/Clotrimazol): Elección para Candidiasis. El tratamiento oral de dosis única es muy efectivo.",
       "expected_action": "keep",
       "scoring": {

@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 160/100, FC 110 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -72,7 +72,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "activity",
-      "category": "Estudio Inicial",
+      "category": "meds",
       "card_text": "D) Electrocardiograma de 12 derivaciones: Meta institucional de realizar e interpretar en menos de 10 minutos.",
       "expected_action": "keep",
       "scoring": {
@@ -88,7 +88,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "pill",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "E) Aspirina 325 mg masticada: Antiagregación plaquetaria inmediata para limitar el tamaño del infarto.",
       "expected_action": "keep",
       "scoring": {

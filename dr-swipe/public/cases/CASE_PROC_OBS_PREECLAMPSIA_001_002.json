@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 160/110, FC 95 lpm, Temp 36.8°C",
       "expected_action": "discard",
       "scoring": {
@@ -56,7 +56,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "shield",
-      "category": "Manejo",
+      "category": "meds",
       "card_text": "C) Sulfato de Magnesio: Administración de dosis de impregnación (4g IV) y mantenimiento para prevenir eclampsia.",
       "expected_action": "keep",
       "scoring": {
@@ -96,7 +96,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "pill",
-      "category": "Antihipertensivo",
+      "category": "meds",
       "card_text": "F) Hidralazina IV: Bolo inicial de 5mg si la TA es persistente mente alta (>160/110).",
       "expected_action": "keep",
       "scoring": {
@@ -108,7 +108,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "beaker",
-      "category": "Gabinete/Labs",
+      "category": "labs",
       "card_text": "G) Perfil Toxémico: Solicitar biometría, pruebas de función hepática, creatinina y tiempos de coagulación.",
       "expected_action": "keep",
       "scoring": {

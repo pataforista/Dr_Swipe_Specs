@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 85/50 mmHg, FC 115 lpm, Temp 39.0°C",
       "expected_action": "discard",
       "scoring": {
@@ -24,7 +24,7 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "imaging",
       "card_text": "A) Bundle de 1 Hora (Cultivos, AB Empírico, Cristaloides): Resucitación inicial agresiva: Toma de lactato, cultivos, antibióticos de amplio espectro y fluidos IV.",
       "expected_action": "keep",
       "scoring": {
@@ -41,7 +41,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Maldonado: Errores Comunes",
+      "category": "meds",
       "card_text": "B) Administrar Esteroide IV (Hidrocortisona): Indicado únicamente en choque séptico REFRACTARIO que no responde a fluidos ni vasopresores.",
       "expected_action": "discard",
       "scoring": {
@@ -93,7 +93,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "droplet",
-      "category": "Bundle 1 Hora",
+      "category": "imaging",
       "card_text": "F) Medición de Lactato: Tomar muestra inicial de lactato sérico para guiar la terapia de resucitación hemodinámica.",
       "expected_action": "keep",
       "scoring": {
@@ -109,7 +109,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "zap",
-      "category": "Manejo Urgente",
+      "category": "meds",
       "card_text": "G) Antibióticos en <60 min: Administrar terapia empírica de amplio espectro tras la toma de hemocultivos.",
       "expected_action": "keep",
       "scoring": {
@@ -125,7 +125,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "battery-charging",
-      "category": "Resucitación",
+      "category": "labs",
       "card_text": "H) Carga de Cristaloides (30 mL/kg): Iniciar en las primeras 3 horas ante hipotensión o lactato >=4 mmol/L.",
       "expected_action": "keep",
       "scoring": {
@@ -141,7 +141,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "alert-triangle",
-      "category": "Choque Séptico",
+      "category": "meds",
       "card_text": "I) Soporte Vasopresor: Iniciar Norepinefrina si la PAM persiste <65 mmHg a pesar de una adecuada reanimación volémica.",
       "expected_action": "keep",
       "scoring": {

@@ -12,13 +12,13 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 85/50 mmHg, FC 125 lpm (Datos de Choque Hipovolémico), SatO2 94%.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Vázquez: Elena se está descompensando. Activa el Código Mater de inmediato."
+        "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
       }
     },
     {
@@ -30,7 +30,7 @@
       "scoring": {
         "points": 150,
         "error_type": "omission",
-        "vazquez_comment": "Vázquez: ¡Correcto! El útero 'blando' es el signo cardinal."
+        "vazquez_comment": "Claramente la medicina no es lo tuyo. Ese dato era VITAL."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -46,7 +46,7 @@
       "scoring": {
         "points": 150,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Vázquez: ¡Vital! No pierdas tiempo, el primer paso SIEMPRE es el masaje.",
+        "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas.",
         "safety_flags": {
           "lethal_risk": true,
           "decision_critical": true
@@ -56,13 +56,13 @@
     {
       "card_id": "c_3",
       "ui_icon": "pill",
-      "category": "Farmacoterapia",
+      "category": "meds",
       "card_text": "C) Oxitocina (10-20 UI IV/IM): Fármaco de primera línea para la prevención y tratamiento de la atonía uterina.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Vázquez: ¡Bien! Es el agente uterotónico más seguro y efectivo inicialmente."
+        "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -78,7 +78,7 @@
       "scoring": {
         "points": 50,
         "error_type": "omission",
-        "vazquez_comment": "Vázquez: Bien. Siempre revisa desgarros (Trauma) y restos (Tissue) si el útero está contraído."
+        "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
       }
     },
     {
@@ -90,7 +90,7 @@
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Vázquez: ¡Excelente! Muy común en guías actuales."
+        "vazquez_comment": "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
       }
     },
     {
@@ -102,31 +102,31 @@
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Vázquez: ¡Bien! Elena no es hipertensa, pero siempre hay que recordarlo."
+        "vazquez_comment": "Claramente la medicina no es lo tuyo. Ese dato era VITAL."
       }
     },
     {
       "card_id": "c_7",
       "ui_icon": "shield",
-      "category": "Segunda Línea",
+      "category": "meds",
       "card_text": "G) Misoprostol (800 mcg rectal): Alternativa eficaz en lugares con poca infraestructura para refrigerar oxitocina.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Vázquez: ¡Correcto! Una herramienta muy versátil en obstetricia."
+        "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
       }
     },
     {
       "card_id": "c_8",
       "ui_icon": "maximize",
-      "category": "Manejo Mecánico",
+      "category": "meds",
       "card_text": "H) Balón de Bakri (Taponamiento): Dispositivo intrauterino que ejerce presión interna para detener el sangrado.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "omission",
-        "vazquez_comment": "Vázquez: ¡Excelente! Si los fármacos fallan, el balón es el siguiente paso antes de la cirugía."
+        "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
       }
     },
     {
@@ -138,19 +138,19 @@
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Vázquez: Bien. Es el paso previo a la histerectomía obstétrica."
+        "vazquez_comment": "Claramente la medicina no es lo tuyo. Ese dato era VITAL."
       }
     },
     {
       "card_id": "c_10",
       "ui_icon": "droplet",
-      "category": "Ácido Tranexámico",
+      "category": "meds",
       "card_text": "J) Ácido Tranexámico (1g IV): Administrar en las primeras 3 horas del inicio de la HPP para reducir la mortalidad.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Vázquez: ¡Muy bien! El estudio WOMAN confirmó su beneficio en HPP."
+        "vazquez_comment": "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
       }
     }
   ],

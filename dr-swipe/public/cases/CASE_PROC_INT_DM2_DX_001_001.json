@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 130/85, FC 80 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -24,7 +24,7 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "labs",
       "card_text": "A) Diabetes Mellitus Tipo 2 (Confirmada): Criterios: Glucosa ayuno ≥126, HbA1c ≥6.5%, o Glucosa azar ≥200 con síntomas.",
       "expected_action": "keep",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "calendar",
-      "category": "Criterio Ayuno",
+      "category": "labs",
       "card_text": "C) Glucosa Ayuno >=126 mg/dL: Requiere al menos 8 horas de ayuno calórico y debe confirmarse con una segunda medición en un día distinto.",
       "expected_action": "keep",
       "scoring": {
@@ -52,7 +52,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "activity",
-      "category": "Criterio HbA1c",
+      "category": "labs",
       "card_text": "D) HbA1c >=6.5%: Refleja el promedio de glucemia de los últimos 3 meses y debe medirse por métodos certificados (NGSP).",
       "expected_action": "keep",
       "scoring": {
@@ -76,7 +76,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "zap",
-      "category": "Diagnóstico Único",
+      "category": "labs",
       "card_text": "F) Crisis Glucémica: Paciente con POLIURIA, POLIDIPSIA y pérdida de peso + Glucosa al azar >=200 mg/dL: Diagnóstico inmediato.",
       "expected_action": "keep",
       "scoring": {
@@ -116,13 +116,25 @@
     {
       "card_id": "c_9",
       "ui_icon": "trending-down",
-      "category": "Metas Control",
+      "category": "labs",
       "card_text": "I) Meta de HbA1c <7.0%: Objetivo general para reducir el riesgo de nefropatía y retinopatía diabética.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
         "vazquez_comment": "Mendoza: ¡Perfecto! Un control glucémico estrecho salva riñones y ojos."
+      }
+    },
+    {
+      "card_id": "pad_010",
+      "ui_icon": "🧪",
+      "category": "labs",
+      "card_text": "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
       }
     }
   ],

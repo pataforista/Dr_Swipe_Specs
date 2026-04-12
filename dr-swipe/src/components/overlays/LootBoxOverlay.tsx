@@ -11,7 +11,7 @@ interface LootBoxOverlayProps {
 
 export const LootBoxOverlay: React.FC<LootBoxOverlayProps> = ({ reward, onClaim }) => {
   return (
-    <div className="fixed inset-0 flex flex-col items-center justify-center z-[110] p-6">
+    <div className="fixed inset-0 flex flex-col items-center justify-center z-overlay p-6">
       <motion.div
         className="absolute inset-0 bg-[#FDFBF7]/90 backdrop-blur-md"
         initial={{ opacity: 0 }}

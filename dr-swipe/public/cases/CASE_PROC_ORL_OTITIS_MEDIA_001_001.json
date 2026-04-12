@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "FC 115 lpm, FR 24 rpm, Temp 38.8°C.",
       "expected_action": "discard",
       "scoring": {
@@ -64,7 +64,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "pill",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "D) Amoxicilina (80-90 mg/kg/día): Tratamiento de primera elección por 5-10 días según la edad y severidad.",
       "expected_action": "keep",
       "scoring": {
@@ -80,7 +80,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "activity",
-      "category": "Segunda Línea",
+      "category": "meds",
       "card_text": "E) Amoxicilina con Ácido Clavulánico: Indicada si el paciente recibió amoxicilina en los últimos 30 días o tiene conjuntivitis purulenta asociada.",
       "expected_action": "keep",
       "scoring": {
@@ -92,7 +92,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "alert-triangle",
-      "category": "Complicación",
+      "category": "meds",
       "card_text": "F) Mastoiditis Aguda: Complicación supurativa más frecuente. Se caracteriza por desplazamiento del pabellón auricular y eritema retroauricular.",
       "expected_action": "keep",
       "scoring": {
@@ -108,7 +108,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "info",
-      "category": "Factores Riesgo",
+      "category": "meds",
       "card_text": "G) Guarderías, Tabaquismo Pasivo y Ausencia de Lactancia Materna: Factores que incrementan significativamente el riesgo de OMA recurrente.",
       "expected_action": "keep",
       "scoring": {
@@ -132,7 +132,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "droplet",
-      "category": "Morfología",
+      "category": "meds",
       "card_text": "I) Timpanometría: Prueba de elección para confirmar objetivamente la presencia de efusión si la otoscopia no es clara.",
       "expected_action": "keep",
       "scoring": {

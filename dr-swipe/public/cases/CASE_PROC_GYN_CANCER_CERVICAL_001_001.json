@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 110/70, FC 72 lpm, Temp 36.4°C",
       "expected_action": "discard",
       "scoring": {
@@ -100,7 +100,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "search",
-      "category": "Tamizaje Citológico",
+      "category": "meds",
       "card_text": "G) Citología Cervical (Pap): Tamizaje inicial a los 25 años. Tras dos resultados anuales negativos, se realiza cada 3 años.",
       "expected_action": "keep",
       "scoring": {
@@ -112,7 +112,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "dna",
-      "category": "Tamizaje Biomolecular",
+      "category": "meds",
       "card_text": "H) Prueba de ADN para VPH: Tamizaje preferido en mujeres >=35 años por su altísimo valor predictivo negativo.",
       "expected_action": "keep",
       "scoring": {

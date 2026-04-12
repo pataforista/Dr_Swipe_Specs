@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 130/85 mmHg, FC 92 lpm, Temp 38.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -24,7 +24,7 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "imaging",
       "card_text": "A) Diverticulitis Hinchey II (Drenaje Percutáneo): Absceso >4cm requiere drenaje guiado por imagen + antibióticos IV.",
       "expected_action": "keep",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "target",
-      "category": "Manejo Hinchey III/IV",
+      "category": "meds",
       "card_text": "B) Hinchey III/IV (Cirugía): Peritonitis purulenta o fecal. Requiere laparotomía urgente y procedimiento de Hartmann.",
       "expected_action": "keep",
       "scoring": {
@@ -80,7 +80,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "activity",
-      "category": "Clínica",
+      "category": "meds",
       "card_text": "E) Dolor en FII: El dolor en la fosa ilíaca izquierda es el síntoma pivote; se le llama la 'apendicitis del lado izquierdo'.",
       "expected_action": "keep",
       "scoring": {
@@ -92,7 +92,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "pill",
-      "category": "Manejo Hinchey I",
+      "category": "meds",
       "card_text": "F) Hinchey I (Manejo Médico): Absceso pericólico pequeño o solo inflamación. Requiere antibióticos IV y reposo intestinal.",
       "expected_action": "keep",
       "scoring": {
@@ -104,7 +104,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "zap",
-      "category": "Manejo Quirúrgico",
+      "category": "meds",
       "card_text": "G) Cirugía de Hartmann: Resección del segmento afectado + colostomía. Es el estándar en Hinchey IV (Fecal).",
       "expected_action": "keep",
       "scoring": {
@@ -132,7 +132,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "shield",
-      "category": "Tratamiento ATB",
+      "category": "meds",
       "card_text": "I) Antibióticos Combinados: Esquema que cubra gramnegativos y anaerobios (e.g. Ciprofloxacino + Metronidazol).",
       "expected_action": "keep",
       "scoring": {

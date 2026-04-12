@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 170/90 mmHg, FC 110 lpm (irregular), Temp 36.6°C",
       "expected_action": "discard",
       "scoring": {
@@ -69,7 +69,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "clipboard",
-      "category": "Gravedad",
+      "category": "vitals",
       "card_text": "D) Escala NIHSS: Cuantificar el déficit neurológico para guiar la decisión terapéutica y el pronóstico.",
       "expected_action": "keep",
       "scoring": {
@@ -81,7 +81,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "search",
-      "category": "Imagenología",
+      "category": "meds",
       "card_text": "E) TC Cráneo Simple: Objetivo primordial: Descartar hemorragia intracraneal en los primeros 25 min.",
       "expected_action": "keep",
       "scoring": {
@@ -97,7 +97,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "alert-triangle",
-      "category": "Contraindicación",
+      "category": "vitals",
       "card_text": "F) Control de TA: Mantener la TA por debajo de 185/110 mmHg para iniciar rTPA de forma segura.",
       "expected_action": "keep",
       "scoring": {
@@ -141,7 +141,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "calendar",
-      "category": "Seguimiento",
+      "category": "meds",
       "card_text": "I) Iniciar Antiagregación (ASA): Administrar 160-325 mg de Aspirina tras 24 horas de la fibrinólisis.",
       "expected_action": "keep",
       "scoring": {

@@ -104,7 +104,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "thermometer",
-      "category": "Influenza",
+      "category": "imaging",
       "card_text": "H) Influenza Estacional: Aplicación anual a partir de los 6 meses de edad (invierno).",
       "expected_action": "keep",
       "scoring": {
@@ -128,7 +128,7 @@
     {
       "card_id": "c_10",
       "ui_icon": "alert-triangle",
-      "category": "Seguridad",
+      "category": "meds",
       "card_text": "J) Contraindicación de Vacunas Vivas (SRP): No aplicar en pacientes con inmunodeficiencia grave o antecedente de anafilaxia a neomicina.",
       "expected_action": "keep",
       "scoring": {

@@ -12,7 +12,7 @@ export const FailProtectionOverlay: React.FC<FailProtectionOverlayProps> = ({
   error, livesRemaining, onRescue, onRestart 
 }) => {
   return (
-    <div className="fixed inset-0 flex flex-col items-center justify-center z-[110] p-6">
+    <div className="fixed inset-0 flex flex-col items-center justify-center z-fail-protection p-6">
       <motion.div
         className="absolute inset-0 bg-rose-50/95 backdrop-blur-md"
         initial={{ opacity: 0 }}

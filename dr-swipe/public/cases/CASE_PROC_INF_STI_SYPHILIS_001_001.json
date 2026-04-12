@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 120/80, FC 70 lpm, Temp 36.6°C.",
       "expected_action": "discard",
       "scoring": {
@@ -64,7 +64,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "search",
-      "category": "Tamizaje",
+      "category": "meds",
       "card_text": "D) Pruebas No Treponémicas (VDRL/RPR): Baratas, útiles para tamizaje y seguimiento del tratamiento. Tienen falsos positivos.",
       "expected_action": "keep",
       "scoring": {
@@ -76,7 +76,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "check-circle",
-      "category": "Confirmación",
+      "category": "meds",
       "card_text": "E) Pruebas Treponémicas (FTA-ABS): Confirmatorias. Permanecen positivas de por vida (cicatriz serológica).",
       "expected_action": "keep",
       "scoring": {
@@ -88,7 +88,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "pill",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "F) Penicilina G Benzatínica (2.4 Millones UI IM - Dosis Única): Tratamiento de elección para sífilis primaria, secundaria y latente temprana.",
       "expected_action": "keep",
       "scoring": {
@@ -104,7 +104,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "alert-triangle",
-      "category": "Complicación Tx",
+      "category": "imaging",
       "card_text": "G) Reacción de Jarisch-Herxheimer: Episodio febril agudo tras la primera dosis de penicilina por liberación de antígenos del treponema moribundo.",
       "expected_action": "keep",
       "scoring": {
@@ -116,7 +116,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "moon",
-      "category": "Sífilis Secundaria",
+      "category": "vitals",
       "card_text": "H) Roséola Sifilítica y Condiloma Lata: Manifestaciones sistémicas. Típico el exantema en palmas y plantas.",
       "expected_action": "keep",
       "scoring": {
@@ -128,7 +128,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "users",
-      "category": "Salud Pública",
+      "category": "imaging",
       "card_text": "I) Tratamiento de Parejas Sexuales: Notificar y tratar a todos los contactos de los últimos 90 días, incluso si son seronegativos.",
       "expected_action": "keep",
       "scoring": {

@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 130/85 mmHg, FC 92 lpm, Temp 38.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -24,7 +24,7 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "imaging",
       "card_text": "A) Diverticulitis Hinchey II (Drenaje Percutáneo): Absceso >4cm requiere drenaje guiado por imagen + antibióticos IV.",
       "expected_action": "keep",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "meds",
       "card_text": "B) Diverticulitis Hinchey III/IV (Cirugía - Hartmann): Peritonitis purulenta o fecaloide requiere cirugía de urgencia (Procedimiento de Hartmann).",
       "expected_action": "keep",
       "scoring": {
@@ -52,6 +52,90 @@
         "lethal_risk": true,
         "decision_critical": true,
         "lethal_if_discarded": true
+      }
+    },
+    {
+      "card_id": "pad_004",
+      "ui_icon": "🧪",
+      "category": "labs",
+      "card_text": "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
+      }
+    },
+    {
+      "card_id": "pad_005",
+      "ui_icon": "📄",
+      "category": "notes",
+      "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
+      }
+    },
+    {
+      "card_id": "pad_006",
+      "ui_icon": "📄",
+      "category": "notes",
+      "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
+      }
+    },
+    {
+      "card_id": "pad_007",
+      "ui_icon": "📄",
+      "category": "notes",
+      "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
+      }
+    },
+    {
+      "card_id": "pad_008",
+      "ui_icon": "🩺",
+      "category": "vitals",
+      "card_text": "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
+      }
+    },
+    {
+      "card_id": "pad_009",
+      "ui_icon": "☢️",
+      "category": "imaging",
+      "card_text": "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
+      }
+    },
+    {
+      "card_id": "pad_010",
+      "ui_icon": "🩺",
+      "category": "vitals",
+      "card_text": "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
       }
     }
   ],

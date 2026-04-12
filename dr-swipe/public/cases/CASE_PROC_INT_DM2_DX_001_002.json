@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 130/85, FC 80 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -24,7 +24,7 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "labs",
       "card_text": "A) Diabetes Mellitus Tipo 2 (Confirmada): Criterios: Glucosa ayuno ≥126, HbA1c ≥6.5%, o Glucosa azar ≥200 con síntomas.",
       "expected_action": "keep",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico",
+      "category": "labs",
       "card_text": "B) Prediabetes (Glucosa Alterada en Ayuno): Glucosa en ayuno entre 100 y 125 mg/dl.",
       "expected_action": "discard",
       "scoring": {
@@ -56,7 +56,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "activity",
-      "category": "Gabinete",
+      "category": "labs",
       "card_text": "C) Hemoglobina Glucosilada (HbA1c) ≥6.5%: Estándar para el diagnóstico y seguimiento crónico. Refleja los últimos 3 meses.",
       "expected_action": "keep",
       "scoring": {
@@ -68,7 +68,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "labs",
       "card_text": "D) Glucosa en Ayuno (≥126 mg/dL): Requiere al menos 8 horas de ayuno calórico. Debe repetirse para confirmar si no hay síntomas.",
       "expected_action": "keep",
       "scoring": {
@@ -80,7 +80,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "beaker",
-      "category": "Diagnóstico",
+      "category": "labs",
       "card_text": "E) Curva de Tolerancia (CTOG 75g) ≥200: Medición a las 2 horas tras carga de glucosa anhidra.",
       "expected_action": "keep",
       "scoring": {
@@ -92,7 +92,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "alert-circle",
-      "category": "Diagnóstico",
+      "category": "labs",
       "card_text": "F) Glucosa al Azar ≥200 + Síntomas Plenos: Diagnóstico directo sin necesidad de repetición si hay poliuria/polidipsia.",
       "expected_action": "keep",
       "scoring": {
@@ -116,7 +116,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "pill",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "H) Metformina: Fármaco de primera elección. Disminuye la gluconeogénesis hepática y mejora la sensibilidad a la insulina.",
       "expected_action": "keep",
       "scoring": {

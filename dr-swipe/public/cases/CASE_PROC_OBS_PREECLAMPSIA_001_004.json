@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 170/115, FC 90 lpm, Temp 37.0°C",
       "expected_action": "discard",
       "scoring": {
@@ -56,7 +56,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "shield",
-      "category": "Manejo",
+      "category": "meds",
       "card_text": "C) Sulfato de Magnesio: Inicio de esquema Zuspan para prevención de crisis convulsivas (eclampsia).",
       "expected_action": "keep",
       "scoring": {
@@ -84,7 +84,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "zap",
-      "category": "Antídoto",
+      "category": "meds",
       "card_text": "E) Gluconato de Calcio: Administración inmediata de 1g IV si se detectan signos de intoxicación por Magnesio.",
       "expected_action": "keep",
       "scoring": {

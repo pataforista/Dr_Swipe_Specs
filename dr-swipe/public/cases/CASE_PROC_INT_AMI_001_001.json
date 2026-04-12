@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 150/90, FC 50 lpm (bloqueo), Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -64,7 +64,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "heart",
-      "category": "Estudio Inicial",
+      "category": "imaging",
       "card_text": "D) ECG de 12 derivaciones: Realización e interpretación en menos de 10 minutos desde la llegada a urgencias.",
       "expected_action": "keep",
       "scoring": {
@@ -92,7 +92,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "crosshair",
-      "category": "Reperfusión",
+      "category": "imaging",
       "card_text": "F) ICP Primaria (Angioplastia): Estrategia de elección si se puede realizar en menos de 90 minutos desde el primer contacto médico.",
       "expected_action": "keep",
       "scoring": {
@@ -108,7 +108,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "beaker",
-      "category": "Biomarcadores",
+      "category": "labs",
       "card_text": "G) Troponina I / T: Marcadores de elección por su alta sensibilidad y especificidad de daño miocárdico.",
       "expected_action": "keep",
       "scoring": {
@@ -120,7 +120,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "thermometer",
-      "category": "Farmacoterapia",
+      "category": "meds",
       "card_text": "H) Nitroglicerina Sublingual: Para control de síntomas anginosos, si la TA sistólica es >90 mmHg y no hay sospecha de infarto de ventrículo derecho.",
       "expected_action": "keep",
       "scoring": {

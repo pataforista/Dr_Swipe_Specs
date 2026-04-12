@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 120/80, FC 110 lpm, Temp 37.8°C",
       "expected_action": "discard",
       "scoring": {
@@ -56,7 +56,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "eye",
-      "category": "Diagnóstico",
+      "category": "meds",
       "card_text": "C) Embarazo Ectópico Roto: Dolor pélvico agudo, sangrado transvaginal y datos de choque hipovolémico.",
       "expected_action": "discard",
       "scoring": {
@@ -84,7 +84,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "camera",
-      "category": "Gabinete",
+      "category": "imaging",
       "card_text": "E) Ultrasonido de FID: Imagen tubular no compresible >6mm, pared engrosada y líquido periapendicular.",
       "expected_action": "keep",
       "scoring": {
@@ -96,7 +96,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "beaker",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "F) Antibiótico Profiláctico: Cefalosporina de 2da generación (Cefoxitina) o Cefazolina + Metronidazol.",
       "expected_action": "keep",
       "scoring": {
@@ -136,7 +136,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "alert-triangle",
-      "category": "Complicación",
+      "category": "meds",
       "card_text": "I) Plastrón Apendicular: Masa palpable en FID tras varios días de evolución; manejo inicial suele ser conservador (antibióticos).",
       "expected_action": "keep",
       "scoring": {

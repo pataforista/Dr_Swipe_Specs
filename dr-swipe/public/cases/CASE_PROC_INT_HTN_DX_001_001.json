@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 145/95 mmHg, FC 75 lpm, Temp 36.6°C",
       "expected_action": "discard",
       "scoring": {
@@ -104,7 +104,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "clock",
-      "category": "Crisis Hipertensiva",
+      "category": "meds",
       "card_text": "G) Urgencia Hipertensiva: TA >180/120 mmHg SIN daño a órgano blanco. Tratamiento oral y reducción en 24-48h.",
       "expected_action": "keep",
       "scoring": {
@@ -116,7 +116,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "zap",
-      "category": "Emergencia",
+      "category": "meds",
       "card_text": "H) Emergencia Hipertensiva: TA >180/120 mmHg CON daño agudo (EVC, IAM, EAP). Requiere tratamiento IV y hospitalización.",
       "expected_action": "keep",
       "scoring": {

@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 145/95 mmHg, FC 75 lpm, Temp 36.6°C",
       "expected_action": "discard",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico",
+      "category": "meds",
       "card_text": "B) Administrar Esteroide IV Inmediatamente: Solo se consideran en choque séptico REFRACTARIO a fluidos y vasopresores. No es manejo inicial.",
       "expected_action": "discard",
       "scoring": {
@@ -84,7 +84,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "droplet",
-      "category": "Bundle 1h",
+      "category": "labs",
       "card_text": "E) Medir Lactato Sérico: Guía la terapia inicial y predice mortalidad si es >2 mmol/L.",
       "expected_action": "keep",
       "scoring": {
@@ -96,7 +96,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "zap",
-      "category": "Bundle 1h",
+      "category": "meds",
       "card_text": "F) Antibióticos <60 min: Iniciar terapia empírica de amplio espectro tras toma de hemocultivos.",
       "expected_action": "keep",
       "scoring": {
@@ -112,7 +112,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "beaker",
-      "category": "Volemia",
+      "category": "vitals",
       "card_text": "G) Carga de Cristaloides 30ml/kg: Iniciada en las primeras 3 horas de hipotensión o lactato >=4.",
       "expected_action": "keep",
       "scoring": {
@@ -144,7 +144,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "trash",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "I) Hidrocortisona IV: Administrar de rutina en todo choque séptico sin esperar respuesta a líquidos.",
       "expected_action": "discard",
       "scoring": {
@@ -208,7 +208,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "clock",
-      "category": "Crisis Hipertensiva",
+      "category": "meds",
       "card_text": "G) Urgencia Hipertensiva: TA >180/120 mmHg SIN daño a órgano blanco agudo. Tratamiento oral y control ambulatorio.",
       "expected_action": "keep",
       "scoring": {
@@ -220,7 +220,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "zap",
-      "category": "Emergencia",
+      "category": "meds",
       "card_text": "H) Emergencia Hipertensiva: TA >180/120 mmHg CON daño agudo (EVC, IAM, EAP). Requiere tratamiento IV hospitalario.",
       "expected_action": "keep",
       "scoring": {

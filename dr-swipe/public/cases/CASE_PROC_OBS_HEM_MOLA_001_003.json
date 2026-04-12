@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 120/80 mmHg, FC 88 lpm, Temp 36.6°C",
       "expected_action": "discard",
       "scoring": {
@@ -24,7 +24,7 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Genética",
+      "category": "vitals",
       "card_text": "A) Mola Completa: Generalmente 46,XX (origen paterno diploide). Ausencia de tejido fetal y vellosidades hidrópicas difusas.",
       "expected_action": "keep",
       "scoring": {
@@ -36,7 +36,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "image",
-      "category": "Auxiliares Diagnóstico",
+      "category": "imaging",
       "card_text": "B) Imagen en 'Copo de Nieve': Patrón ultrasonográfico con múltiples ecos lineales que indican vesículas hidrópicas.",
       "expected_action": "keep",
       "scoring": {
@@ -60,7 +60,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "slash",
-      "category": "Diagnóstico Diferencial",
+      "category": "meds",
       "card_text": "D) Mola Parcial: Triploidía (69XXX/XXY). Se observa feto (a menudo malformado) y niveles de hCG menos elevados.",
       "expected_action": "discard",
       "scoring": {
@@ -88,7 +88,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "activity",
-      "category": "Complicaciones",
+      "category": "meds",
       "card_text": "F) Quistes Tecaluteínicos: Quistes ováricos bilaterales (>6cm) secundarios a la estimulación masiva de la hCG.",
       "expected_action": "keep",
       "scoring": {
@@ -100,7 +100,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "alert-triangle",
-      "category": "Complicaciones",
+      "category": "meds",
       "card_text": "G) Preeclampsia Temprana: Hipertensión inducida por el embarazo antes de las 20 semanas es sugestiva de Mola.",
       "expected_action": "keep",
       "scoring": {
@@ -116,7 +116,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "copy",
-      "category": "Seguimiento",
+      "category": "meds",
       "card_text": "H) hCG Semanal: Medir niveles cada semana hasta alcanzar tres valores negativos consecutivos.",
       "expected_action": "keep",
       "scoring": {

@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 110/70, FC 80 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -24,7 +24,7 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "imaging",
       "card_text": "A) Diabetes Gestacional (Confirmada): Estrategia Un Paso (75g): Ayuno ≥92, 1h ≥180, o 2h ≥153. Solo se requiere un valor alterado.",
       "expected_action": "keep",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico Diferencial",
+      "category": "labs",
       "card_text": "B) Tolerancia a la Glucosa Normal: Todos los valores de la curva de 75g deben ser inferiores a 92, 180 y 153 mg/dl.",
       "expected_action": "discard",
       "scoring": {
@@ -52,7 +52,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "slash",
-      "category": "Diagnóstico Diferencial",
+      "category": "labs",
       "card_text": "C) Diabetes Pre-gestacional: Glucosa en ayuno >=126 o HbA1c >=6.5% detectada antes de las 13 semanas de gestación.",
       "expected_action": "discard",
       "scoring": {
@@ -104,7 +104,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "activity",
-      "category": "Metas de Control",
+      "category": "labs",
       "card_text": "G) Metas Glucémicas: Ayuno <95 mg/dl, 1h postprandial <140 mg/dl y 2h postprandial <120 mg/dl.",
       "expected_action": "keep",
       "scoring": {
@@ -120,7 +120,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "user-check",
-      "category": "Vigilancia Fetal",
+      "category": "imaging",
       "card_text": "H) Macrosomía Fetal: Principal complicación gestacional; peso fetal estimado >=p90 o >4,000g.",
       "expected_action": "keep",
       "scoring": {

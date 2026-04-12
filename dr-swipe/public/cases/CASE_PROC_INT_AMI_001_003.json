@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 90/60 (tendencia al choque), FC 50 lpm (bloqueo), Temp 36.8°C",
       "expected_action": "discard",
       "scoring": {
@@ -72,7 +72,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "activity",
-      "category": "Estudio Inicial",
+      "category": "meds",
       "card_text": "D) Electrocardiograma de 12 derivaciones: Meta institucional de realizar e interpretar en menos de 10 minutos.",
       "expected_action": "keep",
       "scoring": {
@@ -120,7 +120,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "alert-circle",
-      "category": "Seguridad",
+      "category": "meds",
       "card_text": "G) Hemorragia Digestiva Activa: Contraindicación absoluta para el uso de terapia fibrinolítica.",
       "expected_action": "discard",
       "scoring": {
@@ -148,7 +148,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "move",
-      "category": "Manejo Post-Fibrinólisis",
+      "category": "meds",
       "card_text": "I) Traslado a centro con ICP: Todos los pacientes post-fibrinólisis deben ser referidos para estrategia fármaco-invasiva.",
       "expected_action": "keep",
       "scoring": {

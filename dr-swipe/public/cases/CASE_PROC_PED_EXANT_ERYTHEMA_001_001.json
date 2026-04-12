@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA N/A, FC 80 lpm, Temp 37.2°C",
       "expected_action": "discard",
       "scoring": {
@@ -24,7 +24,7 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "meds",
       "card_text": "A) Eritema Infeccioso (5ta Enfermedad): Parvovirus B19. Signo de la bofetada + Exantema reticulado.",
       "expected_action": "keep",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "alert-triangle",
-      "category": "Complicación Crítica",
+      "category": "meds",
       "card_text": "B) Crisis Aplásica: El Parvovirus B19 tiene tropismo por precursores eritroides. En esferocitosis, esto causa caída súbita de hemoglobina.",
       "expected_action": "keep",
       "scoring": {
@@ -121,7 +121,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "thermometer",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "H) Medidas de Sostén: Reposo e hidratación. En casos de crisis aplásica puede requerir transfusión.",
       "expected_action": "keep",
       "scoring": {
@@ -145,7 +145,7 @@
     {
       "card_id": "c_10",
       "ui_icon": "slash",
-      "category": "Prevención",
+      "category": "meds",
       "card_text": "J) Vacuna contra Parvovirus B19: Inmunización universal recomendada en la Cartilla Nacional de Salud de México.",
       "expected_action": "discard",
       "scoring": {

@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 115/75 mmHg, FC 82 lpm, Temp 36.8°C",
       "expected_action": "discard",
       "scoring": {
@@ -36,7 +36,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Auxiliares Diagnóstico",
+      "category": "imaging",
       "card_text": "B) Especuloscopía Estéril: Confirmación visual de salida de líquido tras maniobra de Valsalva o Tarnier. Evita el tacto vaginal.",
       "expected_action": "keep",
       "scoring": {
@@ -60,7 +60,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "microscope",
-      "category": "Pruebas de Laboratorio",
+      "category": "labs",
       "card_text": "D) Test de Helecho (Cristalografía): Patrón de arborización al secar el líquido en un portaobjetos por las sales amnióticas.",
       "expected_action": "keep",
       "scoring": {
@@ -72,7 +72,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "slash",
-      "category": "Diagnóstico Diferencial",
+      "category": "meds",
       "card_text": "E) Incontinencia Urinaria: Pérdida involuntaria de orina; pH ácido y ausencia de patrón en helecho.",
       "expected_action": "discard",
       "scoring": {
@@ -112,7 +112,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "pill",
-      "category": "Esquema Antibiótico",
+      "category": "meds",
       "card_text": "H) Antibióticos de Latencia: Ampicilina + Eritromicina IV. Prolongan el periodo de latencia y reducen riesgos infecciosos.",
       "expected_action": "keep",
       "scoring": {

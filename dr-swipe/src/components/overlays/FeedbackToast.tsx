@@ -14,7 +14,7 @@ export const FeedbackToast: React.FC<FeedbackToastProps> = ({ result, points }) 
           initial={{ opacity: 0, x: 20, scale: 0.8 }}
           animate={{ opacity: 1, x: 0, scale: 1 }}
           exit={{ opacity: 0, x: 20, scale: 0.8 }}
-          className={`fixed bottom-10 right-10 z-[200] px-6 py-4 rounded-3xl shadow-xl border-2 flex items-center gap-4 lettering
+          className={`fixed bottom-10 right-10 z-global-toast px-6 py-4 rounded-3xl shadow-xl border-2 flex items-center gap-4 lettering
             ${result === 'correct' ? 'bg-emerald-50 border-emerald-200 text-emerald-600' : 'bg-rose-50 border-rose-200 text-rose-600'}
           `}
         >

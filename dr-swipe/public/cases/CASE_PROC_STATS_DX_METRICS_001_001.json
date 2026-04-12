@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA N/A, FC N/A, Temp N/A",
       "expected_action": "discard",
       "scoring": {
@@ -24,7 +24,7 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "meds",
       "card_text": "A) Probabilidad BAJA (<10%): En enfermedades raras, incluso pruebas 'buenas' tienen un Valor Predictivo Positivo (VPP) muy bajo por el peso de los FP.",
       "expected_action": "keep",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "percent",
-      "category": "Valor Predictivo (+)",
+      "category": "meds",
       "card_text": "B) Valor Predictivo Positivo (VPP): Probabilidad de tener la enfermedad si el resultado es POSITIVO. (VP / VP + FP).",
       "expected_action": "keep",
       "scoring": {
@@ -52,7 +52,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "search",
-      "category": "Sensibilidad",
+      "category": "meds",
       "card_text": "C) Sensibilidad (Sn): Capacidad para detectar enfermos; tasa de verdaderos positivos (VP / VP + FN).",
       "expected_action": "keep",
       "scoring": {
@@ -64,7 +64,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "check-square",
-      "category": "Especificidad",
+      "category": "meds",
       "card_text": "D) Especificidad (Sp): Capacidad para detectar sanos; tasa de verdaderos negativos (VN / VN + FP).",
       "expected_action": "keep",
       "scoring": {
@@ -88,7 +88,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "minus-circle",
-      "category": "V.P. Negativo",
+      "category": "meds",
       "card_text": "F) Valor Predictivo Negativo (VPN): Probabilidad de estar sano si la prueba es negativa. Se eleva cuando la prevalencia es baja.",
       "expected_action": "keep",
       "scoring": {

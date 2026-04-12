@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "FC 88 lpm, Temp 36.6°C, SatO2 97% (Aire ambiente).",
       "expected_action": "discard",
       "scoring": {
@@ -68,7 +68,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "activity",
-      "category": "Control",
+      "category": "meds",
       "card_text": "D) Cuestionario ACT / ACQ: Herramientas validadas para evaluar el nivel de control de los síntomas en las últimas 4 semanas.",
       "expected_action": "keep",
       "scoring": {
@@ -128,7 +128,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "slash",
-      "category": "Diagnóstico",
+      "category": "imaging",
       "card_text": "I) Prueba de Provocación con Metacolina: Usada si la espirometría es normal pero la sospecha clínica es muy alta.",
       "expected_action": "keep",
       "scoring": {

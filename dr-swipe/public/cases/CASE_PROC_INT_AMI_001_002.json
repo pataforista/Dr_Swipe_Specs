@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 90/60 (tendencia al choque), FC 50 lpm (bloqueo), Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -72,7 +72,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "activity",
-      "category": "Estudio Inicial",
+      "category": "imaging",
       "card_text": "D) Electrocardiograma de 12 derivaciones: Realizar e interpretar en menos de 10 minutos desde el primer contacto.",
       "expected_action": "keep",
       "scoring": {
@@ -88,7 +88,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "pill",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "E) Aspirina 325 mg (masticada): Antiagregación inicial obligatoria para reducir mortalidad.",
       "expected_action": "keep",
       "scoring": {
@@ -100,7 +100,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "pill",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "F) Clopidogrel 300 mg: Segundo antiagregante (DAPT) para potenciar la inhibición plaquetaria.",
       "expected_action": "keep",
       "scoring": {
@@ -112,7 +112,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "droplet",
-      "category": "Farmacología",
+      "category": "meds",
       "card_text": "G) Nitroglicerina Sublingual: Administrar para control del dolor retroesternal en este infarto inferior.",
       "expected_action": "discard",
       "scoring": {

@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 110/70 mmHg, FC 105 lpm, Temp 38.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -72,7 +72,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "activity",
-      "category": "Laboratorio",
+      "category": "labs",
       "card_text": "E) Leucocitosis: Conteo de glóbulos blancos >15,000 cel/mm3 con desviación a la izquierda.",
       "expected_action": "keep",
       "scoring": {
@@ -84,7 +84,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "zap",
-      "category": "Manejo Médico",
+      "category": "meds",
       "card_text": "F) Antibióticos IV: Esquema de primera línea: Ampicilina 2g IV cada 6h + Gentamicina 3-5mg/kg IV cada 24h.",
       "expected_action": "keep",
       "scoring": {
@@ -128,7 +128,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "user-minus",
-      "category": "Riesgos",
+      "category": "imaging",
       "card_text": "I) Tactos Vaginales Múltiples: Realizar más de 5 tactos durante el trabajo de parto es el factor de riesgo modificable más importante.",
       "expected_action": "keep",
       "scoring": {

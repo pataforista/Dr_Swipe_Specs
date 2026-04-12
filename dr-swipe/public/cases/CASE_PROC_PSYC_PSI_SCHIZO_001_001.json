@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 120/80, FC 90 lpm, Temp 36.8°C",
       "expected_action": "discard",
       "scoring": {
@@ -64,7 +64,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "zap",
-      "category": "Semiología",
+      "category": "meds",
       "card_text": "D) Síntomas Positivos: Alucinaciones auditivas (voces que comentan), ideas delirantes (persecutorias) y desorganización del pensamiento.",
       "expected_action": "keep",
       "scoring": {
@@ -76,7 +76,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "moon",
-      "category": "Semiología",
+      "category": "meds",
       "card_text": "E) Síntomas Negativos: Aplanamiento afectivo, abulia (falta de voluntad), alogia (pobreza del habla) y anhedonia.",
       "expected_action": "keep",
       "scoring": {
@@ -88,7 +88,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "activity",
-      "category": "Fisiopatología",
+      "category": "meds",
       "card_text": "F) Hipótesis Dopaminérgica: Exceso de dopamina en la vía mesolímbica (positivos) y déficit en la vía mesocortical (negativos).",
       "expected_action": "keep",
       "scoring": {
@@ -100,7 +100,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "pill",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "G) Antipsicóticos Atípicos (2ª Gen): Fármacos como Risperidona u Olanzapina como primera línea por su perfil de efectos secundarios.",
       "expected_action": "keep",
       "scoring": {
@@ -128,7 +128,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "trending-up",
-      "category": "Pronóstico",
+      "category": "meds",
       "card_text": "I) Factores de Buen Pronóstico: Inicio tardío, sexo femenino, presencia de factores estresantes claros y síntomas positivos predominantes.",
       "expected_action": "keep",
       "scoring": {
@@ -140,7 +140,7 @@
     {
       "card_id": "c_10",
       "ui_icon": "alert-circle",
-      "category": "Seguimiento",
+      "category": "labs",
       "card_text": "J) Monitorización Metabólica: Vigilar peso, glucosa y perfil de lípidos, especialmente en pacientes que reciben Olanzapina o Clozapina.",
       "expected_action": "keep",
       "scoring": {

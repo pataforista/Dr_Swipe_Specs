@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA N/A, FC 130 lpm (durante fiebre), Temp 36.6°C (post-fiebre)",
       "expected_action": "discard",
       "scoring": {
@@ -100,7 +100,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "thermometer",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "G) Sostén y Antipiréticos: Paracetamol y control térmico físico son suficientes en pacientes sanos.",
       "expected_action": "keep",
       "scoring": {
@@ -112,7 +112,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "zap",
-      "category": "Complicación",
+      "category": "meds",
       "card_text": "H) Convulsión Febril: Es la exantemática que más se asocia a crisis convulsivas por la fiebre tan alta.",
       "expected_action": "keep",
       "scoring": {

@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 90/60 mmHg, FC 115 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -101,7 +101,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "test-tube",
-      "category": "Laboratorio",
+      "category": "labs",
       "card_text": "G) Perfil de Coagulación / Fibrinógeno: El DPPNI es la causa más común de Coagulación Intravascular Diseminada (CID) en el embarazo.",
       "expected_action": "keep",
       "scoring": {
@@ -133,7 +133,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "alert-triangle",
-      "category": "Complicación Tardía",
+      "category": "meds",
       "card_text": "I) Síndrome de Sheehan: Necrosis hipofisaria post-parto secundaria a choque hipovolémico hemorrágico.",
       "expected_action": "keep",
       "scoring": {

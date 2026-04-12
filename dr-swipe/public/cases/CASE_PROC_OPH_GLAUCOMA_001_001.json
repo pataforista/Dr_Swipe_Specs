@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 150/90, FC 100 lpm, Temp 36.6°C.",
       "expected_action": "discard",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico",
+      "category": "meds",
       "card_text": "B) Conjuntivitis Bacteriana: Ojo rojo con secreción purulenta y sensación de cuerpo extraño; no causa dolor intenso ni midriasis.",
       "expected_action": "discard",
       "scoring": {
@@ -52,7 +52,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "zap",
-      "category": "Manejo Inicial",
+      "category": "meds",
       "card_text": "C) Acetazolamida (Oral/IV) y Manitol (IV): Agentes hiperosmóticos que reducen rápidamente la presión intraocular.",
       "expected_action": "keep",
       "scoring": {
@@ -104,7 +104,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "slash",
-      "category": "Diferencial",
+      "category": "meds",
       "card_text": "G) Glaucoma de Ángulo Abierto: Crónico, asintomático, pérdida progresiva de visión periférica ('túnel').",
       "expected_action": "keep",
       "scoring": {
@@ -140,7 +140,7 @@
     {
       "card_id": "c_10",
       "ui_icon": "x-circle",
-      "category": "Manejo",
+      "category": "meds",
       "card_text": "J) Atropina (Midriático): Útil para aliviar el dolor espasmódico del iris en la fase aguda del glaucoma cerrado.",
       "expected_action": "discard",
       "scoring": {

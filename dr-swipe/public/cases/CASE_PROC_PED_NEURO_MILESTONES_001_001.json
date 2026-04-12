@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA N/A, FC 110 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -52,7 +52,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "slash",
-      "category": "Diagnóstico Diferencial",
+      "category": "imaging",
       "card_text": "C) Trastorno del Espectro Autista (TEA): Sospechar ante falta de contacto visual, ausencia de señalar y retraso en el lenguaje a los 18-24 meses.",
       "expected_action": "discard",
       "scoring": {
@@ -64,7 +64,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "smile",
-      "category": "Motor Fino",
+      "category": "meds",
       "card_text": "D) Sonrisa Social (2 meses): El lactante responde con una sonrisa a los estímulos visuales y auditivos de los cuidadores.",
       "expected_action": "keep",
       "scoring": {
@@ -76,7 +76,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "arrow-up",
-      "category": "Motor Grueso",
+      "category": "imaging",
       "card_text": "E) Sedestación Independiente (9 meses): Capacidad de mantenerse sentado sin apoyo durante al menos un minuto.",
       "expected_action": "keep",
       "scoring": {
@@ -104,7 +104,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "zap",
-      "category": "Alerta Mayor",
+      "category": "meds",
       "card_text": "G) Marcha Independiente (18 meses): Falta de caminar solo a esta edad REQUIERE evaluación motriz y auditiva inmediata.",
       "expected_action": "keep",
       "scoring": {

@@ -34,7 +34,8 @@
       "expected_action": "discard",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding"
+        "error_type": "hoarding",
+        "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
       },
       "safety_flags": {
         "contraindication": false,
@@ -50,7 +51,8 @@
       "expected_action": "discard",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding"
+        "error_type": "hoarding",
+        "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
       },
       "safety_flags": {
         "contraindication": false,
@@ -66,7 +68,8 @@
       "expected_action": "discard",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding"
+        "error_type": "hoarding",
+        "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
       },
       "safety_flags": {
         "contraindication": false,
@@ -82,7 +85,8 @@
       "expected_action": "discard",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding"
+        "error_type": "hoarding",
+        "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
       },
       "safety_flags": {
         "contraindication": false,
@@ -115,7 +119,8 @@
       "expected_action": "discard",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding"
+        "error_type": "hoarding",
+        "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
       },
       "safety_flags": {
         "contraindication": false,
@@ -131,7 +136,8 @@
       "expected_action": "discard",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding"
+        "error_type": "hoarding",
+        "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
       },
       "safety_flags": {
         "contraindication": true,
@@ -147,7 +153,8 @@
       "expected_action": "discard",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding"
+        "error_type": "hoarding",
+        "vazquez_comment": "Perdiendo el tiempo con tonterías... concéntrate en lo que importa."
       },
       "safety_flags": {
         "contraindication": false,
@@ -163,7 +170,8 @@
       "expected_action": "discard",
       "scoring": {
         "points": 50,
-        "error_type": "hoarding"
+        "error_type": "hoarding",
+        "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
       },
       "safety_flags": {
         "contraindication": false,

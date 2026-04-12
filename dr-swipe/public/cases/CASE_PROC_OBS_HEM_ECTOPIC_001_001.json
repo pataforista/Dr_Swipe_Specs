@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 80/40 mmHg, FC 120 lpm, Temp 36.2°C",
       "expected_action": "discard",
       "scoring": {
@@ -24,7 +24,7 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "meds",
       "card_text": "A) Embarazo Ectópico Roto: Triada: Amenorrea + Dolor pélvico + Sangrado escaso. Evoluciona a choque hemoperitoneo.",
       "expected_action": "keep",
       "scoring": {
@@ -53,7 +53,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "target",
-      "category": "Auxiliares Diagnóstico",
+      "category": "imaging",
       "card_text": "C) Zona de Discriminación (hCG): Si la beta-hCG es >1,500 mUI/ml y el útero está vacío en USG transvaginal, el Dx es Ectópico.",
       "expected_action": "keep",
       "scoring": {
@@ -65,7 +65,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "slash",
-      "category": "Diagnóstico Diferencial",
+      "category": "imaging",
       "card_text": "D) Cuerpo Lúteo Hemorrágico: Causa de dolor y líquido libre; en USG se ve el 'anillo de fuego', pero no hay amenorrea prolongada.",
       "expected_action": "discard",
       "scoring": {

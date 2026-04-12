@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA N/A, FC 90 lpm, Temp 38.2°C",
       "expected_action": "discard",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico Diferencial",
+      "category": "meds",
       "card_text": "B) Viruela: Lesiones en el mismo estadio de evolución (monomórficas), centrífugas y umbilicadas. Ausente en la actualidad.",
       "expected_action": "discard",
       "scoring": {
@@ -104,7 +104,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "thermometer",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "G) Paracetamol y Antihistamínicos: Control de fiebre y prurito para evitar el rascado y sobreinfección.",
       "expected_action": "keep",
       "scoring": {
@@ -116,7 +116,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "alert-circle",
-      "category": "Complicación",
+      "category": "meds",
       "card_text": "H) Cerebelitis / Ataxia Cerebelosa Aguda: Complicación neurológica frecuente en niños (pronóstico favorable).",
       "expected_action": "keep",
       "scoring": {
@@ -128,7 +128,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "shield-check",
-      "category": "Prevención",
+      "category": "meds",
       "card_text": "I) Vacuna Varicela: Virus vivos atenuados. Incluida como refuerzo de la SRP (SRPV) o individual.",
       "expected_action": "keep",
       "scoring": {
@@ -140,7 +140,7 @@
     {
       "card_id": "c_10",
       "ui_icon": "pill",
-      "category": "Tratamiento",
+      "category": "meds",
       "card_text": "J) Aciclovir Oral de Rutina: Administrar a todo paciente inmunocompetente menor de 12 años con varicela no complicada.",
       "expected_action": "discard",
       "scoring": {

@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA N/A, FC 120 lpm, Temp 37.8°C",
       "expected_action": "discard",
       "scoring": {
@@ -88,7 +88,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "pill",
-      "category": "Manejo Inicial",
+      "category": "meds",
       "card_text": "F) Dexametasona 0.6 mg/kg (Dosis única): Es el pilar del tratamiento; reduce el edema laríngeo y la necesidad de hospitalización.",
       "expected_action": "keep",
       "scoring": {

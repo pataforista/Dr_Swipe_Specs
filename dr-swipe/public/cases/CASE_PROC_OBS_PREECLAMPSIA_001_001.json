@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 160/110, FC 95 lpm, Temp 37.0°C",
       "expected_action": "discard",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico Diferencial",
+      "category": "imaging",
       "card_text": "B) Hipertensión Gestacional: Elevación de la PA después de las 20 SDG en ausencia de proteinuria o datos de severidad.",
       "expected_action": "discard",
       "scoring": {
@@ -68,7 +68,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "shield",
-      "category": "Neuroprotección",
+      "category": "meds",
       "card_text": "D) Sulfato de Magnesio: Esquema Zuspan (4g impregnación IV, luego 1g/h mantenimiento) para prevenir eclampsia.",
       "expected_action": "keep",
       "scoring": {
@@ -108,7 +108,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "pill",
-      "category": "Antihipertensivo",
+      "category": "meds",
       "card_text": "G) Hidralazina o Nifedipino: Tratamiento de elección para el control de la crisis hipertensiva (TA ≥160/110).",
       "expected_action": "keep",
       "scoring": {

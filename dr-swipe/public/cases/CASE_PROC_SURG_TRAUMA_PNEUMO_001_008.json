@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 80/50 mmHg, FC 140 lpm, Temp 36.0°C",
       "expected_action": "discard",
       "scoring": {
@@ -73,7 +73,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "eye",
-      "category": "Signo Clínico",
+      "category": "imaging",
       "card_text": "D) Ausencia de Ruidos Respiratorios: Lado derecho silencioso a la auscultación pulmonar.",
       "expected_action": "keep",
       "scoring": {
@@ -85,7 +85,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "arrow-up",
-      "category": "Signo Clínico",
+      "category": "imaging",
       "card_text": "E) Ingurgitación Yugular: Distensión venosa por obstrucción del retorno venoso al corazón.",
       "expected_action": "keep",
       "scoring": {
@@ -109,7 +109,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "activity",
-      "category": "Fisiopatología",
+      "category": "meds",
       "card_text": "G) Choque Obstructivo: El mecanismo de choque no es por sangrado, sino por colapso de venas cavas.",
       "expected_action": "keep",
       "scoring": {

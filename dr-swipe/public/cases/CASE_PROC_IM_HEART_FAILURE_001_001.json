@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 145/90 mmHg, FC 92 lpm, FR 22 rpm, SatO2 93%.",
       "expected_action": "discard",
       "scoring": {
@@ -40,7 +40,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "beaker",
-      "category": "Gabinete",
+      "category": "meds",
       "card_text": "B) Péptidos Natriuréticos (NT-proBNP): Útiles para el diagnóstico por su alto valor predictivo negativo (descartar IC en urgencias).",
       "expected_action": "keep",
       "scoring": {
@@ -80,7 +80,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "info",
-      "category": "Clasificación",
+      "category": "imaging",
       "card_text": "E) NYHA (New York Heart Association): Clasifica la severidad según la limitación funcional por síntomas (I a IV).",
       "expected_action": "keep",
       "scoring": {
@@ -104,7 +104,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "alert-triangle",
-      "category": "Contraindicación",
+      "category": "meds",
       "card_text": "G) Verapamilo / Diltiazem: Calcioantagonistas no dihidropiridínicos que deben EVITARSE en ICFEr por su efecto inotrópico negativo.",
       "expected_action": "discard",
       "scoring": {
@@ -120,7 +120,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "search",
-      "category": "Imagen",
+      "category": "imaging",
       "card_text": "H) Ecocardiograma Transtorácico: Estudio fundamental para evaluar la FEVI y la etiología estructural de la IC.",
       "expected_action": "keep",
       "scoring": {

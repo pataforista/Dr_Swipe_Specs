@@ -491,7 +491,7 @@ export const gameMachine = setup({
     },
     critical_alert: {
       after: {
-        1000: { target: 'boss_fight' }
+        1500: { target: 'boss_fight' }
       }
     },
     boss_fight: {

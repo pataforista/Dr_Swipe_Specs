@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 110/70 mmHg, FC 105 lpm, Temp 39.4°C",
       "expected_action": "discard",
       "scoring": {
@@ -41,7 +41,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico Diferencial",
+      "category": "labs",
       "card_text": "B) Aciclovir IV: El paciente presenta LCR con pleocitosis linfocitaria, glucosa normal y proteínas levemente elevadas. Sospecha de Encefalitis.",
       "expected_action": "discard",
       "scoring": {
@@ -53,7 +53,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "slash",
-      "category": "Antibioticoterapia",
+      "category": "meds",
       "card_text": "C) Ampicilina IV: Añadir al esquema empírico si se sospecha Listeria monocytogenes (>50 años o inmunocompromiso).",
       "expected_action": "discard",
       "scoring": {
@@ -65,7 +65,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "search",
-      "category": "Signo Clínico",
+      "category": "imaging",
       "card_text": "D) Signos de Irritación Meníngea: Kernig (dolor al extender la rodilla) y Brudzinski (flexión de rodillas al flexionar el cuello).",
       "expected_action": "keep",
       "scoring": {
@@ -77,7 +77,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "test-tube",
-      "category": "Procedimiento",
+      "category": "meds",
       "card_text": "E) Punción Lumbar (PL): Obtención de LCR para citología, citoquímica, Gram y cultivo.",
       "expected_action": "keep",
       "scoring": {
@@ -93,7 +93,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "droplet",
-      "category": "Estudio de LCR",
+      "category": "labs",
       "card_text": "F) Hallazgos Bacterianos: Glucosa <40 mg/dl (consumo por bacterias) y PMN >1000/mm3.",
       "expected_action": "keep",
       "scoring": {
@@ -117,7 +117,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "shield-alert",
-      "category": "Salud Pública",
+      "category": "imaging",
       "card_text": "H) Quimioprofilaxis con Rifampicina: Administración a contactos cercanos si se confirma N. meningitidis o H. influenzae b.",
       "expected_action": "keep",
       "scoring": {

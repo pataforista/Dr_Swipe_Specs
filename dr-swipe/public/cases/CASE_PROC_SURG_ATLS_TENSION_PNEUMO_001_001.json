@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 80/40 mmHg, FC 130 lpm, Temp 36.2°C",
       "expected_action": "discard",
       "scoring": {
@@ -53,7 +53,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "slash",
-      "category": "Diagnóstico Diferencial",
+      "category": "meds",
       "card_text": "C) Tamponade Cardiaco: Tríada de Beck (Hipotensión, IVY, ruidos cardiacos alejados). Ruidos respiratorios normales.",
       "expected_action": "discard",
       "scoring": {
@@ -77,7 +77,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "arrow-up",
-      "category": "Signo Clínico",
+      "category": "imaging",
       "card_text": "E) Ingurgitación Yugular (IVY): Distensión de venas del cuello por aumento de la presión intratorácica.",
       "expected_action": "keep",
       "scoring": {
@@ -121,7 +121,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "activity",
-      "category": "Fisiopatología",
+      "category": "meds",
       "card_text": "H) Choque Obstructivo: Mecanismo de choque por colapso de la vena cava superior e inferior.",
       "expected_action": "keep",
       "scoring": {
@@ -133,7 +133,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "radio",
-      "category": "Ultrasonido",
+      "category": "imaging",
       "card_text": "I) Signo del Código de Barras: Se observa en Modo M; indica ausencia de deslizamiento pulmonar (vía rápida diagnóstica).",
       "expected_action": "keep",
       "scoring": {

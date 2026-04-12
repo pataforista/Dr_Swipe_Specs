@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 100/60 mmHg, FC 110 lpm (materna), Temp 38.8°C",
       "expected_action": "discard",
       "scoring": {
@@ -65,7 +65,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "pill",
-      "category": "Antibioticoterapia",
+      "category": "meds",
       "card_text": "D) Ampicilina + Gentamicina IV: Esquema antibiótico de elección para cobertura de flora vaginal y entérica.",
       "expected_action": "keep",
       "scoring": {

@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 120/80, FC 110 lpm, Temp 37.8°C",
       "expected_action": "discard",
       "scoring": {
@@ -56,7 +56,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "eye",
-      "category": "Diagnóstico",
+      "category": "meds",
       "card_text": "C) Embarazo Ectópico Roto: Dolor pélvico agudo, sangrado transvaginal y datos de choque hipovolémico.",
       "expected_action": "discard",
       "scoring": {
@@ -96,7 +96,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "refresh-cw",
-      "category": "Signo Clínico",
+      "category": "imaging",
       "card_text": "F) Signo del Obturador: Dolor con la rotación interna del muslo flexionado. Sugiere apéndice pélvico.",
       "expected_action": "keep",
       "scoring": {
@@ -120,7 +120,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "beaker",
-      "category": "Manejo",
+      "category": "meds",
       "card_text": "H) Antibiótico Profiláctico: Debe administrarse en la hora previa a la incisión quirúrgica.",
       "expected_action": "keep",
       "scoring": {
@@ -136,7 +136,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "droplet",
-      "category": "Manejo Preoperatorio",
+      "category": "imaging",
       "card_text": "I) Ayuno y Soluciones Intravenosas: Iniciar hidratación con cristaloides y mantener NPT (nada por vía oral).",
       "expected_action": "keep",
       "scoring": {

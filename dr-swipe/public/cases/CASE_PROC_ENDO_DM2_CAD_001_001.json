@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 90/60 mmHg, FC 120 lpm, Temp 37.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -41,7 +41,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico Diferencial",
+      "category": "labs",
       "card_text": "B) Estado Hiperosmolar (EHH): Glucosa >600 + Osmolaridad >320; ausencia de acidosis severa. Común en DM2 adultos.",
       "expected_action": "discard",
       "scoring": {
@@ -53,7 +53,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "droplets",
-      "category": "Hidratación",
+      "category": "imaging",
       "card_text": "C) Rehidratación Inicial: 1000-1500 ml de Solución Salina 0.9% en la primera hora para restaurar el volumen.",
       "expected_action": "keep",
       "scoring": {
@@ -81,7 +81,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "pill",
-      "category": "Insulinoterapia",
+      "category": "meds",
       "card_text": "E) Infusión de Insulina: 0.1 U/kg/h IV. El objetivo es frenar la cetogénesis, no solo bajar la glucosa.",
       "expected_action": "keep",
       "scoring": {
@@ -93,7 +93,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "activity",
-      "category": "Anion Gap",
+      "category": "labs",
       "card_text": "F) Brecha Aniónica (Anion Gap): Valor >12 indica presencia de cetoácidos circulantes. Clave para el seguimiento.",
       "expected_action": "keep",
       "scoring": {
@@ -117,7 +117,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "check-circle",
-      "category": "Resolución",
+      "category": "labs",
       "card_text": "H) Criterios de Resolución: pH >7.3, HCO3 >=18 y Anion Gap normalizado. No depende solo del nivel de glucosa.",
       "expected_action": "keep",
       "scoring": {
@@ -129,7 +129,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "search",
-      "category": "Investigación",
+      "category": "meds",
       "card_text": "I) Factor Precipitante: Investigar infecciones (IVU/Neumonía) u omisión de dosis como causa del descontrol.",
       "expected_action": "keep",
       "scoring": {

@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA N/A, FC 120 lpm, Temp 37.8°C",
       "expected_action": "discard",
       "scoring": {
@@ -80,7 +80,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "pill",
-      "category": "Farmacoterapia",
+      "category": "meds",
       "card_text": "E) Dexametasona 0.6 mg/kg (Dosis Única): Pilar del tratamiento para reducir el edema de la vía aérea en todos los grados.",
       "expected_action": "keep",
       "scoring": {
@@ -112,7 +112,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "refresh-cw",
-      "category": "Soporte",
+      "category": "imaging",
       "card_text": "G) Exposición a Aire Frío/Húmedo: Medida de soporte para calmar al paciente y reducir la agitación.",
       "expected_action": "keep",
       "scoring": {

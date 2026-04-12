@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 90/60 mmHg, FC 120 lpm, Temp 37.5°C",
       "expected_action": "discard",
       "scoring": {
@@ -57,7 +57,7 @@
     {
       "card_id": "c_3",
       "ui_icon": "droplet",
-      "category": "Manejo Inicial",
+      "category": "imaging",
       "card_text": "C) Hidratación con Solución Salina 0.9%: Administrar 1000 ml en la primera hora para restaurar el volumen circulante.",
       "expected_action": "keep",
       "scoring": {
@@ -73,7 +73,7 @@
     {
       "card_id": "c_4",
       "ui_icon": "pill",
-      "category": "Manejo Metabólico",
+      "category": "meds",
       "card_text": "D) Insulina Rápida IV (0.1 U/kg): Iniciar infusión continua una vez corroborado que el Potasio es >3.3 mEq/L.",
       "expected_action": "keep",
       "scoring": {
@@ -89,7 +89,7 @@
     {
       "card_id": "c_5",
       "ui_icon": "activity",
-      "category": "Electrolitos",
+      "category": "labs",
       "card_text": "E) Reposición de Potasio (KCl): Si el K está entre 3.3 y 5.2 mEq/L, agregar 20-30 mEq por cada litro de solución infundida.",
       "expected_action": "keep",
       "scoring": {
@@ -101,7 +101,7 @@
     {
       "card_id": "c_6",
       "ui_icon": "slash",
-      "category": "Manejo",
+      "category": "labs",
       "card_text": "F) Administración de Bicarbonato de Sodio: Aplicar bolo de 100 mmol si el pH arterial inicial es de 7.1.",
       "expected_action": "discard",
       "scoring": {
@@ -113,7 +113,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "refresh-cw",
-      "category": "Ajuste de Soluciones",
+      "category": "labs",
       "card_text": "G) Cambio a Solución Glucosada 5% o Mixta: Realizar cuando la glucosa capilar descienda a <250 mg/dL.",
       "expected_action": "keep",
       "scoring": {

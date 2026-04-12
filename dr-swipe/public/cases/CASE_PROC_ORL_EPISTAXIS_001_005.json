@@ -12,13 +12,13 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 170/100 mmHg, FC 95 lpm, FR 18 rpm. (Hipertensión significativa).",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Vázquez: La presión está alta, probablemente por el estrés del sangrado. Controlémoslo."
+        "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
       }
     },
     {
@@ -30,23 +30,107 @@
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Vázquez: ¡Bien! Es la zona de anastomosis de 5 arterias en el tabique anterior."
+        "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
       }
     },
     {
       "card_id": "c_2",
       "ui_icon": "zap",
-      "category": "Manejo Inicial",
+      "category": "vitals",
       "card_text": "B) Presión Digital Directa: Comprimir las alas nasales de forma continua durante 5 a 15 minutos con el paciente inclinado hacia ADELANTE.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Vázquez: ¡Correcto! Es la medida inicial más efectiva. Nunca inclines la cabeza hacia atrás (riesgo de aspiración).",
+        "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas.",
         "safety_flags": {
           "lethal_risk": false,
           "decision_critical": true
         }
+      }
+    },
+    {
+      "card_id": "pad_004",
+      "ui_icon": "🧪",
+      "category": "labs",
+      "card_text": "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
+      }
+    },
+    {
+      "card_id": "pad_005",
+      "ui_icon": "🧪",
+      "category": "labs",
+      "card_text": "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
+      }
+    },
+    {
+      "card_id": "pad_006",
+      "ui_icon": "📄",
+      "category": "notes",
+      "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
+      }
+    },
+    {
+      "card_id": "pad_007",
+      "ui_icon": "☢️",
+      "category": "imaging",
+      "card_text": "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
+      }
+    },
+    {
+      "card_id": "pad_008",
+      "ui_icon": "🧪",
+      "category": "labs",
+      "card_text": "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
+      }
+    },
+    {
+      "card_id": "pad_009",
+      "ui_icon": "📄",
+      "category": "notes",
+      "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
+      }
+    },
+    {
+      "card_id": "pad_010",
+      "ui_icon": "🧪",
+      "category": "labs",
+      "card_text": "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
       }
     }
   ],

@@ -12,7 +12,7 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "TA 110/70, FC 90 bpm, Temp 37.0°C. (Variables basales estables).",
       "expected_action": "discard",
       "scoring": {
@@ -96,7 +96,7 @@
     {
       "card_id": "c_7",
       "ui_icon": "alert-triangle",
-      "category": "Error",
+      "category": "meds",
       "card_text": "G) Error Tipo I (Alfa): Rechazar la hipótesis nula cuando en realidad es verdadera (Falso Positivo).",
       "expected_action": "keep",
       "scoring": {
@@ -108,7 +108,7 @@
     {
       "card_id": "c_8",
       "ui_icon": "alert-circle",
-      "category": "Error",
+      "category": "meds",
       "card_text": "H) Error Tipo II (Beta): No rechazar la hipótesis nula cuando es falsa (Falso Negativo).",
       "expected_action": "keep",
       "scoring": {
@@ -120,7 +120,7 @@
     {
       "card_id": "c_9",
       "ui_icon": "users",
-      "category": "Muestreo",
+      "category": "meds",
       "card_text": "I) Muestreo Aleatorio Simple: Cada individuo de la población tiene la misma probabilidad de ser elegido para el estudio.",
       "expected_action": "keep",
       "scoring": {
@@ -132,7 +132,7 @@
     {
       "card_id": "c_10",
       "ui_icon": "target",
-      "category": "Métricas",
+      "category": "meds",
       "card_text": "J) Sensibilidad vs Especificidad: Sensibilidad = Capacidad de detectar enfermos (pocos falsos negativos). Especificidad = Capacidad de detectar sanos (pocos falsos positivos).",
       "expected_action": "keep",
       "scoring": {
