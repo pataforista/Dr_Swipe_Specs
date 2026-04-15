@@ -64,7 +64,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
               key={`avatar-${validExpression}`}
               animate={avatarMotion[validExpression]}
               transition={{ duration: 0.6, ease: 'easeInOut' }}
-              className={`w-16 h-16 rounded-full flex items-center justify-center text-4xl shadow-xl relative z-10 border-4 border-white bg-slate-50 transition-colors duration-500`}
+              className={`w-16 h-16 rounded-full flex items-center justify-center text-4xl shadow-md relative z-10 border-4 border-white bg-slate-50 transition-colors duration-500`}
             >
               <span className="relative z-10 filter drop-shadow-sm">
                 {mentorIcons[validDoctor]}
@@ -91,7 +91,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
                     animate={{ opacity: 1, y: 0, scale: 1, rotate: 1 }}
                     exit={{ opacity: 0, y: -10, scale: 0.85, rotate: 2 }}
                     transition={{ duration: 0.45, delay: 0.1, ease: 'easeOut' }}
-                    className={`paper-sheet p-6 max-w-sm text-center relative border-2 shadow-lg overflow-hidden ${bubbleColors[validExpression]}`}
+                    className={`paper-sheet p-6 max-w-sm text-center relative border-2 rounded-panel shadow-lg overflow-hidden ${bubbleColors[validExpression]}`}
                   >
                     {/* Washi Tape Accent */}
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 washi-tape-pink opacity-60 -rotate-2" />

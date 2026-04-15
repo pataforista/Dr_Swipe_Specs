@@ -126,11 +126,14 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
         <div className="flex flex-col items-center gap-3 relative group">
           <div className="absolute inset-0 bg-accent-alert/20 rounded-full blur-xl scale-90 group-hover:scale-110 group-hover:bg-accent-alert/40 transition-all opacity-0 group-hover:opacity-100" />
           <motion.button
+            type="button"
+            aria-label="Descartar esta carta médica (Flecha izquierda)"
+            title="DESCARTAR"
             disabled={isLocked || visibleCards.length === 0}
             onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); handleActionSwipe('left'); }}
             whileHover={!isLocked ? { scale: 1.15, y: -4 } : {}}
             whileTap={!isLocked ? { scale: 0.9 } : {}}
-            className={`w-20 h-20 rounded-full bg-white border text-accent-alert shadow-[0_0_40px_rgba(0,0,0,0.4)] flex items-center justify-center text-3xl hover:bg-slate-800 hover:border-accent-alert/50 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner relative ${
+            className={`w-20 h-20 rounded-full bg-white border text-accent-alert shadow-xl flex items-center justify-center text-3xl hover:bg-slate-800 hover:border-accent-alert/50 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner relative ${
               lifelineActive && cards[currentIndex]?.expected_action === 'discard' ? 'sticker-glow border-accent-alert/100 animate-pulse' : 'border-white/10'
             }`}
           >
@@ -145,11 +148,13 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
         {/* Hint */}
         <div className="flex flex-col items-center gap-3">
           <motion.button
+            type="button"
+            aria-label="Escanear carta médica usando créditos (25 🪙)"
             disabled={!canUseLifeline || isLocked}
             onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); onUseLifeline?.(); }}
             whileHover={canUseLifeline && !isLocked ? { scale: 1.15, rotate: 180, boxShadow: '0 0 30px rgba(129,140,248,0.4)' } : {}}
             whileTap={canUseLifeline && !isLocked ? { scale: 0.85 } : {}}
-            className={`w-16 h-16 rounded-full border shadow-2xl flex items-center justify-center text-2xl transition-all ${
+            className={`w-16 h-16 rounded-full border shadow-lg flex items-center justify-center text-2xl transition-all ${
               lifelineActive ? 'bg-secondary/20 border-secondary text-white sticker-glow' : 'bg-white border-white/5 text-secondary hover:bg-white/5 hover:border-white/20 disabled:opacity-20'
             }`}
              title="Escanear (25 🪙)"
@@ -163,11 +168,14 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
         <div className="flex flex-col items-center gap-3 relative group">
           <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl scale-90 group-hover:scale-110 group-hover:bg-primary/40 transition-all opacity-0 group-hover:opacity-100" />
           <motion.button
+            type="button"
+            aria-label="Mantener esta carta médica (Flecha derecha)"
+            title="MANTENER"
             disabled={isLocked || visibleCards.length === 0}
             onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); handleActionSwipe('right'); }}
             whileHover={!isLocked ? { scale: 1.15, y: -4 } : {}}
             whileTap={!isLocked ? { scale: 0.9 } : {}}
-            className={`w-20 h-20 rounded-full bg-white border text-primary shadow-[0_0_40px_rgba(0,0,0,0.4)] flex items-center justify-center text-3xl hover:bg-slate-800 hover:border-primary/50 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner relative ${
+            className={`w-20 h-20 rounded-full bg-white border text-primary shadow-xl flex items-center justify-center text-3xl hover:bg-slate-800 hover:border-primary/50 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner relative ${
               lifelineActive && cards[currentIndex]?.expected_action === 'keep' ? 'sticker-glow border-primary/100 animate-pulse' : 'border-white/10'
             }`}
           >

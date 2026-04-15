@@ -77,6 +77,18 @@ export default {
           '100%': { clipPath: 'inset(50% 0 20% 0)' },
         }
       },
+      borderRadius: {
+        button: 'var(--radius-button)',
+        panel: 'var(--radius-panel)',
+        container: 'var(--radius-container)',
+        dialog: 'var(--radius-dialog)',
+      },
+      boxShadow: {
+        sm: 'var(--shadow-sm)',
+        md: 'var(--shadow-md)',
+        lg: 'var(--shadow-lg)',
+        xl: 'var(--shadow-xl)',
+      },
       animation: {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'float': 'float 3s ease-in-out infinite',

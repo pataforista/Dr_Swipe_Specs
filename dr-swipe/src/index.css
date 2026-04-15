@@ -3,15 +3,33 @@
 @tailwind utilities;
 
 :root {
+  /* Semantic Palette */
   --bg-app: #FDFBF7;
   --surface: #FFFFFF;
   --text-main: #334155;
   --text-muted: #64748B;
-  --primary: #FF007F;
+  --primary: #0D9488;    /* Teal 600 - More medical */
   --secondary: #FBBC05;
-  --tertiary: #00F5D4;
-  --accent-alert: #F43F5E;
+  --tertiary: #5DBCA7;  /* Darker teal for better contrast */
+  --accent-alert: #EF4444; /* Red 500 */
   --accent-info: #0EA5E9;
+
+  /* Shadows - Layered & Premium */
+  --shadow-sm: 0 2px 4px rgba(92,64,51,0.05);
+  --shadow-md: 0 10px 30px rgba(92,64,51,0.08); /* Replaces shadow-premium */
+  --shadow-lg: 0 15px 45px rgba(92,64,51,0.12);
+  --shadow-xl: 0 20px 60px rgba(92,64,51,0.15);
+
+  /* Border Radius */
+  --radius-button: 9999px;
+  --radius-panel: 1.5rem;
+  --radius-container: 2rem;
+  --radius-dialog: 3rem;
+
+  /* Glassmorphism Variants */
+  --glass-light: rgba(255, 255, 255, 0.4);
+  --glass-medium: rgba(255, 255, 255, 0.75);
+  --glass-heavy: rgba(255, 255, 255, 0.92);
 }
 
 body {
@@ -28,12 +46,12 @@ h1, h2, h3, .lettering {
 }
 
 .paper-sheet {
-  background-color: white;
+  background-color: var(--surface);
   border: 1px solid #E2E8F0;
-  border-radius: 2.5rem;
+  border-radius: var(--radius-container);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.04);
+  box-shadow: var(--shadow-sm);
   /* Layering Defaults */
   isolation: isolate;
 }
@@ -47,10 +65,10 @@ h1, h2, h3, .lettering {
 .z-global-toast { z-index: 600; }
 
 .index-card {
-  background-color: white;
-  border-radius: 1.5rem;
+  background-color: var(--surface);
+  border-radius: var(--radius-panel);
   border: 1px solid #F1F5F9;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  box-shadow: var(--shadow-md);
   background-image: linear-gradient(to bottom, transparent 39px, #F1F5F9 40px);
   background-size: 100% 40px;
 }
