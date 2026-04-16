@@ -105,20 +105,20 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
-            className="mb-12 relative z-10 flex-1 flex flex-col min-h-0"
+            className="mb-12 relative z-10 flex-1 flex flex-col w-full"
           >
             <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-8 leading-tight lettering tracking-tight">
               {questions[currentStep].question || questions[currentStep].q}
             </h3>
 
-            <div className="grid gap-4 overflow-y-auto pr-2 flex-1">
+            <div className="flex flex-col gap-4 flex-1 overflow-y-auto pr-2">
               {questions[currentStep].options.map((opt: string, idx: number) => (
                 <button
                   key={idx}
                   onClick={() => handleAnswer(idx)}
-                  className="paper-sheet p-6 text-left hover:border-emerald-300 hover:bg-emerald-50/30 transition-all group flex items-center gap-4 border-2 border-slate-50"
+                  className="paper-sheet p-6 text-left hover:border-emerald-300 hover:bg-emerald-50/30 transition-all group flex items-center gap-4 border-2 border-slate-50 flex-shrink-0"
                 >
-                  <span className="w-8 h-8 rounded-full border-2 border-slate-200 flex items-center justify-center font-bold text-slate-400 group-hover:border-emerald-300 group-hover:text-emerald-500 transition-colors">
+                  <span className="w-8 h-8 rounded-full border-2 border-slate-200 flex items-center justify-center font-bold text-slate-400 group-hover:border-emerald-300 group-hover:text-emerald-500 transition-colors flex-shrink-0">
                     {String.fromCharCode(65 + idx)}
                   </span>
                   <span className="text-xl font-bold text-slate-600 group-hover:text-slate-800 lettering">{opt}</span>
