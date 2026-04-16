@@ -32,13 +32,24 @@
   --glass-heavy: rgba(255, 255, 255, 0.92);
 }
 
+html {
+  overscroll-behavior: none; /* Previene pull-to-refresh y bounce en iOS */
+  height: -webkit-fill-available; /* Soluciona problemas de altura en iOS Safari */
+}
+
 body {
   background-color: #FDFBF7;
   color: #334155;
   font-family: 'Outfit', sans-serif;
-  background-color: #FDFBF7; /* Fallback */
   background-image: radial-gradient(#E2E8F0 1px, transparent 1px);
   background-size: 24px 24px;
+  overscroll-behavior: none;
+  overflow: hidden;      /* Bloquea el scroll de la página principal */
+  position: fixed;       /* Asegura que el viewport no se mueva al arrastrar */
+  width: 100%;
+  height: 100%;
+  min-height: -webkit-fill-available;
+  touch-action: pan-y;   /* Permite scroll vertical interno si es necesario, pero evita scroll horizontal */
 }
 
 h1, h2, h3, .lettering {
@@ -87,7 +98,8 @@ h1, h2, h3, .lettering {
   border-radius: 9999px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  font-size: 11px;
+  font-size: 14px !important; /* Aumentado para legibilidad móvil */
+  padding: 1rem 2rem !important; /* Más compacto pero táctil */
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   transform: rotate(-1deg);
   transition: all 0.3s;
@@ -133,4 +145,30 @@ h1, h2, h3, .lettering {
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background: #FF007F22;
   border-radius: 10px;
+}
+
+/* --- MOBILE OPTIMIZATIONS --- */
+
+/* Safe Area Utilities */
+.p-safe-top { padding-top: max(1rem, env(safe-area-inset-top)); }
+.p-safe-bottom { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+.p-safe-left { padding-left: max(0px, env(safe-area-inset-left)); }
+.p-safe-right { padding-right: max(0px, env(safe-area-inset-right)); }
+
+/* Fine adjustment for very small screens */
+@media (max-width: 375px) {
+  .marker-btn {
+    font-size: 13px !important;
+    padding: 0.875rem 1.5rem !important;
+  }
+}
+
+/* Border Radius Adjustment for Mobile */
+@media (max-width: 768px) {
+  .paper-sheet {
+    border-radius: 1.5rem !important;
+  }
+  body {
+    background-image: none; /* Mejor rendimiento en móviles antiguos */
+  }
 }

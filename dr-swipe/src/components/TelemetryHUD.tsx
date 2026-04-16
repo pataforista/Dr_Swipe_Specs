@@ -15,7 +15,7 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
   if (state !== 'triage' && state !== 'boss_fight' && state !== 'urgent_triage') return null;
 
   return (
-    <div className="fixed top-2 sm:top-4 left-2 sm:left-4 right-2 sm:right-4 z-hud flex flex-col sm:flex-row items-center justify-between p-3 sm:p-4 paper-sheet shadow-md border-2 border-white/50 bg-white/60 backdrop-blur-md rounded-2xl gap-3 sm:gap-0">
+    <div className="fixed top-2 sm:top-4 left-2 sm:left-4 right-2 sm:right-4 z-hud flex flex-col sm:flex-row items-center justify-between p-3 sm:p-4 paper-sheet shadow-md border-2 border-white/50 bg-white/60 backdrop-blur-md rounded-2xl gap-3 sm:gap-0 pointer-events-none">
       <div className="flex items-center gap-3 sm:gap-4 flex-1 w-full sm:w-auto justify-between sm:justify-start">
         <div className="flex flex-col gap-0.5">
           <span className="text-[9px] sm:text-[10px] font-black tracking-widest text-primary uppercase leading-none lettering">

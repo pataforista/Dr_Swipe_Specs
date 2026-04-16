@@ -57,7 +57,7 @@ export function App() {
 
   useEffect(() => {
     let timer: number;
-    const isOverlayActive = !!(state.context.activeEvent || state.context.activePenalty || state.context.lootBoxReward);
+    const isOverlayActive = !!(state.context.activeEvent || state.context.activePenalty || state.context.lootBoxReward || showIntro);
     if (!isPaused && !isOverlayActive && timeLeft > 0 && (state.matches('triage') || state.matches('urgent_triage'))) {
       if (state.context.isSandiaMode) return;
       timer = window.setInterval(() => setTimeLeft(t => t - 1), 1000);
@@ -186,7 +186,7 @@ export function App() {
     setTimeLeft(timeLimit);
     timeLimitRef.current = timeLimit;
     pendingDeckRef.current = shuffledCards;
-    send({ type: 'CONTINUE_SHIFT', deck: shuffledCards, puzzle: nextCase.enarm_pearl || (nextCase as any).perla_enarm });
+    setShowIntro(true); // Trigger intro card for next patient
   };
 
   const handleLifeline = () => {
@@ -212,7 +212,20 @@ export function App() {
             <span className="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase lettering block mt-3 sm:mt-4 mb-1 sm:mb-2">EXPEDIENTE MÉDICO 📔</span>
             <h2 className="text-3xl sm:text-5xl font-black text-slate-800 lettering mb-3 sm:mb-4 break-words">{currentCase.patient_intro.name}</h2>
             <div className="bg-slate-50 p-4 sm:p-6 rounded-2xl mb-6 sm:mb-8 border-2 border-dashed border-slate-100 italic lettering text-base sm:text-lg">"{currentCase.patient_intro.arrival_scenario}"</div>
-            <button onClick={() => { setShowIntro(false); setTimeLeft(timeLimitRef.current); send({ type: 'START_GUARD', deck: pendingDeckRef.current, difficulty: currentCase.difficulty || 'standard', pearl: currentCase.enarm_pearl as any }); }} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl group">INICIAR CONSULTA ✨</button>
+            <button 
+              onClick={() => { 
+                setShowIntro(false); 
+                setTimeLeft(timeLimitRef.current); 
+                if (state.matches('idle')) {
+                  send({ type: 'START_GUARD', deck: pendingDeckRef.current, difficulty: currentCase.difficulty || 'standard', pearl: currentCase.enarm_pearl as any }); 
+                } else {
+                  send({ type: 'CONTINUE_SHIFT', deck: pendingDeckRef.current, puzzle: currentCase.enarm_pearl || (currentCase as any).perla_enarm });
+                }
+              }} 
+              className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl group"
+            >
+              INICIAR CONSULTA ✨
+            </button>
           </motion.div>
         </div>
       );
@@ -289,7 +302,7 @@ export function App() {
   };
 
   return (
-    <div className={`fixed inset-0 bg-[#FDFBF7] flex flex-col items-center select-none overflow-hidden text-slate-800 pt-4 ${timeLeft <= 10 && state.matches('triage') ? 'destabilized-content' : ''} ${swipeFeedback === 'wrong' ? 'shake-lite' : ''}`}>
+    <div className={`fixed inset-0 bg-[#FDFBF7] flex flex-col items-center select-none overflow-hidden text-slate-800 p-safe-top p-safe-bottom p-safe-left p-safe-right ${timeLeft <= 10 && state.matches('triage') ? 'destabilized-content' : ''} ${swipeFeedback === 'wrong' ? 'shake-lite' : ''}`}>
       <div className="absolute inset-0 pointer-events-none opacity-[0.02] medical-grid" />
       <TelemetryHUD timeLeft={timeLeft} state={state.value as string} score={state.context.score} combo={state.context.combo} vitality={state.context.vitality} />
       
