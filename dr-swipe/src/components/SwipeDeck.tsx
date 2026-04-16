@@ -266,7 +266,7 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
   // Stack visibility: gentle paper stacking
   const stackScale = useTransform(x, [-300, 0, 300], [1, 0.96, 1]);
   const stackY = useTransform(x, [-300, 0, 300], [0, 12, 0]);
-  const stackOpacity = useTransform(x, [-300, 0, 300], [1, 0.5, 1]);
+  const stackOpacity = useTransform(x, [-300, 0, 300], [1, 0.9, 1]);
   const stackRotate = useTransform(x, [-300, 0, 300], [0, (indexOffset % 2 === 0 ? 1.5 : -1.5), 0]);
 
   const overlayOpacityLeft = useTransform(x, [0, -100], [0, 1]);
@@ -352,7 +352,7 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
 
       {/* Main Content Area */}
       <div className="flex-grow p-10 pl-16 flex flex-col justify-center relative">
-         <p className={`font-medium leading-relaxed text-slate-700 text-center ${getFontSizeClass(card.card_text)} px-2`}>
+         <p className={`font-semibold leading-relaxed text-slate-800 text-center ${getFontSizeClass(card.card_text)} px-2`}>
           {card.card_text}
         </p>
       </div>

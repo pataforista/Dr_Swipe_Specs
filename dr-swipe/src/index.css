@@ -42,7 +42,9 @@ body {
 }
 
 h1, h2, h3, .lettering {
-  font-family: 'Caveat', cursive;
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
 }
 
 .paper-sheet {
@@ -100,7 +102,7 @@ h1, h2, h3, .lettering {
 }
 
 .lettering {
-  font-family: 'Caveat', cursive;
+  font-family: 'Fraunces', serif;
 }
 
 @keyframes sticker-slap {
