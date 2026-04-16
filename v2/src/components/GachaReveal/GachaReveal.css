@@ -247,3 +247,57 @@
 .btn-save-codex:active {
   transform: translateY(0);
 }
+
+/* ── Mobile Responsiveness ────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .gacha-overlay {
+    min-height: 100vh;
+  }
+
+  .results-view {
+    padding: 1rem;
+  }
+
+  .dossier-sealed {
+    width: 140px;
+    height: 190px;
+  }
+
+  .decrypt-text {
+    font-size: 0.65rem;
+  }
+
+  .dossier-opening {
+    width: 140px;
+    height: 190px;
+  }
+
+  .perla-card {
+    max-width: 100%;
+    padding: 28px 24px;
+    margin: 0 16px;
+  }
+
+  .perla-title {
+    font-size: 1.2rem;
+  }
+
+  .perla-text {
+    font-size: 0.9rem;
+  }
+
+  .perla-badge {
+    font-size: 0.65rem;
+  }
+
+  .btn-reward {
+    padding: 12px 24px;
+    font-size: 0.85rem;
+  }
+
+  .btn-save-codex {
+    padding: 14px 16px;
+    font-size: 0.8rem;
+    margin-top: 20px;
+  }
+}

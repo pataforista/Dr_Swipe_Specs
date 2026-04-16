@@ -86,3 +86,14 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+/* ── Mobile Responsiveness ────────────────────────────────────────── */
+@media (max-width: 480px) {
+  #root {
+    max-width: 100%;
+  }
+
+  .view-container {
+    padding: 12px;
+  }
+}

@@ -43,3 +43,32 @@
   object-fit: contain;
   filter: drop-shadow(0 4px 8px rgba(92, 64, 51, 0.15));
 }
+
+/* ── Mobile Responsiveness ────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .avatar-feedback-container {
+    padding: 8px;
+  }
+
+  .speech-bubble {
+    max-width: 140px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    margin-right: 6px;
+    font-size: 0.75rem;
+    border-radius: 12px;
+  }
+
+  .speech-bubble::after {
+    bottom: -6px;
+    right: 12px;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--secondary);
+  }
+
+  .avatar-sprite {
+    width: 70px;
+    height: 70px;
+  }
+}

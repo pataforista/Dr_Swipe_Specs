@@ -207,3 +207,70 @@
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
+
+/* ── Mobile Responsiveness ────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .shock-room-overlay {
+    padding: 16px;
+  }
+
+  .shock-header {
+    margin-bottom: 20px;
+  }
+
+  .alarm-title {
+    font-size: 0.95rem;
+  }
+
+  .timer-display {
+    font-size: 2.5rem;
+  }
+
+  .heartbeat-counter {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+  }
+
+  .question-card {
+    max-width: 100%;
+    padding: 24px 20px;
+  }
+
+  .step-indicator {
+    font-size: 0.65rem;
+    margin-bottom: 12px;
+  }
+
+  .question-text {
+    font-size: 1rem;
+    margin-bottom: 16px;
+  }
+
+  .options-list {
+    gap: 8px;
+  }
+
+  .option-btn {
+    padding: 12px 14px;
+    font-size: 0.85rem;
+  }
+
+  .dossier-preview {
+    margin-top: 20px;
+    max-width: 100%;
+  }
+
+  .dossier-label {
+    font-size: 0.65rem;
+    margin-bottom: 8px;
+  }
+
+  .dossier-pills {
+    gap: 6px;
+  }
+
+  .dossier-pill {
+    padding: 4px 10px;
+    font-size: 0.6rem;
+  }
+}
