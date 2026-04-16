@@ -23,6 +23,7 @@ import { PenaltyOverlay } from './components/overlays/PenaltyOverlay';
 import { FailProtectionOverlay } from './components/overlays/FailProtectionOverlay';
 import { TelemetryHUD } from './components/TelemetryHUD';
 import { AvatarFeedback } from './components/AvatarFeedback';
+import { ReloadPrompt } from './components/overlays/ReloadPrompt';
 
 const isSwipeCorrect = (direction: 'left' | 'right', expectedAction: 'keep' | 'discard'): boolean => {
   return (direction === 'right' && expectedAction === 'keep') ||
@@ -321,6 +322,7 @@ export function App() {
         </motion.div>
       )}</AnimatePresence>
       <div className="w-full max-w-md text-center opacity-20 py-4"><p className="text-[8px] font-bold tracking-widest uppercase lettering">HGC ARCHIVE · Dr. Swipe Scrapbook</p></div>
+      <ReloadPrompt />
     </div>
   );
 }
