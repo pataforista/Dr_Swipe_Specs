@@ -206,13 +206,13 @@ export function App() {
   const renderCurrentView = () => {
     if (showIntro && currentCase) {
       return (
-        <div className="fixed inset-0 bg-[#FDFBF7] flex flex-col items-center justify-center p-8 z-[120]">
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-10 max-w-md w-full text-center shadow-xl relative bg-white">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-8 washi-tape-pink -rotate-1 shadow-sm" />
-            <span className="text-[10px] font-bold text-slate-400 uppercase lettering block mt-4 mb-2">EXPEDIENTE MÉDICO 📔</span>
-            <h2 className="text-5xl font-black text-slate-800 lettering mb-4">{currentCase.patient_intro.name}</h2>
-            <div className="bg-slate-50 p-6 rounded-2xl mb-8 border-2 border-dashed border-slate-100 italic lettering text-lg">"{currentCase.patient_intro.arrival_scenario}"</div>
-            <button onClick={() => { setShowIntro(false); setTimeLeft(timeLimitRef.current); send({ type: 'START_GUARD', deck: pendingDeckRef.current, difficulty: currentCase.difficulty || 'standard', pearl: currentCase.enarm_pearl as any }); }} className="marker-btn w-full py-5 text-xl group">INICIAR CONSULTA ✨</button>
+        <div className="fixed inset-0 bg-[#FDFBF7] flex flex-col items-center justify-center p-4 sm:p-8 z-[120] overflow-y-auto">
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-6 sm:p-10 max-w-md w-full text-center shadow-xl relative bg-white my-auto">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 sm:w-40 h-6 sm:h-8 washi-tape-pink -rotate-1 shadow-sm" />
+            <span className="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase lettering block mt-3 sm:mt-4 mb-1 sm:mb-2">EXPEDIENTE MÉDICO 📔</span>
+            <h2 className="text-3xl sm:text-5xl font-black text-slate-800 lettering mb-3 sm:mb-4 break-words">{currentCase.patient_intro.name}</h2>
+            <div className="bg-slate-50 p-4 sm:p-6 rounded-2xl mb-6 sm:mb-8 border-2 border-dashed border-slate-100 italic lettering text-base sm:text-lg">"{currentCase.patient_intro.arrival_scenario}"</div>
+            <button onClick={() => { setShowIntro(false); setTimeLeft(timeLimitRef.current); send({ type: 'START_GUARD', deck: pendingDeckRef.current, difficulty: currentCase.difficulty || 'standard', pearl: currentCase.enarm_pearl as any }); }} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl group">INICIAR CONSULTA ✨</button>
           </motion.div>
         </div>
       );
@@ -220,27 +220,27 @@ export function App() {
     switch (true) {
       case state.matches('idle'):
         return (
-          <div className="fixed inset-0 bg-[#FDFBF7] flex flex-col items-center justify-center p-8 overflow-hidden z-[120]">
-            <div className="text-center mb-10">
-              <span className="text-[10px] font-black tracking-widest text-primary uppercase mb-2 block lettering">NOTAS DE ESTUDIO ✨</span>
-              <h1 className="text-7xl font-black text-slate-800 lettering drop-shadow-sm">Dr. Swipe</h1>
-              <div className="h-2 w-48 washi-tape-pink mx-auto mt-4 rotate-1" />
+          <div className="fixed inset-0 bg-[#FDFBF7] flex flex-col items-center justify-center p-4 sm:p-8 overflow-hidden z-[120]">
+            <div className="text-center mb-6 sm:mb-10">
+              <span className="text-[9px] sm:text-[10px] font-black tracking-widest text-primary uppercase mb-2 block lettering">NOTAS DE ESTUDIO ✨</span>
+              <h1 className="text-5xl sm:text-6xl md:text-7xl font-black text-slate-800 lettering drop-shadow-sm">Dr. Swipe</h1>
+              <div className="h-2 w-32 sm:w-48 washi-tape-pink mx-auto mt-3 sm:mt-4 rotate-1" />
             </div>
-            {dailyStreak > 0 && <div className="flex items-center gap-2 bg-amber-100 px-6 py-2 rounded-2xl mb-10 shadow-sm font-bold text-amber-700 lettering uppercase text-[11px]">🔥 Racha: {dailyStreak} Días</div>}
-            <div className="flex flex-col gap-4 w-full max-w-xs">
-              <button onClick={() => startNewCase()} disabled={isLoadingCase} className="marker-btn py-5 text-xl">{isLoadingCase ? 'PREPARANDO...' : 'EMPEZAR GUARDIA ✨'}</button>
-              <button onClick={() => setShowStats(true)} className="text-[11px] font-bold text-slate-400 hover:text-primary transition-colors uppercase lettering tracking-widest pt-2">Ver mi diario 📔</button>
+            {dailyStreak > 0 && <div className="flex items-center gap-2 bg-amber-100 px-4 sm:px-6 py-2 rounded-2xl mb-6 sm:mb-10 shadow-sm font-bold text-amber-700 lettering uppercase text-[10px] sm:text-[11px]">🔥 Racha: {dailyStreak} Días</div>}
+            <div className="flex flex-col gap-3 sm:gap-4 w-full max-w-xs px-2">
+              <button onClick={() => startNewCase()} disabled={isLoadingCase} className="marker-btn py-4 sm:py-5 text-base sm:text-xl">{isLoadingCase ? 'PREPARANDO...' : 'EMPEZAR GUARDIA ✨'}</button>
+              <button onClick={() => setShowStats(true)} className="text-[10px] sm:text-[11px] font-bold text-slate-400 hover:text-primary transition-colors uppercase lettering tracking-widest pt-2">Ver mi diario 📔</button>
             </div>
           </div>
         );
       case state.matches('triage') || state.matches('urgent_triage'):
         return (
-          <div className="flex flex-col items-center justify-center w-full max-w-sm gap-4 px-4 h-full pt-16 pb-12">
+          <div className="flex flex-col items-center justify-center w-full max-w-sm gap-2 sm:gap-4 px-2 sm:px-4 h-full pt-12 sm:pt-16 pb-8 sm:pb-12">
             <div className="relative w-full h-full flex flex-col items-center">
               <SwipeDeck cards={state.context.deck} currentIndex={state.context.currentCardIndex} onSwipe={handleSwipe} isLocked={isLoadingCase || isPaused} lifelineActive={state.context.lifelineActive} canUseLifeline={stats.coins >= LIFELINE_COST && !state.context.lifelineActive} onUseLifeline={handleLifeline} />
-              <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-[110]">
-                <button disabled={state.context.undoCharges === 0 || state.context.currentCardIndex === 0} onClick={handleUndo} className="w-12 h-12 rounded-full border-2 border-white bg-secondary/80 flex items-center justify-center text-xl shadow-md disabled:opacity-20 transition-all">⏪</button>
-                <span className="text-[9px] font-black text-slate-400 uppercase lettering tracking-tighter">{state.context.undoCharges}/5</span>
+              <div className="absolute -bottom-10 sm:-bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-[110]">
+                <button disabled={state.context.undoCharges === 0 || state.context.currentCardIndex === 0} onClick={handleUndo} className="w-10 sm:w-12 h-10 sm:h-12 rounded-full border-2 border-white bg-secondary/80 flex items-center justify-center text-lg sm:text-xl shadow-md disabled:opacity-20 transition-all">⏪</button>
+                <span className="text-[8px] sm:text-[9px] font-black text-slate-400 uppercase lettering tracking-tighter">{state.context.undoCharges}/5</span>
               </div>
             </div>
           </div>
@@ -249,39 +249,39 @@ export function App() {
         return <ShockRoom questions={currentCase!.boss_fight_triad!.questions} dossierItems={state.context.dossier} onSurvive={() => { stopTriageAlarm(); send({ type: 'ANSWER_CORRECT' }); }} onGhosted={handleBossGhosted} />;
       case state.matches('reward'):
         return (
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-10 max-w-md text-center shadow-xl relative">
-            <div className="w-20 h-20 bg-cyan-50 rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-white shadow-sm font-bold text-4xl">✨</div>
-            <h2 className="text-5xl font-black text-slate-800 mb-4 lettering">¡Muy bien!</h2>
-            <div className="bg-slate-50 p-6 rounded-2xl mb-8 border-2 border-dashed border-slate-100 text-left">
-              <div className="flex justify-between mb-4"><span className="text-[10px] uppercase font-bold text-slate-400">Puntos</span><span className="text-3xl font-black text-primary lettering">+{state.context.score}</span></div>
-              <div className="flex justify-between"><span className="text-[10px] uppercase font-bold text-slate-400">Monedas</span><span className="text-3xl font-black text-secondary lettering">+{state.context.coinsEarnedThisCase}</span></div>
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-6 sm:p-10 max-w-md w-full text-center shadow-xl relative mx-4">
+            <div className="w-16 sm:w-20 h-16 sm:h-20 bg-cyan-50 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 border-4 border-white shadow-sm font-bold text-3xl sm:text-4xl">✨</div>
+            <h2 className="text-4xl sm:text-5xl font-black text-slate-800 mb-3 sm:mb-4 lettering">¡Muy bien!</h2>
+            <div className="bg-slate-50 p-4 sm:p-6 rounded-2xl mb-6 sm:mb-8 border-2 border-dashed border-slate-100 text-left">
+              <div className="flex justify-between mb-3 sm:mb-4"><span className="text-[9px] sm:text-[10px] uppercase font-bold text-slate-400">Puntos</span><span className="text-2xl sm:text-3xl font-black text-primary lettering">+{state.context.score}</span></div>
+              <div className="flex justify-between"><span className="text-[9px] sm:text-[10px] uppercase font-bold text-slate-400">Monedas</span><span className="text-2xl sm:text-3xl font-black text-secondary lettering">+{state.context.coinsEarnedThisCase}</span></div>
             </div>
-            <button onClick={() => { if (caseQueue.length > 0) handleCaseTransition(); else send({ type: 'RESTART' }); }} className="marker-btn w-full py-5 text-xl">{caseQueue.length > 0 ? `Siguiente Px (${caseQueue.length})` : 'Terminar Turno'}</button>
+            <button onClick={() => { if (caseQueue.length > 0) handleCaseTransition(); else send({ type: 'RESTART' }); }} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl">{caseQueue.length > 0 ? `Siguiente Px (${caseQueue.length})` : 'Terminar Turno'}</button>
           </motion.div>
         );
       case state.matches('ghosted'):
         return (
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-10 max-w-md text-center shadow-xl relative">
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-6 sm:p-10 max-w-md w-full text-center shadow-xl relative mx-4">
             <div className="absolute top-0 left-0 w-full h-2 bg-rose-400" />
-            <div className="text-7xl mb-6 mt-4">💀</div>
-            <span className="lettering text-rose-500 font-bold block mb-2 text-[10px] uppercase">Turno Terminado</span>
-            <h2 className="text-5xl font-black text-slate-800 mb-4 lettering">Sin más internos</h2>
-            <div className="bg-rose-50 p-6 rounded-2xl mb-8 border-2 border-dashed border-rose-100 italic lettering text-lg">
+            <div className="text-6xl sm:text-7xl mb-4 sm:mb-6 mt-3 sm:mt-4">💀</div>
+            <span className="lettering text-rose-500 font-bold block mb-2 text-[9px] sm:text-[10px] uppercase">Turno Terminado</span>
+            <h2 className="text-4xl sm:text-5xl font-black text-slate-800 mb-3 sm:mb-4 lettering">Sin más internos</h2>
+            <div className="bg-rose-50 p-4 sm:p-6 rounded-2xl mb-6 sm:mb-8 border-2 border-dashed border-rose-100 italic lettering text-base sm:text-lg">
               "{state.context.fatalError || 'El servicio no sobrevivió.'}"
             </div>
-            <div className="flex flex-col gap-4">
-              <button onClick={() => send({ type: 'VIEW_DEBRIEF' })} className="marker-btn w-full py-5 text-xl !bg-slate-700">VER NOTAS 📝</button>
-              <button onClick={() => send({ type: 'RESTART' })} className="text-[10px] font-bold text-slate-300 hover:text-rose-400 uppercase tracking-widest py-2 transition-all lettering">— Nueva Guardia —</button>
+            <div className="flex flex-col gap-3 sm:gap-4">
+              <button onClick={() => send({ type: 'VIEW_DEBRIEF' })} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl !bg-slate-700">VER NOTAS 📝</button>
+              <button onClick={() => send({ type: 'RESTART' })} className="text-[9px] sm:text-[10px] font-bold text-slate-300 hover:text-rose-400 uppercase tracking-widest py-2 transition-all lettering">— Nueva Guardia —</button>
             </div>
           </motion.div>
         );
       case state.matches('debrief'):
         return (
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-10 max-w-md text-left shadow-xl relative">
-            <div className="mb-6"><span className="bg-rose-500 text-white px-4 py-1 rounded-lg lettering text-xl shadow-sm rotate-[-2deg] inline-block">¡NOTITA! 📝</span></div>
-            <div className="bg-rose-50 p-6 rounded-2xl mb-6 border-2 border-dashed border-rose-100 italic lettering text-lg">"{state.context.debriefData?.comment}"</div>
-            <p className="text-[9px] font-bold text-slate-400 uppercase mb-4 lettering">GPC: {state.context.debriefData?.gpc}</p>
-            <button onClick={() => send({ type: 'RESTART' })} className="marker-btn w-full py-5 text-lg">Continuar Estudiando ✨</button>
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-6 sm:p-10 max-w-md w-full text-left shadow-xl relative mx-4">
+            <div className="mb-4 sm:mb-6"><span className="bg-rose-500 text-white px-3 sm:px-4 py-1 rounded-lg lettering text-base sm:text-xl shadow-sm rotate-[-2deg] inline-block">¡NOTITA! 📝</span></div>
+            <div className="bg-rose-50 p-4 sm:p-6 rounded-2xl mb-4 sm:mb-6 border-2 border-dashed border-rose-100 italic lettering text-base sm:text-lg">"{state.context.debriefData?.comment}"</div>
+            <p className="text-[8px] sm:text-[9px] font-bold text-slate-400 uppercase mb-3 sm:mb-4 lettering">GPC: {state.context.debriefData?.gpc}</p>
+            <button onClick={() => send({ type: 'RESTART' })} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-lg">Continuar Estudiando ✨</button>
           </motion.div>
         );
       default: return null;
