@@ -198,3 +198,77 @@
   color: var(--text-muted);
   text-transform: uppercase;
 }
+
+/* ── Mobile Responsiveness ────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .codex-container {
+    padding: 1rem;
+  }
+
+  .codex-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .codex-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .codex-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .filter-pill-group {
+    gap: 0.4rem;
+  }
+
+  .filter-pill {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.65rem;
+  }
+
+  .codex-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .codex-card {
+    padding: 1rem;
+  }
+
+  .card-top {
+    margin-bottom: 0.6rem;
+  }
+
+  .card-category {
+    font-size: 0.6rem;
+    padding: 2px 6px;
+  }
+
+  .card-title {
+    font-size: 0.9rem;
+  }
+
+  .card-snippet {
+    font-size: 0.7rem;
+  }
+
+  .card-ref {
+    font-size: 0.55rem;
+    padding: 2px 6px;
+  }
+
+  .codex-card-locked {
+    padding: 1.5rem;
+  }
+
+  .lock-icon {
+    font-size: 1.5rem;
+  }
+
+  .lock-text {
+    font-size: 0.6rem;
+  }
+}

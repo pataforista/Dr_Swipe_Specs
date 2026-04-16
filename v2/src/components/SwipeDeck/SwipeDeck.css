@@ -136,3 +136,48 @@
 .top-card:hover::after {
   opacity: 0.7;
 }
+
+/* ── Mobile Responsiveness ────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .swipe-deck {
+    height: 340px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  .swipe-card {
+    width: 220px;
+    height: 300px;
+    padding: 16px;
+  }
+
+  .card-category {
+    font-size: 0.65rem;
+    padding: 3px 8px;
+    margin-bottom: 12px;
+  }
+
+  .card-text {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .card-payload {
+    margin-top: 12px;
+    padding: 8px 10px;
+  }
+
+  .card-payload .value {
+    font-size: 1.5rem;
+  }
+
+  .card-payload .unit {
+    font-size: 0.75rem;
+  }
+
+  .swipe-card::before,
+  .swipe-card::after {
+    width: 30px;
+    height: 30px;
+  }
+}
