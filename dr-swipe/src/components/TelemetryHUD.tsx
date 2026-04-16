@@ -18,20 +18,20 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
     <div className="fixed top-2 sm:top-4 left-2 sm:left-4 right-2 sm:right-4 z-hud flex flex-col sm:flex-row items-center justify-between p-3 sm:p-4 paper-sheet shadow-md border-2 border-white/50 bg-white/60 backdrop-blur-md rounded-2xl gap-3 sm:gap-0">
       <div className="flex items-center gap-3 sm:gap-4 flex-1 w-full sm:w-auto justify-between sm:justify-start">
         <div className="flex flex-col gap-0.5">
-          <span className="text-[7px] sm:text-[8px] font-black tracking-widest text-primary/60 uppercase leading-none lettering">
+          <span className="text-[9px] sm:text-[10px] font-black tracking-widest text-primary uppercase leading-none lettering">
             Puntaje
           </span>
           <motion.span
             key={score}
             animate={{ scale: [1, 1.1, 1] }}
-            className="text-base sm:text-lg font-bold text-slate-700 leading-none lettering"
+            className="text-lg sm:text-xl font-bold text-slate-700 leading-none lettering tabular-nums"
           >
             {Math.max(0, score)}
           </motion.span>
         </div>
         <div className="w-px h-6 bg-slate-200 hidden sm:block" />
         <div className="flex flex-col gap-0.5 flex-1 max-w-[80px] sm:max-w-[100px]">
-          <span className="text-[7px] sm:text-[8px] font-black tracking-widest text-primary/60 uppercase leading-none lettering">
+          <span className="text-[9px] sm:text-[10px] font-black tracking-widest text-primary uppercase leading-none lettering">
             Salud Px
           </span>
           <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden border border-slate-200 shadow-inner">

@@ -55,7 +55,7 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-[150] flex flex-col items-center justify-center p-6 bg-[#FDFBF7]/90 backdrop-blur-md overflow-y-auto">
+    <div className="fixed inset-0 z-[150] flex flex-col items-center pt-20 sm:pt-24 pb-4 sm:pb-6 px-4 sm:px-6 bg-[#FDFBF7]/90 backdrop-blur-md overflow-y-auto">
       {/* Paper texture overlay */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] medical-grid z-0" />
 
@@ -63,22 +63,22 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
         initial={{ scale: 0.9, y: 20, rotate: -2 }}
         animate={shakeIndicator ? { x: [-10, 10, -10, 10, 0] } : { scale: 1, y: 0, rotate: 0 }}
         transition={shakeIndicator ? { duration: 0.4 } : { duration: 0.3 }}
-        className="paper-sheet p-10 md:p-14 max-w-2xl w-full shadow-2xl relative bg-white border-2 border-rose-100 flex flex-col"
+        className="paper-sheet p-4 sm:p-8 md:p-12 max-w-2xl w-full shadow-2xl relative bg-white border-2 border-rose-100 flex flex-col"
       >
         {/* Washi Tape Accent */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-10 washi-tape-pink -rotate-1 shadow-sm border-x-2 border-white/40 z-20" />
 
-        <div className="flex justify-between items-center mb-10 relative z-10">
+        <div className="flex justify-between items-center mb-3 sm:mb-8 relative z-10">
           <div className="flex flex-col gap-1">
             <span className="text-rose-500 font-black text-[12px] tracking-[0.4em] uppercase lettering">Fase Crítica ⚡</span>
             <div className="h-1.5 w-16 bg-rose-200 rounded-full" />
           </div>
-          <div className={`px-6 py-2 rounded-2xl border-2 font-bold lettering text-2xl transition-colors ${timeLeft <= 5 ? 'bg-rose-500 text-white border-white animate-pulse' : 'bg-slate-50 text-slate-700 border-white'}`}>
+          <div className={`px-3 py-1.5 sm:px-6 sm:py-2 rounded-2xl border-2 font-bold lettering text-lg sm:text-2xl transition-colors ${timeLeft <= 5 ? 'bg-rose-500 text-white border-white animate-pulse' : 'bg-slate-50 text-slate-700 border-white'}`}>
             ⏱️ {timeLeft}s
           </div>
         </div>
 
-        <div className="mb-12 relative z-10">
+        <div className="mb-3 sm:mb-10 relative z-10">
             <div className="flex justify-between items-end mb-4">
               <span className="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] lettering">PROGRESO DEL CASO</span>
               <div className="flex gap-4 items-center">
@@ -105,23 +105,23 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
-            className="mb-12 relative z-10 flex-1 flex flex-col w-full"
+            className="mb-3 sm:mb-10 relative z-10 flex-1 flex flex-col w-full"
           >
-            <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-8 leading-tight lettering tracking-tight">
+            <h3 className="text-lg sm:text-2xl md:text-4xl font-bold text-slate-800 mb-2 sm:mb-6 leading-tight lettering tracking-tight">
               {questions[currentStep].question || questions[currentStep].q}
             </h3>
 
-            <div className="flex flex-col gap-4 flex-1 overflow-y-auto pr-2">
+            <div className="flex flex-col gap-2 sm:gap-3 overflow-y-auto pr-1 sm:pr-2">
               {questions[currentStep].options.map((opt: string, idx: number) => (
                 <button
                   key={idx}
                   onClick={() => handleAnswer(idx)}
-                  className="paper-sheet p-6 text-left hover:border-emerald-300 hover:bg-emerald-50/30 transition-all group flex items-center gap-4 border-2 border-slate-50 flex-shrink-0"
+                  className="paper-sheet p-2.5 sm:p-5 text-left hover:border-emerald-300 hover:bg-emerald-50/30 transition-all group flex items-center gap-2 sm:gap-4 border-2 border-slate-50 flex-shrink-0"
                 >
-                  <span className="w-8 h-8 rounded-full border-2 border-slate-200 flex items-center justify-center font-bold text-slate-400 group-hover:border-emerald-300 group-hover:text-emerald-500 transition-colors flex-shrink-0">
+                  <span className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-slate-200 flex items-center justify-center font-bold text-xs sm:text-sm text-slate-400 group-hover:border-emerald-300 group-hover:text-emerald-500 transition-colors flex-shrink-0">
                     {String.fromCharCode(65 + idx)}
                   </span>
-                  <span className="text-xl font-bold text-slate-600 group-hover:text-slate-800 lettering">{opt}</span>
+                  <span className="text-sm sm:text-lg font-bold text-slate-600 group-hover:text-slate-800 lettering">{opt}</span>
                 </button>
               ))}
             </div>
@@ -129,7 +129,7 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
         </AnimatePresence>
 
         {/* Marginal notes for previous findings (Dossier) */}
-        <div className="mt-10 pt-8 border-t-2 border-slate-50 flex flex-wrap gap-3 opacity-60">
+        <div className="mt-3 sm:mt-8 pt-3 sm:pt-6 border-t-2 border-slate-50 flex flex-wrap gap-3 opacity-60">
             <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest block w-full mb-2 lettering italic">Hallazgos registrados en el diario:</span>
             {dossierItems.slice(-3).map((item, idx) => (
                 <span key={idx} className="bg-slate-50 px-4 py-1 rounded-full text-[10px] lowercase lettering font-bold border-2 border-white">
