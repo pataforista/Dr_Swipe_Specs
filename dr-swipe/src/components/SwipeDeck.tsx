@@ -247,9 +247,10 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
 
   useEffect(() => {
     if (isTop) {
+      x.set(0); // Reset position when becoming top card
       controls.start({ opacity: 1, scale: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } });
     }
-  }, [isTop, controls]);
+  }, [isTop, controls, x]);
 
   // Dynamic font scaling logic for dense clinical cases
   const getFontSizeClass = (text: string) => {
