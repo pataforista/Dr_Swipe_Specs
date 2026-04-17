@@ -150,7 +150,7 @@ export function App() {
     const lastFeedback = state.context.feedbackHistory[state.context.feedbackHistory.length - 1];
     // Note: Since 'send' is async in terms of context update, we might need to wait for the next render
     // or use the 'isCorrect' calculated here.
-    setTimeout(() => setSwipeFeedback(null), 1000);
+    setTimeout(() => setSwipeFeedback(null), 2000);
   };
 
   useEffect(() => {
@@ -163,7 +163,7 @@ export function App() {
       const timer = setTimeout(() => {
         setVazquezDialogue(null);
         setVazquezExpression('neutral');
-      }, 3000);
+      }, 4500);
       return () => clearTimeout(timer);
     }
   }, [state.context.feedbackHistory]);
