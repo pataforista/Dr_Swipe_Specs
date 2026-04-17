@@ -1,174 +1,194 @@
 {
-  "case_id": "PROC_OPH_GLAUCOMA_001_005",
-  "version": "v3_swipe_action",
-  "theme_config": "med",
-  "difficulty": "hard",
-  "patient_intro": {
-    "name": "Sra. Rosa, 50 años",
-    "arrival_scenario": "Mujer con antecedente familiar de glaucoma. Refiere ver \"manchas\" en su campo visual periférico desde hace meses. PIO 24 mmHg, papila con relación C/D 0.7 y campo visual con escotoma paracentral superior. Sin dolor ocular.",
-    "time_limit_sec": 50
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "vitals",
-      "card_text": "TA 150/90, FC 100 lpm, Temp 36.6°C.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "López: El dolor justifica la presión alta, pero el problema real está en el ojo."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "A) Glaucoma Agudo de Ángulo Cerrado: Emergencia oftalmológica caracterizada por aumento súbito de la PIO (>40-50 mmHg).",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "López: ¡Exacto! Si no se trata en horas, el daño al nervio óptico es irreversible."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_2",
-      "ui_icon": "eye",
-      "category": "meds",
-      "card_text": "B) Conjuntivitis Bacteriana: Ojo rojo con secreción purulenta y sensación de cuerpo extraño; no causa dolor intenso ni midriasis.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "López: ¡Bien! La midriasis arreactiva descarta cualquier proceso superficial."
-      }
-    },
-    {
-      "card_id": "pad_004",
-      "ui_icon": "🩺",
-      "category": "vitals",
-      "card_text": "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
-      }
-    },
-    {
-      "card_id": "pad_005",
-      "ui_icon": "📄",
-      "category": "notes",
-      "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-      }
-    },
-    {
-      "card_id": "pad_006",
-      "ui_icon": "🩺",
-      "category": "vitals",
-      "card_text": "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
-      }
-    },
-    {
-      "card_id": "pad_007",
-      "ui_icon": "🧪",
-      "category": "labs",
-      "card_text": "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-      }
-    },
-    {
-      "card_id": "pad_008",
-      "ui_icon": "🩺",
-      "category": "vitals",
-      "card_text": "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
-      }
-    },
-    {
-      "card_id": "pad_009",
-      "ui_icon": "🧪",
-      "category": "labs",
-      "card_text": "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-      }
-    },
-    {
-      "card_id": "pad_010",
-      "ui_icon": "📄",
-      "category": "notes",
-      "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
-      }
-    }
-  ],
-  "enarm_pearl": {
-    "title": "Glaucoma Agudo vs Crónico",
-    "text": "Agudo: Dolor + Midriasis + Ojo pétreo. Tx: Pilocarpina + Acetazolamida + Láser. Crónico: Escotomas periféricos + PIO >21. Tx: Análogos PG (Latanoprost).",
-    "gpc_ref": "GPC Diagnóstico y Manejo del Glaucoma de Ángulo Cerrado"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es el tratamiento quirúrgico/definitivo de elección para prevenir recurrencias en glaucoma primario de ángulo cerrado?",
-        "options": [
-          "Iridotomía con láser YAG",
-          "Trabeculectomía",
-          "Extracción de catarata"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Qué hallazgo pupilar es característico del ataque agudo de glaucoma de ángulo cerrado?",
-        "options": [
-          "Midriasis media arreactiva",
-          "Miosis puntiforme",
-          "Pupila de Argyll Robertson"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál de estas opciones farmacológicas está CONTRAINDICADA en la fase aguda del glaucoma de ángulo cerrado?",
-        "options": [
-          "Midriáticos (Atropina)",
-          "Mióticos (Pilocarpina)",
-          "Anhídrasa carbónica (Acetazolamida)"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
+    "case_id":  "PROC_OPH_GLAUCOMA_001_005",
+    "version":  "v3_swipe_action",
+    "theme_config":  "med",
+    "difficulty":  "hard",
+    "patient_intro":  {
+                          "name":  "Sra. Rosa, 50 años",
+                          "arrival_scenario":  "Paciente refiere dolor ocular lancinante súbito, visión borrosa con halos iridiscentes y náuseas. Al examen: Ojo con inyección ciliar difusa, pupila en midriasis media arreactiva y globo pétreo a la palpación digital.",
+                          "time_limit_sec":  50
+                      },
+    "card_stream":  [
+                        {
+                            "card_id":  "init_vitals",
+                            "ui_icon":  "heartbeat",
+                            "category":  "vitals",
+                            "card_text":  "TA 150/90, FC 100 lpm, Temp 36.6°C.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "López: El dolor justifica la presión alta, pero el problema real está en el ojo."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_1",
+                            "ui_icon":  "target",
+                            "category":  "Diagnóstico",
+                            "card_text":  "A) Glaucoma Agudo de Ángulo Cerrado: Emergencia oftalmológica caracterizada por aumento súbito de la PIO (\u003e40-50 mmHg).",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "López: ¡Exacto! Si no se trata en horas, el daño al nervio óptico es irreversible."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_2",
+                            "ui_icon":  "eye",
+                            "category":  "meds",
+                            "card_text":  "B) Conjuntivitis Bacteriana: Ojo rojo con secreción purulenta y sensación de cuerpo extraño; no causa dolor intenso ni midriasis.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "López: ¡Bien! La midriasis arreactiva descarta cualquier proceso superficial."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_3",
+                            "ui_icon":  "zap",
+                            "category":  "meds",
+                            "card_text":  "C) Acetazolamida (Oral/IV) y Manitol (IV): Agentes hiperosmóticos que reducen rápidamente la presión intraocular.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "López: ¡Vital! Hay que bajar esa presión antes de cualquier otra intervención.",
+                                            "safety_flags":  {
+                                                                 "lethal_risk":  true,
+                                                                 "decision_critical":  true
+                                                             }
+                                        }
+                        },
+                        {
+                            "card_id":  "c_4",
+                            "ui_icon":  "droplet",
+                            "category":  "Manejo Inicial",
+                            "card_text":  "D) Pilocarpina (Gotas): Miótico que ayuda a abrir el ángulo al traccionar el iris hacia el centro.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "López: ¡Muy bien! Romper el bloqueo pupilar es el objetivo mecánico."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_5",
+                            "ui_icon":  "activity",
+                            "category":  "Gabinete",
+                            "card_text":  "E) Tonometría: Medición de la presión intraocular. Gold Standard: Tonometría de Goldmann.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "López: Correcto. Necesitamos números precisos para monitorizar la respuesta."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_6",
+                            "ui_icon":  "search",
+                            "category":  "Tratamiento Definitivo",
+                            "card_text":  "F) Iridotomía con Láser YAG: Procedimiento para crear un orificio en el iris y prevenir futuros bloqueos.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "López: ¡Excelente! Se debe realizar de forma profiláctica también en el ojo contralateral."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_7",
+                            "ui_icon":  "slash",
+                            "category":  "meds",
+                            "card_text":  "G) Glaucoma de Ángulo Abierto: Crónico, asintomático, pérdida progresiva de visión periférica (\u0027túnel\u0027).",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "López: Bien. Es el glaucoma más frecuente, pero no es una urgencia dolorosa."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_8",
+                            "ui_icon":  "alert-triangle",
+                            "category":  "Fármacos",
+                            "card_text":  "H) Timolol (Betabloqueador): Reduce la producción del humor acuoso. Contraindicado en pacientes con asma o falla cardíaca.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "López: Bien. Recuerda siempre los efectos sistémicos de las gotas."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_9",
+                            "ui_icon":  "info",
+                            "category":  "Examen",
+                            "card_text":  "I) Gonioscopia: Técnica para visualizar directamente el ángulo camerular y confirmar si está cerrado o abierto.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "López: ¡Perfecto! Es la prueba definitiva para la clasificación anatómica."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_10",
+                            "ui_icon":  "x-circle",
+                            "category":  "meds",
+                            "card_text":  "J) Atropina (Midriático): Útil para aliviar el dolor espasmódico del iris en la fase aguda del glaucoma cerrado.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_hazard",
+                                            "vazquez_comment":  "López: ¡MAL! La midriasis EMPEORA el cierre del ángulo. Nunca dilates a un paciente con sospecha de glaucoma cerrado."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true
+                                             }
+                        }
+                    ],
+    "enarm_pearl":  {
+                        "title":  "Glaucoma Agudo vs Crónico",
+                        "text":  "Agudo: Dolor + Midriasis + Ojo pétreo. Tx: Pilocarpina + Acetazolamida + Láser. Crónico: Escotomas periféricos + PIO \u003e21. Tx: Análogos PG (Latanoprost).",
+                        "gpc_ref":  "GPC Diagnóstico y Manejo del Glaucoma de Ángulo Cerrado"
+                    },
+    "boss_fight_triad":  {
+                             "trigger":  "after_cards",
+                             "questions":  [
+                                               {
+                                                   "question":  "¿Cuál es el tratamiento quirúrgico/definitivo de elección para prevenir recurrencias en glaucoma primario de ángulo cerrado?",
+                                                   "options":  [
+                                                                   "Iridotomía con láser YAG",
+                                                                   "Trabeculectomía",
+                                                                   "Extracción de catarata"
+                                                               ],
+                                                   "correct_index":  0
+                                               },
+                                               {
+                                                   "question":  "¿Qué hallazgo pupilar es característico del ataque agudo de glaucoma de ángulo cerrado?",
+                                                   "options":  [
+                                                                   "Midriasis media arreactiva",
+                                                                   "Miosis puntiforme",
+                                                                   "Pupila de Argyll Robertson"
+                                                               ],
+                                                   "correct_index":  0
+                                               },
+                                               {
+                                                   "question":  "¿Cuál de estas opciones farmacológicas está CONTRAINDICADA en la fase aguda del glaucoma de ángulo cerrado?",
+                                                   "options":  [
+                                                                   "Midriáticos (Atropina)",
+                                                                   "Mióticos (Pilocarpina)",
+                                                                   "Anhídrasa carbónica (Acetazolamida)"
+                                                               ],
+                                                   "correct_index":  0
+                                               }
+                                           ]
+                         }
 }

@@ -1,178 +1,178 @@
 {
-  "case_id": "PROC_PED_PYLORIC_SENOSIS_001_001",
-  "version": "v3_swipe_action",
-  "theme_config": "ped",
-  "difficulty": "standard",
-  "patient_intro": {
-    "name": "Luis, 5 años",
-    "arrival_scenario": "Varón primogénito de 4 semanas. Vómitos postprandiales inmediatos, abundantes y de contenido alimentario (leche). Se observa onda peristáltica gástrica de izquierda a derecha. Deshidratación leve. Labs con alcalosis metabólica hipoclorémica.",
-    "time_limit_sec": 60
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "vitals",
-      "card_text": "TA N/A, FC 140 lpm, Temp 36.6°C",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
-      }
-    },
-    {
-      "card_id": "c_2",
-      "ui_icon": "eye",
-      "category": "Diagnóstico Diferencial",
-      "card_text": "B) Atresia Duodenal: Vómitos biliares precoces (primeras 24-48h). Radiografía con signo de la 'doble burbuja'. Frecuente en Síndrome de Down.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡Bien! El vómito en la estenosis de píloro es característicamente NO biliar."
-      }
-    },
-    {
-      "card_id": "c_3",
-      "ui_icon": "eye",
-      "category": "imaging",
-      "card_text": "C) Reflujo Gastroesofágico: Regurgitaciones frecuentes, no en proyectil, con ganancia ponderal adecuada inicialmente.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Castillo: Correcto. El vómito explosivo 'en proyectil' apunta fuertemente a una obstrucción mecánica."
-      }
-    },
-    {
-      "card_id": "c_4",
-      "ui_icon": "search",
-      "category": "meds",
-      "card_text": "D) Oliva Pilórica: Masa firme, móvil, de unos 2 cm, palpable en el borde lateral del músculo recto abdominal derecho.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Excelente! Es el hallazgo patognomónico, aunque solo se palpa en el 60-80% de los casos."
-      }
-    },
-    {
-      "card_id": "c_5",
-      "ui_icon": "activity",
-      "category": "imaging",
-      "card_text": "E) Ondas Peristálticas Gástricas: Movimientos visibles de izquierda a derecha tras la alimentación que terminan en el vómito.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: Bien. Representan el esfuerzo del estómago por vencer la obstrucción pilórica."
-      }
-    },
-    {
-      "card_id": "c_6",
-      "ui_icon": "beaker",
-      "category": "labs",
-      "card_text": "F) Alcalosis Metabólica Hipoclorémica: Producida por la pérdida masiva de ácido clorhídrico en el vómito gástrico.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Castillo: ¡Vital! El desequilibrio ácido-base debe corregirse ANTES de cualquier intervención quirúrgica."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_7",
-      "ui_icon": "camera",
-      "category": "Gabinete",
-      "card_text": "G) Ultrasonido Abdominal: Criterios: Grosor del músculo pilórico >3-4 mm y longitud del canal >15-17 mm.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Perfecto! Es el 'estándar de oro' diagnóstico actual por su alta sensibilidad."
-      }
-    },
-    {
-      "card_id": "c_8",
-      "ui_icon": "thermometer",
-      "category": "imaging",
-      "card_text": "H) Ayuno e Hidratación Parenteral: Reposición de volumen y electrolitos (Sodio, Cloro y Potasio).",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: Correcto. Un niño con alcalosis grave tiene mayor riesgo de apnea postoperatoria."
-      }
-    },
-    {
-      "card_id": "c_9",
-      "ui_icon": "scissors",
-      "category": "Tratamiento Definitivo",
-      "card_text": "I) Piloromiotomía de Fredet-Ramstedt: Sección de las fibras musculares del píloro sin entrar a la luz mucosa.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Castillo: ¡Logrado! Es el tratamiento definitivo y curativo."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_10",
-      "ui_icon": "alert-circle",
-      "category": "imaging",
-      "card_text": "J) Alimentación Postoperatoria: Iniciar dieta hídrica a las 4-6 horas tras la cirugía si no hay complicaciones.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: Bien. La recuperación suele ser rápida y satisfactoria."
-      }
-    }
-  ],
-  "enarm_pearl": {
-    "title": "Estenosis de Píloro: ¿Oliva o USG?",
-    "text": "Clave: Vómito no biliar + Alcalosis metabólica hipoclorémica. Oliva pilórica (patognomónico). USG: Músculo >3mm.",
-    "gpc_ref": "GPC Diagnóstico y Tratamiento de Estenosis Hipertrófica de Píloro"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es el trastorno ácido-base característico de la estenosis hipertrófica de píloro?",
-        "options": [
-          "Alcalosis metabólica hipoclorémica",
-          "Acidosis metabólica hiperclorémica",
-          "Alcalosis respiratoria compensada"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Qué grosor de músculo pilórico en el ultrasonido confirma el diagnóstico de estenosis?",
-        "options": [
-          "Mayor a 3 mm",
-          "Mayor a 1 mm",
-          "Entre 1.5 y 2 mm"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cómo se llama el procedimiento quirúrgico de elección para esta patología?",
-        "options": [
-          "Piloromiotomía de Fredet-Ramstedt",
-          "Piloroplastia de Heineke-Mikulicz",
-          "Gastroenterostomía"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
+    "case_id":  "PROC_PED_PYLORIC_SENOSIS_001_001",
+    "version":  "v3_swipe_action",
+    "theme_config":  "ped",
+    "difficulty":  "standard",
+    "patient_intro":  {
+                          "name":  "Luis, 4 semanas",
+                          "arrival_scenario":  "VarA³n primogA©nito de 4 semanas. VA³mitos postprandiales inmediatos, abundantes y de contenido alimentario (leche). Se observa onda peristA¡ltica gA¡strica de izquierda a derecha. DeshidrataciA³n leve. Labs con alcalosis metabA³lica hipoclorA©mica.",
+                          "time_limit_sec":  60
+                      },
+    "card_stream":  [
+                        {
+                            "card_id":  "init_vitals",
+                            "ui_icon":  "heartbeat",
+                            "category":  "Signos Vitales",
+                            "card_text":  "Hallazgo: InformaciA³n redundante: TA N/A, FC 140 lpm, Temp 36.6A°C",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "ðYZ¯ DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_2",
+                            "ui_icon":  "eye",
+                            "category":  "DiagnA³stico Diferencial",
+                            "card_text":  "Hallazgo: Dato anecdA³tico: B) Atresia Duodenal: VA³mitos biliares precoces (primeras 24-48h). RadiografA­a con signo de la \u0027doble burbuja\u0027. Frecuente en SA­ndrome de Down.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "ðYZ¯ DATO CLAVE OMITIDO: Castillo: A¡Bien! El vA³mito en la estenosis de pA­loro es caracterA­sticamente NO biliar."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_3",
+                            "ui_icon":  "eye",
+                            "category":  "DiagnA³stico Diferencial",
+                            "card_text":  "Dato de importancia: Dato anecdA³tico: C) Reflujo GastroesofA¡gico: Regurgitaciones frecuentes, no en proyectil, con ganancia ponderal adecuada inicialmente.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "ðYZ¯ DATO CLAVE OMITIDO: Castillo: Correcto. El vA³mito explosivo \u0027en proyectil\u0027 apunta fuertemente a una obstrucciA³n mecA¡nica."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_4",
+                            "ui_icon":  "search",
+                            "category":  "Signo Clinico",
+                            "card_text":  "Evidencia: D) Oliva PilA³rica: Masa firme, mA³vil, de unos 2 cm, palpable en el borde lateral del mAºsculo recto abdominal derecho.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: A¡Excelente! Es el hallazgo patognomA³nico, aunque solo se palpa en el 60-80% de los casos."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_5",
+                            "ui_icon":  "activity",
+                            "category":  "Signo ClA­nico",
+                            "card_text":  "Dato de importancia: E) Ondas PeristA¡lticas GA¡stricas: Movimientos visibles de izquierda a derecha tras la alimentaciA³n que terminan en el vA³mito.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: Bien. Representan el esfuerzo del estA³mago por vencer la obstrucciA³n pilA³rica."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_6",
+                            "ui_icon":  "beaker",
+                            "category":  "Laboratorio",
+                            "card_text":  "Hallazgo: F) Alcalosis MetabA³lica HipoclorA©mica: Producida por la pA©rdida masiva de A¡cido clorhA­drico en el vA³mito gA¡strico.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "Castillo: A¡Vital! El desequilibrio A¡cido-base debe corregirse ANTES de cualquier intervenciA³n quirAºrgica."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_7",
+                            "ui_icon":  "camera",
+                            "category":  "Gabinete",
+                            "card_text":  "Evidencia: G) Ultrasonido Abdominal: Criterios: Grosor del mAºsculo pilA³rico \u003e3-4 mm y longitud del canal \u003e15-17 mm.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: A¡Perfecto! Es el \u0027estA¡ndar de oro\u0027 diagnA³stico actual por su alta sensibilidad."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_8",
+                            "ui_icon":  "thermometer",
+                            "category":  "Manejo Inicial",
+                            "card_text":  "Evidencia: H) Ayuno e HidrataciA³n Parenteral: ReposiciA³n de volumen y electrolitos (Sodio, Cloro y Potasio).",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: Correcto. Un niA±o con alcalosis grave tiene mayor riesgo de apnea postoperatoria."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_9",
+                            "ui_icon":  "scissors",
+                            "category":  "Tratamiento Definitivo",
+                            "card_text":  "Hallazgo: I) PiloromiotomA­a de Fredet-Ramstedt: SecciA³n de las fibras musculares del pA­loro sin entrar a la luz mucosa.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "Castillo: A¡Logrado! Es el tratamiento definitivo y curativo."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_10",
+                            "ui_icon":  "alert-circle",
+                            "category":  "Seguimiento",
+                            "card_text":  "Dato de importancia: J) AlimentaciA³n Postoperatoria: Iniciar dieta hA­drica a las 4-6 horas tras la cirugA­a si no hay complicaciones.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: Bien. La recuperaciA³n suele ser rA¡pida y satisfactoria."
+                                        }
+                        }
+                    ],
+    "enarm_pearl":  {
+                        "title":  "Estenosis de PA­loro: A¿Oliva o USG?",
+                        "text":  "Clave: VA³mito no biliar + Alcalosis metabA³lica hipoclorA©mica. Oliva pilA³rica (patognomA³nico). USG: MAºsculo \u003e3mm.",
+                        "gpc_ref":  "GPC DiagnA³stico y Tratamiento de Estenosis HipertrA³fica de PA­loro"
+                    },
+    "boss_fight_triad":  {
+                             "trigger":  "after_cards",
+                             "questions":  [
+                                               {
+                                                   "question":  "A¿CuA¡l es el trastorno A¡cido-base caracterA­stico de la estenosis hipertrA³fica de pA­loro?",
+                                                   "options":  [
+                                                                   "Alcalosis metabA³lica hipoclorA©mica",
+                                                                   "Acidosis metabA³lica hiperclorA©mica",
+                                                                   "Alcalosis respiratoria compensada"
+                                                               ],
+                                                   "correct_index":  0
+                                               },
+                                               {
+                                                   "question":  "A¿QuA© grosor de mAºsculo pilA³rico en el ultrasonido confirma el diagnA³stico de estenosis?",
+                                                   "options":  [
+                                                                   "Mayor a 3 mm",
+                                                                   "Mayor a 1 mm",
+                                                                   "Entre 1.5 y 2 mm"
+                                                               ],
+                                                   "correct_index":  0
+                                               },
+                                               {
+                                                   "question":  "A¿CA³mo se llama el procedimiento quirAºrgico de elecciA³n para esta patologA­a?",
+                                                   "options":  [
+                                                                   "PiloromiotomA­a de Fredet-Ramstedt",
+                                                                   "Piloroplastia de Heineke-Mikulicz",
+                                                                   "GastroenterostomA­a"
+                                                               ],
+                                                   "correct_index":  0
+                                               }
+                                           ]
+                         }
 }

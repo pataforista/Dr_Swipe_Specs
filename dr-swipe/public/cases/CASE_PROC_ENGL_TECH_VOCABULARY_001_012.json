@@ -1,190 +1,94 @@
 {
-  "case_id": "PROC_ENGL_TECH_VOCABULARY_001_012",
-  "version": "v3_swipe_action",
-  "theme_config": "engl",
-  "difficulty": "standard",
-  "patient_intro": {
-    "name": "Juan, 38 años",
-    "arrival_scenario": "Examination reveals a 'rash' on the upper limbs and 'wheezing' upon lung auscultation. False Friend Alert: The patient reports 'Constipation'. Does this refer to nasal congestion or bowel movement issues?",
-    "time_limit_sec": 60
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "vitals",
-      "card_text": "TA 120/80, FC 78 bpm, Temp 37.0°C",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Correcto! Dominar estos términos es vital para la sección de inglés técnico del ENARM."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_2",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "B) Estreñimiento (Bowel movement issues): 'Constipation' es el falso amigo más común: significa Estreñimiento, NO congestión nasal.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Excelente! Evitaste caer en el falso amigo. 'Constipated' nasal se dice 'Congested'."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "pad_004",
-      "ui_icon": "📄",
-      "category": "notes",
-      "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
-      }
-    },
-    {
-      "card_id": "pad_005",
-      "ui_icon": "📄",
-      "category": "notes",
-      "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
-      }
-    },
-    {
-      "card_id": "pad_006",
-      "ui_icon": "🩺",
-      "category": "vitals",
-      "card_text": "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
-      }
-    },
-    {
-      "card_id": "pad_007",
-      "ui_icon": "📄",
-      "category": "notes",
-      "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-      }
-    },
-    {
-      "card_id": "pad_008",
-      "ui_icon": "📄",
-      "category": "notes",
-      "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
-      }
-    },
-    {
-      "card_id": "pad_009",
-      "ui_icon": "📄",
-      "category": "notes",
-      "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-      }
-    },
-    {
-      "card_id": "pad_010",
-      "ui_icon": "🩺",
-      "category": "vitals",
-      "card_text": "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
-      }
-    },
-    {
-      "card_id": "pad_011_489",
-      "ui_icon": "🧪",
-      "category": "labs",
-      "card_text": "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
-      }
-    }
-  ],
-  "enarm_pearl": {
-    "title": "Inglés Médico: False Friends",
-    "text": "Constipation = Estreñimiento. Injury = Lesión. Sever = Cortar. Informed Consent = Consentimiento Informado.",
-    "gpc_ref": "ENARM Technical English Section"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
-        "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
-        "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
-        "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
+    "case_id":  "PROC_ENGL_TECH_VOCABULARY_001_012",
+    "version":  "v3_swipe_action",
+    "theme_config":  "engl",
+    "difficulty":  "standard",
+    "patient_intro":  {
+                          "name":  "Juan, 38 años",
+                          "arrival_scenario":  "Examination reveals a \u0027rash\u0027 on the upper limbs and \u0027wheezing\u0027 upon lung auscultation. False Friend Alert: The patient reports \u0027Constipation\u0027. Does this refer to nasal congestion or bowel movement issues?",
+                          "time_limit_sec":  60
+                      },
+    "card_stream":  [
+                        {
+                            "card_id":  "init_vitals",
+                            "ui_icon":  "heartbeat",
+                            "category":  "vitals",
+                            "card_text":  "TA 120/80, FC 78 bpm, Temp 37.0°C",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_1",
+                            "ui_icon":  "target",
+                            "category":  "Diagnóstico",
+                            "card_text":  "A) Disnea y Sibilancias: \u0027Shortness of breath\u0027 = Disnea. \u0027Wheezing\u0027 = Sibilancias.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Navarro: ¡Correcto! Dominar estos términos es vital para la sección de inglés técnico del ENARM."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_2",
+                            "ui_icon":  "target",
+                            "category":  "Diagnóstico",
+                            "card_text":  "B) Estreñimiento (Bowel movement issues): \u0027Constipation\u0027 es el falso amigo más común: significa Estreñimiento, NO congestión nasal.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Navarro: ¡Excelente! Evitaste caer en el falso amigo. \u0027Constipated\u0027 nasal se dice \u0027Congested\u0027."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  true
+                                             }
+                        }
+                    ],
+    "enarm_pearl":  {
+                        "title":  "Inglés Médico: False Friends",
+                        "text":  "Constipation = Estreñimiento. Injury = Lesión. Sever = Cortar. Informed Consent = Consentimiento Informado.",
+                        "gpc_ref":  "ENARM Technical English Section"
+                    },
+    "boss_fight_triad":  {
+                             "trigger":  "after_cards",
+                             "questions":  [
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Cuál es la traducción correcta de \u0027Constipation\u0027 en un contexto médico?",
+                                                   "options":  [
+                                                                   "Estreñimiento",
+                                                                   "Congestión nasal",
+                                                                   "Diarrea"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Qué significa el término \u0027Shortness of breath\u0027?",
+                                                   "options":  [
+                                                                   "Disnea (falta de aire)",
+                                                                   "Dolor de pecho",
+                                                                   "Tos seca"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Cuál es la diferencia entre \u0027Wound\u0027 e \u0027Injury\u0027?",
+                                                   "options":  [
+                                                                   "Wound es una herida abierta; Injury es cualquier lesión",
+                                                                   "Wound es una fractura; Injury es un moretón",
+                                                                   "Son sinónimos exactos en medicina"
+                                                               ]
+                                               }
+                                           ]
+                         }
 }

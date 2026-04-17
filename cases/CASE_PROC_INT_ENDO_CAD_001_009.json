@@ -1,94 +1,94 @@
 {
-  "case_id": "PROC_INT_ENDO_CAD_001_009",
-  "version": "v3_swipe_action",
-  "theme_config": "int",
-  "difficulty": "standard",
-  "patient_intro": {
-    "name": "Carmen, 18 años",
-    "arrival_scenario": "Familiar reporta poliuria y polidipsia intensa desde hace 48 días, hoy amanece letárgico. Respiración de Kussmaul evidente. Mucosas muy secas. Glucosa reportada en 480 mg/dl. Gasometría con pH 7.15, HCO3 12.",
-    "time_limit_sec": 60
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
-      "card_text": "Dato de importancia: Ruido en el expediente: TA 100/65, FC 125 lpm, Temp 36.5°C",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "Hallazgo: A) Cetoacidosis Diabética (CAD): Descompensación diabética aguda (típica en pacientes jóvenes/DM1). Triada: Hiperglucemia, Cetonemia/Cetonuria y Acidosis Metabólica.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "¡Correcto! Paciente joven con dolor abdominal, Kussmaul y aliento afrutado. La piedra angular inicial es la hidratación IV agresiva y medición de potasio ANTES de iniciar insulina."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_2",
-      "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "Hallazgo: Información redundante: B) Estado Hiperosmolar Hiperglucémico (EHH): Suele presentarse en adultos mayores (DM2) con hiperglucemias extremas (>600), deshidratación profunda y SIN acidosis significativa.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Buen ojo! La presencia de acidosis franca y Kussmaul hace la diferencia entre EHH y CAD."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
-      }
-    }
-  ],
-  "enarm_pearl": {
-    "title": "Manejo de la CAD: Líquidos Primero",
-    "text": "En la Cetoacidosis Diabética, lo principal es la REPOSICIÃ“N DE LÃQUIDOS (Sol. Salina al 0.9%). Nunca se debe iniciar Insulina si el Potasio está bajo (<3.3 mEq/L) para evitar arritmias fatales.",
-    "gpc_ref": "GPC Manejo de Cetoacidosis Diabética"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
-        "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
-        "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
-        "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
+    "case_id":  "PROC_INT_ENDO_CAD_001_009",
+    "version":  "v3_swipe_action",
+    "theme_config":  "int",
+    "difficulty":  "standard",
+    "patient_intro":  {
+                          "name":  "Carmen, 18 años",
+                          "arrival_scenario":  "Familiar reporta poliuria y polidipsia intensa desde hace 48 días, hoy amanece letárgico. Respiración de Kussmaul evidente. Mucosas muy secas. Glucosa reportada en 480 mg/dl. Gasometría con pH 7.15, HCO3 12.",
+                          "time_limit_sec":  60
+                      },
+    "card_stream":  [
+                        {
+                            "card_id":  "init_vitals",
+                            "ui_icon":  "heartbeat",
+                            "category":  "Signos Vitales",
+                            "card_text":  "Dato de importancia: Ruido en el expediente: TA 100/65, FC 125 lpm, Temp 36.5°C",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_1",
+                            "ui_icon":  "target",
+                            "category":  "Diagnóstico",
+                            "card_text":  "Hallazgo: A) Cetoacidosis Diabética (CAD): Descompensación diabética aguda (típica en pacientes jóvenes/DM1). Triada: Hiperglucemia, Cetonemia/Cetonuria y Acidosis Metabólica.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "¡Correcto! Paciente joven con dolor abdominal, Kussmaul y aliento afrutado. La piedra angular inicial es la hidratación IV agresiva y medición de potasio ANTES de iniciar insulina."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_2",
+                            "ui_icon":  "eye",
+                            "category":  "Diagnóstico",
+                            "card_text":  "Hallazgo: Información redundante: B) Estado Hiperosmolar Hiperglucémico (EHH): Suele presentarse en adultos mayores (DM2) con hiperglucemias extremas (\u003e600), deshidratación profunda y SIN acidosis significativa.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: ¡Buen ojo! La presencia de acidosis franca y Kussmaul hace la diferencia entre EHH y CAD."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  false
+                                             }
+                        }
+                    ],
+    "enarm_pearl":  {
+                        "title":  "Manejo de la CAD: Líquidos Primero",
+                        "text":  "En la Cetoacidosis Diabética, lo principal es la REPOSICIÃ“N DE LÃQUIDOS (Sol. Salina al 0.9%). Nunca se debe iniciar Insulina si el Potasio está bajo (\u003c3.3 mEq/L) para evitar arritmias fatales.",
+                        "gpc_ref":  "GPC Manejo de Cetoacidosis Diabética"
+                    },
+    "boss_fight_triad":  {
+                             "trigger":  "after_cards",
+                             "questions":  [
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Cuál es el valor mínimo de Potasio requerido para iniciar la infusión de insulina de forma segura?",
+                                                   "options":  [
+                                                                   "Mayor a 3.3 mEq/L",
+                                                                   "Mayor a 2.5 mEq/L",
+                                                                   "Mayor a 5.0 mEq/L"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿En qué situación clínica se recomienda el uso de Bicarbonato de Sodio?",
+                                                   "options":  [
+                                                                   "pH menor a 6.9",
+                                                                   "pH menor a 7.2",
+                                                                   "Solo ante hiperpotasemia grave"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Cuál es el parámetro laboratorial principal para definir la resolución de la CAD?",
+                                                   "options":  [
+                                                                   "Cierre del Anion Gap / Brecha aniónica",
+                                                                   "Glucosa menor a 100 mg/dl",
+                                                                   "Ausencia de glucosuria"
+                                                               ]
+                                               }
+                                           ]
+                         }
 }

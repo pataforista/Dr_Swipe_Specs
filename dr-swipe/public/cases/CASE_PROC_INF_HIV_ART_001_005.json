@@ -1,178 +1,178 @@
 {
-  "case_id": "PROC_INF_HIV_ART_001_005",
-  "version": "v3_swipe_action",
-  "theme_config": "inf",
-  "difficulty": "standard",
-  "patient_intro": {
-    "name": "Marta, 39 años",
-    "arrival_scenario": "Paciente con diagnóstico reciente de VIH. Acude para inicio de tratamiento. Se encuentra asintomático actualmente. Independientemente del conteo de CD4, el paciente solicita iniciar tratamiento. No tiene antecedentes de ERC.",
-    "time_limit_sec": 60
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "vitals",
-      "card_text": "TA 120/80, FC 72 lpm, Temp 36.7°C",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "meds",
-      "card_text": "A) Iniciar ART Inmediatamente (Tratamiento Universal): Guías actuales (GPC/WHO): Se recomienda iniciar ART en TODOS los pacientes, sin importar el nivel de CD4.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Correcto! El inicio temprano reduce la transmisión y mejora el pronóstico a largo plazo."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_2",
-      "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "B) Diferir inicio hasta CD4 <200 (SIDA): Práctica obsoleta que aumentaba el riesgo de infecciones oportunistas y mortalidad.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Bien! Reconociste el cambio hacia el tratamiento universal proactivo."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
-      }
-    },
-    {
-      "card_id": "pad_004",
-      "ui_icon": "🧪",
-      "category": "labs",
-      "card_text": "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
-      }
-    },
-    {
-      "card_id": "pad_005",
-      "ui_icon": "🧪",
-      "category": "labs",
-      "card_text": "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-      }
-    },
-    {
-      "card_id": "pad_006",
-      "ui_icon": "📄",
-      "category": "notes",
-      "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
-      }
-    },
-    {
-      "card_id": "pad_007",
-      "ui_icon": "📄",
-      "category": "notes",
-      "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
-      }
-    },
-    {
-      "card_id": "pad_008",
-      "ui_icon": "📄",
-      "category": "notes",
-      "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
-      }
-    },
-    {
-      "card_id": "pad_009",
-      "ui_icon": "☢️",
-      "category": "imaging",
-      "card_text": "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-      }
-    },
-    {
-      "card_id": "pad_010",
-      "ui_icon": "📄",
-      "category": "notes",
-      "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
-      }
-    }
-  ],
-  "enarm_pearl": {
-    "title": "VIH: Inicio de ART",
-    "text": "Regla ENARM: Inicio de ART en TODO paciente diagnosticado, sin importar CD4. Esquema preferente: 2 ITNR + 1 INSTI (Dolutegravir).",
-    "gpc_ref": "GPC Tratamiento Antirretroviral del Adulto con VIH"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
-        "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
-        "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
-        "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
+    "case_id":  "PROC_INF_HIV_ART_001_005",
+    "version":  "v3_swipe_action",
+    "theme_config":  "inf",
+    "difficulty":  "standard",
+    "patient_intro":  {
+                          "name":  "Marta, 39 años",
+                          "arrival_scenario":  "Paciente con diagnóstico reciente de VIH. Acude para inicio de tratamiento. Se encuentra asintomático actualmente. Independientemente del conteo de CD4, el paciente solicita iniciar tratamiento. No tiene antecedentes de ERC.",
+                          "time_limit_sec":  60
+                      },
+    "card_stream":  [
+                        {
+                            "card_id":  "init_vitals",
+                            "ui_icon":  "heartbeat",
+                            "category":  "vitals",
+                            "card_text":  "TA 120/80, FC 72 lpm, Temp 36.7°C",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_1",
+                            "ui_icon":  "target",
+                            "category":  "meds",
+                            "card_text":  "A) Iniciar ART Inmediatamente (Tratamiento Universal): Guías actuales (GPC/WHO): Se recomienda iniciar ART en TODOS los pacientes, sin importar el nivel de CD4.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Navarro: ¡Correcto! El inicio temprano reduce la transmisión y mejora el pronóstico a largo plazo."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_2",
+                            "ui_icon":  "eye",
+                            "category":  "Diagnóstico",
+                            "card_text":  "B) Diferir inicio hasta CD4 \u003c200 (SIDA): Práctica obsoleta que aumentaba el riesgo de infecciones oportunistas y mortalidad.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "Navarro: ¡Bien! Reconociste el cambio hacia el tratamiento universal proactivo."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  false
+                                             }
+                        },
+                        {
+                            "card_id":  "pad_004",
+                            "ui_icon":  "🧪",
+                            "category":  "labs",
+                            "card_text":  "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
+                                        }
+                        },
+                        {
+                            "card_id":  "pad_005",
+                            "ui_icon":  "🧪",
+                            "category":  "labs",
+                            "card_text":  "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
+                                        }
+                        },
+                        {
+                            "card_id":  "pad_006",
+                            "ui_icon":  "📄",
+                            "category":  "notes",
+                            "card_text":  "Edema de miembros inferiores grado II, con fóvea, bilateral.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Navarro: Esto es puro ruido, R1. Enfócate en la prioridad."
+                                        }
+                        },
+                        {
+                            "card_id":  "pad_007",
+                            "ui_icon":  "📄",
+                            "category":  "notes",
+                            "card_text":  "Refiere alergia al polen y al polvo durante la primavera.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
+                                        }
+                        },
+                        {
+                            "card_id":  "pad_008",
+                            "ui_icon":  "📄",
+                            "category":  "notes",
+                            "card_text":  "Edema de miembros inferiores grado II, con fóvea, bilateral.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Navarro: Esto es puro ruido, R1. Enfócate en la prioridad."
+                                        }
+                        },
+                        {
+                            "card_id":  "pad_009",
+                            "ui_icon":  "☢️",
+                            "category":  "imaging",
+                            "card_text":  "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
+                                        }
+                        },
+                        {
+                            "card_id":  "pad_010",
+                            "ui_icon":  "📄",
+                            "category":  "notes",
+                            "card_text":  "Edema de miembros inferiores grado II, con fóvea, bilateral.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Navarro: Esto es puro ruido, R1. Enfócate en la prioridad."
+                                        }
+                        }
+                    ],
+    "enarm_pearl":  {
+                        "title":  "VIH: Inicio de ART",
+                        "text":  "Regla ENARM: Inicio de ART en TODO paciente diagnosticado, sin importar CD4. Esquema preferente: 2 ITNR + 1 INSTI (Dolutegravir).",
+                        "gpc_ref":  "GPC Tratamiento Antirretroviral del Adulto con VIH"
+                    },
+    "boss_fight_triad":  {
+                             "trigger":  "after_cards",
+                             "questions":  [
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Cuál es el recuento de células CD4 por debajo del cual se define la etapa clínica de SIDA?",
+                                                   "options":  [
+                                                                   "Menos de 200 cél/µl",
+                                                                   "Menos de 500 cél/µl",
+                                                                   "Menos de 50 cél/µl"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Qué fármaco se utiliza de primera línea para la profilaxis de Pneumocystis jirovecii?",
+                                                   "options":  [
+                                                                   "Trimetoprima/Sulfametoxazol",
+                                                                   "Linezolid",
+                                                                   "Clindamicina"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿A qué familia de antirretrovirales pertenece el Dolutegravir (DTG)?",
+                                                   "options":  [
+                                                                   "Inhibidor de la Integrasa (INSTI)",
+                                                                   "Inhibidor de la Proteasa (IP)",
+                                                                   "Inhibidor de Nucleósidos (ITNR)"
+                                                               ]
+                                               }
+                                           ]
+                         }
 }

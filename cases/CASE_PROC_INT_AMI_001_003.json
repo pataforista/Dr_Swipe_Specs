@@ -1,198 +1,198 @@
 {
-  "case_id": "PROC_INT_AMI_001_003",
-  "version": "v3_swipe_action",
-  "theme_config": "int",
-  "difficulty": "hard",
-  "patient_intro": {
-    "name": "José, 58 años",
-    "arrival_scenario": "Paciente diabético llega con dolor torácico opresivo de 120 minutos. Irradia a mandíbula y brazo izquierdo. ECG muestra supra-desnivel del ST en derivaciones II, III, aVF (Inferior). Tabaquista activo (20 paq/año).",
-    "time_limit_sec": 50
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
-      "card_text": "Evidencia clínica: Ruido en el expediente: TA 90/60 (tendencia al choque), FC 50 lpm (bloqueo), Temp 36.8°C",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de bradicardia, R1. El reloj no se detiene."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "Evidencia: A) Infarto Agudo al Miocardio (SCACEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "¡Perfect Match! El cuadro clínico más el ECG con elevación del ST hacen el diagnóstico. ICP primaria en menos de 90 min ideal."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_2",
-      "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "Hallazgo clínico: Dato anecdótico: B) Costocondritis (Síndrome de Tietze): Dolor torácico reproducible a la palpación de las articulaciones condrocostales, sin cambios en ECG.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Ojo clínico! El dolor reproducible a la palpación casi siempre descarta origen isquémico clásico, aquí el dolor es visceral."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
-      }
-    },
-    {
-      "card_id": "c_3",
-      "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "Evidencia: C) Tromboembolia Pulmonar: Disnea súbita, taquicardia, dolor pleurítico, hipoxia severa. S1Q3T3 raro pero posible.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "lethal_hazard",
-        "vazquez_comment": "Felicidades por descartarlo. Los cambios ST y el tipo de dolor nos centran en las coronarias."
-      },
-      "safety_flags": {
-        "red_flag": true,
-        "lethal_risk": true
-      }
-    },
-    {
-      "card_id": "c_4",
-      "ui_icon": "activity",
-      "category": "Estudio Inicial",
-      "card_text": "Dato de importancia: D) Electrocardiograma de 12 derivaciones: Meta institucional de realizar e interpretar en menos de 10 minutos.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "¡Vital! El retraso en el ECG es retraso en la reperfusión."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_5",
-      "ui_icon": "zap",
-      "category": "Reperfusión",
-      "card_text": "Evidencia clínica: E) Fibrinólisis Farmacológica: Estrategia de elección si la ICP no está disponible en menos de 120 minutos.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "¡Bien! Si no hay sala de hemodinamia cerca, la trombolisis es la salvación."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_6",
-      "ui_icon": "alert-triangle",
-      "category": "Seguridad",
-      "card_text": "Evidencia: F) Antecedente de Hemorragia Intracraneal: Contraindicación absoluta para la administración de fibrinolíticos.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_hazard",
-        "vazquez_comment": "¡EXCELENTE! Trombolizar a alguien con este antecedente es un error fatal garantizado."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_7",
-      "ui_icon": "alert-circle",
-      "category": "Seguridad",
-      "card_text": "Hallazgo: G) Hemorragia Digestiva Activa: Contraindicación absoluta para el uso de terapia fibrinolítica.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "lethal_hazard",
-        "vazquez_comment": "Correcto. Siempre hay que realizar el checklist de seguridad antes de la 'aguja'."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_8",
-      "ui_icon": "clock",
-      "category": "Metas de Tiempo",
-      "card_text": "Evidencia: H) Tiempo Puerta-Aguja <30 min: Meta de tiempo desde la llegada al hospital hasta el inicio del fibrinolítico.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "¡Exacto! Los tiempos son los que evaluamos en el triage de alta especialidad."
-      }
-    },
-    {
-      "card_id": "c_9",
-      "ui_icon": "move",
-      "category": "Manejo Post-Fibrinólisis",
-      "card_text": "Hallazgo: I) Traslado a centro con ICP: Todos los pacientes post-fibrinólisis deben ser referidos para estrategia fármaco-invasiva.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Bien. La fibrinólisis fallida o exitosa requiere una evaluación hemodinámica posterior."
-      }
-    }
-  ],
-  "enarm_pearl": {
-    "title": "Cardiopatía Isquémica: Tiempo es Músculo",
-    "text": "En un SCACEST, el diagnóstico se hace con clínica + ECG (en <10 min). NO se debe esperar el resultado de las troponinas para activar código infarto ni trombolizar/ICP.",
-    "gpc_ref": "GPC Infarto Agudo al Miocardio con Elevación del ST"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
-        "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
-        "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
-        "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
+    "case_id":  "PROC_INT_AMI_001_003",
+    "version":  "v3_swipe_action",
+    "theme_config":  "int",
+    "difficulty":  "hard",
+    "patient_intro":  {
+                          "name":  "José, 58 años",
+                          "arrival_scenario":  "Paciente diabético llega con dolor torácico opresivo de 120 minutos. Irradia a mandíbula y brazo izquierdo. ECG muestra supra-desnivel del ST en derivaciones II, III, aVF (Inferior). Tabaquista activo (20 paq/año).",
+                          "time_limit_sec":  50
+                      },
+    "card_stream":  [
+                        {
+                            "card_id":  "init_vitals",
+                            "ui_icon":  "heartbeat",
+                            "category":  "Signos Vitales",
+                            "card_text":  "Evidencia clínica: Ruido en el expediente: TA 90/60 (tendencia al choque), FC 50 lpm (bloqueo), Temp 36.8°C",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de bradicardia, R1. El reloj no se detiene."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_1",
+                            "ui_icon":  "target",
+                            "category":  "Diagnóstico",
+                            "card_text":  "Evidencia: A) Infarto Agudo al Miocardio (SCACEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "¡Perfect Match! El cuadro clínico más el ECG con elevación del ST hacen el diagnóstico. ICP primaria en menos de 90 min ideal."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_2",
+                            "ui_icon":  "eye",
+                            "category":  "Diagnóstico",
+                            "card_text":  "Hallazgo clínico: Dato anecdótico: B) Costocondritis (Síndrome de Tietze): Dolor torácico reproducible a la palpación de las articulaciones condrocostales, sin cambios en ECG.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: ¡Ojo clínico! El dolor reproducible a la palpación casi siempre descarta origen isquémico clásico, aquí el dolor es visceral."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  false
+                                             }
+                        },
+                        {
+                            "card_id":  "c_3",
+                            "ui_icon":  "eye",
+                            "category":  "Diagnóstico",
+                            "card_text":  "Evidencia: C) Tromboembolia Pulmonar: Disnea súbita, taquicardia, dolor pleurítico, hipoxia severa. S1Q3T3 raro pero posible.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "lethal_hazard",
+                                            "vazquez_comment":  "Felicidades por descartarlo. Los cambios ST y el tipo de dolor nos centran en las coronarias."
+                                        },
+                            "safety_flags":  {
+                                                 "red_flag":  true,
+                                                 "lethal_risk":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_4",
+                            "ui_icon":  "activity",
+                            "category":  "Estudio Inicial",
+                            "card_text":  "Dato de importancia: D) Electrocardiograma de 12 derivaciones: Meta institucional de realizar e interpretar en menos de 10 minutos.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "¡Vital! El retraso en el ECG es retraso en la reperfusión."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_5",
+                            "ui_icon":  "zap",
+                            "category":  "Reperfusión",
+                            "card_text":  "Evidencia clínica: E) Fibrinólisis Farmacológica: Estrategia de elección si la ICP no está disponible en menos de 120 minutos.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "¡Bien! Si no hay sala de hemodinamia cerca, la trombolisis es la salvación."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_6",
+                            "ui_icon":  "alert-triangle",
+                            "category":  "Seguridad",
+                            "card_text":  "Evidencia: F) Antecedente de Hemorragia Intracraneal: Contraindicación absoluta para la administración de fibrinolíticos.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_hazard",
+                                            "vazquez_comment":  "¡EXCELENTE! Trombolizar a alguien con este antecedente es un error fatal garantizado."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_7",
+                            "ui_icon":  "alert-circle",
+                            "category":  "Seguridad",
+                            "card_text":  "Hallazgo: G) Hemorragia Digestiva Activa: Contraindicación absoluta para el uso de terapia fibrinolítica.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "lethal_hazard",
+                                            "vazquez_comment":  "Correcto. Siempre hay que realizar el checklist de seguridad antes de la \u0027aguja\u0027."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_8",
+                            "ui_icon":  "clock",
+                            "category":  "Metas de Tiempo",
+                            "card_text":  "Evidencia: H) Tiempo Puerta-Aguja \u003c30 min: Meta de tiempo desde la llegada al hospital hasta el inicio del fibrinolítico.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "¡Exacto! Los tiempos son los que evaluamos en el triage de alta especialidad."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_9",
+                            "ui_icon":  "move",
+                            "category":  "Manejo Post-Fibrinólisis",
+                            "card_text":  "Hallazgo: I) Traslado a centro con ICP: Todos los pacientes post-fibrinólisis deben ser referidos para estrategia fármaco-invasiva.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Bien. La fibrinólisis fallida o exitosa requiere una evaluación hemodinámica posterior."
+                                        }
+                        }
+                    ],
+    "enarm_pearl":  {
+                        "title":  "Cardiopatía Isquémica: Tiempo es Músculo",
+                        "text":  "En un SCACEST, el diagnóstico se hace con clínica + ECG (en \u003c10 min). NO se debe esperar el resultado de las troponinas para activar código infarto ni trombolizar/ICP.",
+                        "gpc_ref":  "GPC Infarto Agudo al Miocardio con Elevación del ST"
+                    },
+    "boss_fight_triad":  {
+                             "trigger":  "after_cards",
+                             "questions":  [
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Cuál es el tiempo meta establecido por las guías para la realización e interpretación del ECG?",
+                                                   "options":  [
+                                                                   "Menos de 10 minutos",
+                                                                   "Menos de 30 minutos",
+                                                                   "A la brevedad posible sin tiempo límite"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Cuál es la estrategia de reperfusión de elección si el hospital cuenta con sala de hemodinamia?",
+                                                   "options":  [
+                                                                   "Intervención Coronaria Percutánea (ICP) primaria",
+                                                                   "Fibrinólisis farmacológica",
+                                                                   "Bypass de arteria coronaria urgente"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Cuál es la principal causa de muerte prehospitalaria en un paciente con IAM?",
+                                                   "options":  [
+                                                                   "Fibrilación Ventricular",
+                                                                   "Ruptura de pared libre",
+                                                                   "Choque cardiogénico"
+                                                               ]
+                                               }
+                                           ]
+                         }
 }

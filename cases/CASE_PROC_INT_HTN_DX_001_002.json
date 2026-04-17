@@ -1,286 +1,182 @@
 {
-  "case_id": "PROC_INT_HTN_DX_001_002",
-  "version": "v3_swipe_action",
-  "theme_config": "int",
-  "difficulty": "standard",
-  "patient_intro": {
-    "name": "Luis, 53 años",
-    "arrival_scenario": "Acude a consulta externa. En la primera medición presenta TA 145/95 mmHg. Se le pide reposar 5 min y se repite: 142/92 mmHg. Se registran bitácoras de TA en casa (AMPA) con promedio de 138/88 mmHg. En consultorio hoy: 146/94 mmHg.",
-    "time_limit_sec": 60
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
-      "card_text": "Información redundante: TA 145/95 mmHg, FC 75 lpm, Temp 36.6°C",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en signos estables, R1. El reloj no se detiene."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "Hallazgo clínico: A) Hipertensión Arterial Sistémica Grado 1 (Sustentada): Criterios NOM-030: â‰¥140/90 mmHg en 2 o más visitas, o promedio de bitácora diagnóstica.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "¡Correcto! El diagnóstico se sustenta tras mediciones repetidas adecuadamente."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_2",
-      "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "Hallazgo clínico: Dato anecdótico: B) Administrar Esteroide IV Inmediatamente: Solo se consideran en choque séptico REFRACTARIO a fluidos y vasopresores. No es manejo inicial.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Priorizaste la resucitación con fluidos y antibióticos."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
-      }
-    },
-    {
-      "card_id": "c_3",
-      "ui_icon": "clipboard",
-      "category": "Tamizaje",
-      "card_text": "Evidencia: C) Escala qSOFA: Evalúa: FR >=22, Alteración mental (Glasgow <15) y TAS <=100 mmHg.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Muy bien! Identifica rápidamente riesgo de muerte fuera de la UCI."
-      }
-    },
-    {
-      "card_id": "c_4",
-      "ui_icon": "activity",
-      "category": "Score SOFA",
-      "card_text": "Evidencia clínica: D) Score SOFA >=2 puntos: Define Sepsis como disfunción orgánica aguda secundaria a la infección.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Navarro: ¡Exacto! Es el nuevo estándar de oro para definir sepsis grave."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_5",
-      "ui_icon": "droplet",
-      "category": "Bundle 1h",
-      "card_text": "Evidencia: E) Medir Lactato Sérico: Guía la terapia inicial y predice mortalidad si es >2 mmol/L.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: Bien. La hiperlactatemia es un marcador de hipoperfusión tisular."
-      }
-    },
-    {
-      "card_id": "c_6",
-      "ui_icon": "zap",
-      "category": "Bundle 1h",
-      "card_text": "Hallazgo: F) Antibióticos <60 min: Iniciar terapia empírica de amplio espectro tras toma de hemocultivos.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Navarro: ¡Vital! El retraso aumenta la mortalidad radicalmente cada hora."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_7",
-      "ui_icon": "beaker",
-      "category": "Volemia",
-      "card_text": "Hallazgo clínico: G) Carga de Cristaloides 30ml/kg: Iniciada en las primeras 3 horas de hipotensión o lactato >=4.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Navarro: ¡Correcto! La resucitación hídrica es el primer paso hemodinámico."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_8",
-      "ui_icon": "zap",
-      "category": "Vasopresor",
-      "card_text": "Hallazgo: H) Norepinefrina: Vasopresor de primera elección si la PAM persiste <65 tras líquidos.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Navarro: ¡Excelente! Supera a la dopamina en eficacia y reducción de arritmias."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_9",
-      "ui_icon": "trash",
-      "category": "Tratamiento",
-      "card_text": "Hallazgo clínico: Dato anecdótico: I) Hidrocortisona IV: Administrar de rutina en todo choque séptico sin esperar respuesta a líquidos.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Solo se usa si no se alcanzan metas de PAM con norepinefrina."
-      }
-    },
-    {
-      "card_id": "c_3",
-      "ui_icon": "slash",
-      "category": "Diagnóstico Diferencial",
-      "card_text": "Evidencia clínica: Ruido en el expediente: C) Hipertensión Enmascarada: Cifras normales en consultorio pero elevadas fuera de él; tiene peor pronóstico cardiovascular.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Correcto. Requiere monitoreo ambulatorio (MAPA) para su detección y manejo."
-      }
-    },
-    {
-      "card_id": "c_4",
-      "ui_icon": "alert-circle",
-      "category": "Criterio Diagnóstico",
-      "card_text": "Evidencia: D) Diagnóstico en Visita Ãšnica: Se confirma si la TA inicial es >=180/110 mmHg o si hay daño evidente a órgano blanco.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "¡Exacto! En crisis o daño severo no se posterga el inicio del tratamiento."
-      }
-    },
-    {
-      "card_id": "c_5",
-      "ui_icon": "heart",
-      "category": "Manejo Inicial",
-      "card_text": "Hallazgo clínico: E) Medidas No Farmacológicas (DASH): Dieta baja en sodio, reducción de peso y 150 min de ejercicio semanal.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Bien. La dieta DASH es el pilar complementario indispensable del manejo."
-      }
-    },
-    {
-      "card_id": "c_6",
-      "ui_icon": "pill",
-      "category": "Tratamiento Dual",
-      "card_text": "Evidencia clínica: F) Terapia Combinada Inicial: IECA o ARA-II + Bloqueador de canales de calcio o Diurético tiazídico.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "¡Muy bien! La mayoría de los pacientes requieren dos fármacos para el control real."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_7",
-      "ui_icon": "clock",
-      "category": "Crisis Hipertensiva",
-      "card_text": "Evidencia clínica: G) Urgencia Hipertensiva: TA >180/120 mmHg SIN daño a órgano blanco agudo. Tratamiento oral y control ambulatorio.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Correcto. El descenso debe ser gradual (24-48h) para evitar isquemia autorregulada."
-      }
-    },
-    {
-      "card_id": "c_8",
-      "ui_icon": "zap",
-      "category": "Emergencia",
-      "card_text": "Evidencia: H) Emergencia Hipertensiva: TA >180/120 mmHg CON daño agudo (EVC, IAM, EAP). Requiere tratamiento IV hospitalario.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "¡Vital! El objetivo es reducir la PAM no más del 25% en la primera hora."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_9",
-      "ui_icon": "activity",
-      "category": "Meta Terapéutica",
-      "card_text": "Hallazgo clínico: I) Meta General de Control: Mantener cifras menores a 130/80 mmHg en la mayoría de los pacientes sanos.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "¡Perfecto! El control estricto previene la progresión a enfermedad renal y falla cardíaca."
-      }
-    }
-  ],
-  "enarm_pearl": {
-    "title": "Diagnóstico HAS (NOM-030)",
-    "text": "Diagnóstico inicial: Promedio â‰¥140/90 mmHg en al menos dos consultas. Si el paciente llega con â‰¥180/110 mmHg, el diagnóstico se hace en la PRIMERA visita.",
-    "gpc_ref": "NOM-030-SSA2-2009"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
-        "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
-        "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
-        "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
+    "case_id":  "PROC_INT_HTN_DX_001_002",
+    "version":  "v3_swipe_action",
+    "theme_config":  "int",
+    "difficulty":  "standard",
+    "patient_intro":  {
+                          "name":  "Luis, 53 años",
+                          "arrival_scenario":  "Acude a consulta externa. En la primera medición presenta TA 145/95 mmHg. Se le pide reposar 5 min y se repite: 142/92 mmHg. Se registran bitácoras de TA en casa (AMPA) con promedio de 138/88 mmHg. En consultorio hoy: 146/94 mmHg.",
+                          "time_limit_sec":  60
+                      },
+    "card_stream":  [
+                        {
+                            "card_id":  "init_vitals",
+                            "ui_icon":  "heartbeat",
+                            "category":  "Signos Vitales",
+                            "card_text":  "Información redundante: TA 145/95 mmHg, FC 75 lpm, Temp 36.6°C",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: No te detengas en signos estables, R1. El reloj no se detiene."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_1",
+                            "ui_icon":  "target",
+                            "category":  "Diagnóstico",
+                            "card_text":  "Evidencia: A) Hipertensión Arterial Sistémica Grado 1 (Sustentada): Criterios NOM-030: ≥140/90 mmHg en 2 o más visitas, o promedio de bitácora diagnóstica.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "¡Correcto! El diagnóstico se sustenta tras mediciones repetidas adecuadamente."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_2",
+                            "ui_icon":  "eye",
+                            "category":  "Diagnóstico Diferencial",
+                            "card_text":  "Evidencia clínica: Dato anecdótico: B) Hipertensión de Bata Blanca: Cifras elevadas en consultorio (>=140/90) pero normales en casa (AMPA) o MAPA.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: ¡Bien! Es importante no sobretratar a pacientes cuya elevación es puramente tensional por el entorno médico."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_3",
+                            "ui_icon":  "slash",
+                            "category":  "Diagnóstico Diferencial",
+                            "card_text":  "Hallazgo: Dato anecdótico: C) Hipertensión Enmascarada: Cifras normales en el consultorio pero elevadas fuera de él; tiene peor pronóstico que la de bata blanca.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Correcto. Requiere un monitoreo ambulatorio (MAPA) para ser detectada."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_4",
+                            "ui_icon":  "alert-circle",
+                            "category":  "Criterio Diagnóstico",
+                            "card_text":  "Evidencia: D) Diagnóstico en Visita Única: Se confirma si la TA es >=180/110 mmHg o si hay daño evidente a órgano blanco inicial.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "¡Exacto! No hace falta esperar a una segunda cita si el paciente ya está en crisis o con daño."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_5",
+                            "ui_icon":  "heart",
+                            "category":  "Manejo Inicial",
+                            "card_text":  "Dato de importancia: E) Medidas No Farmacológicas: Dieta DASH (baja en sodio, alta en potasio), pérdida de peso y 150 min de ejercicio semanal.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Bien. Estas medidas pueden reducir la TAS hasta 10-15 mmHg."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_6",
+                            "ui_icon":  "pill",
+                            "category":  "Tratamiento Dual",
+                            "card_text":  "Evidencia: F) Terapia Combinada Inicial: IECA o ARA-II + Bloqueador de canales de calcio o Diurético tipo tiazida.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "¡Muy bien! La mayoría de los pacientes requieren dos fármacos para alcanzar metas de control."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_7",
+                            "ui_icon":  "clock",
+                            "category":  "Crisis Hipertensiva",
+                            "card_text":  "Dato de importancia: G) Urgencia Hipertensiva: TA >180/120 mmHg SIN daño a órgano blanco. Tratamiento oral y reducción en 24-48h.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Correcto. No requiere hospitalización ni fármacos intravenosos de entrada."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_8",
+                            "ui_icon":  "zap",
+                            "category":  "Emergencia",
+                            "card_text":  "Evidencia: H) Emergencia Hipertensiva: TA >180/120 mmHg CON daño agudo (EVC, IAM, EAP). Requiere tratamiento IV y hospitalización.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "¡Vital! El objetivo es reducir la PAM no más del 25% en la primera hora para evitar isquemia."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_9",
+                            "ui_icon":  "activity",
+                            "category":  "Meta Terapéutica",
+                            "card_text":  "Evidencia: I) Meta General de Control: Mantener cifras menores a 130/80 mmHg en la mayoría de los pacientes (GPC/AHA).",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "¡Perfecto! El control estrecho previene complicaciones crónicas nefrológicas y cardiacas."
+                                        }
+                        }
+                    ],
+    "enarm_pearl":  {
+                        "title":  "HTA: Diagnóstico y Crisis",
+                        "text":  "Dx: >=140/90. Emergencia = Daño a órgano blanco + Tx IV. Urgencia = Sin daño + Tx Oral. Combo: IECA/ARA2 + BCC.",
+                        "gpc_ref":  "GPC Diagnóstico y Tratamiento de la Hipertensión Arterial Primaria"
+                    },
+    "boss_fight_triad":  {
+                             "trigger":  "after_cards",
+                             "questions":  [
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Cifra para diagnóstico de HAS según NOM-030?",
+                                                   "options":  [
+                                                                   ">=140/90 mmHg",
+                                                                   ">=130/80 mmHg",
+                                                                   ">=150/95 mmHg"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Meta de TA en diabéticos según la ADA?",
+                                                   "options":  [
+                                                                   "<130/80 mmHg",
+                                                                   "<140/90 mmHg",
+                                                                   "<120/70 mmHg"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Qué indica el fondo de ojo en HAS?",
+                                                   "options":  [
+                                                                   "Daño a órgano blanco crónico",
+                                                                   "Solo agudeza visual",
+                                                                   "No tiene utilidad"
+                                                               ]
+                                               }
+                                           ]
+                         }
 }

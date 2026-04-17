@@ -1,90 +1,142 @@
 {
-  "case_id": "PROC_PED_RESPIRATORY_PNEUMONIA_001_003",
-  "version": "v3_swipe_action",
-  "theme_config": "ped",
-  "difficulty": "standard",
-  "patient_intro": {
-    "name": "Ana, 7 años",
-    "arrival_scenario": "Escolar con tos seca y fiebre de 38°C de inicio insidioso hace 5 días. Al examen: tiraje leve, sibilancias dispersas. Rx tórax: infiltrados intersticiales bilaterales. Responde parcialmente a amoxicilina. Se sospecha etiología atípica.",
-    "time_limit_sec": 60
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
-      "card_text": "Hallazgo clínico: Ruido en el expediente: FC 130 lpm, FR 45 rpm (Taquipnea), Temp 39.2°C, SatO2 91%.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Cuidado con esa saturación! Valentina necesita atención inmediata."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "Hallazgo: A) Neumonía Adquirida en la Comunidad (NAC): Presencia de consolidación en Rx o estertores + Síntomas de infección respiratoria aguda.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Correcto! Es una de las principales causas de morbimortalidad infantil."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_2",
-      "ui_icon": "beaker",
-      "category": "Etiología",
-      "card_text": "Hallazgo clínico: B) Streptococcus pneumoniae: El patógeno bacteriano más frecuente de NAC en niños de todas las edades (excepto neonatos).",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Pneumococo es el rey! Siempre hay que cubrirlo."
-      }
-    }
-  ],
-  "enarm_pearl": {
-    "title": "Neumonía Ped: Pilares Tx",
-    "text": "1ra línea Ambulatorio: Amoxicilina (High dose). Hospital: Ampicilina IV. Atípica (>5a): Azitromicina. Criterios: Sat <92% o dificultad grave.",
-    "gpc_ref": "GPC Prevención, Diagnóstico y Tratamiento de la Neumonía Adquirida en la Comunidad"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es el agente etiológico bacteriano más frecuente de neumonía adquirida en la comunidad en niños mayores de 3 meses?",
-        "options": [
-          "Streptococcus pneumoniae",
-          "Staphylococcus aureus",
-          "Haemophilus influenzae"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el tratamiento antibiótico de elección para una NAC no complicada en el manejo ambulatorio?",
-        "options": [
-          "Amoxicilina a dosis de 80-90 mg/kg/día",
-          "Ceftriaxona intramuscular",
-          "Eritromicina oral"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿A partir de qué nivel de saturación de oxígeno por oximetría de pulso se indica el ingreso hospitalario?",
-        "options": [
-          "Menor a 92%",
-          "Menor a 95%",
-          "Menor a 88%"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
+    "case_id":  "PROC_PED_RESPIRATORY_PNEUMONIA_001_003",
+    "version":  "v3_swipe_action",
+    "theme_config":  "ped",
+    "difficulty":  "standard",
+    "patient_intro":  {
+                          "name":  "Ana, 7 aA±os",
+                          "arrival_scenario":  "Escolar con tos seca y fiebre de 38.0A°C de inicio insidioso hace 5 dA­as. Al examen: tiraje leve, sibilancias dispersas. Rx tA³rax: infiltrados intersticiales bilaterales (disociaciA³n clA­nico-radiolA³gica). Responde parcialmente a amoxicilina.",
+                          "time_limit_sec":  60
+                      },
+    "card_stream":  [
+                        {
+                            "card_id":  "init_vitals",
+                            "ui_icon":  "heartbeat",
+                            "category":  "Signos Vitales",
+                            "card_text":  "Hallazgo clA­nico: FC 105 lpm, FR 28 rpm, Temp 38.0A°C, SatO2 96%.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "ðYZ¯ DATO CLAVE OMITIDO: Navarro: Signos vitales estables, tA­pico de una neumonA­a atA­pica. No requiere manejo urgente en urgencias."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_1",
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  true
+                                             },
+                            "ui_icon":  "target",
+                            "card_text":  "Evidencia: A) NeumonA­a AtA­pica: Cuadro subagudo, tos seca predominante y disociaciA³n clA­nico-radiolA³gica.",
+                            "scoring":  {
+                                            "vazquez_comment":  "Navarro: A¡Exacto! Los sA­ntomas son menos floridos que en la neumonA­a tA­pica.",
+                                            "points":  150,
+                                            "error_type":  "omission"
+                                        },
+                            "expected_action":  "keep",
+                            "category":  "DiagnA³stico"
+                        },
+                        {
+                            "card_id":  "c_2",
+                            "ui_icon":  "beaker",
+                            "card_text":  "Hallazgo: B) Mycoplasma pneumoniae: El patA³geno atA­pico mA¡s frecuente en niA±os mayores de 5 aA±os.",
+                            "scoring":  {
+                                            "vazquez_comment":  "Navarro: A¡Correcto! Es el principal sospechoso ante esta clA­nica y edad.",
+                                            "points":  100,
+                                            "error_type":  "omission"
+                                        },
+                            "expected_action":  "keep",
+                            "category":  "EtiologA­a"
+                        },
+                        {
+                            "card_id":  "c_3",
+                            "ui_icon":  "camera",
+                            "card_text":  "Evidencia: C) Infiltrados Intersticiales: Hallazgo radiolA³gico clA¡sico de neumonA­a atA­pica, a menudo bilateral y difuso.",
+                            "scoring":  {
+                                            "vazquez_comment":  "Navarro: Bien. La placa se ve \u0027peor\u0027 que el estado general del paciente.",
+                                            "points":  100,
+                                            "error_type":  "omission"
+                                        },
+                            "expected_action":  "keep",
+                            "category":  "Imagen"
+                        },
+                        {
+                            "card_id":  "c_4",
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true
+                                             },
+                            "ui_icon":  "pill",
+                            "card_text":  "Dato de importancia: D) Azitromicina (MacrA³lido): Tratamiento de elecciA³n para gA©rmenes atA­picos. Inhibe la sA­ntesis proteica (50S).",
+                            "scoring":  {
+                                            "vazquez_comment":  "Navarro: A¡Excelente! Los betalactA¡micos no sirven contra Mycoplasma porque carece de pared celular.",
+                                            "points":  150,
+                                            "error_type":  "lethal_omission"
+                                        },
+                            "expected_action":  "keep",
+                            "category":  "Tratamiento"
+                        },
+                        {
+                            "card_id":  "c_5",
+                            "ui_icon":  "eye",
+                            "card_text":  "Hallazgo: E) Signos Extrapulmonares: Miringitis bulosa, eritema multiforme o anemia hemolA­tica pueden acompaA±ar la infecciA³n.",
+                            "scoring":  {
+                                            "vazquez_comment":  "Navarro: A¡Buen detalle! Estos hallazgos refuerzan mucho la sospecha de Mycoplasma.",
+                                            "points":  50,
+                                            "error_type":  "omission"
+                                        },
+                            "expected_action":  "keep",
+                            "category":  "Examen FA­sico"
+                        },
+                        {
+                            "card_id":  "c_6",
+                            "ui_icon":  "slash",
+                            "card_text":  "Dato de importancia: F) NAC TA­pica (Neumococo): Cursa con inicio sAºbito, fiebre alta, dolor pleurA­tico y consolidaciA³n lobar.",
+                            "scoring":  {
+                                            "vazquez_comment":  "ðYZ¯ DATO CLAVE OMITIDO: Navarro: Correcto. Este paciente NO tiene la toxicidad ni los hallazgos de una neumonA­a tA­pica.",
+                                            "points":  50,
+                                            "error_type":  "hoarding"
+                                        },
+                            "expected_action":  "discard",
+                            "category":  "Diferencial"
+                        }
+                    ],
+    "enarm_pearl":  {
+                        "title":  "NeumonA­a AtA­pica vs TA­pica",
+                        "text":  "AtA­pica (Mycoplasma): \u003e5 aA±os, insidiosa, tos seca, infiltrado intersticial, Tx MacrA³lidos. TA­pica (Neumococo): Cualquier edad, sAºbita, fiebre alta, consolidaciA³n, Tx Amoxicilina.",
+                        "gpc_ref":  "GPC PrevenciA³n, DiagnA³stico y Tratamiento de la NeumonA­a Adquirida en la Comunidad"
+                    },
+    "boss_fight_triad":  {
+                             "trigger":  "after_cards",
+                             "questions":  [
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "A¿CuA¡l es el tratamiento antibiA³tico de elecciA³n para la NeumonA­a AtA­pica por Mycoplasma?",
+                                                   "options":  [
+                                                                   "Azitromicina",
+                                                                   "Amoxicilina",
+                                                                   "Ceftriaxona"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "A¿CuA¡l es el agente etiolA³gico atA­pico mA¡s frecuente en niA±os mayores de 5 aA±os?",
+                                                   "options":  [
+                                                                   "Mycoplasma pneumoniae",
+                                                                   "Chlamydia pneumoniae",
+                                                                   "Legionella pneumophila"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "A¿QuA© hallazgo radiolA³gico es caracterA­stico de una neumonA­a por Mycoplasma?",
+                                                   "options":  [
+                                                                   "Infiltrados intersticiales bilaterales",
+                                                                   "ConsolidaciA³n lobar Aºnica",
+                                                                   "Absceso pulmonar"
+                                                               ]
+                                               }
+                                           ]
+                         }
 }

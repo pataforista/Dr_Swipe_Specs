@@ -1,194 +1,194 @@
 {
-  "case_id": "PROC_ORL_OTITIS_MEDIA_001_001",
-  "version": "v3_swipe_action",
-  "theme_config": "ped",
-  "difficulty": "standard",
-  "patient_intro": {
-    "name": "Santi, 3 años",
-    "arrival_scenario": "Lactante con antecedente de infección respiratoria superior hace 3 días. Inicia con irritabilidad, llanto inconsolable y fiebre de 38.5°C. Se toca frecuentemente la oreja derecha. La madre nota que 'no escucha bien' de ese lado.",
-    "time_limit_sec": 60
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "vitals",
-      "card_text": "FC 115 lpm, FR 24 rpm, Temp 38.8°C.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Castillo: Fiebre confirmada. Pasemos a la otoscopia."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "A) Otitis Media Aguda (OMA): Presencia de efusión en oído medio + inicio súbito de signos y síntomas de inflamación local.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Correcto! Es la infección bacteriana más común en pediatría que justifica el uso de antibióticos."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_2",
-      "ui_icon": "eye",
-      "category": "Otoscopia",
-      "card_text": "B) Membrana Timpánica Abombada: Es el signo clínico más sensible y específico para el diagnóstico de efusión en el oído medio.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Excelente! Si la membrana no está abombada, el diagnóstico de OMA es dudoso."
-      }
-    },
-    {
-      "card_id": "c_3",
-      "ui_icon": "beaker",
-      "category": "Etiología",
-      "card_text": "C) Streptococcus pneumoniae: Agente bacteriano principal, seguido por Haemophilus influenzae no tipificable y Moraxella catarrhalis.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Muy bien! El 'Big Three' de la OMA."
-      }
-    },
-    {
-      "card_id": "c_4",
-      "ui_icon": "pill",
-      "category": "meds",
-      "card_text": "D) Amoxicilina (80-90 mg/kg/día): Tratamiento de primera elección por 5-10 días según la edad y severidad.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Castillo: ¡Logrado! Dosis alta para vencer la resistencia del neumococo.",
-        "safety_flags": {
-          "lethal_risk": true,
-          "decision_critical": true
-        }
-      }
-    },
-    {
-      "card_id": "c_5",
-      "ui_icon": "activity",
-      "category": "meds",
-      "card_text": "E) Amoxicilina con Ácido Clavulánico: Indicada si el paciente recibió amoxicilina en los últimos 30 días o tiene conjuntivitis purulenta asociada.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Bien pensado! Cubrimos las beta-lactamasas del H. influenzae."
-      }
-    },
-    {
-      "card_id": "c_6",
-      "ui_icon": "alert-triangle",
-      "category": "meds",
-      "card_text": "F) Mastoiditis Aguda: Complicación supurativa más frecuente. Se caracteriza por desplazamiento del pabellón auricular y eritema retroauricular.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Castillo: ¡Vital! Requiere hospitalización y antibióticos IV inmediatos.",
-        "safety_flags": {
-          "lethal_risk": true,
-          "decision_critical": true
-        }
-      }
-    },
-    {
-      "card_id": "c_7",
-      "ui_icon": "info",
-      "category": "meds",
-      "card_text": "G) Guarderías, Tabaquismo Pasivo y Ausencia de Lactancia Materna: Factores que incrementan significativamente el riesgo de OMA recurrente.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: Bien. La prevención empieza con cambios en el entorno del niño."
-      }
-    },
-    {
-      "card_id": "c_8",
-      "ui_icon": "slash",
-      "category": "Diferencial",
-      "card_text": "H) Otitis Media con Efusión (Serosa): Presencia de líquido sin signos de infección aguda (fiebre/dolor). No requiere antibióticos.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Excelente! Evitar el uso innecesario de antibióticos es medicina de calidad."
-      }
-    },
-    {
-      "card_id": "c_9",
-      "ui_icon": "droplet",
-      "category": "meds",
-      "card_text": "I) Timpanometría: Prueba de elección para confirmar objetivamente la presencia de efusión si la otoscopia no es clara.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Correcto! Mide la movilidad de la membrana timpánica."
-      }
-    },
-    {
-      "card_id": "c_10",
-      "ui_icon": "x-circle",
-      "category": "Contraindicación",
-      "card_text": "J) Antihistamínicos y Descongestionantes: Recomendados de rutina para acelerar la resolución de la efusión en el oído medio.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡No! Han demostrado NO ser efectivos para la OMA y pueden prolongar la efusión."
-      }
-    }
-  ],
-  "enarm_pearl": {
-    "title": "OMA: Signos y Dosis",
-    "text": "Signo clave: Abombamiento MT. Tx: Amoxicilina 80-90 mg/kg. Complicación #1: Mastoiditis. Etiología: Neumococo.",
-    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Otitis Media Aguda en la Edad Pediátrica"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es el hallazgo en la otoscopia más sugestivo de otitis media aguda?",
-        "options": [
-          "Abombamiento de la membrana timpánica",
-          "Membrana timpánica íntegra y nacarada",
-          "Presencia de cerumen obstructivo"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el antibiótico de primera elección y su dosis para el tratamiento de la OMA?",
-        "options": [
-          "Amoxicilina a 80-90 mg/kg/día",
-          "Ceftriaxona 50 mg/kg IM dosis única",
-          "Eritromicina 40 mg/kg/día"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es la complicación intratemporal supurativa más frecuente de la OMA?",
-        "options": [
-          "Mastoiditis aguda",
-          "Laberintitis",
-          "Meningitis supurativa"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
+    "case_id":  "PROC_ORL_OTITIS_MEDIA_001_001",
+    "version":  "v3_swipe_action",
+    "theme_config":  "ped",
+    "difficulty":  "standard",
+    "patient_intro":  {
+                          "name":  "Santi, 3 años",
+                          "arrival_scenario":  "Lactante con antecedente de infección respiratoria superior hace 3 días. Inicia con irritabilidad, llanto inconsolable y fiebre de 38.5°C. Se toca frecuentemente la oreja derecha. La madre nota que \u0027no escucha bien\u0027 de ese lado.",
+                          "time_limit_sec":  60
+                      },
+    "card_stream":  [
+                        {
+                            "card_id":  "init_vitals",
+                            "ui_icon":  "heartbeat",
+                            "category":  "vitals",
+                            "card_text":  "FC 115 lpm, FR 24 rpm, Temp 38.8°C.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "Castillo: Fiebre confirmada. Pasemos a la otoscopia."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_1",
+                            "ui_icon":  "target",
+                            "category":  "Diagnóstico",
+                            "card_text":  "A) Otitis Media Aguda (OMA): Presencia de efusión en oído medio + inicio súbito de signos y síntomas de inflamación local.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: ¡Correcto! Es la infección bacteriana más común en pediatría que justifica el uso de antibióticos."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_2",
+                            "ui_icon":  "eye",
+                            "category":  "Otoscopia",
+                            "card_text":  "B) Membrana Timpánica Abombada: Es el signo clínico más sensible y específico para el diagnóstico de efusión en el oído medio.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: ¡Excelente! Si la membrana no está abombada, el diagnóstico de OMA es dudoso."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_3",
+                            "ui_icon":  "beaker",
+                            "category":  "Etiología",
+                            "card_text":  "C) Streptococcus pneumoniae: Agente bacteriano principal, seguido por Haemophilus influenzae no tipificable y Moraxella catarrhalis.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: ¡Muy bien! El \u0027Big Three\u0027 de la OMA."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_4",
+                            "ui_icon":  "pill",
+                            "category":  "meds",
+                            "card_text":  "D) Amoxicilina (80-90 mg/kg/día): Tratamiento de primera elección por 5-10 días según la edad y severidad.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "Castillo: ¡Logrado! Dosis alta para vencer la resistencia del neumococo.",
+                                            "safety_flags":  {
+                                                                 "lethal_risk":  true,
+                                                                 "decision_critical":  true
+                                                             }
+                                        }
+                        },
+                        {
+                            "card_id":  "c_5",
+                            "ui_icon":  "activity",
+                            "category":  "meds",
+                            "card_text":  "E) Amoxicilina con Ácido Clavulánico: Indicada si el paciente recibió amoxicilina en los últimos 30 días o tiene conjuntivitis purulenta asociada.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: ¡Bien pensado! Cubrimos las beta-lactamasas del H. influenzae."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_6",
+                            "ui_icon":  "alert-triangle",
+                            "category":  "meds",
+                            "card_text":  "F) Mastoiditis Aguda: Complicación supurativa más frecuente. Se caracteriza por desplazamiento del pabellón auricular y eritema retroauricular.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "Castillo: ¡Vital! Requiere hospitalización y antibióticos IV inmediatos.",
+                                            "safety_flags":  {
+                                                                 "lethal_risk":  true,
+                                                                 "decision_critical":  true
+                                                             }
+                                        }
+                        },
+                        {
+                            "card_id":  "c_7",
+                            "ui_icon":  "info",
+                            "category":  "meds",
+                            "card_text":  "G) Guarderías, Tabaquismo Pasivo y Ausencia de Lactancia Materna: Factores que incrementan significativamente el riesgo de OMA recurrente.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: Bien. La prevención empieza con cambios en el entorno del niño."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_8",
+                            "ui_icon":  "slash",
+                            "category":  "Diferencial",
+                            "card_text":  "H) Otitis Media con Efusión (Serosa): Presencia de líquido sin signos de infección aguda (fiebre/dolor). No requiere antibióticos.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: ¡Excelente! Evitar el uso innecesario de antibióticos es medicina de calidad."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_9",
+                            "ui_icon":  "droplet",
+                            "category":  "meds",
+                            "card_text":  "I) Timpanometría: Prueba de elección para confirmar objetivamente la presencia de efusión si la otoscopia no es clara.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: ¡Correcto! Mide la movilidad de la membrana timpánica."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_10",
+                            "ui_icon":  "x-circle",
+                            "category":  "Contraindicación",
+                            "card_text":  "J) Antihistamínicos y Descongestionantes: Recomendados de rutina para acelerar la resolución de la efusión en el oído medio.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "Castillo: ¡No! Han demostrado NO ser efectivos para la OMA y pueden prolongar la efusión."
+                                        }
+                        }
+                    ],
+    "enarm_pearl":  {
+                        "title":  "OMA: Signos y Dosis",
+                        "text":  "Signo clave: Abombamiento MT. Tx: Amoxicilina 80-90 mg/kg. Complicación #1: Mastoiditis. Etiología: Neumococo.",
+                        "gpc_ref":  "GPC Diagnóstico y Tratamiento de la Otitis Media Aguda en la Edad Pediátrica"
+                    },
+    "boss_fight_triad":  {
+                             "trigger":  "after_cards",
+                             "questions":  [
+                                               {
+                                                   "question":  "¿Cuál es el hallazgo en la otoscopia más sugestivo de otitis media aguda?",
+                                                   "options":  [
+                                                                   "Abombamiento de la membrana timpánica",
+                                                                   "Membrana timpánica íntegra y nacarada",
+                                                                   "Presencia de cerumen obstructivo"
+                                                               ],
+                                                   "correct_index":  0
+                                               },
+                                               {
+                                                   "question":  "¿Cuál es el antibiótico de primera elección y su dosis para el tratamiento de la OMA?",
+                                                   "options":  [
+                                                                   "Amoxicilina a 80-90 mg/kg/día",
+                                                                   "Ceftriaxona 50 mg/kg IM dosis única",
+                                                                   "Eritromicina 40 mg/kg/día"
+                                                               ],
+                                                   "correct_index":  0
+                                               },
+                                               {
+                                                   "question":  "¿Cuál es la complicación intratemporal supurativa más frecuente de la OMA?",
+                                                   "options":  [
+                                                                   "Mastoiditis aguda",
+                                                                   "Laberintitis",
+                                                                   "Meningitis supurativa"
+                                                               ],
+                                                   "correct_index":  0
+                                               }
+                                           ]
+                         }
 }

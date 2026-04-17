@@ -1,94 +1,94 @@
 {
-  "case_id": "PROC_GYN_CANCER_BREAST_001_005",
-  "version": "v3_swipe_action",
-  "theme_config": "gyn",
-  "difficulty": "standard",
-  "patient_intro": {
-    "name": "Isabel, 53 años",
-    "arrival_scenario": "Mujer de 45 años acude a mastografía de tamizaje anual. Refiere ser tabaquista y nulípara. Se observa asimetría focal con distorsión de la arquitectura. Categoría BI-RADS 5. ¿Cuál es el siguiente paso?",
-    "time_limit_sec": 60
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
-      "card_text": "Evidencia clínica: Ruido en el expediente: TA 120/80, FC 70 lpm, Temp 36.5°C",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "Evidencia: A) Biopsia Percutánea (Trucut): BI-RADS 4 y 5 requieren confirmación histopatológica inmediata mediante biopsia con aguja gruesa.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Correcto! El diagnóstico definitivo es histopatológico. Nunca se debe retrasar ante una sospecha BI-RADS 4/5."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_2",
-      "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "Información redundante: B) Seguimiento en 6 meses (BI-RADS 3): Conducta ante hallazgos probablemente benignos (<2% riesgo de malignidad).",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Diferenciaste el seguimiento (BI-RADS 3) de la acción agresiva (BI-RADS 4+)."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
-      }
-    }
-  ],
-  "enarm_pearl": {
-    "title": "BI-RADS y Conducta",
-    "text": "BI-RADS 1-2: Rutina. BI-RADS 3: Seguimiento 6 meses. BI-RADS 4-5: BIOPSIA obligatoria.",
-    "gpc_ref": "GPC Prevención y Diagnóstico del Cáncer de Mama"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
-        "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
-        "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
-        "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
+    "case_id":  "PROC_GYN_CANCER_BREAST_001_005",
+    "version":  "v3_swipe_action",
+    "theme_config":  "gyn",
+    "difficulty":  "standard",
+    "patient_intro":  {
+                          "name":  "Isabel, 53 años",
+                          "arrival_scenario":  "Mujer de 45 años acude a mastografía de tamizaje anual. Refiere ser tabaquista y nulípara. Se observa asimetría focal con distorsión de la arquitectura. Categoría BI-RADS 5. ¿Cuál es el siguiente paso?",
+                          "time_limit_sec":  60
+                      },
+    "card_stream":  [
+                        {
+                            "card_id":  "init_vitals",
+                            "ui_icon":  "heartbeat",
+                            "category":  "Signos Vitales",
+                            "card_text":  "Evidencia clínica: Ruido en el expediente: TA 120/80, FC 70 lpm, Temp 36.5°C",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_1",
+                            "ui_icon":  "target",
+                            "category":  "Diagnóstico",
+                            "card_text":  "Evidencia: A) Biopsia Percutánea (Trucut): BI-RADS 4 y 5 requieren confirmación histopatológica inmediata mediante biopsia con aguja gruesa.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: ¡Correcto! El diagnóstico definitivo es histopatológico. Nunca se debe retrasar ante una sospecha BI-RADS 4/5."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_2",
+                            "ui_icon":  "eye",
+                            "category":  "Diagnóstico",
+                            "card_text":  "Información redundante: B) Seguimiento en 6 meses (BI-RADS 3): Conducta ante hallazgos probablemente benignos (\u003c2% riesgo de malignidad).",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Diferenciaste el seguimiento (BI-RADS 3) de la acción agresiva (BI-RADS 4+)."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  false
+                                             }
+                        }
+                    ],
+    "enarm_pearl":  {
+                        "title":  "BI-RADS y Conducta",
+                        "text":  "BI-RADS 1-2: Rutina. BI-RADS 3: Seguimiento 6 meses. BI-RADS 4-5: BIOPSIA obligatoria.",
+                        "gpc_ref":  "GPC Prevención y Diagnóstico del Cáncer de Mama"
+                    },
+    "boss_fight_triad":  {
+                             "trigger":  "after_cards",
+                             "questions":  [
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿A qué edad recomienda la GPC iniciar el tamizaje mastográfico en pacientes de riesgo promedio sin antecedentes?",
+                                                   "options":  [
+                                                                   "A partir de los 40 años",
+                                                                   "A partir de los 50 años",
+                                                                   "A partir de los 35 años"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Cuál es la conducta recomendada ante un hallazgo categorizado como BI-RADS 3 (Probablemente Benigno)?",
+                                                   "options":  [
+                                                                   "Seguimiento mastográfico en 6 meses",
+                                                                   "Biopsia percutánea inmediata",
+                                                                   "Repetir estudio en 2 años"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Cuál de los siguientes subtipos histopatológicos es el más frecuente en el cáncer de mama invasor?",
+                                                   "options":  [
+                                                                   "Carcinoma Ductal Infiltrante",
+                                                                   "Carcinoma Lobulillar Infiltrante",
+                                                                   "Carcinoma Mucinoso"
+                                                               ]
+                                               }
+                                           ]
+                         }
 }

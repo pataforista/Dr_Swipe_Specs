@@ -1,183 +1,183 @@
 {
-  "case_id": "PROC_PSYC_DEP_SUICIDE_001_001",
-  "version": "v3_swipe_action",
-  "theme_config": "psyc",
-  "difficulty": "standard",
-  "patient_intro": {
-    "name": "José, 70 años",
-    "arrival_scenario": "Paciente que ha regalado sus pertenencias y refiere que 'su familia estaría mejor sin él'. Presenta anhedonia severa. Al interrogatorio directo admite tener un plan estructurado para quitarse la vida mediante ingesta de fármacos.",
-    "time_limit_sec": 60
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "vitals",
-      "card_text": "TA 120/80, FC 80 lpm, Temp 36.5°C",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "meds",
-      "card_text": "A) Depresión Mayor con Riesgo Suicida Agudo: Sintomatología depresiva >2 semanas + Plan/Ideación suicida. Requiere hospitalización o vigilancia estrecha.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Navarro: ¡Correcto! La seguridad del paciente es prioridad. Si hay plan estructurado, no se debe enviar a casa solo."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true,
-        "lethal_if_discarded": true
-      }
-    },
-    {
-      "card_id": "c_2",
-      "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "B) Duelo Normal: Reacción a pérdida; la funcionalidad suele mantenerse y no hay ideación suicida estructurada.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Bien! Identificaste que el plan suicida marca la patología."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
-      }
-    },
-    {
-      "card_id": "c_3",
-      "ui_icon": "help-circle",
-      "category": "notes",
-      "card_text": "C) Preguntar Directamente sobre el Suicidio: Contrario al mito, preguntar sobre planes suicidas reduce la ansiedad y permite la intervención.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Fundamental! Romper el tabú es el primer paso para la prevención."
-      }
-    },
-    {
-      "card_id": "c_4",
-      "ui_icon": "clipboard",
-      "category": "Evaluación",
-      "card_text": "D) Escala SAD PERSONS: Herramienta nemotécnica para evaluar factores de riesgo (Sexo, Edad, Depresión, Previos, etc.).",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: Bien. Aunque no sustituye al juicio clínico, ayuda a sistematizar el riesgo."
-      }
-    },
-    {
-      "card_id": "c_5",
-      "ui_icon": "pill",
-      "category": "meds",
-      "card_text": "E) ISRS (Sertralina/Fluoxetina): Fármacos de primera línea para el episodio depresivo mayor. Tardan 2-4 semanas en actuar.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Correcto! Son seguros y efectivos para el manejo a largo plazo."
-      }
-    },
-    {
-      "card_id": "c_6",
-      "ui_icon": "alert-triangle",
-      "category": "Seguridad",
-      "card_text": "F) Hospitalización Psiquiátrica: Indicada si hay plan estructurado, intento reciente o falta de red de apoyo social.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Navarro: ¡Vital! En José (70 años, plan estructurado), el ingreso es obligatorio.",
-        "safety_flags": {
-          "lethal_risk": true,
-          "decision_critical": true
-        }
-      }
-    },
-    {
-      "card_id": "c_7",
-      "ui_icon": "zap",
-      "category": "meds",
-      "card_text": "G) Terapia Electroconvulsiva (TEC): Indicada en depresión con riesgo suicida inminente o refractaria a fármacos.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Excelente técnica avanzada! Es la medida más rápida para revertir la ideación suicida grave."
-      }
-    },
-    {
-      "card_id": "c_8",
-      "ui_icon": "scissors",
-      "category": "meds",
-      "card_text": "H) Trastorno Bipolar (Fase Maníaca): El inicio de antidepresivos en un paciente bipolar no diagnosticado puede inducir viraje a manía.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: Bien. Siempre descarta antecedentes de manía antes de recetar ISRS."
-      }
-    },
-    {
-      "card_id": "c_9",
-      "ui_icon": "alert-circle",
-      "category": "Riesgo",
-      "card_text": "I) Ancianos y Varones: Tienen mayor tasa de suicidio consumado (éxito) en comparación con jóvenes y mujeres.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Correcto! José cumple con dos de los factores demográficos de más alto riesgo."
-      }
-    }
-  ],
-  "enarm_pearl": {
-    "title": "Pregunta por el Suicidio",
-    "text": "Mito ENARM: Preguntar sobre el suicidio NO incita al paciente a hacerlo; al contrario, reduce el riesgo al permitir intervención.",
-    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Depresión"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
-        "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
-        "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
-        "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
+    "case_id":  "PROC_PSYC_DEP_SUICIDE_001_001",
+    "version":  "v3_swipe_action",
+    "theme_config":  "psyc",
+    "difficulty":  "standard",
+    "patient_intro":  {
+                          "name":  "JosA©, 70 aA±os",
+                          "arrival_scenario":  "Paciente que ha regalado sus pertenencias y refiere que 'su familia estarA­a mejor sin A©l'. Presenta anhedonia severa. Al interrogatorio directo admite tener un plan estructurado para quitarse la vida mediante ingesta de fA¡rmacos.",
+                          "time_limit_sec":  60
+                      },
+    "card_stream":  [
+                        {
+                            "card_id":  "init_vitals",
+                            "ui_icon":  "heartbeat",
+                            "category":  "Signos Vitales",
+                            "card_text":  "Dato de importancia: Dato anecdA³tico: TA 120/80, FC 80 lpm, Temp 36.5A°C",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "ðYZ¯ DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_1",
+                            "ui_icon":  "target",
+                            "category":  "DiagnA³stico",
+                            "card_text":  "Hallazgo: A) DepresiA³n Mayor con Riesgo Suicida Agudo: SintomatologA­a depresiva >2 semanas + Plan/IdeaciA³n suicida. Requiere hospitalizaciA³n o vigilancia estrecha.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "Navarro: A¡Correcto! La seguridad del paciente es prioridad. Si hay plan estructurado, no se debe enviar a casa solo."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true,
+                                                 "lethal_if_discarded":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_2",
+                            "ui_icon":  "eye",
+                            "category":  "DiagnA³stico",
+                            "card_text":  "Hallazgo clA­nico: Dato anecdA³tico: B) Duelo Normal: ReacciA³n a pA©rdida; la funcionalidad suele mantenerse y no hay ideaciA³n suicida estructurada.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "ðYZ¯ DATO CLAVE OMITIDO: Navarro: A¡Bien! Identificaste que el plan suicida marca la patologA­a."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  false
+                                             }
+                        },
+                        {
+                            "card_id":  "c_3",
+                            "ui_icon":  "help-circle",
+                            "category":  "Interrogatorio",
+                            "card_text":  "Hallazgo: C) Preguntar Directamente sobre el Suicidio: Contrario al mito, preguntar sobre planes suicidas reduce la ansiedad y permite la intervenciA³n.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Navarro: A¡Fundamental! Romper el tabAº es el primer paso para la prevenciA³n."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_4",
+                            "ui_icon":  "clipboard",
+                            "category":  "EvaluaciA³n",
+                            "card_text":  "Evidencia: D) Escala SAD PERSONS: Herramienta nemotA©cnica para evaluar factores de riesgo (Sexo, Edad, DepresiA³n, Previos, etc.).",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Navarro: Bien. Aunque no sustituye al juicio clA­nico, ayuda a sistematizar el riesgo."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_5",
+                            "ui_icon":  "pill",
+                            "category":  "Tratamiento",
+                            "card_text":  "Evidencia: E) ISRS (Sertralina/Fluoxetina): FA¡rmacos de primera lA­nea para el episodio depresivo mayor. Tardan 2-4 semanas en actuar.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Navarro: A¡Correcto! Son seguros y efectivos para el manejo a largo plazo."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_6",
+                            "ui_icon":  "alert-triangle",
+                            "category":  "Seguridad",
+                            "card_text":  "Hallazgo: F) HospitalizaciA³n PsiquiA¡trica: Indicada si hay plan estructurado, intento reciente o falta de red de apoyo social.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "Navarro: A¡Vital! En JosA© (70 aA±os, plan estructurado), el ingreso es obligatorio.",
+                                            "safety_flags":  {
+                                                                 "lethal_risk":  true,
+                                                                 "decision_critical":  true
+                                                             }
+                                        }
+                        },
+                        {
+                            "card_id":  "c_7",
+                            "ui_icon":  "zap",
+                            "category":  "Emergencia",
+                            "card_text":  "Hallazgo: G) Terapia Electroconvulsiva (TEC): Indicada en depresiA³n con riesgo suicida inminente o refractaria a fA¡rmacos.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Navarro: A¡Excelente tA©cnica avanzada! Es la medida mA¡s rA¡pida para revertir la ideaciA³n suicida grave."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_8",
+                            "ui_icon":  "scissors",
+                            "category":  "Diferencial",
+                            "card_text":  "Hallazgo: H) Trastorno Bipolar (Fase ManA­aca): El inicio de antidepresivos en un paciente bipolar no diagnosticado puede inducir viraje a manA­a.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Navarro: Bien. Siempre descarta antecedentes de manA­a antes de recetar ISRS."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_9",
+                            "ui_icon":  "alert-circle",
+                            "category":  "Riesgo",
+                            "card_text":  "Hallazgo: I) Ancianos y Varones: Tienen mayor tasa de suicidio consumado (A©xito) en comparaciA³n con jA³venes y mujeres.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Navarro: A¡Correcto! JosA© cumple con dos de los factores demogrA¡ficos de mA¡s alto riesgo."
+                                        }
+                        }
+                    ],
+    "enarm_pearl":  {
+                        "title":  "Pregunta por el Suicidio",
+                        "text":  "Mito ENARM: Preguntar sobre el suicidio NO incita al paciente a hacerlo; al contrario, reduce el riesgo al permitir intervenciA³n.",
+                        "gpc_ref":  "GPC DiagnA³stico y Tratamiento de la DepresiA³n"
+                    },
+    "boss_fight_triad":  {
+                             "trigger":  "after_cards",
+                             "questions":  [
+                                               {
+                                                   "correct_index":  1,
+                                                   "question":  "A¿CuA¡l es la conducta inicial MAS IMPORTANTE ante un paciente con depresiA³n mayor y plan suicida estructurado?",
+                                                   "options":  [
+                                                                   "Iniciar ISRS (Sertralina) de inmediato",
+                                                                   "HospitalizaciA³n psiquiA¡trica o vigilancia estrecha",
+                                                                   "Solicitar estudios de laboratorio para descartar causas orgA¡nicas"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  1,
+                                                   "question":  "A¿CuA¡l de los siguientes factores se asocia con MAYOR riesgo de suicidio consumado?",
+                                                   "options":  [
+                                                                   "Sexo femenino",
+                                                                   "Edad avanzada y sexo masculino",
+                                                                   "Presencia de ansiedad leve"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  2,
+                                                   "question":  "A¿CuA¡l es la primera lA­nea farmacolA³gica para el tratamiento de la depresiA³n mayor?",
+                                                   "options":  [
+                                                                   "Benzodiacepinas",
+                                                                   "AntipsicA³ticos atA­picos",
+                                                                   "ISRS (Inhibidores de la recaptura de serotonina)"
+                                                               ]
+                                               }
+                                           ]
+                         }
 }

@@ -1,186 +1,186 @@
 {
-  "case_id": "PROC_PED_EXANT_ROSEOLA_001_008",
-  "version": "v3_swipe_action",
-  "theme_config": "ped",
-  "difficulty": "standard",
-  "patient_intro": {
-    "name": "José, 1.5 años",
-    "arrival_scenario": "Tras 4 días de fiebre alta difícil de controlar, el niño amanece sin fiebre pero con manchas rosadas en tronco y cuello. Exantema maculopapular no pruriginoso que afecta principalmente tronco. El niño luce bien tras la caída de la fiebre.",
-    "time_limit_sec": 60
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "vitals",
-      "card_text": "TA N/A, FC 130 lpm (durante fiebre), Temp 36.6°C (post-fiebre)",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "A) Exantema Súbito (6ta Enfermedad): Fiebre ALTA que desaparece → Aparece exantema. Virus Herpes Humano 6.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Correcto! 'Súbito' porque el exantema sale en cuanto la fiebre se va de golpe."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_2",
-      "ui_icon": "eye",
-      "category": "Diagnóstico Diferencial",
-      "card_text": "B) Rubéola: Exantema similar pero con fiebre leve/moderada y adenopatías retroauriculares. El niño no luce tan sano.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Castillo: ¡Bien! En Roseola la fiebre es mucho más alta que en Rubéola."
-      }
-    },
-    {
-      "card_id": "c_3",
-      "ui_icon": "eye",
-      "category": "Diagnóstico Diferencial",
-      "card_text": "C) Sarampión: Requiere prodrómos respiratorios intensos (tos, coriza) y el exantema suele ser más 'sucio' y confluente.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Castillo: Correcto. Aquí no hay 'triple catarro', solo fiebre y luego el brote."
-      }
-    },
-    {
-      "card_id": "c_4",
-      "ui_icon": "search",
-      "category": "Signo Clínico",
-      "card_text": "D) Manchas de Nagayama: Pequeñas pápulas eritematosas en el paladar blando y úvula.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Excelente! Es el enantema característico de la Roseola."
-      }
-    },
-    {
-      "card_id": "c_5",
-      "ui_icon": "beaker",
-      "category": "Etiología",
-      "card_text": "E) Virus Herpes Humano 6 (VHH-6): Agente causal más frecuente (90% de los casos).",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: Así es. También puede ser causado por VHH-7, pero el 6 es el rey."
-      }
-    },
-    {
-      "card_id": "c_6",
-      "ui_icon": "clipboard-list",
-      "category": "Diagnóstico",
-      "card_text": "F) Diagnóstico Clínico: El patrón fiebre-exantema es suficiente. No requiere serología ni PCR de rutina.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: Exacto, evita gastos innecesarios. La clínica es soberana."
-      }
-    },
-    {
-      "card_id": "c_7",
-      "ui_icon": "thermometer",
-      "category": "meds",
-      "card_text": "G) Sostén y Antipiréticos: Paracetamol y control térmico físico son suficientes en pacientes sanos.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Castillo: Bien. No uses antibióticos para virus, R1."
-      }
-    },
-    {
-      "card_id": "c_8",
-      "ui_icon": "zap",
-      "category": "meds",
-      "card_text": "H) Convulsión Febril: Es la exantemática que más se asocia a crisis convulsivas por la fiebre tan alta.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Punto clave! Siempre advierte a los padres sobre este riesgo."
-      }
-    },
-    {
-      "card_id": "c_9",
-      "ui_icon": "users",
-      "category": "Consejería",
-      "card_text": "I) Curso Benigno y Autolimitado: Explicar que el exantema desaparecerá en 1-2 días sin dejar secuelas.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: La comunicación médico-paciente es medicina de calidad."
-      }
-    },
-    {
-      "card_id": "c_10",
-      "ui_icon": "help-circle",
-      "category": "Complicación",
-      "card_text": "J) Encefalitis: Complicación neurológica rara que puede ocurrir tras la infección por VHH-6 en lactantes.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: Bien. Aunque el curso es benigno, siempre vigila signos de irritación meníngea."
-      }
-    }
-  ],
-  "enarm_pearl": {
-    "title": "Roséola: Fiebre y Convulsión",
-    "text": "Es la causa más frecuente de crisis convulsivas febriles debido a la rapidez y magnitud del ascenso térmico.",
-    "gpc_ref": "GPC Diagnóstico de Enfermedades Exantemáticas"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
-        "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
-        "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
-        "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
+    "case_id":  "PROC_PED_EXANT_ROSEOLA_001_008",
+    "version":  "v3_swipe_action",
+    "theme_config":  "ped",
+    "difficulty":  "standard",
+    "patient_intro":  {
+                          "name":  "José, 0.75 años",
+                          "arrival_scenario":  "Lactante con historia de fiebre alta (39-40°C) durante 3-4 días que desaparece de forma súbita, momento en el cual inicia un exantema maculopapular rosado focalizado en tronco. El niño luce estable y con buen estado general.",
+                          "time_limit_sec":  60
+                      },
+    "card_stream":  [
+                        {
+                            "card_id":  "init_vitals",
+                            "ui_icon":  "heartbeat",
+                            "category":  "vitals",
+                            "card_text":  "TA N/A, FC 130 lpm (durante fiebre), Temp 36.6°C (post-fiebre)",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_1",
+                            "ui_icon":  "target",
+                            "category":  "Diagnóstico",
+                            "card_text":  "A) Exantema Súbito (6ta Enfermedad): Fiebre ALTA que desaparece → Aparece exantema. Virus Herpes Humano 6.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: ¡Correcto! \u0027Súbito\u0027 porque el exantema sale en cuanto la fiebre se va de golpe."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_2",
+                            "ui_icon":  "eye",
+                            "category":  "Diagnóstico Diferencial",
+                            "card_text":  "B) Rubéola: Exantema similar pero con fiebre leve/moderada y adenopatías retroauriculares. El niño no luce tan sano.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "Castillo: ¡Bien! En Roseola la fiebre es mucho más alta que en Rubéola."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_3",
+                            "ui_icon":  "eye",
+                            "category":  "Diagnóstico Diferencial",
+                            "card_text":  "C) Sarampión: Requiere prodrómos respiratorios intensos (tos, coriza) y el exantema suele ser más \u0027sucio\u0027 y confluente.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "Castillo: Correcto. Aquí no hay \u0027triple catarro\u0027, solo fiebre y luego el brote."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_4",
+                            "ui_icon":  "search",
+                            "category":  "Signo Clínico",
+                            "card_text":  "D) Manchas de Nagayama: Pequeñas pápulas eritematosas en el paladar blando y úvula.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: ¡Excelente! Es el enantema característico de la Roseola."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_5",
+                            "ui_icon":  "beaker",
+                            "category":  "Etiología",
+                            "card_text":  "E) Virus Herpes Humano 6 (VHH-6): Agente causal más frecuente (90% de los casos).",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: Así es. También puede ser causado por VHH-7, pero el 6 es el rey."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_6",
+                            "ui_icon":  "clipboard-list",
+                            "category":  "Diagnóstico",
+                            "card_text":  "F) Diagnóstico Clínico: El patrón fiebre-exantema es suficiente. No requiere serología ni PCR de rutina.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: Exacto, evita gastos innecesarios. La clínica es soberana."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_7",
+                            "ui_icon":  "thermometer",
+                            "category":  "meds",
+                            "card_text":  "G) Sostén y Antipiréticos: Paracetamol y control térmico físico son suficientes en pacientes sanos.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "Castillo: Bien. No uses antibióticos para virus, R1."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_8",
+                            "ui_icon":  "zap",
+                            "category":  "meds",
+                            "card_text":  "H) Convulsión Febril: Es la exantemática que más se asocia a crisis convulsivas por la fiebre tan alta.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: ¡Punto clave! Siempre advierte a los padres sobre este riesgo."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_9",
+                            "ui_icon":  "users",
+                            "category":  "Consejería",
+                            "card_text":  "I) Curso Benigno y Autolimitado: Explicar que el exantema desaparecerá en 1-2 días sin dejar secuelas.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: La comunicación médico-paciente es medicina de calidad."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_10",
+                            "ui_icon":  "help-circle",
+                            "category":  "Complicación",
+                            "card_text":  "J) Encefalitis: Complicación neurológica rara que puede ocurrir tras la infección por VHH-6 en lactantes.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: Bien. Aunque el curso es benigno, siempre vigila signos de irritación meníngea."
+                                        }
+                        }
+                    ],
+    "enarm_pearl":  {
+                        "title":  "Roséola: Fiebre y Convulsión",
+                        "text":  "Es la causa más frecuente de crisis convulsivas febriles debido a la rapidez y magnitud del ascenso térmico. Clave: Fiebre que cae → Rash que sale.",
+                        "gpc_ref":  "GPC Diagnóstico de Enfermedades Exantemáticas"
+                    },
+    "boss_fight_triad":  {
+                             "trigger":  "after_cards",
+                             "questions":  [
+                                               {
+                                                   "question":  "¿Cuál es el agente etiológico más común del exantema súbito?",
+                                                   "options":  [
+                                                                   "Virus Herpes Humano 6",
+                                                                   "Virus Varicela Zóster",
+                                                                   "Parvovirus B19"
+                                                               ],
+                                                   "correct_index":  0
+                                               },
+                                               {
+                                                   "question":  "¿Qué hallazgo en la cavidad oral es característico de esta enfermedad?",
+                                                   "options":  [
+                                                                   "Manchas de Nagayama",
+                                                                   "Manchas de Koplik",
+                                                                   "Manchas de Forchheimer"
+                                                               ],
+                                                   "correct_index":  0
+                                               },
+                                               {
+                                                   "question":  "¿Cuál es la complicación sistémica más frecuente asociada a la Roseola?",
+                                                   "options":  [
+                                                                   "Convulsiones febriles",
+                                                                   "Neumonía",
+                                                                   "Glomerulonefritis"
+                                                               ],
+                                                   "correct_index":  0
+                                               }
+                                           ]
+                         }
 }

@@ -1,186 +1,186 @@
 {
-  "case_id": "PROC_INT_TEP_001_013",
-  "version": "v3_swipe_action",
-  "theme_config": "int",
-  "difficulty": "hard",
-  "patient_intro": {
-    "name": "María, 41 años",
-    "arrival_scenario": "Acude por disnea súbita y dolor torácico pleurítico de 15 minutos. Antecedente de cirugía de cadera hace 2 semanas. Saturación de O2 al 85% al aire ambiente. Miembro inferior derecho con edema y dolor (TVP). ECG con taquicardia sinusal.",
-    "time_limit_sec": 50
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "vitals",
-      "card_text": "TA 90/60 (tendencia al choque), FC 120 lpm, Temp 37.0°C",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "A) Tromboembolia Pulmonar (TEP): Obstrucción del flujo arterial pulmonar por trombos. Triada de Virchow presente.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Excelente! La disnea súbita en un paciente con factores de riesgo (cirugía reciente/cáncer) y pulmones 'limpios' a la auscultación grita TEP."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_2",
-      "ui_icon": "search",
-      "category": "Paraclínicos",
-      "card_text": "B) Dímero D elevado (1500 ng/mL). Alta sensibilidad, baja especificidad.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: Con Wells de 7, el Dímero D no descarta nada. Directo a imagen, R1."
-      }
-    },
-    {
-      "card_id": "c_3",
-      "ui_icon": "camera",
-      "category": "imaging",
-      "card_text": "C) Angio-Tomografía Computarizada (AngioTAC) Pulmonar: Defectos de llenado en arterias segmentarias.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Exacto! Es el estándar de oro para confirmar la sospecha en pacientes estables."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_4",
-      "ui_icon": "beaker",
-      "category": "meds",
-      "card_text": "D) Enoxaparina 1mg/kg SC cada 12 horas. Inicio inmediato tras confirmación.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Mendoza: Bien. La anticoagulación es la piedra angular del tratamiento para prevenir recurrencias."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_5",
-      "ui_icon": "clipboard",
-      "category": "Pronóstico",
-      "card_text": "E) Escala PESI simplificada: Puntuación de 0 puntos indica bajo riesgo; permite considerar manejo ambulatorio.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Mendoza: Importante. La estratificación del riesgo dicta la agresividad del manejo y el destino del paciente."
-      }
-    },
-    {
-      "card_id": "c_6",
-      "ui_icon": "search",
-      "category": "meds",
-      "card_text": "F) Signo de Homans: Dolor en la pantorrilla o región poplítea a la dorsiflexión pasiva del pie; sugiere Trombosis Venosa Profunda.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Mendoza: Bien. Aunque poco específico, su presencia refuerza la sospecha de la fuente del émbolo."
-      }
-    },
-    {
-      "card_id": "c_7",
-      "ui_icon": "activity",
-      "category": "meds",
-      "card_text": "G) Patrón S1Q3T3: Signo de McGinn-White (Onda S profunda en I, Q profunda en III y T negativa en III).",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Clásico! Refleja la sobrecarga aguda de cavidades derechas por la obstrucción pulmonar masiva."
-      }
-    },
-    {
-      "card_id": "c_8",
-      "ui_icon": "zap",
-      "category": "meds",
-      "card_text": "H) Trombólisis con Alteplasa (r-TPA): Indicada para pacientes con TEP masivo y choque obstructivo.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Mendoza: ¡Vital! En TEP inestable, la anticoagulación no basta; hay que disolver el coágulo inmediatamente."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_9",
-      "ui_icon": "shield",
-      "category": "Profilaxis Secundaria",
-      "card_text": "I) Filtro de Vena Cava Inferior: Opción para pacientes con TEP recurrente a pesar de anticoagulación o contraindicación para la misma.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Mendoza: Correcto. Es una medida mecánica de protección cuando falla la farmacológica."
-      }
-    }
-  ],
-  "enarm_pearl": {
-    "title": "Diagnóstico de TEP: AngioTAC",
-    "text": "El estándar de oro para el diagnóstico de TEP es la Angio-Tomografía Computarizada. El ECG más común es la taquicardia sinusal.",
-    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Tromboembolia Pulmonar"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
-        "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
-        "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
-        "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
+    "case_id":  "PROC_INT_TEP_001_013",
+    "version":  "v3_swipe_action",
+    "theme_config":  "int",
+    "difficulty":  "hard",
+    "patient_intro":  {
+                          "name":  "María, 41 años",
+                          "arrival_scenario":  "Acude por disnea súbita y dolor torácico pleurítico de 15 minutos. Antecedente de cirugía de cadera hace 2 semanas. Saturación de O2 al 85% al aire ambiente. Miembro inferior derecho con edema y dolor (TVP). ECG con taquicardia sinusal.",
+                          "time_limit_sec":  50
+                      },
+    "card_stream":  [
+                        {
+                            "card_id":  "init_vitals",
+                            "ui_icon":  "heartbeat",
+                            "category":  "vitals",
+                            "card_text":  "TA 90/60 (tendencia al choque), FC 120 lpm, Temp 37.0°C",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "Mendoza: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_1",
+                            "ui_icon":  "target",
+                            "category":  "Diagnóstico",
+                            "card_text":  "A) Tromboembolia Pulmonar (TEP): Obstrucción del flujo arterial pulmonar por trombos. Triada de Virchow presente.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Mendoza: ¡Excelente! La disnea súbita en un paciente con factores de riesgo (cirugía reciente/cáncer) y pulmones \u0027limpios\u0027 a la auscultación grita TEP."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_2",
+                            "ui_icon":  "search",
+                            "category":  "Paraclínicos",
+                            "card_text":  "B) Dímero D elevado (1500 ng/mL). Alta sensibilidad, baja especificidad.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "Mendoza: Con Wells de 7, el Dímero D no descarta nada. Directo a imagen, R1."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_3",
+                            "ui_icon":  "camera",
+                            "category":  "imaging",
+                            "card_text":  "C) Angio-Tomografía Computarizada (AngioTAC) Pulmonar: Defectos de llenado en arterias segmentarias.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Mendoza: ¡Exacto! Es el estándar de oro para confirmar la sospecha en pacientes estables."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_4",
+                            "ui_icon":  "beaker",
+                            "category":  "meds",
+                            "card_text":  "D) Enoxaparina 1mg/kg SC cada 12 horas. Inicio inmediato tras confirmación.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "Mendoza: Bien. La anticoagulación es la piedra angular del tratamiento para prevenir recurrencias."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_5",
+                            "ui_icon":  "clipboard",
+                            "category":  "Pronóstico",
+                            "card_text":  "E) Escala PESI simplificada: Puntuación de 0 puntos indica bajo riesgo; permite considerar manejo ambulatorio.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Mendoza: Importante. La estratificación del riesgo dicta la agresividad del manejo y el destino del paciente."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_6",
+                            "ui_icon":  "search",
+                            "category":  "meds",
+                            "card_text":  "F) Signo de Homans: Dolor en la pantorrilla o región poplítea a la dorsiflexión pasiva del pie; sugiere Trombosis Venosa Profunda.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Mendoza: Bien. Aunque poco específico, su presencia refuerza la sospecha de la fuente del émbolo."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_7",
+                            "ui_icon":  "activity",
+                            "category":  "meds",
+                            "card_text":  "G) Patrón S1Q3T3: Signo de McGinn-White (Onda S profunda en I, Q profunda en III y T negativa en III).",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Mendoza: ¡Clásico! Refleja la sobrecarga aguda de cavidades derechas por la obstrucción pulmonar masiva."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_8",
+                            "ui_icon":  "zap",
+                            "category":  "meds",
+                            "card_text":  "H) Trombólisis con Alteplasa (r-TPA): Indicada para pacientes con TEP masivo y choque obstructivo.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "Mendoza: ¡Vital! En TEP inestable, la anticoagulación no basta; hay que disolver el coágulo inmediatamente."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_9",
+                            "ui_icon":  "shield",
+                            "category":  "Profilaxis Secundaria",
+                            "card_text":  "I) Filtro de Vena Cava Inferior: Opción para pacientes con TEP recurrente a pesar de anticoagulación o contraindicación para la misma.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Mendoza: Correcto. Es una medida mecánica de protección cuando falla la farmacológica."
+                                        }
+                        }
+                    ],
+    "enarm_pearl":  {
+                        "title":  "Diagnóstico de TEP: AngioTAC",
+                        "text":  "El estándar de oro para el diagnóstico de TEP es la Angio-Tomografía Computarizada. El ECG más común es la taquicardia sinusal.",
+                        "gpc_ref":  "GPC Diagnóstico y Tratamiento de la Tromboembolia Pulmonar"
+                    },
+    "boss_fight_triad":  {
+                             "trigger":  "after_cards",
+                             "questions":  [
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Cuál es el componente de la Triada de Virchow que describe la inmovilidad prolongada?",
+                                                   "options":  [
+                                                                   "Estasis venosa",
+                                                                   "Lesión endotelial",
+                                                                   "Hipercoagulabilidad"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Cuál es la puntuación de Wells que indica ALTA probabilidad clínica de TEP?",
+                                                   "options":  [
+                                                                   "Mayor a 6 puntos",
+                                                                   "Menor a 2 puntos",
+                                                                   "Entre 3 y 4 puntos"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Qué estudio de imagen es preferible en una mujer EMBARAZADA con sospecha de TEP ante una radiografía normal?",
+                                                   "options":  [
+                                                                   "Gammagrafía de ventilación/perfusión (V/Q)",
+                                                                   "AngioTAC (por dosis fetal baja)",
+                                                                   "Arteriografía pulmonar directa"
+                                                               ]
+                                               }
+                                           ]
+                         }
 }

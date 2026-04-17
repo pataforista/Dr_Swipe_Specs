@@ -1,90 +1,90 @@
 {
-  "case_id": "PROC_IM_HEART_FAILURE_001_005",
-  "version": "v3_swipe_action",
-  "theme_config": "med",
-  "difficulty": "hard",
-  "patient_intro": {
-    "name": "Don Alberto, 75 años",
-    "arrival_scenario": "Paciente con antecedente de valvulopatía aórtica. Acude tras descompensación aguda con edema agudo pulmonar: ortopnea, sibilancias, diaforesis y desaturación. TA 180/100, FC 110, Sat O2 88% (aire ambiente).",
-    "time_limit_sec": 50
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
-      "card_text": "Hallazgo clínico: Dato anecdótico: TA 145/90 mmHg, FC 92 lpm, FR 22 rpm, SatO2 93%.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: Presión un poco alta, pero lo importante es la insuficiencia cardíaca."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "Hallazgo: A) Insuficiencia Cardíaca con FE reducida (ICFEr): Presencia de síntomas típicos + FEVI <40%. Don Pedro cumple criterios de Framingham.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Excelente! La distinción por FEVI es vital para el tratamiento."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_2",
-      "ui_icon": "beaker",
-      "category": "Gabinete",
-      "card_text": "Evidencia: B) Péptidos Natriuréticos (NT-proBNP): Ãštiles para el diagnóstico por su alto valor predictivo negativo (descartar IC en urgencias).",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Correcto! Si es normal, es muy poco probable que sea IC."
-      }
-    }
-  ],
-  "enarm_pearl": {
-    "title": "IC: Los 4 Fantásticos",
-    "text": "1. ARNI (Sacubitrilo). 2. BB (Carvedilol). 3. ARM (Espironolactona). 4. iSGLT2 (Dapa/Empa). Framingham: 2 mayores o 1 mayor + 2 menores.",
-    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Insuficiencia Cardíaca Crónica"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál de estos grupos de fármacos NO forma parte de la 'terapia cuádruple' estándar para ICFEr?",
-        "options": [
-          "Calcioantagonistas no dihidropiridínicos",
-          "iSGLT2 (Dapagliflozina)",
-          "Antagonistas de Mineralocorticoides"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿A qué clase de la NYHA corresponde un paciente con disnea a pequeños esfuerzos que limita la actividad normal?",
-        "options": [
-          "NYHA III",
-          "NYHA I",
-          "NYHA IV"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el estudio de imagen de elección para confirmar el diagnóstico y clasificar la FEVI en IC?",
-        "options": [
-          "Ecocardiograma",
-          "Radiografía de tórax",
-          "Resonancia magnética"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
+    "case_id":  "PROC_IM_HEART_FAILURE_001_005",
+    "version":  "v3_swipe_action",
+    "theme_config":  "med",
+    "difficulty":  "hard",
+    "patient_intro":  {
+                          "name":  "Don Alberto, 75 años",
+                          "arrival_scenario":  "Paciente con antecedente de valvulopatía aórtica. Acude tras descompensación aguda con edema agudo pulmonar: ortopnea, sibilancias, diaforesis y desaturación. TA 180/100, FC 110, Sat O2 88% (aire ambiente).",
+                          "time_limit_sec":  50
+                      },
+    "card_stream":  [
+                        {
+                            "card_id":  "init_vitals",
+                            "ui_icon":  "heartbeat",
+                            "category":  "Signos Vitales",
+                            "card_text":  "Hallazgo clínico: Dato anecdótico: TA 145/90 mmHg, FC 92 lpm, FR 22 rpm, SatO2 93%.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Navarro: Presión un poco alta, pero lo importante es la insuficiencia cardíaca."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_1",
+                            "ui_icon":  "target",
+                            "category":  "Diagnóstico",
+                            "card_text":  "Hallazgo: A) Insuficiencia Cardíaca con FE reducida (ICFEr): Presencia de síntomas típicos + FEVI \u003c40%. Don Pedro cumple criterios de Framingham.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Navarro: ¡Excelente! La distinción por FEVI es vital para el tratamiento."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_2",
+                            "ui_icon":  "beaker",
+                            "category":  "Gabinete",
+                            "card_text":  "Evidencia: B) Péptidos Natriuréticos (NT-proBNP): Ãštiles para el diagnóstico por su alto valor predictivo negativo (descartar IC en urgencias).",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Navarro: ¡Correcto! Si es normal, es muy poco probable que sea IC."
+                                        }
+                        }
+                    ],
+    "enarm_pearl":  {
+                        "title":  "IC: Los 4 Fantásticos",
+                        "text":  "1. ARNI (Sacubitrilo). 2. BB (Carvedilol). 3. ARM (Espironolactona). 4. iSGLT2 (Dapa/Empa). Framingham: 2 mayores o 1 mayor + 2 menores.",
+                        "gpc_ref":  "GPC Diagnóstico y Tratamiento de la Insuficiencia Cardíaca Crónica"
+                    },
+    "boss_fight_triad":  {
+                             "trigger":  "after_cards",
+                             "questions":  [
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Cuáles son los \u0027cuatro fantásticos\u0027 pilares del tratamiento inicial de la Insuficiencia Cardíaca con FE reducida?",
+                                                   "options":  [
+                                                                   "ARNI (o IECA), Beta-bloqueador, ARM e iSGLT2",
+                                                                   "Diurético, Digoxina, Calcio-antagonista y AAS",
+                                                                   "Amiodarona, Nitratos, IECA y ARM"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Qué escala se utiliza para clasificar la capacidad funcional de los pacientes con insuficiencia cardíaca?",
+                                                   "options":  [
+                                                                   "Clasificación NYHA",
+                                                                   "Criterios de Framingham",
+                                                                   "Puntuación CHA2DS2-VASc"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Cuál es el estudio de elección para confirmar el diagnóstico y clasificar la fracción de eyección en la IC?",
+                                                   "options":  [
+                                                                   "Ecocardiograma Transtorácico",
+                                                                   "Electrocardiograma de 12 derivaciones",
+                                                                   "Radiografía de tórax (PA)"
+                                                               ]
+                                               }
+                                           ]
+                         }
 }

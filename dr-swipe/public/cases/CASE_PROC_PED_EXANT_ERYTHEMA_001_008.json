@@ -1,179 +1,195 @@
 {
-  "case_id": "PROC_PED_EXANT_ERYTHEMA_001_008",
-  "version": "v3_swipe_action",
-  "theme_config": "ped",
-  "difficulty": "standard",
-  "patient_intro": {
-    "name": "Elena, 11 años",
-    "arrival_scenario": "Escolar de 6 años que presenta eritema súbito en ambas mejillas, con aspecto de 'bofetada'. Paciente con esferocitosis hereditaria (complicación latente por Parvovirus B19).",
-    "time_limit_sec": 60
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "vitals",
-      "card_text": "TA N/A, FC 80 lpm, Temp 37.2°C",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "meds",
-      "card_text": "A) Eritema Infeccioso (5ta Enfermedad): Parvovirus B19. Signo de la bofetada + Exantema reticulado.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Match! El aspecto de 'encaje' es el descriptor clásico ENARM para Parvovirus B19."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_2",
-      "ui_icon": "target",
-      "category": "meds",
-      "card_text": "B) Crisis Aplásica: Riesgo real en pacientes con anemias hemolíticas crónicas infectados por Parvovirus B19.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Castillo: ¡Excelente! En el examen, si mencionan un niño con anemia y este exantema, la respuesta es crisis aplásica."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true,
-        "lethal_if_discarded": true
-      }
-    },
-    {
-      "card_id": "pad_004",
-      "ui_icon": "👶",
-      "category": "notes",
-      "card_text": "Llenado capilar de 2 segundos, mucosas hidratadas.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
-      }
-    },
-    {
-      "card_id": "pad_005",
-      "ui_icon": "🧪",
-      "category": "labs",
-      "card_text": "Examen general de orina: pH 6.0, densidad 1.015, sin nitritos.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-      }
-    },
-    {
-      "card_id": "pad_006",
-      "ui_icon": "🩸",
-      "category": "labs",
-      "card_text": "Leucocitosis de 15,000 con neutrofilia del 80%.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
-      }
-    },
-    {
-      "card_id": "pad_007",
-      "ui_icon": "📄",
-      "category": "notes",
-      "card_text": "Refiere la madre que el niño no durmió bien hace 3 días por ruido externo.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-      }
-    },
-    {
-      "card_id": "pad_008",
-      "ui_icon": "👶",
-      "category": "notes",
-      "card_text": "Llenado capilar de 2 segundos, mucosas hidratadas.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
-      }
-    },
-    {
-      "card_id": "pad_009",
-      "ui_icon": "🧪",
-      "category": "labs",
-      "card_text": "Examen general de orina: pH 6.0, densidad 1.015, sin nitritos.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
-      }
-    },
-    {
-      "card_id": "pad_010",
-      "ui_icon": "🩸",
-      "category": "labs",
-      "card_text": "Leucocitosis de 15,000 con neutrofilia del 80%.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
-      }
-    }
-  ],
-  "enarm_pearl": {
-    "title": "Bofetada y Encaje",
-    "text": "Descriptor clave: Exantema reticulado o en encaje. Riesgo: Hidrops fetalis en embarazadas y crisis aplásica en anémicos.",
-    "gpc_ref": "GPC Diagnóstico de Enfermedades Exantemáticas"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
-        "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
-        "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
-        "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
+    "case_id":  "PROC_PED_EXANT_ERYTHEMA_001_008",
+    "version":  "v3_swipe_action",
+    "theme_config":  "ped",
+    "difficulty":  "standard",
+    "patient_intro":  {
+                          "name":  "Elena, 11 años",
+                          "arrival_scenario":  "Paciente con mejillas eritematosas intensas (signo de la bofetada) seguidas de un exantema en tronco con aspecto de encaje (reticulado) que respeta palmas y plantas. Afebril, buen estado general.",
+                          "time_limit_sec":  60
+                      },
+    "card_stream":  [
+                        {
+                            "card_id":  "init_vitals",
+                            "ui_icon":  "heartbeat",
+                            "category":  "vitals",
+                            "card_text":  "TA N/A, FC 80 lpm, Temp 37.2°C",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_1",
+                            "ui_icon":  "target",
+                            "category":  "meds",
+                            "card_text":  "A) Eritema Infeccioso (5ta Enfermedad): Parvovirus B19. Signo de la bofetada + Exantema reticulado.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: ¡Match! El aspecto de \u0027encaje\u0027 es el descriptor clásico ENARM para Parvovirus B19."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_2",
+                            "ui_icon":  "alert-triangle",
+                            "category":  "meds",
+                            "card_text":  "B) Crisis Aplásica: El Parvovirus B19 tiene tropismo por precursores eritroides. En esferocitosis, esto causa caída súbita de hemoglobina.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "Castillo: ¡Excelente! Esta es la \u0027pregunta de oro\u0027 en pediatría del ENARM cuando mencionan anemias hemolíticas."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true,
+                                                 "lethal_if_discarded":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_3",
+                            "ui_icon":  "eye",
+                            "category":  "Diagnóstico Diferencial",
+                            "card_text":  "C) Lupus Eritematoso Sistémico (LES): El eritema malar puede confundir, pero el LES suele ser fotosensible y tener compromiso multiorgánico.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "Castillo: Correcto. El aspecto \u0027reticulado\u0027 posterior en extremidades aleja el diagnóstico de Lupus."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_4",
+                            "ui_icon":  "search",
+                            "category":  "Fase Clínica",
+                            "card_text":  "D) Signo de la Bofetada: Eritema facial bilateral que respeta la zona periorbitaria y nasolabial.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: ¡Bien! Es la primera fase del exantema en la 5ta enfermedad."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_5",
+                            "ui_icon":  "grid",
+                            "category":  "Fase Clínica",
+                            "card_text":  "E) Aspecto de Encaje: Exantema reticulado en tronco y extremidades que aparece tras la fase facial.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: Así es. Puede durar semanas y reaparecer con calor o ejercicio."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_6",
+                            "ui_icon":  "beaker",
+                            "category":  "Fisiopatología",
+                            "card_text":  "F) Receptor de Antígeno P: El virus entra a los proeritroblastos a través de este receptor específico.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: ¡Nivel especialista! Un dato muy fino del Parvovirus B19."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_7",
+                            "ui_icon":  "baby",
+                            "category":  "Riesgo Obstétrico",
+                            "card_text":  "G) Hidrops Fetalis: Riesgo de infección transplacentaria en embarazadas no inmunes, causando anemia fetal grave.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "Castillo: ¡Vital! El Parvovirus B19 es una causa importante de pérdida fetal por hidropesía."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_8",
+                            "ui_icon":  "thermometer",
+                            "category":  "meds",
+                            "card_text":  "H) Medidas de Sostén: Reposo e hidratación. En casos de crisis aplásica puede requerir transfusión.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: Bien. El manejo es mayormente conservador en inmunocompetentes."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_9",
+                            "ui_icon":  "shield-off",
+                            "category":  "Salud Pública",
+                            "card_text":  "I) Período de Contagio: El paciente es contagioso ANTES del exantema. Al aparecer el brote, ya no transmite el virus.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: ¡Dato clave! Por eso el aislamiento respiratorio suele ser inútil una vez diagnosticado el exantema."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_10",
+                            "ui_icon":  "slash",
+                            "category":  "meds",
+                            "card_text":  "J) Vacuna contra Parvovirus B19: Inmunización universal recomendada en la Cartilla Nacional de Salud de México.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "Castillo: ¡No! Aún no existe una vacuna comercial disponible para el Parvovirus B19."
+                                        }
+                        }
+                    ],
+    "enarm_pearl":  {
+                        "title":  "Bofetada y Encaje",
+                        "text":  "Descriptor clave: Exantema reticulado o en encaje. Riesgo: Hidrops fetalis en embarazadas y crisis aplásica en anémicos. No contagian cuando aparece el rash.",
+                        "gpc_ref":  "GPC Diagnóstico de Enfermedades Exantemáticas"
+                    },
+    "boss_fight_triad":  {
+                             "trigger":  "after_cards",
+                             "questions":  [
+                                               {
+                                                   "question":  "¿Cuál es el agente etiológico del eritema infeccioso?",
+                                                   "options":  [
+                                                                   "Parvovirus B19",
+                                                                   "Virus Herpes Humano 6",
+                                                                   "Virus de la Rubéola"
+                                                               ],
+                                                   "correct_index":  0
+                                               },
+                                               {
+                                                   "question":  "¿Cuál es el principal receptor celular para el Parvovirus B19?",
+                                                   "options":  [
+                                                                   "Antígeno P (globósido)",
+                                                                   "Receptor ACE2",
+                                                                   "CD4"
+                                                               ],
+                                                   "correct_index":  0
+                                               },
+                                               {
+                                                   "question":  "¿En qué momento deja de ser contagioso un niño con la quinta enfermedad?",
+                                                   "options":  [
+                                                                   "En cuanto aparece el exantema",
+                                                                   "7 días después del exantema",
+                                                                   "Nunca deja de ser contagioso"
+                                                               ],
+                                                   "correct_index":  0
+                                               }
+                                           ]
+                         }
 }

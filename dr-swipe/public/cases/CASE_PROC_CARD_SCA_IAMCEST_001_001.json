@@ -22,7 +22,7 @@
       }
     },
     {
-      "card_id": "c_1",
+      "card_id": "pad_001",
       "ui_icon": "target",
       "category": "Diagnóstico",
       "card_text": "A) IAMCEST (Fibrinolisis Sistémica): IAMCEST Cara Anterior. Si la ICP >120 min de retraso, se opta por Fibrinolisis (Alteplase).",
@@ -39,7 +39,7 @@
       }
     },
     {
-      "card_id": "c_2",
+      "card_id": "pad_002",
       "ui_icon": "eye",
       "category": "Diagnóstico Diferencial",
       "card_text": "B) Angina Inestable: Isquemia miocárdica sin elevación del ST ni marcadores de necrosis; manejo es distinto.",
@@ -51,7 +51,7 @@
       }
     },
     {
-      "card_id": "c_3",
+      "card_id": "pad_003",
       "ui_icon": "activity",
       "category": "meds",
       "card_text": "C) Elevación del ST: Elevación >=1 mm en 2 o más derivadas contiguas (o >=2 mm en V2-V3 en varones) es diagnóstica.",
@@ -63,7 +63,7 @@
       }
     },
     {
-      "card_id": "c_4",
+      "card_id": "pad_004",
       "ui_icon": "clock",
       "category": "Tiempos Meta",
       "card_text": "D) Tiempos Vitales: Puerta-Balón (ICP) <90-120 min. Puerta-Aguja (Fibrinolisis) <30 min.",
@@ -75,10 +75,10 @@
       }
     },
     {
-      "card_id": "c_5",
+      "card_id": "pad_005",
       "ui_icon": "zap",
       "category": "Dosis de Carga",
-      "card_text": "E) Antiagregación Dual: Aspirina (300mg) + Clopidogrel (300-600mg) como dosis de carga inmediata.",
+      "card_text": "E) Antiagregación Dual: Aspirina (300mg) + Clopidogrel (300mg) como dosis de carga inmediata.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -91,7 +91,7 @@
       }
     },
     {
-      "card_id": "c_6",
+      "card_id": "pad_006",
       "ui_icon": "pill",
       "category": "Prevención Secundaria",
       "card_text": "F) Estatinas: Iniciar Atorvastatina 80mg de forma temprana tras el evento agudo para estabilizar la placa.",
@@ -103,7 +103,7 @@
       }
     },
     {
-      "card_id": "c_7",
+      "card_id": "pad_007",
       "ui_icon": "alert-triangle",
       "category": "meds",
       "card_text": "G) Contraindica Fibrinolisis: EVC hemorrágico previo, neoplasia intracraneal conocida o sangrado interno activo.",
@@ -119,7 +119,7 @@
       }
     },
     {
-      "card_id": "c_8",
+      "card_id": "pad_008",
       "ui_icon": "check-circle",
       "category": "meds",
       "card_text": "H) Criterios de Reperfusión: Descenso del ST >50% a los 60-90 min de la fibrinólisis y alivio del dolor.",
@@ -131,7 +131,7 @@
       }
     },
     {
-      "card_id": "c_9",
+      "card_id": "pad_009",
       "ui_icon": "help-circle",
       "category": "Localización EKG",
       "card_text": "I) Cara Anterior (V1-V4): Corresponde generalmente a la oclusión de la Arteria Descendente Anterior (DAI).",

@@ -4,8 +4,8 @@
   "theme_config": "ped",
   "difficulty": "standard",
   "patient_intro": {
-    "name": "Luis, 2 años",
-    "arrival_scenario": "Lactante de 2 años que inicia súbitamente por la noche con tos 'perruna', estridor inspiratorio y disfonía. Antecedente de coriza leve. El paciente mejora notablemente al contacto con el aire frío de la noche.",
+    "name": "Luis, 2 anos",
+    "arrival_scenario": "Lactante de 2 anos que inicia subitamente por la noche con tos 'perruna', estridor inspiratorio y disfonia. Antecedente de coriza leve. El paciente mejora notablemente al contacto con el aire frio de la noche.",
     "time_limit_sec": 60
   },
   "card_stream": [
@@ -13,7 +13,7 @@
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
       "category": "Signos Vitales",
-      "card_text": "Hallazgo: Información redundante: TA N/A, FC 120 lpm, Temp 37.8°C",
+      "card_text": "Hallazgo: Informacion redundante: TA N/A, FC 120 lpm, Temp 37.8°C",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -24,13 +24,13 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "Hallazgo: A) Laringotraqueítis (CRUP): Virus Parainfluenza tipe 1 y 3. Triada: Tos traqueal, estridor e hiponía.",
+      "category": "Diagnostico",
+      "card_text": "Hallazgo: A) Laringotraqueitis (CRUP): Virus Parainfluenza tipe 1 y 3. Triada: Tos traqueal, estridor e hiponia.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Perfecto! El manejo de elección según GPC es la DEXAMETASONA dosis única (IM u Oral)."
+        "vazquez_comment": "Castillo: ¡Perfecto! El manejo de eleccion segun GPC es la DEXAMETASONA dosis unica (IM u Oral)."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -40,61 +40,61 @@
     {
       "card_id": "c_2",
       "ui_icon": "eye",
-      "category": "Diagnóstico Diferencial",
-      "card_text": "Hallazgo clínico: B) Epiglotitis Aguda: H. influenzae tipo b. Fiebre alta, babeo, posición de trípode y ausencia de tos perruna.",
+      "category": "Diagnostico Diferencial",
+      "card_text": "Hallazgo clinico: B) Epiglotitis Aguda: H. influenzae tipo b. Fiebre alta, babeo, posicion de tripode y ausencia de tos perruna.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "lethal_hazard",
-        "vazquez_comment": "Castillo: ¡Bien! La epiglotitis es una emergencia quirúrgica de la vía aérea; aquí la clínica es puramente de Crup."
+        "vazquez_comment": "Castillo: ¡Bien! La epiglotitis es una emergencia quirurgica de la via aerea; aqui la clinica es puramente de Crup."
       }
     },
     {
       "card_id": "c_3",
       "ui_icon": "slash",
-      "category": "Diagnóstico Diferencial",
-      "card_text": "Dato de importancia: Dato anecdótico: C) Aspiración de Cuerpo Extraño: Inicio súbito tras jugar con objetos pequeños, sin fiebre ni síntomas gripales previos.",
+      "category": "Diagnostico Diferencial",
+      "card_text": "Dato de importancia: Dato anecdotico: C) Aspiracion de Cuerpo Extrano: Inicio subito tras jugar con objetos pequenos, sin fiebre ni sintomas gripales previos.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. El antecedente de coriza (catarro) orienta más a una causa viral infecciosa."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. El antecedente de coriza (catarro) orienta mas a una causa viral infecciosa."
       }
     },
     {
       "card_id": "c_4",
       "ui_icon": "clipboard",
-      "category": "Evaluación",
-      "card_text": "Evidencia clínica: D) Escala de Westley: Herramienta clínica para clasificar la gravedad del Crup (Leve, Moderado, Grave).",
+      "category": "Evaluacion",
+      "card_text": "Evidencia clinica: D) Escala de Westley: Herramienta clinica para clasificar la gravedad del Crup (Leve, Moderado, Grave).",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Muy bien! Clasificar al paciente es el primer paso para decidir el tratamiento farmacológico."
+        "vazquez_comment": "Castillo: ¡Muy bien! Clasificar al paciente es el primer paso para decidir el tratamiento farmacologico."
       }
     },
     {
       "card_id": "c_5",
       "ui_icon": "camera",
-      "category": "Imagenología",
-      "card_text": "Hallazgo: E) Signo de la Torre (Punta de Lápiz): Estrechamiento de la vía aérea subglótica en radiografía AP de cuello.",
+      "category": "Imagenologia",
+      "card_text": "Hallazgo: E) Signo de la Torre (Punta de Lapiz): Estrechamiento de la via aerea subglotica en radiografia AP de cuello.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Clásico! Aunque el diagnóstico es clínico, este signo radiológico es muy característico del Crup."
+        "vazquez_comment": "Castillo: ¡Clasico! Aunque el diagnostico es clinico, este signo radiologico es muy caracteristico del Crup."
       }
     },
     {
       "card_id": "c_6",
       "ui_icon": "pill",
       "category": "Manejo Inicial",
-      "card_text": "Evidencia: F) Dexametasona 0.6 mg/kg (Dosis única): Es el pilar del tratamiento; reduce el edema laríngeo y la necesidad de hospitalización.",
+      "card_text": "Evidencia: F) Dexametasona 0.6 mg/kg (Dosis unica): Es el pilar del tratamiento; reduce el edema laringeo y la necesidad de hospitalizacion.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Castillo: ¡Indispensable! Todos los niños con Crup deben recibir una dosis de esteroide."
+        "vazquez_comment": "Castillo: ¡Indispensable! Todos los ninos con Crup deben recibir una dosis de esteroide."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -105,12 +105,12 @@
       "card_id": "c_7",
       "ui_icon": "zap",
       "category": "Manejo de Urgencias",
-      "card_text": "Evidencia: G) Epinefrina Racémica Nebulizada: Indicada si hay estridor inspiratorio en reposo o retracciones moderadas-graves.",
+      "card_text": "Evidencia: G) Epinefrina Racemica Nebulizada: Indicada si hay estridor inspiratorio en reposo o retracciones moderadas-graves.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Castillo: ¡Vital! La adrenalina ofrece una mejoría rápida pero transitoria de la obstrucción de la vía aérea."
+        "vazquez_comment": "Castillo: ¡Vital! La adrenalina ofrece una mejoria rapida pero transitoria de la obstruccion de la via aerea."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -121,49 +121,49 @@
       "card_id": "c_8",
       "ui_icon": "clock",
       "category": "Seguridad",
-      "card_text": "Hallazgo: H) Observación Post-Nebulización: Mantener al niño en urgencias 2-4 horas para vigilar el efecto 'rebote' de la obstrucción.",
+      "card_text": "Hallazgo: H) Observacion Post-Nebulizacion: Mantener al nino en urgencias 2-4 horas para vigilar el efecto 'rebote' de la obstruccion.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Castillo: Muy bien pensado. Nunca des de alta a un niño inmediatamente después de nebulizarlo con adrenalina."
+        "vazquez_comment": "Castillo: Muy bien pensado. Nunca des de alta a un nino inmediatamente despues de nebulizarlo con adrenalina."
       }
     },
     {
       "card_id": "c_9",
       "ui_icon": "home",
       "category": "Cuidados",
-      "card_text": "Hallazgo: I) Manejo Conservador: Mantener al niño tranquilo en brazos de sus padres y evitar exploraciones orales innecesarias.",
+      "card_text": "Hallazgo: I) Manejo Conservador: Mantener al nino tranquilo en brazos de sus padres y evitar exploraciones orales innecesarias.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Exacto! La agitación empeora la obstrucción dinámica de la laringe."
+        "vazquez_comment": "Castillo: ¡Exacto! La agitacion empeora la obstruccion dinamica de la laringe."
       }
     },
     {
       "card_id": "c_10",
       "ui_icon": "slash",
       "category": "Diferencial",
-      "card_text": "Información redundante: J) Crup Espasmódico: Similar al viral pero recurrente y sin pródromo de catarro; de causa presumiblemente alérgica.",
+      "card_text": "Informacion redundante: J) Crup Espasmodico: Similar al viral pero recurrente y sin prodromo de catarro; de causa presumiblemente alergica.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Es el 'Crup nocturno' que se resuelve espontáneamente."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Es el 'Crup nocturno' que se resuelve espontaneamente."
       }
     }
   ],
   "enarm_pearl": {
-    "title": "Crup (Laringotraqueítis)",
-    "text": "Virus: Parainfluenza 1. Clínica: Tos perruna, estridor, disfonía. Rayos X: Signo de la Torre. Prednisona/Dexa para todos.",
-    "gpc_ref": "GPC Diagnóstico y Manejo de la Laringotraqueítis"
+    "title": "Crup (Laringotraqueitis)",
+    "text": "Virus: Parainfluenza 1. Clinica: Tos perruna, estridor, disfonia. Rayos X: Signo de la Torre. Prednisona/Dexa para todos.",
+    "gpc_ref": "GPC Diagnostico y Manejo de la Laringotraqueitis"
   },
   "boss_fight_triad": {
     "trigger": "after_cards",
     "questions": [
       {
-        "question": "¿Cuál es el agente etiológico más común del Crup viral?",
+        "question": "¿Cual es el agente etiologico mas comun del Crup viral?",
         "options": [
           "Virus Parainfluenza tipo 1",
           "Virus Sincitial Respiratorio (VSR)",
@@ -172,16 +172,16 @@
         "correct_index": 0
       },
       {
-        "question": "¿Cómo se llama el signo radiográfico característico observado en la proyección AP de cuello?",
+        "question": "¿Como se llama el signo radiografico caracteristico observado en la proyeccion AP de cuello?",
         "options": [
-          "Signo de la Torre o Punta de Lápiz",
+          "Signo de la Torre o Punta de Lapiz",
           "Signo del Pulgar",
           "Imagen en Coraza"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el tratamiento esteroideo de elección en el servicio de urgencias?",
+        "question": "¿Cual es el tratamiento esteroideo de eleccion en el servicio de urgencias?",
         "options": [
           "Dexametasona",
           "Metilprednisolona",

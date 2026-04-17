@@ -1,189 +1,189 @@
 {
-  "case_id": "PROC_CARD_SCA_IAMCEST_001_002",
-  "version": "v3_swipe_action",
-  "theme_config": "card",
-  "difficulty": "hard",
-  "patient_intro": {
-    "name": "Juan, 70 años",
-    "arrival_scenario": "Acude por dolor precordial opresivo irradiado a mandíbula de 60 minutos de evolución. Presenta náuseas y sudoración fría. Se encuentra en un centro de salud sin sala de hemodinamia. El hospital con ICP más cercano está a 3 horas de distancia.",
-    "time_limit_sec": 50
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "vitals",
-      "card_text": "TA 100/60 mmHg (en descenso), FC 95 lpm, Temp 36.5°C",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "A) IAMCEST (Fibrinolisis Sistémica): IAMCEST Cara Anterior. Si la ICP >120 min de retraso, se opta por Fibrinolisis (Alteplase).",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Mendoza: ¡Correcto! En el ENARM, si el tiempo a ICP es >120 min (o 90 min en centros grandes), la FIBRINOLISIS es la respuesta correcta."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true,
-        "lethal_if_discarded": true
-      }
-    },
-    {
-      "card_id": "c_2",
-      "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "B) Angina Inestable: Dolor isquémico SIN elevación del ST y SIN elevación de troponinas.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: ¡Bien! El ST elevado marca la pauta de tratamiento invasivo inmediato."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
-      }
-    },
-    {
-      "card_id": "c_3",
-      "ui_icon": "target",
-      "category": "meds",
-      "card_text": "C) Ácido Acetilsalicílico 300mg + Ticagrelor 180mg: Carga dual de antiagregantes. Debe administrarse ANTES de la fibrinolisis.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Mendoza: ¡Excelente! La carga dual ANTES de fibrinolizar reduce reoclusión. Sin esto, tu paciente hace reinfarto."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true,
-        "lethal_if_discarded": true
-      }
-    },
-    {
-      "card_id": "c_4",
-      "ui_icon": "shield",
-      "category": "Monitoreo",
-      "card_text": "D) ECG seriado cada 15 min post-fibrinolisis durante 1 hora: Detección temprana de reoclusión (elevación del ST recurrente).",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Mendoza: Bien. El ECG seriado te dice si fibrinolizaste correctamente o si necesitas rescate con ICP."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true,
-        "lethal_if_discarded": false
-      }
-    },
-    {
-      "card_id": "pad_006",
-      "ui_icon": "🩺",
-      "category": "vitals",
-      "card_text": "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
-      }
-    },
-    {
-      "card_id": "pad_007",
-      "ui_icon": "☢️",
-      "category": "imaging",
-      "card_text": "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
-      }
-    },
-    {
-      "card_id": "pad_008",
-      "ui_icon": "📄",
-      "category": "notes",
-      "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
-      }
-    },
-    {
-      "card_id": "pad_009",
-      "ui_icon": "☢️",
-      "category": "imaging",
-      "card_text": "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-      }
-    },
-    {
-      "card_id": "pad_010",
-      "ui_icon": "📄",
-      "category": "notes",
-      "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
-      }
-    }
-  ],
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es el TIEMPO MÁXIMO puerta-aguja para fibrinolisis en IAMCEST?",
-        "options": [
-          "30 minutos",
-          "60 minutos",
-          "90 minutos"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Qué indica ELEVACIÓN de ST nuevamente 30 min post-fibrinolisis?",
-        "options": [
-          "Éxito del tratamiento",
-          "Reoclusión del vaso → Rescate ICP",
-          "Arritmia reperfusión"
-        ],
-        "correct_index": 1
-      },
-      {
-        "question": "¿En qué orden se dan: ASA, Ticagrelor, y Fibrinolítico?",
-        "options": [
-          "Fibrinolítico → ASA → Ticagrelor",
-          "ASA + Ticagrelor → Fibrinolítico",
-          "Ticagrelor → Fibrinolítico → ASA"
-        ],
-        "correct_index": 1
-      }
-    ]
-  },
-  "enarm_pearl": {
-    "title": "Tiempos en IAMCEST",
-    "text": "Puerta-Aguja: <30 min. Puerta-Balón (ICP): <90 min. Si ICP >120 min: FIBRINOLIZAR. ECG seriado detecta reoclusión (ST nuevamente elevado).",
-    "gpc_ref": "GPC Diagnóstico y Tratamiento del Infarto Agudo de Miocardio"
-  }
+    "case_id":  "PROC_CARD_SCA_IAMCEST_001_002",
+    "version":  "v3_swipe_action",
+    "theme_config":  "card",
+    "difficulty":  "hard",
+    "patient_intro":  {
+                          "name":  "Juan, 70 años",
+                          "arrival_scenario":  "Acude por dolor precordial opresivo irradiado a mandíbula de 60 minutos de evolución. Presenta náuseas y sudoración fría. Se encuentra en un centro de salud sin sala de hemodinamia. El hospital con ICP más cercano está a 3 horas de distancia.",
+                          "time_limit_sec":  50
+                      },
+    "card_stream":  [
+                        {
+                            "card_id":  "init_vitals",
+                            "ui_icon":  "heartbeat",
+                            "category":  "vitals",
+                            "card_text":  "TA 100/60 mmHg (en descenso), FC 95 lpm, Temp 36.5°C",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_1",
+                            "ui_icon":  "target",
+                            "category":  "Diagnóstico",
+                            "card_text":  "A) IAMCEST (Fibrinolisis Sistémica): IAMCEST Cara Anterior. Si la ICP \u003e120 min de retraso, se opta por Fibrinolisis (Alteplase).",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "Mendoza: ¡Correcto! En el ENARM, si el tiempo a ICP es \u003e120 min (o 90 min en centros grandes), la FIBRINOLISIS es la respuesta correcta."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true,
+                                                 "lethal_if_discarded":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_2",
+                            "ui_icon":  "eye",
+                            "category":  "Diagnóstico",
+                            "card_text":  "B) Angina Inestable: Dolor isquémico SIN elevación del ST y SIN elevación de troponinas.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "Mendoza: ¡Bien! El ST elevado marca la pauta de tratamiento invasivo inmediato."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  false
+                                             }
+                        },
+                        {
+                            "card_id":  "c_3",
+                            "ui_icon":  "target",
+                            "category":  "meds",
+                            "card_text":  "C) Ácido Acetilsalicílico 300mg + Ticagrelor 180mg: Carga dual de antiagregantes. Debe administrarse ANTES de la fibrinolisis.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "Mendoza: ¡Excelente! La carga dual ANTES de fibrinolizar reduce reoclusión. Sin esto, tu paciente hace reinfarto."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true,
+                                                 "lethal_if_discarded":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_4",
+                            "ui_icon":  "shield",
+                            "category":  "Monitoreo",
+                            "card_text":  "D) ECG seriado cada 15 min post-fibrinolisis durante 1 hora: Detección temprana de reoclusión (elevación del ST recurrente).",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Mendoza: Bien. El ECG seriado te dice si fibrinolizaste correctamente o si necesitas rescate con ICP."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true,
+                                                 "lethal_if_discarded":  false
+                                             }
+                        },
+                        {
+                            "card_id":  "pad_006",
+                            "ui_icon":  "🩺",
+                            "category":  "vitals",
+                            "card_text":  "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
+                                        }
+                        },
+                        {
+                            "card_id":  "pad_007",
+                            "ui_icon":  "☢️",
+                            "category":  "imaging",
+                            "card_text":  "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
+                                        }
+                        },
+                        {
+                            "card_id":  "pad_008",
+                            "ui_icon":  "📄",
+                            "category":  "notes",
+                            "card_text":  "Edema de miembros inferiores grado II, con fóvea, bilateral.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Mendoza: Dato irrelevante en el contexto agudo. Indica cronicidad, no es una prioridad de Código Infarto."
+                                        }
+                        },
+                        {
+                            "card_id":  "pad_009",
+                            "ui_icon":  "☢️",
+                            "category":  "imaging",
+                            "card_text":  "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
+                                        }
+                        },
+                        {
+                            "card_id":  "pad_010",
+                            "ui_icon":  "📄",
+                            "category":  "notes",
+                            "card_text":  "Edema de miembros inferiores grado II, con fóvea, bilateral.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Mendoza: Dato irrelevante en el contexto agudo. Indica cronicidad, no es una prioridad de Código Infarto."
+                                        }
+                        }
+                    ],
+    "boss_fight_triad":  {
+                             "trigger":  "after_cards",
+                             "questions":  [
+                                               {
+                                                   "question":  "¿Cuál es el TIEMPO MÁXIMO puerta-aguja para fibrinolisis en IAMCEST?",
+                                                   "options":  [
+                                                                   "30 minutos",
+                                                                   "60 minutos",
+                                                                   "90 minutos"
+                                                               ],
+                                                   "correct_index":  0
+                                               },
+                                               {
+                                                   "question":  "¿Qué indica ELEVACIÓN de ST nuevamente 30 min post-fibrinolisis?",
+                                                   "options":  [
+                                                                   "Éxito del tratamiento",
+                                                                   "Reoclusión del vaso → Rescate ICP",
+                                                                   "Arritmia reperfusión"
+                                                               ],
+                                                   "correct_index":  1
+                                               },
+                                               {
+                                                   "question":  "¿En qué orden se dan: ASA, Ticagrelor, y Fibrinolítico?",
+                                                   "options":  [
+                                                                   "Fibrinolítico → ASA → Ticagrelor",
+                                                                   "ASA + Ticagrelor → Fibrinolítico",
+                                                                   "Ticagrelor → Fibrinolítico → ASA"
+                                                               ],
+                                                   "correct_index":  1
+                                               }
+                                           ]
+                         },
+    "enarm_pearl":  {
+                        "title":  "Tiempos en IAMCEST",
+                        "text":  "Puerta-Aguja: \u003c30 min. Puerta-Balón (ICP): \u003c90 min. Si ICP \u003e120 min: FIBRINOLIZAR. ECG seriado detecta reoclusión (ST nuevamente elevado).",
+                        "gpc_ref":  "GPC Diagnóstico y Tratamiento del Infarto Agudo de Miocardio"
+                    }
 }

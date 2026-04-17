@@ -1,94 +1,94 @@
 {
-  "case_id": "PROC_INT_HTN_DX_001_006",
-  "version": "v3_swipe_action",
-  "theme_config": "int",
-  "difficulty": "standard",
-  "patient_intro": {
-    "name": "Miguel, 51 años",
-    "arrival_scenario": "Paciente con antecedente de tabaquismo. En campañas de salud le detectan TA 150/100 mmHg. Acude para corroborar diagnóstico. Se realiza diagnóstico tras tres mediciones en días distintos con promedio â‰¥140/90 mmHg.",
-    "time_limit_sec": 60
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
-      "card_text": "Hallazgo: Ruido en el expediente: TA 145/95 mmHg, FC 75 lpm, Temp 36.6°C",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en signos estables, R1. El reloj no se detiene."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "Evidencia clínica: A) Hipertensión Arterial Sistémica Grado 1 (Sustentada): Criterios NOM-030: â‰¥140/90 mmHg en 2 o más visitas, o promedio de bitácora diagnóstica.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "¡Correcto! El diagnóstico se sustenta tras mediciones repetidas adecuadamente."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_2",
-      "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "Hallazgo: Información redundante: B) Hipertensión de Bata Blanca: Cifras altas en consultorio pero NORMALES en AMPA/MAPA.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! Diferenciaste el fenómeno de bata blanca de una HAS real."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
-      }
-    }
-  ],
-  "enarm_pearl": {
-    "title": "Diagnóstico HAS (NOM-030)",
-    "text": "Diagnóstico inicial: Promedio â‰¥140/90 mmHg en al menos dos consultas. Si el paciente llega con â‰¥180/110 mmHg, el diagnóstico se hace en la PRIMERA visita.",
-    "gpc_ref": "NOM-030-SSA2-2009"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
-        "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
-        "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
-        "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
+    "case_id":  "PROC_INT_HTN_DX_001_006",
+    "version":  "v3_swipe_action",
+    "theme_config":  "int",
+    "difficulty":  "standard",
+    "patient_intro":  {
+                          "name":  "Miguel, 51 años",
+                          "arrival_scenario":  "Paciente con antecedente de tabaquismo. En campañas de salud le detectan TA 150/100 mmHg. Acude para corroborar diagnóstico. Se realiza diagnóstico tras tres mediciones en días distintos con promedio â‰¥140/90 mmHg.",
+                          "time_limit_sec":  60
+                      },
+    "card_stream":  [
+                        {
+                            "card_id":  "init_vitals",
+                            "ui_icon":  "heartbeat",
+                            "category":  "Signos Vitales",
+                            "card_text":  "Hallazgo: Ruido en el expediente: TA 145/95 mmHg, FC 75 lpm, Temp 36.6°C",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: No te detengas en signos estables, R1. El reloj no se detiene."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_1",
+                            "ui_icon":  "target",
+                            "category":  "Diagnóstico",
+                            "card_text":  "Evidencia clínica: A) Hipertensión Arterial Sistémica Grado 1 (Sustentada): Criterios NOM-030: â‰¥140/90 mmHg en 2 o más visitas, o promedio de bitácora diagnóstica.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "¡Correcto! El diagnóstico se sustenta tras mediciones repetidas adecuadamente."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_2",
+                            "ui_icon":  "eye",
+                            "category":  "Diagnóstico",
+                            "card_text":  "Hallazgo: Información redundante: B) Hipertensión de Bata Blanca: Cifras altas en consultorio pero NORMALES en AMPA/MAPA.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: ¡Bien! Diferenciaste el fenómeno de bata blanca de una HAS real."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  false
+                                             }
+                        }
+                    ],
+    "enarm_pearl":  {
+                        "title":  "Diagnóstico HAS (NOM-030)",
+                        "text":  "Diagnóstico inicial: Promedio â‰¥140/90 mmHg en al menos dos consultas. Si el paciente llega con â‰¥180/110 mmHg, el diagnóstico se hace en la PRIMERA visita.",
+                        "gpc_ref":  "NOM-030-SSA2-2009"
+                    },
+    "boss_fight_triad":  {
+                             "trigger":  "after_cards",
+                             "questions":  [
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Cifra para diagnóstico de HAS según NOM-030?",
+                                                   "options":  [
+                                                                   "\u003e=140/90 mmHg",
+                                                                   "\u003e=130/80 mmHg",
+                                                                   "\u003e=150/95 mmHg"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Meta de TA en diabéticos según la ADA?",
+                                                   "options":  [
+                                                                   "\u003c130/80 mmHg",
+                                                                   "\u003c140/90 mmHg",
+                                                                   "\u003c120/70 mmHg"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Qué indica el fondo de ojo en HAS?",
+                                                   "options":  [
+                                                                   "Daño a órgano blanco crónico",
+                                                                   "Solo agudeza visual",
+                                                                   "No tiene utilidad"
+                                                               ]
+                                               }
+                                           ]
+                         }
 }

@@ -1,174 +1,190 @@
 {
-  "case_id": "PROC_ORL_EPISTAXIS_001_002",
-  "version": "v3_swipe_action",
-  "theme_config": "med",
-  "difficulty": "standard",
-  "patient_intro": {
-    "name": "Sra. Beatriz, 42 años",
-    "arrival_scenario": "Anticoagulada con warfarina por FA. Acude por epistaxis unilateral derecha que no cede con compresión manual tras 20 minutos. El INR del día es 3.8. La epistaxis es posterior, con sangre fluyendo por la orofaringe.",
-    "time_limit_sec": 60
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "vitals",
-      "card_text": "TA 170/100 mmHg, FC 95 lpm, FR 18 rpm. (Hipertensión significativa).",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Anatomía",
-      "card_text": "A) Plexo de Kiesselbach (Área de Little): Sitio anatómico donde ocurre el 90% de las epistaxis anteriores.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Claramente la medicina no es lo tuyo. Ese dato era VITAL."
-      }
-    },
-    {
-      "card_id": "c_2",
-      "ui_icon": "zap",
-      "category": "vitals",
-      "card_text": "B) Presión Digital Directa: Comprimir las alas nasales de forma continua durante 5 a 15 minutos con el paciente inclinado hacia ADELANTE.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Perdiendo el tiempo con tonterías... concéntrate en lo que importa.",
-        "safety_flags": {
-          "lethal_risk": false,
-          "decision_critical": true
-        }
-      }
-    },
-    {
-      "card_id": "pad_004",
-      "ui_icon": "🧪",
-      "category": "labs",
-      "card_text": "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
-      }
-    },
-    {
-      "card_id": "pad_005",
-      "ui_icon": "🧪",
-      "category": "labs",
-      "card_text": "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
-      }
-    },
-    {
-      "card_id": "pad_006",
-      "ui_icon": "📄",
-      "category": "notes",
-      "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
-      }
-    },
-    {
-      "card_id": "pad_007",
-      "ui_icon": "📄",
-      "category": "notes",
-      "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-      }
-    },
-    {
-      "card_id": "pad_008",
-      "ui_icon": "📄",
-      "category": "notes",
-      "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
-      }
-    },
-    {
-      "card_id": "pad_009",
-      "ui_icon": "☢️",
-      "category": "imaging",
-      "card_text": "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
-      }
-    },
-    {
-      "card_id": "pad_010",
-      "ui_icon": "🩺",
-      "category": "vitals",
-      "card_text": "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
-      }
-    }
-  ],
-  "enarm_pearl": {
-    "title": "Epistaxis: Anterior vs Posterior",
-    "text": "Anterior: 90%, Plexo Kiesselbach. Tx: Presión -> Cauterización. Posterior: 10%, Esfenopalatina. Tx: Taponamiento posterior + Hospital.",
-    "gpc_ref": "GPC Diagnóstico y Manejo de la Epistaxis"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es el sitio anatómico más frecuente de origen de la epistaxis anterior?",
-        "options": [
-          "Plexo de Kiesselbach",
-          "Arteria esfenopalatina",
-          "Arterias etmoidales anteriores"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es la conducta inicial recomendada para el manejo de la epistaxis aguda?",
-        "options": [
-          "Presión digital directa con cabeza hacia adelante",
-          "Cauterización eléctrica inmediata",
-          "Taponamiento posterior con sonda Foley"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Qué arteria se asocia principalmente con la epistaxis posterior grave?",
-        "options": [
-          "Arteria esfenopalatina",
-          "Arteria labial superior",
-          "Arteria palatina mayor"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
+    "case_id":  "PROC_ORL_EPISTAXIS_001_002",
+    "version":  "v3_swipe_action",
+    "theme_config":  "med",
+    "difficulty":  "standard",
+    "patient_intro":  {
+                          "name":  "Sra. Beatriz, 42 años",
+                          "arrival_scenario":  "Anticoagulada con warfarina por FA. Acude por epistaxis unilateral derecha que no cede con compresión manual tras 20 minutos. El INR del día es 3.8. La epistaxis es posterior, con sangre fluyendo por la orofaringe.",
+                          "time_limit_sec":  60
+                      },
+    "card_stream":  [
+                        {
+                            "card_id":  "init_vitals",
+                            "ui_icon":  "heartbeat",
+                            "category":  "vitals",
+                            "card_text":  "TA 170/100 mmHg, FC 95 lpm, FR 18 rpm. (Hipertensión significativa).",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_1",
+                            "ui_icon":  "target",
+                            "category":  "Anatomía",
+                            "card_text":  "A) Plexo de Kiesselbach (Área de Little): Sitio anatómico donde ocurre el 90% de las epistaxis anteriores.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_2",
+                            "ui_icon":  "zap",
+                            "category":  "vitals",
+                            "card_text":  "B) Presión Digital Directa: Comprimir las alas nasales de forma continua durante 5 a 15 minutos con el paciente inclinado hacia ADELANTE.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido.",
+                                            "safety_flags":  {
+                                                                 "lethal_risk":  false,
+                                                                 "decision_critical":  true
+                                                             }
+                                        }
+                        },
+                        {
+                            "card_id":  "c_3",
+                            "ui_icon":  "droplet",
+                            "category":  "Exploración",
+                            "card_text":  "C) Epistaxis Posterior: Sangrado que no cede a la presión anterior, fluye por orofaringe y suele originarse de la arteria esfenopalatina.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo.",
+                                            "safety_flags":  {
+                                                                 "lethal_risk":  true,
+                                                                 "decision_critical":  true
+                                                             }
+                                        }
+                        },
+                        {
+                            "card_id":  "c_4",
+                            "ui_icon":  "pill",
+                            "category":  "Tópicos",
+                            "card_text":  "D) Vasoconstrictores Locales (Oximetazolina): Ayudan a reducir el sangrado capilar inicial para permitir una mejor visión del punto sangrante.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_5",
+                            "ui_icon":  "activity",
+                            "category":  "meds",
+                            "card_text":  "E) Cauterización (Nitrato de Plata / Eléctrica): Indicada si el sitio del sangrado anterior es claramente visible.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_6",
+                            "ui_icon":  "slash",
+                            "category":  "meds",
+                            "card_text":  "F) Taponamiento Nasal Anterior: Utilizar gasa con lubricante o esponjas expandibles (Merocel) por 48-72 horas.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_7",
+                            "ui_icon":  "alert-triangle",
+                            "category":  "Manejo Posterior",
+                            "card_text":  "G) Taponamiento Posterior (Sonda Foley / Gasa): Indicado en sangrado incoercible que drena por faringe. Requiere hospitalización.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_8",
+                            "ui_icon":  "search",
+                            "category":  "labs",
+                            "card_text":  "H) Perfil de Coagulación (TP, TTP): Indispensables en pacientes con epistaxis recurrente o uso de anticoagulantes.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_9",
+                            "ui_icon":  "info",
+                            "category":  "Seguimiento",
+                            "card_text":  "I) Profilaxis Antibiótica: Recomendada durante el tiempo que dure el taponamiento (anterior o posterior) para evitar el Síndrome de Choque Tóxico.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_10",
+                            "ui_icon":  "x-circle",
+                            "category":  "vitals",
+                            "card_text":  "J) Control Agudo de la TA: Es la medida prioritaria para detener el sangrado nasal antes de cualquier maniobra local.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "lethal_hazard",
+                                            "vazquez_comment":  "¡PELIGRO! Eso era una contraindicación absoluta. Menos mal que esto es un juego."
+                                        }
+                        }
+                    ],
+    "enarm_pearl":  {
+                        "title":  "Epistaxis: Anterior vs Posterior",
+                        "text":  "Anterior: 90%, Plexo Kiesselbach. Tx: Presión -\u003e Cauterización. Posterior: 10%, Esfenopalatina. Tx: Taponamiento posterior + Hospital.",
+                        "gpc_ref":  "GPC Diagnóstico y Manejo de la Epistaxis"
+                    },
+    "boss_fight_triad":  {
+                             "trigger":  "after_cards",
+                             "questions":  [
+                                               {
+                                                   "question":  "¿Cuál es el sitio anatómico más frecuente de origen de la epistaxis anterior?",
+                                                   "options":  [
+                                                                   "Plexo de Kiesselbach",
+                                                                   "Arteria esfenopalatina",
+                                                                   "Arterias etmoidales anteriores"
+                                                               ],
+                                                   "correct_index":  0
+                                               },
+                                               {
+                                                   "question":  "¿Cuál es la conducta inicial recomendada para el manejo de la epistaxis aguda?",
+                                                   "options":  [
+                                                                   "Presión digital directa con cabeza hacia adelante",
+                                                                   "Cauterización eléctrica inmediata",
+                                                                   "Taponamiento posterior con sonda Foley"
+                                                               ],
+                                                   "correct_index":  0
+                                               },
+                                               {
+                                                   "question":  "¿Qué arteria se asocia principalmente con la epistaxis posterior grave?",
+                                                   "options":  [
+                                                                   "Arteria esfenopalatina",
+                                                                   "Arteria labial superior",
+                                                                   "Arteria palatina mayor"
+                                                               ],
+                                                   "correct_index":  0
+                                               }
+                                           ]
+                         }
 }

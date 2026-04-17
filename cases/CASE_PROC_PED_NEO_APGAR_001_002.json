@@ -4,8 +4,8 @@
   "theme_config": "ped",
   "difficulty": "standard",
   "patient_intro": {
-    "name": "María, 0 años",
-    "arrival_scenario": "Neonato de 39 SDG. Al minuto: acrocianosis, FC 110, muecas al estimular, respiración irregular y flacidez. Se observa Silverman-Andersen: aleteo nasal leve, tiraje intercostal discreto. Resto normal.",
+    "name": "Maria, 0 anos",
+    "arrival_scenario": "Neonato de 39 SDG. Al minuto: acrocianosis, FC de 90 lpm, muecas al estimular, respiracion irregular y flacidez. Se observa Silverman-Andersen: aleteo nasal leve, tiraje intercostal discreto. Resto normal.",
     "time_limit_sec": 60
   },
   "card_stream": [
@@ -24,13 +24,13 @@
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "Hallazgo: A) APGAR 5 (Depresión Moderada): FC <100 (1) + Llanto débil (1) + Mueca (1) + Flexión (1) + Acrocianosis (1).",
+      "category": "Diagnostico",
+      "card_text": "Hallazgo: A) APGAR 5 (Depresion Moderada): FC <100 (1) + Llanto debil (1) + Mueca (1) + Flexion (1) + Acrocianosis (1).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Excelente cálculo! El APGAR evalúa vitalidad, no pronóstico neurológico a largo plazo."
+        "vazquez_comment": "Castillo: ¡Excelente calculo! El APGAR evalua vitalidad, no pronostico neurologico a largo plazo."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -40,7 +40,7 @@
     {
       "card_id": "c_2",
       "ui_icon": "target",
-      "category": "Diagnóstico",
+      "category": "Diagnostico",
       "card_text": "Evidencia: B) Silverman-Andersen 2 (Dificultad Leve): Aleteo (1) + Tiraje (1) = 2. A diferencia del APGAR, a mayor puntaje Silverman, mayor gravedad.",
       "expected_action": "keep",
       "scoring": {
@@ -57,19 +57,19 @@
       "card_id": "c_3",
       "ui_icon": "clipboard",
       "category": "Criterios",
-      "card_text": "Hallazgo: C) Signos del APGAR: Evalúa Frecuencia Cardiaca, Respiración, Tono Muscular, Irritabilidad Refleja y Coloración.",
+      "card_text": "Hallazgo: C) Signos del APGAR: Evalua Frecuencia Cardiaca, Respiracion, Tono Muscular, Irritabilidad Refleja y Coloracion.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Bien! Es la herramienta universal para evaluar la transición extrauterina."
+        "vazquez_comment": "Castillo: ¡Bien! Es la herramienta universal para evaluar la transicion extrauterina."
       }
     },
     {
       "card_id": "c_4",
       "ui_icon": "activity",
       "category": "Criterios",
-      "card_text": "Evidencia: D) Signos de Silverman: Disociación Toraco-abdominal, Tiraje Intercostal, Retracción Xifoidea, Aleteo Nasal y Quejido Respiratorio.",
+      "card_text": "Evidencia: D) Signos de Silverman: Disociacion Toraco-abdominal, Tiraje Intercostal, Retraccion Xifoidea, Aleteo Nasal y Quejido Respiratorio.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -81,12 +81,12 @@
       "card_id": "c_5",
       "ui_icon": "thermometer",
       "category": "Procedimiento",
-      "card_text": "Hallazgo clínico: E) Pasos Iniciales de Reanimación: Proveer calor, posicionar vía aérea, aspirar (si es necesario) y secar/estimular.",
+      "card_text": "Hallazgo clinico: E) Pasos Iniciales de Reanimacion: Proveer calor, posicionar via aerea, aspirar (si es necesario) y secar/estimular.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Castillo: ¡Bien! Son los primeros 30 segundos dorados de todo recién nacido."
+        "vazquez_comment": "Castillo: ¡Bien! Son los primeros 30 segundos dorados de todo recien nacido."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -97,12 +97,12 @@
       "card_id": "c_6",
       "ui_icon": "zap",
       "category": "Manejo",
-      "card_text": "Dato de importancia: F) Ventilación a Presión Positiva (VPP): Indicada si FC <100 lpm, apnea o boqueo tras los pasos iniciales.",
+      "card_text": "Dato de importancia: F) Ventilacion a Presion Positiva (VPP): Indicada si FC <100 lpm, apnea o boqueo tras los pasos iniciales.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Castillo: ¡Vital! La ventilación es el paso más importante en la reanimación neonatal."
+        "vazquez_comment": "Castillo: ¡Vital! La ventilacion es el paso mas importante en la reanimacion neonatal."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -113,12 +113,12 @@
       "card_id": "c_7",
       "ui_icon": "heart",
       "category": "Manejo",
-      "card_text": "Evidencia: G) Compresiones Torácicas: Iniciar si FC <60 lpm después de al menos 30 segundos de VPP efectiva.",
+      "card_text": "Evidencia: G) Compresiones Toracicas: Iniciar si FC <60 lpm despues de al menos 30 segundos de VPP efectiva.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Castillo: ¡Correcto! Se debe usar la técnica de los dos pulgares coordinada con la ventilación (3:1)."
+        "vazquez_comment": "Castillo: ¡Correcto! Se debe usar la tecnica de los dos pulgares coordinada con la ventilacion (3:1)."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -129,12 +129,12 @@
       "card_id": "c_8",
       "ui_icon": "pill",
       "category": "Manejo",
-      "card_text": "Dato de importancia: H) Adrenalina: Aplicar si la FC persiste <60 lpm tras 60 seg de ventilación y compresiones coordinadas.",
+      "card_text": "Dato de importancia: H) Adrenalina: Aplicar si la FC persiste <60 lpm tras 60 seg de ventilacion y compresiones coordinadas.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "lethal_omission",
-        "vazquez_comment": "Castillo: ¡Vital! Es el último recurso farmacológico en el algoritmo de reanimación."
+        "vazquez_comment": "Castillo: ¡Vital! Es el ultimo recurso farmacologico en el algoritmo de reanimacion."
       },
       "safety_flags": {
         "lethal_risk": true,
@@ -145,50 +145,51 @@
       "card_id": "c_9",
       "ui_icon": "slash",
       "category": "Manejo",
-      "card_text": "Información redundante: I) Nutrición Parenteral: Iniciar de forma rutinaria e inmediata en todo neonato que requirió pasos iniciales.",
+      "card_text": "Informacion redundante: I) Nutricion Parenteral: Iniciar de forma rutinaria e inmediata en todo neonato que requirio pasos iniciales.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡No! Se debe priorizar el apego inmediato y la lactancia materna si el neonato está estable."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡No! Se debe priorizar el apego inmediato y la lactancia materna si el neonato esta estable."
       }
     }
   ],
   "enarm_pearl": {
     "title": "APGAR vs Silverman",
-    "text": "APGAR: Evalúa vitalidad (1 y 5 min). Silverman: Evalúa dificultad respiratoria. RECUERDA: Silverman 0 es el éxito, APGAR 10 es el éxito.",
-    "gpc_ref": "GPC Reanimación Neonatal"
+    "text": "APGAR: Evalua vitalidad (1 y 5 min). Silverman: Evalua dificultad respiratoria. RECUERDA: Silverman 0 es el exito, APGAR 10 es el exito.",
+    "gpc_ref": "GPC Reanimacion Neonatal"
   },
   "boss_fight_triad": {
     "trigger": "after_cards",
     "questions": [
       {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
+        "question": "¿Que evalua la escala de Silverman-Andersen en el periodo neonatal?",
         "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
+          "Dificultad Respiratoria",
+          "Vitalidad y Adaptacion",
+          "Madurez Gestacional"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
+        "question": "¿Cual es la conducta inmediata ante una frecuencia cardiaca <100 lpm en el recien nacido?",
         "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
+          "Iniciar Ventilacion a Presion Positiva (VPP)",
+          "Iniciar Compresiones Toracicas",
+          "Administrar Adrenalina Umbilical"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
+        "question": "¿Que puntuacion de Silverman-Andersen indica una dificultad respiratoria GRAVE?",
         "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
+          "Mayor a 7 puntos",
+          "Entre 1 y 3 puntos",
+          "0 puntos (Normalidad)"
         ],
         "correct_index": 0
       }
     ]
+
   }
 }

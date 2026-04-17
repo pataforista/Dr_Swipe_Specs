@@ -4,40 +4,40 @@
   "theme_config": "ped",
   "difficulty": "standard",
   "patient_intro": {
-    "name": "Dr. Martínez, R1 de Pediatría",
-    "arrival_scenario": "Estás analizando un estudio sobre la eficacia de un nuevo antibiótico en neumonía infantil. ¿Qué prueba estadística es la adecuada para cada tipo de variable y comparación?",
+    "name": "Dr. Martinez, R1 de Pediatria",
+    "arrival_scenario": "Estas analizando un estudio sobre la eficacia de un nuevo antibiotico en neumonia infantil. ¿Que prueba estadistica es la adecuada para cada tipo de variable y comparacion?",
     "time_limit_sec": 60
   },
   "card_stream": [
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "vitals",
-      "card_text": "TA 110/70, FC 90 bpm, Temp 37.0°C. (Variables basales estables).",
+      "category": "Signos Vitales",
+      "card_text": "Evidencia clinica: Ruido en el expediente: TA 110/70, FC 90 bpm, Temp 37.0°C. (Variables basales estables).",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "Navarro: En bioestadística, no te distraigas con los signos si el objetivo es el análisis de datos."
+        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: En bioestadistica, no te distraigas con los signos si el objetivo es el analisis de datos."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
-      "category": "Estadística Inf.",
-      "card_text": "A) t de Student: Prueba para comparar Medias de una variable continua entre 2 grupos independientes (Ej: Peso al nacer entre niños y niñas).",
+      "category": "Estadistica Inf.",
+      "card_text": "Evidencia: A) t de Student: Prueba para comparar Medias de una variable continua entre 2 grupos independientes (Ej: Peso al nacer entre ninos y ninas).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
         "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Correcto! Es el pan de cada día en el ENARM."
+        "vazquez_comment": "Navarro: ¡Correcto! Es el pan de cada dia en el ENARM."
       }
     },
     {
       "card_id": "c_2",
       "ui_icon": "grid",
-      "category": "Estadística Inf.",
-      "card_text": "B) Chi-Cuadrada (Pearson): Se usa para comparar proporciones o asociación entre variables Categóricas/Nominales (Ej: Sexo y Presencia de Tos).",
+      "category": "Estadistica Inf.",
+      "card_text": "Hallazgo: B) Chi-Cuadrada (Pearson): Se usa para comparar proporciones o asociacion entre variables Categoricas/Nominales (Ej: Sexo y Presencia de Tos).",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -48,44 +48,44 @@
     {
       "card_id": "c_3",
       "ui_icon": "bar-chart-2",
-      "category": "Estadística Inf.",
-      "card_text": "C) ANOVA (Análisis de Varianza): Para comparar Medias de variable continua entre 3 o más grupos independientes.",
+      "category": "Estadistica Inf.",
+      "card_text": "Hallazgo: C) ANOVA (Analisis de Varianza): Para comparar Medias de variable continua entre 3 o mas grupos independientes.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Bien! Es como la t de Student pero para más de dos grupos."
+        "vazquez_comment": "Navarro: ¡Bien! Es como la t de Student pero para mas de dos grupos."
       }
     },
     {
       "card_id": "c_4",
       "ui_icon": "trending-up",
-      "category": "Relación",
-      "card_text": "D) Correlación de Pearson (r): Mide la fuerza y dirección de la relación lineal entre dos variables continuas.",
+      "category": "Relacion",
+      "card_text": "Evidencia: D) Correlacion de Pearson (r): Mide la fuerza y direccion de la relacion lineal entre dos variables continuas.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Navarro: Correcto. Cerca de +1 o -1 es una relación fuerte."
+        "vazquez_comment": "Navarro: Correcto. Cerca de +1 o -1 es una relacion fuerte."
       }
     },
     {
       "card_id": "c_5",
       "ui_icon": "help-circle",
       "category": "Significancia",
-      "card_text": "E) Valor p < 0.05: Indica que hay menos del 5% de probabilidad de que el resultado sea por azar; se rechaza la Hipótesis Nula (H0).",
+      "card_text": "Hallazgo clinico: E) Valor p < 0.05: Indica que hay menos del 5% de probabilidad de que el resultado sea por azar; se rechaza la Hipotesis Nula (H0).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
         "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Fundamental! Define si tus hallazgos son estadísticamente significativos."
+        "vazquez_comment": "Navarro: ¡Fundamental! Define si tus hallazgos son estadisticamente significativos."
       }
     },
     {
       "card_id": "c_6",
       "ui_icon": "maximize",
-      "category": "Precisión",
-      "card_text": "F) Intervalo de Confianza (IC 95%): Rango donde se encuentra el verdadero valor poblacional con un 95% de certeza.",
+      "category": "Precision",
+      "card_text": "Evidencia: F) Intervalo de Confianza (IC 95%): Rango donde se encuentra el verdadero valor poblacional con un 95% de certeza.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -96,8 +96,8 @@
     {
       "card_id": "c_7",
       "ui_icon": "alert-triangle",
-      "category": "meds",
-      "card_text": "G) Error Tipo I (Alfa): Rechazar la hipótesis nula cuando en realidad es verdadera (Falso Positivo).",
+      "category": "Error",
+      "card_text": "Hallazgo: G) Error Tipo I (Alfa): Rechazar la hipotesis nula cuando en realidad es verdadera (Falso Positivo).",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -108,32 +108,32 @@
     {
       "card_id": "c_8",
       "ui_icon": "alert-circle",
-      "category": "meds",
-      "card_text": "H) Error Tipo II (Beta): No rechazar la hipótesis nula cuando es falsa (Falso Negativo).",
+      "category": "Error",
+      "card_text": "Evidencia: H) Error Tipo II (Beta): No rechazar la hipotesis nula cuando es falsa (Falso Negativo).",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "omission",
-        "vazquez_comment": "Navarro: Correcto. Se relaciona con el Poder Estadístico (1-beta)."
+        "vazquez_comment": "Navarro: Correcto. Se relaciona con el Poder Estadistico (1-beta)."
       }
     },
     {
       "card_id": "c_9",
       "ui_icon": "users",
-      "category": "meds",
-      "card_text": "I) Muestreo Aleatorio Simple: Cada individuo de la población tiene la misma probabilidad de ser elegido para el estudio.",
+      "category": "Muestreo",
+      "card_text": "Hallazgo: I) Muestreo Aleatorio Simple: Cada individuo de la poblacion tiene la misma probabilidad de ser elegido para el estudio.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
         "error_type": "omission",
-        "vazquez_comment": "Navarro: El ideal teórica para evitar sesgos de selección."
+        "vazquez_comment": "Navarro: El ideal teorica para evitar sesgos de seleccion."
       }
     },
     {
       "card_id": "c_10",
       "ui_icon": "target",
-      "category": "meds",
-      "card_text": "J) Sensibilidad vs Especificidad: Sensibilidad = Capacidad de detectar enfermos (pocos falsos negativos). Especificidad = Capacidad de detectar sanos (pocos falsos positivos).",
+      "category": "Metricas",
+      "card_text": "Hallazgo: J) Sensibilidad vs Especificidad: Sensibilidad = Capacidad de detectar enfermos (pocos falsos negativos). Especificidad = Capacidad de detectar sanos (pocos falsos positivos).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -143,35 +143,35 @@
     }
   ],
   "enarm_pearl": {
-    "title": "Bioestadística: Tipos de Variables",
+    "title": "Bioestadistica: Tipos de Variables",
     "text": "Nominal: Sin orden (Sexo). Ordinal: Con orden (Grado escolar). Continua: Medible (Peso). Discreta: Contable (N° hijos).",
-    "gpc_ref": "Metodología de la Investigación Clínica"
+    "gpc_ref": "Metodologia de la Investigacion Clinica"
   },
   "boss_fight_triad": {
     "trigger": "after_cards",
     "questions": [
       {
-        "question": "¿Qué prueba estadística utilizarías para comparar el promedio de peso al nacer entre niños y niñas?",
+        "question": "¿Que prueba estadistica utilizarias para comparar el promedio de peso al nacer entre ninos y ninas?",
         "options": [
           "t de Student para muestras independientes",
           "Chi-cuadrada",
-          "Análisis de Varianza (ANOVA)"
+          "Analisis de Varianza (ANOVA)"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Qué indica un valor de p < 0.05 en un estudio clínico?",
+        "question": "¿Que indica un valor de p < 0.05 en un estudio clinico?",
         "options": [
-          "Que el resultado es estadísticamente significativo",
+          "Que el resultado es estadisticamente significativo",
           "Que no hay diferencia entre los grupos",
-          "Que el estudio tiene un error de diseño grave"
+          "Que el estudio tiene un error de diseno grave"
         ],
         "correct_index": 0
       },
       {
-        "question": "¿Qué sucede si el Intervalo de Confianza del 95% para un Riesgo Relativo (RR) cruza el valor 1.0?",
+        "question": "¿Que sucede si el Intervalo de Confianza del 95% para un Riesgo Relativo (RR) cruza el valor 1.0?",
         "options": [
-          "El resultado NO es estadísticamente significativo",
+          "El resultado NO es estadisticamente significativo",
           "El factor analizado es protector",
           "El estudio es altamente preciso"
         ],

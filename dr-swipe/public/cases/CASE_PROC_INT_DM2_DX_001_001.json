@@ -1,178 +1,178 @@
 {
-  "case_id": "PROC_INT_DM2_DX_001_001",
-  "version": "v3_swipe_action",
-  "theme_config": "int",
-  "difficulty": "standard",
-  "patient_intro": {
-    "name": "Marta, 51 años",
-    "arrival_scenario": "Paciente con obesidad grado I, refiere poliuria y polidipsia ocasional. Glucosa al azar de 210 mg/dl. Glucosa plasmática a las 2 horas de carga de 75g: 205 mg/dl.",
-    "time_limit_sec": 60
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "vitals",
-      "card_text": "TA 130/85, FC 80 lpm, Temp 36.5°C",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "labs",
-      "card_text": "A) Diabetes Mellitus Tipo 2 (Confirmada): Criterios: Glucosa ayuno ≥126, HbA1c ≥6.5%, o Glucosa azar ≥200 con síntomas.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Correcto! Cumple criterios de la NOM-015 para diagnóstico definitivo."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_3",
-      "ui_icon": "calendar",
-      "category": "labs",
-      "card_text": "C) Glucosa Ayuno >=126 mg/dL: Requiere al menos 8 horas de ayuno calórico y debe confirmarse con una segunda medición en un día distinto.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Exacto! Un solo valor alterado en ayuno no hace el diagnóstico, a menos que haya síntomas inequívocos."
-      }
-    },
-    {
-      "card_id": "c_4",
-      "ui_icon": "activity",
-      "category": "labs",
-      "card_text": "D) HbA1c >=6.5%: Refleja el promedio de glucemia de los últimos 3 meses y debe medirse por métodos certificados (NGSP).",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Muy bien! Es un criterio sólido y cómodo para el paciente, aunque costoso."
-      }
-    },
-    {
-      "card_id": "c_5",
-      "ui_icon": "search",
-      "category": "Tamizaje",
-      "card_text": "E) Screening (ADA): Iniciar a los 35 años en población general, o antes en adultos con sobrepeso (IMC >=25) y un factor de riesgo.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Mendoza: Correcto. La detección temprana es fundamental para prevenir complicaciones microvasculares."
-      }
-    },
-    {
-      "card_id": "c_6",
-      "ui_icon": "zap",
-      "category": "labs",
-      "card_text": "F) Crisis Glucémica: Paciente con POLIURIA, POLIDIPSIA y pérdida de peso + Glucosa al azar >=200 mg/dL: Diagnóstico inmediato.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Mendoza: ¡Vital! Ante la triada clásica de las 'P's y glucemia alta, no necesitas repetir pruebas."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_7",
-      "ui_icon": "pill",
-      "category": "Manejo Inicial",
-      "card_text": "G) Metformina: Fármaco de primera elección tras el diagnóstico junto con cambios en el estilo de vida.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Exacto! Es segura, económica y reduce la producción hepática de glucosa."
-      }
-    },
-    {
-      "card_id": "c_8",
-      "ui_icon": "eye",
-      "category": "Complicaciones",
-      "card_text": "H) Evaluación Inicial: Realizar fondo de ojo y búsqueda de microalbuminuria al momento del diagnóstico en DM2.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Fundamental! El 20% de los pacientes con DM2 ya tienen daño a órgano blanco al ser diagnosticados."
-      }
-    },
-    {
-      "card_id": "c_9",
-      "ui_icon": "trending-down",
-      "category": "labs",
-      "card_text": "I) Meta de HbA1c <7.0%: Objetivo general para reducir el riesgo de nefropatía y retinopatía diabética.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Perfecto! Un control glucémico estrecho salva riñones y ojos."
-      }
-    },
-    {
-      "card_id": "pad_010",
-      "ui_icon": "🧪",
-      "category": "labs",
-      "card_text": "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
-      }
-    }
-  ],
-  "enarm_pearl": {
-    "title": "DM2: Diagnóstico ADA/NOM",
-    "text": "Ayuno >=126 (confirmado). HbA1c >=6.5%. Curva 2h >=200. Azar >=200 + Síntomas. Tx Inicial: Metformina.",
-    "gpc_ref": "Standards of Care in Diabetes 2024 (ADA)"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es el valor de glucosa plasmática en ayuno necesario para el diagnóstico de Diabetes Mellitus?",
-        "options": [
-          ">=126 mg/dL",
-          ">=100 mg/dL",
-          ">=200 mg/dL"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el fármaco de primera elección para el manejo inicial de la DM2 según las guías internacionales?",
-        "options": [
-          "Metformina",
-          "Glibenclamida",
-          "Insulina NPH"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Qué porcentaje de Hemoglobina Glucosilada (HbA1c) confirma el diagnóstico de Diabetes?",
-        "options": [
-          ">=6.5%",
-          ">=5.7%",
-          ">=8.0%"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
+    "case_id":  "PROC_INT_DM2_DX_001_001",
+    "version":  "v3_swipe_action",
+    "theme_config":  "int",
+    "difficulty":  "standard",
+    "patient_intro":  {
+                          "name":  "Marta, 51 años",
+                          "arrival_scenario":  "Paciente con obesidad grado I, refiere poliuria y polidipsia ocasional. Glucosa al azar de 210 mg/dl. Glucosa plasmática a las 2 horas de carga de 75g: 205 mg/dl.",
+                          "time_limit_sec":  60
+                      },
+    "card_stream":  [
+                        {
+                            "card_id":  "init_vitals",
+                            "ui_icon":  "heartbeat",
+                            "category":  "vitals",
+                            "card_text":  "TA 130/85, FC 80 lpm, Temp 36.5°C",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_1",
+                            "ui_icon":  "target",
+                            "category":  "labs",
+                            "card_text":  "A) Diabetes Mellitus Tipo 2 (Confirmada): Criterios: Glucosa ayuno ≥126, HbA1c ≥6.5%, o Glucosa azar ≥200 con síntomas.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Mendoza: ¡Correcto! Cumple criterios de la NOM-015 para diagnóstico definitivo."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_3",
+                            "ui_icon":  "calendar",
+                            "category":  "labs",
+                            "card_text":  "C) Glucosa Ayuno \u003e=126 mg/dL: Requiere al menos 8 horas de ayuno calórico y debe confirmarse con una segunda medición en un día distinto.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Mendoza: ¡Exacto! Un solo valor alterado en ayuno no hace el diagnóstico, a menos que haya síntomas inequívocos."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_4",
+                            "ui_icon":  "activity",
+                            "category":  "labs",
+                            "card_text":  "D) HbA1c \u003e=6.5%: Refleja el promedio de glucemia de los últimos 3 meses y debe medirse por métodos certificados (NGSP).",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Mendoza: ¡Muy bien! Es un criterio sólido y cómodo para el paciente, aunque costoso."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_5",
+                            "ui_icon":  "search",
+                            "category":  "Tamizaje",
+                            "card_text":  "E) Screening (ADA): Iniciar a los 35 años en población general, o antes en adultos con sobrepeso (IMC \u003e=25) y un factor de riesgo.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Mendoza: Correcto. La detección temprana es fundamental para prevenir complicaciones microvasculares."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_6",
+                            "ui_icon":  "zap",
+                            "category":  "labs",
+                            "card_text":  "F) Crisis Glucémica: Paciente con POLIURIA, POLIDIPSIA y pérdida de peso + Glucosa al azar \u003e=200 mg/dL: Diagnóstico inmediato.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "Mendoza: ¡Vital! Ante la triada clásica de las \u0027P\u0027s y glucemia alta, no necesitas repetir pruebas."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_7",
+                            "ui_icon":  "pill",
+                            "category":  "Manejo Inicial",
+                            "card_text":  "G) Metformina: Fármaco de primera elección tras el diagnóstico junto con cambios en el estilo de vida.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Mendoza: ¡Exacto! Es segura, económica y reduce la producción hepática de glucosa."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_8",
+                            "ui_icon":  "eye",
+                            "category":  "Complicaciones",
+                            "card_text":  "H) Evaluación Inicial: Realizar fondo de ojo y búsqueda de microalbuminuria al momento del diagnóstico en DM2.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Mendoza: ¡Fundamental! El 20% de los pacientes con DM2 ya tienen daño a órgano blanco al ser diagnosticados."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_9",
+                            "ui_icon":  "trending-down",
+                            "category":  "labs",
+                            "card_text":  "I) Meta de HbA1c \u003c7.0%: Objetivo general para reducir el riesgo de nefropatía y retinopatía diabética.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Mendoza: ¡Perfecto! Un control glucémico estrecho salva riñones y ojos."
+                                        }
+                        },
+                        {
+                            "card_id":  "pad_010",
+                            "ui_icon":  "🧪",
+                            "category":  "labs",
+                            "card_text":  "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  20,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
+                                        }
+                        }
+                    ],
+    "enarm_pearl":  {
+                        "title":  "DM2: Diagnóstico ADA/NOM",
+                        "text":  "Ayuno \u003e=126 (confirmado). HbA1c \u003e=6.5%. Curva 2h \u003e=200. Azar \u003e=200 + Síntomas. Tx Inicial: Metformina.",
+                        "gpc_ref":  "Standards of Care in Diabetes 2024 (ADA)"
+                    },
+    "boss_fight_triad":  {
+                             "trigger":  "after_cards",
+                             "questions":  [
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Cuál es la cifra de glucosa en ayuno para diagnóstico de DM2?",
+                                                   "options":  [
+                                                                   "\u003e=126 mg/dL",
+                                                                   "\u003e=100 mg/dL",
+                                                                   "\u003e=200 mg/dL"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Qué porcentaje de HbA1c confirma el diagnóstico?",
+                                                   "options":  [
+                                                                   "\u003e=6.5%",
+                                                                   "\u003e=5.7%",
+                                                                   "\u003e=8.0%"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿En qué momento se diagnostica DM2 con glucosa al azar \u003e=200?",
+                                                   "options":  [
+                                                                   "Si hay síntomas clásicos (Ps)",
+                                                                   "Siempre es diagnóstico",
+                                                                   "Nunca, requiere confirmación"
+                                                               ]
+                                               }
+                                           ]
+                         }
 }

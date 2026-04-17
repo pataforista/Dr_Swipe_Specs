@@ -1,182 +1,182 @@
 {
-  "case_id": "PROC_INF_HIV_ART_001_002",
-  "version": "v3_swipe_action",
-  "theme_config": "inf",
-  "difficulty": "standard",
-  "patient_intro": {
-    "name": "Miguel, 38 años",
-    "arrival_scenario": "Usuario de drogas IV con pérdida de peso y candidiasis oral persistente. ELISA y Western Blot positivos para VIH. Independientemente del conteo de CD4, el paciente solicita iniciar tratamiento. No tiene antecedentes de ERC.",
-    "time_limit_sec": 60
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
-      "card_text": "Hallazgo: Ruido en el expediente: TA 120/80, FC 72 lpm, Temp 36.7°C",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "Evidencia: A) Iniciar ART Inmediatamente (Tratamiento Universal): Guías actuales (GPC/WHO): Se recomienda iniciar ART en TODOS los pacientes, sin importar el nivel de CD4.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Correcto! El inicio temprano reduce la transmisión y mejora el pronóstico a largo plazo."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_2",
-      "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "Hallazgo: Dato anecdótico: B) Diferir inicio hasta CD4 <200 (SIDA): Práctica obsoleta que aumentaba el riesgo de infecciones oportunistas y mortalidad.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Reconociste el cambio hacia el tratamiento universal proactivo."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
-      }
-    },
-    {
-      "card_id": "c_3",
-      "ui_icon": "pill",
-      "category": "Tratamiento",
-      "card_text": "Dato de importancia: C) Esquema Preferente (Biktarvy): Bictegravir + Emtricitabina + Tenofovir Alafenamida (B/F/TAF) en tableta única.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Excelente! Es el esquema de primera línea por su alta barrera genética y pocos efectos secundarios."
-      }
-    },
-    {
-      "card_id": "c_4",
-      "ui_icon": "beaker",
-      "category": "Estudio Inicial",
-      "card_text": "Evidencia: D) Genotropificación de Resistencia: Realizar antes de iniciar tratamiento para guiar la elección de fármacos.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: Bien. Conocer la resistencia basal es fundamental en el manejo moderno."
-      }
-    },
-    {
-      "card_id": "c_5",
-      "ui_icon": "alert-triangle",
-      "category": "Complicación",
-      "card_text": "Evidencia: E) Síndrome de Reconstitución Inmune (IRIS): Empeoramiento paradójico de infecciones tras iniciar ART.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Exacto! Especialmente peligroso en TB o meningitis criptocócica."
-      }
-    },
-    {
-      "card_id": "c_6",
-      "ui_icon": "info",
-      "category": "Tratamiento Dual",
-      "card_text": "Evidencia: F) Esquema Dovato (DTG/3TC): Dolutegravir + Lamivudina. Opción válida en pacientes sin hepatitis B y carga viral <500,000.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: Bien. La terapia dual ya es una realidad segura en casos seleccionados."
-      }
-    },
-    {
-      "card_id": "c_7",
-      "ui_icon": "shield",
-      "category": "Profilaxis",
-      "card_text": "Hallazgo: G) TMP-SMX (Primaria): Iniciar en todo paciente con CD4 <200 para prevenir neumonía por Pneumocystis jirovecii.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Navarro: ¡Vital! El Bactrim salva vidas mientras el ART hace efecto."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_8",
-      "ui_icon": "eye",
-      "category": "Seguimiento",
-      "card_text": "Hallazgo: H) Carga Viral Indetectable: Meta del tratamiento a los 6 meses de inicio (Indetectable = Intransmisible).",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Correcto! El lema I=I es pilar de la salud pública actual."
-      }
-    },
-    {
-      "card_id": "c_9",
-      "ui_icon": "activity",
-      "category": "Efectos Adversos",
-      "card_text": "Hallazgo: I) Toxicidad por Efavirenz: Causa sueños vívidos, depresión y mareos (síntomas neuropsiquiátricos).",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: Muy bien. Por eso ya no es el fármaco de primera elección."
-      }
-    }
-  ],
-  "enarm_pearl": {
-    "title": "VIH: Inicio de ART",
-    "text": "Regla ENARM: Inicio de ART en TODO paciente diagnosticado, sin importar CD4. Esquema preferente: 2 ITNR + 1 INSTI (Dolutegravir).",
-    "gpc_ref": "GPC Tratamiento Antirretroviral del Adulto con VIH"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
-        "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
-        "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
-        "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
+    "case_id":  "PROC_INF_HIV_ART_001_002",
+    "version":  "v3_swipe_action",
+    "theme_config":  "inf",
+    "difficulty":  "standard",
+    "patient_intro":  {
+                          "name":  "Miguel, 38 años",
+                          "arrival_scenario":  "Usuario de drogas IV con pérdida de peso y candidiasis oral persistente. ELISA y Western Blot positivos para VIH. Independientemente del conteo de CD4, el paciente solicita iniciar tratamiento. No tiene antecedentes de ERC.",
+                          "time_limit_sec":  60
+                      },
+    "card_stream":  [
+                        {
+                            "card_id":  "init_vitals",
+                            "ui_icon":  "heartbeat",
+                            "category":  "Signos Vitales",
+                            "card_text":  "Hallazgo: Ruido en el expediente: TA 120/80, FC 72 lpm, Temp 36.7°C",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_1",
+                            "ui_icon":  "target",
+                            "category":  "Diagnóstico",
+                            "card_text":  "Evidencia: A) Iniciar ART Inmediatamente (Tratamiento Universal): Guías actuales (GPC/WHO): Se recomienda iniciar ART en TODOS los pacientes, sin importar el nivel de CD4.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Navarro: ¡Correcto! El inicio temprano reduce la transmisión y mejora el pronóstico a largo plazo."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_2",
+                            "ui_icon":  "eye",
+                            "category":  "Diagnóstico",
+                            "card_text":  "Hallazgo: Dato anecdótico: B) Diferir inicio hasta CD4 \u003c200 (SIDA): Práctica obsoleta que aumentaba el riesgo de infecciones oportunistas y mortalidad.",
+                            "expected_action":  "discard",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "hoarding",
+                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Reconociste el cambio hacia el tratamiento universal proactivo."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  false,
+                                                 "decision_critical":  false
+                                             }
+                        },
+                        {
+                            "card_id":  "c_3",
+                            "ui_icon":  "pill",
+                            "category":  "Tratamiento",
+                            "card_text":  "Dato de importancia: C) Esquema Preferente (Biktarvy): Bictegravir + Emtricitabina + Tenofovir Alafenamida (B/F/TAF) en tableta única.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Navarro: ¡Excelente! Es el esquema de primera línea por su alta barrera genética y pocos efectos secundarios."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_4",
+                            "ui_icon":  "beaker",
+                            "category":  "Estudio Inicial",
+                            "card_text":  "Evidencia: D) Genotropificación de Resistencia: Realizar antes de iniciar tratamiento para guiar la elección de fármacos.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Navarro: Bien. Conocer la resistencia basal es fundamental en el manejo moderno."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_5",
+                            "ui_icon":  "alert-triangle",
+                            "category":  "Complicación",
+                            "card_text":  "Evidencia: E) Síndrome de Reconstitución Inmune (IRIS): Empeoramiento paradójico de infecciones tras iniciar ART.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Navarro: ¡Exacto! Especialmente peligroso en TB o meningitis criptocócica."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_6",
+                            "ui_icon":  "info",
+                            "category":  "Tratamiento Dual",
+                            "card_text":  "Evidencia: F) Esquema Dovato (DTG/3TC): Dolutegravir + Lamivudina. Opción válida en pacientes sin hepatitis B y carga viral \u003c500,000.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Navarro: Bien. La terapia dual ya es una realidad segura en casos seleccionados."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_7",
+                            "ui_icon":  "shield",
+                            "category":  "Profilaxis",
+                            "card_text":  "Hallazgo: G) TMP-SMX (Primaria): Iniciar en todo paciente con CD4 \u003c200 para prevenir neumonía por Pneumocystis jirovecii.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "Navarro: ¡Vital! El Bactrim salva vidas mientras el ART hace efecto."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_8",
+                            "ui_icon":  "eye",
+                            "category":  "Seguimiento",
+                            "card_text":  "Hallazgo: H) Carga Viral Indetectable: Meta del tratamiento a los 6 meses de inicio (Indetectable = Intransmisible).",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Navarro: ¡Correcto! El lema I=I es pilar de la salud pública actual."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_9",
+                            "ui_icon":  "activity",
+                            "category":  "Efectos Adversos",
+                            "card_text":  "Hallazgo: I) Toxicidad por Efavirenz: Causa sueños vívidos, depresión y mareos (síntomas neuropsiquiátricos).",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Navarro: Muy bien. Por eso ya no es el fármaco de primera elección."
+                                        }
+                        }
+                    ],
+    "enarm_pearl":  {
+                        "title":  "VIH: Inicio de ART",
+                        "text":  "Regla ENARM: Inicio de ART en TODO paciente diagnosticado, sin importar CD4. Esquema preferente: 2 ITNR + 1 INSTI (Dolutegravir).",
+                        "gpc_ref":  "GPC Tratamiento Antirretroviral del Adulto con VIH"
+                    },
+    "boss_fight_triad":  {
+                             "trigger":  "after_cards",
+                             "questions":  [
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Cuál es el recuento de células CD4 por debajo del cual se define la etapa clínica de SIDA?",
+                                                   "options":  [
+                                                                   "Menos de 200 cél/µl",
+                                                                   "Menos de 500 cél/µl",
+                                                                   "Menos de 50 cél/µl"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿Qué fármaco se utiliza de primera línea para la profilaxis de Pneumocystis jirovecii?",
+                                                   "options":  [
+                                                                   "Trimetoprima/Sulfametoxazol",
+                                                                   "Linezolid",
+                                                                   "Clindamicina"
+                                                               ]
+                                               },
+                                               {
+                                                   "correct_index":  0,
+                                                   "question":  "¿A qué familia de antirretrovirales pertenece el Dolutegravir (DTG)?",
+                                                   "options":  [
+                                                                   "Inhibidor de la Integrasa (INSTI)",
+                                                                   "Inhibidor de la Proteasa (IP)",
+                                                                   "Inhibidor de Nucleósidos (ITNR)"
+                                                               ]
+                                               }
+                                           ]
+                         }
 }

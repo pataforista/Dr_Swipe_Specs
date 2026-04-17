@@ -1,178 +1,178 @@
 {
-  "case_id": "PROC_OBS_INFECTION_CORIO_001_011",
-  "version": "v3_swipe_action",
-  "theme_config": "obs",
-  "difficulty": "hard",
-  "patient_intro": {
-    "name": "Marta, 21 años",
-    "arrival_scenario": "Acude por fiebre y dolor uterino a la palpación. El líquido amniótico se observa turbio y con mal olor. Ãštero sensible a la palpación. Diagnóstico clínico de Corioamnionitis (Criterios de Gibbs).",
-    "time_limit_sec": 50
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
-      "card_text": "Hallazgo clínico: Ruido en el expediente: TA 110/70 mmHg, FC 105 lpm, Temp 38.5°C",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de fiebre, R1. El reloj no se detiene."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Definición",
-      "card_text": "Evidencia: A) Corioamnionitis: Infección aguda de las membranas amnio-coriales y del líquido amniótico, generalmente de origen ascendente.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Correcto! Es una de las causas principales de morbi-mortalidad tanto materna como neonatal."
-      }
-    },
-    {
-      "card_id": "c_2",
-      "ui_icon": "thermometer",
-      "category": "Criterios Gibbs",
-      "card_text": "Hallazgo: B) Fiebre Materna: Temperatura oral >=38°C. Es el criterio INDISPENSABLE para el diagnóstico clínico de Gibbs.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Correcto! Sin fiebre no podemos hablar de Gibbs clínico, aunque existan otros signos."
-      }
-    },
-    {
-      "card_id": "c_3",
-      "ui_icon": "heart-pulse",
-      "category": "Criterios Gibbs",
-      "card_text": "Evidencia: C) Taquicardia: FC Fetal sostenida >160 lpm o FC Materna >100 lpm en ausencia de otras causas.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: Bien. La taquicardia fetal suele ser el signo más precoz de infección intramniótica."
-      }
-    },
-    {
-      "card_id": "c_4",
-      "ui_icon": "droplets",
-      "category": "Criterios Gibbs",
-      "card_text": "Evidencia clínica: D) Líquido Fétido: Salida de líquido amniótico con mal olor o aspecto purulento por el canal vaginal.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: Correcto, aunque es un signo tardío y menos frecuente que la taquicardia."
-      }
-    },
-    {
-      "card_id": "c_5",
-      "ui_icon": "activity",
-      "category": "Laboratorio",
-      "card_text": "Evidencia: E) Leucocitosis: Conteo de glóbulos blancos >15,000 cel/mm3 con desviación a la izquierda.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: Bien. Es un criterio de apoyo importante, aunque inespecífico en el trabajo de parto."
-      }
-    },
-    {
-      "card_id": "c_6",
-      "ui_icon": "zap",
-      "category": "Manejo Médico",
-      "card_text": "Hallazgo: F) Antibióticos IV: Esquema de primera línea: Ampicilina 2g IV cada 6h + Gentamicina 3-5mg/kg IV cada 24h.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Castillo: ¡Excelente! Este esquema cubre los patógenos más comunes de la flora vaginal y entérica."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_7",
-      "ui_icon": "refresh-cw",
-      "category": "Interrupción",
-      "card_text": "Evidencia: G) Finalización del Embarazo: Debe realizarse lo antes posible tras el diagnóstico. La vía vaginal es de ELECCIÃ“N.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Castillo: ¡Vital! La corioamnionitis por sí sola NO es indicación de cesárea; de hecho, la cesárea aumenta el riesgo de sepsis materna."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_8",
-      "ui_icon": "shield-off",
-      "category": "Prevención",
-      "card_text": "Dato de importancia: H) RPM Prolongada: Ruptura de membranas >18 horas sin inicio de trabajo de parto aumenta drásticamente el riesgo de infección.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: Bien. Por eso se indica profilaxis antibiótica tras las 12-18 horas de ruptura."
-      }
-    },
-    {
-      "card_id": "c_9",
-      "ui_icon": "user-minus",
-      "category": "Riesgos",
-      "card_text": "Evidencia: I) Tactos Vaginales Múltiples: Realizar más de 5 tactos durante el trabajo de parto es el factor de riesgo modificable más importante.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Buen punto! Limitar los tactos es una medida preventiva clave en obstetricia moderna."
-      }
-    }
-  ],
-  "enarm_pearl": {
-    "title": "Criterios de Gibbs",
-    "text": "Indispensable: Fiebre materna â‰¥38°C + 2 de: Taquicardia Materna, Taquicardia Fetal, Sensibilidad Uterina, Líquido fétido.",
-    "gpc_ref": "GPC Diagnóstico y Tratamiento de Corioamnionitis"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es la conducta inicial prioritaria ante este cuadro clínico?",
-        "options": [
-          "Estabilización hemodinámica (ABC)",
-          "Traslado inmediato sin manejo",
-          "Esperar laboratoriales de control"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el 'estándar de oro' diagnóstico para esta patología?",
-        "options": [
-          "Estudio de imagen específico (TC/USG)",
-          "Solo clínica",
-          "Cualquier paraclínico al azar"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es el objetivo principal del tratamiento instaurado?",
-        "options": [
-          "Reducir morbi-mortalidad y complicaciones",
-          "Solo control de dolor",
-          "Ninguna de las anteriores"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
+    "case_id":  "PROC_OBS_INFECTION_CORIO_001_011",
+    "version":  "v3_swipe_action",
+    "theme_config":  "obs",
+    "difficulty":  "hard",
+    "patient_intro":  {
+                          "name":  "Marta, 21 años",
+                          "arrival_scenario":  "Acude por fiebre y dolor uterino a la palpación. El líquido amniótico se observa turbio y con mal olor. Ãštero sensible a la palpación. Diagnóstico clínico de Corioamnionitis (Criterios de Gibbs).",
+                          "time_limit_sec":  50
+                      },
+    "card_stream":  [
+                        {
+                            "card_id":  "init_vitals",
+                            "ui_icon":  "heartbeat",
+                            "category":  "Signos Vitales",
+                            "card_text":  "Información redundante: TA 110/70 mmHg, FC 105 lpm, Temp 38.5°C",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de fiebre, R1. El reloj no se detiene."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_1",
+                            "ui_icon":  "target",
+                            "category":  "Diagnóstico",
+                            "card_text":  "Hallazgo clínico: A) Corioamnionitis: Infección aguda de las membranas amnio-coriales y del líquido amniótico, generalmente de origen ascendente.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: ¡Correcto! Es una de las causas principales de morbi-mortalidad tanto materna como neonatal."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_2",
+                            "ui_icon":  "thermometer",
+                            "category":  "Criterios Gibbs",
+                            "card_text":  "Hallazgo: B) Fiebre Materna: Temperatura oral \u003e=38°C. Es el criterio INDISPENSABLE para el diagnóstico clínico de Gibbs.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  100,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: ¡Correcto! Sin fiebre no podemos hablar de Gibbs clínico, aunque existan otros signos."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_3",
+                            "ui_icon":  "heart-pulse",
+                            "category":  "Criterios Gibbs",
+                            "card_text":  "Evidencia: C) Taquicardia: FC Fetal sostenida \u003e160 lpm o FC Materna \u003e100 lpm en ausencia de otras causas.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: Bien. La taquicardia fetal suele ser el signo más precoz de infección intramniótica."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_4",
+                            "ui_icon":  "droplets",
+                            "category":  "Criterios Gibbs",
+                            "card_text":  "Hallazgo: D) Líquido Fétido: Salida de líquido amniótico con mal olor o aspecto purulento por el canal vaginal.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: Correcto, aunque es un signo tardío y menos frecuente que la taquicardia."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_5",
+                            "ui_icon":  "activity",
+                            "category":  "Laboratorio",
+                            "card_text":  "Hallazgo: E) Leucocitosis: Conteo de glóbulos blancos \u003e15,000 cel/mm3 con desviación a la izquierda.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: Bien. Es un criterio de apoyo importante, aunque inespecífico en el trabajo de parto."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_6",
+                            "ui_icon":  "zap",
+                            "category":  "Manejo Médico",
+                            "card_text":  "Dato de importancia: F) Antibióticos IV: Esquema de primera línea: Ampicilina 2g IV cada 6h + Gentamicina 3-5mg/kg IV cada 24h.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "Castillo: ¡Excelente! Este esquema cubre los patógenos más comunes de la flora vaginal y entérica."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_7",
+                            "ui_icon":  "refresh-cw",
+                            "category":  "Interrupción",
+                            "card_text":  "Hallazgo: G) Finalización del Embarazo: Debe realizarse lo antes posible tras el diagnóstico. La vía vaginal es de ELECCIÃ“N.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  150,
+                                            "error_type":  "lethal_omission",
+                                            "vazquez_comment":  "Castillo: ¡Vital! La corioamnionitis por sí sola NO es indicación de cesárea; de hecho, la cesárea aumenta el riesgo de sepsis materna."
+                                        },
+                            "safety_flags":  {
+                                                 "lethal_risk":  true,
+                                                 "decision_critical":  true
+                                             }
+                        },
+                        {
+                            "card_id":  "c_8",
+                            "ui_icon":  "shield-off",
+                            "category":  "Prevención",
+                            "card_text":  "Evidencia: H) RPM Prolongada: Ruptura de membranas \u003e18 horas sin inicio de trabajo de parto aumenta drásticamente el riesgo de infección.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: Bien. Por eso se indica profilaxis antibiótica tras las 12-18 horas de ruptura."
+                                        }
+                        },
+                        {
+                            "card_id":  "c_9",
+                            "ui_icon":  "user-minus",
+                            "category":  "Factor de Riesgo",
+                            "card_text":  "Hallazgo: I) Tactos Vaginales Múltiples: Realizar más de 5 tactos durante el trabajo de parto es el factor de riesgo modificable más importante.",
+                            "expected_action":  "keep",
+                            "scoring":  {
+                                            "points":  50,
+                                            "error_type":  "omission",
+                                            "vazquez_comment":  "Castillo: ¡Buen punto! Limitar los tactos es una medida preventiva clave en obstetricia moderna."
+                                        }
+                        }
+                    ],
+    "enarm_pearl":  {
+                        "title":  "Corioamnionitis: Gibbs",
+                        "text":  "Indispensable: Fiebre \u003e=38°C. Tx: Ampicilina + Gentamicina. Conducta: Inducción (Parto vaginal preferible).",
+                        "gpc_ref":  "GPC Diagnóstico y Manejo de la Infección Intramniótica"
+                    },
+    "boss_fight_triad":  {
+                             "trigger":  "after_cards",
+                             "questions":  [
+                                               {
+                                                   "question":  "¿Cuál es el signo clínico INDISPENSABLE para integrar el diagnóstico de Corioamnionitis (Criterios de Gibbs)?",
+                                                   "options":  [
+                                                                   "Fiebre materna \u003e=38.0°C",
+                                                                   "Taquicardia Fetal \u003e160 lpm",
+                                                                   "Líquido amniótico fétido"
+                                                               ],
+                                                   "correct_index":  0
+                                               },
+                                               {
+                                                   "question":  "¿Cuál es el esquema antibiótico de primera elección recomendado por la GPC para el manejo de la corioamnionitis?",
+                                                   "options":  [
+                                                                   "Ampicilina + Gentamicina",
+                                                                   "Ceftriaxona + Metronidazol",
+                                                                   "Clindamicina + Amikacina"
+                                                               ],
+                                                   "correct_index":  0
+                                               },
+                                               {
+                                                   "question":  "¿Cuál es la vía de interrupción del embarazo preferida en una paciente con Corioamnionitis, si no existe contraindicación obstétrica?",
+                                                   "options":  [
+                                                                   "Vía Vaginal (Inducción/Conducción)",
+                                                                   "Cesárea de Urgencia",
+                                                                   "Histerectomía en bloque"
+                                                               ],
+                                                   "correct_index":  0
+                                               }
+                                           ]
+                         }
 }
