@@ -50,5 +50,17 @@ export const dataLoader = {
     const finalId = filtered[Math.floor(Math.random() * filtered.length)];
 
     return await dataLoader.loadCase(finalId);
+  },
+
+  /**
+   * Load a specific case by its exact case_id (used for session resumption).
+   * The caseId stored in sessionProgress maps directly to a filename via the index.
+   */
+  loadCaseById: async (caseId: string): Promise<ClinicalCase> => {
+    // The case_id in JSON files uses the full stem (e.g. "PROC_CARD_IAM_001_001")
+    // loadCase prefixes with "CASE_" when building the URL, so we just pass the ID as-is.
+    // Strip the "CASE_" prefix if it somehow got persisted in sessionProgress.
+    const sanitizedId = caseId.replace(/^CASE_/i, '');
+    return await dataLoader.loadCase(sanitizedId);
   }
 };

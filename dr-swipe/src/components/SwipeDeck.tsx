@@ -3,6 +3,7 @@ import { motion, useMotionValue, useTransform, useAnimation, AnimatePresence } f
 import type { Card } from '../types/game';
 import { useGameAudio } from '../hooks/useGameAudio';
 import { triggerHaptic } from '../utils/hapticFeedback';
+import { LIFELINE_COST } from '../store/useCodexStore';
 
 interface SwipeDeckProps {
   cards: Card[];
@@ -157,11 +158,13 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
             className={`w-14 sm:w-16 h-14 sm:h-16 rounded-full border shadow-lg flex items-center justify-center text-xl sm:text-2xl transition-all ${
               lifelineActive ? 'bg-secondary/20 border-secondary text-white sticker-glow' : 'bg-white border-white/5 text-secondary hover:bg-white/5 hover:border-white/20 disabled:opacity-20'
             }`}
-             title="Escanear (25 🪙)"
+              title={`Escanear Carta (Cuesta ${LIFELINE_COST} 🪙)`}
           >
             {lifelineActive ? '✨' : '🧬'}
           </motion.button>
-          <span className={`text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] ${lifelineActive ? 'text-secondary' : 'text-slate-500'}`}>{lifelineActive ? 'ACTIVO' : 'ESCANEO'}</span>
+          <span className={`text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] ${lifelineActive ? 'text-secondary' : 'text-slate-500'}`}>
+            {lifelineActive ? 'ACTIVO' : `${LIFELINE_COST} 🪙`}
+          </span>
         </div>
 
         {/* Keep */}

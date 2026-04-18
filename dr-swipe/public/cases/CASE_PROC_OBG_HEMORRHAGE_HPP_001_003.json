@@ -1,178 +1,183 @@
 {
-    "case_id":  "PROC_OBG_HEMORRHAGE_HPP_001_003",
-    "version":  "v3_swipe_action",
-    "theme_config":  "obg",
-    "difficulty":  "hard",
-    "patient_intro":  {
-                          "name":  "Sra. Patricia, 25 años",
-                          "arrival_scenario":  "Postcesárea de urgencia por placenta previa. A los 30 minutos del cierre se detecta sangrado persistente por drenaje. El útero está bien contraído pero la paciente presenta signos de choque. Se sospecha retención de restos placentarios.",
-                          "time_limit_sec":  50
-                      },
-    "card_stream":  [
-                        {
-                            "card_id":  "init_vitals",
-                            "ui_icon":  "heartbeat",
-                            "category":  "vitals",
-                            "card_text":  "TA 85/50 mmHg, FC 125 lpm (Datos de Choque Hipovolémico), SatO2 94%.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Perdiendo el tiempo con tonterías... concéntrate en lo que importa."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_1",
-                            "ui_icon":  "target",
-                            "category":  "Diagnóstico",
-                            "card_text":  "A) Atonía Uterina: Causa número uno de hemorragia posparto (70%). Fallo del útero para contraerse eficazmente.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_2",
-                            "ui_icon":  "zap",
-                            "category":  "Manejo Inicial",
-                            "card_text":  "B) Masaje Uterino Bimanual: Maniobra inmediata para estimular la contracción mecánica del miometrio.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "lethal_omission",
-                                            "vazquez_comment":  "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas.",
-                                            "safety_flags":  {
-                                                                 "lethal_risk":  true,
-                                                                 "decision_critical":  true
-                                                             }
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_004",
-                            "ui_icon":  "🩸",
-                            "category":  "labs",
-                            "card_text":  "Proteinuria en tira reactiva (++) en muestra al azar.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_005",
-                            "ui_icon":  "🩸",
-                            "category":  "labs",
-                            "card_text":  "VDRL no reactivo (reporte de hace 2 meses).",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_006",
-                            "ui_icon":  "🩺",
-                            "category":  "vitals",
-                            "card_text":  "TA 145/95 mmHg. Cifras tensionales elevadas en dos tomas.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_007",
-                            "ui_icon":  "📄",
-                            "category":  "notes",
-                            "card_text":  "Refiere consumo de ácido fólico antes de la concepción de forma irregular.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_008",
-                            "ui_icon":  "🩸",
-                            "category":  "labs",
-                            "card_text":  "Proteinuria en tira reactiva (++) en muestra al azar.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_009",
-                            "ui_icon":  "🩸",
-                            "category":  "labs",
-                            "card_text":  "VDRL no reactivo (reporte de hace 2 meses).",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_010",
-                            "ui_icon":  "🩺",
-                            "category":  "vitals",
-                            "card_text":  "TA 145/95 mmHg. Cifras tensionales elevadas en dos tomas.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-                                        }
-                        }
-                    ],
-    "enarm_pearl":  {
-                        "title":  "HPP: El Minuto de Oro",
-                        "text":  "Definición: \u003e500ml (Vaginal) o \u003e1000ml (Cesárea). Causa #1: Atonía. Tx: Masaje + Oxitocina. 4Ts: Tonus, Trauma, Tissue, Thrombin.",
-                        "gpc_ref":  "GPC Prevención y Manejo de la Hemorragia Posparto"
-                    },
-    "boss_fight_triad":  {
-                             "trigger":  "after_cards",
-                             "questions":  [
-                                               {
-                                                   "question":  "¿Cuál es la causa más frecuente de hemorragia posparto inmediata?",
-                                                   "options":  [
-                                                                   "Atonía uterina",
-                                                                   "Retención de restos placentarios",
-                                                                   "Desgarros del canal del parto"
-                                                               ],
-                                                   "correct_index":  0
-                                               },
-                                               {
-                                                   "question":  "¿Cuál es la maniobra inicial prioritaria ante la sospecha de atonía uterina?",
-                                                   "options":  [
-                                                                   "Masaje uterino bimanual",
-                                                                   "Histerectomía de urgencia",
-                                                                   "Legrado uterino instrumental"
-                                                               ],
-                                                   "correct_index":  0
-                                               },
-                                               {
-                                                   "question":  "¿Qué fármaco uterotónico está CONTRAINDICADO en pacientes con hipertensión arterial?",
-                                                   "options":  [
-                                                                   "Ergonovina",
-                                                                   "Oxitocina",
-                                                                   "Misoprostol"
-                                                               ],
-                                                   "correct_index":  0
-                                               }
-                                           ]
-                         }
+    "case_id": "PROC_OBG_HEMORRHÁGE_HPP_001_003",
+    "version": "v3_swipe_action",
+    "theme_config": "obg",
+    "difficulty": "hard",
+    "patient_intro": {
+        "name": "Sra. Patricia, 25 años",
+        "arrival_scenario": "Postcesárea de urgencia por placenta previa. A los 30 minutos del cierre se detecta sangrado persistente por drenaje. El útero está bien contraído pero la paciente presenta signos de choque. Se sospecha retención de restos placentarios.",
+        "time_limit_sec": 50
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA 85/50 mmHg, FC 125 lpm (Datos de Choque Hipovolémico), SatO2 94%.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Perdiendo el tiempo con tonterías... concéntrate en lo que importa."
+            }
+        },
+        {
+            "card_id": "pad_006",
+            "ui_icon": "🩺",
+            "category": "vitals",
+            "card_text": "TA 145/95 mmHg. Cifras tensionales elevadas en dos tomas.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "A) Atonía Uterina: Causa número uno de hemorragia posparto (70%). Fallo del útero para contraerse eficazmente.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "zap",
+            "category": "Manejo Inicial",
+            "card_text": "B) Masaje Uterino Bimanual: Maniobra inmediata para estimular la contracción mecánica del miometrio.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas.",
+                "safety_flags": {
+                    "lethal_risk": true,
+                    "decision_critical": true
+                }
+            }
+        },
+        {
+            "card_id": "pad_004",
+            "ui_icon": "🩸",
+            "category": "labs",
+            "card_text": "Proteinuria en tira reactiva (++) en muestra al azar.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
+            }
+        },
+        {
+            "card_id": "pad_005",
+            "ui_icon": "🩸",
+            "category": "labs",
+            "card_text": "VDRL no reactivo (reporte de hace 2 meses).",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
+            }
+        },
+        {
+            "card_id": "pad_007",
+            "ui_icon": "📄",
+            "category": "notes",
+            "card_text": "Refiere consumo de ácido fólico antes de la concepción de forma irregular.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
+            }
+        },
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA 90/60 (tendencia al choque), FC 110 lpm, Temp 36.8°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "ev_010",
+            "ui_icon": "📄",
+            "category": "timeline",
+            "card_text": "Refiere dolor torácico leve hace 3 días que cedió espontáneamente en 10 minutos. Sin recurrencia.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Perdiendo el tiempo con tonterías... concéntrate en lo que importa."
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "Diagnóstico Diferencial",
+            "card_text": "Información redundante: B) Atresia Duodenal: Vómitos biliares precoces (primeras 24-48h). Radiografía con signo de la 'doble burbuja'. Frecuente en Síndrome de Down.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! El vómito en la estenosis de píloro es característicamente NO biliar."
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "HPP: El Minuto de Oro",
+        "text": "Definición: >500ml (Vaginal) o >1000ml (Cesárea). Causa #1: Atonía. Tx: Masaje + Oxitocina. 4Ts: Tonus, Trauma, Tissue, Thrombin.",
+        "gpc_ref": "GPC Prevención y Manejo de la Hemorragia Posparto"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "question": "¿Cuál es la maniobra inicial prioritaria ante la sospecha de atonía uterina?",
+                "options": [
+                    "Masaje uterino bimanual",
+                    "Histerectomía de urgencia",
+                    "Legrado uterino instrumental"
+                ],
+                "correct_index": 0
+            },
+            {
+                "question": "¿Qué fármaco uterotónico está CONTRÁINDICÁDO en pacientes con hipertensión arterial?",
+                "options": [
+                    "Ergonovina",
+                    "Misoprostol",
+                    "Oxitocina"
+                ],
+                "correct_index": 0
+            },
+            {
+                "question": "¿Cuál es la causa más frecuente de hemorragia posparto inmediata?",
+                "options": [
+                    "Desgarros del canal del parto",
+                    "Retención de restos placentarios",
+                    "Atonía uterina"
+                ],
+                "correct_index": 2
+            }
+        ]
+    }
 }

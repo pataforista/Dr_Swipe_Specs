@@ -1,0 +1,146 @@
+[
+  {
+    "filename": "CASE_PROC_GYN_INFECTION_VAGINITIS_001_001.json",
+    "case_id": "PROC_GYN_INFECTION_VAGINITIS_001_001",
+    "cards_with_issues": [
+      {
+        "card_index": 1,
+        "card_id": "c_1",
+        "text": "A) Candidiasis Vaginal: Flujo grumoso + PH <4.5 + Prurito. Tx: Azoles (Miconazol/Fluconazol).",
+        "action": "discard",
+        "comment": "Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.",
+        "issues": [
+          "Action 'discard' with 'match' in comment: 'Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.'"
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "CASE_PROC_GYN_INFECTION_VAGINITIS_001_003.json",
+    "case_id": "PROC_GYN_INFECTION_VAGINITIS_001_003",
+    "cards_with_issues": [
+      {
+        "card_index": 1,
+        "card_id": "c_1",
+        "text": "A) Candidiasis Vaginal: Flujo grumoso + PH <4.5 + Prurito. Tx: Azoles (Miconazol/Fluconazol).",
+        "action": "discard",
+        "comment": "Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.",
+        "issues": [
+          "Action 'discard' with 'match' in comment: 'Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.'"
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "CASE_PROC_GYN_INFECTION_VAGINITIS_001_005.json",
+    "case_id": "PROC_GYN_INFECTION_VAGINITIS_001_005",
+    "cards_with_issues": [
+      {
+        "card_index": 1,
+        "card_id": "c_1",
+        "text": "A) Candidiasis Vaginal: Flujo grumoso + PH <4.5 + Prurito. Tx: Azoles (Miconazol/Fluconazol).",
+        "action": "discard",
+        "comment": "Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.",
+        "issues": [
+          "Action 'discard' with 'match' in comment: 'Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.'"
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "CASE_PROC_GYN_INFECTION_VAGINITIS_001_010.json",
+    "case_id": "PROC_GYN_INFECTION_VAGINITIS_001_010",
+    "cards_with_issues": [
+      {
+        "card_index": 1,
+        "card_id": "c_1",
+        "text": "A) Candidiasis Vaginal: Flujo grumoso + PH <4.5 + Prurito. Tx: Azoles (Miconazol/Fluconazol).",
+        "action": "discard",
+        "comment": "Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.",
+        "issues": [
+          "Action 'discard' with 'match' in comment: 'Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.'"
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "CASE_PROC_GYN_INFECTION_VAGINITIS_001_011.json",
+    "case_id": "PROC_GYN_INFECTION_VAGINITIS_001_011",
+    "cards_with_issues": [
+      {
+        "card_index": 1,
+        "card_id": "c_1",
+        "text": "A) Candidiasis Vaginal: Flujo grumoso + PH <4.5 + Prurito. Tx: Azoles (Miconazol/Fluconazol).",
+        "action": "discard",
+        "comment": "Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.",
+        "issues": [
+          "Action 'discard' with 'match' in comment: 'Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.'"
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "CASE_PROC_GYN_INFECTION_VAGINITIS_001_012.json",
+    "case_id": "PROC_GYN_INFECTION_VAGINITIS_001_012",
+    "cards_with_issues": [
+      {
+        "card_index": 1,
+        "card_id": "c_1",
+        "text": "A) Candidiasis Vaginal: Flujo grumoso + PH <4.5 + Prurito. Tx: Azoles (Miconazol/Fluconazol).",
+        "action": "discard",
+        "comment": "Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.",
+        "issues": [
+          "Action 'discard' with 'match' in comment: 'Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.'"
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "CASE_PROC_GYN_INFECTION_VAGINITIS_001_013.json",
+    "case_id": "PROC_GYN_INFECTION_VAGINITIS_001_013",
+    "cards_with_issues": [
+      {
+        "card_index": 1,
+        "card_id": "c_1",
+        "text": "A) Candidiasis Vaginal: Flujo grumoso + PH <4.5 + Prurito. Tx: Azoles (Miconazol/Fluconazol).",
+        "action": "discard",
+        "comment": "Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.",
+        "issues": [
+          "Action 'discard' with 'match' in comment: 'Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.'"
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "CASE_PROC_GYN_INFECTION_VAGINITIS_001_014.json",
+    "case_id": "PROC_GYN_INFECTION_VAGINITIS_001_014",
+    "cards_with_issues": [
+      {
+        "card_index": 1,
+        "card_id": "c_1",
+        "text": "A) Candidiasis Vaginal: Flujo grumoso + PH <4.5 + Prurito. Tx: Azoles (Miconazol/Fluconazol).",
+        "action": "discard",
+        "comment": "Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.",
+        "issues": [
+          "Action 'discard' with 'match' in comment: 'Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.'"
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "CASE_PROC_GYN_INFECTION_VAGINITIS_001_015.json",
+    "case_id": "PROC_GYN_INFECTION_VAGINITIS_001_015",
+    "cards_with_issues": [
+      {
+        "card_index": 1,
+        "card_id": "c_1",
+        "text": "A) Candidiasis Vaginal: Flujo grumoso + PH <4.5 + Prurito. Tx: Azoles (Miconazol/Fluconazol).",
+        "action": "discard",
+        "comment": "Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.",
+        "issues": [
+          "Action 'discard' with 'match' in comment: 'Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.'"
+        ]
+      }
+    ]
+  }
+]

@@ -1,178 +1,178 @@
 {
-    "case_id":  "PROC_ENDO_DM2_MANAGEMENT_001_014",
-    "version":  "v3_swipe_action",
-    "theme_config":  "endo",
-    "difficulty":  "standard",
-    "patient_intro":  {
-                          "name":  "María, 52 años",
-                          "arrival_scenario":  "Acude a control. Presenta antecedente de infarto previo y tiene IMC de 32. Su tratamiento actual es insuficiente. TFG reportada en 75 mL/min/1.73m². El paciente desea un fármaco que le ayude a bajar de peso y proteja su corazón.",
-                          "time_limit_sec":  60
-                      },
-    "card_stream":  [
-                        {
-                            "card_id":  "init_vitals",
-                            "ui_icon":  "heartbeat",
-                            "category":  "vitals",
-                            "card_text":  "TA 130/80 mmHg, FC 72 lpm, Temp 36.5°C",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_1",
-                            "ui_icon":  "target",
-                            "category":  "labs",
-                            "card_text":  "A) Agregar Agonista GLP-1 (Liraglutida/Semaglutida): Indicado en DM2 con riesgo cardiovascular establecido y obesidad. Excelente control de HbA1c.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "¡Correcto! Por su antecedente de IAM (prevención secundaria), los GLP-1 son la elección actual sobre las sulfonilureas para protección CV."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_2",
-                            "ui_icon":  "eye",
-                            "category":  "labs",
-                            "card_text":  "B) Agregar Sulfonilurea (Glibenclamida): Eficaz para bajar glucosa, pero causa ganancia de peso y riesgo alto de hipoglucemia. No tiene beneficio CV.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Mendoza: ¡Bien! Evitaste el riesgo de hipoglucemia y la ganancia de peso innecesaria."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  false
-                                             }
-                        },
-                        {
-                            "card_id":  "pad_004",
-                            "ui_icon":  "🩺",
-                            "category":  "vitals",
-                            "card_text":  "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_005",
-                            "ui_icon":  "☢️",
-                            "category":  "imaging",
-                            "card_text":  "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_006",
-                            "ui_icon":  "🩺",
-                            "category":  "vitals",
-                            "card_text":  "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_007",
-                            "ui_icon":  "🧪",
-                            "category":  "labs",
-                            "card_text":  "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_008",
-                            "ui_icon":  "🩺",
-                            "category":  "vitals",
-                            "card_text":  "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_009",
-                            "ui_icon":  "📄",
-                            "category":  "notes",
-                            "card_text":  "Refiere alergia al polen y al polvo durante la primavera.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_010",
-                            "ui_icon":  "🩺",
-                            "category":  "vitals",
-                            "card_text":  "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-                                        }
-                        }
-                    ],
-    "enarm_pearl":  {
-                        "title":  "Algoritmo ADA: Cardio-Nefroprotección",
-                        "text":  "Si hay ECV establecida → GLP-1 o iSGLT2. Si hay Falla Cardíaca o ERC (Nefropatía) → iSGLT2 (Empagliflozina).",
-                        "gpc_ref":  "ADA Standards of Care in Diabetes"
-                    },
-    "boss_fight_triad":  {
-                             "trigger":  "after_cards",
-                             "questions":  [
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Cuál es el fármaco de elección en pacientes con DM2 y enfermedad cardiovascular establecida (prevención secundaria)?",
-                                                   "options":  [
-                                                                   "Agonistas GLP-1",
-                                                                   "Sulfonilureas",
-                                                                   "Metformina sola"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Cuál es el principal riesgo asociado al uso de sulfonilureas como la glibenclamida?",
-                                                   "options":  [
-                                                                   "Hipoglucemia y ganancia de peso",
-                                                                   "Cetoacidosis diabética",
-                                                                   "Insuficiencia renal aguda"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "En un paciente con DM2 e Insuficiencia Cardíaca, ¿qué grupo farmacológico aporta mayor beneficio de cardio-protección?",
-                                                   "options":  [
-                                                                   "Inhibidores de SGLT2 (iSGLT2)",
-                                                                   "Agonistas GLP-1",
-                                                                   "Inhibidores de DPP-4"
-                                                               ]
-                                               }
-                                           ]
-                         }
+    "case_id": "PROC_ENDO_DM2_MÁNÁGEMENT_001_014",
+    "version": "v3_swipe_action",
+    "theme_config": "endo",
+    "difficulty": "standard",
+    "patient_intro": {
+        "name": "María, 52 años",
+        "arrival_scenario": "Acude a control. Presenta antecedente de infarto previo y tiene IMC de 32. Su tratamiento actual es insuficiente. TFG reportada en 75 mL/min/1.73m². El paciente desea un fármaco que le ayude a bajar de peso y proteja su corazón.",
+        "time_limit_sec": 60
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA 130/80 mmHg, FC 72 lpm, Temp 36.5°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "pad_004",
+            "ui_icon": "🩺",
+            "category": "vitals",
+            "card_text": "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "labs",
+            "card_text": "A) Agregar Agonista GLP-1 (Liraglutida/Semaglutida): Indicado en DM2 con riesgo cardiovascular establecido y obesidad. Excelente control de HbÁ1c.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "¡Correcto! Por su antecedente de IÁM (prevención secundaria), los GLP-1 son la elección actual sobre las sulfonilureas para protección CV."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "labs",
+            "card_text": "B) Agregar Sulfonilurea (Glibenclamida): Eficaz para bajar glucosa, pero causa ganancia de peso y riesgo alto de hipoglucemia. No tiene beneficio CV.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: ¡Bien! Evitaste el riesgo de hipoglucemia y la ganancia de peso innecesaria."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "pad_005",
+            "ui_icon": "☢️",
+            "category": "imaging",
+            "card_text": "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
+            }
+        },
+        {
+            "card_id": "pad_007",
+            "ui_icon": "🧪",
+            "category": "labs",
+            "card_text": "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
+            }
+        },
+        {
+            "card_id": "pad_009",
+            "ui_icon": "📄",
+            "category": "notes",
+            "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
+            }
+        },
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "FC 120 lpm, FR 28 rpm, Temp 36.7°C. (Signos estables para la edad).",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Paciente estable pero pálido. Procedamos con el diagnóstico."
+            }
+        },
+        {
+            "card_id": "c_10",
+            "ui_icon": "slash",
+            "category": "meds",
+            "card_text": "J) Vacuna contra Parvovirus B19: Inmunización universal recomendada en la Cartilla Nacional de Salud de México.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: ¡No! Áún no existe una vacuna comercial disponible para el Parvovirus B19."
+            }
+        },
+        {
+            "card_id": "c_9",
+            "ui_icon": "slash",
+            "category": "Manejo",
+            "card_text": "Dato de importancia: Dato anecdotico: I) Jarabes para la Tos (Antitusigenos): Recomendados en preescolares para mejorar el descanso nocturno durante la NÁC.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: ¡No! Los antitusigenos estan contraindicados en ninos pequenos; pueden inhibir la eliminacion de secreciones."
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Algoritmo ÁDÁ: Cardio-Nefroprotección",
+        "text": "Si hay ECV establecida → GLP-1 o iSGLT2. Si hay Falla Cardíaca o ERC (Nefropatía) → iSGLT2 (Empagliflozina).",
+        "gpc_ref": "ÁDA Standards of Care in Diabetes"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "correct_index": 1,
+                "question": "En un paciente con DM2 e Insuficiencia Cardíaca, ¿qué grupo farmacológico aporta mayor beneficio de cardio-protección?",
+                "options": [
+                    "Inhibidores de DPP-4",
+                    "Inhibidores de SGLT2 (iSGLT2)",
+                    "Agonistas GLP-1"
+                ]
+            },
+            {
+                "correct_index": 2,
+                "question": "¿Cuál es el principal riesgo asociado al uso de sulfonilureas como la glibenclamida?",
+                "options": [
+                    "Cetoacidosis diabética",
+                    "Insuficiencia renal aguda",
+                    "Hipoglucemia y ganancia de peso"
+                ]
+            },
+            {
+                "correct_index": 1,
+                "question": "¿Cuál es el fármaco de elección en pacientes con DM2 y enfermedad cardiovascular establecida (prevención secundaria)?",
+                "options": [
+                    "Sulfonilureas",
+                    "Agonistas GLP-1",
+                    "Metformina sola"
+                ]
+            }
+        ]
+    }
 }

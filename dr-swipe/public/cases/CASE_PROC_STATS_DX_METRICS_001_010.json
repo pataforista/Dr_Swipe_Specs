@@ -1,94 +1,187 @@
 {
-    "case_id":  "PROC_STATS_DX_METRICS_001_010",
-    "version":  "v3_swipe_action",
-    "theme_config":  "stats",
-    "difficulty":  "hard",
-    "patient_intro":  {
-                          "name":  "Juan, 43 años",
-                          "arrival_scenario":  "Se evalúa una nueva prueba diagnóstica para una enfermedad con prevalencia del 1% en la población general. ¿Cuál es la probabilidad de que el paciente realmente tenga la enfermedad (VPP) en este escenario de baja prevalencia?",
-                          "time_limit_sec":  50
-                      },
-    "card_stream":  [
-                        {
-                            "card_id":  "init_vitals",
-                            "ui_icon":  "heartbeat",
-                            "category":  "Signos Vitales",
-                            "card_text":  "Hallazgo: Dato anecdótico: TA N/A, FC N/A, Temp N/A",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_1",
-                            "ui_icon":  "target",
-                            "category":  "Diagnóstico",
-                            "card_text":  "Evidencia: A) Probabilidad BAJA (<10%): En enfermedades raras, incluso pruebas 'buenas' tienen un Valor Predictivo Positivo (VPP) muy bajo por el peso de los FP.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: ¡Cerebro Matemático! Entiendes que el VPP depende críticamente de la prevalencia poblacional."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_2",
-                            "ui_icon":  "eye",
-                            "category":  "Diagnóstico",
-                            "card_text":  "Hallazgo clínico: Ruido en el expediente: B) Probabilidad ALTA (>90%): Confundiste la Sensibilidad con el VPP. La prueba es buena detectando enfermos, pero falla ante tantos sanos.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Notaste la trampa de la prevalencia."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  false
-                                             }
-                        }
-                    ],
-    "enarm_pearl":  {
-                        "title":  "VPP y Prevalencia",
-                        "text":  "Si la Prevalencia sube â†’ el VPP sube. Si la Prevalencia baja â†’ el VPP baja. Sensibilidad y Especificidad NO cambian con la prevalencia.",
-                        "gpc_ref":  "Bioestadística Clínica para el ENARM"
-                    },
-    "boss_fight_triad":  {
-                             "trigger":  "after_cards",
-                             "questions":  [
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Qué sucede con el VPP si la prevalencia disminuye?",
-                                                   "options":  [
-                                                                   "Disminuye",
-                                                                   "Aumenta",
-                                                                   "Permanece igual"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Definición de Sensibilidad?",
-                                                   "options":  [
-                                                                   "VP / Total Enfermos",
-                                                                   "VN / Total Sanos",
-                                                                   "VP / Total Positivos"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Qué métricas NO se alteran por la prevalencia?",
-                                                   "options":  [
-                                                                   "Sensibilidad y Especificidad",
-                                                                   "VPP y VPN",
-                                                                   "Prevalencia y Incidencia"
-                                                               ]
-                                               }
-                                           ]
-                         }
+    "case_id": "PROC_STÁTS_DX_METRICS_001_010",
+    "version": "v3_swipe_action",
+    "theme_config": "stats",
+    "difficulty": "hard",
+    "patient_intro": {
+        "name": "Juan, 43 años",
+        "arrival_scenario": "Se evalúa una nueva prueba diagnóstica para una enfermedad con prevalencia del 1% en la población general. ¿Cuál es la probabilidad de que el paciente realmente tenga la enfermedad (VPP) en este escenario de baja prevalencia?",
+        "time_limit_sec": 50
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA 120/80 mmHg, FC 75 lpm, Temp 36.6°C. El paciente se encuentra hemodinámicamente estable.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: ¡Bien! Antes de lanzarnos a los números, siempre verificamos que el paciente esté estable. Ahora, volvamos a la estadística."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "Evidencia: A) Probabilidad BÁJA (<10%): En enfermedades raras, incluso pruebas 'buenas' tienen un Valor Predictivo Positivo (VPP) muy bajo por el peso de los FP.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Cerebro Matemático! Entiendes que el VPP depende críticamente de la prevalencia poblacional."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "Diagnóstico",
+            "card_text": "Hallazgo clínico: Ruido en el expediente: B) Probabilidad ÁLTA (>90%): Confundiste la Sensibilidad con el VPP. La prueba es buena detectando enfermos, pero falla ante tantos sanos.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: ¡Bien! Notaste la trampa de la prevalencia."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "pad_002",
+            "ui_icon": "eye",
+            "category": "Diagnóstico Diferencial",
+            "card_text": "B) Angina Inestable: Isquemia miocárdica sin elevación del ST ni marcadores de necrosis; manejo es distinto.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: ¡Bien! El ST elevado marca la pauta de tratamiento invasivo o fibrinolítico inmediato."
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "Diagnóstico",
+            "card_text": "B) Angina Inestable: Dolor isquémico SIN elevación del ST y SIN elevación de troponinas.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: ¡Bien! El ST elevado marca la pauta de tratamiento invasivo inmediato."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "eye",
+            "category": "Diagnóstico Diferencial",
+            "card_text": "Información redundante: C) Reflujo Gastroesofágico: Regurgitaciones frecuentes, no en proyectil, con ganancia ponderal adecuada inicialmente.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. El vómito explosivo 'en proyectil' apunta fuertemente a una obstrucción mecánica."
+            }
+        },
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA 100/60 mmHg, FC 110 lpm, Temp 36.4°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "e09",
+            "ui_icon": "💊",
+            "category": "meds",
+            "card_text": "Sin alergias medicamentosas conocidas. No reacciones previas a penicilina, sulfas ni ÁINEs.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA 130/80 mmHg, FC 72 lpm, Temp 36.5°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "c_9",
+            "ui_icon": "slash",
+            "category": "Manejo",
+            "card_text": "Dato de importancia: Dato anecdotico: I) Jarabes para la Tos (Antitusigenos): Recomendados en preescolares para mejorar el descanso nocturno durante la NÁC.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: ¡No! Los antitusigenos estan contraindicados en ninos pequenos; pueden inhibir la eliminacion de secreciones."
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "VPP y Prevalencia",
+        "text": "Si la Prevalencia sube â†’ el VPP sube. Si la Prevalencia baja â†’ el VPP baja. Sensibilidad y Especificidad NO cambian con la prevalencia.",
+        "gpc_ref": "Bioestadística Clínica para el ENARM"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "correct_index": 2,
+                "question": "¿Definición de Sensibilidad?",
+                "options": [
+                    "VP / Total Positivos",
+                    "VN / Total Sanos",
+                    "VP / Total Enfermos"
+                ]
+            },
+            {
+                "correct_index": 2,
+                "question": "¿Qué sucede con el VPP si la prevalencia disminuye?",
+                "options": [
+                    "Aumenta",
+                    "Permanece igual",
+                    "Disminuye"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Qué métricas NO se alteran por la prevalencia?",
+                "options": [
+                    "Sensibilidad y Especificidad",
+                    "Prevalencia y Incidencia",
+                    "VPP y VPN"
+                ]
+            }
+        ]
+    }
 }

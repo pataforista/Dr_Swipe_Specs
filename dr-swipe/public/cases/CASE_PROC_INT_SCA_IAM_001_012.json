@@ -1,143 +1,183 @@
 {
-    "case_id":  "PROC_INT_SCA_IAM_001_012",
-    "version":  "v3_swipe_action",
-    "theme_config":  "int",
-    "difficulty":  "hard",
-    "patient_intro":  {
-                          "name":  "Laura, 45 años",
-                          "arrival_scenario":  "Paciente de 68 años con dolor torácico opresivo de gran intensidad, irradiado a mandíbula y brazo izquierdo. Refiere que el dolor inició hace 2 horas y no cede con el reposo. Se observa elevación de Biomarcadores (Troponinas).",
-                          "time_limit_sec":  50
-                      },
-    "card_stream":  [
-                        {
-                            "card_id":  "init_vitals",
-                            "ui_icon":  "heartbeat",
-                            "category":  "vitals",
-                            "card_text":  "TA 100/60 mmHg, FC 110 lpm, Temp 36.4°C",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Mendoza: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_1",
-                            "ui_icon":  "target",
-                            "category":  "Diagnóstico",
-                            "card_text":  "A) IAMCEST de Cara Anterior: Elevación del ST en precordiales (V1-V4). Requiere reperfusión inmediata (ICP o Fibrinólisis).",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "lethal_omission",
-                                            "vazquez_comment":  "Mendoza: ¡Correcto! El ST elevado en V1-V4 indica compromiso de la Descendente Anterior. El tiempo es músculo."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  true,
-                                                 "decision_critical":  true,
-                                                 "lethal_if_discarded":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_2",
-                            "ui_icon":  "eye",
-                            "category":  "meds",
-                            "card_text":  "B) Angina Inestable: Dolor isquémico sin elevación del ST ni biomarcadores positivos.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Mendoza: ¡Bien! Los biomarcadores y el ECG confirmaron el infarto."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  false
-                                             }
-                        },
-                        {
-                            "card_id":  "pad_005",
-                            "ui_icon":  "📄",
-                            "category":  "notes",
-                            "card_text":  "Refiere alergia al polen y al polvo durante la primavera.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_006",
-                            "ui_icon":  "📄",
-                            "category":  "notes",
-                            "card_text":  "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_007",
-                            "ui_icon":  "🧪",
-                            "category":  "labs",
-                            "card_text":  "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_009",
-                            "ui_icon":  "📄",
-                            "category":  "notes",
-                            "card_text":  "Refiere alergia al polen y al polvo durante la primavera.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-                                        }
-                        }
-                    ],
-    "enarm_pearl":  {
-                        "title":  "Ventana Reperfusión SCA",
-                        "text":  "Meta ICP primaria: \u003c90 min (puerta-balón). Meta Fibrinólisis: \u003c30 min (puerta-aguja) si no hay ICP disponible.",
-                        "gpc_ref":  "GPC Diagnóstico y Tratamiento del Infarto Agudo de Miocardio"
-                    },
-    "boss_fight_triad":  {
-                             "trigger":  "after_cards",
-                             "questions":  [
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Cuál es el tiempo meta establecido por las guías para la realización e interpretación del ECG?",
-                                                   "options":  [
-                                                                   "Menos de 10 minutos",
-                                                                   "Menos de 30 minutos",
-                                                                   "A la brevedad posible sin tiempo límite"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Cuál es la estrategia de reperfusión de elección si el hospital cuenta con sala de hemodinamia?",
-                                                   "options":  [
-                                                                   "Intervención Coronaria Percutánea (ICP) primaria",
-                                                                   "Fibrinólisis farmacológica",
-                                                                   "Bypass de arteria coronaria urgente"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Cuál es la principal causa de muerte prehospitalaria en un paciente con IAM?",
-                                                   "options":  [
-                                                                   "Fibrilación Ventricular",
-                                                                   "Ruptura de pared libre",
-                                                                   "Choque cardiogénico"
-                                                               ]
-                                               }
-                                           ]
-                         }
+    "case_id": "PROC_INT_SCÁ_IÁM_001_012",
+    "version": "v3_swipe_action",
+    "theme_config": "int",
+    "difficulty": "hard",
+    "patient_intro": {
+        "name": "Laura, 45 años",
+        "arrival_scenario": "Paciente de 68 años con dolor torácico opresivo de gran intensidad, irradiado a mandíbula y brazo izquierdo. Refiere que el dolor inició hace 2 horas y no cede con el reposo. Se observa elevación de Biomarcadores (Troponinas).",
+        "time_limit_sec": 50
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA 100/60 mmHg, FC 110 lpm, Temp 36.4°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "meds",
+            "card_text": "B) Angina Inestable: Dolor isquémico sin elevación del ST ni biomarcadores positivos.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: ¡Bien! Los biomarcadores y el ECG confirmaron el infarto."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "pad_005",
+            "ui_icon": "📄",
+            "category": "notes",
+            "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
+            }
+        },
+        {
+            "card_id": "pad_006",
+            "ui_icon": "📄",
+            "category": "notes",
+            "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
+            }
+        },
+        {
+            "card_id": "pad_007",
+            "ui_icon": "🧪",
+            "category": "labs",
+            "card_text": "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "A) IÁMCEST de Cara Anterior: Elevación del ST en precordiales (V1-V4). Requiere reperfusión inmediata (ICP o Fibrinólisis).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Mendoza: ¡Correcto! El ST elevado en V1-V4 indica compromiso de la Descendente Anterior. El tiempo es músculo."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true,
+                "lethal_if_discarded": true
+            }
+        },
+        {
+            "card_id": "c_4",
+            "ui_icon": "slash",
+            "category": "Diagnóstico Diferencial",
+            "card_text": "Información redundante: D) Vacuna Varicela: Aunque recomendada, NO está incluida en el esquema básico nacional gratuito de México (Cartilla 2024).",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. En el ENARM debes basarte en el esquema oficial de la Cartilla Nacional de Salud."
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "B) Vaginosis Bacteriana (Gardnerella): Flujo gris + Mal olor + PH >4.5 + Células Clave. Tx: Metronidazol.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: ¡Correcto! Las Clue Cells son el dato patognomónico de la Vaginosis."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_5",
+            "ui_icon": "eye",
+            "category": "Diagnóstico Diferencial",
+            "card_text": "E) Tricomoniasis: Flujo amarillento, espumoso, PH >5.0 y cérvix en fresa. Se ven protozoarios móviles en fresco.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Bien. La Tricomoniasis es una ITS y presenta inflamación severa, a diferencia de la Vaginosis."
+            }
+        },
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA 120/80, FC 72 lpm, Temp 36.7°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Ventana Reperfusión SCÁ",
+        "text": "Meta ICP primaria: <90 min (puerta-balón). Meta Fibrinólisis: <30 min (puerta-aguja) si no hay ICP disponible.",
+        "gpc_ref": "GPC Diagnóstico y Tratamiento del Infarto Agudo de Miocardio"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "correct_index": 0,
+                "question": "De las siguientes opciones, ¿cuál es el tiempo meta establecido por las guías para la realización e interpretación del ECG?",
+                "options": [
+                    "Menos de 10 minutos",
+                    "Menos de 30 minutos",
+                    "A la brevedad posible sin tiempo límite"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "En este contexto clínico, ¿cuál es la estrategia de reperfusión de elección si el hospital cuenta con sala de hemodinamia?",
+                "options": [
+                    "Intervención Coronaria Percutánea (ICP) primaria",
+                    "Bypass de arteria coronaria urgente",
+                    "Fibrinólisis farmacológica"
+                ]
+            },
+            {
+                "correct_index": 2,
+                "question": "¿Cuál es la principal causa de muerte prehospitalaria en un paciente con IÁM?",
+                "options": [
+                    "Choque cardiogénico",
+                    "Ruptura de pared libre",
+                    "Fibrilación Ventricular"
+                ]
+            }
+        ]
+    }
 }

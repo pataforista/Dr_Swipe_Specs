@@ -1,118 +1,187 @@
 {
-    "case_id":  "PROC_GYN_CANCER_CERVICAL_001_010",
-    "version":  "v3_swipe_action",
-    "theme_config":  "gyn",
-    "difficulty":  "standard",
-    "patient_intro":  {
-                          "name":  "Isabel, 30 años",
-                          "arrival_scenario":  "Acude por resultado de citología cervical (Papanicolaou) de rutina. Inicio de VSA a los 16 años. Citología reporta HSIL (Lesión de Alto Grado). Durante colposcopia se observa zona de transformación tipo 2 con epitelio acetoblanco denso.",
-                          "time_limit_sec":  60
-                      },
-    "card_stream":  [
-                        {
-                            "card_id":  "init_vitals",
-                            "ui_icon":  "heartbeat",
-                            "category":  "vitals",
-                            "card_text":  "TA 110/70, FC 72 lpm, Temp 36.4°C",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_1",
-                            "ui_icon":  "target",
-                            "category":  "Diagnóstico",
-                            "card_text":  "A) Colposcopia con Biopsia Dirigida: Ante HSIL o LSIL persistente, el estándar de oro es la visualización colposcópica y toma de biopsia.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Logrado! La colposcopia permite localizar el sitio exacto de la lesión para normar el tratamiento quirúrgico (cono)."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_2",
-                            "ui_icon":  "target",
-                            "category":  "Diagnóstico",
-                            "card_text":  "B) Conización Cervical (LLETZ/Frío): Tratamiento de elección para NIC 2 y NIC 3 (lesiones de alto grado) para asegurar márgenes libres.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Correcto! En NIC 2 o 3 el objetivo es la remoción de la zona de transformación."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "pad_006",
-                            "ui_icon":  "🩺",
-                            "category":  "vitals",
-                            "card_text":  "TA 145/95 mmHg. Cifras tensionales elevadas en dos tomas.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_010",
-                            "ui_icon":  "🩺",
-                            "category":  "vitals",
-                            "card_text":  "TA 145/95 mmHg. Cifras tensionales elevadas en dos tomas.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
-                                        }
-                        }
-                    ],
-    "enarm_pearl":  {
-                        "title":  "Citología: Bethesda 2014",
-                        "text":  "Clave: LSIL (Bajo grado) suele vigilarse o colposcopia según edad. HSIL (Alto grado) SIEMPRE va a colposcopia/biopsia/tratamiento.",
-                        "gpc_ref":  "NOM-014-SSA2-1994 Prevención Cacu"
-                    },
-    "boss_fight_triad":  {
-                             "trigger":  "after_cards",
-                             "questions":  [
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Qué subtipos de Virus del Papiloma Humano (VPH) se asocian con mayor frecuencia al desarrollo de cáncer cervicouterino?",
-                                                   "options":  [
-                                                                   "VPH 16 y 18",
-                                                                   "VPH 6 y 11",
-                                                                   "VPH 31 y 33"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Cuál es la conducta a seguir ante un reporte citológico de Lesión Intraepitelial de Alto Grado (HSIL)?",
-                                                   "options":  [
-                                                                   "Referencia inmediata a Colposcopia",
-                                                                   "Repetir citología en 6 meses",
-                                                                   "Tratamiento con óvulos antibióticos"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Cuál es el esquema de tamizaje citológico recomendado tras obtener dos resultados anuales negativos consecutivos?",
-                                                   "options":  [
-                                                                   "Cada 3 años",
-                                                                   "Cada 5 años",
-                                                                   "Cada 6 meses"
-                                                               ]
-                                               }
-                                           ]
-                         }
+    "case_id": "PROC_GYN_CÁNCER_CERVICÁL_001_010",
+    "version": "v3_swipe_action",
+    "theme_config": "gyn",
+    "difficulty": "standard",
+    "patient_intro": {
+        "name": "Isabel, 30 años",
+        "arrival_scenario": "Acude por resultado de citología cervical (Papanicolaou) de rutina. Inicio de VSA a los 16 años. Citología reporta HSIL (Lesión de Alto Grado). Durante colposcopia se observa zona de transformación tipo 2 con epitelio acetoblanco denso.",
+        "time_limit_sec": 60
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA 110/70, FC 72 lpm, Temp 36.4°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "pad_006",
+            "ui_icon": "🩺",
+            "category": "vitals",
+            "card_text": "TA 145/95 mmHg. Cifras tensionales elevadas en dos tomas.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "A) Colposcopia con Biopsia Dirigida: Ante HSIL o LSIL persistente, el estándar de oro es la visualización colposcópica y toma de biopsia.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Logrado! La colposcopia permite localizar el sitio exacto de la lesión para normar el tratamiento quirúrgico (cono)."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "B) Conización Cervical (LLETZ/Frío): Tratamiento de elección para NIC 2 y NIC 3 (lesiones de alto grado) para asegurar márgenes libres.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Correcto! En NIC 2 o 3 el objetivo es la remoción de la zona de transformación."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "eye",
+            "category": "Rescate",
+            "card_text": "C) Salbutamol (SÁBA) a demanda: Única terapia necesaria para pacientes con síntomas ocasionales (Step 1 antiguo).",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: ¡Incorrecto! La GINA ya no recomienda SÁBA solo por el riesgo de exacerbaciones graves. ¡Usa ICS-Formoterol!"
+            }
+        },
+        {
+            "card_id": "ev_004",
+            "ui_icon": "📄",
+            "category": "notes",
+            "card_text": "Paciente ansioso y diaforético al ingreso. Estado de ánimo alterado por la situación aguda.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "c_7",
+            "ui_icon": "droplet",
+            "category": "meds",
+            "card_text": "G) Nitroglicerina Sublingual: Administrar para control del dolor retroesternal en este infarto inferior.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_hazard",
+                "vazquez_comment": "Mendoza: ¡PELIGRO! En el infarto inferior con sospecha de extension a ventrículo derecho, los nitratos pueden causar colapso circulatorio."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "Diagnóstico Diferencial",
+            "card_text": "Información redundante: B) Atresia Duodenal: Vómitos biliares precoces (primeras 24-48h). Radiografía con signo de la 'doble burbuja'. Frecuente en Síndrome de Down.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! El vómito en la estenosis de píloro es característicamente NO biliar."
+            }
+        },
+        {
+            "card_id": "c_5",
+            "ui_icon": "slash",
+            "category": "meds",
+            "card_text": "E) Incontinencia Urinaria: Pérdida involuntaria de orina; pH ácido y ausencia de patrón en helecho.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Bien. El Test de Helecho positivo en esta paciente descarta pérdidas urinarias."
+            }
+        },
+        {
+            "card_id": "pad_006",
+            "ui_icon": "🤰",
+            "category": "notes",
+            "card_text": "Altura uterina de 28 cm, acorde a edad gestacional por FUM.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Citología: Bethesda 2014",
+        "text": "Clave: LSIL (Bajo grado) suele vigilarse o colposcopia según edad. HSIL (Alto grado) SIEMPRE va a colposcopia/biopsia/tratamiento.",
+        "gpc_ref": "NOM-014-SSÁ2-1994 Prevención Cacu"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "correct_index": 1,
+                "question": "¿Qué subtipos de Virus del Papiloma Humano (VPH) se asocian con mayor frecuencia al desarrollo de cáncer cervicouterino?",
+                "options": [
+                    "VPH 31 y 33",
+                    "VPH 16 y 18",
+                    "VPH 6 y 11"
+                ]
+            },
+            {
+                "correct_index": 1,
+                "question": "Con respecto a la patología, ¿cuál es el esquema de tamizaje citológico recomendado tras obtener dos resultados anuales negativos consecutivos?",
+                "options": [
+                    "Cada 6 meses",
+                    "Cada 3 años",
+                    "Cada 5 años"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Cuál es la conducta a seguir ante un reporte citológico de Lesión Intraepitelial de Alto Grado (HSIL)?",
+                "options": [
+                    "Referencia inmediata a Colposcopia",
+                    "Repetir citología en 6 meses",
+                    "Tratamiento con óvulos antibióticos"
+                ]
+            }
+        ]
+    }
 }

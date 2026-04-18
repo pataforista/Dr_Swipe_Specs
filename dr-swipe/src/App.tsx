@@ -24,6 +24,8 @@ import { FailProtectionOverlay } from './components/overlays/FailProtectionOverl
 import { TelemetryHUD } from './components/TelemetryHUD';
 import { AvatarFeedback } from './components/AvatarFeedback';
 import { ReloadPrompt } from './components/overlays/ReloadPrompt';
+import { LootScreen } from './components/overlays/LootScreen';
+import { EventAlert } from './components/overlays/EventAlert';
 
 const isSwipeCorrect = (direction: 'left' | 'right', expectedAction: 'keep' | 'discard'): boolean => {
   return (direction === 'right' && expectedAction === 'keep') ||
@@ -34,7 +36,7 @@ export function App() {
   const [state, send] = useMachine(gameMachine);
   const { playFeedback, startTriageAlarm, stopTriageAlarm } = useGameAudio();
   const [currentCase, setCurrentCase] = useState<ClinicalCase | null>(null);
-  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, clearSessionProgress, stats, dailyStreak } = useCodexStore();
+  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak } = useCodexStore();
   const timeLimitRef = useRef<number>(60);
   const pendingDeckRef = useRef<any[]>([]);
   const [showTutorial, setShowTutorial] = useState(() => !localStorage.getItem('dr_swipe_tutorial_seen'));
@@ -66,7 +68,26 @@ export function App() {
       send({ type: 'TIME_OUT' });
     }
     return () => clearInterval(timer);
-  }, [state, timeLeft, send, isPaused]);
+  }, [state, timeLeft, send, isPaused, showIntro]);
+
+  // AUTO-SAVE SESSION every 3 swipes
+  useEffect(() => {
+    if (state.matches('triage') && currentCase && state.context.currentCardIndex > 0 && state.context.currentCardIndex % 3 === 0) {
+      saveSessionProgress({
+        caseId: currentCase.case_id,
+        currentCardIndex: state.context.currentCardIndex,
+        score: state.context.score,
+        combo: state.context.combo,
+        multiplier: state.context.multiplier,
+        caseStreak: state.context.caseStreak,
+        coinsEarnedThisCase: state.context.coinsEarnedThisCase,
+        mistakesThisCase: state.context.mistakesThisCase,
+        warningCount: state.context.warningCount,
+        difficulty: state.context.difficulty,
+        savedAt: Date.now()
+      });
+    }
+  }, [state.context.currentCardIndex, state.value, currentCase, saveSessionProgress]);
 
   useEffect(() => {
     if (state.matches('reward') && currentCase) {
@@ -112,6 +133,43 @@ export function App() {
       setShowIntro(true);
     } catch (err) {
       send({ type: 'RESTART' });
+    } finally {
+      setIsLoadingCase(false);
+    }
+  };
+
+  const resumeSession = async () => {
+    if (!sessionProgress || !sessionProgress.caseId) return;
+    setIsLoadingCase(true);
+    try {
+      // Find the specific case file
+      const caseData = await dataLoader.loadCaseById(sessionProgress.caseId);
+      if (caseData.boss_fight_triad?.questions) {
+         caseData.boss_fight_triad.questions = caseData.boss_fight_triad.questions.map(q => shuffleBossQuestion(q));
+      }
+      setCurrentCase(caseData);
+      setCaseQueue([]); // Clearing queue for resumed cases to avoid complexity
+      
+      const fullDeck = [...caseData.card_stream];
+      const initialCard = fullDeck.shift()!;
+      // Not randomizing on resume to maintain consistency with the saved index
+      const resumedDeck = [initialCard, ...fullDeck]; 
+
+      send({ 
+        type: 'START_GUARD', 
+        deck: resumedDeck, 
+        difficulty: sessionProgress.difficulty, 
+        pearl: caseData.enarm_pearl as any 
+      });
+
+      const timeLimit = Math.max(90, Math.min(180, resumedDeck.length * 18));
+      setTimeLeft(timeLimit);
+      timeLimitRef.current = timeLimit;
+      pendingDeckRef.current = resumedDeck;
+      setShowIntro(true);
+    } catch (err) {
+      console.error("Failed to resume session", err);
+      clearSessionProgress();
     } finally {
       setIsLoadingCase(false);
     }
@@ -241,7 +299,17 @@ export function App() {
             </div>
             {dailyStreak > 0 && <div className="flex items-center gap-2 bg-amber-100 px-4 sm:px-6 py-2 rounded-2xl mb-6 sm:mb-10 shadow-sm font-bold text-amber-700 lettering uppercase text-[10px] sm:text-[11px]">🔥 Racha: {dailyStreak} Días</div>}
             <div className="flex flex-col gap-3 sm:gap-4 w-full max-w-xs px-2">
-              <button onClick={() => startNewCase()} disabled={isLoadingCase} className="marker-btn py-4 sm:py-5 text-base sm:text-xl">{isLoadingCase ? 'PREPARANDO...' : 'EMPEZAR GUARDIA ✨'}</button>
+              <button onClick={() => startNewCase()} disabled={isLoadingCase} className="marker-btn py-4 sm:py-5 text-base sm:text-xl group">
+                 {isLoadingCase ? 'PREPARANDO...' : 'EMPEZAR GUARDIA ✨'}
+                 <div className="absolute -top-1 -right-1 bg-rose-500 text-white text-[8px] px-2 py-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">NUEVA</div>
+              </button>
+              
+              {sessionProgress && (
+                <button onClick={() => resumeSession()} disabled={isLoadingCase} className="marker-btn py-4 sm:py-5 text-base sm:text-xl !bg-slate-700 !border-slate-600 shadow-slate-200">
+                   REANUDAR GUARDIA 📑
+                </button>
+              )}
+
               <button onClick={() => setShowStats(true)} className="text-[10px] sm:text-[11px] font-bold text-slate-400 hover:text-primary transition-colors uppercase lettering tracking-widest pt-2">Ver mi diario 📔</button>
             </div>
           </div>
@@ -262,15 +330,16 @@ export function App() {
         return <ShockRoom questions={currentCase!.boss_fight_triad!.questions} dossierItems={state.context.dossier} onSurvive={() => { stopTriageAlarm(); send({ type: 'ANSWER_CORRECT' }); }} onGhosted={handleBossGhosted} />;
       case state.matches('reward'):
         return (
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-6 sm:p-10 max-w-md w-full text-center shadow-xl relative mx-4">
-            <div className="w-16 sm:w-20 h-16 sm:h-20 bg-cyan-50 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 border-4 border-white shadow-sm font-bold text-3xl sm:text-4xl">✨</div>
-            <h2 className="text-4xl sm:text-5xl font-black text-slate-800 mb-3 sm:mb-4 lettering">¡Muy bien!</h2>
-            <div className="bg-slate-50 p-4 sm:p-6 rounded-2xl mb-6 sm:mb-8 border-2 border-dashed border-slate-100 text-left">
-              <div className="flex justify-between mb-3 sm:mb-4"><span className="text-[9px] sm:text-[10px] uppercase font-bold text-slate-400">Puntos</span><span className="text-2xl sm:text-3xl font-black text-primary lettering">+{state.context.score}</span></div>
-              <div className="flex justify-between"><span className="text-[9px] sm:text-[10px] uppercase font-bold text-slate-400">Monedas</span><span className="text-2xl sm:text-3xl font-black text-secondary lettering">+{state.context.coinsEarnedThisCase}</span></div>
-            </div>
-            <button onClick={() => { if (caseQueue.length > 0) handleCaseTransition(); else send({ type: 'RESTART' }); }} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl">{caseQueue.length > 0 ? `Siguiente Px (${caseQueue.length})` : 'Terminar Turno'}</button>
-          </motion.div>
+          <LootScreen 
+            score={state.context.score}
+            xpTotal={Math.floor(state.context.score * getDailyStreakMultiplier(dailyStreak))}
+            coins={state.context.coinsEarnedThisCase}
+            isPerfect={state.context.mistakesThisCase === 0}
+            onContinue={() => { 
+              if (caseQueue.length > 0) handleCaseTransition(); 
+              else send({ type: 'RESTART' }); 
+            }}
+          />
         );
       case state.matches('ghosted'):
         return (
@@ -304,7 +373,15 @@ export function App() {
   return (
     <div className={`fixed inset-0 bg-[#FDFBF7] flex flex-col items-center select-none overflow-hidden text-slate-800 p-safe-top p-safe-bottom p-safe-left p-safe-right ${timeLeft <= 10 && state.matches('triage') ? 'destabilized-content' : ''} ${swipeFeedback === 'wrong' ? 'shake-lite' : ''}`}>
       <div className="absolute inset-0 pointer-events-none opacity-[0.02] medical-grid" />
-      <TelemetryHUD timeLeft={timeLeft} state={state.value as string} score={state.context.score} combo={state.context.combo} vitality={state.context.vitality} />
+      <TelemetryHUD 
+        timeLeft={timeLeft} 
+        state={state.value as string} 
+        score={state.context.score} 
+        combo={state.context.combo} 
+        vitality={state.context.vitality}
+        coins={stats.coins}
+        lastVitals={state.context.lastVitals}
+      />
       
       {/* Background Avatar Feedback Layer */}
       <div className="fixed top-28 left-0 right-0 z-avatar pointer-events-none flex justify-center">
@@ -319,6 +396,7 @@ export function App() {
       <div className="w-full flex-grow flex items-center justify-center relative z-10">{renderCurrentView()}</div>
       <AnimatePresence>{showTutorial && <TutorialOverlay onComplete={() => setShowTutorial(false)} />}</AnimatePresence>
       <AnimatePresence>{showStats && <div className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-6 overflow-hidden"><StatsDashboard onClose={() => setShowStats(false)} /></div>}</AnimatePresence>
+      <AnimatePresence mode="wait">{state.context.activeEvent?.item && <EventAlert key={state.context.activeEvent?.item?.id ?? 'event'} event={state.context.activeEvent} onClose={() => send({ type: 'CLEAR_OVERLAYS' })} />}</AnimatePresence>
       <AnimatePresence>{state.context.lootBoxReward?.active && state.context.lootBoxReward.item && <LootBoxOverlay reward={{ active: true, item: state.context.lootBoxReward.item }} onClaim={() => send({ type: 'CLEAR_OVERLAYS' })} />}</AnimatePresence>
       <AnimatePresence>{state.context.activePenalty?.active && <PenaltyOverlay penalty={{ active: true, item: state.context.activePenalty.item }} onAccept={() => send({ type: 'CLEAR_OVERLAYS' })} />}</AnimatePresence>
       <AnimatePresence>{state.matches('fail_protection') && <FailProtectionOverlay error={state.context.fatalError || "Error Clínico"} livesRemaining={state.context.lives} onRescue={() => send({ type: 'RESCUE' })} onRestart={() => send({ type: 'RESTART' })} />}</AnimatePresence>

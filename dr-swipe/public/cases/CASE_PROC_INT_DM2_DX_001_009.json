@@ -1,190 +1,183 @@
 {
-    "case_id":  "PROC_INT_DM2_DX_001_009",
-    "version":  "v3_swipe_action",
-    "theme_config":  "int",
-    "difficulty":  "standard",
-    "patient_intro":  {
-                          "name":  "Elena, 53 años",
-                          "arrival_scenario":  "Paciente con obesidad grado I, refiere poliuria y polidipsia ocasional. Glucosa al azar de 210 mg/dl. Glucosa plasmática a las 2 horas de carga de 75g: 205 mg/dl.",
-                          "time_limit_sec":  60
-                      },
-    "card_stream":  [
-                        {
-                            "card_id":  "init_vitals",
-                            "ui_icon":  "heartbeat",
-                            "category":  "vitals",
-                            "card_text":  "TA 130/85, FC 80 lpm, Temp 36.5°C",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_1",
-                            "ui_icon":  "target",
-                            "category":  "labs",
-                            "card_text":  "A) Diabetes Mellitus Tipo 2 (Confirmada): Criterios: Glucosa ayuno ≥126, HbA1c ≥6.5%, o Glucosa azar ≥200 con síntomas.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Mendoza: ¡Correcto! Cumple criterios de la NOM-015 para diagnóstico definitivo."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_2",
-                            "ui_icon":  "eye",
-                            "category":  "labs",
-                            "card_text":  "B) Prediabetes (Glucosa Alterada en Ayuno): Glucosa en ayuno entre 100 y 125 mg/dl.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Mendoza: ¡Bien! Reconociste que ya es un cuadro franco de Diabetes."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  false
-                                             }
-                        },
-                        {
-                            "card_id":  "pad_004",
-                            "ui_icon":  "🩺",
-                            "category":  "vitals",
-                            "card_text":  "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_005",
-                            "ui_icon":  "📄",
-                            "category":  "notes",
-                            "card_text":  "Refiere alergia al polen y al polvo durante la primavera.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_006",
-                            "ui_icon":  "🧪",
-                            "category":  "labs",
-                            "card_text":  "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_007",
-                            "ui_icon":  "📄",
-                            "category":  "notes",
-                            "card_text":  "Refiere alergia al polen y al polvo durante la primavera.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_008",
-                            "ui_icon":  "🩺",
-                            "category":  "vitals",
-                            "card_text":  "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_009",
-                            "ui_icon":  "📄",
-                            "category":  "notes",
-                            "card_text":  "Refiere alergia al polen y al polvo durante la primavera.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_010",
-                            "ui_icon":  "📄",
-                            "category":  "notes",
-                            "card_text":  "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_011_611",
-                            "ui_icon":  "☢️",
-                            "category":  "imaging",
-                            "card_text":  "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-                                        }
-                        }
-                    ],
-    "enarm_pearl":  {
-                        "title":  "Criterios Diagnósticos DM2 (NOM-015)",
-                        "text":  "1. Glucosa ayuno ≥126 (x2), 2. HbA1c ≥6.5%, 3. Curva (75g) ≥200 a las 2h, 4. Azar ≥200 + síntomas clásicos.",
-                        "gpc_ref":  "NOM-015-SSA2-2010"
-                    },
-    "boss_fight_triad":  {
-                             "trigger":  "after_cards",
-                             "questions":  [
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Cuál es la cifra de glucosa en ayuno para diagnóstico de DM2?",
-                                                   "options":  [
-                                                                   "\u003e=126 mg/dL",
-                                                                   "\u003e=100 mg/dL",
-                                                                   "\u003e=200 mg/dL"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Qué porcentaje de HbA1c confirma el diagnóstico?",
-                                                   "options":  [
-                                                                   "\u003e=6.5%",
-                                                                   "\u003e=5.7%",
-                                                                   "\u003e=8.0%"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿En qué momento se diagnostica DM2 con glucosa al azar \u003e=200?",
-                                                   "options":  [
-                                                                   "Si hay síntomas clásicos (Ps)",
-                                                                   "Siempre es diagnóstico",
-                                                                   "Nunca, requiere confirmación"
-                                                               ]
-                                               }
-                                           ]
-                         }
+    "case_id": "PROC_INT_DM2_DX_001_009",
+    "version": "v3_swipe_action",
+    "theme_config": "int",
+    "difficulty": "standard",
+    "patient_intro": {
+        "name": "Elena, 53 años",
+        "arrival_scenario": "Paciente con obesidad grado I, refiere poliuria y polidipsia ocasional. Glucosa al azar de 210 mg/dl. Glucosa plasmática a las 2 horas de carga de 75g: 205 mg/dl.",
+        "time_limit_sec": 60
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA 130/85, FC 80 lpm, Temp 36.5°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "pad_004",
+            "ui_icon": "🩺",
+            "category": "vitals",
+            "card_text": "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "labs",
+            "card_text": "A) Diabetes Mellitus Tipo 2 (Confirmada): Criterios: Glucosa ayuno ≥126, HbÁ1c ≥6.5%, o Glucosa azar ≥200 con síntomas.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Mendoza: ¡Correcto! Cumple criterios de la NOM-015 para diagnóstico definitivo."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "labs",
+            "card_text": "B) Prediabetes (Glucosa Alterada en Ayuno): Glucosa en ayuno entre 100 y 125 mg/dl.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: ¡Bien! Reconociste que ya es un cuadro franco de Diabetes."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "pad_005",
+            "ui_icon": "📄",
+            "category": "notes",
+            "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
+            }
+        },
+        {
+            "card_id": "pad_006",
+            "ui_icon": "🧪",
+            "category": "labs",
+            "card_text": "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
+            }
+        },
+        {
+            "card_id": "pad_010",
+            "ui_icon": "📄",
+            "category": "notes",
+            "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
+            }
+        },
+        {
+            "card_id": "pad_011_611",
+            "ui_icon": "☢️",
+            "category": "imaging",
+            "card_text": "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "labs",
+            "card_text": "B) Aciclovir IV: El paciente presenta LCR con pleocitosis linfocitaria, glucosa normal y proteínas levemente elevadas. Sospecha de Encefalitis.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: ¡Bien! Diferenciaste la meningitis bacteriana (PMN) de la viral/encefalitis (mononucleares)."
+            }
+        },
+        {
+            "card_id": "e07",
+            "ui_icon": "☢️",
+            "category": "imaging",
+            "card_text": "Sin infiltrados, derrames ni cardiomegalia. Silueta cardíaca normal. Campos pulmonares limpios.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Criterios Diagnósticos DM2 (NOM-015)",
+        "text": "1. Glucosa ayuno ≥126 (x2), 2. HbÁ1c ≥6.5%, 3. Curva (75g) ≥200 a las 2h, 4. Azar ≥200 + síntomas clásicos.",
+        "gpc_ref": "NOM-015-SSÁ2-2010"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "correct_index": 1,
+                "question": "¿En qué momento se diagnostica DM2 con glucosa al azar >=200?",
+                "options": [
+                    "Nunca, requiere confirmación",
+                    "Si hay síntomas clásicos (Ps)",
+                    "Siempre es diagnóstico"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "En este contexto clínico, ¿cuál es la cifra de glucosa en ayuno para diagnóstico de DM2?",
+                "options": [
+                    ">=126 mg/dL",
+                    ">=100 mg/dL",
+                    ">=200 mg/dL"
+                ]
+            },
+            {
+                "correct_index": 1,
+                "question": "¿Qué porcentaje de HbÁ1c confirma el diagnóstico?",
+                "options": [
+                    ">=8.0%",
+                    ">=6.5%",
+                    ">=5.7%"
+                ]
+            }
+        ]
+    }
 }

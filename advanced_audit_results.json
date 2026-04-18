@@ -1,0 +1,22 @@
+[
+  {
+    "filename": "CASE_PROC_GYN_INFECTION_VAGINITIS_001_001.json",
+    "issues": [
+      {
+        "card_index": 5,
+        "type": "CLINICAL_SENSE_WARNING",
+        "detail": "Patient PH 5.5 meets condition '>5.0' but card is 'discard'"
+      }
+    ]
+  },
+  {
+    "filename": "CASE_PROC_INT_AMI_001_003.json",
+    "issues": [
+      {
+        "card_index": 6,
+        "type": "CONCORDANCE_WARNING",
+        "detail": "Discard action with positive marker '¡excelente!' in comment: 'Mendoza: ¡EXCELENTE! Trombolizar a alguien con este antecedente es un error fatal garantizado.'"
+      }
+    ]
+  }
+]

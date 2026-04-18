@@ -13,7 +13,7 @@
       "card_id": "ev_001",
       "ui_icon": "🩺",
       "category": "vitals",
-      "card_text": "TA: 90/60 mmHg en triage. Palidez de tegumentos. Llenado capilar de 3 segundos.",
+      "card_text": "TÁ: 90/60 mmHg en triage. Palidez de tegumentos. Llenado capilar de 3 segundos.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
@@ -184,9 +184,9 @@
     "trigger": "after_cards",
     "questions": [
       {
-        "question": "Hombre 55 años, melena 2 días, síncope, TA 90/60, Hb 8.1, uso de AINEs 10 días. ¿Diagnóstico más probable?",
+        "question": "Hombre 55 años, melena 2 días, síncope, TA 90/60, Hb 8.1, uso de ÁINEs 10 días. ¿Diagnóstico más probable?",
         "options": [
-          "Hemorragia de tubo digestivo alto por úlcera péptica inducida por AINEs",
+          "Hemorragia de tubo digestivo alto por úlcera péptica inducida por ÁINEs",
           "Hemorragia de tubo digestivo bajo por diverticulosis",
           "Tromboembolismo pulmonar con hemoptisis",
           "Anemia hemolítica autoinmune"
@@ -196,17 +196,17 @@
       {
         "question": "¿Cuál es el estudio diagnóstico de elección para confirmar y tratar la hemorragia de TDA en urgencias?",
         "options": [
-          "Endoscopia alta urgente (dentro de las primeras 24 horas según ASGE)",
-          "TAC de abdomen y pelvis con contraste",
+          "Endoscopia alta urgente (dentro de las primeras 24 horas según ÁSGE)",
+          "TÁC de abdomen y pelvis con contraste",
           "Arteriografía mesentérica",
           "Colonoscopia urgente"
         ],
         "correct_index": 0
       },
       {
-        "question": "Previo a la endoscopia, ¿cuál es el manejo inicial correcto según la GPC de hemorragia TDA?",
+        "question": "Previo a la endoscopia, ¿cuál es el manejo inicial correcto según la GPC de hemorragia TDÁ?",
         "options": [
-          "IBP IV en bolo + infusión continua, reposición de volumen y suspender AINEs",
+          "IBP IV en bolo + infusión continua, reposición de volumen y suspender ÁINEs",
           "Transfusión inmediata y traslado a quirófano sin endoscopia previa",
           "Sucralfato oral y observación por 24 horas sin reposición hídrica",
           "Omeprazol oral y colonoscopia electiva en 72 horas"
@@ -216,13 +216,13 @@
     ]
   },
   "perla_enarm": {
-    "title": "Hemorragia de Tubo Digestivo Alto por AINEs",
-    "text": "La tríada: melena + TA baja + FC elevada + uso de AINEs es la presentación clásica de úlcera péptica complicada con hemorragia. La GPC indica IBP IV (pantoprazol 80 mg bolo + infusión 8 mg/h) y endoscopia urgente dentro de 24h como estándar de oro. El score de Glasgow-Blatchford predice necesidad de intervención. Transfundir si Hb < 7 g/dL o inestabilidad hemodinámica persistente.",
+    "title": "Hemorragia de Tubo Digestivo Alto por ÁINEs",
+    "text": "La tríada: melena + TA baja + FC elevada + uso de ÁINEs es la presentación clásica de úlcera péptica complicada con hemorragia. La GPC indica IBP IV (pantoprazol 80 mg bolo + infusión 8 mg/h) y endoscopia urgente dentro de 24h como estándar de oro. El score de Glasgow-Blatchford predice necesidad de intervención. Transfundir si Hb < 7 g/dL o inestabilidad hemodinámica persistente.",
     "gpc_ref": "GPC IMSS-188-09: Diagnóstico y Tratamiento de la Hemorragia de Tubo Digestivo Alto"
   },
   "enarm_pearl": {
-    "title": "Hemorragia de Tubo Digestivo Alto (HTDA) por AINEs",
-    "text": "Hemorragia de tubo digestivo alto = origen proximal al ángulo de Treitz. Melena (sangre digerida negra/alquitranada) orienta a HTDA. AINEs + anticoagulantes = principal causa de úlcera péptica hemorrágica. Manejo: Estabilización → Endoscopía en <24 horas.",
+    "title": "Hemorragia de Tubo Digestivo Alto (HTDA) por ÁINEs",
+    "text": "Hemorragia de tubo digestivo alto = origen proximal al ángulo de Treitz. Melena (sangre digerida negra/alquitranada) orienta a HTDÁ. ÁINEs + anticoagulantes = principal causa de úlcera péptica hemorrágica. Manejo: Estabilización → Endoscopía en <24 horas.",
     "gpc_ref": "GPC Hemorragia del Tubo Digestivo / Consenso Mexicano de Hemorragia de Tubo Digestivo"
   }
 }

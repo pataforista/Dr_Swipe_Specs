@@ -1,94 +1,196 @@
 {
-    "case_id":  "PROC_ENGL_TECH_VOCABULARY_001_003",
-    "version":  "v3_swipe_action",
-    "theme_config":  "engl",
-    "difficulty":  "standard",
-    "patient_intro":  {
-                          "name":  "Miguel, 25 años",
-                          "arrival_scenario":  "A patient presents with \u0027shortness of breath\u0027 and progressive \u0027fatigue\u0027 after walking two blocks. False Friend Alert: The patient reports \u0027Constipation\u0027. Does this refer to nasal congestion or bowel movement issues?",
-                          "time_limit_sec":  60
-                      },
-    "card_stream":  [
-                        {
-                            "card_id":  "init_vitals",
-                            "ui_icon":  "heartbeat",
-                            "category":  "vitals",
-                            "card_text":  "TA 120/80, FC 78 bpm, Temp 37.0°C",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_1",
-                            "ui_icon":  "target",
-                            "category":  "Diagnóstico",
-                            "card_text":  "A) Disnea y Sibilancias: \u0027Shortness of breath\u0027 = Disnea. \u0027Wheezing\u0027 = Sibilancias.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: ¡Correcto! Dominar estos términos es vital para la sección de inglés técnico del ENARM."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_2",
-                            "ui_icon":  "target",
-                            "category":  "Diagnóstico",
-                            "card_text":  "B) Estreñimiento (Bowel movement issues): \u0027Constipation\u0027 es el falso amigo más común: significa Estreñimiento, NO congestión nasal.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: ¡Excelente! Evitaste caer en el falso amigo. \u0027Constipated\u0027 nasal se dice \u0027Congested\u0027."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  true
-                                             }
-                        }
-                    ],
-    "enarm_pearl":  {
-                        "title":  "Inglés Médico: False Friends",
-                        "text":  "Constipation = Estreñimiento. Injury = Lesión. Sever = Cortar. Informed Consent = Consentimiento Informado.",
-                        "gpc_ref":  "ENARM Technical English Section"
-                    },
-    "boss_fight_triad":  {
-                             "trigger":  "after_cards",
-                             "questions":  [
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Cuál es la traducción correcta de \u0027Constipation\u0027 en un contexto médico?",
-                                                   "options":  [
-                                                                   "Estreñimiento",
-                                                                   "Congestión nasal",
-                                                                   "Diarrea"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Qué significa el término \u0027Shortness of breath\u0027?",
-                                                   "options":  [
-                                                                   "Disnea (falta de aire)",
-                                                                   "Dolor de pecho",
-                                                                   "Tos seca"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Cuál es la diferencia entre \u0027Wound\u0027 e \u0027Injury\u0027?",
-                                                   "options":  [
-                                                                   "Wound es una herida abierta; Injury es cualquier lesión",
-                                                                   "Wound es una fractura; Injury es un moretón",
-                                                                   "Son sinónimos exactos en medicina"
-                                                               ]
-                                               }
-                                           ]
-                         }
+    "case_id": "PROC_ENGL_TECH_VOCÁBULÁRY_001_003",
+    "version": "v3_swipe_action",
+    "theme_config": "engl",
+    "difficulty": "standard",
+    "patient_intro": {
+        "name": "Miguel, 25 años",
+        "arrival_scenario": "A patient presents with 'shortness of breath' and progressive 'fatigue' after walking two blocks. False Friend Alert: The patient reports 'Constipation'. Does this refer to nasal congestion or bowel movement issues?",
+        "time_limit_sec": 60
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA 120/80, FC 78 bpm, Temp 37.0°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Correcto! Dominar estos términos es vital para la sección de inglés técnico del ENARM."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "B) Estreñimiento (Bowel movement issues): 'Constipation' es el falso amigo más común: significa Estreñimiento, NO congestión nasal.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Excelente! Evitaste caer en el falso amigo. 'Constipated' nasal se dice 'Congested'."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "imaging",
+            "card_text": "B) Estado Hiperosmolar Hiperglucémico (EHH): Suele presentarse en adultos mayores (DM2) con hiperglucemias extremas (>600), deshidratación profunda y SIN acidosis significativa.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: ¡Buen ojo! La presencia de acidosis franca y Kussmaul hace la diferencia entre EHH y CÁD."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "pad_009",
+            "ui_icon": "📄",
+            "category": "notes",
+            "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "Diagnóstico",
+            "card_text": "Hallazgo: Dato anecdótico: B) Colecistectomía Laparoscópica Urgente: La colecistectomía es para la COLECISTITIS. En COLÁNGITIS, el problema está en el colédoco y debe drenarse primero.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "¡Bien! Diferenciaste el manejo de la inflamación vesicular del drenaje de la vía biliar."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "Diagnostico Diferencial",
+            "card_text": "Dato de importancia: Dato anecdotico: B) Trastorno Psicotico Breve: Sintomas psicoticos con duracion mayor a 1 dia pero menor a 1 mes, con retorno total a la funcionalidad.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: ¡Bien! El tiempo es el factor determinante en la psiquiatria del ENARM."
+            }
+        },
+        {
+            "card_id": "h05",
+            "ui_icon": "🧪",
+            "category": "labs",
+            "card_text": "Cr: 2.4 mg/dL — resultado disponible 5 horas post-ingreso. La decisión de antibiótico ya fue tomada sin este dato.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "ev_002",
+            "ui_icon": "🩺",
+            "category": "vitals",
+            "card_text": "FC: 120 lpm. Taquicardia sinusal compensatoria. Indica hipovolemia aguda.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "slash",
+            "category": "meds",
+            "card_text": "C) Ampicilina IV: Áñadir al esquema empírico si se sospecha Listeria monocytogenes (>50 años o inmunocompromiso).",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Correcto. Este paciente tiene 39 años y es inmunocompetente; no requiere cobertura para Listeria inicialmente."
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Inglés Médico: False Friends",
+        "text": "Constipation = Estreñimiento. Injury = Lesión. Sever = Cortar. Informed Consent = Consentimiento Informado.",
+        "gpc_ref": "ENARM Technical English Section"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "correct_index": 1,
+                "question": "¿Qué significa el término 'Shortness of breath'?",
+                "options": [
+                    "Tos seca",
+                    "Disnea (falta de aire)",
+                    "Dolor de pecho"
+                ]
+            },
+            {
+                "correct_index": 2,
+                "question": "De las siguientes opciones, ¿cuál es la traducción correcta de 'Constipation' en un contexto médico?",
+                "options": [
+                    "Diarrea",
+                    "Congestión nasal",
+                    "Estreñimiento"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "En este contexto clínico, ¿cuál es la diferencia entre 'Wound' e 'Injury'?",
+                "options": [
+                    "Wound es una herida abierta; Injury es cualquier lesión",
+                    "Wound es una fractura; Injury es un moretón",
+                    "Son sinónimos exactos en medicina"
+                ]
+            }
+        ]
+    }
 }

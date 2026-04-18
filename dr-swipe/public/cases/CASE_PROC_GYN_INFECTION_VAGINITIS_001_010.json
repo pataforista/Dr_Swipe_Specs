@@ -1,142 +1,178 @@
 {
-    "case_id":  "PROC_GYN_INFECTION_VAGINITIS_001_010",
-    "version":  "v3_swipe_action",
-    "theme_config":  "gyn",
-    "difficulty":  "standard",
-    "patient_intro":  {
-                          "name":  "Ana, 36 años",
-                          "arrival_scenario":  "Consulta por flujo vaginal blanquecino, espeso, tipo \u0027queso cottage\u0027 y prurito intenso de 3 días. PH vaginal de 5.5. Prueba de KOH (Whiff test) positiva. Se observan \u0027Células Clave\u0027 (Clue Cells).",
-                          "time_limit_sec":  60
-                      },
-    "card_stream":  [
-                        {
-                            "card_id":  "init_vitals",
-                            "ui_icon":  "heartbeat",
-                            "category":  "vitals",
-                            "card_text":  "TA 110/70, FC 75 lpm, Temp 36.5°C",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_1",
-                            "ui_icon":  "target",
-                            "category":  "Diagnóstico",
-                            "card_text":  "A) Candidiasis Vaginal: Flujo grumoso + PH \u003c4.5 + Prurito. Tx: Azoles (Miconazol/Fluconazol).",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Match! La acidez (PH \u003c4.5) es típica de Candida."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_2",
-                            "ui_icon":  "target",
-                            "category":  "Diagnóstico",
-                            "card_text":  "B) Vaginosis Bacteriana (Gardnerella): Flujo gris + Mal olor + PH \u003e4.5 + Células Clave. Tx: Metronidazol.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Correcto! Las Clue Cells son el dato patognomónico de la Vaginosis."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "pad_004",
-                            "ui_icon":  "🩸",
-                            "category":  "labs",
-                            "card_text":  "Proteinuria en tira reactiva (++) en muestra al azar.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Castillo: Esto es puro ruido en este contexto. No te distraigas."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_005",
-                            "ui_icon":  "🩸",
-                            "category":  "labs",
-                            "card_text":  "VDRL no reactivo (reporte de hace 2 meses).",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_006",
-                            "ui_icon":  "🩸",
-                            "category":  "labs",
-                            "card_text":  "Proteinuria en tira reactiva (++) en muestra al azar.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Castillo: Esto es puro ruido en este contexto. No te distraigas."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_008",
-                            "ui_icon":  "🩺",
-                            "category":  "vitals",
-                            "card_text":  "TA 145/95 mmHg. Cifras tensionales elevadas en dos tomas.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Castillo: Esto es puro ruido en este contexto. No te distraigas."
-                                        }
-                        }
-                    ],
-    "enarm_pearl":  {
-                        "title":  "Diferencial de Vaginitis",
-                        "text":  "Clave PH: PH \u003c4.5 = Candida. PH \u003e4.5 = Vaginosis o Tricomoniasis. Clave Célula: Clue Cell = Vaginosis.",
-                        "gpc_ref":  "GPC Diagnóstico y Tratamiento de Infecciones Vaginales"
-                    },
-    "boss_fight_triad":  {
-                             "trigger":  "after_cards",
-                             "questions":  [
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Cuál es el hallazgo microscópico considerado patognomónico de la Vaginosis Bacteriana?",
-                                                   "options":  [
-                                                                   "Células guía (Clue Cells)",
-                                                                   "Hifas y esporas",
-                                                                   "Trofozoítos móviles piriformes"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿En cuál de las siguientes infecciones vaginales es OBLIGATORIO el tratamiento simultáneo a la pareja sexual?",
-                                                   "options":  [
-                                                                   "Tricomoniasis",
-                                                                   "Candidiasis Vaginal",
-                                                                   "Vaginosis Bacteriana"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Cuál es el conjunto de criterios clínicos utilizados para diagnosticar Vaginosis Bacteriana en el consultorio?",
-                                                   "options":  [
-                                                                   "Criterios de Amsel",
-                                                                   "Criterios de Jones",
-                                                                   "Criterios de Centor"
-                                                               ]
-                                               }
-                                           ]
-                         }
+    "case_id": "PROC_GYN_INFECTION_VÁGINITIS_001_010",
+    "version": "v3_swipe_action",
+    "theme_config": "gyn",
+    "difficulty": "standard",
+    "patient_intro": {
+        "name": "Ana, 36 años",
+        "arrival_scenario": "Consulta por flujo vaginal blanquecino, espeso, tipo 'queso cottage' y prurito intenso de 3 días. PH vaginal de 5.5. Prueba de KOH (Whiff test) positiva. Se observan 'Células Clave' (Clue Cells).",
+        "time_limit_sec": 60
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA 110/70, FC 75 lpm, Temp 36.5°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "pad_008",
+            "ui_icon": "🩺",
+            "category": "vitals",
+            "card_text": "TA 145/95 mmHg. Cifras tensionales elevadas en dos tomas.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Esto es puro ruido en este contexto. No te distraigas."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "A) Candidiasis Vaginal: Flujo grumoso + PH <4.5 + Prurito. Tx: Azoles (Miconazol/Fluconazol).",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Bien detectado: La acidez (PH <4.5) es típica de Candida."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "B) Vaginosis Bacteriana (Gardnerella): Flujo gris + Mal olor + PH >4.5 + Células Clave. Tx: Metronidazol.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Correcto! Las Clue Cells son el dato patognomónico de la Vaginosis."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "pad_004",
+            "ui_icon": "🩸",
+            "category": "labs",
+            "card_text": "Proteinuria en tira reactiva (++) en muestra al azar.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Esto es puro ruido en este contexto. No te distraigas."
+            }
+        },
+        {
+            "card_id": "pad_005",
+            "ui_icon": "🩸",
+            "category": "labs",
+            "card_text": "VDRL no reactivo (reporte de hace 2 meses).",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
+            }
+        },
+        {
+            "card_id": "c_4",
+            "ui_icon": "slash",
+            "category": "Diagnóstico Diferencial",
+            "card_text": "D) LSIL (Lesión de Bajo Grado): Refleja infección por VPH; alta tasa de regresión espontánea (60-80%) especialmente en jóvenes.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Bien. La paciente tiene una citología de HSIL, lo que obliga a actuar, no a vigilar como en LSIL."
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "slash",
+            "category": "Diagnostico Diferencial",
+            "card_text": "Hallazgo clínico: Ruido en el expediente: C) Trastorno del Espectro Autista (TEA): Sospechar ante falta de contacto visual, ausencia de señalar y retraso en el lenguaje a los 18-24 meses.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. Aunque el screening (M-CHÁT-R) es importante, este paciente tiene una interacción social normal para su edad."
+            }
+        },
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA 145/90 mmHg, FC 92 lpm, FR 22 rpm, SatO2 93%.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Presión un poco alta, pero lo importante es la insuficiencia cardíaca."
+            }
+        },
+        {
+            "card_id": "c_6",
+            "ui_icon": "camera-off",
+            "category": "Error Crítico",
+            "card_text": "Evidencia: F) Radiografía de Tórax: Solicitar placa ÁP de tórax para confirmar el diagnóstico antes de intervenir.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_hazard",
+                "vazquez_comment": "¡ÁSESINO! El neumotórax a tensión es CLÍNICO. Esperar la placa es sentenciar al paciente."
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Diferencial de Vaginitis",
+        "text": "Clave PH: PH <4.5 = Candida. PH >4.5 = Vaginosis o Tricomoniasis. Clave Célula: Clue Cell = Vaginosis.",
+        "gpc_ref": "GPC Diagnóstico y Tratamiento de Infecciones Vaginales"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "correct_index": 2,
+                "question": "Con respecto a la patología, ¿cuál es el conjunto de criterios clínicos utilizados para diagnosticar Vaginosis Bacteriana en el consultorio?",
+                "options": [
+                    "Criterios de Jones",
+                    "Criterios de Centor",
+                    "Criterios de Amsel"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "De las siguientes opciones, ¿cuál es el hallazgo microscópico considerado patognomónico de la Vaginosis Bacteriana?",
+                "options": [
+                    "Células guía (Clue Cells)",
+                    "Hifas y esporas",
+                    "Trofozoítos móviles piriformes"
+                ]
+            },
+            {
+                "correct_index": 1,
+                "question": "¿En cuál de las siguientes infecciones vaginales es OBLIGÁTORIO el tratamiento simultáneo a la pareja sexual?",
+                "options": [
+                    "Candidiasis Vaginal",
+                    "Tricomoniasis",
+                    "Vaginosis Bacteriana"
+                ]
+            }
+        ]
+    }
 }

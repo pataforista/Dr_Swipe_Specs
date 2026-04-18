@@ -1,0 +1,92 @@
+[
+  {
+    "filename": "CASE_PROC_GYN_INFECTION_VAGINITIS_001_001.json",
+    "fixes": [
+      {
+        "card_index": 1,
+        "old": "Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.",
+        "new": "Castillo: Bien detectado: La acidez (PH <4.5) es típica de Candida."
+      }
+    ]
+  },
+  {
+    "filename": "CASE_PROC_GYN_INFECTION_VAGINITIS_001_003.json",
+    "fixes": [
+      {
+        "card_index": 1,
+        "old": "Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.",
+        "new": "Castillo: Bien detectado: La acidez (PH <4.5) es típica de Candida."
+      }
+    ]
+  },
+  {
+    "filename": "CASE_PROC_GYN_INFECTION_VAGINITIS_001_005.json",
+    "fixes": [
+      {
+        "card_index": 1,
+        "old": "Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.",
+        "new": "Castillo: Bien detectado: La acidez (PH <4.5) es típica de Candida."
+      }
+    ]
+  },
+  {
+    "filename": "CASE_PROC_GYN_INFECTION_VAGINITIS_001_010.json",
+    "fixes": [
+      {
+        "card_index": 1,
+        "old": "Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.",
+        "new": "Castillo: Bien detectado: La acidez (PH <4.5) es típica de Candida."
+      }
+    ]
+  },
+  {
+    "filename": "CASE_PROC_GYN_INFECTION_VAGINITIS_001_011.json",
+    "fixes": [
+      {
+        "card_index": 1,
+        "old": "Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.",
+        "new": "Castillo: Bien detectado: La acidez (PH <4.5) es típica de Candida."
+      }
+    ]
+  },
+  {
+    "filename": "CASE_PROC_GYN_INFECTION_VAGINITIS_001_012.json",
+    "fixes": [
+      {
+        "card_index": 1,
+        "old": "Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.",
+        "new": "Castillo: Bien detectado: La acidez (PH <4.5) es típica de Candida."
+      }
+    ]
+  },
+  {
+    "filename": "CASE_PROC_GYN_INFECTION_VAGINITIS_001_013.json",
+    "fixes": [
+      {
+        "card_index": 1,
+        "old": "Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.",
+        "new": "Castillo: Bien detectado: La acidez (PH <4.5) es típica de Candida."
+      }
+    ]
+  },
+  {
+    "filename": "CASE_PROC_GYN_INFECTION_VAGINITIS_001_014.json",
+    "fixes": [
+      {
+        "card_index": 1,
+        "old": "Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.",
+        "new": "Castillo: Bien detectado: La acidez (PH <4.5) es típica de Candida."
+      }
+    ]
+  },
+  {
+    "filename": "CASE_PROC_GYN_INFECTION_VAGINITIS_001_015.json",
+    "fixes": [
+      {
+        "card_index": 1,
+        "old": "Castillo: ¡Match! La acidez (PH <4.5) es típica de Candida.",
+        "new": "Castillo: Bien detectado: La acidez (PH <4.5) es típica de Candida."
+      }
+    ]
+  }
+]

@@ -1,183 +1,183 @@
 {
-    "case_id":  "PROC_OBS_HEM_DPPNI_001_008",
-    "version":  "v3_swipe_action",
-    "theme_config":  "obs",
-    "difficulty":  "standard",
-    "patient_intro":  {
-                          "name":  "Laura, 26 años",
-                          "arrival_scenario":  "Gestante de 33 SDG que presenta sangrado transvaginal oscuro y dolor abdominal muy intenso. A la palpación: Hipertonía uterina (útero leñoso). FCF en 90 lpm (bradicardia fetal).",
-                          "time_limit_sec":  60
-                      },
-    "card_stream":  [
-                        {
-                            "card_id":  "init_vitals",
-                            "ui_icon":  "heartbeat",
-                            "category":  "vitals",
-                            "card_text":  "TA 90/60 mmHg, FC 115 lpm, Temp 36.5°C",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_1",
-                            "ui_icon":  "target",
-                            "category":  "Diagnóstico",
-                            "card_text":  "A) Desprendimiento Prematuro de Placenta (DPPNI): Dolor abdominal intenso + Hipertonía uterina + Sangrado oscuro + Sufrimiento fetal.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "lethal_omission",
-                                            "vazquez_comment":  "Castillo: ¡Correcto! El dolor y la hipertonía son la clave para diferenciarlo de la Placenta Previa."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  true,
-                                                 "decision_critical":  true,
-                                                 "lethal_if_discarded":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_2",
-                            "ui_icon":  "eye",
-                            "category":  "Diagnóstico Diferencial",
-                            "card_text":  "B) Placenta Previa: Sangrado rojo rutilante, INDOLORO, sin hipertonía uterina y frecuencia cardiaca fetal suele ser normal inicialmente.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Castillo: ¡Bien! El dolor intenso y la hipertonía descartan Placenta Previa."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_3",
-                            "ui_icon":  "eye",
-                            "category":  "Diagnóstico Diferencial",
-                            "card_text":  "C) Ruptura Uterina: Dolor súbito e insoportable, cese de las contracciones, hemorragia abundante y partes fetales palpables en abdomen.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Castillo: Correcto. La ruptura ocurre más comúnmente durante el trabajo de parto en úteros con cicatriz previa."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_4",
-                            "ui_icon":  "alert-circle",
-                            "category":  "Factor de Riesgo",
-                            "card_text":  "D) Hipertensión Arterial / Preeclampsia: Factor de riesgo más importante para el desarrollo de DPPNI.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Exacto! Casi la mitad de los casos se asocian a trastornos hipertensivos."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_5",
-                            "ui_icon":  "grid",
-                            "category":  "Signo Clínico",
-                            "card_text":  "E) Útero Leñoso: Hipertonía uterina persistente que impide la relajación y dificulta la palpación fetal.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: Muy bien. Es el signo físico cardinal del DPPNI."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_6",
-                            "ui_icon":  "activity",
-                            "category":  "Fisiopatología",
-                            "card_text":  "F) Útero de Couvelaire: Infiltración hemática del miometrio por el hematoma retroplacentario, dándole un color purpúreo.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Nivel experto! Esto puede causar atonía uterina post-parto severa."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_7",
-                            "ui_icon":  "test-tube",
-                            "category":  "labs",
-                            "card_text":  "G) Perfil de Coagulación / Fibrinógeno: El DPPNI es la causa más común de Coagulación Intravascular Diseminada (CID) en el embarazo.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "lethal_omission",
-                                            "vazquez_comment":  "Castillo: ¡Vital! Si el fibrinógeno es \u003c150 mg/dl, prepárate para una hemorragia masiva."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  true,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_8",
-                            "ui_icon":  "zap",
-                            "category":  "Manejo",
-                            "card_text":  "H) Cesárea de Urgencia: Indicada ante compromiso de la frecuencia cardiaca fetal, inestabilidad materna o hemorragia severa.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "lethal_omission",
-                                            "vazquez_comment":  "Castillo: ¡Indispensable! En DPPNI severo, el tiempo es oro para salvar ambos binomios."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  true,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_9",
-                            "ui_icon":  "alert-triangle",
-                            "category":  "meds",
-                            "card_text":  "I) Síndrome de Sheehan: Necrosis hipofisaria post-parto secundaria a choque hipovolémico hemorrágico.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: Bien. Sospechar si la paciente presenta agalactia y amenorrea en el puerperio."
-                                        }
-                        }
-                    ],
-    "enarm_pearl":  {
-                        "title":  "DPPNI: La Triada de Alarma",
-                        "text":  "Triada: Sufrimiento fetal, dolor abdominal/hipertonía y sangrado oscuro. Riesgo mayor: CID y útero de Couvelaire.",
-                        "gpc_ref":  "GPC Diagnóstico y Tratamiento del DPPNI"
-                    },
-    "boss_fight_triad":  {
-                             "trigger":  "after_cards",
-                             "questions":  [
-                                               {
-                                                   "question":  "¿Cuál es el factor de riesgo más importante para presentar DPPNI?",
-                                                   "options":  [
-                                                                   "Hipertensión Arterial / Preeclampsia",
-                                                                   "Diabetes Gestacional",
-                                                                   "Edad materna avanzada"
-                                                               ],
-                                                   "correct_index":  0
-                                               },
-                                               {
-                                                   "question":  "¿Cuál es la complicación hematológica más grave asociada al DPPNI?",
-                                                   "options":  [
-                                                                   "Coagulación Intravascular Diseminada (CID)",
-                                                                   "Anemia ferropénica severa",
-                                                                   "Trombocitosis reactiva"
-                                                               ],
-                                                   "correct_index":  0
-                                               },
-                                               {
-                                                   "question":  "¿Qué hallazgo quirúrgico define al Útero de Couvelaire?",
-                                                   "options":  [
-                                                                   "Infiltración de sangre en el miometrio",
-                                                                   "Ruptura de la serosa uterina",
-                                                                   "Acretismo placentario focal"
-                                                               ],
-                                                   "correct_index":  0
-                                               }
-                                           ]
-                         }
+    "case_id": "PROC_OBS_HEM_DPPNI_001_008",
+    "version": "v3_swipe_action",
+    "theme_config": "obs",
+    "difficulty": "standard",
+    "patient_intro": {
+        "name": "Laura, 26 años",
+        "arrival_scenario": "Gestante de 33 SDG que presenta sangrado transvaginal oscuro y dolor abdominal muy intenso. A la palpación: Hipertonía uterina (útero leñoso). FCF en 90 lpm (bradicardia fetal).",
+        "time_limit_sec": 60
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA 90/60 mmHg, FC 115 lpm, Temp 36.5°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "Diagnóstico Diferencial",
+            "card_text": "B) Placenta Previa: Sangrado rojo rutilante, INDOLORO, sin hipertonía uterina y frecuencia cardiaca fetal suele ser normal inicialmente.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: ¡Bien! El dolor intenso y la hipertonía descartan Placenta Previa."
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "eye",
+            "category": "Diagnóstico Diferencial",
+            "card_text": "C) Ruptura Uterina: Dolor súbito e insoportable, cese de las contracciones, hemorragia abundante y partes fetales palpables en abdomen.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Correcto. La ruptura ocurre más comúnmente durante el trabajo de parto en úteros con cicatriz previa."
+            }
+        },
+        {
+            "card_id": "c_4",
+            "ui_icon": "alert-circle",
+            "category": "Factor de Riesgo",
+            "card_text": "D) Hipertensión Arterial / Preeclampsia: Factor de riesgo más importante para el desarrollo de DPPNI.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Exacto! Casi la mitad de los casos se asocian a trastornos hipertensivos."
+            }
+        },
+        {
+            "card_id": "c_5",
+            "ui_icon": "grid",
+            "category": "Signo Clínico",
+            "card_text": "E) Útero Leñoso: Hipertonía uterina persistente que impide la relajación y dificulta la palpación fetal.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: Muy bien. Es el signo físico cardinal del DPPNI."
+            }
+        },
+        {
+            "card_id": "c_6",
+            "ui_icon": "activity",
+            "category": "Fisiopatología",
+            "card_text": "F) Útero de Couvelaire: Infiltración hemática del miometrio por el hematoma retroplacentario, dándole un color purpúreo.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Nivel experto! Esto puede causar atonía uterina post-parto severa."
+            }
+        },
+        {
+            "card_id": "c_9",
+            "ui_icon": "alert-triangle",
+            "category": "meds",
+            "card_text": "I) Síndrome de Sheehan: Necrosis hipofisaria post-parto secundaria a choque hipovolémico hemorrágico.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: Bien. Sospechar si la paciente presenta agalactia y amenorrea en el puerperio."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "A) Desprendimiento Prematuro de Placenta (DPPNI): Dolor abdominal intenso + Hipertonía uterina + Sangrado oscuro + Sufrimiento fetal.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Castillo: ¡Correcto! El dolor y la hipertonía son la clave para diferenciarlo de la Placenta Previa."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true,
+                "lethal_if_discarded": true
+            }
+        },
+        {
+            "card_id": "c_7",
+            "ui_icon": "test-tube",
+            "category": "labs",
+            "card_text": "G) Perfil de Coagulación / Fibrinógeno: El DPPNI es la causa más común de Coagulación Intravascular Diseminada (CID) en el embarazo.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Castillo: ¡Vital! Si el fibrinógeno es <150 mg/dl, prepárate para una hemorragia masiva."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_8",
+            "ui_icon": "zap",
+            "category": "Manejo",
+            "card_text": "H) Cesárea de Urgencia: Indicada ante compromiso de la frecuencia cardiaca fetal, inestabilidad materna o hemorragia severa.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Castillo: ¡Indispensable! En DPPNI severo, el tiempo es oro para salvar ambos binomios."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "DPPNI: La Triada de Alarma",
+        "text": "Triada: Sufrimiento fetal, dolor abdominal/hipertonía y sangrado oscuro. Riesgo mayor: CID y útero de Couvelaire.",
+        "gpc_ref": "GPC Diagnóstico y Tratamiento del DPPNI"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "question": "¿Qué hallazgo quirúrgico define al Útero de Couvelaire?",
+                "options": [
+                    "Ruptura de la serosa uterina",
+                    "Acretismo placentario focal",
+                    "Infiltración de sangre en el miometrio"
+                ],
+                "correct_index": 2
+            },
+            {
+                "question": "¿Cuál es la complicación hematológica más grave asociada al DPPNI?",
+                "options": [
+                    "Anemia ferropénica severa",
+                    "Trombocitosis reactiva",
+                    "Coagulación Intravascular Diseminada (CID)"
+                ],
+                "correct_index": 2
+            },
+            {
+                "question": "En este contexto clínico, ¿cuál es el factor de riesgo más importante para presentar DPPNI?",
+                "options": [
+                    "Diabetes Gestacional",
+                    "Edad materna avanzada",
+                    "Hipertensión Arterial / Preeclampsia"
+                ],
+                "correct_index": 2
+            }
+        ]
+    }
 }

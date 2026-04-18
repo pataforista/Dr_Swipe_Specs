@@ -1,190 +1,190 @@
 {
-  "case_id": "PROC_IM_ASTHMA_001_001",
-  "version": "v3_swipe_action",
-  "theme_config": "med",
-  "difficulty": "standard",
-  "patient_intro": {
-    "name": "Sofía, 22 años",
-    "arrival_scenario": "Estudiante de medicina con antecedente de atopia. Acude por sibilancias, tos seca predominio nocturno y opresión torácica recidivante. Refiere que los síntomas empeoran con el ejercicio y el frío. GINA 2024: ¿Cuál es el manejo inicial?",
-    "time_limit_sec": 60
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "vitals",
-      "card_text": "FC 88 lpm, Temp 36.6°C, SatO2 97% (Aire ambiente).",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Navarro: Signos estables por ahora, Sofía no está en crisis aguda."
-      }
+    "case_id": "PROC_IM_ÁSTHMÁ_001_001",
+    "version": "v3_swipe_action",
+    "theme_config": "med",
+    "difficulty": "standard",
+    "patient_intro": {
+        "name": "Sofía, 22 años",
+        "arrival_scenario": "Estudiante de medicina con antecedente de atopia. Acude por sibilancias, tos seca predominio nocturno y opresión torácica recidivante. Refiere que los síntomas empeoran con el ejercicio y el frío. GINA 2024: ¿Cuál es el manejo inicial?",
+        "time_limit_sec": 60
     },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "A) Asma Bronquial: Enfermedad inflamatoria crónica de la vía aérea con obstrucción reversible (clínica + espirometría).",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Correcto! Reversibilidad: Aumento de FEV1 >12% y >200ml tras broncodilatador."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_2",
-      "ui_icon": "pill",
-      "category": "Tratamiento GINA",
-      "card_text": "B) ICS-Formoterol (Rescate y Mantenimiento): Vía preferente (Step 1 y 2). El uso de SABA solo ha quedado relegado.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Navarro: ¡Excelente actualización! La inflamación debe tratarse siempre junto con la broncodilatación.",
-        "safety_flags": {
-          "lethal_risk": false,
-          "decision_critical": true
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "FC 88 lpm, Temp 36.6°C, SatO2 97% (Aire ambiente).",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Signos estables por ahora, Sofía no está en crisis aguda."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "A) Asma Bronquial: Enfermedad inflamatoria crónica de la vía aérea con obstrucción reversible (clínica + espirometría).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Correcto! Reversibilidad: Aumento de FEV1 >12% y >200ml tras broncodilatador."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "pill",
+            "category": "Tratamiento GINÁ",
+            "card_text": "B) ICS-Formoterol (Rescate y Mantenimiento): Vía preferente (Step 1 y 2). El uso de SÁBA solo ha quedado relegado.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Navarro: ¡Excelente actualización! La inflamación debe tratarse siempre junto con la broncodilatación.",
+                "safety_flags": {
+                    "lethal_risk": false,
+                    "decision_critical": true
+                }
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "eye",
+            "category": "Rescate",
+            "card_text": "C) Salbutamol (SÁBA) a demanda: Única terapia necesaria para pacientes con síntomas ocasionales (Step 1 antiguo).",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: ¡Incorrecto! La GINA ya no recomienda SÁBA solo por el riesgo de exacerbaciones graves. ¡Usa ICS-Formoterol!"
+            }
+        },
+        {
+            "card_id": "c_4",
+            "ui_icon": "activity",
+            "category": "meds",
+            "card_text": "D) Cuestionario ÁCT / ÁCQ: Herramientas validadas para evaluar el nivel de control de los síntomas en las últimas 4 semanas.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Bien. Nos permite ajustar el tratamiento de forma objetiva."
+            }
+        },
+        {
+            "card_id": "c_5",
+            "ui_icon": "thermometer",
+            "category": "Crisis Aguda",
+            "card_text": "E) Prednisona Oral: Indicada en exacerbaciones moderadas-graves para reducir la inflamación sistémica.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Muy bien! Los esteroides orales son clave en la crisis."
+            }
+        },
+        {
+            "card_id": "c_6",
+            "ui_icon": "info",
+            "category": "Factores Riesgo",
+            "card_text": "F) Atopia y Obesidad: Factores que dificultan el control del asma e incrementan la severidad del cuadro.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Correcto. Un abordaje multidisciplinario es fundamental."
+            }
+        },
+        {
+            "card_id": "c_7",
+            "ui_icon": "alert-circle",
+            "category": "Función Pulmonar",
+            "card_text": "G) Flujometría (PEF): Útil para el auto-monitoreo del paciente en casa y detección temprana de crisis.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Bien. Es una herramienta sencilla que empodera al paciente."
+            }
+        },
+        {
+            "card_id": "c_8",
+            "ui_icon": "zap",
+            "category": "Manejo Step 3",
+            "card_text": "H) Aumentar dosis de ICS-Formoterol: Si los síntomas persisten a pesar del manejo inicial adecuado.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Exacto! Subimos de escalón siguiendo la guía."
+            }
+        },
+        {
+            "card_id": "c_9",
+            "ui_icon": "slash",
+            "category": "imaging",
+            "card_text": "I) Prueba de Provocación con Metacolina: Usada si la espirometría es normal pero la sospecha clínica es muy alta.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Bravo! Evalúa la hiperreactividad bronquial."
+            }
+        },
+        {
+            "card_id": "c_10",
+            "ui_icon": "check-circle",
+            "category": "Técnica",
+            "card_text": "J) Evaluación de Técnica Inhalatoria: Paso obligatorio en CÁDA consulta antes de escalar el tratamiento.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Fundamental! El 50% de los fallos terapéuticos son por mala técnica."
+            }
         }
-      }
+    ],
+    "enarm_pearl": {
+        "title": "Asma: GINA 2024",
+        "text": "Gold Standard: Espirometría (+12%/200ml reversibilidad). Pilares: ICS-Formoterol pilar desde Step 1. NUNCA SÁBA solo.",
+        "gpc_ref": "Global Initiative for Asthma (GINA) 2024 / GEMÁ"
     },
-    {
-      "card_id": "c_3",
-      "ui_icon": "eye",
-      "category": "Rescate",
-      "card_text": "C) Salbutamol (SABA) a demanda: Única terapia necesaria para pacientes con síntomas ocasionales (Step 1 antiguo).",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 100,
-        "error_type": "hoarding",
-        "vazquez_comment": "Navarro: ¡Incorrecto! La GINA ya no recomienda SABA solo por el riesgo de exacerbaciones graves. ¡Usa ICS-Formoterol!"
-      }
-    },
-    {
-      "card_id": "c_4",
-      "ui_icon": "activity",
-      "category": "meds",
-      "card_text": "D) Cuestionario ACT / ACQ: Herramientas validadas para evaluar el nivel de control de los síntomas en las últimas 4 semanas.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: Bien. Nos permite ajustar el tratamiento de forma objetiva."
-      }
-    },
-    {
-      "card_id": "c_5",
-      "ui_icon": "thermometer",
-      "category": "Crisis Aguda",
-      "card_text": "E) Prednisona Oral: Indicada en exacerbaciones moderadas-graves para reducir la inflamación sistémica.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Muy bien! Los esteroides orales son clave en la crisis."
-      }
-    },
-    {
-      "card_id": "c_6",
-      "ui_icon": "info",
-      "category": "Factores Riesgo",
-      "card_text": "F) Atopia y Obesidad: Factores que dificultan el control del asma e incrementan la severidad del cuadro.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: Correcto. Un abordaje multidisciplinario es fundamental."
-      }
-    },
-    {
-      "card_id": "c_7",
-      "ui_icon": "alert-circle",
-      "category": "Función Pulmonar",
-      "card_text": "G) Flujometría (PEF): Útil para el auto-monitoreo del paciente en casa y detección temprana de crisis.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: Bien. Es una herramienta sencilla que empodera al paciente."
-      }
-    },
-    {
-      "card_id": "c_8",
-      "ui_icon": "zap",
-      "category": "Manejo Step 3",
-      "card_text": "H) Aumentar dosis de ICS-Formoterol: Si los síntomas persisten a pesar del manejo inicial adecuado.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Exacto! Subimos de escalón siguiendo la guía."
-      }
-    },
-    {
-      "card_id": "c_9",
-      "ui_icon": "slash",
-      "category": "imaging",
-      "card_text": "I) Prueba de Provocación con Metacolina: Usada si la espirometría es normal pero la sospecha clínica es muy alta.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Bravo! Evalúa la hiperreactividad bronquial."
-      }
-    },
-    {
-      "card_id": "c_10",
-      "ui_icon": "check-circle",
-      "category": "Técnica",
-      "card_text": "J) Evaluación de Técnica Inhalatoria: Paso obligatorio en CADA consulta antes de escalar el tratamiento.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Fundamental! El 50% de los fallos terapéuticos son por mala técnica."
-      }
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "question": "De las siguientes opciones, ¿cuál es la medida más importante antes de subir de escalón terapéutico en un paciente no controlado?",
+                "options": [
+                    "Agregar antibióticos",
+                    "Revisar técnica inhalatoria y apego",
+                    "Cambiar a inmunoterapia"
+                ],
+                "correct_index": 1
+            },
+            {
+                "question": "¿Cuál es la combinación farmacológica preferente para el rescate y mantenimiento en asma según GINA 2024?",
+                "options": [
+                    "Tiotropio (LÁMA) solo",
+                    "Esteroide inhalado (ICS) + Formoterol",
+                    "Salbutamol (SÁBA) solo"
+                ],
+                "correct_index": 1
+            },
+            {
+                "question": "¿Qué porcentaje de mejoría del FEV1 tras el uso de broncodilatador se considera diagnóstico de asma?",
+                "options": [
+                    "Mayor al 12%",
+                    "Mayor al 20%",
+                    "Mayor al 5%"
+                ],
+                "correct_index": 0
+            }
+        ]
     }
-  ],
-  "enarm_pearl": {
-    "title": "Asma: GINA 2024",
-    "text": "Gold Standard: Espirometría (+12%/200ml reversibilidad). Pilares: ICS-Formoterol pilar desde Step 1. NUNCA SABA solo.",
-    "gpc_ref": "Global Initiative for Asthma (GINA) 2024 / GEMA"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es la combinación farmacológica preferente para el rescate y mantenimiento en asma según GINA 2024?",
-        "options": [
-          "Esteroide inhalado (ICS) + Formoterol",
-          "Salbutamol (SABA) solo",
-          "Tiotropio (LAMA) solo"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Qué porcentaje de mejoría del FEV1 tras el uso de broncodilatador se considera diagnóstico de asma?",
-        "options": [
-          "Mayor al 12%",
-          "Mayor al 5%",
-          "Mayor al 20%"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es la medida más importante antes de subir de escalón terapéutico en un paciente no controlado?",
-        "options": [
-          "Revisar técnica inhalatoria y apego",
-          "Agregar antibióticos",
-          "Cambiar a inmunoterapia"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
 }

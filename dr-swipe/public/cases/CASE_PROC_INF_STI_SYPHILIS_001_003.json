@@ -1,174 +1,174 @@
 {
-    "case_id":  "PROC_INF_STI_SYPHILIS_001_003",
-    "version":  "v3_swipe_action",
-    "theme_config":  "med",
-    "difficulty":  "standard",
-    "patient_intro":  {
-                          "name":  "Roberto, 32 años",
-                          "arrival_scenario":  "HSH acude por erupción maculopapular generalizada, incluyendo palmas y plantas, que apareció hace 2 semanas. Niega úlceras actuales pero recuerda una \"llaguita indolora\" en el recto que desapareció sola hace 6 semanas.",
-                          "time_limit_sec":  60
-                      },
-    "card_stream":  [
-                        {
-                            "card_id":  "init_vitals",
-                            "ui_icon":  "heartbeat",
-                            "category":  "vitals",
-                            "card_text":  "TA 120/80, FC 70 lpm, Temp 36.6°C.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Navarro: Paciente estable. Analicemos la lesión."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_1",
-                            "ui_icon":  "target",
-                            "category":  "Diagnóstico",
-                            "card_text":  "A) Sífilis Primaria (Chancro Sifilítico): Úlcera única, limpia, indurada e indolora. Es el sello de la infección inicial.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: ¡Exacto! Si no duele, sospecha Treponema pallidum primero."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_2",
-                            "ui_icon":  "scissors",
-                            "category":  "Diferencial",
-                            "card_text":  "B) Chancroide (H. ducreyi): Úlceras múltiples, con bordes sucios, base necrótica y MUY DOLOROSAS.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Navarro: ¡Bien! Ducreyi duele (Do-cry)."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_004",
-                            "ui_icon":  "📄",
-                            "category":  "notes",
-                            "card_text":  "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_005",
-                            "ui_icon":  "📄",
-                            "category":  "notes",
-                            "card_text":  "Refiere alergia al polen y al polvo durante la primavera.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_006",
-                            "ui_icon":  "📄",
-                            "category":  "notes",
-                            "card_text":  "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_007",
-                            "ui_icon":  "🧪",
-                            "category":  "labs",
-                            "card_text":  "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_008",
-                            "ui_icon":  "📄",
-                            "category":  "notes",
-                            "card_text":  "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_009",
-                            "ui_icon":  "☢️",
-                            "category":  "imaging",
-                            "card_text":  "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-                                        }
-                        },
-                        {
-                            "card_id":  "pad_010",
-                            "ui_icon":  "🧪",
-                            "category":  "labs",
-                            "card_text":  "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-                                        }
-                        }
-                    ],
-    "enarm_pearl":  {
-                        "title":  "Sífilis: El ABC",
-                        "text":  "Primaria: Chancro indoloro. Secundaria: Palmas/Plantas. Tx: Penicilina Benzatínica 2.4 M. Seguimiento: Descenso de 4 diluciones en VDRL.",
-                        "gpc_ref":  "GPC Diagnóstico y tratamiento de la sífilis"
-                    },
-    "boss_fight_triad":  {
-                             "trigger":  "after_cards",
-                             "questions":  [
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Cuál es la característica clínica definitiva del chancro sifilítico primario?",
-                                                   "options":  [
-                                                                   "Úlcera indolora de base indurada",
-                                                                   "Múltiples vesículas dolorosas",
-                                                                   "Úlcera sucia con base friable"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Cuál es el tratamiento de primera elección para un paciente con diagnóstico de sífilis primaria?",
-                                                   "options":  [
-                                                                   "Penicilina G benzatínica 2.4 millones UI IM",
-                                                                   "Ceftriaxona 250 mg IM dosis única",
-                                                                   "Doxiciclina 100 mg c/12h por 14 días"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Cuál de las siguientes pruebas se utiliza para evaluar la respuesta al tratamiento y detectar reinfecciones?",
-                                                   "options":  [
-                                                                   "Pruebas no treponémicas (VDRL/RPR)",
-                                                                   "Pruebas treponémicas (FTA-ABS)",
-                                                                   "Inmunotransferencia (Western Blot)"
-                                                               ]
-                                               }
-                                           ]
-                         }
+    "case_id": "PROC_INF_STI_SYPHILIS_001_003",
+    "version": "v3_swipe_action",
+    "theme_config": "med",
+    "difficulty": "standard",
+    "patient_intro": {
+        "name": "Roberto, 32 años",
+        "arrival_scenario": "HSH acude por erupción maculopapular generalizada, incluyendo palmas y plantas, que apareció hace 2 semanas. Niega úlceras actuales pero recuerda una \"llaguita indolora\" en el recto que desapareció sola hace 6 semanas.",
+        "time_limit_sec": 60
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA 120/80, FC 70 lpm, Temp 36.6°C.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Paciente estable. Analicemos la lesión."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "A) Sífilis Primaria (Chancro Sifilítico): Úlcera única, limpia, indurada e indolora. Es el sello de la infección inicial.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Exacto! Si no duele, sospecha Treponema pallidum primero."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "scissors",
+            "category": "Diferencial",
+            "card_text": "B) Chancroide (H. ducreyi): Úlceras múltiples, con bordes sucios, base necrótica y MUY DOLOROSÁS.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: ¡Bien! Ducreyi duele (Do-cry)."
+            }
+        },
+        {
+            "card_id": "pad_004",
+            "ui_icon": "📄",
+            "category": "notes",
+            "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
+            }
+        },
+        {
+            "card_id": "pad_005",
+            "ui_icon": "📄",
+            "category": "notes",
+            "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
+            }
+        },
+        {
+            "card_id": "pad_007",
+            "ui_icon": "🧪",
+            "category": "labs",
+            "card_text": "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
+            }
+        },
+        {
+            "card_id": "pad_009",
+            "ui_icon": "☢️",
+            "category": "imaging",
+            "card_text": "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
+            }
+        },
+        {
+            "card_id": "pad_010",
+            "ui_icon": "🧪",
+            "category": "labs",
+            "card_text": "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
+            }
+        },
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "Dato de importancia: FC 135 lpm (Taquicardia moderada), FR 28 rpm, Temp 37.5 C, TA 105/65 mmHg (Normal-Baja).",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "DATO CLAVE OMITIDO: Navarro: Atencion! El paciente presenta deshidratacion moderada. Inicia Plan B de Rehidratacion Oral supervisada."
+            }
+        },
+        {
+            "card_id": "c_8",
+            "ui_icon": "slash",
+            "category": "Manejo",
+            "card_text": "Dato de importancia: Dato anecdótico: H) Antibióticos (Amoxicilina): Indicados para tratar la etiología bacteriana más probable en el lactante.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Cuidado! El Crup es predominantemente viral (Parainfluenza). Los antibióticos no tienen rol aquí."
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Sífilis: El ÁBC",
+        "text": "Primaria: Chancro indoloro. Secundaria: Palmas/Plantas. Tx: Penicilina Benzatínica 2.4 M. Seguimiento: Descenso de 4 diluciones en VDRL.",
+        "gpc_ref": "GPC Diagnóstico y tratamiento de la sífilis"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "correct_index": 0,
+                "question": "De las siguientes opciones, ¿cuál es la característica clínica definitiva del chancro sifilítico primario?",
+                "options": [
+                    "Úlcera indolora de base indurada",
+                    "Úlcera sucia con base friable",
+                    "Múltiples vesículas dolorosas"
+                ]
+            },
+            {
+                "correct_index": 2,
+                "question": "¿Cuál es el tratamiento de primera elección para un paciente con diagnóstico de sífilis primaria?",
+                "options": [
+                    "Ceftriaxona 250 mg IM dosis única",
+                    "Doxiciclina 100 mg c/12h por 14 días",
+                    "Penicilina G benzatínica 2.4 millones UI IM"
+                ]
+            },
+            {
+                "correct_index": 1,
+                "question": "¿Cuál de las siguientes pruebas se utiliza para evaluar la respuesta al tratamiento y detectar reinfecciones?",
+                "options": [
+                    "Inmunotransferencia (Western Blot)",
+                    "Pruebas no treponémicas (VDRL/RPR)",
+                    "Pruebas treponémicas (FTÁ-ÁBS)"
+                ]
+            }
+        ]
+    }
 }

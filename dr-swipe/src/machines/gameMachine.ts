@@ -1,6 +1,7 @@
 import { setup, assign } from 'xstate';
 import type { Card, EnarmPearl } from '../types/game';
 import { cleanVazquezComment } from '../utils/formatters';
+import { parseVitalsFromText } from '../utils/vitalsParser';
 import { calculateCardScore, COMBO_MILESTONES } from '../utils/scoringEngine';
 import rewardData from '../data/lore/rewardItems.json';
 import penaltyData from '../data/lore/penaltyItems.json';
@@ -58,6 +59,7 @@ interface GameContext {
     points: number;
     expectedAction: 'keep' | 'discard';
   }>;
+  lastVitals: { ta?: string; fc?: number; temp?: number; status: string } | null;
   // Shift (Guardia) context
   isSandiaMode: boolean;
   totalCasesInShift: number;
@@ -74,6 +76,7 @@ interface GameContext {
     feedbackHistory: any[];
     coinsEarnedThisCase: number;
     mistakesThisCase: number;
+    lastVitals: { ta?: string; fc?: number; temp?: number; status: string } | null;
   } | null;
 }
 
@@ -137,6 +140,7 @@ export const gameMachine = setup({
       activePenalty: null,
       activeEvent: null,
       feedbackHistory: [],
+      lastVitals: null,
       isSandiaMode: false,
       undoCharges: 5,
       lastAction: null
@@ -163,6 +167,13 @@ export const gameMachine = setup({
       const card = context.deck[context.currentCardIndex];
       if (!card) return {};
 
+      // Parse and persist vitals if category matches
+      let nextVitals = context.lastVitals;
+      if (card.category === 'vitals') {
+        const parsed = parseVitalsFromText(card.card_text);
+        if (parsed) nextVitals = parsed;
+      }
+
       // Store current state for Undo
       const lastActionState = {
         vitality: context.vitality,
@@ -172,7 +183,8 @@ export const gameMachine = setup({
         dossier: [...context.dossier],
         feedbackHistory: [...context.feedbackHistory],
         coinsEarnedThisCase: context.coinsEarnedThisCase,
-        mistakesThisCase: context.mistakesThisCase
+        mistakesThisCase: context.mistakesThisCase,
+        lastVitals: context.lastVitals
       };
 
       const isCorrect = (event.direction === 'right' && card.expected_action === 'keep') ||
@@ -297,6 +309,7 @@ export const gameMachine = setup({
         mistakesThisCase: isCorrect ? context.mistakesThisCase : context.mistakesThisCase + 1,
         lifelineActive: false, // Reset lifeline after swipe
         comboMilestoneHit: milestoneHit,
+        lastVitals: nextVitals,
         feedbackHistory: [...context.feedbackHistory, newHistoryItem],
         lastAction: lastActionState
       };
@@ -336,6 +349,7 @@ export const gameMachine = setup({
     lootBoxReward: null,
     activeEvent: null,
     feedbackHistory: [],
+    lastVitals: null,
     totalCasesInShift: 1,
     casesCompleted: 0,
     lives: 5,
@@ -584,6 +598,7 @@ export const gameMachine = setup({
             lootBoxReward: null,
             activePenalty: null,
             activeEvent: null,
+            lastVitals: null,
             lifelineActive: false,
             comboMilestoneHit: 0
           })
