@@ -22,7 +22,9 @@ class AudioEngine {
     if (!this.supported) return null;
     try {
       if (!this.ctx) {
-        const Ctor = window.AudioContext || (window as any).webkitAudioContext;
+        const Ctor =
+          window.AudioContext ||
+          (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
         if (!Ctor) { this.supported = false; return null; }
         this.ctx = new Ctor();
         this.master = this.ctx.createGain();

@@ -10,7 +10,7 @@ interface LootScreenProps {
 }
 
 export const LootScreen: React.FC<LootScreenProps> = ({ 
-  score, xpTotal, coins, isPerfect, onContinue 
+  xpTotal, coins, isPerfect, onContinue
 }) => {
   return (
     <motion.div 
@@ -47,7 +47,7 @@ export const LootScreen: React.FC<LootScreenProps> = ({
               <span className="text-sm sm:text-base font-bold text-slate-600">Puntaje acumulado</span>
             </div>
           </div>
-          <span className="text-2xl sm:text-3xl font-black text-primary lettering">+{score}</span>
+          <span className="text-2xl sm:text-3xl font-black text-primary lettering">+{xpTotal}</span>
         </div>
 
         <div className="h-px w-full bg-slate-200/50" />

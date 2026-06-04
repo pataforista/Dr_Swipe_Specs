@@ -25,6 +25,15 @@ jobs:
       - name: Install dependencies
         run: cd dr-swipe && npm install --legacy-peer-deps
 
+      - name: Typecheck
+        run: cd dr-swipe && npm run typecheck
+
+      - name: Lint
+        run: cd dr-swipe && npm run lint
+
+      - name: Validate cases
+        run: node tools/validate_public_cases.mjs
+
       - name: Build
         run: cd dr-swipe && npm run build
 

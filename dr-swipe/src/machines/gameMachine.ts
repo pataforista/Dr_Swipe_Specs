@@ -1,5 +1,5 @@
 import { setup, assign } from 'xstate';
-import type { Card, EnarmPearl } from '../types/game';
+import type { Card, EnarmPearl, LoreItem, FeedbackEntry, PuzzleDebrief } from '../types/game';
 import { cleanVazquezComment } from '../utils/formatters';
 import { parseVitalsFromText } from '../utils/vitalsParser';
 import { calculateCardScore, COMBO_MILESTONES } from '../utils/scoringEngine';
@@ -44,18 +44,10 @@ interface GameContext {
   comboMilestoneHit: number; // last milestone combo reached (5,10,15,20), 0 if none
   vitality: number; // 0-100 (Health/Life)
   consecutiveErrors: number;
-  lootBoxReward: { active: boolean; item: any } | null;
-  activePenalty: { active: boolean; item: any } | null;
-  activeEvent: { type: 'lab' | 'archive' | 'systemic'; item: any } | null;
-  feedbackHistory: Array<{
-    cardId: string;
-    cardText: string;
-    isCorrect: boolean;
-    feedback: string;
-    category: string;
-    points: number;
-    expectedAction: 'keep' | 'discard';
-  }>;
+  lootBoxReward: { active: boolean; item: LoreItem } | null;
+  activePenalty: { active: boolean; item: LoreItem } | null;
+  activeEvent: { type: 'lab' | 'archive' | 'systemic'; item: LoreItem } | null;
+  feedbackHistory: FeedbackEntry[];
   lastVitals: { ta?: string; fc?: number; temp?: number; status: string } | null;
   // Shift (Guardia) context
   isSandiaMode: boolean;
@@ -70,7 +62,7 @@ interface GameContext {
     combo: number;
     multiplier: number;
     dossier: Card[];
-    feedbackHistory: any[];
+    feedbackHistory: FeedbackEntry[];
     coinsEarnedThisCase: number;
     mistakesThisCase: number;
     lastVitals: { ta?: string; fc?: number; temp?: number; status: string } | null;
@@ -78,7 +70,7 @@ interface GameContext {
 }
 
 type GameEvent =
-  | { type: 'START_GUARD'; deck: Card[]; difficulty: string; pearl: EnarmPearl; isSandiaMode?: boolean }
+  | { type: 'START_GUARD'; deck: Card[]; difficulty: string; pearl?: EnarmPearl; isSandiaMode?: boolean }
   | { type: 'SWIPE'; direction: 'left' | 'right' }
   | { type: 'UNDO_SWIPE' }
   | { type: 'TRIGGER_BOSS' }
@@ -96,7 +88,7 @@ type GameEvent =
   | { type: 'RESOLVE_INTERRUPTION' }
   | { type: 'USE_LIFELINE' }
   | { type: 'APPLY_REWARD_HEAL'; value: number }
-  | { type: 'CONTINUE_SHIFT'; deck: Card[]; puzzle: any; isSandiaMode?: boolean } // deck of the NEXT case
+  | { type: 'CONTINUE_SHIFT'; deck: Card[]; puzzle: PuzzleDebrief; isSandiaMode?: boolean } // deck of the NEXT case
   | { type: 'RESCUE' }
   | { type: 'CLEAR_MILESTONE' };
 
@@ -228,8 +220,8 @@ export const gameMachine = setup({
       }
 
       // Tactical Dossier Combo Logic
-      let nextDossier = [...context.dossier];
-      let nextDiscarded = [...context.discarded];
+      const nextDossier = [...context.dossier];
+      const nextDiscarded = [...context.discarded];
       let hasEureka = false;
 
       if (event.direction === 'right') {

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion, useMotionValue, useTransform, useAnimation, AnimatePresence } from 'framer-motion';
+import type { MotionValue, PanInfo } from 'framer-motion';
 import type { Card } from '../types/game';
 import { useGameAudio } from '../hooks/useGameAudio';
 import { triggerHaptic } from '../utils/hapticFeedback';
@@ -203,7 +204,7 @@ interface DraggableCardProps {
   isLocked?: boolean;
   cardNumber: number;
   totalCards: number;
-  topX: any;
+  topX: MotionValue<number>;
 }
 
 // Icon helper for scrapbook categories
@@ -282,7 +283,7 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
   const cardBg = isLethal ? 'bg-rose-50' : isCritical ? 'bg-amber-50' : 'bg-white';
   const accentColor = isLethal ? 'border-accent-alert/40 shadow-rose-100' : isCritical ? 'border-secondary/40 shadow-amber-100' : 'border-slate-100 shadow-slate-200/50';
 
-  const handleDragEnd = async (_event: any, info: { offset: { x: number }; velocity: { x: number } }) => {
+  const handleDragEnd = async (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     if (!isTop || isLocked) return;
     const threshold = SWIPE_CONFIG.CARD_WIDTH * SWIPE_CONFIG.DRAG_THRESHOLD;
     const velocity = info.velocity.x;

@@ -4,7 +4,7 @@ import { gameMachine } from './machines/gameMachine';
 import { SwipeDeck } from './components/SwipeDeck';
 import { ShockRoom } from './components/ShockRoom';
 import { useState, useEffect, useRef, useCallback } from 'react';
-import type { ClinicalCase } from './types/game';
+import type { ClinicalCase, Card } from './types/game';
 import { dataLoader } from './utils/dataLoader';
 import { useGameAudio } from './hooks/useGameAudio';
 import { shuffleBossQuestion } from './utils/formatters';
@@ -34,11 +34,11 @@ const isSwipeCorrect = (direction: 'left' | 'right', expectedAction: 'keep' | 'd
 
 export function App() {
   const [state, send] = useMachine(gameMachine);
-  const { playFeedback, startTriageAlarm, stopTriageAlarm } = useGameAudio();
+  const { playFeedback, stopTriageAlarm } = useGameAudio();
   const [currentCase, setCurrentCase] = useState<ClinicalCase | null>(null);
   const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak } = useCodexStore();
   const timeLimitRef = useRef<number>(60);
-  const pendingDeckRef = useRef<any[]>([]);
+  const pendingDeckRef = useRef<Card[]>([]);
   const [showTutorial, setShowTutorial] = useState(() => !localStorage.getItem('dr_swipe_tutorial_seen'));
   const [showStats, setShowStats] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -103,7 +103,7 @@ export function App() {
       addCoins(totalCoins);
       if (totalCoins > 0 && state.context.mistakesThisCase > 0) showToast(`+${totalCoins} 🪙`, 'coins');
       registerCaseSolved(currentCase.case_id, state.context.score);
-      const pearl = currentCase.enarm_pearl || (currentCase as any).perla_enarm;
+      const pearl = currentCase.enarm_pearl || currentCase.perla_enarm;
       if (pearl) unlockPearl(pearl);
     }
   }, [state.value, currentCase, dailyStreak, addXp, addCoins, registerCaseSolved, unlockPearl]);
@@ -131,7 +131,7 @@ export function App() {
       timeLimitRef.current = timeLimit;
       pendingDeckRef.current = shuffledCards;
       setShowIntro(true);
-    } catch (err) {
+    } catch {
       send({ type: 'RESTART' });
     } finally {
       setIsLoadingCase(false);
@@ -157,9 +157,9 @@ export function App() {
 
       send({ 
         type: 'START_GUARD', 
-        deck: resumedDeck, 
-        difficulty: sessionProgress.difficulty, 
-        pearl: caseData.enarm_pearl as any 
+        deck: resumedDeck,
+        difficulty: sessionProgress.difficulty,
+        pearl: caseData.enarm_pearl
       });
 
       const timeLimit = Math.max(90, Math.min(180, resumedDeck.length * 18));
@@ -203,11 +203,7 @@ export function App() {
     setSwipeFeedback(isCorrect ? 'correct' : 'wrong');
     triggerHaptic(isCorrect ? 'criticalSuccess' : 'warning');
     send({ type: 'SWIPE', direction });
-    
-    // Update Vazquez Feedback immediately on swipe
-    const lastFeedback = state.context.feedbackHistory[state.context.feedbackHistory.length - 1];
-    // Note: Since 'send' is async in terms of context update, we might need to wait for the next render
-    // or use the 'isCorrect' calculated here.
+
     setTimeout(() => setSwipeFeedback(null), 2000);
   };
 
@@ -275,9 +271,9 @@ export function App() {
                 setShowIntro(false); 
                 setTimeLeft(timeLimitRef.current); 
                 if (state.matches('idle')) {
-                  send({ type: 'START_GUARD', deck: pendingDeckRef.current, difficulty: currentCase.difficulty || 'standard', pearl: currentCase.enarm_pearl as any }); 
+                  send({ type: 'START_GUARD', deck: pendingDeckRef.current, difficulty: currentCase.difficulty || 'standard', pearl: currentCase.enarm_pearl });
                 } else {
-                  send({ type: 'CONTINUE_SHIFT', deck: pendingDeckRef.current, puzzle: currentCase.enarm_pearl || (currentCase as any).perla_enarm });
+                  send({ type: 'CONTINUE_SHIFT', deck: pendingDeckRef.current, puzzle: currentCase.enarm_pearl || currentCase.perla_enarm || {} });
                 }
               }} 
               className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl group"

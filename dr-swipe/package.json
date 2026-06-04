@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "typecheck": "tsc -p tsconfig.app.json --noEmit",
     "prebuild": "node regen_index.js",
-    "build": "vite build",
+    "build": "tsc -p tsconfig.app.json --noEmit && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",

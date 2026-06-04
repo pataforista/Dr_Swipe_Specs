@@ -86,6 +86,42 @@ export interface ClinicalCase {
   perla_enarm?: EnarmPearl; // legacy support
 }
 
+// Lore items (reward / penalty / systemic-lab-archive events) loaded from
+// src/data/lore/*.json. Fields are optional because the three families share a
+// loose shape.
+export interface LoreEffect {
+  tipo: string;
+  duracion?: number;
+  valor?: number;
+}
+
+export interface LoreItem {
+  id?: string;
+  nombre: string;
+  texto?: string;
+  efecto?: LoreEffect;
+  frases?: { start?: string; [k: string]: string | undefined };
+  [k: string]: unknown;
+}
+
+// One entry of the per-case feedback log kept in the state machine context.
+export interface FeedbackEntry {
+  cardId: string;
+  cardText: string;
+  isCorrect: boolean;
+  feedback: string;
+  category: string;
+  points: number;
+  expectedAction: 'keep' | 'discard';
+}
+
+// Debrief payload handed over when advancing to the next patient of a shift.
+export interface PuzzleDebrief {
+  title?: string;
+  text?: string;
+  gpc_ref?: string;
+}
+
 export interface PlayerStats {
   rank: string;
   xp: number;
