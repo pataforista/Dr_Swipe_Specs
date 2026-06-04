@@ -83,9 +83,10 @@ export function calculateCardScore(
     };
   }
 
-  // Combo multiplier
+  // Combo multiplier (capped at x3 so it can't run away if stacked with the
+  // difficulty/speed/dossier multipliers; reached at combo 20).
   const nextCombo = context.combo + 1;
-  const comboMultiplier = 1 + Math.floor(nextCombo / 5) * 0.5;
+  const comboMultiplier = Math.min(3, 1 + Math.floor(nextCombo / 5) * 0.5);
 
   // Difficulty multiplier
   const difficultyMultiplier =
@@ -116,7 +117,9 @@ export function calculateCardScore(
       }
     }
     if (matchCount > 0) {
-      dossierMultiplier = 1 + matchCount * 0.2; // 1.2x, 1.4x, 1.6x per match
+      // Modest, since it stacks multiplicatively with combo/difficulty/speed and
+      // is effectively always-on once a coherent dossier is built.
+      dossierMultiplier = 1 + matchCount * 0.15; // 1.15x, 1.30x, 1.45x per match
       bonusType = 'dossier';
     }
   }
