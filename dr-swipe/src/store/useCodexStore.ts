@@ -39,6 +39,12 @@ interface CodexState {
   openKnowledgeCrate: (pool: EnarmPearl[]) => CrateResult | null;
   buyBoost: (id: BoostId) => boolean;
   consumeBoost: (id: BoostId) => boolean;
+  // Daily missions & streak goals
+  dailyMissions: DailyMissions;
+  streakMilestonesClaimed: number[];
+  refreshDaily: () => void;
+  trackMission: (metric: MissionMetric, amount?: number) => void;
+  claimMission: (id: MissionMetric) => number; // returns coins granted (0 if none)
 }
 
 export interface CrateResult { pearl: EnarmPearl; isNew: boolean; refund: number; }
@@ -53,6 +59,22 @@ export const BOOST_CATALOG: BoostInfo[] = [
   { id: 'freeHints',   name: 'Pista Gratis',   desc: 'Escanea una carta sin gastar monedas (x3).',  cost: 45, emoji: '🧬' },
 ];
 const FREE_HINTS_PER_BUY = 3;
+
+// ── Daily missions & streak goals ───────────────────────────────────────────
+export type MissionMetric = 'cases' | 'correct' | 'perfect';
+export interface Mission { id: MissionMetric; label: string; emoji: string; target: number; reward: number; progress: number; claimed: boolean; }
+export interface DailyMissions { date: string; list: Mission[]; }
+/** Coins granted the first time the daily streak reaches each milestone. */
+export const STREAK_MILESTONES: Record<number, number> = { 3: 30, 7: 75, 14: 150, 30: 400 };
+
+const todayStr = () => new Date().toISOString().slice(0, 10);
+function freshMissions(): Mission[] {
+  return [
+    { id: 'cases',   label: 'Resuelve 3 pacientes',       emoji: '📑', target: 3,  reward: 30, progress: 0, claimed: false },
+    { id: 'correct', label: 'Acierta 25 decisiones',      emoji: '🎯', target: 25, reward: 25, progress: 0, claimed: false },
+    { id: 'perfect', label: 'Logra 1 guardia perfecta',   emoji: '✨', target: 1,  reward: 40, progress: 0, claimed: false },
+  ];
+}
 
 export const LIFELINE_COST = 25;
 export const KNOWLEDGE_CRATE_COST = 50;
@@ -90,6 +112,8 @@ export const useCodexStore = create<CodexState>()(
       lastPlayedDate: null,
       sessionProgress: null,
       boosts: { doubleXp: 0, doubleCoins: 0, freeHints: 0 },
+      dailyMissions: { date: '', list: freshMissions() },
+      streakMilestonesClaimed: [],
 
       addXp: (amount) => set((state) => ({
         stats: { ...state.stats, xp: state.stats.xp + amount }
@@ -160,12 +184,23 @@ export const useCodexStore = create<CodexState>()(
       })),
 
       updateDailyStreak: () => set((state) => {
-        const today = new Date().toISOString().slice(0, 10);
+        const today = todayStr();
         if (state.lastPlayedDate === today) return state; // Already updated today
 
         const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
         const newStreak = state.lastPlayedDate === yesterday ? state.dailyStreak + 1 : 1;
-        return { dailyStreak: newStreak, lastPlayedDate: today };
+
+        // Reward the first time the streak reaches a milestone.
+        const claimed = state.streakMilestonesClaimed ?? [];
+        const reward = STREAK_MILESTONES[newStreak];
+        const grant = reward && !claimed.includes(newStreak) ? reward : 0;
+
+        return {
+          dailyStreak: newStreak,
+          lastPlayedDate: today,
+          stats: grant ? { ...state.stats, coins: state.stats.coins + grant } : state.stats,
+          streakMilestonesClaimed: grant ? [...claimed, newStreak] : claimed,
+        };
       }),
 
       saveSessionProgress: (progress) => set(() => ({ sessionProgress: progress })),
@@ -198,6 +233,39 @@ export const useCodexStore = create<CodexState>()(
           return { boosts: { ...cur, [id]: cur[id] - 1 } };
         });
         return used;
+      },
+
+      refreshDaily: () => set((state) => {
+        if (state.dailyMissions?.date === todayStr()) return state;
+        return { dailyMissions: { date: todayStr(), list: freshMissions() } };
+      }),
+
+      trackMission: (metric, amount = 1) => set((state) => {
+        const dm = state.dailyMissions?.date === todayStr()
+          ? state.dailyMissions
+          : { date: todayStr(), list: freshMissions() };
+        const list = dm.list.map(m =>
+          m.id === metric && !m.claimed
+            ? { ...m, progress: Math.min(m.target, m.progress + amount) }
+            : m
+        );
+        return { dailyMissions: { date: dm.date, list } };
+      }),
+
+      claimMission: (id) => {
+        let granted = 0;
+        set((state) => {
+          const dm = state.dailyMissions;
+          if (!dm) return state;
+          const m = dm.list.find(x => x.id === id);
+          if (!m || m.claimed || m.progress < m.target) return state;
+          granted = m.reward;
+          return {
+            stats: { ...state.stats, coins: state.stats.coins + m.reward },
+            dailyMissions: { date: dm.date, list: dm.list.map(x => x.id === id ? { ...x, claimed: true } : x) },
+          };
+        });
+        return granted;
       },
     }),
     {

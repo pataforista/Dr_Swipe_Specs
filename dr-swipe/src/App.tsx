@@ -16,6 +16,7 @@ import { TutorialOverlay } from './components/TutorialOverlay';
 import { StatsDashboard } from './components/StatsDashboard';
 import { CodexView } from './components/CodexView';
 import { TiendaView } from './components/TiendaView';
+import { DailyView } from './components/DailyView';
 import { RetrospectiveView } from './components/RetrospectiveView';
 
 import { FeedbackToast } from './components/overlays/FeedbackToast';
@@ -38,7 +39,7 @@ export function App() {
   const [state, send] = useMachine(gameMachine);
   const { playFeedback, stopTriageAlarm } = useGameAudio();
   const [currentCase, setCurrentCase] = useState<ClinicalCase | null>(null);
-  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak, boosts, consumeBoost } = useCodexStore();
+  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak, boosts, consumeBoost, trackMission, refreshDaily } = useCodexStore();
   const [guardBoosts, setGuardBoosts] = useState<{ doubleXp: boolean; doubleCoins: boolean }>({ doubleXp: false, doubleCoins: false });
   const timeLimitRef = useRef<number>(60);
   const pendingDeckRef = useRef<any[]>([]);
@@ -46,6 +47,7 @@ export function App() {
   const [showStats, setShowStats] = useState(false);
   const [showCodex, setShowCodex] = useState(false);
   const [showTienda, setShowTienda] = useState(false);
+  const [showDaily, setShowDaily] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isLoadingCase, setIsLoadingCase] = useState(false);
   const [showRetro, setShowRetro] = useState(false);
@@ -57,6 +59,8 @@ export function App() {
   const [vazquezDialogue, setVazquezDialogue] = useState<string | null>(null);
   const [vazquezExpression, setVazquezExpression] = useState<'neutral' | 'happy' | 'angry' | 'shocked'>('neutral');
   const [timeLeft, setTimeLeft] = useState(60);
+
+  useEffect(() => { refreshDaily(); }, [refreshDaily]);
 
   useEffect(() => {
     if (state.matches('reward') || state.matches('ghosted') || state.matches('debrief')) clearSessionProgress();
@@ -109,6 +113,8 @@ export function App() {
       addCoins(totalCoins);
       if (totalCoins > 0 && state.context.mistakesThisCase > 0) showToast(`+${totalCoins} 🪙`, 'coins');
       registerCaseSolved(currentCase.case_id, state.context.score);
+      trackMission('cases', 1);
+      if (state.context.mistakesThisCase === 0) trackMission('perfect', 1);
       const pearl = currentCase.enarm_pearl || (currentCase as any).perla_enarm;
       if (pearl) unlockPearl(pearl);
     }
@@ -194,6 +200,7 @@ export function App() {
     if (!card) return;
     const isCorrect = isSwipeCorrect(direction, card.expected_action);
     updateSwipeResult(isCorrect);
+    if (isCorrect) trackMission('correct');
     const timeTaken = Date.now() - state.context.lastCardPresentedAt;
     const scoreBreakdown = calculateCardScore(
       card,
@@ -295,13 +302,13 @@ export function App() {
     switch (true) {
       case state.matches('idle'):
         return (
-          <div className="fixed inset-0 bg-[#FDFBF7] flex flex-col items-center justify-center p-4 sm:p-8 overflow-hidden z-[120]">
+          <div className="fixed inset-0 bg-[#FDFBF7] flex flex-col items-center justify-center p-4 sm:p-8 overflow-y-auto z-[120]">
             <div className="text-center mb-6 sm:mb-10">
               <span className="text-[9px] sm:text-[10px] font-black tracking-widest text-primary uppercase mb-2 block lettering">NOTAS DE ESTUDIO ✨</span>
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-black text-slate-800 lettering drop-shadow-sm">Dr. Swipe</h1>
               <div className="h-2 w-32 sm:w-48 washi-tape-pink mx-auto mt-3 sm:mt-4 rotate-1" />
             </div>
-            {dailyStreak > 0 && <div className="flex items-center gap-2 bg-amber-100 px-4 sm:px-6 py-2 rounded-2xl mb-6 sm:mb-10 shadow-sm font-bold text-amber-700 lettering uppercase text-[10px] sm:text-[11px]">🔥 Racha: {dailyStreak} Días</div>}
+            {dailyStreak > 0 && <button onClick={() => setShowDaily(true)} className="flex items-center gap-2 bg-amber-100 px-4 sm:px-6 py-2 rounded-2xl mb-6 sm:mb-10 shadow-sm font-bold text-amber-700 lettering uppercase text-[10px] sm:text-[11px] hover:bg-amber-200 transition-colors">🔥 Racha: {dailyStreak} Días</button>}
             <div className="flex flex-col gap-3 sm:gap-4 w-full max-w-xs px-2">
               <button onClick={() => startNewCase()} disabled={isLoadingCase} className="marker-btn py-4 sm:py-5 text-base sm:text-xl group">
                  {isLoadingCase ? 'PREPARANDO...' : 'EMPEZAR GUARDIA ✨'}
@@ -313,6 +320,10 @@ export function App() {
                    REANUDAR GUARDIA 📑
                 </button>
               )}
+
+              <button onClick={() => setShowDaily(true)} className="marker-btn py-4 sm:py-5 text-sm sm:text-base !bg-amber-400 !border-amber-400 shadow-amber-100 !text-amber-900">
+                 MISIONES DEL DÍA 🗓️
+              </button>
 
               <div className="flex gap-3">
                 <button onClick={() => setShowCodex(true)} className="marker-btn flex-1 py-4 sm:py-5 text-sm sm:text-base !bg-secondary !border-secondary shadow-amber-100">
@@ -411,6 +422,7 @@ export function App() {
       <AnimatePresence>{showStats && <div className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-6 overflow-hidden"><StatsDashboard onClose={() => setShowStats(false)} /></div>}</AnimatePresence>
       <AnimatePresence>{showCodex && <div className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-4 sm:p-6 overflow-hidden"><CodexView onClose={() => setShowCodex(false)} /></div>}</AnimatePresence>
       <AnimatePresence>{showTienda && <div className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-4 sm:p-6 overflow-hidden"><TiendaView onClose={() => setShowTienda(false)} /></div>}</AnimatePresence>
+      <AnimatePresence>{showDaily && <div className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-4 sm:p-6 overflow-hidden"><DailyView onClose={() => setShowDaily(false)} /></div>}</AnimatePresence>
       <AnimatePresence mode="wait">{state.context.activeEvent?.item && <EventAlert key={state.context.activeEvent?.item?.id ?? 'event'} event={state.context.activeEvent} onClose={() => send({ type: 'CLEAR_OVERLAYS' })} />}</AnimatePresence>
       <AnimatePresence>{state.context.lootBoxReward?.active && state.context.lootBoxReward.item && <LootBoxOverlay reward={{ active: true, item: state.context.lootBoxReward.item }} onClaim={() => send({ type: 'CLEAR_OVERLAYS' })} />}</AnimatePresence>
       <AnimatePresence>{state.context.activePenalty?.active && <PenaltyOverlay penalty={{ active: true, item: state.context.activePenalty.item }} onAccept={() => send({ type: 'CLEAR_OVERLAYS' })} />}</AnimatePresence>
