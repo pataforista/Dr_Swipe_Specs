@@ -43,6 +43,7 @@ export function App() {
   const [guardBoosts, setGuardBoosts] = useState<{ doubleXp: boolean; doubleCoins: boolean }>({ doubleXp: false, doubleCoins: false });
   const timeLimitRef = useRef<number>(60);
   const pendingDeckRef = useRef<any[]>([]);
+  const rewardProcessedRef = useRef(false);
   const [showTutorial, setShowTutorial] = useState(() => !localStorage.getItem('dr_swipe_tutorial_seen'));
   const [showStats, setShowStats] = useState(false);
   const [showCodex, setShowCodex] = useState(false);
@@ -99,26 +100,35 @@ export function App() {
   }, [state.context.currentCardIndex, state.value, currentCase, saveSessionProgress]);
 
   useEffect(() => {
-    if (state.matches('reward') && currentCase) {
-      const streakMult = getDailyStreakMultiplier(dailyStreak);
-      const xpGained = Math.floor(state.context.score * streakMult) * (guardBoosts.doubleXp ? 2 : 1);
-      addXp(xpGained);
-      let totalCoins = state.context.coinsEarnedThisCase;
-      if (state.context.mistakesThisCase === 0) {
-        const bonus = calculatePerfectRoundBonus(state.context.deck.length, state.context.difficulty);
-        totalCoins += bonus;
-        showToast(`¡GUARDIA PERFECTA! +${bonus} 🪙`, 'milestone');
-      }
-      if (guardBoosts.doubleCoins) totalCoins *= 2;
-      addCoins(totalCoins);
-      if (totalCoins > 0 && state.context.mistakesThisCase > 0) showToast(`+${totalCoins} 🪙`, 'coins');
-      registerCaseSolved(currentCase.case_id, state.context.score);
-      trackMission('cases', 1);
-      if (state.context.mistakesThisCase === 0) trackMission('perfect', 1);
-      const pearl = currentCase.enarm_pearl || (currentCase as any).perla_enarm;
-      if (pearl) unlockPearl(pearl);
+    if (!state.matches('reward')) {
+      // Reset the guard whenever we leave the reward screen so the NEXT case can grant.
+      rewardProcessedRef.current = false;
+      return;
     }
-  }, [state.value, currentCase, dailyStreak, addXp, addCoins, registerCaseSolved, unlockPearl]);
+    // Process each reward exactly once. handleCaseTransition swaps currentCase while
+    // still in 'reward' (before CONTINUE_SHIFT), which would otherwise re-fire this
+    // effect and double-grant XP/coins/missions.
+    if (!currentCase || rewardProcessedRef.current) return;
+    rewardProcessedRef.current = true;
+
+    const streakMult = getDailyStreakMultiplier(dailyStreak);
+    const xpGained = Math.floor(state.context.score * streakMult) * (guardBoosts.doubleXp ? 2 : 1);
+    addXp(xpGained);
+    let totalCoins = state.context.coinsEarnedThisCase;
+    if (state.context.mistakesThisCase === 0) {
+      const bonus = calculatePerfectRoundBonus(state.context.deck.length, state.context.difficulty);
+      totalCoins += bonus;
+      showToast(`¡GUARDIA PERFECTA! +${bonus} 🪙`, 'milestone');
+    }
+    if (guardBoosts.doubleCoins) totalCoins *= 2;
+    addCoins(totalCoins);
+    if (totalCoins > 0 && state.context.mistakesThisCase > 0) showToast(`+${totalCoins} 🪙`, 'coins');
+    registerCaseSolved(currentCase.case_id, state.context.score);
+    trackMission('cases', 1);
+    if (state.context.mistakesThisCase === 0) trackMission('perfect', 1);
+    const pearl = currentCase.enarm_pearl || (currentCase as any).perla_enarm;
+    if (pearl) unlockPearl(pearl);
+  }, [state.value, currentCase, dailyStreak, guardBoosts, addXp, addCoins, registerCaseSolved, unlockPearl, trackMission]);
 
   const startNewCase = async () => {
     setIsPaused(false);
@@ -162,6 +172,7 @@ export function App() {
          caseData.boss_fight_triad.questions = caseData.boss_fight_triad.questions.map(q => shuffleBossQuestion(q));
       }
       setCurrentCase(caseData);
+      setGuardBoosts({ doubleXp: false, doubleCoins: false }); // resumed guards don't carry shop boosts
       setCaseQueue([]); // Clearing queue for resumed cases to avoid complexity
       
       const fullDeck = [...caseData.card_stream];
