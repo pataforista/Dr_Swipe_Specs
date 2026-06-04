@@ -13,7 +13,7 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "Signos Vitales",
-            "card_text": "Hallazgo clínico: Ruido en el expediente: TA 110/70 mmHg, FC 105 lpm, Temp 39.4°C",
+            "card_text": "Hallazgo clínico: TA 110/70 mmHg, FC 105 lpm, Temp 39.4°C",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,

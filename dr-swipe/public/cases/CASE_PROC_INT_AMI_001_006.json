@@ -13,7 +13,7 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "Signos Vitales",
-            "card_text": "Dato de importancia: Dato anecdótico: TA 90/60 (tendencia al choque), FC 110 lpm, Temp 36.8°C",
+            "card_text": "Dato de importancia: TA 90/60 (tendencia al choque), FC 110 lpm, Temp 36.8°C",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,

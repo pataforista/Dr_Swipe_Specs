@@ -145,10 +145,10 @@
             "ui_icon": "rotate-cw",
             "category": "Dizziness",
             "card_text": "H) Dizziness vs Vertigo: 'Dizziness' es el término laxo para Mareo, mientras que 'Vertigo' implica ilusión de movimiento.",
-            "expected_action": "discard",
+            "expected_action": "keep",
             "scoring": {
                 "points": 50,
-                "error_type": "hoarding",
+                "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Bien! Aunque se confunden, 'dizziness' es más inespecífico (aturdimiento)."
             }
         },

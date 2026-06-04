@@ -5,7 +5,7 @@
     "difficulty": "standard",
     "patient_intro": {
         "name": "Marta, 41 años",
-        "arrival_scenario": "Mujer de 52 años acude a mastografía de tamizaje anual. Refiere ser tabaquista y nulípara. Reporte de mastografía: Nódulo circunscrito de 1cm con microcalcificaciones pleomórficas agrupadas. Clasificado como BI-RADS 4.",
+        "arrival_scenario": "Mujer de 52 años acude a mastografía de tamizaje de rutina. Refiere ser tabaquista y nulípara. Reporte de mastografía: Nódulo circunscrito de 1cm con microcalcificaciones pleomórficas agrupadas. Clasificado como BI-RADS 4.",
         "time_limit_sec": 60
     },
     "card_stream": [

@@ -5,7 +5,7 @@
     "difficulty": "standard",
     "patient_intro": {
         "name": "Isabel, 53 años",
-        "arrival_scenario": "Mujer de 45 años acude a mastografía de tamizaje anual. Refiere ser tabaquista y nulípara. Se observa asimetría focal con distorsión de la arquitectura. Categoría BI-RADS 5. ¿Cuál es el siguiente paso?",
+        "arrival_scenario": "Mujer de 45 años acude a mastografía de tamizaje de rutina. Refiere ser tabaquista y nulípara. Se observa asimetría focal con distorsión de la arquitectura. Categoría BI-RADS 5. ¿Cuál es el siguiente paso?",
         "time_limit_sec": 60
     },
     "card_stream": [
