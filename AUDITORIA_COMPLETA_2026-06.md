@@ -24,10 +24,15 @@ Segunda tanda (completada):
 - ✅ **F3 — Peso letal.** `lethal_if_discarded` ahora pesa −1000 como `lethal_risk`. *(commit `40346ea`)*
 - ✅ **A2 — reduce-motion** respetado vía `@media (prefers-reduced-motion)`.
 
-Pendiente por diseño (no son bugs de una lectura; requieren tu criterio):
+Tercera tanda (completada):
 
-- ⚠️ **F2 mecánicas inertes** (sinergia de dossier sin datos, `dynamic_value`, QTE fantasma): se dejan **intactas a propósito** — no afectan el juego (nunca se disparan) y conviene decidir si poblarlas o retirarlas, no removerlas a ciegas.
-- ⚠️ **Estética E1–E4** (monitor de vitales oscuro, naming vázquez↔mendoza, textos diminutos) y **A1/A3/A4**: cambios de opinión visual, mejor consensuarlos antes.
+- ✅ **F2 — QTE fantasma retirado.** Se eliminó la maquinaria QTE inalcanzable del `boss_fight` (contexto, eventos `QTE_*`, `after:5000`), superada por `ShockRoom`. La **sinergia de dossier** se conserva como mecánica diseñada: solo requiere poblar `related_diagnoses` en los casos para activarse (decisión de contenido pendiente, no es un bug).
+- ✅ **E1 — Monitor de vitales** re-skineado a la paleta clara "scrapbook" (era `slate-900`, rompía la estética).
+
+Pendiente por diseño (requieren tu criterio):
+
+- ⚠️ **Poblar `related_diagnoses`** si se quiere activar la sinergia de dossier (tarea de contenido).
+- ⚠️ **E2/E3/E4 y A1/A3/A4** (naming vázquez↔mendoza, textos diminutos, etiquetas keep/discard): ajustes de opinión visual, mejor consensuarlos.
 
 ---
 

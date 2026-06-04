@@ -34,9 +34,6 @@ interface GameContext {
   isUrgent: boolean;
   showBloodVignette: boolean;
   debriefData: { title: string; text: string; gpc: string; comment: string } | null;
-  // QTE context
-  qteActive: boolean;
-  qteTimeLeft: number;
   // Interruption context
   interruptionActive: boolean;
   lastInterruptionAt: number;
@@ -95,8 +92,6 @@ type GameEvent =
   | { type: 'CLEAR_VISUALS' }
   | { type: 'CLEAR_OVERLAYS' }
   | { type: 'VIEW_DEBRIEF' }
-  | { type: 'QTE_TIMER_TICK' }
-  | { type: 'QTE_INTERACT' }
   | { type: 'TRIGGER_INTERRUPTION' }
   | { type: 'RESOLVE_INTERRUPTION' }
   | { type: 'USE_LIFELINE' }
@@ -126,8 +121,6 @@ export const gameMachine = setup({
       isUrgent: false,
       showBloodVignette: false,
       debriefData: null,
-      qteActive: false,
-      qteTimeLeft: 0,
       interruptionActive: false,
       lastInterruptionAt: 0,
       coinsEarnedThisCase: 0,
@@ -335,8 +328,6 @@ export const gameMachine = setup({
     isUrgent: false,
     showBloodVignette: false,
     debriefData: null,
-    qteActive: false,
-    qteTimeLeft: 0,
     interruptionActive: false,
     lastInterruptionAt: 0,
     coinsEarnedThisCase: 0,
@@ -382,8 +373,6 @@ export const gameMachine = setup({
               gpc: event.pearl?.gpc_ref || "GPC en vigor",
               comment: ""
             }),
-            qteActive: false,
-            qteTimeLeft: 0,
             interruptionActive: false,
             lastInterruptionAt: 0,
             coinsEarnedThisCase: 0,
@@ -509,52 +498,22 @@ export const gameMachine = setup({
       }
     },
     boss_fight: {
-      entry: assign({
-        qteActive: true,
-        qteTimeLeft: 5
-      }),
+      // The ShockRoom component drives this phase and owns its own timer,
+      // emitting ANSWER_CORRECT / ANSWER_WRONG. (The legacy QTE fallback was
+      // unreachable dead code and has been removed.)
       on: {
-        QTE_TIMER_TICK: {
-          actions: assign({
-            qteTimeLeft: ({ context }) => Math.max(0, context.qteTimeLeft - 1)
-          })
-        },
-        QTE_INTERACT: {
-          target: 'reward',
-          actions: assign({
-            caseStreak: ({ context }) => context.caseStreak + 1,
-            score: ({ context }) => context.score + (context.caseStreak * 500),
-            qteActive: false,
-            qteTimeLeft: 0
-          })
-        },
         ANSWER_CORRECT: {
           target: 'reward',
           actions: assign({
             caseStreak: ({ context }) => context.caseStreak + 1,
-            score: ({ context }) => context.score + (context.caseStreak * 500), // Streak Bonus
-            qteActive: false,
-            qteTimeLeft: 0
+            score: ({ context }) => context.score + (context.caseStreak * 500) // Streak Bonus
           })
         },
         ANSWER_WRONG: {
           target: 'fail_protection',
           actions: assign({
             fatalError: ({ event }) => event.type === 'ANSWER_WRONG' ? event.error : "Error en Shock Room",
-            caseStreak: 0,
-            qteActive: false,
-            qteTimeLeft: 0
-          })
-        }
-      },
-      after: {
-        5000: {
-          guard: ({ context }) => context.qteActive && context.qteTimeLeft <= 0,
-          target: 'fail_protection',
-          actions: assign({
-            fatalError: () => "QTE Fallido: El paciente se desestabilizó.",
-            caseStreak: 0,
-            qteActive: false
+            caseStreak: 0
           })
         }
       }
