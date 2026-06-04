@@ -15,6 +15,7 @@ import { useCodexStore } from './store/useCodexStore';
 import { TutorialOverlay } from './components/TutorialOverlay';
 import { StatsDashboard } from './components/StatsDashboard';
 import { CodexView } from './components/CodexView';
+import { TiendaView } from './components/TiendaView';
 import { RetrospectiveView } from './components/RetrospectiveView';
 
 import { FeedbackToast } from './components/overlays/FeedbackToast';
@@ -37,12 +38,14 @@ export function App() {
   const [state, send] = useMachine(gameMachine);
   const { playFeedback, stopTriageAlarm } = useGameAudio();
   const [currentCase, setCurrentCase] = useState<ClinicalCase | null>(null);
-  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak } = useCodexStore();
+  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak, boosts, consumeBoost } = useCodexStore();
+  const [guardBoosts, setGuardBoosts] = useState<{ doubleXp: boolean; doubleCoins: boolean }>({ doubleXp: false, doubleCoins: false });
   const timeLimitRef = useRef<number>(60);
   const pendingDeckRef = useRef<any[]>([]);
   const [showTutorial, setShowTutorial] = useState(() => !localStorage.getItem('dr_swipe_tutorial_seen'));
   const [showStats, setShowStats] = useState(false);
   const [showCodex, setShowCodex] = useState(false);
+  const [showTienda, setShowTienda] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isLoadingCase, setIsLoadingCase] = useState(false);
   const [showRetro, setShowRetro] = useState(false);
@@ -94,7 +97,7 @@ export function App() {
   useEffect(() => {
     if (state.matches('reward') && currentCase) {
       const streakMult = getDailyStreakMultiplier(dailyStreak);
-      const xpGained = Math.floor(state.context.score * streakMult);
+      const xpGained = Math.floor(state.context.score * streakMult) * (guardBoosts.doubleXp ? 2 : 1);
       addXp(xpGained);
       let totalCoins = state.context.coinsEarnedThisCase;
       if (state.context.mistakesThisCase === 0) {
@@ -102,6 +105,7 @@ export function App() {
         totalCoins += bonus;
         showToast(`¡GUARDIA PERFECTA! +${bonus} 🪙`, 'milestone');
       }
+      if (guardBoosts.doubleCoins) totalCoins *= 2;
       addCoins(totalCoins);
       if (totalCoins > 0 && state.context.mistakesThisCase > 0) showToast(`+${totalCoins} 🪙`, 'coins');
       registerCaseSolved(currentCase.case_id, state.context.score);
@@ -115,6 +119,8 @@ export function App() {
     setIsLoadingCase(true);
     incrementSessions();
     updateDailyStreak();
+    // Activate any pre-guard power-ups bought in the shop (apply to the whole shift).
+    setGuardBoosts({ doubleXp: consumeBoost('doubleXp'), doubleCoins: consumeBoost('doubleCoins') });
     try {
       send({ type: 'RESTART' });
       const numCases = 3;
@@ -246,7 +252,8 @@ export function App() {
 
   const handleLifeline = () => {
     if (isLoadingCase || isPaused) return;
-    if (spendCoins(LIFELINE_COST)) {
+    // Prefer a free hint (shop boost) before spending coins.
+    if (consumeBoost('freeHints') || spendCoins(LIFELINE_COST)) {
       send({ type: 'USE_LIFELINE' });
       triggerHaptic('warning');
     }
@@ -307,9 +314,14 @@ export function App() {
                 </button>
               )}
 
-              <button onClick={() => setShowCodex(true)} className="marker-btn py-4 sm:py-5 text-base sm:text-xl !bg-secondary !border-secondary shadow-amber-100">
-                 MI CODEX 📖
-              </button>
+              <div className="flex gap-3">
+                <button onClick={() => setShowCodex(true)} className="marker-btn flex-1 py-4 sm:py-5 text-sm sm:text-base !bg-secondary !border-secondary shadow-amber-100">
+                   CODEX 📖
+                </button>
+                <button onClick={() => setShowTienda(true)} className="marker-btn flex-1 py-4 sm:py-5 text-sm sm:text-base !bg-secondary !border-secondary shadow-amber-100">
+                   TIENDA 🛒
+                </button>
+              </div>
 
               <button onClick={() => setShowStats(true)} className="text-[10px] sm:text-[11px] font-bold text-slate-400 hover:text-primary transition-colors uppercase lettering tracking-widest pt-2">Ver mi diario 📔</button>
             </div>
@@ -319,7 +331,7 @@ export function App() {
         return (
           <div className="flex flex-col items-center justify-center w-full max-w-sm gap-2 sm:gap-4 px-2 sm:px-4 h-full pt-12 sm:pt-16 pb-8 sm:pb-12">
             <div className="relative w-full h-full flex flex-col items-center">
-              <SwipeDeck cards={state.context.deck} currentIndex={state.context.currentCardIndex} onSwipe={handleSwipe} isLocked={isLoadingCase || isPaused} lifelineActive={state.context.lifelineActive} canUseLifeline={stats.coins >= LIFELINE_COST && !state.context.lifelineActive} onUseLifeline={handleLifeline} />
+              <SwipeDeck cards={state.context.deck} currentIndex={state.context.currentCardIndex} onSwipe={handleSwipe} isLocked={isLoadingCase || isPaused} lifelineActive={state.context.lifelineActive} canUseLifeline={(stats.coins >= LIFELINE_COST || (boosts?.freeHints ?? 0) > 0) && !state.context.lifelineActive} onUseLifeline={handleLifeline} />
               <div className="absolute -bottom-10 sm:-bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-[110]">
                 <button disabled={state.context.undoCharges === 0 || state.context.currentCardIndex === 0} onClick={handleUndo} className="w-10 sm:w-12 h-10 sm:h-12 rounded-full border-2 border-white bg-secondary/80 flex items-center justify-center text-lg sm:text-xl shadow-md disabled:opacity-20 transition-all">⏪</button>
                 <span className="text-[8px] sm:text-[9px] font-black text-slate-400 uppercase lettering tracking-tighter">{state.context.undoCharges}/5</span>
@@ -398,6 +410,7 @@ export function App() {
       <AnimatePresence>{showTutorial && <TutorialOverlay onComplete={() => setShowTutorial(false)} />}</AnimatePresence>
       <AnimatePresence>{showStats && <div className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-6 overflow-hidden"><StatsDashboard onClose={() => setShowStats(false)} /></div>}</AnimatePresence>
       <AnimatePresence>{showCodex && <div className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-4 sm:p-6 overflow-hidden"><CodexView onClose={() => setShowCodex(false)} /></div>}</AnimatePresence>
+      <AnimatePresence>{showTienda && <div className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-4 sm:p-6 overflow-hidden"><TiendaView onClose={() => setShowTienda(false)} /></div>}</AnimatePresence>
       <AnimatePresence mode="wait">{state.context.activeEvent?.item && <EventAlert key={state.context.activeEvent?.item?.id ?? 'event'} event={state.context.activeEvent} onClose={() => send({ type: 'CLEAR_OVERLAYS' })} />}</AnimatePresence>
       <AnimatePresence>{state.context.lootBoxReward?.active && state.context.lootBoxReward.item && <LootBoxOverlay reward={{ active: true, item: state.context.lootBoxReward.item }} onClaim={() => send({ type: 'CLEAR_OVERLAYS' })} />}</AnimatePresence>
       <AnimatePresence>{state.context.activePenalty?.active && <PenaltyOverlay penalty={{ active: true, item: state.context.activePenalty.item }} onAccept={() => send({ type: 'CLEAR_OVERLAYS' })} />}</AnimatePresence>
