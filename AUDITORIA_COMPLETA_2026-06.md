@@ -7,6 +7,22 @@
 
 ---
 
+## 0. Estado de remediación (actualizado)
+
+Ya corregido en esta rama (build de producción verificado tras cada cambio):
+
+- ✅ **C2 — "REANUDAR GUARDIA" roto.** Los 598 `case_id` normalizados a su stem ASCII (elimina `IÁMCEST`, `EXÁNT`, … de los IDs) y `dataLoader.loadCase` endurecido para quitar diacríticos como fallback. *(commit `07c55cf`)*
+- ✅ **C4 — scripts en `public/`.** Eliminados `propagate_themes.py` y `structural_audit*.py` de `dr-swipe/public/cases/`. *(commit `07c55cf`)*
+- ✅ **C1 (contaminación) — 276 casos.** Restaurado el `card_stream`/boss/perla canónico desde `/cases` y aplicado `ftfy`: IDs duplicados **247→0**, mojibake `Ã/A³` **~245→3** archivos. *(commit `9c2188b`)*
+
+Pendiente (documentado abajo, requiere decisión/pasada editorial):
+
+- ⚠️ **35 archivos con U+FFFD** (bytes perdidos, no recuperables automáticamente).
+- ⚠️ **Sobre-acentuación de acrónimos en el cuerpo** de casos no alterados (`IÁMCEST`, `ÁRNI`) — reversión segura requiere whitelist/revisión.
+- ⚠️ **C3 audio**, y los hallazgos 🟠 de mecánica (F1 XP, F3 letal, mecánicas muertas) — implican cambios de balance/diseño.
+
+---
+
 ## 1. Veredicto ejecutivo
 
 La app está **bien construida a nivel de ingeniería** (compila sin errores de tipos, build de producción exitoso, máquina de estados clara, manejo de errores con ErrorBoundary, UI muy cuidada). El problema **no es la medicina ni el motor**: es el **pipeline de datos** y un puñado de defectos funcionales que ningún review previo detectó.
