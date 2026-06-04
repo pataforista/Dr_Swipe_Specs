@@ -25,13 +25,13 @@ export interface ScoreBreakdown {
  * Reducido de [5,10,15,20] a [5,8,12,16] para celebraciones más frecuentes
  */
 export const COMBO_MILESTONES = [5, 8, 12, 16, 20] as const;
-export const COMBO_MILESTONE_COINS = { 5: 8, 8: 15, 12: 25, 16: 40, 20: 60 } as const;
+export const COMBO_MILESTONE_COINS = { 5: 5, 8: 10, 12: 15, 16: 25, 20: 40 } as const;
 
 /**
  * Calculate bonus coins for perfect round (zero mistakes across all cards).
  */
 export function calculatePerfectRoundBonus(totalCards: number, difficulty: string): number {
-  const base = totalCards * 10;
+  const base = totalCards * 3;
   const mult = difficulty === 'extreme' ? 3 : difficulty === 'hard' ? 2 : 1;
   return base * mult;
 }
@@ -135,7 +135,7 @@ export function calculateCardScore(
 
   // Coin calculation: 1 base + bonus for speed/combo milestones
   let coinsEarned = 1;
-  if (speedBonus > 1) coinsEarned += 2; // Speed bonus coins
+  if (speedBonus > 1) coinsEarned += 1; // Speed bonus coins
   if (comboMultiplier > 1) coinsEarned += Math.floor(comboMultiplier); // Combo coins
   // Milestone bonus coins
   const milestone = COMBO_MILESTONES.find(m => m === nextCombo);
