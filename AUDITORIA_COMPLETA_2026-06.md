@@ -15,11 +15,19 @@ Ya corregido en esta rama (build de producción verificado tras cada cambio):
 - ✅ **C4 — scripts en `public/`.** Eliminados `propagate_themes.py` y `structural_audit*.py` de `dr-swipe/public/cases/`. *(commit `07c55cf`)*
 - ✅ **C1 (contaminación) — 276 casos.** Restaurado el `card_stream`/boss/perla canónico desde `/cases` y aplicado `ftfy`: IDs duplicados **247→0**, mojibake `Ã/A³` **~245→3** archivos. *(commit `9c2188b`)*
 
-Pendiente (documentado abajo, requiere decisión/pasada editorial):
+Segunda tanda (completada):
 
-- ⚠️ **35 archivos con U+FFFD** (bytes perdidos, no recuperables automáticamente).
-- ⚠️ **Sobre-acentuación de acrónimos en el cuerpo** de casos no alterados (`IÁMCEST`, `ÁRNI`) — reversión segura requiere whitelist/revisión.
-- ⚠️ **C3 audio**, y los hallazgos 🟠 de mecánica (F1 XP, F3 letal, mecánicas muertas) — implican cambios de balance/diseño.
+- ✅ **35 archivos con U+FFFD reconstruidos.** El acentuado original (`C3 YY`) había perdido el primer byte → secuencia `U+FFFD + NUL + <byte>`. Reconstrucción determinista (`chr(0xC0|(byte&0x3F))`) con desambiguación por contexto (á/¡, ñ/±, ú/º, °, ¿): 2665 ocurrencias, 0 residuales. *(commit `e887cd0`)*
+- ✅ **Sobre-acentuación de acrónimos.** 139 tokens espurios (`IÁMCEST`, `ÁRNI`, `N/Á`, `HbÁ1c`…) corregidos en 276 archivos usando `/cases` como oráculo de ortografía; acentos legítimos intactos (`Ácido`, `Útero`, `Diagnóstico`). *(commit `380c9ab`)*
+- ✅ **C3 — Audio.** SFX sintetizados con Web Audio API (no requieren binarios); el juego deja de ser mudo. *(commit `bc84db4`)*
+- ✅ **F1 — Inflación de XP.** `score` resetea por paciente en `CONTINUE_SHIFT`. *(commit `40346ea`)*
+- ✅ **F3 — Peso letal.** `lethal_if_discarded` ahora pesa −1000 como `lethal_risk`. *(commit `40346ea`)*
+- ✅ **A2 — reduce-motion** respetado vía `@media (prefers-reduced-motion)`.
+
+Pendiente por diseño (no son bugs de una lectura; requieren tu criterio):
+
+- ⚠️ **F2 mecánicas inertes** (sinergia de dossier sin datos, `dynamic_value`, QTE fantasma): se dejan **intactas a propósito** — no afectan el juego (nunca se disparan) y conviene decidir si poblarlas o retirarlas, no removerlas a ciegas.
+- ⚠️ **Estética E1–E4** (monitor de vitales oscuro, naming vázquez↔mendoza, textos diminutos) y **A1/A3/A4**: cambios de opinión visual, mejor consensuarlos antes.
 
 ---
 
