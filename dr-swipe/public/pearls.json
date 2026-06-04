@@ -1,0 +1,730 @@
+[
+  {
+    "id": "sarampion-vitamina-a",
+    "title": "Sarampión: Vitamina A",
+    "text": "Tratamiento Clave: A TODO niño con sarampión se le debe administrar VITAMINA A para reducir complicaciones y mortalidad.",
+    "gpc_ref": "GPC Prevención, Diagnóstico y Tratamiento del Sarampión",
+    "category": "ped",
+    "rarity": "common"
+  },
+  {
+    "id": "algoritmo-ada-cardio-nefroproteccion",
+    "title": "Algoritmo ADA: Cardio-Nefroprotección",
+    "text": "Si hay ECV establecida → GLP-1 o iSGLT2. Si hay Falla Cardíaca o ERC (Nefropatía) → iSGLT2 (Empagliflozina).",
+    "gpc_ref": "ADA Standards of Care in Diabetes",
+    "category": "endo",
+    "rarity": "common"
+  },
+  {
+    "id": "vih-inicio-de-art",
+    "title": "VIH: Inicio de ART",
+    "text": "Regla ENARM: Inicio de ART en TODO paciente diagnosticado, sin importar CD4. Esquema preferente: 2 ITNR + 1 INSTI (Dolutegravir).",
+    "gpc_ref": "GPC Tratamiento Antirretroviral del Adulto con VIH",
+    "category": "inf",
+    "rarity": "rare"
+  },
+  {
+    "id": "diferencial-de-vaginitis",
+    "title": "Diferencial de Vaginitis",
+    "text": "Clave PH: PH <4.5 = Candida. PH >4.5 = Vaginosis o Tricomoniasis. Clave Célula: Clue Cell = Vaginosis.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de Infecciones Vaginales",
+    "category": "gyn",
+    "rarity": "common"
+  },
+  {
+    "id": "ectopico-triada-y-manejo",
+    "title": "Ectópico: Tríada y Manejo",
+    "text": "Tríada: Amenorrea + Dolor + Sangrado. Localización: Ampula (95%). MTX: <5,000 hCG + Estable. Dx Oro: Laparoscopia.",
+    "gpc_ref": "GPC Diagnóstico y Manejo del Embarazo Ectópico",
+    "category": "obs",
+    "rarity": "common"
+  },
+  {
+    "id": "roseola-fiebre-y-convulsion",
+    "title": "Roséola: Fiebre y Convulsión",
+    "text": "Es la causa más frecuente de crisis convulsivas febriles debido a la rapidez y magnitud del ascenso térmico. Clave: Fiebre que cae → Rash que sale.",
+    "gpc_ref": "GPC Diagnóstico de Enfermedades Exantemáticas",
+    "category": "ped",
+    "rarity": "common"
+  },
+  {
+    "id": "vomito-en-piloro-alcalosis-hipocloremica",
+    "title": "Vómito en Píloro: Alcalosis Hipoclorémica",
+    "text": "El trastorno ácido-base clásico de la Estenosis de Píloro es la ALCALOSIS METABAƒa€œLICA HIPOCLORAƒa€°MICA e hipokalémica.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de Estenosis Hipertrófica de Píloro",
+    "category": "ped",
+    "rarity": "rare"
+  },
+  {
+    "id": "rpm-no-tacto-vaginal",
+    "title": "RPM: ¡No Tacto Vaginal!",
+    "text": "Confirmación: Helecho/Nitrazina. <34 SDG: Conservador (Esteroides + ATB). >34 SDG: Inducción. Dx oro: Especuloscopía.",
+    "gpc_ref": "GPC Diagnóstico y Manejo de Ruptura Prematura de Membranas",
+    "category": "obs",
+    "rarity": "rare"
+  },
+  {
+    "id": "manejo-de-la-cad-liquidos-primero",
+    "title": "Manejo de la CAD: Líquidos Primero",
+    "text": "En la Cetoacidosis Diabética, lo principal es la REPOSICIÓN DE LÍQUIDOS (Sol. Salina al 0.9%). Nunca se debe iniciar Insulina si el Potasio está bajo (<3.3 mEq/L) para evitar arritmias fatales.",
+    "gpc_ref": "GPC Manejo de Cetoacidosis Diabética",
+    "category": "int",
+    "rarity": "common"
+  },
+  {
+    "id": "diagnostico-has-nom-030",
+    "title": "Diagnóstico HAS (NOM-030)",
+    "text": "Diagnóstico inicial: Promedio ≥140/90 mmHg en al menos dos consultas. Si el paciente llega con ≥180/110 mmHg, el diagnóstico se hace en la PRIMERA visita.",
+    "gpc_ref": "NOM-030-SSA2-2009",
+    "category": "int",
+    "rarity": "common"
+  },
+  {
+    "id": "varicela-pleomorfismo-y-reye",
+    "title": "Varicela: Pleomorfismo y Reye",
+    "text": "Clave: Lesiones en todos los estadios (Cielo estrellado). Nunca des Aspirina (Síndrome de Reye) ni Ibuprofeno (Infección de tejidos blandos).",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Varicela en el Paciente Pediátrico",
+    "category": "ped",
+    "rarity": "common"
+  },
+  {
+    "id": "lcr-bacterias-vs-virus",
+    "title": "LCR: Bacterias vs Virus",
+    "text": "Bacterias: PMN ↑, Glucosa ↓, Proteínas ↑. Virus: Linfocitos ↑, Glucosa normal, Proteínas levemente ↑.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de Meningitis Bacteriana",
+    "category": "inf",
+    "rarity": "common"
+  },
+  {
+    "id": "vpp-y-prevalencia",
+    "title": "VPP y Prevalencia",
+    "text": "Si la Prevalencia sube → el VPP sube. Si la Prevalencia baja → el VPP baja. Sensibilidad y Especificidad NO cambian con la prevalencia.",
+    "gpc_ref": "Bioestadística Clínica para el ENARM",
+    "category": "stats",
+    "rarity": "epic"
+  },
+  {
+    "id": "bi-rads-y-conducta",
+    "title": "BI-RADS y Conducta",
+    "text": "BI-RADS 1-2: Rutina. BI-RADS 3: Seguimiento 6 meses. BI-RADS 4-5: BIOPSIA obligatoria.",
+    "gpc_ref": "GPC Prevención y Diagnóstico del Cáncer de Mama",
+    "category": "gyn",
+    "rarity": "common"
+  },
+  {
+    "id": "diagnostico-de-tep-angiotac",
+    "title": "Diagnóstico de TEP: AngioTAC",
+    "text": "El estándar de oro para el diagnóstico de TEP es la Angio-Tomografía Computarizada. El ECG más común es la taquicardia sinusal.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Tromboembolia Pulmonar",
+    "category": "int",
+    "rarity": "common"
+  },
+  {
+    "id": "tamizaje-dg-un-paso-vs-dos-pasos",
+    "title": "Tamizaje DG: Un Paso vs Dos Pasos",
+    "text": "Clave: Estrategia Un Paso (75g) usa puntos de corte 92-180-153. Con UN solo valor alterado se hace el diagnóstico.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Diabetes en el Embarazo",
+    "category": "obs",
+    "rarity": "common"
+  },
+  {
+    "id": "atls-10a-neumotorax-a-tension",
+    "title": "ATLS 10ª: Neumotórax a Tensión",
+    "text": "Cambio Crítico: La descompresión inmediata se realiza en el 5° espacio intercostal, línea axilar anterior o media (mismo sitio del tubo de tórax).",
+    "gpc_ref": "Manual ATLS 10ª Edición",
+    "category": "surg",
+    "rarity": "rare"
+  },
+  {
+    "id": "oma-signos-y-dosis",
+    "title": "OMA: Signos y Dosis",
+    "text": "Signo clave: Abombamiento MT. Tx: Amoxicilina 80-90 mg/kg. Complicación #1: Mastoiditis. Etiología: Neumococo.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Otitis Media Aguda en la Edad Pediátrica",
+    "category": "orl",
+    "rarity": "epic"
+  },
+  {
+    "id": "ingles-medico-false-friends",
+    "title": "Inglés Médico: False Friends",
+    "text": "Constipation = Estreñimiento. Injury = Lesión. Sever = Cortar. Informed Consent = Consentimiento Informado.",
+    "gpc_ref": "ENARM Technical English Section",
+    "category": "engl",
+    "rarity": "common"
+  },
+  {
+    "id": "planes-de-rehidratacion",
+    "title": "Planes de Rehidratación",
+    "text": "Plan A: Home (ABC: Alimentación, Bebidas VSO, Consulta). Plan B: Hospital (100ml/kg VSO 4h). Plan C: IV (Shock - 20ml/kg bolos). Zinc 14 días.",
+    "gpc_ref": "GPC Prevención y Manejo de la Diarrea Aguda",
+    "category": "ped",
+    "rarity": "common"
+  },
+  {
+    "id": "corioamnionitis-gibbs",
+    "title": "Corioamnionitis: Gibbs",
+    "text": "Indispensable: Fiebre >=38°C. Tx: Ampicilina + Gentamicina. Conducta: Inducción (Parto vaginal preferible).",
+    "gpc_ref": "GPC Diagnóstico y Manejo de la Infección Intramniótica",
+    "category": "obs",
+    "rarity": "rare"
+  },
+  {
+    "id": "ventana-de-rtpa",
+    "title": "Ventana de rTPA",
+    "text": "Tiempo es Cerebro: La ventana ideal es <3h, extendida hasta 4.5h en casos seleccionados. Contraindicación absoluta: TA >185/110 persistente.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de ACV Isquémico",
+    "category": "neur",
+    "rarity": "common"
+  },
+  {
+    "id": "sifilis-el-abc",
+    "title": "Sífilis: El ABC",
+    "text": "Primaria: Chancro indoloro. Secundaria: Palmas/Plantas. Tx: Penicilina Benzatínica 2.4 M. Seguimiento: Descenso de 4 diluciones en VDRL.",
+    "gpc_ref": "GPC Diagnóstico y tratamiento de la sífilis",
+    "category": "inf",
+    "rarity": "rare"
+  },
+  {
+    "id": "clasificacion-de-aborto",
+    "title": "Clasificación de Aborto",
+    "text": "Clave ENARM: Cérvix CERRADO = Amenaza o Diferido. Cérvix ABIERTO = Inevitable, En Evolución o Incompleto.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento del Aborto",
+    "category": "obs",
+    "rarity": "common"
+  },
+  {
+    "id": "mola-hta-20-semanas",
+    "title": "Mola: HTA <20 Semanas",
+    "text": "USG: Tormenta de Nieve. Tx: AMEU. Seguimiento: hCG semanal y OCOs por 1 año. Dato clave: Útero > Amenorrea.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Enfermedad Trofoblástica",
+    "category": "obs",
+    "rarity": "common"
+  },
+  {
+    "id": "sepsis-3-choque-septico",
+    "title": "Sepsis-3: Choque Séptico",
+    "text": "Definición: Sepsis + Necesidad de vasopresores para PAM ≥65 + Lactato >2 mmol/L pese a reanimación volémica.",
+    "gpc_ref": "Surviving Sepsis Campaign Guidelines 2021",
+    "category": "inf",
+    "rarity": "legendary"
+  },
+  {
+    "id": "cad-k-antes-que-insulina",
+    "title": "CAD: K+ antes que Insulina",
+    "text": "Triada: Glucosa >250, pH <7.3, Cetonas (+). NUNCA dar insulina si K <3.3. Bicarbonato solo si pH <6.9.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la CAD y EHH",
+    "category": "endo",
+    "rarity": "epic"
+  },
+  {
+    "id": "dm2-diagnostico-ada-nom",
+    "title": "DM2: Diagnóstico ADA/NOM",
+    "text": "Ayuno >=126 (confirmado). HbA1c >=6.5%. Curva 2h >=200. Azar >=200 + Síntomas. Tx Inicial: Metformina.",
+    "gpc_ref": "Standards of Care in Diabetes 2024 (ADA)",
+    "category": "int",
+    "rarity": "common"
+  },
+  {
+    "id": "cefalea-en-trueno",
+    "title": "Cefalea en Trueno",
+    "text": "Si la TC es NEGATIVA pero la sospecha de HSA es alta, el siguiente paso es la PUNCIÓN LUMBAR buscando xantocromía.",
+    "gpc_ref": "GPC Manejo de la Hemorragia Subaracnoidea",
+    "category": "neur",
+    "rarity": "rare"
+  },
+  {
+    "id": "dppni-la-triada-de-alarma",
+    "title": "DPPNI: La Triada de Alarma",
+    "text": "Triada: Sufrimiento fetal, dolor abdominal/hipertonía y sangrado oscuro. Riesgo mayor: CID y útero de Couvelaire.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento del DPPNI",
+    "category": "obs",
+    "rarity": "epic"
+  },
+  {
+    "id": "criterios-diagnosticos-dm2-nom-015",
+    "title": "Criterios Diagnósticos DM2 (NOM-015)",
+    "text": "1. Glucosa ayuno ≥126 (x2), 2. HbA1c ≥6.5%, 3. Curva (75g) ≥200 a las 2h, 4. Azar ≥200 + síntomas clásicos.",
+    "gpc_ref": "NOM-015-SSA2-2010",
+    "category": "int",
+    "rarity": "common"
+  },
+  {
+    "id": "colangitis-charcot-y-reynolds",
+    "title": "Colangitis: Charcot y Reynolds",
+    "text": "Charcot: Dolor, fiebre, ictericia. Reynolds: + Choque, + Conciencia â†“. Manejo gold standard: CPRE precoz.",
+    "gpc_ref": "GPC Diagnóstico y Manejo de Colangitis Aguda",
+    "category": "surg",
+    "rarity": "common"
+  },
+  {
+    "id": "epistaxis-anterior-vs-posterior",
+    "title": "Epistaxis: Anterior vs Posterior",
+    "text": "Anterior: 90%, Plexo Kiesselbach. Tx: Presión -> Cauterización. Posterior: 10%, Esfenopalatina. Tx: Taponamiento posterior + Hospital.",
+    "gpc_ref": "GPC Diagnóstico y Manejo de la Epistaxis",
+    "category": "orl",
+    "rarity": "common"
+  },
+  {
+    "id": "glaucoma-agudo-vs-cronico",
+    "title": "Glaucoma Agudo vs Crónico",
+    "text": "Agudo: Dolor + Midriasis + Ojo pétreo. Tx: Pilocarpina + Acetazolamida + Láser. Crónico: Escotomas periféricos + PIO >21. Tx: Análogos PG (Latanoprost).",
+    "gpc_ref": "GPC Diagnóstico y Manejo del Glaucoma de Angulo Cerrado",
+    "category": "oph",
+    "rarity": "rare"
+  },
+  {
+    "id": "leavell-clark-niveles",
+    "title": "Leavell & Clark: Niveles",
+    "text": "P1: Antes de enfermar (Vacunas/Dieta). P2: Al inicio (Tamizaje/Pap). P3: Limitar dano (Rehab). P4: No danar (Evitar exceso).",
+    "gpc_ref": "Fundamentos de Salud Publica y Epidemiologia",
+    "category": "prev",
+    "rarity": "rare"
+  },
+  {
+    "id": "anemia-ferropenica",
+    "title": "Anemia Ferropénica",
+    "text": "Micro/Hipo + Ferritina <12. Tx: Hierro 3-6 mg/kg. Primer cambio: Reticulocitos (10 días). Duración: normalizar Hb + 3 meses.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de Anemia por Deficiencia de Hierro",
+    "category": "ped",
+    "rarity": "common"
+  },
+  {
+    "id": "pastia-y-filatov",
+    "title": "Pastia y Filatov",
+    "text": "Escarlatina: Exantema en lija, Líneas de Pastia (pliegues), Fascies de Filatov y Lengua en Fresa. Clave: S. pyogenes y prevención de Fiebre Reumática.",
+    "gpc_ref": "GPC Prevención de Fiebre Reumática",
+    "category": "ped",
+    "rarity": "epic"
+  },
+  {
+    "id": "citologia-bethesda-2014",
+    "title": "Citología: Bethesda 2014",
+    "text": "Clave: LSIL (Bajo grado) suele vigilarse o colposcopia según edad. HSIL (Alto grado) SIEMPRE va a colposcopia/biopsia/tratamiento.",
+    "gpc_ref": "NOM-014-SSA2-1994 Prevención Cacu",
+    "category": "gyn",
+    "rarity": "rare"
+  },
+  {
+    "id": "hpp-el-minuto-de-oro",
+    "title": "HPP: El Minuto de Oro",
+    "text": "Definición: >500ml (Vaginal) o >1000ml (Cesárea). Causa #1: Atonía. Tx: Masaje + Oxitocina. 4Ts: Tonus, Trauma, Tissue, Thrombin.",
+    "gpc_ref": "GPC Prevención y Manejo de la Hemorragia Posparto",
+    "category": "obg",
+    "rarity": "common"
+  },
+  {
+    "id": "cardiopatia-isquemica-tiempo-es-musculo",
+    "title": "Cardiopatía Isquémica: Tiempo es Músculo",
+    "text": "En un SCACEST, el diagnóstico se hace con clínica + ECG (en <10 min). NO se debe esperar el resultado de las troponinas para activar código infarto ni trombolizar/ICP.",
+    "gpc_ref": "GPC Infarto Agudo al Miocardio con Elevación del ST",
+    "category": "int",
+    "rarity": "rare"
+  },
+  {
+    "id": "preeclampsia-datos-de-severidad",
+    "title": "Preeclampsia: Datos de Severidad",
+    "text": "Severidad: TA ≥160/110, cefalea, fosfenos, dolor en epigastrio, creatinina >1.1, plaquetas <100k. Antídoto Mg: Gluconato de Calcio.",
+    "gpc_ref": "GPC Preeclampsia - Eclampsia",
+    "category": "obs",
+    "rarity": "common"
+  },
+  {
+    "id": "rubeola-manchas-de-forchheimer",
+    "title": "Rubéola: Manchas de Forchheimer",
+    "text": "Las manchas de Forchheimer (paladar) son sugerentes, pero las adenopatías retroauriculares/occipitales dolorosas son el 'clue' del examen. Riesgo mayor: Malformaciones congénitas.",
+    "gpc_ref": "GPC Diagnóstico de Enfermedades Exantemáticas",
+    "category": "ped",
+    "rarity": "epic"
+  },
+  {
+    "id": "bofetada-y-encaje",
+    "title": "Bofetada y Encaje",
+    "text": "Descriptor clave: Exantema reticulado o en encaje. Riesgo: Hidrops fetalis en embarazadas y crisis aplásica en anémicos. No contagian cuando aparece el rash.",
+    "gpc_ref": "GPC Diagnóstico de Enfermedades Exantemáticas",
+    "category": "ped",
+    "rarity": "common"
+  },
+  {
+    "id": "bioestadistica-tipos-de-variables",
+    "title": "Bioestadistica: Tipos de Variables",
+    "text": "Nominal: Sin orden (Sexo). Ordinal: Con orden (Grado escolar). Continua: Medible (Peso). Discreta: Contable (N° hijos).",
+    "gpc_ref": "Metodologia de la Investigacion Clinica",
+    "category": "ped",
+    "rarity": "common"
+  },
+  {
+    "id": "hemorragia-de-tubo-digestivo-alto-htda-por-aines",
+    "title": "Hemorragia de Tubo Digestivo Alto (HTDA) por AINEs",
+    "text": "Hemorragia de tubo digestivo alto = origen proximal al ángulo de Treitz. Melena (sangre digerida negra/alquitranada) orienta a HTDA. AINEs + anticoagulantes = principal causa de úlcera péptica hemorrágica. Manejo: Estabilización → Endoscopía en <24 horas.",
+    "gpc_ref": "GPC Hemorragia del Tubo Digestivo / Consenso Mexicano de Hemorragia de Tubo Digestivo",
+    "category": "swipe",
+    "rarity": "common"
+  },
+  {
+    "id": "apendicitis-escala-de-alvarado",
+    "title": "Apendicitis: Escala de Alvarado",
+    "text": "MANTRELS: Migración (1), Anorexia (1), Náuseas (1), Ternura en FID (2), Rebote (1), Elevación Temp (1), Leucocitosis (2), Shift a la izquierda (1). ≥7 ptos = Cirugía.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de Apendicitis Aguda",
+    "category": "surg",
+    "rarity": "common"
+  },
+  {
+    "id": "esquizofrenia-el-6-es-la-clave",
+    "title": "Esquizofrenia: El 6 es la Clave",
+    "text": "Diagnostico: >6 meses. Predominio de sintomas negativos = Peor pronostico. Resistente = Clozapina.",
+    "gpc_ref": "Guia de Practica Clinica Salud Mental",
+    "category": "psyc",
+    "rarity": "common"
+  },
+  {
+    "id": "meningitis-triada-de-lcr",
+    "title": "Meningitis: Triada de LCR",
+    "text": "LCR Bacteriano: Glucosa ↓, Proteínas ↑, PMN ↑. LCR Viral: Glucosa normal, Linfocitosis. Tratamiento: Siempre incluye Dexametasona antes del antibiótico.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de Meningitis Bacteriana",
+    "category": "inf",
+    "rarity": "common"
+  },
+  {
+    "id": "ventana-reperfusion-sca",
+    "title": "Ventana Reperfusión SCA",
+    "text": "Meta ICP primaria: <90 min (puerta-balón). Meta Fibrinólisis: <30 min (puerta-aguja) si no hay ICP disponible.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento del Infarto Agudo de Miocardio",
+    "category": "int",
+    "rarity": "rare"
+  },
+  {
+    "id": "ic-los-4-fantasticos",
+    "title": "IC: Los 4 Fantásticos",
+    "text": "1. ARNI (Sacubitrilo). 2. BB (Carvedilol). 3. ARM (Espironolactona). 4. iSGLT2 (Dapa/Empa). Framingham: 2 mayores o 1 mayor + 2 menores.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Insuficiencia Cardíaca Crónica",
+    "category": "im",
+    "rarity": "common"
+  },
+  {
+    "id": "bioestadistica-sn-sp-y-vp",
+    "title": "Bioestadística: Sn, Sp y VP",
+    "text": "Sn/Sp: Propiedades fijas. VP: Dependen de Prevalencia. +Prevalencia = +VPP. -Prevalencia = +VPN. Tamizaje = Sn. Confirmar = Sp.",
+    "gpc_ref": "Manual de Bioestadística Médica",
+    "category": "stats",
+    "rarity": "legendary"
+  },
+  {
+    "id": "hta-diagnostico-y-crisis",
+    "title": "HTA: Diagnóstico y Crisis",
+    "text": "Dx: >=140/90. Emergencia = Daño a órgano blanco + Tx IV. Urgencia = Sin daño + Tx Oral. Combo: IECA/ARA2 + BCC.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Hipertensión Arterial Primaria",
+    "category": "int",
+    "rarity": "rare"
+  },
+  {
+    "id": "acne-escalinata-terapeutica",
+    "title": "Acné: Escalinata Terapéutica",
+    "text": "Comedónico: Retinoides. Inflamatorio Leve: Peróxido + ATB tópico. Moderado/Grave: ATB Oral. Quístico/Refractario: Isotretinoína.",
+    "gpc_ref": "GPC Diagnóstico y tratamiento del acné vulgar",
+    "category": "derm",
+    "rarity": "epic"
+  },
+  {
+    "id": "tiempos-en-iamcest",
+    "title": "Tiempos en IAMCEST",
+    "text": "Puerta-Aguja: <30 min. Puerta-Balón (ICP): <90 min. Si ICP >120 min: FIBRINOLIZAR. ECG seriado detecta reoclusión (ST nuevamente elevado).",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento del Infarto Agudo de Miocardio",
+    "category": "card",
+    "rarity": "common"
+  },
+  {
+    "id": "cad-reglas-de-oro",
+    "title": "CAD: Reglas de Oro",
+    "text": "1. Líquidos primero. 2. K >3.3 antes de Insulina. 3. Monitorizar Anion Gap. 4. Bicarbonato solo si pH <6.9.",
+    "gpc_ref": "GPC Manejo de Cetoacidosis Diabética",
+    "category": "int",
+    "rarity": "common"
+  },
+  {
+    "id": "alvarado-mantrem",
+    "title": "Alvarado: MANTREM",
+    "text": "M: Migración (1), A: Anorexia (1), N: Náusea (1), T: Tenderness/Dolor FID (2), R: Rebote (1), E: Elevación temp (1), M: Modif. WBC (2).",
+    "gpc_ref": "GPC Diagnóstico de Apendicitis Aguda",
+    "category": "surg",
+    "rarity": "rare"
+  },
+  {
+    "id": "indicadores-oms-t-e-cronico",
+    "title": "Indicadores OMS: T/E = Cronico",
+    "text": "Indicador Talla para Edad (T/E) evalua desnutricion CRONICA. Peso para Talla (P/T) evalua desnutricion AGUDA (emaciacion).",
+    "gpc_ref": "NOM-031-SSA2-1999 Para la salud del nino",
+    "category": "ped",
+    "rarity": "rare"
+  },
+  {
+    "id": "asma-gina-2024",
+    "title": "Asma: GINA 2024",
+    "text": "Gold Standard: Espirometría (+12%/200ml reversibilidad). Pilares: ICS-Formoterol pilar desde Step 1. NUNCA SABA solo.",
+    "gpc_ref": "Global Initiative for Asthma (GINA) 2024 / GEMA",
+    "category": "im",
+    "rarity": "common"
+  },
+  {
+    "id": "obstruccion-pila-de-monedas",
+    "title": "Obstrucción: Pila de Monedas",
+    "text": "Causa #1: Bridas. Rx: Niveles hidroaéreos y pila de monedas. Manejo inicial: SNG + Ayuno. Cx: Si hay estrangulación.",
+    "gpc_ref": "GPC Diagnóstico y Manejo de la Obstrucción Intestinal",
+    "category": "surg",
+    "rarity": "common"
+  },
+  {
+    "id": "estenosis-de-piloro-oliva-o-usg",
+    "title": "Estenosis de Píloro: ¿Oliva o USG?",
+    "text": "Clave: Vómito no biliar + Alcalosis metabólica hipoclorémica. Oliva pilórica (patognomónico). USG: Músculo >3mm.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de Estenosis Hipertrófica de Píloro",
+    "category": "ped",
+    "rarity": "common"
+  },
+  {
+    "id": "tamizaje-cancer-de-mama",
+    "title": "Tamizaje Cáncer de Mama",
+    "text": "Mastografía: 40-69 años (cada 2 años). BI-RADS 4/5 = BIOPSIA. BI-RADS 3 = Seguimiento 6m. BI-RADS 0 = Incompleto.",
+    "gpc_ref": "GPC Prevención, Tamizaje y Diagnóstico del Cáncer de Mama",
+    "category": "gyn",
+    "rarity": "common"
+  },
+  {
+    "id": "fatiga-funcional-no-medicalizar-al-paciente-sano",
+    "title": "Fatiga Funcional: No Medicalizar al Paciente Sano",
+    "text": "Ante un paciente con fatiga, cifras hematológicas normales, TA y FC normales y sin síntomas de alarma (pérdida de peso, fiebre, sudoración nocturna), el diagnóstico más probable es fatiga funcional. El error clásico es pedir batería de estudios innecesarios. El ENARM evalúa la capacidad de NO sobre-medicalizar.",
+    "gpc_ref": "GPC Atención del Paciente con Fatiga / Medicina General",
+    "category": "swipe",
+    "rarity": "common"
+  },
+  {
+    "id": "cacu-pap-y-colposcopia",
+    "title": "CaCu: Pap y Colposcopia",
+    "text": "Pap: 25-64 años. DNA-VPH: >=35 años. HSIL = Colposcopia inmediata. Tx NIC 2/3: Conización.",
+    "gpc_ref": "GPC Prevención y Detección Oportuna del Cáncer Cervicouterino",
+    "category": "gyn",
+    "rarity": "common"
+  },
+  {
+    "id": "charcot-vs-reynolds",
+    "title": "Charcot vs Reynolds",
+    "text": "Charcot: Fiebre, Ictericia, Dolor. Reynolds: Charcot + Hipotensión + Confusión (Mortalidad >50% sin ERCP).",
+    "gpc_ref": "GPC Diagnóstico y Manejo de la Colangitis",
+    "category": "surg",
+    "rarity": "rare"
+  },
+  {
+    "id": "vih-perlas-enarm",
+    "title": "VIH: Perlas ENARM",
+    "text": "SIDA = CD4 <200. Profilaxis P. jirovecii = TMP/SMX. Esquema preferido = 2 ITNR + 1 INSTI (Dolutegravir).",
+    "gpc_ref": "GPC Tratamiento Antirretroviral del Adulto con VIH",
+    "category": "inf",
+    "rarity": "rare"
+  },
+  {
+    "id": "crup-laringotraqueitis",
+    "title": "Crup (Laringotraqueitis)",
+    "text": "Virus: Parainfluenza 1. Clinica: Tos perruna, estridor, disfonia. Rayos X: Signo de la Torre. Prednisona/Dexa para todos.",
+    "gpc_ref": "GPC Diagnostico y Manejo de la Laringotraqueitis",
+    "category": "ped",
+    "rarity": "rare"
+  },
+  {
+    "id": "diabetes-gestacional-92-180-153",
+    "title": "Diabetes Gestacional: 92-180-153",
+    "text": "Dx (75g): 1 solo valor alterado basta. Tx 1ª línea: Dieta 2 sem. Tx 2ª línea: Insulina. Meta ayuno: <95.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Diabetes en el Embarazo",
+    "category": "obs",
+    "rarity": "common"
+  },
+  {
+    "id": "apgar-vs-silverman",
+    "title": "APGAR vs Silverman",
+    "text": "APGAR: Evalua vitalidad (1 y 5 min). Silverman: Evalua dificultad respiratoria. RECUERDA: Silverman 0 es el exito, APGAR 10 es el exito.",
+    "gpc_ref": "GPC Reanimacion Neonatal",
+    "category": "ped",
+    "rarity": "common"
+  },
+  {
+    "id": "iamcest-tiempo-es-musculo",
+    "title": "IAMCEST: Tiempo es Músculo",
+    "text": "ICP: <120 min de retraso. Si >120 min: FIBRINOLISIS (<10 min de contacto). ASA 300mg + Clopidogrel 300mg.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento del Infarto Agudo al Miocardio con ST Elevado",
+    "category": "card",
+    "rarity": "common"
+  },
+  {
+    "id": "hitos-regla-de-los-8",
+    "title": "Hitos: Regla de los '8'",
+    "text": "Sedestación: 6-8m. Gateo: 8-10m. Bipedestación: 10-12m. Marcha: 12-15m (Límite 18m). Pinza fina: 9-10m.",
+    "gpc_ref": "Control y Vigilancia de la salud del niño <5 años",
+    "category": "ped",
+    "rarity": "common"
+  },
+  {
+    "id": "neumonia-ped-pilares-tx",
+    "title": "Neumonia Ped: Pilares Tx",
+    "text": "1ra linea Ambulatorio: Amoxicilina (High dose). Hospital: Ampicilina IV. Atipica (>5a): Azitromicina. Criterios: Sat <92% o dificultad grave.",
+    "gpc_ref": "GPC Prevencion, Diagnostico y Tratamiento de la Neumonia Adquirida en la Comunidad",
+    "category": "ped",
+    "rarity": "rare"
+  },
+  {
+    "id": "triple-diferencial-vaginal",
+    "title": "Triple Diferencial Vaginal",
+    "text": "Gardnerella: Clue cells + PH >4.5 + Fishy odor. Candida: Queso cottage + PH <4.5. Trichomonas: Fresa + PH >5.0.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de Vaginitis Infecciosa",
+    "category": "gyn",
+    "rarity": "epic"
+  },
+  {
+    "id": "cartilla-2024-novedades",
+    "title": "Cartilla 2024: Novedades",
+    "text": "SRP 2ª dosis: 18 meses. Hexavalente: 2, 4, 6, 18m. BCG: Previene TB Miliar/Meníngea. Rotavirus: No dar >8 meses.",
+    "gpc_ref": "Manual de Vacunación 2024, México",
+    "category": "ped",
+    "rarity": "epic"
+  },
+  {
+    "id": "actualizacia3n-cartilla-srp",
+    "title": "ActualizaciA³n Cartilla SRP",
+    "text": "El cambio mA¡s preguntado recientemente: La Segunda Dosis de SRP (SarampiA³n, RubA©ola, Parotiditis) ya NO es a los 6 aA±os. Ahora es a los 18 MESES en la cartilla vigente.",
+    "gpc_ref": "Cartilla Nacional de Salud / Lineamientos de VacunaciA³n Universal",
+    "category": "ped",
+    "rarity": "rare"
+  },
+  {
+    "id": "iamcest-anterior-urgencia-maximal",
+    "title": "IAMCEST Anterior: Urgencia Maximal",
+    "text": "V1-V4 elevado = VI → Choque cardiogénico probable. Puerta-Aguja <30min. Puerta-Balón <90min. Si >120min: FIBRINOLIZAR.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento del Infarto Agudo de Miocardio",
+    "category": "card",
+    "rarity": "common"
+  },
+  {
+    "id": "evc-isquemico-tiempos",
+    "title": "EVC Isquémico: Tiempos",
+    "text": "Ventana rTPA: 4.5h. Puerta-TC: 25 min. TA meta rTPA: <185/110. Cincinnati: Cara, Brazo, Habla.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de ACV Isquémico",
+    "category": "neur",
+    "rarity": "epic"
+  },
+  {
+    "id": "atls-10-abcde-y-pnt",
+    "title": "ATLS 10: ABCDE y PNT",
+    "text": "PNT: Dx CLíNICO. Punción: 5° Espacio (Axilar). Resucitación: 1L de Hartmann. Tríada Muerte: Acidosis, Coagulopatía, Hipotermia.",
+    "gpc_ref": "Standard ATLS 10th Edition / GPC Manejo del Trauma Grave",
+    "category": "surg",
+    "rarity": "common"
+  },
+  {
+    "id": "sepsis-3-y-bundle",
+    "title": "Sepsis-3 y Bundle",
+    "text": "Sepsis = ΔSOFA >=2. Bundle: Lactato, Hemocultivos, Antibióticos, Líquidos (30ml/kg), Vasopresores si PAM <65.",
+    "gpc_ref": "Surviving Sepsis Campaign Guidelines 2021",
+    "category": "inf",
+    "rarity": "common"
+  },
+  {
+    "id": "criterios-mania-digfast",
+    "title": "Criterios Mania: DIGFAST",
+    "text": "Mnemotecnia DIGFAST: Distractibility, Indiscretion, Grandiosity, Flight of ideas, Activity increase, Sleep deficit, Talkativeness.",
+    "gpc_ref": "Guia de Practica Clinica Trastorno Bipolar",
+    "category": "psych",
+    "rarity": "rare"
+  },
+  {
+    "id": "isquemia-el-gran-mismatch",
+    "title": "Isquemia: El Gran Mismatch",
+    "text": "Clave: Dolor 10/10 + Abdomen suave. Factor: FA (Embolo). Elección: Angio-TC. Oro: Angiografía. Marcador: Lactato.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Isquemia Mesentérica Aguda",
+    "category": "gast",
+    "rarity": "rare"
+  },
+  {
+    "id": "pregunta-por-el-suicidio",
+    "title": "Pregunta por el Suicidio",
+    "text": "Mito ENARM: Preguntar sobre el suicidio NO incita al paciente a hacerlo; al contrario, reduce el riesgo al permitir intervención.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Depresión",
+    "category": "psyc",
+    "rarity": "common"
+  },
+  {
+    "id": "neumonaa-atapica-vs-tapica",
+    "title": "NeumonA­a AtA­pica vs TA­pica",
+    "text": "AtA­pica (Mycoplasma): >5 aA±os, insidiosa, tos seca, infiltrado intersticial, Tx MacrA³lidos. TA­pica (Neumococo): Cualquier edad, sAºbita, fiebre alta, consolidaciA³n, Tx Amoxicilina.",
+    "gpc_ref": "GPC PrevenciA³n, DiagnA³stico y Tratamiento de la NeumonA­a Adquirida en la Comunidad",
+    "category": "ped",
+    "rarity": "rare"
+  },
+  {
+    "id": "hinchey-tc-y-hartmann",
+    "title": "Hinchey: TC y Hartmann",
+    "text": "Estándar Oro: TC Abdomen. Contraindicación: Colonoscopía. Hinchey III/IV: Hartmann. Fístula más común: Colovesical.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Enfermedad Diverticular del Colon",
+    "category": "gast",
+    "rarity": "rare"
+  },
+  {
+    "id": "tep-wells-y-virchow",
+    "title": "TEP: Wells y Virchow",
+    "text": "Gold Standard: Angiotomografía. ECG más común: Taquicardia sinusal. ECG más específico: S1Q3T3. Masivo = Inestabilidad hemodinámica.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Tromboembolia Pulmonar",
+    "category": "int",
+    "rarity": "legendary"
+  },
+  {
+    "id": "minuto-de-oro-neonatal",
+    "title": "Minuto de Oro Neonatal",
+    "text": "FC <100 = VPP. FC <60 = Compresiones (3:1). Silverman 0 = Exito. APGAR 10 = Exito.",
+    "gpc_ref": "GPC Reanimacion Neonatal / NRP 8th Edition",
+    "category": "ped",
+    "rarity": "rare"
+  },
+  {
+    "id": "tiempo-es-musculo-scacest",
+    "title": "Tiempo es Músculo: SCACEST",
+    "text": "Diagnóstico: Clínica + ECG (<10 min). Tiempo puerta-balón (ICP): <90 min. Tiempo puerta-aguja (fibrinólisis): <30 min. Complicación letal temprana: Fibrilación ventricular.",
+    "gpc_ref": "GPC Infarto Agudo al Miocardio con Elevación del ST",
+    "category": "int",
+    "rarity": "rare"
+  },
+  {
+    "id": "urosepsis-choque-septico-de-foco-urinario",
+    "title": "Urosepsis / Choque Séptico de Foco Urinario",
+    "text": "Urosepsis = Sepsis + foco urinario. Criterios de choque: TA <90/60 refractaria + lactato >2 mmol/L. Manejo: Hemocultivos → Antibióticos de amplio espectro <1 hora → Líquidos 30 mL/kg → UCI. No retrasar antibióticos por esperar cultivos.",
+    "gpc_ref": "Surviving Sepsis Campaign 2021 / GPC Infección de Vías Urinarias Complicada",
+    "category": "swipe",
+    "rarity": "rare"
+  },
+  {
+    "id": "hsa-pasos-diagnosticos",
+    "title": "HSA: Pasos Diagnósticos",
+    "text": "1. TC Simple. 2. Si negativa: Punción Lumbar (Xantocromía). 3. Angiografía. Manejo: Nimodipino.",
+    "gpc_ref": "GPC Manejo de la Hemorragia Subaracnoidea",
+    "category": "neur",
+    "rarity": "common"
+  },
+  {
+    "id": "tratamiento-de-crup",
+    "title": "Tratamiento de CRUP",
+    "text": "GPC: El pilar es Dexametasona (0.6 mg/kg). Si hay estridor en reposo, agregar Epinefrina Racémica nebulizada.",
+    "gpc_ref": "GPC Diagnóstico y Manejo de la Laringotraqueítis",
+    "category": "ped",
+    "rarity": "common"
+  },
+  {
+    "id": "neumotorax-a-tension",
+    "title": "Neumotórax a Tensión",
+    "text": "DIAGNÓSTICO CLÍNICO. Tríada: Ausencia ruidos, IVY y choque. Manejo: Aguja (5° espacio) -> Tubo.",
+    "gpc_ref": "ATLS 10a Edición",
+    "category": "surg",
+    "rarity": "rare"
+  },
+  {
+    "id": "aborto-22-sem-500g",
+    "title": "Aborto: <22 Sem / <500g",
+    "text": "ABIERTOS (cérvix): Incompleto/Inevitable. CERRADOS: Amenaza/Diferido. AMEU en <11 sem. LUI en inestabilidad.",
+    "gpc_ref": "GPC Prevención, Diagnóstico y Manejo del Aborto, México",
+    "category": "obs",
+    "rarity": "common"
+  }
+]

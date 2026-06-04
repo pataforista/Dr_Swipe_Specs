@@ -34,6 +34,11 @@ export default defineConfig({
             }
           },
           {
+            urlPattern: /\/pearls\.json$/i,
+            handler: 'StaleWhileRevalidate',
+            options: { cacheName: 'pearls-pool-cache' }
+          },
+          {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
             handler: 'CacheFirst',
             options: {

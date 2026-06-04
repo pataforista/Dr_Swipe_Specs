@@ -14,6 +14,7 @@ import { LIFELINE_COST } from './store/useCodexStore';
 import { useCodexStore } from './store/useCodexStore';
 import { TutorialOverlay } from './components/TutorialOverlay';
 import { StatsDashboard } from './components/StatsDashboard';
+import { CodexView } from './components/CodexView';
 import { RetrospectiveView } from './components/RetrospectiveView';
 
 import { FeedbackToast } from './components/overlays/FeedbackToast';
@@ -41,6 +42,7 @@ export function App() {
   const pendingDeckRef = useRef<any[]>([]);
   const [showTutorial, setShowTutorial] = useState(() => !localStorage.getItem('dr_swipe_tutorial_seen'));
   const [showStats, setShowStats] = useState(false);
+  const [showCodex, setShowCodex] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isLoadingCase, setIsLoadingCase] = useState(false);
   const [showRetro, setShowRetro] = useState(false);
@@ -305,6 +307,10 @@ export function App() {
                 </button>
               )}
 
+              <button onClick={() => setShowCodex(true)} className="marker-btn py-4 sm:py-5 text-base sm:text-xl !bg-secondary !border-secondary shadow-amber-100">
+                 MI CODEX 📖
+              </button>
+
               <button onClick={() => setShowStats(true)} className="text-[10px] sm:text-[11px] font-bold text-slate-400 hover:text-primary transition-colors uppercase lettering tracking-widest pt-2">Ver mi diario 📔</button>
             </div>
           </div>
@@ -391,6 +397,7 @@ export function App() {
       <div className="w-full flex-grow flex items-center justify-center relative z-10">{renderCurrentView()}</div>
       <AnimatePresence>{showTutorial && <TutorialOverlay onComplete={() => setShowTutorial(false)} />}</AnimatePresence>
       <AnimatePresence>{showStats && <div className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-6 overflow-hidden"><StatsDashboard onClose={() => setShowStats(false)} /></div>}</AnimatePresence>
+      <AnimatePresence>{showCodex && <div className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-4 sm:p-6 overflow-hidden"><CodexView onClose={() => setShowCodex(false)} /></div>}</AnimatePresence>
       <AnimatePresence mode="wait">{state.context.activeEvent?.item && <EventAlert key={state.context.activeEvent?.item?.id ?? 'event'} event={state.context.activeEvent} onClose={() => send({ type: 'CLEAR_OVERLAYS' })} />}</AnimatePresence>
       <AnimatePresence>{state.context.lootBoxReward?.active && state.context.lootBoxReward.item && <LootBoxOverlay reward={{ active: true, item: state.context.lootBoxReward.item }} onClaim={() => send({ type: 'CLEAR_OVERLAYS' })} />}</AnimatePresence>
       <AnimatePresence>{state.context.activePenalty?.active && <PenaltyOverlay penalty={{ active: true, item: state.context.activePenalty.item }} onAccept={() => send({ type: 'CLEAR_OVERLAYS' })} />}</AnimatePresence>
