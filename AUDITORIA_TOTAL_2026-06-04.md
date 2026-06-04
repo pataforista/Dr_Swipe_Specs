@@ -28,6 +28,35 @@ La **app desplegada está hoy en buen estado de datos** y compila a producción,
 
 ---
 
+## 0.1 Remediación aplicada en esta rama (`claude/total-audit-gzIdy`)
+
+Commits `1e4a0dd` (build) y `28a5be1` (datos). Toolchain completa en verde
+(`typecheck`, `lint`, `validate cases`, `build` → exit 0).
+
+**Calidad de build (🔴 → 🟢)**
+- ✅ Los **8 errores de `tsc`** corregidos; `tsc --noEmit` ahora pasa y **gatea el `build`**.
+- ✅ Los **errores de `eslint`** resueltos (quedan 4 *warnings* `exhaustive-deps`, no bloqueantes); `any` sustituidos por tipos reales (`LoreItem`, `FeedbackEntry`, `PuzzleDebrief`, `MotionValue`, `PanInfo`, `BossQuestion`).
+- ✅ CI ahora ejecuta **typecheck + lint + validación de casos** antes de construir.
+- ✅ `LootScreen` muestra el XP real (`xpTotal`) en vez del `score` crudo; variable muerta `lastFeedback` eliminada.
+
+**Integridad de datos desplegados (🟢 → 🟢, endurecido)**
+- ✅ Nuevo `tools/validate_public_cases.mjs` (sin dependencias) rechaza en CI: mojibake (incluidas las familias `A+latin1`, `Aƒ`, controles C1 y emoji roto `ðY`), `case_id` no-ASCII, `card_id` duplicado y violaciones de esquema.
+- ✅ El validador **destapó corrupción que ni la auditoría previa ni el primer pase de ésta detectaron**: **15 casos** con mojibake residual (1 flecha en CHOLANGITIS; familia `A+latin1` en CRUP/PNEUMONIA/VAC_SRP; `Aƒ`=mayúsculas acentuadas en pyloric/neuro; controles C1 en suicide/stats/atls10/appendicitis/mania). Todos reparados con desambiguación por contexto.
+- ✅ Prefijo espurio `🎯 DATO CLAVE OMITIDO:` retirado de **557 `vazquez_comment` (300 archivos)**: estaba baked-in delante del nombre del mentor, que se filtraba al texto mostrado.
+
+**Contenido clínico (🟠 → parcial)**
+- ✅ **Furosemida** (`IM_HEART_FAILURE_001_001`): de `discard`/"puro ruido" a `keep` con matiz de mortalidad (paciente congestivo).
+- ✅ Perlas: consolidado `enarm_pearl` (quitado `perla_enarm` legacy) en 3 SWIPE; añadida perla ATLS faltante en 2 casos de neumotórax.
+
+**Pendiente (requiere tu criterio — ver §10)**
+- ⚠️ **85 incoherencias de edad** nombre↔escenario (¿cuál es la canónica por caso?).
+- ⚠️ **445 casos** avatar (`mendoza`) ↔ mentor citado (Castillo/Navarro/…): decisión de diseño de personajes.
+- ⚠️ Archivar `cases/` raíz corrupta + 41 scripts; decidir destino de `v2/`; peer-deps PWA; doble ruta de deploy.
+
+> El resto de este documento describe el estado **original** detectado (pre-remediación); úsalo como referencia de hallazgos.
+
+---
+
 ## 1. Datos: las dos copias divergen y la "fuente" está podrida 🔴
 
 Existen **dos directorios de casos** y ya **no coinciden**:
@@ -221,4 +250,23 @@ npx eslint .                                        # exit 1 (25 errores)
 ```
 
 ---
-*Auditoría de solo lectura. No se modificó ningún archivo de la app ni de los casos; este documento es el único artefacto generado.*
+
+## 10. Decisiones pendientes (requieren criterio del autor)
+
+Estos puntos **no se tocaron** porque dependen de criterio editorial/diseño, no de una respuesta determinista:
+
+1. **85 incoherencias de edad** entre `patient_intro.name` y `arrival_scenario`
+   (p.ej. "Iker, 9 meses" vs "Paciente de 4 años"). Hay que decidir, por caso,
+   cuál edad es la canónica antes de tocar contenido clínico que depende de ella.
+2. **445 casos con avatar (`mendoza`) ≠ mentor citado** en los comentarios
+   (Castillo 287 · Navarro 184 · Mendoza 28 · Vázquez 4). Dos caminos posibles:
+   (a) que el avatar refleje al mentor que habla, o (b) normalizar todos los
+   comentarios a un único mentor. Es una decisión de diseño de personajes.
+3. **Higiene de repo**: archivar `cases/` raíz (corrupta, esquema antiguo, no la
+   usa la app) + los 41 scripts sueltos; decidir destino de `v2/` (scaffold
+   muerto); resolver peer-deps de `vite-plugin-pwa`; aclarar doble ruta de deploy.
+4. **Bundle** de 518 KB en un solo chunk: opcional, code-splitting con `React.lazy`.
+
+---
+*Documento vivo. La auditoría original fue de solo lectura; la §0.1 registra la
+remediación aplicada en esta rama (commits `1e4a0dd` y `28a5be1`).*
