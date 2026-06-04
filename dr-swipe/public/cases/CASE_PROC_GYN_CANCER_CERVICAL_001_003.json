@@ -12,32 +12,20 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 110/70, FC 72 lpm, Temp 36.4°C",
+            "category": "Signos Vitales",
+            "card_text": "Hallazgo: Información redundante: TA 110/70, FC 72 lpm, Temp 36.4°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "pad_008",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "TA 145/95 mmHg. Cifras tensionales elevadas en dos tomas.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 50,
-                "error_type": "omission",
-                "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Colposcopia con Biopsia Dirigida: Ante HSIL o LSIL persistente, el estándar de oro es la visualización colposcópica y toma de biopsia.",
+            "card_text": "Hallazgo: A) Colposcopia con Biopsia Dirigida: Ante HSIL o LSIL persistente, el estándar de oro es la visualización colposcópica y toma de biopsia.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -53,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "B) Conización Cervical (LLETZ/Frío): Tratamiento de elección para NIC 2 y NIC 3 (lesiones de alto grado) para asegurar márgenes libres.",
+            "card_text": "Evidencia: B) Conización Cervical (LLETZ/Frío): Tratamiento de elección para NIC 2 y NIC 3 (lesiones de alto grado) para asegurar márgenes libres.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -64,117 +52,41 @@
                 "lethal_risk": false,
                 "decision_critical": true
             }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "Signos Vitales",
-            "card_text": "Hallazgo: Dato anecdótico: TA N/Á, FC N/Á, Temp N/Á",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "Hallazgo: Dato anecdótico: B) Colecistitis Aguda Litiásica: Inflamación de la vesícula biliar. Dolor en hipocondrio derecho, fiebre leve, Murphy positivo, sin ictericia o muy leve.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¡Bien hecho! La ictericia marcada nos indica que el problema está en la vía biliar principal (coledocolitiasis/colangitis)."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "Evidencia clínica: Ruido en el expediente: B) Atresia Duodenal: Vómitos biliares precoces (primeras 24-48h). Radiografía con signo de la 'doble burbuja'. Frecuente en Síndrome de Down.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! El vómito en la estenosis de píloro es característicamente NO biliar."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "Evidencia clínica: Dato anecdótico: B) Atresia Duodenal: Vómitos biliares precoces (primeras 24-48h). Radiografía con signo de la 'doble burbuja'. Frecuente en Síndrome de Down.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! El vómito en la estenosis de píloro es característicamente NO biliar."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "B) Costocondritis (Síndrome de Tietze): Dolor torácico reproducible a la palpación de las articulaciones condrocostales, sin cambios en ECG.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: ¡Ojo clínico! El dolor reproducible a la palpación casi siempre descarta origen isquémico clásico, aquí el dolor es visceral."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "c_3",
-            "ui_icon": "slash",
-            "category": "meds",
-            "card_text": "C) Mononucleosis Infecciosa: Fiebre, faringitis y linfadenopatía. Similar al síndrome agudo de VIH pero con prueba de Monospot positiva.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Correcto. El periodo de ventana y los factores de riesgo son clave para diferenciar el síndrome retroviral agudo."
-            }
         }
     ],
     "enarm_pearl": {
         "title": "Citología: Bethesda 2014",
         "text": "Clave: LSIL (Bajo grado) suele vigilarse o colposcopia según edad. HSIL (Alto grado) SIEMPRE va a colposcopia/biopsia/tratamiento.",
-        "gpc_ref": "NOM-014-SSÁ2-1994 Prevención Cacu"
+        "gpc_ref": "NOM-014-SSA2-1994 Prevención Cacu"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 2,
-                "question": "Con respecto a la patología, ¿cuál es la conducta a seguir ante un reporte citológico de Lesión Intraepitelial de Alto Grado (HSIL)?",
-                "options": [
-                    "Tratamiento con óvulos antibióticos",
-                    "Repetir citología en 6 meses",
-                    "Referencia inmediata a Colposcopia"
-                ]
-            },
-            {
-                "correct_index": 1,
-                "question": "¿Cuál es el esquema de tamizaje citológico recomendado tras obtener dos resultados anuales negativos consecutivos?",
-                "options": [
-                    "Cada 5 años",
-                    "Cada 3 años",
-                    "Cada 6 meses"
-                ]
-            },
-            {
-                "correct_index": 1,
+                "correct_index": 0,
                 "question": "¿Qué subtipos de Virus del Papiloma Humano (VPH) se asocian con mayor frecuencia al desarrollo de cáncer cervicouterino?",
                 "options": [
-                    "VPH 31 y 33",
                     "VPH 16 y 18",
-                    "VPH 6 y 11"
+                    "VPH 6 y 11",
+                    "VPH 31 y 33"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Cuál es la conducta a seguir ante un reporte citológico de Lesión Intraepitelial de Alto Grado (HSIL)?",
+                "options": [
+                    "Referencia inmediata a Colposcopia",
+                    "Repetir citología en 6 meses",
+                    "Tratamiento con óvulos antibióticos"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Cuál es el esquema de tamizaje citológico recomendado tras obtener dos resultados anuales negativos consecutivos?",
+                "options": [
+                    "Cada 3 años",
+                    "Cada 5 años",
+                    "Cada 6 meses"
                 ]
             }
         ]

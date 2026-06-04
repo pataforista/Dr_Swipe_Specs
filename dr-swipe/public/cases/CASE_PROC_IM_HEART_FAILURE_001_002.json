@@ -12,32 +12,20 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 145/90 mmHg, FC 92 lpm, FR 22 rpm, SatO2 93%.",
+            "category": "Signos Vitales",
+            "card_text": "Información redundante: TA 145/90 mmHg, FC 92 lpm, FR 22 rpm, SatO2 93%.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Presión un poco alta, pero lo importante es la insuficiencia cardíaca."
-            }
-        },
-        {
-            "card_id": "pad_006",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Esto es puro ruido, R1. Concéntrate en la patología de base."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: Presión un poco alta, pero lo importante es la insuficiencia cardíaca."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Insuficiencia Cardíaca con FE reducida (ICFEr): Presencia de síntomas típicos + FEVI <40%. Don Pedro cumple criterios de Framingham.",
+            "card_text": "Hallazgo: A) Insuficiencia Cardíaca con FE reducida (ICFEr): Presencia de síntomas típicos + FEVI <40%. Don Pedro cumple criterios de Framingham.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -52,91 +40,19 @@
         {
             "card_id": "c_2",
             "ui_icon": "beaker",
-            "category": "meds",
-            "card_text": "B) Péptidos Natriuréticos (NT-proBNP): Útiles para el diagnóstico por su alto valor predictivo negativo (descartar IC en urgencias).",
+            "category": "Gabinete",
+            "card_text": "Hallazgo: B) Péptidos Natriuréticos (NT-proBNP): Útiles para el diagnóstico por su alto valor predictivo negativo (descartar IC en urgencias).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Correcto! Si es normal, es muy poco probable que sea IC."
             }
-        },
-        {
-            "card_id": "pad_004",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Esto es puro ruido, R1. Concéntrate en la patología de base."
-            }
-        },
-        {
-            "card_id": "pad_005",
-            "ui_icon": "☢️",
-            "category": "imaging",
-            "card_text": "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-            }
-        },
-        {
-            "card_id": "pad_007",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
-            }
-        },
-        {
-            "card_id": "pad_010",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Esto es puro ruido, R1. Concéntrate en la patología de base."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 120/80, FC 78 bpm, Temp 37.0°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 150/90, FC 50 lpm (bloqueo), Temp 36.5°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en estos signos de bradicardia, R1. El reloj no se detiene."
-            }
         }
     ],
     "enarm_pearl": {
         "title": "IC: Los 4 Fantásticos",
-        "text": "1. ÁRNI (Sacubitrilo). 2. BB (Carvedilol). 3. ÁRM (Espironolactona). 4. iSGLT2 (Dapa/Empa). Framingham: 2 mayores o 1 mayor + 2 menores.",
+        "text": "1. ARNI (Sacubitrilo). 2. BB (Carvedilol). 3. ARM (Espironolactona). 4. iSGLT2 (Dapa/Empa). Framingham: 2 mayores o 1 mayor + 2 menores.",
         "gpc_ref": "GPC Diagnóstico y Tratamiento de la Insuficiencia Cardíaca Crónica"
     },
     "boss_fight_triad": {
@@ -144,29 +60,29 @@
         "questions": [
             {
                 "correct_index": 0,
+                "question": "¿Cuáles son los 'cuatro fantásticos' pilares del tratamiento inicial de la Insuficiencia Cardíaca con FE reducida?",
+                "options": [
+                    "ARNI (o IECA), Beta-bloqueador, ARM e iSGLT2",
+                    "Diurético, Digoxina, Calcio-antagonista y AAS",
+                    "Amiodarona, Nitratos, IECA y ARM"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Qué escala se utiliza para clasificar la capacidad funcional de los pacientes con insuficiencia cardíaca?",
+                "options": [
+                    "Clasificación NYHA",
+                    "Criterios de Framingham",
+                    "Puntuación CHA2DS2-VASc"
+                ]
+            },
+            {
+                "correct_index": 0,
                 "question": "¿Cuál es el estudio de elección para confirmar el diagnóstico y clasificar la fracción de eyección en la IC?",
                 "options": [
                     "Ecocardiograma Transtorácico",
-                    "Radiografía de tórax (PA)",
-                    "Electrocardiograma de 12 derivaciones"
-                ]
-            },
-            {
-                "correct_index": 1,
-                "question": "¿Cuáles son los 'cuatro fantásticos' pilares del tratamiento inicial de la Insuficiencia Cardíaca con FE reducida?",
-                "options": [
-                    "Amiodarona, Nitratos, IECA y ÁRM",
-                    "ÁRNI (o IECA), Beta-bloqueador, ÁRM e iSGLT2",
-                    "Diurético, Digoxina, Calcio-antagonista y ÁÁS"
-                ]
-            },
-            {
-                "correct_index": 1,
-                "question": "¿Qué escala se utiliza para clasificar la capacidad funcional de los pacientes con insuficiencia cardíaca?",
-                "options": [
-                    "Puntuación CHÁ2DS2-VÁSc",
-                    "Clasificación NYHÁ",
-                    "Criterios de Framingham"
+                    "Electrocardiograma de 12 derivaciones",
+                    "Radiografía de tórax (PA)"
                 ]
             }
         ]

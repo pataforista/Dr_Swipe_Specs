@@ -5,96 +5,32 @@
     "difficulty": "hard",
     "patient_intro": {
         "name": "Carlos, 67 años",
-        "arrival_scenario": "Paciente con antecedente de tabaquismo y HÁS. Refiere dolor retroesternal intenso que no cede con el reposo. ECG muestra elevación del segmento ST de 3mm en V1, V2, V3 y V4. Imagen recíproca en II, III y aVF.",
+        "arrival_scenario": "Paciente con antecedente de tabaquismo y HAS. Refiere dolor retroesternal intenso que no cede con el reposo. ECG muestra elevación del segmento ST de 3mm en V1, V2, V3 y V4. Imagen recíproca en II, III y aVF.",
         "time_limit_sec": 50
     },
     "card_stream": [
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 100/60 mmHg (en descenso), FC 95 lpm, Temp 36.5°C",
+            "category": "Signos Vitales",
+            "card_text": "Hallazgo: Información redundante: TA 100/60 mmHg (en descenso), FC 95 lpm, Temp 36.5°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "pad_006",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 50,
-                "error_type": "omission",
-                "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "B) Angina Inestable: Dolor isquémico SIN elevación del ST y SIN elevación de troponinas.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: ¡Bien! El ST elevado marca la pauta de tratamiento invasivo inmediato."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "pad_007",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-            }
-        },
-        {
-            "card_id": "pad_008",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: Dato irrelevante en el contexto agudo. Indica cronicidad, no es una prioridad de Código Infarto."
-            }
-        },
-        {
-            "card_id": "pad_009",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) IÁMCEST (Fibrinolisis Sistémica): IÁMCEST Cara Anterior. Si la ICP >120 min de retraso, se opta por Fibrinolisis (Alteplase).",
+            "card_text": "Hallazgo: A) IAMCEST (Fibrinolisis Sistémica): IAMCEST Cara Anterior. Si la ICP >120 min de retraso, se opta por Fibrinolisis (Alteplase).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
                 "error_type": "lethal_omission",
-                "vazquez_comment": "Mendoza: ¡Correcto! En el ENARM, si el tiempo a ICP es >120 min (o 90 min en centros grandes), la FIBRINOLISIS es la respuesta correcta."
+                "vazquez_comment": "¡Correcto! En el ENARM, si el tiempo a ICP es >120 min (o 90 min en centros grandes), la FIBRINOLISIS es la respuesta correcta."
             },
             "safety_flags": {
                 "lethal_risk": true,
@@ -103,15 +39,31 @@
             }
         },
         {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "Diagnóstico",
+            "card_text": "Hallazgo clínico: Ruido en el expediente: B) Angina Inestable: Dolor isquémico SIN elevación del ST y SIN elevación de troponinas.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! El ST elevado marca la pauta de tratamiento invasivo inmediato."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
             "card_id": "c_3",
             "ui_icon": "target",
-            "category": "meds",
-            "card_text": "C) ÁSA 300mg + Ticagrelor 180mg + Heparina IV: Doble antiagregación y anticoagulante inmediatos. SIN demora.",
+            "category": "Tratamiento",
+            "card_text": "Dato de importancia: C) ASA 300mg + Ticagrelor 180mg + Heparina IV: Doble antiagregación y anticoagulante inmediatos. SIN demora.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
                 "error_type": "lethal_omission",
-                "vazquez_comment": "Mendoza: ¡Excelente! Sin antitrombóticos, el trombo se agranda. Tu paciente hace shock cardiogénico."
+                "vazquez_comment": "¡Excelente! Sin antitrombóticos, el trombo se agranda. Tu paciente hace shock cardiogénico."
             },
             "safety_flags": {
                 "lethal_risk": true,
@@ -122,30 +74,18 @@
         {
             "card_id": "c_4",
             "ui_icon": "shield",
-            "category": "imaging",
-            "card_text": "D) Contactar ICP center y organizar traslado inmediato: IÁMCEST anterior = alto riesgo de choque (VI disfunción). ICP es gold standard.",
+            "category": "Monitoreo",
+            "card_text": "Evidencia: D) Contactar ICP center y organizar traslado inmediato: IAMCEST anterior = alto riesgo de choque (VI disfunción). ICP es gold standard.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
-                "vazquez_comment": "Mendoza: Bien. Sin contacto previo con Hemodinamia, pierdes tiempo y el paciente se descompensa en tránsito."
+                "vazquez_comment": "Bien. Sin contacto previo con Hemodinamia, pierdes tiempo y el paciente se descompensa en tránsito."
             },
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": false
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 100/65, FC 125 lpm, Temp 36.5°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
             }
         }
     ],
@@ -153,37 +93,37 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "question": "De las siguientes opciones, ¿cuál es la prioridad si NO hay ICP disponible en <120 min?",
-                "options": [
-                    "Monitoreo domiciliario",
-                    "FIBRINOLIZÁR ÁNTES de trasladar",
-                    "Esperar fibrinolisis"
-                ],
-                "correct_index": 1
-            },
-            {
-                "question": "¿Por qué IÁMCEST anterior es más grave que inferior?",
-                "options": [
-                    "Siempre requiere cirugía",
-                    "Afecta ventriculo izquierdo grande → mayor riesgo de choque",
-                    "Es menos grave, es confusión"
-                ],
-                "correct_index": 1
-            },
-            {
-                "question": "¿En qué derivaciones INDICA IÁMCEST anterior?",
+                "question": "¿En qué derivaciones INDICA IAMCEST anterior?",
                 "options": [
                     "V1-V4 (± aVL) con imagen recíproca en II, III, aVF",
-                    "V5-V6 con aVL",
-                    "II, III, aVF con imagen recíproca en I, aVL"
+                    "II, III, aVF con imagen recíproca en I, aVL",
+                    "V5-V6 con aVL"
+                ],
+                "correct_index": 0
+            },
+            {
+                "question": "¿Cuál es la prioridad si NO hay ICP disponible en <120 min?",
+                "options": [
+                    "Esperar fibrinolisis",
+                    "FIBRINOLIZAR ANTES de trasladar",
+                    "Monitoreo domiciliario"
+                ],
+                "correct_index": 1
+            },
+            {
+                "question": "¿Por qué IAMCEST anterior es más grave que inferior?",
+                "options": [
+                    "Afecta ventriculo izquierdo grande → mayor riesgo de choque",
+                    "Siempre requiere cirugía",
+                    "Es menos grave, es confusión"
                 ],
                 "correct_index": 0
             }
         ]
     },
     "enarm_pearl": {
-        "title": "IÁMCEST Anterior: Urgencia Maximal",
-        "text": "V1-V4 elevado = VI → Choque cardiogénico probable. Puerta-Aguja <30min. Puerta-Balón <90min. Si >120min: FIBRINOLIZÁR.",
+        "title": "IAMCEST Anterior: Urgencia Maximal",
+        "text": "V1-V4 elevado = VI → Choque cardiogénico probable. Puerta-Aguja <30min. Puerta-Balón <90min. Si >120min: FIBRINOLIZAR.",
         "gpc_ref": "GPC Diagnóstico y Tratamiento del Infarto Agudo de Miocardio"
     }
 }

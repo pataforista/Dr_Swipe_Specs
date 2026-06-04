@@ -12,20 +12,20 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 120/80, FC 78 bpm, Temp 37.0°C",
+            "category": "Signos Vitales",
+            "card_text": "Hallazgo clínico: Dato anecdótico: TA 120/80, FC 78 bpm, Temp 37.0°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias.",
+            "card_text": "Evidencia: A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "B) Estreñimiento (Bowel movement issues): 'Constipation' es el falso amigo más común: significa Estreñimiento, NO congestión nasal.",
+            "card_text": "Evidencia: B) Estreñimiento (Bowel movement issues): 'Constipation' es el falso amigo más común: significa Estreñimiento, NO congestión nasal.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -51,94 +51,6 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
-        },
-        {
-            "card_id": "c_6",
-            "ui_icon": "slash",
-            "card_text": "Dato de importancia: F) NÁC Típica (Neumococo): Cursa con inicio súbito, fiebre alta, dolor pleurítico y consolidación lobar.",
-            "scoring": {
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: Correcto. Este paciente NO tiene la toxicidad ni los hallazgos de una neumonía típica.",
-                "points": 50,
-                "error_type": "hoarding"
-            },
-            "expected_action": "discard",
-            "category": "Diferencial"
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "Signos Vitales",
-            "card_text": "Informacion redundante: TA N/Á, FC 100 lpm, Temp 36.6°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_4",
-            "ui_icon": "slash",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "D) LSIL (Lesión de Bajo Grado): Refleja infección por VPH; alta tasa de regresión espontánea (60-80%) especialmente en jóvenes.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: Bien. La paciente tiene una citología de HSIL, lo que obliga a actuar, no a vigilar como en LSIL."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "B) Hemorragia Intracraneal: Clínica similar pero TC mostraría hiperdensidad súbita.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! La TC negativa a sangre confirma el origen isquémico temprano."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "c_5",
-            "ui_icon": "slash",
-            "category": "meds",
-            "card_text": "E) Incontinencia Urinaria: Pérdida involuntaria de orina; pH ácido y ausencia de patrón en helecho.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: Bien. El Test de Helecho positivo en esta paciente descarta pérdidas urinarias."
-            }
-        },
-        {
-            "card_id": "pad_011_103",
-            "ui_icon": "☢️",
-            "category": "imaging",
-            "card_text": "Rx Torax: Se observa discreto derrame pleural derecho.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 160/110, FC 95 lpm, Temp 37.0°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
             }
         }
     ],
@@ -152,6 +64,15 @@
         "questions": [
             {
                 "correct_index": 0,
+                "question": "¿Cuál es la traducción correcta de 'Constipation' en un contexto médico?",
+                "options": [
+                    "Estreñimiento",
+                    "Congestión nasal",
+                    "Diarrea"
+                ]
+            },
+            {
+                "correct_index": 0,
                 "question": "¿Qué significa el término 'Shortness of breath'?",
                 "options": [
                     "Disnea (falta de aire)",
@@ -160,21 +81,12 @@
                 ]
             },
             {
-                "correct_index": 2,
-                "question": "Identifique la diferencia entre 'Wound' e 'Injury'?",
+                "correct_index": 0,
+                "question": "¿Cuál es la diferencia entre 'Wound' e 'Injury'?",
                 "options": [
+                    "Wound es una herida abierta; Injury es cualquier lesión",
                     "Wound es una fractura; Injury es un moretón",
-                    "Son sinónimos exactos en medicina",
-                    "Wound es una herida abierta; Injury es cualquier lesión"
-                ]
-            },
-            {
-                "correct_index": 2,
-                "question": "Identifique la traducción correcta de 'Constipation' en un contexto médico?",
-                "options": [
-                    "Diarrea",
-                    "Congestión nasal",
-                    "Estreñimiento"
+                    "Son sinónimos exactos en medicina"
                 ]
             }
         ]

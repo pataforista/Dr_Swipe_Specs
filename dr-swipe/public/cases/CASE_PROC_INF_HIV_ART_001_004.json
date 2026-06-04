@@ -5,39 +5,27 @@
     "difficulty": "standard",
     "patient_intro": {
         "name": "Isabel, 40 años",
-        "arrival_scenario": "Usuario de drogas IV con pérdida de peso y candidiasis oral persistente. ELISA y Western Blot positivos para VIH. Conteo de CD4: 350 cél/mm³. Carga viral: 50,000 copias/mL. ¿Cuál es la conducta recomendada respecto al inicio de ÁRT?",
+        "arrival_scenario": "Usuario de drogas IV con pérdida de peso y candidiasis oral persistente. ELISA y Western Blot positivos para VIH. Conteo de CD4: 350 cél/mm³. Carga viral: 50,000 copias/mL. ¿Cuál es la conducta recomendada respecto al inicio de ART?",
         "time_limit_sec": 60
     },
     "card_stream": [
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 120/80, FC 72 lpm, Temp 36.7°C",
+            "category": "Signos Vitales",
+            "card_text": "Evidencia clínica: Ruido en el expediente: TA 120/80, FC 72 lpm, Temp 36.7°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "pad_006",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 50,
-                "error_type": "omission",
-                "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
-            "category": "meds",
-            "card_text": "A) Iniciar ÁRT Inmediatamente (Tratamiento Universal): Guías actuales (GPC/WHO): Se recomienda iniciar ÁRT en TODOS los pacientes, sin importar el nivel de CD4.",
+            "category": "Diagnóstico",
+            "card_text": "Hallazgo: A) Iniciar ART Inmediatamente (Tratamiento Universal): Guías actuales (GPC/WHO): Se recomienda iniciar ART en TODOS los pacientes, sin importar el nivel de CD4.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -53,88 +41,12 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "B) Diferir inicio hasta CD4 <200 (SIDA): Práctica obsoleta que aumentaba el riesgo de infecciones oportunistas y mortalidad.",
+            "card_text": "Hallazgo: Dato anecdótico: B) Diferir inicio hasta CD4 <200 (SIDA): Práctica obsoleta que aumentaba el riesgo de infecciones oportunistas y mortalidad.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Reconociste el cambio hacia el tratamiento universal proactivo."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "pad_004",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Esto es puro ruido, R1. Enfócate en la prioridad."
-            }
-        },
-        {
-            "card_id": "pad_005",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
-            }
-        },
-        {
-            "card_id": "pad_007",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-            }
-        },
-        {
-            "card_id": "pad_009",
-            "ui_icon": "☢️",
-            "category": "imaging",
-            "card_text": "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "Signos Vitales",
-            "card_text": "Información redundante: TA 145/95 mmHg, FC 75 lpm, Temp 36.6°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "B) Seguimiento en 6 meses (BI-RÁDS 3): Conducta ante hallazgos probablemente benignos (<2% riesgo de malignidad).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: ¡Bien! Diferenciaste el seguimiento (BI-RÁDS 3) de la acción agresiva (BI-RÁDS 4+)."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Reconociste el cambio hacia el tratamiento universal proactivo."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -143,20 +55,20 @@
         }
     ],
     "enarm_pearl": {
-        "title": "VIH: Inicio de ÁRT",
-        "text": "Regla ENARM: Inicio de ÁRT en TODO paciente diagnosticado, sin importar CD4. Esquema preferente: 2 ITNR + 1 INSTI (Dolutegravir).",
+        "title": "VIH: Inicio de ART",
+        "text": "Regla ENARM: Inicio de ART en TODO paciente diagnosticado, sin importar CD4. Esquema preferente: 2 ITNR + 1 INSTI (Dolutegravir).",
         "gpc_ref": "GPC Tratamiento Antirretroviral del Adulto con VIH"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 2,
-                "question": "¿Cuál es el recuento de células CD4 por debajo del cual se define la etapa clínica de SIDÁ?",
+                "correct_index": 0,
+                "question": "¿Cuál es el recuento de células CD4 por debajo del cual se define la etapa clínica de SIDA?",
                 "options": [
-                    "Menos de 50 cél/µl",
+                    "Menos de 200 cél/µl",
                     "Menos de 500 cél/µl",
-                    "Menos de 200 cél/µl"
+                    "Menos de 50 cél/µl"
                 ]
             },
             {
@@ -169,12 +81,12 @@
                 ]
             },
             {
-                "correct_index": 2,
+                "correct_index": 0,
                 "question": "¿A qué familia de antirretrovirales pertenece el Dolutegravir (DTG)?",
                 "options": [
-                    "Inhibidor de Nucleósidos (ITNR)",
+                    "Inhibidor de la Integrasa (INSTI)",
                     "Inhibidor de la Proteasa (IP)",
-                    "Inhibidor de la Integrasa (INSTI)"
+                    "Inhibidor de Nucleósidos (ITNR)"
                 ]
             }
         ]

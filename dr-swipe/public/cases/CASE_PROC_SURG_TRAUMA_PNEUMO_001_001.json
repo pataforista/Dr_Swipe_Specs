@@ -18,31 +18,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "omission",
-                "vazquez_comment": "No te detengas en estos signos de choque obstructivo, R1."
-            }
-        },
-        {
-            "card_id": "c_4",
-            "ui_icon": "eye",
-            "category": "Signo Clínico",
-            "card_text": "Evidencia: D) Ausencia de Ruidos Respiratorios: Lado derecho silencioso a la auscultación pulmonar.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 100,
-                "error_type": "omission",
-                "vazquez_comment": "Bien. Es un hallazgo clave que guía la descompresión."
-            }
-        },
-        {
-            "card_id": "c_5",
-            "ui_icon": "arrow-up",
-            "category": "Signo Clínico",
-            "card_text": "Hallazgo: E) Ingurgitación Yugular: Distensión venosa por obstrucción del retorno venoso al corazón.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 100,
-                "error_type": "omission",
-                "vazquez_comment": "Correcto. Indica el componente obstructivo del choque."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de choque obstructivo, R1."
             }
         },
         {
@@ -87,11 +63,35 @@
             "scoring": {
                 "points": 150,
                 "error_type": "lethal_hazard",
-                "vazquez_comment": "¡ÁSESINO! El neumotórax a tensión es CLÍNICO. Esperar la placa es sentenciar al paciente."
+                "vazquez_comment": "¡ASESINO! El neumotórax a tensión es CLÍNICO. Esperar la placa es sentenciar al paciente."
             },
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_4",
+            "ui_icon": "eye",
+            "category": "Signo Clínico",
+            "card_text": "Evidencia: D) Ausencia de Ruidos Respiratorios: Lado derecho silencioso a la auscultación pulmonar.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Bien. Es un hallazgo clave que guía la descompresión."
+            }
+        },
+        {
+            "card_id": "c_5",
+            "ui_icon": "arrow-up",
+            "category": "Signo Clínico",
+            "card_text": "Hallazgo: E) Ingurgitación Yugular: Distensión venosa por obstrucción del retorno venoso al corazón.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Correcto. Indica el componente obstructivo del choque."
             }
         },
         {
@@ -109,79 +109,43 @@
                 "lethal_risk": true,
                 "decision_critical": true
             }
-        },
-        {
-            "card_id": "c_10",
-            "ui_icon": "x-circle",
-            "category": "Mito",
-            "card_text": "J) Dieta Estricta (Sin Chocolate): Medida de primera línea indispensable para lograr la remisión del acné.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: ¡No! Aunque la dieta con alta carga glucémica puede influir, no es la base del tratamiento médico."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 110/70, FC 75 lpm, Temp 36.5°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 120/80, FC 70 lpm, Temp 36.5°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
         }
     ],
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
             {
-                "question": "¿Qué hallazgo a la percusión diferencia un neumotórax de un hemotórax masivo?",
-                "options": [
-                    "Dolor pleurítico vs IVY",
-                    "Desviación traqueal vs Crepitación",
-                    "Hiperresonancia vs Matidez"
-                ],
-                "correct_index": 2
-            },
-            {
                 "question": "¿Cuál es el sitio de punción preferido actual según ATLS 10a Edición?",
                 "options": [
-                    "4° espacio intercostal (LÁA)",
+                    "5° espacio intercostal (LAA/LAM)",
                     "2° espacio intercostal (LMC)",
-                    "5° espacio intercostal (LÁÁ/LÁM)"
+                    "4° espacio intercostal (LAA)"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿Qué tipo de choque presenta este paciente?",
                 "options": [
-                    "Choque distributivo",
+                    "Choque obstructivo",
                     "Choque hipovolémico",
-                    "Choque obstructivo"
+                    "Choque distributivo"
                 ],
-                "correct_index": 2
+                "correct_index": 0
+            },
+            {
+                "question": "¿Qué hallazgo a la percusión diferencia un neumotórax de un hemotórax masivo?",
+                "options": [
+                    "Hiperresonancia vs Matidez",
+                    "Desviación traqueal vs Crepitación",
+                    "Dolor pleurítico vs IVY"
+                ],
+                "correct_index": 0
             }
         ]
     },
     "enarm_pearl": {
         "title": "Neumotórax a Tensión",
-        "text": "DIÁGNÓSTICO CLÍNICO. Tríada: Ausencia ruidos, IVY y choque. Manejo: Aguja (5° espacio) -> Tubo.",
+        "text": "DIAGNÓSTICO CLÍNICO. Tríada: Ausencia ruidos, IVY y choque. Manejo: Aguja (5° espacio) -> Tubo.",
         "gpc_ref": "ATLS 10a Edición"
     }
 }

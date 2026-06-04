@@ -12,101 +12,25 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 160/100 mmHg, FC 95 lpm, Temp 37.2°C",
+            "category": "Signos Vitales",
+            "card_text": "Información redundante: TA 160/100 mmHg, FC 95 lpm, Temp 37.2°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "pad_008",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "B) Migraña con Aura: Dolor pulsátil de inicio gradual, precedido por escotomas. No es súbito ni 'en trueno'.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! El inicio súbito es el red flag que descarta la migraña."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "pad_004",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "pad_005",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "pad_006",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "pad_007",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
-            "category": "imaging",
-            "card_text": "A) Hemorragia Subaracnoidea (HSA): Cefalea en trueno + Irritación meníngea. Causa principal: Rotura de aneurisma sacular.",
+            "category": "Diagnóstico",
+            "card_text": "Evidencia clínica: A) Hemorragia Subaracnoidea (HSA): Cefalea en trueno + Irritación meníngea. Causa principal: Rotura de aneurisma sacular.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
                 "error_type": "lethal_omission",
-                "vazquez_comment": "Navarro: ¡Manejo Perfecto! La HSA es una emergencia neuroquirúrgica. La TC es el primer estudio. La segunda causa más frecuente es la Malformación Arteriovenosa (MÁV)."
+                "vazquez_comment": "Navarro: ¡Manejo Perfecto! La HSA es una emergencia neuroquirúrgica. La TC es el primer estudio. La segunda causa más frecuente es la Malformación Arteriovenosa (MAV)."
             },
             "safety_flags": {
                 "lethal_risk": true,
@@ -115,54 +39,37 @@
             }
         },
         {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "Dato de importancia: FC 110 lpm, FR 22 rpm, Temp 37.2 C, TA 110/70 mmHg (Signos Vitales Estables).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "DATO CLAVE OMITIDO: Navarro: Bien! No hay signos de deshidratacion clinica. Inicia Plan A ambulatorio en casa."
-            }
-        },
-        {
-            "card_id": "c_3",
+            "card_id": "c_2",
             "ui_icon": "eye",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "Hallazgo: Dato anecdótico: C) Reflujo Gastroesofágico: Regurgitaciones frecuentes, no en proyectil, con ganancia ponderal adecuada inicialmente.",
+            "category": "Diagnóstico",
+            "card_text": "Hallazgo clínico: Dato anecdótico: B) Migraña con Aura: Dolor pulsátil de inicio gradual, precedido por escotomas. No es súbito ni 'en trueno'.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. El vómito explosivo 'en proyectil' apunta fuertemente a una obstrucción mecánica."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! El inicio súbito es el red flag que descarta la migraña."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
             }
         }
     ],
     "enarm_pearl": {
         "title": "Cefalea en Trueno",
-        "text": "Si la TC es NEGÁTIVA pero la sospecha de HSA es alta, el siguiente paso es la PUNCIÓN LUMBÁR buscando xantocromía.",
+        "text": "Si la TC es NEGATIVA pero la sospecha de HSA es alta, el siguiente paso es la PUNCIÓN LUMBAR buscando xantocromía.",
         "gpc_ref": "GPC Manejo de la Hemorragia Subaracnoidea"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 2,
+                "correct_index": 0,
                 "question": "¿Cuál es la causa no traumática más frecuente de Hemorragia Subaracnoidea?",
                 "options": [
-                    "Angiopatía amiloide",
-                    "Malformación arteriovenosa (MÁV)",
-                    "Rotura de aneurisma sacular"
-                ]
-            },
-            {
-                "correct_index": 1,
-                "question": "De las siguientes opciones, ¿cuál es el fármaco de elección para prevenir el vasoespasmo cerebral tras la rotura?",
-                "options": [
-                    "Amlodipino",
-                    "Nimodipino",
-                    "Verapamilo"
+                    "Rotura de aneurisma sacular",
+                    "Malformación arteriovenosa (MAV)",
+                    "Angiopatía amiloide"
                 ]
             },
             {
@@ -170,8 +77,17 @@
                 "question": "¿Qué hallazgo en el líquido cefalorraquídeo confirma una HSA frente a una punción traumática?",
                 "options": [
                     "Xantocromía (coloración amarillenta)",
-                    "Presencia de leucocitos PMN",
-                    "Glucosa muy baja"
+                    "Glucosa muy baja",
+                    "Presencia de leucocitos PMN"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Cuál es el fármaco de elección para prevenir el vasoespasmo cerebral tras la rotura?",
+                "options": [
+                    "Nimodipino",
+                    "Verapamilo",
+                    "Amlodipino"
                 ]
             }
         ]

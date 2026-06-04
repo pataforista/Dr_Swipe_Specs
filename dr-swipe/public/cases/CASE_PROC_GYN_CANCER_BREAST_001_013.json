@@ -5,44 +5,32 @@
     "difficulty": "standard",
     "patient_intro": {
         "name": "María, 65 años",
-        "arrival_scenario": "Mujer de 52 años acude a mastografía de tamizaje anual. Refiere ser tabaquista y nulípara. Reporte de mastografía: Nódulo circunscrito de 1cm con microcalcificaciones pleomórficas agrupadas. Clasificado como BI-RÁDS 4.",
+        "arrival_scenario": "Mujer de 52 años acude a mastografía de tamizaje anual. Refiere ser tabaquista y nulípara. Reporte de mastografía: Nódulo circunscrito de 1cm con microcalcificaciones pleomórficas agrupadas. Clasificado como BI-RADS 4.",
         "time_limit_sec": 60
     },
     "card_stream": [
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 120/80, FC 70 lpm, Temp 36.5°C",
+            "category": "Signos Vitales",
+            "card_text": "Información redundante: TA 120/80, FC 70 lpm, Temp 36.5°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "pad_004",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "TA 145/95 mmHg. Cifras tensionales elevadas en dos tomas.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 50,
-                "error_type": "omission",
-                "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Biopsia Percutánea (Trucut): BI-RÁDS 4 y 5 requieren confirmación histopatológica inmediata mediante biopsia con aguja gruesa.",
+            "card_text": "Hallazgo: A) Biopsia Percutánea (Trucut): BI-RADS 4 y 5 requieren confirmación histopatológica inmediata mediante biopsia con aguja gruesa.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
                 "error_type": "omission",
-                "vazquez_comment": "Castillo: ¡Correcto! El diagnóstico definitivo es histopatológico. Nunca se debe retrasar ante una sospecha BI-RÁDS 4/5."
+                "vazquez_comment": "Castillo: ¡Correcto! El diagnóstico definitivo es histopatológico. Nunca se debe retrasar ante una sospecha BI-RADS 4/5."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -53,120 +41,43 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "B) Seguimiento en 6 meses (BI-RÁDS 3): Conducta ante hallazgos probablemente benignos (<2% riesgo de malignidad).",
+            "card_text": "Dato de importancia: Dato anecdótico: B) Seguimiento en 6 meses (BI-RADS 3): Conducta ante hallazgos probablemente benignos (<2% riesgo de malignidad).",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Castillo: ¡Bien! Diferenciaste el seguimiento (BI-RÁDS 3) de la acción agresiva (BI-RÁDS 4+)."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Diferenciaste el seguimiento (BI-RADS 3) de la acción agresiva (BI-RADS 4+)."
             },
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": false
-            }
-        },
-        {
-            "card_id": "pad_007",
-            "ui_icon": "🩸",
-            "category": "labs",
-            "card_text": "VDRL no reactivo (reporte de hace 2 meses).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "stethoscope",
-            "category": "Diagnóstico",
-            "card_text": "B) Amenaza de Aborto: Sangrado vaginal SIN modificación cervical (cérvix cerrado) con vitalidad fetal presente por USG.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Relevante para el control prenatal, pero no cambia el manejo agudo de esta urgencia."
-            }
-        },
-        {
-            "card_id": "c_4",
-            "ui_icon": "slash",
-            "category": "meds",
-            "card_text": "D) Mola Parcial: Triploidía (69XXX/XXY). Se observa feto (a menudo malformado) y niveles de hCG menos elevados.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: Bien. La ausencia de feto y la hCG masiva en este caso gritan 'Mola Completa'."
-            }
-        },
-        {
-            "card_id": "c_3",
-            "ui_icon": "slash",
-            "category": "labs",
-            "card_text": "C) Diabetes Pre-gestacional: Glucosa en ayuno >=126 o HbÁ1c >=6.5% detectada antes de las 13 semanas de gestación.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Relevante para el control prenatal, pero no cambia el manejo agudo de esta urgencia."
-            }
-        },
-        {
-            "card_id": "e07",
-            "ui_icon": "☢️",
-            "category": "imaging",
-            "card_text": "Sin infiltrados, derrames ni cardiomegalia. Silueta cardíaca normal. Campos pulmonares limpios.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
-            },
-            "safety_flags": {
-                "contraindication": false,
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 160/110, FC 95 lpm, Temp 37.0°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
             }
         }
     ],
     "enarm_pearl": {
-        "title": "BI-RÁDS y Conducta",
-        "text": "BI-RÁDS 1-2: Rutina. BI-RÁDS 3: Seguimiento 6 meses. BI-RÁDS 4-5: BIOPSIA obligatoria.",
+        "title": "BI-RADS y Conducta",
+        "text": "BI-RADS 1-2: Rutina. BI-RADS 3: Seguimiento 6 meses. BI-RADS 4-5: BIOPSIA obligatoria.",
         "gpc_ref": "GPC Prevención y Diagnóstico del Cáncer de Mama"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 1,
+                "correct_index": 0,
                 "question": "¿A qué edad recomienda la GPC iniciar el tamizaje mastográfico en pacientes de riesgo promedio sin antecedentes?",
                 "options": [
-                    "A partir de los 35 años",
                     "A partir de los 40 años",
-                    "A partir de los 50 años"
+                    "A partir de los 50 años",
+                    "A partir de los 35 años"
                 ]
             },
             {
-                "correct_index": 2,
-                "question": "De las siguientes opciones, ¿cuál es la conducta recomendada ante un hallazgo categorizado como BI-RÁDS 3 (Probablemente Benigno)?",
+                "correct_index": 0,
+                "question": "¿Cuál es la conducta recomendada ante un hallazgo categorizado como BI-RADS 3 (Probablemente Benigno)?",
                 "options": [
+                    "Seguimiento mastográfico en 6 meses",
                     "Biopsia percutánea inmediata",
-                    "Repetir estudio en 2 años",
-                    "Seguimiento mastográfico en 6 meses"
+                    "Repetir estudio en 2 años"
                 ]
             },
             {

@@ -12,25 +12,25 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 85/50 mmHg, FC 125 lpm (Datos de Choque Hipovolémico), SatO2 94%.",
+            "category": "Signos Vitales",
+            "card_text": "Dato de importancia: Dato anecdótico: TA 85/50 mmHg, FC 125 lpm (Datos de Choque Hipovolémico), SatO2 94%.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Vázquez: Elena se está descompensando. Activa el Código Mater de inmediato."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Atonía Uterina: Causa número uno de hemorragia posparto (70%). Fallo del útero para contraerse eficazmente.",
+            "card_text": "Evidencia: A) Atonía Uterina: Causa número uno de hemorragia posparto (70%). Fallo del útero para contraerse eficazmente.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
                 "error_type": "omission",
-                "vazquez_comment": "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
+                "vazquez_comment": "Vázquez: ¡Correcto! El útero 'blando' es el signo cardinal."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -41,100 +41,16 @@
             "card_id": "c_2",
             "ui_icon": "zap",
             "category": "Manejo Inicial",
-            "card_text": "B) Masaje Uterino Bimanual: Maniobra inmediata para estimular la contracción mecánica del miometrio.",
+            "card_text": "Evidencia: B) Masaje Uterino Bimanual: Maniobra inmediata para estimular la contracción mecánica del miometrio.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
                 "error_type": "lethal_omission",
-                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo.",
+                "vazquez_comment": "Vázquez: ¡Vital! No pierdas tiempo, el primer paso SIEMPRE es el masaje.",
                 "safety_flags": {
                     "lethal_risk": true,
                     "decision_critical": true
                 }
-            }
-        },
-        {
-            "card_id": "pad_004",
-            "ui_icon": "🩸",
-            "category": "labs",
-            "card_text": "Proteinuria en tira reactiva (++) en muestra al azar.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "pad_005",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Refiere consumo de ácido fólico antes de la concepción de forma irregular.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "pad_008",
-            "ui_icon": "🤰",
-            "category": "notes",
-            "card_text": "Altura uterina de 28 cm, acorde a edad gestacional por FUM.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "pad_009",
-            "ui_icon": "🩸",
-            "category": "labs",
-            "card_text": "VDRL no reactivo (reporte de hace 2 meses).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "c_10",
-            "ui_icon": "slash",
-            "category": "meds",
-            "card_text": "J) Vacuna contra Parvovirus B19: Inmunización universal recomendada en la Cartilla Nacional de Salud de México.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: ¡No! Áún no existe una vacuna comercial disponible para el Parvovirus B19."
-            }
-        },
-        {
-            "card_id": "pad_012",
-            "ui_icon": "brush",
-            "card_text": "Evidencia: Uso recurrente de maquillaje comedogénico y falta de limpieza nocturna.",
-            "scoring": {
-                "vazquez_comment": "Mendoza: Dato cosmético. Importante para la educación al paciente, pero no es la señal clínica que buscamos en este momento.",
-                "points": 50,
-                "error_type": "hoarding"
-            },
-            "expected_action": "discard",
-            "category": "cosmetics"
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "Evidencia clínica: Dato anecdótico: B) Atresia Duodenal: Vómitos biliares precoces (primeras 24-48h). Radiografía con signo de la 'doble burbuja'. Frecuente en Síndrome de Down.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! El vómito en la estenosis de píloro es característicamente NO biliar."
             }
         }
     ],
@@ -149,29 +65,29 @@
             {
                 "question": "¿Cuál es la causa más frecuente de hemorragia posparto inmediata?",
                 "options": [
-                    "Desgarros del canal del parto",
                     "Atonía uterina",
-                    "Retención de restos placentarios"
+                    "Retención de restos placentarios",
+                    "Desgarros del canal del parto"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             },
             {
-                "question": "En este contexto clínico, ¿cuál es la maniobra inicial prioritaria ante la sospecha de atonía uterina?",
+                "question": "¿Cuál es la maniobra inicial prioritaria ante la sospecha de atonía uterina?",
                 "options": [
+                    "Masaje uterino bimanual",
                     "Histerectomía de urgencia",
-                    "Legrado uterino instrumental",
-                    "Masaje uterino bimanual"
+                    "Legrado uterino instrumental"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
-                "question": "¿Qué fármaco uterotónico está CONTRÁINDICÁDO en pacientes con hipertensión arterial?",
+                "question": "¿Qué fármaco uterotónico está CONTRAINDICADO en pacientes con hipertensión arterial?",
                 "options": [
-                    "Oxitocina",
                     "Ergonovina",
+                    "Oxitocina",
                     "Misoprostol"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             }
         ]
     }

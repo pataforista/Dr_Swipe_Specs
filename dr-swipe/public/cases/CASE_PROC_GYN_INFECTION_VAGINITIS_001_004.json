@@ -12,32 +12,20 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 110/70, FC 75 lpm, Temp 36.5°C",
+            "category": "Signos Vitales",
+            "card_text": "Hallazgo clínico: Ruido en el expediente: TA 110/70, FC 75 lpm, Temp 36.5°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "pad_006",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "TA 145/95 mmHg. Cifras tensionales elevadas en dos tomas.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: Esto es puro ruido en este contexto. No te distraigas."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Candidiasis Vaginal: Flujo grumoso + PH <4.5 + Prurito. Tx: Azoles (Miconazol/Fluconazol).",
+            "card_text": "Hallazgo: A) Candidiasis Vaginal: Flujo grumoso + PH <4.5 + Prurito. Tx: Azoles (Miconazol/Fluconazol).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -53,96 +41,15 @@
             "card_id": "c_2",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "B) Vaginosis Bacteriana (Gardnerella): Flujo gris + Mal olor + PH >4.5 + Células Clave. Tx: Metronidazol.",
+            "card_text": "Hallazgo: B) Vaginosis Bacteriana (Gardnerella): Flujo gris + Mal olor + PH >4.5 + Células Clave. Tx: Metronidazol.",
             "expected_action": "discard",
             "scoring": {
                 "points": 150,
-                "error_type": "hoarding",
+                "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Las Clue Cells son el dato patognomónico de la Vaginosis."
             },
             "safety_flags": {
                 "lethal_risk": false,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "pad_007",
-            "ui_icon": "🩸",
-            "category": "labs",
-            "card_text": "VDRL no reactivo (reporte de hace 2 meses).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-            }
-        },
-        {
-            "card_id": "pad_010",
-            "ui_icon": "🩸",
-            "category": "labs",
-            "card_text": "Proteinuria en tira reactiva (++) en muestra al azar.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: Esto es puro ruido en este contexto. No te distraigas."
-            }
-        },
-        {
-            "card_id": "h10",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Número de póliza del seguro médico ilegible. Domicilio registrado en colonia con nombre incorrecto.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-            },
-            "safety_flags": {
-                "contraindication": false,
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 110/70 mmHg, FC 105 lpm, Temp 38.5°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: No te detengas en estos signos de fiebre, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "Signos Vitales",
-            "card_text": "Información redundante: TA N/Á, FC N/Á, Temp N/Á",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_7",
-            "ui_icon": "slash",
-            "category": "Gastroenteritis",
-            "card_text": "G) Loperamida: Recomendada en lactantes para reducir el n�\u0000ºmero de evacuciones y evitar la p�\u0000©rdida de l�\u0000­quidos.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 100,
-                "error_type": "lethal_hazard",
-                "vazquez_comment": "Navarro: �\u0000¡PELIGRO! Los antidiarr�\u0000©icos est�\u0000¡n estrictamente contraindicados en ni�\u0000±os; pueden causar �\u0000­leo paral�\u0000­tico o megacolon."
-            },
-            "safety_flags": {
-                "lethal_risk": true,
                 "decision_critical": true
             }
         }
@@ -157,7 +64,16 @@
         "questions": [
             {
                 "correct_index": 0,
-                "question": "¿En cuál de las siguientes infecciones vaginales es OBLIGÁTORIO el tratamiento simultáneo a la pareja sexual?",
+                "question": "¿Cuál es el hallazgo microscópico considerado patognomónico de la Vaginosis Bacteriana?",
+                "options": [
+                    "Células guía (Clue Cells)",
+                    "Hifas y esporas",
+                    "Trofozoítos móviles piriformes"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿En cuál de las siguientes infecciones vaginales es OBLIGATORIO el tratamiento simultáneo a la pareja sexual?",
                 "options": [
                     "Tricomoniasis",
                     "Candidiasis Vaginal",
@@ -165,21 +81,12 @@
                 ]
             },
             {
-                "correct_index": 1,
+                "correct_index": 0,
                 "question": "¿Cuál es el conjunto de criterios clínicos utilizados para diagnosticar Vaginosis Bacteriana en el consultorio?",
                 "options": [
-                    "Criterios de Centor",
                     "Criterios de Amsel",
-                    "Criterios de Jones"
-                ]
-            },
-            {
-                "correct_index": 2,
-                "question": "En este contexto clínico, ¿cuál es el hallazgo microscópico considerado patognomónico de la Vaginosis Bacteriana?",
-                "options": [
-                    "Trofozoítos móviles piriformes",
-                    "Hifas y esporas",
-                    "Células guía (Clue Cells)"
+                    "Criterios de Jones",
+                    "Criterios de Centor"
                 ]
             }
         ]

@@ -5,44 +5,32 @@
     "difficulty": "standard",
     "patient_intro": {
         "name": "Marta, 46 años",
-        "arrival_scenario": "Se realiza mastografía en paciente de 52 años tras detectar nódulo firme e indoloro en cuadrante superior externo. Reporte de mastografía: Nódulo circunscrito de 1cm con microcalcificaciones pleomórficas agrupadas. Clasificado como BI-RÁDS 4.",
+        "arrival_scenario": "Se realiza mastografía en paciente de 52 años tras detectar nódulo firme e indoloro en cuadrante superior externo. Reporte de mastografía: Nódulo circunscrito de 1cm con microcalcificaciones pleomórficas agrupadas. Clasificado como BI-RADS 4.",
         "time_limit_sec": 60
     },
     "card_stream": [
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 120/80, FC 70 lpm, Temp 36.5°C",
+            "category": "Signos Vitales",
+            "card_text": "Hallazgo: Dato anecdótico: TA 120/80, FC 70 lpm, Temp 36.5°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "pad_004",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "TA 145/95 mmHg. Cifras tensionales elevadas en dos tomas.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 50,
-                "error_type": "omission",
-                "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Biopsia Percutánea (Trucut): BI-RÁDS 4 y 5 requieren confirmación histopatológica inmediata mediante biopsia con aguja gruesa.",
+            "card_text": "Hallazgo: A) Biopsia Percutánea (Trucut): BI-RADS 4 y 5 requieren confirmación histopatológica inmediata mediante biopsia con aguja gruesa.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
                 "error_type": "omission",
-                "vazquez_comment": "Castillo: ¡Correcto! El diagnóstico definitivo es histopatológico. Nunca se debe retrasar ante una sospecha BI-RÁDS 4/5."
+                "vazquez_comment": "Castillo: ¡Correcto! El diagnóstico definitivo es histopatológico. Nunca se debe retrasar ante una sospecha BI-RADS 4/5."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -53,110 +41,43 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "B) Seguimiento en 6 meses (BI-RÁDS 3): Conducta ante hallazgos probablemente benignos (<2% riesgo de malignidad).",
+            "card_text": "Información redundante: B) Seguimiento en 6 meses (BI-RADS 3): Conducta ante hallazgos probablemente benignos (<2% riesgo de malignidad).",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Castillo: ¡Bien! Diferenciaste el seguimiento (BI-RÁDS 3) de la acción agresiva (BI-RÁDS 4+)."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Diferenciaste el seguimiento (BI-RADS 3) de la acción agresiva (BI-RADS 4+)."
             },
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": false
             }
-        },
-        {
-            "card_id": "pad_009",
-            "ui_icon": "🩸",
-            "category": "labs",
-            "card_text": "VDRL no reactivo (reporte de hace 2 meses).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-            }
-        },
-        {
-            "card_id": "c_10",
-            "ui_icon": "x-circle",
-            "category": "vitals",
-            "card_text": "J) Control Agudo de la TÁ: Es la medida prioritaria para detener el sangrado nasal antes de cualquier maniobra local.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 100,
-                "error_type": "lethal_hazard",
-                "vazquez_comment": "¡PELIGRO! Eso era una contraindicación absoluta. Menos mal que esto es un juego."
-            }
-        },
-        {
-            "card_id": "c_10",
-            "ui_icon": "pill",
-            "category": "meds",
-            "card_text": "J) Aciclovir Oral de Rutina: Administrar a todo paciente inmunocompetente menor de 12 a�\u0000±os con varicela no complicada.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: �\u0000¡No! El aciclovir solo se indica si hay riesgo (mayores de 12 a�\u0000±os, enfermedad pulmonar cr�\u0000³nica o uso de esteroides)."
-            }
-        },
-        {
-            "card_id": "c_10",
-            "ui_icon": "slash",
-            "category": "meds",
-            "card_text": "J) Vacuna contra Parvovirus B19: Inmunización universal recomendada en la Cartilla Nacional de Salud de México.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: ¡No! Áún no existe una vacuna comercial disponible para el Parvovirus B19."
-            }
-        },
-        {
-            "card_id": "c_3",
-            "ui_icon": "eye",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "Evidencia clínica: Ruido en el expediente: C) Hepatitis Viral Aguda: Elevación marcada de transaminasas (>1000 U/L), ictericia, astenia y adinamia, sin dilatación de la vía biliar.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Correcto. En la hepatitis no suele haber dolor abdominal tan intenso ni leucocitosis importante."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "target",
-            "category": "Diagnóstico",
-            "card_text": "B) Vaginosis Bacteriana (Gardnerella): Flujo gris + Mal olor + PH >4.5 + Células Clave. Tx: Metronidazol.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 150,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: ¡Correcto! Las Clue Cells son el dato patognomónico de la Vaginosis."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": true
-            }
         }
     ],
     "enarm_pearl": {
-        "title": "BI-RÁDS y Conducta",
-        "text": "BI-RÁDS 1-2: Rutina. BI-RÁDS 3: Seguimiento 6 meses. BI-RÁDS 4-5: BIOPSIA obligatoria.",
+        "title": "BI-RADS y Conducta",
+        "text": "BI-RADS 1-2: Rutina. BI-RADS 3: Seguimiento 6 meses. BI-RADS 4-5: BIOPSIA obligatoria.",
         "gpc_ref": "GPC Prevención y Diagnóstico del Cáncer de Mama"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 2,
-                "question": "Con respecto a la patología, ¿cuál es la conducta recomendada ante un hallazgo categorizado como BI-RÁDS 3 (Probablemente Benigno)?",
+                "correct_index": 0,
+                "question": "¿A qué edad recomienda la GPC iniciar el tamizaje mastográfico en pacientes de riesgo promedio sin antecedentes?",
                 "options": [
-                    "Repetir estudio en 2 años",
+                    "A partir de los 40 años",
+                    "A partir de los 50 años",
+                    "A partir de los 35 años"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Cuál es la conducta recomendada ante un hallazgo categorizado como BI-RADS 3 (Probablemente Benigno)?",
+                "options": [
+                    "Seguimiento mastográfico en 6 meses",
                     "Biopsia percutánea inmediata",
-                    "Seguimiento mastográfico en 6 meses"
+                    "Repetir estudio en 2 años"
                 ]
             },
             {
@@ -166,15 +87,6 @@
                     "Carcinoma Ductal Infiltrante",
                     "Carcinoma Lobulillar Infiltrante",
                     "Carcinoma Mucinoso"
-                ]
-            },
-            {
-                "correct_index": 1,
-                "question": "¿A qué edad recomienda la GPC iniciar el tamizaje mastográfico en pacientes de riesgo promedio sin antecedentes?",
-                "options": [
-                    "A partir de los 35 años",
-                    "A partir de los 40 años",
-                    "A partir de los 50 años"
                 ]
             }
         ]

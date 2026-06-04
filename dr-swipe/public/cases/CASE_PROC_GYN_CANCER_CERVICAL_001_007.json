@@ -12,32 +12,20 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 110/70, FC 72 lpm, Temp 36.4°C",
+            "category": "Signos Vitales",
+            "card_text": "Información redundante: TA 110/70, FC 72 lpm, Temp 36.4°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "pad_010",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "TA 145/95 mmHg. Cifras tensionales elevadas en dos tomas.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 50,
-                "error_type": "omission",
-                "vazquez_comment": "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Colposcopia con Biopsia Dirigida: Ante HSIL o LSIL persistente, el estándar de oro es la visualización colposcópica y toma de biopsia.",
+            "card_text": "Hallazgo: A) Colposcopia con Biopsia Dirigida: Ante HSIL o LSIL persistente, el estándar de oro es la visualización colposcópica y toma de biopsia.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -53,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "B) Conización Cervical (LLETZ/Frío): Tratamiento de elección para NIC 2 y NIC 3 (lesiones de alto grado) para asegurar márgenes libres.",
+            "card_text": "Hallazgo: B) Conización Cervical (LLETZ/Frío): Tratamiento de elección para NIC 2 y NIC 3 (lesiones de alto grado) para asegurar márgenes libres.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -64,126 +52,41 @@
                 "lethal_risk": false,
                 "decision_critical": true
             }
-        },
-        {
-            "card_id": "pad_011_134",
-            "ui_icon": "🩸",
-            "category": "labs",
-            "card_text": "VDRL no reactivo (reporte de hace 2 meses).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
-            }
-        },
-        {
-            "card_id": "ev_001",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "TÁ: 90/60 mmHg en triage. Palidez de tegumentos. Llenado capilar de 3 segundos.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "lethal_hazard",
-                "vazquez_comment": "¡Eso era una Red Flag letal! ¡El paciente está en choque por tu culpa!"
-            },
-            "safety_flags": {
-                "contraindication": false,
-                "lethal_risk": true,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "Hallazgo: Ruido en el expediente: B) Probabilidad ÁLTA (>90%): Confundiste la Sensibilidad con el VPP. La prueba es buena detectando enfermos, pero falla ante tantos sanos.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Notaste la trampa de la prevalencia."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "c_7",
-            "ui_icon": "slash",
-            "category": "Gastroenteritis",
-            "card_text": "G) Loperamida: Recomendada en lactantes para reducir el n�\u0000ºmero de evacuciones y evitar la p�\u0000©rdida de l�\u0000­quidos.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 100,
-                "error_type": "lethal_hazard",
-                "vazquez_comment": "Navarro: �\u0000¡PELIGRO! Los antidiarr�\u0000©icos est�\u0000¡n estrictamente contraindicados en ni�\u0000±os; pueden causar �\u0000­leo paral�\u0000­tico o megacolon."
-            },
-            "safety_flags": {
-                "lethal_risk": true,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "c_3",
-            "ui_icon": "slash",
-            "category": "meds",
-            "card_text": "C) Ampicilina IV: Áñadir al esquema empírico si se sospecha Listeria monocytogenes (>50 años o inmunocompromiso).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Correcto. Este paciente tiene 39 años y es inmunocompetente; no requiere cobertura para Listeria inicialmente."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "Dato de importancia: FC 180 lpm (Taquicardia severa), FR 35 rpm, Temp 37.0 C, TA 70/40 mmHg (Sugerente de Choque).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "DATO CLAVE OMITIDO: Navarro: Urgente! El paciente esta en estado de choque hipovolemico. Plan C inmediato."
-            }
         }
     ],
     "enarm_pearl": {
         "title": "Citología: Bethesda 2014",
         "text": "Clave: LSIL (Bajo grado) suele vigilarse o colposcopia según edad. HSIL (Alto grado) SIEMPRE va a colposcopia/biopsia/tratamiento.",
-        "gpc_ref": "NOM-014-SSÁ2-1994 Prevención Cacu"
+        "gpc_ref": "NOM-014-SSA2-1994 Prevención Cacu"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 1,
-                "question": "¿Cuál es el esquema de tamizaje citológico recomendado tras obtener dos resultados anuales negativos consecutivos?",
-                "options": [
-                    "Cada 6 meses",
-                    "Cada 3 años",
-                    "Cada 5 años"
-                ]
-            },
-            {
-                "correct_index": 2,
+                "correct_index": 0,
                 "question": "¿Qué subtipos de Virus del Papiloma Humano (VPH) se asocian con mayor frecuencia al desarrollo de cáncer cervicouterino?",
                 "options": [
-                    "VPH 31 y 33",
+                    "VPH 16 y 18",
                     "VPH 6 y 11",
-                    "VPH 16 y 18"
+                    "VPH 31 y 33"
                 ]
             },
             {
                 "correct_index": 0,
-                "question": "De las siguientes opciones, ¿cuál es la conducta a seguir ante un reporte citológico de Lesión Intraepitelial de Alto Grado (HSIL)?",
+                "question": "¿Cuál es la conducta a seguir ante un reporte citológico de Lesión Intraepitelial de Alto Grado (HSIL)?",
                 "options": [
                     "Referencia inmediata a Colposcopia",
-                    "Tratamiento con óvulos antibióticos",
-                    "Repetir citología en 6 meses"
+                    "Repetir citología en 6 meses",
+                    "Tratamiento con óvulos antibióticos"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Cuál es el esquema de tamizaje citológico recomendado tras obtener dos resultados anuales negativos consecutivos?",
+                "options": [
+                    "Cada 3 años",
+                    "Cada 5 años",
+                    "Cada 6 meses"
                 ]
             }
         ]

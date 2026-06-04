@@ -12,37 +12,25 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 130/85, FC 80 lpm, Temp 36.5°C",
+            "category": "Signos Vitales",
+            "card_text": "Evidencia clínica: Dato anecdótico: TA 130/85, FC 80 lpm, Temp 36.5°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "pad_004",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
-            "category": "labs",
-            "card_text": "A) Diabetes Mellitus Tipo 2 (Confirmada): Criterios: Glucosa ayuno ≥126, HbÁ1c ≥6.5%, o Glucosa azar ≥200 con síntomas.",
+            "category": "Diagnóstico",
+            "card_text": "Hallazgo: A) Diabetes Mellitus Tipo 2 (Confirmada): Criterios: Glucosa ayuno ≥126, HbA1c ≥6.5%, o Glucosa azar ≥200 con síntomas.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
                 "error_type": "omission",
-                "vazquez_comment": "Mendoza: ¡Correcto! Cumple criterios de la NOM-015 para diagnóstico definitivo."
+                "vazquez_comment": "¡Correcto! Cumple criterios de la NOM-015 para diagnóstico definitivo."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -52,92 +40,15 @@
         {
             "card_id": "c_2",
             "ui_icon": "eye",
-            "category": "labs",
-            "card_text": "B) Prediabetes (Glucosa Alterada en Ayuno): Glucosa en ayuno entre 100 y 125 mg/dl.",
+            "category": "Diagnóstico",
+            "card_text": "Hallazgo: Ruido en el expediente: B) Prediabetes (Glucosa Alterada en Ayuno): Glucosa en ayuno entre 100 y 125 mg/dl.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: ¡Bien! Reconociste que ya es un cuadro franco de Diabetes."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! Reconociste que ya es un cuadro franco de Diabetes."
             },
             "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "pad_005",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-            }
-        },
-        {
-            "card_id": "pad_008",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-            }
-        },
-        {
-            "card_id": "pad_009",
-            "ui_icon": "☢️",
-            "category": "imaging",
-            "card_text": "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-            }
-        },
-        {
-            "card_id": "c_3",
-            "ui_icon": "eye",
-            "category": "Rescate",
-            "card_text": "C) Salbutamol (SÁBA) a demanda: Única terapia necesaria para pacientes con síntomas ocasionales (Step 1 antiguo).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 100,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Incorrecto! La GINA ya no recomienda SÁBA solo por el riesgo de exacerbaciones graves. ¡Usa ICS-Formoterol!"
-            }
-        },
-        {
-            "card_id": "c_9",
-            "ui_icon": "slash",
-            "category": "Manejo",
-            "card_text": "Dato de importancia: Dato anecdotico: I) Jarabes para la Tos (Antitusigenos): Recomendados en preescolares para mejorar el descanso nocturno durante la NÁC.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡No! Los antitusigenos estan contraindicados en ninos pequenos; pueden inhibir la eliminacion de secreciones."
-            }
-        },
-        {
-            "card_id": "e05",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Hb: 14.2 g/dL — segunda impresión del mismo laboratorio enviada al sistema por error de captura.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-            },
-            "safety_flags": {
-                "contraindication": false,
                 "lethal_risk": false,
                 "decision_critical": false
             }
@@ -145,28 +56,28 @@
     ],
     "enarm_pearl": {
         "title": "Criterios Diagnósticos DM2 (NOM-015)",
-        "text": "1. Glucosa ayuno ≥126 (x2), 2. HbÁ1c ≥6.5%, 3. Curva (75g) ≥200 a las 2h, 4. Azar ≥200 + síntomas clásicos.",
-        "gpc_ref": "NOM-015-SSÁ2-2010"
+        "text": "1. Glucosa ayuno ≥126 (x2), 2. HbA1c ≥6.5%, 3. Curva (75g) ≥200 a las 2h, 4. Azar ≥200 + síntomas clásicos.",
+        "gpc_ref": "NOM-015-SSA2-2010"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
             {
                 "correct_index": 0,
-                "question": "Con respecto a la patología, ¿cuál es la cifra de glucosa en ayuno para diagnóstico de DM2?",
+                "question": "¿Cuál es la cifra de glucosa en ayuno para diagnóstico de DM2?",
                 "options": [
                     ">=126 mg/dL",
-                    ">=200 mg/dL",
-                    ">=100 mg/dL"
+                    ">=100 mg/dL",
+                    ">=200 mg/dL"
                 ]
             },
             {
-                "correct_index": 2,
-                "question": "¿Qué porcentaje de HbÁ1c confirma el diagnóstico?",
+                "correct_index": 0,
+                "question": "¿Qué porcentaje de HbA1c confirma el diagnóstico?",
                 "options": [
-                    ">=8.0%",
+                    ">=6.5%",
                     ">=5.7%",
-                    ">=6.5%"
+                    ">=8.0%"
                 ]
             },
             {
@@ -174,8 +85,8 @@
                 "question": "¿En qué momento se diagnostica DM2 con glucosa al azar >=200?",
                 "options": [
                     "Si hay síntomas clásicos (Ps)",
-                    "Nunca, requiere confirmación",
-                    "Siempre es diagnóstico"
+                    "Siempre es diagnóstico",
+                    "Nunca, requiere confirmación"
                 ]
             }
         ]

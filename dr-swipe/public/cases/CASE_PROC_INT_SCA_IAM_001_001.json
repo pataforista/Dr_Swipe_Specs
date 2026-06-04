@@ -18,30 +18,14 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "Hallazgo: Ruido en el expediente: B) Angina Inestable: Dolor isquémico sin elevación del ST ni biomarcadores positivos.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¡Bien! Los biomarcadores y el ECG confirmaron el infarto."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "Hallazgo: A) IÁMCEST de Cara Anterior: Elevación del ST en precordiales (V1-V4). Requiere reperfusión inmediata (ICP o Fibrinólisis).",
+            "card_text": "Hallazgo: A) IAMCEST de Cara Anterior: Elevación del ST en precordiales (V1-V4). Requiere reperfusión inmediata (ICP o Fibrinólisis).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -55,87 +39,15 @@
             }
         },
         {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 110/70, FC 90 lpm, Temp 36.8°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Relevante para el control prenatal, pero no cambia el manejo agudo de esta urgencia."
-            }
-        },
-        {
-            "card_id": "c_3",
-            "ui_icon": "eye",
-            "category": "Rescate",
-            "card_text": "C) Salbutamol (SÁBA) a demanda: Única terapia necesaria para pacientes con síntomas ocasionales (Step 1 antiguo).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 100,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Incorrecto! La GINA ya no recomienda SÁBA solo por el riesgo de exacerbaciones graves. ¡Usa ICS-Formoterol!"
-            }
-        },
-        {
-            "card_id": "c_10",
-            "ui_icon": "slash",
-            "category": "Diferencial",
-            "card_text": "Informacion redundante: J) Crup Espasmodico: Similar al viral pero recurrente y sin prodromo de catarro; de causa presumiblemente alergica.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: ¡Bien! Es el 'Crup nocturno' que se resuelve espontaneamente."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "Signos Vitales",
-            "card_text": "Hallazgo: Dato anecdótico: TA N/Á, FC N/Á, Temp N/Á",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "Signos Vitales",
-            "card_text": "Información redundante: TA 100/60, FC 110 lpm, Temp 37.2°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_10",
-            "ui_icon": "slash",
-            "category": "meds",
-            "card_text": "J) Vacuna contra Parvovirus B19: Inmunización universal recomendada en la Cartilla Nacional de Salud de México.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: ¡No! Áún no existe una vacuna comercial disponible para el Parvovirus B19."
-            }
-        },
-        {
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "Información redundante: B) Punción en 2° espacio intercostal: Sitio recomendado en guías anteriores (ATLS 9ª y normas mexicanas viejas).",
+            "card_text": "Hallazgo: Ruido en el expediente: B) Angina Inestable: Dolor isquémico sin elevación del ST ni biomarcadores positivos.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "¡Bien! Reconociste que el 2° espacio ya no es el sitio preferido en las guías más recientes."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! Los biomarcadores y el ECG confirmaron el infarto."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -144,7 +56,7 @@
         }
     ],
     "enarm_pearl": {
-        "title": "Ventana Reperfusión SCÁ",
+        "title": "Ventana Reperfusión SCA",
         "text": "Meta ICP primaria: <90 min (puerta-balón). Meta Fibrinólisis: <30 min (puerta-aguja) si no hay ICP disponible.",
         "gpc_ref": "GPC Diagnóstico y Tratamiento del Infarto Agudo de Miocardio"
     },
@@ -152,31 +64,31 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "question": "En este contexto clínico, ¿cuál es la dosis de carga recomendada de Acido Acetilsalicílico (Aspirina) en la fase aguda del infarto según la GPC?",
-                "options": [
-                    "100 mg",
-                    "300 mg",
-                    "500 mg"
-                ],
-                "correct_index": 1
-            },
-            {
-                "question": "¿Qué hallazgo electrocardiográfico define un IÁMCEST según los criterios universales?",
-                "options": [
-                    "Presencia aislada de ondas Q profundas",
-                    "Inversión de la onda T en V1-V2",
-                    "Elevación del ST >= 1 mm en 2 derivadas contiguas"
-                ],
-                "correct_index": 2
-            },
-            {
                 "question": "¿Cuál es la conducta de reperfusión recomendada si el tiempo estimado para realizar una ICP primaria es mayor a 120 minutos?",
                 "options": [
+                    "Fibrinolisis sitémica inmediata",
                     "Manejo conservador con nitratos",
-                    "Esperar el tiempo necesario para ICP",
-                    "Fibrinolisis sitémica inmediata"
+                    "Esperar el tiempo necesario para ICP"
                 ],
-                "correct_index": 2
+                "correct_index": 0
+            },
+            {
+                "question": "¿Qué hallazgo electrocardiográfico define un IAMCEST según los criterios universales?",
+                "options": [
+                    "Elevación del ST >= 1 mm en 2 derivadas contiguas",
+                    "Inversión de la onda T en V1-V2",
+                    "Presencia aislada de ondas Q profundas"
+                ],
+                "correct_index": 0
+            },
+            {
+                "question": "¿Cuál es la dosis de carga recomendada de Ácido Acetilsalicílico (Aspirina) en la fase aguda del infarto según la GPC?",
+                "options": [
+                    "300 mg",
+                    "100 mg",
+                    "500 mg"
+                ],
+                "correct_index": 0
             }
         ]
     }

@@ -12,25 +12,25 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 160/100, FC 115 lpm, Temp 36.8°C",
+            "category": "Signos Vitales",
+            "card_text": "Dato de importancia: Dato anecdótico: TA 160/100, FC 115 lpm, Temp 36.8°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Infarto Agudo al Miocardio (SCÁCEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
+            "card_text": "Evidencia: A) Infarto Agudo al Miocardio (SCACEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
                 "error_type": "omission",
-                "vazquez_comment": "Mendoza: ¡Perfect Match! El cuadro clínico más el ECG con elevación del ST hacen el diagnóstico. ICP primaria en menos de 90 min ideal."
+                "vazquez_comment": "¡Perfect Match! El cuadro clínico más el ECG con elevación del ST hacen el diagnóstico. ICP primaria en menos de 90 min ideal."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -41,114 +41,38 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "B) Costocondritis (Síndrome de Tietze): Dolor torácico reproducible a la palpación de las articulaciones condrocostales, sin cambios en ECG.",
+            "card_text": "Información redundante: B) Costocondritis (Síndrome de Tietze): Dolor torácico reproducible a la palpación de las articulaciones condrocostales, sin cambios en ECG.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: ¡Ojo clínico! El dolor reproducible a la palpación casi siempre descarta origen isquémico clásico, aquí el dolor es visceral."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Ojo clínico! El dolor reproducible a la palpación casi siempre descarta origen isquémico clásico, aquí el dolor es visceral."
             },
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": false
-            }
-        },
-        {
-            "card_id": "pad_005",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "pad_006",
-            "ui_icon": "☢️",
-            "category": "imaging",
-            "card_text": "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "pad_009",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "pad_010",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
             }
         },
         {
             "card_id": "c_3",
             "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "C) Tromboembolia Pulmonar: Disnea súbita, taquicardia, dolor pleurítico, hipoxia severa. S1Q3T3 raro pero posible.",
-            "expected_action": "discard",
+            "card_text": "Hallazgo: C) Tromboembolia Pulmonar: Disnea súbita, taquicardia, dolor pleurítico, hipoxia severa. S1Q3T3 raro pero posible.",
+            "expected_action": "keep",
             "scoring": {
                 "points": 50,
                 "error_type": "lethal_hazard",
-                "vazquez_comment": "Mendoza: Felicidades por descartarlo. Los cambios ST y el tipo de dolor nos centran en las coronarias."
+                "vazquez_comment": "Felicidades por descartarlo. Los cambios ST y el tipo de dolor nos centran en las coronarias."
             },
             "safety_flags": {
                 "red_flag": true,
                 "lethal_risk": true
             }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "Información redundante: B) Punción en 2° espacio intercostal: Sitio recomendado en guías anteriores (ATLS 9ª y normas mexicanas viejas).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¡Bien! Reconociste que el 2° espacio ya no es el sitio preferido en las guías más recientes."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "B) Hipertensión de Bata Blanca: Cifras elevadas en consultorio (>=140/90) pero normales en casa (ÁMPA) o MÁPÁ.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: ¡Bien! Es importante no sobretratar a pacientes cuya elevación es puramente tensional por el entorno médico."
-            }
         }
     ],
     "enarm_pearl": {
         "title": "Cardiopatía Isquémica: Tiempo es Músculo",
-        "text": "En un SCÁCEST, el diagnóstico se hace con clínica + ECG (en <10 min). NO se debe esperar el resultado de las troponinas para activar código infarto ni trombolizar/ICP.",
+        "text": "En un SCACEST, el diagnóstico se hace con clínica + ECG (en <10 min). NO se debe esperar el resultado de las troponinas para activar código infarto ni trombolizar/ICP.",
         "gpc_ref": "GPC Infarto Agudo al Miocardio con Elevación del ST"
     },
     "boss_fight_triad": {
@@ -156,7 +80,7 @@
         "questions": [
             {
                 "correct_index": 0,
-                "question": "De las siguientes opciones, ¿cuál es el tiempo meta establecido por las guías para la realización e interpretación del ECG?",
+                "question": "¿Cuál es el tiempo meta establecido por las guías para la realización e interpretación del ECG?",
                 "options": [
                     "Menos de 10 minutos",
                     "Menos de 30 minutos",
@@ -164,21 +88,21 @@
                 ]
             },
             {
-                "correct_index": 2,
-                "question": "De las siguientes opciones, ¿cuál es la estrategia de reperfusión de elección si el hospital cuenta con sala de hemodinamia?",
+                "correct_index": 0,
+                "question": "¿Cuál es la estrategia de reperfusión de elección si el hospital cuenta con sala de hemodinamia?",
                 "options": [
+                    "Intervención Coronaria Percutánea (ICP) primaria",
                     "Fibrinólisis farmacológica",
-                    "Bypass de arteria coronaria urgente",
-                    "Intervención Coronaria Percutánea (ICP) primaria"
+                    "Bypass de arteria coronaria urgente"
                 ]
             },
             {
-                "correct_index": 1,
-                "question": "¿Cuál es la principal causa de muerte prehospitalaria en un paciente con IÁM?",
+                "correct_index": 0,
+                "question": "¿Cuál es la principal causa de muerte prehospitalaria en un paciente con IAM?",
                 "options": [
-                    "Choque cardiogénico",
                     "Fibrilación Ventricular",
-                    "Ruptura de pared libre"
+                    "Ruptura de pared libre",
+                    "Choque cardiogénico"
                 ]
             }
         ]

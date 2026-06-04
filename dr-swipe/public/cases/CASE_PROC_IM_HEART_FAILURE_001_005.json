@@ -12,20 +12,20 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 145/90 mmHg, FC 92 lpm, FR 22 rpm, SatO2 93%.",
+            "category": "Signos Vitales",
+            "card_text": "Hallazgo clínico: Dato anecdótico: TA 145/90 mmHg, FC 92 lpm, FR 22 rpm, SatO2 93%.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Presión un poco alta, pero lo importante es la insuficiencia cardíaca."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: Presión un poco alta, pero lo importante es la insuficiencia cardíaca."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Insuficiencia Cardíaca con FE reducida (ICFEr): Presencia de síntomas típicos + FEVI <40%. Don Pedro cumple criterios de Framingham.",
+            "card_text": "Hallazgo: A) Insuficiencia Cardíaca con FE reducida (ICFEr): Presencia de síntomas típicos + FEVI <40%. Don Pedro cumple criterios de Framingham.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -40,108 +40,19 @@
         {
             "card_id": "c_2",
             "ui_icon": "beaker",
-            "category": "meds",
-            "card_text": "B) Péptidos Natriuréticos (NT-proBNP): Útiles para el diagnóstico por su alto valor predictivo negativo (descartar IC en urgencias).",
+            "category": "Gabinete",
+            "card_text": "Evidencia: B) Péptidos Natriuréticos (NT-proBNP): Útiles para el diagnóstico por su alto valor predictivo negativo (descartar IC en urgencias).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Correcto! Si es normal, es muy poco probable que sea IC."
             }
-        },
-        {
-            "card_id": "pad_004",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Esto es puro ruido, R1. Concéntrate en la patología de base."
-            }
-        },
-        {
-            "card_id": "pad_005",
-            "ui_icon": "☢️",
-            "category": "imaging",
-            "card_text": "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
-            }
-        },
-        {
-            "card_id": "pad_007",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
-            }
-        },
-        {
-            "card_id": "pad_010",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Esto es puro ruido, R1. Concéntrate en la patología de base."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "Hallazgo: Dato anecdótico: B) Atresia Duodenal: Vómitos biliares precoces (primeras 24-48h). Radiografía con signo de la 'doble burbuja'. Frecuente en Síndrome de Down.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! El vómito en la estenosis de píloro es característicamente NO biliar."
-            }
-        },
-        {
-            "card_id": "e07",
-            "ui_icon": "☢️",
-            "category": "imaging",
-            "card_text": "Sin infiltrados, derrames ni cardiomegalia. Silueta cardíaca normal. Campos pulmonares limpios.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
-            },
-            "safety_flags": {
-                "contraindication": false,
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "B) Isquemia Mesentérica Crónica: Dolor postprandial (angina abdominal), miedo a comer y pérdida de peso importante.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: ¡Bien! Este cuadro es agudo. La isquemia crónica se presenta con dolor después de las comidas."
-            }
         }
     ],
     "enarm_pearl": {
         "title": "IC: Los 4 Fantásticos",
-        "text": "1. ÁRNI (Sacubitrilo). 2. BB (Carvedilol). 3. ÁRM (Espironolactona). 4. iSGLT2 (Dapa/Empa). Framingham: 2 mayores o 1 mayor + 2 menores.",
+        "text": "1. ARNI (Sacubitrilo). 2. BB (Carvedilol). 3. ARM (Espironolactona). 4. iSGLT2 (Dapa/Empa). Framingham: 2 mayores o 1 mayor + 2 menores.",
         "gpc_ref": "GPC Diagnóstico y Tratamiento de la Insuficiencia Cardíaca Crónica"
     },
     "boss_fight_triad": {
@@ -151,27 +62,27 @@
                 "correct_index": 0,
                 "question": "¿Cuáles son los 'cuatro fantásticos' pilares del tratamiento inicial de la Insuficiencia Cardíaca con FE reducida?",
                 "options": [
-                    "ÁRNI (o IECA), Beta-bloqueador, ÁRM e iSGLT2",
-                    "Diurético, Digoxina, Calcio-antagonista y ÁÁS",
-                    "Amiodarona, Nitratos, IECA y ÁRM"
+                    "ARNI (o IECA), Beta-bloqueador, ARM e iSGLT2",
+                    "Diurético, Digoxina, Calcio-antagonista y AAS",
+                    "Amiodarona, Nitratos, IECA y ARM"
                 ]
             },
             {
                 "correct_index": 0,
-                "question": "En este contexto clínico, ¿cuál es el estudio de elección para confirmar el diagnóstico y clasificar la fracción de eyección en la IC?",
+                "question": "¿Qué escala se utiliza para clasificar la capacidad funcional de los pacientes con insuficiencia cardíaca?",
+                "options": [
+                    "Clasificación NYHA",
+                    "Criterios de Framingham",
+                    "Puntuación CHA2DS2-VASc"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Cuál es el estudio de elección para confirmar el diagnóstico y clasificar la fracción de eyección en la IC?",
                 "options": [
                     "Ecocardiograma Transtorácico",
                     "Electrocardiograma de 12 derivaciones",
                     "Radiografía de tórax (PA)"
-                ]
-            },
-            {
-                "correct_index": 2,
-                "question": "¿Qué escala se utiliza para clasificar la capacidad funcional de los pacientes con insuficiencia cardíaca?",
-                "options": [
-                    "Puntuación CHÁ2DS2-VÁSc",
-                    "Criterios de Framingham",
-                    "Clasificación NYHÁ"
                 ]
             }
         ]

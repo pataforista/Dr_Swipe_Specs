@@ -12,20 +12,20 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 120/80, FC 78 bpm, Temp 37.0°C",
+            "category": "Signos Vitales",
+            "card_text": "Hallazgo: Dato anecdótico: TA 120/80, FC 78 bpm, Temp 37.0°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias.",
+            "card_text": "Hallazgo: A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "B) Estreñimiento (Bowel movement issues): 'Constipation' es el falso amigo más común: significa Estreñimiento, NO congestión nasal.",
+            "card_text": "Hallazgo: B) Estreñimiento (Bowel movement issues): 'Constipation' es el falso amigo más común: significa Estreñimiento, NO congestión nasal.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -51,99 +51,6 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
-        },
-        {
-            "card_id": "h07",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Hb: 9.0 g/dL — segunda impresión del mismo análisis. Valor idéntico al previo. Error de sistema.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-            },
-            "safety_flags": {
-                "contraindication": false,
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "c_7",
-            "ui_icon": "slash",
-            "category": "Gastroenteritis",
-            "card_text": "G) Loperamida: Recomendada en lactantes para reducir el n�\u0000ºmero de evacuciones y evitar la p�\u0000©rdida de l�\u0000­quidos.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 100,
-                "error_type": "lethal_hazard",
-                "vazquez_comment": "Navarro: �\u0000¡PELIGRO! Los antidiarr�\u0000©icos est�\u0000¡n estrictamente contraindicados en ni�\u0000±os; pueden causar �\u0000­leo paral�\u0000­tico o megacolon."
-            },
-            "safety_flags": {
-                "lethal_risk": true,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 100/60 mmHg, FC 120 lpm (arrítmico), Temp 37.0°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 120/80, FC 72 lpm, Temp 36.7°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "Dato de importancia: FC 110 lpm, FR 22 rpm, Temp 37.2 C, TA 110/70 mmHg (Signos Vitales Estables).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "DATO CLAVE OMITIDO: Navarro: Bien! No hay signos de deshidratacion clinica. Inicia Plan A ambulatorio en casa."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "B) Migraña con Aura: Dolor pulsátil de inicio gradual, precedido por escotomas visuales. No es súbito ni 'en trueno'.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! El inicio súbito es la 'red flag' que nos obliga a descartar algo letal como la HSÁ."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 110/70, FC 90 lpm, Temp 36.8°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Relevante para el control prenatal, pero no cambia el manejo agudo de esta urgencia."
             }
         }
     ],
@@ -157,11 +64,11 @@
         "questions": [
             {
                 "correct_index": 0,
-                "question": "¿Cuál es la diferencia entre 'Wound' e 'Injury'?",
+                "question": "¿Cuál es la traducción correcta de 'Constipation' en un contexto médico?",
                 "options": [
-                    "Wound es una herida abierta; Injury es cualquier lesión",
-                    "Son sinónimos exactos en medicina",
-                    "Wound es una fractura; Injury es un moretón"
+                    "Estreñimiento",
+                    "Congestión nasal",
+                    "Diarrea"
                 ]
             },
             {
@@ -169,17 +76,17 @@
                 "question": "¿Qué significa el término 'Shortness of breath'?",
                 "options": [
                     "Disnea (falta de aire)",
-                    "Tos seca",
-                    "Dolor de pecho"
+                    "Dolor de pecho",
+                    "Tos seca"
                 ]
             },
             {
-                "correct_index": 1,
-                "question": "Identifique la traducción correcta de 'Constipation' en un contexto médico?",
+                "correct_index": 0,
+                "question": "¿Cuál es la diferencia entre 'Wound' e 'Injury'?",
                 "options": [
-                    "Diarrea",
-                    "Estreñimiento",
-                    "Congestión nasal"
+                    "Wound es una herida abierta; Injury es cualquier lesión",
+                    "Wound es una fractura; Injury es un moretón",
+                    "Son sinónimos exactos en medicina"
                 ]
             }
         ]

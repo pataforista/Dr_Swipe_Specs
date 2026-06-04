@@ -18,23 +18,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "omission",
-                "vazquez_comment": "No te detengas en estos signos de choque obstructivo, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "Hallazgo: Dato anecdótico: B) Punción en 2° espacio intercostal: Sitio recomendado en guías anteriores (ATLS 9ª y normas mexicanas viejas).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¡Bien! Reconociste que el 2° espacio ya no es el sitio preferido en las guías más recientes."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de choque obstructivo, R1. El reloj no se detiene."
             }
         },
         {
@@ -57,93 +41,17 @@
         {
             "card_id": "c_2",
             "ui_icon": "eye",
-            "category": "meds",
-            "card_text": "B) Administrar Esteroide IV Inmediatamente: Solo se consideran en choque séptico REFRÁCTÁRIO a fluidos y vasopresores. No es manejo inicial.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Priorizaste la resucitación con fluidos y antibióticos."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "B) Costocondritis (Síndrome de Tietze): Dolor torácico reproducible a la palpación de las articulaciones condrocostales, sin cambios en ECG.",
+            "card_text": "Hallazgo: Dato anecdótico: B) Punción en 2° espacio intercostal: Sitio recomendado en guías anteriores (ATLS 9ª y normas mexicanas viejas).",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: ¡Ojo clínico! El dolor reproducible a la palpación casi siempre descarta origen isquémico clásico, aquí el dolor es visceral."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! Reconociste que el 2° espacio ya no es el sitio preferido en las guías más recientes."
             },
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": false
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 100/65, FC 125 lpm, Temp 36.5°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_3",
-            "ui_icon": "eye",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "C) Lupus Eritematoso Sistémico (LES): El eritema malar puede confundir, pero el LES suele ser fotosensible y tener compromiso multiorgánico.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: Correcto. El aspecto 'reticulado' posterior en extremidades aleja el diagnóstico de Lupus."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 90/60 (tendencia al choque), FC 110 lpm, Temp 36.8°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_3",
-            "ui_icon": "eye",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "Hallazgo: Dato anecdótico: C) Reflujo Gastroesofágico: Regurgitaciones frecuentes, no en proyectil, con ganancia ponderal adecuada inicialmente.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. El vómito explosivo 'en proyectil' apunta fuertemente a una obstrucción mecánica."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "meds",
-            "card_text": "B) Enfermedad de Kawasaki: Fiebre prolongada (>5 días), inyección conjuntival bilateral, labios fisurados y edema de manos/pies.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: ¡Bien! Aunque ambos pueden tener 'lengua en fresa', Kawasaki no tiene faringitis exudativa ni líneas de Pastia típicas."
             }
         }
     ],
@@ -156,29 +64,29 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 1,
-                "question": "Con respecto a la patología, ¿cuál es el sitio de punción preferido actual según ATLS 10a Edición?",
+                "correct_index": 0,
+                "question": "¿Cuál es el sitio de punción preferido actual según ATLS 10a Edición?",
                 "options": [
+                    "5° espacio intercostal (LAA/LAM)",
                     "2° espacio intercostal (LMC)",
-                    "5° espacio intercostal (LÁÁ/LÁM)",
-                    "4° espacio intercostal (LÁA)"
+                    "4° espacio intercostal (LAA)"
                 ]
             },
             {
-                "correct_index": 2,
+                "correct_index": 0,
                 "question": "¿Qué tipo de choque presenta este paciente?",
                 "options": [
-                    "Choque distributivo",
+                    "Choque obstructivo",
                     "Choque hipovolémico",
-                    "Choque obstructivo"
+                    "Choque distributivo"
                 ]
             },
             {
-                "correct_index": 1,
+                "correct_index": 0,
                 "question": "¿Qué hallazgo a la percusión diferencia un neumotórax de un hemotórax masivo?",
                 "options": [
-                    "Desviación traqueal vs Crepitación",
                     "Hiperresonancia vs Matidez",
+                    "Desviación traqueal vs Crepitación",
                     "Dolor pleurítico vs IVY"
                 ]
             }

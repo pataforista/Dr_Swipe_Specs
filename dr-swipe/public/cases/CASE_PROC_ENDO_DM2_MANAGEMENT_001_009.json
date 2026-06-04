@@ -5,44 +5,32 @@
     "difficulty": "standard",
     "patient_intro": {
         "name": "Carmen, 54 años",
-        "arrival_scenario": "Paciente con DM2 de 5 años de evolución en manejo con Metformina 850 mg c/12h. Su HbÁ1c actual es de 8.2%. No tiene antecedentes de pancreatitis. Se busca intensificar tratamiento según las últimas guías ÁDÁ/GPC.",
+        "arrival_scenario": "Paciente con DM2 de 5 años de evolución en manejo con Metformina 850 mg c/12h. Su HbA1c actual es de 8.2%. No tiene antecedentes de pancreatitis. Se busca intensificar tratamiento según las últimas guías ADA/GPC.",
         "time_limit_sec": 60
     },
     "card_stream": [
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 130/80 mmHg, FC 72 lpm, Temp 36.5°C",
+            "category": "Signos Vitales",
+            "card_text": "Información redundante: TA 130/80 mmHg, FC 72 lpm, Temp 36.5°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "pad_010",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
-            "category": "labs",
-            "card_text": "A) Agregar Agonista GLP-1 (Liraglutida/Semaglutida): Indicado en DM2 con riesgo cardiovascular establecido y obesidad. Excelente control de HbÁ1c.",
+            "category": "Diagnóstico",
+            "card_text": "Hallazgo clínico: A) Agregar Agonista GLP-1 (Liraglutida/Semaglutida): Indicado en DM2 con riesgo cardiovascular establecido y obesidad. Excelente control de HbA1c.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
                 "error_type": "omission",
-                "vazquez_comment": "¡Correcto! Por su antecedente de IÁM (prevención secundaria), los GLP-1 son la elección actual sobre las sulfonilureas para protección CV."
+                "vazquez_comment": "¡Correcto! Por su antecedente de IAM (prevención secundaria), los GLP-1 son la elección actual sobre las sulfonilureas para protección CV."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -52,130 +40,53 @@
         {
             "card_id": "c_2",
             "ui_icon": "eye",
-            "category": "labs",
-            "card_text": "B) Agregar Sulfonilurea (Glibenclamida): Eficaz para bajar glucosa, pero causa ganancia de peso y riesgo alto de hipoglucemia. No tiene beneficio CV.",
+            "category": "Diagnóstico",
+            "card_text": "Hallazgo: Ruido en el expediente: B) Agregar Sulfonilurea (Glibenclamida): Eficaz para bajar glucosa, pero causa ganancia de peso y riesgo alto de hipoglucemia. No tiene beneficio CV.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: ¡Bien! Evitaste el riesgo de hipoglucemia y la ganancia de peso innecesaria."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! Evitaste el riesgo de hipoglucemia y la ganancia de peso innecesaria."
             },
             "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "pad_004",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-            }
-        },
-        {
-            "card_id": "pad_005",
-            "ui_icon": "☢️",
-            "category": "imaging",
-            "card_text": "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-            }
-        },
-        {
-            "card_id": "pad_007",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-            }
-        },
-        {
-            "card_id": "pad_008",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-            }
-        },
-        {
-            "card_id": "pad_009",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-            }
-        },
-        {
-            "card_id": "ev_007",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Glucosa: 98 mg/dL. Normal. No diabetes ni hipoglucemia en este contexto agudo.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-            },
-            "safety_flags": {
-                "contraindication": false,
                 "lethal_risk": false,
                 "decision_critical": false
             }
         }
     ],
     "enarm_pearl": {
-        "title": "Algoritmo ÁDÁ: Cardio-Nefroprotección",
+        "title": "Algoritmo ADA: Cardio-Nefroprotección",
         "text": "Si hay ECV establecida → GLP-1 o iSGLT2. Si hay Falla Cardíaca o ERC (Nefropatía) → iSGLT2 (Empagliflozina).",
-        "gpc_ref": "ÁDA Standards of Care in Diabetes"
+        "gpc_ref": "ADA Standards of Care in Diabetes"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 2,
-                "question": "Identifique el fármaco de elección en pacientes con DM2 y enfermedad cardiovascular establecida (prevención secundaria)?",
+                "correct_index": 0,
+                "question": "¿Cuál es el fármaco de elección en pacientes con DM2 y enfermedad cardiovascular establecida (prevención secundaria)?",
                 "options": [
+                    "Agonistas GLP-1",
                     "Sulfonilureas",
-                    "Metformina sola",
-                    "Agonistas GLP-1"
+                    "Metformina sola"
                 ]
             },
             {
-                "correct_index": 1,
-                "question": "Con respecto a la patología, ¿cuál es el principal riesgo asociado al uso de sulfonilureas como la glibenclamida?",
+                "correct_index": 0,
+                "question": "¿Cuál es el principal riesgo asociado al uso de sulfonilureas como la glibenclamida?",
                 "options": [
-                    "Insuficiencia renal aguda",
                     "Hipoglucemia y ganancia de peso",
-                    "Cetoacidosis diabética"
+                    "Cetoacidosis diabética",
+                    "Insuficiencia renal aguda"
                 ]
             },
             {
-                "correct_index": 1,
+                "correct_index": 0,
                 "question": "En un paciente con DM2 e Insuficiencia Cardíaca, ¿qué grupo farmacológico aporta mayor beneficio de cardio-protección?",
                 "options": [
-                    "Inhibidores de DPP-4",
                     "Inhibidores de SGLT2 (iSGLT2)",
-                    "Agonistas GLP-1"
+                    "Agonistas GLP-1",
+                    "Inhibidores de DPP-4"
                 ]
             }
         ]

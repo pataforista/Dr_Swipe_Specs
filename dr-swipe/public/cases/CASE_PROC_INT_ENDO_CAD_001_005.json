@@ -12,25 +12,25 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 100/65, FC 125 lpm, Temp 36.5°C",
+            "category": "Signos Vitales",
+            "card_text": "Dato de importancia: Dato anecdótico: TA 100/65, FC 125 lpm, Temp 36.5°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Cetoacidosis Diabética (CÁD): Descompensación diabética aguda (típica en pacientes jóvenes/DM1). Triada: Hiperglucemia, Cetonemia/Cetonuria y Acidosis Metabólica.",
+            "card_text": "Dato de importancia: A) Cetoacidosis Diabética (CAD): Descompensación diabética aguda (típica en pacientes jóvenes/DM1). Triada: Hiperglucemia, Cetonemia/Cetonuria y Acidosis Metabólica.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
                 "error_type": "omission",
-                "vazquez_comment": "Mendoza: ¡Correcto! Paciente joven con dolor abdominal, Kussmaul y aliento afrutado. La piedra angular inicial es la hidratación IV agresiva y medición de potasio ÁNTES de iniciar insulina."
+                "vazquez_comment": "¡Correcto! Paciente joven con dolor abdominal, Kussmaul y aliento afrutado. La piedra angular inicial es la hidratación IV agresiva y medición de potasio ANTES de iniciar insulina."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -40,106 +40,22 @@
         {
             "card_id": "c_2",
             "ui_icon": "eye",
-            "category": "imaging",
-            "card_text": "B) Estado Hiperosmolar Hiperglucémico (EHH): Suele presentarse en adultos mayores (DM2) con hiperglucemias extremas (>600), deshidratación profunda y SIN acidosis significativa.",
+            "category": "Diagnóstico",
+            "card_text": "Dato de importancia: Dato anecdótico: B) Estado Hiperosmolar Hiperglucémico (EHH): Suele presentarse en adultos mayores (DM2) con hiperglucemias extremas (>600), deshidratación profunda y SIN acidosis significativa.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: ¡Buen ojo! La presencia de acidosis franca y Kussmaul hace la diferencia entre EHH y CÁD."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Buen ojo! La presencia de acidosis franca y Kussmaul hace la diferencia entre EHH y CAD."
             },
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": false
             }
-        },
-        {
-            "card_id": "pad_004",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "pad_005",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
-            }
-        },
-        {
-            "card_id": "pad_006",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "pad_007",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-            }
-        },
-        {
-            "card_id": "pad_009",
-            "ui_icon": "☢️",
-            "category": "imaging",
-            "card_text": "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA N/Á, FC 80 lpm, Temp 37.2°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA N/Á, FC 95 lpm, Temp 37.8°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
         }
     ],
     "enarm_pearl": {
-        "title": "Manejo de la CÁD: Líquidos Primero",
+        "title": "Manejo de la CAD: Líquidos Primero",
         "text": "En la Cetoacidosis Diabética, lo principal es la REPOSICIÓN DE LÍQUIDOS (Sol. Salina al 0.9%). Nunca se debe iniciar Insulina si el Potasio está bajo (<3.3 mEq/L) para evitar arritmias fatales.",
         "gpc_ref": "GPC Manejo de Cetoacidosis Diabética"
     },
@@ -147,21 +63,12 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 1,
-                "question": "¿Cuál es el parámetro laboratorial principal para definir la resolución de la CÁD?",
-                "options": [
-                    "Ausencia de glucosuria",
-                    "Cierre del Anion Gap / Brecha aniónica",
-                    "Glucosa menor a 100 mg/dl"
-                ]
-            },
-            {
-                "correct_index": 1,
+                "correct_index": 0,
                 "question": "¿Cuál es el valor mínimo de Potasio requerido para iniciar la infusión de insulina de forma segura?",
                 "options": [
-                    "Mayor a 5.0 mEq/L",
                     "Mayor a 3.3 mEq/L",
-                    "Mayor a 2.5 mEq/L"
+                    "Mayor a 2.5 mEq/L",
+                    "Mayor a 5.0 mEq/L"
                 ]
             },
             {
@@ -169,8 +76,17 @@
                 "question": "¿En qué situación clínica se recomienda el uso de Bicarbonato de Sodio?",
                 "options": [
                     "pH menor a 6.9",
-                    "Solo ante hiperpotasemia grave",
-                    "pH menor a 7.2"
+                    "pH menor a 7.2",
+                    "Solo ante hiperpotasemia grave"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Cuál es el parámetro laboratorial principal para definir la resolución de la CAD?",
+                "options": [
+                    "Cierre del Anion Gap / Brecha aniónica",
+                    "Glucosa menor a 100 mg/dl",
+                    "Ausencia de glucosuria"
                 ]
             }
         ]
