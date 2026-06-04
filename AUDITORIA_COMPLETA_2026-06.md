@@ -28,11 +28,13 @@ Tercera tanda (completada):
 
 - ✅ **F2 — QTE fantasma retirado.** Se eliminó la maquinaria QTE inalcanzable del `boss_fight` (contexto, eventos `QTE_*`, `after:5000`), superada por `ShockRoom`. La **sinergia de dossier** se conserva como mecánica diseñada: solo requiere poblar `related_diagnoses` en los casos para activarse (decisión de contenido pendiente, no es un bug).
 - ✅ **E1 — Monitor de vitales** re-skineado a la paleta clara "scrapbook" (era `slate-900`, rompía la estética).
+- ✅ **E2 — Naming del mentor:** unificado a "Dr. Vázquez" (el personaje real del app; el avatar renderizaba `mendoza` heredado del scaffold v2). Ahora se muestra el nombre en el globo.
+- ✅ **E3 — Legibilidad:** textos mínimos de 7px subidos a 8px en HUD/telemetría/stats.
+- ✅ **A3 — Contraste:** textos secundarios `slate-300`→`slate-400` sobre fondo claro.
 
 Pendiente por diseño (requieren tu criterio):
 
-- ⚠️ **Poblar `related_diagnoses`** si se quiere activar la sinergia de dossier (tarea de contenido).
-- ⚠️ **E2/E3/E4 y A1/A3/A4** (naming vázquez↔mendoza, textos diminutos, etiquetas keep/discard): ajustes de opinión visual, mejor consensuarlos.
+- ⚠️ **Poblar `related_diagnoses`** si se quiere activar la sinergia de dossier — tarea de contenido (6142 cartas, juicio clínico por carta, altera el balance del scoring); amerita una sesión dedicada, no un cambio masivo a ciegas.
 
 ---
 

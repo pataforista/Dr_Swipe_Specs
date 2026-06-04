@@ -2,22 +2,29 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ErrorBoundary from './ErrorBoundary';
 
 interface AvatarFeedbackProps {
-  doctor: 'mendoza' | 'castillo' | 'navarro';
+  doctor: 'vazquez' | 'mendoza' | 'castillo' | 'navarro';
   expression: 'neutral' | 'happy' | 'angry' | 'shocked';
   dialogueText: string | null;
   isVisible: boolean;
 }
 
 export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
-  doctor = 'mendoza',
+  doctor = 'vazquez',
   expression = 'neutral',
   dialogueText,
   isVisible
 }) => {
   const mentorIcons = {
+    vazquez: '👴',
     mendoza: '👴',
     castillo: '👩‍🔬',
     navarro: '👩‍⚕️'
+  };
+  const mentorNames: Record<string, string> = {
+    vazquez: 'Dr. Vázquez',
+    mendoza: 'Dr. Mendoza',
+    castillo: 'Dra. Castillo',
+    navarro: 'Dra. Navarro'
   };
 
   const expressionColors = {
@@ -34,7 +41,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
     shocked: 'border-amber-100 bg-amber-50/50'
   };
 
-  const validDoctor = (doctor in mentorIcons) ? doctor : 'mendoza';
+  const validDoctor = (doctor in mentorIcons) ? doctor : 'vazquez';
   const validExpression = (expression in expressionColors) ? expression : 'neutral';
 
   const avatarMotion = {
@@ -96,8 +103,8 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
                     {/* Washi Tape Accent */}
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-12 sm:w-16 h-5 sm:h-6 washi-tape-pink opacity-60 -rotate-2" />
 
-                    <span className="block text-[8px] sm:text-[10px] font-black opacity-30 tracking-[0.3em] uppercase mb-2 sm:mb-3 lettering">
-                      {validExpression === 'angry' ? '¡OJO!' : validExpression === 'happy' ? 'CORRECTO' : validExpression === 'shocked' ? '¡PELIGRO!' : 'CONSEJO'}
+                    <span className="block text-[9px] sm:text-[11px] font-black opacity-50 tracking-[0.25em] uppercase mb-2 sm:mb-3 lettering">
+                      {mentorNames[validDoctor]} · {validExpression === 'angry' ? '¡OJO!' : validExpression === 'happy' ? 'CORRECTO' : validExpression === 'shocked' ? '¡PELIGRO!' : 'CONSEJO'}
                     </span>
 
                     <p className={`text-sm sm:text-base md:text-xl font-bold leading-relaxed italic lettering ${expressionColors[validExpression]}`}>

@@ -76,7 +76,7 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
         </AnimatePresence>
         {state !== 'boss_fight' && (
           <div className="flex flex-col items-end gap-0.5">
-            <span className="text-[7px] sm:text-[8px] font-black tracking-widest text-rose-400 uppercase leading-none lettering">
+            <span className="text-[8px] sm:text-[8px] font-black tracking-widest text-rose-400 uppercase leading-none lettering">
               Tiempo
             </span>
             <span
@@ -137,10 +137,10 @@ const VitalsMonitor: React.FC<{ vitals: TelemetryHUDProps['lastVitals'] }> = ({ 
     >
       <div className="absolute top-0 right-3 w-10 h-3 washi-tape-pink opacity-50 -rotate-2" />
       <div className="flex justify-between items-center">
-        <span className="text-[7px] sm:text-[8px] font-black uppercase tracking-widest text-slate-400 flex items-center gap-1 lettering">
+        <span className="text-[8px] sm:text-[8px] font-black uppercase tracking-widest text-slate-400 flex items-center gap-1 lettering">
           <span className={`w-1 h-1 ${dotColor} rounded-full animate-pulse`} /> Monitor
         </span>
-        <span className={`text-[7px] sm:text-[8px] font-bold uppercase ${getStatusColor(vitals.status)}`}>
+        <span className={`text-[8px] sm:text-[8px] font-bold uppercase ${getStatusColor(vitals.status)}`}>
           {vitals.status === 'normal' ? 'Estable' : vitals.status === 'alert' ? 'Riesgo' : 'CRÍTICO'}
         </span>
       </div>
@@ -155,7 +155,7 @@ const VitalsMonitor: React.FC<{ vitals: TelemetryHUDProps['lastVitals'] }> = ({ 
         {vitals.fc && (
            <div className="flex justify-between items-baseline gap-2">
              <span className="text-[8px] sm:text-[9px] font-bold text-slate-400">FC</span>
-             <span className={`text-xs sm:text-sm font-black tabular-nums ${getStatusColor(vitals.status)}`}>{vitals.fc} <span className="text-[7px] opacity-50">lpm</span></span>
+             <span className={`text-xs sm:text-sm font-black tabular-nums ${getStatusColor(vitals.status)}`}>{vitals.fc} <span className="text-[8px] opacity-50">lpm</span></span>
            </div>
         )}
         {vitals.temp && (

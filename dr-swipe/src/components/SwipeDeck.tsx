@@ -379,7 +379,7 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
 
       {/* Card Footer */}
       <div className="p-3 sm:p-5 pl-8 sm:pl-14 bg-slate-50/40 border-t border-slate-100 flex justify-between items-center text-[8px] sm:text-[10px] font-bold text-slate-400 gap-2">
-        <span className="lettering text-sm sm:text-lg text-slate-300 truncate">Guardia nocturna...</span>
+        <span className="lettering text-sm sm:text-lg text-slate-400 truncate">Guardia nocturna...</span>
         <div className="bg-white px-2 sm:px-3 py-1 rounded-full border border-slate-100 text-slate-500 flex-shrink-0 whitespace-nowrap">
           {cardNumber}/{totalCards}
         </div>

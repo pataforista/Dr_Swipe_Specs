@@ -353,7 +353,7 @@ export function App() {
             </div>
             <div className="flex flex-col gap-3 sm:gap-4">
               <button onClick={() => send({ type: 'VIEW_DEBRIEF' })} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl !bg-slate-700">VER NOTAS 📝</button>
-              <button onClick={() => send({ type: 'RESTART' })} className="text-[9px] sm:text-[10px] font-bold text-slate-300 hover:text-rose-400 uppercase tracking-widest py-2 transition-all lettering">— Nueva Guardia —</button>
+              <button onClick={() => send({ type: 'RESTART' })} className="text-[9px] sm:text-[10px] font-bold text-slate-400 hover:text-rose-400 uppercase tracking-widest py-2 transition-all lettering">— Nueva Guardia —</button>
             </div>
           </motion.div>
         );
@@ -386,7 +386,7 @@ export function App() {
       {/* Background Avatar Feedback Layer */}
       <div className="fixed top-28 left-0 right-0 z-avatar pointer-events-none flex justify-center">
         <AvatarFeedback 
-          doctor="mendoza" 
+          doctor="vazquez"
           expression={vazquezExpression} 
           dialogueText={vazquezDialogue} 
           isVisible={!!vazquezDialogue && (state.matches('triage') || state.matches('urgent_triage'))} 
@@ -408,7 +408,7 @@ export function App() {
           <motion.div initial={{ scale: 0.9 }} animate={{ scale: 1 }} className="paper-sheet p-10 max-w-xs w-full text-center border-primary/20 shadow-xl relative">
             <p className="text-slate-400 text-sm italic mb-8 lettering leading-relaxed">"Guardia en pausa. Tus notas están seguras."</p>
             <button onClick={() => setIsPaused(false)} className="marker-btn w-full py-4 text-sm mb-4">REANUDAR ✨</button>
-            <button onClick={() => send({ type: 'RESTART' })} className="text-[10px] font-bold text-slate-300 uppercase py-2 lettering">ABANDONAR</button>
+            <button onClick={() => send({ type: 'RESTART' })} className="text-[10px] font-bold text-slate-400 uppercase py-2 lettering">ABANDONAR</button>
           </motion.div>
         </motion.div>
       )}</AnimatePresence>
