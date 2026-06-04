@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "Hallazgo: A) Probabilidad BÁJA (<10%): En enfermedades raras, incluso pruebas 'buenas' tienen un Valor Predictivo Positivo (VPP) muy bajo por el peso de los FP.",
+            "card_text": "Hallazgo: A) Probabilidad BAJA (<10%): En enfermedades raras, incluso pruebas 'buenas' tienen un Valor Predictivo Positivo (VPP) muy bajo por el peso de los FP.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -113,7 +113,7 @@
             "card_id": "c_8",
             "ui_icon": "trending-down",
             "category": "Curva ROC",
-            "card_text": "Hallazgo: H) írea bajo la curva (ÁUC): Gráfico de Sn vs (1-Sp). Un área de 1.0 indica una prueba perfecta, 0.5 indica puro azar.",
+            "card_text": "Hallazgo: H) írea bajo la curva (AUC): Gráfico de Sn vs (1-Sp). Un área de 1.0 indica una prueba perfecta, 0.5 indica puro azar.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

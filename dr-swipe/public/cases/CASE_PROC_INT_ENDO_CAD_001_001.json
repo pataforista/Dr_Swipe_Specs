@@ -25,12 +25,12 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Cetoacidosis Diabética (CÁD): Descompensación diabética aguda (típica en pacientes jóvenes/DM1). Triada: Hiperglucemia, Cetonemia/Cetonuria y Acidosis Metabólica.",
+            "card_text": "A) Cetoacidosis Diabética (CAD): Descompensación diabética aguda (típica en pacientes jóvenes/DM1). Triada: Hiperglucemia, Cetonemia/Cetonuria y Acidosis Metabólica.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
                 "error_type": "omission",
-                "vazquez_comment": "Mendoza: ¡Correcto! Paciente joven con dolor abdominal, Kussmaul y aliento afrutado. La piedra angular inicial es la hidratación IV agresiva y medición de potasio ÁNTES de iniciar insulina."
+                "vazquez_comment": "Mendoza: ¡Correcto! Paciente joven con dolor abdominal, Kussmaul y aliento afrutado. La piedra angular inicial es la hidratación IV agresiva y medición de potasio ANTES de iniciar insulina."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -46,14 +46,14 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: ¡Bien! La acidosis marcada y las cetonas nos confirman que es CÁD y no EHH."
+                "vazquez_comment": "Mendoza: ¡Bien! La acidosis marcada y las cetonas nos confirman que es CAD y no EHH."
             }
         },
         {
             "card_id": "c_6",
             "ui_icon": "activity",
             "category": "labs",
-            "card_text": "F) Reposición de Potasio: Áñadir 20-30 mEq por litro de solución si el potasio sérico es <5.2 mEq/L.",
+            "card_text": "F) Reposición de Potasio: Añadir 20-30 mEq por litro de solución si el potasio sérico es <5.2 mEq/L.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -70,7 +70,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "omission",
-                "vazquez_comment": "Mendoza: ¡Exacto! No te guíes solo por la glucosa; la resolución de la CÁD se define por el equilibrio ácido-base."
+                "vazquez_comment": "Mendoza: ¡Exacto! No te guíes solo por la glucosa; la resolución de la CAD se define por el equilibrio ácido-base."
             }
         },
         {
@@ -147,7 +147,7 @@
         }
     ],
     "enarm_pearl": {
-        "title": "CÁD: Reglas de Oro",
+        "title": "CAD: Reglas de Oro",
         "text": "1. Líquidos primero. 2. K >3.3 antes de Insulina. 3. Monitorizar Anion Gap. 4. Bicarbonato solo si pH <6.9.",
         "gpc_ref": "GPC Manejo de Cetoacidosis Diabética"
     },
@@ -173,7 +173,7 @@
                 "correct_index": 2
             },
             {
-                "question": "Con respecto a la patología, ¿cuál es el parámetro laboratorial principal para definir la resolución de la CÁD?",
+                "question": "Con respecto a la patología, ¿cuál es el parámetro laboratorial principal para definir la resolución de la CAD?",
                 "options": [
                     "Ausencia de glucosuria",
                     "Cierre del Anion Gap / Brecha aniónica",

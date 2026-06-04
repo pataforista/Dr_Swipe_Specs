@@ -53,7 +53,7 @@
             "card_id": "c_4",
             "ui_icon": "clipboard",
             "category": "Evaluación",
-            "card_text": "Evidencia: D) Escala SÁD PERSONS: Herramienta nemotécnica para evaluar factores de riesgo (Sexo, Edad, Depresión, Previos, etc.).",
+            "card_text": "Evidencia: D) Escala SAD PERSONS: Herramienta nemotécnica para evaluar factores de riesgo (Sexo, Edad, Depresión, Previos, etc.).",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -153,7 +153,7 @@
         "questions": [
             {
                 "correct_index": 2,
-                "question": "¿Cuál de los siguientes factores se asocia con MÁYOR riesgo de suicidio consumado?",
+                "question": "¿Cuál de los siguientes factores se asocia con MAYOR riesgo de suicidio consumado?",
                 "options": [
                     "Presencia de ansiedad leve",
                     "Sexo femenino",
@@ -162,7 +162,7 @@
             },
             {
                 "correct_index": 0,
-                "question": "¿Cuál es la conducta inicial MÁS IMPORTÁNTE ante un paciente con depresión mayor y plan suicida estructurado?",
+                "question": "¿Cuál es la conducta inicial MAS IMPORTANTE ante un paciente con depresión mayor y plan suicida estructurado?",
                 "options": [
                     "Hospitalización psiquiátrica o vigilancia estrecha",
                     "Solicitar estudios de laboratorio para descartar causas orgánicas",

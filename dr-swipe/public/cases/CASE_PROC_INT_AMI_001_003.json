@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Infarto Agudo al Miocardio (SCÁCEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
+            "card_text": "A) Infarto Agudo al Miocardio (SCACEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -160,7 +160,7 @@
     ],
     "enarm_pearl": {
         "title": "Cardiopatía Isquémica: Tiempo es Músculo",
-        "text": "En un SCÁCEST, el diagnóstico se hace con clínica + ECG (en <10 min). NO se debe esperar el resultado de las troponinas para activar código infarto ni trombolizar/ICP.",
+        "text": "En un SCACEST, el diagnóstico se hace con clínica + ECG (en <10 min). NO se debe esperar el resultado de las troponinas para activar código infarto ni trombolizar/ICP.",
         "gpc_ref": "GPC Infarto Agudo al Miocardio con Elevación del ST"
     },
     "boss_fight_triad": {
@@ -186,7 +186,7 @@
             },
             {
                 "correct_index": 1,
-                "question": "En este contexto clínico, ¿cuál es la principal causa de muerte prehospitalaria en un paciente con IÁM?",
+                "question": "En este contexto clínico, ¿cuál es la principal causa de muerte prehospitalaria en un paciente con IAM?",
                 "options": [
                     "Ruptura de pared libre",
                     "Fibrilación Ventricular",

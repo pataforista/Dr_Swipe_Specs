@@ -13,7 +13,7 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "Signos Vitales",
-            "card_text": "Información redundante: TA N/Á, FC 140 lpm, Temp 36.6°C",
+            "card_text": "Información redundante: TA N/A, FC 140 lpm, Temp 36.6°C",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -102,7 +102,7 @@
             "scoring": {
                 "points": 100,
                 "error_type": "lethal_omission",
-                "vazquez_comment": "Castillo: ¡Vital! El desequilibrio ácido-base debe corregirse ÁNTES de cualquier intervención quirúrgica."
+                "vazquez_comment": "Castillo: ¡Vital! El desequilibrio ácido-base debe corregirse ANTES de cualquier intervención quirúrgica."
             },
             "safety_flags": {
                 "lethal_risk": true,
@@ -140,7 +140,7 @@
     ],
     "enarm_pearl": {
         "title": "Vómito en Píloro: Alcalosis Hipoclorémica",
-        "text": "El trastorno ácido-base clásico de la Estenosis de Píloro es la ÁLCÁLOSIS METÁBÁƒa€œLICA HIPOCLORÁƒa€°MICA e hipokalémica.",
+        "text": "El trastorno ácido-base clásico de la Estenosis de Píloro es la ALCALOSIS METABAƒa€œLICA HIPOCLORAƒa€°MICA e hipokalémica.",
         "gpc_ref": "GPC Diagnóstico y Tratamiento de Estenosis Hipertrófica de Píloro"
     },
     "boss_fight_triad": {

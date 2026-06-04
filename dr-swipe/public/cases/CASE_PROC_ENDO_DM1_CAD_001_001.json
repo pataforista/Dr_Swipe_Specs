@@ -30,7 +30,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: ¡Bien! El pH bajo y las cetonas elevadas te confirman que estamos ante una CÁD, no un EHH."
+                "vazquez_comment": "Mendoza: ¡Bien! El pH bajo y las cetonas elevadas te confirman que estamos ante una CAD, no un EHH."
             }
         },
         {
@@ -66,7 +66,7 @@
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
-                "vazquez_comment": "Mendoza: ¡Muy bien! El cierre de la brecha aniónica es el mejor marcador de resolución de la CÁD."
+                "vazquez_comment": "Mendoza: ¡Muy bien! El cierre de la brecha aniónica es el mejor marcador de resolución de la CAD."
             }
         },
         {
@@ -102,14 +102,14 @@
             "scoring": {
                 "points": 50,
                 "error_type": "omission",
-                "vazquez_comment": "Mendoza: Bien. Identificar la causa evita que el paciente vuelva a caer en CÁD en 48 horas."
+                "vazquez_comment": "Mendoza: Bien. Identificar la causa evita que el paciente vuelva a caer en CAD en 48 horas."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Cetoacidosis Diabética (CÁD): Triada: Hiperglucemia + Acidosis Metabólica (Anion Gap ↑) + Cetonemia/Cetonuria.",
+            "card_text": "A) Cetoacidosis Diabética (CAD): Triada: Hiperglucemia + Acidosis Metabólica (Anion Gap ↑) + Cetonemia/Cetonuria.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -140,15 +140,15 @@
         }
     ],
     "enarm_pearl": {
-        "title": "CÁD: K+ antes que Insulina",
+        "title": "CAD: K+ antes que Insulina",
         "text": "Triada: Glucosa >250, pH <7.3, Cetonas (+). NUNCA dar insulina si K <3.3. Bicarbonato solo si pH <6.9.",
-        "gpc_ref": "GPC Diagnóstico y Tratamiento de la CÁD y EHH"
+        "gpc_ref": "GPC Diagnóstico y Tratamiento de la CAD y EHH"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
             {
-                "question": "¿En qué situación clínica extrema se recomienda la administración de bicarbonato de sodio en un paciente con CÁD?",
+                "question": "¿En qué situación clínica extrema se recomienda la administración de bicarbonato de sodio en un paciente con CAD?",
                 "options": [
                     "pH arterial menor a 7.2",
                     "pH arterial menor a 6.9",
@@ -157,7 +157,7 @@
                 "correct_index": 1
             },
             {
-                "question": "De las siguientes opciones, ¿cuál es el nivel de potasio sérico por debajo del cual está contraindicado iniciar la infusión de insulina en CÁD?",
+                "question": "De las siguientes opciones, ¿cuál es el nivel de potasio sérico por debajo del cual está contraindicado iniciar la infusión de insulina en CAD?",
                 "options": [
                     "Menos de 3.3 mEq/L",
                     "Menos de 2.5 mEq/L",

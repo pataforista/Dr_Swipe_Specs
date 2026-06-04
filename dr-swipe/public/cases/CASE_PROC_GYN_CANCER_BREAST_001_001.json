@@ -5,7 +5,7 @@
     "difficulty": "standard",
     "patient_intro": {
         "name": "Laura, 65 años",
-        "arrival_scenario": "Mujer de 52 años acude a mastografía de tamizaje anual. Refiere ser tabaquista y nulípara. Se observa asimetría focal con distorsión de la arquitectura. Categoría BI-RÁDS 5. ¿Cuál es el siguiente paso?",
+        "arrival_scenario": "Mujer de 52 años acude a mastografía de tamizaje anual. Refiere ser tabaquista y nulípara. Se observa asimetría focal con distorsión de la arquitectura. Categoría BI-RADS 5. ¿Cuál es el siguiente paso?",
         "time_limit_sec": 60
     },
     "card_stream": [
@@ -25,12 +25,12 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Biopsia Percutánea (Trucut): BI-RÁDS 4 y 5 requieren confirmación histopatológica inmediata mediante biopsia con aguja gruesa.",
+            "card_text": "A) Biopsia Percutánea (Trucut): BI-RADS 4 y 5 requieren confirmación histopatológica inmediata mediante biopsia con aguja gruesa.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
                 "error_type": "omission",
-                "vazquez_comment": "Castillo: ¡Correcto! El diagnóstico definitivo es histopatológico. Nunca se debe retrasar ante una sospecha BI-RÁDS 4/5."
+                "vazquez_comment": "Castillo: ¡Correcto! El diagnóstico definitivo es histopatológico. Nunca se debe retrasar ante una sospecha BI-RADS 4/5."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -41,12 +41,12 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
-            "card_text": "B) Seguimiento en 6 meses (BI-RÁDS 3): Conducta indicada ante hallazgos probablemente benignos (<2% riesgo de malignidad).",
+            "card_text": "B) Seguimiento en 6 meses (BI-RADS 3): Conducta indicada ante hallazgos probablemente benignos (<2% riesgo de malignidad).",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Castillo: ¡Bien! Un BI-RÁDS 5 en esta paciente exige acción inmediata, no observación."
+                "vazquez_comment": "Castillo: ¡Bien! Un BI-RADS 5 en esta paciente exige acción inmediata, no observación."
             }
         },
         {
@@ -65,7 +65,7 @@
             "card_id": "c_4",
             "ui_icon": "slash",
             "category": "Auxilio Diagnóstico",
-            "card_text": "D) Ultrasonido Mamario: Complemento ideal en mamas densas (BI-RÁDS 0) o en mujeres menores de 35 años con masa palpable.",
+            "card_text": "D) Ultrasonido Mamario: Complemento ideal en mamas densas (BI-RADS 0) o en mujeres menores de 35 años con masa palpable.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -101,7 +101,7 @@
             "card_id": "c_7",
             "ui_icon": "dna",
             "category": "imaging",
-            "card_text": "G) Mutaciones BRCÁ1/2: Presentes en el 5-10% de los casos. Confieren un riesgo de por vida del 40-80% para cáncer de mama.",
+            "card_text": "G) Mutaciones BRCA1/2: Presentes en el 5-10% de los casos. Confieren un riesgo de por vida del 40-80% para cáncer de mama.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -112,13 +112,13 @@
         {
             "card_id": "c_8",
             "ui_icon": "help-circle",
-            "category": "BI-RÁDS 0",
-            "card_text": "H) BI-RÁDS 0 (Evaluación Incompleta): Requiere estudios adicionales (ultrasonido o proyecciones adicionales) para asignar categoría final.",
+            "category": "BI-RADS 0",
+            "card_text": "H) BI-RADS 0 (Evaluación Incompleta): Requiere estudios adicionales (ultrasonido o proyecciones adicionales) para asignar categoría final.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
-                "vazquez_comment": "Castillo: ¡Excelente! Nunca dejes a una paciente con un BI-RÁDS 0; siempre hay que completar el estudio."
+                "vazquez_comment": "Castillo: ¡Excelente! Nunca dejes a una paciente con un BI-RADS 0; siempre hay que completar el estudio."
             }
         },
         {
@@ -136,7 +136,7 @@
     ],
     "enarm_pearl": {
         "title": "Tamizaje Cáncer de Mama",
-        "text": "Mastografía: 40-69 años (cada 2 años). BI-RÁDS 4/5 = BIOPSIÁ. BI-RÁDS 3 = Seguimiento 6m. BI-RÁDS 0 = Incompleto.",
+        "text": "Mastografía: 40-69 años (cada 2 años). BI-RADS 4/5 = BIOPSIA. BI-RADS 3 = Seguimiento 6m. BI-RADS 0 = Incompleto.",
         "gpc_ref": "GPC Prevención, Tamizaje y Diagnóstico del Cáncer de Mama"
     },
     "boss_fight_triad": {
@@ -161,7 +161,7 @@
                 "correct_index": 0
             },
             {
-                "question": "¿Cuál es la conducta recomendada ante un hallazgo categorizado como BI-RÁDS 3 (Probablemente Benigno)?",
+                "question": "¿Cuál es la conducta recomendada ante un hallazgo categorizado como BI-RADS 3 (Probablemente Benigno)?",
                 "options": [
                     "Seguimiento mastográfico en 6 meses",
                     "Repetir estudio en 2 años",

@@ -5,7 +5,7 @@
     "difficulty": "standard",
     "patient_intro": {
         "name": "Don Carlos, 55 años",
-        "arrival_scenario": "Acude a urgencias por sangrado nasal activo abundante por narina derecha. Refiere que inició hace 20 minutos tras estornudo. Antecedente de HÁS mal controlada. Se observa sangre fresca fluyendo al examinar la orofaringe.",
+        "arrival_scenario": "Acude a urgencias por sangrado nasal activo abundante por narina derecha. Refiere que inició hace 20 minutos tras estornudo. Antecedente de HAS mal controlada. Se observa sangre fresca fluyendo al examinar la orofaringe.",
         "time_limit_sec": 60
     },
     "card_stream": [
@@ -25,7 +25,7 @@
             "card_id": "c_2",
             "ui_icon": "zap",
             "category": "vitals",
-            "card_text": "B) Presión Digital Directa: Comprimir las alas nasales de forma continua durante 5 a 15 minutos con el paciente inclinado hacia ÁDELÁNTE.",
+            "card_text": "B) Presión Digital Directa: Comprimir las alas nasales de forma continua durante 5 a 15 minutos con el paciente inclinado hacia ADELANTE.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_10",
             "ui_icon": "x-circle",
             "category": "vitals",
-            "card_text": "J) Control Agudo de la TÁ: Es la medida prioritaria para detener el sangrado nasal antes de cualquier maniobra local.",
+            "card_text": "J) Control Agudo de la TA: Es la medida prioritaria para detener el sangrado nasal antes de cualquier maniobra local.",
             "expected_action": "discard",
             "scoring": {
                 "points": 100,

@@ -30,7 +30,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Correcto. En la meningitis la fiebre es la protagonista; en la HSÁ, es el dolor explosivo."
+                "vazquez_comment": "Navarro: Correcto. En la meningitis la fiebre es la protagonista; en la HSA, es el dolor explosivo."
             }
         },
         {
@@ -42,7 +42,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! El inicio súbito es la 'red flag' que nos obliga a descartar algo letal como la HSÁ."
+                "vazquez_comment": "Navarro: ¡Bien! El inicio súbito es la 'red flag' que nos obliga a descartar algo letal como la HSA."
             }
         },
         {
@@ -90,7 +90,7 @@
             "scoring": {
                 "points": 150,
                 "error_type": "lethal_omission",
-                "vazquez_comment": "Navarro: ¡Manejo Perfecto! La HSA es una emergencia neuroquirúrgica. La TC es el primer estudio. La segunda causa más frecuente es la Malformación Arteriovenosa (MÁV)."
+                "vazquez_comment": "Navarro: ¡Manejo Perfecto! La HSA es una emergencia neuroquirúrgica. La TC es el primer estudio. La segunda causa más frecuente es la Malformación Arteriovenosa (MAV)."
             },
             "safety_flags": {
                 "lethal_risk": true,
@@ -148,7 +148,7 @@
         }
     ],
     "enarm_pearl": {
-        "title": "HSÁ: Pasos Diagnósticos",
+        "title": "HSA: Pasos Diagnósticos",
         "text": "1. TC Simple. 2. Si negativa: Punción Lumbar (Xantocromía). 3. Angiografía. Manejo: Nimodipino.",
         "gpc_ref": "GPC Manejo de la Hemorragia Subaracnoidea"
     },
@@ -159,7 +159,7 @@
                 "question": "Con respecto a la patología, ¿cuál es la causa no traumática más frecuente de Hemorragia Subaracnoidea?",
                 "options": [
                     "Rotura de aneurisma sacular",
-                    "Malformación arteriovenosa (MÁV)",
+                    "Malformación arteriovenosa (MAV)",
                     "Angiopatía amiloide"
                 ],
                 "correct_index": 0

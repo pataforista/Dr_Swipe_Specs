@@ -5,7 +5,7 @@
     "difficulty": "standard",
     "patient_intro": {
         "name": "Juan, 28 anos",
-        "arrival_scenario": "Presenta verborrea, fuga de ideas y grandiosidad. Afirma ser el 'nuevo director del hospital' sin tener formacion medica. Afecto expansivo, pobre juicio de realidad. Escala DIGFÁST positiva.",
+        "arrival_scenario": "Presenta verborrea, fuga de ideas y grandiosidad. Afirma ser el 'nuevo director del hospital' sin tener formacion medica. Afecto expansivo, pobre juicio de realidad. Escala DIGFAST positiva.",
         "time_limit_sec": 60
     },
     "card_stream": [
@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnostico",
-            "card_text": "Hallazgo: A) Episodio Maniaco (Trastorno Bipolar I): Estado de animo elevado/expansivo por al menos 1 semana. Criterios DIGFÁST presentes.",
+            "card_text": "Hallazgo: A) Episodio Maniaco (Trastorno Bipolar I): Estado de animo elevado/expansivo por al menos 1 semana. Criterios DIGFAST presentes.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -147,8 +147,8 @@
         }
     ],
     "enarm_pearl": {
-        "title": "Criterios Mania: DIGFÁST",
-        "text": "Mnemotecnia DIGFÁST: Distractibility, Indiscretion, Grandiosity, Flight of ideas, Activity increase, Sleep deficit, Talkativeness.",
+        "title": "Criterios Mania: DIGFAST",
+        "text": "Mnemotecnia DIGFAST: Distractibility, Indiscretion, Grandiosity, Flight of ideas, Activity increase, Sleep deficit, Talkativeness.",
         "gpc_ref": "Guia de Practica Clinica Trastorno Bipolar"
     },
     "boss_fight_triad": {
@@ -168,7 +168,7 @@
                 "options": [
                     "Carbonato de Litio",
                     "Lamotrigina",
-                    "Ácido Valproico"
+                    "Acido Valproico"
                 ],
                 "correct_index": 0
             },

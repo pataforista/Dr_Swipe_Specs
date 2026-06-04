@@ -73,7 +73,7 @@
             "card_id": "pad_009",
             "ui_icon": "help-circle",
             "category": "Localización EKG",
-            "card_text": "I) Cara Anterior (V1-V4): Corresponde generalmente a la oclusión de la Arteria Descendente Anterior (DÁI).",
+            "card_text": "I) Cara Anterior (V1-V4): Corresponde generalmente a la oclusión de la Arteria Descendente Anterior (DAI).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -85,7 +85,7 @@
             "card_id": "pad_001",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) IÁMCEST (Fibrinolisis Sistémica): IÁMCEST Cara Anterior. Si la ICP >120 min de retraso, se opta por Fibrinolisis (Alteplase).",
+            "card_text": "A) IAMCEST (Fibrinolisis Sistémica): IAMCEST Cara Anterior. Si la ICP >120 min de retraso, se opta por Fibrinolisis (Alteplase).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -144,8 +144,8 @@
         }
     ],
     "enarm_pearl": {
-        "title": "IÁMCEST: Tiempo es Músculo",
-        "text": "ICP: <120 min de retraso. Si >120 min: FIBRINOLISIS (<10 min de contacto). ÁSA 300mg + Clopidogrel 300mg.",
+        "title": "IAMCEST: Tiempo es Músculo",
+        "text": "ICP: <120 min de retraso. Si >120 min: FIBRINOLISIS (<10 min de contacto). ASA 300mg + Clopidogrel 300mg.",
         "gpc_ref": "GPC Diagnóstico y Tratamiento del Infarto Agudo al Miocardio con ST Elevado"
     },
     "boss_fight_triad": {
@@ -170,7 +170,7 @@
                 "correct_index": 2
             },
             {
-                "question": "¿Qué hallazgo electrocardiográfico define un IÁMCEST según los criterios universales?",
+                "question": "¿Qué hallazgo electrocardiográfico define un IAMCEST según los criterios universales?",
                 "options": [
                     "Inversión de la onda T en V1-V2",
                     "Presencia aislada de ondas Q profundas",

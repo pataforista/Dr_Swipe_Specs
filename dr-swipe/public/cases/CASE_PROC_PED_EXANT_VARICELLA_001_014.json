@@ -13,7 +13,7 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "vitals",
-            "card_text": "TA N/Á, FC 90 lpm, Temp 38.2°C",
+            "card_text": "TA N/A, FC 90 lpm, Temp 38.2°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -137,7 +137,7 @@
             "card_id": "c_3",
             "ui_icon": "slash",
             "category": "Contraindicacion",
-            "card_text": "Hallazgo: C) Contraindicado: ÁSA (Acido Acetilsalicilico/Aspirina). Su uso para la fiebre en varicela conlleva alto riesgo de Sindrome de Reye (falla hepatica aguda).",
+            "card_text": "Hallazgo: C) Contraindicado: ASA (Acido Acetilsalicilico/Aspirina). Su uso para la fiebre en varicela conlleva alto riesgo de Sindrome de Reye (falla hepatica aguda).",
             "expected_action": "discard",
             "scoring": {
                 "points": 150,

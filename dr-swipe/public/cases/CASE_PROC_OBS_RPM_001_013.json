@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Definición",
-            "card_text": "A) Ruptura Prematura de Membranas (RPM): Ruptura de las membranas ovulares ÁNTES del inicio del trabajo de parto.",
+            "card_text": "A) Ruptura Prematura de Membranas (RPM): Ruptura de las membranas ovulares ANTES del inicio del trabajo de parto.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -49,7 +49,7 @@
             "card_id": "c_3",
             "ui_icon": "droplets",
             "category": "Pruebas de Consultorio",
-            "card_text": "C) Test de Nitrazina: El papel de tornasol vira a ÁZUL en presencia de líquido amniótico por su pH alcalino (>6.0).",
+            "card_text": "C) Test de Nitrazina: El papel de tornasol vira a AZUL en presencia de líquido amniótico por su pH alcalino (>6.0).",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -136,7 +136,7 @@
     ],
     "enarm_pearl": {
         "title": "RPM: ¡No Tacto Vaginal!",
-        "text": "Confirmación: Helecho/Nitrazina. <34 SDG: Conservador (Esteroides + ÁTB). >34 SDG: Inducción. Dx oro: Especuloscopía.",
+        "text": "Confirmación: Helecho/Nitrazina. <34 SDG: Conservador (Esteroides + ATB). >34 SDG: Inducción. Dx oro: Especuloscopía.",
         "gpc_ref": "GPC Diagnóstico y Manejo de Ruptura Prematura de Membranas"
     },
     "boss_fight_triad": {
@@ -152,7 +152,7 @@
                 "correct_index": 2
             },
             {
-                "question": "¿Cuál es la maniobra exploratoria que debe EVITÁRSE ante la sospecha de ruptura prematura de membranas?",
+                "question": "¿Cuál es la maniobra exploratoria que debe EVITARSE ante la sospecha de ruptura prematura de membranas?",
                 "options": [
                     "Especuloscopía estéril",
                     "Tacto vaginal repetido",
@@ -163,7 +163,7 @@
             {
                 "question": "¿Qué marcador bioquímico es el más sensible para diagnosticar ruptura de membranas (Amnisure)?",
                 "options": [
-                    "Microglobulina placentaria alfa-1 (PÁMG-1)",
+                    "Microglobulina placentaria alfa-1 (PAMG-1)",
                     "Alfa-fetoproteína",
                     "Fibronectina fetal"
                 ],

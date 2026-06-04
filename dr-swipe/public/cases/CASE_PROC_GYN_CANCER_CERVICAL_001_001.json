@@ -113,12 +113,12 @@
             "card_id": "c_8",
             "ui_icon": "dna",
             "category": "meds",
-            "card_text": "H) Prueba de ÁDN para VPH: Tamizaje preferido en mujeres >=35 años por su altísimo valor predictivo negativo.",
+            "card_text": "H) Prueba de ADN para VPH: Tamizaje preferido en mujeres >=35 años por su altísimo valor predictivo negativo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
-                "vazquez_comment": "Castillo: ¡Correcto! Si el ÁDN-VPH es negativo, el riesgo de CaCu en los siguientes 5 años es casi nulo."
+                "vazquez_comment": "Castillo: ¡Correcto! Si el ADN-VPH es negativo, el riesgo de CaCu en los siguientes 5 años es casi nulo."
             }
         },
         {
@@ -136,7 +136,7 @@
     ],
     "enarm_pearl": {
         "title": "CaCu: Pap y Colposcopia",
-        "text": "Pap: 25-64 años. DNÁ-VPH: >=35 años. HSIL = Colposcopia inmediata. Tx NIC 2/3: Conización.",
+        "text": "Pap: 25-64 años. DNA-VPH: >=35 años. HSIL = Colposcopia inmediata. Tx NIC 2/3: Conización.",
         "gpc_ref": "GPC Prevención y Detección Oportuna del Cáncer Cervicouterino"
     },
     "boss_fight_triad": {

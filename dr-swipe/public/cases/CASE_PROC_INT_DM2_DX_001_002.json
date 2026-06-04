@@ -5,7 +5,7 @@
     "difficulty": "standard",
     "patient_intro": {
         "name": "Ana, 57 años",
-        "arrival_scenario": "Paciente con obesidad grado I, refiere poliuria y polidipsia ocasional. Glucosa al azar de 210 mg/dl. Se realiza segunda medición de glucosa en ayuno: 128 mg/dl. HbÁ1c reportada en 6.7%.",
+        "arrival_scenario": "Paciente con obesidad grado I, refiere poliuria y polidipsia ocasional. Glucosa al azar de 210 mg/dl. Se realiza segunda medición de glucosa en ayuno: 128 mg/dl. HbA1c reportada en 6.7%.",
         "time_limit_sec": 60
     },
     "card_stream": [
@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "labs",
-            "card_text": "A) Diabetes Mellitus Tipo 2 (Confirmada): Criterios: Glucosa ayuno ≥126, HbÁ1c ≥6.5%, o Glucosa azar ≥200 con síntomas.",
+            "card_text": "A) Diabetes Mellitus Tipo 2 (Confirmada): Criterios: Glucosa ayuno ≥126, HbA1c ≥6.5%, o Glucosa azar ≥200 con síntomas.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -57,7 +57,7 @@
             "card_id": "c_3",
             "ui_icon": "activity",
             "category": "labs",
-            "card_text": "C) Hemoglobina Glucosilada (HbÁ1c) ≥6.5%: Estándar para el diagnóstico y seguimiento crónico. Refleja los últimos 3 meses.",
+            "card_text": "C) Hemoglobina Glucosilada (HbA1c) ≥6.5%: Estándar para el diagnóstico y seguimiento crónico. Refleja los últimos 3 meses.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -105,7 +105,7 @@
             "card_id": "c_7",
             "ui_icon": "search",
             "category": "Tamizaje",
-            "card_text": "G) Iniciar Tamizaje a los 35 años: Edad de inicio recomendada por la ÁDA para toda la población, incluso sin factores de riesgo.",
+            "card_text": "G) Iniciar Tamizaje a los 35 años: Edad de inicio recomendada por la ADA para toda la población, incluso sin factores de riesgo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -144,15 +144,15 @@
     ],
     "enarm_pearl": {
         "title": "Criterios Diagnósticos DM2 (NOM-015)",
-        "text": "1. Glucosa ayuno ≥126 (x2), 2. HbÁ1c ≥6.5%, 3. Curva (75g) ≥200 a las 2h, 4. Azar ≥200 + síntomas clásicos.",
-        "gpc_ref": "NOM-015-SSÁ2-2010"
+        "text": "1. Glucosa ayuno ≥126 (x2), 2. HbA1c ≥6.5%, 3. Curva (75g) ≥200 a las 2h, 4. Azar ≥200 + síntomas clásicos.",
+        "gpc_ref": "NOM-015-SSA2-2010"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
             {
                 "correct_index": 1,
-                "question": "¿Qué porcentaje de HbÁ1c confirma el diagnóstico?",
+                "question": "¿Qué porcentaje de HbA1c confirma el diagnóstico?",
                 "options": [
                     ">=5.7%",
                     ">=6.5%",

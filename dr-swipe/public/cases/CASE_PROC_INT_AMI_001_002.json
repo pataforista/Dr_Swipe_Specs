@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Infarto Agudo al Miocardio (SCÁCEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
+            "card_text": "A) Infarto Agudo al Miocardio (SCACEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -69,7 +69,7 @@
             "card_id": "c_6",
             "ui_icon": "pill",
             "category": "meds",
-            "card_text": "F) Clopidogrel 300 mg: Segundo antiagregante (DÁPT) para potenciar la inhibición plaquetaria.",
+            "card_text": "F) Clopidogrel 300 mg: Segundo antiagregante (DAPT) para potenciar la inhibición plaquetaria.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -93,12 +93,12 @@
             "card_id": "c_9",
             "ui_icon": "zap",
             "category": "Complicación",
-            "card_text": "I) Bloqueo ÁV de Tercer Grado: Complicación eléctrica frecuente en infartos de la cara inferior.",
+            "card_text": "I) Bloqueo AV de Tercer Grado: Complicación eléctrica frecuente en infartos de la cara inferior.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
-                "vazquez_comment": "Mendoza: Muy bien. La arteria coronaria derecha suele irrigar el nodo ÁV."
+                "vazquez_comment": "Mendoza: Muy bien. La arteria coronaria derecha suele irrigar el nodo AV."
             }
         },
         {
@@ -152,7 +152,7 @@
     ],
     "enarm_pearl": {
         "title": "Cardiopatía Isquémica: Tiempo es Músculo",
-        "text": "En un SCÁCEST, el diagnóstico se hace con clínica + ECG (en <10 min). NO se debe esperar el resultado de las troponinas para activar código infarto ni trombolizar/ICP.",
+        "text": "En un SCACEST, el diagnóstico se hace con clínica + ECG (en <10 min). NO se debe esperar el resultado de las troponinas para activar código infarto ni trombolizar/ICP.",
         "gpc_ref": "GPC Infarto Agudo al Miocardio con Elevación del ST"
     },
     "boss_fight_triad": {
@@ -169,7 +169,7 @@
             },
             {
                 "correct_index": 2,
-                "question": "¿Cuál es la principal causa de muerte prehospitalaria en un paciente con IÁM?",
+                "question": "¿Cuál es la principal causa de muerte prehospitalaria en un paciente con IAM?",
                 "options": [
                     "Choque cardiogénico",
                     "Ruptura de pared libre",

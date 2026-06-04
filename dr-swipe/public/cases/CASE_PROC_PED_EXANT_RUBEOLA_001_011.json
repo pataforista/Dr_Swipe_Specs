@@ -13,7 +13,7 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "vitals",
-            "card_text": "TA N/Á, FC 95 lpm, Temp 37.8°C",
+            "card_text": "TA N/A, FC 95 lpm, Temp 37.8°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -93,7 +93,7 @@
             "card_id": "c_5",
             "ui_icon": "beaker",
             "category": "meds",
-            "card_text": "E) Virus de la Rubéola (Togavirus): Virus de ÁRN, único miembro del género Rubivirus.",
+            "card_text": "E) Virus de la Rubéola (Togavirus): Virus de ARN, único miembro del género Rubivirus.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

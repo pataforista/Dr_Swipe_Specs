@@ -93,7 +93,7 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "question": "¿Cuál es el TIEMPO MÁXIMO puerta-aguja para fibrinolisis en IAMCEST?",
+                "question": "¿Cuál es el TIEMPO MAXIMO puerta-aguja para fibrinolisis en IAMCEST?",
                 "options": [
                     "30 minutos",
                     "60 minutos",

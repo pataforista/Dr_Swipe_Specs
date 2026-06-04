@@ -101,7 +101,7 @@
             "card_id": "c_7",
             "ui_icon": "users",
             "category": "Tratamiento ITS",
-            "card_text": "G) Tratamiento de la Pareja: OBLIGÁTORIO en Tricomoniasis para evitar el efecto 'ping-pong' de reinfección.",
+            "card_text": "G) Tratamiento de la Pareja: OBLIGATORIO en Tricomoniasis para evitar el efecto 'ping-pong' de reinfección.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -155,7 +155,7 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "question": "¿En cuál de las siguientes infecciones vaginales es OBLIGÁTORIO el tratamiento simultáneo a la pareja sexual?",
+                "question": "¿En cuál de las siguientes infecciones vaginales es OBLIGATORIO el tratamiento simultáneo a la pareja sexual?",
                 "options": [
                     "Vaginosis Bacteriana",
                     "Tricomoniasis",

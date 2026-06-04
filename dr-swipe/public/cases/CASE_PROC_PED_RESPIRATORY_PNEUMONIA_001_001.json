@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnostico",
-            "card_text": "Evidencia: A) Neumonia Adquirida en la Comunidad (NÁC): Presencia de consolidacion en Rx o estertores + Sintomas de infeccion respiratoria aguda.",
+            "card_text": "Evidencia: A) Neumonia Adquirida en la Comunidad (NAC): Presencia de consolidacion en Rx o estertores + Sintomas de infeccion respiratoria aguda.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "beaker",
             "category": "Etiologia",
-            "card_text": "Hallazgo: B) Streptococcus pneumoniae: El patogeno bacteriano mas frecuente de NÁC en ninos de todas las edades (excepto neonatos).",
+            "card_text": "Hallazgo: B) Streptococcus pneumoniae: El patogeno bacteriano mas frecuente de NAC en ninos de todas las edades (excepto neonatos).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -65,7 +65,7 @@
             "card_id": "c_6",
             "ui_icon": "camera",
             "category": "Imagen",
-            "card_text": "Evidencia: F) Radiografia de Torax: Hallazgo tipico de NÁC bacteriana: Consolidacion lobar o segmentaria con broncograma aereo.",
+            "card_text": "Evidencia: F) Radiografia de Torax: Hallazgo tipico de NAC bacteriana: Consolidacion lobar o segmentaria con broncograma aereo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -101,7 +101,7 @@
             "card_id": "c_9",
             "ui_icon": "slash",
             "category": "Manejo",
-            "card_text": "Dato de importancia: Dato anecdotico: I) Jarabes para la Tos (Antitusigenos): Recomendados en preescolares para mejorar el descanso nocturno durante la NÁC.",
+            "card_text": "Dato de importancia: Dato anecdotico: I) Jarabes para la Tos (Antitusigenos): Recomendados en preescolares para mejorar el descanso nocturno durante la NAC.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -113,7 +113,7 @@
             "card_id": "c_10",
             "ui_icon": "pill",
             "category": "Tratamiento Hospitalario",
-            "card_text": "Dato de importancia: J) Ampicilina o Penicilina G Sodica: Tratamiento IV de eleccion para NÁC bacteriana en el paciente hospitalizado con esquema de vacunacion completo.",
+            "card_text": "Dato de importancia: J) Ampicilina o Penicilina G Sodica: Tratamiento IV de eleccion para NAC bacteriana en el paciente hospitalizado con esquema de vacunacion completo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -125,7 +125,7 @@
             "card_id": "c_3",
             "ui_icon": "pill",
             "category": "Tratamiento Ambulatorio",
-            "card_text": "Dato de importancia: C) Amoxicilina (Altas dosis): 80-90 mg/kg/dia por 7-10 dias. Tratamiento de primera eleccion para NÁC no complicada.",
+            "card_text": "Dato de importancia: C) Amoxicilina (Altas dosis): 80-90 mg/kg/dia por 7-10 dias. Tratamiento de primera eleccion para NAC no complicada.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -163,7 +163,7 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "question": "¿Cual es el tratamiento antibiotico de eleccion para una NÁC no complicada en el manejo ambulatorio?",
+                "question": "¿Cual es el tratamiento antibiotico de eleccion para una NAC no complicada en el manejo ambulatorio?",
                 "options": [
                     "Eritromicina oral",
                     "Ceftriaxona intramuscular",

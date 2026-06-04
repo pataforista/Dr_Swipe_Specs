@@ -13,7 +13,7 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "Signos Vitales",
-            "card_text": "Hallazgo: Ruido en el expediente: TA N/Á, FC 90 lpm, Temp 36.5°C",
+            "card_text": "Hallazgo: Ruido en el expediente: TA N/A, FC 90 lpm, Temp 36.5°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -25,12 +25,12 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnostico",
-            "card_text": "Evidencia: A) ÁPGÁR 5 (Depresion Moderada): FC <100 (1) + Llanto debil (1) + Mueca (1) + Flexion (1) + Acrocianosis (1).",
+            "card_text": "Evidencia: A) APGAR 5 (Depresion Moderada): FC <100 (1) + Llanto debil (1) + Mueca (1) + Flexion (1) + Acrocianosis (1).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
                 "error_type": "omission",
-                "vazquez_comment": "Castillo: ¡Excelente calculo! El ÁPGÁR evalua vitalidad, no pronostico neurologico a largo plazo."
+                "vazquez_comment": "Castillo: ¡Excelente calculo! El APGAR evalua vitalidad, no pronostico neurologico a largo plazo."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -53,7 +53,7 @@
             "card_id": "c_3",
             "ui_icon": "slash",
             "category": "Diagnostico Diferencial",
-            "card_text": "Evidencia clinica: Ruido en el expediente: C) Asfixia Neonatal: Requiere pH arterial de cordon <7.0, deficit de base >=12, ÁPGÁR 0-3 tras 5 min y dano a organos.",
+            "card_text": "Evidencia clinica: Ruido en el expediente: C) Asfixia Neonatal: Requiere pH arterial de cordon <7.0, deficit de base >=12, APGAR 0-3 tras 5 min y dano a organos.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -65,7 +65,7 @@
             "card_id": "c_6",
             "ui_icon": "help-circle",
             "category": "Correccion",
-            "card_text": "Hallazgo: F) MR. SOPÁ: Pasos correctivos de la ventilacion: Mascara, Reposicion, Succion, Open mouth, Pressure, Alternative airway.",
+            "card_text": "Hallazgo: F) MR. SOPA: Pasos correctivos de la ventilacion: Mascara, Reposicion, Succion, Open mouth, Pressure, Alternative airway.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -152,7 +152,7 @@
     ],
     "enarm_pearl": {
         "title": "Minuto de Oro Neonatal",
-        "text": "FC <100 = VPP. FC <60 = Compresiones (3:1). Silverman 0 = Exito. ÁPGÁR 10 = Exito.",
+        "text": "FC <100 = VPP. FC <60 = Compresiones (3:1). Silverman 0 = Exito. APGAR 10 = Exito.",
         "gpc_ref": "GPC Reanimacion Neonatal / NRP 8th Edition"
     },
     "boss_fight_triad": {
@@ -163,7 +163,7 @@
                 "options": [
                     "Inmediatamente al nacer si no llora",
                     "Si la FC es <60 lpm pese a VPP efectiva",
-                    "Si el ÁPGÁR inicial es <3"
+                    "Si el APGAR inicial es <3"
                 ],
                 "correct_index": 1
             },

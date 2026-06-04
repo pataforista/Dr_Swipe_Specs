@@ -53,7 +53,7 @@
             "card_id": "c_3",
             "ui_icon": "pill",
             "category": "Tratamiento Pilares",
-            "card_text": "C) Los 'Cuatro Fantásticos': ÁRNI (o IECÁ/ÁRÁII), Beta-bloqueador, Antagonista de Mineralocorticoides e iSGLT2.",
+            "card_text": "C) Los 'Cuatro Fantásticos': ARNI (o IECA/ARAII), Beta-bloqueador, Antagonista de Mineralocorticoides e iSGLT2.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -129,7 +129,7 @@
             "card_id": "c_10",
             "ui_icon": "pill",
             "category": "Avances",
-            "card_text": "J) Sacubitrilo/Valsartán (ÁRNI): Sustituto preferente de IECÁ/ÁRÁII en ICFEr sintomática para reducir hospitalizaciones.",
+            "card_text": "J) Sacubitrilo/Valsartán (ARNI): Sustituto preferente de IECA/ARAII en ICFEr sintomática para reducir hospitalizaciones.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -141,12 +141,12 @@
             "card_id": "c_7",
             "ui_icon": "alert-triangle",
             "category": "meds",
-            "card_text": "G) Verapamilo / Diltiazem: Calcioantagonistas no dihidropiridínicos que deben EVITÁRSE en ICFEr por su efecto inotrópico negativo.",
+            "card_text": "G) Verapamilo / Diltiazem: Calcioantagonistas no dihidropiridínicos que deben EVITARSE en ICFEr por su efecto inotrópico negativo.",
             "expected_action": "discard",
             "scoring": {
                 "points": 100,
                 "error_type": "lethal_hazard",
-                "vazquez_comment": "Navarro: ¡MÁL! Podrías precipitar un choque cardiogénico."
+                "vazquez_comment": "Navarro: ¡MAL! Podrías precipitar un choque cardiogénico."
             },
             "safety_flags": {
                 "lethal_risk": true,
@@ -156,7 +156,7 @@
     ],
     "enarm_pearl": {
         "title": "IC: Los 4 Fantásticos",
-        "text": "1. ÁRNI (Sacubitrilo). 2. BB (Carvedilol). 3. ÁRM (Espironolactona). 4. iSGLT2 (Dapa/Empa). Framingham: 2 mayores o 1 mayor + 2 menores.",
+        "text": "1. ARNI (Sacubitrilo). 2. BB (Carvedilol). 3. ARM (Espironolactona). 4. iSGLT2 (Dapa/Empa). Framingham: 2 mayores o 1 mayor + 2 menores.",
         "gpc_ref": "GPC Diagnóstico y Tratamiento de la Insuficiencia Cardíaca Crónica"
     },
     "boss_fight_triad": {

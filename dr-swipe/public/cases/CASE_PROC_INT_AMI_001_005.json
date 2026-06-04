@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Infarto Agudo al Miocardio (SCÁCEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
+            "card_text": "A) Infarto Agudo al Miocardio (SCACEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -81,7 +81,7 @@
             "card_id": "c_8",
             "ui_icon": "monitor",
             "category": "Gabinete",
-            "card_text": "H) Ecocardiograma Transtorácico: Estudio de elección ante la sospecha de cualquier complicación mecánica post-ÁMI.",
+            "card_text": "H) Ecocardiograma Transtorácico: Estudio de elección ante la sospecha de cualquier complicación mecánica post-AMI.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -152,7 +152,7 @@
     ],
     "enarm_pearl": {
         "title": "Cardiopatía Isquémica: Tiempo es Músculo",
-        "text": "En un SCÁCEST, el diagnóstico se hace con clínica + ECG (en <10 min). NO se debe esperar el resultado de las troponinas para activar código infarto ni trombolizar/ICP.",
+        "text": "En un SCACEST, el diagnóstico se hace con clínica + ECG (en <10 min). NO se debe esperar el resultado de las troponinas para activar código infarto ni trombolizar/ICP.",
         "gpc_ref": "GPC Infarto Agudo al Miocardio con Elevación del ST"
     },
     "boss_fight_triad": {
@@ -169,7 +169,7 @@
             },
             {
                 "correct_index": 1,
-                "question": "¿Cuál es la principal causa de muerte prehospitalaria en un paciente con IÁM?",
+                "question": "¿Cuál es la principal causa de muerte prehospitalaria en un paciente con IAM?",
                 "options": [
                     "Choque cardiogénico",
                     "Fibrilación Ventricular",

@@ -37,7 +37,7 @@
             "card_id": "c_4",
             "ui_icon": "info",
             "category": "imaging",
-            "card_text": "D) Plan Á: Prevención de deshidratación en casa. Menores de 1 año: 75 ml de VSO tras cada evacuación líquida.",
+            "card_text": "D) Plan A: Prevención de deshidratación en casa. Menores de 1 año: 75 ml de VSO tras cada evacuación líquida.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -156,7 +156,7 @@
     ],
     "enarm_pearl": {
         "title": "Planes de Rehidratación",
-        "text": "Plan Á: Home (ÁBC: Alimentación, Bebidas VSO, Consulta). Plan B: Hospital (100ml/kg VSO 4h). Plan C: IV (Shock - 20ml/kg bolos). Zinc 14 días.",
+        "text": "Plan A: Home (ABC: Alimentación, Bebidas VSO, Consulta). Plan B: Hospital (100ml/kg VSO 4h). Plan C: IV (Shock - 20ml/kg bolos). Zinc 14 días.",
         "gpc_ref": "GPC Prevención y Manejo de la Diarrea Aguda"
     },
     "boss_fight_triad": {
