@@ -5,7 +5,7 @@
     "difficulty": "standard",
     "patient_intro": {
         "name": "Diego, 2 anos",
-        "arrival_scenario": "Paciente de 4 a�\u0000±os con lesiones cut�\u0000¡neas pruriginosas en diferentes estadios de evoluci�\u0000³n. Fiebre moderada. Las ves�\u0000­culas tienen aspecto de 'gota de roc�\u0000­o'. Prurito intenso referido por la madre.",
+        "arrival_scenario": "Paciente de 4 años con lesiones cutáneas pruriginosas en diferentes estadios de evolución. Fiebre moderada. Las vesículas tienen aspecto de 'gota de rocío'. Prurito intenso referido por la madre.",
         "time_limit_sec": 60
     },
     "card_stream": [
@@ -13,7 +13,7 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "vitals",
-            "card_text": "TA N/Á, FC 90 lpm, Temp 38.2�\u0000°C",
+            "card_text": "TA N/Á, FC 90 lpm, Temp 38.2°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -24,13 +24,13 @@
         {
             "card_id": "c_1",
             "ui_icon": "target",
-            "category": "Diagn�\u0000³stico",
-            "card_text": "A) Varicela: Virus Varicela-Z�\u0000³ster. Pleomorfismo regional (m�\u0000¡cula, p�\u0000¡pula, ves�\u0000­cula, costra). 'Cielo estrellado'.",
+            "category": "Diagnóstico",
+            "card_text": "A) Varicela: Virus Varicela-Zóster. Pleomorfismo regional (mácula, pápula, vesícula, costra). 'Cielo estrellado'.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
                 "error_type": "omission",
-                "vazquez_comment": "Castillo: �\u0000¡Perfecto! El 'pleomorfismo regional' o 'cielo estrellado' es el t�\u0000©rmino t�\u0000©cnico que buscar�\u0000¡s en el examen."
+                "vazquez_comment": "Castillo: ¡Perfecto! El 'pleomorfismo regional' o 'cielo estrellado' es el término técnico que buscarás en el examen."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -41,55 +41,55 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "meds",
-            "card_text": "B) Viruela: Lesiones en el mismo estadio de evoluci�\u0000³n (monom�\u0000³rficas), centr�\u0000­fugas y umbilicadas. Ausente en la actualidad.",
+            "card_text": "B) Viruela: Lesiones en el mismo estadio de evolución (monomórficas), centrífugas y umbilicadas. Ausente en la actualidad.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Castillo: �\u0000¡Bien! Reconociste la diferencia clave en el estadio de las lesiones (monom�\u0000³rficas vs polim�\u0000³rficas)."
+                "vazquez_comment": "Castillo: ¡Bien! Reconociste la diferencia clave en el estadio de las lesiones (monomórficas vs polimórficas)."
             }
         },
         {
             "card_id": "c_4",
             "ui_icon": "search",
-            "category": "Signo Cl�\u0000­nico",
-            "card_text": "D) Gota de Roc�\u0000­o sobre P�\u0000©talo de Rosa: Ves�\u0000­culas de contenido hialino sobre una base eritematosa.",
+            "category": "Signo Clínico",
+            "card_text": "D) Gota de Rocío sobre Pétalo de Rosa: Vesículas de contenido hialino sobre una base eritematosa.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
-                "vazquez_comment": "Castillo: �\u0000¡Excelente! Es la descripci�\u0000³n morfol�\u0000³gica cl�\u0000¡sica de la ves�\u0000­cula por VZV."
+                "vazquez_comment": "Castillo: ¡Excelente! Es la descripción morfológica clásica de la vesícula por VZV."
             }
         },
         {
             "card_id": "c_5",
             "ui_icon": "beaker",
-            "category": "Etiolog�\u0000­a",
-            "card_text": "E) Virus Varicela-Z�\u0000³ster (VHH-3): Familia Herpesviridae, virus con capacidad de latencia en ganglios nerviosos.",
+            "category": "Etiología",
+            "card_text": "E) Virus Varicela-Zóster (VHH-3): Familia Herpesviridae, virus con capacidad de latencia en ganglios nerviosos.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
-                "vazquez_comment": "Castillo: Correcto. No olvides que puede reactivarse como Herpes Z�\u0000³ster."
+                "vazquez_comment": "Castillo: Correcto. No olvides que puede reactivarse como Herpes Zóster."
             }
         },
         {
             "card_id": "c_6",
             "ui_icon": "test-tube",
-            "category": "Diagn�\u0000³stico",
-            "card_text": "F) Citodiagn�\u0000³stico de Tzanck: Hallazgo de c�\u0000©lulas gigantes multinucleadas con inclusiones intranucleares.",
+            "category": "Diagnóstico",
+            "card_text": "F) Citodiagnóstico de Tzanck: Hallazgo de células gigantes multinucleadas con inclusiones intranucleares.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
                 "error_type": "omission",
-                "vazquez_comment": "Castillo: Bien, aunque el diagn�\u0000³stico suele ser cl�\u0000­nico, el Tzanck es un dato hist�\u0000³rico-m�\u0000©dico com�\u0000ºn."
+                "vazquez_comment": "Castillo: Bien, aunque el diagnóstico suele ser clínico, el Tzanck es un dato histórico-médico común."
             }
         },
         {
             "card_id": "c_7",
             "ui_icon": "thermometer",
             "category": "meds",
-            "card_text": "G) Paracetamol y Antihistam�\u0000­nicos: Control de fiebre y prurito para evitar el rascado y sobreinfecci�\u0000³n.",
+            "card_text": "G) Paracetamol y Antihistamínicos: Control de fiebre y prurito para evitar el rascado y sobreinfección.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -101,12 +101,12 @@
             "card_id": "c_8",
             "ui_icon": "alert-circle",
             "category": "meds",
-            "card_text": "H) Cerebelitis / Ataxia Cerebelosa Aguda: Complicaci�\u0000³n neurol�\u0000³gica frecuente en ni�\u0000±os (pron�\u0000³stico favorable).",
+            "card_text": "H) Cerebelitis / Ataxia Cerebelosa Aguda: Complicación neurológica frecuente en niños (pronóstico favorable).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
-                "vazquez_comment": "Castillo: �\u0000¡Excelente! La ataxia tras varicela es una pregunta cl�\u0000¡sica."
+                "vazquez_comment": "Castillo: ¡Excelente! La ataxia tras varicela es una pregunta clásica."
             }
         },
         {
@@ -118,19 +118,19 @@
             "scoring": {
                 "points": 50,
                 "error_type": "omission",
-                "vazquez_comment": "Castillo: La prevenci�\u0000³n es fundamental para evitar brotes escolares."
+                "vazquez_comment": "Castillo: La prevención es fundamental para evitar brotes escolares."
             }
         },
         {
             "card_id": "c_10",
             "ui_icon": "pill",
             "category": "meds",
-            "card_text": "J) Aciclovir Oral de Rutina: Administrar a todo paciente inmunocompetente menor de 12 a�\u0000±os con varicela no complicada.",
+            "card_text": "J) Aciclovir Oral de Rutina: Administrar a todo paciente inmunocompetente menor de 12 años con varicela no complicada.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Castillo: �\u0000¡No! El aciclovir solo se indica si hay riesgo (mayores de 12 a�\u0000±os, enfermedad pulmonar cr�\u0000³nica o uso de esteroides)."
+                "vazquez_comment": "Castillo: ¡No! El aciclovir solo se indica si hay riesgo (mayores de 12 años, enfermedad pulmonar crónica o uso de esteroides)."
             }
         },
         {
@@ -142,7 +142,7 @@
             "scoring": {
                 "points": 150,
                 "error_type": "lethal_hazard",
-                "vazquez_comment": "Castillo: �\u0000¡CR�\u0000TICO! El uso de salicilatos en varicela e influenza se asocia a S�\u0000­ndrome de Reye (insuficiencia hep�\u0000¡tica hep�\u0000¡tica aguda)."
+                "vazquez_comment": "Castillo: ¡CRÍTICO! El uso de salicilatos en varicela e influenza se asocia a Síndrome de Reye (insuficiencia hepática hepática aguda)."
             },
             "safety_flags": {
                 "lethal_risk": true,
@@ -152,36 +152,36 @@
     ],
     "enarm_pearl": {
         "title": "Varicela: Pleomorfismo y Reye",
-        "text": "Clave: Lesiones en todos los estadios (Cielo estrellado). Nunca des Aspirina (S�\u0000­ndrome de Reye) ni Ibuprofeno (Infecci�\u0000³n de tejidos blandos).",
-        "gpc_ref": "GPC Diagn�\u0000³stico y Tratamiento de la Varicela en el Paciente Pedi�\u0000¡trico"
+        "text": "Clave: Lesiones en todos los estadios (Cielo estrellado). Nunca des Aspirina (Síndrome de Reye) ni Ibuprofeno (Infección de tejidos blandos).",
+        "gpc_ref": "GPC Diagnóstico y Tratamiento de la Varicela en el Paciente Pediátrico"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
             {
-                "question": "�\u0000¿Cu�\u0000¡l es el hallazgo dermatol�\u0000³gico patognom�\u0000³nico de la varicela?",
+                "question": "¿Cuál es el hallazgo dermatológico patognomónico de la varicela?",
                 "options": [
-                    "Pleomorfismo regional (m�\u0000¡cula a costra)",
-                    "Exantema monom�\u0000³rfico centr�\u0000­fugo",
+                    "Pleomorfismo regional (mácula a costra)",
+                    "Exantema monomórfico centrífugo",
                     "Manchas de Forchheimer"
                 ],
                 "correct_index": 0
             },
             {
-                "question": "�\u0000¿Cu�\u0000¡l es la complicaci�\u0000³n neurol�\u0000³gica m�\u0000¡s frecuente en ni�\u0000±os con varicela?",
+                "question": "¿Cuál es la complicación neurológica más frecuente en niños con varicela?",
                 "options": [
                     "Ataxia cerebelosa aguda",
-                    "Encefalitis por inclusi�\u0000³n",
+                    "Encefalitis por inclusión",
                     "Mielitis transversa"
                 ],
                 "correct_index": 0
             },
             {
-                "question": "�\u0000¿Qu�\u0000© medicamento est�\u0000¡ estrictamente contraindicado en varicela pedi�\u0000¡trica por riesgo de S. de Reye?",
+                "question": "¿Qué medicamento está estrictamente contraindicado en varicela pediátrica por riesgo de S. de Reye?",
                 "options": [
                     "Aciclovir",
                     "Paracetamol",
-                    "�\u0000cido Acetilsalic�\u0000­lico"
+                    "Ácido Acetilsalicílico"
                 ],
                 "correct_index": 2
             }
