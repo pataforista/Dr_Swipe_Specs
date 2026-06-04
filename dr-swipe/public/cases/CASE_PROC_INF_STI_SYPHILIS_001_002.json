@@ -18,7 +18,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: Paciente estable. Analicemos la lesión."
+                "vazquez_comment": "Navarro: Paciente estable. Analicemos la lesión."
             }
         },
         {
@@ -46,7 +46,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Ducreyi duele (Do-cry)."
+                "vazquez_comment": "Navarro: ¡Bien! Ducreyi duele (Do-cry)."
             }
         }
     ],

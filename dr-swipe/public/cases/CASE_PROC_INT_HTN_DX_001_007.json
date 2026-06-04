@@ -18,7 +18,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en signos estables, R1. El reloj no se detiene."
+                "vazquez_comment": "No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
@@ -46,7 +46,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! Diferenciaste el fenómeno de bata blanca de una HAS real."
+                "vazquez_comment": "¡Bien! Diferenciaste el fenómeno de bata blanca de una HAS real."
             },
             "safety_flags": {
                 "lethal_risk": false,

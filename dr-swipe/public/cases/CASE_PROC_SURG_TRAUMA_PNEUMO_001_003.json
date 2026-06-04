@@ -76,5 +76,10 @@
                 "correct_index": 0
             }
         ]
+    },
+    "enarm_pearl": {
+        "title": "ATLS 10ª: Neumotórax a Tensión",
+        "text": "Diagnóstico CLÍNICO, no radiográfico: no esperes la placa. Descompresión inmediata con aguja gruesa en el 5° espacio intercostal, línea axilar anterior o media (mismo sitio del tubo de tórax, según ATLS 10ª ed.), seguida de toracostomía con sonda.",
+        "gpc_ref": "Manual ATLS 10ª Edición"
     }
 }

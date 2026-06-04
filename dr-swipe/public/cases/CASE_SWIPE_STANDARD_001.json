@@ -215,11 +215,6 @@
             }
         ]
     },
-    "perla_enarm": {
-        "title": "Hemorragia de Tubo Digestivo Alto por AINEs",
-        "text": "La tríada: melena + TA baja + FC elevada + uso de AINEs es la presentación clásica de úlcera péptica complicada con hemorragia. La GPC indica IBP IV (pantoprazol 80 mg bolo + infusión 8 mg/h) y endoscopia urgente dentro de 24h como estándar de oro. El score de Glasgow-Blatchford predice necesidad de intervención. Transfundir si Hb < 7 g/dL o inestabilidad hemodinámica persistente.",
-        "gpc_ref": "GPC IMSS-188-09: Diagnóstico y Tratamiento de la Hemorragia de Tubo Digestivo Alto"
-    },
     "enarm_pearl": {
         "title": "Hemorragia de Tubo Digestivo Alto (HTDA) por AINEs",
         "text": "Hemorragia de tubo digestivo alto = origen proximal al ángulo de Treitz. Melena (sangre digerida negra/alquitranada) orienta a HTDA. AINEs + anticoagulantes = principal causa de úlcera péptica hemorrágica. Manejo: Estabilización → Endoscopía en <24 horas.",

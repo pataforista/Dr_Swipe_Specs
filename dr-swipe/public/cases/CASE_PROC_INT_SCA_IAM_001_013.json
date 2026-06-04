@@ -18,7 +18,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+                "vazquez_comment": "No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
             }
         },
         {
@@ -47,7 +47,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! Los biomarcadores y el ECG confirmaron el infarto."
+                "vazquez_comment": "¡Bien! Los biomarcadores y el ECG confirmaron el infarto."
             },
             "safety_flags": {
                 "lethal_risk": false,

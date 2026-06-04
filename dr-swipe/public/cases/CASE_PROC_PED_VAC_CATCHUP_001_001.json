@@ -18,7 +18,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Falso! Una infección leve (catarro) NO es contraindicación para vacunar. No pierdas oportunidades."
+                "vazquez_comment": "Castillo: ¡Falso! Una infección leve (catarro) NO es contraindicación para vacunar. No pierdas oportunidades."
             }
         },
         {
@@ -30,7 +30,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Las guías 2024 son taxativas: la protección debe completarse lo antes posible."
+                "vazquez_comment": "Castillo: ¡Bien! Las guías 2024 son taxativas: la protección debe completarse lo antes posible."
             }
         },
         {
@@ -54,7 +54,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. En el ENARM debes basarte en el esquema oficial de la Cartilla Nacional de Salud."
+                "vazquez_comment": "Castillo: Correcto. En el ENARM debes basarte en el esquema oficial de la Cartilla Nacional de Salud."
             }
         },
         {

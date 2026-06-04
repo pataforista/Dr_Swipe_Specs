@@ -69,12 +69,12 @@
             "card_id": "c_4",
             "ui_icon": "droplet",
             "category": "Manejo Síntomas",
-            "card_text": "D) Furosemida (Diurético de Asa): Tratamiento de elección para el control de la congestión y el edema.",
-            "expected_action": "discard",
+            "card_text": "D) Furosemida (Diurético de Asa): Tratamiento de elección para el alivio de la congestión y el edema. Mejora los síntomas, pero no modifica la mortalidad.",
+            "expected_action": "keep",
             "scoring": {
                 "points": 100,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Esto es puro ruido, R1. Concéntrate en la patología de base."
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Bien, R1. En un paciente congestivo el diurético de asa alivia la disnea y el edema. Ojo: mejora síntomas, pero quien cambia el pronóstico son los Cuatro Fantásticos."
             }
         },
         {

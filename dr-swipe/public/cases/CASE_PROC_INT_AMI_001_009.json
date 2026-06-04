@@ -18,7 +18,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
+                "vazquez_comment": "No te detengas en estos signos de severidad, R1. El reloj no se detiene."
             }
         },
         {
@@ -46,7 +46,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Ojo clínico! El dolor reproducible a la palpación casi siempre descarta origen isquémico clásico, aquí el dolor es visceral."
+                "vazquez_comment": "¡Ojo clínico! El dolor reproducible a la palpación casi siempre descarta origen isquémico clásico, aquí el dolor es visceral."
             },
             "safety_flags": {
                 "lethal_risk": false,

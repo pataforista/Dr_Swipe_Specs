@@ -130,7 +130,7 @@
             "card_id": "c_8",
             "ui_icon": "alert-circle",
             "category": "Breathing",
-            "card_text": "Evidencia: H) Diagnóstico Clínico (PNT): El Neumotórax a Tensión se diagnostica con la CLíNICA. Nunca retraces el tratamiento por Rayos X.",
+            "card_text": "Evidencia: H) Diagnóstico Clínico (PNT): El Neumotórax a Tensión se diagnostica con la CLÍNICA. Nunca retraces el tratamiento por Rayos X.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -145,7 +145,7 @@
     ],
     "enarm_pearl": {
         "title": "ATLS 10: ABCDE y PNT",
-        "text": "PNT: Dx CLíNICO. Punción: 5° Espacio (Axilar). Resucitación: 1L de Hartmann. Tríada Muerte: Acidosis, Coagulopatía, Hipotermia.",
+        "text": "PNT: Dx CLÍNICO. Punción: 5° Espacio (Axilar). Resucitación: 1L de Hartmann. Tríada Muerte: Acidosis, Coagulopatía, Hipotermia.",
         "gpc_ref": "Standard ATLS 10th Edition / GPC Manejo del Trauma Grave"
     },
     "boss_fight_triad": {

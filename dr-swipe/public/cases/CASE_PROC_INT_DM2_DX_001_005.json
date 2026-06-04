@@ -18,7 +18,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en signos estables, R1. El reloj no se detiene."
+                "vazquez_comment": "No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
@@ -46,7 +46,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! Reconociste que ya es un cuadro franco de Diabetes."
+                "vazquez_comment": "¡Bien! Reconociste que ya es un cuadro franco de Diabetes."
             },
             "safety_flags": {
                 "lethal_risk": false,

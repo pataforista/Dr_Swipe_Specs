@@ -18,7 +18,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "omission",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en estos signos de fiebre, R1. El reloj no se detiene."
+                "vazquez_comment": "Navarro: No te detengas en estos signos de fiebre, R1. El reloj no se detiene."
             }
         },
         {
@@ -47,7 +47,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Diferenciaste la meningitis bacteriana de la viral/encefalitis."
+                "vazquez_comment": "Navarro: ¡Bien! Diferenciaste la meningitis bacteriana de la viral/encefalitis."
             },
             "safety_flags": {
                 "lethal_risk": false,

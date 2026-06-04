@@ -18,7 +18,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en signos estables, R1. El reloj no se detiene."
+                "vazquez_comment": "No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
@@ -47,7 +47,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! El ST elevado marca la pauta de tratamiento invasivo inmediato."
+                "vazquez_comment": "¡Bien! El ST elevado marca la pauta de tratamiento invasivo inmediato."
             },
             "safety_flags": {
                 "lethal_risk": false,

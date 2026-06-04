@@ -215,11 +215,6 @@
             }
         ]
     },
-    "perla_enarm": {
-        "title": "Urosepsis — Choque Séptico de Foco Urinario",
-        "text": "El choque séptico se define por hipotensión refractaria a fluidos (≥30 mL/kg) + lactato >2 mmol/L (Sepsis-3). El bundle de 1 hora de la SSC incluye: hemocultivos, antibióticos, 30 mL/kg de cristaloides y lactato. Norepinefrina es el vasopresor de primera línea. Metformina está CONTRAINDICADA en sepsis con disfunción renal por riesgo de acidosis láctica. Pielonefritis complicada + bacteriemia = urosepsis.",
-        "gpc_ref": "GPC IMSS-481-11: Diagnóstico y Tratamiento de Sepsis Grave y Choque Séptico — Surviving Sepsis Campaign 2021"
-    },
     "enarm_pearl": {
         "title": "Urosepsis / Choque Séptico de Foco Urinario",
         "text": "Urosepsis = Sepsis + foco urinario. Criterios de choque: TA <90/60 refractaria + lactato >2 mmol/L. Manejo: Hemocultivos → Antibióticos de amplio espectro <1 hora → Líquidos 30 mL/kg → UCI. No retrasar antibióticos por esperar cultivos.",

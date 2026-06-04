@@ -215,11 +215,6 @@
             }
         ]
     },
-    "perla_enarm": {
-        "title": "Abordaje de Fatiga en Primera Consulta",
-        "text": "La fatiga sin signos de alarma (sin fiebre, pérdida de peso, sangrado o anemia) en paciente joven con signos vitales estables permite un abordaje conservador. La GPC recomienda seguimiento ambulatorio con instrucciones de alarma antes de iniciar estudios costosos. No toda fatiga requiere hospitalización.",
-        "gpc_ref": "GPC IMSS-015-08: Diagnóstico y Tratamiento de la Fatiga Crónica"
-    },
     "enarm_pearl": {
         "title": "Fatiga Funcional: No Medicalizar al Paciente Sano",
         "text": "Ante un paciente con fatiga, cifras hematológicas normales, TA y FC normales y sin síntomas de alarma (pérdida de peso, fiebre, sudoración nocturna), el diagnóstico más probable es fatiga funcional. El error clásico es pedir batería de estudios innecesarios. El ENARM evalúa la capacidad de NO sobre-medicalizar.",

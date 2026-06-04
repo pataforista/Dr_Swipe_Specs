@@ -18,7 +18,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+                "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
@@ -30,7 +30,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Identificaste que el plan suicida marca la patología."
+                "vazquez_comment": "Navarro: ¡Bien! Identificaste que el plan suicida marca la patología."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -162,7 +162,7 @@
             },
             {
                 "correct_index": 0,
-                "question": "¿Cuál es la conducta inicial MAS IMPORTANTE ante un paciente con depresión mayor y plan suicida estructurado?",
+                "question": "¿Cuál es la conducta inicial MÁS IMPORTANTE ante un paciente con depresión mayor y plan suicida estructurado?",
                 "options": [
                     "Hospitalización psiquiátrica o vigilancia estrecha",
                     "Solicitar estudios de laboratorio para descartar causas orgánicas",

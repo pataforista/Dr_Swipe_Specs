@@ -18,7 +18,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+                "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
             }
         },
         {
@@ -46,7 +46,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Reconocer que el paciente no cumple los criterios de retraso evita derivaciones innecesarias."
+                "vazquez_comment": "Castillo: ¡Bien! Reconocer que el paciente no cumple los criterios de retraso evita derivaciones innecesarias."
             }
         },
         {
@@ -58,7 +58,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. Aunque el screening (M-CHAT-R) es importante, este paciente tiene una interacción social normal para su edad."
+                "vazquez_comment": "Castillo: Correcto. Aunque el screening (M-CHAT-R) es importante, este paciente tiene una interacción social normal para su edad."
             }
         },
         {
@@ -100,7 +100,7 @@
         {
             "card_id": "c_9",
             "ui_icon": "users",
-            "category": "AƒArea Social",
+            "category": "Área Social",
             "card_text": "Hallazgo: I) Juego Simbólico (3 años): Capacidad de representar situaciones (ej. jugar a la comidita o al doctor).",
             "expected_action": "keep",
             "scoring": {

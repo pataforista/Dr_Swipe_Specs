@@ -18,14 +18,14 @@
             "scoring": {
                 "points": 50,
                 "error_type": "omission",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+                "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "Evidencia: A) Laringotraqueítis (CRUP): Virus Parainfluenza tipe 1 y 3. Triada: Tos traqueal, estridor e hiponía.",
+            "card_text": "Evidencia: A) Laringotraqueítis (CRUP): Virus Parainfluenza tipo 1 y 3. Triada: Tos traqueal, estridor e hiponía.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_3",
             "ui_icon": "clipboard",
             "category": "Escalas",
-            "card_text": "Evidencia clínica: C) Escala de Westley: Aƒátil para clasificar la severidad. Leve (A¢a€°A¤2), Moderada (3-7), Grave (A¢a€°A¥8).",
+            "card_text": "Evidencia clínica: C) Escala de Westley: Útil para clasificar la severidad. Leve (≤2), Moderada (3-7), Grave (≥8).",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -82,7 +82,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Cuidado! El Crup es predominantemente viral (Parainfluenza). Los antibióticos no tienen rol aquí."
+                "vazquez_comment": "Castillo: ¡Cuidado! El Crup es predominantemente viral (Parainfluenza). Los antibióticos no tienen rol aquí."
             }
         },
         {

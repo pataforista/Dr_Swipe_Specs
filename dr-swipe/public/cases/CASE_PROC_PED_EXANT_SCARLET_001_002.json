@@ -18,7 +18,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "omission",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+                "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
             }
         },
         {
@@ -46,7 +46,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Aunque ambos pueden tener 'lengua en fresa', Kawasaki no tiene faringitis exudativa ni líneas de Pastia típicas."
+                "vazquez_comment": "Castillo: ¡Bien! Aunque ambos pueden tener 'lengua en fresa', Kawasaki no tiene faringitis exudativa ni líneas de Pastia típicas."
             }
         },
         {
@@ -58,7 +58,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. El sarampión no tiene la textura de 'lija' característica de la escarlatina."
+                "vazquez_comment": "Castillo: Correcto. El sarampión no tiene la textura de 'lija' característica de la escarlatina."
             }
         },
         {
@@ -158,7 +158,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡No! Aún no existe una vacuna comercial disponible para el Parvovirus B19."
+                "vazquez_comment": "Castillo: ¡No! Aún no existe una vacuna comercial disponible para el Parvovirus B19."
             }
         }
     ],
