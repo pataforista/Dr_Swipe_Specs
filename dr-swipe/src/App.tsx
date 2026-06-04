@@ -34,7 +34,7 @@ const isSwipeCorrect = (direction: 'left' | 'right', expectedAction: 'keep' | 'd
 
 export function App() {
   const [state, send] = useMachine(gameMachine);
-  const { playFeedback, startTriageAlarm, stopTriageAlarm } = useGameAudio();
+  const { playFeedback, stopTriageAlarm } = useGameAudio();
   const [currentCase, setCurrentCase] = useState<ClinicalCase | null>(null);
   const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak } = useCodexStore();
   const timeLimitRef = useRef<number>(60);
@@ -203,11 +203,6 @@ export function App() {
     setSwipeFeedback(isCorrect ? 'correct' : 'wrong');
     triggerHaptic(isCorrect ? 'criticalSuccess' : 'warning');
     send({ type: 'SWIPE', direction });
-    
-    // Update Vazquez Feedback immediately on swipe
-    const lastFeedback = state.context.feedbackHistory[state.context.feedbackHistory.length - 1];
-    // Note: Since 'send' is async in terms of context update, we might need to wait for the next render
-    // or use the 'isCorrect' calculated here.
     setTimeout(() => setSwipeFeedback(null), 2000);
   };
 

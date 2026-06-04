@@ -9,8 +9,8 @@ interface LootScreenProps {
   onContinue: () => void;
 }
 
-export const LootScreen: React.FC<LootScreenProps> = ({ 
-  score, xpTotal, coins, isPerfect, onContinue 
+export const LootScreen: React.FC<LootScreenProps> = ({
+  score, coins, isPerfect, onContinue
 }) => {
   return (
     <motion.div 
