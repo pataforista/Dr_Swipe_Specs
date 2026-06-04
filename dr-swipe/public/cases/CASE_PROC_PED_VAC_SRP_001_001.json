@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "vac",
+                "srp"
+            ]
         },
         {
             "card_id": "c_2",

@@ -19,7 +19,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Cuidado con esa saturacion! Valentina necesita atencion inmediata."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "pneumonia"
+            ]
         },
         {
             "card_id": "c_1",
@@ -35,7 +40,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "pneumonia"
+            ]
         },
         {
             "card_id": "c_2",
@@ -47,7 +57,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Pneumococo es el rey! Siempre hay que cubrirlo."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "pneumonia"
+            ]
         },
         {
             "card_id": "c_5",
@@ -59,7 +74,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. En estos casos los macrolidos (Azitromicina) son la eleccion."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "pneumonia"
+            ]
         },
         {
             "card_id": "c_6",
@@ -71,7 +91,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Efectivamente! Ayuda a localizar la lesion y descartar complicaciones (derrame)."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "pneumonia"
+            ]
         },
         {
             "card_id": "c_7",
@@ -83,7 +108,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Excelente ojo clinico! La persistencia de fiebre obliga a re-evaluar."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "pneumonia"
+            ]
         },
         {
             "card_id": "c_8",
@@ -95,7 +125,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Fundamental! La prevencion es la mejor medicina."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "pneumonia"
+            ]
         },
         {
             "card_id": "c_9",
@@ -119,7 +154,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Correcto. Si el nino esta vacunado, no necesitamos cefalosporinas de 3ra generacion de entrada."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "pneumonia"
+            ]
         },
         {
             "card_id": "c_3",
@@ -135,7 +175,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "pneumonia"
+            ]
         },
         {
             "card_id": "c_4",
@@ -151,7 +196,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "pneumonia"
+            ]
         }
     ],
     "enarm_pearl": {

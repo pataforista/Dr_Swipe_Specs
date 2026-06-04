@@ -43,7 +43,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Correcto! El EKG debe tomarse e interpretarse en los primeros 10 minutos de contacto."
-            }
+            },
+            "related_diagnoses": [
+                "card",
+                "sca",
+                "iamcest"
+            ]
         },
         {
             "card_id": "pad_004",
@@ -55,7 +60,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Excelente! Recuerda: el tiempo es músculo miocárdico."
-            }
+            },
+            "related_diagnoses": [
+                "card",
+                "sca",
+                "iamcest"
+            ]
         },
         {
             "card_id": "pad_008",
@@ -67,7 +77,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Correcto! Si falla, debemos considerar una ICP de rescate inmediata."
-            }
+            },
+            "related_diagnoses": [
+                "card",
+                "sca",
+                "iamcest"
+            ]
         },
         {
             "card_id": "pad_009",
@@ -79,7 +94,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Excelente! Saber la cara del infarto nos ayuda a predecir posibles complicaciones."
-            }
+            },
+            "related_diagnoses": [
+                "card",
+                "sca",
+                "iamcest"
+            ]
         },
         {
             "card_id": "pad_001",
@@ -96,7 +116,12 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
-            }
+            },
+            "related_diagnoses": [
+                "card",
+                "sca",
+                "iamcest"
+            ]
         },
         {
             "card_id": "pad_005",
@@ -112,7 +137,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "card",
+                "sca",
+                "iamcest"
+            ]
         },
         {
             "card_id": "pad_006",
@@ -124,7 +154,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Muy bien! Las estatinas tienen efectos pleiotrópicos beneficiosos en el infarto agudo."
-            }
+            },
+            "related_diagnoses": [
+                "card",
+                "sca",
+                "iamcest"
+            ]
         },
         {
             "card_id": "pad_007",
@@ -140,7 +175,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "card",
+                "sca",
+                "iamcest"
+            ]
         }
     ],
     "enarm_pearl": {

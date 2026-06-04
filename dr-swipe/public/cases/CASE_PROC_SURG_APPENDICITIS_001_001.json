@@ -35,7 +35,11 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "appendicitis"
+            ]
         },
         {
             "card_id": "c_2",
@@ -63,7 +67,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Correcto. La escala de Alvarado es una herramienta clínica fundamental para el triage."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "appendicitis"
+            ]
         },
         {
             "card_id": "c_5",
@@ -75,7 +83,11 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Bien. Aunque el diagnóstico sea clínico, el USG es la primera línea en niños y embarazadas."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "appendicitis"
+            ]
         },
         {
             "card_id": "c_7",
@@ -87,7 +99,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Bien! Es un signo de irritación peritoneal indirecta muy útil."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "appendicitis"
+            ]
         },
         {
             "card_id": "c_8",
@@ -99,7 +115,11 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Correcto. Estos signos nos ayudan a sospechar posiciones atípicas del apéndice."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "appendicitis"
+            ]
         },
         {
             "card_id": "c_9",
@@ -111,7 +131,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Muy bien! En el plastrón, la cirugía inmediata se asocia a mayor riesgo de lesiones intestinales."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "appendicitis"
+            ]
         },
         {
             "card_id": "c_3",
@@ -127,7 +151,11 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "condition": "female"
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "appendicitis"
+            ]
         },
         {
             "card_id": "c_6",
@@ -143,7 +171,11 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "appendicitis"
+            ]
         }
     ],
     "boss_fight_triad": {

@@ -43,7 +43,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Correcto! La hidratación es el primer paso antes de la insulina para estabilizar la presión arterial."
-            }
+            },
+            "related_diagnoses": [
+                "endo",
+                "dm1",
+                "cad"
+            ]
         },
         {
             "card_id": "c_5",
@@ -55,7 +60,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Bien! Recuerda bajar la infusión a la mitad cuando la glucosa llegue a 200 mg/dl."
-            }
+            },
+            "related_diagnoses": [
+                "endo",
+                "dm1",
+                "cad"
+            ]
         },
         {
             "card_id": "c_6",
@@ -67,7 +77,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Muy bien! El cierre de la brecha aniónica es el mejor marcador de resolución de la CAD."
-            }
+            },
+            "related_diagnoses": [
+                "endo",
+                "dm1",
+                "cad"
+            ]
         },
         {
             "card_id": "c_7",
@@ -79,7 +94,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Correcto! La mayoría de los pacientes corrigen la acidosis solo con hidratación e insulina."
-            }
+            },
+            "related_diagnoses": [
+                "endo",
+                "dm1",
+                "cad"
+            ]
         },
         {
             "card_id": "c_8",
@@ -91,7 +111,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Excelente! Solo entonces podemos pasar a un esquema de insulina subcutánea."
-            }
+            },
+            "related_diagnoses": [
+                "endo",
+                "dm1",
+                "cad"
+            ]
         },
         {
             "card_id": "c_9",
@@ -103,7 +128,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Bien. Identificar la causa evita que el paciente vuelva a caer en CAD en 48 horas."
-            }
+            },
+            "related_diagnoses": [
+                "endo",
+                "dm1",
+                "cad"
+            ]
         },
         {
             "card_id": "c_1",
@@ -120,7 +150,12 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
-            }
+            },
+            "related_diagnoses": [
+                "endo",
+                "dm1",
+                "cad"
+            ]
         },
         {
             "card_id": "c_4",
@@ -136,7 +171,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "endo",
+                "dm1",
+                "cad"
+            ]
         }
     ],
     "enarm_pearl": {

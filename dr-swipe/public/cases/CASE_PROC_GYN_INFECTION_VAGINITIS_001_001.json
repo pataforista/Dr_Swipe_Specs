@@ -47,7 +47,12 @@
                 "points": 150,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Las Clue Cells son el dato patognomónico producido por la adherencia de Gardnerella al epitelio."
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "infection",
+                "vaginitis"
+            ]
         },
         {
             "card_id": "c_3",
@@ -59,7 +64,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Muy bien! Es la herramienta diagnóstica estándar en el consultorio."
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "infection",
+                "vaginitis"
+            ]
         },
         {
             "card_id": "c_4",
@@ -71,7 +81,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Excelente! Un puntaje de 7-10 confirma Vaginosis Bacteriana."
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "infection",
+                "vaginitis"
+            ]
         },
         {
             "card_id": "c_5",
@@ -95,7 +110,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! La Vaginosis es un desequilibrio de la flora, no necesariamente una ITS."
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "infection",
+                "vaginitis"
+            ]
         },
         {
             "card_id": "c_7",
@@ -107,7 +127,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Vital! En Tricomoniasis siempre se trata al contacto sexual, aunque sea asintomático."
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "infection",
+                "vaginitis"
+            ]
         },
         {
             "card_id": "c_8",
@@ -119,7 +144,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. Recuerda evitar Fluconazol en el primer trimestre del embarazo."
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "infection",
+                "vaginitis"
+            ]
         },
         {
             "card_id": "c_9",
@@ -131,7 +161,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Excelente! Es una perla visual clásica del examen físico ginecológico."
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "infection",
+                "vaginitis"
+            ]
         },
         {
             "card_id": "c_10",
@@ -143,7 +178,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Excelente nivel! El manejo de la recurrencia es una pregunta clásica de dificultad alta."
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "infection",
+                "vaginitis"
+            ]
         }
     ],
     "enarm_pearl": {

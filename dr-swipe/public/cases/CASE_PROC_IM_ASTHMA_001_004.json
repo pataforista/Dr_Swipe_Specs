@@ -35,7 +35,11 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "im",
+                "asthma"
+            ]
         },
         {
             "card_id": "c_2",
@@ -51,7 +55,11 @@
                     "lethal_risk": false,
                     "decision_critical": true
                 }
-            }
+            },
+            "related_diagnoses": [
+                "im",
+                "asthma"
+            ]
         }
     ],
     "enarm_pearl": {

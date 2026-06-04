@@ -31,7 +31,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Es una de las causas principales de morbi-mortalidad tanto materna como neonatal."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "infection",
+                "corio"
+            ]
         },
         {
             "card_id": "c_2",
@@ -43,7 +48,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Sin fiebre no podemos hablar de Gibbs clínico, aunque existan otros signos."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "infection",
+                "corio"
+            ]
         },
         {
             "card_id": "c_3",
@@ -55,7 +65,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. La taquicardia fetal suele ser el signo más precoz de infección intramniótica."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "infection",
+                "corio"
+            ]
         },
         {
             "card_id": "c_4",
@@ -67,7 +82,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Correcto, aunque es un signo tardío y menos frecuente que la taquicardia."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "infection",
+                "corio"
+            ]
         },
         {
             "card_id": "c_5",
@@ -79,7 +99,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. Es un criterio de apoyo importante, aunque inespecífico en el trabajo de parto."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "infection",
+                "corio"
+            ]
         },
         {
             "card_id": "c_9",
@@ -91,7 +116,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Buen punto! Limitar los tactos es una medida preventiva clave en obstetricia moderna."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "infection",
+                "corio"
+            ]
         },
         {
             "card_id": "c_6",
@@ -107,7 +137,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "infection",
+                "corio"
+            ]
         },
         {
             "card_id": "c_7",
@@ -123,7 +158,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "infection",
+                "corio"
+            ]
         },
         {
             "card_id": "c_8",
@@ -135,7 +175,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. Por eso se indica profilaxis antibiótica tras las 12-18 horas de ruptura."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "infection",
+                "corio"
+            ]
         }
     ],
     "enarm_pearl": {

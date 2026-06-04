@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "obg",
+                "hemorrhage",
+                "hpp"
+            ]
         },
         {
             "card_id": "c_2",
@@ -51,7 +56,12 @@
                     "lethal_risk": true,
                     "decision_critical": true
                 }
-            }
+            },
+            "related_diagnoses": [
+                "obg",
+                "hemorrhage",
+                "hpp"
+            ]
         },
         {
             "card_id": "c_4",
@@ -63,7 +73,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
-            }
+            },
+            "related_diagnoses": [
+                "obg",
+                "hemorrhage",
+                "hpp"
+            ]
         },
         {
             "card_id": "c_5",
@@ -75,7 +90,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
-            }
+            },
+            "related_diagnoses": [
+                "obg",
+                "hemorrhage",
+                "hpp"
+            ]
         },
         {
             "card_id": "c_6",
@@ -87,7 +107,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Claramente la medicina no es lo tuyo. Ese dato era VITAL."
-            }
+            },
+            "related_diagnoses": [
+                "obg",
+                "hemorrhage",
+                "hpp"
+            ]
         },
         {
             "card_id": "c_7",
@@ -99,7 +124,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
-            }
+            },
+            "related_diagnoses": [
+                "obg",
+                "hemorrhage",
+                "hpp"
+            ]
         },
         {
             "card_id": "c_8",
@@ -111,7 +141,12 @@
                 "points": 150,
                 "error_type": "omission",
                 "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
-            }
+            },
+            "related_diagnoses": [
+                "obg",
+                "hemorrhage",
+                "hpp"
+            ]
         },
         {
             "card_id": "c_9",
@@ -123,7 +158,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Claramente la medicina no es lo tuyo. Ese dato era VITAL."
-            }
+            },
+            "related_diagnoses": [
+                "obg",
+                "hemorrhage",
+                "hpp"
+            ]
         },
         {
             "card_id": "c_10",
@@ -135,7 +175,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
-            }
+            },
+            "related_diagnoses": [
+                "obg",
+                "hemorrhage",
+                "hpp"
+            ]
         },
         {
             "card_id": "c_3",
@@ -151,7 +196,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "obg",
+                "hemorrhage",
+                "hpp"
+            ]
         }
     ],
     "enarm_pearl": {

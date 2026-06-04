@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "im",
+                "heart",
+                "failure"
+            ]
         },
         {
             "card_id": "c_2",
@@ -47,7 +52,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Correcto! Si es normal, es muy poco probable que sea IC."
-            }
+            },
+            "related_diagnoses": [
+                "im",
+                "heart",
+                "failure"
+            ]
         }
     ],
     "enarm_pearl": {

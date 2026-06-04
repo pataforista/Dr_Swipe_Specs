@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "htn",
+                "dx"
+            ]
         },
         {
             "card_id": "c_2",
@@ -71,7 +76,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Exacto! No hace falta esperar a una segunda cita si el paciente ya está en crisis o con daño."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "htn",
+                "dx"
+            ]
         },
         {
             "card_id": "c_5",
@@ -83,7 +93,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Bien. Estas medidas pueden reducir la TAS hasta 10-15 mmHg."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "htn",
+                "dx"
+            ]
         },
         {
             "card_id": "c_7",
@@ -95,7 +110,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Correcto. No requiere hospitalización ni fármacos intravenosos de entrada."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "htn",
+                "dx"
+            ]
         },
         {
             "card_id": "c_9",
@@ -107,7 +127,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Perfecto! El control estrecho previene complicaciones crónicas nefrológicas y cardiacas."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "htn",
+                "dx"
+            ]
         },
         {
             "card_id": "c_6",
@@ -123,7 +148,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "htn",
+                "dx"
+            ]
         },
         {
             "card_id": "c_8",
@@ -139,7 +169,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "htn",
+                "dx"
+            ]
         }
     ],
     "enarm_pearl": {

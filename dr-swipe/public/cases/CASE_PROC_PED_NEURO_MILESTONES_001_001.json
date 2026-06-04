@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neuro",
+                "milestones"
+            ]
         },
         {
             "card_id": "c_2",
@@ -71,7 +76,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Muy bien! Es uno de los primeros y más importantes hitos del área social."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neuro",
+                "milestones"
+            ]
         },
         {
             "card_id": "c_6",
@@ -83,7 +93,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Exacto! Indica maduración de la coordinación óculo-manual avanzada."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neuro",
+                "milestones"
+            ]
         },
         {
             "card_id": "c_8",
@@ -95,7 +110,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. A los 2 años el niño debe tener un vocabulario de unas 50 palabras y formar frases sencillas."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neuro",
+                "milestones"
+            ]
         },
         {
             "card_id": "c_9",
@@ -107,7 +127,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Indica un desarrollo cognitivo y social acorde a la edad preescolar."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neuro",
+                "milestones"
+            ]
         },
         {
             "card_id": "c_5",
@@ -123,7 +148,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neuro",
+                "milestones"
+            ]
         },
         {
             "card_id": "c_7",
@@ -139,7 +169,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neuro",
+                "milestones"
+            ]
         }
     ],
     "enarm_pearl": {

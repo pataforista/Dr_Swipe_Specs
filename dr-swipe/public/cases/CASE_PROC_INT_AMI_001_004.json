@@ -47,7 +47,11 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         },
         {
             "card_id": "c_2",
@@ -75,7 +79,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Bien. La piedra angular del tratamiento farmacológico inicial."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         },
         {
             "card_id": "c_6",
@@ -87,7 +95,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Bien! Es el predictor pronóstico clínico más utilizado en el SCACEST."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         },
         {
             "card_id": "c_9",
@@ -99,7 +111,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Bien. Ayuda a 'vaciar' el pulmón desplazando el volumen hacia el sistema venoso."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         },
         {
             "card_id": "c_3",
@@ -131,7 +147,11 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         },
         {
             "card_id": "c_7",
@@ -143,7 +163,11 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Correcto. Representa al paciente estable sin compromiso hemodinámico notable."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         }
     ],
     "enarm_pearl": {

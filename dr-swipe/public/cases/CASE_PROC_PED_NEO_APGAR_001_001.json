@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neo",
+                "apgar"
+            ]
         },
         {
             "card_id": "c_2",
@@ -47,7 +52,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! El Silverman es preventivo: 1-3 leve, 4-6 moderada, >7 grave."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neo",
+                "apgar"
+            ]
         },
         {
             "card_id": "c_3",
@@ -71,7 +81,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Muy bien! Si el pecho no se expande con VPP, debemos corregir antes de avanzar."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neo",
+                "apgar"
+            ]
         },
         {
             "card_id": "c_8",
@@ -83,7 +98,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. La sincronizacion es clave para asegurar la perfusion y oxigenacion simultanea."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neo",
+                "apgar"
+            ]
         },
         {
             "card_id": "c_4",
@@ -99,7 +119,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neo",
+                "apgar"
+            ]
         },
         {
             "card_id": "c_5",
@@ -115,7 +140,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neo",
+                "apgar"
+            ]
         },
         {
             "card_id": "c_7",
@@ -131,7 +161,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neo",
+                "apgar"
+            ]
         },
         {
             "card_id": "c_9",
@@ -147,7 +182,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neo",
+                "apgar"
+            ]
         }
     ],
     "enarm_pearl": {

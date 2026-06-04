@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "orl",
+                "otitis",
+                "media"
+            ]
         },
         {
             "card_id": "c_2",
@@ -47,7 +52,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Excelente! Si la membrana no está abombada, el diagnóstico de OMA es dudoso."
-            }
+            },
+            "related_diagnoses": [
+                "orl",
+                "otitis",
+                "media"
+            ]
         },
         {
             "card_id": "c_3",
@@ -59,7 +69,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Muy bien! El 'Big Three' de la OMA."
-            }
+            },
+            "related_diagnoses": [
+                "orl",
+                "otitis",
+                "media"
+            ]
         },
         {
             "card_id": "c_4",
@@ -75,7 +90,12 @@
                     "lethal_risk": true,
                     "decision_critical": true
                 }
-            }
+            },
+            "related_diagnoses": [
+                "orl",
+                "otitis",
+                "media"
+            ]
         },
         {
             "card_id": "c_5",
@@ -87,7 +107,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Bien pensado! Cubrimos las beta-lactamasas del H. influenzae."
-            }
+            },
+            "related_diagnoses": [
+                "orl",
+                "otitis",
+                "media"
+            ]
         },
         {
             "card_id": "c_6",
@@ -103,7 +128,12 @@
                     "lethal_risk": true,
                     "decision_critical": true
                 }
-            }
+            },
+            "related_diagnoses": [
+                "orl",
+                "otitis",
+                "media"
+            ]
         },
         {
             "card_id": "c_7",
@@ -115,7 +145,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. La prevención empieza con cambios en el entorno del niño."
-            }
+            },
+            "related_diagnoses": [
+                "orl",
+                "otitis",
+                "media"
+            ]
         },
         {
             "card_id": "c_8",
@@ -127,7 +162,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Excelente! Evitar el uso innecesario de antibióticos es medicina de calidad."
-            }
+            },
+            "related_diagnoses": [
+                "orl",
+                "otitis",
+                "media"
+            ]
         },
         {
             "card_id": "c_9",
@@ -139,7 +179,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Mide la movilidad de la membrana timpánica."
-            }
+            },
+            "related_diagnoses": [
+                "orl",
+                "otitis",
+                "media"
+            ]
         },
         {
             "card_id": "c_10",

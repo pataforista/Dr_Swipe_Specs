@@ -43,7 +43,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Correcto! Es el signo radiológico clásico que localiza la obstrucción en el intestino delgado."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "obstruction"
+            ]
         },
         {
             "card_id": "c_3",
@@ -55,7 +59,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Muy bien! Indican que el tránsito intestinal está completamente detenido."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "obstruction"
+            ]
         },
         {
             "card_id": "c_4",
@@ -67,7 +75,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Exacto! Siempre pregunta por cirugías previas ante un cuadro de abdomen agudo obstructivo."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "obstruction"
+            ]
         },
         {
             "card_id": "c_5",
@@ -79,7 +91,11 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Bien. Es un signo de gravedad que sugiere que el cuadro lleva varias horas o días."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "obstruction"
+            ]
         },
         {
             "card_id": "c_7",
@@ -91,7 +107,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Correcto! Muchos casos de bridas resuelven con reposo intestinal sin necesidad de quirófano."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "obstruction"
+            ]
         },
         {
             "card_id": "c_8",
@@ -103,7 +123,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Excelente! La tomografía es clave para decidir si el paciente requiere cirugía urgente."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "obstruction"
+            ]
         },
         {
             "card_id": "c_10",
@@ -115,7 +139,11 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Bien. La profilaxis preoperatoria reduce drásticamente la infección de sitio quirúrgico."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "obstruction"
+            ]
         },
         {
             "card_id": "c_6",
@@ -131,7 +159,11 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "obstruction"
+            ]
         },
         {
             "card_id": "c_9",
@@ -147,7 +179,11 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "obstruction"
+            ]
         }
     ],
     "enarm_pearl": {

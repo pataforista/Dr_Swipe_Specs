@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "stats",
+                "dx",
+                "metrics"
+            ]
         },
         {
             "card_id": "c_2",
@@ -47,7 +52,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Bien! Es la métrica que más le importa al clínico en el consultorio."
-            }
+            },
+            "related_diagnoses": [
+                "stats",
+                "dx",
+                "metrics"
+            ]
         },
         {
             "card_id": "c_3",
@@ -59,7 +69,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Exacto! Una prueba muy sensible es ideal para el tamizaje (screening) porque da pocos Falsos Negativos."
-            }
+            },
+            "related_diagnoses": [
+                "stats",
+                "dx",
+                "metrics"
+            ]
         },
         {
             "card_id": "c_4",
@@ -71,7 +86,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Correcto! Una prueba muy específica es ideal para confirmar un diagnóstico (SpPIn)."
-            }
+            },
+            "related_diagnoses": [
+                "stats",
+                "dx",
+                "metrics"
+            ]
         },
         {
             "card_id": "c_5",
@@ -83,7 +103,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Muy bien. Esta es una pregunta clásica del ENARM que muchos fallan."
-            }
+            },
+            "related_diagnoses": [
+                "stats",
+                "dx",
+                "metrics"
+            ]
         },
         {
             "card_id": "c_6",
@@ -95,7 +120,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Bien! Es la contraparte del VPP; si casi nadie está enfermo, un negativo es sumamente confiable."
-            }
+            },
+            "related_diagnoses": [
+                "stats",
+                "dx",
+                "metrics"
+            ]
         },
         {
             "card_id": "c_7",
@@ -107,7 +137,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Correcto. Indica cuánto más probable es un resultado positivo en un enfermo que en un sano."
-            }
+            },
+            "related_diagnoses": [
+                "stats",
+                "dx",
+                "metrics"
+            ]
         },
         {
             "card_id": "c_8",
@@ -119,7 +154,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Excelente! Permite comparar la discriminación de diferentes pruebas diagnósticas visualmente."
-            }
+            },
+            "related_diagnoses": [
+                "stats",
+                "dx",
+                "metrics"
+            ]
         },
         {
             "card_id": "c_9",
@@ -131,7 +171,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Perfecto! Es el trade-off fundamental de toda prueba diagnóstica continua."
-            }
+            },
+            "related_diagnoses": [
+                "stats",
+                "dx",
+                "metrics"
+            ]
         }
     ],
     "enarm_pearl": {

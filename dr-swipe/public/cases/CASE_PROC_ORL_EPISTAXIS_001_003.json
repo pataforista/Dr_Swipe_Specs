@@ -35,7 +35,11 @@
                     "lethal_risk": false,
                     "decision_critical": true
                 }
-            }
+            },
+            "related_diagnoses": [
+                "orl",
+                "epistaxis"
+            ]
         },
         {
             "card_id": "c_10",
@@ -59,7 +63,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
-            }
+            },
+            "related_diagnoses": [
+                "orl",
+                "epistaxis"
+            ]
         },
         {
             "card_id": "c_3",
@@ -75,7 +83,11 @@
                     "lethal_risk": true,
                     "decision_critical": true
                 }
-            }
+            },
+            "related_diagnoses": [
+                "orl",
+                "epistaxis"
+            ]
         },
         {
             "card_id": "c_4",
@@ -87,7 +99,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
-            }
+            },
+            "related_diagnoses": [
+                "orl",
+                "epistaxis"
+            ]
         },
         {
             "card_id": "c_5",
@@ -99,7 +115,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
-            }
+            },
+            "related_diagnoses": [
+                "orl",
+                "epistaxis"
+            ]
         },
         {
             "card_id": "c_6",
@@ -111,7 +131,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
-            }
+            },
+            "related_diagnoses": [
+                "orl",
+                "epistaxis"
+            ]
         },
         {
             "card_id": "c_7",
@@ -123,7 +147,11 @@
                 "points": 150,
                 "error_type": "omission",
                 "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
-            }
+            },
+            "related_diagnoses": [
+                "orl",
+                "epistaxis"
+            ]
         },
         {
             "card_id": "c_8",
@@ -135,7 +163,11 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
-            }
+            },
+            "related_diagnoses": [
+                "orl",
+                "epistaxis"
+            ]
         },
         {
             "card_id": "c_9",
@@ -147,7 +179,11 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
-            }
+            },
+            "related_diagnoses": [
+                "orl",
+                "epistaxis"
+            ]
         }
     ],
     "enarm_pearl": {

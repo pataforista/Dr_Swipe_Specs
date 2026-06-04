@@ -47,7 +47,11 @@
                     "lethal_risk": true,
                     "decision_critical": true
                 }
-            }
+            },
+            "related_diagnoses": [
+                "oph",
+                "glaucoma"
+            ]
         },
         {
             "card_id": "c_4",
@@ -59,7 +63,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "López: ¡Muy bien! Romper el bloqueo pupilar es el objetivo mecánico."
-            }
+            },
+            "related_diagnoses": [
+                "oph",
+                "glaucoma"
+            ]
         },
         {
             "card_id": "c_5",
@@ -71,7 +79,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "López: Correcto. Necesitamos números precisos para monitorizar la respuesta."
-            }
+            },
+            "related_diagnoses": [
+                "oph",
+                "glaucoma"
+            ]
         },
         {
             "card_id": "c_6",
@@ -83,7 +95,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "López: ¡Excelente! Se debe realizar de forma profiláctica también en el ojo contralateral."
-            }
+            },
+            "related_diagnoses": [
+                "oph",
+                "glaucoma"
+            ]
         },
         {
             "card_id": "c_7",
@@ -95,7 +111,11 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "López: Bien. Es el glaucoma más frecuente, pero no es una urgencia dolorosa."
-            }
+            },
+            "related_diagnoses": [
+                "oph",
+                "glaucoma"
+            ]
         },
         {
             "card_id": "c_8",
@@ -107,7 +127,11 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "López: Bien. Recuerda siempre los efectos sistémicos de las gotas."
-            }
+            },
+            "related_diagnoses": [
+                "oph",
+                "glaucoma"
+            ]
         },
         {
             "card_id": "c_9",
@@ -119,7 +143,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "López: ¡Perfecto! Es la prueba definitiva para la clasificación anatómica."
-            }
+            },
+            "related_diagnoses": [
+                "oph",
+                "glaucoma"
+            ]
         },
         {
             "card_id": "c_1",
@@ -135,7 +163,11 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "oph",
+                "glaucoma"
+            ]
         },
         {
             "card_id": "c_10",

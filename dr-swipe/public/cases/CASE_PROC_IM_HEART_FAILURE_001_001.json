@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "im",
+                "heart",
+                "failure"
+            ]
         },
         {
             "card_id": "c_2",
@@ -47,7 +52,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Correcto! Si es normal, es muy poco probable que sea IC."
-            }
+            },
+            "related_diagnoses": [
+                "im",
+                "heart",
+                "failure"
+            ]
         },
         {
             "card_id": "c_3",
@@ -63,7 +73,12 @@
                     "lethal_risk": true,
                     "decision_critical": true
                 }
-            }
+            },
+            "related_diagnoses": [
+                "im",
+                "heart",
+                "failure"
+            ]
         },
         {
             "card_id": "c_4",
@@ -87,7 +102,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Correcto. Don Pedro está en una clase NYHA II-III."
-            }
+            },
+            "related_diagnoses": [
+                "im",
+                "heart",
+                "failure"
+            ]
         },
         {
             "card_id": "c_6",
@@ -99,7 +119,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Bien! El metoprolol tartrato NO tiene beneficio en IC crónica."
-            }
+            },
+            "related_diagnoses": [
+                "im",
+                "heart",
+                "failure"
+            ]
         },
         {
             "card_id": "c_8",
@@ -111,7 +136,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Exacto! Es la base de la clasificación moderna de la IC."
-            }
+            },
+            "related_diagnoses": [
+                "im",
+                "heart",
+                "failure"
+            ]
         },
         {
             "card_id": "c_9",
@@ -123,7 +153,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. La educación al paciente es la mitad del éxito."
-            }
+            },
+            "related_diagnoses": [
+                "im",
+                "heart",
+                "failure"
+            ]
         },
         {
             "card_id": "c_10",
@@ -135,7 +170,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Muy bien! Es la punta de lanza del tratamiento actual."
-            }
+            },
+            "related_diagnoses": [
+                "im",
+                "heart",
+                "failure"
+            ]
         },
         {
             "card_id": "c_7",

@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "endo",
+                "cad"
+            ]
         },
         {
             "card_id": "c_2",
@@ -59,7 +64,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Muy bien. La insulina meterá potasio a la célula y los niveles séricos caerán rápidamente."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "endo",
+                "cad"
+            ]
         },
         {
             "card_id": "c_7",
@@ -71,7 +81,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Exacto! No te guíes solo por la glucosa; la resolución de la CAD se define por el equilibrio ácido-base."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "endo",
+                "cad"
+            ]
         },
         {
             "card_id": "c_8",
@@ -95,7 +110,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Bien. Recuerda que la gasometría venosa suele ser suficiente para el seguimiento."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "endo",
+                "cad"
+            ]
         },
         {
             "card_id": "c_3",
@@ -127,7 +147,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "endo",
+                "cad"
+            ]
         },
         {
             "card_id": "c_5",
@@ -143,7 +168,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "endo",
+                "cad"
+            ]
         }
     ],
     "enarm_pearl": {

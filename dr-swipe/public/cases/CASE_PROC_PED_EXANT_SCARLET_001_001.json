@@ -19,7 +19,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "scarlet"
+            ]
         },
         {
             "card_id": "c_1",
@@ -35,7 +40,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "scarlet"
+            ]
         },
         {
             "card_id": "c_2",
@@ -71,7 +81,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Exacto! Primero es lengua 'saburral' (blanca) y luego 'en fresa' (roja)."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "scarlet"
+            ]
         },
         {
             "card_id": "c_5",
@@ -83,7 +98,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Excelente! Es un signo clásico de la toxina eritrogénica."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "scarlet"
+            ]
         },
         {
             "card_id": "c_6",
@@ -95,7 +115,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Muy bien. Otro detalle visual clave en el triage pediátrico."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "scarlet"
+            ]
         },
         {
             "card_id": "c_7",
@@ -107,7 +132,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Correcto. Es la misma bacteria de la faringoamigdalitis estreptocócica."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "scarlet"
+            ]
         },
         {
             "card_id": "c_8",
@@ -123,7 +153,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "scarlet"
+            ]
         },
         {
             "card_id": "c_9",
@@ -135,7 +170,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Por esto nunca descuides el tratamiento completo."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "scarlet"
+            ]
         },
         {
             "card_id": "c_10",
@@ -147,7 +187,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. La infectividad cesa rápidamente tras la primera dosis de penicilina."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "scarlet"
+            ]
         },
         {
             "card_id": "c_11",

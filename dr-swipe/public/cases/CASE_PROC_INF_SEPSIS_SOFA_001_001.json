@@ -31,7 +31,12 @@
                 "error_type": "omission"
             },
             "expected_action": "keep",
-            "category": "Anamnesis"
+            "category": "Anamnesis",
+            "related_diagnoses": [
+                "inf",
+                "sepsis",
+                "sofa"
+            ]
         },
         {
             "card_id": "c_2",
@@ -67,7 +72,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Muy bien! El qSOFA es una herramienta rápida 'a pie de cama' para alertar disfunción orgánica."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "sepsis",
+                "sofa"
+            ]
         },
         {
             "card_id": "c_1",
@@ -84,7 +94,12 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "sepsis",
+                "sofa"
+            ]
         },
         {
             "card_id": "c_5",
@@ -100,7 +115,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "sepsis",
+                "sofa"
+            ]
         },
         {
             "card_id": "c_6",
@@ -116,7 +136,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "sepsis",
+                "sofa"
+            ]
         },
         {
             "card_id": "c_7",
@@ -132,7 +157,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "sepsis",
+                "sofa"
+            ]
         },
         {
             "card_id": "c_8",
@@ -148,7 +178,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "sepsis",
+                "sofa"
+            ]
         },
         {
             "card_id": "c_9",
@@ -164,7 +199,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "sepsis",
+                "sofa"
+            ]
         }
     ],
     "enarm_pearl": {

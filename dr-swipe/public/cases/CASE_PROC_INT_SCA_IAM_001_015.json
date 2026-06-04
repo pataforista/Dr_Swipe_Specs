@@ -36,7 +36,12 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "sca",
+                "iam"
+            ]
         },
         {
             "card_id": "c_2",

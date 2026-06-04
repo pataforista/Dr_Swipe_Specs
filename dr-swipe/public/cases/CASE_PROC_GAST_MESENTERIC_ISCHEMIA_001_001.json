@@ -43,7 +43,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Muy bien! Es el hallazgo clínico más distintivo de la isquemia mesentérica temprana."
-            }
+            },
+            "related_diagnoses": [
+                "gast",
+                "mesenteric",
+                "ischemia"
+            ]
         },
         {
             "card_id": "c_4",
@@ -55,7 +60,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Correcto! La FA genera trombos en la orejuela izquierda que viajan directamente a la circulación mesentérica."
-            }
+            },
+            "related_diagnoses": [
+                "gast",
+                "mesenteric",
+                "ischemia"
+            ]
         },
         {
             "card_id": "c_5",
@@ -67,7 +77,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Excelente! Permite visualizar la luz de los vasos y los signos de sufrimiento intestinal."
-            }
+            },
+            "related_diagnoses": [
+                "gast",
+                "mesenteric",
+                "ischemia"
+            ]
         },
         {
             "card_id": "c_6",
@@ -79,7 +94,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Correcto! Aunque la Angio-TC se usa más habitualmente, la angiografía es la prueba definitiva."
-            }
+            },
+            "related_diagnoses": [
+                "gast",
+                "mesenteric",
+                "ischemia"
+            ]
         },
         {
             "card_id": "c_9",
@@ -91,7 +111,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Bien. Es un signo radiológico ominoso que indica muerte celular en la pared intestinal."
-            }
+            },
+            "related_diagnoses": [
+                "gast",
+                "mesenteric",
+                "ischemia"
+            ]
         },
         {
             "card_id": "c_1",
@@ -108,7 +133,12 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
-            }
+            },
+            "related_diagnoses": [
+                "gast",
+                "mesenteric",
+                "ischemia"
+            ]
         },
         {
             "card_id": "c_7",
@@ -124,7 +154,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "gast",
+                "mesenteric",
+                "ischemia"
+            ]
         },
         {
             "card_id": "c_8",
@@ -140,7 +175,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "gast",
+                "mesenteric",
+                "ischemia"
+            ]
         }
     ],
     "enarm_pearl": {

@@ -35,7 +35,11 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "psych",
+                "mania"
+            ]
         },
         {
             "card_id": "c_2",
@@ -71,7 +75,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Excelente! Es el estandar de oro, aunque hay que vigilar la funcion renal y tiroidea."
-            }
+            },
+            "related_diagnoses": [
+                "psych",
+                "mania"
+            ]
         },
         {
             "card_id": "c_5",
@@ -83,7 +91,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Muy bien! Es una excelente opcion si el litio esta contraindicado."
-            }
+            },
+            "related_diagnoses": [
+                "psych",
+                "mania"
+            ]
         },
         {
             "card_id": "c_6",
@@ -95,7 +107,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Correcto! A menudo se inician en combinacion con el estabilizador."
-            }
+            },
+            "related_diagnoses": [
+                "psych",
+                "mania"
+            ]
         },
         {
             "card_id": "c_8",
@@ -107,7 +123,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Excelente perla ENARM! Siempre realiza prueba de embarazo antes de iniciar litio."
-            }
+            },
+            "related_diagnoses": [
+                "psych",
+                "mania"
+            ]
         },
         {
             "card_id": "c_9",
@@ -119,7 +139,11 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. Nos permite objetivar la mejoria del paciente."
-            }
+            },
+            "related_diagnoses": [
+                "psych",
+                "mania"
+            ]
         },
         {
             "card_id": "c_10",
@@ -131,7 +155,11 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. La prevencion de recaidas es el objetivo a largo plazo."
-            }
+            },
+            "related_diagnoses": [
+                "psych",
+                "mania"
+            ]
         },
         {
             "card_id": "c_7",
@@ -143,7 +171,11 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Vital! El reconocimiento temprano puede salvar la vida del paciente."
-            }
+            },
+            "related_diagnoses": [
+                "psych",
+                "mania"
+            ]
         }
     ],
     "enarm_pearl": {

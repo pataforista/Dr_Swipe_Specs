@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "varicella"
+            ]
         },
         {
             "card_id": "c_2",
@@ -59,7 +64,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Excelente! Es la descripción morfológica clásica de la vesícula por VZV."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "varicella"
+            ]
         },
         {
             "card_id": "c_5",
@@ -71,7 +81,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Correcto. No olvides que puede reactivarse como Herpes Zóster."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "varicella"
+            ]
         },
         {
             "card_id": "c_6",
@@ -83,7 +98,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien, aunque el diagnóstico suele ser clínico, el Tzanck es un dato histórico-médico común."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "varicella"
+            ]
         },
         {
             "card_id": "c_7",
@@ -95,7 +115,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Correcto. Evita el Ibuprofeno, se ha asociado a mayor riesgo de fasciitis necrotizante por S. pyogenes."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "varicella"
+            ]
         },
         {
             "card_id": "c_8",
@@ -107,7 +132,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Excelente! La ataxia tras varicela es una pregunta clásica."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "varicella"
+            ]
         },
         {
             "card_id": "c_9",
@@ -119,7 +149,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: La prevención es fundamental para evitar brotes escolares."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "varicella"
+            ]
         },
         {
             "card_id": "c_10",

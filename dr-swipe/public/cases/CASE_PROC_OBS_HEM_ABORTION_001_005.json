@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "abortion"
+            ]
         },
         {
             "card_id": "c_2",
@@ -71,7 +76,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. Conocer los límites legales y médicos es fundamental en obstetricia."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "abortion"
+            ]
         },
         {
             "card_id": "c_5",
@@ -83,7 +93,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Excelente! Menor tasa de perforaciones que el legrado tradicional."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "abortion"
+            ]
         },
         {
             "card_id": "c_7",
@@ -95,7 +110,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. Siempre bajo vigilancia clínica por el riesgo de dolor y sangrado abundante."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "abortion"
+            ]
         },
         {
             "card_id": "c_9",
@@ -107,7 +127,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! No olvides preguntar el Rh en todo sangrado del primer trimestre."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "abortion"
+            ]
         },
         {
             "card_id": "c_6",
@@ -123,7 +148,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "abortion"
+            ]
         },
         {
             "card_id": "c_8",
@@ -139,7 +169,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "abortion"
+            ]
         }
     ],
     "enarm_pearl": {

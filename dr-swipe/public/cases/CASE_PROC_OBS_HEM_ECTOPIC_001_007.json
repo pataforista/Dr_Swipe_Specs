@@ -43,7 +43,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Es el umbral crítico para correlacionar la clínica con el ultrasonido."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "ectopic"
+            ]
         },
         {
             "card_id": "c_4",
@@ -67,7 +72,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Exacto! Debes cumplir estrictamente estos criterios para evitar fallas en el tratamiento médico."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "ectopic"
+            ]
         },
         {
             "card_id": "c_7",
@@ -79,7 +89,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. Requiere seguimiento posterior de hCG para asegurar que no queden restos trofoblásticos."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "ectopic"
+            ]
         },
         {
             "card_id": "c_8",
@@ -91,7 +106,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Es una 'perla' clásica del ENARM."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "ectopic"
+            ]
         },
         {
             "card_id": "c_9",
@@ -103,7 +123,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Muy bien! El antecedente de EPI aumenta exponencialmente la probabilidad de ectópico."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "ectopic"
+            ]
         },
         {
             "card_id": "c_1",
@@ -120,7 +145,12 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "ectopic"
+            ]
         },
         {
             "card_id": "c_6",
@@ -136,7 +166,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "ectopic"
+            ]
         }
     ],
     "enarm_pearl": {

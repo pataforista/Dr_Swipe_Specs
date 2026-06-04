@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neo",
+                "apgar"
+            ]
         },
         {
             "card_id": "c_2",
@@ -51,7 +56,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neo",
+                "apgar"
+            ]
         },
         {
             "card_id": "c_3",
@@ -63,7 +73,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Bien! Es la herramienta universal para evaluar la transicion extrauterina."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neo",
+                "apgar"
+            ]
         },
         {
             "card_id": "c_4",
@@ -75,7 +90,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Exacto! Memorizar estos 5 puntos es vital para el ENARM."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neo",
+                "apgar"
+            ]
         },
         {
             "card_id": "c_9",
@@ -103,7 +123,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neo",
+                "apgar"
+            ]
         },
         {
             "card_id": "c_6",
@@ -119,7 +144,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neo",
+                "apgar"
+            ]
         },
         {
             "card_id": "c_7",
@@ -135,7 +165,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neo",
+                "apgar"
+            ]
         },
         {
             "card_id": "c_8",
@@ -151,7 +186,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "neo",
+                "apgar"
+            ]
         }
     ],
     "enarm_pearl": {

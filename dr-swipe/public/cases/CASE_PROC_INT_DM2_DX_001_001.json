@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "dm2",
+                "dx"
+            ]
         },
         {
             "card_id": "c_3",
@@ -47,7 +52,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Exacto! Un solo valor alterado en ayuno no hace el diagnóstico, a menos que haya síntomas inequívocos."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "dm2",
+                "dx"
+            ]
         },
         {
             "card_id": "c_4",
@@ -59,7 +69,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Muy bien! Es un criterio sólido y cómodo para el paciente, aunque costoso."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "dm2",
+                "dx"
+            ]
         },
         {
             "card_id": "c_5",
@@ -71,7 +86,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Correcto. La detección temprana es fundamental para prevenir complicaciones microvasculares."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "dm2",
+                "dx"
+            ]
         },
         {
             "card_id": "c_6",
@@ -87,7 +107,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "dm2",
+                "dx"
+            ]
         },
         {
             "card_id": "c_7",
@@ -99,7 +124,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Exacto! Es segura, económica y reduce la producción hepática de glucosa."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "dm2",
+                "dx"
+            ]
         },
         {
             "card_id": "c_8",
@@ -111,7 +141,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Fundamental! El 20% de los pacientes con DM2 ya tienen daño a órgano blanco al ser diagnosticados."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "dm2",
+                "dx"
+            ]
         },
         {
             "card_id": "c_9",
@@ -123,7 +158,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Perfecto! Un control glucémico estrecho salva riñones y ojos."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "dm2",
+                "dx"
+            ]
         }
     ],
     "enarm_pearl": {

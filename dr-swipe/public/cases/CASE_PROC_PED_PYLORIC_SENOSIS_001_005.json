@@ -19,7 +19,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "pyloric",
+                "senosis"
+            ]
         },
         {
             "card_id": "c_2",
@@ -55,7 +60,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Excelente! Es el hallazgo patognomónico, aunque solo se palpa en el 60-80% de los casos."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "pyloric",
+                "senosis"
+            ]
         },
         {
             "card_id": "c_5",
@@ -67,7 +77,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. Representan el esfuerzo del estómago por vencer la obstrucción pilórica."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "pyloric",
+                "senosis"
+            ]
         },
         {
             "card_id": "c_7",
@@ -79,7 +94,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Perfecto! Es el 'estándar de oro' diagnóstico actual por su alta sensibilidad."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "pyloric",
+                "senosis"
+            ]
         },
         {
             "card_id": "c_8",
@@ -91,7 +111,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Correcto. Un niño con alcalosis grave tiene mayor riesgo de apnea postoperatoria."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "pyloric",
+                "senosis"
+            ]
         },
         {
             "card_id": "c_6",
@@ -107,7 +132,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "pyloric",
+                "senosis"
+            ]
         },
         {
             "card_id": "c_9",
@@ -123,7 +153,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "pyloric",
+                "senosis"
+            ]
         },
         {
             "card_id": "c_10",
@@ -135,7 +170,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. La recuperación suele ser rápida y satisfactoria."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "pyloric",
+                "senosis"
+            ]
         }
     ],
     "enarm_pearl": {

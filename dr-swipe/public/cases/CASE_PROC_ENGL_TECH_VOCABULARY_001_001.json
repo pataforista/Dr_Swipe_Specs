@@ -31,7 +31,12 @@
                 "points": 150,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Correcto! Dominar estos términos es vital para la sección de inglés técnico del ENARM."
-            }
+            },
+            "related_diagnoses": [
+                "engl",
+                "tech",
+                "vocabulary"
+            ]
         },
         {
             "card_id": "c_2",
@@ -43,7 +48,12 @@
                 "points": 150,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Excelente! Evitaste el falso amigo. 'Constipated' nasal se dice 'Congested'."
-            }
+            },
+            "related_diagnoses": [
+                "engl",
+                "tech",
+                "vocabulary"
+            ]
         },
         {
             "card_id": "c_3",
@@ -55,7 +65,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Bien! 'Injury' abarca desde fracturas hasta contusiones."
-            }
+            },
+            "related_diagnoses": [
+                "engl",
+                "tech",
+                "vocabulary"
+            ]
         },
         {
             "card_id": "c_4",
@@ -67,7 +82,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Correcto. Un síntoma básico que verás en consulta externa."
-            }
+            },
+            "related_diagnoses": [
+                "engl",
+                "tech",
+                "vocabulary"
+            ]
         },
         {
             "card_id": "c_5",
@@ -79,7 +99,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Muy bien! Es un hallazgo fundamental en la exploración física."
-            }
+            },
+            "related_diagnoses": [
+                "engl",
+                "tech",
+                "vocabulary"
+            ]
         },
         {
             "card_id": "c_6",
@@ -91,7 +116,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Exacto! Datos cardinales para el interrogatorio neurológico."
-            }
+            },
+            "related_diagnoses": [
+                "engl",
+                "tech",
+                "vocabulary"
+            ]
         },
         {
             "card_id": "c_7",
@@ -103,7 +133,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. Puede indicar desde vicios de refracción hasta crisis hipertensivas."
-            }
+            },
+            "related_diagnoses": [
+                "engl",
+                "tech",
+                "vocabulary"
+            ]
         },
         {
             "card_id": "c_8",
@@ -127,7 +162,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Correcto! La temporalidad define muchas veces la gravedad del cuadro."
-            }
+            },
+            "related_diagnoses": [
+                "engl",
+                "tech",
+                "vocabulary"
+            ]
         }
     ],
     "enarm_pearl": {

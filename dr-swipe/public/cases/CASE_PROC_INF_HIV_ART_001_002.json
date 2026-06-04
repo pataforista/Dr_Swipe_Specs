@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "hiv",
+                "art"
+            ]
         },
         {
             "card_id": "c_2",
@@ -63,7 +68,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Excelente! Es el esquema de primera línea por su alta barrera genética y pocos efectos secundarios."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "hiv",
+                "art"
+            ]
         },
         {
             "card_id": "c_4",
@@ -75,7 +85,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. Conocer la resistencia basal es fundamental en el manejo moderno."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "hiv",
+                "art"
+            ]
         },
         {
             "card_id": "c_5",
@@ -87,7 +102,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Exacto! Especialmente peligroso en TB o meningitis criptocócica."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "hiv",
+                "art"
+            ]
         },
         {
             "card_id": "c_6",
@@ -99,7 +119,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. La terapia dual ya es una realidad segura en casos seleccionados."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "hiv",
+                "art"
+            ]
         },
         {
             "card_id": "c_9",
@@ -111,7 +136,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Muy bien. Por eso ya no es el fármaco de primera elección."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "hiv",
+                "art"
+            ]
         },
         {
             "card_id": "c_7",
@@ -127,7 +157,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "hiv",
+                "art"
+            ]
         },
         {
             "card_id": "c_8",
@@ -139,7 +174,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Correcto! El lema I=I es pilar de la salud pública actual."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "hiv",
+                "art"
+            ]
         }
     ],
     "enarm_pearl": {

@@ -35,7 +35,11 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         },
         {
             "card_id": "c_2",
@@ -63,7 +67,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Bien. La piedra angular del tratamiento farmacológico inicial."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         },
         {
             "card_id": "c_7",
@@ -75,7 +83,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Bien. Requiere diagnóstico agudo mediante ecocardiograma y manejo quirúrgico."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         },
         {
             "card_id": "c_8",
@@ -87,7 +99,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Exacto! Nos permite ver defectos septales, rupturas o aneurismas ventriculares."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         },
         {
             "card_id": "c_9",
@@ -99,7 +115,11 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Bien. Se maneja con aspirina a dosis altas o colchicina."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         },
         {
             "card_id": "c_3",
@@ -131,7 +151,11 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         },
         {
             "card_id": "c_6",
@@ -147,7 +171,11 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         }
     ],
     "enarm_pearl": {

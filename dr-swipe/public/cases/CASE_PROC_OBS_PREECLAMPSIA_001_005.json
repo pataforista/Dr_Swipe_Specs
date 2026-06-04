@@ -35,7 +35,11 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "preeclampsia"
+            ]
         },
         {
             "card_id": "c_2",
@@ -59,7 +63,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Correcto. Si el magnesio sube demasiado, el primer signo es la arreflexia rotuliana."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "preeclampsia"
+            ]
         },
         {
             "card_id": "c_6",
@@ -71,7 +79,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Exacto! Debes tenerlo siempre a la mano cuando uses MgSO4."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "preeclampsia"
+            ]
         },
         {
             "card_id": "c_7",
@@ -83,7 +95,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. El objetivo no es normalizar, sino bajar la TA a niveles seguros (140/90)."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "preeclampsia"
+            ]
         },
         {
             "card_id": "c_8",
@@ -95,7 +111,11 @@
                 "points": 150,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Excelente! Es una de las complicaciones más temidas y justifica el perfil toxémico."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "preeclampsia"
+            ]
         },
         {
             "card_id": "c_3",
@@ -127,7 +147,11 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "preeclampsia"
+            ]
         },
         {
             "card_id": "c_9",
@@ -143,7 +167,11 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "preeclampsia"
+            ]
         }
     ],
     "enarm_pearl": {

@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "measles"
+            ]
         },
         {
             "card_id": "c_2",
@@ -79,7 +84,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Exacto! Si ves Koplik, es Sarampión hasta no demostrar lo contrario."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "measles"
+            ]
         },
         {
             "card_id": "c_6",
@@ -91,7 +101,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Correcto. Como médico R1, tu responsabilidad social es alertar a las autoridades."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "measles"
+            ]
         },
         {
             "card_id": "c_7",
@@ -103,7 +118,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Bien! Es importante conocer a tu enemigo a nivel molecular."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "measles"
+            ]
         },
         {
             "card_id": "c_8",
@@ -115,7 +135,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Así es. Muchos piensan en neumonía por ser la más letal, pero la otitis es la más común."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "measles"
+            ]
         },
         {
             "card_id": "c_9",
@@ -127,7 +152,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Nivel experto! Una complicación rara pero devastadora que justifica la vacunación masiva."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "measles"
+            ]
         },
         {
             "card_id": "c_10",
@@ -139,7 +169,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Es vital para prevenir brotes en guarderías y salas de espera."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "measles"
+            ]
         },
         {
             "card_id": "c_5",
@@ -155,7 +190,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "measles"
+            ]
         }
     ],
     "boss_fight_triad": {

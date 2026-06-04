@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "prev",
+                "levels",
+                "leavell"
+            ]
         },
         {
             "card_id": "c_2",
@@ -47,7 +52,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Muy bien! El tamizaje es el corazon de la prevencion secundaria."
-            }
+            },
+            "related_diagnoses": [
+                "prev",
+                "levels",
+                "leavell"
+            ]
         },
         {
             "card_id": "c_3",
@@ -59,7 +69,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. La promocion de la salud es el primer peldano para evitar que el agente contacte al huesped."
-            }
+            },
+            "related_diagnoses": [
+                "prev",
+                "levels",
+                "leavell"
+            ]
         },
         {
             "card_id": "c_4",
@@ -71,7 +86,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Exacto! Una vez que la enfermedad avanzo, buscamos limitar el dano y rehabilitar."
-            }
+            },
+            "related_diagnoses": [
+                "prev",
+                "levels",
+                "leavell"
+            ]
         },
         {
             "card_id": "c_5",
@@ -83,7 +103,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Excelente! El principio 'Primum non nocere' define este nivel de prevencion."
-            }
+            },
+            "related_diagnoses": [
+                "prev",
+                "levels",
+                "leavell"
+            ]
         },
         {
             "card_id": "c_6",
@@ -95,7 +120,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Bien! Es aqui donde las medidas primarias tienen su maximo impacto."
-            }
+            },
+            "related_diagnoses": [
+                "prev",
+                "levels",
+                "leavell"
+            ]
         },
         {
             "card_id": "c_7",
@@ -107,7 +137,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Correcto! Es el momento ideal para la prevencion secundaria."
-            }
+            },
+            "related_diagnoses": [
+                "prev",
+                "levels",
+                "leavell"
+            ]
         },
         {
             "card_id": "c_8",
@@ -119,7 +154,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Muy bien. Es el segundo subnivel de la prevencion primaria."
-            }
+            },
+            "related_diagnoses": [
+                "prev",
+                "levels",
+                "leavell"
+            ]
         },
         {
             "card_id": "c_9",
@@ -131,7 +171,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Exacto! Identificar el problema a tiempo cambia radicalmente el pronostico."
-            }
+            },
+            "related_diagnoses": [
+                "prev",
+                "levels",
+                "leavell"
+            ]
         },
         {
             "card_id": "c_10",
@@ -143,7 +188,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Excelente profundidad! Es ir un paso antes de la prevencion primaria tradicional."
-            }
+            },
+            "related_diagnoses": [
+                "prev",
+                "levels",
+                "leavell"
+            ]
         }
     ],
     "enarm_pearl": {

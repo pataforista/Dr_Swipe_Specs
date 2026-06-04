@@ -31,7 +31,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Excelente! Es la medida de salud pública que más vidas salva en pediatría."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "git",
+                "dehydration"
+            ]
         },
         {
             "card_id": "c_4",
@@ -43,7 +48,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. Es el manejo para el niño sin signos de deshidratación clínica."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "git",
+                "dehydration"
+            ]
         },
         {
             "card_id": "c_5",
@@ -55,7 +65,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Correcto! Se realiza en la unidad de salud bajo supervisión médica."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "git",
+                "dehydration"
+            ]
         },
         {
             "card_id": "c_6",
@@ -67,7 +82,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. Refleja la pérdida de turgencia por falta de líquidos intersticiales."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "git",
+                "dehydration"
+            ]
         },
         {
             "card_id": "c_8",
@@ -79,7 +99,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Excelente perla! El Zinc es fundamental en el manejo moderno de la diarrea."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "git",
+                "dehydration"
+            ]
         },
         {
             "card_id": "c_9",
@@ -91,7 +116,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. La hipocalemia es un enemigo oculto en la deshidratación prolongada."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "git",
+                "dehydration"
+            ]
         },
         {
             "card_id": "c_10",
@@ -103,7 +133,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Así se hace! En choque hipovolémico, cada segundo cuenta."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "git",
+                "dehydration"
+            ]
         },
         {
             "card_id": "c_1",
@@ -119,7 +154,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "git",
+                "dehydration"
+            ]
         },
         {
             "card_id": "c_2",
@@ -135,7 +175,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "git",
+                "dehydration"
+            ]
         },
         {
             "card_id": "c_7",

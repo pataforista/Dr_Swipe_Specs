@@ -43,7 +43,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! A los 18 meses el niño debe recibir el refuerzo de la hexavalente acelular."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "vac",
+                "catchup"
+            ]
         },
         {
             "card_id": "c_4",
@@ -67,7 +72,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Muy bien! Respetar los límites de edad previene la asociación con invaginación intestinal."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "vac",
+                "catchup"
+            ]
         },
         {
             "card_id": "c_8",
@@ -79,7 +89,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. La primovacunación requiere dos dosis con un mes de diferencia."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "vac",
+                "catchup"
+            ]
         },
         {
             "card_id": "c_9",
@@ -91,7 +106,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Perfecto! El esquema actual en México se ha simplificado a una dosis única masiva."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "vac",
+                "catchup"
+            ]
         },
         {
             "card_id": "c_5",
@@ -107,7 +127,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "vac",
+                "catchup"
+            ]
         },
         {
             "card_id": "c_7",
@@ -123,7 +148,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "vac",
+                "catchup"
+            ]
         },
         {
             "card_id": "c_10",
@@ -139,7 +169,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "vac",
+                "catchup"
+            ]
         }
     ],
     "enarm_pearl": {

@@ -51,7 +51,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "infection",
+                "vaginitis"
+            ]
         }
     ],
     "enarm_pearl": {

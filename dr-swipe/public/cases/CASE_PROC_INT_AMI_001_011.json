@@ -19,7 +19,11 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         },
         {
             "card_id": "c_1",
@@ -35,7 +39,11 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         },
         {
             "card_id": "c_2",
@@ -67,7 +75,11 @@
             "safety_flags": {
                 "red_flag": true,
                 "lethal_risk": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         }
     ],
     "enarm_pearl": {

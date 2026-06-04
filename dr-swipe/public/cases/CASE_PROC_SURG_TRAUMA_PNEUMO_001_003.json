@@ -19,7 +19,12 @@
                 "points": 150,
                 "error_type": "lethal_omission",
                 "vazquez_comment": "¡Vital! Identificar esto salva la vida."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "trauma",
+                "pneumo"
+            ]
         },
         {
             "card_id": "c_3",
@@ -42,7 +47,12 @@
             "scoring": {
                 "points": 200,
                 "vazquez_comment": "¡Excelente! ATLS 10 indica el 5° espacio."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "trauma",
+                "pneumo"
+            ]
         }
     ],
     "boss_fight_triad": {

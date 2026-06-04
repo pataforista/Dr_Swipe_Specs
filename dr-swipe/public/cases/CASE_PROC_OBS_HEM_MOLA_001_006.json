@@ -31,7 +31,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Bien! Es la forma más común y la que más riesgo tiene de malignizar."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "mola"
+            ]
         },
         {
             "card_id": "c_2",
@@ -43,7 +48,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Es el signo patognomónico clásico en el ultrasonido de una mola completa."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "mola"
+            ]
         },
         {
             "card_id": "c_3",
@@ -55,7 +65,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Muy bien! El crecimiento acelerado del útero es un dato pivote para sospechar enfermedad trofoblástica."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "mola"
+            ]
         },
         {
             "card_id": "c_4",
@@ -79,7 +94,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. Generalmente involucionan solos tras la evacuación de la mola."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "mola"
+            ]
         },
         {
             "card_id": "c_8",
@@ -91,7 +111,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Es la única forma de vigilar la persistencia de tejido trofoblástico."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "mola"
+            ]
         },
         {
             "card_id": "c_5",
@@ -107,7 +132,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "mola"
+            ]
         },
         {
             "card_id": "c_7",
@@ -123,7 +153,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "mola"
+            ]
         },
         {
             "card_id": "c_9",
@@ -135,7 +170,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Excelente! Un embarazo nuevo haría imposible saber si la hCG sube por el bebé o por un cáncer."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hem",
+                "mola"
+            ]
         }
     ],
     "enarm_pearl": {

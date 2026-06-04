@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "appendicitis",
+                "alvarado"
+            ]
         },
         {
             "card_id": "c_2",
@@ -63,7 +68,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Bien. La parte 'MANT' de la escala."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "appendicitis",
+                "alvarado"
+            ]
         },
         {
             "card_id": "c_4",
@@ -75,7 +85,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Correcto! Es el signo físico de mayor peso."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "appendicitis",
+                "alvarado"
+            ]
         },
         {
             "card_id": "c_5",
@@ -87,7 +102,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Bien. Sumando puntos críticos."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "appendicitis",
+                "alvarado"
+            ]
         },
         {
             "card_id": "c_6",
@@ -99,7 +119,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Exacto! Segundo criterio de 2 puntos."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "appendicitis",
+                "alvarado"
+            ]
         },
         {
             "card_id": "c_7",
@@ -111,7 +136,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Bien. En la 'zona gris', la imagen es obligatoria."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "appendicitis",
+                "alvarado"
+            ]
         },
         {
             "card_id": "c_8",
@@ -123,7 +153,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Muy bien. Un diagnóstico diferencial clásico."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "appendicitis",
+                "alvarado"
+            ]
         },
         {
             "card_id": "c_9",
@@ -135,7 +170,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Correcto. Reduce significativamente la infección del sitio quirúrgico."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "appendicitis",
+                "alvarado"
+            ]
         }
     ],
     "enarm_pearl": {

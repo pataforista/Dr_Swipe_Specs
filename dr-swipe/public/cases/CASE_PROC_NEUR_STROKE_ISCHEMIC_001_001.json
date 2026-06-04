@@ -31,7 +31,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Muy bien. Una escala NIHSS entre 4 y 25 puntos suele ser la ventana ideal para rTPA."
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "stroke",
+                "ischemic"
+            ]
         },
         {
             "card_id": "c_6",
@@ -47,7 +52,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "stroke",
+                "ischemic"
+            ]
         },
         {
             "card_id": "c_2",
@@ -71,7 +81,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Exacto! Todo el esfuerzo es para salvar la zona de penumbra."
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "stroke",
+                "ischemic"
+            ]
         },
         {
             "card_id": "c_9",
@@ -83,7 +98,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Correcto. Nunca antes de las 24 horas para evitar sangrado."
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "stroke",
+                "ischemic"
+            ]
         },
         {
             "card_id": "c_1",
@@ -100,7 +120,12 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "stroke",
+                "ischemic"
+            ]
         },
         {
             "card_id": "c_3",
@@ -116,7 +141,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "stroke",
+                "ischemic"
+            ]
         },
         {
             "card_id": "c_5",
@@ -132,7 +162,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "stroke",
+                "ischemic"
+            ]
         },
         {
             "card_id": "c_8",
@@ -148,7 +183,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "stroke",
+                "ischemic"
+            ]
         }
     ],
     "enarm_pearl": {

@@ -35,7 +35,11 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         },
         {
             "card_id": "c_2",
@@ -63,7 +67,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Exacto! Los tiempos son los que evaluamos en el triage de alta especialidad."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         },
         {
             "card_id": "c_9",
@@ -75,7 +83,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Bien. La fibrinólisis fallida o exitosa requiere una evaluación hemodinámica posterior."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         },
         {
             "card_id": "c_3",
@@ -107,7 +119,11 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         },
         {
             "card_id": "c_5",
@@ -123,7 +139,11 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         },
         {
             "card_id": "c_6",

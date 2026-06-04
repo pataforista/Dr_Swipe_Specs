@@ -19,7 +19,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en estos signos de hipotensión/choque, R1. El reloj no se detiene."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "sepsis",
+                "sofa"
+            ]
         },
         {
             "card_id": "c_1",
@@ -36,7 +41,12 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "sepsis",
+                "sofa"
+            ]
         },
         {
             "card_id": "c_2",
@@ -64,7 +74,12 @@
                 "error_type": "omission"
             },
             "expected_action": "keep",
-            "category": "Anamnesis"
+            "category": "Anamnesis",
+            "related_diagnoses": [
+                "inf",
+                "sepsis",
+                "sofa"
+            ]
         }
     ],
     "enarm_pearl": {

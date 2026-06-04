@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "psyc",
+                "psi",
+                "schizo"
+            ]
         },
         {
             "card_id": "c_2",
@@ -71,7 +76,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Excelente! Son los sintomas que 'aparecen' y suelen responder mejor a los antipsicoticos tipicos."
-            }
+            },
+            "related_diagnoses": [
+                "psyc",
+                "psi",
+                "schizo"
+            ]
         },
         {
             "card_id": "c_5",
@@ -83,7 +93,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. Son sintomas que 'quitan' funcionalidad y son mas dificiles de tratar, indicando peor pronostico."
-            }
+            },
+            "related_diagnoses": [
+                "psyc",
+                "psi",
+                "schizo"
+            ]
         },
         {
             "card_id": "c_6",
@@ -95,7 +110,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Muy bien! Es la base neurobiologica que justifica el uso de antagonistas dopaminergicos."
-            }
+            },
+            "related_diagnoses": [
+                "psyc",
+                "psi",
+                "schizo"
+            ]
         },
         {
             "card_id": "c_8",
@@ -107,7 +127,12 @@
                 "points": 150,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Excelente perla! Recuerda vigilar la biometria hematica por riesgo de agranulocitosis."
-            }
+            },
+            "related_diagnoses": [
+                "psyc",
+                "psi",
+                "schizo"
+            ]
         },
         {
             "card_id": "c_9",
@@ -119,7 +144,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Correcto. El inicio temprano y los sintomas negativos suelen asociarse a un curso mas cronico y deteriorante."
-            }
+            },
+            "related_diagnoses": [
+                "psyc",
+                "psi",
+                "schizo"
+            ]
         },
         {
             "card_id": "c_7",
@@ -135,7 +165,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "psyc",
+                "psi",
+                "schizo"
+            ]
         },
         {
             "card_id": "c_10",
@@ -147,7 +182,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Excelente! El sindrome metabolico es la principal causa de muerte prematura en estos pacientes."
-            }
+            },
+            "related_diagnoses": [
+                "psyc",
+                "psi",
+                "schizo"
+            ]
         }
     ],
     "enarm_pearl": {

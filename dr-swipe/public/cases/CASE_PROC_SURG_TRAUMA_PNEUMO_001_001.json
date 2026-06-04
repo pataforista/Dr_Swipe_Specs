@@ -19,7 +19,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de choque obstructivo, R1."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "trauma",
+                "pneumo"
+            ]
         },
         {
             "card_id": "c_1",
@@ -35,7 +40,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "trauma",
+                "pneumo"
+            ]
         },
         {
             "card_id": "c_2",
@@ -52,7 +62,12 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "trauma",
+                "pneumo"
+            ]
         },
         {
             "card_id": "c_3",
@@ -80,7 +95,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Bien. Es un hallazgo clave que guía la descompresión."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "trauma",
+                "pneumo"
+            ]
         },
         {
             "card_id": "c_5",
@@ -92,7 +112,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Correcto. Indica el componente obstructivo del choque."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "trauma",
+                "pneumo"
+            ]
         },
         {
             "card_id": "c_9",
@@ -108,7 +133,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "trauma",
+                "pneumo"
+            ]
         }
     ],
     "boss_fight_triad": {

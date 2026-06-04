@@ -35,7 +35,11 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "tep"
+            ]
         },
         {
             "card_id": "c_2",
@@ -63,7 +67,11 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "tep"
+            ]
         },
         {
             "card_id": "c_6",
@@ -75,7 +83,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Bien. Aunque poco específico, su presencia refuerza la sospecha de la fuente del émbolo."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "tep"
+            ]
         },
         {
             "card_id": "c_7",
@@ -87,7 +99,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Clásico! Refleja la sobrecarga aguda de cavidades derechas por la obstrucción pulmonar masiva."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "tep"
+            ]
         },
         {
             "card_id": "c_9",
@@ -99,7 +115,11 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Correcto. Es una medida mecánica de protección cuando falla la farmacológica."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "tep"
+            ]
         },
         {
             "card_id": "c_4",
@@ -115,7 +135,11 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "tep"
+            ]
         },
         {
             "card_id": "c_5",
@@ -127,7 +151,11 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Importante. La estratificación del riesgo dicta la agresividad del manejo y el destino del paciente."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "tep"
+            ]
         },
         {
             "card_id": "c_8",
@@ -143,7 +171,11 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "tep"
+            ]
         }
     ],
     "enarm_pearl": {

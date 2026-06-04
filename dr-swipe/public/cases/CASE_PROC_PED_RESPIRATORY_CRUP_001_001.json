@@ -19,7 +19,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "crup"
+            ]
         },
         {
             "card_id": "c_1",
@@ -35,7 +40,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "crup"
+            ]
         },
         {
             "card_id": "c_2",
@@ -47,7 +57,12 @@
                 "points": 50,
                 "error_type": "lethal_hazard",
                 "vazquez_comment": "Castillo: ¡Bien! La epiglotitis es una emergencia quirurgica de la via aerea; aqui la clinica es puramente de Crup."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "crup"
+            ]
         },
         {
             "card_id": "c_3",
@@ -71,7 +86,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Muy bien! Clasificar al paciente es el primer paso para decidir el tratamiento farmacologico."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "crup"
+            ]
         },
         {
             "card_id": "c_5",
@@ -83,7 +103,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Clasico! Aunque el diagnostico es clinico, este signo radiologico es muy caracteristico del Crup."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "crup"
+            ]
         },
         {
             "card_id": "c_9",
@@ -95,7 +120,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Exacto! La agitacion empeora la obstruccion dinamica de la laringe."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "crup"
+            ]
         },
         {
             "card_id": "c_10",
@@ -123,7 +153,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "crup"
+            ]
         },
         {
             "card_id": "c_7",
@@ -139,7 +174,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "crup"
+            ]
         },
         {
             "card_id": "c_8",
@@ -151,7 +191,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Muy bien pensado. Nunca des de alta a un nino inmediatamente despues de nebulizarlo con adrenalina."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "crup"
+            ]
         }
     ],
     "enarm_pearl": {

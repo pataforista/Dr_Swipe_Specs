@@ -35,7 +35,11 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         },
         {
             "card_id": "c_2",
@@ -67,7 +71,11 @@
             "safety_flags": {
                 "red_flag": true,
                 "lethal_risk": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "ami"
+            ]
         }
     ],
     "enarm_pearl": {

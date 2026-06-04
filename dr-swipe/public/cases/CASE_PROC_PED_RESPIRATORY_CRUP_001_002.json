@@ -19,7 +19,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "crup"
+            ]
         },
         {
             "card_id": "c_1",
@@ -35,7 +40,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "crup"
+            ]
         },
         {
             "card_id": "c_3",
@@ -47,7 +57,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! La escala guía la agresividad del tratamiento inicial."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "crup"
+            ]
         },
         {
             "card_id": "c_4",
@@ -59,7 +74,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Clásico! Aunque el diagnóstico es clínico, es un hallazgo radiológico muy preguntado."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "crup"
+            ]
         },
         {
             "card_id": "c_7",
@@ -71,7 +91,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. Ayuda a evitar que el llanto empeore la obstrucción dinámica."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "crup"
+            ]
         },
         {
             "card_id": "c_8",
@@ -99,7 +124,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": false
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "crup"
+            ]
         },
         {
             "card_id": "c_5",
@@ -115,7 +145,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "crup"
+            ]
         },
         {
             "card_id": "c_6",
@@ -131,7 +166,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "crup"
+            ]
         },
         {
             "card_id": "c_9",
@@ -147,7 +187,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "crup"
+            ]
         }
     ],
     "enarm_pearl": {

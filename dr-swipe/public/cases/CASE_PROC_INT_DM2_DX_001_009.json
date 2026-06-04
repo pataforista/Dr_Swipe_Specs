@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "dm2",
+                "dx"
+            ]
         },
         {
             "card_id": "c_2",

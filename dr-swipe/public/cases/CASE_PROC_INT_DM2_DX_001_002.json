@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "dm2",
+                "dx"
+            ]
         },
         {
             "card_id": "c_2",
@@ -63,7 +68,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Correcto! Es el parámetro más robusto para evaluar el control glucémico a largo plazo."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "dm2",
+                "dx"
+            ]
         },
         {
             "card_id": "c_4",
@@ -75,7 +85,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Bien. La confirmación es vital para evitar falsos positivos por estrés o ayuno mal realizado."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "dm2",
+                "dx"
+            ]
         },
         {
             "card_id": "c_5",
@@ -87,7 +102,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Correcto. Es la prueba más sensible para detectar diabetes en etapas tempranas."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "dm2",
+                "dx"
+            ]
         },
         {
             "card_id": "c_6",
@@ -99,7 +119,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Exacto! Los síntomas clásicos ('las 4 P') dan el valor diagnóstico a la cifra aislada."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "dm2",
+                "dx"
+            ]
         },
         {
             "card_id": "c_7",
@@ -111,7 +136,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Bien. Recuerda que en México solemos iniciar tamizaje desde los 20 años en personas con sobrepeso."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "dm2",
+                "dx"
+            ]
         },
         {
             "card_id": "c_9",
@@ -123,7 +153,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Bien. El control de la albuminuria es tan importante como el control de la glucemia."
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "dm2",
+                "dx"
+            ]
         },
         {
             "card_id": "c_8",
@@ -139,7 +174,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "int",
+                "dm2",
+                "dx"
+            ]
         }
     ],
     "enarm_pearl": {

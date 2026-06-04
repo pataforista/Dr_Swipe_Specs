@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "gdm",
+                "dx"
+            ]
         },
         {
             "card_id": "c_2",
@@ -71,7 +76,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Muy bien! Es el periodo estándar para realizar las pruebas de escrutinio en pacientes con riesgo bajo/medio."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "gdm",
+                "dx"
+            ]
         },
         {
             "card_id": "c_5",
@@ -83,7 +93,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. La dieta debe ser fraccionada en 3 comidas y 2-3 colaciones."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "gdm",
+                "dx"
+            ]
         },
         {
             "card_id": "c_8",
@@ -95,7 +110,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. Aumenta el riesgo de traumatismo obstétrico y distocia de hombros."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "gdm",
+                "dx"
+            ]
         },
         {
             "card_id": "c_6",
@@ -111,7 +131,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "gdm",
+                "dx"
+            ]
         },
         {
             "card_id": "c_7",
@@ -127,7 +152,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "gdm",
+                "dx"
+            ]
         },
         {
             "card_id": "c_9",
@@ -139,7 +169,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Excelente! Estas pacientes tienen un alto riesgo de desarrollar DM2 en los siguientes 10 años."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "gdm",
+                "dx"
+            ]
         }
     ],
     "enarm_pearl": {

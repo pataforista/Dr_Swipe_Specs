@@ -32,9 +32,11 @@ Tercera tanda (completada):
 - ✅ **E3 — Legibilidad:** textos mínimos de 7px subidos a 8px en HUD/telemetría/stats.
 - ✅ **A3 — Contraste:** textos secundarios `slate-300`→`slate-400` sobre fondo claro.
 
-Pendiente por diseño (requieren tu criterio):
+Cuarta tanda (completada):
 
-- ⚠️ **Poblar `related_diagnoses`** si se quiere activar la sinergia de dossier — tarea de contenido (6142 cartas, juicio clínico por carta, altera el balance del scoring); amerita una sesión dedicada, no un cambio masivo a ciegas.
+- ✅ **Sinergia de dossier activada.** Se pobló `related_diagnoses` en las **3047 cartas `keep`** (595 casos) con etiquetas clínicas derivadas de la taxonomía del `case_id` (especialidad + entidad, p. ej. `["ped","exant","measles"]`). Solo se etiquetan las cartas `keep`, de modo que la mecánica premia construir un dossier de hallazgos *relevantes*: 1ª keep ×1.0 (dossier vacío) → siguientes ×1.4–×1.6. Los descartes correctos no reciben bonus. Sin juicio clínico por carta y sin contaminación entre casos (el dossier resetea por paciente). **Nota de balance:** sube los puntajes por caso ~40–60% en cadenas de keeps; el factor está en `scoringEngine.ts` (`1 + matchCount * 0.2`, cap ×1.6) si se quiere ajustar.
+
+Nada queda pendiente de los hallazgos de la auditoría. Mejoras opcionales futuras: E4 (escalado de fuente), A1/A4 (etiquetas keep/discard, mezcla de idioma en casos ENGL) — todas cosméticas/de opinión.
 
 ---
 

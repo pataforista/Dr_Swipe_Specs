@@ -55,7 +55,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Exacto! Casi la mitad de los casos se asocian a trastornos hipertensivos."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hemorrhage",
+                "dppni"
+            ]
         },
         {
             "card_id": "c_5",
@@ -67,7 +72,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Muy bien. Es el signo físico cardinal del DPPNI."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hemorrhage",
+                "dppni"
+            ]
         },
         {
             "card_id": "c_6",
@@ -79,7 +89,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Nivel experto! Esto puede causar atonía uterina post-parto severa."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hemorrhage",
+                "dppni"
+            ]
         },
         {
             "card_id": "c_9",
@@ -91,7 +106,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. Sospechar si la paciente presenta agalactia y amenorrea en el puerperio."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hemorrhage",
+                "dppni"
+            ]
         },
         {
             "card_id": "c_1",
@@ -108,7 +128,12 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hemorrhage",
+                "dppni"
+            ]
         },
         {
             "card_id": "c_7",
@@ -124,7 +149,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hemorrhage",
+                "dppni"
+            ]
         },
         {
             "card_id": "c_8",
@@ -140,7 +170,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "hemorrhage",
+                "dppni"
+            ]
         }
     ],
     "enarm_pearl": {

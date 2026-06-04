@@ -35,7 +35,12 @@
                 "error_type": "omission"
             },
             "expected_action": "keep",
-            "category": "DiagnA³stico"
+            "category": "DiagnA³stico",
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "pneumonia"
+            ]
         },
         {
             "card_id": "c_2",
@@ -47,7 +52,12 @@
                 "error_type": "omission"
             },
             "expected_action": "keep",
-            "category": "EtiologA­a"
+            "category": "EtiologA­a",
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "pneumonia"
+            ]
         },
         {
             "card_id": "c_3",
@@ -59,7 +69,12 @@
                 "error_type": "omission"
             },
             "expected_action": "keep",
-            "category": "Imagen"
+            "category": "Imagen",
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "pneumonia"
+            ]
         },
         {
             "card_id": "c_4",
@@ -75,7 +90,12 @@
                 "error_type": "lethal_omission"
             },
             "expected_action": "keep",
-            "category": "Tratamiento"
+            "category": "Tratamiento",
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "pneumonia"
+            ]
         },
         {
             "card_id": "c_5",
@@ -87,7 +107,12 @@
                 "error_type": "omission"
             },
             "expected_action": "keep",
-            "category": "Examen FA­sico"
+            "category": "Examen FA­sico",
+            "related_diagnoses": [
+                "ped",
+                "respiratory",
+                "pneumonia"
+            ]
         },
         {
             "card_id": "c_6",

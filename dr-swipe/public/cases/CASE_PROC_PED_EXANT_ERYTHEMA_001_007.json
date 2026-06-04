@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "erythema"
+            ]
         },
         {
             "card_id": "c_3",
@@ -59,7 +64,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Bien! Es la primera fase del exantema en la 5ta enfermedad."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "erythema"
+            ]
         },
         {
             "card_id": "c_5",
@@ -71,7 +81,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Así es. Puede durar semanas y reaparecer con calor o ejercicio."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "erythema"
+            ]
         },
         {
             "card_id": "c_6",
@@ -83,7 +98,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Nivel especialista! Un dato muy fino del Parvovirus B19."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "erythema"
+            ]
         },
         {
             "card_id": "c_8",
@@ -95,7 +115,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. El manejo es mayormente conservador en inmunocompetentes."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "erythema"
+            ]
         },
         {
             "card_id": "c_9",
@@ -107,7 +132,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Dato clave! Por eso el aislamiento respiratorio suele ser inútil una vez diagnosticado el exantema."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "erythema"
+            ]
         },
         {
             "card_id": "c_10",
@@ -136,7 +166,12 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "erythema"
+            ]
         },
         {
             "card_id": "c_7",
@@ -152,7 +187,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "erythema"
+            ]
         }
     ],
     "enarm_pearl": {

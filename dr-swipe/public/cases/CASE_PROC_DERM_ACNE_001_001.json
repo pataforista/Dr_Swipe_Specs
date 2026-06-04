@@ -35,7 +35,11 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "derm",
+                "acne"
+            ]
         },
         {
             "card_id": "c_2",
@@ -47,7 +51,11 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Bien! Es el agente causal clave en la fisiopatología."
-            }
+            },
+            "related_diagnoses": [
+                "derm",
+                "acne"
+            ]
         },
         {
             "card_id": "c_3",
@@ -59,7 +67,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Excelente! Es la piedra angular del tratamiento tópico inicial."
-            }
+            },
+            "related_diagnoses": [
+                "derm",
+                "acne"
+            ]
         },
         {
             "card_id": "c_4",
@@ -71,7 +83,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Así es! Manejan el componente comedogénico del acné."
-            }
+            },
+            "related_diagnoses": [
+                "derm",
+                "acne"
+            ]
         },
         {
             "card_id": "c_5",
@@ -83,7 +99,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Bien! Siempre se deben combinar con peróxido de benzoilo para evitar resistencias."
-            }
+            },
+            "related_diagnoses": [
+                "derm",
+                "acne"
+            ]
         },
         {
             "card_id": "c_6",
@@ -99,7 +119,11 @@
                     "lethal_risk": true,
                     "decision_critical": true
                 }
-            }
+            },
+            "related_diagnoses": [
+                "derm",
+                "acne"
+            ]
         },
         {
             "card_id": "c_7",
@@ -115,7 +139,11 @@
                     "lethal_risk": true,
                     "decision_critical": true
                 }
-            }
+            },
+            "related_diagnoses": [
+                "derm",
+                "acne"
+            ]
         },
         {
             "card_id": "c_8",
@@ -127,7 +155,11 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Bien. Ayudan a reducir la producción de sebo mediada por andrógenos."
-            }
+            },
+            "related_diagnoses": [
+                "derm",
+                "acne"
+            ]
         },
         {
             "card_id": "c_9",
@@ -139,7 +171,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Excelente! La clave diagnóstica es buscar los comedones."
-            }
+            },
+            "related_diagnoses": [
+                "derm",
+                "acne"
+            ]
         },
         {
             "card_id": "c_10",

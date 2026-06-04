@@ -47,7 +47,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. Es el indicador más fiable de degradación de hemoglobina en el LCR."
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "headache",
+                "thunder"
+            ]
         },
         {
             "card_id": "c_6",
@@ -59,7 +64,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Correcto. Un Hunt-Hess bajo (I-III) sugiere mejor pronóstico para intervención temprana."
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "headache",
+                "thunder"
+            ]
         },
         {
             "card_id": "c_7",
@@ -71,7 +81,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. A mayor sangre en cisternas (Fisher 3), mayor riesgo de vasoespasmo."
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "headache",
+                "thunder"
+            ]
         },
         {
             "card_id": "c_8",
@@ -83,7 +98,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. Debemos evitar cualquier esfuerzo (Valsalva) que cause resangrado."
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "headache",
+                "thunder"
+            ]
         },
         {
             "card_id": "c_1",
@@ -100,7 +120,12 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "headache",
+                "thunder"
+            ]
         },
         {
             "card_id": "c_3",
@@ -116,7 +141,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "headache",
+                "thunder"
+            ]
         },
         {
             "card_id": "c_5",
@@ -132,7 +162,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "headache",
+                "thunder"
+            ]
         },
         {
             "card_id": "c_9",
@@ -148,7 +183,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "headache",
+                "thunder"
+            ]
         }
     ],
     "enarm_pearl": {

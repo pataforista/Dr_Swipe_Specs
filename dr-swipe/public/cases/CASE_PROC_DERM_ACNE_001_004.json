@@ -35,7 +35,11 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "derm",
+                "acne"
+            ]
         },
         {
             "card_id": "c_2",
@@ -47,7 +51,11 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "¡Bien! Es el agente causal clave en la fisiopatología."
-            }
+            },
+            "related_diagnoses": [
+                "derm",
+                "acne"
+            ]
         }
     ],
     "enarm_pearl": {

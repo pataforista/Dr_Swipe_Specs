@@ -19,7 +19,13 @@
                 "points": 150,
                 "error_type": "lethal_omission",
                 "vazquez_comment": "¡Vital! Identificar esto salva la vida."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "atls",
+                "tension",
+                "pneumo"
+            ]
         },
         {
             "card_id": "c_6",
@@ -42,7 +48,13 @@
             "scoring": {
                 "points": 200,
                 "vazquez_comment": "¡Correcto! Cumples con el ATLS 10."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "atls",
+                "tension",
+                "pneumo"
+            ]
         }
     ],
     "boss_fight_triad": {

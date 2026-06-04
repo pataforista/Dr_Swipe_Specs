@@ -31,7 +31,12 @@
                 "error_type": "omission"
             },
             "expected_action": "keep",
-            "category": "Anamnesis"
+            "category": "Anamnesis",
+            "related_diagnoses": [
+                "inf",
+                "meningitis",
+                "bacterial"
+            ]
         },
         {
             "card_id": "c_2",
@@ -67,7 +72,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Excelente! Son la base de la sospecha clínica en urgencias."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "meningitis",
+                "bacterial"
+            ]
         },
         {
             "card_id": "c_6",
@@ -79,7 +89,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Exacto! La hipoglucorraquia y pleocitosis neutrofílica gritan 'bacteria'."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "meningitis",
+                "bacterial"
+            ]
         },
         {
             "card_id": "c_7",
@@ -91,7 +106,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Correcto. El neumococo sigue siendo el rey de las meningitis comunitarias."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "meningitis",
+                "bacterial"
+            ]
         },
         {
             "card_id": "c_8",
@@ -103,7 +123,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Muy bien! Romper la cadena de transmisión es parte de tu labor como médico."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "meningitis",
+                "bacterial"
+            ]
         },
         {
             "card_id": "c_9",
@@ -115,7 +140,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Triste pero cierto. Por eso la Dexametasona es tan importante al inicio."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "meningitis",
+                "bacterial"
+            ]
         },
         {
             "card_id": "c_1",
@@ -132,7 +162,12 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "meningitis",
+                "bacterial"
+            ]
         },
         {
             "card_id": "c_5",
@@ -148,7 +183,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "meningitis",
+                "bacterial"
+            ]
         }
     ],
     "enarm_pearl": {

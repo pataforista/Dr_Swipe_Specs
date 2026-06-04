@@ -31,7 +31,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Si ocurre después de las 37 semanas es RPM a término; antes es RPM pretérmino."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "rpm"
+            ]
         },
         {
             "card_id": "c_2",
@@ -43,7 +47,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Es el primer paso diagnóstico. Meter los dedos antes de tiempo solo introduce bacterias."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "rpm"
+            ]
         },
         {
             "card_id": "c_3",
@@ -55,7 +63,11 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. Recuerda que el semen y la sangre pueden dar falsos positivos."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "rpm"
+            ]
         },
         {
             "card_id": "c_4",
@@ -67,7 +79,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Muy bien! Es una prueba altamente específica para confirmar ruptura de membranas."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "rpm"
+            ]
         },
         {
             "card_id": "c_5",
@@ -91,7 +107,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. Ayudan a ganar tiempo valioso para que los esteroides actúen."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "rpm"
+            ]
         },
         {
             "card_id": "c_9",
@@ -103,7 +123,11 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Es el punto de corte actual para dejar el manejo conservador y pasar a la resolución."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "rpm"
+            ]
         },
         {
             "card_id": "c_6",
@@ -115,7 +139,11 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Correcto. En el manejo conservador de la RPM prematura, la infección es el principal riesgo."
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "rpm"
+            ]
         },
         {
             "card_id": "c_7",
@@ -131,7 +159,11 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "obs",
+                "rpm"
+            ]
         }
     ],
     "enarm_pearl": {

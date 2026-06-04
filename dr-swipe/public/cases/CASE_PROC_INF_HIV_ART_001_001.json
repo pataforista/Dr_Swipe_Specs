@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "hiv",
+                "art"
+            ]
         },
         {
             "card_id": "c_2",
@@ -71,7 +76,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Muy bien! Ocurre a las 2-4 semanas de la exposición. La sospecha clínica en esta fase es vital."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "hiv",
+                "art"
+            ]
         },
         {
             "card_id": "c_8",
@@ -83,7 +93,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. Especialmente con el TDF (Tenofovir Disoproxil), el TAF es más seguro para el riñón y hueso."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "hiv",
+                "art"
+            ]
         },
         {
             "card_id": "c_9",
@@ -95,7 +110,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Excelente perla! El Síndrome Inflamatorio de Reconstitución Inmune (IRIS) puede ser fatal."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "hiv",
+                "art"
+            ]
         },
         {
             "card_id": "c_5",
@@ -111,7 +131,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "hiv",
+                "art"
+            ]
         },
         {
             "card_id": "c_6",
@@ -127,7 +152,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "hiv",
+                "art"
+            ]
         },
         {
             "card_id": "c_7",
@@ -143,7 +173,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "hiv",
+                "art"
+            ]
         }
     ],
     "enarm_pearl": {

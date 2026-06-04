@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "gast",
+                "diverticulitis",
+                "hinchey"
+            ]
         },
         {
             "card_id": "c_3",
@@ -47,7 +52,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Correcto! La TC permite ver la extensión de la inflamación y la presencia de abscesos o aire libre."
-            }
+            },
+            "related_diagnoses": [
+                "gast",
+                "diverticulitis",
+                "hinchey"
+            ]
         },
         {
             "card_id": "c_4",
@@ -71,7 +81,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Bien. En pacientes asiáticos, puede presentarse en el lado derecho por divertículos cecales."
-            }
+            },
+            "related_diagnoses": [
+                "gast",
+                "diverticulitis",
+                "hinchey"
+            ]
         },
         {
             "card_id": "c_6",
@@ -83,7 +98,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Correcto! La mayoría de los casos grado I resuelven con manejo médico conservador."
-            }
+            },
+            "related_diagnoses": [
+                "gast",
+                "diverticulitis",
+                "hinchey"
+            ]
         },
         {
             "card_id": "c_9",
@@ -95,7 +115,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Correcto! La cobertura anaerobia es vital debido a la microbiota colonica."
-            }
+            },
+            "related_diagnoses": [
+                "gast",
+                "diverticulitis",
+                "hinchey"
+            ]
         },
         {
             "card_id": "c_2",
@@ -111,7 +136,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "gast",
+                "diverticulitis",
+                "hinchey"
+            ]
         },
         {
             "card_id": "c_7",
@@ -127,7 +157,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "gast",
+                "diverticulitis",
+                "hinchey"
+            ]
         },
         {
             "card_id": "c_8",
@@ -139,7 +174,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Muy bien! El aire en la orina es un dato clásico de comunicación entre colon y vejiga."
-            }
+            },
+            "related_diagnoses": [
+                "gast",
+                "diverticulitis",
+                "hinchey"
+            ]
         }
     ],
     "enarm_pearl": {

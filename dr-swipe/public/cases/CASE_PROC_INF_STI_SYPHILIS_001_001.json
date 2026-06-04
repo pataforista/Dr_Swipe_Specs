@@ -31,7 +31,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. Es la fase de mayor contagiosidad sistémica."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "sti",
+                "syphilis"
+            ]
         },
         {
             "card_id": "c_1",
@@ -47,7 +52,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "sti",
+                "syphilis"
+            ]
         },
         {
             "card_id": "c_2",
@@ -71,7 +81,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Muy bien! Es el diagnóstico de elección en la fase primaria."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "sti",
+                "syphilis"
+            ]
         },
         {
             "card_id": "c_4",
@@ -83,7 +98,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Correcto. Requieren confirmación con pruebas treponémicas."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "sti",
+                "syphilis"
+            ]
         },
         {
             "card_id": "c_5",
@@ -95,7 +115,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Bien! Una vez confirmada, no sirven para medir respuesta al tratamiento."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "sti",
+                "syphilis"
+            ]
         },
         {
             "card_id": "c_6",
@@ -111,7 +136,12 @@
                     "lethal_risk": true,
                     "decision_critical": true
                 }
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "sti",
+                "syphilis"
+            ]
         },
         {
             "card_id": "c_7",
@@ -123,7 +153,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Excelente perla! No es una alergia; es una reacción esperable que se maneja con sintomáticos."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "sti",
+                "syphilis"
+            ]
         },
         {
             "card_id": "c_9",
@@ -135,7 +170,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Fundamental! Romper la cadena de transmisión es prioridad en ITS."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "sti",
+                "syphilis"
+            ]
         },
         {
             "card_id": "c_10",
@@ -147,7 +187,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Correcto! El manejo cambia radicalmente a penicilina IV si el SNC está afectado."
-            }
+            },
+            "related_diagnoses": [
+                "inf",
+                "sti",
+                "syphilis"
+            ]
         }
     ],
     "enarm_pearl": {

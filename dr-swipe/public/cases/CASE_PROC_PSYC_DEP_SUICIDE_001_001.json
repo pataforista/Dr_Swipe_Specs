@@ -47,7 +47,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Fundamental! Romper el tabú es el primer paso para la prevención."
-            }
+            },
+            "related_diagnoses": [
+                "psyc",
+                "dep",
+                "suicide"
+            ]
         },
         {
             "card_id": "c_4",
@@ -59,7 +64,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. Aunque no sustituye al juicio clínico, ayuda a sistematizar el riesgo."
-            }
+            },
+            "related_diagnoses": [
+                "psyc",
+                "dep",
+                "suicide"
+            ]
         },
         {
             "card_id": "c_5",
@@ -71,7 +81,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Correcto! Son seguros y efectivos para el manejo a largo plazo."
-            }
+            },
+            "related_diagnoses": [
+                "psyc",
+                "dep",
+                "suicide"
+            ]
         },
         {
             "card_id": "c_7",
@@ -83,7 +98,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Excelente técnica avanzada! Es la medida más rápida para revertir la ideación suicida grave."
-            }
+            },
+            "related_diagnoses": [
+                "psyc",
+                "dep",
+                "suicide"
+            ]
         },
         {
             "card_id": "c_8",
@@ -95,7 +115,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. Siempre descarta antecedentes de manía antes de recetar ISRS."
-            }
+            },
+            "related_diagnoses": [
+                "psyc",
+                "dep",
+                "suicide"
+            ]
         },
         {
             "card_id": "c_9",
@@ -107,7 +132,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Correcto! José cumple con dos de los factores demográficos de más alto riesgo."
-            }
+            },
+            "related_diagnoses": [
+                "psyc",
+                "dep",
+                "suicide"
+            ]
         },
         {
             "card_id": "c_1",
@@ -124,7 +154,12 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
-            }
+            },
+            "related_diagnoses": [
+                "psyc",
+                "dep",
+                "suicide"
+            ]
         },
         {
             "card_id": "c_6",
@@ -140,7 +175,12 @@
                     "lethal_risk": true,
                     "decision_critical": true
                 }
-            }
+            },
+            "related_diagnoses": [
+                "psyc",
+                "dep",
+                "suicide"
+            ]
         }
     ],
     "enarm_pearl": {

@@ -31,7 +31,12 @@
                 "points": 150,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Correcto! Es el pan de cada dia en el ENARM."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "stats",
+                "tests"
+            ]
         },
         {
             "card_id": "c_2",
@@ -43,7 +48,12 @@
                 "points": 150,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Excelente! Recuerda: cualitativa con cualitativa = Chi-cuadrada."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "stats",
+                "tests"
+            ]
         },
         {
             "card_id": "c_3",
@@ -55,7 +65,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Bien! Es como la t de Student pero para mas de dos grupos."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "stats",
+                "tests"
+            ]
         },
         {
             "card_id": "c_4",
@@ -67,7 +82,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Correcto. Cerca de +1 o -1 es una relacion fuerte."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "stats",
+                "tests"
+            ]
         },
         {
             "card_id": "c_5",
@@ -79,7 +99,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Fundamental! Define si tus hallazgos son estadisticamente significativos."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "stats",
+                "tests"
+            ]
         },
         {
             "card_id": "c_6",
@@ -91,7 +116,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Exacto! Si el IC de un RR o OR incluye el 1, NO es significativo."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "stats",
+                "tests"
+            ]
         },
         {
             "card_id": "c_7",
@@ -103,7 +133,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. Es el error de ver algo donde no hay nada."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "stats",
+                "tests"
+            ]
         },
         {
             "card_id": "c_8",
@@ -115,7 +150,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Correcto. Se relaciona con el Poder Estadistico (1-beta)."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "stats",
+                "tests"
+            ]
         },
         {
             "card_id": "c_9",
@@ -127,7 +167,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: El ideal teorica para evitar sesgos de seleccion."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "stats",
+                "tests"
+            ]
         },
         {
             "card_id": "c_10",
@@ -139,7 +184,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Oro puro! Recuerda que las pruebas de tamizaje deben ser altamente sensibles."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "stats",
+                "tests"
+            ]
         }
     ],
     "enarm_pearl": {

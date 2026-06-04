@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "cancer",
+                "breast"
+            ]
         },
         {
             "card_id": "c_2",
@@ -59,7 +64,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Es el único método que ha demostrado reducir la mortalidad por cáncer de mama."
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "cancer",
+                "breast"
+            ]
         },
         {
             "card_id": "c_4",
@@ -83,7 +93,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Muy bien! Si uno de los tres es sospechoso, se debe proceder como tal aunque los otros sean negativos."
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "cancer",
+                "breast"
+            ]
         },
         {
             "card_id": "c_6",
@@ -95,7 +110,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. Todo lo que aumente los ciclos menstruales a lo largo de la vida es un factor de riesgo."
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "cancer",
+                "breast"
+            ]
         },
         {
             "card_id": "c_7",
@@ -107,7 +127,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Se sospecha ante cánceres a edades tempranas o antecedentes familiares múltiples."
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "cancer",
+                "breast"
+            ]
         },
         {
             "card_id": "c_8",
@@ -119,7 +144,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Excelente! Nunca dejes a una paciente con un BI-RADS 0; siempre hay que completar el estudio."
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "cancer",
+                "breast"
+            ]
         },
         {
             "card_id": "c_9",
@@ -131,7 +161,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Es la respuesta esperada en el ENARM para el subtipo histopatológico predominante."
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "cancer",
+                "breast"
+            ]
         }
     ],
     "enarm_pearl": {

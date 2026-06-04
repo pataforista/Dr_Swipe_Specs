@@ -19,7 +19,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "biliary",
+                "cholangitis"
+            ]
         },
         {
             "card_id": "c_1",
@@ -35,7 +40,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "biliary",
+                "cholangitis"
+            ]
         },
         {
             "card_id": "c_2",
@@ -71,7 +81,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Muy bien! Identificar la péntada es reconocer una urgencia quirúrgica/endoscópica inmediata."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "biliary",
+                "cholangitis"
+            ]
         },
         {
             "card_id": "c_5",
@@ -83,7 +98,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Exacto. Es el perfil bioquímico típico de la obstrucción biliar."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "biliary",
+                "cholangitis"
+            ]
         },
         {
             "card_id": "c_6",
@@ -95,7 +115,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Bien. Es el estudio inicial de elección para confirmar la dilatación."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "biliary",
+                "cholangitis"
+            ]
         },
         {
             "card_id": "c_7",
@@ -107,7 +132,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Correcto. Junto con Klebsiella y Enterococcus, forman la flora bacteriana común de la colangitis."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "biliary",
+                "cholangitis"
+            ]
         },
         {
             "card_id": "c_8",
@@ -123,7 +153,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "biliary",
+                "cholangitis"
+            ]
         },
         {
             "card_id": "c_9",
@@ -139,7 +174,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "biliary",
+                "cholangitis"
+            ]
         }
     ],
     "enarm_pearl": {

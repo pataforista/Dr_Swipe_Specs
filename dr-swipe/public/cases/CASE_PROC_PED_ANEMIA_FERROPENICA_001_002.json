@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "anemia",
+                "ferropenica"
+            ]
         },
         {
             "card_id": "c_2",
@@ -47,7 +52,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Excelente! La ferritina refleja fielmente los depósitos de hierro."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "anemia",
+                "ferropenica"
+            ]
         },
         {
             "card_id": "c_3",
@@ -63,7 +73,12 @@
                     "lethal_risk": false,
                     "decision_critical": true
                 }
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "anemia",
+                "ferropenica"
+            ]
         },
         {
             "card_id": "c_5",
@@ -75,7 +90,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Correcto! Es el patrón clásico de las anemias por falta de síntesis de hemoglobina."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "anemia",
+                "ferropenica"
+            ]
         },
         {
             "card_id": "c_6",
@@ -87,7 +107,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Un signo clínico curioso pero muy preguntado en el ENARM."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "anemia",
+                "ferropenica"
+            ]
         },
         {
             "card_id": "c_7",
@@ -99,7 +124,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. La electroforesis de hemoglobina es la clave para diferenciarla."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "anemia",
+                "ferropenica"
+            ]
         },
         {
             "card_id": "c_8",
@@ -123,7 +153,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Estratégico! No basta con normalizar la Hb, hay que llenar el almacén."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "anemia",
+                "ferropenica"
+            ]
         },
         {
             "card_id": "c_10",
@@ -135,7 +170,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Correcto. Un consejo nutricional clave para evitar recaídas."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "anemia",
+                "ferropenica"
+            ]
         },
         {
             "card_id": "c_4",
@@ -147,7 +187,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. Es el primer signo hematológico de que el tratamiento está funcionando."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "anemia",
+                "ferropenica"
+            ]
         }
     ],
     "enarm_pearl": {

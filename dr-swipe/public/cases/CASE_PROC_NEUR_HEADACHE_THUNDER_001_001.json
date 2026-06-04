@@ -55,7 +55,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Muy bien! Es la escala clínica por excelencia para la HSA en el servicio de urgencias."
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "headache",
+                "thunder"
+            ]
         },
         {
             "card_id": "c_5",
@@ -67,7 +72,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Exacto! Más sangre en las cisternas (Fisher III/IV) significa mayor riesgo de isquemia secundaria."
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "headache",
+                "thunder"
+            ]
         },
         {
             "card_id": "c_9",
@@ -79,7 +89,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. El riesgo es máximo en las primeras 24 horas tras el evento inicial."
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "headache",
+                "thunder"
+            ]
         },
         {
             "card_id": "c_1",
@@ -96,7 +111,12 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "headache",
+                "thunder"
+            ]
         },
         {
             "card_id": "c_6",
@@ -112,7 +132,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "headache",
+                "thunder"
+            ]
         },
         {
             "card_id": "c_7",
@@ -128,7 +153,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "headache",
+                "thunder"
+            ]
         },
         {
             "card_id": "c_8",
@@ -144,7 +174,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "neur",
+                "headache",
+                "thunder"
+            ]
         }
     ],
     "enarm_pearl": {

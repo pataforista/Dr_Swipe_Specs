@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "growth",
+                "tally"
+            ]
         },
         {
             "card_id": "c_2",
@@ -59,7 +64,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. Es el primer indicador que se afecta, pero no distingue entre agudo y cronico."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "growth",
+                "tally"
+            ]
         },
         {
             "card_id": "c_4",
@@ -71,7 +81,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Exacto! Un nino puede estar en el percentil 3, pero si su velocidad es normal, puede ser solo talla baja familiar."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "growth",
+                "tally"
+            ]
         },
         {
             "card_id": "c_5",
@@ -83,7 +98,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Muy bien! Si la edad osea esta retrasada, aun hay esperanza de crecimiento longitudinal."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "growth",
+                "tally"
+            ]
         },
         {
             "card_id": "c_6",
@@ -95,7 +115,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Excelente! Siempre ajusta el potencial del nino a la genetica de sus padres."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "growth",
+                "tally"
+            ]
         },
         {
             "card_id": "c_7",
@@ -107,7 +132,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. Es una variante normal del crecimiento, no una patologia."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "growth",
+                "tally"
+            ]
         },
         {
             "card_id": "c_8",
@@ -119,7 +149,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: El 'slow starter'. Tarda mas en arrancar pero llega bien a la meta."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "growth",
+                "tally"
+            ]
         },
         {
             "card_id": "c_9",
@@ -131,7 +166,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Correcto. No lo olvides en tu consulta de nino sano."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "growth",
+                "tally"
+            ]
         }
     ],
     "enarm_pearl": {

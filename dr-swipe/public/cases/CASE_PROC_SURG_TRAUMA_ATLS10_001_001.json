@@ -19,7 +19,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "No te detengas en estos signos de choque obstructivo, R1. El reloj no se detiene."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "trauma",
+                "atls10"
+            ]
         },
         {
             "card_id": "c_2",
@@ -43,7 +48,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Correcto! Ignorar esta secuencia mata pacientes; siempre trata el problema más urgente primero."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "trauma",
+                "atls10"
+            ]
         },
         {
             "card_id": "c_4",
@@ -55,7 +65,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Excelente! Es la herramienta de elección en pacientes inestables para localizar hemorragia interna."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "trauma",
+                "atls10"
+            ]
         },
         {
             "card_id": "c_6",
@@ -67,7 +82,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Perfecto! Necesitamos volumen rápido si la presión sigue cayendo."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "trauma",
+                "atls10"
+            ]
         },
         {
             "card_id": "c_7",
@@ -79,7 +99,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Bien! ATLS 10 bajó la recomendación inicial de 2L a 1L para evitar la coagulopatía por dilución."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "trauma",
+                "atls10"
+            ]
         },
         {
             "card_id": "c_9",
@@ -91,7 +116,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Excelente! Identificaste los datos clásicos que confirman la hipertensión intratorácica."
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "trauma",
+                "atls10"
+            ]
         },
         {
             "card_id": "c_1",
@@ -108,7 +138,12 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "trauma",
+                "atls10"
+            ]
         },
         {
             "card_id": "c_5",
@@ -124,7 +159,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "trauma",
+                "atls10"
+            ]
         },
         {
             "card_id": "c_8",
@@ -140,7 +180,12 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "surg",
+                "trauma",
+                "atls10"
+            ]
         }
     ],
     "enarm_pearl": {

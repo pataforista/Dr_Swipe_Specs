@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "roseola"
+            ]
         },
         {
             "card_id": "c_2",
@@ -71,7 +76,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Excelente! Es el enantema característico de la Roseola."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "roseola"
+            ]
         },
         {
             "card_id": "c_5",
@@ -83,7 +93,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Así es. También puede ser causado por VHH-7, pero el 6 es el rey."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "roseola"
+            ]
         },
         {
             "card_id": "c_6",
@@ -95,7 +110,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Exacto, evita gastos innecesarios. La clínica es soberana."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "roseola"
+            ]
         },
         {
             "card_id": "c_7",
@@ -107,7 +127,12 @@
                 "points": 100,
                 "error_type": "lethal_omission",
                 "vazquez_comment": "Castillo: Bien. No uses antibióticos para virus, R1."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "roseola"
+            ]
         },
         {
             "card_id": "c_8",
@@ -119,7 +144,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Punto clave! Siempre advierte a los padres sobre este riesgo."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "roseola"
+            ]
         },
         {
             "card_id": "c_9",
@@ -131,7 +161,12 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: La comunicación médico-paciente es medicina de calidad."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "roseola"
+            ]
         },
         {
             "card_id": "c_10",
@@ -143,7 +178,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. Aunque el curso es benigno, siempre vigila signos de irritación meníngea."
-            }
+            },
+            "related_diagnoses": [
+                "ped",
+                "exant",
+                "roseola"
+            ]
         }
     ],
     "enarm_pearl": {

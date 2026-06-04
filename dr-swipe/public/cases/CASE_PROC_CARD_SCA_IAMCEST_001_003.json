@@ -36,7 +36,12 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
-            }
+            },
+            "related_diagnoses": [
+                "card",
+                "sca",
+                "iamcest"
+            ]
         },
         {
             "card_id": "c_2",
@@ -69,7 +74,12 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
-            }
+            },
+            "related_diagnoses": [
+                "card",
+                "sca",
+                "iamcest"
+            ]
         },
         {
             "card_id": "c_4",
@@ -86,7 +96,12 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": false
-            }
+            },
+            "related_diagnoses": [
+                "card",
+                "sca",
+                "iamcest"
+            ]
         }
     ],
     "boss_fight_triad": {

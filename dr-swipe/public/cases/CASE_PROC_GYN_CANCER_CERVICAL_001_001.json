@@ -35,7 +35,12 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "cancer",
+                "cervical"
+            ]
         },
         {
             "card_id": "c_2",
@@ -47,7 +52,12 @@
                 "points": 150,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! El cono es diagnóstico y terapéutico al mismo tiempo en lesiones preinvasoras."
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "cancer",
+                "cervical"
+            ]
         },
         {
             "card_id": "c_3",
@@ -59,7 +69,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Muy bien! Identificar una lesión de alto grado es el primer paso para prevenir el cáncer invasivo."
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "cancer",
+                "cervical"
+            ]
         },
         {
             "card_id": "c_4",
@@ -83,7 +98,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Estos hallazgos guían la toma de la biopsia al sitio de mayor sospecha."
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "cancer",
+                "cervical"
+            ]
         },
         {
             "card_id": "c_6",
@@ -95,7 +115,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Muy bien! Son el blanco principal de las vacunas preventivas actuales."
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "cancer",
+                "cervical"
+            ]
         },
         {
             "card_id": "c_7",
@@ -107,7 +132,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Exacto! Es la estrategia de salud pública más exitosa en la detección de CaCu."
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "cancer",
+                "cervical"
+            ]
         },
         {
             "card_id": "c_8",
@@ -119,7 +149,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Si el ADN-VPH es negativo, el riesgo de CaCu en los siguientes 5 años es casi nulo."
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "cancer",
+                "cervical"
+            ]
         },
         {
             "card_id": "c_9",
@@ -131,7 +166,12 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Excelente! El otro 10-15% corresponde principalmente a adenocarcinoma."
-            }
+            },
+            "related_diagnoses": [
+                "gyn",
+                "cancer",
+                "cervical"
+            ]
         }
     ],
     "enarm_pearl": {
