@@ -353,7 +353,7 @@ export function App() {
         return (
           <div className="flex flex-col items-center justify-center w-full max-w-sm gap-2 sm:gap-4 px-2 sm:px-4 h-full pt-12 sm:pt-16 pb-8 sm:pb-12">
             <div className="relative w-full h-full flex flex-col items-center">
-              <SwipeDeck cards={state.context.deck} currentIndex={state.context.currentCardIndex} onSwipe={handleSwipe} isLocked={isLoadingCase || isPaused} lifelineActive={state.context.lifelineActive} canUseLifeline={(stats.coins >= LIFELINE_COST || (boosts?.freeHints ?? 0) > 0) && !state.context.lifelineActive} onUseLifeline={handleLifeline} />
+              <SwipeDeck cards={state.context.deck} currentIndex={state.context.currentCardIndex} onSwipe={handleSwipe} isLocked={isLoadingCase || isPaused} lifelineActive={state.context.lifelineActive} canUseLifeline={(stats.coins >= LIFELINE_COST || (boosts?.freeHints ?? 0) > 0) && !state.context.lifelineActive} freeHint={(boosts?.freeHints ?? 0) > 0} onUseLifeline={handleLifeline} />
               <div className="absolute -bottom-10 sm:-bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-[110]">
                 <button disabled={state.context.undoCharges === 0 || state.context.currentCardIndex === 0} onClick={handleUndo} className="w-10 sm:w-12 h-10 sm:h-12 rounded-full border-2 border-white bg-secondary/80 flex items-center justify-center text-lg sm:text-xl shadow-md disabled:opacity-20 transition-all">⏪</button>
                 <span className="text-[8px] sm:text-[9px] font-black text-slate-400 uppercase lettering tracking-tighter">{state.context.undoCharges}/5</span>

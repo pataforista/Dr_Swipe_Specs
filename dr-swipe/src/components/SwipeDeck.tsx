@@ -12,6 +12,7 @@ interface SwipeDeckProps {
   isLocked?: boolean;
   lifelineActive?: boolean;
   canUseLifeline?: boolean;
+  freeHint?: boolean;
   onUseLifeline?: () => void;
 }
 
@@ -20,7 +21,7 @@ export interface DraggableCardHandle {
 }
 
 export const SwipeDeck: React.FC<SwipeDeckProps> = ({ 
-  cards, currentIndex, onSwipe, isLocked, lifelineActive, canUseLifeline, onUseLifeline 
+  cards, currentIndex, onSwipe, isLocked, lifelineActive, canUseLifeline, freeHint, onUseLifeline
 }) => {
   const { playSwipe } = useGameAudio();
   const topX = useMotionValue(0);
@@ -162,8 +163,8 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
           >
             {lifelineActive ? '✨' : '🧬'}
           </motion.button>
-          <span className={`text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] ${lifelineActive ? 'text-secondary' : 'text-slate-500'}`}>
-            {lifelineActive ? 'ACTIVO' : `${LIFELINE_COST} 🪙`}
+          <span className={`text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] ${lifelineActive ? 'text-secondary' : freeHint ? 'text-emerald-500' : 'text-slate-500'}`}>
+            {lifelineActive ? 'ACTIVO' : freeHint ? 'GRATIS' : `${LIFELINE_COST} 🪙`}
           </span>
         </div>
 
