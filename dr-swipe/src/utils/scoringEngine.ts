@@ -56,8 +56,9 @@ export function calculateCardScore(
   // Base points
   let basePoints = card.scoring.points;
   if (!isCorrect) {
-    // Lethal risks have heavy penalties
-    if (card.safety_flags?.lethal_risk) {
+    // Lethal risks have heavy penalties. Both lethal_risk and lethal_if_discarded
+    // are surfaced to the player as "¡Letal!", so they must carry the same weight.
+    if (card.safety_flags?.lethal_risk || card.safety_flags?.lethal_if_discarded) {
       basePoints = -1000;
     } else {
       basePoints = -Math.floor(card.scoring.points / 2);

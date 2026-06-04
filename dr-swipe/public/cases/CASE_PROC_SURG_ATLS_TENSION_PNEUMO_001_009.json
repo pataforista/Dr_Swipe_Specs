@@ -18,23 +18,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "omission",
-                "vazquez_comment": "No te detengas en estos signos de choque obstructivo, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "Evidencia clínica: Ruido en el expediente: B) Punción en 2° espacio intercostal: Sitio recomendado en guías anteriores (ATLS 9ª y normas mexicanas viejas).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¡Bien! Reconociste que el 2° espacio ya no es el sitio preferido en las guías más recientes."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de choque obstructivo, R1. El reloj no se detiene."
             }
         },
         {
@@ -55,101 +39,19 @@
             }
         },
         {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 150/90, FC 50 lpm (bloqueo), Temp 36.5°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en estos signos de bradicardia, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_9",
-            "ui_icon": "slash",
-            "category": "Manejo",
-            "card_text": "Dato de importancia: Dato anecdotico: I) Jarabes para la Tos (Antitusigenos): Recomendados en preescolares para mejorar el descanso nocturno durante la NÁC.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡No! Los antitusigenos estan contraindicados en ninos pequenos; pueden inhibir la eliminacion de secreciones."
-            }
-        },
-        {
-            "card_id": "h09",
-            "ui_icon": "☢️",
-            "category": "imaging",
-            "card_text": "Riñón derecho con ectasia pielocalicial grado II. Vejiga con sedimento ecogénico. Compatible con proceso infeccioso urinario activo.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Perdiendo el tiempo con tonterías... concéntrate en lo que importa."
-            },
-            "safety_flags": {
-                "contraindication": false,
-                "lethal_risk": false,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 100/60 mmHg (en descenso), FC 95 lpm, Temp 36.5°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "ev_007",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Glucosa: 98 mg/dL. Normal. No diabetes ni hipoglucemia en este contexto agudo.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-            },
-            "safety_flags": {
-                "contraindication": false,
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "Hallazgo: Ruido en el expediente: B) Probabilidad ÁLTA (>90%): Confundiste la Sensibilidad con el VPP. La prueba es buena detectando enfermos, pero falla ante tantos sanos.",
+            "card_text": "Evidencia clínica: Ruido en el expediente: B) Punción en 2° espacio intercostal: Sitio recomendado en guías anteriores (ATLS 9ª y normas mexicanas viejas).",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Notaste la trampa de la prevalencia."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! Reconociste que el 2° espacio ya no es el sitio preferido en las guías más recientes."
             },
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": false
-            }
-        },
-        {
-            "card_id": "c_8",
-            "ui_icon": "umbrella",
-            "category": "vitals",
-            "card_text": "H) Killip III: Edema agudo pulmonar (estertores en más del 50% de campos pulmonares).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
             }
         }
     ],
@@ -162,30 +64,30 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 2,
-                "question": "¿Qué hallazgo a la percusión diferencia un neumotórax de un hemotórax masivo?",
+                "correct_index": 0,
+                "question": "¿Cuál es el sitio de punción preferido actual según ATLS 10a Edición?",
                 "options": [
-                    "Dolor pleurítico vs IVY",
-                    "Desviación traqueal vs Crepitación",
-                    "Hiperresonancia vs Matidez"
-                ]
-            },
-            {
-                "correct_index": 2,
-                "question": "En este contexto clínico, ¿cuál es el sitio de punción preferido actual según ATLS 10a Edición?",
-                "options": [
+                    "5° espacio intercostal (LAA/LAM)",
                     "2° espacio intercostal (LMC)",
-                    "4° espacio intercostal (LÁA)",
-                    "5° espacio intercostal (LÁÁ/LÁM)"
+                    "4° espacio intercostal (LAA)"
                 ]
             },
             {
-                "correct_index": 1,
+                "correct_index": 0,
                 "question": "¿Qué tipo de choque presenta este paciente?",
                 "options": [
-                    "Choque distributivo",
                     "Choque obstructivo",
-                    "Choque hipovolémico"
+                    "Choque hipovolémico",
+                    "Choque distributivo"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Qué hallazgo a la percusión diferencia un neumotórax de un hemotórax masivo?",
+                "options": [
+                    "Hiperresonancia vs Matidez",
+                    "Desviación traqueal vs Crepitación",
+                    "Dolor pleurítico vs IVY"
                 ]
             }
         ]

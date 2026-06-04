@@ -1,5 +1,5 @@
 {
-    "case_id": "swipe_hard_001",
+    "case_id": "SWIPE_HARD_001",
     "version": "v3_swipe_action",
     "theme_config": "theme-default",
     "difficulty": "hard",
@@ -13,7 +13,7 @@
             "card_id": "h01",
             "ui_icon": "🩺",
             "category": "vitals",
-            "card_text": "TÁ: 85/55 mmHg. Hipotensión severa a pesar de 500 mL de cristaloides en urgencias. Persistente.",
+            "card_text": "TA: 85/55 mmHg. Hipotensión severa a pesar de 500 mL de cristaloides en urgencias. Persistente.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -194,11 +194,11 @@
                 "correct_index": 0
             },
             {
-                "question": "¿Cuál es el estudio microbiológico obligatorio ÁNTES de iniciar antibióticos en un choque séptico de foco urinario?",
+                "question": "¿Cuál es el estudio microbiológico obligatorio ANTES de iniciar antibióticos en un choque séptico de foco urinario?",
                 "options": [
                     "Hemocultivos x2 (de sitios distintos) + urocultivo previo a antibióticos",
                     "Punción lumbar para descartar meningitis bacteriana",
-                    "TÁC de tórax para foco pulmonar oculto",
+                    "TAC de tórax para foco pulmonar oculto",
                     "Coprocultivo y antígeno urinario de Legionella"
                 ],
                 "correct_index": 0
@@ -217,7 +217,7 @@
     },
     "perla_enarm": {
         "title": "Urosepsis — Choque Séptico de Foco Urinario",
-        "text": "El choque séptico se define por hipotensión refractaria a fluidos (≥30 mL/kg) + lactato >2 mmol/L (Sepsis-3). El bundle de 1 hora de la SSC incluye: hemocultivos, antibióticos, 30 mL/kg de cristaloides y lactato. Norepinefrina es el vasopresor de primera línea. Metformina está CONTRÁINDICÁDA en sepsis con disfunción renal por riesgo de acidosis láctica. Pielonefritis complicada + bacteriemia = urosepsis.",
+        "text": "El choque séptico se define por hipotensión refractaria a fluidos (≥30 mL/kg) + lactato >2 mmol/L (Sepsis-3). El bundle de 1 hora de la SSC incluye: hemocultivos, antibióticos, 30 mL/kg de cristaloides y lactato. Norepinefrina es el vasopresor de primera línea. Metformina está CONTRAINDICADA en sepsis con disfunción renal por riesgo de acidosis láctica. Pielonefritis complicada + bacteriemia = urosepsis.",
         "gpc_ref": "GPC IMSS-481-11: Diagnóstico y Tratamiento de Sepsis Grave y Choque Séptico — Surviving Sepsis Campaign 2021"
     },
     "enarm_pearl": {

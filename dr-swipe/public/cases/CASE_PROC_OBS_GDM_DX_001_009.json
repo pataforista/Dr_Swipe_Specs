@@ -30,7 +30,7 @@
             "scoring": {
                 "points": 150,
                 "error_type": "omission",
-                "vazquez_comment": "Castillo: ¡Correcto! Cumple criterios de la ÁDÁ/GPC con un solo valor por encima del punto de corte."
+                "vazquez_comment": "Castillo: ¡Correcto! Cumple criterios de la ADA/GPC con un solo valor por encima del punto de corte."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -53,7 +53,7 @@
             "card_id": "c_3",
             "ui_icon": "slash",
             "category": "labs",
-            "card_text": "C) Diabetes Pre-gestacional: Glucosa en ayuno >=126 o HbÁ1c >=6.5% detectada antes de las 13 semanas de gestación.",
+            "card_text": "C) Diabetes Pre-gestacional: Glucosa en ayuno >=126 o HbA1c >=6.5% detectada antes de las 13 semanas de gestación.",
             "expected_action": "discard",
             "scoring": {
                 "points": 20,
@@ -160,7 +160,7 @@
                 "correct_index": 2
             },
             {
-                "question": "Identifique el valor diagnóstico de glucosa en ÁYUNO para Diabetes Gestacional en la estrategia de Un Paso (75g)?",
+                "question": "Identifique el valor diagnóstico de glucosa en AYUNO para Diabetes Gestacional en la estrategia de Un Paso (75g)?",
                 "options": [
                     ">=92 mg/dl",
                     ">=126 mg/dl",

@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_OBG_HEMORRHÁGE_HPP_001_001",
+    "case_id": "PROC_OBG_HEMORRHAGE_HPP_001_001",
     "version": "v3_swipe_action",
     "theme_config": "obg",
     "difficulty": "hard",
@@ -30,7 +30,7 @@
             "scoring": {
                 "points": 150,
                 "error_type": "omission",
-                "vazquez_comment": "Claramente la medicina no es lo tuyo. Ese dato era VITÁL."
+                "vazquez_comment": "Claramente la medicina no es lo tuyo. Ese dato era VITAL."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -81,12 +81,12 @@
             "card_id": "c_6",
             "ui_icon": "alert-triangle",
             "category": "Segunda Línea",
-            "card_text": "F) Ergonovina / Metilergonovina: Uterotónico potente; CONTRÁINDICÁDO en pacientes con hipertensión o preeclampsia.",
+            "card_text": "F) Ergonovina / Metilergonovina: Uterotónico potente; CONTRAINDICADO en pacientes con hipertensión o preeclampsia.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
-                "vazquez_comment": "Claramente la medicina no es lo tuyo. Ese dato era VITÁL."
+                "vazquez_comment": "Claramente la medicina no es lo tuyo. Ese dato era VITAL."
             }
         },
         {
@@ -122,7 +122,7 @@
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
-                "vazquez_comment": "Claramente la medicina no es lo tuyo. Ese dato era VITÁL."
+                "vazquez_comment": "Claramente la medicina no es lo tuyo. Ese dato era VITAL."
             }
         },
         {
@@ -181,7 +181,7 @@
                 "correct_index": 2
             },
             {
-                "question": "¿Qué fármaco uterotónico está CONTRÁINDICÁDO en pacientes con hipertensión arterial?",
+                "question": "¿Qué fármaco uterotónico está CONTRAINDICADO en pacientes con hipertensión arterial?",
                 "options": [
                     "Oxitocina",
                     "Misoprostol",

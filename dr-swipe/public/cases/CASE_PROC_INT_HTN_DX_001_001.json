@@ -5,7 +5,7 @@
     "difficulty": "standard",
     "patient_intro": {
         "name": "Fernando, 50 años",
-        "arrival_scenario": "Acude a consulta externa. En la primera medición presenta TA 145/95 mmHg. Se le pide reposar 5 min y se repite: 142/92 mmHg. Se registran bitácoras de TA en casa (ÁMPA) con promedio de 138/88 mmHg. En consultorio hoy: 146/94 mmHg.",
+        "arrival_scenario": "Acude a consulta externa. En la primera medición presenta TA 145/95 mmHg. Se le pide reposar 5 min y se repite: 142/92 mmHg. Se registran bitácoras de TA en casa (AMPA) con promedio de 138/88 mmHg. En consultorio hoy: 146/94 mmHg.",
         "time_limit_sec": 60
     },
     "card_stream": [
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
-            "card_text": "B) Hipertensión de Bata Blanca: Cifras elevadas en consultorio (>=140/90) pero normales en casa (ÁMPA) o MÁPÁ.",
+            "card_text": "B) Hipertensión de Bata Blanca: Cifras elevadas en consultorio (>=140/90) pero normales en casa (AMPA) o MAPA.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -58,7 +58,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: Correcto. Requiere un monitoreo ambulatorio (MÁPA) para ser detectada."
+                "vazquez_comment": "Mendoza: Correcto. Requiere un monitoreo ambulatorio (MAPA) para ser detectada."
             }
         },
         {
@@ -77,12 +77,12 @@
             "card_id": "c_5",
             "ui_icon": "heart",
             "category": "Manejo Inicial",
-            "card_text": "E) Medidas No Farmacológicas: Dieta DÁSH (baja en sodio, alta en potasio), pérdida de peso y 150 min de ejercicio semanal.",
+            "card_text": "E) Medidas No Farmacológicas: Dieta DASH (baja en sodio, alta en potasio), pérdida de peso y 150 min de ejercicio semanal.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
                 "error_type": "omission",
-                "vazquez_comment": "Mendoza: Bien. Estas medidas pueden reducir la TÁS hasta 10-15 mmHg."
+                "vazquez_comment": "Mendoza: Bien. Estas medidas pueden reducir la TAS hasta 10-15 mmHg."
             }
         },
         {
@@ -101,7 +101,7 @@
             "card_id": "c_9",
             "ui_icon": "activity",
             "category": "Meta Terapéutica",
-            "card_text": "I) Meta General de Control: Mantener cifras menores a 130/80 mmHg en la mayoría de los pacientes (GPC/ÁHA).",
+            "card_text": "I) Meta General de Control: Mantener cifras menores a 130/80 mmHg en la mayoría de los pacientes (GPC/AHA).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -113,7 +113,7 @@
             "card_id": "c_6",
             "ui_icon": "pill",
             "category": "Tratamiento Dual",
-            "card_text": "F) Terapia Combinada Inicial: IECA o ÁRÁ-II + Bloqueador de canales de calcio o Diurético tipo tiazida.",
+            "card_text": "F) Terapia Combinada Inicial: IECA o ARA-II + Bloqueador de canales de calcio o Diurético tipo tiazida.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -129,12 +129,12 @@
             "card_id": "c_8",
             "ui_icon": "zap",
             "category": "meds",
-            "card_text": "H) Emergencia Hipertensiva: TA >180/120 mmHg CON daño agudo (EVC, IÁM, EÁP). Requiere tratamiento IV y hospitalización.",
+            "card_text": "H) Emergencia Hipertensiva: TA >180/120 mmHg CON daño agudo (EVC, IAM, EAP). Requiere tratamiento IV y hospitalización.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
                 "error_type": "lethal_omission",
-                "vazquez_comment": "Mendoza: ¡Vital! El objetivo es reducir la PÁM no más del 25% en la primera hora para evitar isquemia."
+                "vazquez_comment": "Mendoza: ¡Vital! El objetivo es reducir la PAM no más del 25% en la primera hora para evitar isquemia."
             },
             "safety_flags": {
                 "lethal_risk": true,
@@ -143,8 +143,8 @@
         }
     ],
     "enarm_pearl": {
-        "title": "HTÁ: Diagnóstico y Crisis",
-        "text": "Dx: >=140/90. Emergencia = Daño a órgano blanco + Tx IV. Urgencia = Sin daño + Tx Oral. Combo: IECÁ/ÁRÁ2 + BCC.",
+        "title": "HTA: Diagnóstico y Crisis",
+        "text": "Dx: >=140/90. Emergencia = Daño a órgano blanco + Tx IV. Urgencia = Sin daño + Tx Oral. Combo: IECA/ARA2 + BCC.",
         "gpc_ref": "GPC Diagnóstico y Tratamiento de la Hipertensión Arterial Primaria"
     },
     "boss_fight_triad": {
@@ -152,7 +152,7 @@
         "questions": [
             {
                 "correct_index": 2,
-                "question": "¿Meta de TA en diabéticos según la ÁDÁ?",
+                "question": "¿Meta de TA en diabéticos según la ADA?",
                 "options": [
                     "<140/90 mmHg",
                     "<120/70 mmHg",
@@ -161,7 +161,7 @@
             },
             {
                 "correct_index": 2,
-                "question": "¿Qué indica el fondo de ojo en HÁS?",
+                "question": "¿Qué indica el fondo de ojo en HAS?",
                 "options": [
                     "Solo agudeza visual",
                     "No tiene utilidad",
@@ -170,7 +170,7 @@
             },
             {
                 "correct_index": 0,
-                "question": "¿Cifra para diagnóstico de HÁS según NOM-030?",
+                "question": "¿Cifra para diagnóstico de HAS según NOM-030?",
                 "options": [
                     ">=140/90 mmHg",
                     ">=130/80 mmHg",

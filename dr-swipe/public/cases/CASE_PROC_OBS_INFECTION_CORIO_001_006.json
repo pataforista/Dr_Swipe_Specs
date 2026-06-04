@@ -37,7 +37,7 @@
             "card_id": "c_2",
             "ui_icon": "thermometer",
             "category": "Criterios Gibbs",
-            "card_text": "B) Fiebre Materna: Temperatura oral >=38°C. Es el criterio INDISPENSÁBLE para el diagnóstico clínico de Gibbs.",
+            "card_text": "B) Fiebre Materna: Temperatura oral >=38°C. Es el criterio INDISPENSABLE para el diagnóstico clínico de Gibbs.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -156,7 +156,7 @@
                 "correct_index": 0
             },
             {
-                "question": "Con respecto a la patología, ¿cuál es el signo clínico INDISPENSÁBLE para integrar el diagnóstico de Corioamnionitis (Criterios de Gibbs)?",
+                "question": "Con respecto a la patología, ¿cuál es el signo clínico INDISPENSABLE para integrar el diagnóstico de Corioamnionitis (Criterios de Gibbs)?",
                 "options": [
                     "Fiebre materna >=38.0°C",
                     "Taquicardia Fetal >160 lpm",

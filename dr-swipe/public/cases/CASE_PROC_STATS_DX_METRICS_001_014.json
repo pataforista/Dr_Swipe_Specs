@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_STÁTS_DX_METRICS_001_014",
+    "case_id": "PROC_STATS_DX_METRICS_001_014",
     "version": "v3_swipe_action",
     "theme_config": "stats",
     "difficulty": "hard",
@@ -12,20 +12,20 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 120/80 mmHg, FC 75 lpm, Temp 36.6°C. El paciente se encuentra hemodinámicamente estable.",
+            "category": "Signos Vitales",
+            "card_text": "Evidencia clínica: Ruido en el expediente: TA N/A, FC N/A, Temp N/A",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Antes de lanzarnos a los números, siempre verificamos que el paciente esté estable. Ahora, volvamos a la estadística."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "Hallazgo: A) Probabilidad BÁJA (<10%): En enfermedades raras, incluso pruebas 'buenas' tienen un Valor Predictivo Positivo (VPP) muy bajo por el peso de los FP.",
+            "card_text": "Hallazgo: A) Probabilidad BAJA (<10%): En enfermedades raras, incluso pruebas 'buenas' tienen un Valor Predictivo Positivo (VPP) muy bajo por el peso de los FP.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,136 +41,52 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "Dato de importancia: Dato anecdótico: B) Probabilidad ÁLTA (>90%): Confundiste la Sensibilidad con el VPP. La prueba es buena detectando enfermos, pero falla ante tantos sanos.",
+            "card_text": "Dato de importancia: Dato anecdótico: B) Probabilidad ALTA (>90%): Confundiste la Sensibilidad con el VPP. La prueba es buena detectando enfermos, pero falla ante tantos sanos.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Notaste la trampa de la prevalencia."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Notaste la trampa de la prevalencia."
             },
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": false
             }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "Dato de importancia: FC 110 lpm, FR 22 rpm, Temp 37.2 C, TA 110/70 mmHg (Signos Vitales Estables).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "DATO CLAVE OMITIDO: Navarro: Bien! No hay signos de deshidratacion clinica. Inicia Plan A ambulatorio en casa."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 130/85, FC 80 lpm, Temp 36.5°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_3",
-            "ui_icon": "eye",
-            "category": "Rescate",
-            "card_text": "C) Salbutamol (SÁBA) a demanda: Única terapia necesaria para pacientes con síntomas ocasionales (Step 1 antiguo).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 100,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Incorrecto! La GINA ya no recomienda SÁBA solo por el riesgo de exacerbaciones graves. ¡Usa ICS-Formoterol!"
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "Signos Vitales",
-            "card_text": "Hallazgo: Ruido en el expediente: TA 100/60 mmHg, FC 110 lpm, Temp 36.4°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 90/60 (tendencia al choque), FC 50 lpm (bloqueo), Temp 36.8°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en estos signos de bradicardia, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_3",
-            "ui_icon": "eye",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "Información redundante: C) Reflujo Gastroesofágico: Regurgitaciones frecuentes, no en proyectil, con ganancia ponderal adecuada inicialmente.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. El vómito explosivo 'en proyectil' apunta fuertemente a una obstrucción mecánica."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Historia Estándar",
-            "card_text": "Información redundante: B) Descompresión en 2° Espacio Intercostal (LMC): Sitio recomendado en versiones antiguas (ATLS 9ª y previas). Menos efectivo por el grosor de la pared torácica.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¡Bien! Escogiste el sitio del ATLS 10 para garantizar la descompresión efectiva."
-            }
         }
     ],
     "enarm_pearl": {
         "title": "VPP y Prevalencia",
-        "text": "Si la Prevalencia sube â†’ el VPP sube. Si la Prevalencia baja â†’ el VPP baja. Sensibilidad y Especificidad NO cambian con la prevalencia.",
+        "text": "Si la Prevalencia sube → el VPP sube. Si la Prevalencia baja → el VPP baja. Sensibilidad y Especificidad NO cambian con la prevalencia.",
         "gpc_ref": "Bioestadística Clínica para el ENARM"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 1,
-                "question": "¿Definición de Sensibilidad?",
-                "options": [
-                    "VP / Total Positivos",
-                    "VP / Total Enfermos",
-                    "VN / Total Sanos"
-                ]
-            },
-            {
-                "correct_index": 2,
+                "correct_index": 0,
                 "question": "¿Qué sucede con el VPP si la prevalencia disminuye?",
                 "options": [
-                    "Permanece igual",
+                    "Disminuye",
                     "Aumenta",
-                    "Disminuye"
+                    "Permanece igual"
                 ]
             },
             {
-                "correct_index": 1,
+                "correct_index": 0,
+                "question": "¿Definición de Sensibilidad?",
+                "options": [
+                    "VP / Total Enfermos",
+                    "VN / Total Sanos",
+                    "VP / Total Positivos"
+                ]
+            },
+            {
+                "correct_index": 0,
                 "question": "¿Qué métricas NO se alteran por la prevalencia?",
                 "options": [
-                    "Prevalencia y Incidencia",
                     "Sensibilidad y Especificidad",
-                    "VPP y VPN"
+                    "VPP y VPN",
+                    "Prevalencia y Incidencia"
                 ]
             }
         ]

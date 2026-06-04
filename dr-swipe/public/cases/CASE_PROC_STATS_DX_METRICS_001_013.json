@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_STÁTS_DX_METRICS_001_013",
+    "case_id": "PROC_STATS_DX_METRICS_001_013",
     "version": "v3_swipe_action",
     "theme_config": "stats",
     "difficulty": "hard",
@@ -12,20 +12,20 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 120/80 mmHg, FC 75 lpm, Temp 36.6°C. El paciente se encuentra hemodinámicamente estable.",
+            "category": "Signos Vitales",
+            "card_text": "Hallazgo clínico: Dato anecdótico: TA N/A, FC N/A, Temp N/A",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Antes de lanzarnos a los números, siempre verificamos que el paciente esté estable. Ahora, volvamos a la estadística."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "Evidencia: A) Probabilidad BÁJA (<10%): En enfermedades raras, incluso pruebas 'buenas' tienen un Valor Predictivo Positivo (VPP) muy bajo por el peso de los FP.",
+            "card_text": "Evidencia: A) Probabilidad BAJA (<10%): En enfermedades raras, incluso pruebas 'buenas' tienen un Valor Predictivo Positivo (VPP) muy bajo por el peso de los FP.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,119 +41,36 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "Información redundante: B) Probabilidad ÁLTA (>90%): Confundiste la Sensibilidad con el VPP. La prueba es buena detectando enfermos, pero falla ante tantos sanos.",
+            "card_text": "Información redundante: B) Probabilidad ALTA (>90%): Confundiste la Sensibilidad con el VPP. La prueba es buena detectando enfermos, pero falla ante tantos sanos.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Notaste la trampa de la prevalencia."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Notaste la trampa de la prevalencia."
             },
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": false
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "Información redundante: B) Observación y Antibióticos: No es la conducta estándar ante una sospecha tan alta de apendicitis aguda no complicada.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¡Bien! El manejo expectante en apendicitis confirmada es arriesgado."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 90/60 (tendencia al choque), FC 50 lpm (bloqueo), Temp 36.8°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en estos signos de bradicardia, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "B) Placenta Previa: Sangrado rojo rutilante, INDOLORO, sin hipertonía uterina y frecuencia cardiaca fetal suele ser normal inicialmente.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: ¡Bien! El dolor intenso y la hipertonía descartan Placenta Previa."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "labs",
-            "card_text": "B) Prediabetes (Glucosa Alterada en Ayuno): Glucosa en ayuno entre 100 y 125 mg/dl.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: ¡Bien! Reconociste que ya es un cuadro franco de Diabetes."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "Dato de importancia: FC 135 lpm (Taquicardia moderada), FR 28 rpm, Temp 37.5 C, TA 105/65 mmHg (Normal-Baja).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "DATO CLAVE OMITIDO: Navarro: Atencion! El paciente presenta deshidratacion moderada. Inicia Plan B de Rehidratacion Oral supervisada."
-            }
-        },
-        {
-            "card_id": "pad_009",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 120/80 mmHg, FC 75 lpm, Temp 36.6°C. El paciente se encuentra hemodinámicamente estable.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Antes de lanzarnos a los números, siempre verificamos que el paciente esté estable. Ahora, volvamos a la estadística."
             }
         }
     ],
     "enarm_pearl": {
         "title": "VPP y Prevalencia",
-        "text": "Si la Prevalencia sube â†’ el VPP sube. Si la Prevalencia baja â†’ el VPP baja. Sensibilidad y Especificidad NO cambian con la prevalencia.",
+        "text": "Si la Prevalencia sube → el VPP sube. Si la Prevalencia baja → el VPP baja. Sensibilidad y Especificidad NO cambian con la prevalencia.",
         "gpc_ref": "Bioestadística Clínica para el ENARM"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
+            {
+                "correct_index": 0,
+                "question": "¿Qué sucede con el VPP si la prevalencia disminuye?",
+                "options": [
+                    "Disminuye",
+                    "Aumenta",
+                    "Permanece igual"
+                ]
+            },
             {
                 "correct_index": 0,
                 "question": "¿Definición de Sensibilidad?",
@@ -165,20 +82,11 @@
             },
             {
                 "correct_index": 0,
-                "question": "¿Qué sucede con el VPP si la prevalencia disminuye?",
-                "options": [
-                    "Disminuye",
-                    "Permanece igual",
-                    "Aumenta"
-                ]
-            },
-            {
-                "correct_index": 1,
                 "question": "¿Qué métricas NO se alteran por la prevalencia?",
                 "options": [
-                    "Prevalencia y Incidencia",
                     "Sensibilidad y Especificidad",
-                    "VPP y VPN"
+                    "VPP y VPN",
+                    "Prevalencia y Incidencia"
                 ]
             }
         ]

@@ -5,7 +5,7 @@
     "difficulty": "standard",
     "patient_intro": {
         "name": "Alex, 28 años",
-        "arrival_scenario": "Acude por úlcera única en el glande, de bordes elevados, indurada y totalmente INDOLORÁ. Refiere contacto sexual de riesgo hace 3 semanas. Presenta adenopatías inguinales bilaterales no dolorosas.",
+        "arrival_scenario": "Acude por úlcera única en el glande, de bordes elevados, indurada y totalmente INDOLORA. Refiere contacto sexual de riesgo hace 3 semanas. Presenta adenopatías inguinales bilaterales no dolorosas.",
         "time_limit_sec": 60
     },
     "card_stream": [
@@ -53,7 +53,7 @@
             "card_id": "c_2",
             "ui_icon": "scissors",
             "category": "Diferencial",
-            "card_text": "B) Chancroide (H. ducreyi): Úlceras múltiples, con bordes sucios, base necrótica y MUY DOLOROSÁS.",
+            "card_text": "B) Chancroide (H. ducreyi): Úlceras múltiples, con bordes sucios, base necrótica y MUY DOLOROSAS.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -89,7 +89,7 @@
             "card_id": "c_5",
             "ui_icon": "check-circle",
             "category": "meds",
-            "card_text": "E) Pruebas Treponémicas (FTÁ-ÁBS): Confirmatorias. Permanecen positivas de por vida (cicatriz serológica).",
+            "card_text": "E) Pruebas Treponémicas (FTA-ABS): Confirmatorias. Permanecen positivas de por vida (cicatriz serológica).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -151,7 +151,7 @@
         }
     ],
     "enarm_pearl": {
-        "title": "Sífilis: El ÁBC",
+        "title": "Sífilis: El ABC",
         "text": "Primaria: Chancro indoloro. Secundaria: Palmas/Plantas. Tx: Penicilina Benzatínica 2.4 M. Seguimiento: Descenso de 4 diluciones en VDRL.",
         "gpc_ref": "GPC Diagnóstico y tratamiento de la sífilis"
     },
@@ -161,7 +161,7 @@
             {
                 "question": "¿Cuál de las siguientes pruebas se utiliza para evaluar la respuesta al tratamiento y detectar reinfecciones?",
                 "options": [
-                    "Pruebas treponémicas (FTÁ-ÁBS)",
+                    "Pruebas treponémicas (FTA-ABS)",
                     "Inmunotransferencia (Western Blot)",
                     "Pruebas no treponémicas (VDRL/RPR)"
                 ],

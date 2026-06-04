@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_INT_ÁMI_001_001",
+    "case_id": "PROC_INT_AMI_001_001",
     "version": "v3_swipe_action",
     "theme_config": "int",
     "difficulty": "hard",
@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Infarto Agudo al Miocardio (SCÁCEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
+            "card_text": "A) Infarto Agudo al Miocardio (SCACEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -70,7 +70,7 @@
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
-                "vazquez_comment": "Mendoza: Correcto. La antiagregación es la base del manejo inicial en el SCÁCEST."
+                "vazquez_comment": "Mendoza: Correcto. La antiagregación es la base del manejo inicial en el SCACEST."
             }
         },
         {
@@ -82,7 +82,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "omission",
-                "vazquez_comment": "Mendoza: Bien. Recuerda que en SCÁCEST no esperas el resultado para actuar, pero sirven para seguimiento y pronóstico."
+                "vazquez_comment": "Mendoza: Bien. Recuerda que en SCACEST no esperas el resultado para actuar, pero sirven para seguimiento y pronóstico."
             }
         },
         {
@@ -106,7 +106,7 @@
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
-                "vazquez_comment": "Mendoza: ¡Dato fundamental! Por eso todo paciente con IÁM debe estar monitorizado y con desfibrilador cerca."
+                "vazquez_comment": "Mendoza: ¡Dato fundamental! Por eso todo paciente con IAM debe estar monitorizado y con desfibrilador cerca."
             }
         },
         {
@@ -143,7 +143,7 @@
         }
     ],
     "enarm_pearl": {
-        "title": "Tiempo es Músculo: SCÁCEST",
+        "title": "Tiempo es Músculo: SCACEST",
         "text": "Diagnóstico: Clínica + ECG (<10 min). Tiempo puerta-balón (ICP): <90 min. Tiempo puerta-aguja (fibrinólisis): <30 min. Complicación letal temprana: Fibrilación ventricular.",
         "gpc_ref": "GPC Infarto Agudo al Miocardio con Elevación del ST"
     },
@@ -160,7 +160,7 @@
                 "correct_index": 1
             },
             {
-                "question": "¿Cuál es la principal causa de muerte prehospitalaria en un paciente con IÁM?",
+                "question": "¿Cuál es la principal causa de muerte prehospitalaria en un paciente con IAM?",
                 "options": [
                     "Fibrilación Ventricular",
                     "Choque cardiogénico",

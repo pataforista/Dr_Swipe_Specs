@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_STÁTS_DX_METRICS_001_007",
+    "case_id": "PROC_STATS_DX_METRICS_001_007",
     "version": "v3_swipe_action",
     "theme_config": "stats",
     "difficulty": "hard",
@@ -12,20 +12,20 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 120/80 mmHg, FC 75 lpm, Temp 36.6°C. El paciente se encuentra hemodinámicamente estable.",
+            "category": "Signos Vitales",
+            "card_text": "Información redundante: TA N/A, FC N/A, Temp N/A",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Antes de lanzarnos a los números, siempre verificamos que el paciente esté estable. Ahora, volvamos a la estadística."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "Hallazgo clínico: A) Probabilidad BÁJA (<10%): En enfermedades raras, incluso pruebas 'buenas' tienen un Valor Predictivo Positivo (VPP) muy bajo por el peso de los FP.",
+            "card_text": "Hallazgo clínico: A) Probabilidad BAJA (<10%): En enfermedades raras, incluso pruebas 'buenas' tienen un Valor Predictivo Positivo (VPP) muy bajo por el peso de los FP.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,120 +41,14 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "Hallazgo clínico: Dato anecdótico: B) Probabilidad ÁLTA (>90%): Confundiste la Sensibilidad con el VPP. La prueba es buena detectando enfermos, pero falla ante tantos sanos.",
+            "card_text": "Hallazgo clínico: Dato anecdótico: B) Probabilidad ALTA (>90%): Confundiste la Sensibilidad con el VPP. La prueba es buena detectando enfermos, pero falla ante tantos sanos.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Notaste la trampa de la prevalencia."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Notaste la trampa de la prevalencia."
             },
             "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 85/50 mmHg, FC 115 lpm, Temp 39.0°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en estos signos de hipotensión/choque, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "B) Diferir inicio hasta CD4 <200 (SIDA): Práctica obsoleta que aumentaba el riesgo de infecciones oportunistas y mortalidad.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Reconociste el cambio hacia el tratamiento universal proactivo."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "c_3",
-            "ui_icon": "slash",
-            "category": "meds",
-            "card_text": "C) Bicarbonato de Sodio IV: Indicado para corregir la acidosis metabólica en todos los pacientes con pH <7.2.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "lethal_hazard",
-                "vazquez_comment": "Mendoza: ¡Cuidado! El bicarbonato NO se usa de rutina; solo se indica si el pH es <6.9 por riesgo de edema cerebral y acidosis paradójica."
-            },
-            "safety_flags": {
-                "lethal_risk": true,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "e07",
-            "ui_icon": "☢️",
-            "category": "imaging",
-            "card_text": "Sin infiltrados, derrames ni cardiomegalia. Silueta cardíaca normal. Campos pulmonares limpios.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
-            },
-            "safety_flags": {
-                "contraindication": false,
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "meds",
-            "card_text": "B) Administrar Esteroide IV Inmediatamente: Solo se consideran en choque séptico REFRÁCTÁRIO a fluidos y vasopresores. No es manejo inicial.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Priorizaste la resucitación con fluidos y antibióticos."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "c_8",
-            "ui_icon": "umbrella",
-            "category": "vitals",
-            "card_text": "H) Killip III: Edema agudo pulmonar (estertores en más del 50% de campos pulmonares).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "ev_006",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Hb: 8.1 g/dL — copia exacta del mismo laboratorio enviada por doble impresión. Valor idéntico.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
-            },
-            "safety_flags": {
-                "contraindication": false,
                 "lethal_risk": false,
                 "decision_critical": false
             }
@@ -162,37 +56,37 @@
     ],
     "enarm_pearl": {
         "title": "VPP y Prevalencia",
-        "text": "Si la Prevalencia sube â†’ el VPP sube. Si la Prevalencia baja â†’ el VPP baja. Sensibilidad y Especificidad NO cambian con la prevalencia.",
+        "text": "Si la Prevalencia sube → el VPP sube. Si la Prevalencia baja → el VPP baja. Sensibilidad y Especificidad NO cambian con la prevalencia.",
         "gpc_ref": "Bioestadística Clínica para el ENARM"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 2,
-                "question": "¿Definición de Sensibilidad?",
-                "options": [
-                    "VP / Total Positivos",
-                    "VN / Total Sanos",
-                    "VP / Total Enfermos"
-                ]
-            },
-            {
-                "correct_index": 1,
-                "question": "¿Qué métricas NO se alteran por la prevalencia?",
-                "options": [
-                    "VPP y VPN",
-                    "Sensibilidad y Especificidad",
-                    "Prevalencia y Incidencia"
-                ]
-            },
-            {
-                "correct_index": 2,
+                "correct_index": 0,
                 "question": "¿Qué sucede con el VPP si la prevalencia disminuye?",
                 "options": [
+                    "Disminuye",
                     "Aumenta",
-                    "Permanece igual",
-                    "Disminuye"
+                    "Permanece igual"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Definición de Sensibilidad?",
+                "options": [
+                    "VP / Total Enfermos",
+                    "VN / Total Sanos",
+                    "VP / Total Positivos"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Qué métricas NO se alteran por la prevalencia?",
+                "options": [
+                    "Sensibilidad y Especificidad",
+                    "VPP y VPN",
+                    "Prevalencia y Incidencia"
                 ]
             }
         ]

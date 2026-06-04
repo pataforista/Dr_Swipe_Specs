@@ -61,7 +61,7 @@
             "card_id": "c_5",
             "ui_icon": "pill",
             "category": "Tratamiento Médico",
-            "card_text": "E) Metotrexato (MTX): Elección si: Paciente ESTÁBLE, saco <3.5cm, sin latido fetal y beta-hCG <5,000 mUI/ml.",
+            "card_text": "E) Metotrexato (MTX): Elección si: Paciente ESTABLE, saco <3.5cm, sin latido fetal y beta-hCG <5,000 mUI/ml.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -73,7 +73,7 @@
             "card_id": "c_7",
             "ui_icon": "scissors",
             "category": "Tratamiento Conservador",
-            "card_text": "G) Salpingostomía: Incisión en la trompa para extraer el saco. Elección si se desea preservar la fertilidad en paciente ESTÁBLE.",
+            "card_text": "G) Salpingostomía: Incisión en la trompa para extraer el saco. Elección si se desea preservar la fertilidad en paciente ESTABLE.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

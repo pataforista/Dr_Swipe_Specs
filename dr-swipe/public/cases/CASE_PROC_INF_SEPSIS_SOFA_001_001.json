@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_INF_SEPSIS_SOFÁ_001_001",
+    "case_id": "PROC_INF_SEPSIS_SOFA_001_001",
     "version": "v3_swipe_action",
     "theme_config": "inf",
     "difficulty": "hard",
@@ -37,7 +37,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "meds",
-            "card_text": "B) Administrar Esteroide IV (Hidrocortisona): Indicado únicamente en choque séptico REFRÁCTÁRIO que no responde a fluidos ni vasopresores.",
+            "card_text": "B) Administrar Esteroide IV (Hidrocortisona): Indicado únicamente en choque séptico REFRACTARIO que no responde a fluidos ni vasopresores.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -61,7 +61,7 @@
             "card_id": "c_4",
             "ui_icon": "clipboard",
             "category": "Tamizaje",
-            "card_text": "D) Escala qSOFÁ: Evalúa: FR >=22, Alteración mental (Glasgow <15) y TÁS <=100 mmHg. Identifica pacientes graves fuera de UCI.",
+            "card_text": "D) Escala qSOFA: Evalúa: FR >=22, Alteración mental (Glasgow <15) y TAS <=100 mmHg. Identifica pacientes graves fuera de UCI.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -73,7 +73,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "imaging",
-            "card_text": "A) Bundle de 1 Hora (Cultivos, ÁB Empírico, Cristaloides): Resucitación inicial agresiva: Toma de lactato, cultivos, antibióticos de amplio espectro y fluidos IV.",
+            "card_text": "A) Bundle de 1 Hora (Cultivos, AB Empírico, Cristaloides): Resucitación inicial agresiva: Toma de lactato, cultivos, antibióticos de amplio espectro y fluidos IV.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -95,7 +95,7 @@
             "scoring": {
                 "points": 100,
                 "error_type": "lethal_omission",
-                "vazquez_comment": "Navarro: ¡Exacto! Sepsis ya no es igual a SIRS; ahora es disfunción de órganos cuantificada por SOFÁ."
+                "vazquez_comment": "Navarro: ¡Exacto! Sepsis ya no es igual a SIRS; ahora es disfunción de órganos cuantificada por SOFA."
             },
             "safety_flags": {
                 "lethal_risk": true,
@@ -154,7 +154,7 @@
             "card_id": "c_9",
             "ui_icon": "alert-triangle",
             "category": "meds",
-            "card_text": "I) Soporte Vasopresor: Iniciar Norepinefrina si la PÁM persiste <65 mmHg a pesar de una adecuada reanimación volémica.",
+            "card_text": "I) Soporte Vasopresor: Iniciar Norepinefrina si la PAM persiste <65 mmHg a pesar de una adecuada reanimación volémica.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -169,14 +169,14 @@
     ],
     "enarm_pearl": {
         "title": "Sepsis-3 y Bundle",
-        "text": "Sepsis = ΔSOFA >=2. Bundle: Lactato, Hemocultivos, Antibióticos, Líquidos (30ml/kg), Vasopresores si PÁM <65.",
+        "text": "Sepsis = ΔSOFA >=2. Bundle: Lactato, Hemocultivos, Antibióticos, Líquidos (30ml/kg), Vasopresores si PAM <65.",
         "gpc_ref": "Surviving Sepsis Campaign Guidelines 2021"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
             {
-                "question": "Con respecto a la patología, ¿cuál es la meta de Presión Arterial Media (PÁM) tras la reanimación inicial?",
+                "question": "Con respecto a la patología, ¿cuál es la meta de Presión Arterial Media (PAM) tras la reanimación inicial?",
                 "options": [
                     ">=50 mmHg",
                     ">=65 mmHg",
@@ -196,7 +196,7 @@
             {
                 "question": "¿Qué par de criterios definen el Choque Séptico tras la reanimación con líquidos?",
                 "options": [
-                    "TÁS <100 y qSOFA de 3",
+                    "TAS <100 y qSOFA de 3",
                     "Necesidad de vasopresores y Lactato >2 mmol/L",
                     "Fiebre y Leucocitosis"
                 ],

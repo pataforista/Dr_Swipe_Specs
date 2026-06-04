@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_GÁST_MESENTERIC_ISCHEMIÁ_001_001",
+    "case_id": "PROC_GAST_MESENTERIC_ISCHEMIA_001_001",
     "version": "v3_swipe_action",
     "theme_config": "gast",
     "difficulty": "hard",
@@ -49,7 +49,7 @@
             "card_id": "c_4",
             "ui_icon": "alert-triangle",
             "category": "Factores Riesgo",
-            "card_text": "D) Fibrilación Auricular (FA): Principal causa de embolismo a la Arteria Mesentérica Superior (ÁMS).",
+            "card_text": "D) Fibrilación Auricular (FA): Principal causa de embolismo a la Arteria Mesentérica Superior (AMS).",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,

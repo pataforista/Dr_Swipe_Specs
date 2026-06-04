@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_ENGL_TECH_VOCÁBULÁRY_001_015",
+    "case_id": "PROC_ENGL_TECH_VOCABULARY_001_015",
     "version": "v3_swipe_action",
     "theme_config": "engl",
     "difficulty": "standard",
@@ -12,20 +12,20 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 120/80, FC 78 bpm, Temp 37.0°C",
+            "category": "Signos Vitales",
+            "card_text": "Hallazgo clínico: Ruido en el expediente: TA 120/80, FC 78 bpm, Temp 37.0°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias.",
+            "card_text": "Evidencia: A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "B) Estreñimiento (Bowel movement issues): 'Constipation' es el falso amigo más común: significa Estreñimiento, NO congestión nasal.",
+            "card_text": "Evidencia clínica: B) Estreñimiento (Bowel movement issues): 'Constipation' es el falso amigo más común: significa Estreñimiento, NO congestión nasal.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -51,111 +51,6 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
-        },
-        {
-            "card_id": "c_3",
-            "ui_icon": "eye",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "C) Lupus Eritematoso Sistémico (LES): El eritema malar puede confundir, pero el LES suele ser fotosensible y tener compromiso multiorgánico.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: Correcto. El aspecto 'reticulado' posterior en extremidades aleja el diagnóstico de Lupus."
-            }
-        },
-        {
-            "card_id": "c_3",
-            "ui_icon": "target",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "Evidencia clínica: Ruido en el expediente: C) 2da Dosis de BCG y Sabin (VOP): Se planea aplicar refuerzo de tuberculosis y vacuna oral viva de poliomielitis (gotitas).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Perfecto! No caíste en distractores obsoletos del esquema antiguo."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "h09",
-            "ui_icon": "☢️",
-            "category": "imaging",
-            "card_text": "Riñón derecho con ectasia pielocalicial grado II. Vejiga con sedimento ecogénico. Compatible con proceso infeccioso urinario activo.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Perdiendo el tiempo con tonterías... concéntrate en lo que importa."
-            },
-            "safety_flags": {
-                "contraindication": false,
-                "lethal_risk": false,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "Evidencia clínica: Ruido en el expediente: B) Punción en 2° espacio intercostal: Sitio recomendado en guías anteriores (ATLS 9ª y normas mexicanas viejas).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¡Bien! Reconociste que el 2° espacio ya no es el sitio preferido en las guías más recientes."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "Información redundante: B) Observación y Antibióticos: No es la conducta estándar ante una sospecha tan alta de apendicitis aguda no complicada.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¡Bien! El manejo expectante en apendicitis confirmada es arriesgado."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "labs",
-            "card_text": "B) Aciclovir IV: Tratamiento para Encefalitis herpética (hallazgos LCR suelen ser linfocitosis y glucosa normal).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Diferenciaste la meningitis bacteriana de la viral/encefalitis."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "Signos Vitales",
-            "card_text": "Informacion redundante: TA 120/80, FC 90 lpm, Temp 36.8°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         }
     ],
@@ -168,30 +63,30 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 1,
+                "correct_index": 0,
                 "question": "¿Cuál es la traducción correcta de 'Constipation' en un contexto médico?",
                 "options": [
-                    "Congestión nasal",
                     "Estreñimiento",
+                    "Congestión nasal",
                     "Diarrea"
                 ]
             },
             {
-                "correct_index": 1,
-                "question": "¿Cuál es la diferencia entre 'Wound' e 'Injury'?",
+                "correct_index": 0,
+                "question": "¿Qué significa el término 'Shortness of breath'?",
                 "options": [
-                    "Wound es una fractura; Injury es un moretón",
-                    "Wound es una herida abierta; Injury es cualquier lesión",
-                    "Son sinónimos exactos en medicina"
+                    "Disnea (falta de aire)",
+                    "Dolor de pecho",
+                    "Tos seca"
                 ]
             },
             {
-                "correct_index": 2,
-                "question": "¿Qué significa el término 'Shortness of breath'?",
+                "correct_index": 0,
+                "question": "¿Cuál es la diferencia entre 'Wound' e 'Injury'?",
                 "options": [
-                    "Dolor de pecho",
-                    "Tos seca",
-                    "Disnea (falta de aire)"
+                    "Wound es una herida abierta; Injury es cualquier lesión",
+                    "Wound es una fractura; Injury es un moretón",
+                    "Son sinónimos exactos en medicina"
                 ]
             }
         ]

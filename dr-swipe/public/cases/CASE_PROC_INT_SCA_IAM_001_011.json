@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_INT_SCÁ_IÁM_001_011",
+    "case_id": "PROC_INT_SCA_IAM_001_011",
     "version": "v3_swipe_action",
     "theme_config": "int",
     "difficulty": "hard",
@@ -12,77 +12,25 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 100/60 mmHg, FC 110 lpm, Temp 36.4°C",
+            "category": "Signos Vitales",
+            "card_text": "Dato de importancia: Dato anecdótico: TA 100/60 mmHg, FC 110 lpm, Temp 36.4°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "meds",
-            "card_text": "B) Angina Inestable: Dolor isquémico sin elevación del ST ni biomarcadores positivos.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: ¡Bien! Los biomarcadores y el ECG confirmaron el infarto."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "pad_005",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "pad_007",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "pad_008",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) IÁMCEST de Cara Anterior: Elevación del ST en precordiales (V1-V4). Requiere reperfusión inmediata (ICP o Fibrinólisis).",
+            "card_text": "Evidencia clínica: A) IAMCEST de Cara Anterior: Elevación del ST en precordiales (V1-V4). Requiere reperfusión inmediata (ICP o Fibrinólisis).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
                 "error_type": "lethal_omission",
-                "vazquez_comment": "Mendoza: ¡Correcto! El ST elevado en V1-V4 indica compromiso de la Descendente Anterior. El tiempo es músculo."
+                "vazquez_comment": "¡Correcto! El ST elevado en V1-V4 indica compromiso de la Descendente Anterior. El tiempo es músculo."
             },
             "safety_flags": {
                 "lethal_risk": true,
@@ -91,60 +39,24 @@
             }
         },
         {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 90/60 (tendencia al choque), FC 115 lpm, Temp 36.5°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
-            }
-        },
-        {
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "Evidencia clínica: Dato anecdótico: B) Punción en 2° espacio intercostal: Sitio recomendado en guías anteriores (ATLS 9ª y normas mexicanas viejas).",
+            "card_text": "Dato de importancia: Dato anecdótico: B) Angina Inestable: Dolor isquémico sin elevación del ST ni biomarcadores positivos.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "¡Bien! Reconociste que el 2° espacio ya no es el sitio preferido en las guías más recientes."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! Los biomarcadores y el ECG confirmaron el infarto."
             },
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": false
             }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "labs",
-            "card_text": "B) Aciclovir IV: El paciente presenta LCR con pleocitosis linfocitaria, glucosa normal y proteínas levemente elevadas. Sospecha de Encefalitis.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Diferenciaste la meningitis bacteriana (PMN) de la viral/encefalitis (mononucleares)."
-            }
-        },
-        {
-            "card_id": "c_3",
-            "ui_icon": "eye",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "Hallazgo clínico: Dato anecdótico: C) Reflujo Gastroesofágico: Regurgitaciones frecuentes, no en proyectil, con ganancia ponderal adecuada inicialmente.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. El vómito explosivo 'en proyectil' apunta fuertemente a una obstrucción mecánica."
-            }
         }
     ],
     "enarm_pearl": {
-        "title": "Ventana Reperfusión SCÁ",
+        "title": "Ventana Reperfusión SCA",
         "text": "Meta ICP primaria: <90 min (puerta-balón). Meta Fibrinólisis: <30 min (puerta-aguja) si no hay ICP disponible.",
         "gpc_ref": "GPC Diagnóstico y Tratamiento del Infarto Agudo de Miocardio"
     },
@@ -152,30 +64,30 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 2,
-                "question": "Identifique la principal causa de muerte prehospitalaria en un paciente con IÁM?",
-                "options": [
-                    "Ruptura de pared libre",
-                    "Choque cardiogénico",
-                    "Fibrilación Ventricular"
-                ]
-            },
-            {
-                "correct_index": 2,
-                "question": "¿Cuál es la estrategia de reperfusión de elección si el hospital cuenta con sala de hemodinamia?",
-                "options": [
-                    "Fibrinólisis farmacológica",
-                    "Bypass de arteria coronaria urgente",
-                    "Intervención Coronaria Percutánea (ICP) primaria"
-                ]
-            },
-            {
                 "correct_index": 0,
                 "question": "¿Cuál es el tiempo meta establecido por las guías para la realización e interpretación del ECG?",
                 "options": [
                     "Menos de 10 minutos",
-                    "A la brevedad posible sin tiempo límite",
-                    "Menos de 30 minutos"
+                    "Menos de 30 minutos",
+                    "A la brevedad posible sin tiempo límite"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Cuál es la estrategia de reperfusión de elección si el hospital cuenta con sala de hemodinamia?",
+                "options": [
+                    "Intervención Coronaria Percutánea (ICP) primaria",
+                    "Fibrinólisis farmacológica",
+                    "Bypass de arteria coronaria urgente"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Cuál es la principal causa de muerte prehospitalaria en un paciente con IAM?",
+                "options": [
+                    "Fibrilación Ventricular",
+                    "Ruptura de pared libre",
+                    "Choque cardiogénico"
                 ]
             }
         ]

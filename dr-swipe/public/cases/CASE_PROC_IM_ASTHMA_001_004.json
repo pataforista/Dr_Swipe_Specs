@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_IM_ÁSTHMÁ_001_004",
+    "case_id": "PROC_IM_ASTHMA_001_004",
     "version": "v3_swipe_action",
     "theme_config": "med",
     "difficulty": "standard",
@@ -12,32 +12,20 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "FC 88 lpm, Temp 36.6°C, SatO2 97% (Aire ambiente).",
+            "category": "Signos Vitales",
+            "card_text": "Dato de importancia: Dato anecdótico: FC 88 lpm, Temp 36.6°C, SatO2 97% (Aire ambiente).",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Signos estables por ahora, Sofía no está en crisis aguda."
-            }
-        },
-        {
-            "card_id": "pad_006",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 50,
-                "error_type": "omission",
-                "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: Signos estables por ahora, Sofía no está en crisis aguda."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Asma Bronquial: Enfermedad inflamatoria crónica de la vía aérea con obstrucción reversible (clínica + espirometría).",
+            "card_text": "Evidencia clínica: A) Asma Bronquial: Enfermedad inflamatoria crónica de la vía aérea con obstrucción reversible (clínica + espirometría).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -52,8 +40,8 @@
         {
             "card_id": "c_2",
             "ui_icon": "pill",
-            "category": "Tratamiento GINÁ",
-            "card_text": "B) ICS-Formoterol (Rescate y Mantenimiento): Vía preferente (Step 1 y 2). El uso de SÁBA solo ha quedado relegado.",
+            "category": "Tratamiento GINA",
+            "card_text": "Hallazgo clínico: B) ICS-Formoterol (Rescate y Mantenimiento): Vía preferente (Step 1 y 2). El uso de SABA solo ha quedado relegado.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -64,118 +52,41 @@
                     "decision_critical": true
                 }
             }
-        },
-        {
-            "card_id": "pad_004",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Esto es puro ruido, R1. Concéntrate en la patología de base."
-            }
-        },
-        {
-            "card_id": "pad_005",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
-            }
-        },
-        {
-            "card_id": "pad_007",
-            "ui_icon": "☢️",
-            "category": "imaging",
-            "card_text": "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
-            }
-        },
-        {
-            "card_id": "pad_008",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Esto es puro ruido, R1. Concéntrate en la patología de base."
-            }
-        },
-        {
-            "card_id": "pad_009",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-            }
-        },
-        {
-            "card_id": "h07",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Hb: 9.0 g/dL — segunda impresión del mismo análisis. Valor idéntico al previo. Error de sistema.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-            },
-            "safety_flags": {
-                "contraindication": false,
-                "lethal_risk": false,
-                "decision_critical": false
-            }
         }
     ],
     "enarm_pearl": {
         "title": "Asma: GINA 2024",
-        "text": "Gold Standard: Espirometría (+12%/200ml reversibilidad). Pilares: ICS-Formoterol pilar desde Step 1. NUNCA SÁBA solo.",
-        "gpc_ref": "Global Initiative for Asthma (GINA) 2024 / GEMÁ"
+        "text": "Gold Standard: Espirometría (+12%/200ml reversibilidad). Pilares: ICS-Formoterol pilar desde Step 1. NUNCA SABA solo.",
+        "gpc_ref": "Global Initiative for Asthma (GINA) 2024 / GEMA"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 2,
-                "question": "¿Cuál es la medida más importante antes de subir de escalón terapéutico en un paciente no controlado?",
-                "options": [
-                    "Agregar antibióticos",
-                    "Cambiar a inmunoterapia",
-                    "Revisar técnica inhalatoria y apego"
-                ]
-            },
-            {
                 "correct_index": 0,
                 "question": "¿Cuál es la combinación farmacológica preferente para el rescate y mantenimiento en asma según GINA 2024?",
                 "options": [
                     "Esteroide inhalado (ICS) + Formoterol",
-                    "Salbutamol (SÁBA) solo",
-                    "Tiotropio (LÁMA) solo"
+                    "Salbutamol (SABA) solo",
+                    "Tiotropio (LAMA) solo"
                 ]
             },
             {
-                "correct_index": 2,
+                "correct_index": 0,
                 "question": "¿Qué porcentaje de mejoría del FEV1 tras el uso de broncodilatador se considera diagnóstico de asma?",
                 "options": [
-                    "Mayor al 20%",
+                    "Mayor al 12%",
                     "Mayor al 5%",
-                    "Mayor al 12%"
+                    "Mayor al 20%"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Cuál es la medida más importante antes de subir de escalón terapéutico en un paciente no controlado?",
+                "options": [
+                    "Revisar técnica inhalatoria y apego",
+                    "Agregar antibióticos",
+                    "Cambiar a inmunoterapia"
                 ]
             }
         ]

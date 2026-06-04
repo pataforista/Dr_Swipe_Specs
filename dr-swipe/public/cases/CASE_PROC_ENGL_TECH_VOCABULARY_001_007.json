@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_ENGL_TECH_VOCÁBULÁRY_001_007",
+    "case_id": "PROC_ENGL_TECH_VOCABULARY_001_007",
     "version": "v3_swipe_action",
     "theme_config": "engl",
     "difficulty": "standard",
@@ -12,20 +12,20 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 120/80, FC 78 bpm, Temp 37.0°C",
+            "category": "Signos Vitales",
+            "card_text": "Evidencia clínica: Dato anecdótico: TA 120/80, FC 78 bpm, Temp 37.0°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias.",
+            "card_text": "Hallazgo: A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "B) Estreñimiento (Bowel movement issues): 'Constipation' es el falso amigo más común: significa Estreñimiento, NO congestión nasal.",
+            "card_text": "Hallazgo: B) Estreñimiento (Bowel movement issues): 'Constipation' es el falso amigo más común: significa Estreñimiento, NO congestión nasal.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -51,98 +51,6 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "labs",
-            "card_text": "B) Aciclovir IV: Tratamiento para Encefalitis herpética (hallazgos LCR suelen ser linfocitosis y glucosa normal).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Diferenciaste la meningitis bacteriana de la viral/encefalitis."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "imaging",
-            "card_text": "B) Hipertensión Gestacional: Elevación de la PA después de las 20 SDG en ausencia de proteinuria o datos de severidad.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: ¡Bien! Esta paciente SÍ tiene proteinuria y síntomas de alarma, es preeclampsia."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 110/70, FC 80 lpm, Temp 36.5°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Relevante para el control prenatal, pero no cambia el manejo agudo de esta urgencia."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "labs",
-            "card_text": "B) Tolerancia a la Glucosa Normal: Todos los valores de la curva de 75g deben ser inferiores a 92, 180 y 153 mg/dl.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Relevante para el control prenatal, pero no cambia el manejo agudo de esta urgencia."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnostico Diferencial",
-            "card_text": "Dato de importancia: Dato anecdotico: B) Trastorno Psicotico Breve: Sintomas psicoticos con duracion mayor a 1 dia pero menor a 1 mes, con retorno total a la funcionalidad.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! El tiempo es el factor determinante en la psiquiatria del ENARM."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "FC 120 lpm, FR 28 rpm, Temp 36.7°C. (Signos estables para la edad).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Paciente estable pero pálido. Procedamos con el diagnóstico."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "Hallazgo: Información redundante: B) Punción en 2° espacio intercostal: Sitio recomendado en guías anteriores (ATLS 9ª y normas mexicanas viejas).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¡Bien! Reconociste que el 2° espacio ya no es el sitio preferido en las guías más recientes."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
             }
         }
     ],
@@ -156,7 +64,7 @@
         "questions": [
             {
                 "correct_index": 0,
-                "question": "Con respecto a la patología, ¿cuál es la traducción correcta de 'Constipation' en un contexto médico?",
+                "question": "¿Cuál es la traducción correcta de 'Constipation' en un contexto médico?",
                 "options": [
                     "Estreñimiento",
                     "Congestión nasal",
@@ -165,20 +73,20 @@
             },
             {
                 "correct_index": 0,
-                "question": "De las siguientes opciones, ¿cuál es la diferencia entre 'Wound' e 'Injury'?",
+                "question": "¿Qué significa el término 'Shortness of breath'?",
+                "options": [
+                    "Disnea (falta de aire)",
+                    "Dolor de pecho",
+                    "Tos seca"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Cuál es la diferencia entre 'Wound' e 'Injury'?",
                 "options": [
                     "Wound es una herida abierta; Injury es cualquier lesión",
                     "Wound es una fractura; Injury es un moretón",
                     "Son sinónimos exactos en medicina"
-                ]
-            },
-            {
-                "correct_index": 1,
-                "question": "¿Qué significa el término 'Shortness of breath'?",
-                "options": [
-                    "Dolor de pecho",
-                    "Disnea (falta de aire)",
-                    "Tos seca"
                 ]
             }
         ]

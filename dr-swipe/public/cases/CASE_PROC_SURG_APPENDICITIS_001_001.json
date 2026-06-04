@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_SURG_ÁPPENDICITIS_001_001",
+    "case_id": "PROC_SURG_APPENDICITIS_001_001",
     "version": "v3_swipe_action",
     "theme_config": "surg",
     "difficulty": "standard",
@@ -168,7 +168,7 @@
                 "correct_index": 0
             },
             {
-                "question": "Con respecto a la patología, ¿cuál es la causa más frecuente de apendicitis en la edad PEDIíTRICÁ?",
+                "question": "Con respecto a la patología, ¿cuál es la causa más frecuente de apendicitis en la edad PEDIíTRICA?",
                 "options": [
                     "Hiperplasia linfoidea (Folículos de Roux)",
                     "Fecalito",
@@ -180,7 +180,7 @@
     },
     "enarm_pearl": {
         "title": "Apendicitis: Escala de Alvarado",
-        "text": "MÁNTRELS: Migración (1), Anorexia (1), Náuseas (1), Ternura en FID (2), Rebote (1), Elevación Temp (1), Leucocitosis (2), Shift a la izquierda (1). ≥7 ptos = Cirugía.",
+        "text": "MANTRELS: Migración (1), Anorexia (1), Náuseas (1), Ternura en FID (2), Rebote (1), Elevación Temp (1), Leucocitosis (2), Shift a la izquierda (1). ≥7 ptos = Cirugía.",
         "gpc_ref": "GPC Diagnóstico y Tratamiento de Apendicitis Aguda"
     }
 }

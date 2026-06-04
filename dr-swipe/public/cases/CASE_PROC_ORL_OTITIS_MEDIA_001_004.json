@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_ORL_OTITIS_MEDIÁ_001_004",
+    "case_id": "PROC_ORL_OTITIS_MEDIA_001_004",
     "version": "v3_swipe_action",
     "theme_config": "ped",
     "difficulty": "standard",
@@ -58,7 +58,7 @@
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
-                "vazquez_comment": "Castillo: ¡Muy bien! El 'Big Three' de la OMÁ."
+                "vazquez_comment": "Castillo: ¡Muy bien! El 'Big Three' de la OMA."
             }
         },
         {
@@ -155,7 +155,7 @@
         }
     ],
     "enarm_pearl": {
-        "title": "OMÁ: Signos y Dosis",
+        "title": "OMA: Signos y Dosis",
         "text": "Signo clave: Abombamiento MT. Tx: Amoxicilina 80-90 mg/kg. Complicación #1: Mastoiditis. Etiología: Neumococo.",
         "gpc_ref": "GPC Diagnóstico y Tratamiento de la Otitis Media Aguda en la Edad Pediátrica"
     },
@@ -163,7 +163,7 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "question": "¿Cuál es la complicación intratemporal supurativa más frecuente de la OMÁ?",
+                "question": "¿Cuál es la complicación intratemporal supurativa más frecuente de la OMA?",
                 "options": [
                     "Mastoiditis aguda",
                     "Laberintitis",
@@ -172,7 +172,7 @@
                 "correct_index": 0
             },
             {
-                "question": "¿Cuál es el antibiótico de primera elección y su dosis para el tratamiento de la OMÁ?",
+                "question": "¿Cuál es el antibiótico de primera elección y su dosis para el tratamiento de la OMA?",
                 "options": [
                     "Amoxicilina a 80-90 mg/kg/día",
                     "Eritromicina 40 mg/kg/día",

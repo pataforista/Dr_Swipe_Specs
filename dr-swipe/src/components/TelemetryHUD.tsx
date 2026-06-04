@@ -111,38 +111,40 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
 
 const VitalsMonitor: React.FC<{ vitals: TelemetryHUDProps['lastVitals'] }> = ({ vitals }) => {
   if (!vitals) return (
-    <div className="bg-slate-900/90 text-slate-500 p-3 rounded-xl border border-slate-700/50 flex flex-col gap-1 min-w-[120px]">
-       <span className="text-[8px] font-black uppercase tracking-widest">Telemetría</span>
-       <div className="flex flex-col gap-1 opacity-20">
-         <div className="h-1.5 w-full bg-slate-700 rounded-full" />
-         <div className="h-1.5 w-2/3 bg-slate-700 rounded-full" />
+    <div className="paper-sheet bg-white/70 backdrop-blur-md text-slate-400 p-3 rounded-2xl border-2 border-white/60 shadow-md flex flex-col gap-1 min-w-[120px]">
+       <span className="text-[8px] font-black uppercase tracking-widest text-slate-400">Telemetría</span>
+       <div className="flex flex-col gap-1 opacity-30">
+         <div className="h-1.5 w-full bg-slate-200 rounded-full" />
+         <div className="h-1.5 w-2/3 bg-slate-200 rounded-full" />
        </div>
     </div>
   );
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'critical': return 'text-rose-400 drop-shadow-[0_0_8px_rgba(244,63,94,0.6)]';
-      case 'alert': return 'text-amber-400';
-      default: return 'text-emerald-400';
+      case 'critical': return 'text-rose-500';
+      case 'alert': return 'text-amber-600';
+      default: return 'text-emerald-600';
     }
   };
+  const dotColor = vitals.status === 'critical' ? 'bg-rose-500' : vitals.status === 'alert' ? 'bg-amber-500' : 'bg-emerald-500';
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ x: 20, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
-      className="bg-slate-900 shadow-2xl p-2.5 sm:p-3 rounded-xl sm:rounded-2xl border-2 border-slate-800 flex flex-col gap-1.5 sm:gap-2 min-w-[100px] sm:min-w-[140px] pointer-events-auto hover:scale-105 transition-transform group"
+      className="paper-sheet bg-white/85 backdrop-blur-md shadow-md p-2.5 sm:p-3 rounded-2xl border-2 border-white/60 flex flex-col gap-1.5 sm:gap-2 min-w-[100px] sm:min-w-[140px] pointer-events-auto hover:scale-105 transition-transform group"
     >
+      <div className="absolute top-0 right-3 w-10 h-3 washi-tape-pink opacity-50 -rotate-2" />
       <div className="flex justify-between items-center">
-        <span className="text-[7px] sm:text-[8px] font-black uppercase tracking-widest text-slate-500 flex items-center gap-1">
-          <span className="w-1 h-1 bg-emerald-500 rounded-full animate-pulse" /> Monitor Activo
+        <span className="text-[7px] sm:text-[8px] font-black uppercase tracking-widest text-slate-400 flex items-center gap-1 lettering">
+          <span className={`w-1 h-1 ${dotColor} rounded-full animate-pulse`} /> Monitor
         </span>
         <span className={`text-[7px] sm:text-[8px] font-bold uppercase ${getStatusColor(vitals.status)}`}>
           {vitals.status === 'normal' ? 'Estable' : vitals.status === 'alert' ? 'Riesgo' : 'CRÍTICO'}
         </span>
       </div>
-      
+
       <div className="grid grid-cols-1 gap-1">
         {vitals.ta && (
            <div className="flex justify-between items-baseline gap-2">
@@ -164,11 +166,11 @@ const VitalsMonitor: React.FC<{ vitals: TelemetryHUDProps['lastVitals'] }> = ({ 
         )}
       </div>
 
-      <div className="h-4 sm:h-5 w-full bg-slate-800/50 rounded flex items-center justify-center overflow-hidden">
+      <div className="h-4 sm:h-5 w-full bg-slate-100 rounded-lg flex items-center justify-center overflow-hidden border border-slate-200/60">
          <motion.div
            animate={{ x: [-100, 100] }}
            transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-           className="h-px w-full bg-slate-700/50"
+           className={`h-px w-full ${vitals.status === 'critical' ? 'bg-rose-300' : 'bg-slate-300'}`}
          />
       </div>
     </motion.div>

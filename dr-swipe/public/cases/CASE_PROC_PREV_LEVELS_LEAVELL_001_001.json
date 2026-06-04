@@ -1,11 +1,11 @@
 {
-    "case_id": "PROC_PREV_LEVELS_LEÁVELL_001_001",
+    "case_id": "PROC_PREV_LEVELS_LEAVELL_001_001",
     "version": "v3_swipe_action",
     "theme_config": "prev",
     "difficulty": "standard",
     "patient_intro": {
         "name": "Carmen, 41 anos",
-        "arrival_scenario": "Se presenta para control de salud. Pregunta por las acciones necesarias para evitar el cáncer cervicouterino. ¿Cual seria un ejemplo de Prevencion PRIMÁRIA en esta paciente respecto al virus del papiloma humano (VPH)?",
+        "arrival_scenario": "Se presenta para control de salud. Pregunta por las acciones necesarias para evitar el cáncer cervicouterino. ¿Cual seria un ejemplo de Prevencion PRIMARIA en esta paciente respecto al virus del papiloma humano (VPH)?",
         "time_limit_sec": 60
     },
     "card_stream": [

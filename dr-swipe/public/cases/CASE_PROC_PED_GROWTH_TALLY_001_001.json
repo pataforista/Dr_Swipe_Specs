@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_PED_GROWTH_TÁLLY_001_001",
+    "case_id": "PROC_PED_GROWTH_TALLY_001_001",
     "version": "v3_swipe_action",
     "theme_config": "ped",
     "difficulty": "standard",
@@ -13,7 +13,7 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "Signos Vitales",
-            "card_text": "Informacion redundante: TA N/Á, FC 100 lpm, Temp 36.6°C",
+            "card_text": "Informacion redundante: TA N/A, FC 100 lpm, Temp 36.6°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -136,14 +136,14 @@
     ],
     "enarm_pearl": {
         "title": "Indicadores OMS: T/E = Cronico",
-        "text": "Indicador Talla para Edad (T/E) evalua desnutricion CRONICÁ. Peso para Talla (P/T) evalua desnutricion ÁGUDA (emaciacion).",
-        "gpc_ref": "NOM-031-SSÁ2-1999 Para la salud del nino"
+        "text": "Indicador Talla para Edad (T/E) evalua desnutricion CRONICA. Peso para Talla (P/T) evalua desnutricion AGUDA (emaciacion).",
+        "gpc_ref": "NOM-031-SSA2-1999 Para la salud del nino"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
             {
-                "question": "¿Como se calcula la Talla Blanco Familiar para una NINÁ?",
+                "question": "¿Como se calcula la Talla Blanco Familiar para una NINA?",
                 "options": [
                     "(Talla Padre + Talla Madre - 13) / 2",
                     "(Talla Padre + Talla Madre + 13) / 2",

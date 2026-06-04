@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_OBS_HEM_ÁBORTION_001_006",
+    "case_id": "PROC_OBS_HEM_ABORTION_001_006",
     "version": "v3_swipe_action",
     "theme_config": "obs",
     "difficulty": "standard",
@@ -30,7 +30,7 @@
             "scoring": {
                 "points": 150,
                 "error_type": "omission",
-                "vazquez_comment": "Castillo: ¡Correcto! Requiere evacuación mediante ÁMEU o Legrado según estabilidad y semanas."
+                "vazquez_comment": "Castillo: ¡Correcto! Requiere evacuación mediante AMEU o Legrado según estabilidad y semanas."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -53,7 +53,7 @@
             "card_id": "c_3",
             "ui_icon": "slash",
             "category": "imaging",
-            "card_text": "C) Aborto Diferido: Huevo muerto y retenido; ausencia de latido fetal en USG con cérvix CERRÁDO y sin sangrado.",
+            "card_text": "C) Aborto Diferido: Huevo muerto y retenido; ausencia de latido fetal en USG con cérvix CERRADO y sin sangrado.",
             "expected_action": "discard",
             "scoring": {
                 "points": 20,
@@ -77,7 +77,7 @@
             "card_id": "c_5",
             "ui_icon": "zap",
             "category": "Tratamiento Quirúrgico",
-            "card_text": "E) ÁMEU (Aspiración Manual Endouterina): Elección en <11 semanas o cuando el útero sea menor de 12cm de altura.",
+            "card_text": "E) AMEU (Aspiración Manual Endouterina): Elección en <11 semanas o cuando el útero sea menor de 12cm de altura.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -144,7 +144,7 @@
     ],
     "enarm_pearl": {
         "title": "Clasificación de Aborto",
-        "text": "Clave ENARM: Cérvix CERRÁDO = Amenaza o Diferido. Cérvix ÁBIERTO = Inevitable, En Evolución o Incompleto.",
+        "text": "Clave ENARM: Cérvix CERRADO = Amenaza o Diferido. Cérvix ABIERTO = Inevitable, En Evolución o Incompleto.",
         "gpc_ref": "GPC Diagnóstico y Tratamiento del Aborto"
     },
     "boss_fight_triad": {
@@ -162,7 +162,7 @@
             {
                 "question": "Con respecto a la patología, ¿cuál es el tratamiento quirúrgico de elección en una paciente con aborto incompleto estable y útero de 10 semanas?",
                 "options": [
-                    "ÁMEU (Aspiración endouterina)",
+                    "AMEU (Aspiración endouterina)",
                     "LUI (Legrado uterino)",
                     "Histerectomía"
                 ],

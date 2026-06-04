@@ -53,7 +53,7 @@
             "card_id": "c_3",
             "ui_icon": "camera",
             "category": "imaging",
-            "card_text": "C) Angio-Tomografía Computarizada (AngioTÁC) Pulmonar: Defectos de llenado en arterias segmentarias.",
+            "card_text": "C) Angio-Tomografía Computarizada (AngioTAC) Pulmonar: Defectos de llenado en arterias segmentarias.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -147,7 +147,7 @@
         }
     ],
     "enarm_pearl": {
-        "title": "Diagnóstico de TEP: AngioTÁC",
+        "title": "Diagnóstico de TEP: AngioTAC",
         "text": "El estándar de oro para el diagnóstico de TEP es la Angio-Tomografía Computarizada. El ECG más común es la taquicardia sinusal.",
         "gpc_ref": "GPC Diagnóstico y Tratamiento de la Tromboembolia Pulmonar"
     },
@@ -165,16 +165,16 @@
             },
             {
                 "correct_index": 1,
-                "question": "¿Qué estudio de imagen es preferible en una mujer EMBÁRÁZÁDA con sospecha de TEP ante una radiografía normal?",
+                "question": "¿Qué estudio de imagen es preferible en una mujer EMBARAZADA con sospecha de TEP ante una radiografía normal?",
                 "options": [
-                    "AngioTÁC (por dosis fetal baja)",
+                    "AngioTAC (por dosis fetal baja)",
                     "Gammagrafía de ventilación/perfusión (V/Q)",
                     "Arteriografía pulmonar directa"
                 ]
             },
             {
                 "correct_index": 1,
-                "question": "En este contexto clínico, ¿cuál es la puntuación de Wells que indica ÁLTA probabilidad clínica de TEP?",
+                "question": "En este contexto clínico, ¿cuál es la puntuación de Wells que indica ALTA probabilidad clínica de TEP?",
                 "options": [
                     "Menor a 2 puntos",
                     "Mayor a 6 puntos",

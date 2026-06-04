@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_STÁTS_DX_METRICS_001_009",
+    "case_id": "PROC_STATS_DX_METRICS_001_009",
     "version": "v3_swipe_action",
     "theme_config": "stats",
     "difficulty": "hard",
@@ -12,20 +12,20 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 120/80 mmHg, FC 75 lpm, Temp 36.6°C. El paciente se encuentra hemodinámicamente estable.",
+            "category": "Signos Vitales",
+            "card_text": "Información redundante: TA N/A, FC N/A, Temp N/A",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Antes de lanzarnos a los números, siempre verificamos que el paciente esté estable. Ahora, volvamos a la estadística."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "Hallazgo: A) Probabilidad BÁJA (<10%): En enfermedades raras, incluso pruebas 'buenas' tienen un Valor Predictivo Positivo (VPP) muy bajo por el peso de los FP.",
+            "card_text": "Hallazgo: A) Probabilidad BAJA (<10%): En enfermedades raras, incluso pruebas 'buenas' tienen un Valor Predictivo Positivo (VPP) muy bajo por el peso de los FP.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,108 +41,12 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "Hallazgo: Dato anecdótico: B) Probabilidad ÁLTA (>90%): Confundiste la Sensibilidad con el VPP. La prueba es buena detectando enfermos, pero falla ante tantos sanos.",
+            "card_text": "Hallazgo: Dato anecdótico: B) Probabilidad ALTA (>90%): Confundiste la Sensibilidad con el VPP. La prueba es buena detectando enfermos, pero falla ante tantos sanos.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Notaste la trampa de la prevalencia."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "labs",
-            "card_text": "B) Aciclovir IV: Tratamiento para Encefalitis herpética (hallazgos LCR suelen ser linfocitosis y glucosa normal).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Diferenciaste la meningitis bacteriana de la viral/encefalitis."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 130/85 mmHg, FC 92 lpm, Temp 38.5°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en estos signos de fiebre, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 160/100, FC 115 lpm, Temp 36.5°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_7",
-            "ui_icon": "slash",
-            "category": "Gastroenteritis",
-            "card_text": "G) Loperamida: Recomendada en lactantes para reducir el n�\u0000ºmero de evacuciones y evitar la p�\u0000©rdida de l�\u0000­quidos.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 100,
-                "error_type": "lethal_hazard",
-                "vazquez_comment": "Navarro: �\u0000¡PELIGRO! Los antidiarr�\u0000©icos est�\u0000¡n estrictamente contraindicados en ni�\u0000±os; pueden causar �\u0000­leo paral�\u0000­tico o megacolon."
-            },
-            "safety_flags": {
-                "lethal_risk": true,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 120/80 mmHg, FC 75 lpm, Temp 36.6°C. El paciente se encuentra hemodinámicamente estable.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Antes de lanzarnos a los números, siempre verificamos que el paciente esté estable. Ahora, volvamos a la estadística."
-            }
-        },
-        {
-            "card_id": "c_3",
-            "ui_icon": "eye",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "Información redundante: C) Reflujo Gastroesofágico: Regurgitaciones frecuentes, no en proyectil, con ganancia ponderal adecuada inicialmente.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. El vómito explosivo 'en proyectil' apunta fuertemente a una obstrucción mecánica."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "B) Seguimiento en 6 meses (BI-RÁDS 3): Conducta ante hallazgos probablemente benignos (<2% riesgo de malignidad).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: ¡Bien! Diferenciaste el seguimiento (BI-RÁDS 3) de la acción agresiva (BI-RÁDS 4+)."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Notaste la trampa de la prevalencia."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -152,19 +56,28 @@
     ],
     "enarm_pearl": {
         "title": "VPP y Prevalencia",
-        "text": "Si la Prevalencia sube â†’ el VPP sube. Si la Prevalencia baja â†’ el VPP baja. Sensibilidad y Especificidad NO cambian con la prevalencia.",
+        "text": "Si la Prevalencia sube → el VPP sube. Si la Prevalencia baja → el VPP baja. Sensibilidad y Especificidad NO cambian con la prevalencia.",
         "gpc_ref": "Bioestadística Clínica para el ENARM"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 2,
+                "correct_index": 0,
+                "question": "¿Qué sucede con el VPP si la prevalencia disminuye?",
+                "options": [
+                    "Disminuye",
+                    "Aumenta",
+                    "Permanece igual"
+                ]
+            },
+            {
+                "correct_index": 0,
                 "question": "¿Definición de Sensibilidad?",
                 "options": [
+                    "VP / Total Enfermos",
                     "VN / Total Sanos",
-                    "VP / Total Positivos",
-                    "VP / Total Enfermos"
+                    "VP / Total Positivos"
                 ]
             },
             {
@@ -174,15 +87,6 @@
                     "Sensibilidad y Especificidad",
                     "VPP y VPN",
                     "Prevalencia y Incidencia"
-                ]
-            },
-            {
-                "correct_index": 0,
-                "question": "¿Qué sucede con el VPP si la prevalencia disminuye?",
-                "options": [
-                    "Disminuye",
-                    "Aumenta",
-                    "Permanece igual"
                 ]
             }
         ]

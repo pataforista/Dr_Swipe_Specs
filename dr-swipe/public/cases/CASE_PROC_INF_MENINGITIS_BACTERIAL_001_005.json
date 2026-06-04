@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_INF_MENINGITIS_BÁCTERIÁL_001_005",
+    "case_id": "PROC_INF_MENINGITIS_BACTERIAL_001_005",
     "version": "v3_swipe_action",
     "theme_config": "inf",
     "difficulty": "hard",
@@ -12,25 +12,46 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 110/70 mmHg, FC 105 lpm, Temp 39.4°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en estos signos de fiebre, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "pad_010",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
+            "category": "Signos Vitales",
+            "card_text": "Hallazgo clínico: Ruido en el expediente: TA 110/70 mmHg, FC 105 lpm, Temp 39.4°C",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
                 "error_type": "omission",
-                "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en estos signos de fiebre, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "Evidencia: A) Ceftriaxona + Vancomicina + Dexametasona: Tratamiento empírico estándar para meningitis bacteriana comunitaria. Dexametasona previene secuelas (sordera).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Navarro: ¡Excelente! La administración de Dexametasona antes o con la primera dosis de AB es vital para el pronóstico."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true,
+                "lethal_if_discarded": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "Diagnóstico",
+            "card_text": "Evidencia clínica: Ruido en el expediente: B) Aciclovir IV: Tratamiento para Encefalitis herpética (hallazgos LCR suelen ser linfocitosis y glucosa normal).",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Diferenciaste la meningitis bacteriana de la viral/encefalitis."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
             }
         },
         {
@@ -44,99 +65,6 @@
             },
             "expected_action": "keep",
             "category": "Anamnesis"
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "labs",
-            "card_text": "B) Aciclovir IV: Tratamiento para Encefalitis herpética (hallazgos LCR suelen ser linfocitosis y glucosa normal).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Diferenciaste la meningitis bacteriana de la viral/encefalitis."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "pad_004",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Creatinina 1.6 mg/dL. Elevación respecto a basal previa.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Esto es puro ruido, R1. Enfócate en la prioridad."
-            }
-        },
-        {
-            "card_id": "pad_005",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-            }
-        },
-        {
-            "card_id": "pad_007",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
-            }
-        },
-        {
-            "card_id": "pad_008",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Esto es puro ruido, R1. Enfócate en la prioridad."
-            }
-        },
-        {
-            "card_id": "pad_009",
-            "ui_icon": "☢️",
-            "category": "imaging",
-            "card_text": "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
-            }
-        },
-        {
-            "card_id": "c_1",
-            "ui_icon": "target",
-            "category": "Diagnóstico",
-            "card_text": "A) Ceftriaxona + Vancomicina + Dexametasona: Tratamiento empírico estándar para meningitis bacteriana comunitaria. Dexametasona previene secuelas (sordera).",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 150,
-                "error_type": "lethal_omission",
-                "vazquez_comment": "Navarro: ¡Excelente! La administración de Dexametasona antes o con la primera dosis de ÁB es vital para el pronóstico."
-            },
-            "safety_flags": {
-                "lethal_risk": true,
-                "decision_critical": true,
-                "lethal_if_discarded": true
-            }
         }
     ],
     "enarm_pearl": {
@@ -148,30 +76,30 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 1,
-                "question": "¿Qué fármaco se utiliza para la quimioprofilaxis de contactos en caso de sospecha de meningococo?",
+                "correct_index": 0,
+                "question": "¿Cuál es el patrón típico del LCR en la meningitis bacteriana?",
                 "options": [
-                    "Penicilina V",
-                    "Rifampicina",
-                    "Amoxicilina"
-                ]
-            },
-            {
-                "correct_index": 2,
-                "question": "De las siguientes opciones, ¿cuál es el patrón típico del LCR en la meningitis bacteriana?",
-                "options": [
-                    "Hiperglucorraquia y predominio de monocitos",
+                    "Hipoglucorraquia y predominio de polimorfonucleares",
                     "Glucosa normal y predominio de linfocitos",
-                    "Hipoglucorraquia y predominio de polimorfonucleares"
+                    "Hiperglucorraquia y predominio de monocitos"
                 ]
             },
             {
-                "correct_index": 2,
+                "correct_index": 0,
                 "question": "¿En qué momento debe administrarse la Dexametasona?",
                 "options": [
+                    "Inmediatamente antes o con la primera dosis de antibiótico",
                     "24 horas después de iniciar el antibiótico",
-                    "Solo si el paciente no mejora en 48 horas",
-                    "Inmediatamente antes o con la primera dosis de antibiótico"
+                    "Solo si el paciente no mejora en 48 horas"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Qué fármaco se utiliza para la quimioprofilaxis de contactos en caso de sospecha de meningococo?",
+                "options": [
+                    "Rifampicina",
+                    "Penicilina V",
+                    "Amoxicilina"
                 ]
             }
         ]

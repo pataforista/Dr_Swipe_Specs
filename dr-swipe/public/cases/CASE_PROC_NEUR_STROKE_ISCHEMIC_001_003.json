@@ -12,84 +12,20 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 170/90 mmHg, FC 110 lpm (irregular), Temp 36.6°C",
+            "category": "Signos Vitales",
+            "card_text": "Evidencia clínica: Ruido en el expediente: TA 170/90 mmHg, FC 110 lpm (irregular), Temp 36.6°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "pad_004",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "B) Hemorragia Intracraneal: Clínica similar pero TC mostraría hiperdensidad súbita.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! La TC negativa a sangre confirma el origen isquémico temprano."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "pad_005",
-            "ui_icon": "🧪",
-            "category": "labs",
-            "card_text": "Colesterol Total 190 mg/dL. Dentro de rangos convencionales.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "pad_006",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Edema de miembros inferiores grado II, con fóvea, bilateral.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "pad_007",
-            "ui_icon": "☢️",
-            "category": "imaging",
-            "card_text": "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) ÁCV Isquémico (Ventana de Fibrinolisis): Sintomatología focal <4.5 horas + TC sin hemorragia. Manejo: rTPA (Alteplase).",
+            "card_text": "Hallazgo: A) ACV Isquémico (Ventana de Fibrinolisis): Sintomatología focal <4.5 horas + TC sin hemorragia. Manejo: rTPA (Alteplase).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -103,57 +39,37 @@
             }
         },
         {
-            "card_id": "c_3",
+            "card_id": "c_2",
             "ui_icon": "eye",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "Hallazgo clínico: Dato anecdótico: C) Reflujo Gastroesofágico: Regurgitaciones frecuentes, no en proyectil, con ganancia ponderal adecuada inicialmente.",
+            "category": "Diagnóstico",
+            "card_text": "Evidencia clínica: Ruido en el expediente: B) Hemorragia Intracraneal: Clínica similar pero TC mostraría hiperdensidad súbita.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. El vómito explosivo 'en proyectil' apunta fuertemente a una obstrucción mecánica."
-            }
-        },
-        {
-            "card_id": "c_1",
-            "ui_icon": "slash",
-            "category": "Manejo",
-            "card_text": "Hallazgo: Dato anecdótico: A) Diferir inmunización por cuadro respiratorio leve: Posponer vacunas hasta que el niño esté completamente asintomático.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Falso! Una infección leve (catarro) NO es contraindicación para vacunar. No pierdas oportunidades."
-            }
-        },
-        {
-            "card_id": "c_6",
-            "ui_icon": "slash",
-            "card_text": "Dato de importancia: F) NÁC Típica (Neumococo): Cursa con inicio súbito, fiebre alta, dolor pleurítico y consolidación lobar.",
-            "scoring": {
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: Correcto. Este paciente NO tiene la toxicidad ni los hallazgos de una neumonía típica.",
-                "points": 50,
-                "error_type": "hoarding"
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! La TC negativa a sangre confirma el origen isquémico temprano."
             },
-            "expected_action": "discard",
-            "category": "Diferencial"
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
+            }
         }
     ],
     "enarm_pearl": {
-        "title": "Ventana de rTPÁ",
+        "title": "Ventana de rTPA",
         "text": "Tiempo es Cerebro: La ventana ideal es <3h, extendida hasta 4.5h en casos seleccionados. Contraindicación absoluta: TA >185/110 persistente.",
-        "gpc_ref": "GPC Diagnóstico y Tratamiento de ÁCV Isquémico"
+        "gpc_ref": "GPC Diagnóstico y Tratamiento de ACV Isquémico"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 2,
-                "question": "Con respecto a la patología, ¿cuál es la puntuación máxima de la escala NIHSS (indicadora de severidad extrema)?",
+                "correct_index": 0,
+                "question": "¿Cuál es la puntuación máxima de la escala NIHSS (indicadora de severidad extrema)?",
                 "options": [
-                    "100 puntos",
+                    "42 puntos",
                     "15 puntos",
-                    "42 puntos"
+                    "100 puntos"
                 ]
             },
             {
@@ -166,12 +82,12 @@
                 ]
             },
             {
-                "correct_index": 2,
+                "correct_index": 0,
                 "question": "¿Cuál es el valor de glucosa capilar por debajo del cual los síntomas podrían ser un imitador (mimic) del EVC?",
                 "options": [
+                    "Menor a 50 mg/dl",
                     "Menor a 100 mg/dl",
-                    "Mayor a 200 mg/dl",
-                    "Menor a 50 mg/dl"
+                    "Mayor a 200 mg/dl"
                 ]
             }
         ]

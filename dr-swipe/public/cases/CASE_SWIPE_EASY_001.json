@@ -1,5 +1,5 @@
 {
-    "case_id": "swipe_easy_001",
+    "case_id": "SWIPE_EASY_001",
     "version": "v3_swipe_action",
     "theme_config": "theme-default",
     "difficulty": "standard",
@@ -132,7 +132,7 @@
             "card_id": "e08",
             "ui_icon": "💊",
             "category": "meds",
-            "card_text": "Sin tratamiento farmacológico previo. No usa anticonceptivos ni suplementos. Niega uso de ÁINEs.",
+            "card_text": "Sin tratamiento farmacológico previo. No usa anticonceptivos ni suplementos. Niega uso de AINEs.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -149,7 +149,7 @@
             "card_id": "e09",
             "ui_icon": "💊",
             "category": "meds",
-            "card_text": "Sin alergias medicamentosas conocidas. No reacciones previas a penicilina, sulfas ni ÁINEs.",
+            "card_text": "Sin alergias medicamentosas conocidas. No reacciones previas a penicilina, sulfas ni AINEs.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -197,7 +197,7 @@
                 "question": "Con el abordaje inicial negativo, ¿qué conducta diagnóstica está indicada según GPC?",
                 "options": [
                     "Seguimiento ambulatorio con signos de alarma",
-                    "TÁC de tórax y abdomen urgente",
+                    "TAC de tórax y abdomen urgente",
                     "Biopsia de médula ósea",
                     "Endoscopia superior de urgencias"
                 ],

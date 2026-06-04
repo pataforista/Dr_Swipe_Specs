@@ -1,95 +1,31 @@
 {
-    "case_id": "PROC_INF_SEPSIS_SOFÁ_001_009",
+    "case_id": "PROC_INF_SEPSIS_SOFA_001_009",
     "version": "v3_swipe_action",
     "theme_config": "inf",
     "difficulty": "hard",
     "patient_intro": {
         "name": "Antonio, 80 años",
-        "arrival_scenario": "Paciente post-operado de apendicectomía con fiebre, taquicardia y oliguria. Presenta lactato sérico de 4.5 mmol/L. Sepsis-3: Se identifica disfunción orgánica mediante aumento de ≥2 puntos en escala SOFÁ. ¿Cuál es el primer paso en el manejo?",
+        "arrival_scenario": "Paciente post-operado de apendicectomía con fiebre, taquicardia y oliguria. Presenta lactato sérico de 4.5 mmol/L. Sepsis-3: Se identifica disfunción orgánica mediante aumento de ≥2 puntos en escala SOFA. ¿Cuál es el primer paso en el manejo?",
         "time_limit_sec": 50
     },
     "card_stream": [
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 85/50 mmHg, FC 115 lpm, Temp 39.0°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en estos signos de hipotensión/choque, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "pad_004",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "FC 105 lpm. Taquicardia sinusal persistente en reposo.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Esto es puro ruido, R1. Enfócate en la prioridad."
-            }
-        },
-        {
-            "card_id": "c_10_perla",
-            "ui_icon": "pill",
-            "card_text": "Dato de importancia: J) Antecedente de uso de antibióticos recientes: Factor de riesgo clave para microorganismos multirresistentes (MDR).",
-            "scoring": {
-                "vazquez_comment": "Navarro: ¡Excelente! La historia previa de antibióticos guía la agresividad del esquema empírico.",
-                "points": 100,
-                "error_type": "omission"
-            },
+            "category": "Signos Vitales",
+            "card_text": "Evidencia clínica: Ruido en el expediente: TA 85/50 mmHg, FC 115 lpm, Temp 39.0°C",
             "expected_action": "keep",
-            "category": "Anamnesis"
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "meds",
-            "card_text": "B) Administrar Esteroide IV Inmediatamente: Solo se consideran en choque séptico REFRÁCTÁRIO a fluidos y vasopresores. No es manejo inicial.",
-            "expected_action": "discard",
             "scoring": {
                 "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Priorizaste la resucitación con fluidos y antibióticos."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "pad_005",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Refiere alergia al polen y al polvo durante la primavera.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
-            }
-        },
-        {
-            "card_id": "pad_007",
-            "ui_icon": "☢️",
-            "category": "imaging",
-            "card_text": "Rx Torax: Botón aórtico prominente acorde a la edad del paciente.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
+                "error_type": "omission",
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en estos signos de hipotensión/choque, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
-            "category": "imaging",
-            "card_text": "A) Bundle de 1 Hora (Cultivos, ÁB Empírico, Cristaloides): Resucitación inicial agresiva: Toma de lactato, cultivos, antibióticos de amplio espectro y fluidos IV.",
+            "category": "Diagnóstico",
+            "card_text": "Evidencia: A) Bundle de 1 Hora (Cultivos, AB Empírico, Cristaloides): Resucitación inicial agresiva: Toma de lactato, cultivos, antibióticos de amplio espectro y fluidos IV.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -103,27 +39,15 @@
             }
         },
         {
-            "card_id": "c_3",
-            "ui_icon": "eye",
-            "category": "Diagnostico Diferencial",
-            "card_text": "Informacion redundante: C) Trastorno Esquizofreniforme: Presenta los mismos sintomas que la esquizofrenia pero con una duracion entre 1 y 6 meses.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Correcto. Si los sintomas persisten mas de 6 meses, el diagnostico evoluciona a esquizofrenia."
-            }
-        },
-        {
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "Hallazgo: Ruido en el expediente: B) Probabilidad ÁLTA (>90%): Confundiste la Sensibilidad con el VPP. La prueba es buena detectando enfermos, pero falla ante tantos sanos.",
+            "card_text": "Dato de importancia: Ruido en el expediente: B) Administrar Esteroide IV Inmediatamente: Solo se consideran en choque séptico REFRACTARIO a fluidos y vasopresores. No es manejo inicial.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Notaste la trampa de la prevalencia."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! Priorizaste la resucitación con fluidos y antibióticos."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -131,26 +55,21 @@
             }
         },
         {
-            "card_id": "e06",
-            "ui_icon": "📄",
-            "category": "notes",
-            "card_text": "Paciente cooperadora al ingreso, sin ansiedad aparente. Estado de ánimo tranquilo.",
-            "expected_action": "discard",
+            "card_id": "c_10_perla",
+            "ui_icon": "pill",
+            "card_text": "Dato de importancia: J) Antecedente de uso de antibióticos recientes: Factor de riesgo clave para microorganismos multirresistentes (MDR).",
             "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
+                "vazquez_comment": "Navarro: ¡Excelente! La historia previa de antibióticos guía la agresividad del esquema empírico.",
+                "points": 100,
+                "error_type": "omission"
             },
-            "safety_flags": {
-                "contraindication": false,
-                "lethal_risk": false,
-                "decision_critical": false
-            }
+            "expected_action": "keep",
+            "category": "Anamnesis"
         }
     ],
     "enarm_pearl": {
         "title": "Sepsis-3: Choque Séptico",
-        "text": "Definición: Sepsis + Necesidad de vasopresores para PÁM ≥65 + Lactato >2 mmol/L pese a reanimación volémica.",
+        "text": "Definición: Sepsis + Necesidad de vasopresores para PAM ≥65 + Lactato >2 mmol/L pese a reanimación volémica.",
         "gpc_ref": "Surviving Sepsis Campaign Guidelines 2021"
     },
     "boss_fight_triad": {
@@ -158,19 +77,10 @@
         "questions": [
             {
                 "correct_index": 0,
-                "question": "¿Qué par de criterios definen el Choque Séptico tras la reanimación con líquidos?",
+                "question": "¿Cuál es la meta de Presión Arterial Media (PAM) tras la reanimación inicial?",
                 "options": [
-                    "Necesidad de vasopresores y Lactato >2 mmol/L",
-                    "TÁS <100 y qSOFA de 3",
-                    "Fiebre y Leucocitosis"
-                ]
-            },
-            {
-                "correct_index": 1,
-                "question": "¿Cuál es la meta de Presión Arterial Media (PÁM) tras la reanimación inicial?",
-                "options": [
-                    ">=90 mmHg",
                     ">=65 mmHg",
+                    ">=90 mmHg",
                     ">=50 mmHg"
                 ]
             },
@@ -179,8 +89,17 @@
                 "question": "¿Cuál es el vasopresor de primera elección en el choque séptico?",
                 "options": [
                     "Norepinefrina",
-                    "Epinefrina",
-                    "Dopamina"
+                    "Dopamina",
+                    "Epinefrina"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Qué par de criterios definen el Choque Séptico tras la reanimación con líquidos?",
+                "options": [
+                    "Necesidad de vasopresores y Lactato >2 mmol/L",
+                    "Fiebre y Leucocitosis",
+                    "TAS <100 y qSOFA de 3"
                 ]
             }
         ]

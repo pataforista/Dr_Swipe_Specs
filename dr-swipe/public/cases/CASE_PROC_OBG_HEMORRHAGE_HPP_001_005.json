@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_OBG_HEMORRHÁGE_HPP_001_005",
+    "case_id": "PROC_OBG_HEMORRHAGE_HPP_001_005",
     "version": "v3_swipe_action",
     "theme_config": "obg",
     "difficulty": "hard",
@@ -12,37 +12,25 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 85/50 mmHg, FC 125 lpm (Datos de Choque Hipovolémico), SatO2 94%.",
+            "category": "Signos Vitales",
+            "card_text": "Información redundante: TA 85/50 mmHg, FC 125 lpm (Datos de Choque Hipovolémico), SatO2 94%.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Perdiendo el tiempo con tonterías... concéntrate en lo que importa."
-            }
-        },
-        {
-            "card_id": "pad_010",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "TA 145/95 mmHg. Cifras tensionales elevadas en dos tomas.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Vázquez: Elena se está descompensando. Activa el Código Mater de inmediato."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Atonía Uterina: Causa número uno de hemorragia posparto (70%). Fallo del útero para contraerse eficazmente.",
+            "card_text": "Evidencia: A) Atonía Uterina: Causa número uno de hemorragia posparto (70%). Fallo del útero para contraerse eficazmente.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
                 "error_type": "omission",
-                "vazquez_comment": "Eso era una señal clara. Estás más perdido que un cirujano en una biblioteca."
+                "vazquez_comment": "Vázquez: ¡Correcto! El útero 'blando' es el signo cardinal."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -53,92 +41,16 @@
             "card_id": "c_2",
             "ui_icon": "zap",
             "category": "Manejo Inicial",
-            "card_text": "B) Masaje Uterino Bimanual: Maniobra inmediata para estimular la contracción mecánica del miometrio.",
+            "card_text": "Hallazgo: B) Masaje Uterino Bimanual: Maniobra inmediata para estimular la contracción mecánica del miometrio.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
                 "error_type": "lethal_omission",
-                "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido.",
+                "vazquez_comment": "Vázquez: ¡Vital! No pierdas tiempo, el primer paso SIEMPRE es el masaje.",
                 "safety_flags": {
                     "lethal_risk": true,
                     "decision_critical": true
                 }
-            }
-        },
-        {
-            "card_id": "pad_004",
-            "ui_icon": "🩸",
-            "category": "labs",
-            "card_text": "Proteinuria en tira reactiva (++) en muestra al azar.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "pad_005",
-            "ui_icon": "🩸",
-            "category": "labs",
-            "card_text": "VDRL no reactivo (reporte de hace 2 meses).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "pad_008",
-            "ui_icon": "🤰",
-            "category": "notes",
-            "card_text": "Altura uterina de 28 cm, acorde a edad gestacional por FUM.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 90/60 (tendencia al choque), FC 50 lpm (bloqueo), Temp 36.8°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en estos signos de bradicardia, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_3",
-            "ui_icon": "slash",
-            "category": "labs",
-            "card_text": "C) Diabetes Pre-gestacional: Glucosa en ayuno >=126 o HbÁ1c >=6.5% detectada antes de las 13 semanas de gestación.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Relevante para el control prenatal, pero no cambia el manejo agudo de esta urgencia."
-            }
-        },
-        {
-            "card_id": "c_1",
-            "ui_icon": "target",
-            "category": "Diagnóstico",
-            "card_text": "A) Candidiasis Vaginal: Flujo grumoso + PH <4.5 + Prurito. Tx: Azoles (Miconazol/Fluconazol).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 150,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: Bien detectado: La acidez (PH <4.5) es típica de Candida."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": true
             }
         }
     ],
@@ -151,31 +63,31 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "question": "¿Cuál es la maniobra inicial prioritaria ante la sospecha de atonía uterina?",
-                "options": [
-                    "Histerectomía de urgencia",
-                    "Legrado uterino instrumental",
-                    "Masaje uterino bimanual"
-                ],
-                "correct_index": 2
-            },
-            {
-                "question": "¿Qué fármaco uterotónico está CONTRÁINDICÁDO en pacientes con hipertensión arterial?",
-                "options": [
-                    "Misoprostol",
-                    "Oxitocina",
-                    "Ergonovina"
-                ],
-                "correct_index": 2
-            },
-            {
                 "question": "¿Cuál es la causa más frecuente de hemorragia posparto inmediata?",
                 "options": [
-                    "Retención de restos placentarios",
                     "Atonía uterina",
+                    "Retención de restos placentarios",
                     "Desgarros del canal del parto"
                 ],
-                "correct_index": 1
+                "correct_index": 0
+            },
+            {
+                "question": "¿Cuál es la maniobra inicial prioritaria ante la sospecha de atonía uterina?",
+                "options": [
+                    "Masaje uterino bimanual",
+                    "Histerectomía de urgencia",
+                    "Legrado uterino instrumental"
+                ],
+                "correct_index": 0
+            },
+            {
+                "question": "¿Qué fármaco uterotónico está CONTRAINDICADO en pacientes con hipertensión arterial?",
+                "options": [
+                    "Ergonovina",
+                    "Oxitocina",
+                    "Misoprostol"
+                ],
+                "correct_index": 0
             }
         ]
     }

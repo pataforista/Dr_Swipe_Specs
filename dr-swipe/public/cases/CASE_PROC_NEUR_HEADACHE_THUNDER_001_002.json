@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_NEUR_HEÁDÁCHE_THUNDER_001_002",
+    "case_id": "PROC_NEUR_HEADACHE_THUNDER_001_002",
     "version": "v3_swipe_action",
     "theme_config": "neur",
     "difficulty": "hard",
@@ -94,7 +94,7 @@
             "scoring": {
                 "points": 150,
                 "error_type": "lethal_omission",
-                "vazquez_comment": "Navarro: ¡Manejo Perfecto! La HSA es una emergencia neuroquirúrgica. La TC es el primer estudio. La segunda causa más frecuente es la Malformación Arteriovenosa (MÁV)."
+                "vazquez_comment": "Navarro: ¡Manejo Perfecto! La HSA es una emergencia neuroquirúrgica. La TC es el primer estudio. La segunda causa más frecuente es la Malformación Arteriovenosa (MAV)."
             },
             "safety_flags": {
                 "lethal_risk": true,
@@ -153,7 +153,7 @@
     ],
     "enarm_pearl": {
         "title": "Cefalea en Trueno",
-        "text": "Si la TC es NEGÁTIVA pero la sospecha de HSA es alta, el siguiente paso es la PUNCIÓN LUMBÁR buscando xantocromía.",
+        "text": "Si la TC es NEGATIVA pero la sospecha de HSA es alta, el siguiente paso es la PUNCIÓN LUMBAR buscando xantocromía.",
         "gpc_ref": "GPC Manejo de la Hemorragia Subaracnoidea"
     },
     "boss_fight_triad": {
@@ -173,7 +173,7 @@
                 "question": "¿Cuál es la causa no traumática más frecuente de Hemorragia Subaracnoidea?",
                 "options": [
                     "Angiopatía amiloide",
-                    "Malformación arteriovenosa (MÁV)",
+                    "Malformación arteriovenosa (MAV)",
                     "Rotura de aneurisma sacular"
                 ]
             },

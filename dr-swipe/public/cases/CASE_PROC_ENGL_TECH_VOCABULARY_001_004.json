@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_ENGL_TECH_VOCÁBULÁRY_001_004",
+    "case_id": "PROC_ENGL_TECH_VOCABULARY_001_004",
     "version": "v3_swipe_action",
     "theme_config": "engl",
     "difficulty": "standard",
@@ -12,20 +12,20 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 120/80, FC 78 bpm, Temp 37.0°C",
+            "category": "Signos Vitales",
+            "card_text": "Información redundante: TA 120/80, FC 78 bpm, Temp 37.0°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias.",
+            "card_text": "Hallazgo: A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "B) Estreñimiento (Bowel movement issues): 'Constipation' es el falso amigo más común: significa Estreñimiento, NO congestión nasal.",
+            "card_text": "Hallazgo: B) Estreñimiento (Bowel movement issues): 'Constipation' es el falso amigo más común: significa Estreñimiento, NO congestión nasal.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -51,98 +51,6 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 130/85, FC 80 lpm, Temp 36.5°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "Información redundante: B) Gastroenteritis Infecciosa: Dolor abdominal generalizado, fiebre y náuseas. Frecuentemente autolimitado.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¡Buen ojo! La focalización (McBurney) y la leucocitosis alejan el diagnóstico de algo viral autolimitado."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "Signos Vitales",
-            "card_text": "Hallazgo: Informacion redundante: TA 110/70, FC 68 lpm, Temp 36.5°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "pad_006",
-            "ui_icon": "🤰",
-            "category": "notes",
-            "card_text": "Altura uterina de 28 cm, acorde a edad gestacional por FUM.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental de poca relevancia para el cuadro agudo actual. No te distraigas."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 145/90 mmHg, FC 92 lpm, FR 22 rpm, SatO2 93%.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Presión un poco alta, pero lo importante es la insuficiencia cardíaca."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "labs",
-            "card_text": "B) Prediabetes (Glucosa Alterada en Ayuno): Glucosa en ayuno entre 100 y 125 mg/dl.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: ¡Bien! Reconociste que ya es un cuadro franco de Diabetes."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 150/90, FC 50 lpm (bloqueo), Temp 36.5°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en estos signos de bradicardia, R1. El reloj no se detiene."
             }
         }
     ],
@@ -155,21 +63,12 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 2,
-                "question": "Identifique la traducción correcta de 'Constipation' en un contexto médico?",
-                "options": [
-                    "Diarrea",
-                    "Congestión nasal",
-                    "Estreñimiento"
-                ]
-            },
-            {
                 "correct_index": 0,
-                "question": "¿Cuál es la diferencia entre 'Wound' e 'Injury'?",
+                "question": "¿Cuál es la traducción correcta de 'Constipation' en un contexto médico?",
                 "options": [
-                    "Wound es una herida abierta; Injury es cualquier lesión",
-                    "Son sinónimos exactos en medicina",
-                    "Wound es una fractura; Injury es un moretón"
+                    "Estreñimiento",
+                    "Congestión nasal",
+                    "Diarrea"
                 ]
             },
             {
@@ -177,8 +76,17 @@
                 "question": "¿Qué significa el término 'Shortness of breath'?",
                 "options": [
                     "Disnea (falta de aire)",
-                    "Tos seca",
-                    "Dolor de pecho"
+                    "Dolor de pecho",
+                    "Tos seca"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Cuál es la diferencia entre 'Wound' e 'Injury'?",
+                "options": [
+                    "Wound es una herida abierta; Injury es cualquier lesión",
+                    "Wound es una fractura; Injury es un moretón",
+                    "Son sinónimos exactos en medicina"
                 ]
             }
         ]

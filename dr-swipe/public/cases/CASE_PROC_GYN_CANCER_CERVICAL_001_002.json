@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_GYN_CÁNCER_CERVICÁL_001_002",
+    "case_id": "PROC_GYN_CANCER_CERVICAL_001_002",
     "version": "v3_swipe_action",
     "theme_config": "gyn",
     "difficulty": "standard",
@@ -12,20 +12,20 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 110/70, FC 72 lpm, Temp 36.4°C",
+            "category": "Signos Vitales",
+            "card_text": "Hallazgo: Información redundante: TA 110/70, FC 72 lpm, Temp 36.4°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Colposcopia con Biopsia Dirigida: Ante HSIL o LSIL persistente, el estándar de oro es la visualización colposcópica y toma de biopsia.",
+            "card_text": "Hallazgo: A) Colposcopia con Biopsia Dirigida: Ante HSIL o LSIL persistente, el estándar de oro es la visualización colposcópica y toma de biopsia.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "B) Conización Cervical (LLETZ/Frío): Tratamiento de elección para NIC 2 y NIC 3 (lesiones de alto grado) para asegurar márgenes libres.",
+            "card_text": "Evidencia: B) Conización Cervical (LLETZ/Frío): Tratamiento de elección para NIC 2 y NIC 3 (lesiones de alto grado) para asegurar márgenes libres.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -52,109 +52,16 @@
                 "lethal_risk": false,
                 "decision_critical": true
             }
-        },
-        {
-            "card_id": "pad_005",
-            "ui_icon": "🩸",
-            "category": "labs",
-            "card_text": "VDRL no reactivo (reporte de hace 2 meses).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
-            }
-        },
-        {
-            "card_id": "pad_011_186",
-            "ui_icon": "💊",
-            "category": "meds",
-            "card_text": "Ajuste de dosis de metformina por falla renal aguda detectada.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 20,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Hallazgo incidental en este contexto outpatient. No define conducta inmediata en consulta externa."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "Hallazgo: Información redundante: TA 105/65 mmHg (Normal para la edad), FC 90 lpm, FR 18 rpm.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 145/95 mmHg, FC 75 lpm, Temp 36.6°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 160/100 mmHg, FC 95 lpm, Temp 37.2°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "meds",
-            "card_text": "B) Viruela: Lesiones en el mismo estadio de evoluci�\u0000³n (monom�\u0000³rficas), centr�\u0000­fugas y umbilicadas. Ausente en la actualidad.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: �\u0000¡Bien! Reconociste la diferencia clave en el estadio de las lesiones (monom�\u0000³rficas vs polim�\u0000³rficas)."
-            }
-        },
-        {
-            "card_id": "c_3",
-            "ui_icon": "slash",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "C) Choque Cardiogénico: Hipotensión con evidencia de fallo de bomba (ritmo de galope, estertores pulmonares) sin foco infeccioso.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Correcto. Aquí el antecedente quirúrgico y la fiebre gritan Sepsis."
-            }
         }
     ],
     "enarm_pearl": {
         "title": "Citología: Bethesda 2014",
         "text": "Clave: LSIL (Bajo grado) suele vigilarse o colposcopia según edad. HSIL (Alto grado) SIEMPRE va a colposcopia/biopsia/tratamiento.",
-        "gpc_ref": "NOM-014-SSÁ2-1994 Prevención Cacu"
+        "gpc_ref": "NOM-014-SSA2-1994 Prevención Cacu"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
-            {
-                "correct_index": 0,
-                "question": "Identifique la conducta a seguir ante un reporte citológico de Lesión Intraepitelial de Alto Grado (HSIL)?",
-                "options": [
-                    "Referencia inmediata a Colposcopia",
-                    "Tratamiento con óvulos antibióticos",
-                    "Repetir citología en 6 meses"
-                ]
-            },
             {
                 "correct_index": 0,
                 "question": "¿Qué subtipos de Virus del Papiloma Humano (VPH) se asocian con mayor frecuencia al desarrollo de cáncer cervicouterino?",
@@ -165,12 +72,21 @@
                 ]
             },
             {
-                "correct_index": 1,
+                "correct_index": 0,
+                "question": "¿Cuál es la conducta a seguir ante un reporte citológico de Lesión Intraepitelial de Alto Grado (HSIL)?",
+                "options": [
+                    "Referencia inmediata a Colposcopia",
+                    "Repetir citología en 6 meses",
+                    "Tratamiento con óvulos antibióticos"
+                ]
+            },
+            {
+                "correct_index": 0,
                 "question": "¿Cuál es el esquema de tamizaje citológico recomendado tras obtener dos resultados anuales negativos consecutivos?",
                 "options": [
-                    "Cada 6 meses",
                     "Cada 3 años",
-                    "Cada 5 años"
+                    "Cada 5 años",
+                    "Cada 6 meses"
                 ]
             }
         ]

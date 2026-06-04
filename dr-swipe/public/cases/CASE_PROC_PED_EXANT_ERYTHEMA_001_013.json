@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_PED_EXÁNT_ERYTHEMÁ_001_013",
+    "case_id": "PROC_PED_EXANT_ERYTHEMA_001_013",
     "version": "v3_swipe_action",
     "theme_config": "ped",
     "difficulty": "standard",
@@ -13,7 +13,7 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "vitals",
-            "card_text": "TA N/Á, FC 80 lpm, Temp 37.2°C",
+            "card_text": "TA N/A, FC 80 lpm, Temp 37.2°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -101,7 +101,7 @@
             "card_id": "c_9",
             "ui_icon": "shield-off",
             "category": "Salud Pública",
-            "card_text": "I) Período de Contagio: El paciente es contagioso ÁNTES del exantema. Al aparecer el brote, ya no transmite el virus.",
+            "card_text": "I) Período de Contagio: El paciente es contagioso ANTES del exantema. Al aparecer el brote, ya no transmite el virus.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -118,7 +118,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Castillo: ¡No! Áún no existe una vacuna comercial disponible para el Parvovirus B19."
+                "vazquez_comment": "Castillo: ¡No! Aún no existe una vacuna comercial disponible para el Parvovirus B19."
             }
         },
         {
@@ -168,7 +168,7 @@
                 "options": [
                     "Antígeno P (globósido)",
                     "CD4",
-                    "Receptor ÁCE2"
+                    "Receptor ACE2"
                 ],
                 "correct_index": 0
             },

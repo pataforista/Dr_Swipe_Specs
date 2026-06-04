@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_GYN_CÁNCER_CERVICÁL_001_014",
+    "case_id": "PROC_GYN_CANCER_CERVICAL_001_014",
     "version": "v3_swipe_action",
     "theme_config": "gyn",
     "difficulty": "standard",
@@ -12,32 +12,20 @@
         {
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 110/70, FC 72 lpm, Temp 36.4°C",
+            "category": "Signos Vitales",
+            "card_text": "Evidencia clínica: Dato anecdótico: TA 110/70, FC 72 lpm, Temp 36.4°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "pad_004",
-            "ui_icon": "🩺",
-            "category": "vitals",
-            "card_text": "TA 145/95 mmHg. Cifras tensionales elevadas en dos tomas.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 50,
-                "error_type": "omission",
-                "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
+                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Colposcopia con Biopsia Dirigida: Ante HSIL o LSIL persistente, el estándar de oro es la visualización colposcópica y toma de biopsia.",
+            "card_text": "Evidencia: A) Colposcopia con Biopsia Dirigida: Ante HSIL o LSIL persistente, el estándar de oro es la visualización colposcópica y toma de biopsia.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -53,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "B) Conización Cervical (LLETZ/Frío): Tratamiento de elección para NIC 2 y NIC 3 (lesiones de alto grado) para asegurar márgenes libres.",
+            "card_text": "Evidencia: B) Conización Cervical (LLETZ/Frío): Tratamiento de elección para NIC 2 y NIC 3 (lesiones de alto grado) para asegurar márgenes libres.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -64,92 +52,12 @@
                 "lethal_risk": false,
                 "decision_critical": true
             }
-        },
-        {
-            "card_id": "pad_007",
-            "ui_icon": "🩸",
-            "category": "labs",
-            "card_text": "VDRL no reactivo (reporte de hace 2 meses).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "Hallazgo: Dato anecdótico: B) Probabilidad ÁLTA (>90%): Confundiste la Sensibilidad con el VPP. La prueba es buena detectando enfermos, pero falla ante tantos sanos.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Bien! Notaste la trampa de la prevalencia."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "Evidencia clínica: Dato anecdótico: B) Hipertensión de Bata Blanca: Cifras elevadas en consultorio (>=140/90) pero normales en casa (ÁMPA) o MÁPÁ.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¡Bien! Es importante no sobretratar a pacientes cuya elevación es puramente tensional por el entorno médico."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico Diferencial",
-            "card_text": "B) Hipertensión de Bata Blanca: Cifras elevadas en consultorio (>=140/90) pero normales en casa (ÁMPA) o MÁPÁ.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Mendoza: ¡Bien! Es importante no sobretratar a pacientes cuya elevación es puramente tensional por el entorno médico."
-            }
-        },
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "Dato de importancia: FC 180 lpm (Taquicardia severa), FR 35 rpm, Temp 37.0 C, TA 70/40 mmHg (Sugerente de Choque).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "DATO CLAVE OMITIDO: Navarro: Urgente! El paciente esta en estado de choque hipovolemico. Plan C inmediato."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "Evidencia clínica: Dato anecdótico: B) Punción en 2° espacio intercostal: Sitio recomendado en guías anteriores (ATLS 9ª y normas mexicanas viejas).",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¡Bien! Reconociste que el 2° espacio ya no es el sitio preferido en las guías más recientes."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
         }
     ],
     "enarm_pearl": {
         "title": "Citología: Bethesda 2014",
         "text": "Clave: LSIL (Bajo grado) suele vigilarse o colposcopia según edad. HSIL (Alto grado) SIEMPRE va a colposcopia/biopsia/tratamiento.",
-        "gpc_ref": "NOM-014-SSÁ2-1994 Prevención Cacu"
+        "gpc_ref": "NOM-014-SSA2-1994 Prevención Cacu"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
@@ -159,26 +67,26 @@
                 "question": "¿Qué subtipos de Virus del Papiloma Humano (VPH) se asocian con mayor frecuencia al desarrollo de cáncer cervicouterino?",
                 "options": [
                     "VPH 16 y 18",
-                    "VPH 31 y 33",
-                    "VPH 6 y 11"
+                    "VPH 6 y 11",
+                    "VPH 31 y 33"
                 ]
             },
             {
-                "correct_index": 1,
-                "question": "Con respecto a la patología, ¿cuál es el esquema de tamizaje citológico recomendado tras obtener dos resultados anuales negativos consecutivos?",
+                "correct_index": 0,
+                "question": "¿Cuál es la conducta a seguir ante un reporte citológico de Lesión Intraepitelial de Alto Grado (HSIL)?",
                 "options": [
-                    "Cada 5 años",
-                    "Cada 3 años",
-                    "Cada 6 meses"
-                ]
-            },
-            {
-                "correct_index": 1,
-                "question": "De las siguientes opciones, ¿cuál es la conducta a seguir ante un reporte citológico de Lesión Intraepitelial de Alto Grado (HSIL)?",
-                "options": [
-                    "Repetir citología en 6 meses",
                     "Referencia inmediata a Colposcopia",
+                    "Repetir citología en 6 meses",
                     "Tratamiento con óvulos antibióticos"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Cuál es el esquema de tamizaje citológico recomendado tras obtener dos resultados anuales negativos consecutivos?",
+                "options": [
+                    "Cada 3 años",
+                    "Cada 5 años",
+                    "Cada 6 meses"
                 ]
             }
         ]

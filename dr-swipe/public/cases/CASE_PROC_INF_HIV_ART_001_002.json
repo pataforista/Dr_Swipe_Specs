@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_INF_HIV_ÁRT_001_002",
+    "case_id": "PROC_INF_HIV_ART_001_002",
     "version": "v3_swipe_action",
     "theme_config": "inf",
     "difficulty": "standard",
@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "meds",
-            "card_text": "A) Iniciar ÁRT Inmediatamente (Tratamiento Universal): Guías actuales (GPC/WHO): Se recomienda iniciar ÁRT en TODOS los pacientes, sin importar el nivel de CD4.",
+            "card_text": "A) Iniciar ART Inmediatamente (Tratamiento Universal): Guías actuales (GPC/WHO): Se recomienda iniciar ART en TODOS los pacientes, sin importar el nivel de CD4.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -57,7 +57,7 @@
             "card_id": "c_3",
             "ui_icon": "pill",
             "category": "meds",
-            "card_text": "C) Esquema Preferente (Biktarvy): Bictegravir + Emtricitabina + Tenofovir Alafenamida (B/F/TÁF) en tableta única.",
+            "card_text": "C) Esquema Preferente (Biktarvy): Bictegravir + Emtricitabina + Tenofovir Alafenamida (B/F/TAF) en tableta única.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -81,7 +81,7 @@
             "card_id": "c_5",
             "ui_icon": "alert-triangle",
             "category": "Complicación",
-            "card_text": "E) Síndrome de Reconstitución Inmune (IRIS): Empeoramiento paradójico de infecciones tras iniciar ÁRT.",
+            "card_text": "E) Síndrome de Reconstitución Inmune (IRIS): Empeoramiento paradójico de infecciones tras iniciar ART.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -122,7 +122,7 @@
             "scoring": {
                 "points": 150,
                 "error_type": "lethal_omission",
-                "vazquez_comment": "Navarro: ¡Vital! El Bactrim salva vidas mientras el ÁRT hace efecto."
+                "vazquez_comment": "Navarro: ¡Vital! El Bactrim salva vidas mientras el ART hace efecto."
             },
             "safety_flags": {
                 "lethal_risk": true,
@@ -143,8 +143,8 @@
         }
     ],
     "enarm_pearl": {
-        "title": "VIH: Inicio de ÁRT",
-        "text": "Regla ENARM: Inicio de ÁRT en TODO paciente diagnosticado, sin importar CD4. Esquema preferente: 2 ITNR + 1 INSTI (Dolutegravir).",
+        "title": "VIH: Inicio de ART",
+        "text": "Regla ENARM: Inicio de ART en TODO paciente diagnosticado, sin importar CD4. Esquema preferente: 2 ITNR + 1 INSTI (Dolutegravir).",
         "gpc_ref": "GPC Tratamiento Antirretroviral del Adulto con VIH"
     },
     "boss_fight_triad": {
@@ -170,7 +170,7 @@
             },
             {
                 "correct_index": 2,
-                "question": "¿Cuál es el recuento de células CD4 por debajo del cual se define la etapa clínica de SIDÁ?",
+                "question": "¿Cuál es el recuento de células CD4 por debajo del cual se define la etapa clínica de SIDA?",
                 "options": [
                     "Menos de 50 cél/µl",
                     "Menos de 500 cél/µl",

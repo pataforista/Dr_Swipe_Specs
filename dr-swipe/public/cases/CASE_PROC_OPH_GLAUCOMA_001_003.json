@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_OPH_GLÁUCOMÁ_001_003",
+    "case_id": "PROC_OPH_GLAUCOMA_001_003",
     "version": "v3_swipe_action",
     "theme_config": "med",
     "difficulty": "hard",
@@ -77,7 +77,7 @@
             "card_id": "c_6",
             "ui_icon": "search",
             "category": "Tratamiento Definitivo",
-            "card_text": "F) Iridotomía con Láser YÁG: Procedimiento para crear un orificio en el iris y prevenir futuros bloqueos.",
+            "card_text": "F) Iridotomía con Láser YAG: Procedimiento para crear un orificio en el iris y prevenir futuros bloqueos.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -146,7 +146,7 @@
             "scoring": {
                 "points": 150,
                 "error_type": "lethal_hazard",
-                "vazquez_comment": "López: ¡MÁL! La midriasis EMPEORA el cierre del ángulo. Nunca dilates a un paciente con sospecha de glaucoma cerrado."
+                "vazquez_comment": "López: ¡MAL! La midriasis EMPEORA el cierre del ángulo. Nunca dilates a un paciente con sospecha de glaucoma cerrado."
             },
             "safety_flags": {
                 "lethal_risk": true,
@@ -172,7 +172,7 @@
                 "correct_index": 2
             },
             {
-                "question": "¿Cuál de estas opciones farmacológicas está CONTRÁINDICÁDA en la fase aguda del glaucoma de ángulo cerrado?",
+                "question": "¿Cuál de estas opciones farmacológicas está CONTRAINDICADA en la fase aguda del glaucoma de ángulo cerrado?",
                 "options": [
                     "Anhídrasa carbónica (Acetazolamida)",
                     "Mióticos (Pilocarpina)",
@@ -184,7 +184,7 @@
                 "question": "En este contexto clínico, ¿cuál es el tratamiento quirúrgico/definitivo de elección para prevenir recurrencias en glaucoma primario de ángulo cerrado?",
                 "options": [
                     "Trabeculectomía",
-                    "Iridotomía con láser YÁG",
+                    "Iridotomía con láser YAG",
                     "Extracción de catarata"
                 ],
                 "correct_index": 1

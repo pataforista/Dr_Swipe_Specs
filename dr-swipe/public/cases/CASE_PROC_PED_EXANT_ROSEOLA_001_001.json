@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_PED_EXÁNT_ROSEOLÁ_001_001",
+    "case_id": "PROC_PED_EXANT_ROSEOLA_001_001",
     "version": "v3_swipe_action",
     "theme_config": "ped",
     "difficulty": "standard",
@@ -13,7 +13,7 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "vitals",
-            "card_text": "TA N/Á, FC 130 lpm (durante fiebre), Temp 36.6°C (post-fiebre)",
+            "card_text": "TA N/A, FC 130 lpm (durante fiebre), Temp 36.6°C (post-fiebre)",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Exantema Súbito (6ta Enfermedad): Fiebre ÁLTA que desaparece → Aparece exantema. Virus Herpes Humano 6.",
+            "card_text": "A) Exantema Súbito (6ta Enfermedad): Fiebre ALTA que desaparece → Aparece exantema. Virus Herpes Humano 6.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

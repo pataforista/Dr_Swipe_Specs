@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_OBS_HEM_MOLÁ_001_004",
+    "case_id": "PROC_OBS_HEM_MOLA_001_004",
     "version": "v3_swipe_action",
     "theme_config": "obs",
     "difficulty": "standard",
@@ -97,7 +97,7 @@
             "card_id": "c_5",
             "ui_icon": "zap",
             "category": "Manejo Quirúrgico",
-            "card_text": "E) Evacuación por Aspiración (ÁMEU): Tratamiento de elección. Debe realizarse lo antes posible para evitar complicaciones.",
+            "card_text": "E) Evacuación por Aspiración (AMEU): Tratamiento de elección. Debe realizarse lo antes posible para evitar complicaciones.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -140,7 +140,7 @@
     ],
     "enarm_pearl": {
         "title": "Mola: HTA <20 Semanas",
-        "text": "USG: Tormenta de Nieve. Tx: ÁMEU. Seguimiento: hCG semanal y OCOs por 1 año. Dato clave: Útero > Amenorrea.",
+        "text": "USG: Tormenta de Nieve. Tx: AMEU. Seguimiento: hCG semanal y OCOs por 1 año. Dato clave: Útero > Amenorrea.",
         "gpc_ref": "GPC Diagnóstico y Tratamiento de la Enfermedad Trofoblástica"
     },
     "boss_fight_triad": {

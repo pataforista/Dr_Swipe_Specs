@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_SURG_BILIÁRY_CHOLÁNGITIS_001_001",
+    "case_id": "PROC_SURG_BILIARY_CHOLANGITIS_001_001",
     "version": "v3_swipe_action",
     "theme_config": "surg",
     "difficulty": "standard",
@@ -163,7 +163,7 @@
                 "question": "Con respecto a la patología, ¿cuál es el procedimiento diagnóstico y terapéutico de elección en la colangitis aguda?",
                 "options": [
                     "CPRE (Colangiopancreatografía Retrógrada Endoscópica)",
-                    "Gammagrafía HIDÁ",
+                    "Gammagrafía HIDA",
                     "Colecistectomía laparoscópica de urgencia"
                 ],
                 "correct_index": 0

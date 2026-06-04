@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_PED_STÁTS_TESTS_001_001",
+    "case_id": "PROC_PED_STATS_TESTS_001_001",
     "version": "v3_swipe_action",
     "theme_config": "ped",
     "difficulty": "standard",
@@ -49,7 +49,7 @@
             "card_id": "c_3",
             "ui_icon": "bar-chart-2",
             "category": "Estadistica Inf.",
-            "card_text": "Hallazgo: C) ÁNOVA (Analisis de Varianza): Para comparar Medias de variable continua entre 3 o mas grupos independientes.",
+            "card_text": "Hallazgo: C) ANOVA (Analisis de Varianza): Para comparar Medias de variable continua entre 3 o mas grupos independientes.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -163,7 +163,7 @@
                 "question": "¿Que prueba estadistica utilizarias para comparar el promedio de peso al nacer entre ninos y ninas?",
                 "options": [
                     "Chi-cuadrada",
-                    "Analisis de Varianza (ÁNOVA)",
+                    "Analisis de Varianza (ANOVA)",
                     "t de Student para muestras independientes"
                 ],
                 "correct_index": 2

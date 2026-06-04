@@ -7,7 +7,11 @@ import { ClinicalCaseSchema } from './caseSchema';
  */
 export const dataLoader = {
   loadCase: async (caseId: string): Promise<ClinicalCase> => {
-    const safeId = encodeURIComponent(caseId.toUpperCase());
+    // Strip diacritics so a stale/accent-corrupted case_id (e.g. an old saved
+    // session persisted as "PROC_PED_EXÁNT_MEÁSLES…") still resolves to the
+    // ASCII filename on disk instead of 404'ing.
+    const asciiId = caseId.normalize('NFD').replace(/[̀-ͯ]/g, '');
+    const safeId = encodeURIComponent(asciiId.toUpperCase());
     const response = await fetch(`${import.meta.env.BASE_URL}cases/CASE_${safeId}.json`);
     if (response.status === 404) throw new Error(`Case not found: ${caseId}`);
     if (!response.ok) throw new Error(`Failed to load case: ${response.status} - ${caseId}`);

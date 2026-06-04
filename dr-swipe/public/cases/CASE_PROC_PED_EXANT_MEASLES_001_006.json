@@ -1,5 +1,5 @@
 {
-    "case_id": "PROC_PED_EXÁNT_MEÁSLES_001_006",
+    "case_id": "PROC_PED_EXANT_MEASLES_001_006",
     "version": "v3_swipe_action",
     "theme_config": "ped",
     "difficulty": "standard",
@@ -13,7 +13,7 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "vitals",
-            "card_text": "TA N/Á, FC 120 lpm, Temp 39.5°C",
+            "card_text": "TA N/A, FC 120 lpm, Temp 39.5°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -97,7 +97,7 @@
             "card_id": "c_7",
             "ui_icon": "beaker",
             "category": "meds",
-            "card_text": "G) Virus del Sarampión (Paramixovirus): Virus de ÁRN de cadena negativa, altamente contagioso vía aerosoles.",
+            "card_text": "G) Virus del Sarampión (Paramixovirus): Virus de ARN de cadena negativa, altamente contagioso vía aerosoles.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -145,7 +145,7 @@
             "card_id": "c_5",
             "ui_icon": "beaker",
             "category": "meds",
-            "card_text": "E) Vitamina Á: Administración inmediata para prevenir complicaciones como neumonía.",
+            "card_text": "E) Vitamina A: Administración inmediata para prevenir complicaciones como neumonía.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -159,8 +159,8 @@
         }
     ],
     "enarm_pearl": {
-        "title": "Sarampión: Vitamina Á",
-        "text": "Tratamiento Clave: A TODO niño con sarampión se le debe administrar VITÁMINA A para reducir complicaciones y mortalidad.",
+        "title": "Sarampión: Vitamina A",
+        "text": "Tratamiento Clave: A TODO niño con sarampión se le debe administrar VITAMINA A para reducir complicaciones y mortalidad.",
         "gpc_ref": "GPC Prevención, Diagnóstico y Tratamiento del Sarampión"
     },
     "boss_fight_triad": {

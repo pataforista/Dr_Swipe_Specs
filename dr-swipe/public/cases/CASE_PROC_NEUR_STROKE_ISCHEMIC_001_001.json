@@ -30,14 +30,14 @@
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
-                "vazquez_comment": "Navarro: Muy bien. Una escala NIHSS entre 4 y 25 puntos suele ser la ventana ideal para rTPÁ."
+                "vazquez_comment": "Navarro: Muy bien. Una escala NIHSS entre 4 y 25 puntos suele ser la ventana ideal para rTPA."
             }
         },
         {
             "card_id": "c_6",
             "ui_icon": "alert-triangle",
             "category": "vitals",
-            "card_text": "F) Control de TÁ: Mantener la TA por debajo de 185/110 mmHg para iniciar rTPA de forma segura.",
+            "card_text": "F) Control de TA: Mantener la TA por debajo de 185/110 mmHg para iniciar rTPA de forma segura.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -53,7 +53,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
-            "card_text": "B) Hemorragia Intracraneal: Clínica similar pero TC mostraría hiperdensidad súbita. Contraindica rTPÁ.",
+            "card_text": "B) Hemorragia Intracraneal: Clínica similar pero TC mostraría hiperdensidad súbita. Contraindica rTPA.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -77,7 +77,7 @@
             "card_id": "c_9",
             "ui_icon": "calendar",
             "category": "meds",
-            "card_text": "I) Iniciar Antiagregación (ÁSA): Administrar 160-325 mg de Aspirina tras 24 horas de la fibrinólisis.",
+            "card_text": "I) Iniciar Antiagregación (ASA): Administrar 160-325 mg de Aspirina tras 24 horas de la fibrinólisis.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -89,7 +89,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) ÁCV Isquémico (Ventana de Fibrinolisis): Sintomatología focal <4.5 horas + TC sin hemorragia. Manejo: rTPA (Alteplase).",
+            "card_text": "A) ACV Isquémico (Ventana de Fibrinolisis): Sintomatología focal <4.5 horas + TC sin hemorragia. Manejo: rTPA (Alteplase).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -138,7 +138,7 @@
             "card_id": "c_8",
             "ui_icon": "slash",
             "category": "Complicación",
-            "card_text": "H) Transformación Hemorrágica: Vigilar cefalea intensa, náuseas o deterioro neurológico súbito post-rTPÁ.",
+            "card_text": "H) Transformación Hemorrágica: Vigilar cefalea intensa, náuseas o deterioro neurológico súbito post-rTPA.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -153,8 +153,8 @@
     ],
     "enarm_pearl": {
         "title": "EVC Isquémico: Tiempos",
-        "text": "Ventana rTPÁ: 4.5h. Puerta-TC: 25 min. TA meta rTPÁ: <185/110. Cincinnati: Cara, Brazo, Habla.",
-        "gpc_ref": "GPC Diagnóstico y Tratamiento de ÁCV Isquémico"
+        "text": "Ventana rTPA: 4.5h. Puerta-TC: 25 min. TA meta rTPA: <185/110. Cincinnati: Cara, Brazo, Habla.",
+        "gpc_ref": "GPC Diagnóstico y Tratamiento de ACV Isquémico"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
