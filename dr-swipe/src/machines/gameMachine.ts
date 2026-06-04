@@ -589,6 +589,9 @@ export const gameMachine = setup({
             mistakesThisCase: 0,
             coinsEarnedThisCase: 0,
             // Reset per-case state for the new patient
+            // score resets per patient so XP (granted on reward = score) is not
+            // double-counted across the shift (was: 3·S1 + 2·S2 + S3).
+            score: 0,
             vitality: 100,
             combo: 0,
             multiplier: 1,
