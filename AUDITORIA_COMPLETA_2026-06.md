@@ -7,6 +7,19 @@
 
 ---
 
+## 0-bis. Sistema de enganche (nuevo — fomentar juego + estudio)
+
+Como el app es **permisivo a propósito** (para no frustrar y que la gente siga jugando = siga aprendiendo), se añadió un bucle de recompensa cuyo premio refuerza el estudio. Cuatro mecánicas, todas con monedas como divisa (el ajuste de economía les dio sentido):
+
+1. **Caja de Conocimiento (gacha de perlas ENARM)** — `pearls.json` (91 perlas con rareza), compra por 50🪙, sorteo ponderado, **la recompensa es contenido de estudio coleccionable**; repetidas devuelven 15🪙 de "polvo". Visor **Codex** con la colección (X/total, rareza, bloqueadas). *(commit `a66ac5a`)*
+2. **Tienda de ventajas** — boosts comprables: Doble XP / Doble Monedas (próxima guardia) y Pista Gratis ×3. Inventario persistente. *(commit `111b019`)*
+3. **Misiones diarias** — 3 objetivos/día (resuelve 3 pacientes, acierta 25 decisiones, guardia perfecta) con progreso y cobro de monedas. *(commit `ca0329f`)*
+4. **Metas de racha** — recompensas al alcanzar 3/7/14/30 días de racha. Panel **Diario** con barra de progreso. *(commit `ca0329f`)*
+
+Sin cambios en el state machine; todo en el store (Zustand persistido) + UI. Build y `tsc` limpios.
+
+---
+
 ## 0. Estado de remediación (actualizado)
 
 Ya corregido en esta rama (build de producción verificado tras cada cambio):
