@@ -10,7 +10,7 @@ import { useGameAudio } from './hooks/useGameAudio';
 import { shuffleBossQuestion } from './utils/formatters';
 import { triggerHaptic } from './utils/hapticFeedback';
 import { calculatePerfectRoundBonus, getDailyStreakMultiplier, calculateCardScore } from './utils/scoringEngine';
-import { LIFELINE_COST } from './store/useCodexStore';
+import { LIFELINE_COST, KNOWLEDGE_CRATE_COST } from './store/useCodexStore';
 import { useCodexStore } from './store/useCodexStore';
 import { TutorialOverlay } from './components/TutorialOverlay';
 import { StatsDashboard } from './components/StatsDashboard';
@@ -39,7 +39,8 @@ export function App() {
   const [state, send] = useMachine(gameMachine);
   const { playFeedback, stopTriageAlarm } = useGameAudio();
   const [currentCase, setCurrentCase] = useState<ClinicalCase | null>(null);
-  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak, boosts, consumeBoost, trackMission, refreshDaily } = useCodexStore();
+  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak, boosts, consumeBoost, trackMission, refreshDaily, dailyMissions } = useCodexStore();
+  const claimableMissions = (dailyMissions?.list ?? []).filter(m => m.progress >= m.target && !m.claimed).length;
   const [guardBoosts, setGuardBoosts] = useState<{ doubleXp: boolean; doubleCoins: boolean }>({ doubleXp: false, doubleCoins: false });
   const timeLimitRef = useRef<number>(60);
   const pendingDeckRef = useRef<any[]>([]);
@@ -94,7 +95,10 @@ export function App() {
         mistakesThisCase: state.context.mistakesThisCase,
         warningCount: state.context.warningCount,
         difficulty: state.context.difficulty,
-        savedAt: Date.now()
+        savedAt: Date.now(),
+        deckOrder: state.context.deck.map(c => c.card_id),
+        vitality: state.context.vitality,
+        lives: state.context.lives
       });
     }
   }, [state.context.currentCardIndex, state.value, currentCase, saveSessionProgress]);
@@ -165,33 +169,49 @@ export function App() {
   const resumeSession = async () => {
     if (!sessionProgress || !sessionProgress.caseId) return;
     setIsLoadingCase(true);
+    setGuardBoosts({ doubleXp: false, doubleCoins: false }); // resumed guards don't carry shop boosts
     try {
-      // Find the specific case file
       const caseData = await dataLoader.loadCaseById(sessionProgress.caseId);
       if (caseData.boss_fight_triad?.questions) {
          caseData.boss_fight_triad.questions = caseData.boss_fight_triad.questions.map(q => shuffleBossQuestion(q));
       }
       setCurrentCase(caseData);
-      setGuardBoosts({ doubleXp: false, doubleCoins: false }); // resumed guards don't carry shop boosts
-      setCaseQueue([]); // Clearing queue for resumed cases to avoid complexity
-      
-      const fullDeck = [...caseData.card_stream];
-      const initialCard = fullDeck.shift()!;
-      // Not randomizing on resume to maintain consistency with the saved index
-      const resumedDeck = [initialCard, ...fullDeck]; 
+      setCaseQueue([]); // Resumed guards play just the saved case
 
-      send({ 
-        type: 'START_GUARD', 
-        deck: resumedDeck, 
-        difficulty: sessionProgress.difficulty, 
-        pearl: caseData.enarm_pearl as any 
+      // Rebuild the EXACT deck order the player was on (saved as card_ids).
+      const byId = new Map(caseData.card_stream.map(c => [c.card_id, c]));
+      const order = sessionProgress.deckOrder ?? [];
+      let deck = order.map(id => byId.get(id)).filter(Boolean) as typeof caseData.card_stream;
+      let startIndex = sessionProgress.currentCardIndex;
+      if (deck.length !== caseData.card_stream.length) {
+        // Old session without deckOrder (or mismatch): fall back to a fresh deck from the start.
+        const full = [...caseData.card_stream];
+        deck = [full.shift()!, ...full];
+        startIndex = 0;
+      }
+
+      send({
+        type: 'RESUME_GUARD',
+        deck,
+        pearl: caseData.enarm_pearl as any,
+        resume: {
+          currentCardIndex: startIndex,
+          score: sessionProgress.score,
+          combo: sessionProgress.combo,
+          multiplier: sessionProgress.multiplier,
+          caseStreak: sessionProgress.caseStreak,
+          coinsEarnedThisCase: sessionProgress.coinsEarnedThisCase,
+          mistakesThisCase: sessionProgress.mistakesThisCase,
+          difficulty: sessionProgress.difficulty,
+          vitality: sessionProgress.vitality ?? 100,
+          lives: sessionProgress.lives ?? 5,
+        },
       });
 
-      const timeLimit = Math.max(90, Math.min(180, resumedDeck.length * 18));
+      const timeLimit = Math.max(90, Math.min(180, deck.length * 18));
       setTimeLeft(timeLimit);
       timeLimitRef.current = timeLimit;
-      pendingDeckRef.current = resumedDeck;
-      setShowIntro(true);
+      setShowIntro(false); // jump straight back into triage
     } catch (err) {
       console.error("Failed to resume session", err);
       clearSessionProgress();
@@ -332,16 +352,19 @@ export function App() {
                 </button>
               )}
 
-              <button onClick={() => setShowDaily(true)} className="marker-btn py-4 sm:py-5 text-sm sm:text-base !bg-amber-400 !border-amber-400 shadow-amber-100 !text-amber-900">
+              <button onClick={() => setShowDaily(true)} className="relative marker-btn py-4 sm:py-5 text-sm sm:text-base !bg-amber-400 !border-amber-400 shadow-amber-100 !text-amber-900">
                  MISIONES DEL DÍA 🗓️
+                 {claimableMissions > 0 && <span className="absolute -top-2 -right-2 bg-rose-500 text-white text-[11px] font-black min-w-6 h-6 px-1.5 rounded-full flex items-center justify-center border-2 border-white shadow-md animate-pulse">{claimableMissions}</span>}
               </button>
 
               <div className="flex gap-3">
-                <button onClick={() => setShowCodex(true)} className="marker-btn flex-1 py-4 sm:py-5 text-sm sm:text-base !bg-secondary !border-secondary shadow-amber-100">
+                <button onClick={() => setShowCodex(true)} className="relative marker-btn flex-1 py-4 sm:py-5 text-sm sm:text-base !bg-secondary !border-secondary shadow-amber-100">
                    CODEX 📖
+                   {stats.coins >= KNOWLEDGE_CRATE_COST && <span className="absolute -top-1.5 -right-1.5 w-3.5 h-3.5 bg-rose-500 rounded-full border-2 border-white" />}
                 </button>
-                <button onClick={() => setShowTienda(true)} className="marker-btn flex-1 py-4 sm:py-5 text-sm sm:text-base !bg-secondary !border-secondary shadow-amber-100">
+                <button onClick={() => setShowTienda(true)} className="relative marker-btn flex-1 py-4 sm:py-5 text-sm sm:text-base !bg-secondary !border-secondary shadow-amber-100">
                    TIENDA 🛒
+                   {stats.coins >= 45 && <span className="absolute -top-1.5 -right-1.5 w-3.5 h-3.5 bg-rose-500 rounded-full border-2 border-white" />}
                 </button>
               </div>
 

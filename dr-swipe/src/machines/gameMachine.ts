@@ -79,6 +79,7 @@ interface GameContext {
 
 type GameEvent =
   | { type: 'START_GUARD'; deck: Card[]; difficulty: string; pearl: EnarmPearl; isSandiaMode?: boolean }
+  | { type: 'RESUME_GUARD'; deck: Card[]; pearl: EnarmPearl; resume: ResumeState }
   | { type: 'SWIPE'; direction: 'left' | 'right' }
   | { type: 'UNDO_SWIPE' }
   | { type: 'TRIGGER_BOSS' }
@@ -99,6 +100,19 @@ type GameEvent =
   | { type: 'CONTINUE_SHIFT'; deck: Card[]; puzzle: any; isSandiaMode?: boolean } // deck of the NEXT case
   | { type: 'RESCUE' }
   | { type: 'CLEAR_MILESTONE' };
+
+interface ResumeState {
+  currentCardIndex: number;
+  score: number;
+  combo: number;
+  multiplier: number;
+  caseStreak: number;
+  coinsEarnedThisCase: number;
+  mistakesThisCase: number;
+  difficulty: string;
+  vitality: number;
+  lives: number;
+}
 
 export const gameMachine = setup({
   types: {
@@ -386,6 +400,50 @@ export const gameMachine = setup({
             casesCompleted: 0,
             lives: 5,
             isSandiaMode: ({ event }) => event.type === 'START_GUARD' ? !!event.isSandiaMode : false
+          })
+        },
+        RESUME_GUARD: {
+          target: 'triage',
+          actions: assign({
+            deck: ({ event }) => event.deck,
+            dossier: [],
+            discarded: [],
+            fatalError: null,
+            currentCardIndex: ({ event }) => event.resume.currentCardIndex,
+            score: ({ event }) => event.resume.score,
+            combo: ({ event }) => event.resume.combo,
+            multiplier: ({ event }) => event.resume.multiplier,
+            caseStreak: ({ event }) => event.resume.caseStreak,
+            coinsEarnedThisCase: ({ event }) => event.resume.coinsEarnedThisCase,
+            mistakesThisCase: ({ event }) => event.resume.mistakesThisCase,
+            difficulty: ({ event }) => event.resume.difficulty,
+            vitality: ({ event }) => event.resume.vitality,
+            lives: ({ event }) => event.resume.lives,
+            lastCardPresentedAt: Date.now(),
+            showEureka: false,
+            isUrgent: false,
+            showBloodVignette: false,
+            debriefData: ({ event }) => ({
+              title: event.pearl?.title || "Repaso Clínico",
+              text: event.pearl?.text || "",
+              gpc: event.pearl?.gpc_ref || "GPC en vigor",
+              comment: ""
+            }),
+            interruptionActive: false,
+            lastInterruptionAt: 0,
+            lifelineActive: false,
+            comboMilestoneHit: 0,
+            consecutiveErrors: 0,
+            lootBoxReward: null,
+            activePenalty: null,
+            activeEvent: null,
+            feedbackHistory: [],
+            lastVitals: null,
+            totalCasesInShift: 1,
+            casesCompleted: 0,
+            undoCharges: 5,
+            lastAction: null,
+            isSandiaMode: false
           })
         }
       }

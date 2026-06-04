@@ -14,6 +14,9 @@ export interface SessionProgress {
   warningCount: number;
   difficulty: string;
   savedAt: number; // timestamp
+  deckOrder?: string[]; // card_ids in play order, to restore the exact deck on resume
+  vitality?: number;
+  lives?: number;
 }
 
 interface CodexState {
