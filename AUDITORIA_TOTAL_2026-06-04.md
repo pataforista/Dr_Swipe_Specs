@@ -48,10 +48,13 @@ Commits `1e4a0dd` (build) y `28a5be1` (datos). Toolchain completa en verde
 - ✅ **Furosemida** (`IM_HEART_FAILURE_001_001`): de `discard`/"puro ruido" a `keep` con matiz de mortalidad (paciente congestivo).
 - ✅ Perlas: consolidado `enarm_pearl` (quitado `perla_enarm` legacy) en 3 SWIPE; añadida perla ATLS faltante en 2 casos de neumotórax.
 
-**Pendiente (requiere tu criterio — ver §10)**
-- ⚠️ **85 incoherencias de edad** nombre↔escenario (¿cuál es la canónica por caso?).
-- ⚠️ **445 casos** avatar (`mendoza`) ↔ mentor citado (Castillo/Navarro/…): decisión de diseño de personajes.
-- ⚠️ Archivar `cases/` raíz corrupta + 41 scripts; decidir destino de `v2/`; peer-deps PWA; doble ruta de deploy.
+**Decisiones del autor — ya aplicadas**
+- ✅ **Edades nombre↔escenario**: corregidas **59 inconsistencias reales** (nombre←escenario). Se descubrió que la mayoría de los "85" eran **falsos positivos** (duración de enfermedad o edad gestacional en semanas ≠ edad del paciente). En 5 casos IAM con escenario masculino se ajustó también el nombre (género).
+- ✅ **Avatar = mentor citado**: el avatar ahora refleja a Castillo/Navarro/Mendoza según el comentario de cada carta (antes siempre `mendoza`).
+- ✅ **Higiene de repo**: `cases/` raíz, 41 scripts y `v2/` archivados en `_LEGACY_ARCHIVE/`. `public/cases` es la fuente única.
+
+**Pendiente menor (opcional)**
+- ⚠️ Peer-deps PWA (`vite-plugin-pwa@1.2.0` vs `vite@8`, sigue con `--legacy-peer-deps`); doble ruta de deploy; code-splitting del bundle (518 KB).
 
 > El resto de este documento describe el estado **original** detectado (pre-remediación); úsalo como referencia de hallazgos.
 
