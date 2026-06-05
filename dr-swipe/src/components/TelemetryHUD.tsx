@@ -76,7 +76,7 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
         </AnimatePresence>
         {state !== 'boss_fight' && (
           <div className="flex flex-col items-end gap-0.5">
-            <span className="text-[7px] sm:text-[8px] font-black tracking-widest text-rose-400 uppercase leading-none lettering">
+            <span className="text-[9px] sm:text-[10px] font-black tracking-widest text-rose-400 uppercase leading-none lettering">
               Tiempo
             </span>
             <span
@@ -112,7 +112,7 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
 const VitalsMonitor: React.FC<{ vitals: TelemetryHUDProps['lastVitals'] }> = ({ vitals }) => {
   if (!vitals) return (
     <div className="paper-sheet bg-white/70 backdrop-blur-md text-slate-400 p-3 rounded-2xl border-2 border-white/60 shadow-md flex flex-col gap-1 min-w-[120px]">
-       <span className="text-[8px] font-black uppercase tracking-widest text-slate-400">Telemetría</span>
+       <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Telemetría</span>
        <div className="flex flex-col gap-1 opacity-30">
          <div className="h-1.5 w-full bg-slate-200 rounded-full" />
          <div className="h-1.5 w-2/3 bg-slate-200 rounded-full" />
@@ -137,10 +137,10 @@ const VitalsMonitor: React.FC<{ vitals: TelemetryHUDProps['lastVitals'] }> = ({ 
     >
       <div className="absolute top-0 right-3 w-10 h-3 washi-tape-pink opacity-50 -rotate-2" />
       <div className="flex justify-between items-center">
-        <span className="text-[7px] sm:text-[8px] font-black uppercase tracking-widest text-slate-400 flex items-center gap-1 lettering">
+        <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 flex items-center gap-1 lettering">
           <span className={`w-1 h-1 ${dotColor} rounded-full animate-pulse`} /> Monitor
         </span>
-        <span className={`text-[7px] sm:text-[8px] font-bold uppercase ${getStatusColor(vitals.status)}`}>
+        <span className={`text-[9px] sm:text-[10px] font-bold uppercase ${getStatusColor(vitals.status)}`}>
           {vitals.status === 'normal' ? 'Estable' : vitals.status === 'alert' ? 'Riesgo' : 'CRÍTICO'}
         </span>
       </div>
@@ -148,19 +148,19 @@ const VitalsMonitor: React.FC<{ vitals: TelemetryHUDProps['lastVitals'] }> = ({ 
       <div className="grid grid-cols-1 gap-1">
         {vitals.ta && (
            <div className="flex justify-between items-baseline gap-2">
-             <span className="text-[8px] sm:text-[9px] font-bold text-slate-400">TA</span>
+             <span className="text-[10px] sm:text-[10px] font-bold text-slate-400">TA</span>
              <span className={`text-xs sm:text-sm font-black tabular-nums ${getStatusColor(vitals.status)}`}>{vitals.ta}</span>
            </div>
         )}
         {vitals.fc && (
            <div className="flex justify-between items-baseline gap-2">
-             <span className="text-[8px] sm:text-[9px] font-bold text-slate-400">FC</span>
-             <span className={`text-xs sm:text-sm font-black tabular-nums ${getStatusColor(vitals.status)}`}>{vitals.fc} <span className="text-[7px] opacity-50">lpm</span></span>
+             <span className="text-[10px] sm:text-[10px] font-bold text-slate-400">FC</span>
+             <span className={`text-xs sm:text-sm font-black tabular-nums ${getStatusColor(vitals.status)}`}>{vitals.fc} <span className="text-[9px] opacity-50">lpm</span></span>
            </div>
         )}
         {vitals.temp && (
            <div className="flex justify-between items-baseline gap-2">
-             <span className="text-[8px] sm:text-[9px] font-bold text-slate-400">T°</span>
+             <span className="text-[10px] sm:text-[10px] font-bold text-slate-400">T°</span>
              <span className={`text-xs sm:text-sm font-black tabular-nums ${getStatusColor(vitals.status)}`}>{vitals.temp}°C</span>
            </div>
         )}

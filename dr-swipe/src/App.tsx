@@ -299,7 +299,7 @@ export function App() {
             <div className="flex flex-col gap-3 sm:gap-4 w-full max-w-xs px-2">
               <button onClick={() => startNewCase()} disabled={isLoadingCase} className="marker-btn py-4 sm:py-5 text-base sm:text-xl group">
                  {isLoadingCase ? 'PREPARANDO...' : 'EMPEZAR GUARDIA ✨'}
-                 <div className="absolute -top-1 -right-1 bg-rose-500 text-white text-[8px] px-2 py-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">NUEVA</div>
+                 <div className="absolute -top-1 -right-1 bg-rose-500 text-white text-[10px] px-2 py-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">NUEVA</div>
               </button>
               
               {sessionProgress && (
@@ -319,7 +319,7 @@ export function App() {
               <SwipeDeck cards={state.context.deck} currentIndex={state.context.currentCardIndex} onSwipe={handleSwipe} isLocked={isLoadingCase || isPaused} lifelineActive={state.context.lifelineActive} canUseLifeline={stats.coins >= LIFELINE_COST && !state.context.lifelineActive} onUseLifeline={handleLifeline} />
               <div className="absolute -bottom-10 sm:-bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-[110]">
                 <button disabled={state.context.undoCharges === 0 || state.context.currentCardIndex === 0} onClick={handleUndo} className="w-10 sm:w-12 h-10 sm:h-12 rounded-full border-2 border-white bg-secondary/80 flex items-center justify-center text-lg sm:text-xl shadow-md disabled:opacity-20 transition-all">⏪</button>
-                <span className="text-[8px] sm:text-[9px] font-black text-slate-400 uppercase lettering tracking-tighter">{state.context.undoCharges}/5</span>
+                <span className="text-[10px] sm:text-[10px] font-black text-slate-400 uppercase lettering tracking-tighter">{state.context.undoCharges}/5</span>
               </div>
             </div>
           </div>
@@ -351,7 +351,7 @@ export function App() {
             </div>
             <div className="flex flex-col gap-3 sm:gap-4">
               <button onClick={() => send({ type: 'VIEW_DEBRIEF' })} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl !bg-slate-700">VER NOTAS 📝</button>
-              <button onClick={() => send({ type: 'RESTART' })} className="text-[9px] sm:text-[10px] font-bold text-slate-300 hover:text-rose-400 uppercase tracking-widest py-2 transition-all lettering">— Nueva Guardia —</button>
+              <button onClick={() => send({ type: 'RESTART' })} className="text-[9px] sm:text-[10px] font-bold text-slate-500 hover:text-rose-400 uppercase tracking-widest py-2 transition-all lettering">— Nueva Guardia —</button>
             </div>
           </motion.div>
         );
@@ -360,7 +360,7 @@ export function App() {
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-6 sm:p-10 max-w-md w-full text-left shadow-xl relative mx-4">
             <div className="mb-4 sm:mb-6"><span className="bg-rose-500 text-white px-3 sm:px-4 py-1 rounded-lg lettering text-base sm:text-xl shadow-sm rotate-[-2deg] inline-block">¡NOTITA! 📝</span></div>
             <div className="bg-rose-50 p-4 sm:p-6 rounded-2xl mb-4 sm:mb-6 border-2 border-dashed border-rose-100 italic lettering text-base sm:text-lg">"{state.context.debriefData?.comment}"</div>
-            <p className="text-[8px] sm:text-[9px] font-bold text-slate-400 uppercase mb-3 sm:mb-4 lettering">GPC: {state.context.debriefData?.gpc}</p>
+            <p className="text-[10px] sm:text-[10px] font-bold text-slate-400 uppercase mb-3 sm:mb-4 lettering">GPC: {state.context.debriefData?.gpc}</p>
             <button onClick={() => send({ type: 'RESTART' })} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-lg">Continuar Estudiando ✨</button>
           </motion.div>
         );
@@ -406,11 +406,11 @@ export function App() {
           <motion.div initial={{ scale: 0.9 }} animate={{ scale: 1 }} className="paper-sheet p-10 max-w-xs w-full text-center border-primary/20 shadow-xl relative">
             <p className="text-slate-400 text-sm italic mb-8 lettering leading-relaxed">"Guardia en pausa. Tus notas están seguras."</p>
             <button onClick={() => setIsPaused(false)} className="marker-btn w-full py-4 text-sm mb-4">REANUDAR ✨</button>
-            <button onClick={() => send({ type: 'RESTART' })} className="text-[10px] font-bold text-slate-300 uppercase py-2 lettering">ABANDONAR</button>
+            <button onClick={() => send({ type: 'RESTART' })} className="text-[10px] font-bold text-slate-500 uppercase py-2 lettering">ABANDONAR</button>
           </motion.div>
         </motion.div>
       )}</AnimatePresence>
-      <div className="w-full max-w-md text-center opacity-20 py-4"><p className="text-[8px] font-bold tracking-widest uppercase lettering">HGC ARCHIVE · Dr. Swipe Scrapbook</p></div>
+      <div className="w-full max-w-md text-center opacity-20 py-4"><p className="text-[10px] font-bold tracking-widest uppercase lettering">HGC ARCHIVE · Dr. Swipe Scrapbook</p></div>
       <ReloadPrompt />
     </div>
   );
