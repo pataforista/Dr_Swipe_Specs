@@ -113,6 +113,8 @@ export interface FeedbackEntry {
   category: string;
   points: number;
   expectedAction: 'keep' | 'discard';
+  // Mentor que emite el comentario (para que el avatar coincida con el texto).
+  mentor?: 'mendoza' | 'castillo' | 'navarro';
 }
 
 // Debrief payload handed over when advancing to the next patient of a shift.

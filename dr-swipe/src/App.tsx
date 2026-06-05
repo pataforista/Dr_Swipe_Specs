@@ -51,6 +51,7 @@ export function App() {
   const [swipeFeedback, setSwipeFeedback] = useState<'correct' | 'wrong' | null>(null);
   const [vazquezDialogue, setVazquezDialogue] = useState<string | null>(null);
   const [vazquezExpression, setVazquezExpression] = useState<'neutral' | 'happy' | 'angry' | 'shocked'>('neutral');
+  const [vazquezDoctor, setVazquezDoctor] = useState<'mendoza' | 'castillo' | 'navarro'>('mendoza');
   const [timeLeft, setTimeLeft] = useState(60);
 
   useEffect(() => {
@@ -213,6 +214,7 @@ export function App() {
       const last = history[history.length - 1];
       setVazquezDialogue(last.feedback);
       setVazquezExpression(last.isCorrect ? 'happy' : 'angry');
+      setVazquezDoctor(last.mentor ?? 'mendoza');
       
       const timer = setTimeout(() => {
         setVazquezDialogue(null);
@@ -381,9 +383,9 @@ export function App() {
       
       {/* Background Avatar Feedback Layer */}
       <div className="fixed top-28 left-0 right-0 z-avatar pointer-events-none flex justify-center">
-        <AvatarFeedback 
-          doctor="mendoza" 
-          expression={vazquezExpression} 
+        <AvatarFeedback
+          doctor={vazquezDoctor}
+          expression={vazquezExpression}
           dialogueText={vazquezDialogue} 
           isVisible={!!vazquezDialogue && (state.matches('triage') || state.matches('urgent_triage'))} 
         />

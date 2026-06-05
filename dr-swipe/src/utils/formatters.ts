@@ -74,6 +74,17 @@ export const cleanVazquezComment = (comment: string | undefined, isCorrect: bool
 };
 
 /**
+ * Deriva el avatar del mentor a partir del prefijo del comentario
+ * ("Castillo: …", "Navarro: …"). Mendoza/Vázquez/sin prefijo → 'mendoza'
+ * (el único otro avatar definido en AvatarFeedback).
+ */
+export const getMentorAvatar = (comment: string | undefined): 'mendoza' | 'castillo' | 'navarro' => {
+  const m = comment?.match(/^\s*(Castillo|Navarro)\s*:/i);
+  if (m) return m[1].toLowerCase() as 'castillo' | 'navarro';
+  return 'mendoza';
+};
+
+/**
  * Shuffles the options of a boss question and updates the correct_index.
  * Returns a NEW object to avoid mutations.
  */

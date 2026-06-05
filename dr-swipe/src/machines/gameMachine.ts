@@ -1,6 +1,6 @@
 import { setup, assign } from 'xstate';
 import type { Card, EnarmPearl, LoreItem, FeedbackEntry, PuzzleDebrief } from '../types/game';
-import { cleanVazquezComment } from '../utils/formatters';
+import { cleanVazquezComment, getMentorAvatar } from '../utils/formatters';
 import { parseVitalsFromText } from '../utils/vitalsParser';
 import { calculateCardScore, COMBO_MILESTONES } from '../utils/scoringEngine';
 import rewardData from '../data/lore/rewardItems.json';
@@ -271,7 +271,8 @@ export const gameMachine = setup({
         feedback: feedbackText,
         category: card.category,
         points: scoreBreakdown.finalPoints,
-        expectedAction: card.expected_action
+        expectedAction: card.expected_action,
+        mentor: getMentorAvatar(card.scoring?.vazquez_comment)
       };
 
       return {
