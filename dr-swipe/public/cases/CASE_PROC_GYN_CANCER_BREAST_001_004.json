@@ -4,7 +4,7 @@
     "theme_config": "gyn",
     "difficulty": "standard",
     "patient_intro": {
-        "name": "Marta, 62 años",
+        "name": "Marta, 45 años",
         "arrival_scenario": "Se realiza mastografía en paciente de 45 años tras detectar nódulo firme e indoloro en cuadrante superior externo. Se observa asimetría focal con distorsión de la arquitectura. Categoría BI-RADS 5. ¿Cuál es el siguiente paso?",
         "time_limit_sec": 60
     },

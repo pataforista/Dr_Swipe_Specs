@@ -4,7 +4,7 @@
     "theme_config": "int",
     "difficulty": "hard",
     "patient_intro": {
-        "name": "Rosa, 69 años",
+        "name": "Ramón, 62 años",
         "arrival_scenario": "Hombre de 62 años con antecedente de DM2 e hipertensión que inicia con dolor precordial súbito y náuseas. ECG: Elevación del segmento ST ≥1mm en V1-V4. El paciente se encuentra pálido y sudoroso.",
         "time_limit_sec": 50
     },

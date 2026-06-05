@@ -4,7 +4,7 @@
     "theme_config": "ped",
     "difficulty": "standard",
     "patient_intro": {
-        "name": "Carmen, 2 años",
+        "name": "Carmen, 18 meses",
         "arrival_scenario": "Paciente de 18 meses con fiebre leve y dificultad respiratoria progresiva. A la auscultación estridor laríngeo. El paciente mejora notablemente al contacto con el aire frío de la noche.",
         "time_limit_sec": 60
     },
