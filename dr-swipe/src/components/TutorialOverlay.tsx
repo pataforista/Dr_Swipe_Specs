@@ -99,7 +99,7 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({ onComplete }) 
         {current === 0 && (
           <button
             onClick={onComplete}
-            className="mt-8 text-[11px] font-black tracking-[0.4em] text-slate-400 hover:text-rose-500 transition-colors uppercase lettering italic"
+            className="mt-8 text-[11px] font-black tracking-[0.4em] text-slate-500 hover:text-rose-500 transition-colors uppercase lettering italic"
           >
             — SALTAR TUTORIAL —
           </button>

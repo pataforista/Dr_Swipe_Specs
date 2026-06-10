@@ -53,7 +53,7 @@ export const FailProtectionOverlay: React.FC<FailProtectionOverlayProps> = ({
           </button>
           <button
             onClick={onRestart}
-            className="text-[10px] font-bold text-slate-300 hover:text-rose-400 uppercase tracking-widest py-2 transition-all lettering"
+            className="text-[10px] font-bold text-slate-500 hover:text-rose-500 uppercase tracking-widest py-2 transition-all lettering"
           >
             — Terminar Turno —
           </button>

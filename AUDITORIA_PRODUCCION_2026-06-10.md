@@ -23,6 +23,8 @@ Todos los hallazgos accionables de esta auditoría fueron corregidos en los comm
 - ✅ **K14-K20** y **F4/F6/E2/A2**: score del toast leído del actor (sin doble cálculo), CSP sin `unsafe-inline` en scripts, una sola ruta de deploy (Action, gated a push; `gh-pages` eliminado), `howler` eliminado, copy del tutorial alineado (-15/+8, racha x8), `.md` interno fuera de `public/`, `lang="es"`, barajado eliminado (orden clínico autoral), naming `mentor*` unificado, `MotionConfig reducedMotion="user"`.
 - ✅ **Higiene**: ~41 scripts y dumps del pipeline movidos a `tools/legacy_pipeline/`.
 
+Tercera tanda — pulido estético/a11y (E3/A1/A3): tamaños mínimos de texto subidos en toda la UI (7px→9px, 8px→10px en HUD, cartas, stats y overlays) y contraste de elementos accionables elevado a `slate-500` ("— Nueva Guardia —", "ABANDONAR", "SALTAR TUTORIAL", "Ver mi diario", rescate); las etiquetas keep/discard ("ESTO CAMBIA TODO" / "PÉRDIDA DE TIEMPO") ahora son legibles en móvil.
+
 Pendientes cerrados en la segunda tanda (misma rama): `v2/` archivado en `_LEGACY_ARCHIVE/v2` (scaffold sin desplegar), la sinergia de dossier muerta **eliminada** del motor (en vez de poblarla artificialmente: `related_diagnoses` fuera de schema/tipos/scoring), y **lint en 0 problemas** (todos los `any` tipados con `LoreItem`/`BossQuestion`/`MotionValue`, `showToast` sin TDZ, diálogo del mentor movido del efecto al handler).
 
 ## 1. Veredicto ejecutivo (pre-remediación)

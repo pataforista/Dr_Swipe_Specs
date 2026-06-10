@@ -150,7 +150,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,theme(colors.accent-alert/10),transparent)] opacity-0 hover:opacity-100 transition-opacity" />
             <span className="relative z-10 drop-shadow-[0_0_10px_rgba(251,113,133,0.8)]">✕</span>
           </motion.button>
-          <span className={`text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] transition-colors line-clamp-2 text-center max-w-[70px] sm:max-w-none ${
+          <span className={`text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] transition-colors line-clamp-2 text-center max-w-[70px] sm:max-w-none ${
             lifelineActive && cards[currentIndex]?.expected_action === 'discard' ? 'text-accent-alert' : 'text-slate-500 group-hover:text-accent-alert'
           }`}>PÉRDIDA DE TIEMPO</span>
         </div>
@@ -171,7 +171,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
           >
             {lifelineActive ? '✨' : '🧬'}
           </motion.button>
-          <span className={`text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] ${lifelineActive ? 'text-secondary' : 'text-slate-500'}`}>
+          <span className={`text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] ${lifelineActive ? 'text-secondary' : 'text-slate-500'}`}>
             {lifelineActive ? 'ACTIVO' : `${LIFELINE_COST} 🪙`}
           </span>
         </div>
@@ -194,7 +194,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,theme(colors.primary/10),transparent)] opacity-0 hover:opacity-100 transition-opacity" />
              <span className="relative z-10 drop-shadow-[0_0_10px_rgba(34,211,238,0.8)]">♥</span>
           </motion.button>
-          <span className={`text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] transition-colors line-clamp-2 text-center max-w-[70px] sm:max-w-none ${
+          <span className={`text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] transition-colors line-clamp-2 text-center max-w-[70px] sm:max-w-none ${
             lifelineActive && cards[currentIndex]?.expected_action === 'keep' ? 'text-primary' : 'text-slate-500 group-hover:text-primary'
           }`}>ESTO CAMBIA TODO</span>
         </div>
@@ -387,7 +387,7 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
       )}
 
       {/* Card Footer */}
-      <div className="p-3 sm:p-5 pl-8 sm:pl-14 bg-slate-50/40 border-t border-slate-100 flex justify-between items-center text-[8px] sm:text-[10px] font-bold text-slate-400 gap-2">
+      <div className="p-3 sm:p-5 pl-8 sm:pl-14 bg-slate-50/40 border-t border-slate-100 flex justify-between items-center text-[10px] font-bold text-slate-400 gap-2">
         <span className="lettering text-sm sm:text-lg text-slate-300 truncate">Guardia nocturna...</span>
         <div className="bg-white px-2 sm:px-3 py-1 rounded-full border border-slate-100 text-slate-500 flex-shrink-0 whitespace-nowrap">
           {cardNumber}/{totalCards}
