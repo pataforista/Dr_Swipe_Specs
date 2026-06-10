@@ -1,183 +1,183 @@
 {
-  "case_id": "PROC_CARD_SCA_IAMCEST_001_001",
-  "version": "v3_swipe_action",
-  "theme_config": "card",
-  "difficulty": "hard",
-  "patient_intro": {
-    "name": "Carlos, 65 años",
-    "arrival_scenario": "Acude por dolor precordial opresivo irradiado a mandíbula de 40 minutos de evolución. Presenta náuseas y sudoración fría. Se encuentra en un centro de salud sin sala de hemodinamia. El hospital con ICP más cercano está a 3 horas de distancia.",
-    "time_limit_sec": 50
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "vitals",
-      "card_text": "TA 100/60 mmHg (en descenso), FC 95 lpm, Temp 36.5°C",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
-      }
+    "case_id": "PROC_CARD_SCA_IAMCEST_001_001",
+    "version": "v3_swipe_action",
+    "theme_config": "card",
+    "difficulty": "hard",
+    "patient_intro": {
+        "name": "Carlos, 65 años",
+        "arrival_scenario": "Acude por dolor precordial opresivo irradiado a mandíbula de 40 minutos de evolución. Presenta náuseas y sudoración fría. Se encuentra en un centro de salud sin sala de hemodinamia. El hospital con ICP más cercano está a 3 horas de distancia.",
+        "time_limit_sec": 50
     },
-    {
-      "card_id": "pad_001",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "A) IAMCEST (Fibrinolisis Sistémica): IAMCEST Cara Anterior. Si la ICP >120 min de retraso, se opta por Fibrinolisis (Alteplase).",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Mendoza: ¡Correcto! En el ENARM, si el tiempo a ICP es >120 min (o 90 min en centros grandes), la FIBRINOLISIS es la respuesta correcta."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true,
-        "lethal_if_discarded": true
-      }
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA 100/60 mmHg (en descenso), FC 95 lpm, Temp 36.5°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: No te detengas en signos estables, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "pad_002",
+            "ui_icon": "eye",
+            "category": "Diagnóstico Diferencial",
+            "card_text": "B) Angina Inestable: Isquemia miocárdica sin elevación del ST ni marcadores de necrosis; manejo es distinto.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: ¡Bien! El ST elevado marca la pauta de tratamiento invasivo o fibrinolítico inmediato."
+            }
+        },
+        {
+            "card_id": "pad_003",
+            "ui_icon": "activity",
+            "category": "meds",
+            "card_text": "C) Elevación del ST: Elevación >=1 mm en 2 o más derivadas contiguas (o >=2 mm en V2-V3 en varones) es diagnóstica.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Mendoza: ¡Correcto! El EKG debe tomarse e interpretarse en los primeros 10 minutos de contacto."
+            }
+        },
+        {
+            "card_id": "pad_004",
+            "ui_icon": "clock",
+            "category": "Tiempos Meta",
+            "card_text": "D) Tiempos Vitales: Puerta-Balón (ICP) <90-120 min. Puerta-Aguja (Fibrinolisis) <30 min.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Mendoza: ¡Excelente! Recuerda: el tiempo es músculo miocárdico."
+            }
+        },
+        {
+            "card_id": "pad_008",
+            "ui_icon": "check-circle",
+            "category": "meds",
+            "card_text": "H) Criterios de Reperfusión: Descenso del ST >50% a los 60-90 min de la fibrinólisis y alivio del dolor.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Mendoza: ¡Correcto! Si falla, debemos considerar una ICP de rescate inmediata."
+            }
+        },
+        {
+            "card_id": "pad_009",
+            "ui_icon": "help-circle",
+            "category": "Localización EKG",
+            "card_text": "I) Cara Anterior (V1-V4): Corresponde generalmente a la oclusión de la Arteria Descendente Anterior (DAI).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Mendoza: ¡Excelente! Saber la cara del infarto nos ayuda a predecir posibles complicaciones."
+            }
+        },
+        {
+            "card_id": "pad_001",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "A) IAMCEST (Fibrinolisis Sistémica): IAMCEST Cara Anterior. Si la ICP >120 min de retraso, se opta por Fibrinolisis (Alteplase).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Mendoza: ¡Correcto! En el ENARM, si el tiempo a ICP es >120 min (o 90 min en centros grandes), la FIBRINOLISIS es la respuesta correcta."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true,
+                "lethal_if_discarded": true
+            }
+        },
+        {
+            "card_id": "pad_005",
+            "ui_icon": "zap",
+            "category": "Dosis de Carga",
+            "card_text": "E) Antiagregación Dual: Aspirina (300mg) + Clopidogrel (300mg) como dosis de carga inmediata.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Mendoza: ¡Vital! La antiagregación rápida previene la propagación del trombo coronario."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "pad_006",
+            "ui_icon": "pill",
+            "category": "Prevención Secundaria",
+            "card_text": "F) Estatinas: Iniciar Atorvastatina 80mg de forma temprana tras el evento agudo para estabilizar la placa.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Mendoza: ¡Muy bien! Las estatinas tienen efectos pleiotrópicos beneficiosos en el infarto agudo."
+            }
+        },
+        {
+            "card_id": "pad_007",
+            "ui_icon": "alert-triangle",
+            "category": "meds",
+            "card_text": "G) Contraindica Fibrinolisis: EVC hemorrágico previo, neoplasia intracraneal conocida o sangrado interno activo.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Mendoza: ¡Crucial! Debes realizar el check-list de seguridad antes de administrar fibrinolíticos."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "IAMCEST: Tiempo es Músculo",
+        "text": "ICP: <120 min de retraso. Si >120 min: FIBRINOLISIS (<10 min de contacto). ASA 300mg + Clopidogrel 300mg.",
+        "gpc_ref": "GPC Diagnóstico y Tratamiento del Infarto Agudo al Miocardio con ST Elevado"
     },
-    {
-      "card_id": "pad_002",
-      "ui_icon": "eye",
-      "category": "Diagnóstico Diferencial",
-      "card_text": "B) Angina Inestable: Isquemia miocárdica sin elevación del ST ni marcadores de necrosis; manejo es distinto.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "Mendoza: ¡Bien! El ST elevado marca la pauta de tratamiento invasivo o fibrinolítico inmediato."
-      }
-    },
-    {
-      "card_id": "pad_003",
-      "ui_icon": "activity",
-      "category": "meds",
-      "card_text": "C) Elevación del ST: Elevación >=1 mm en 2 o más derivadas contiguas (o >=2 mm en V2-V3 en varones) es diagnóstica.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Correcto! El EKG debe tomarse e interpretarse en los primeros 10 minutos de contacto."
-      }
-    },
-    {
-      "card_id": "pad_004",
-      "ui_icon": "clock",
-      "category": "Tiempos Meta",
-      "card_text": "D) Tiempos Vitales: Puerta-Balón (ICP) <90-120 min. Puerta-Aguja (Fibrinolisis) <30 min.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Excelente! Recuerda: el tiempo es músculo miocárdico."
-      }
-    },
-    {
-      "card_id": "pad_005",
-      "ui_icon": "zap",
-      "category": "Dosis de Carga",
-      "card_text": "E) Antiagregación Dual: Aspirina (300mg) + Clopidogrel (300mg) como dosis de carga inmediata.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Mendoza: ¡Vital! La antiagregación rápida previene la propagación del trombo coronario."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "pad_006",
-      "ui_icon": "pill",
-      "category": "Prevención Secundaria",
-      "card_text": "F) Estatinas: Iniciar Atorvastatina 80mg de forma temprana tras el evento agudo para estabilizar la placa.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Muy bien! Las estatinas tienen efectos pleiotrópicos beneficiosos en el infarto agudo."
-      }
-    },
-    {
-      "card_id": "pad_007",
-      "ui_icon": "alert-triangle",
-      "category": "meds",
-      "card_text": "G) Contraindica Fibrinolisis: EVC hemorrágico previo, neoplasia intracraneal conocida o sangrado interno activo.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Mendoza: ¡Crucial! Debes realizar el check-list de seguridad antes de administrar fibrinolíticos."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "pad_008",
-      "ui_icon": "check-circle",
-      "category": "meds",
-      "card_text": "H) Criterios de Reperfusión: Descenso del ST >50% a los 60-90 min de la fibrinólisis y alivio del dolor.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Correcto! Si falla, debemos considerar una ICP de rescate inmediata."
-      }
-    },
-    {
-      "card_id": "pad_009",
-      "ui_icon": "help-circle",
-      "category": "Localización EKG",
-      "card_text": "I) Cara Anterior (V1-V4): Corresponde generalmente a la oclusión de la Arteria Descendente Anterior (DAI).",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Mendoza: ¡Excelente! Saber la cara del infarto nos ayuda a predecir posibles complicaciones."
-      }
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "question": "¿Cuál es la conducta de reperfusión recomendada si el tiempo estimado para realizar una ICP primaria es mayor a 120 minutos?",
+                "options": [
+                    "Esperar el tiempo necesario para ICP",
+                    "Manejo conservador con nitratos",
+                    "Fibrinolisis sitémica inmediata"
+                ],
+                "correct_index": 2
+            },
+            {
+                "question": "¿Cuál es la dosis de carga recomendada de Acido Acetilsalicílico (Aspirina) en la fase aguda del infarto según la GPC?",
+                "options": [
+                    "500 mg",
+                    "100 mg",
+                    "300 mg"
+                ],
+                "correct_index": 2
+            },
+            {
+                "question": "¿Qué hallazgo electrocardiográfico define un IAMCEST según los criterios universales?",
+                "options": [
+                    "Inversión de la onda T en V1-V2",
+                    "Presencia aislada de ondas Q profundas",
+                    "Elevación del ST >= 1 mm en 2 derivadas contiguas"
+                ],
+                "correct_index": 2
+            }
+        ]
     }
-  ],
-  "enarm_pearl": {
-    "title": "IAMCEST: Tiempo es Músculo",
-    "text": "ICP: <120 min de retraso. Si >120 min: FIBRINOLISIS (<10 min de contacto). ASA 300mg + Clopidogrel 300mg.",
-    "gpc_ref": "GPC Diagnóstico y Tratamiento del Infarto Agudo al Miocardio con ST Elevado"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Cuál es la conducta de reperfusión recomendada si el tiempo estimado para realizar una ICP primaria es mayor a 120 minutos?",
-        "options": [
-          "Fibrinolisis sitémica inmediata",
-          "Manejo conservador con nitratos",
-          "Esperar el tiempo necesario para ICP"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Qué hallazgo electrocardiográfico define un IAMCEST según los criterios universales?",
-        "options": [
-          "Elevación del ST >= 1 mm en 2 derivadas contiguas",
-          "Inversión de la onda T en V1-V2",
-          "Presencia aislada de ondas Q profundas"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es la dosis de carga recomendada de Ácido Acetilsalicílico (Aspirina) en la fase aguda del infarto según la GPC?",
-        "options": [
-          "300 mg",
-          "100 mg",
-          "500 mg"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
 }

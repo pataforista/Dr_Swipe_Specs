@@ -1,10 +1,14 @@
-import type { BossQuestion } from '../types/game';
+import type { BossQuestion, Card } from '../types/game';
 
 /**
  * Creates contextual feedback comments based on whether the decision was correct or wrong.
  * Implements the "Institución de Salud Verde" tone: specific, dry, clinical, not moralizing.
+ *
+ * The error prefix is derived from the card itself (expected_action / safety_flags),
+ * never from keywords in the comment: "DATO CLAVE OMITIDO" only makes sense when the
+ * player discarded a `keep` card, and "DESCARTE RECOMENDADO" when they hoarded a `discard`.
  */
-export const cleanVazquezComment = (comment: string | undefined, isCorrect: boolean): string => {
+export const cleanVazquezComment = (comment: string | undefined, isCorrect: boolean, card?: Pick<Card, 'expected_action' | 'safety_flags'>): string => {
   if (!comment) return isCorrect ? "Decisión oportuna." : "Esta decisión no sostiene. Revísala antes de cerrar el caso.";
 
   let clean = comment;
@@ -51,21 +55,18 @@ export const cleanVazquezComment = (comment: string | undefined, isCorrect: bool
   } else {
     // Neutral correction. Focus on the clinical fact.
     if (reasoning) {
-      // Pick prefix based on the context of the reasoning or error type
       let prefix = "Nota clínica:";
-      const lowerReasoning = reasoning.toLowerCase();
-      
-      if (lowerReasoning.includes("red flag") || lowerReasoning.includes("letal") || lowerReasoning.includes("vital")) {
+      if (card?.safety_flags?.lethal_risk || card?.safety_flags?.lethal_if_discarded) {
         prefix = "🚨 ¡ERROR CRÍTICO!";
-      } else if (lowerReasoning.includes("ruido") || lowerReasoning.includes("irrelevante") || lowerReasoning.includes("basura")) {
-        prefix = "🧹 DESCARTE RECOMENDADO:";
-      } else if (lowerReasoning.includes("importante") || lowerReasoning.includes("clave")) {
-        prefix = "🎯 DATO CLAVE OMITIDO:";
+      } else if (card?.expected_action === 'keep') {
+        prefix = "🎯 DATO CLAVE OMITIDO:"; // the player discarded data they needed
+      } else if (card?.expected_action === 'discard') {
+        prefix = "🧹 DESCARTE RECOMENDADO:"; // the player hoarded noise
       } else {
         const prefixes = ["Nota clínica:", "Punto clave:", "Recordatorio:"];
         prefix = prefixes[reasoning.length % prefixes.length];
       }
-      
+
       return `${prefix} ${reasoning}`;
     } else {
       return "Esta decisión no sostiene. Revísala antes de cerrar el caso.";

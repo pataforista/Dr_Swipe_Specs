@@ -1,218 +1,228 @@
 {
-  "case_id": "SWIPE_EASY_001",
-  "version": "v3_swipe_action",
-  "theme_config": "theme-default",
-  "difficulty": "standard",
-  "patient_intro": {
-    "name": "Paciente",
-    "arrival_scenario": "Ingresa al servicio de urgencias.",
-    "time_limit_sec": 60
-  },
-  "card_stream": [
-    {
-      "card_id": "e01",
-      "ui_icon": "📄",
-      "category": "timeline",
-      "card_text": "Hallazgo: Dato anecdótico: Mujer de 34 años, acude por fatiga progresiva de 3 semanas. Niega fiebre, pérdida de peso o sangrado. No antecedentes de enfermedad crónica conocida.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding"
-      },
-      "safety_flags": {
-        "contraindication": false,
-        "lethal_risk": false,
-        "decision_critical": false
-      }
+    "case_id": "SWIPE_EASY_001",
+    "version": "v3_swipe_action",
+    "theme_config": "theme-default",
+    "difficulty": "standard",
+    "patient_intro": {
+        "name": "Paciente",
+        "arrival_scenario": "Ingresa al servicio de urgencias.",
+        "time_limit_sec": 60
     },
-    {
-      "card_id": "e02",
-      "ui_icon": "🩺",
-      "category": "vitals",
-      "card_text": "Enfermería reporta: Recordaste una cifra previa de: 88 lpm en reposo. Ritmo regular. No palpitaciones reportadas.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding"
-      },
-      "safety_flags": {
-        "contraindication": false,
-        "lethal_risk": false,
-        "decision_critical": false
-      }
+    "card_stream": [
+        {
+            "card_id": "e02",
+            "ui_icon": "🩺",
+            "category": "vitals",
+            "card_text": "88 lpm en reposo. Ritmo regular. No palpitaciones reportadas.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "e03",
+            "ui_icon": "🩺",
+            "category": "vitals",
+            "card_text": "120/75 mmHg. Normovolemia. Sin signos de hipoperfusión periférica.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Perdiendo el tiempo con tonterías... concéntrate en lo que importa."
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "e01",
+            "ui_icon": "📄",
+            "category": "timeline",
+            "card_text": "Mujer de 34 años, acude por fatiga progresiva de 3 semanas. Niega fiebre, pérdida de peso o sangrado. No antecedentes de enfermedad crónica conocida.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "e04",
+            "ui_icon": "🧪",
+            "category": "labs",
+            "card_text": "Hb: 14.2 g/dL (valor normal para mujer adulta). Serie roja sin alteraciones significativas.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Perdiendo el tiempo con tonterías... concéntrate en lo que importa."
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "e05",
+            "ui_icon": "🧪",
+            "category": "labs",
+            "card_text": "Hb: 14.2 g/dL — segunda impresión del mismo laboratorio enviada al sistema por error de captura.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "e06",
+            "ui_icon": "📄",
+            "category": "notes",
+            "card_text": "Paciente cooperadora al ingreso, sin ansiedad aparente. Estado de ánimo tranquilo.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "¿Síndrome de Diógenes clínico? Suelta eso, es puro ruido."
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "e07",
+            "ui_icon": "☢️",
+            "category": "imaging",
+            "card_text": "Sin infiltrados, derrames ni cardiomegalia. Silueta cardíaca normal. Campos pulmonares limpios.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "e08",
+            "ui_icon": "💊",
+            "category": "meds",
+            "card_text": "Sin tratamiento farmacológico previo. No usa anticonceptivos ni suplementos. Niega uso de AINEs.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "e09",
+            "ui_icon": "💊",
+            "category": "meds",
+            "card_text": "Sin alergias medicamentosas conocidas. No reacciones previas a penicilina, sulfas ni AINEs.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Felicidades, encontraste un dato irrelevante. Lástima que el paciente sigue enfermo."
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "e10",
+            "ui_icon": "📄",
+            "category": "notes",
+            "card_text": "Número de expediente: MG-2024-001. Número de seguro médico y domicilio para facturación registrados.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "¿Para qué quieres eso? Estás coleccionando basura en lugar de salvar vidas."
+            },
+            "safety_flags": {
+                "contraindication": false,
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        }
+    ],
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "question": "Con Hb 14.2 g/dL, TA y FC normales, sin pérdida de peso ni fiebre, ¿cuál es el diagnóstico más probable?",
+                "options": [
+                    "Fatiga funcional / paciente sana en control",
+                    "Anemia ferropénica leve",
+                    "Neoplasia oculta en estadio temprano",
+                    "Insuficiencia cardíaca diastólica"
+                ],
+                "correct_index": 0
+            },
+            {
+                "question": "Con el abordaje inicial negativo, ¿qué conducta diagnóstica está indicada según GPC?",
+                "options": [
+                    "Seguimiento ambulatorio con signos de alarma",
+                    "TAC de tórax y abdomen urgente",
+                    "Biopsia de médula ósea",
+                    "Endoscopia superior de urgencias"
+                ],
+                "correct_index": 0
+            },
+            {
+                "question": "¿Cuál es la conducta a seguir para esta paciente en primera consulta sin hallazgos patológicos?",
+                "options": [
+                    "Egreso con instrucciones de signos de alarma y cita de seguimiento",
+                    "Ingreso a hospitalización para estudio completo",
+                    "Inicio de hierro oral inmediato sin estudios previos",
+                    "Transfusión de concentrados eritrocitarios"
+                ],
+                "correct_index": 0
+            }
+        ]
     },
-    {
-      "card_id": "e03",
-      "ui_icon": "🩺",
-      "category": "vitals",
-      "card_text": "Enfermería reporta: Un interno te entrega por error: 120/75 mmHg. Normovolemia. Sin signos de hipoperfusión periférica.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding"
-      },
-      "safety_flags": {
-        "contraindication": false,
-        "lethal_risk": false,
-        "decision_critical": false
-      }
+    "perla_enarm": {
+        "title": "Abordaje de Fatiga en Primera Consulta",
+        "text": "La fatiga sin signos de alarma (sin fiebre, pérdida de peso, sangrado o anemia) en paciente joven con signos vitales estables permite un abordaje conservador. La GPC recomienda seguimiento ambulatorio con instrucciones de alarma antes de iniciar estudios costosos. No toda fatiga requiere hospitalización.",
+        "gpc_ref": "GPC IMSS-015-08: Diagnóstico y Tratamiento de la Fatiga Crónica"
     },
-    {
-      "card_id": "e04",
-      "ui_icon": "🧪",
-      "category": "labs",
-      "card_text": "El técnico de lab informa: Un técnico te entrega un resultado ajeno: Hb: 14.2 g/dL (valor normal para mujer adulta). Serie roja sin alteraciones significativas.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding"
-      },
-      "safety_flags": {
-        "contraindication": false,
-        "lethal_risk": false,
-        "decision_critical": false
-      }
-    },
-    {
-      "card_id": "e05",
-      "ui_icon": "🧪",
-      "category": "labs",
-      "card_text": "Laboratorio entregó reporte: Recordaste que ayer la cifra era: Hb: 14.2 g/dL — segunda impresión del mismo laboratorio enviada al sistema por error de captura.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding"
-      },
-      "safety_flags": {
-        "contraindication": false,
-        "lethal_risk": false,
-        "decision_critical": false
-      }
-    },
-    {
-      "card_id": "e06",
-      "ui_icon": "📄",
-      "category": "notes",
-      "card_text": "Notas en el expediente: Recordaste un rumor sobre el paciente: Paciente cooperadora al ingreso, sin ansiedad aparente. Estado de ánimo tranquilo.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding"
-      },
-      "safety_flags": {
-        "contraindication": false,
-        "lethal_risk": false,
-        "decision_critical": false
-      }
-    },
-    {
-      "card_id": "e07",
-      "ui_icon": "☢️",
-      "category": "imaging",
-      "card_text": "La radiografía muestra: Recordaste una placa de hace 2 años: Sin infiltrados, derrames ni cardiomegalia. Silueta cardíaca normal. Campos pulmonares limpios.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding"
-      },
-      "safety_flags": {
-        "contraindication": false,
-        "lethal_risk": false,
-        "decision_critical": false
-      }
-    },
-    {
-      "card_id": "e08",
-      "ui_icon": "💊",
-      "category": "meds",
-      "card_text": "Refiere automedicarse con: Viste una nota de una vitamina irrelevante: Sin tratamiento farmacológico previo. No usa anticonceptivos ni suplementos. Niega uso de AINEs.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding"
-      },
-      "safety_flags": {
-        "contraindication": false,
-        "lethal_risk": false,
-        "decision_critical": false
-      }
-    },
-    {
-      "card_id": "e09",
-      "ui_icon": "💊",
-      "category": "meds",
-      "card_text": "La receta previa indica: Viste una nota de una vitamina irrelevante: Sin alergias medicamentosas conocidas. No reacciones previas a penicilina, sulfas ni AINEs.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding"
-      },
-      "safety_flags": {
-        "contraindication": false,
-        "lethal_risk": false,
-        "decision_critical": false
-      }
-    },
-    {
-      "card_id": "e10",
-      "ui_icon": "📄",
-      "category": "notes",
-      "card_text": "A la exploración física: Un amigo del paciente te dice que: Número de expediente: MG-2024-001. Número de seguro médico y domicilio para facturación registrados.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding"
-      },
-      "safety_flags": {
-        "contraindication": false,
-        "lethal_risk": false,
-        "decision_critical": false
-      }
+    "enarm_pearl": {
+        "title": "Fatiga Funcional: No Medicalizar al Paciente Sano",
+        "text": "Ante un paciente con fatiga, cifras hematológicas normales, TA y FC normales y sin síntomas de alarma (pérdida de peso, fiebre, sudoración nocturna), el diagnóstico más probable es fatiga funcional. El error clásico es pedir batería de estudios innecesarios. El ENARM evalúa la capacidad de NO sobre-medicalizar.",
+        "gpc_ref": "GPC Atención del Paciente con Fatiga / Medicina General"
     }
-  ],
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "Con Hb 14.2 g/dL, TA y FC normales, sin pérdida de peso ni fiebre, ¿cuál es el diagnóstico más probable?",
-        "options": [
-          "Fatiga funcional / paciente sana en control",
-          "Anemia ferropénica leve",
-          "Neoplasia oculta en estadio temprano",
-          "Insuficiencia cardíaca diastólica"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "Con el abordaje inicial negativo, ¿qué conducta diagnóstica está indicada según GPC?",
-        "options": [
-          "Seguimiento ambulatorio con signos de alarma",
-          "TAC de tórax y abdomen urgente",
-          "Biopsia de médula ósea",
-          "Endoscopia superior de urgencias"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál es la conducta a seguir para esta paciente en primera consulta sin hallazgos patológicos?",
-        "options": [
-          "Egreso con instrucciones de signos de alarma y cita de seguimiento",
-          "Ingreso a hospitalización para estudio completo",
-          "Inicio de hierro oral inmediato sin estudios previos",
-          "Transfusión de concentrados eritrocitarios"
-        ],
-        "correct_index": 0
-      }
-    ]
-  },
-  "perla_enarm": {
-    "title": "Abordaje de Fatiga en Primera Consulta",
-    "text": "La fatiga sin signos de alarma (sin fiebre, pérdida de peso, sangrado o anemia) en paciente joven con signos vitales estables permite un abordaje conservador. La GPC recomienda seguimiento ambulatorio con instrucciones de alarma antes de iniciar estudios costosos. No toda fatiga requiere hospitalización.",
-    "gpc_ref": "GPC IMSS-015-08: Diagnóstico y Tratamiento de la Fatiga Crónica"
-  },
-  "enarm_pearl": {
-    "title": "Fatiga Funcional: No Medicalizar al Paciente Sano",
-    "text": "Ante un paciente con fatiga, cifras hematológicas normales, TA y FC normales y sin síntomas de alarma (pérdida de peso, fiebre, sudoración nocturna), el diagnóstico más probable es fatiga funcional. El error clásico es pedir batería de estudios innecesarios. El ENARM evalúa la capacidad de NO sobre-medicalizar.",
-    "gpc_ref": "GPC Atención del Paciente con Fatiga / Medicina General"
-  }
 }

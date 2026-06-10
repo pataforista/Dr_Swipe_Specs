@@ -50,6 +50,9 @@ const BossQuestionSchema = z.object({
 }).refine(
   (q) => !!(q.q || q.question),
   { message: 'BossQuestion necesita "q" o "question"' }
+).refine(
+  (q) => q.correct_index < q.options.length,
+  { message: 'correct_index fuera de rango (el boss sería imposible de ganar)' }
 );
 
 const QTEConfigSchema = z.object({
@@ -59,7 +62,7 @@ const QTEConfigSchema = z.object({
 
 const BossFightTriadSchema = z.object({
   trigger:      z.literal('after_cards'),
-  questions:    z.array(BossQuestionSchema),
+  questions:    z.array(BossQuestionSchema).min(1, 'boss_fight_triad necesita al menos 1 pregunta'),
   qte_fallback: QTEConfigSchema.optional(),
 });
 
@@ -86,7 +89,26 @@ export const ClinicalCaseSchema = z.object({
     arrival_scenario: z.string().min(1),
     time_limit_sec:   z.number().positive(),
   }),
-  card_stream:      z.array(CardSchema).min(3, 'Un caso necesita al menos 3 cartas'),
+  card_stream:      z.array(CardSchema)
+    .min(3, 'Un caso necesita al menos 3 cartas')
+    .max(15, 'Un caso no debe exceder 15 cartas')
+    .superRefine((cards, ctx) => {
+      // These two invariants are the fingerprints of the cross-case
+      // contamination incident: duplicated card_ids and multiple init_vitals
+      // meant cards from *other diseases* were injected into the case.
+      const seen = new Set<string>();
+      let initVitalsCount = 0;
+      for (const card of cards) {
+        if (seen.has(card.card_id)) {
+          ctx.addIssue({ code: 'custom', message: `card_id duplicado: ${card.card_id}` });
+        }
+        seen.add(card.card_id);
+        if (card.card_id === 'init_vitals') initVitalsCount++;
+      }
+      if (initVitalsCount > 1) {
+        ctx.addIssue({ code: 'custom', message: `${initVitalsCount} cartas init_vitals (máximo 1)` });
+      }
+    }),
   boss_fight_triad: BossFightTriadSchema.optional(),
   // Consolidating pearl fields: enarm_pearl is the primary, perla_enarm is legacy
   enarm_pearl:      EnarmPearlSchema.optional(),

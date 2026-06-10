@@ -1,182 +1,182 @@
 {
-    "case_id":  "PROC_OBS_HEM_ABORTION_001_013",
-    "version":  "v3_swipe_action",
-    "theme_config":  "obs",
-    "difficulty":  "standard",
-    "patient_intro":  {
-                          "name":  "Marta, 29 años",
-                          "arrival_scenario":  "Gestante de 8 semanas acude por sangrado vaginal transcurrente y dolor tipo cólico en hipogastrio. Especuloscopía: Cérvix con orificios abiertos, se observa presencia de restos ovulares en canal vaginal.",
-                          "time_limit_sec":  60
-                      },
-    "card_stream":  [
-                        {
-                            "card_id":  "init_vitals",
-                            "ui_icon":  "heartbeat",
-                            "category":  "Signos Vitales",
-                            "card_text":  "Hallazgo: Información redundante: TA 110/70, FC 90 lpm, Temp 36.8°C",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Navarro: Relevante para el control prenatal, pero no cambia el manejo agudo de esta urgencia."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_1",
-                            "ui_icon":  "target",
-                            "category":  "Diagnóstico",
-                            "card_text":  "Evidencia: A) Aborto Incompleto: Expulsión parcial de restos. Cérvix abierto + Sangrado persistente + Ãštero contraído.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Correcto! Requiere evacuación mediante AMEU o Legrado según estabilidad y semanas."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_2",
-                            "ui_icon":  "stethoscope",
-                            "category":  "Diagnóstico",
-                            "card_text":  "Información redundante: B) Amenaza de Aborto: Sangrado vaginal SIN modificación cervical (cérvix cerrado) con vitalidad fetal presente por USG.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Navarro: Relevante para el control prenatal, pero no cambia el manejo agudo de esta urgencia."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_3",
-                            "ui_icon":  "slash",
-                            "category":  "Diagnóstico Diferencial",
-                            "card_text":  "Hallazgo: Dato anecdótico: C) Aborto Diferido: Huevo muerto y retenido; ausencia de latido fetal en USG con cérvix CERRADO y sin sangrado.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  20,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "Navarro: Relevante para el control prenatal, pero no cambia el manejo agudo de esta urgencia."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_4",
-                            "ui_icon":  "alert-circle",
-                            "category":  "Definición",
-                            "card_text":  "Hallazgo: D) Definición de Aborto: Terminación del embarazo antes de la semana 22 o expulsión de producto de \u003c500g.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: Bien. Conocer los límites legales y médicos es fundamental en obstetricia."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_5",
-                            "ui_icon":  "zap",
-                            "category":  "Tratamiento Quirúrgico",
-                            "card_text":  "Hallazgo: E) AMEU (Aspiración Manual Endouterina): Elección en \u003c11 semanas o cuando el útero sea menor de 12cm de altura.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Excelente! Menor tasa de perforaciones que el legrado tradicional."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_6",
-                            "ui_icon":  "hammer",
-                            "category":  "Tratamiento Urgente",
-                            "card_text":  "Hallazgo: F) LUI (Legrado Uterino Instrumental): Reservado para inestabilidad hemodinámica, abortos sépticos o úteros \u003e=12 SDG.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "lethal_omission",
-                                            "vazquez_comment":  "Castillo: ¡Correcto! Si el útero es muy grande o hay mucho choque, el legrado es la vía rápida."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  true,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_7",
-                            "ui_icon":  "pill",
-                            "category":  "Tratamiento Médico",
-                            "card_text":  "Evidencia: G) Misoprostol: Alternativa farmacológica para evacuación uterina en abortos no complicados de \u003c12 SDG.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: Bien. Siempre bajo vigilancia clínica por el riesgo de dolor y sangrado abundante."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_8",
-                            "ui_icon":  "frown",
-                            "category":  "Complicaciones",
-                            "card_text":  "Hallazgo: H) Aborto Séptico: Presencia de fiebre (\u003e38°C), fetidez, hipersensibilidad uterina y descarga purulenta.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "lethal_omission",
-                                            "vazquez_comment":  "Castillo: ¡Fundamental! Identificar sepsis cambia el manejo a antibióticos de amplio espectro inmediatos."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  true,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_9",
-                            "ui_icon":  "shield-check",
-                            "category":  "Prevención",
-                            "card_text":  "Hallazgo: I) Inmunoglobulina Anti-D: Administrar en pacientes Rh negativas no sensibilizadas para evitar isoinmunización futura.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Correcto! No olvides preguntar el Rh en todo sangrado del primer trimestre."
-                                        }
-                        }
-                    ],
-    "enarm_pearl":  {
-                        "title":  "Clasificación de Aborto",
-                        "text":  "Clave ENARM: Cérvix CERRADO = Amenaza o Diferido. Cérvix ABIERTO = Inevitable, En Evolución o Incompleto.",
-                        "gpc_ref":  "GPC Diagnóstico y Tratamiento del Aborto"
-                    },
-    "boss_fight_triad":  {
-                             "trigger":  "after_cards",
-                             "questions":  [
-                                               {
-                                                   "question":  "¿Cuál es la definición cronológica del aborto según la norma oficial mexicana?",
-                                                   "options":  [
-                                                                   "Antes de la semana 22 de gestación",
-                                                                   "Antes de la semana 20 de gestación",
-                                                                   "Antes de la semana 12 de gestación"
-                                                               ],
-                                                   "correct_index":  0
-                                               },
-                                               {
-                                                   "question":  "¿Cuál es el tratamiento quirúrgico de elección en una paciente con aborto incompleto estable y útero de 10 semanas?",
-                                                   "options":  [
-                                                                   "AMEU (Aspiración endouterina)",
-                                                                   "LUI (Legrado uterino)",
-                                                                   "Histerectomía"
-                                                               ],
-                                                   "correct_index":  0
-                                               },
-                                               {
-                                                   "question":  "¿Qué hallazgo clínico diferencia el aborto incompleto de la amenaza de aborto?",
-                                                   "options":  [
-                                                                   "Dilatación cervical (cérvix abierto)",
-                                                                   "Hemorragia transvaginal",
-                                                                   "Aparición de dolor abdominal"
-                                                               ],
-                                                   "correct_index":  0
-                                               }
-                                           ]
-                         }
+    "case_id": "PROC_OBS_HEM_ABORTION_001_013",
+    "version": "v3_swipe_action",
+    "theme_config": "obs",
+    "difficulty": "standard",
+    "patient_intro": {
+        "name": "Marta, 29 años",
+        "arrival_scenario": "Gestante de 8 semanas acude por sangrado vaginal transcurrente y dolor tipo cólico en hipogastrio. Especuloscopía: Cérvix con orificios abiertos, se observa presencia de restos ovulares en canal vaginal.",
+        "time_limit_sec": 60
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA 110/70, FC 90 lpm, Temp 36.8°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Relevante para el control prenatal, pero no cambia el manejo agudo de esta urgencia."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "A) Aborto Incompleto: Expulsión parcial de restos. Cérvix abierto + Sangrado persistente + Útero contraído.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Correcto! Requiere evacuación mediante AMEU o Legrado según estabilidad y semanas."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "stethoscope",
+            "category": "Diagnóstico",
+            "card_text": "B) Amenaza de Aborto: Sangrado vaginal SIN modificación cervical (cérvix cerrado) con vitalidad fetal presente por USG.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Relevante para el control prenatal, pero no cambia el manejo agudo de esta urgencia."
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "slash",
+            "category": "imaging",
+            "card_text": "C) Aborto Diferido: Huevo muerto y retenido; ausencia de latido fetal en USG con cérvix CERRADO y sin sangrado.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 20,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Relevante para el control prenatal, pero no cambia el manejo agudo de esta urgencia."
+            }
+        },
+        {
+            "card_id": "c_4",
+            "ui_icon": "alert-circle",
+            "category": "Definición",
+            "card_text": "D) Definición de Aborto: Terminación del embarazo antes de la semana 22 o expulsión de producto de <500g.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: Bien. Conocer los límites legales y médicos es fundamental en obstetricia."
+            }
+        },
+        {
+            "card_id": "c_5",
+            "ui_icon": "zap",
+            "category": "Tratamiento Quirúrgico",
+            "card_text": "E) AMEU (Aspiración Manual Endouterina): Elección en <11 semanas o cuando el útero sea menor de 12cm de altura.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Excelente! Menor tasa de perforaciones que el legrado tradicional."
+            }
+        },
+        {
+            "card_id": "c_7",
+            "ui_icon": "pill",
+            "category": "meds",
+            "card_text": "G) Misoprostol: Alternativa farmacológica para evacuación uterina en abortos no complicados de <12 SDG.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: Bien. Siempre bajo vigilancia clínica por el riesgo de dolor y sangrado abundante."
+            }
+        },
+        {
+            "card_id": "c_9",
+            "ui_icon": "shield-check",
+            "category": "meds",
+            "card_text": "I) Inmunoglobulina Anti-D: Administrar en pacientes Rh negativas no sensibilizadas para evitar isoinmunización futura.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Correcto! No olvides preguntar el Rh en todo sangrado del primer trimestre."
+            }
+        },
+        {
+            "card_id": "c_6",
+            "ui_icon": "hammer",
+            "category": "Tratamiento Urgente",
+            "card_text": "F) LUI (Legrado Uterino Instrumental): Reservado para inestabilidad hemodinámica, abortos sépticos o úteros >=12 SDG.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Castillo: ¡Correcto! Si el útero es muy grande o hay mucho choque, el legrado es la vía rápida."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_8",
+            "ui_icon": "frown",
+            "category": "Complicaciones",
+            "card_text": "H) Aborto Séptico: Presencia de fiebre (>38°C), fetidez, hipersensibilidad uterina y descarga purulenta.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Castillo: ¡Fundamental! Identificar sepsis cambia el manejo a antibióticos de amplio espectro inmediatos."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Clasificación de Aborto",
+        "text": "Clave ENARM: Cérvix CERRADO = Amenaza o Diferido. Cérvix ABIERTO = Inevitable, En Evolución o Incompleto.",
+        "gpc_ref": "GPC Diagnóstico y Tratamiento del Aborto"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "question": "¿Cuál es la definición cronológica del aborto según la norma oficial mexicana?",
+                "options": [
+                    "Antes de la semana 22 de gestación",
+                    "Antes de la semana 12 de gestación",
+                    "Antes de la semana 20 de gestación"
+                ],
+                "correct_index": 0
+            },
+            {
+                "question": "Identifique el tratamiento quirúrgico de elección en una paciente con aborto incompleto estable y útero de 10 semanas?",
+                "options": [
+                    "AMEU (Aspiración endouterina)",
+                    "LUI (Legrado uterino)",
+                    "Histerectomía"
+                ],
+                "correct_index": 0
+            },
+            {
+                "question": "¿Qué hallazgo clínico diferencia el aborto incompleto de la amenaza de aborto?",
+                "options": [
+                    "Aparición de dolor abdominal",
+                    "Hemorragia transvaginal",
+                    "Dilatación cervical (cérvix abierto)"
+                ],
+                "correct_index": 2
+            }
+        ]
+    }
 }

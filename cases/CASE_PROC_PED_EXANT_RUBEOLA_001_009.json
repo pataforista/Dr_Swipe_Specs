@@ -1,190 +1,190 @@
 {
-    "case_id":  "PROC_PED_EXANT_RUBEOLA_001_009",
-    "version":  "v3_swipe_action",
-    "theme_config":  "ped",
-    "difficulty":  "standard",
-    "patient_intro":  {
-                          "name":  "Rosa, 3 años",
-                          "arrival_scenario":  "Escolar con cuadro de fiebre leve (febrícula). Presenta linfoadenopatías retroauriculares y occipitales dolorosas al tacto. Exantema rosado no confluente que inició en cara y se extendió a tronco. Manchas de Forchheimer en el paladar.",
-                          "time_limit_sec":  60
-                      },
-    "card_stream":  [
-                        {
-                            "card_id":  "init_vitals",
-                            "ui_icon":  "heartbeat",
-                            "category":  "Signos Vitales",
-                            "card_text":  "Información redundante: TA N/A, FC 95 lpm, Temp 37.8°C",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_1",
-                            "ui_icon":  "target",
-                            "category":  "Diagnóstico",
-                            "card_text":  "Evidencia: A) Rubéola: Adenopatías retroauriculares + Manchas de Forchheimer + Exantema de 3 días.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Excelente! El dato pivote son las adenopatías dolorosas y las manchas de Forchheimer."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_2",
-                            "ui_icon":  "eye",
-                            "category":  "Diagnóstico Diferencial",
-                            "card_text":  "Hallazgo: Ruido en el expediente: B) Sarampión: Cuadro mucho más tóxico, conjuntivitis y manchas de Koplik. Exantema que dura 7 días.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Diferenciaste la rubéola (leve) del sarampión (severo)."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_3",
-                            "ui_icon":  "eye",
-                            "category":  "Diagnóstico Diferencial",
-                            "card_text":  "Hallazgo: Dato anecdótico: C) Escarlatina: S. pyogenes. Enantema en fresa y exantema en lija que respeta el triángulo nasolabial. No tiene adenopatías retroauriculares.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. La escarlatina es bacteriana y no tiene las adenopatías típicas de la Rubéola."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_4",
-                            "ui_icon":  "search",
-                            "category":  "Signo Clínico",
-                            "card_text":  "Evidencia clínica: D) Manchas de Forchheimer: Pequeñas petequias rojas en el paladar blando.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Exacto! Aunque no son exclusivas, apoyan mucho el diagnóstico de Rubéola."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_5",
-                            "ui_icon":  "beaker",
-                            "category":  "Etiología",
-                            "card_text":  "Evidencia: E) Virus de la Rubéola (Togavirus): Virus de ARN, único miembro del género Rubivirus.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: Así es. Recuerda que es un Togavirus."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_6",
-                            "ui_icon":  "test-tube",
-                            "category":  "Diagnóstico",
-                            "card_text":  "Dato de importancia: F) IgM Específica: Prueba diagnóstica de elección para confirmar infección aguda.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: Muy bien. La confirmación es vital, especialmente por el riesgo epidemiológico."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_7",
-                            "ui_icon":  "thermometer",
-                            "category":  "Tratamiento",
-                            "card_text":  "Evidencia: G) Tratamiento de Sostén: Reposo e hidratación. No existe antiviral específico.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: Correcto. No hay mucho más que hacer que vigilar y cuidar."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_8",
-                            "ui_icon":  "alert-triangle",
-                            "category":  "Complicación",
-                            "card_text":  "Hallazgo: H) Riesgo de Rubéola Congénita: Infección en el 1er trimestre del embarazo conlleva alto riesgo de malformaciones (Tríada de Gregg).",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "lethal_omission",
-                                            "vazquez_comment":  "Castillo: ¡CRÃTICO! Esta es la razón de ser de la vigilancia de Rubéola. ¡Bien!"
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  true,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_9",
-                            "ui_icon":  "shield-check",
-                            "category":  "Prevención",
-                            "card_text":  "Hallazgo: I) Vacunación SRP: Aplicación a los 12 meses y 18 meses (o 6 años según esquema previo).",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: La prevención es la mejor medicina."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_10",
-                            "ui_icon":  "activity",
-                            "category":  "Complicación",
-                            "card_text":  "Hallazgo clínico: J) Artritis y Artralgias: Complicación frecuente en mujeres adolescentes y adultas que contraen Rubéola.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Excelente! Afecta principalmente manos y rodillas de forma transitoria."
-                                        }
-                        }
-                    ],
-    "enarm_pearl":  {
-                        "title":  "Rubéola: Manchas de Forchheimer",
-                        "text":  "Las manchas de Forchheimer (paladar) son sugerentes, pero las adenopatías retroauriculares/occipitales dolorosas son el \u0027clue\u0027 del examen. Riesgo mayor: Malformaciones congénitas.",
-                        "gpc_ref":  "GPC Diagnóstico de Enfermedades Exantemáticas"
-                    },
-    "boss_fight_triad":  {
-                             "trigger":  "after_cards",
-                             "questions":  [
-                                               {
-                                                   "question":  "¿A qué familia de virus pertenece el agente de la Rubéola?",
-                                                   "options":  [
-                                                                   "Togavirus",
-                                                                   "Paramixovirus",
-                                                                   "Herpesvirus"
-                                                               ],
-                                                   "correct_index":  0
-                                               },
-                                               {
-                                                   "question":  "¿Cuál es la complicación más grave de la Rubéola en la población general?",
-                                                   "options":  [
-                                                                   "Síndrome de Rubéola Congénita",
-                                                                   "Púrpura Trombocitopénica",
-                                                                   "Encefalitis"
-                                                               ],
-                                                   "correct_index":  0
-                                               },
-                                               {
-                                                   "question":  "¿Qué componentes integran la Tríada de Gregg (Rubéola Congénita)?",
-                                                   "options":  [
-                                                                   "Catarata, Sordera, Cardiopatía (PCA)",
-                                                                   "Fiebre, Tos, Exantema",
-                                                                   "Ictericia, Anemia, Esplenomegalia"
-                                                               ],
-                                                   "correct_index":  0
-                                               }
-                                           ]
-                         }
+    "case_id": "PROC_PED_EXANT_RUBEOLA_001_009",
+    "version": "v3_swipe_action",
+    "theme_config": "ped",
+    "difficulty": "standard",
+    "patient_intro": {
+        "name": "Rosa, 3 años",
+        "arrival_scenario": "Escolar con cuadro de fiebre leve (febrícula). Presenta linfoadenopatías retroauriculares y occipitales dolorosas al tacto. Exantema rosado no confluente que inició en cara y se extendió a tronco. Manchas de Forchheimer en el paladar.",
+        "time_limit_sec": 60
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA N/A, FC 95 lpm, Temp 37.8°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "c_8",
+            "ui_icon": "alert-triangle",
+            "category": "vitals",
+            "card_text": "H) Riesgo de Rubéola Congénita: Infección en el 1er trimestre del embarazo conlleva alto riesgo de malformaciones (Tríada de Gregg).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Castillo: ¡CRÍTICO! Esta es la razón de ser de la vigilancia de Rubéola. ¡Bien!"
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "A) Rubéola: Adenopatías retroauriculares + Manchas de Forchheimer + Exantema de 3 días.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Excelente! El dato pivote son las adenopatías dolorosas y las manchas de Forchheimer."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "meds",
+            "card_text": "B) Sarampión: Cuadro mucho más tóxico, conjuntivitis y manchas de Koplik. Exantema que dura 7 días.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: ¡Bien! Diferenciaste la rubéola (leve) del sarampión (severo)."
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "eye",
+            "category": "Diagnóstico Diferencial",
+            "card_text": "C) Escarlatina: S. pyogenes. Enantema en fresa y exantema en lija que respeta el triángulo nasolabial. No tiene adenopatías retroauriculares.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Correcto. La escarlatina es bacteriana y no tiene las adenopatías típicas de la Rubéola."
+            }
+        },
+        {
+            "card_id": "c_4",
+            "ui_icon": "search",
+            "category": "Signo Clínico",
+            "card_text": "D) Manchas de Forchheimer: Pequeñas petequias rojas en el paladar blando.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Exacto! Aunque no son exclusivas, apoyan mucho el diagnóstico de Rubéola."
+            }
+        },
+        {
+            "card_id": "c_5",
+            "ui_icon": "beaker",
+            "category": "meds",
+            "card_text": "E) Virus de la Rubéola (Togavirus): Virus de ARN, único miembro del género Rubivirus.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: Así es. Recuerda que es un Togavirus."
+            }
+        },
+        {
+            "card_id": "c_6",
+            "ui_icon": "test-tube",
+            "category": "Diagnóstico",
+            "card_text": "F) IgM Específica: Prueba diagnóstica de elección para confirmar infección aguda.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: Muy bien. La confirmación es vital, especialmente por el riesgo epidemiológico."
+            }
+        },
+        {
+            "card_id": "c_7",
+            "ui_icon": "thermometer",
+            "category": "meds",
+            "card_text": "G) Tratamiento de Sostén: Reposo e hidratación. No existe antiviral específico.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: Correcto. No hay mucho más que hacer que vigilar y cuidar."
+            }
+        },
+        {
+            "card_id": "c_10",
+            "ui_icon": "activity",
+            "category": "Complicación",
+            "card_text": "J) Artritis y Artralgias: Complicación frecuente en mujeres adolescentes y adultas que contraen Rubéola.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Excelente! Afecta principalmente manos y rodillas de forma transitoria."
+            }
+        },
+        {
+            "card_id": "c_9",
+            "ui_icon": "shield-check",
+            "category": "Prevención",
+            "card_text": "I) Vacunación SRP: Aplicación a los 12 meses y 18 meses (o 6 años según esquema previo).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: La prevención es la mejor medicina."
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Rubéola: Manchas de Forchheimer",
+        "text": "Las manchas de Forchheimer (paladar) son sugerentes, pero las adenopatías retroauriculares/occipitales dolorosas son el 'clue' del examen. Riesgo mayor: Malformaciones congénitas.",
+        "gpc_ref": "GPC Diagnóstico de Enfermedades Exantemáticas"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "question": "De las siguientes opciones, ¿cuál es la complicación más grave de la Rubéola en la población general?",
+                "options": [
+                    "Síndrome de Rubéola Congénita",
+                    "Púrpura Trombocitopénica",
+                    "Encefalitis"
+                ],
+                "correct_index": 0
+            },
+            {
+                "question": "¿A qué familia de virus pertenece el agente de la Rubéola?",
+                "options": [
+                    "Togavirus",
+                    "Paramixovirus",
+                    "Herpesvirus"
+                ],
+                "correct_index": 0
+            },
+            {
+                "question": "¿Qué componentes integran la Tríada de Gregg (Rubéola Congénita)?",
+                "options": [
+                    "Catarata, Sordera, Cardiopatía (PCA)",
+                    "Fiebre, Tos, Exantema",
+                    "Ictericia, Anemia, Esplenomegalia"
+                ],
+                "correct_index": 0
+            }
+        ]
+    }
 }

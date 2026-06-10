@@ -4,28 +4,28 @@
   "theme_config": "gyn",
   "difficulty": "standard",
   "patient_intro": {
-    "name": "Laura, 65 años",
-    "arrival_scenario": "Mujer de 52 años acude a mastografía de tamizaje anual. Refiere ser tabaquista y nulípara. Se observa asimetría focal con distorsión de la arquitectura. Categoría BI-RADS 5. ¿Cuál es el siguiente paso?",
+    "name": "Laura, 52 años",
+    "arrival_scenario": "Mujer de 52 años acude a mastografía de tamizaje de rutina. Refiere ser tabaquista y nulípara. Se observa asimetría focal con distorsión de la arquitectura. Categoría BI-RADS 5. ¿Cuál es el siguiente paso?",
     "time_limit_sec": 60
   },
   "card_stream": [
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
-      "card_text": "Evidencia clínica: Ruido en el expediente: TA 120/80, FC 70 lpm, Temp 36.5°C",
+      "category": "vitals",
+      "card_text": "TA 120/80, FC 70 lpm, Temp 36.5°C",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
       "card_id": "c_1",
       "ui_icon": "target",
       "category": "Diagnóstico",
-      "card_text": "Evidencia clínica: A) Biopsia Percutánea (Trucut): BI-RADS 4 y 5 requieren confirmación histopatológica inmediata mediante biopsia con aguja gruesa.",
+      "card_text": "A) Biopsia Percutánea (Trucut): BI-RADS 4 y 5 requieren confirmación histopatológica inmediata mediante biopsia con aguja gruesa.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -41,19 +41,19 @@
       "card_id": "c_2",
       "ui_icon": "eye",
       "category": "Diagnóstico Diferencial",
-      "card_text": "Hallazgo clínico: Ruido en el expediente: B) Seguimiento en 6 meses (BI-RADS 3): Conducta indicada ante hallazgos probablemente benignos (<2% riesgo de malignidad).",
+      "card_text": "B) Seguimiento en 6 meses (BI-RADS 3): Conducta indicada ante hallazgos probablemente benignos (<2% riesgo de malignidad).",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Un BI-RADS 5 en esta paciente exige acción inmediata, no observación."
+        "vazquez_comment": "Castillo: ¡Bien! Un BI-RADS 5 en esta paciente exige acción inmediata, no observación."
       }
     },
     {
       "card_id": "c_3",
       "ui_icon": "search",
       "category": "Tamizaje",
-      "card_text": "Hallazgo: C) Mastografía de Tamizaje: Realizar cada 2 años a partir de los 40 años hasta los 69 años en mamas asintomáticas.",
+      "card_text": "C) Mastografía de Tamizaje: Realizar cada 2 años a partir de los 40 años hasta los 69 años en mamas asintomáticas.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -65,19 +65,19 @@
       "card_id": "c_4",
       "ui_icon": "slash",
       "category": "Auxilio Diagnóstico",
-      "card_text": "Información redundante: D) Ultrasonido Mamario: Complemento ideal en mamas densas (BI-RADS 0) o en mujeres menores de 35 años con masa palpable.",
+      "card_text": "D) Ultrasonido Mamario: Complemento ideal en mamas densas (BI-RADS 0) o en mujeres menores de 35 años con masa palpable.",
       "expected_action": "discard",
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: Bien. El USG ayuda but no sustituye a la mastografía en el tamizaje poblacional."
+        "vazquez_comment": "Castillo: Bien. El USG ayuda but no sustituye a la mastografía en el tamizaje poblacional."
       }
     },
     {
       "card_id": "c_5",
       "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "Evidencia: E) Triple Evaluación: Diagnóstico integral mediante la tríada: clínica, imagen (mastografía/USG) y biopsia histopatológica.",
+      "category": "imaging",
+      "card_text": "E) Triple Evaluación: Diagnóstico integral mediante la tríada: clínica, imagen (mastografía/USG) y biopsia histopatológica.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -89,7 +89,7 @@
       "card_id": "c_6",
       "ui_icon": "alert-triangle",
       "category": "Factores de Riesgo",
-      "card_text": "Hallazgo clínico: F) Exposición Estrogénica: Menarca temprana (<12 años), menopausia tardía (>55 años) y nuliparidad aumentan el riesgo.",
+      "card_text": "F) Exposición Estrogénica: Menarca temprana (<12 años), menopausia tardía (>55 años) y nuliparidad aumentan el riesgo.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -100,8 +100,8 @@
     {
       "card_id": "c_7",
       "ui_icon": "dna",
-      "category": "Genética",
-      "card_text": "Hallazgo clínico: G) Mutaciones BRCA1/2: Presentes en el 5-10% de los casos. Confieren un riesgo de por vida del 40-80% para cáncer de mama.",
+      "category": "imaging",
+      "card_text": "G) Mutaciones BRCA1/2: Presentes en el 5-10% de los casos. Confieren un riesgo de por vida del 40-80% para cáncer de mama.",
       "expected_action": "keep",
       "scoring": {
         "points": 50,
@@ -113,7 +113,7 @@
       "card_id": "c_8",
       "ui_icon": "help-circle",
       "category": "BI-RADS 0",
-      "card_text": "Hallazgo: H) BI-RADS 0 (Evaluación Incompleta): Requiere estudios adicionales (ultrasonido o proyecciones adicionales) para asignar categoría final.",
+      "card_text": "H) BI-RADS 0 (Evaluación Incompleta): Requiere estudios adicionales (ultrasonido o proyecciones adicionales) para asignar categoría final.",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -125,7 +125,7 @@
       "card_id": "c_9",
       "ui_icon": "activity",
       "category": "Histología",
-      "card_text": "Evidencia: I) Carcinoma Ductal Infiltrante: Forma más común del cáncer de mama de tipo no específico (invasor).",
+      "card_text": "I) Carcinoma Ductal Infiltrante: Forma más común del cáncer de mama de tipo no específico (invasor).",
       "expected_action": "keep",
       "scoring": {
         "points": 100,
@@ -143,6 +143,15 @@
     "trigger": "after_cards",
     "questions": [
       {
+        "question": "¿Cuál de los siguientes subtipos histopatológicos es el más frecuente en el cáncer de mama invasor?",
+        "options": [
+          "Carcinoma Lobulillar Infiltrante",
+          "Carcinoma Ductal Infiltrante",
+          "Carcinoma Mucinoso"
+        ],
+        "correct_index": 1
+      },
+      {
         "question": "¿A qué edad recomienda la GPC iniciar el tamizaje mastográfico en pacientes de riesgo promedio sin antecedentes?",
         "options": [
           "A partir de los 40 años",
@@ -155,17 +164,8 @@
         "question": "¿Cuál es la conducta recomendada ante un hallazgo categorizado como BI-RADS 3 (Probablemente Benigno)?",
         "options": [
           "Seguimiento mastográfico en 6 meses",
-          "Biopsia percutánea inmediata",
-          "Repetir estudio en 2 años"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Cuál de los siguientes subtipos histopatológicos es el más frecuente en el cáncer de mama invasor?",
-        "options": [
-          "Carcinoma Ductal Infiltrante",
-          "Carcinoma Lobulillar Infiltrante",
-          "Carcinoma Mucinoso"
+          "Repetir estudio en 2 años",
+          "Biopsia percutánea inmediata"
         ],
         "correct_index": 0
       }

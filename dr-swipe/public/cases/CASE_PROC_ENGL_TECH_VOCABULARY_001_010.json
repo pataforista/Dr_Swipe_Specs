@@ -1,94 +1,94 @@
 {
-    "case_id": "PROC_ENGL_TECH_VOCABULARY_001_010",
-    "version": "v3_swipe_action",
-    "theme_config": "engl",
-    "difficulty": "standard",
-    "patient_intro": {
-        "name": "Ana, 37 años",
-        "arrival_scenario": "A patient presents with 'shortness of breath' and progressive 'fatigue' after walking two blocks. Term translation check: What is the correct medical equivalent for 'Shortness of Breath' and 'Wheezing' in Spanish?",
-        "time_limit_sec": 60
+  "case_id": "PROC_ENGL_TECH_VOCABULARY_001_010",
+  "version": "v3_swipe_action",
+  "theme_config": "engl",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Ana, 37 años",
+    "arrival_scenario": "A patient presents with 'shortness of breath' and progressive 'fatigue' after walking two blocks. Term translation check: What is the correct medical equivalent for 'Shortness of Breath' and 'Wheezing' in Spanish?",
+    "time_limit_sec": 60
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "Dato de importancia: Dato anecdótico: TA 120/80, FC 78 bpm, Temp 37.0°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
     },
-    "card_stream": [
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "Signos Vitales",
-            "card_text": "Dato de importancia: Dato anecdótico: TA 120/80, FC 78 bpm, Temp 37.0°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_1",
-            "ui_icon": "target",
-            "category": "Diagnóstico",
-            "card_text": "Hallazgo: A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 150,
-                "error_type": "omission",
-                "vazquez_comment": "Navarro: ¡Correcto! Dominar estos términos es vital para la sección de inglés técnico del ENARM."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "target",
-            "category": "Diagnóstico",
-            "card_text": "Evidencia: B) Estreñimiento (Bowel movement issues): 'Constipation' es el falso amigo más común: significa Estreñimiento, NO congestión nasal.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 150,
-                "error_type": "omission",
-                "vazquez_comment": "Navarro: ¡Excelente! Evitaste caer en el falso amigo. 'Constipated' nasal se dice 'Congested'."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": true
-            }
-        }
-    ],
-    "enarm_pearl": {
-        "title": "Inglés Médico: False Friends",
-        "text": "Constipation = Estreñimiento. Injury = Lesión. Sever = Cortar. Informed Consent = Consentimiento Informado.",
-        "gpc_ref": "ENARM Technical English Section"
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "Hallazgo: A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Correcto! Dominar estos términos es vital para la sección de inglés técnico del ENARM."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
     },
-    "boss_fight_triad": {
-        "trigger": "after_cards",
-        "questions": [
-            {
-                "correct_index": 0,
-                "question": "¿Cuál es la traducción correcta de 'Constipation' en un contexto médico?",
-                "options": [
-                    "Estreñimiento",
-                    "Congestión nasal",
-                    "Diarrea"
-                ]
-            },
-            {
-                "correct_index": 0,
-                "question": "¿Qué significa el término 'Shortness of breath'?",
-                "options": [
-                    "Disnea (falta de aire)",
-                    "Dolor de pecho",
-                    "Tos seca"
-                ]
-            },
-            {
-                "correct_index": 0,
-                "question": "¿Cuál es la diferencia entre 'Wound' e 'Injury'?",
-                "options": [
-                    "Wound es una herida abierta; Injury es cualquier lesión",
-                    "Wound es una fractura; Injury es un moretón",
-                    "Son sinónimos exactos en medicina"
-                ]
-            }
-        ]
+    {
+      "card_id": "c_2",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "Evidencia: B) Estreñimiento (Bowel movement issues): 'Constipation' es el falso amigo más común: significa Estreñimiento, NO congestión nasal.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Excelente! Evitaste caer en el falso amigo. 'Constipated' nasal se dice 'Congested'."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
     }
+  ],
+  "enarm_pearl": {
+    "title": "Inglés Médico: False Friends",
+    "text": "Constipation = Estreñimiento. Injury = Lesión. Sever = Cortar. Informed Consent = Consentimiento Informado.",
+    "gpc_ref": "ENARM Technical English Section"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "correct_index": 0,
+        "question": "¿Cuál es la traducción correcta de 'Constipation' en un contexto médico?",
+        "options": [
+          "Estreñimiento",
+          "Congestión nasal",
+          "Diarrea"
+        ]
+      },
+      {
+        "correct_index": 0,
+        "question": "¿Qué significa el término 'Shortness of breath'?",
+        "options": [
+          "Disnea (falta de aire)",
+          "Dolor de pecho",
+          "Tos seca"
+        ]
+      },
+      {
+        "correct_index": 0,
+        "question": "¿Cuál es la diferencia entre 'Wound' e 'Injury'?",
+        "options": [
+          "Wound es una herida abierta; Injury es cualquier lesión",
+          "Wound es una fractura; Injury es un moretón",
+          "Son sinónimos exactos en medicina"
+        ]
+      }
+    ]
+  }
 }

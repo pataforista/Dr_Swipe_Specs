@@ -1,179 +1,179 @@
 {
-    "case_id":  "PROC_OBS_HEM_ECTOPIC_001_010",
-    "version":  "v3_swipe_action",
-    "theme_config":  "obs",
-    "difficulty":  "hard",
-    "patient_intro":  {
-                          "name":  "Laura, 32 años",
-                          "arrival_scenario":  "Acude a urgencias por dolor abdominal súbito en fosa ilíaca derecha de intensidad 10/10. Refiere manchado vaginal escaso. HCG cuantitativa de 2,500 mUI/ml. Se observa imagen anexial compleja. Grito de Douglas positivo.",
-                          "time_limit_sec":  50
-                      },
-    "card_stream":  [
-                        {
-                            "card_id":  "init_vitals",
-                            "ui_icon":  "heartbeat",
-                            "category":  "Signos Vitales",
-                            "card_text":  "Evidencia clínica: Ruido en el expediente: TA 80/40 mmHg, FC 120 lpm, Temp 36.2°C",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de hipotensión/choque, R1. El reloj no se detiene."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_1",
-                            "ui_icon":  "target",
-                            "category":  "Diagnóstico",
-                            "card_text":  "Hallazgo: A) Embarazo Ectópico Roto: Triada: Amenorrea + Dolor pélvico + Sangrado escaso. Evoluciona a choque hemoperitoneo.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "lethal_omission",
-                                            "vazquez_comment":  "Castillo: ¡Excelente! Es una emergencia quirúrgica (Salpingectomía). El dolor a la movilización cervical es clave."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  true,
-                                                 "decision_critical":  true,
-                                                 "lethal_if_discarded":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_2",
-                            "ui_icon":  "eye",
-                            "category":  "Diagnóstico Diferencial",
-                            "card_text":  "Hallazgo: Ruido en el expediente: B) Apendicitis Aguda: Presenta dolor en fosa ilíaca derecha, náuseas y vómito, pero no se asocia a amenorrea ni a inestabilidad hemodinámica súbita.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! La amenorrea y el choque sugieren una causa obstétrica urgente."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_3",
-                            "ui_icon":  "target",
-                            "category":  "Auxiliares Diagnóstico",
-                            "card_text":  "Hallazgo: C) Zona de Discriminación (hCG): Si la beta-hCG es \u003e1,500 mUI/ml y el útero está vacío en USG transvaginal, el Dx es Ectópico.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Correcto! Es el umbral crítico para correlacionar la clínica con el ultrasonido."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_4",
-                            "ui_icon":  "slash",
-                            "category":  "Diagnóstico Diferencial",
-                            "card_text":  "Información redundante: D) Cuerpo Lúteo Hemorrágico: Causa de dolor y líquido libre; en USG se ve el \u0027anillo de fuego\u0027, pero no hay amenorrea prolongada.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Castillo: Bien. La paciente tiene franca amenorrea, lo que inclina la balanza al ectópico."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_5",
-                            "ui_icon":  "pill",
-                            "category":  "Tratamiento Médico",
-                            "card_text":  "Evidencia: E) Metotrexato (MTX): Elección si: Paciente ESTABLE, saco \u003c3.5cm, sin latido fetal y beta-hCG \u003c5,000 mUI/ml.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Exacto! Debes cumplir estrictamente estos criterios para evitar fallas en el tratamiento médico."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_6",
-                            "ui_icon":  "zap",
-                            "category":  "Tratamiento Quirúrgico",
-                            "card_text":  "Evidencia: F) Salpingectomía (Ectópico Roto): Procedimiento de elección ante inestabilidad hemodinámica o sangrado profuso.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "lethal_omission",
-                                            "vazquez_comment":  "Castillo: ¡Vital! En una paciente chocada, hay que entrar a detener el sangrado sacrificando la trompa si es necesario."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  true,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_7",
-                            "ui_icon":  "scissors",
-                            "category":  "Tratamiento Conservador",
-                            "card_text":  "Hallazgo: G) Salpingostomía: Incisión en la trompa para extraer el saco. Elección si se desea preservar la fertilidad en paciente ESTABLE.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: Bien. Requiere seguimiento posterior de hCG para asegurar que no queden restos trofoblásticos."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_8",
-                            "ui_icon":  "map",
-                            "category":  "Anatomía",
-                            "card_text":  "Hallazgo clínico: H) Región Ampular: Localización más frecuente de los embarazos ectópicos (95% de los casos).",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Correcto! Es una \u0027perla\u0027 clásica del ENARM."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_9",
-                            "ui_icon":  "alert-triangle",
-                            "category":  "Factores de Riesgo",
-                            "card_text":  "Evidencia clínica: I) Enfermedad Pélvica Inflamatoria (EPI): Es el factor de riesgo más importante debido al daño de los cilios tubáricos.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Muy bien! El antecedente de EPI aumenta exponencialmente la probabilidad de ectópico."
-                                        }
-                        }
-                    ],
-    "enarm_pearl":  {
-                        "title":  "Ectópico: Tríada y Manejo",
-                        "text":  "Tríada: Amenorrea + Dolor + Sangrado. Localización: Ãmpula (95%). MTX: \u003c5,000 hCG + Estable. Dx Oro: Laparoscopia.",
-                        "gpc_ref":  "GPC Diagnóstico y Manejo del Embarazo Ectópico"
-                    },
-    "boss_fight_triad":  {
-                             "trigger":  "after_cards",
-                             "questions":  [
-                                               {
-                                                   "question":  "¿Cuál es la localización anatómica más frecuente del embarazo ectópico?",
-                                                   "options":  [
-                                                                   "Región Ampular (Ãmpula)",
-                                                                   "Región Ãstmica",
-                                                                   "Región Intersticial"
-                                                               ],
-                                                   "correct_index":  0
-                                               },
-                                               {
-                                                   "question":  "¿Cuál es el \u0027estándar de oro\u0027 (Gold Standard) para el diagnóstico definitivo de embarazo ectópico?",
-                                                   "options":  [
-                                                                   "Laparoscopia",
-                                                                   "Ultrasonido Transvaginal",
-                                                                   "Niveles de Progesterona Sérica"
-                                                               ],
-                                                   "correct_index":  0
-                                               },
-                                               {
-                                                   "question":  "¿Cuál es un criterio necesario para indicar manejo MÃ‰DICO con Metotrexato?",
-                                                   "options":  [
-                                                                   "HCG sérica \u003c5,000 mUI/ml y estabilidad hemodinámica",
-                                                                   "Presencia de latido cardíaco fetal",
-                                                                   "Saco gestacional \u003e5 cm"
-                                                               ],
-                                                   "correct_index":  0
-                                               }
-                                           ]
-                         }
+    "case_id": "PROC_OBS_HEM_ECTOPIC_001_010",
+    "version": "v3_swipe_action",
+    "theme_config": "obs",
+    "difficulty": "hard",
+    "patient_intro": {
+        "name": "Laura, 32 años",
+        "arrival_scenario": "Acude a urgencias por dolor abdominal súbito en fosa ilíaca derecha de intensidad 10/10. Refiere manchado vaginal escaso. HCG cuantitativa de 2,500 mUI/ml. Se observa imagen anexial compleja. Grito de Douglas positivo.",
+        "time_limit_sec": 50
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA 80/40 mmHg, FC 120 lpm, Temp 36.2°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: No te detengas en estos signos de hipotensión/choque, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "Diagnóstico Diferencial",
+            "card_text": "B) Apendicitis Aguda: Presenta dolor en fosa ilíaca derecha, náuseas y vómito, pero no se asocia a amenorrea ni a inestabilidad hemodinámica súbita.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: ¡Bien! La amenorrea y el choque sugieren una causa obstétrica urgente."
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "target",
+            "category": "imaging",
+            "card_text": "C) Zona de Discriminación (hCG): Si la beta-hCG es >1,500 mUI/ml y el útero está vacío en USG transvaginal, el Dx es Ectópico.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Correcto! Es el umbral crítico para correlacionar la clínica con el ultrasonido."
+            }
+        },
+        {
+            "card_id": "c_4",
+            "ui_icon": "slash",
+            "category": "imaging",
+            "card_text": "D) Cuerpo Lúteo Hemorrágico: Causa de dolor y líquido libre; en USG se ve el 'anillo de fuego', pero no hay amenorrea prolongada.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Bien. La paciente tiene franca amenorrea, lo que inclina la balanza al ectópico."
+            }
+        },
+        {
+            "card_id": "c_5",
+            "ui_icon": "pill",
+            "category": "Tratamiento Médico",
+            "card_text": "E) Metotrexato (MTX): Elección si: Paciente ESTABLE, saco <3.5cm, sin latido fetal y beta-hCG <5,000 mUI/ml.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Exacto! Debes cumplir estrictamente estos criterios para evitar fallas en el tratamiento médico."
+            }
+        },
+        {
+            "card_id": "c_7",
+            "ui_icon": "scissors",
+            "category": "Tratamiento Conservador",
+            "card_text": "G) Salpingostomía: Incisión en la trompa para extraer el saco. Elección si se desea preservar la fertilidad en paciente ESTABLE.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: Bien. Requiere seguimiento posterior de hCG para asegurar que no queden restos trofoblásticos."
+            }
+        },
+        {
+            "card_id": "c_8",
+            "ui_icon": "map",
+            "category": "Anatomía",
+            "card_text": "H) Región Ampular: Localización más frecuente de los embarazos ectópicos (95% de los casos).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Correcto! Es una 'perla' clásica del ENARM."
+            }
+        },
+        {
+            "card_id": "c_9",
+            "ui_icon": "alert-triangle",
+            "category": "Factores de Riesgo",
+            "card_text": "I) Enfermedad Pélvica Inflamatoria (EPI): Es el factor de riesgo más importante debido al daño de los cilios tubáricos.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Muy bien! El antecedente de EPI aumenta exponencialmente la probabilidad de ectópico."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "A) Embarazo Ectópico Roto: Triada: Amenorrea + Dolor pélvico + Sangrado escaso. Evoluciona a choque hemoperitoneo.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Castillo: ¡Excelente! Es una emergencia quirúrgica (Salpingectomía). El dolor a la movilización cervical es clave."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true,
+                "lethal_if_discarded": true
+            }
+        },
+        {
+            "card_id": "c_6",
+            "ui_icon": "zap",
+            "category": "Tratamiento Quirúrgico",
+            "card_text": "F) Salpingectomía (Ectópico Roto): Procedimiento de elección ante inestabilidad hemodinámica o sangrado profuso.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Castillo: ¡Vital! En una paciente chocada, hay que entrar a detener el sangrado sacrificando la trompa si es necesario."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Ectópico: Tríada y Manejo",
+        "text": "Tríada: Amenorrea + Dolor + Sangrado. Localización: Ampula (95%). MTX: <5,000 hCG + Estable. Dx Oro: Laparoscopia.",
+        "gpc_ref": "GPC Diagnóstico y Manejo del Embarazo Ectópico"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "question": "¿Cuál es el 'estándar de oro' (Gold Standard) para el diagnóstico definitivo de embarazo ectópico?",
+                "options": [
+                    "Niveles de Progesterona Sérica",
+                    "Ultrasonido Transvaginal",
+                    "Laparoscopia"
+                ],
+                "correct_index": 2
+            },
+            {
+                "question": "¿Cuál es un criterio necesario para indicar manejo MÉDICO con Metotrexato?",
+                "options": [
+                    "HCG sérica <5,000 mUI/ml y estabilidad hemodinámica",
+                    "Saco gestacional >5 cm",
+                    "Presencia de latido cardíaco fetal"
+                ],
+                "correct_index": 0
+            },
+            {
+                "question": "¿Cuál es la localización anatómica más frecuente del embarazo ectópico?",
+                "options": [
+                    "Región Ístmica",
+                    "Región Intersticial",
+                    "Región Ampular (Ampula)"
+                ],
+                "correct_index": 2
+            }
+        ]
+    }
 }

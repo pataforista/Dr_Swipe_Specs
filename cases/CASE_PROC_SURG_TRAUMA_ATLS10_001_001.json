@@ -12,30 +12,13 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "Dato de importancia: Dato anecdótico: TA 80/50 mmHg, FC 130 lpm, Temp 36.2°C",
-      "expected_action": "keep",
+      "expected_action": "discard",
       "scoring": {
         "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de choque obstructivo, R1. El reloj no se detiene."
-      }
-    },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "Evidencia: A) Descompresión en 5° Espacio Intercostal (LAA/LAM): ATLS 10ª Edición (2024): El sitio preferido es el 5° espacio intercostal en la línea axilar anterior o media.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "¡Excelente! Estás actualizado con el ATLS 10. El 5° espacio es ahora el estándar para evitar lesiones y asegurar éxito."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true,
-        "lethal_if_discarded": true
+        "error_type": "hoarding",
+        "vazquez_comment": "No te detengas en estos signos de choque obstructivo, R1. El reloj no se detiene."
       }
     },
     {
@@ -47,7 +30,7 @@
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! Escogiste el sitio del ATLS 10 para garantizar la descompresión efectiva."
+        "vazquez_comment": "¡Bien! Escogiste el sitio del ATLS 10 para garantizar la descompresión efectiva."
       }
     },
     {
@@ -75,22 +58,6 @@
       }
     },
     {
-      "card_id": "c_5",
-      "ui_icon": "alert-triangle",
-      "category": "Triada Mortal",
-      "card_text": "Hallazgo: E) Triada de la Muerte: Acidosis, Coagulopatía e Hipotermia. Son eventos que se autoalimentan y llevan al fallecimiento.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "¡Vital! El control preventivo de la temperatura y la reposición de factores son clave en el choque hemorrágico."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
       "card_id": "c_6",
       "ui_icon": "zap",
       "category": "Circulación",
@@ -115,22 +82,6 @@
       }
     },
     {
-      "card_id": "c_8",
-      "ui_icon": "alert-circle",
-      "category": "Breathing",
-      "card_text": "Evidencia: H) Diagnóstico Clínico (PNT): El Neumotórax a Tensión se diagnostica con la CLÃNICA. Nunca retraces el tratamiento por Rayos X.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "¡Correcto! Esperar una placa en un PNT es una negligencia mortal; pincha de inmediato."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
       "card_id": "c_9",
       "ui_icon": "activity",
       "category": "Breathing",
@@ -141,11 +92,60 @@
         "error_type": "omission",
         "vazquez_comment": "¡Excelente! Identificaste los datos clásicos que confirman la hipertensión intratorácica."
       }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "Evidencia: A) Descompresión en 5° Espacio Intercostal (LAA/LAM): ATLS 10ª Edición (2024): El sitio preferido es el 5° espacio intercostal en la línea axilar anterior o media.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "¡Excelente! Estás actualizado con el ATLS 10. El 5° espacio es ahora el estándar para evitar lesiones y asegurar éxito."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true,
+        "lethal_if_discarded": true
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "alert-triangle",
+      "category": "Triada Mortal",
+      "card_text": "Hallazgo: E) Triada de la Muerte: Acidosis, Coagulopatía e Hipotermia. Son eventos que se autoalimentan y llevan al fallecimiento.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "¡Vital! El control preventivo de la temperatura y la reposición de factores son clave en el choque hemorrágico."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "alert-circle",
+      "category": "Breathing",
+      "card_text": "Evidencia: H) Diagnóstico Clínico (PNT): El Neumotórax a Tensión se diagnostica con la CLÍNICA. Nunca retraces el tratamiento por Rayos X.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "¡Correcto! Esperar una placa en un PNT es una negligencia mortal; pincha de inmediato."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
     }
   ],
   "enarm_pearl": {
     "title": "ATLS 10: ABCDE y PNT",
-    "text": "PNT: Dx CLÃNICO. Punción: 5° Espacio (Axilar). Resucitación: 1L de Hartmann. Tríada Muerte: Acidosis, Coagulopatía, Hipotermia.",
+    "text": "PNT: Dx CLÍNICO. Punción: 5° Espacio (Axilar). Resucitación: 1L de Hartmann. Tríada Muerte: Acidosis, Coagulopatía, Hipotermia.",
     "gpc_ref": "Standard ATLS 10th Edition / GPC Manejo del Trauma Grave"
   },
   "boss_fight_triad": {
@@ -161,22 +161,22 @@
         "correct_index": 0
       },
       {
-        "question": "¿Cuáles son los componentes de la 'Tríada de la Muerte' en el paciente con trauma?",
-        "options": [
-          "Acidosis Metabólica, Coagulopatía e Hipotermia",
-          "Hipotensión, Bradicardia y Arritmia",
-          "Fiebre, Leucocitosis y Dolor"
-        ],
-        "correct_index": 0
-      },
-      {
         "question": "¿Qué hallazgo es indispensable para diagnosticar un Neumotórax a Tensión?",
         "options": [
-          "Datos clínicos (ingurgitación, timpanismo, ausencia ruidos)",
           "Confirmación por Radiografía de Tórax",
-          "Reporte de Gasometría Arterial"
+          "Reporte de Gasometría Arterial",
+          "Datos clínicos (ingurgitación, timpanismo, ausencia ruidos)"
         ],
-        "correct_index": 0
+        "correct_index": 2
+      },
+      {
+        "question": "¿Cuáles son los componentes de la 'Tríada de la Muerte' en el paciente con trauma?",
+        "options": [
+          "Fiebre, Leucocitosis y Dolor",
+          "Hipotensión, Bradicardia y Arritmia",
+          "Acidosis Metabólica, Coagulopatía e Hipotermia"
+        ],
+        "correct_index": 2
       }
     ]
   }

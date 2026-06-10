@@ -14,7 +14,7 @@ interface TelemetryHUDProps {
 export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({ 
   timeLeft, state, score, combo, vitality, coins, lastVitals
 }) => {
-  if (state !== 'triage' && state !== 'boss_fight' && state !== 'urgent_triage') return null;
+  if (state !== 'triage' && state !== 'boss_fight') return null;
 
   return (
     <>

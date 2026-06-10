@@ -5,7 +5,7 @@
   "difficulty": "hard",
   "patient_intro": {
     "name": "Sra. Fernanda, 27 años",
-    "arrival_scenario": "Parturienta con parto vaginal y alumbramiento natural hace 45 minutos. El sangrado continúa y la placenta aún no ha sido expulsada. Ãštero contraído y firme. Se sospecha retención de placenta acreta o percreta.",
+    "arrival_scenario": "Parturienta con parto vaginal y alumbramiento natural hace 45 minutos. El sangrado continúa y la placenta aún no ha sido expulsada. Útero contraído y firme. Se sospecha retención de placenta acreta o percreta.",
     "time_limit_sec": 50
   },
   "card_stream": [
@@ -18,7 +18,7 @@
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Vázquez: Elena se está descompensando. Activa el Código Mater de inmediato."
+        "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Vázquez: Elena se está descompensando. Activa el Código Mater de inmediato."
       }
     },
     {

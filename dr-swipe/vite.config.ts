@@ -26,11 +26,20 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,png,svg,webp}'],
         runtimeCaching: [
           {
-            urlPattern: /^\/cases\/.*/i,
+            // The index must revalidate so newly published cases appear.
+            urlPattern: ({ url }) => url.pathname === '/cases/case_index.json',
+            handler: 'StaleWhileRevalidate',
+            options: { cacheName: 'clinical-cases-index' }
+          },
+          {
+            // NOTE: regex patterns match against the FULL url (https://host/...),
+            // so a regex anchored at "^/cases/" never fires — use the pathname.
+            urlPattern: ({ url }) => url.pathname.startsWith('/cases/'),
             handler: 'CacheFirst',
             options: {
               cacheName: 'clinical-cases-cache',
-              expiration: { maxEntries: 100, maxAgeSeconds: 60 * 60 * 24 * 30 }
+              expiration: { maxEntries: 650, maxAgeSeconds: 60 * 60 * 24 * 30 },
+              cacheableResponse: { statuses: [200] }
             }
           },
           {

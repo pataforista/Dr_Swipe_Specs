@@ -8,9 +8,26 @@
 
 ---
 
-## 1. Veredicto ejecutivo
+## 0. Estado de remediación (2026-06-10, misma rama)
 
-> **NO-GO para producción plena. GO condicional para beta/soft-launch.**
+Todos los hallazgos accionables de esta auditoría fueron corregidos en los commits siguientes de esta rama, con `tsc -b`, `vite build`, validador de corpus (598/598 OK) y smoke test del bundle verificados:
+
+- ✅ **K1** doble pago de recompensas — guard con ref del `case_id` premiado (`App.tsx`).
+- ✅ **K2** resume real — nuevo evento `RESUME_GUARD` que restaura índice/score/combo/monedas del snapshot guardado.
+- ✅ **§3.1** los 5 bugs de autoría: prefijo derivado de `expected_action` en `formatters.ts` + datos corregidos (463 prefijos invertidos, 77 `init_vitals` → `discard`+texto limpio, Furosemida → `keep`, Dizziness → `keep`, mama "anual"→"de rutina" en 9 archivos + edad 65→52).
+- ✅ **§3.4** mojibake residual — 9 archivos reparados determinísticamente (`A³`→ó, `[íA]`+byte C1→letra real); 0 restos.
+- ✅ **§2** pipeline — `/cases/` re-sincronizada desde la copia saneada (fuente == desplegada) + `tools/validate_cases.py` como gate de CI.
+- ✅ **K3** tutorial persiste · **K4** 8 errores de tsc corregidos y `tsc -b` añadido al build · **K5** schema valida boss (≥1 pregunta, `correct_index` en rango) y `card_stream` (ids únicos, ≤15, 1 `init_vitals`); App salta el boss si falta tríada · **K6** `vite-plugin-pwa` 1.3.0 (peer-deps limpios, CI sin `--legacy-peer-deps`).
+- ✅ **K7** SW cachea `/cases/` de verdad (pathname matcher, 650 entradas, índice SWR) · **K8** content-type check en dataLoader · **K9** lock anti doble-input en SwipeDeck · **K11** `caseStreak`/`discarded` se resetean · **K12** `safeStorage` (no crashea con storage bloqueado) · **K13** error visible + `Promise.all` + 3 casos sin repetición.
+- ✅ **K10** mecánicas conectadas o retiradas: las cajas curan (`APPLY_REWARD_HEAL`), suenan correct/gacha/alarma de triage, `RetrospectiveView` accesible desde el debrief, EventAlert ya no promete efectos, estados/eventos fantasma eliminados de la máquina.
+- ✅ **K14-K20** y **F4/F6/E2/A2**: score del toast leído del actor (sin doble cálculo), CSP sin `unsafe-inline` en scripts, una sola ruta de deploy (Action, gated a push; `gh-pages` eliminado), `howler` eliminado, copy del tutorial alineado (-15/+8, racha x8), `.md` interno fuera de `public/`, `lang="es"`, barajado eliminado (orden clínico autoral), naming `mentor*` unificado, `MotionConfig reducedMotion="user"`.
+- ✅ **Higiene**: ~41 scripts y dumps del pipeline movidos a `tools/legacy_pipeline/`.
+
+Pendiente (decisiones de producto, no bugs): destino de `v2/` (scaffold sin desplegar), poblar `related_diagnoses` si se quiere activar la sinergia de dossier, y la deuda de lint preexistente (`no-explicit-any` en props de lore).
+
+## 1. Veredicto ejecutivo (pre-remediación)
+
+> **NO-GO para producción plena. GO condicional para beta/soft-launch.** *(Corregido — ver §0.)*
 
 | Eje | Estado | Resumen |
 |---|---|---|

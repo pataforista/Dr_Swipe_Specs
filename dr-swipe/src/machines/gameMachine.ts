@@ -2,7 +2,7 @@ import { setup, assign } from 'xstate';
 import type { Card, EnarmPearl } from '../types/game';
 import { cleanVazquezComment } from '../utils/formatters';
 import { parseVitalsFromText } from '../utils/vitalsParser';
-import { calculateCardScore, COMBO_MILESTONES } from '../utils/scoringEngine';
+import { calculateCardScore } from '../utils/scoringEngine';
 import rewardData from '../data/lore/rewardItems.json';
 import penaltyData from '../data/lore/penaltyItems.json';
 
@@ -17,6 +17,18 @@ const labEventsList = labData.labEvents;
 const archiveEventsList = archiveData.archiveEvents;
 const systemicEventsList = systemicData.systemicEvents;
 
+/** Snapshot persisted by the auto-save; used by RESUME_GUARD to restore a session. */
+export interface ResumeSnapshot {
+  currentCardIndex: number;
+  score: number;
+  combo: number;
+  multiplier: number;
+  caseStreak: number;
+  coinsEarnedThisCase: number;
+  mistakesThisCase: number;
+  warningCount: number;
+}
+
 interface GameContext {
   deck: Card[];
   dossier: Card[];
@@ -30,18 +42,11 @@ interface GameContext {
   warningCount: number;
   caseStreak: number;
   lastCardPresentedAt: number;
-  showEureka: boolean;
-  isUrgent: boolean;
-  showBloodVignette: boolean;
   debriefData: { title: string; text: string; gpc: string; comment: string } | null;
-  // Interruption context
-  interruptionActive: boolean;
-  lastInterruptionAt: number;
   // Coin & lifeline context
   coinsEarnedThisCase: number;
   mistakesThisCase: number;
   lifelineActive: boolean; // true = hint is currently showing
-  comboMilestoneHit: number; // last milestone combo reached (5,10,15,20), 0 if none
   vitality: number; // 0-100 (Health/Life)
   consecutiveErrors: number;
   lootBoxReward: { active: boolean; item: any } | null;
@@ -79,26 +84,19 @@ interface GameContext {
 
 type GameEvent =
   | { type: 'START_GUARD'; deck: Card[]; difficulty: string; pearl: EnarmPearl; isSandiaMode?: boolean }
+  | { type: 'RESUME_GUARD'; deck: Card[]; difficulty: string; pearl: EnarmPearl; snapshot: ResumeSnapshot }
   | { type: 'SWIPE'; direction: 'left' | 'right' }
   | { type: 'UNDO_SWIPE' }
-  | { type: 'TRIGGER_BOSS' }
   | { type: 'ANSWER_CORRECT' }
   | { type: 'ANSWER_WRONG'; error: string }
-  | { type: 'CLAIM' }
   | { type: 'RESTART' }
   | { type: 'TIME_OUT' }
-  | { type: 'TRIGGER_URGENCY' }
-  | { type: 'RESOLVE_URGENCY' }
-  | { type: 'CLEAR_VISUALS' }
   | { type: 'CLEAR_OVERLAYS' }
   | { type: 'VIEW_DEBRIEF' }
-  | { type: 'TRIGGER_INTERRUPTION' }
-  | { type: 'RESOLVE_INTERRUPTION' }
   | { type: 'USE_LIFELINE' }
   | { type: 'APPLY_REWARD_HEAL'; value: number }
   | { type: 'CONTINUE_SHIFT'; deck: Card[]; puzzle: any; isSandiaMode?: boolean } // deck of the NEXT case
-  | { type: 'RESCUE' }
-  | { type: 'CLEAR_MILESTONE' };
+  | { type: 'RESCUE' };
 
 export const gameMachine = setup({
   types: {
@@ -116,17 +114,12 @@ export const gameMachine = setup({
       combo: 0,
       multiplier: 1,
       warningCount: 0,
+      caseStreak: 0,
       lastCardPresentedAt: 0,
-      showEureka: false,
-      isUrgent: false,
-      showBloodVignette: false,
       debriefData: null,
-      interruptionActive: false,
-      lastInterruptionAt: 0,
       coinsEarnedThisCase: 0,
       mistakesThisCase: 0,
       lifelineActive: false,
-      comboMilestoneHit: 0,
       vitality: 100,
       consecutiveErrors: 0,
       lootBoxReward: null,
@@ -137,10 +130,6 @@ export const gameMachine = setup({
       isSandiaMode: false,
       undoCharges: 5,
       lastAction: null
-    }),
-    clearVisuals: assign({
-      showEureka: false,
-      showBloodVignette: false
     }),
     clearOverlays: assign({
       lootBoxReward: null,
@@ -227,32 +216,13 @@ export const gameMachine = setup({
         };
       }
 
-      // Tactical Dossier Combo Logic
-      let nextDossier = [...context.dossier];
-      let nextDiscarded = [...context.discarded];
-      let hasEureka = false;
-
+      // Dossier tracking (kept cards feed the dossier synergy multiplier & the boss room)
+      const nextDossier = [...context.dossier];
+      const nextDiscarded = [...context.discarded];
       if (event.direction === 'right') {
         nextDossier.push(card);
-        // Check if last 3 match category
-        if (nextDossier.length >= 3) {
-          const last3 = nextDossier.slice(-3);
-          if (last3.every(c => c.category === card.category)) {
-            hasEureka = true;
-          }
-        }
       } else {
         nextDiscarded.push(card);
-      }
-
-      // Check for interruption trigger (combo >= 5 y 8% chance para menos disrupción)
-      // Cambio: Combo >= 3 → 5, Chance 15% → 8% para mantener el flow del jugador
-      let shouldTriggerInterruption = false;
-      if (isCorrect && nextCombo >= 5 && Math.random() < 0.08) {
-        const timeSinceLastInterruption = Date.now() - context.lastInterruptionAt;
-        if (timeSinceLastInterruption > 45000) { // Increased cooldown from 30s to 45s
-          shouldTriggerInterruption = true;
-        }
       }
 
       // Random Probabilistic Events (Lab, Archive, Systemic) - 5% chance if answering correctly
@@ -268,10 +238,8 @@ export const gameMachine = setup({
         }
       }
 
-      const milestoneHit = (COMBO_MILESTONES as readonly number[]).includes(nextCombo) ? nextCombo : 0;
-
       // Calculate feedback for history
-      const feedbackText = cleanVazquezComment(card.scoring?.vazquez_comment, isCorrect);
+      const feedbackText = cleanVazquezComment(card.scoring?.vazquez_comment, isCorrect, card);
       const newHistoryItem = {
         cardId: card.card_id,
         cardText: card.card_text,
@@ -293,15 +261,11 @@ export const gameMachine = setup({
         score: Math.max(0, context.score + (context.isSandiaMode ? Math.floor(scoreBreakdown.finalPoints * 0.5) : scoreBreakdown.finalPoints)),
         dossier: nextDossier,
         discarded: nextDiscarded,
-        showEureka: hasEureka,
         currentCardIndex: context.currentCardIndex + 1,
         lastCardPresentedAt: Date.now(),
-        interruptionActive: shouldTriggerInterruption,
-        lastInterruptionAt: shouldTriggerInterruption ? Date.now() : context.lastInterruptionAt,
         coinsEarnedThisCase: context.coinsEarnedThisCase + (context.isSandiaMode ? Math.floor(scoreBreakdown.coinsEarned * 0.5) : scoreBreakdown.coinsEarned),
         mistakesThisCase: isCorrect ? context.mistakesThisCase : context.mistakesThisCase + 1,
         lifelineActive: false, // Reset lifeline after swipe
-        comboMilestoneHit: milestoneHit,
         lastVitals: nextVitals,
         feedbackHistory: [...context.feedbackHistory, newHistoryItem],
         lastAction: lastActionState
@@ -324,16 +288,10 @@ export const gameMachine = setup({
     warningCount: 0,
     caseStreak: 0,
     lastCardPresentedAt: 0,
-    showEureka: false,
-    isUrgent: false,
-    showBloodVignette: false,
     debriefData: null,
-    interruptionActive: false,
-    lastInterruptionAt: 0,
     coinsEarnedThisCase: 0,
     mistakesThisCase: 0,
     lifelineActive: false,
-    comboMilestoneHit: 0,
     vitality: 100,
     consecutiveErrors: 0,
     activePenalty: null,
@@ -362,23 +320,18 @@ export const gameMachine = setup({
             score: 0,
             combo: 0,
             multiplier: 1,
+            caseStreak: 0,
             difficulty: ({ event }) => event.difficulty,
             lastCardPresentedAt: Date.now(),
-            showEureka: false,
-            isUrgent: false,
-            showBloodVignette: false,
             debriefData: ({ event }) => ({
               title: event.pearl?.title || "Repaso Clínico",
               text: event.pearl?.text || "",
               gpc: event.pearl?.gpc_ref || "GPC en vigor",
               comment: ""
             }),
-            interruptionActive: false,
-            lastInterruptionAt: 0,
             coinsEarnedThisCase: 0,
             mistakesThisCase: 0,
             lifelineActive: false,
-            comboMilestoneHit: 0,
             vitality: 100,
             lootBoxReward: null,
             feedbackHistory: [],
@@ -387,15 +340,51 @@ export const gameMachine = setup({
             lives: 5,
             isSandiaMode: ({ event }) => event.type === 'START_GUARD' ? !!event.isSandiaMode : false
           })
+        },
+        RESUME_GUARD: {
+          target: 'triage',
+          actions: assign({
+            deck: ({ event }) => event.deck,
+            dossier: [],
+            discarded: [],
+            // Restore the persisted per-case progress (vitality/lives are not
+            // persisted: a resumed case restarts with full vitality, but keeps
+            // its card position, score, combo and coins).
+            currentCardIndex: ({ event }) => event.snapshot.currentCardIndex,
+            score: ({ event }) => event.snapshot.score,
+            combo: ({ event }) => event.snapshot.combo,
+            multiplier: ({ event }) => event.snapshot.multiplier,
+            caseStreak: ({ event }) => event.snapshot.caseStreak,
+            coinsEarnedThisCase: ({ event }) => event.snapshot.coinsEarnedThisCase,
+            mistakesThisCase: ({ event }) => event.snapshot.mistakesThisCase,
+            warningCount: ({ event }) => event.snapshot.warningCount,
+            fatalError: null,
+            difficulty: ({ event }) => event.difficulty,
+            lastCardPresentedAt: Date.now(),
+            debriefData: ({ event }) => ({
+              title: event.pearl?.title || "Repaso Clínico",
+              text: event.pearl?.text || "",
+              gpc: event.pearl?.gpc_ref || "GPC en vigor",
+              comment: ""
+            }),
+            lifelineActive: false,
+            vitality: 100,
+            lootBoxReward: null,
+            activePenalty: null,
+            activeEvent: null,
+            feedbackHistory: [],
+            totalCasesInShift: 1, // resumed sessions run a single case
+            casesCompleted: 0,
+            lives: 5,
+            isSandiaMode: false,
+            undoCharges: 5,
+            lastAction: null
+          })
         }
       }
     },
     triage: {
       always: [
-        {
-          target: 'interruption_active',
-          guard: ({ context }) => context.interruptionActive
-        },
         {
           target: 'fail_protection',
           guard: ({ context }) => context.vitality <= 0,
@@ -439,56 +428,14 @@ export const gameMachine = setup({
             fatalError: () => "Tiempo agotado. El paciente se desestabilizó.",
           })
         },
-        TRIGGER_URGENCY: {
-          target: 'urgent_triage'
-        },
-        CLEAR_VISUALS: {
-          actions: 'clearVisuals'
-        },
         CLEAR_OVERLAYS: {
           actions: 'clearOverlays'
         },
+        APPLY_REWARD_HEAL: {
+          actions: 'applyRewardHeal'
+        },
         USE_LIFELINE: {
           actions: assign({ lifelineActive: true })
-        },
-        CLEAR_MILESTONE: {
-          actions: assign({ comboMilestoneHit: 0 })
-        }
-      }
-    },
-    critical_warning: {
-      on: {
-        CLEAR_VISUALS: { actions: assign({ showBloodVignette: false }) }
-      },
-      after: {
-        3000: { target: 'triage', actions: assign({ showBloodVignette: false }) }
-      }
-    },
-    interruption_active: {
-      entry: assign({ showBloodVignette: false }),
-      on: {
-        RESOLVE_INTERRUPTION: {
-          target: 'triage',
-          actions: assign({ interruptionActive: false })
-        }
-      },
-      after: {
-        2000: {
-          target: 'triage',
-          actions: assign({ interruptionActive: false })
-        }
-      }
-    },
-    urgent_triage: {
-      entry: assign({ isUrgent: true, lastCardPresentedAt: Date.now() }),
-      on: {
-        SWIPE: {
-          target: 'triage',
-          actions: ['handleCardSwipe', assign({ isUrgent: false })]
-        },
-        TIME_OUT: {
-          target: 'fail_protection',
-          actions: assign({ fatalError: () => "Código Rojo Fallido: El paciente no resistió." })
         }
       }
     },
@@ -519,18 +466,7 @@ export const gameMachine = setup({
       }
     },
     reward: {
-      on: { 
-        CLAIM: [
-          {
-            guard: ({ context }) => context.casesCompleted + 1 < context.totalCasesInShift,
-            target: 'triage',
-            actions: assign({
-              casesCompleted: ({ context }) => context.casesCompleted + 1,
-              // We'll need to inject the new deck here or wait for CONTINUE_SHIFT
-            })
-          },
-          { target: 'idle', actions: ['resetGame'] }
-        ],
+      on: {
         CONTINUE_SHIFT: {
           target: 'triage',
           actions: assign({
@@ -556,16 +492,16 @@ export const gameMachine = setup({
             multiplier: 1,
             consecutiveErrors: 0,
             dossier: [],
+            discarded: [],
             undoCharges: 5,
             lootBoxReward: null,
             activePenalty: null,
             activeEvent: null,
             lastVitals: null,
-            lifelineActive: false,
-            comboMilestoneHit: 0
+            lifelineActive: false
           })
         },
-        RESTART: { target: 'idle', actions: ['resetGame'] } 
+        RESTART: { target: 'idle', actions: ['resetGame'] }
       }
     },
     fail_protection: {
@@ -589,9 +525,9 @@ export const gameMachine = setup({
       }
     },
     ghosted: {
-      on: { 
+      on: {
         VIEW_DEBRIEF: { target: 'debrief' },
-        RESTART: { target: 'idle', actions: ['resetGame'] } 
+        RESTART: { target: 'idle', actions: ['resetGame'] }
       }
     },
     debrief: {

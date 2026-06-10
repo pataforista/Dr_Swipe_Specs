@@ -18,7 +18,7 @@
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🧹 DESCARTE RECOMENDADO: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
@@ -47,7 +47,7 @@
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! El ST elevado marca la pauta de tratamiento invasivo inmediato."
+        "vazquez_comment": "🧹 DESCARTE RECOMENDADO: ¡Bien! El ST elevado marca la pauta de tratamiento invasivo inmediato."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -113,7 +113,7 @@
       {
         "question": "¿Por qué IAMCEST anterior es más grave que inferior?",
         "options": [
-          "Afecta ventriculo izquierdo grande â†’ mayor riesgo de choque",
+          "Afecta ventriculo izquierdo grande → mayor riesgo de choque",
           "Siempre requiere cirugía",
           "Es menos grave, es confusión"
         ],
@@ -123,7 +123,7 @@
   },
   "enarm_pearl": {
     "title": "IAMCEST Anterior: Urgencia Maximal",
-    "text": "V1-V4 elevado = VI â†’ Choque cardiogénico probable. Puerta-Aguja <30min. Puerta-Balón <90min. Si >120min: FIBRINOLIZAR.",
+    "text": "V1-V4 elevado = VI → Choque cardiogénico probable. Puerta-Aguja <30min. Puerta-Balón <90min. Si >120min: FIBRINOLIZAR.",
     "gpc_ref": "GPC Diagnóstico y Tratamiento del Infarto Agudo de Miocardio"
   }
 }

@@ -25,19 +25,28 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
   const { playSwipe } = useGameAudio();
   const topX = useMotionValue(0);
   const topCardRef = React.useRef<DraggableCardHandle>(null);
+  // Blocks inputs while the exit animation runs (~250ms). Without it, a double
+  // tap or a held arrow key in auto-repeat dispatches a second swipe that the
+  // machine applies to the NEXT card, deciding it sight-unseen.
+  const isAnimatingRef = React.useRef(false);
 
   // Take current + 2 more for the stack
   const visibleCards = cards.slice(currentIndex, currentIndex + 3).reverse();
 
-  const handleActionSwipe = async (direction: 'left' | 'right') => {
-    if (isLocked || visibleCards.length === 0) return;
-    if (topCardRef.current) {
-      await topCardRef.current.swipeOut(direction);
-    } else {
-      playSwipe(direction);
-      onSwipe(direction);
+  const handleActionSwipe = React.useCallback(async (direction: 'left' | 'right') => {
+    if (isLocked || isAnimatingRef.current || currentIndex >= cards.length) return;
+    isAnimatingRef.current = true;
+    try {
+      if (topCardRef.current) {
+        await topCardRef.current.swipeOut(direction);
+      } else {
+        playSwipe(direction);
+        onSwipe(direction);
+      }
+    } finally {
+      isAnimatingRef.current = false;
     }
-  };
+  }, [isLocked, onSwipe, playSwipe, currentIndex, cards.length]);
 
   // Keyboard support (ArrowLeft / ArrowRight)
   useEffect(() => {
@@ -48,7 +57,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, [isLocked, onSwipe]);
+  }, [isLocked, handleActionSwipe]);
 
   return (
     <div className="flex flex-col items-center w-full max-w-sm mx-auto gap-4 sm:gap-8 px-2 sm:px-3 relative overflow-hidden">

@@ -1,95 +1,95 @@
 {
-    "case_id":  "PROC_SURG_ATLS_TENSION_PNEUMO_001_011",
-    "version":  "v3_swipe_action",
-    "theme_config":  "surg",
-    "difficulty":  "hard",
-    "patient_intro":  {
-                          "name":  "José, 34 años",
-                          "arrival_scenario":  "Masculino de 30 años tras accidente automovilístico. Presenta dificultad respiratoria severa y desviación traqueal. A la exploración: Ingurgitación yugular, ausencia de ruidos respiratorios a la derecha y timpanismo a la percusión.",
-                          "time_limit_sec":  50
-                      },
-    "card_stream":  [
-                        {
-                            "card_id":  "init_vitals",
-                            "ui_icon":  "heartbeat",
-                            "category":  "Signos Vitales",
-                            "card_text":  "Hallazgo clínico: Ruido en el expediente: TA 80/40 mmHg, FC 130 lpm, Temp 36.2°C",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de choque obstructivo, R1. El reloj no se detiene."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_1",
-                            "ui_icon":  "target",
-                            "category":  "Diagnóstico",
-                            "card_text":  "Evidencia: A) Descompresión con aguja hoy (5° espacio): ATLS 10ª Edición: El sitio recomendado de descompresión es el 5° espacio intercostal, línea axilar anterior/media.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "lethal_omission",
-                                            "vazquez_comment":  "¡Excelente! Te actualizaste al ATLS 10ª. La descompresión en el 5° espacio es ahora el estándar."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  true,
-                                                 "decision_critical":  true,
-                                                 "lethal_if_discarded":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_2",
-                            "ui_icon":  "eye",
-                            "category":  "Diagnóstico",
-                            "card_text":  "Evidencia clínica: Ruido en el expediente: B) Punción en 2° espacio intercostal: Sitio recomendado en guías anteriores (ATLS 9ª y normas mexicanas viejas).",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: ¡Bien! Reconociste que el 2° espacio ya no es el sitio preferido en las guías más recientes."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  false
-                                             }
-                        }
-                    ],
-    "enarm_pearl":  {
-                        "title":  "ATLS 10ª: Neumotórax a Tensión",
-                        "text":  "Cambio Crítico: La descompresión inmediata se realiza en el 5° espacio intercostal, línea axilar anterior o media (mismo sitio del tubo de tórax).",
-                        "gpc_ref":  "Manual ATLS 10ª Edición"
-                    },
-    "boss_fight_triad":  {
-                             "trigger":  "after_cards",
-                             "questions":  [
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Cuál es el sitio de punción preferido actual según ATLS 10a Edición?",
-                                                   "options":  [
-                                                                   "5° espacio intercostal (LAA/LAM)",
-                                                                   "2° espacio intercostal (LMC)",
-                                                                   "4° espacio intercostal (LAA)"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Qué tipo de choque presenta este paciente?",
-                                                   "options":  [
-                                                                   "Choque obstructivo",
-                                                                   "Choque hipovolémico",
-                                                                   "Choque distributivo"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Qué hallazgo a la percusión diferencia un neumotórax de un hemotórax masivo?",
-                                                   "options":  [
-                                                                   "Hiperresonancia vs Matidez",
-                                                                   "Desviación traqueal vs Crepitación",
-                                                                   "Dolor pleurítico vs IVY"
-                                                               ]
-                                               }
-                                           ]
-                         }
+  "case_id": "PROC_SURG_ATLS_TENSION_PNEUMO_001_011",
+  "version": "v3_swipe_action",
+  "theme_config": "surg",
+  "difficulty": "hard",
+  "patient_intro": {
+    "name": "José, 34 años",
+    "arrival_scenario": "Masculino de 30 años tras accidente automovilístico. Presenta dificultad respiratoria severa y desviación traqueal. A la exploración: Ingurgitación yugular, ausencia de ruidos respiratorios a la derecha y timpanismo a la percusión.",
+    "time_limit_sec": 50
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "vitals",
+      "card_text": "Hallazgo clínico: Ruido en el expediente: TA 80/40 mmHg, FC 130 lpm, Temp 36.2°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "No te detengas en estos signos de choque obstructivo, R1. El reloj no se detiene."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "Evidencia: A) Descompresión con aguja hoy (5° espacio): ATLS 10ª Edición: El sitio recomendado de descompresión es el 5° espacio intercostal, línea axilar anterior/media.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "¡Excelente! Te actualizaste al ATLS 10ª. La descompresión en el 5° espacio es ahora el estándar."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true,
+        "lethal_if_discarded": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "Evidencia clínica: Ruido en el expediente: B) Punción en 2° espacio intercostal: Sitio recomendado en guías anteriores (ATLS 9ª y normas mexicanas viejas).",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "🧹 DESCARTE RECOMENDADO: ¡Bien! Reconociste que el 2° espacio ya no es el sitio preferido en las guías más recientes."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
+    }
+  ],
+  "enarm_pearl": {
+    "title": "ATLS 10ª: Neumotórax a Tensión",
+    "text": "Cambio Crítico: La descompresión inmediata se realiza en el 5° espacio intercostal, línea axilar anterior o media (mismo sitio del tubo de tórax).",
+    "gpc_ref": "Manual ATLS 10ª Edición"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "correct_index": 0,
+        "question": "¿Cuál es el sitio de punción preferido actual según ATLS 10a Edición?",
+        "options": [
+          "5° espacio intercostal (LAA/LAM)",
+          "2° espacio intercostal (LMC)",
+          "4° espacio intercostal (LAA)"
+        ]
+      },
+      {
+        "correct_index": 0,
+        "question": "¿Qué tipo de choque presenta este paciente?",
+        "options": [
+          "Choque obstructivo",
+          "Choque hipovolémico",
+          "Choque distributivo"
+        ]
+      },
+      {
+        "correct_index": 0,
+        "question": "¿Qué hallazgo a la percusión diferencia un neumotórax de un hemotórax masivo?",
+        "options": [
+          "Hiperresonancia vs Matidez",
+          "Desviación traqueal vs Crepitación",
+          "Dolor pleurítico vs IVY"
+        ]
+      }
+    ]
+  }
 }

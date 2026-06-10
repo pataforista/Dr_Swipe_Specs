@@ -1,198 +1,198 @@
 {
-    "case_id":  "PROC_PED_EXANT_MEASLES_001_005",
-    "version":  "v3_swipe_action",
-    "theme_config":  "ped",
-    "difficulty":  "standard",
-    "patient_intro":  {
-                          "name":  "Luis, 7 años",
-                          "arrival_scenario":  "Niño con fiebre alta, tos, coriza y conjuntivitis (triple catarro). Aparecen manchas de Koplik en la boca seguidas de un exantema maculopapular morbiliforme cefalocaudal que tiende a la confluencia.",
-                          "time_limit_sec":  60
-                      },
-    "card_stream":  [
-                        {
-                            "card_id":  "init_vitals",
-                            "ui_icon":  "heartbeat",
-                            "category":  "Signos Vitales",
-                            "card_text":  "Hallazgo clínico: Ruido en el expediente: TA N/A, FC 120 lpm, Temp 39.5°C",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_1",
-                            "ui_icon":  "target",
-                            "category":  "Diagnóstico",
-                            "card_text":  "Hallazgo: A) Sarampión: Virus del Sarampión. Triada: Tos, coriza, conjuntivitis + Manchas de Koplik patognomónicas.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Excelente! El \u0027triple catarro\u0027 y las manchas de Koplik son oro puro en el ENARM para Sarampión."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_2",
-                            "ui_icon":  "eye",
-                            "category":  "Diagnóstico",
-                            "card_text":  "Información redundante: B) Rubéola: Exantema menos confluente, adenopatías retroauriculares dolorosas y manchas de Forchheimer.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Diferenciaste el cuadro severo del sarampión del más leve de la rubéola."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  false
-                                             }
-                        },
-                        {
-                            "card_id":  "c_3",
-                            "ui_icon":  "eye",
-                            "category":  "Diagnóstico",
-                            "card_text":  "Evidencia clínica: Dato anecdótico: C) Escarlatina: S. pyogenes. Lengua en fresa, líneas de Pastia y fascies de Filatov. Exantema en lija.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Castillo: Correcto. El cuadro respiratorio prodrómico es típico de virus, no de bacterias como el pyogenes."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  false
-                                             }
-                        },
-                        {
-                            "card_id":  "c_4",
-                            "ui_icon":  "search",
-                            "category":  "Signos Patognomónicos",
-                            "card_text":  "Evidencia: D) Manchas de Koplik: Puntos blancos en mucosa yugal previos al exantema.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Exacto! Si ves Koplik, es Sarampión hasta no demostrar lo contrario."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_5",
-                            "ui_icon":  "beaker",
-                            "category":  "Tratamiento",
-                            "card_text":  "Hallazgo: E) Vitamina A: Administración inmediata para prevenir complicaciones como neumonía.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "lethal_omission",
-                                            "vazquez_comment":  "Castillo: Muy bien. La Vitamina A salva vidas en el contexto de Sarampión."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  true,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_6",
-                            "ui_icon":  "shield",
-                            "category":  "Salud Pública",
-                            "card_text":  "Hallazgo: F) Notificación Inmediata a Epidemiología: Reporte obligatorio por riesgo de brote.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: Correcto. Como médico R1, tu responsabilidad social es alertar a las autoridades."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_7",
-                            "ui_icon":  "beaker",
-                            "category":  "Etiología",
-                            "card_text":  "Hallazgo clínico: G) Virus del Sarampión (Paramixovirus): Virus de ARN de cadena negativa, altamente contagioso vía aerosoles.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Bien! Es importante conocer a tu enemigo a nivel molecular."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_8",
-                            "ui_icon":  "volume-2",
-                            "category":  "Complicación",
-                            "card_text":  "Hallazgo: H) Otitis Media Aguda: Complicación más frecuente del sarampión en niños.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: Así es. Muchos piensan en neumonía por ser la más letal, pero la otitis es la más común."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_9",
-                            "ui_icon":  "brain",
-                            "category":  "Complicación Tardía",
-                            "card_text":  "Hallazgo: I) Panencefalitis Esclerosante Subaguda (PEES): Degeneración progresiva del SNC que ocurre años después del cuadro agudo.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Nivel experto! Una complicación rara pero devastadora que justifica la vacunación masiva."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_10",
-                            "ui_icon":  "alert-triangle",
-                            "category":  "Aislamiento",
-                            "card_text":  "Hallazgo: J) Reglas de Aislamiento: El paciente debe permanecer aislado desde el inicio de la fiebre hasta 4-5 días DESPUÃ‰S del inicio del exantema.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Correcto! Es vital para prevenir brotes en guarderías y salas de espera."
-                                        }
-                        }
-                    ],
-    "enarm_pearl":  {
-                        "title":  "Sarampión: Vitamina A",
-                        "text":  "Tratamiento Clave: A TODO niño con sarampión se le debe administrar VITAMINA A para reducir complicaciones y mortalidad.",
-                        "gpc_ref":  "GPC Prevención, Diagnóstico y Tratamiento del Sarampión"
-                    },
-    "boss_fight_triad":  {
-                             "trigger":  "after_cards",
-                             "questions":  [
-                                               {
-                                                   "question":  "¿Cuál es la complicación más frecuente del sarampión?",
-                                                   "options":  [
-                                                                   "Otitis media aguda",
-                                                                   "Panencefalitis esclerosante subaguda",
-                                                                   "Crup"
-                                                               ],
-                                                   "correct_index":  0
-                                               },
-                                               {
-                                                   "question":  "¿En qué periodo es contagioso el paciente?",
-                                                   "options":  [
-                                                                   "Desde el pródromo hasta 4-5 días tras inicio de exantema",
-                                                                   "Solo cuando tiene fiebre alta",
-                                                                   "Durante toda la vida"
-                                                               ],
-                                                   "correct_index":  0
-                                               },
-                                               {
-                                                   "question":  "¿Cuál es la causa más común de MUERTE por sarampión?",
-                                                   "options":  [
-                                                                   "Neumonía",
-                                                                   "Encefalitis",
-                                                                   "Deshidratación"
-                                                               ],
-                                                   "correct_index":  0
-                                               }
-                                           ]
-                         }
+    "case_id": "PROC_PED_EXANT_MEASLES_001_005",
+    "version": "v3_swipe_action",
+    "theme_config": "ped",
+    "difficulty": "standard",
+    "patient_intro": {
+        "name": "Luis, 7 años",
+        "arrival_scenario": "Niño con fiebre alta, tos, coriza y conjuntivitis (triple catarro). Aparecen manchas de Koplik en la boca seguidas de un exantema maculopapular morbiliforme cefalocaudal que tiende a la confluencia.",
+        "time_limit_sec": 60
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA N/A, FC 120 lpm, Temp 39.5°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "meds",
+            "card_text": "A) Sarampión: Virus del Sarampión. Triada: Tos, coriza, conjuntivitis + Manchas de Koplik patognomónicas.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Excelente! El 'triple catarro' y las manchas de Koplik son oro puro en el ENARM para Sarampión."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "Diagnóstico",
+            "card_text": "B) Rubéola: Exantema menos confluente, adenopatías retroauriculares dolorosas y manchas de Forchheimer.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: ¡Bien! Diferenciaste el cuadro severo del sarampión del más leve de la rubéola."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "eye",
+            "category": "Diagnóstico",
+            "card_text": "C) Escarlatina: S. pyogenes. Lengua en fresa, líneas de Pastia y fascies de Filatov. Exantema en lija.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Correcto. El cuadro respiratorio prodrómico es típico de virus, no de bacterias como el pyogenes."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "c_4",
+            "ui_icon": "search",
+            "category": "Signos Patognomónicos",
+            "card_text": "D) Manchas de Koplik: Puntos blancos en mucosa yugal previos al exantema.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Exacto! Si ves Koplik, es Sarampión hasta no demostrar lo contrario."
+            }
+        },
+        {
+            "card_id": "c_6",
+            "ui_icon": "shield",
+            "category": "Salud Pública",
+            "card_text": "F) Notificación Inmediata a Epidemiología: Reporte obligatorio por riesgo de brote.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: Correcto. Como médico R1, tu responsabilidad social es alertar a las autoridades."
+            }
+        },
+        {
+            "card_id": "c_7",
+            "ui_icon": "beaker",
+            "category": "meds",
+            "card_text": "G) Virus del Sarampión (Paramixovirus): Virus de ARN de cadena negativa, altamente contagioso vía aerosoles.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Bien! Es importante conocer a tu enemigo a nivel molecular."
+            }
+        },
+        {
+            "card_id": "c_8",
+            "ui_icon": "volume-2",
+            "category": "Complicación",
+            "card_text": "H) Otitis Media Aguda: Complicación más frecuente del sarampión en niños.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: Así es. Muchos piensan en neumonía por ser la más letal, pero la otitis es la más común."
+            }
+        },
+        {
+            "card_id": "c_9",
+            "ui_icon": "brain",
+            "category": "meds",
+            "card_text": "I) Panencefalitis Esclerosante Subaguda (PEES): Degeneración progresiva del SNC que ocurre años después del cuadro agudo.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Nivel experto! Una complicación rara pero devastadora que justifica la vacunación masiva."
+            }
+        },
+        {
+            "card_id": "c_10",
+            "ui_icon": "alert-triangle",
+            "category": "Aislamiento",
+            "card_text": "J) Reglas de Aislamiento: El paciente debe permanecer aislado desde el inicio de la fiebre hasta 4-5 días DESPUÉS del inicio del exantema.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Correcto! Es vital para prevenir brotes en guarderías y salas de espera."
+            }
+        },
+        {
+            "card_id": "c_5",
+            "ui_icon": "beaker",
+            "category": "meds",
+            "card_text": "E) Vitamina A: Administración inmediata para prevenir complicaciones como neumonía.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Castillo: Muy bien. La Vitamina A salva vidas en el contexto de Sarampión."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Sarampión: Vitamina A",
+        "text": "Tratamiento Clave: A TODO niño con sarampión se le debe administrar VITAMINA A para reducir complicaciones y mortalidad.",
+        "gpc_ref": "GPC Prevención, Diagnóstico y Tratamiento del Sarampión"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "question": "¿Cuál es la causa más común de MUERTE por sarampión?",
+                "options": [
+                    "Neumonía",
+                    "Deshidratación",
+                    "Encefalitis"
+                ],
+                "correct_index": 0
+            },
+            {
+                "question": "De las siguientes opciones, ¿cuál es la complicación más frecuente del sarampión?",
+                "options": [
+                    "Crup",
+                    "Otitis media aguda",
+                    "Panencefalitis esclerosante subaguda"
+                ],
+                "correct_index": 1
+            },
+            {
+                "question": "¿En qué periodo es contagioso el paciente?",
+                "options": [
+                    "Solo cuando tiene fiebre alta",
+                    "Desde el pródromo hasta 4-5 días tras inicio de exantema",
+                    "Durante toda la vida"
+                ],
+                "correct_index": 1
+            }
+        ]
+    }
 }

@@ -12,13 +12,13 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
+      "category": "vitals",
       "card_text": "Evidencia clínica: Dato anecdótico: TA 100/65, FC 120 lpm, Temp 39.5°C",
-      "expected_action": "keep",
+      "expected_action": "discard",
       "scoring": {
         "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+        "error_type": "hoarding",
+        "vazquez_comment": "No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
       }
     },
     {
@@ -46,7 +46,7 @@
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien hecho! La ictericia marcada nos indica que el problema está en la vía biliar principal (coledocolitiasis/colangitis)."
+        "vazquez_comment": "¡Bien hecho! La ictericia marcada nos indica que el problema está en la vía biliar principal (coledocolitiasis/colangitis)."
       }
     },
     {
@@ -58,7 +58,7 @@
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Correcto. En la hepatitis no suele haber dolor abdominal tan intenso ni leucocitosis importante."
+        "vazquez_comment": "Correcto. En la hepatitis no suele haber dolor abdominal tan intenso ni leucocitosis importante."
       }
     },
     {
@@ -153,29 +153,29 @@
       {
         "question": "¿Qué par de hallazgos adicionales transforman la tríada de Charcot en la péntada de Reynolds?",
         "options": [
+          "Bradicardia e hipotermia",
           "Hipotensión arterial y alteración del estado mental",
-          "Diarrea y vómitos profusos",
-          "Bradicardia e hipotermia"
+          "Diarrea y vómitos profusos"
         ],
-        "correct_index": 0
+        "correct_index": 1
       },
       {
-        "question": "¿Cuál es el procedimiento diagnóstico y terapéutico de elección en la colangitis aguda?",
+        "question": "Con respecto a la patología, ¿cuál es el procedimiento diagnóstico y terapéutico de elección en la colangitis aguda?",
         "options": [
           "CPRE (Colangiopancreatografía Retrógrada Endoscópica)",
-          "Colecistectomía laparoscópica de urgencia",
-          "Gammagrafía HIDA"
+          "Gammagrafía HIDA",
+          "Colecistectomía laparoscópica de urgencia"
         ],
         "correct_index": 0
       },
       {
         "question": "¿Cuál es el germen más frecuentemente aislado en esta patología?",
         "options": [
-          "Escherichia coli",
           "Staphylococcus aureus",
+          "Escherichia coli",
           "Bacteroides fragilis"
         ],
-        "correct_index": 0
+        "correct_index": 1
       }
     ]
   }

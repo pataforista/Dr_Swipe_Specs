@@ -18,7 +18,7 @@
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en signos estables, R1. El reloj no se detiene."
+        "vazquez_comment": "🧹 DESCARTE RECOMENDADO: No te detengas en signos estables, R1. El reloj no se detiene."
       }
     },
     {
@@ -47,7 +47,7 @@
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! El ST elevado marca la pauta de tratamiento invasivo inmediato."
+        "vazquez_comment": "🧹 DESCARTE RECOMENDADO: ¡Bien! El ST elevado marca la pauta de tratamiento invasivo inmediato."
       },
       "safety_flags": {
         "lethal_risk": false,
@@ -58,7 +58,7 @@
       "card_id": "c_3",
       "ui_icon": "target",
       "category": "Tratamiento",
-      "card_text": "Dato de importancia: C) Ãcido Acetilsalicílico 300mg + Ticagrelor 180mg: Carga dual de antiagregantes. Debe administrarse ANTES de la fibrinolisis.",
+      "card_text": "Dato de importancia: C) Ácido Acetilsalicílico 300mg + Ticagrelor 180mg: Carga dual de antiagregantes. Debe administrarse ANTES de la fibrinolisis.",
       "expected_action": "keep",
       "scoring": {
         "points": 150,
@@ -93,7 +93,7 @@
     "trigger": "after_cards",
     "questions": [
       {
-        "question": "¿Cuál es el TIEMPO MÃXIMO puerta-aguja para fibrinolisis en IAMCEST?",
+        "question": "¿Cuál es el TIEMPO MAXIMO puerta-aguja para fibrinolisis en IAMCEST?",
         "options": [
           "30 minutos",
           "60 minutos",
@@ -102,10 +102,10 @@
         "correct_index": 0
       },
       {
-        "question": "¿Qué indica ELEVACIÃ“N de ST nuevamente 30 min post-fibrinolisis?",
+        "question": "¿Qué indica ELEVACIÓN de ST nuevamente 30 min post-fibrinolisis?",
         "options": [
-          "Ã‰xito del tratamiento",
-          "Reoclusión del vaso â†’ Rescate ICP",
+          "Éxito del tratamiento",
+          "Reoclusión del vaso → Rescate ICP",
           "Arritmia reperfusión"
         ],
         "correct_index": 1
@@ -113,9 +113,9 @@
       {
         "question": "¿En qué orden se dan: ASA, Ticagrelor, y Fibrinolítico?",
         "options": [
-          "Fibrinolítico â†’ ASA â†’ Ticagrelor",
-          "ASA + Ticagrelor â†’ Fibrinolítico",
-          "Ticagrelor â†’ Fibrinolítico â†’ ASA"
+          "Fibrinolítico → ASA → Ticagrelor",
+          "ASA + Ticagrelor → Fibrinolítico",
+          "Ticagrelor → Fibrinolítico → ASA"
         ],
         "correct_index": 1
       }

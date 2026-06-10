@@ -15,6 +15,10 @@ export const dataLoader = {
     const response = await fetch(`${import.meta.env.BASE_URL}cases/CASE_${safeId}.json`);
     if (response.status === 404) throw new Error(`Case not found: ${caseId}`);
     if (!response.ok) throw new Error(`Failed to load case: ${response.status} - ${caseId}`);
+    // The SPA fallback (_redirects) answers missing files with index.html and a
+    // 200 status, so a non-JSON content-type is really a "case not found".
+    const contentType = response.headers.get('content-type') ?? '';
+    if (!contentType.includes('json')) throw new Error(`Case not found (SPA fallback): ${caseId}`);
 
     const raw = await response.json();
     const result = ClinicalCaseSchema.safeParse(raw);
@@ -54,6 +58,31 @@ export const dataLoader = {
     const finalId = filtered[Math.floor(Math.random() * filtered.length)];
 
     return await dataLoader.loadCase(finalId);
+  },
+
+  /**
+   * Load `count` random cases in parallel, sampling WITHOUT replacement so a
+   * shift never repeats the same patient.
+   */
+  loadRandomCases: async (count: number, specialty: string = 'all'): Promise<ClinicalCase[]> => {
+    const indexResponse = await fetch(`${import.meta.env.BASE_URL}cases/case_index.json`);
+    if (!indexResponse.ok) throw new Error('Failed to load case index');
+    let index: string[] = await indexResponse.json();
+
+    if (specialty !== 'all') {
+      index = index.filter(id => id.toLowerCase().includes(specialty.toLowerCase()));
+    }
+    if (index.length === 0) throw new Error(`No cases found for specialty: ${specialty}`);
+
+    // Partial Fisher-Yates: shuffle just the first `count` slots
+    const pool = [...index];
+    const n = Math.min(count, pool.length);
+    for (let i = 0; i < n; i++) {
+      const j = i + Math.floor(Math.random() * (pool.length - i));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+
+    return await Promise.all(pool.slice(0, n).map(id => dataLoader.loadCase(id)));
   },
 
   /**

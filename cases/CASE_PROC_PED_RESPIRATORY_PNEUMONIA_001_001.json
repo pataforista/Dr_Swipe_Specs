@@ -12,13 +12,13 @@
     {
       "card_id": "init_vitals",
       "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
-      "card_text": "Informacion redundante: FC 130 lpm, FR 45 rpm (Taquipnea), Temp 39.2°C, SatO2 91%.",
-      "expected_action": "keep",
+      "category": "vitals",
+      "card_text": "FC 130 lpm, FR 45 rpm (Taquipnea), Temp 39.2°C, SatO2 91%.",
+      "expected_action": "discard",
       "scoring": {
         "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Cuidado con esa saturacion! Valentina necesita atencion inmediata."
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: ¡Cuidado con esa saturacion! Valentina necesita atencion inmediata."
       }
     },
     {
@@ -47,38 +47,6 @@
         "points": 100,
         "error_type": "omission",
         "vazquez_comment": "Navarro: ¡Pneumococo es el rey! Siempre hay que cubrirlo."
-      }
-    },
-    {
-      "card_id": "c_3",
-      "ui_icon": "pill",
-      "category": "Tratamiento Ambulatorio",
-      "card_text": "Dato de importancia: C) Amoxicilina (Altas dosis): 80-90 mg/kg/dia por 7-10 dias. Tratamiento de primera eleccion para NAC no complicada.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Navarro: ¡Excelente! Superas la resistencia parcial del neumococo con dosis altas de amoxi."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
-      }
-    },
-    {
-      "card_id": "c_4",
-      "ui_icon": "alert-triangle",
-      "category": "Criterios Ingreso",
-      "card_text": "Evidencia clinica: D) SatO2 <92% (Aire ambiente): Indicacion absoluta de ingreso hospitalario para oxigenoterapia y manejo IV.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Navarro: ¡Vital! Una hipoxemia no tratada puede llevar a falla respiratoria rapida."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
       }
     },
     {
@@ -138,7 +106,7 @@
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡No! Los antitusigenos estan contraindicados en ninos pequenos; pueden inhibir la eliminacion de secreciones."
+        "vazquez_comment": "Navarro: ¡No! Los antitusigenos estan contraindicados en ninos pequenos; pueden inhibir la eliminacion de secreciones."
       }
     },
     {
@@ -152,6 +120,38 @@
         "error_type": "omission",
         "vazquez_comment": "Navarro: Correcto. Si el nino esta vacunado, no necesitamos cefalosporinas de 3ra generacion de entrada."
       }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "pill",
+      "category": "Tratamiento Ambulatorio",
+      "card_text": "Dato de importancia: C) Amoxicilina (Altas dosis): 80-90 mg/kg/dia por 7-10 dias. Tratamiento de primera eleccion para NAC no complicada.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Excelente! Superas la resistencia parcial del neumococo con dosis altas de amoxi."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "alert-triangle",
+      "category": "Criterios Ingreso",
+      "card_text": "Evidencia clinica: D) SatO2 <92% (Aire ambiente): Indicacion absoluta de ingreso hospitalario para oxigenoterapia y manejo IV.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Vital! Una hipoxemia no tratada puede llevar a falla respiratoria rapida."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
     }
   ],
   "enarm_pearl": {
@@ -163,31 +163,31 @@
     "trigger": "after_cards",
     "questions": [
       {
-        "question": "¿Cual es el agente etiologico bacteriano mas frecuente de neumonia adquirida en la comunidad en ninos mayores de 3 meses?",
-        "options": [
-          "Streptococcus pneumoniae",
-          "Staphylococcus aureus",
-          "Haemophilus influenzae"
-        ],
-        "correct_index": 0
-      },
-      {
         "question": "¿Cual es el tratamiento antibiotico de eleccion para una NAC no complicada en el manejo ambulatorio?",
         "options": [
-          "Amoxicilina a dosis de 80-90 mg/kg/dia",
+          "Eritromicina oral",
           "Ceftriaxona intramuscular",
-          "Eritromicina oral"
+          "Amoxicilina a dosis de 80-90 mg/kg/dia"
         ],
-        "correct_index": 0
+        "correct_index": 2
       },
       {
         "question": "¿A partir de que nivel de saturacion de oxigeno por oximetria de pulso se indica el ingreso hospitalario?",
         "options": [
-          "Menor a 92%",
           "Menor a 95%",
-          "Menor a 88%"
+          "Menor a 88%",
+          "Menor a 92%"
         ],
-        "correct_index": 0
+        "correct_index": 2
+      },
+      {
+        "question": "¿Cual es el agente etiologico bacteriano mas frecuente de neumonia adquirida en la comunidad en ninos mayores de 3 meses?",
+        "options": [
+          "Staphylococcus aureus",
+          "Haemophilus influenzae",
+          "Streptococcus pneumoniae"
+        ],
+        "correct_index": 2
       }
     ]
   }
