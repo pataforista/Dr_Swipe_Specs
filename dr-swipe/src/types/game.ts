@@ -44,7 +44,6 @@ export interface Card {
   dynamic_value?: DynamicValue;
   safety_flags?: SafetyFlags;
   scoring: CardScoring;
-  related_diagnoses?: string[]; // For dossier synergy multiplier
 }
 
 export interface BossQuestion {
@@ -95,4 +94,13 @@ export interface PlayerStats {
   cases_solved: number;
   best_score: number;
   total_sessions: number;
+}
+
+/** Narrative items from src/data/lore (rewards, penalties, lab/archive/systemic events). */
+export interface LoreItem {
+  id: string;
+  nombre: string;
+  texto?: string;
+  frases?: { start?: string; end?: string };
+  efecto?: { tipo: string; valor?: number; duracion?: number };
 }

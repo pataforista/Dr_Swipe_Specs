@@ -1,10 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import type { LoreItem } from '../../types/game';
 
 interface PenaltyOverlayProps {
   penalty: {
     active: boolean;
-    item: any;
+    item: LoreItem;
   };
   onAccept: () => void;
 }

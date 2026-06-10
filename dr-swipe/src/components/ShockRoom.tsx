@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import type { BossQuestion, Card } from '../types/game';
 
 interface ShockRoomProps {
-  questions: any[];
-  dossierItems: any[];
+  questions: BossQuestion[];
+  dossierItems: Card[];
   onSurvive: () => void;
   onGhosted: (error: string) => void;
 }

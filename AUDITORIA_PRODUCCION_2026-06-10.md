@@ -23,7 +23,7 @@ Todos los hallazgos accionables de esta auditoría fueron corregidos en los comm
 - ✅ **K14-K20** y **F4/F6/E2/A2**: score del toast leído del actor (sin doble cálculo), CSP sin `unsafe-inline` en scripts, una sola ruta de deploy (Action, gated a push; `gh-pages` eliminado), `howler` eliminado, copy del tutorial alineado (-15/+8, racha x8), `.md` interno fuera de `public/`, `lang="es"`, barajado eliminado (orden clínico autoral), naming `mentor*` unificado, `MotionConfig reducedMotion="user"`.
 - ✅ **Higiene**: ~41 scripts y dumps del pipeline movidos a `tools/legacy_pipeline/`.
 
-Pendiente (decisiones de producto, no bugs): destino de `v2/` (scaffold sin desplegar), poblar `related_diagnoses` si se quiere activar la sinergia de dossier, y la deuda de lint preexistente (`no-explicit-any` en props de lore).
+Pendientes cerrados en la segunda tanda (misma rama): `v2/` archivado en `_LEGACY_ARCHIVE/v2` (scaffold sin desplegar), la sinergia de dossier muerta **eliminada** del motor (en vez de poblarla artificialmente: `related_diagnoses` fuera de schema/tipos/scoring), y **lint en 0 problemas** (todos los `any` tipados con `LoreItem`/`BossQuestion`/`MotionValue`, `showToast` sin TDZ, diálogo del mentor movido del efecto al handler).
 
 ## 1. Veredicto ejecutivo (pre-remediación)
 

@@ -4,7 +4,7 @@ import { gameMachine } from './machines/gameMachine';
 import { SwipeDeck } from './components/SwipeDeck';
 import { ShockRoom } from './components/ShockRoom';
 import { useState, useEffect, useRef, useCallback } from 'react';
-import type { ClinicalCase } from './types/game';
+import type { Card, ClinicalCase } from './types/game';
 import { dataLoader } from './utils/dataLoader';
 import { useGameAudio } from './hooks/useGameAudio';
 import { shuffleBossQuestion } from './utils/formatters';
@@ -34,13 +34,14 @@ export function App() {
   const [currentCase, setCurrentCase] = useState<ClinicalCase | null>(null);
   const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak } = useCodexStore();
   const timeLimitRef = useRef<number>(60);
-  const pendingDeckRef = useRef<any[]>([]);
+  const pendingDeckRef = useRef<Card[]>([]);
   // Guards the reward effect: a case must only be paid out once. Without this,
   // setCurrentCase(nextCase) during the `reward` state re-fires the effect and
   // pays XP/coins twice while registering the *next* case as already solved.
   const rewardedCaseRef = useRef<string | null>(null);
   // Holds the saved snapshot between resumeSession() and the intro button.
   const pendingResumeRef = useRef<SessionProgress | null>(null);
+  const mentorTimerRef = useRef<number | null>(null);
   const [showTutorial, setShowTutorial] = useState(() => !safeStorage.getItem('dr_swipe_tutorial_seen'));
   const [showStats, setShowStats] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -55,9 +56,16 @@ export function App() {
   const [mentorExpression, setMentorExpression] = useState<'neutral' | 'happy' | 'angry' | 'shocked'>('neutral');
   const [timeLeft, setTimeLeft] = useState(60);
 
+  const showToast = useCallback((text: string, type: 'coins' | 'xp' | 'milestone' = 'coins') => {
+    // Deferred a tick: the reward payout effect calls this while React is
+    // still committing, and a synchronous setState there cascades renders.
+    window.setTimeout(() => setRewardToast({ show: true, text, type }), 0);
+    window.setTimeout(() => setRewardToast(prev => ({ ...prev, show: false })), 2500);
+  }, []);
+
   useEffect(() => {
     if (state.matches('reward') || state.matches('ghosted') || state.matches('debrief')) clearSessionProgress();
-  }, [state.value, clearSessionProgress]);
+  }, [state, clearSessionProgress]);
 
   useEffect(() => {
     let timer: number;
@@ -103,7 +111,7 @@ export function App() {
         savedAt: Date.now()
       });
     }
-  }, [state.context.currentCardIndex, state.value, currentCase, saveSessionProgress]);
+  }, [state, currentCase, saveSessionProgress]);
 
   useEffect(() => {
     if (state.matches('reward') && currentCase) {
@@ -121,12 +129,12 @@ export function App() {
       addCoins(totalCoins);
       if (totalCoins > 0 && state.context.mistakesThisCase > 0) showToast(`+${totalCoins} 🪙`, 'coins');
       registerCaseSolved(currentCase.case_id, state.context.score);
-      const pearl = currentCase.enarm_pearl || (currentCase as any).perla_enarm;
+      const pearl = currentCase.enarm_pearl ?? currentCase.perla_enarm;
       if (pearl) unlockPearl(pearl);
     } else if (!state.matches('reward')) {
       rewardedCaseRef.current = null;
     }
-  }, [state.value, currentCase, dailyStreak, addXp, addCoins, registerCaseSolved, unlockPearl]);
+  }, [state, currentCase, dailyStreak, addXp, addCoins, registerCaseSolved, unlockPearl, showToast]);
 
   // Cases without a boss triad (or with 0 questions) skip the ShockRoom instead
   // of crashing on questions[currentStep].
@@ -134,7 +142,7 @@ export function App() {
     if (state.matches('boss_fight') && !(currentCase?.boss_fight_triad?.questions?.length)) {
       send({ type: 'ANSWER_CORRECT' });
     }
-  }, [state.value, currentCase, send]);
+  }, [state, currentCase, send]);
 
   const startNewCase = async () => {
     setIsPaused(false);
@@ -195,11 +203,6 @@ export function App() {
     }
   };
 
-  const showToast = (text: string, type: 'coins' | 'xp' | 'milestone' = 'coins') => {
-    setRewardToast({ show: true, text, type });
-    setTimeout(() => setRewardToast(prev => ({ ...prev, show: false })), 2500);
-  };
-
   const handleSwipe = (direction: 'left' | 'right') => {
     if (isPaused) return;
     const before = actorRef.getSnapshot().context.feedbackHistory.length;
@@ -215,22 +218,20 @@ export function App() {
     playFeedback(last.isCorrect ? 'correct' : 'wrong');
     triggerHaptic(last.isCorrect ? 'criticalSuccess' : 'warning');
     setTimeout(() => setSwipeFeedback(null), 2000);
+    // Mentor bubble for this swipe
+    setMentorDialogue(last.feedback);
+    setMentorExpression(last.isCorrect ? 'happy' : 'angry');
+    if (mentorTimerRef.current !== null) clearTimeout(mentorTimerRef.current);
+    mentorTimerRef.current = window.setTimeout(() => {
+      setMentorDialogue(null);
+      setMentorExpression('neutral');
+      mentorTimerRef.current = null;
+    }, 4500);
   };
 
-  useEffect(() => {
-    const history = state.context.feedbackHistory;
-    if (history.length > 0) {
-      const last = history[history.length - 1];
-      setMentorDialogue(last.feedback);
-      setMentorExpression(last.isCorrect ? 'happy' : 'angry');
-
-      const timer = setTimeout(() => {
-        setMentorDialogue(null);
-        setMentorExpression('neutral');
-      }, 4500);
-      return () => clearTimeout(timer);
-    }
-  }, [state.context.feedbackHistory]);
+  useEffect(() => () => {
+    if (mentorTimerRef.current !== null) clearTimeout(mentorTimerRef.current);
+  }, []);
 
   const handleUndo = () => {
     if (state.context.undoCharges > 0 && state.context.currentCardIndex > 0) {
@@ -294,7 +295,7 @@ export function App() {
                     type: 'RESUME_GUARD',
                     deck: pendingDeckRef.current,
                     difficulty: snapshot.difficulty,
-                    pearl: currentCase.enarm_pearl as any,
+                    pearl: currentCase.enarm_pearl ?? currentCase.perla_enarm,
                     snapshot: {
                       currentCardIndex: snapshot.currentCardIndex,
                       score: snapshot.score,
@@ -307,9 +308,9 @@ export function App() {
                     }
                   });
                 } else if (state.matches('idle')) {
-                  send({ type: 'START_GUARD', deck: pendingDeckRef.current, difficulty: currentCase.difficulty || 'standard', pearl: currentCase.enarm_pearl as any });
+                  send({ type: 'START_GUARD', deck: pendingDeckRef.current, difficulty: currentCase.difficulty || 'standard', pearl: currentCase.enarm_pearl ?? currentCase.perla_enarm });
                 } else {
-                  send({ type: 'CONTINUE_SHIFT', deck: pendingDeckRef.current, puzzle: currentCase.enarm_pearl || (currentCase as any).perla_enarm });
+                  send({ type: 'CONTINUE_SHIFT', deck: pendingDeckRef.current, puzzle: currentCase.enarm_pearl ?? currentCase.perla_enarm });
                 }
               }}
               className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl group"

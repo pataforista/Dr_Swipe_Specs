@@ -37,7 +37,6 @@ export const CardSchema = z.object({
   dynamic_value:   DynamicValueSchema.optional(),
   safety_flags:    SafetyFlagsSchema.optional(),
   scoring:         CardScoringSchema,
-  related_diagnoses: z.array(z.string()).optional(),
 });
 
 // ── Boss Fight ────────────────────────────────────────────────────────────────

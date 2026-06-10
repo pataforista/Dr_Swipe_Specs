@@ -1,5 +1,5 @@
 import { setup, assign } from 'xstate';
-import type { Card, EnarmPearl } from '../types/game';
+import type { Card, EnarmPearl, LoreItem } from '../types/game';
 import { cleanVazquezComment } from '../utils/formatters';
 import { parseVitalsFromText } from '../utils/vitalsParser';
 import { calculateCardScore } from '../utils/scoringEngine';
@@ -49,9 +49,9 @@ interface GameContext {
   lifelineActive: boolean; // true = hint is currently showing
   vitality: number; // 0-100 (Health/Life)
   consecutiveErrors: number;
-  lootBoxReward: { active: boolean; item: any } | null;
-  activePenalty: { active: boolean; item: any } | null;
-  activeEvent: { type: 'lab' | 'archive' | 'systemic'; item: any } | null;
+  lootBoxReward: { active: boolean; item: LoreItem } | null;
+  activePenalty: { active: boolean; item: LoreItem } | null;
+  activeEvent: { type: 'lab' | 'archive' | 'systemic'; item: LoreItem } | null;
   feedbackHistory: Array<{
     cardId: string;
     cardText: string;
@@ -75,7 +75,7 @@ interface GameContext {
     combo: number;
     multiplier: number;
     dossier: Card[];
-    feedbackHistory: any[];
+    feedbackHistory: GameContext['feedbackHistory'];
     coinsEarnedThisCase: number;
     mistakesThisCase: number;
     lastVitals: { ta?: string; fc?: number; temp?: number; status: string } | null;
@@ -83,8 +83,8 @@ interface GameContext {
 }
 
 type GameEvent =
-  | { type: 'START_GUARD'; deck: Card[]; difficulty: string; pearl: EnarmPearl; isSandiaMode?: boolean }
-  | { type: 'RESUME_GUARD'; deck: Card[]; difficulty: string; pearl: EnarmPearl; snapshot: ResumeSnapshot }
+  | { type: 'START_GUARD'; deck: Card[]; difficulty: string; pearl?: EnarmPearl; isSandiaMode?: boolean }
+  | { type: 'RESUME_GUARD'; deck: Card[]; difficulty: string; pearl?: EnarmPearl; snapshot: ResumeSnapshot }
   | { type: 'SWIPE'; direction: 'left' | 'right' }
   | { type: 'UNDO_SWIPE' }
   | { type: 'ANSWER_CORRECT' }
@@ -95,7 +95,7 @@ type GameEvent =
   | { type: 'VIEW_DEBRIEF' }
   | { type: 'USE_LIFELINE' }
   | { type: 'APPLY_REWARD_HEAL'; value: number }
-  | { type: 'CONTINUE_SHIFT'; deck: Card[]; puzzle: any; isSandiaMode?: boolean } // deck of the NEXT case
+  | { type: 'CONTINUE_SHIFT'; deck: Card[]; puzzle?: EnarmPearl; isSandiaMode?: boolean } // deck of the NEXT case
   | { type: 'RESCUE' };
 
 export const gameMachine = setup({
@@ -181,7 +181,6 @@ export const gameMachine = setup({
           combo: context.combo,
           multiplier: context.multiplier,
           difficulty: context.difficulty,
-          dossier: context.dossier,
           lastCardPresentedAt: context.lastCardPresentedAt
         },
         isCorrect,
