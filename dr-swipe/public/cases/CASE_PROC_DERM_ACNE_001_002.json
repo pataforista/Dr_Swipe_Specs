@@ -1,90 +1,90 @@
 {
-    "case_id": "PROC_DERM_ACNE_001_002",
-    "version": "v3_swipe_action",
-    "theme_config": "med",
-    "difficulty": "standard",
-    "patient_intro": {
-        "name": "Diego, 19 años",
-        "arrival_scenario": "Acude por brotes recurrentes en frente y espalda, especialmente al final del semestre universitario. Presenta comedones cerrados y pápulas eritematosas. Refiere haber usado antibióticos tópicos sin receta durante 6 meses sin mejora.",
-        "time_limit_sec": 60
+  "case_id": "PROC_DERM_ACNE_001_002",
+  "version": "v3_swipe_action",
+  "theme_config": "med",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Diego, 19 años",
+    "arrival_scenario": "Acude por brotes recurrentes en frente y espalda, especialmente al final del semestre universitario. Presenta comedones cerrados y pápulas eritematosas. Refiere haber usado antibióticos tópicos sin receta durante 6 meses sin mejora.",
+    "time_limit_sec": 60
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "Evidencia clínica: Ruido en el expediente: TA 110/60, FC 70 lpm, Temp 36.4°C.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Signos normales. Concentrémonos en la piel."
+      }
     },
-    "card_stream": [
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "Signos Vitales",
-            "card_text": "Evidencia clínica: Ruido en el expediente: TA 110/60, FC 70 lpm, Temp 36.4°C.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Signos normales. Concentrémonos en la piel."
-            }
-        },
-        {
-            "card_id": "c_1",
-            "ui_icon": "target",
-            "category": "Diagnóstico",
-            "card_text": "Hallazgo: A) Acné Vulgar (Grado II - Inflamatorio Leve): Caracterizado por comedones, pápulas y pústulas sin evidencia de nódulos o quistes.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 150,
-                "error_type": "omission",
-                "vazquez_comment": "¡Correcto! Clasificar el acné es vital para elegir el tratamiento adecuado."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "beaker",
-            "category": "Etiología",
-            "card_text": "Evidencia: B) Cutibacterium acnes (antes Propionibacterium): Bacteria anaerobia que coloniza la unidad pilosebácea y promueve la inflamación.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 50,
-                "error_type": "omission",
-                "vazquez_comment": "¡Bien! Es el agente causal clave en la fisiopatología."
-            }
-        }
-    ],
-    "enarm_pearl": {
-        "title": "Acné: Escalinata Terapéutica",
-        "text": "Comedónico: Retinoides. Inflamatorio Leve: Peróxido + ATB tópico. Moderado/Grave: ATB Oral. Quístico/Refractario: Isotretinoína.",
-        "gpc_ref": "GPC Diagnóstico y tratamiento del acné vulgar"
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "Hallazgo: A) Acné Vulgar (Grado II - Inflamatorio Leve): Caracterizado por comedones, pápulas y pústulas sin evidencia de nódulos o quistes.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "¡Correcto! Clasificar el acné es vital para elegir el tratamiento adecuado."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
     },
-    "boss_fight_triad": {
-        "trigger": "after_cards",
-        "questions": [
-            {
-                "question": "¿Cuál es la bacteria implicada principalmente en la génesis del acné inflamatorio?",
-                "options": [
-                    "Cutibacterium acnes",
-                    "Staphylococcus aureus",
-                    "Streptococcus pyogenes"
-                ],
-                "correct_index": 0
-            },
-            {
-                "question": "¿Cuál es el fármaco considerado de elección para el acné nódulo-quístico severo o refractario?",
-                "options": [
-                    "Isotretinoína oral",
-                    "Doxiciclina oral",
-                    "Clindamicina tópica"
-                ],
-                "correct_index": 0
-            },
-            {
-                "question": "¿Cuál es el principal efecto adverso por el que se debe vigilar estrechamente a una mujer en tratamiento con Isotretinoína?",
-                "options": [
-                    "Teratogenicidad",
-                    "Ototoxicidad",
-                    "Insuficiencia renal"
-                ],
-                "correct_index": 0
-            }
-        ]
+    {
+      "card_id": "c_2",
+      "ui_icon": "beaker",
+      "category": "Etiología",
+      "card_text": "Evidencia: B) Cutibacterium acnes (antes Propionibacterium): Bacteria anaerobia que coloniza la unidad pilosebácea y promueve la inflamación.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "¡Bien! Es el agente causal clave en la fisiopatología."
+      }
     }
+  ],
+  "enarm_pearl": {
+    "title": "Acné: Escalinata Terapéutica",
+    "text": "Comedónico: Retinoides. Inflamatorio Leve: Peróxido + ATB tópico. Moderado/Grave: ATB Oral. Quístico/Refractario: Isotretinoína.",
+    "gpc_ref": "GPC Diagnóstico y tratamiento del acné vulgar"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es la bacteria implicada principalmente en la génesis del acné inflamatorio?",
+        "options": [
+          "Cutibacterium acnes",
+          "Staphylococcus aureus",
+          "Streptococcus pyogenes"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el fármaco considerado de elección para el acné nódulo-quístico severo o refractario?",
+        "options": [
+          "Isotretinoína oral",
+          "Doxiciclina oral",
+          "Clindamicina tópica"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Cuál es el principal efecto adverso por el que se debe vigilar estrechamente a una mujer en tratamiento con Isotretinoína?",
+        "options": [
+          "Teratogenicidad",
+          "Ototoxicidad",
+          "Insuficiencia renal"
+        ],
+        "correct_index": 0
+      }
+    ]
+  }
 }

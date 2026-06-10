@@ -1,94 +1,94 @@
 {
-    "case_id": "PROC_INT_DM2_DX_001_004",
-    "version": "v3_swipe_action",
-    "theme_config": "int",
-    "difficulty": "standard",
-    "patient_intro": {
-        "name": "José, 53 años",
-        "arrival_scenario": "Acude a revisión tras hallazgo casual de glucosa de 135 mg/dl en ayuno. Niega síntomas cardinales. Glucosa plasmática a las 2 horas de carga de 75g: 205 mg/dl.",
-        "time_limit_sec": 60
+  "case_id": "PROC_INT_DM2_DX_001_004",
+  "version": "v3_swipe_action",
+  "theme_config": "int",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "José, 53 años",
+    "arrival_scenario": "Acude a revisión tras hallazgo casual de glucosa de 135 mg/dl en ayuno. Niega síntomas cardinales. Glucosa plasmática a las 2 horas de carga de 75g: 205 mg/dl.",
+    "time_limit_sec": 60
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "Hallazgo: Dato anecdótico: TA 130/85, FC 80 lpm, Temp 36.5°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "🧹 DESCARTE RECOMENDADO: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
     },
-    "card_stream": [
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "Signos Vitales",
-            "card_text": "Hallazgo: Dato anecdótico: TA 130/85, FC 80 lpm, Temp 36.5°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_1",
-            "ui_icon": "target",
-            "category": "Diagnóstico",
-            "card_text": "Hallazgo: A) Diabetes Mellitus Tipo 2 (Confirmada): Criterios: Glucosa ayuno ≥126, HbA1c ≥6.5%, o Glucosa azar ≥200 con síntomas.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 150,
-                "error_type": "omission",
-                "vazquez_comment": "¡Correcto! Cumple criterios de la NOM-015 para diagnóstico definitivo."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "Hallazgo: Información redundante: B) Prediabetes (Glucosa Alterada en Ayuno): Glucosa en ayuno entre 100 y 125 mg/dl.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! Reconociste que ya es un cuadro franco de Diabetes."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        }
-    ],
-    "enarm_pearl": {
-        "title": "Criterios Diagnósticos DM2 (NOM-015)",
-        "text": "1. Glucosa ayuno ≥126 (x2), 2. HbA1c ≥6.5%, 3. Curva (75g) ≥200 a las 2h, 4. Azar ≥200 + síntomas clásicos.",
-        "gpc_ref": "NOM-015-SSA2-2010"
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "Hallazgo: A) Diabetes Mellitus Tipo 2 (Confirmada): Criterios: Glucosa ayuno ≥126, HbA1c ≥6.5%, o Glucosa azar ≥200 con síntomas.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "¡Correcto! Cumple criterios de la NOM-015 para diagnóstico definitivo."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
     },
-    "boss_fight_triad": {
-        "trigger": "after_cards",
-        "questions": [
-            {
-                "correct_index": 0,
-                "question": "¿Cuál es la cifra de glucosa en ayuno para diagnóstico de DM2?",
-                "options": [
-                    ">=126 mg/dL",
-                    ">=100 mg/dL",
-                    ">=200 mg/dL"
-                ]
-            },
-            {
-                "correct_index": 0,
-                "question": "¿Qué porcentaje de HbA1c confirma el diagnóstico?",
-                "options": [
-                    ">=6.5%",
-                    ">=5.7%",
-                    ">=8.0%"
-                ]
-            },
-            {
-                "correct_index": 0,
-                "question": "¿En qué momento se diagnostica DM2 con glucosa al azar >=200?",
-                "options": [
-                    "Si hay síntomas clásicos (Ps)",
-                    "Siempre es diagnóstico",
-                    "Nunca, requiere confirmación"
-                ]
-            }
-        ]
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "Hallazgo: Información redundante: B) Prediabetes (Glucosa Alterada en Ayuno): Glucosa en ayuno entre 100 y 125 mg/dl.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "🧹 DESCARTE RECOMENDADO: ¡Bien! Reconociste que ya es un cuadro franco de Diabetes."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
     }
+  ],
+  "enarm_pearl": {
+    "title": "Criterios Diagnósticos DM2 (NOM-015)",
+    "text": "1. Glucosa ayuno ≥126 (x2), 2. HbA1c ≥6.5%, 3. Curva (75g) ≥200 a las 2h, 4. Azar ≥200 + síntomas clásicos.",
+    "gpc_ref": "NOM-015-SSA2-2010"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "correct_index": 0,
+        "question": "¿Cuál es la cifra de glucosa en ayuno para diagnóstico de DM2?",
+        "options": [
+          ">=126 mg/dL",
+          ">=100 mg/dL",
+          ">=200 mg/dL"
+        ]
+      },
+      {
+        "correct_index": 0,
+        "question": "¿Qué porcentaje de HbA1c confirma el diagnóstico?",
+        "options": [
+          ">=6.5%",
+          ">=5.7%",
+          ">=8.0%"
+        ]
+      },
+      {
+        "correct_index": 0,
+        "question": "¿En qué momento se diagnostica DM2 con glucosa al azar >=200?",
+        "options": [
+          "Si hay síntomas clásicos (Ps)",
+          "Siempre es diagnóstico",
+          "Nunca, requiere confirmación"
+        ]
+      }
+    ]
+  }
 }

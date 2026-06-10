@@ -18,7 +18,7 @@
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+        "vazquez_comment": "No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
       }
     },
     {
@@ -46,27 +46,11 @@
       "scoring": {
         "points": 50,
         "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Buen ojo! La focalización (McBurney) y la leucocitosis alejan el diagnóstico de algo viral autolimitado."
+        "vazquez_comment": "¡Buen ojo! La focalización (McBurney) y la leucocitosis alejan el diagnóstico de algo viral autolimitado."
       },
       "safety_flags": {
         "lethal_risk": false,
         "decision_critical": false
-      }
-    },
-    {
-      "card_id": "c_3",
-      "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "Evidencia: C) Embarazo Ectópico Roto: Dolor pélvico agudo, sangrado transvaginal y datos de choque hipovolémico.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "lethal_hazard",
-        "vazquez_comment": "¡Correcto! TA normal y cuadro más compatible con foco infeccioso intestinal."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "condition": "female"
       }
     },
     {
@@ -91,22 +75,6 @@
         "points": 50,
         "error_type": "omission",
         "vazquez_comment": "Bien. Aunque el diagnóstico sea clínico, el USG es la primera línea en niños y embarazadas."
-      }
-    },
-    {
-      "card_id": "c_6",
-      "ui_icon": "beaker",
-      "category": "Tratamiento",
-      "card_text": "Hallazgo: F) Antibiótico Profiláctico: Cefalosporina de 2da generación (Cefoxitina) o Cefazolina + Metronidazol.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "¡Vital! La profilaxis reduce drásticamente las infecciones de sitio quirúrgico."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true
       }
     },
     {
@@ -144,28 +112,51 @@
         "error_type": "omission",
         "vazquez_comment": "¡Muy bien! En el plastrón, la cirugía inmediata se asocia a mayor riesgo de lesiones intestinales."
       }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "Evidencia: C) Embarazo Ectópico Roto: Dolor pélvico agudo, sangrado transvaginal y datos de choque hipovolémico.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "lethal_hazard",
+        "vazquez_comment": "¡Correcto! TA normal y cuadro más compatible con foco infeccioso intestinal."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "condition": "female"
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "beaker",
+      "category": "Tratamiento",
+      "card_text": "Hallazgo: F) Antibiótico Profiláctico: Cefalosporina de 2da generación (Cefoxitina) o Cefazolina + Metronidazol.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "¡Vital! La profilaxis reduce drásticamente las infecciones de sitio quirúrgico."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
     }
   ],
   "boss_fight_triad": {
     "trigger": "after_cards",
     "questions": [
       {
-        "question": "¿Cuál es la causa más frecuente de apendicitis en la edad PEDIÃTRICA?",
-        "options": [
-          "Hiperplasia linfoidea (Folículos de Roux)",
-          "Fecalito",
-          "Cuerpos extraños"
-        ],
-        "correct_index": 0
-      },
-      {
         "question": "¿Qué componente de la Escala de Alvarado otorga 2 puntos?",
         "options": [
-          "Dolor en FID y Leucocitosis (>10k)",
           "Anorexia y Náuseas",
-          "Fiebre y Shift a la izquierda"
+          "Fiebre y Shift a la izquierda",
+          "Dolor en FID y Leucocitosis (>10k)"
         ],
-        "correct_index": 0
+        "correct_index": 2
       },
       {
         "question": "¿Cuál es el tratamiento de elección definitivo para la apendicitis aguda no complicada?",
@@ -175,12 +166,21 @@
           "Drenaje percutáneo"
         ],
         "correct_index": 0
+      },
+      {
+        "question": "Con respecto a la patología, ¿cuál es la causa más frecuente de apendicitis en la edad PEDIÁTRICA?",
+        "options": [
+          "Hiperplasia linfoidea (Folículos de Roux)",
+          "Fecalito",
+          "Cuerpos extraños"
+        ],
+        "correct_index": 0
       }
     ]
   },
   "enarm_pearl": {
     "title": "Apendicitis: Escala de Alvarado",
-    "text": "MANTRELS: Migración (1), Anorexia (1), Náuseas (1), Ternura en FID (2), Rebote (1), Elevación Temp (1), Leucocitosis (2), Shift a la izquierda (1). â‰¥7 ptos = Cirugía.",
+    "text": "MANTRELS: Migración (1), Anorexia (1), Náuseas (1), Ternura en FID (2), Rebote (1), Elevación Temp (1), Leucocitosis (2), Shift a la izquierda (1). ≥7 ptos = Cirugía.",
     "gpc_ref": "GPC Diagnóstico y Tratamiento de Apendicitis Aguda"
   }
 }

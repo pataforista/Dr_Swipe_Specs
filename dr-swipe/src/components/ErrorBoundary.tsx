@@ -47,7 +47,7 @@ class ErrorBoundary extends Component<Props, State> {
             <p className="text-slate-300 mb-6 text-sm">
               {this.state.errorMessage || "Algo salió mal. Por favor, intenta recargar la página."}
             </p>
-            {process.env.NODE_ENV === "development" && this.state.errorStack && (
+            {import.meta.env.DEV && this.state.errorStack && (
               <details className="mb-6 text-left">
                 <summary className="text-xs text-slate-500 cursor-pointer hover:text-slate-400">
                   Detalles técnicos

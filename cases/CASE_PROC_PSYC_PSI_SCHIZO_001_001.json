@@ -1,190 +1,190 @@
 {
-    "case_id":  "PROC_PSYC_PSI_SCHIZO_001_001",
-    "version":  "v3_swipe_action",
-    "theme_config":  "psyc",
-    "difficulty":  "standard",
-    "patient_intro":  {
-                          "name":  "Fernando, 22 anos",
-                          "arrival_scenario":  "Familiares refieren que el paciente escucha voces que le dan ordenes y se ha aislado socialmente desde hace 8 meses. No se identifican causas medicas ni consumo de sustancias tras toxicologia negativa. Deterioro evidente de la funcionalidad.",
-                          "time_limit_sec":  60
-                      },
-    "card_stream":  [
-                        {
-                            "card_id":  "init_vitals",
-                            "ui_icon":  "heartbeat",
-                            "category":  "Signos Vitales",
-                            "card_text":  "Informacion redundante: TA 120/80, FC 90 lpm, Temp 36.8°C",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_1",
-                            "ui_icon":  "target",
-                            "category":  "Diagnostico",
-                            "card_text":  "Hallazgo: A) Esquizofrenia: Sintomas psicoticos (alucinaciones/delirios) con duracion >6 meses y deterioro funcional.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: ¡Asiduo! El criterio temporal (>6 meses) es lo que define la esquizofrenia frente a otros trastornos psicoticos."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_2",
-                            "ui_icon":  "eye",
-                            "category":  "Diagnostico Diferencial",
-                            "card_text":  "Dato de importancia: Dato anecdotico: B) Trastorno Psicotico Breve: Sintomas psicoticos con duracion mayor a 1 dia pero menor a 1 mes, con retorno total a la funcionalidad.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! El tiempo es el factor determinante en la psiquiatria del ENARM."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_3",
-                            "ui_icon":  "eye",
-                            "category":  "Diagnostico Diferencial",
-                            "card_text":  "Informacion redundante: C) Trastorno Esquizofreniforme: Presenta los mismos sintomas que la esquizofrenia pero con una duracion entre 1 y 6 meses.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Navarro: Correcto. Si los sintomas persisten mas de 6 meses, el diagnostico evoluciona a esquizofrenia."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_4",
-                            "ui_icon":  "zap",
-                            "category":  "Semiologia",
-                            "card_text":  "Hallazgo: D) Sintomas Positivos: Alucinaciones auditivas (voces que comentan), ideas delirantes (persecutorias) y desorganizacion del pensamiento.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: ¡Excelente! Son los sintomas que 'aparecen' y suelen responder mejor a los antipsicoticos tipicos."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_5",
-                            "ui_icon":  "moon",
-                            "category":  "Semiologia",
-                            "card_text":  "Hallazgo: E) Sintomas Negativos: Aplanamiento afectivo, abulia (falta de voluntad), alogia (pobreza del habla) y anhedonia.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Bien. Son sintomas que 'quitan' funcionalidad y son mas dificiles de tratar, indicando peor pronostico."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_6",
-                            "ui_icon":  "activity",
-                            "category":  "Fisiopatologia",
-                            "card_text":  "Hallazgo: F) Hipotesis Dopaminergica: Exceso de dopamina en la via mesolimbica (positivos) y deficit en la via mesocortical (negativos).",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: ¡Muy bien! Es la base neurobiologica que justifica el uso de antagonistas dopaminergicos."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_7",
-                            "ui_icon":  "pill",
-                            "category":  "Tratamiento",
-                            "card_text":  "Hallazgo: G) Antipsicoticos Atipicos (2ª Gen): Farmacos como Risperidona u Olanzapina como primera linea por su perfil de efectos secundarios.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "lethal_omission",
-                                            "vazquez_comment":  "Navarro: ¡Asi es! Tienen menor riesgo de sintomas extrapiramidales que el Haloperidol."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  true,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_8",
-                            "ui_icon":  "shield-alert",
-                            "category":  "Tratamiento Avanzado",
-                            "card_text":  "Evidencia clinica: H) Clozapina: Tratamiento de eleccion en esquizofrenia resistente (refractaria) a dos o mas antipsicoticos.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: ¡Excelente perla! Recuerda vigilar la biometria hematica por riesgo de agranulocitosis."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_9",
-                            "ui_icon":  "trending-up",
-                            "category":  "Pronostico",
-                            "card_text":  "Hallazgo: I) Factores de Buen Pronostico: Inicio tardio, sexo femenino, presencia de factores estresantes claros y sintomas positivos predominantes.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Correcto. El inicio temprano y los sintomas negativos suelen asociarse a un curso mas cronico y deteriorante."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_10",
-                            "ui_icon":  "alert-circle",
-                            "category":  "Seguimiento",
-                            "card_text":  "Hallazgo: J) Monitorizacion Metabolica: Vigilar peso, glucosa y perfil de lipidos, especialmente en pacientes que reciben Olanzapina o Clozapina.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: ¡Excelente! El sindrome metabolico es la principal causa de muerte prematura en estos pacientes."
-                                        }
-                        }
-                    ],
-    "enarm_pearl":  {
-                        "title":  "Esquizofrenia: El 6 es la Clave",
-                        "text":  "Diagnostico: >6 meses. Predominio de sintomas negativos = Peor pronostico. Resistente = Clozapina.",
-                        "gpc_ref":  "Guia de Practica Clinica Salud Mental"
-                    },
-    "boss_fight_triad":  {
-                             "trigger":  "after_cards",
-                             "questions":  [
-                                               {
-                                                   "question":  "¿Cual es la duracion minima de los sintomas para diagnosticar Esquizofrenia segun el DSM-5?",
-                                                   "options":  [
-                                                                   "6 meses",
-                                                                   "1 mes",
-                                                                   "2 anos"
-                                                               ],
-                                                   "correct_index":  0
-                                               },
-                                               {
-                                                   "question":  "¿Que farmaco es el estandar de oro para el tratamiento de la esquizofrenia REFRACTARIA?",
-                                                   "options":  [
-                                                                   "Clozapina",
-                                                                   "Haloperidol",
-                                                                   "Aripiprazol"
-                                                               ],
-                                                   "correct_index":  0
-                                               },
-                                               {
-                                                   "question":  "¿Cual de los siguientes se considera un factor de MAL pronostico en la esquizofrenia?",
-                                                   "options":  [
-                                                                   "Presencia predominante de sintomas negativos",
-                                                                   "Inicio agudo de los sintomas",
-                                                                   "Sexo femenino"
-                                                               ],
-                                                   "correct_index":  0
-                                               }
-                                           ]
-                         }
+    "case_id": "PROC_PSYC_PSI_SCHIZO_001_001",
+    "version": "v3_swipe_action",
+    "theme_config": "psyc",
+    "difficulty": "standard",
+    "patient_intro": {
+        "name": "Fernando, 22 anos",
+        "arrival_scenario": "Familiares refieren que el paciente escucha voces que le dan ordenes y se ha aislado socialmente desde hace 8 meses. No se identifican causas medicas ni consumo de sustancias tras toxicologia negativa. Deterioro evidente de la funcionalidad.",
+        "time_limit_sec": 60
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "Signos Vitales",
+            "card_text": "Informacion redundante: TA 120/80, FC 90 lpm, Temp 36.8°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Diagnostico",
+            "card_text": "Hallazgo: A) Esquizofrenia: Sintomas psicoticos (alucinaciones/delirios) con duracion >6 meses y deterioro funcional.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Asiduo! El criterio temporal (>6 meses) es lo que define la esquizofrenia frente a otros trastornos psicoticos."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "Diagnostico Diferencial",
+            "card_text": "Dato de importancia: Dato anecdotico: B) Trastorno Psicotico Breve: Sintomas psicoticos con duracion mayor a 1 dia pero menor a 1 mes, con retorno total a la funcionalidad.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: ¡Bien! El tiempo es el factor determinante en la psiquiatria del ENARM."
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "eye",
+            "category": "Diagnostico Diferencial",
+            "card_text": "Informacion redundante: C) Trastorno Esquizofreniforme: Presenta los mismos sintomas que la esquizofrenia pero con una duracion entre 1 y 6 meses.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Correcto. Si los sintomas persisten mas de 6 meses, el diagnostico evoluciona a esquizofrenia."
+            }
+        },
+        {
+            "card_id": "c_4",
+            "ui_icon": "zap",
+            "category": "Semiologia",
+            "card_text": "Hallazgo: D) Sintomas Positivos: Alucinaciones auditivas (voces que comentan), ideas delirantes (persecutorias) y desorganizacion del pensamiento.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Excelente! Son los sintomas que 'aparecen' y suelen responder mejor a los antipsicoticos tipicos."
+            }
+        },
+        {
+            "card_id": "c_5",
+            "ui_icon": "moon",
+            "category": "Semiologia",
+            "card_text": "Hallazgo: E) Sintomas Negativos: Aplanamiento afectivo, abulia (falta de voluntad), alogia (pobreza del habla) y anhedonia.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Bien. Son sintomas que 'quitan' funcionalidad y son mas dificiles de tratar, indicando peor pronostico."
+            }
+        },
+        {
+            "card_id": "c_6",
+            "ui_icon": "activity",
+            "category": "Fisiopatologia",
+            "card_text": "Hallazgo: F) Hipotesis Dopaminergica: Exceso de dopamina en la via mesolimbica (positivos) y deficit en la via mesocortical (negativos).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Muy bien! Es la base neurobiologica que justifica el uso de antagonistas dopaminergicos."
+            }
+        },
+        {
+            "card_id": "c_8",
+            "ui_icon": "shield-alert",
+            "category": "Tratamiento Avanzado",
+            "card_text": "Evidencia clinica: H) Clozapina: Tratamiento de eleccion en esquizofrenia resistente (refractaria) a dos o mas antipsicoticos.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Excelente perla! Recuerda vigilar la biometria hematica por riesgo de agranulocitosis."
+            }
+        },
+        {
+            "card_id": "c_9",
+            "ui_icon": "trending-up",
+            "category": "Pronostico",
+            "card_text": "Hallazgo: I) Factores de Buen Pronostico: Inicio tardio, sexo femenino, presencia de factores estresantes claros y sintomas positivos predominantes.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Correcto. El inicio temprano y los sintomas negativos suelen asociarse a un curso mas cronico y deteriorante."
+            }
+        },
+        {
+            "card_id": "c_7",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Hallazgo: G) Antipsicoticos Atipicos (2ª Gen): Farmacos como Risperidona u Olanzapina como primera linea por su perfil de efectos secundarios.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Navarro: ¡Asi es! Tienen menor riesgo de sintomas extrapiramidales que el Haloperidol."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_10",
+            "ui_icon": "alert-circle",
+            "category": "Seguimiento",
+            "card_text": "Hallazgo: J) Monitorizacion Metabolica: Vigilar peso, glucosa y perfil de lipidos, especialmente en pacientes que reciben Olanzapina o Clozapina.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Excelente! El sindrome metabolico es la principal causa de muerte prematura en estos pacientes."
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Esquizofrenia: El 6 es la Clave",
+        "text": "Diagnostico: >6 meses. Predominio de sintomas negativos = Peor pronostico. Resistente = Clozapina.",
+        "gpc_ref": "Guia de Practica Clinica Salud Mental"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "question": "¿Cual es la duracion minima de los sintomas para diagnosticar Esquizofrenia segun el DSM-5?",
+                "options": [
+                    "2 anos",
+                    "1 mes",
+                    "6 meses"
+                ],
+                "correct_index": 2
+            },
+            {
+                "question": "¿Cual de los siguientes se considera un factor de MAL pronostico en la esquizofrenia?",
+                "options": [
+                    "Inicio agudo de los sintomas",
+                    "Sexo femenino",
+                    "Presencia predominante de sintomas negativos"
+                ],
+                "correct_index": 2
+            },
+            {
+                "question": "¿Que farmaco es el estandar de oro para el tratamiento de la esquizofrenia REFRACTARIA?",
+                "options": [
+                    "Clozapina",
+                    "Haloperidol",
+                    "Aripiprazol"
+                ],
+                "correct_index": 0
+            }
+        ]
+    }
 }

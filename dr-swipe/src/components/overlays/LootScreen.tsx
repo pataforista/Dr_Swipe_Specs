@@ -44,10 +44,10 @@ export const LootScreen: React.FC<LootScreenProps> = ({
             <span className="text-2xl sm:text-3xl bg-white w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center rounded-xl shadow-sm border border-slate-100">✨</span>
             <div className="text-left">
               <span className="text-[9px] sm:text-[10px] font-black uppercase text-slate-400 block tracking-widest leading-none">Experiencia</span>
-              <span className="text-sm sm:text-base font-bold text-slate-600">Puntaje acumulado</span>
+              <span className="text-sm sm:text-base font-bold text-slate-600">Puntaje: {score}{xpTotal !== score ? ' × racha diaria' : ''}</span>
             </div>
           </div>
-          <span className="text-2xl sm:text-3xl font-black text-primary lettering">+{score}</span>
+          <span className="text-2xl sm:text-3xl font-black text-primary lettering">+{xpTotal}</span>
         </div>
 
         <div className="h-px w-full bg-slate-200/50" />

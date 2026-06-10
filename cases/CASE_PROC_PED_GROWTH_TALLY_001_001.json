@@ -1,174 +1,174 @@
 {
-  "case_id": "PROC_PED_GROWTH_TALLY_001_001",
-  "version": "v3_swipe_action",
-  "theme_config": "ped",
-  "difficulty": "standard",
-  "patient_intro": {
-    "name": "Carmen, 5 anos",
-    "arrival_scenario": "Evaluacion antropometrica de rutina para preescolar de 3 anos. Se observa talla baja persistente. El peso actual es adecuado para su talla baja, pero insuficiente para su edad cronologica.",
-    "time_limit_sec": 60
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
-      "card_text": "Informacion redundante: TA N/A, FC 100 lpm, Temp 36.6°C",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
-      }
+    "case_id": "PROC_PED_GROWTH_TALLY_001_001",
+    "version": "v3_swipe_action",
+    "theme_config": "ped",
+    "difficulty": "standard",
+    "patient_intro": {
+        "name": "Carmen, 5 anos",
+        "arrival_scenario": "Evaluacion antropometrica de rutina para preescolar de 3 anos. Se observa talla baja persistente. El peso actual es adecuado para su talla baja, pero insuficiente para su edad cronologica.",
+        "time_limit_sec": 60
     },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnostico",
-      "card_text": "Hallazgo: A) Desnutricion Cronica (Talla Baja): Talla para Edad < -2 DE indica desnutricion cronica o retraso en el crecimiento longitudinal.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Correcto! El indicador T/E mide cronicidad. Si el P/T es normal pero T/E es baja, el nino esta 'armonizado' pero pequeno."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "Signos Vitales",
+            "card_text": "Informacion redundante: TA N/A, FC 100 lpm, Temp 36.6°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Diagnostico",
+            "card_text": "Hallazgo: A) Desnutricion Cronica (Talla Baja): Talla para Edad < -2 DE indica desnutricion cronica o retraso en el crecimiento longitudinal.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Correcto! El indicador T/E mide cronicidad. Si el P/T es normal pero T/E es baja, el nino esta 'armonizado' pero pequeno."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "Diagnostico",
+            "card_text": "Dato de importancia: Ruido en el expediente: B) Desnutricion Aguda (Emaciacion): Se define por el indicador Peso para Talla (P/T) < -2 DE.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: ¡Bien! Diferenciaste agudo de cronico. El P/T normal descarta emaciacion actual."
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "info",
+            "category": "Desnutricion",
+            "card_text": "Evidencia: C) Desnutricion Global: El indicador Peso para Edad (P/E) < -2 DE sugiere desnutricion global. Es util en menores de 1 ano.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: Bien. Es el primer indicador que se afecta, pero no distingue entre agudo y cronico."
+            }
+        },
+        {
+            "card_id": "c_4",
+            "ui_icon": "target",
+            "category": "Crecimiento",
+            "card_text": "Evidencia: D) Velocidad de Crecimiento: Es el parametro mas sensible para detectar alteraciones del crecimiento de forma temprana.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Exacto! Un nino puede estar en el percentil 3, pero si su velocidad es normal, puede ser solo talla baja familiar."
+            }
+        },
+        {
+            "card_id": "c_5",
+            "ui_icon": "calendar",
+            "category": "Gabinete",
+            "card_text": "Hallazgo: E) Edad Osea (Radiografia de Mano Izquierda): Gold standar para evaluar el potencial de crecimiento remanente.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Muy bien! Si la edad osea esta retrasada, aun hay esperanza de crecimiento longitudinal."
+            }
+        },
+        {
+            "card_id": "c_6",
+            "ui_icon": "activity",
+            "category": "Calculo",
+            "card_text": "Hallazgo: F) Talla Blanco Familiar: (Talla Padre + Talla Madre + 13)/2 para ninos; (-13) para ninas. Predice la talla adulta final.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Excelente! Siempre ajusta el potencial del nino a la genetica de sus padres."
+            }
+        },
+        {
+            "card_id": "c_7",
+            "ui_icon": "shield",
+            "category": "Diagnostico",
+            "card_text": "Hallazgo: G) Talla Baja Familiar: Edad osea coincide con la cronologica, velocidad de crecimiento normal y talla final acorde a padres.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: Bien. Es una variante normal del crecimiento, no una patologia."
+            }
+        },
+        {
+            "card_id": "c_8",
+            "ui_icon": "alert-circle",
+            "category": "Diagnostico",
+            "card_text": "Evidencia: H) Retraso Constitucional del Crecimiento: Edad osea retrasada, inicio de pubertad tardio, pero talla final normal.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: El 'slow starter'. Tarda mas en arrancar pero llega bien a la meta."
+            }
+        },
+        {
+            "card_id": "c_9",
+            "ui_icon": "search",
+            "category": "Signo Clinico",
+            "card_text": "Hallazgo: I) Perimetro Cefalico: Su medicion es obligatoria hasta los 2 anos de edad para monitorizar el desarrollo neurologico.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: Correcto. No lo olvides en tu consulta de nino sano."
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Indicadores OMS: T/E = Cronico",
+        "text": "Indicador Talla para Edad (T/E) evalua desnutricion CRONICA. Peso para Talla (P/T) evalua desnutricion AGUDA (emaciacion).",
+        "gpc_ref": "NOM-031-SSA2-1999 Para la salud del nino"
     },
-    {
-      "card_id": "c_2",
-      "ui_icon": "eye",
-      "category": "Diagnostico",
-      "card_text": "Dato de importancia: Ruido en el expediente: B) Desnutricion Aguda (Emaciacion): Se define por el indicador Peso para Talla (P/T) < -2 DE.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Diferenciaste agudo de cronico. El P/T normal descarta emaciacion actual."
-      }
-    },
-    {
-      "card_id": "c_3",
-      "ui_icon": "info",
-      "category": "Desnutricion",
-      "card_text": "Evidencia: C) Desnutricion Global: El indicador Peso para Edad (P/E) < -2 DE sugiere desnutricion global. Es util en menores de 1 ano.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: Bien. Es el primer indicador que se afecta, pero no distingue entre agudo y cronico."
-      }
-    },
-    {
-      "card_id": "c_4",
-      "ui_icon": "target",
-      "category": "Crecimiento",
-      "card_text": "Evidencia: D) Velocidad de Crecimiento: Es el parametro mas sensible para detectar alteraciones del crecimiento de forma temprana.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Exacto! Un nino puede estar en el percentil 3, pero si su velocidad es normal, puede ser solo talla baja familiar."
-      }
-    },
-    {
-      "card_id": "c_5",
-      "ui_icon": "calendar",
-      "category": "Gabinete",
-      "card_text": "Hallazgo: E) Edad Osea (Radiografia de Mano Izquierda): Gold standar para evaluar el potencial de crecimiento remanente.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Muy bien! Si la edad osea esta retrasada, aun hay esperanza de crecimiento longitudinal."
-      }
-    },
-    {
-      "card_id": "c_6",
-      "ui_icon": "activity",
-      "category": "Calculo",
-      "card_text": "Hallazgo: F) Talla Blanco Familiar: (Talla Padre + Talla Madre + 13)/2 para ninos; (-13) para ninas. Predice la talla adulta final.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: ¡Excelente! Siempre ajusta el potencial del nino a la genetica de sus padres."
-      }
-    },
-    {
-      "card_id": "c_7",
-      "ui_icon": "shield",
-      "category": "Diagnostico",
-      "card_text": "Hallazgo: G) Talla Baja Familiar: Edad osea coincide con la cronologica, velocidad de crecimiento normal y talla final acorde a padres.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: Bien. Es una variante normal del crecimiento, no una patologia."
-      }
-    },
-    {
-      "card_id": "c_8",
-      "ui_icon": "alert-circle",
-      "category": "Diagnostico",
-      "card_text": "Evidencia: H) Retraso Constitucional del Crecimiento: Edad osea retrasada, inicio de pubertad tardio, pero talla final normal.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 100,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: El 'slow starter'. Tarda mas en arrancar pero llega bien a la meta."
-      }
-    },
-    {
-      "card_id": "c_9",
-      "ui_icon": "search",
-      "category": "Signo Clinico",
-      "card_text": "Hallazgo: I) Perimetro Cefalico: Su medicion es obligatoria hasta los 2 anos de edad para monitorizar el desarrollo neurologico.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 50,
-        "error_type": "omission",
-        "vazquez_comment": "Castillo: Correcto. No lo olvides en tu consulta de nino sano."
-      }
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "question": "¿Como se calcula la Talla Blanco Familiar para una NINA?",
+                "options": [
+                    "(Talla Padre + Talla Madre - 13) / 2",
+                    "(Talla Padre + Talla Madre + 13) / 2",
+                    "(Talla Padre + Talla Madre) / 2"
+                ],
+                "correct_index": 0
+            },
+            {
+                "question": "¿Que estudio de gabinete es el estandar de oro para evaluar la Edad Osea?",
+                "options": [
+                    "TC de craneo",
+                    "Radiografia de mano izquierda",
+                    "USG abdominal"
+                ],
+                "correct_index": 1
+            },
+            {
+                "question": "¿Que indicador antropometrico evalua la desnutricion CRONICA en pediatria?",
+                "options": [
+                    "Peso para la Edad (P/E)",
+                    "Peso para la Talla (P/T)",
+                    "Talla para la Edad (T/E)"
+                ],
+                "correct_index": 2
+            }
+        ]
     }
-  ],
-  "enarm_pearl": {
-    "title": "Indicadores OMS: T/E = Cronico",
-    "text": "Indicador Talla para Edad (T/E) evalua desnutricion CRONICA. Peso para Talla (P/T) evalua desnutricion AGUDA (emaciacion).",
-    "gpc_ref": "NOM-031-SSA2-1999 Para la salud del nino"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "question": "¿Que indicador antropometrico evalua la desnutricion CRONICA en pediatria?",
-        "options": [
-          "Talla para la Edad (T/E)",
-          "Peso para la Talla (P/T)",
-          "Peso para la Edad (P/E)"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Como se calcula la Talla Blanco Familiar para una NINA?",
-        "options": [
-          "(Talla Padre + Talla Madre - 13) / 2",
-          "(Talla Padre + Talla Madre + 13) / 2",
-          "(Talla Padre + Talla Madre) / 2"
-        ],
-        "correct_index": 0
-      },
-      {
-        "question": "¿Que estudio de gabinete es el estandar de oro para evaluar la Edad Osea?",
-        "options": [
-          "Radiografia de mano izquierda",
-          "TC de craneo",
-          "USG abdominal"
-        ],
-        "correct_index": 0
-      }
-    ]
-  }
 }

@@ -1,194 +1,194 @@
 {
     "case_id": "PROC_PED_GAST_DEHYDRATION_001_002",
-    "version":  "v3_swipe_action",
-    "theme_config":  "ped",
-    "difficulty":  "standard",
-    "patient_intro":  {
-                          "name": "Valentina, 6 meses",
-                          "arrival_scenario":  "Lactante con evacuaciones liquidas abundantes. Se observa irritable, con sed avida, ojos ligeramente hundidos y signo del pliegue lento. Acepta y busca ansiosamente el VSO.",
-                          "time_limit_sec":  60
-                      },
-    "card_stream":  [
-                        {
-                            "card_id":  "init_vitals",
-                            "ui_icon":  "heartbeat",
-                            "category":  "Signos Vitales",
-                            "card_text":  "Dato de importancia: FC 135 lpm (Taquicardia moderada), FR 28 rpm, Temp 37.5 C, TA 105/65 mmHg (Normal-Baja).",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "DATO CLAVE OMITIDO: Navarro: Atencion! El paciente presenta deshidratacion moderada. Inicia Plan B de Rehidratacion Oral supervisada."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_1",
-                            "ui_icon":  "target",
-                            "category":  "Clasificaci�\u0000³n",
-                            "card_text":  "Hallazgo: A) Deshidratacion Moderada (Plan B): Perdida ponderal 5-9%, ojos ligeramente hundidos, signo del pliegue lento e irritabilidad. Acepta VSO oral.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: �\u0000¡Correcto! Es una emergencia m�\u0000©dica que requiere reanimaci�\u0000³n inmediata."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  true,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_2",
-                            "ui_icon":  "zap",
-                            "category":  "Tratamiento",
-                            "card_text":  "Hallazgo cl�\u0000­nico: B) Plan C de Rehidrataci�\u0000³n: Administraci�\u0000³n de l�\u0000­quidos IV en bolos de Soluci�\u0000³n Salina 0.9% o Ringer Lactato a 20 ml/kg.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "lethal_omission",
-                                            "vazquez_comment":  "Navarro: �\u0000¡Vital! Recuperar la volemia es la prioridad absoluta para salvar su vida."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  true,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_3",
-                            "ui_icon":  "droplet",
-                            "category":  "VHG",
-                            "card_text":  "Hallazgo: C) Vida Suero Oral (VSO): Pilar del Plan A y B. Contiene la osmolaridad ideal (75 mEq de sodio) recomendada por la OMS.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: �\u0000¡Excelente! Es la medida de salud p�\u0000ºblica que m�\u0000¡s vidas salva en pediatr�\u0000­a."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_4",
-                            "ui_icon":  "info",
-                            "category":  "Manejo",
-                            "card_text":  "Hallazgo: D) Plan A: Prevenci�\u0000³n de deshidrataci�\u0000³n en casa. Menores de 1 a�\u0000±o: 75 ml de VSO tras cada evacuaci�\u0000³n l�\u0000­quida.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Bien. Es el manejo para el ni�\u0000±o sin signos de deshidrataci�\u0000³n cl�\u0000­nica."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_5",
-                            "ui_icon":  "activity",
-                            "category":  "Manejo",
-                            "card_text":  "Evidencia cl�\u0000­nica: E) Plan B: Deshidrataci�\u0000³n moderada. Administrar VSO 100 ml/kg en 4 horas (en dosis peque�\u0000±as/cucharadas).",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: �\u0000¡Correcto! Se realiza en la unidad de salud bajo supervisi�\u0000³n m�\u0000©dica."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_6",
-                            "ui_icon":  "search",
-                            "category":  "Signo Cl�\u0000­nico",
-                            "card_text":  "Evidencia: F) Signo del Lienzo H�\u0000ºmedo: Persistencia del pliegue cut�\u0000¡neo tras pinchar la piel. Indica deshidrataci�\u0000³n grave.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Bien. Refleja la p�\u0000©rdida de turgencia por falta de l�\u0000­quidos intersticiales."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_7",
-                            "ui_icon":  "slash",
-                            "category":  "Gastroenteritis",
-                            "card_text":  "Evidencia: G) Loperamida: Recomendada en lactantes para reducir el n�\u0000ºmero de evacuciones y evitar la p�\u0000©rdida de l�\u0000­quidos.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "lethal_hazard",
-                                            "vazquez_comment":  "Navarro: �\u0000¡PELIGRO! Los antidiarr�\u0000©icos est�\u0000¡n estrictamente contraindicados en ni�\u0000±os; pueden causar �\u0000­leo paral�\u0000­tico o megacolon."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  true,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_8",
-                            "ui_icon":  "pill",
-                            "category":  "Suplementaci�\u0000³n",
-                            "card_text":  "Hallazgo: H) Zinc Elemental: Administrar 10-20 mg al d�\u0000­a por 10-14 d�\u0000­as para reducir duraci�\u0000³n y recurrencia de la diarrea.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: �\u0000¡Excelente perla! El Zinc es fundamental en el manejo moderno de la diarrea."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_9",
-                            "ui_icon":  "thermometer",
-                            "category":  "Laboratorio",
-                            "card_text":  "Hallazgo cl�\u0000­nico: I) Electrolitos S�\u0000©ricos: Monitorizar niveles de potasio (K+), ya que la diarrea causa p�\u0000©rdidas masivas y riesgo de �\u0000­leo.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: Bien. La hipocalemia es un enemigo oculto en la deshidrataci�\u0000³n prolongada."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_10",
-                            "ui_icon":  "alert-triangle",
-                            "category":  "Intra�\u0000³sea",
-                            "card_text":  "Hallazgo: J) V�\u0000­a Intra�\u0000³sea: Alternativa inmediata de acceso vascular si no se logra canalizaci�\u0000³n venosa en 3 intentos o 90 segundos durante el choque.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Navarro: �\u0000¡As�\u0000­ se hace! En choque hipovol�\u0000©mico, cada segundo cuenta."
-                                        }
-                        }
-                    ],
-    "enarm_pearl":  {
-                        "title":  "Planes de Rehidrataci�\u0000³n",
-                        "text":  "Plan A: Home (ABC: Alimentaci�\u0000³n, Bebidas VSO, Consulta). Plan B: Hospital (100ml/kg VSO 4h). Plan C: IV (Shock - 20ml/kg bolos). Zinc 14 d�\u0000­as.",
-                        "gpc_ref":  "GPC Prevenci�\u0000³n y Manejo de la Diarrea Aguda"
-                    },
-    "boss_fight_triad":  {
-                             "trigger":  "after_cards",
-                             "questions":  [
-                                               {
-                                                   "question":  "�\u0000¿Cu�\u0000¡l es la osmolaridad de sodio recomendada por la OMS para las sales de rehidrataci�\u0000³n oral (VSO)?",
-                                                   "options":  [
-                                                                   "75 mEq/L",
-                                                                   "90 mEq/L",
-                                                                   "60 mEq/L"
-                                                               ],
-                                                   "correct_index":  0
-                                               },
-                                               {
-                                                   "question":  "�\u0000¿Cu�\u0000¡l es la conducta inmediata ante un neonato con choque hipovol�\u0000©mico severo (Plan C)?",
-                                                   "options":  [
-                                                                   "Administrar soluci�\u0000³n fisiol�\u0000³gica 0.9% a 20 ml/kg en bolo",
-                                                                   "Iniciar VSO por sonda nasog�\u0000¡strica",
-                                                                   "Administrar soluci�\u0000³n glucosada al 5%"
-                                                               ],
-                                                   "correct_index":  0
-                                               },
-                                               {
-                                                   "question":  "�\u0000¿Qu�\u0000© mineral se recomienda suplementar durante 14 d�\u0000­as en todo paciente con diarrea aguda seg�\u0000ºn la OMS?",
-                                                   "options":  [
-                                                                   "Zinc",
-                                                                   "Hierro",
-                                                                   "Magnesio"
-                                                               ],
-                                                   "correct_index":  0
-                                               }
-                                           ]
-                         }
+    "version": "v3_swipe_action",
+    "theme_config": "ped",
+    "difficulty": "standard",
+    "patient_intro": {
+        "name": "Valentina, 6 meses",
+        "arrival_scenario": "Lactante con evacuaciones liquidas abundantes. Se observa irritable, con sed avida, ojos ligeramente hundidos y signo del pliegue lento. Acepta y busca ansiosamente el VSO.",
+        "time_limit_sec": 60
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "Dato de importancia: FC 135 lpm (Taquicardia moderada), FR 28 rpm, Temp 37.5 C, TA 105/65 mmHg (Normal-Baja).",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "DATO CLAVE OMITIDO: Navarro: Atencion! El paciente presenta deshidratacion moderada. Inicia Plan B de Rehidratacion Oral supervisada."
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "droplet",
+            "category": "VHG",
+            "card_text": "C) Vida Suero Oral (VSO): Pilar del Plan A y B. Contiene la osmolaridad ideal (75 mEq de sodio) recomendada por la OMS.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Excelente! Es la medida de salud pública que más vidas salva en pediatría."
+            }
+        },
+        {
+            "card_id": "c_4",
+            "ui_icon": "info",
+            "category": "imaging",
+            "card_text": "D) Plan A: Prevención de deshidratación en casa. Menores de 1 año: 75 ml de VSO tras cada evacuación líquida.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Bien. Es el manejo para el niño sin signos de deshidratación clínica."
+            }
+        },
+        {
+            "card_id": "c_5",
+            "ui_icon": "activity",
+            "category": "imaging",
+            "card_text": "E) Plan B: Deshidratación moderada. Administrar VSO 100 ml/kg en 4 horas (en dosis pequeñas/cucharadas).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Correcto! Se realiza en la unidad de salud bajo supervisión médica."
+            }
+        },
+        {
+            "card_id": "c_6",
+            "ui_icon": "search",
+            "category": "imaging",
+            "card_text": "F) Signo del Lienzo Húmedo: Persistencia del pliegue cutáneo tras pinchar la piel. Indica deshidratación grave.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Bien. Refleja la pérdida de turgencia por falta de líquidos intersticiales."
+            }
+        },
+        {
+            "card_id": "c_8",
+            "ui_icon": "pill",
+            "category": "meds",
+            "card_text": "H) Zinc Elemental: Administrar 10-20 mg al día por 10-14 días para reducir duración y recurrencia de la diarrea.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Excelente perla! El Zinc es fundamental en el manejo moderno de la diarrea."
+            }
+        },
+        {
+            "card_id": "c_9",
+            "ui_icon": "thermometer",
+            "category": "labs",
+            "card_text": "I) Electrolitos Séricos: Monitorizar niveles de potasio (K+), ya que la diarrea causa pérdidas masivas y riesgo de íleo.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Bien. La hipocalemia es un enemigo oculto en la deshidratación prolongada."
+            }
+        },
+        {
+            "card_id": "c_10",
+            "ui_icon": "alert-triangle",
+            "category": "meds",
+            "card_text": "J) Vía Intraósea: Alternativa inmediata de acceso vascular si no se logra canalización venosa en 3 intentos o 90 segundos durante el choque.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Así se hace! En choque hipovolémico, cada segundo cuenta."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "imaging",
+            "card_text": "Hallazgo: A) Deshidratacion Moderada (Plan B): Perdida ponderal 5-9%, ojos ligeramente hundidos, signo del pliegue lento e irritabilidad. Acepta VSO oral.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Correcto! Es una emergencia médica que requiere reanimación inmediata."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "zap",
+            "category": "meds",
+            "card_text": "B) Plan C de Rehidratación: Administración de líquidos IV en bolos de Solución Salina 0.9% o Ringer Lactato a 20 ml/kg.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Navarro: ¡Vital! Recuperar la volemia es la prioridad absoluta para salvar su vida."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_7",
+            "ui_icon": "slash",
+            "category": "Gastroenteritis",
+            "card_text": "G) Loperamida: Recomendada en lactantes para reducir el número de evacuciones y evitar la pérdida de líquidos.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "lethal_hazard",
+                "vazquez_comment": "Navarro: ¡PELIGRO! Los antidiarréicos están estrictamente contraindicados en niños; pueden causar íleo paralítico o megacolon."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Planes de Rehidratación",
+        "text": "Plan A: Home (ABC: Alimentación, Bebidas VSO, Consulta). Plan B: Hospital (100ml/kg VSO 4h). Plan C: IV (Shock - 20ml/kg bolos). Zinc 14 días.",
+        "gpc_ref": "GPC Prevención y Manejo de la Diarrea Aguda"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "question": "¿Qué mineral se recomienda suplementar durante 14 días en todo paciente con diarrea aguda según la OMS?",
+                "options": [
+                    "Hierro",
+                    "Magnesio",
+                    "Zinc"
+                ],
+                "correct_index": 2
+            },
+            {
+                "question": "¿Cuál es la osmolaridad de sodio recomendada por la OMS para las sales de rehidratación oral (VSO)?",
+                "options": [
+                    "75 mEq/L",
+                    "90 mEq/L",
+                    "60 mEq/L"
+                ],
+                "correct_index": 0
+            },
+            {
+                "question": "¿Cuál es la conducta inmediata ante un neonato con choque hipovolémico severo (Plan C)?",
+                "options": [
+                    "Administrar solución glucosada al 5%",
+                    "Iniciar VSO por sonda nasogástrica",
+                    "Administrar solución fisiológica 0.9% a 20 ml/kg en bolo"
+                ],
+                "correct_index": 2
+            }
+        ]
+    }
 }

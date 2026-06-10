@@ -1,194 +1,194 @@
 {
-    "case_id": "PROC_IM_HEART_FAILURE_001_001",
-    "version": "v3_swipe_action",
-    "theme_config": "med",
-    "difficulty": "hard",
-    "patient_intro": {
-        "name": "Don Pedro, 68 años",
-        "arrival_scenario": "Paciente con antecedente de infarto previo y DM2. Acude por disnea de medianos esfuerzos (NYHA II) que ha progresado a pequeños esfuerzos, ortopnea y edema de miembros inferiores. Al examen: Ingurgitación yugular y tercer ruido (S3).",
-        "time_limit_sec": 50
+  "case_id": "PROC_IM_HEART_FAILURE_001_001",
+  "version": "v3_swipe_action",
+  "theme_config": "med",
+  "difficulty": "hard",
+  "patient_intro": {
+    "name": "Don Pedro, 68 años",
+    "arrival_scenario": "Paciente con antecedente de infarto previo y DM2. Acude por disnea de medianos esfuerzos (NYHA II) que ha progresado a pequeños esfuerzos, ortopnea y edema de miembros inferiores. Al examen: Ingurgitación yugular y tercer ruido (S3).",
+    "time_limit_sec": 50
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "vitals",
+      "card_text": "TA 145/90 mmHg, FC 92 lpm, FR 22 rpm, SatO2 93%.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: Presión un poco alta, pero lo importante es la insuficiencia cardíaca."
+      }
     },
-    "card_stream": [
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "vitals",
-            "card_text": "TA 145/90 mmHg, FC 92 lpm, FR 22 rpm, SatO2 93%.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Presión un poco alta, pero lo importante es la insuficiencia cardíaca."
-            }
-        },
-        {
-            "card_id": "c_1",
-            "ui_icon": "target",
-            "category": "Diagnóstico",
-            "card_text": "A) Insuficiencia Cardíaca con FE reducida (ICFEr): Presencia de síntomas típicos + FEVI <40%. Don Pedro cumple criterios de Framingham.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 150,
-                "error_type": "omission",
-                "vazquez_comment": "Navarro: ¡Excelente! La distinción por FEVI es vital para el tratamiento."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "beaker",
-            "category": "meds",
-            "card_text": "B) Péptidos Natriuréticos (NT-proBNP): Útiles para el diagnóstico por su alto valor predictivo negativo (descartar IC en urgencias).",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 100,
-                "error_type": "omission",
-                "vazquez_comment": "Navarro: ¡Correcto! Si es normal, es muy poco probable que sea IC."
-            }
-        },
-        {
-            "card_id": "c_3",
-            "ui_icon": "pill",
-            "category": "Tratamiento Pilares",
-            "card_text": "C) Los 'Cuatro Fantásticos': ARNI (o IECA/ARAII), Beta-bloqueador, Antagonista de Mineralocorticoides e iSGLT2.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 150,
-                "error_type": "lethal_omission",
-                "vazquez_comment": "Navarro: ¡Logrado! Esta cuádruple terapia ha revolucionado la supervivencia en ICFEr.",
-                "safety_flags": {
-                    "lethal_risk": true,
-                    "decision_critical": true
-                }
-            }
-        },
-        {
-            "card_id": "c_4",
-            "ui_icon": "droplet",
-            "category": "Manejo Síntomas",
-            "card_text": "D) Furosemida (Diurético de Asa): Tratamiento de elección para el control de la congestión y el edema.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 100,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Esto es puro ruido, R1. Concéntrate en la patología de base."
-            }
-        },
-        {
-            "card_id": "c_5",
-            "ui_icon": "info",
-            "category": "imaging",
-            "card_text": "E) NYHA (New York Heart Association): Clasifica la severidad según la limitación funcional por síntomas (I a IV).",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 50,
-                "error_type": "omission",
-                "vazquez_comment": "Navarro: Correcto. Don Pedro está en una clase NYHA II-III."
-            }
-        },
-        {
-            "card_id": "c_6",
-            "ui_icon": "activity",
-            "category": "Beta-bloqueadores",
-            "card_text": "F) Carvedilol, Bisoprolol, Metoprolol Succinato: Los únicos beta-bloqueadores con beneficio demostrado en ICFEr.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 100,
-                "error_type": "omission",
-                "vazquez_comment": "Navarro: ¡Bien! El metoprolol tartrato NO tiene beneficio en IC crónica."
-            }
-        },
-        {
-            "card_id": "c_8",
-            "ui_icon": "search",
-            "category": "imaging",
-            "card_text": "H) Ecocardiograma Transtorácico: Estudio fundamental para evaluar la FEVI y la etiología estructural de la IC.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 100,
-                "error_type": "omission",
-                "vazquez_comment": "Navarro: ¡Exacto! Es la base de la clasificación moderna de la IC."
-            }
-        },
-        {
-            "card_id": "c_9",
-            "ui_icon": "zap",
-            "category": "Mantenimiento",
-            "card_text": "I) Restricción de Sodio (<2g) y Líquidos: Medidas no farmacológicas esenciales para evitar descompensaciones.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 50,
-                "error_type": "omission",
-                "vazquez_comment": "Navarro: Bien. La educación al paciente es la mitad del éxito."
-            }
-        },
-        {
-            "card_id": "c_10",
-            "ui_icon": "pill",
-            "category": "Avances",
-            "card_text": "J) Sacubitrilo/Valsartán (ARNI): Sustituto preferente de IECA/ARAII en ICFEr sintomática para reducir hospitalizaciones.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 100,
-                "error_type": "omission",
-                "vazquez_comment": "Navarro: ¡Muy bien! Es la punta de lanza del tratamiento actual."
-            }
-        },
-        {
-            "card_id": "c_7",
-            "ui_icon": "alert-triangle",
-            "category": "meds",
-            "card_text": "G) Verapamilo / Diltiazem: Calcioantagonistas no dihidropiridínicos que deben EVITARSE en ICFEr por su efecto inotrópico negativo.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 100,
-                "error_type": "lethal_hazard",
-                "vazquez_comment": "Navarro: ¡MAL! Podrías precipitar un choque cardiogénico."
-            },
-            "safety_flags": {
-                "lethal_risk": true,
-                "decision_critical": true
-            }
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "A) Insuficiencia Cardíaca con FE reducida (ICFEr): Presencia de síntomas típicos + FEVI <40%. Don Pedro cumple criterios de Framingham.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Excelente! La distinción por FEVI es vital para el tratamiento."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_2",
+      "ui_icon": "beaker",
+      "category": "meds",
+      "card_text": "B) Péptidos Natriuréticos (NT-proBNP): Útiles para el diagnóstico por su alto valor predictivo negativo (descartar IC en urgencias).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Correcto! Si es normal, es muy poco probable que sea IC."
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "pill",
+      "category": "Tratamiento Pilares",
+      "card_text": "C) Los 'Cuatro Fantásticos': ARNI (o IECA/ARAII), Beta-bloqueador, Antagonista de Mineralocorticoides e iSGLT2.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Logrado! Esta cuádruple terapia ha revolucionado la supervivencia en ICFEr.",
+        "safety_flags": {
+          "lethal_risk": true,
+          "decision_critical": true
         }
-    ],
-    "enarm_pearl": {
-        "title": "IC: Los 4 Fantásticos",
-        "text": "1. ARNI (Sacubitrilo). 2. BB (Carvedilol). 3. ARM (Espironolactona). 4. iSGLT2 (Dapa/Empa). Framingham: 2 mayores o 1 mayor + 2 menores.",
-        "gpc_ref": "GPC Diagnóstico y Tratamiento de la Insuficiencia Cardíaca Crónica"
+      }
     },
-    "boss_fight_triad": {
-        "trigger": "after_cards",
-        "questions": [
-            {
-                "question": "De las siguientes opciones, ¿cuál es el estudio de imagen de elección para confirmar el diagnóstico y clasificar la FEVI en IC?",
-                "options": [
-                    "Radiografía de tórax",
-                    "Resonancia magnética",
-                    "Ecocardiograma"
-                ],
-                "correct_index": 2
-            },
-            {
-                "question": "¿A qué clase de la NYHA corresponde un paciente con disnea a pequeños esfuerzos que limita la actividad normal?",
-                "options": [
-                    "NYHA I",
-                    "NYHA IV",
-                    "NYHA III"
-                ],
-                "correct_index": 2
-            },
-            {
-                "question": "¿Cuál de estos grupos de fármacos NO forma parte de la 'terapia cuádruple' estándar para ICFEr?",
-                "options": [
-                    "iSGLT2 (Dapagliflozina)",
-                    "Antagonistas de Mineralocorticoides",
-                    "Calcioantagonistas no dihidropiridínicos"
-                ],
-                "correct_index": 2
-            }
-        ]
+    {
+      "card_id": "c_4",
+      "ui_icon": "droplet",
+      "category": "Manejo Síntomas",
+      "card_text": "D) Furosemida (Diurético de Asa): Tratamiento de elección para el control de la congestión y el edema.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: El paciente está congestivo: la furosemida es la base del alivio sintomático, aunque no modifica la mortalidad."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "info",
+      "category": "imaging",
+      "card_text": "E) NYHA (New York Heart Association): Clasifica la severidad según la limitación funcional por síntomas (I a IV).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Correcto. Don Pedro está en una clase NYHA II-III."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "activity",
+      "category": "Beta-bloqueadores",
+      "card_text": "F) Carvedilol, Bisoprolol, Metoprolol Succinato: Los únicos beta-bloqueadores con beneficio demostrado en ICFEr.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Bien! El metoprolol tartrato NO tiene beneficio en IC crónica."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "search",
+      "category": "imaging",
+      "card_text": "H) Ecocardiograma Transtorácico: Estudio fundamental para evaluar la FEVI y la etiología estructural de la IC.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Exacto! Es la base de la clasificación moderna de la IC."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "zap",
+      "category": "Mantenimiento",
+      "card_text": "I) Restricción de Sodio (<2g) y Líquidos: Medidas no farmacológicas esenciales para evitar descompensaciones.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Bien. La educación al paciente es la mitad del éxito."
+      }
+    },
+    {
+      "card_id": "c_10",
+      "ui_icon": "pill",
+      "category": "Avances",
+      "card_text": "J) Sacubitrilo/Valsartán (ARNI): Sustituto preferente de IECA/ARAII en ICFEr sintomática para reducir hospitalizaciones.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Muy bien! Es la punta de lanza del tratamiento actual."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "alert-triangle",
+      "category": "meds",
+      "card_text": "G) Verapamilo / Diltiazem: Calcioantagonistas no dihidropiridínicos que deben EVITARSE en ICFEr por su efecto inotrópico negativo.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_hazard",
+        "vazquez_comment": "Navarro: ¡MAL! Podrías precipitar un choque cardiogénico."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
     }
+  ],
+  "enarm_pearl": {
+    "title": "IC: Los 4 Fantásticos",
+    "text": "1. ARNI (Sacubitrilo). 2. BB (Carvedilol). 3. ARM (Espironolactona). 4. iSGLT2 (Dapa/Empa). Framingham: 2 mayores o 1 mayor + 2 menores.",
+    "gpc_ref": "GPC Diagnóstico y Tratamiento de la Insuficiencia Cardíaca Crónica"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "De las siguientes opciones, ¿cuál es el estudio de imagen de elección para confirmar el diagnóstico y clasificar la FEVI en IC?",
+        "options": [
+          "Radiografía de tórax",
+          "Resonancia magnética",
+          "Ecocardiograma"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "¿A qué clase de la NYHA corresponde un paciente con disnea a pequeños esfuerzos que limita la actividad normal?",
+        "options": [
+          "NYHA I",
+          "NYHA IV",
+          "NYHA III"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "¿Cuál de estos grupos de fármacos NO forma parte de la 'terapia cuádruple' estándar para ICFEr?",
+        "options": [
+          "iSGLT2 (Dapagliflozina)",
+          "Antagonistas de Mineralocorticoides",
+          "Calcioantagonistas no dihidropiridínicos"
+        ],
+        "correct_index": 2
+      }
+    ]
+  }
 }

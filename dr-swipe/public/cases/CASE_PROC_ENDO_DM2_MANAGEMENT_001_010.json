@@ -1,94 +1,94 @@
 {
-    "case_id": "PROC_ENDO_DM2_MANAGEMENT_001_010",
-    "version": "v3_swipe_action",
-    "theme_config": "endo",
-    "difficulty": "standard",
-    "patient_intro": {
-        "name": "Antonio, 48 años",
-        "arrival_scenario": "Acude a control. Presenta antecedente de infarto previo y tiene IMC de 32. Su tratamiento actual es insuficiente. TFG reportada en 75 mL/min/1.73m². El paciente desea un fármaco que le ayude a bajar de peso y proteja su corazón.",
-        "time_limit_sec": 60
+  "case_id": "PROC_ENDO_DM2_MANAGEMENT_001_010",
+  "version": "v3_swipe_action",
+  "theme_config": "endo",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Antonio, 48 años",
+    "arrival_scenario": "Acude a control. Presenta antecedente de infarto previo y tiene IMC de 32. Su tratamiento actual es insuficiente. TFG reportada en 75 mL/min/1.73m². El paciente desea un fármaco que le ayude a bajar de peso y proteja su corazón.",
+    "time_limit_sec": 60
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "Hallazgo: Información redundante: TA 130/80 mmHg, FC 72 lpm, Temp 36.5°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "🧹 DESCARTE RECOMENDADO: No te detengas en signos estables, R1. El reloj no se detiene."
+      }
     },
-    "card_stream": [
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "Signos Vitales",
-            "card_text": "Hallazgo: Información redundante: TA 130/80 mmHg, FC 72 lpm, Temp 36.5°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_1",
-            "ui_icon": "target",
-            "category": "Diagnóstico",
-            "card_text": "Hallazgo: A) Agregar Agonista GLP-1 (Liraglutida/Semaglutida): Indicado en DM2 con riesgo cardiovascular establecido y obesidad. Excelente control de HbA1c.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 150,
-                "error_type": "omission",
-                "vazquez_comment": "¡Correcto! Por su antecedente de IAM (prevención secundaria), los GLP-1 son la elección actual sobre las sulfonilureas para protección CV."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "Hallazgo: Información redundante: B) Agregar Sulfonilurea (Glibenclamida): Eficaz para bajar glucosa, pero causa ganancia de peso y riesgo alto de hipoglucemia. No tiene beneficio CV.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: ¡Bien! Evitaste el riesgo de hipoglucemia y la ganancia de peso innecesaria."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        }
-    ],
-    "enarm_pearl": {
-        "title": "Algoritmo ADA: Cardio-Nefroprotección",
-        "text": "Si hay ECV establecida → GLP-1 o iSGLT2. Si hay Falla Cardíaca o ERC (Nefropatía) → iSGLT2 (Empagliflozina).",
-        "gpc_ref": "ADA Standards of Care in Diabetes"
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "Hallazgo: A) Agregar Agonista GLP-1 (Liraglutida/Semaglutida): Indicado en DM2 con riesgo cardiovascular establecido y obesidad. Excelente control de HbA1c.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "¡Correcto! Por su antecedente de IAM (prevención secundaria), los GLP-1 son la elección actual sobre las sulfonilureas para protección CV."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
     },
-    "boss_fight_triad": {
-        "trigger": "after_cards",
-        "questions": [
-            {
-                "correct_index": 0,
-                "question": "¿Cuál es el fármaco de elección en pacientes con DM2 y enfermedad cardiovascular establecida (prevención secundaria)?",
-                "options": [
-                    "Agonistas GLP-1",
-                    "Sulfonilureas",
-                    "Metformina sola"
-                ]
-            },
-            {
-                "correct_index": 0,
-                "question": "¿Cuál es el principal riesgo asociado al uso de sulfonilureas como la glibenclamida?",
-                "options": [
-                    "Hipoglucemia y ganancia de peso",
-                    "Cetoacidosis diabética",
-                    "Insuficiencia renal aguda"
-                ]
-            },
-            {
-                "correct_index": 0,
-                "question": "En un paciente con DM2 e Insuficiencia Cardíaca, ¿qué grupo farmacológico aporta mayor beneficio de cardio-protección?",
-                "options": [
-                    "Inhibidores de SGLT2 (iSGLT2)",
-                    "Agonistas GLP-1",
-                    "Inhibidores de DPP-4"
-                ]
-            }
-        ]
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "Hallazgo: Información redundante: B) Agregar Sulfonilurea (Glibenclamida): Eficaz para bajar glucosa, pero causa ganancia de peso y riesgo alto de hipoglucemia. No tiene beneficio CV.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "🧹 DESCARTE RECOMENDADO: ¡Bien! Evitaste el riesgo de hipoglucemia y la ganancia de peso innecesaria."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
     }
+  ],
+  "enarm_pearl": {
+    "title": "Algoritmo ADA: Cardio-Nefroprotección",
+    "text": "Si hay ECV establecida → GLP-1 o iSGLT2. Si hay Falla Cardíaca o ERC (Nefropatía) → iSGLT2 (Empagliflozina).",
+    "gpc_ref": "ADA Standards of Care in Diabetes"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "correct_index": 0,
+        "question": "¿Cuál es el fármaco de elección en pacientes con DM2 y enfermedad cardiovascular establecida (prevención secundaria)?",
+        "options": [
+          "Agonistas GLP-1",
+          "Sulfonilureas",
+          "Metformina sola"
+        ]
+      },
+      {
+        "correct_index": 0,
+        "question": "¿Cuál es el principal riesgo asociado al uso de sulfonilureas como la glibenclamida?",
+        "options": [
+          "Hipoglucemia y ganancia de peso",
+          "Cetoacidosis diabética",
+          "Insuficiencia renal aguda"
+        ]
+      },
+      {
+        "correct_index": 0,
+        "question": "En un paciente con DM2 e Insuficiencia Cardíaca, ¿qué grupo farmacológico aporta mayor beneficio de cardio-protección?",
+        "options": [
+          "Inhibidores de SGLT2 (iSGLT2)",
+          "Agonistas GLP-1",
+          "Inhibidores de DPP-4"
+        ]
+      }
+    ]
+  }
 }

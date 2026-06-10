@@ -4,7 +4,6 @@ export interface GameContextForScoring {
   combo: number;
   multiplier: number;
   difficulty: string;
-  dossier: Card[];
   lastCardPresentedAt: number;
 }
 
@@ -13,10 +12,9 @@ export interface ScoreBreakdown {
   comboMultiplier: number;
   difficultyMultiplier: number;
   speedBonus: number;
-  dossierMultiplier: number;
   finalPoints: number;
   coinsEarned: number;
-  bonusType: 'speed' | 'dossier' | 'combo' | 'none';
+  bonusType: 'speed' | 'combo' | 'none';
 }
 
 /**
@@ -76,7 +74,6 @@ export function calculateCardScore(
       comboMultiplier: 1,
       difficultyMultiplier: 1,
       speedBonus: 1,
-      dossierMultiplier: 1,
       finalPoints: basePoints,
       coinsEarned: 0,
       bonusType: 'none'
@@ -93,41 +90,20 @@ export function calculateCardScore(
 
   // Perfect Swipe Logic (x1.2)
   let speedBonus = 1;
-  let bonusType: 'speed' | 'dossier' | 'combo' | 'none' = 'none';
+  let bonusType: 'speed' | 'combo' | 'none' = 'none';
 
   if (timeTaken !== undefined && timeTaken < 1200) {
     speedBonus = 1.2;
     bonusType = 'speed';
   }
 
-  // Dossier synergy multiplier (check for related diagnoses)
-  let dossierMultiplier = 1;
-  if (card.related_diagnoses && context.dossier.length > 0) {
-    let matchCount = 0;
-    for (const diagnosis of card.related_diagnoses) {
-      const hasMatch = context.dossier.some(
-        (dCard) =>
-          dCard.related_diagnoses?.includes(diagnosis) ||
-          dCard.category === diagnosis
-      );
-      if (hasMatch) {
-        matchCount++;
-        if (matchCount >= 3) break; // Cap at 3 matches
-      }
-    }
-    if (matchCount > 0) {
-      dossierMultiplier = 1 + matchCount * 0.2; // 1.2x, 1.4x, 1.6x per match
-      bonusType = 'dossier';
-    }
-  }
-
-  // If we have combo multiplier but no dossier bonus, prefer showing combo
+  // If we have a combo multiplier, surface it as the bonus
   if (comboMultiplier > 1 && bonusType === 'none') {
     bonusType = 'combo';
   }
 
   const finalPoints = Math.floor(
-    basePoints * comboMultiplier * difficultyMultiplier * speedBonus * dossierMultiplier
+    basePoints * comboMultiplier * difficultyMultiplier * speedBonus
   );
 
   // Coin calculation: 1 base + bonus for speed/combo milestones
@@ -143,7 +119,6 @@ export function calculateCardScore(
     comboMultiplier,
     difficultyMultiplier,
     speedBonus,
-    dossierMultiplier,
     finalPoints,
     coinsEarned,
     bonusType

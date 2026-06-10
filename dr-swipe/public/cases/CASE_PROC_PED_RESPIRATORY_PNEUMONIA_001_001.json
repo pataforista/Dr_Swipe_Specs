@@ -1,194 +1,194 @@
 {
-    "case_id": "PROC_PED_RESPIRATORY_PNEUMONIA_001_001",
-    "version": "v3_swipe_action",
-    "theme_config": "ped",
-    "difficulty": "standard",
-    "patient_intro": {
-        "name": "Valentina, 3 anos",
-        "arrival_scenario": "Preescolar con tos productiva, fiebre de 39°C y dificultad respiratoria (taquipnea y aleteo nasal). A la auscultacion se perciben estertores crepitantes localizados en base pulmonar derecha.",
-        "time_limit_sec": 60
+  "case_id": "PROC_PED_RESPIRATORY_PNEUMONIA_001_001",
+  "version": "v3_swipe_action",
+  "theme_config": "ped",
+  "difficulty": "standard",
+  "patient_intro": {
+    "name": "Valentina, 3 anos",
+    "arrival_scenario": "Preescolar con tos productiva, fiebre de 39°C y dificultad respiratoria (taquipnea y aleteo nasal). A la auscultacion se perciben estertores crepitantes localizados en base pulmonar derecha.",
+    "time_limit_sec": 60
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "vitals",
+      "card_text": "FC 130 lpm, FR 45 rpm (Taquipnea), Temp 39.2°C, SatO2 91%.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: ¡Cuidado con esa saturacion! Valentina necesita atencion inmediata."
+      }
     },
-    "card_stream": [
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "Signos Vitales",
-            "card_text": "Informacion redundante: FC 130 lpm, FR 45 rpm (Taquipnea), Temp 39.2°C, SatO2 91%.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 50,
-                "error_type": "omission",
-                "vazquez_comment": "Navarro: ¡Cuidado con esa saturacion! Valentina necesita atencion inmediata."
-            }
-        },
-        {
-            "card_id": "c_1",
-            "ui_icon": "target",
-            "category": "Diagnostico",
-            "card_text": "Evidencia: A) Neumonia Adquirida en la Comunidad (NAC): Presencia de consolidacion en Rx o estertores + Sintomas de infeccion respiratoria aguda.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 150,
-                "error_type": "omission",
-                "vazquez_comment": "Navarro: ¡Correcto! Es una de las principales causas de morbimortalidad infantil."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "beaker",
-            "category": "Etiologia",
-            "card_text": "Hallazgo: B) Streptococcus pneumoniae: El patogeno bacteriano mas frecuente de NAC en ninos de todas las edades (excepto neonatos).",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 100,
-                "error_type": "omission",
-                "vazquez_comment": "Navarro: ¡Pneumococo es el rey! Siempre hay que cubrirlo."
-            }
-        },
-        {
-            "card_id": "c_5",
-            "ui_icon": "info",
-            "category": "Neumonia Atipica",
-            "card_text": "Hallazgo: E) Mycoplasma pneumoniae: Etiologia comun en ninos mayores (>5 anos) con tos persistente, seca y escasa fiebre.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 100,
-                "error_type": "omission",
-                "vazquez_comment": "Navarro: Bien. En estos casos los macrolidos (Azitromicina) son la eleccion."
-            }
-        },
-        {
-            "card_id": "c_6",
-            "ui_icon": "camera",
-            "category": "Imagen",
-            "card_text": "Evidencia: F) Radiografia de Torax: Hallazgo tipico de NAC bacteriana: Consolidacion lobar o segmentaria con broncograma aereo.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 100,
-                "error_type": "omission",
-                "vazquez_comment": "Navarro: ¡Efectivamente! Ayuda a localizar la lesion y descartar complicaciones (derrame)."
-            }
-        },
-        {
-            "card_id": "c_7",
-            "ui_icon": "droplet",
-            "category": "Complicacion",
-            "card_text": "Evidencia: G) Derrame Paraneumonico: Si la fiebre persiste >48-72h tras iniciar antibioticos, sospecha ocupacion pleural.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 100,
-                "error_type": "omission",
-                "vazquez_comment": "Navarro: ¡Excelente ojo clinico! La persistencia de fiebre obliga a re-evaluar."
-            }
-        },
-        {
-            "card_id": "c_8",
-            "ui_icon": "zap",
-            "category": "Prevencion",
-            "card_text": "Evidencia clinica: H) Vacuna Conjugada 13-valente: Ha reducido drasticamente la incidencia de neumonia invasiva por neumococo.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 50,
-                "error_type": "omission",
-                "vazquez_comment": "Navarro: ¡Fundamental! La prevencion es la mejor medicina."
-            }
-        },
-        {
-            "card_id": "c_9",
-            "ui_icon": "slash",
-            "category": "Manejo",
-            "card_text": "Dato de importancia: Dato anecdotico: I) Jarabes para la Tos (Antitusigenos): Recomendados en preescolares para mejorar el descanso nocturno durante la NAC.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡No! Los antitusigenos estan contraindicados en ninos pequenos; pueden inhibir la eliminacion de secreciones."
-            }
-        },
-        {
-            "card_id": "c_10",
-            "ui_icon": "pill",
-            "category": "Tratamiento Hospitalario",
-            "card_text": "Dato de importancia: J) Ampicilina o Penicilina G Sodica: Tratamiento IV de eleccion para NAC bacteriana en el paciente hospitalizado con esquema de vacunacion completo.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 100,
-                "error_type": "omission",
-                "vazquez_comment": "Navarro: Correcto. Si el nino esta vacunado, no necesitamos cefalosporinas de 3ra generacion de entrada."
-            }
-        },
-        {
-            "card_id": "c_3",
-            "ui_icon": "pill",
-            "category": "Tratamiento Ambulatorio",
-            "card_text": "Dato de importancia: C) Amoxicilina (Altas dosis): 80-90 mg/kg/dia por 7-10 dias. Tratamiento de primera eleccion para NAC no complicada.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 150,
-                "error_type": "lethal_omission",
-                "vazquez_comment": "Navarro: ¡Excelente! Superas la resistencia parcial del neumococo con dosis altas de amoxi."
-            },
-            "safety_flags": {
-                "lethal_risk": true,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "c_4",
-            "ui_icon": "alert-triangle",
-            "category": "Criterios Ingreso",
-            "card_text": "Evidencia clinica: D) SatO2 <92% (Aire ambiente): Indicacion absoluta de ingreso hospitalario para oxigenoterapia y manejo IV.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 150,
-                "error_type": "lethal_omission",
-                "vazquez_comment": "Navarro: ¡Vital! Una hipoxemia no tratada puede llevar a falla respiratoria rapida."
-            },
-            "safety_flags": {
-                "lethal_risk": true,
-                "decision_critical": true
-            }
-        }
-    ],
-    "enarm_pearl": {
-        "title": "Neumonia Ped: Pilares Tx",
-        "text": "1ra linea Ambulatorio: Amoxicilina (High dose). Hospital: Ampicilina IV. Atipica (>5a): Azitromicina. Criterios: Sat <92% o dificultad grave.",
-        "gpc_ref": "GPC Prevencion, Diagnostico y Tratamiento de la Neumonia Adquirida en la Comunidad"
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnostico",
+      "card_text": "Evidencia: A) Neumonia Adquirida en la Comunidad (NAC): Presencia de consolidacion en Rx o estertores + Sintomas de infeccion respiratoria aguda.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Correcto! Es una de las principales causas de morbimortalidad infantil."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": true
+      }
     },
-    "boss_fight_triad": {
-        "trigger": "after_cards",
-        "questions": [
-            {
-                "question": "¿Cual es el tratamiento antibiotico de eleccion para una NAC no complicada en el manejo ambulatorio?",
-                "options": [
-                    "Eritromicina oral",
-                    "Ceftriaxona intramuscular",
-                    "Amoxicilina a dosis de 80-90 mg/kg/dia"
-                ],
-                "correct_index": 2
-            },
-            {
-                "question": "¿A partir de que nivel de saturacion de oxigeno por oximetria de pulso se indica el ingreso hospitalario?",
-                "options": [
-                    "Menor a 95%",
-                    "Menor a 88%",
-                    "Menor a 92%"
-                ],
-                "correct_index": 2
-            },
-            {
-                "question": "¿Cual es el agente etiologico bacteriano mas frecuente de neumonia adquirida en la comunidad en ninos mayores de 3 meses?",
-                "options": [
-                    "Staphylococcus aureus",
-                    "Haemophilus influenzae",
-                    "Streptococcus pneumoniae"
-                ],
-                "correct_index": 2
-            }
-        ]
+    {
+      "card_id": "c_2",
+      "ui_icon": "beaker",
+      "category": "Etiologia",
+      "card_text": "Hallazgo: B) Streptococcus pneumoniae: El patogeno bacteriano mas frecuente de NAC en ninos de todas las edades (excepto neonatos).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Pneumococo es el rey! Siempre hay que cubrirlo."
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "info",
+      "category": "Neumonia Atipica",
+      "card_text": "Hallazgo: E) Mycoplasma pneumoniae: Etiologia comun en ninos mayores (>5 anos) con tos persistente, seca y escasa fiebre.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Bien. En estos casos los macrolidos (Azitromicina) son la eleccion."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "camera",
+      "category": "Imagen",
+      "card_text": "Evidencia: F) Radiografia de Torax: Hallazgo tipico de NAC bacteriana: Consolidacion lobar o segmentaria con broncograma aereo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Efectivamente! Ayuda a localizar la lesion y descartar complicaciones (derrame)."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "droplet",
+      "category": "Complicacion",
+      "card_text": "Evidencia: G) Derrame Paraneumonico: Si la fiebre persiste >48-72h tras iniciar antibioticos, sospecha ocupacion pleural.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Excelente ojo clinico! La persistencia de fiebre obliga a re-evaluar."
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "zap",
+      "category": "Prevencion",
+      "card_text": "Evidencia clinica: H) Vacuna Conjugada 13-valente: Ha reducido drasticamente la incidencia de neumonia invasiva por neumococo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 50,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: ¡Fundamental! La prevencion es la mejor medicina."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "slash",
+      "category": "Manejo",
+      "card_text": "Dato de importancia: Dato anecdotico: I) Jarabes para la Tos (Antitusigenos): Recomendados en preescolares para mejorar el descanso nocturno durante la NAC.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "Navarro: ¡No! Los antitusigenos estan contraindicados en ninos pequenos; pueden inhibir la eliminacion de secreciones."
+      }
+    },
+    {
+      "card_id": "c_10",
+      "ui_icon": "pill",
+      "category": "Tratamiento Hospitalario",
+      "card_text": "Dato de importancia: J) Ampicilina o Penicilina G Sodica: Tratamiento IV de eleccion para NAC bacteriana en el paciente hospitalizado con esquema de vacunacion completo.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "Navarro: Correcto. Si el nino esta vacunado, no necesitamos cefalosporinas de 3ra generacion de entrada."
+      }
+    },
+    {
+      "card_id": "c_3",
+      "ui_icon": "pill",
+      "category": "Tratamiento Ambulatorio",
+      "card_text": "Dato de importancia: C) Amoxicilina (Altas dosis): 80-90 mg/kg/dia por 7-10 dias. Tratamiento de primera eleccion para NAC no complicada.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Excelente! Superas la resistencia parcial del neumococo con dosis altas de amoxi."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "alert-triangle",
+      "category": "Criterios Ingreso",
+      "card_text": "Evidencia clinica: D) SatO2 <92% (Aire ambiente): Indicacion absoluta de ingreso hospitalario para oxigenoterapia y manejo IV.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Vital! Una hipoxemia no tratada puede llevar a falla respiratoria rapida."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
     }
+  ],
+  "enarm_pearl": {
+    "title": "Neumonia Ped: Pilares Tx",
+    "text": "1ra linea Ambulatorio: Amoxicilina (High dose). Hospital: Ampicilina IV. Atipica (>5a): Azitromicina. Criterios: Sat <92% o dificultad grave.",
+    "gpc_ref": "GPC Prevencion, Diagnostico y Tratamiento de la Neumonia Adquirida en la Comunidad"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cual es el tratamiento antibiotico de eleccion para una NAC no complicada en el manejo ambulatorio?",
+        "options": [
+          "Eritromicina oral",
+          "Ceftriaxona intramuscular",
+          "Amoxicilina a dosis de 80-90 mg/kg/dia"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "¿A partir de que nivel de saturacion de oxigeno por oximetria de pulso se indica el ingreso hospitalario?",
+        "options": [
+          "Menor a 95%",
+          "Menor a 88%",
+          "Menor a 92%"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "¿Cual es el agente etiologico bacteriano mas frecuente de neumonia adquirida en la comunidad en ninos mayores de 3 meses?",
+        "options": [
+          "Staphylococcus aureus",
+          "Haemophilus influenzae",
+          "Streptococcus pneumoniae"
+        ],
+        "correct_index": 2
+      }
+    ]
+  }
 }

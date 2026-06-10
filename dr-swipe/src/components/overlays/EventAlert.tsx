@@ -1,10 +1,11 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import type { LoreItem } from '../../types/game';
 
 interface EventAlertProps {
   event: {
     type: 'lab' | 'archive' | 'systemic';
-    item: any;
+    item: LoreItem;
   } | null;
   onClose: () => void;
 }
@@ -22,9 +23,9 @@ export const EventAlert: React.FC<EventAlertProps> = ({ event, onClose }) => {
   };
 
   const theme = getEventTheme(event.type);
-  const effectText = event.item.efecto ? 
-    `Efecto: ${event.item.efecto.tipo.replace(/_/g, ' ').toUpperCase()}` : 
-    "Cambio en las reglas de la guardia";
+  // These events are narrative color only — never promise a mechanical effect
+  // that the engine doesn't apply.
+  const effectText = "Anotado en la bitácora de la guardia";
 
   return (
     <motion.div

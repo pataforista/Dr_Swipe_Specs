@@ -1,95 +1,95 @@
 {
-    "case_id": "PROC_NEUR_HEADACHE_THUNDER_001_011",
-    "version": "v3_swipe_action",
-    "theme_config": "neur",
-    "difficulty": "hard",
-    "patient_intro": {
-        "name": "Carmen, 37 años",
-        "arrival_scenario": "Cefalea en trueno que alcanza intensidad máxima en menos de 1 minuto. Presenta náuseas, vómito y rigidez de nuca. TC simple de cráneo muestra hiperdensidad en cisternas de la base y polígono de Willis.",
-        "time_limit_sec": 50
+  "case_id": "PROC_NEUR_HEADACHE_THUNDER_001_011",
+  "version": "v3_swipe_action",
+  "theme_config": "neur",
+  "difficulty": "hard",
+  "patient_intro": {
+    "name": "Carmen, 37 años",
+    "arrival_scenario": "Cefalea en trueno que alcanza intensidad máxima en menos de 1 minuto. Presenta náuseas, vómito y rigidez de nuca. TC simple de cráneo muestra hiperdensidad en cisternas de la base y polígono de Willis.",
+    "time_limit_sec": 50
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "Signos Vitales",
+      "card_text": "Dato de importancia: Dato anecdótico: TA 160/100 mmHg, FC 95 lpm, Temp 37.2°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Navarro: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
+      }
     },
-    "card_stream": [
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "Signos Vitales",
-            "card_text": "Dato de importancia: Dato anecdótico: TA 160/100 mmHg, FC 95 lpm, Temp 37.2°C",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_1",
-            "ui_icon": "target",
-            "category": "Diagnóstico",
-            "card_text": "Evidencia: A) Hemorragia Subaracnoidea (HSA): Cefalea en trueno + Irritación meníngea. Causa principal: Rotura de aneurisma sacular.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 150,
-                "error_type": "lethal_omission",
-                "vazquez_comment": "Navarro: ¡Manejo Perfecto! La HSA es una emergencia neuroquirúrgica. La TC es el primer estudio. La segunda causa más frecuente es la Malformación Arteriovenosa (MAV)."
-            },
-            "safety_flags": {
-                "lethal_risk": true,
-                "decision_critical": true,
-                "lethal_if_discarded": true
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Diagnóstico",
-            "card_text": "Hallazgo: Dato anecdótico: B) Migraña con Aura: Dolor pulsátil de inicio gradual, precedido por escotomas. No es súbito ni 'en trueno'.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "🎯 DATO CLAVE OMITIDO: Navarro: ¡Bien! El inicio súbito es el red flag que descarta la migraña."
-            },
-            "safety_flags": {
-                "lethal_risk": false,
-                "decision_critical": false
-            }
-        }
-    ],
-    "enarm_pearl": {
-        "title": "Cefalea en Trueno",
-        "text": "Si la TC es NEGATIVA pero la sospecha de HSA es alta, el siguiente paso es la PUNCIÓN LUMBAR buscando xantocromía.",
-        "gpc_ref": "GPC Manejo de la Hemorragia Subaracnoidea"
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "Evidencia: A) Hemorragia Subaracnoidea (HSA): Cefalea en trueno + Irritación meníngea. Causa principal: Rotura de aneurisma sacular.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "Navarro: ¡Manejo Perfecto! La HSA es una emergencia neuroquirúrgica. La TC es el primer estudio. La segunda causa más frecuente es la Malformación Arteriovenosa (MAV)."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true,
+        "lethal_if_discarded": true
+      }
     },
-    "boss_fight_triad": {
-        "trigger": "after_cards",
-        "questions": [
-            {
-                "correct_index": 0,
-                "question": "¿Cuál es la causa no traumática más frecuente de Hemorragia Subaracnoidea?",
-                "options": [
-                    "Rotura de aneurisma sacular",
-                    "Malformación arteriovenosa (MAV)",
-                    "Angiopatía amiloide"
-                ]
-            },
-            {
-                "correct_index": 0,
-                "question": "¿Qué hallazgo en el líquido cefalorraquídeo confirma una HSA frente a una punción traumática?",
-                "options": [
-                    "Xantocromía (coloración amarillenta)",
-                    "Glucosa muy baja",
-                    "Presencia de leucocitos PMN"
-                ]
-            },
-            {
-                "correct_index": 0,
-                "question": "¿Cuál es el fármaco de elección para prevenir el vasoespasmo cerebral tras la rotura?",
-                "options": [
-                    "Nimodipino",
-                    "Verapamilo",
-                    "Amlodipino"
-                ]
-            }
-        ]
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Diagnóstico",
+      "card_text": "Hallazgo: Dato anecdótico: B) Migraña con Aura: Dolor pulsátil de inicio gradual, precedido por escotomas. No es súbito ni 'en trueno'.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Navarro: ¡Bien! El inicio súbito es el red flag que descarta la migraña."
+      },
+      "safety_flags": {
+        "lethal_risk": false,
+        "decision_critical": false
+      }
     }
+  ],
+  "enarm_pearl": {
+    "title": "Cefalea en Trueno",
+    "text": "Si la TC es NEGATIVA pero la sospecha de HSA es alta, el siguiente paso es la PUNCIÓN LUMBAR buscando xantocromía.",
+    "gpc_ref": "GPC Manejo de la Hemorragia Subaracnoidea"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "correct_index": 0,
+        "question": "¿Cuál es la causa no traumática más frecuente de Hemorragia Subaracnoidea?",
+        "options": [
+          "Rotura de aneurisma sacular",
+          "Malformación arteriovenosa (MAV)",
+          "Angiopatía amiloide"
+        ]
+      },
+      {
+        "correct_index": 0,
+        "question": "¿Qué hallazgo en el líquido cefalorraquídeo confirma una HSA frente a una punción traumática?",
+        "options": [
+          "Xantocromía (coloración amarillenta)",
+          "Glucosa muy baja",
+          "Presencia de leucocitos PMN"
+        ]
+      },
+      {
+        "correct_index": 0,
+        "question": "¿Cuál es el fármaco de elección para prevenir el vasoespasmo cerebral tras la rotura?",
+        "options": [
+          "Nimodipino",
+          "Verapamilo",
+          "Amlodipino"
+        ]
+      }
+    ]
+  }
 }

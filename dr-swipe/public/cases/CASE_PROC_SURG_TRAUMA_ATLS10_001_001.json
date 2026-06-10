@@ -1,183 +1,183 @@
 {
-    "case_id": "PROC_SURG_TRAUMA_ATLS10_001_001",
-    "version": "v3_swipe_action",
-    "theme_config": "surg",
-    "difficulty": "hard",
-    "patient_intro": {
-        "name": "Pedro, 40 años",
-        "arrival_scenario": "Paciente con trauma torácico penetrante. Se observa ingurgitación yugular, hipotensión (80/40) y timpanismo a la percusión del hemitórax derecho. Bajo estándares de ATLS 10ª Edición, se identifica Neumotórax a Tensión. ¿Cuál es el sitio de descompresión inmediata con aguja?",
-        "time_limit_sec": 50
+  "case_id": "PROC_SURG_TRAUMA_ATLS10_001_001",
+  "version": "v3_swipe_action",
+  "theme_config": "surg",
+  "difficulty": "hard",
+  "patient_intro": {
+    "name": "Pedro, 40 años",
+    "arrival_scenario": "Paciente con trauma torácico penetrante. Se observa ingurgitación yugular, hipotensión (80/40) y timpanismo a la percusión del hemitórax derecho. Bajo estándares de ATLS 10ª Edición, se identifica Neumotórax a Tensión. ¿Cuál es el sitio de descompresión inmediata con aguja?",
+    "time_limit_sec": 50
+  },
+  "card_stream": [
+    {
+      "card_id": "init_vitals",
+      "ui_icon": "heartbeat",
+      "category": "vitals",
+      "card_text": "Dato de importancia: Dato anecdótico: TA 80/50 mmHg, FC 130 lpm, Temp 36.2°C",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "No te detengas en estos signos de choque obstructivo, R1. El reloj no se detiene."
+      }
     },
-    "card_stream": [
-        {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "Signos Vitales",
-            "card_text": "Dato de importancia: Dato anecdótico: TA 80/50 mmHg, FC 130 lpm, Temp 36.2°C",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 50,
-                "error_type": "omission",
-                "vazquez_comment": "No te detengas en estos signos de choque obstructivo, R1. El reloj no se detiene."
-            }
-        },
-        {
-            "card_id": "c_2",
-            "ui_icon": "eye",
-            "category": "Historia Estándar",
-            "card_text": "Información redundante: B) Descompresión en 2° Espacio Intercostal (LMC): Sitio recomendado en versiones antiguas (ATLS 9ª y previas). Menos efectivo por el grosor de la pared torácica.",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "¡Bien! Escogiste el sitio del ATLS 10 para garantizar la descompresión efectiva."
-            }
-        },
-        {
-            "card_id": "c_3",
-            "ui_icon": "list",
-            "category": "Evaluación Primaria",
-            "card_text": "Hallazgo: C) Secuencia ABCDE: Prioridad vital: Vía aérea, Respiración, Circulación, Déficit neurológico y Exposición.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 100,
-                "error_type": "omission",
-                "vazquez_comment": "¡Correcto! Ignorar esta secuencia mata pacientes; siempre trata el problema más urgente primero."
-            }
-        },
-        {
-            "card_id": "c_4",
-            "ui_icon": "search",
-            "category": "Auxilio Diagnóstico",
-            "card_text": "Evidencia: D) FAST Scan: Ultrasonido rápido en 4 puntos (Morrison, esplénico, hueco pélvico y pericardio) para buscar líquido libre.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 100,
-                "error_type": "omission",
-                "vazquez_comment": "¡Excelente! Es la herramienta de elección en pacientes inestables para localizar hemorragia interna."
-            }
-        },
-        {
-            "card_id": "c_6",
-            "ui_icon": "zap",
-            "category": "Circulación",
-            "card_text": "Evidencia: F) Accesos Venosos: Canalar de inmediato 2 venas periféricas con catéteres de grueso calibre (14 o 16 Gauge).",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 100,
-                "error_type": "omission",
-                "vazquez_comment": "¡Perfecto! Necesitamos volumen rápido si la presión sigue cayendo."
-            }
-        },
-        {
-            "card_id": "c_7",
-            "ui_icon": "droplets",
-            "category": "Circulación",
-            "card_text": "Evidencia: G) Reposición de Líquidos: Iniciar con 1 litro de cristaloides isotónicos (Hartmann) tibios para limitar la hiponatermia y acidosis.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 100,
-                "error_type": "omission",
-                "vazquez_comment": "¡Bien! ATLS 10 bajó la recomendación inicial de 2L a 1L para evitar la coagulopatía por dilución."
-            }
-        },
-        {
-            "card_id": "c_9",
-            "ui_icon": "activity",
-            "category": "Breathing",
-            "card_text": "Hallazgo: I) Signos de Tensión: Desviación traqueal, ausencia de ruidos respiratorios e ingurgitación yugular.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 100,
-                "error_type": "omission",
-                "vazquez_comment": "¡Excelente! Identificaste los datos clásicos que confirman la hipertensión intratorácica."
-            }
-        },
-        {
-            "card_id": "c_1",
-            "ui_icon": "target",
-            "category": "Diagnóstico",
-            "card_text": "Evidencia: A) Descompresión en 5° Espacio Intercostal (LAA/LAM): ATLS 10ª Edición (2024): El sitio preferido es el 5° espacio intercostal en la línea axilar anterior o media.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 150,
-                "error_type": "lethal_omission",
-                "vazquez_comment": "¡Excelente! Estás actualizado con el ATLS 10. El 5° espacio es ahora el estándar para evitar lesiones y asegurar éxito."
-            },
-            "safety_flags": {
-                "lethal_risk": true,
-                "decision_critical": true,
-                "lethal_if_discarded": true
-            }
-        },
-        {
-            "card_id": "c_5",
-            "ui_icon": "alert-triangle",
-            "category": "Triada Mortal",
-            "card_text": "Hallazgo: E) Triada de la Muerte: Acidosis, Coagulopatía e Hipotermia. Son eventos que se autoalimentan y llevan al fallecimiento.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 100,
-                "error_type": "lethal_omission",
-                "vazquez_comment": "¡Vital! El control preventivo de la temperatura y la reposición de factores son clave en el choque hemorrágico."
-            },
-            "safety_flags": {
-                "lethal_risk": true,
-                "decision_critical": true
-            }
-        },
-        {
-            "card_id": "c_8",
-            "ui_icon": "alert-circle",
-            "category": "Breathing",
-            "card_text": "Evidencia: H) Diagnóstico Clínico (PNT): El Neumotórax a Tensión se diagnostica con la CLíNICA. Nunca retraces el tratamiento por Rayos X.",
-            "expected_action": "keep",
-            "scoring": {
-                "points": 150,
-                "error_type": "lethal_omission",
-                "vazquez_comment": "¡Correcto! Esperar una placa en un PNT es una negligencia mortal; pincha de inmediato."
-            },
-            "safety_flags": {
-                "lethal_risk": true,
-                "decision_critical": true
-            }
-        }
-    ],
-    "enarm_pearl": {
-        "title": "ATLS 10: ABCDE y PNT",
-        "text": "PNT: Dx CLíNICO. Punción: 5° Espacio (Axilar). Resucitación: 1L de Hartmann. Tríada Muerte: Acidosis, Coagulopatía, Hipotermia.",
-        "gpc_ref": "Standard ATLS 10th Edition / GPC Manejo del Trauma Grave"
+    {
+      "card_id": "c_2",
+      "ui_icon": "eye",
+      "category": "Historia Estándar",
+      "card_text": "Información redundante: B) Descompresión en 2° Espacio Intercostal (LMC): Sitio recomendado en versiones antiguas (ATLS 9ª y previas). Menos efectivo por el grosor de la pared torácica.",
+      "expected_action": "discard",
+      "scoring": {
+        "points": 50,
+        "error_type": "hoarding",
+        "vazquez_comment": "¡Bien! Escogiste el sitio del ATLS 10 para garantizar la descompresión efectiva."
+      }
     },
-    "boss_fight_triad": {
-        "trigger": "after_cards",
-        "questions": [
-            {
-                "question": "¿Cuál es la secuencia de prioridades vitales en la evaluación primaria del paciente con trauma grave?",
-                "options": [
-                    "ABCDE (Vía aérea, Respiración, Circulación, Déficit, Exposición)",
-                    "CAB (Circulación, Vía aérea, Respiración)",
-                    "Especialidad, Laboratorio, Imagen, Diagnóstico"
-                ],
-                "correct_index": 0
-            },
-            {
-                "question": "¿Qué hallazgo es indispensable para diagnosticar un Neumotórax a Tensión?",
-                "options": [
-                    "Confirmación por Radiografía de Tórax",
-                    "Reporte de Gasometría Arterial",
-                    "Datos clínicos (ingurgitación, timpanismo, ausencia ruidos)"
-                ],
-                "correct_index": 2
-            },
-            {
-                "question": "¿Cuáles son los componentes de la 'Tríada de la Muerte' en el paciente con trauma?",
-                "options": [
-                    "Fiebre, Leucocitosis y Dolor",
-                    "Hipotensión, Bradicardia y Arritmia",
-                    "Acidosis Metabólica, Coagulopatía e Hipotermia"
-                ],
-                "correct_index": 2
-            }
-        ]
+    {
+      "card_id": "c_3",
+      "ui_icon": "list",
+      "category": "Evaluación Primaria",
+      "card_text": "Hallazgo: C) Secuencia ABCDE: Prioridad vital: Vía aérea, Respiración, Circulación, Déficit neurológico y Exposición.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "¡Correcto! Ignorar esta secuencia mata pacientes; siempre trata el problema más urgente primero."
+      }
+    },
+    {
+      "card_id": "c_4",
+      "ui_icon": "search",
+      "category": "Auxilio Diagnóstico",
+      "card_text": "Evidencia: D) FAST Scan: Ultrasonido rápido en 4 puntos (Morrison, esplénico, hueco pélvico y pericardio) para buscar líquido libre.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "¡Excelente! Es la herramienta de elección en pacientes inestables para localizar hemorragia interna."
+      }
+    },
+    {
+      "card_id": "c_6",
+      "ui_icon": "zap",
+      "category": "Circulación",
+      "card_text": "Evidencia: F) Accesos Venosos: Canalar de inmediato 2 venas periféricas con catéteres de grueso calibre (14 o 16 Gauge).",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "¡Perfecto! Necesitamos volumen rápido si la presión sigue cayendo."
+      }
+    },
+    {
+      "card_id": "c_7",
+      "ui_icon": "droplets",
+      "category": "Circulación",
+      "card_text": "Evidencia: G) Reposición de Líquidos: Iniciar con 1 litro de cristaloides isotónicos (Hartmann) tibios para limitar la hiponatermia y acidosis.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "¡Bien! ATLS 10 bajó la recomendación inicial de 2L a 1L para evitar la coagulopatía por dilución."
+      }
+    },
+    {
+      "card_id": "c_9",
+      "ui_icon": "activity",
+      "category": "Breathing",
+      "card_text": "Hallazgo: I) Signos de Tensión: Desviación traqueal, ausencia de ruidos respiratorios e ingurgitación yugular.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "omission",
+        "vazquez_comment": "¡Excelente! Identificaste los datos clásicos que confirman la hipertensión intratorácica."
+      }
+    },
+    {
+      "card_id": "c_1",
+      "ui_icon": "target",
+      "category": "Diagnóstico",
+      "card_text": "Evidencia: A) Descompresión en 5° Espacio Intercostal (LAA/LAM): ATLS 10ª Edición (2024): El sitio preferido es el 5° espacio intercostal en la línea axilar anterior o media.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "¡Excelente! Estás actualizado con el ATLS 10. El 5° espacio es ahora el estándar para evitar lesiones y asegurar éxito."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true,
+        "lethal_if_discarded": true
+      }
+    },
+    {
+      "card_id": "c_5",
+      "ui_icon": "alert-triangle",
+      "category": "Triada Mortal",
+      "card_text": "Hallazgo: E) Triada de la Muerte: Acidosis, Coagulopatía e Hipotermia. Son eventos que se autoalimentan y llevan al fallecimiento.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 100,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "¡Vital! El control preventivo de la temperatura y la reposición de factores son clave en el choque hemorrágico."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
+    },
+    {
+      "card_id": "c_8",
+      "ui_icon": "alert-circle",
+      "category": "Breathing",
+      "card_text": "Evidencia: H) Diagnóstico Clínico (PNT): El Neumotórax a Tensión se diagnostica con la CLÍNICA. Nunca retraces el tratamiento por Rayos X.",
+      "expected_action": "keep",
+      "scoring": {
+        "points": 150,
+        "error_type": "lethal_omission",
+        "vazquez_comment": "¡Correcto! Esperar una placa en un PNT es una negligencia mortal; pincha de inmediato."
+      },
+      "safety_flags": {
+        "lethal_risk": true,
+        "decision_critical": true
+      }
     }
+  ],
+  "enarm_pearl": {
+    "title": "ATLS 10: ABCDE y PNT",
+    "text": "PNT: Dx CLÍNICO. Punción: 5° Espacio (Axilar). Resucitación: 1L de Hartmann. Tríada Muerte: Acidosis, Coagulopatía, Hipotermia.",
+    "gpc_ref": "Standard ATLS 10th Edition / GPC Manejo del Trauma Grave"
+  },
+  "boss_fight_triad": {
+    "trigger": "after_cards",
+    "questions": [
+      {
+        "question": "¿Cuál es la secuencia de prioridades vitales en la evaluación primaria del paciente con trauma grave?",
+        "options": [
+          "ABCDE (Vía aérea, Respiración, Circulación, Déficit, Exposición)",
+          "CAB (Circulación, Vía aérea, Respiración)",
+          "Especialidad, Laboratorio, Imagen, Diagnóstico"
+        ],
+        "correct_index": 0
+      },
+      {
+        "question": "¿Qué hallazgo es indispensable para diagnosticar un Neumotórax a Tensión?",
+        "options": [
+          "Confirmación por Radiografía de Tórax",
+          "Reporte de Gasometría Arterial",
+          "Datos clínicos (ingurgitación, timpanismo, ausencia ruidos)"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "¿Cuáles son los componentes de la 'Tríada de la Muerte' en el paciente con trauma?",
+        "options": [
+          "Fiebre, Leucocitosis y Dolor",
+          "Hipotensión, Bradicardia y Arritmia",
+          "Acidosis Metabólica, Coagulopatía e Hipotermia"
+        ],
+        "correct_index": 2
+      }
+    ]
+  }
 }

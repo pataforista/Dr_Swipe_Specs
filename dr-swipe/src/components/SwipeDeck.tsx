@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { motion, useMotionValue, useTransform, useAnimation, AnimatePresence } from 'framer-motion';
+import { motion, useMotionValue, useTransform, useAnimation, AnimatePresence, type MotionValue, type PanInfo } from 'framer-motion';
 import type { Card } from '../types/game';
 import { useGameAudio } from '../hooks/useGameAudio';
 import { triggerHaptic } from '../utils/hapticFeedback';
@@ -25,19 +25,28 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
   const { playSwipe } = useGameAudio();
   const topX = useMotionValue(0);
   const topCardRef = React.useRef<DraggableCardHandle>(null);
+  // Blocks inputs while the exit animation runs (~250ms). Without it, a double
+  // tap or a held arrow key in auto-repeat dispatches a second swipe that the
+  // machine applies to the NEXT card, deciding it sight-unseen.
+  const isAnimatingRef = React.useRef(false);
 
   // Take current + 2 more for the stack
   const visibleCards = cards.slice(currentIndex, currentIndex + 3).reverse();
 
-  const handleActionSwipe = async (direction: 'left' | 'right') => {
-    if (isLocked || visibleCards.length === 0) return;
-    if (topCardRef.current) {
-      await topCardRef.current.swipeOut(direction);
-    } else {
-      playSwipe(direction);
-      onSwipe(direction);
+  const handleActionSwipe = React.useCallback(async (direction: 'left' | 'right') => {
+    if (isLocked || isAnimatingRef.current || currentIndex >= cards.length) return;
+    isAnimatingRef.current = true;
+    try {
+      if (topCardRef.current) {
+        await topCardRef.current.swipeOut(direction);
+      } else {
+        playSwipe(direction);
+        onSwipe(direction);
+      }
+    } finally {
+      isAnimatingRef.current = false;
     }
-  };
+  }, [isLocked, onSwipe, playSwipe, currentIndex, cards.length]);
 
   // Keyboard support (ArrowLeft / ArrowRight)
   useEffect(() => {
@@ -48,7 +57,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, [isLocked, onSwipe]);
+  }, [isLocked, handleActionSwipe]);
 
   return (
     <div className="flex flex-col items-center w-full max-w-sm mx-auto gap-4 sm:gap-8 px-2 sm:px-3 relative overflow-hidden">
@@ -141,7 +150,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,theme(colors.accent-alert/10),transparent)] opacity-0 hover:opacity-100 transition-opacity" />
             <span className="relative z-10 drop-shadow-[0_0_10px_rgba(251,113,133,0.8)]">✕</span>
           </motion.button>
-          <span className={`text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] transition-colors line-clamp-2 text-center max-w-[70px] sm:max-w-none ${
+          <span className={`text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] transition-colors line-clamp-2 text-center max-w-[70px] sm:max-w-none ${
             lifelineActive && cards[currentIndex]?.expected_action === 'discard' ? 'text-accent-alert' : 'text-slate-500 group-hover:text-accent-alert'
           }`}>PÉRDIDA DE TIEMPO</span>
         </div>
@@ -162,7 +171,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
           >
             {lifelineActive ? '✨' : '🧬'}
           </motion.button>
-          <span className={`text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] ${lifelineActive ? 'text-secondary' : 'text-slate-500'}`}>
+          <span className={`text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] ${lifelineActive ? 'text-secondary' : 'text-slate-500'}`}>
             {lifelineActive ? 'ACTIVO' : `${LIFELINE_COST} 🪙`}
           </span>
         </div>
@@ -185,7 +194,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,theme(colors.primary/10),transparent)] opacity-0 hover:opacity-100 transition-opacity" />
              <span className="relative z-10 drop-shadow-[0_0_10px_rgba(34,211,238,0.8)]">♥</span>
           </motion.button>
-          <span className={`text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] transition-colors line-clamp-2 text-center max-w-[70px] sm:max-w-none ${
+          <span className={`text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] transition-colors line-clamp-2 text-center max-w-[70px] sm:max-w-none ${
             lifelineActive && cards[currentIndex]?.expected_action === 'keep' ? 'text-primary' : 'text-slate-500 group-hover:text-primary'
           }`}>ESTO CAMBIA TODO</span>
         </div>
@@ -203,7 +212,7 @@ interface DraggableCardProps {
   isLocked?: boolean;
   cardNumber: number;
   totalCards: number;
-  topX: any;
+  topX: MotionValue<number>;
 }
 
 // Icon helper for scrapbook categories
@@ -282,7 +291,7 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
   const cardBg = isLethal ? 'bg-rose-50' : isCritical ? 'bg-amber-50' : 'bg-white';
   const accentColor = isLethal ? 'border-accent-alert/40 shadow-rose-100' : isCritical ? 'border-secondary/40 shadow-amber-100' : 'border-slate-100 shadow-slate-200/50';
 
-  const handleDragEnd = async (_event: any, info: { offset: { x: number }; velocity: { x: number } }) => {
+  const handleDragEnd = async (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     if (!isTop || isLocked) return;
     const threshold = SWIPE_CONFIG.CARD_WIDTH * SWIPE_CONFIG.DRAG_THRESHOLD;
     const velocity = info.velocity.x;
@@ -378,7 +387,7 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
       )}
 
       {/* Card Footer */}
-      <div className="p-3 sm:p-5 pl-8 sm:pl-14 bg-slate-50/40 border-t border-slate-100 flex justify-between items-center text-[8px] sm:text-[10px] font-bold text-slate-400 gap-2">
+      <div className="p-3 sm:p-5 pl-8 sm:pl-14 bg-slate-50/40 border-t border-slate-100 flex justify-between items-center text-[10px] font-bold text-slate-400 gap-2">
         <span className="lettering text-sm sm:text-lg text-slate-300 truncate">Guardia nocturna...</span>
         <div className="bg-white px-2 sm:px-3 py-1 rounded-full border border-slate-100 text-slate-500 flex-shrink-0 whitespace-nowrap">
           {cardNumber}/{totalCards}

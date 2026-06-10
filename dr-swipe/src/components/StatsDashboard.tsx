@@ -77,7 +77,7 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
           🎓
         </motion.div>
         <div className="relative z-10 min-w-0">
-          <span className="text-[8px] sm:text-[10px] font-black text-slate-400 uppercase tracking-[0.25em] sm:tracking-[0.3em] block mb-1 sm:mb-2 lettering">RANGO ACTUAL:</span>
+          <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.25em] sm:tracking-[0.3em] block mb-1 sm:mb-2 lettering">RANGO ACTUAL:</span>
           <span className="text-base sm:text-xl font-bold text-slate-800 lettering tracking-tight break-words">{rank}</span>
         </div>
       </div>
@@ -146,7 +146,7 @@ const StatCard: React.FC<{
   return (
     <div className="bg-white border-2 border-slate-100 rounded-[1.5rem] sm:rounded-[2.2rem] p-4 sm:p-6 flex flex-col justify-between shadow-sm relative overflow-hidden transition-all hover:border-primary/20 group cursor-default">
       <div className="flex justify-between items-start mb-2 sm:mb-3 gap-2">
-        <span className="text-[7px] sm:text-[9px] font-black text-slate-400 uppercase tracking-[0.25em] sm:tracking-[0.3em] lettering leading-tight">{label}</span>
+        <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.25em] sm:tracking-[0.3em] lettering leading-tight">{label}</span>
         <span className="text-base sm:text-xl opacity-60 group-hover:opacity-100 transition-opacity flex-shrink-0">{emoji}</span>
       </div>
       <div className="flex items-baseline gap-1.5 relative z-10">

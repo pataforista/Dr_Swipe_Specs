@@ -1,190 +1,190 @@
 {
-    "case_id":  "PROC_INT_AMI_001_005",
-    "version":  "v3_swipe_action",
-    "theme_config":  "int",
-    "difficulty":  "hard",
-    "patient_intro":  {
-                          "name":  "Luis, 52 años",
-                          "arrival_scenario":  "Paciente diabético llega con dolor torácico opresivo de 90 minutos. Irradia a mandíbula y brazo izquierdo. ECG muestra supra-desnivel del ST en derivaciones V1-V4 (Antero-septal). Tabaquista activo (20 paq/año).",
-                          "time_limit_sec":  50
-                      },
-    "card_stream":  [
-                        {
-                            "card_id":  "init_vitals",
-                            "ui_icon":  "heartbeat",
-                            "category":  "Signos Vitales",
-                            "card_text":  "Hallazgo: Información redundante: TA 160/100, FC 110 lpm, Temp 36.5°C",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_1",
-                            "ui_icon":  "target",
-                            "category":  "Diagnóstico",
-                            "card_text":  "Evidencia: A) Infarto Agudo al Miocardio (SCACEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "¡Perfect Match! El cuadro clínico más el ECG con elevación del ST hacen el diagnóstico. ICP primaria en menos de 90 min ideal."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_2",
-                            "ui_icon":  "eye",
-                            "category":  "Diagnóstico",
-                            "card_text":  "Hallazgo: Ruido en el expediente: B) Costocondritis (Síndrome de Tietze): Dolor torácico reproducible a la palpación de las articulaciones condrocostales, sin cambios en ECG.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: ¡Ojo clínico! El dolor reproducible a la palpación casi siempre descarta origen isquémico clásico, aquí el dolor es visceral."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  false
-                                             }
-                        },
-                        {
-                            "card_id":  "c_3",
-                            "ui_icon":  "eye",
-                            "category":  "Diagnóstico",
-                            "card_text":  "Evidencia clínica: C) Tromboembolia Pulmonar: Disnea súbita, taquicardia, dolor pleurítico, hipoxia severa. S1Q3T3 raro pero posible.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "lethal_hazard",
-                                            "vazquez_comment":  "Felicidades por descartarlo. Los cambios ST y el tipo de dolor nos centran en las coronarias."
-                                        },
-                            "safety_flags":  {
-                                                 "red_flag":  true,
-                                                 "lethal_risk":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_4",
-                            "ui_icon":  "activity",
-                            "category":  "Estudio Inicial",
-                            "card_text":  "Hallazgo: D) Electrocardiograma de 12 derivaciones: Meta institucional de realizar e interpretar en menos de 10 minutos.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "lethal_omission",
-                                            "vazquez_comment":  "¡Vital! El tiempo es músculo. Sin ECG no hay diagnóstico oportuno."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  true,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_5",
-                            "ui_icon":  "pill",
-                            "category":  "Tratamiento",
-                            "card_text":  "Hallazgo clínico: E) Aspirina 325 mg masticada: Antiagregación plaquetaria inmediata para limitar el tamaño del infarto.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Bien. La piedra angular del tratamiento farmacológico inicial."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_6",
-                            "ui_icon":  "slash",
-                            "category":  "Complicación Mecánica",
-                            "card_text":  "Dato de importancia: F) Ruptura de Pared Libre: Complicación catastrófica que ocurre típicamente entre el 3er y 5to día post-infarto.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "lethal_omission",
-                                            "vazquez_comment":  "¡Vital! El cuadro súbito de choque con disociación electromecánica sugiere esta tragedia."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  true,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_7",
-                            "ui_icon":  "user-minus",
-                            "category":  "Complicación",
-                            "card_text":  "Hallazgo: G) Taponamiento Cardíaco: Consecuencia de la ruptura de pared libre o hemopericardio post-procedimiento.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Bien. Requiere diagnóstico agudo mediante ecocardiograma y manejo quirúrgico."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_8",
-                            "ui_icon":  "monitor",
-                            "category":  "Gabinete",
-                            "card_text":  "Hallazgo: H) Ecocardiograma Transtorácico: Estudio de elección ante la sospecha de cualquier complicación mecánica post-AMI.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "¡Exacto! Nos permite ver defectos septales, rupturas o aneurismas ventriculares."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_9",
-                            "ui_icon":  "shield-alert",
-                            "category":  "Complicación Tardía",
-                            "card_text":  "Evidencia: I) Síndrome de Dressler: Pericarditis autoinmune que se presenta de 2 a 10 semanas después del infarto.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Bien. Se maneja con aspirina a dosis altas o colchicina."
-                                        }
-                        }
-                    ],
-    "enarm_pearl":  {
-                        "title":  "Cardiopatía Isquémica: Tiempo es Músculo",
-                        "text":  "En un SCACEST, el diagnóstico se hace con clínica + ECG (en \u003c10 min). NO se debe esperar el resultado de las troponinas para activar código infarto ni trombolizar/ICP.",
-                        "gpc_ref":  "GPC Infarto Agudo al Miocardio con Elevación del ST"
-                    },
-    "boss_fight_triad":  {
-                             "trigger":  "after_cards",
-                             "questions":  [
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Cuál es el tiempo meta establecido por las guías para la realización e interpretación del ECG?",
-                                                   "options":  [
-                                                                   "Menos de 10 minutos",
-                                                                   "Menos de 30 minutos",
-                                                                   "A la brevedad posible sin tiempo límite"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Cuál es la estrategia de reperfusión de elección si el hospital cuenta con sala de hemodinamia?",
-                                                   "options":  [
-                                                                   "Intervención Coronaria Percutánea (ICP) primaria",
-                                                                   "Fibrinólisis farmacológica",
-                                                                   "Bypass de arteria coronaria urgente"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "¿Cuál es la principal causa de muerte prehospitalaria en un paciente con IAM?",
-                                                   "options":  [
-                                                                   "Fibrilación Ventricular",
-                                                                   "Ruptura de pared libre",
-                                                                   "Choque cardiogénico"
-                                                               ]
-                                               }
-                                           ]
-                         }
+    "case_id": "PROC_INT_AMI_001_005",
+    "version": "v3_swipe_action",
+    "theme_config": "int",
+    "difficulty": "hard",
+    "patient_intro": {
+        "name": "Luis, 52 años",
+        "arrival_scenario": "Paciente diabético llega con dolor torácico opresivo de 90 minutos. Irradia a mandíbula y brazo izquierdo. ECG muestra supra-desnivel del ST en derivaciones V1-V4 (Antero-septal). Tabaquista activo (20 paq/año).",
+        "time_limit_sec": 50
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA 160/100, FC 110 lpm, Temp 36.5°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "A) Infarto Agudo al Miocardio (SCACEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Mendoza: ¡Perfect Match! El cuadro clínico más el ECG con elevación del ST hacen el diagnóstico. ICP primaria en menos de 90 min ideal."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "Diagnóstico",
+            "card_text": "B) Costocondritis (Síndrome de Tietze): Dolor torácico reproducible a la palpación de las articulaciones condrocostales, sin cambios en ECG.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: ¡Ojo clínico! El dolor reproducible a la palpación casi siempre descarta origen isquémico clásico, aquí el dolor es visceral."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "c_5",
+            "ui_icon": "pill",
+            "category": "meds",
+            "card_text": "E) Aspirina 325 mg masticada: Antiagregación plaquetaria inmediata para limitar el tamaño del infarto.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Mendoza: Bien. La piedra angular del tratamiento farmacológico inicial."
+            }
+        },
+        {
+            "card_id": "c_7",
+            "ui_icon": "user-minus",
+            "category": "Complicación",
+            "card_text": "G) Taponamiento Cardíaco: Consecuencia de la ruptura de pared libre o hemopericardio post-procedimiento.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Mendoza: Bien. Requiere diagnóstico agudo mediante ecocardiograma y manejo quirúrgico."
+            }
+        },
+        {
+            "card_id": "c_8",
+            "ui_icon": "monitor",
+            "category": "Gabinete",
+            "card_text": "H) Ecocardiograma Transtorácico: Estudio de elección ante la sospecha de cualquier complicación mecánica post-AMI.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Mendoza: ¡Exacto! Nos permite ver defectos septales, rupturas o aneurismas ventriculares."
+            }
+        },
+        {
+            "card_id": "c_9",
+            "ui_icon": "shield-alert",
+            "category": "Complicación Tardía",
+            "card_text": "I) Síndrome de Dressler: Pericarditis autoinmune que se presenta de 2 a 10 semanas después del infarto.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Mendoza: Bien. Se maneja con aspirina a dosis altas o colchicina."
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "eye",
+            "category": "Diagnóstico",
+            "card_text": "C) Tromboembolia Pulmonar: Disnea súbita, taquicardia, dolor pleurítico, hipoxia severa. S1Q3T3 raro pero posible.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "lethal_hazard",
+                "vazquez_comment": "Mendoza: Felicidades por descartarlo. Los cambios ST y el tipo de dolor nos centran en las coronarias."
+            },
+            "safety_flags": {
+                "red_flag": true,
+                "lethal_risk": true
+            }
+        },
+        {
+            "card_id": "c_4",
+            "ui_icon": "activity",
+            "category": "meds",
+            "card_text": "D) Electrocardiograma de 12 derivaciones: Meta institucional de realizar e interpretar en menos de 10 minutos.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Mendoza: ¡Vital! El tiempo es músculo. Sin ECG no hay diagnóstico oportuno."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_6",
+            "ui_icon": "slash",
+            "category": "Complicación Mecánica",
+            "card_text": "F) Ruptura de Pared Libre: Complicación catastrófica que ocurre típicamente entre el 3er y 5to día post-infarto.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Mendoza: ¡Vital! El cuadro súbito de choque con disociación electromecánica sugiere esta tragedia."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Cardiopatía Isquémica: Tiempo es Músculo",
+        "text": "En un SCACEST, el diagnóstico se hace con clínica + ECG (en <10 min). NO se debe esperar el resultado de las troponinas para activar código infarto ni trombolizar/ICP.",
+        "gpc_ref": "GPC Infarto Agudo al Miocardio con Elevación del ST"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "correct_index": 2,
+                "question": "¿Cuál es la estrategia de reperfusión de elección si el hospital cuenta con sala de hemodinamia?",
+                "options": [
+                    "Fibrinólisis farmacológica",
+                    "Bypass de arteria coronaria urgente",
+                    "Intervención Coronaria Percutánea (ICP) primaria"
+                ]
+            },
+            {
+                "correct_index": 1,
+                "question": "¿Cuál es la principal causa de muerte prehospitalaria en un paciente con IAM?",
+                "options": [
+                    "Choque cardiogénico",
+                    "Fibrilación Ventricular",
+                    "Ruptura de pared libre"
+                ]
+            },
+            {
+                "correct_index": 2,
+                "question": "¿Cuál es el tiempo meta establecido por las guías para la realización e interpretación del ECG?",
+                "options": [
+                    "Menos de 30 minutos",
+                    "A la brevedad posible sin tiempo límite",
+                    "Menos de 10 minutos"
+                ]
+            }
+        ]
+    }
 }

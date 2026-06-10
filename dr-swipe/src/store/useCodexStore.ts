@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import type { PlayerStats, EnarmPearl } from '../types/game';
+import { safeStorage } from '../utils/safeStorage';
 
 export interface SessionProgress {
   caseId?: string;
@@ -119,7 +120,9 @@ export const useCodexStore = create<CodexState>()(
     }),
     {
       name: 'dr-swipe-codex',
-      storage: createJSONStorage(() => localStorage),
+      // safeStorage never throws: blocked storage (private browsing, quota)
+      // degrades to in-memory persistence instead of crashing on mount.
+      storage: createJSONStorage(() => safeStorage),
     }
   )
 );

@@ -22,13 +22,18 @@ jobs:
           cache: 'npm'
           cache-dependency-path: 'dr-swipe/package-lock.json'
 
-      - name: Install dependencies
-        run: cd dr-swipe && npm install --legacy-peer-deps
+      - name: Validate clinical cases
+        run: python3 tools/validate_cases.py dr-swipe/public/cases
 
+      - name: Install dependencies
+        run: cd dr-swipe && npm ci
+
+      # `npm run build` runs `tsc -b` first, so type regressions fail CI here.
       - name: Build
         run: cd dr-swipe && npm run build
 
       - name: Deploy to Cloudflare Pages
+        if: github.event_name == 'push'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}

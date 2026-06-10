@@ -1,178 +1,178 @@
 {
-    "case_id":  "PROC_SURG_APPENDICITIS_ALVARADO_001_001",
-    "version":  "v3_swipe_action",
-    "theme_config":  "surg",
-    "difficulty":  "standard",
-    "patient_intro":  {
-                          "name":  "José, 32 años",
-                          "arrival_scenario":  "Paciente con dolor abdominal agudo. Al examen: Punto de McBurney (+) y signo de Rovsing (+). Leucocitosis de 14,000 con neutrofilia. Puntuación de Alvarado â‰¥8. ¿Cuál es la conducta recomendada en un hombre adulto?",
-                          "time_limit_sec":  60
-                      },
-    "card_stream":  [
-                        {
-                            "card_id":  "init_vitals",
-                            "ui_icon":  "heartbeat",
-                            "category":  "Signos Vitales",
-                            "card_text":  "Hallazgo: Ruido en el expediente: TA 120/80, FC 100 lpm, Temp 38.3°C",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: No te detengas en estos signos de fiebre, R1. El reloj no se detiene."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_1",
-                            "ui_icon":  "target",
-                            "category":  "Diagnóstico",
-                            "card_text":  "Evidencia: A) Apendicectomía (Sin necesidad de imagen extra): En hombres adultos con Alvarado â‰¥8, la probabilidad es >95%. Indicación quirúrgica directa.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "¡Correcto! En hombres con cuadro clásico, la cirugía directa es costo-efectiva. En mujeres se prefiere USG inicial."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_2",
-                            "ui_icon":  "eye",
-                            "category":  "Diagnóstico",
-                            "card_text":  "Información redundante: B) Observación y Antibióticos: No es la conducta estándar ante una sospecha tan alta de apendicitis aguda no complicada.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: ¡Bien! El manejo expectante en apendicitis confirmada es arriesgado."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  false
-                                             }
-                        },
-                        {
-                            "card_id":  "c_3",
-                            "ui_icon":  "info",
-                            "category":  "Escala Alvarado",
-                            "card_text":  "Hallazgo: C) Escala Alvarado (Mantrels): M: Migración del dolor (1), A: Anorexia (1), N: Náuseas (1).",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Bien. La parte 'MANT' de la escala."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_4",
-                            "ui_icon":  "activity",
-                            "category":  "Escala Alvarado",
-                            "card_text":  "Hallazgo clínico: D) Dolor en FID (T): Dolor a la palpación en fosa ilíaca derecha. Otorga 2 puntos en la escala.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "¡Correcto! Es el signo físico de mayor peso."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_5",
-                            "ui_icon":  "zap",
-                            "category":  "Escala Alvarado",
-                            "card_text":  "Evidencia: E) Rebote (R) y Elevación de Temperatura (E): Ambos otorgan 1 punto cada uno.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Bien. Sumando puntos críticos."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_6",
-                            "ui_icon":  "beaker",
-                            "category":  "Escala Alvarado",
-                            "card_text":  "Evidencia: F) Leucocitosis (L): Recuento >10,000 cel/mm3. Otorga 2 puntos en la escala.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "¡Exacto! Segundo criterio de 2 puntos."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_7",
-                            "ui_icon":  "search",
-                            "category":  "Manejo Alvarado",
-                            "card_text":  "Evidencia clínica: G) Puntaje 5-6 (Intermedio): Recomendado realizar estudio de imagen (TAC o USG) o reevaluación clínica en 12h.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Bien. En la 'zona gris', la imagen es obligatoria."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_8",
-                            "ui_icon":  "alert-triangle",
-                            "category":  "Diferencial",
-                            "card_text":  "Hallazgo: H) Adenitis Mesentérica: Causa común de dolor en FID en niños, frecuentemente precedida por cuadro respiratorio.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Muy bien. Un diagnóstico diferencial clásico."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_9",
-                            "ui_icon":  "pill",
-                            "category":  "Tratamiento",
-                            "card_text":  "Dato de importancia: I) Profilaxis Antibiótica: Administrar antibióticos de amplio espectro 30-60 min antes de la incisión.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Correcto. Reduce significativamente la infección del sitio quirúrgico."
-                                        }
-                        }
-                    ],
-    "enarm_pearl":  {
-                        "title":  "Alvarado: MANTREM",
-                        "text":  "M: Migración (1), A: Anorexia (1), N: Náusea (1), T: Tenderness/Dolor FID (2), R: Rebote (1), E: Elevación temp (1), M: Modif. WBC (2).",
-                        "gpc_ref":  "GPC Diagnóstico de Apendicitis Aguda"
-                    },
-    "boss_fight_triad":  {
-                             "trigger":  "after_cards",
-                             "questions":  [
-                                               {
-                                                   "correct_index":  0,
-                                                   "question":  "En un hombre adulto con puntuación de Alvarado =8, ¿cuál es la conducta recomendada?",
-                                                   "options":  [
-                                                                   "Apendicectomía directa (sin necesidad de imagen)",
-                                                                   "TC de abdomen para confirmar",
-                                                                   "Observación y reevaluación en 12 horas"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  1,
-                                                   "question":  "¿Cuántos puntos otorga la leucocitosis (>10,000) en la escala de Alvarado?",
-                                                   "options":  [
-                                                                   "1 punto",
-                                                                   "2 puntos",
-                                                                   "3 puntos"
-                                                               ]
-                                               },
-                                               {
-                                                   "correct_index":  1,
-                                                   "question":  "¿Qué puntuación de Alvarado se considera 'zona gris' y requiere estudio de imagen?",
-                                                   "options":  [
-                                                                   "0-4",
-                                                                   "5-6",
-                                                                   "=7"
-                                                               ]
-                                               }
-                                           ]
-                         }
+    "case_id": "PROC_SURG_APPENDICITIS_ALVARADO_001_001",
+    "version": "v3_swipe_action",
+    "theme_config": "surg",
+    "difficulty": "standard",
+    "patient_intro": {
+        "name": "José, 32 años",
+        "arrival_scenario": "Paciente con dolor abdominal agudo. Al examen: Punto de McBurney (+) y signo de Rovsing (+). Leucocitosis de 14,000 con neutrofilia. Puntuación de Alvarado ≥8. ¿Cuál es la conducta recomendada en un hombre adulto?",
+        "time_limit_sec": 60
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "Signos Vitales",
+            "card_text": "Hallazgo: Ruido en el expediente: TA 120/80, FC 100 lpm, Temp 38.3°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "No te detengas en estos signos de fiebre, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "Evidencia: A) Apendicectomía (Sin necesidad de imagen extra): En hombres adultos con Alvarado ≥8, la probabilidad es >95%. Indicación quirúrgica directa.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "¡Correcto! En hombres con cuadro clásico, la cirugía directa es costo-efectiva. En mujeres se prefiere USG inicial."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "Diagnóstico",
+            "card_text": "Información redundante: B) Observación y Antibióticos: No es la conducta estándar ante una sospecha tan alta de apendicitis aguda no complicada.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "¡Bien! El manejo expectante en apendicitis confirmada es arriesgado."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": false
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "info",
+            "category": "Escala Alvarado",
+            "card_text": "Hallazgo: C) Escala Alvarado (Mantrels): M: Migración del dolor (1), A: Anorexia (1), N: Náuseas (1).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Bien. La parte 'MANT' de la escala."
+            }
+        },
+        {
+            "card_id": "c_4",
+            "ui_icon": "activity",
+            "category": "Escala Alvarado",
+            "card_text": "Hallazgo clínico: D) Dolor en FID (T): Dolor a la palpación en fosa ilíaca derecha. Otorga 2 puntos en la escala.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "¡Correcto! Es el signo físico de mayor peso."
+            }
+        },
+        {
+            "card_id": "c_5",
+            "ui_icon": "zap",
+            "category": "Escala Alvarado",
+            "card_text": "Evidencia: E) Rebote (R) y Elevación de Temperatura (E): Ambos otorgan 1 punto cada uno.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Bien. Sumando puntos críticos."
+            }
+        },
+        {
+            "card_id": "c_6",
+            "ui_icon": "beaker",
+            "category": "Escala Alvarado",
+            "card_text": "Evidencia: F) Leucocitosis (L): Recuento >10,000 cel/mm3. Otorga 2 puntos en la escala.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "¡Exacto! Segundo criterio de 2 puntos."
+            }
+        },
+        {
+            "card_id": "c_7",
+            "ui_icon": "search",
+            "category": "Manejo Alvarado",
+            "card_text": "Evidencia clínica: G) Puntaje 5-6 (Intermedio): Recomendado realizar estudio de imagen (TAC o USG) o reevaluación clínica en 12h.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Bien. En la 'zona gris', la imagen es obligatoria."
+            }
+        },
+        {
+            "card_id": "c_8",
+            "ui_icon": "alert-triangle",
+            "category": "Diferencial",
+            "card_text": "Hallazgo: H) Adenitis Mesentérica: Causa común de dolor en FID en niños, frecuentemente precedida por cuadro respiratorio.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Muy bien. Un diagnóstico diferencial clásico."
+            }
+        },
+        {
+            "card_id": "c_9",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Dato de importancia: I) Profilaxis Antibiótica: Administrar antibióticos de amplio espectro 30-60 min antes de la incisión.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Correcto. Reduce significativamente la infección del sitio quirúrgico."
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Alvarado: MANTREM",
+        "text": "M: Migración (1), A: Anorexia (1), N: Náusea (1), T: Tenderness/Dolor FID (2), R: Rebote (1), E: Elevación temp (1), M: Modif. WBC (2).",
+        "gpc_ref": "GPC Diagnóstico de Apendicitis Aguda"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "correct_index": 0,
+                "question": "En un hombre adulto con puntuación de Alvarado =8, ¿cuál es la conducta recomendada?",
+                "options": [
+                    "Apendicectomía directa (sin necesidad de imagen)",
+                    "Observación y reevaluación en 12 horas",
+                    "TC de abdomen para confirmar"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Cuántos puntos otorga la leucocitosis (>10,000) en la escala de Alvarado?",
+                "options": [
+                    "2 puntos",
+                    "3 puntos",
+                    "1 punto"
+                ]
+            },
+            {
+                "correct_index": 1,
+                "question": "¿Qué puntuación de Alvarado se considera 'zona gris' y requiere estudio de imagen?",
+                "options": [
+                    "=7",
+                    "5-6",
+                    "0-4"
+                ]
+            }
+        ]
+    }
 }

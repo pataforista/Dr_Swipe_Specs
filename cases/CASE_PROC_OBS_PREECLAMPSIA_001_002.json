@@ -1,186 +1,186 @@
 {
-    "case_id":  "PROC_OBS_PREECLAMPSIA_001_002",
-    "version":  "v3_swipe_action",
-    "theme_config":  "obs",
-    "difficulty":  "hard",
-    "patient_intro":  {
-                          "name":  "María, 38 años",
-                          "arrival_scenario":  "Gestante de 36 SDG Acude por cefalea pulsátil, fosfenos y acúfenos. Laboratorios muestran plaquetas en 85,000 y AST/ALT al doble del límite superior.",
-                          "time_limit_sec":  50
-                      },
-    "card_stream":  [
-                        {
-                            "card_id":  "init_vitals",
-                            "ui_icon":  "heartbeat",
-                            "category":  "Signos Vitales",
-                            "card_text":  "Hallazgo clínico: Ruido en el expediente: TA 160/110, FC 95 lpm, Temp 37.0°C",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Castillo: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_1",
-                            "ui_icon":  "target",
-                            "category":  "Diagnóstico",
-                            "card_text":  "Dato de importancia: A) Preeclampsia con Datos de Severidad: PA â‰¥160/110 + Síntomas neurológicos (fosfenos, cefalea) + Trombocitopenia.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Excelente! Requiere interrupción del embarazo previa estabilización con Sulfato de Magnesio."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  false,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_2",
-                            "ui_icon":  "eye",
-                            "category":  "Diagnóstico",
-                            "card_text":  "Hallazgo clínico: Dato anecdótico: B) Hipertensión Gestacional: Elevación de la PA después de las 20 SDG en ausencia de proteinuria o datos de severidad.",
-                            "expected_action":  "discard",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "hoarding",
-                                            "vazquez_comment":  "🎯 DATO CLAVE OMITIDO: Castillo: ¡Bien! Esta paciente SÃ tiene proteinuria y síntomas de alarma, es preeclampsia."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_3",
-                            "ui_icon":  "slash",
-                            "category":  "Manejo",
-                            "card_text":  "Evidencia: C) Manejo Expectante hasta las 37 SDG: Continuar vigilancia ambulatoria sin medicación.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  50,
-                                            "error_type":  "lethal_hazard",
-                                            "vazquez_comment":  "Castillo: ¡CRÍTICO! Ante datos de severidad, el manejo es la interrupción del embarazo. Esperar es negligencia."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  true,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_4",
-                            "ui_icon":  "shield",
-                            "category":  "Neuroprotección",
-                            "card_text":  "Evidencia: D) Sulfato de Magnesio: Esquema Zuspan (4g impregnación IV, luego 1g/h mantenimiento) para prevenir eclampsia.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "lethal_omission",
-                                            "vazquez_comment":  "Castillo: ¡Vital! Es el fármaco de elección para el control de la irritabilidad cortical."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  true,
-                                                 "decision_critical":  true
-                                             }
-                        },
-                        {
-                            "card_id":  "c_5",
-                            "ui_icon":  "stethoscope",
-                            "category":  "Monitoreo",
-                            "card_text":  "Hallazgo: E) Vigilancia de Toxicidad: Control horario de reflejo rotuliano, frecuencia respiratoria (\u003e12) y gasto urinario (\u003e30 ml/h).",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: Correcto. Si el magnesio sube demasiado, el primer signo es la arreflexia rotuliana."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_6",
-                            "ui_icon":  "zap",
-                            "category":  "Antídoto",
-                            "card_text":  "Dato de importancia: F) Gluconato de Calcio: Administración inmediata en caso de sospecha clínica de intoxicación por Magnesio.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Exacto! Debes tenerlo siempre a la mano cuando uses MgSO4."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_7",
-                            "ui_icon":  "pill",
-                            "category":  "Antihipertensivo",
-                            "card_text":  "Hallazgo: G) Hidralazina o Nifedipino: Tratamiento de elección para el control de la crisis hipertensiva (TA â‰¥160/110).",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: Bien. El objetivo no es normalizar, sino bajar la TA a niveles seguros (140/90)."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_8",
-                            "ui_icon":  "alert-triangle",
-                            "category":  "Complicación",
-                            "card_text":  "Evidencia: H) Síndrome de HELLP: Hemólisis (esquizocitos), Enzimas hepáticas elevadas y Plaquetas bajas (\u003c100,000).",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  150,
-                                            "error_type":  "omission",
-                                            "vazquez_comment":  "Castillo: ¡Excelente! Es una de las complicaciones más temidas y justifica el perfil toxémico."
-                                        }
-                        },
-                        {
-                            "card_id":  "c_9",
-                            "ui_icon":  "check-circle",
-                            "category":  "Resolución",
-                            "card_text":  "Dato de importancia: I) Interrupción del Embarazo: Vía de nacimiento según indicación obstétrica, tras estabilización inicial.",
-                            "expected_action":  "keep",
-                            "scoring":  {
-                                            "points":  100,
-                                            "error_type":  "lethal_omission",
-                                            "vazquez_comment":  "Castillo: ¡Perfecto! Recuerda que el único tratamiento definitivo de la preeclampsia es el nacimiento."
-                                        },
-                            "safety_flags":  {
-                                                 "lethal_risk":  true,
-                                                 "decision_critical":  true
-                                             }
-                        }
-                    ],
-    "enarm_pearl":  {
-                        "title":  "Preeclampsia: Datos de Severidad",
-                        "text":  "Severidad: TA â‰¥160/110, cefalea, fosfenos, dolor en epigastrio, creatinina \u003e1.1, plaquetas \u003c100k. Antídoto Mg: Gluconato de Calcio.",
-                        "gpc_ref":  "GPC Preeclampsia - Eclampsia"
-                    },
-    "boss_fight_triad":  {
-                             "trigger":  "after_cards",
-                             "questions":  [
-                                               {
-                                                   "question":  "¿Cuál es el antídoto de elección ante una intoxicación por Sulfato de Magnesio?",
-                                                   "options":  [
-                                                                   "Gluconato de Calcio",
-                                                                   "Naloxona",
-                                                                   "Flumazenil"
-                                                               ],
-                                                   "correct_index":  0
-                                               },
-                                               {
-                                                   "question":  "¿Qué parámetros integran el acrónimo del Síndrome de HELLP?",
-                                                   "options":  [
-                                                                   "Hemólisis, Enzimas hepáticas â†‘, Plaquetas â†“",
-                                                                   "Hipertensión, Edema, Linfocitos â†‘, Leucocitos â†‘",
-                                                                   "Hipotensión, Enzimas cardiacas â†‘, Lactato â†‘"
-                                                               ],
-                                                   "correct_index":  0
-                                               },
-                                               {
-                                                   "question":  "¿Cuál es el primer signo clínico de intoxicación por Magnesio?",
-                                                   "options":  [
-                                                                   "Abolición del reflejo rotuliano",
-                                                                   "Paro respiratorio",
-                                                                   "Somnolencia extrema"
-                                                               ],
-                                                   "correct_index":  0
-                                               }
-                                           ]
-                         }
+    "case_id": "PROC_OBS_PREECLAMPSIA_001_002",
+    "version": "v3_swipe_action",
+    "theme_config": "obs",
+    "difficulty": "hard",
+    "patient_intro": {
+        "name": "María, 38 años",
+        "arrival_scenario": "Gestante de 36 SDG Acude por cefalea pulsátil, fosfenos y acúfenos. Laboratorios muestran plaquetas en 85,000 y AST/ALT al doble del límite superior.",
+        "time_limit_sec": 50
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "vitals",
+            "card_text": "TA 160/110, FC 95 lpm, Temp 37.0°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "A) Preeclampsia con Datos de Severidad: PA ≥160/110 + Síntomas neurológicos (fosfenos, cefalea) + Trombocitopenia.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Excelente! Requiere interrupción del embarazo previa estabilización con Sulfato de Magnesio."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "imaging",
+            "card_text": "B) Hipertensión Gestacional: Elevación de la PA después de las 20 SDG en ausencia de proteinuria o datos de severidad.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: ¡Bien! Esta paciente SÍ tiene proteinuria y síntomas de alarma, es preeclampsia."
+            }
+        },
+        {
+            "card_id": "c_5",
+            "ui_icon": "stethoscope",
+            "category": "Monitoreo",
+            "card_text": "E) Vigilancia de Toxicidad: Control horario de reflejo rotuliano, frecuencia respiratoria (>12) y gasto urinario (>30 ml/h).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: Correcto. Si el magnesio sube demasiado, el primer signo es la arreflexia rotuliana."
+            }
+        },
+        {
+            "card_id": "c_6",
+            "ui_icon": "zap",
+            "category": "Antídoto",
+            "card_text": "F) Gluconato de Calcio: Administración inmediata en caso de sospecha clínica de intoxicación por Magnesio.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Exacto! Debes tenerlo siempre a la mano cuando uses MgSO4."
+            }
+        },
+        {
+            "card_id": "c_7",
+            "ui_icon": "pill",
+            "category": "meds",
+            "card_text": "G) Hidralazina o Nifedipino: Tratamiento de elección para el control de la crisis hipertensiva (TA ≥160/110).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: Bien. El objetivo no es normalizar, sino bajar la TA a niveles seguros (140/90)."
+            }
+        },
+        {
+            "card_id": "c_8",
+            "ui_icon": "alert-triangle",
+            "category": "Complicación",
+            "card_text": "H) Síndrome de HELLP: Hemólisis (esquizocitos), Enzimas hepáticas elevadas y Plaquetas bajas (<100,000).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: ¡Excelente! Es una de las complicaciones más temidas y justifica el perfil toxémico."
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "slash",
+            "category": "Manejo",
+            "card_text": "C) Manejo Expectante hasta las 37 SDG: Continuar vigilancia ambulatoria sin medicación.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "lethal_hazard",
+                "vazquez_comment": "Castillo: ¡CRÍTICO! Ante datos de severidad, el manejo es la interrupción del embarazo. Esperar es negligencia."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_4",
+            "ui_icon": "shield",
+            "category": "meds",
+            "card_text": "D) Sulfato de Magnesio: Esquema Zuspan (4g impregnación IV, luego 1g/h mantenimiento) para prevenir eclampsia.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Castillo: ¡Vital! Es el fármaco de elección para el control de la irritabilidad cortical."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_9",
+            "ui_icon": "check-circle",
+            "category": "Resolución",
+            "card_text": "I) Interrupción del Embarazo: Vía de nacimiento según indicación obstétrica, tras estabilización inicial.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Castillo: ¡Perfecto! Recuerda que el único tratamiento definitivo de la preeclampsia es el nacimiento."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Preeclampsia: Datos de Severidad",
+        "text": "Severidad: TA ≥160/110, cefalea, fosfenos, dolor en epigastrio, creatinina >1.1, plaquetas <100k. Antídoto Mg: Gluconato de Calcio.",
+        "gpc_ref": "GPC Preeclampsia - Eclampsia"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "question": "¿Qué parámetros integran el acrónimo del Síndrome de HELLP?",
+                "options": [
+                    "Hipertensión, Edema, Linfocitos ↑, Leucocitos ↑",
+                    "Hemólisis, Enzimas hepáticas ↑, Plaquetas ↓",
+                    "Hipotensión, Enzimas cardiacas ↑, Lactato ↑"
+                ],
+                "correct_index": 1
+            },
+            {
+                "question": "¿Cuál es el antídoto de elección ante una intoxicación por Sulfato de Magnesio?",
+                "options": [
+                    "Gluconato de Calcio",
+                    "Flumazenil",
+                    "Naloxona"
+                ],
+                "correct_index": 0
+            },
+            {
+                "question": "De las siguientes opciones, ¿cuál es el primer signo clínico de intoxicación por Magnesio?",
+                "options": [
+                    "Paro respiratorio",
+                    "Abolición del reflejo rotuliano",
+                    "Somnolencia extrema"
+                ],
+                "correct_index": 1
+            }
+        ]
+    }
 }
