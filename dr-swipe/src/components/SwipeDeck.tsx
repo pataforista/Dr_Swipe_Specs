@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { motion, useMotionValue, useTransform, useAnimation, AnimatePresence, type MotionValue, type PanInfo } from 'framer-motion';
+import { motion, useMotionValue, useTransform, useAnimation, useReducedMotion, AnimatePresence, type MotionValue, type PanInfo } from 'framer-motion';
 import type { Card } from '../types/game';
 import { useGameAudio } from '../hooks/useGameAudio';
 import { triggerHaptic, getSwipeHapticPattern } from '../utils/hapticFeedback';
@@ -19,12 +19,87 @@ export interface DraggableCardHandle {
   swipeOut: (direction: 'left' | 'right') => Promise<void>;
 }
 
-export const SwipeDeck: React.FC<SwipeDeckProps> = ({ 
+/**
+ * A burst of light that shines and spins around a correct decision.
+ * Centered over the deck, purely decorative (pointer-events-none), and it
+ * removes itself after ~0.7s. Honors prefers-reduced-motion with a soft flash.
+ */
+const SuccessHalo: React.FC = () => {
+  const reduceMotion = useReducedMotion();
+
+  if (reduceMotion) {
+    return (
+      <motion.div
+        className="absolute inset-0 z-[55] pointer-events-none flex items-center justify-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 0.55, 0] }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+      >
+        <div className="w-56 h-56 rounded-full bg-primary/25 blur-2xl" />
+      </motion.div>
+    );
+  }
+
+  return (
+    <div className="absolute inset-0 z-[55] pointer-events-none flex items-center justify-center">
+      {/* Expanding radial pulse */}
+      <motion.div
+        className="absolute w-48 h-48 rounded-full"
+        style={{ background: 'radial-gradient(circle, rgba(34,211,238,0.45) 0%, transparent 70%)' }}
+        initial={{ scale: 0.4, opacity: 0 }}
+        animate={{ scale: 1.8, opacity: [0, 0.9, 0] }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
+      />
+      {/* Rotating shine arc, masked into a ring */}
+      <motion.div
+        className="absolute w-60 h-60 rounded-full"
+        style={{
+          background: 'conic-gradient(from 0deg, transparent 200deg, rgba(34,211,238,0.85) 320deg, #ffffff 348deg, transparent 360deg)',
+          maskImage: 'radial-gradient(circle, transparent 58%, #000 60%, #000 70%, transparent 72%)',
+          WebkitMaskImage: 'radial-gradient(circle, transparent 58%, #000 60%, #000 70%, transparent 72%)',
+        }}
+        initial={{ rotate: -90, scale: 0.7, opacity: 0 }}
+        animate={{ rotate: 270, scale: 1.1, opacity: [0, 1, 0] }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
+      />
+      {/* Sparkles orbiting the decision */}
+      <motion.div
+        className="absolute w-52 h-52"
+        initial={{ rotate: 0, scale: 0.6, opacity: 0 }}
+        animate={{ rotate: 160, scale: 1.2, opacity: [0, 1, 0] }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
+      >
+        {[0, 1, 2, 3, 4, 5].map((i) => (
+          <span
+            key={i}
+            className="absolute left-1/2 top-1/2 text-lg drop-shadow-[0_0_6px_rgba(34,211,238,0.9)]"
+            style={{ transform: `rotate(${i * 60}deg) translateY(-104px)` }}
+          >
+            ✨
+          </span>
+        ))}
+      </motion.div>
+    </div>
+  );
+};
+
+export const SwipeDeck: React.FC<SwipeDeckProps> = ({
   cards, currentIndex, onSwipe, isLocked, lifelineActive, canUseLifeline, onUseLifeline 
 }) => {
   const { playSwipe } = useGameAudio();
   const topX = useMotionValue(0);
   const topCardRef = React.useRef<DraggableCardHandle>(null);
+  // Success halo: a brief shine that spins around a correct decision. Keyed by a
+  // timestamp so each correct swipe re-mounts the effect from scratch.
+  const [haloKey, setHaloKey] = React.useState<number | null>(null);
+  const haloTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+  const fireSuccessHalo = React.useCallback(() => {
+    const key = Date.now();
+    setHaloKey(key);
+    if (haloTimer.current) clearTimeout(haloTimer.current);
+    haloTimer.current = setTimeout(() => setHaloKey(curr => (curr === key ? null : curr)), 800);
+  }, []);
+  React.useEffect(() => () => { if (haloTimer.current) clearTimeout(haloTimer.current); }, []);
   // Blocks inputs while the exit animation runs (~250ms). Without it, a double
   // tap or a held arrow key in auto-repeat dispatches a second swipe that the
   // machine applies to the NEXT card, deciding it sight-unseen.
@@ -103,9 +178,15 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
                 cardNumber={keyIndex + 1}
                 totalCards={cards.length}
                 topX={topX}
+                onSuccess={fireSuccessHalo}
               />
             );
           })}
+        </AnimatePresence>
+
+        {/* Success Halo — shines and spins around a correct decision */}
+        <AnimatePresence>
+          {haloKey !== null && <SuccessHalo key={haloKey} />}
         </AnimatePresence>
       </div>
 
@@ -213,6 +294,7 @@ interface DraggableCardProps {
   cardNumber: number;
   totalCards: number;
   topX: MotionValue<number>;
+  onSuccess?: () => void;
 }
 
 // Icon helper for scrapbook categories
@@ -232,10 +314,10 @@ const getIconForCategory = (category: string) => {
   return '📋';
 };
 
-import { calculateExitPosition, SWIPE_CONFIG } from '../utils/swipePhysics';
+import { calculateExitPosition, SWIPE_CONFIG, isSwipeCorrect } from '../utils/swipePhysics';
 
 const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(({
-  card, isTop, indexOffset, onSwipe, playSwipe, isLocked, cardNumber, totalCards, topX
+  card, isTop, indexOffset, onSwipe, playSwipe, isLocked, cardNumber, totalCards, topX, onSuccess
 }, ref) => {
   const fallbackX = useMotionValue(0);
   const x = isTop ? topX : fallbackX;
@@ -245,6 +327,7 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
     swipeOut: async (direction: 'left' | 'right') => {
       playSwipe(direction);
       triggerHaptic(getSwipeHapticPattern(card, direction));
+      if (isSwipeCorrect(card, direction)) onSuccess?.();
       const exitPos = calculateExitPosition(direction, 0); // No velocity on button click
       await controls.start({ 
         x: exitPos.x, 
@@ -302,6 +385,7 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
       // IMMEDIATE FEEDBACK (T+0)
       playSwipe(direction);
       triggerHaptic(getSwipeHapticPattern(card, direction));
+      if (isSwipeCorrect(card, direction)) onSuccess?.();
       
       const exitPos = calculateExitPosition(direction, velocity / 1000);
       

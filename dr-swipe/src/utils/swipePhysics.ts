@@ -4,6 +4,17 @@
  * Implements the tactile satisfaction of Tinder with parallel timing.
  */
 
+import type { Card } from '../types/game';
+
+/**
+ * Whether a swipe matches the card's clinically expected action.
+ * right -> keep, left -> discard. Shared by haptics and success visuals.
+ */
+export const isSwipeCorrect = (card: Card, direction: 'left' | 'right'): boolean => {
+  const chosenAction = direction === 'right' ? 'keep' : 'discard';
+  return chosenAction === card.expected_action;
+};
+
 export const SWIPE_CONFIG = {
   // Decision Thresholds
   DRAG_THRESHOLD: 0.4, // 40% of card width

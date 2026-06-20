@@ -1,4 +1,5 @@
 import type { Card } from '../types/game';
+import { isSwipeCorrect } from './swipePhysics';
 
 /**
  * Centralized haptic feedback patterns for consistent mobile experience.
@@ -42,10 +43,7 @@ export function triggerHaptic(pattern: HapticPattern): void {
  * harsher "lethalError" buzz so the body remembers the stakes, not just the eyes.
  */
 export function getSwipeHapticPattern(card: Card, direction: 'left' | 'right'): HapticPattern {
-  const chosenAction = direction === 'right' ? 'keep' : 'discard';
-  const isCorrect = chosenAction === card.expected_action;
-
-  if (isCorrect) {
+  if (isSwipeCorrect(card, direction)) {
     return 'criticalSuccess';
   }
 
