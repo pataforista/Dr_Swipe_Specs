@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { motion, useMotionValue, useTransform, useAnimation, AnimatePresence, type MotionValue, type PanInfo } from 'framer-motion';
 import type { Card } from '../types/game';
 import { useGameAudio } from '../hooks/useGameAudio';
-import { triggerHaptic } from '../utils/hapticFeedback';
+import { triggerHaptic, getSwipeHapticPattern } from '../utils/hapticFeedback';
 import { LIFELINE_COST } from '../store/useCodexStore';
 
 interface SwipeDeckProps {
@@ -244,7 +244,7 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
   React.useImperativeHandle(ref, () => ({
     swipeOut: async (direction: 'left' | 'right') => {
       playSwipe(direction);
-      triggerHaptic('cardSwipe');
+      triggerHaptic(getSwipeHapticPattern(card, direction));
       const exitPos = calculateExitPosition(direction, 0); // No velocity on button click
       await controls.start({ 
         x: exitPos.x, 
@@ -301,7 +301,7 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
       
       // IMMEDIATE FEEDBACK (T+0)
       playSwipe(direction);
-      triggerHaptic('cardSwipe');
+      triggerHaptic(getSwipeHapticPattern(card, direction));
       
       const exitPos = calculateExitPosition(direction, velocity / 1000);
       

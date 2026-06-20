@@ -1,3 +1,5 @@
+import type { Card } from '../types/game';
+
 /**
  * Centralized haptic feedback patterns for consistent mobile experience.
  */
@@ -30,6 +32,25 @@ export function triggerHaptic(pattern: HapticPattern): void {
     // Silently fail on unsupported devices
     console.debug('Haptic feedback not supported:', e);
   }
+}
+
+/**
+ * Resolve the haptic pattern for a swipe based on its clinical outcome.
+ *
+ * Tactile reinforcement of the decision: a correct call feels rewarding, a
+ * mistake feels like a warning, and a mistake on a lethal card delivers the
+ * harsher "lethalError" buzz so the body remembers the stakes, not just the eyes.
+ */
+export function getSwipeHapticPattern(card: Card, direction: 'left' | 'right'): HapticPattern {
+  const chosenAction = direction === 'right' ? 'keep' : 'discard';
+  const isCorrect = chosenAction === card.expected_action;
+
+  if (isCorrect) {
+    return 'criticalSuccess';
+  }
+
+  const isLethal = card.safety_flags?.lethal_risk || card.safety_flags?.lethal_if_discarded;
+  return isLethal ? 'lethalError' : 'warning';
 }
 
 /**
