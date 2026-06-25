@@ -1,90 +1,190 @@
 {
-  "case_id": "PROC_INF_STI_SYPHILIS_001_005",
-  "version": "v3_swipe_action",
-  "theme_config": "med",
-  "difficulty": "standard",
-  "patient_intro": {
-    "name": "Miguel, 41 años",
-    "arrival_scenario": "VIH positivo en TARV. En control semestral el VDRL resulta reactivo 1:8, cuando en el control anterior fue 1:4. Niega síntomas neurológicos. Se solicita criterio para interpretación del caso y necesidad de PL.",
-    "time_limit_sec": 60
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
-      "card_text": "Evidencia clínica: Ruido en el expediente: TA 120/80, FC 70 lpm, Temp 36.6°C.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Navarro: Paciente estable. Analicemos la lesión."
-      }
+    "case_id": "PROC_INF_STI_SYPHILIS_001_005",
+    "version": "v3_swipe_action",
+    "theme_config": "med",
+    "difficulty": "standard",
+    "patient_intro": {
+        "name": "Miguel, 41 años",
+        "arrival_scenario": "VIH positivo en TARV. En control semestral el VDRL resulta reactivo 1:8, cuando en el control anterior fue 1:4. Niega síntomas neurológicos. Se solicita criterio para interpretación del caso y necesidad de PL.",
+        "time_limit_sec": 60
     },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "Hallazgo: A) Sífilis Primaria (Chancro Sifilítico): Úlcera única, limpia, indurada e indolora. Es el sello de la infección inicial.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Exacto! Si no duele, sospecha Treponema pallidum primero."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "Signos Vitales",
+            "card_text": "Evidencia clínica: Ruido en el expediente: TA 120/80, FC 70 lpm, Temp 36.6°C.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Navarro: Paciente estable. Analicemos la lesión."
+            }
+        },
+        {
+            "card_id": "c_8",
+            "ui_icon": "moon",
+            "category": "vitals",
+            "card_text": "H) Roséola Sifilítica y Condiloma Lata: Manifestaciones sistémicas. Típico el exantema en palmas y plantas.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Bien. Es la fase de mayor contagiosidad sistémica."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "A) Sífilis Primaria (Chancro Sifilítico): Úlcera única, limpia, indurada e indolora. Es el sello de la infección inicial.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Exacto! Si no duele, sospecha Treponema pallidum primero."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "scissors",
+            "category": "Diferencial",
+            "card_text": "B) Chancroide (H. ducreyi): Úlceras múltiples, con bordes sucios, base necrótica y MUY DOLOROSAS.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: ¡Bien! Ducreyi duele (Do-cry)."
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "microscope",
+            "category": "Diagnóstico",
+            "card_text": "C) Microscopia de Campo Oscuro: Técnica para visualizar espiroquetas móviles directamente de la lesión (Chancro).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Muy bien! Es el diagnóstico de elección en la fase primaria."
+            }
+        },
+        {
+            "card_id": "c_4",
+            "ui_icon": "search",
+            "category": "meds",
+            "card_text": "D) Pruebas No Treponémicas (VDRL/RPR): Baratas, útiles para tamizaje y seguimiento del tratamiento. Tienen falsos positivos.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Correcto. Requieren confirmación con pruebas treponémicas."
+            }
+        },
+        {
+            "card_id": "c_5",
+            "ui_icon": "check-circle",
+            "category": "meds",
+            "card_text": "E) Pruebas Treponémicas (FTA-ABS): Confirmatorias. Permanecen positivas de por vida (cicatriz serológica).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Bien! Una vez confirmada, no sirven para medir respuesta al tratamiento."
+            }
+        },
+        {
+            "card_id": "c_6",
+            "ui_icon": "pill",
+            "category": "meds",
+            "card_text": "F) Penicilina G Benzatínica (2.4 Millones UI IM - Dosis Única): Tratamiento de elección para sífilis primaria, secundaria y latente temprana.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Navarro: ¡Perfecto! La penicilina sigue siendo la reina contra el Treponema después de décadas.",
+                "safety_flags": {
+                    "lethal_risk": true,
+                    "decision_critical": true
+                }
+            }
+        },
+        {
+            "card_id": "c_7",
+            "ui_icon": "alert-triangle",
+            "category": "imaging",
+            "card_text": "G) Reacción de Jarisch-Herxheimer: Episodio febril agudo tras la primera dosis de penicilina por liberación de antígenos del treponema moribundo.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Excelente perla! No es una alergia; es una reacción esperable que se maneja con sintomáticos."
+            }
+        },
+        {
+            "card_id": "c_9",
+            "ui_icon": "users",
+            "category": "imaging",
+            "card_text": "I) Tratamiento de Parejas Sexuales: Notificar y tratar a todos los contactos de los últimos 90 días, incluso si son seronegativos.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Fundamental! Romper la cadena de transmisión es prioridad en ITS."
+            }
+        },
+        {
+            "card_id": "c_10",
+            "ui_icon": "activity",
+            "category": "Neurosífilis",
+            "card_text": "J) Punción Lumbar: Obligatoria en todo paciente con sífilis y síntomas neurológicos, o sífilis terciaria para descartar neurosífilis.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Correcto! El manejo cambia radicalmente a penicilina IV si el SNC está afectado."
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Sífilis: El ABC",
+        "text": "Primaria: Chancro indoloro. Secundaria: Palmas/Plantas. Tx: Penicilina Benzatínica 2.4 M. Seguimiento: Descenso de 4 diluciones en VDRL.",
+        "gpc_ref": "GPC Diagnóstico y tratamiento de la sífilis"
     },
-    {
-      "card_id": "c_2",
-      "ui_icon": "scissors",
-      "category": "Diferencial",
-      "card_text": "Dato de importancia: Dato anecdótico: B) Chancroide (H. ducreyi): Úlceras múltiples, con bordes sucios, base necrótica y MUY DOLOROSAS.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Navarro: ¡Bien! Ducreyi duele (Do-cry)."
-      }
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "correct_index": 0,
+                "question": "¿Cuál es la característica clínica definitiva del chancro sifilítico primario?",
+                "options": [
+                    "Úlcera indolora de base indurada",
+                    "Múltiples vesículas dolorosas",
+                    "Úlcera sucia con base friable"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Cuál es el tratamiento de primera elección para un paciente con diagnóstico de sífilis primaria?",
+                "options": [
+                    "Penicilina G benzatínica 2.4 millones UI IM",
+                    "Ceftriaxona 250 mg IM dosis única",
+                    "Doxiciclina 100 mg c/12h por 14 días"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Cuál de las siguientes pruebas se utiliza para evaluar la respuesta al tratamiento y detectar reinfecciones?",
+                "options": [
+                    "Pruebas no treponémicas (VDRL/RPR)",
+                    "Pruebas treponémicas (FTA-ABS)",
+                    "Inmunotransferencia (Western Blot)"
+                ]
+            }
+        ]
     }
-  ],
-  "enarm_pearl": {
-    "title": "Sífilis: El ABC",
-    "text": "Primaria: Chancro indoloro. Secundaria: Palmas/Plantas. Tx: Penicilina Benzatínica 2.4 M. Seguimiento: Descenso de 4 diluciones en VDRL.",
-    "gpc_ref": "GPC Diagnóstico y tratamiento de la sífilis"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "correct_index": 0,
-        "question": "¿Cuál es la característica clínica definitiva del chancro sifilítico primario?",
-        "options": [
-          "Úlcera indolora de base indurada",
-          "Múltiples vesículas dolorosas",
-          "Úlcera sucia con base friable"
-        ]
-      },
-      {
-        "correct_index": 0,
-        "question": "¿Cuál es el tratamiento de primera elección para un paciente con diagnóstico de sífilis primaria?",
-        "options": [
-          "Penicilina G benzatínica 2.4 millones UI IM",
-          "Ceftriaxona 250 mg IM dosis única",
-          "Doxiciclina 100 mg c/12h por 14 días"
-        ]
-      },
-      {
-        "correct_index": 0,
-        "question": "¿Cuál de las siguientes pruebas se utiliza para evaluar la respuesta al tratamiento y detectar reinfecciones?",
-        "options": [
-          "Pruebas no treponémicas (VDRL/RPR)",
-          "Pruebas treponémicas (FTA-ABS)",
-          "Inmunotransferencia (Western Blot)"
-        ]
-      }
-    ]
-  }
 }

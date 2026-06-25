@@ -1,9 +1,0 @@
-﻿﻿{
-    "case_id":  "PROC_SURG_OBSTRUCTION_001_010",
-    "version":  "v3_swipe_action",
-    "theme_config":  "surg",
-    "difficulty":  "standard",
-    "patient_intro":  {
-                          "name":  "Marta, 61 aÃ±os",
-                          "arrival_scenario":  "Paciente con antecedente de 3 cirugÃ­as abdominales. Presenta dolor abdominal tipo cÃ³lico, distensiÃ³n y ausencia de canalizaciÃ³n de gases de 72 horas. Gran distensiÃ³n timpÃ¡nica. Ampolla rectal vacÃ­a al tacto.",
-  

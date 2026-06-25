@@ -1,94 +1,170 @@
 {
-  "case_id": "PROC_ENGL_TECH_VOCABULARY_001_012",
-  "version": "v3_swipe_action",
-  "theme_config": "engl",
-  "difficulty": "standard",
-  "patient_intro": {
-    "name": "Juan, 38 años",
-    "arrival_scenario": "Examination reveals a 'rash' on the upper limbs and 'wheezing' upon lung auscultation. False Friend Alert: The patient reports 'Constipation'. Does this refer to nasal congestion or bowel movement issues?",
-    "time_limit_sec": 60
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
-      "card_text": "Hallazgo clínico: Dato anecdótico: TA 120/80, FC 78 bpm, Temp 37.0°C",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
-      }
+    "case_id": "PROC_ENGL_TECH_VOCABULARY_001_012",
+    "version": "v3_swipe_action",
+    "theme_config": "engl",
+    "difficulty": "standard",
+    "patient_intro": {
+        "name": "Juan, 38 años",
+        "arrival_scenario": "Examination reveals a 'rash' on the upper limbs and 'wheezing' upon lung auscultation. False Friend Alert: The patient reports 'Constipation'. Does this refer to nasal congestion or bowel movement issues?",
+        "time_limit_sec": 60
     },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "Evidencia: A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Correcto! Dominar estos términos es vital para la sección de inglés técnico del ENARM."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "Signos Vitales",
+            "card_text": "Hallazgo clínico: Dato anecdótico: TA 120/80, FC 78 bpm, Temp 37.0°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Chief Complaint",
+            "card_text": "A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias (sonido silbante al respirar).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Correcto! Dominar estos términos es vital para la sección de inglés técnico del ENARM."
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "slash",
+            "category": "False Friends",
+            "card_text": "B) Estreñimiento (Bowel movement issues): 'Constipation' significa Estreñimiento, NO congestión nasal.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Excelente! Evitaste el falso amigo. 'Constipated' nasal se dice 'Congested'."
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "alert-circle",
+            "category": "Trauma terms",
+            "card_text": "C) Wound vs Injury: 'Wound' se refiere específicamente a una Herida abierta, mientras que 'Injury' es el término general para Lesión.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Bien! 'Injury' abarca desde fracturas hasta contusiones."
+            }
+        },
+        {
+            "card_id": "c_4",
+            "ui_icon": "frown",
+            "category": "Common symptoms",
+            "card_text": "D) Sore Throat: Término común para referirse a la Faringodinia o Dolor de garganta.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Correcto. Un síntoma básico que verás en consulta externa."
+            }
+        },
+        {
+            "card_id": "c_5",
+            "ui_icon": "activity",
+            "category": "Physical Signs",
+            "card_text": "E) Swelling: Traducción médica de Edema o Inflamación de una parte del cuerpo.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Muy bien! Es un hallazgo fundamental en la exploración física."
+            }
+        },
+        {
+            "card_id": "c_6",
+            "ui_icon": "zap",
+            "category": "Neurological",
+            "card_text": "F) Numbness: Sensación de Entumecimiento o Parestesia. A menudo se acompaña de 'Tingling' (hormigueo).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Exacto! Datos cardinales para el interrogatorio neurológico."
+            }
+        },
+        {
+            "card_id": "c_7",
+            "ui_icon": "eye",
+            "category": "Visual",
+            "card_text": "G) Blurred Vision: Término para describir la Visión Borrosa, síntoma clave en patología oftalmológica o sistémica.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Bien. Puede indicar desde vicios de refracción hasta crisis hipertensivas."
+            }
+        },
+        {
+            "card_id": "c_8",
+            "ui_icon": "rotate-cw",
+            "category": "Dizziness",
+            "card_text": "H) Dizziness vs Vertigo: 'Dizziness' es el término laxo para Mareo, mientras que 'Vertigo' implica ilusión de movimiento.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Bien! Aunque se confunden, 'dizziness' es más inespecífico (aturdimiento)."
+            }
+        },
+        {
+            "card_id": "c_9",
+            "ui_icon": "trending-up",
+            "category": "timeline",
+            "card_text": "I) Sudden Onset: Término que indica un Inicio Súbito o repentino de los síntomas.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Correcto! La temporalidad define muchas veces la gravedad del cuadro."
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Inglés Médico: False Friends",
+        "text": "Constipation = Estreñimiento. Injury = Lesión. Sever = Cortar. Informed Consent = Consentimiento Informado.",
+        "gpc_ref": "ENARM Technical English Section"
     },
-    {
-      "card_id": "c_2",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "Evidencia: B) Estreñimiento (Bowel movement issues): 'Constipation' es el falso amigo más común: significa Estreñimiento, NO congestión nasal.",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "omission",
-        "vazquez_comment": "Navarro: ¡Excelente! Evitaste caer en el falso amigo. 'Constipated' nasal se dice 'Congested'."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": true
-      }
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "correct_index": 0,
+                "question": "¿Cuál es la traducción correcta de 'Constipation' en un contexto médico?",
+                "options": [
+                    "Estreñimiento",
+                    "Congestión nasal",
+                    "Diarrea"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Qué significa el término 'Shortness of breath'?",
+                "options": [
+                    "Disnea (falta de aire)",
+                    "Dolor de pecho",
+                    "Tos seca"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Cuál es la diferencia entre 'Wound' e 'Injury'?",
+                "options": [
+                    "Wound es una herida abierta; Injury es cualquier lesión",
+                    "Wound es una fractura; Injury es un moretón",
+                    "Son sinónimos exactos en medicina"
+                ]
+            }
+        ]
     }
-  ],
-  "enarm_pearl": {
-    "title": "Inglés Médico: False Friends",
-    "text": "Constipation = Estreñimiento. Injury = Lesión. Sever = Cortar. Informed Consent = Consentimiento Informado.",
-    "gpc_ref": "ENARM Technical English Section"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "correct_index": 0,
-        "question": "¿Cuál es la traducción correcta de 'Constipation' en un contexto médico?",
-        "options": [
-          "Estreñimiento",
-          "Congestión nasal",
-          "Diarrea"
-        ]
-      },
-      {
-        "correct_index": 0,
-        "question": "¿Qué significa el término 'Shortness of breath'?",
-        "options": [
-          "Disnea (falta de aire)",
-          "Dolor de pecho",
-          "Tos seca"
-        ]
-      },
-      {
-        "correct_index": 0,
-        "question": "¿Cuál es la diferencia entre 'Wound' e 'Injury'?",
-        "options": [
-          "Wound es una herida abierta; Injury es cualquier lesión",
-          "Wound es una fractura; Injury es un moretón",
-          "Son sinónimos exactos en medicina"
-        ]
-      }
-    ]
-  }
 }

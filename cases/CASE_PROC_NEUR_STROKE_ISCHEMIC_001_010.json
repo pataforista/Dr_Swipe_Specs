@@ -1,95 +1,191 @@
 {
-  "case_id": "PROC_NEUR_STROKE_ISCHEMIC_001_010",
-  "version": "v3_swipe_action",
-  "theme_config": "neur",
-  "difficulty": "hard",
-  "patient_intro": {
-    "name": "María, 64 años",
-    "arrival_scenario": "Paciente con antecedente de FA que súbitamente presenta dificultad para hablar y debilidad en brazo izquierdo. Inició con los síntomas hace exactamente 2.5 horas. El paciente es candidato potencial a terapia de reperfusión.",
-    "time_limit_sec": 50
-  },
-  "card_stream": [
-    {
-      "card_id": "init_vitals",
-      "ui_icon": "heartbeat",
-      "category": "Signos Vitales",
-      "card_text": "Información redundante: TA 170/90 mmHg, FC 110 lpm (irregular), Temp 36.6°C",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Navarro: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
-      }
+    "case_id": "PROC_NEUR_STROKE_ISCHEMIC_001_010",
+    "version": "v3_swipe_action",
+    "theme_config": "neur",
+    "difficulty": "hard",
+    "patient_intro": {
+        "name": "María, 64 años",
+        "arrival_scenario": "Paciente con antecedente de FA que súbitamente presenta dificultad para hablar y debilidad en brazo izquierdo. Inició con los síntomas hace exactamente 2.5 horas. El paciente es candidato potencial a terapia de reperfusión.",
+        "time_limit_sec": 50
     },
-    {
-      "card_id": "c_1",
-      "ui_icon": "target",
-      "category": "Diagnóstico",
-      "card_text": "Hallazgo clínico: A) ACV Isquémico (Ventana de Fibrinolisis): Sintomatología focal <4.5 horas + TC sin hemorragia. Manejo: rTPA (Alteplase).",
-      "expected_action": "keep",
-      "scoring": {
-        "points": 150,
-        "error_type": "lethal_omission",
-        "vazquez_comment": "Navarro: ¡Excelente! La ventana de 4.5 horas es sagrada en el ENARM para el uso de fibrinolíticos."
-      },
-      "safety_flags": {
-        "lethal_risk": true,
-        "decision_critical": true,
-        "lethal_if_discarded": true
-      }
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "Signos Vitales",
+            "card_text": "Información redundante: TA 170/90 mmHg, FC 110 lpm (irregular), Temp 36.6°C",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Navarro: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
+            }
+        },
+        {
+            "card_id": "c_4",
+            "ui_icon": "clipboard",
+            "category": "vitals",
+            "card_text": "D) Escala NIHSS: Cuantificar el déficit neurológico para guiar la decisión terapéutica y el pronóstico.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Muy bien. Una escala NIHSS entre 4 y 25 puntos suele ser la ventana ideal para rTPA."
+            }
+        },
+        {
+            "card_id": "c_6",
+            "ui_icon": "alert-triangle",
+            "category": "vitals",
+            "card_text": "F) Control de TA: Mantener la TA por debajo de 185/110 mmHg para iniciar rTPA de forma segura.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Navarro: Vital. Fibrinolar con TA >185/110 aumenta drásticamente el riesgo de hemorragia fatal."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "eye",
+            "category": "Diagnóstico Diferencial",
+            "card_text": "B) Hemorragia Intracraneal: Clínica similar pero TC mostraría hiperdensidad súbita. Contraindica rTPA.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: ¡Bien! La TC negativa a sangre confirma el origen isquémico temprano y permite avanzar al tratamiento."
+            }
+        },
+        {
+            "card_id": "c_7",
+            "ui_icon": "activity",
+            "category": "Fisiología",
+            "card_text": "G) Penumbra Isquémica: Tejido cerebral con riesgo de infarto que aún es rescatable mediante reperfusión.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: ¡Exacto! Todo el esfuerzo es para salvar la zona de penumbra."
+            }
+        },
+        {
+            "card_id": "c_9",
+            "ui_icon": "calendar",
+            "category": "meds",
+            "card_text": "I) Iniciar Antiagregación (ASA): Administrar 160-325 mg de Aspirina tras 24 horas de la fibrinólisis.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Correcto. Nunca antes de las 24 horas para evitar sangrado."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "A) ACV Isquémico (Ventana de Fibrinolisis): Sintomatología focal <4.5 horas + TC sin hemorragia. Manejo: rTPA (Alteplase).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Navarro: ¡Excelente! La ventana de 4.5 horas es sagrada en el ENARM para el uso de fibrinolíticos."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true,
+                "lethal_if_discarded": true
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "zap",
+            "category": "Manejo Inicial",
+            "card_text": "C) Glucometría Capilar: Siempre descartar hipoglucemia, ya que puede simular síntomas de focalidad neurológica.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Navarro: ¡Fundamental! La hipoglucemia es el gran imitador del EVC. Nunca fibrinólisis sin glucosa normal."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_5",
+            "ui_icon": "search",
+            "category": "meds",
+            "card_text": "E) TC Cráneo Simple: Objetivo primordial: Descartar hemorragia intracraneal en los primeros 25 min.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Navarro: ¡Correcto! El tiempo puerta-tomografía es un indicador de calidad vital."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_8",
+            "ui_icon": "slash",
+            "category": "Complicación",
+            "card_text": "H) Transformación Hemorrágica: Vigilar cefalea intensa, náuseas o deterioro neurológico súbito post-rTPA.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Navarro: ¡Bien! Si sospechas esto, suspende la infusión y solicita TC de control de inmediato."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Ventana de rTPA",
+        "text": "Tiempo es Cerebro: La ventana ideal es <3h, extendida hasta 4.5h en casos seleccionados. Contraindicación absoluta: TA >185/110 persistente.",
+        "gpc_ref": "GPC Diagnóstico y Tratamiento de ACV Isquémico"
     },
-    {
-      "card_id": "c_2",
-      "ui_icon": "eye",
-      "category": "Diagnóstico",
-      "card_text": "Información redundante: B) Hemorragia Intracraneal: Clínica similar pero TC mostraría hiperdensidad súbita.",
-      "expected_action": "discard",
-      "scoring": {
-        "points": 50,
-        "error_type": "hoarding",
-        "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Navarro: ¡Bien! La TC negativa a sangre confirma el origen isquémico temprano."
-      },
-      "safety_flags": {
-        "lethal_risk": false,
-        "decision_critical": false
-      }
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "correct_index": 0,
+                "question": "¿Cuál es la puntuación máxima de la escala NIHSS (indicadora de severidad extrema)?",
+                "options": [
+                    "42 puntos",
+                    "15 puntos",
+                    "100 puntos"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Hasta cuántas horas se extiende la ventana terapéutica para rTPA en casos seleccionados?",
+                "options": [
+                    "4.5 horas",
+                    "6 horas",
+                    "12 horas"
+                ]
+            },
+            {
+                "correct_index": 0,
+                "question": "¿Cuál es el valor de glucosa capilar por debajo del cual los síntomas podrían ser un imitador (mimic) del EVC?",
+                "options": [
+                    "Menor a 50 mg/dl",
+                    "Menor a 100 mg/dl",
+                    "Mayor a 200 mg/dl"
+                ]
+            }
+        ]
     }
-  ],
-  "enarm_pearl": {
-    "title": "Ventana de rTPA",
-    "text": "Tiempo es Cerebro: La ventana ideal es <3h, extendida hasta 4.5h en casos seleccionados. Contraindicación absoluta: TA >185/110 persistente.",
-    "gpc_ref": "GPC Diagnóstico y Tratamiento de ACV Isquémico"
-  },
-  "boss_fight_triad": {
-    "trigger": "after_cards",
-    "questions": [
-      {
-        "correct_index": 0,
-        "question": "¿Cuál es la puntuación máxima de la escala NIHSS (indicadora de severidad extrema)?",
-        "options": [
-          "42 puntos",
-          "15 puntos",
-          "100 puntos"
-        ]
-      },
-      {
-        "correct_index": 0,
-        "question": "¿Hasta cuántas horas se extiende la ventana terapéutica para rTPA en casos seleccionados?",
-        "options": [
-          "4.5 horas",
-          "6 horas",
-          "12 horas"
-        ]
-      },
-      {
-        "correct_index": 0,
-        "question": "¿Cuál es el valor de glucosa capilar por debajo del cual los síntomas podrían ser un imitador (mimic) del EVC?",
-        "options": [
-          "Menor a 50 mg/dl",
-          "Menor a 100 mg/dl",
-          "Mayor a 200 mg/dl"
-        ]
-      }
-    ]
-  }
 }
