@@ -4,7 +4,7 @@
     "theme_config": "gyn",
     "difficulty": "standard",
     "patient_intro": {
-        "name": "Rosa, 39 años",
+        "name": "Rosa, 28 años",
         "arrival_scenario": "Mujer de 28 años con reporte de citología reciente que indica Lesión Intraepitelial Escamosa de Bajo Grado (LSIL). Reporte de Papanicolaou con NIC 2 (Neoplasia Intraepitelial Grado 2). ¿Cuál es la conducta terapéutica?",
         "time_limit_sec": 60
     },

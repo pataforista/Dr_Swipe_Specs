@@ -4,7 +4,7 @@
     "theme_config": "surg",
     "difficulty": "hard",
     "patient_intro": {
-        "name": "Juan, 29 años",
+        "name": "Juan, 24 años",
         "arrival_scenario": "Masculino de 24 años tras accidente automovilístico. Presenta dificultad respiratoria severa y desviación traqueal. A la exploración: Ingurgitación yugular, ausencia de ruidos respiratorios a la derecha y timpanismo a la percusión.",
         "time_limit_sec": 50
     },

@@ -4,7 +4,7 @@
     "theme_config": "gyn",
     "difficulty": "standard",
     "patient_intro": {
-        "name": "Elena, 50 años",
+        "name": "Elena, 52 años",
         "arrival_scenario": "Se realiza mastografía en paciente de 52 años tras detectar nódulo firme e indoloro en cuadrante superior externo. Reporte de mastografía: Nódulo circunscrito de 1cm con microcalcificaciones pleomórficas agrupadas. Clasificado como BI-RADS 4.",
         "time_limit_sec": 60
     },

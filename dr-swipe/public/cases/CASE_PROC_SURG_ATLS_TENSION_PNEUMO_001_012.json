@@ -4,7 +4,7 @@
     "theme_config": "surg",
     "difficulty": "hard",
     "patient_intro": {
-        "name": "Antonio, 22 años",
+        "name": "Antonio, 24 años",
         "arrival_scenario": "Masculino de 24 años tras accidente automovilístico. Presenta dificultad respiratoria severa y desviación traqueal. Diagnóstico clínico de Neumotórax a Tensión. El paciente se deteriora rápidamente.",
         "time_limit_sec": 50
     },

@@ -4,7 +4,7 @@
     "theme_config": "surg",
     "difficulty": "hard",
     "patient_intro": {
-        "name": "Luis, 32 años",
+        "name": "Luis, 24 años",
         "arrival_scenario": "Paciente de 24 años con herida por arma blanca en tórax. Presenta hipotensión, ruidos respiratorios ausentes en hemitórax derecho. Diagnóstico clínico de Neumotórax a Tensión. El paciente se deteriora rápidamente.",
         "time_limit_sec": 50
     },
