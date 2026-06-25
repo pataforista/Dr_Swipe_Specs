@@ -72,9 +72,9 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
               animate={{
                 width: i === currentIndex ? '40px' : '6px',
                 backgroundColor: i < currentIndex
-                  ? 'rgba(34, 211, 238, 0.35)'
+                  ? 'rgba(13, 148, 136, 0.35)'
                   : i === currentIndex
-                  ? '#22D3EE'
+                  ? '#0D9488'
                   : 'rgba(148, 163, 184, 0.4)'
               }}
               transition={{ duration: 0.4, type: 'spring' }}
@@ -116,7 +116,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
             initial={{ opacity: 0, scale: 0.9, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className={`mt-2 sm:mt-4 px-4 sm:px-8 py-4 sm:py-5 rounded-2xl sm:rounded-3xl italic text-[10px] sm:text-[11px] font-black tracking-[0.15em] sm:tracking-[0.2em] uppercase shadow-[0_0_30px_rgba(0,0,0,0.5)] z-50 relative backdrop-blur-xl border max-w-xs ${
+            className={`mt-2 sm:mt-4 px-4 sm:px-8 py-4 sm:py-5 rounded-2xl sm:rounded-3xl italic text-[10px] sm:text-[11px] font-black tracking-[0.15em] sm:tracking-[0.2em] uppercase shadow-lg z-50 relative backdrop-blur-sm border-2 max-w-xs ${
               cards[currentIndex].expected_action === 'keep'
                 ? 'bg-primary/10 border-primary/20 text-primary'
                 : 'bg-accent-alert/10 border-accent-alert/20 text-accent-alert'
@@ -143,12 +143,12 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
             onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); handleActionSwipe('left'); }}
             whileHover={!isLocked ? { scale: 1.15, y: -4 } : {}}
             whileTap={!isLocked ? { scale: 0.9 } : {}}
-            className={`w-16 sm:w-20 h-16 sm:h-20 rounded-full bg-white border text-accent-alert shadow-xl flex items-center justify-center text-2xl sm:text-3xl hover:bg-slate-800 hover:border-accent-alert/50 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner relative ${
-              lifelineActive && cards[currentIndex]?.expected_action === 'discard' ? 'sticker-glow border-accent-alert/100 animate-pulse' : 'border-white/10'
+            className={`w-16 sm:w-20 h-16 sm:h-20 rounded-full bg-white border text-accent-alert shadow-xl flex items-center justify-center text-2xl sm:text-3xl hover:bg-rose-50 hover:border-accent-alert/50 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner relative ${
+              lifelineActive && cards[currentIndex]?.expected_action === 'discard' ? 'sticker-glow border-accent-alert/100 animate-pulse' : 'border-slate-200'
             }`}
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,theme(colors.accent-alert/10),transparent)] opacity-0 hover:opacity-100 transition-opacity" />
-            <span className="relative z-10 drop-shadow-[0_0_10px_rgba(251,113,133,0.8)]">✕</span>
+            <span className="relative z-10">✕</span>
           </motion.button>
           <span className={`text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] transition-colors line-clamp-2 text-center max-w-[70px] sm:max-w-none ${
             lifelineActive && cards[currentIndex]?.expected_action === 'discard' ? 'text-accent-alert' : 'text-slate-500 group-hover:text-accent-alert'
@@ -165,7 +165,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
             whileHover={canUseLifeline && !isLocked ? { scale: 1.15, rotate: 180, boxShadow: '0 0 30px rgba(129,140,248,0.4)' } : {}}
             whileTap={canUseLifeline && !isLocked ? { scale: 0.85 } : {}}
             className={`w-14 sm:w-16 h-14 sm:h-16 rounded-full border shadow-lg flex items-center justify-center text-xl sm:text-2xl transition-all ${
-              lifelineActive ? 'bg-secondary/20 border-secondary text-white sticker-glow' : 'bg-white border-white/5 text-secondary hover:bg-white/5 hover:border-white/20 disabled:opacity-20'
+              lifelineActive ? 'bg-amber-100 border-secondary text-amber-700 sticker-glow' : 'bg-white border-slate-200 text-secondary hover:bg-amber-50 hover:border-secondary/40 disabled:opacity-20'
             }`}
               title={`Escanear Carta (Cuesta ${LIFELINE_COST} 🪙)`}
           >
@@ -187,12 +187,12 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
             onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); handleActionSwipe('right'); }}
             whileHover={!isLocked ? { scale: 1.15, y: -4 } : {}}
             whileTap={!isLocked ? { scale: 0.9 } : {}}
-            className={`w-16 sm:w-20 h-16 sm:h-20 rounded-full bg-white border text-primary shadow-xl flex items-center justify-center text-2xl sm:text-3xl hover:bg-slate-800 hover:border-primary/50 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner relative ${
-              lifelineActive && cards[currentIndex]?.expected_action === 'keep' ? 'sticker-glow border-primary/100 animate-pulse' : 'border-white/10'
+            className={`w-16 sm:w-20 h-16 sm:h-20 rounded-full bg-white border text-primary shadow-xl flex items-center justify-center text-2xl sm:text-3xl hover:bg-teal-50 hover:border-primary/50 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner relative ${
+              lifelineActive && cards[currentIndex]?.expected_action === 'keep' ? 'sticker-glow border-primary/100 animate-pulse' : 'border-slate-200'
             }`}
           >
              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,theme(colors.primary/10),transparent)] opacity-0 hover:opacity-100 transition-opacity" />
-             <span className="relative z-10 drop-shadow-[0_0_10px_rgba(34,211,238,0.8)]">♥</span>
+             <span className="relative z-10">♥</span>
           </motion.button>
           <span className={`text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] transition-colors line-clamp-2 text-center max-w-[70px] sm:max-w-none ${
             lifelineActive && cards[currentIndex]?.expected_action === 'keep' ? 'text-primary' : 'text-slate-500 group-hover:text-primary'
@@ -346,7 +346,7 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
         <div className="bg-rose-500 text-white font-bold lettering text-3xl px-8 py-3 rounded-xl -rotate-12 shadow-lg border-2 border-white/20">NO SIRVE 🖍️</div>
       </motion.div>
       <motion.div style={{ opacity: overlayOpacityRight }} className="absolute top-12 right-12 z-50 pointer-events-none">
-        <div className="bg-cyan-500 text-white font-bold lettering text-3xl px-8 py-3 rounded-xl rotate-12 shadow-lg border-2 border-white/20">¡QUÉ NIVEL! ✨</div>
+        <div className="bg-primary text-white font-bold lettering text-3xl px-8 py-3 rounded-xl rotate-12 shadow-lg border-2 border-white/40">¡QUÉ NIVEL! ✨</div>
       </motion.div>
 
       {/* Header (Subject Tab) */}

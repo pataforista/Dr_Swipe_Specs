@@ -19,7 +19,7 @@ const GlitchText: React.FC<GlitchTextProps> = ({ text, className = "" }) => {
       <span 
         className="absolute top-0 left-0 w-full h-full text-primary opacity-70 animate-glitch-after z-0 pointer-events-none"
         aria-hidden="true"
-        style={{ textShadow: '-2px 0 #22D3EE' }}
+        style={{ textShadow: '-2px 0 #0D9488' }}
       >
         {text}
       </span>

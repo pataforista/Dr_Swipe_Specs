@@ -80,7 +80,7 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({ onComplete }) 
               key={i}
               animate={{
                 scale: i === current ? 1.2 : 1,
-                backgroundColor: i === current ? '#22D3EE' : '#E2E8F0'
+                backgroundColor: i === current ? '#0D9488' : '#E2E8F0'
               }}
               className="w-2 sm:w-3 h-2 sm:h-3 rounded-full transition-all duration-300"
             />
