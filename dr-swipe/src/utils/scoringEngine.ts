@@ -11,10 +11,10 @@ export interface ScoreBreakdown {
   basePoints: number;
   comboMultiplier: number;
   difficultyMultiplier: number;
-  speedBonus: number;
+  speedBonus: number; // Represents critical action bonus (keeps interface compatibility)
   finalPoints: number;
   coinsEarned: number;
-  bonusType: 'speed' | 'combo' | 'none';
+  bonusType: 'critical' | 'combo' | 'none';
 }
 
 /**
@@ -49,8 +49,9 @@ export function calculateCardScore(
   card: Card,
   context: GameContextForScoring,
   isCorrect: boolean,
-  timeTaken?: number
+  _timeTaken?: number
 ): ScoreBreakdown {
+  void _timeTaken; // Used by GameMachine but unused in scoring engine logic
   // Base points
   let basePoints = card.scoring.points;
   if (!isCorrect) {
@@ -88,13 +89,15 @@ export function calculateCardScore(
   const difficultyMultiplier =
     context.difficulty === 'extreme' ? 2 : context.difficulty === 'hard' ? 1.5 : 1;
 
-  // Perfect Swipe Logic (x1.2)
+  // Critical Action Success Bonus (x1.2) instead of speed-based bonus
   let speedBonus = 1;
-  let bonusType: 'speed' | 'combo' | 'none' = 'none';
+  let bonusType: 'critical' | 'combo' | 'none' = 'none';
 
-  if (timeTaken !== undefined && timeTaken < 1200) {
+  const isCriticalAction = !!(card.safety_flags?.lethal_risk || card.safety_flags?.lethal_if_discarded || card.safety_flags?.decision_critical);
+
+  if (isCorrect && isCriticalAction) {
     speedBonus = 1.2;
-    bonusType = 'speed';
+    bonusType = 'critical';
   }
 
   // If we have a combo multiplier, surface it as the bonus
@@ -108,7 +111,7 @@ export function calculateCardScore(
 
   // Coin calculation: 1 base + bonus for speed/combo milestones
   let coinsEarned = 1;
-  if (speedBonus > 1) coinsEarned += 2; // Speed bonus coins
+  if (speedBonus > 1) coinsEarned += 2; // Critical action bonus coins
   if (comboMultiplier > 1) coinsEarned += Math.floor(comboMultiplier); // Combo coins
   // Milestone bonus coins
   const milestone = COMBO_MILESTONES.find(m => m === nextCombo);

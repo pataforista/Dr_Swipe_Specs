@@ -86,7 +86,6 @@ export interface ClinicalCase {
 }
 
 export interface PlayerStats {
-  rank: string;
   xp: number;
   coins: number;
   correct_swipes: number;

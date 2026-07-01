@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import type { EnarmPearl } from '../../types/game';
 
 interface LootScreenProps {
   score: number;
@@ -7,10 +8,13 @@ interface LootScreenProps {
   coins: number;
   isPerfect: boolean;
   onContinue: () => void;
+  pearl?: EnarmPearl;
+  feedbackHistoryCount?: number;
+  onViewRetro?: () => void;
 }
 
 export const LootScreen: React.FC<LootScreenProps> = ({ 
-  score, xpTotal, coins, isPerfect, onContinue 
+  score, xpTotal, coins, isPerfect, onContinue, pearl, feedbackHistoryCount = 0, onViewRetro
 }) => {
   return (
     <motion.div 
@@ -57,9 +61,9 @@ export const LootScreen: React.FC<LootScreenProps> = ({
           <div className="flex items-center gap-3">
              <span className="text-2xl sm:text-3xl bg-white w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center rounded-xl shadow-sm border border-slate-100">🪙</span>
              <div className="text-left">
-              <span className="text-[9px] sm:text-[10px] font-black uppercase text-slate-400 block tracking-widest leading-none">Monedas</span>
-              <span className="text-sm sm:text-base font-bold text-slate-600">Créditos de hospital</span>
-            </div>
+               <span className="text-[9px] sm:text-[10px] font-black uppercase text-slate-400 block tracking-widest leading-none">Monedas</span>
+               <span className="text-sm sm:text-base font-bold text-slate-600">Créditos de hospital</span>
+             </div>
           </div>
           <span className="text-2xl sm:text-3xl font-black text-secondary lettering">+{coins}</span>
         </div>
@@ -71,15 +75,34 @@ export const LootScreen: React.FC<LootScreenProps> = ({
         )}
       </div>
 
+      {/* ENARM Pearl Display */}
+      {pearl && (
+        <div className="bg-amber-50/70 p-4 sm:p-5 rounded-[2rem] border border-amber-100 text-left mb-6 relative overflow-hidden z-10">
+          <div className="absolute top-2 right-2 text-xs opacity-20">💡</div>
+          <span className="text-[8px] sm:text-[9px] font-black uppercase text-amber-600 block tracking-widest mb-1 leading-none">Perla ENARM Desbloqueada 🌟</span>
+          <h4 className="text-sm sm:text-base font-black text-slate-800 mb-1 leading-snug">{pearl.title}</h4>
+          <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed">{pearl.text}</p>
+          {pearl.gpc_ref && <span className="text-[8px] font-bold text-slate-400 mt-2 block">GPC: {pearl.gpc_ref}</span>}
+        </div>
+      )}
+
       {/* Utility Message */}
-      <div className="mb-6 sm:mb-10 px-4">
+      <div className="mb-6 sm:mb-8 px-4 relative z-10">
         <p className="text-[10px] sm:text-[11px] text-slate-400 leading-relaxed font-bold lettering uppercase tracking-wide">
           "Usa tus monedas para **ESCANEAR cartas difíciles** en futuras consultas. Un buen médico invierte en sus herramientas."
         </p>
       </div>
 
       {/* Call to Action */}
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col gap-3">
+        {onViewRetro && feedbackHistoryCount > 0 && (
+          <button 
+            onClick={onViewRetro} 
+            className="marker-btn w-full py-3 sm:py-4 text-sm sm:text-base !bg-slate-700 hover:!bg-slate-800"
+          >
+            VER REPASO DE CARTAS 📋
+          </button>
+        )}
         <button 
           onClick={onContinue} 
           className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl group shadow-amber-100/50"
@@ -89,7 +112,7 @@ export const LootScreen: React.FC<LootScreenProps> = ({
       </div>
 
       {/* Decorative Washi Tape */}
-      <div className="absolute bottom-4 -right-10 w-40 h-8 bg-cyan-100 -rotate-12 opacity-40" />
+      <div className="absolute bottom-4 -right-10 w-40 h-8 bg-teal-100 -rotate-12 opacity-40" />
     </motion.div>
   );
 };

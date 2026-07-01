@@ -9,10 +9,11 @@ interface TelemetryHUDProps {
   vitality: number;
   coins: number;
   lastVitals: { ta?: string; fc?: number; temp?: number; status: string } | null;
+  onPause?: () => void;
 }
 
 export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({ 
-  timeLeft, state, score, combo, vitality, coins, lastVitals
+  timeLeft, state, score, combo, vitality, coins, lastVitals, onPause
 }) => {
   if (state !== 'triage' && state !== 'boss_fight') return null;
 
@@ -75,29 +76,45 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
           )}
         </AnimatePresence>
         {state !== 'boss_fight' && (
-          <div className="flex flex-col items-end gap-0.5">
-            <span className="text-[9px] sm:text-[10px] font-black tracking-widest text-rose-400 uppercase leading-none lettering">
-              Tiempo
-            </span>
-            <span
-              className={`text-base sm:text-lg font-bold leading-none lettering tabular-nums ${
-                timeLeft <= 10 ? 'text-rose-500 animate-pulse' : 'text-slate-600'
-              }`}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={onPause}
+              className="pointer-events-auto w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center bg-white/80 hover:bg-rose-50 border border-slate-200 text-xs sm:text-sm rounded-xl shadow-sm transition-all active:scale-95 cursor-pointer"
+              aria-label="Pausar juego"
             >
-              {timeLeft}s
-            </span>
+              ⏸️
+            </button>
+            <div className="flex flex-col items-end gap-0.5">
+              <span className="text-[9px] sm:text-[10px] font-black tracking-widest text-rose-400 uppercase leading-none lettering">
+                Tiempo
+              </span>
+              <span
+                className={`text-base sm:text-lg font-bold leading-none lettering tabular-nums ${
+                  timeLeft <= 10 ? 'text-rose-500 animate-pulse' : 'text-slate-600'
+                }`}
+              >
+                {timeLeft}s
+              </span>
+            </div>
           </div>
         )}
       </div>
     </div>
-    <div className="fixed top-24 sm:top-28 right-2 sm:right-4 z-hud pointer-events-none">
+    <div className="fixed top-[74px] sm:top-28 right-2 sm:right-4 z-hud pointer-events-none">
        <VitalsMonitor vitals={lastVitals} />
     </div>
     </>
   );
 }, (prevProps, nextProps) => {
-  // Custom equality check if needed, but React.memo's default shallow comparison 
-  // is sufficient for these primitives.
+  const v1 = prevProps.lastVitals;
+  const v2 = nextProps.lastVitals;
+  const vitalsEqual = (!v1 && !v2) || (
+    !!v1 && !!v2 &&
+    v1.ta === v2.ta &&
+    v1.fc === v2.fc &&
+    v1.temp === v2.temp &&
+    v1.status === v2.status
+  );
   return (
     prevProps.timeLeft === nextProps.timeLeft &&
     prevProps.state === nextProps.state &&
@@ -105,7 +122,7 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
     prevProps.combo === nextProps.combo &&
     prevProps.vitality === nextProps.vitality &&
     prevProps.coins === nextProps.coins &&
-    JSON.stringify(prevProps.lastVitals) === JSON.stringify(nextProps.lastVitals)
+    vitalsEqual
   );
 });
 

@@ -8,7 +8,7 @@ import type { BossQuestion, Card } from '../types/game';
  * never from keywords in the comment: "DATO CLAVE OMITIDO" only makes sense when the
  * player discarded a `keep` card, and "DESCARTE RECOMENDADO" when they hoarded a `discard`.
  */
-export const cleanVazquezComment = (comment: string | undefined, isCorrect: boolean, card?: Pick<Card, 'expected_action' | 'safety_flags'>): string => {
+export const cleanMentorComment = (comment: string | undefined, isCorrect: boolean, card?: Pick<Card, 'expected_action' | 'safety_flags'>): string => {
   if (!comment) return isCorrect ? "Decisión oportuna." : "Esta decisión no sostiene. Revísala antes de cerrar el caso.";
 
   let clean = comment;
@@ -56,8 +56,10 @@ export const cleanVazquezComment = (comment: string | undefined, isCorrect: bool
     // Neutral correction. Focus on the clinical fact.
     if (reasoning) {
       let prefix = "Nota clínica:";
-      if (card?.safety_flags?.lethal_risk || card?.safety_flags?.lethal_if_discarded) {
-        prefix = "🚨 ¡ERROR CRÍTICO!";
+      if (card?.safety_flags?.lethal_risk) {
+        prefix = "☠️ LETAL SI SE ACEPTA:";
+      } else if (card?.safety_flags?.lethal_if_discarded) {
+        prefix = "⚠️ LETAL SI SE DESCARTA:";
       } else if (card?.expected_action === 'keep') {
         prefix = "🎯 DATO CLAVE OMITIDO:"; // the player discarded data they needed
       } else if (card?.expected_action === 'discard') {

@@ -1,6 +1,6 @@
 import { setup, assign } from 'xstate';
 import type { Card, EnarmPearl, LoreItem } from '../types/game';
-import { cleanVazquezComment } from '../utils/formatters';
+import { cleanMentorComment } from '../utils/formatters';
 import { parseVitalsFromText } from '../utils/vitalsParser';
 import { calculateCardScore } from '../utils/scoringEngine';
 import rewardData from '../data/lore/rewardItems.json';
@@ -69,12 +69,15 @@ interface GameContext {
   lives: number; // Number of interns left (max 5)
   // Rewind (Undo) context
   undoCharges: number;
+  hasRescuedThisCase: boolean;
   lastAction: {
     vitality: number;
     score: number;
     combo: number;
     multiplier: number;
     dossier: Card[];
+    discarded: Card[];
+    consecutiveErrors: number;
     feedbackHistory: GameContext['feedbackHistory'];
     coinsEarnedThisCase: number;
     mistakesThisCase: number;
@@ -96,7 +99,9 @@ type GameEvent =
   | { type: 'USE_LIFELINE' }
   | { type: 'APPLY_REWARD_HEAL'; value: number }
   | { type: 'CONTINUE_SHIFT'; deck: Card[]; puzzle?: EnarmPearl; isSandiaMode?: boolean } // deck of the NEXT case
-  | { type: 'RESCUE' };
+  | { type: 'RESCUE' }
+  | { type: 'BUY_UNDO' }
+  | { type: 'REVIVE_INTERN' };
 
 export const gameMachine = setup({
   types: {
@@ -129,6 +134,7 @@ export const gameMachine = setup({
       lastVitals: null,
       isSandiaMode: false,
       undoCharges: 5,
+      hasRescuedThisCase: false,
       lastAction: null
     }),
     clearOverlays: assign({
@@ -163,6 +169,8 @@ export const gameMachine = setup({
         combo: context.combo,
         multiplier: context.multiplier,
         dossier: [...context.dossier],
+        discarded: [...context.discarded],
+        consecutiveErrors: context.consecutiveErrors,
         feedbackHistory: [...context.feedbackHistory],
         coinsEarnedThisCase: context.coinsEarnedThisCase,
         mistakesThisCase: context.mistakesThisCase,
@@ -198,11 +206,13 @@ export const gameMachine = setup({
       // Changed from 3 to 5 consecutive errors to avoid frustration during learning phase
       const nextConsecutiveErrors = isCorrect ? 0 : context.consecutiveErrors + 1;
       let nextPenalty = context.activePenalty;
+      let nextUndoCharges = context.undoCharges;
       if (nextConsecutiveErrors >= 5) {
         nextPenalty = {
           active: true,
           item: penaltyItemsList[Math.floor(Math.random() * penaltyItemsList.length)]
         };
+        nextUndoCharges = Math.max(0, context.undoCharges - 1);
       }
 
       // Loot Box logic: Trigger every 8 combo hits (más frecuente para permitir recuperación)
@@ -238,7 +248,7 @@ export const gameMachine = setup({
       }
 
       // Calculate feedback for history
-      const feedbackText = cleanVazquezComment(card.scoring?.vazquez_comment, isCorrect, card);
+      const feedbackText = cleanMentorComment(card.scoring?.vazquez_comment, isCorrect, card);
       const newHistoryItem = {
         cardId: card.card_id,
         cardText: card.card_text,
@@ -267,7 +277,8 @@ export const gameMachine = setup({
         lifelineActive: false, // Reset lifeline after swipe
         lastVitals: nextVitals,
         feedbackHistory: [...context.feedbackHistory, newHistoryItem],
-        lastAction: lastActionState
+        lastAction: lastActionState,
+        undoCharges: nextUndoCharges
       };
     })
   }
@@ -303,6 +314,7 @@ export const gameMachine = setup({
     lives: 5,
     isSandiaMode: false,
     undoCharges: 5,
+    hasRescuedThisCase: false,
     lastAction: null
   },
   states: {
@@ -337,7 +349,8 @@ export const gameMachine = setup({
             totalCasesInShift: 3, // Default to 3 cases for a full shift
             casesCompleted: 0,
             lives: 5,
-            isSandiaMode: ({ event }) => event.type === 'START_GUARD' ? !!event.isSandiaMode : false
+            isSandiaMode: ({ event }) => event.type === 'START_GUARD' ? !!event.isSandiaMode : false,
+            hasRescuedThisCase: false
           })
         },
         RESUME_GUARD: {
@@ -377,6 +390,7 @@ export const gameMachine = setup({
             lives: 5,
             isSandiaMode: false,
             undoCharges: 5,
+            hasRescuedThisCase: false,
             lastAction: null
           })
         }
@@ -413,9 +427,12 @@ export const gameMachine = setup({
               combo: context.lastAction.combo,
               multiplier: context.lastAction.multiplier,
               dossier: context.lastAction.dossier,
+              discarded: context.lastAction.discarded,
+              consecutiveErrors: context.lastAction.consecutiveErrors,
               feedbackHistory: context.lastAction.feedbackHistory,
               coinsEarnedThisCase: context.lastAction.coinsEarnedThisCase,
               mistakesThisCase: context.lastAction.mistakesThisCase,
+              lastVitals: context.lastAction.lastVitals,
               undoCharges: context.undoCharges - 1,
               lastAction: null
             };
@@ -435,6 +452,11 @@ export const gameMachine = setup({
         },
         USE_LIFELINE: {
           actions: assign({ lifelineActive: true })
+        },
+        BUY_UNDO: {
+          actions: assign({
+            undoCharges: ({ context }) => context.undoCharges + 1
+          })
         }
       }
     },
@@ -497,7 +519,8 @@ export const gameMachine = setup({
             activePenalty: null,
             activeEvent: null,
             lastVitals: null,
-            lifelineActive: false
+            lifelineActive: false,
+            hasRescuedThisCase: false
           })
         },
         RESTART: { target: 'idle', actions: ['resetGame'] }
@@ -517,7 +540,19 @@ export const gameMachine = setup({
             lives: ({ context }) => context.lives - 1,
             vitality: 100,
             currentCardIndex: 0, // Restart current case cards for learning
-            caseStreak: 0
+            caseStreak: 0,
+            score: 0,
+            coinsEarnedThisCase: 0,
+            dossier: [],
+            discarded: [],
+            feedbackHistory: [],
+            mistakesThisCase: 0,
+            consecutiveErrors: 0,
+            lastVitals: null,
+            lifelineActive: false,
+            undoCharges: 5,
+            hasRescuedThisCase: true,
+            lastAction: null
           })
         },
         RESTART: { target: 'idle', actions: ['resetGame'] }
@@ -526,7 +561,28 @@ export const gameMachine = setup({
     ghosted: {
       on: {
         VIEW_DEBRIEF: { target: 'debrief' },
-        RESTART: { target: 'idle', actions: ['resetGame'] }
+        RESTART: { target: 'idle', actions: ['resetGame'] },
+        REVIVE_INTERN: {
+          target: 'triage',
+          actions: assign({
+            lives: 1,
+            vitality: 100,
+            currentCardIndex: 0,
+            caseStreak: 0,
+            score: 0,
+            coinsEarnedThisCase: 0,
+            dossier: [],
+            discarded: [],
+            feedbackHistory: [],
+            mistakesThisCase: 0,
+            consecutiveErrors: 0,
+            lastVitals: null,
+            lifelineActive: false,
+            undoCharges: 5,
+            hasRescuedThisCase: true,
+            lastAction: null
+          })
+        }
       }
     },
     debrief: {

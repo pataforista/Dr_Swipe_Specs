@@ -1,3 +1,5 @@
+import { useCodexStore } from '../store/useCodexStore';
+
 /**
  * Centralized haptic feedback patterns for consistent mobile experience.
  */
@@ -19,6 +21,11 @@ export type HapticPattern = keyof typeof hapticPatterns;
  * Silently fails on unsupported devices.
  */
 export function triggerHaptic(pattern: HapticPattern): void {
+  const store = useCodexStore.getState();
+  if (store.settings && !store.settings.hapticsEnabled) {
+    return;
+  }
+
   if (typeof navigator === 'undefined' || !navigator.vibrate) {
     return;
   }

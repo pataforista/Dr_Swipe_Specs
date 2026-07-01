@@ -1,0 +1,198 @@
+.wrapper {
+  --ink: #1e293b;
+  --socket-bg: #94a3b8; /* slate-400 */
+  --socket-on: #34d399; /* emerald-400 */
+  --bulb-off: #f1f5f9; /* slate-100 */
+  --bulb-on: #ffdf6c; /* Warm yellow doodle */
+  --glow-1: #ff007f;
+  --glow-2: #00d4ff;
+
+  display: inline-block;
+  font-family: 'Fraunces', "Comic Sans MS", cursive;
+}
+
+.wrapper * {
+  box-sizing: border-box;
+}
+
+.button {
+  cursor: pointer;
+  display: flex;
+  gap: 0;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  align-items: center;
+}
+
+.button:active {
+  transform: scale(0.95) rotate(2deg);
+}
+
+.input {
+  display: none;
+}
+
+/* THE SOCKET */
+.socket {
+  position: relative;
+  background-color: var(--socket-bg);
+  width: 50px;
+  height: 44px;
+  border: 4px solid var(--ink);
+  border-right: 0;
+  border-radius: 40% 10% 10% 40% / 50% 10% 10% 50%;
+  z-index: 10;
+  box-shadow: inset -4px 0 0 rgba(0, 0, 0, 0.1);
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 10px,
+    rgba(30, 30, 36, 0.15) 10px,
+    rgba(30, 30, 36, 0.15) 14px
+  );
+  transition: all 0.3s ease;
+}
+
+.socket:before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  width: 26px;
+  height: 10px;
+  border-radius: 15px 0 0 15px;
+  border-top: 3px solid rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+}
+
+/* THE LIGHT BULB */
+.lightBulb {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 140px;
+  height: 44px;
+  color: var(--ink);
+  background: var(--bulb-off);
+  border: 4px solid var(--ink);
+  border-radius: 10px 50px 50px 10px / 10px 55px 45px 10px;
+  gap: 0.5rem;
+  padding-left: 10px;
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.lightBulb::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 12px;
+  width: 60px;
+  height: 8px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(30, 30, 36, 0.1);
+  transform: rotate(-2deg);
+}
+
+.lightBulb svg {
+  color: var(--ink);
+  z-index: 2;
+  opacity: 0.4;
+  width: 20px;
+  transition: opacity 0.3s, color 0.3s;
+}
+
+.textLightBulb {
+  user-select: none;
+  pointer-events: none;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin: 0;
+  z-index: 2;
+  text-transform: uppercase;
+}
+
+/* CHECKED STATE */
+.input:checked ~ .socket {
+  background-color: var(--socket-on);
+}
+
+.input:checked ~ .lightBulb {
+  background: var(--bulb-on);
+  transform: translateX(4px) translateY(-2px);
+  box-shadow: 6px 8px 0 var(--ink);
+}
+
+.input:checked ~ .lightBulb svg {
+  opacity: 1;
+  color: #ef4444; /* red-500 */
+}
+
+/* GLOW LINES */
+.textLightBulb::after {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+  border: 4px dashed var(--glow-1);
+  border-radius: 15px 60px 70px 15px / 20px 75px 65px 20px;
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.textLightBulb::before {
+  content: "";
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  bottom: -16px;
+  left: -16px;
+  border: 4px dotted var(--glow-2);
+  border-radius: 20px 80px 90px 20px / 25px 95px 85px 25px;
+  z-index: -2;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .textLightBulb::after {
+    animation: doodle-light 20s linear infinite;
+  }
+  .textLightBulb::before {
+    animation: doodle-light-rev 15s linear infinite reverse;
+  }
+}
+
+.input:checked ~ .lightBulb .textLightBulb::after,
+.input:checked ~ .lightBulb .textLightBulb::before {
+  opacity: 1;
+  visibility: visible;
+  animation-play-state: running;
+}
+
+@keyframes doodle-light {
+  0% { transform: scale(1) rotate(0deg); }
+  5% { transform: scale(1.03) rotate(2deg); }
+  10% { transform: scale(1) rotate(0deg); }
+  45% { transform: scale(1.04) rotate(-2deg); }
+  50% { transform: scale(1) rotate(0deg); opacity: 0.7; }
+  95% { transform: scale(1.05) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes doodle-light-rev {
+  0% { transform: scale(1) rotate(0deg); }
+  5% { transform: scale(1.05) rotate(-3deg); }
+  10% { transform: scale(1) rotate(0deg); }
+  45% { transform: scale(1.05) rotate(3deg); }
+  50% { transform: scale(1) rotate(0deg); opacity: 0.6; }
+  95% { transform: scale(1.06) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}

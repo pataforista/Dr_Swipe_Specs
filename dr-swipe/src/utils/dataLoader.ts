@@ -47,7 +47,24 @@ export const dataLoader = {
     let filtered = index;
 
     if (specialty !== 'all') {
-      filtered = index.filter(id => id.toLowerCase().includes(specialty.toLowerCase()));
+      const spec = specialty.toLowerCase();
+      if (spec === 'go') {
+        filtered = index.filter(id => id.includes('_GYN_') || id.includes('_OBS_'));
+      } else if (spec === 'ped') {
+        filtered = index.filter(id => id.includes('_PED_'));
+      } else if (spec === 'surg') {
+        filtered = index.filter(id => id.includes('_SURG_'));
+      } else if (spec === 'im') {
+        filtered = index.filter(id => 
+          !id.includes('_GYN_') && 
+          !id.includes('_OBS_') && 
+          !id.includes('_PED_') && 
+          !id.includes('_SURG_') &&
+          !id.startsWith('SWIPE_')
+        );
+      } else {
+        filtered = index.filter(id => id.toLowerCase().includes(spec));
+      }
     }
 
     if (filtered.length === 0) {
@@ -64,18 +81,41 @@ export const dataLoader = {
    * Load `count` random cases in parallel, sampling WITHOUT replacement so a
    * shift never repeats the same patient.
    */
-  loadRandomCases: async (count: number, specialty: string = 'all'): Promise<ClinicalCase[]> => {
+  loadRandomCases: async (count: number, specialty: string = 'all', excludeIds: string[] = []): Promise<ClinicalCase[]> => {
     const indexResponse = await fetch(`${import.meta.env.BASE_URL}cases/case_index.json`);
     if (!indexResponse.ok) throw new Error('Failed to load case index');
     let index: string[] = await indexResponse.json();
 
     if (specialty !== 'all') {
-      index = index.filter(id => id.toLowerCase().includes(specialty.toLowerCase()));
+      const spec = specialty.toLowerCase();
+      if (spec === 'go') {
+        index = index.filter(id => id.includes('_GYN_') || id.includes('_OBS_'));
+      } else if (spec === 'ped') {
+        index = index.filter(id => id.includes('_PED_'));
+      } else if (spec === 'surg') {
+        index = index.filter(id => id.includes('_SURG_'));
+      } else if (spec === 'im') {
+        index = index.filter(id => 
+          !id.includes('_GYN_') && 
+          !id.includes('_OBS_') && 
+          !id.includes('_PED_') && 
+          !id.includes('_SURG_') &&
+          !id.startsWith('SWIPE_')
+        );
+      } else {
+        index = index.filter(id => id.toLowerCase().includes(spec));
+      }
     }
-    if (index.length === 0) throw new Error(`No cases found for specialty: ${specialty}`);
+    
+    // Exclude recently solved cases
+    let pool = index.filter(id => !excludeIds.includes(id));
+    if (pool.length < count) {
+      pool = index;
+    }
+
+    if (pool.length === 0) throw new Error(`No cases found for specialty: ${specialty}`);
 
     // Partial Fisher-Yates: shuffle just the first `count` slots
-    const pool = [...index];
     const n = Math.min(count, pool.length);
     for (let i = 0; i < n; i++) {
       const j = i + Math.floor(Math.random() * (pool.length - i));

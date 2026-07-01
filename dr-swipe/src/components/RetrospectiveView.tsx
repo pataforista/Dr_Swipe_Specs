@@ -102,7 +102,7 @@ export const RetrospectiveView: React.FC<RetrospectiveViewProps> = ({ history, o
       <div className="mt-8 pt-8 border-t-2 border-slate-50 flex justify-center relative z-10">
         <button
           onClick={onClose}
-          className="marker-btn py-5 px-20 text-xl group shadow-cyan-100"
+          className="marker-btn py-5 px-20 text-xl group shadow-teal-100"
         >
           CERRAR DIARIO ✨
         </button>

@@ -21,6 +21,11 @@ interface CodexState {
   stats: PlayerStats;
   unlockedPearls: EnarmPearl[];
   history: string[]; // case ids solved
+  caseStats?: Record<string, { timesSolved: number; mistakes: number; bestScore: number }>;
+  settings: {
+    soundEnabled: boolean;
+    hapticsEnabled: boolean;
+  };
   dailyStreak: number;
   lastPlayedDate: string | null; // ISO date string (YYYY-MM-DD)
   sessionProgress: SessionProgress | null; // Active game session state
@@ -30,12 +35,13 @@ interface CodexState {
   addCoins: (amount: number) => void;
   spendCoins: (amount: number) => boolean; // returns false if insufficient
   unlockPearl: (pearl: EnarmPearl) => void;
-  registerCaseSolved: (caseId: string, score?: number) => void;
+  registerCaseSolved: (caseId: string, score?: number, mistakes?: number) => void;
   updateSwipeResult: (isCorrect: boolean) => void;
   incrementSessions: () => void;
   updateDailyStreak: () => void;
   saveSessionProgress: (progress: SessionProgress) => void;
   clearSessionProgress: () => void;
+  updateSettings: (settings: Partial<CodexState['settings']>) => void;
 }
 
 export const LIFELINE_COST = 25;
@@ -44,7 +50,6 @@ export const useCodexStore = create<CodexState>()(
   persist(
     (set) => ({
       stats: {
-        rank: 'R0 Aspirante',
         xp: 0,
         coins: 0,
         correct_swipes: 0,
@@ -55,6 +60,11 @@ export const useCodexStore = create<CodexState>()(
       },
       unlockedPearls: [],
       history: [],
+      caseStats: {},
+      settings: {
+        soundEnabled: true,
+        hapticsEnabled: true,
+      },
       dailyStreak: 0,
       lastPlayedDate: null,
       sessionProgress: null,
@@ -84,14 +94,28 @@ export const useCodexStore = create<CodexState>()(
         return { unlockedPearls: [...state.unlockedPearls, pearl] };
       }),
 
-      registerCaseSolved: (caseId, score = 0) => set((state) => ({
-        history: [...state.history, caseId],
-        stats: {
-          ...state.stats,
-          cases_solved: state.stats.cases_solved + 1,
-          best_score: Math.max(state.stats.best_score ?? 0, score),
-        }
-      })),
+      registerCaseSolved: (caseId, score = 0, mistakes = 0) => set((state) => {
+        const currentStats = state.caseStats || {};
+        const caseStat = currentStats[caseId] || { timesSolved: 0, mistakes: 0, bestScore: 0 };
+        const updatedStats = {
+          ...currentStats,
+          [caseId]: {
+            timesSolved: caseStat.timesSolved + 1,
+            mistakes: caseStat.mistakes + mistakes,
+            bestScore: Math.max(caseStat.bestScore, score)
+          }
+        };
+        const newHistory = state.history.includes(caseId) ? state.history : [...state.history, caseId];
+        return {
+          history: newHistory,
+          caseStats: updatedStats,
+          stats: {
+            ...state.stats,
+            cases_solved: state.stats.cases_solved + 1,
+            best_score: Math.max(state.stats.best_score ?? 0, score),
+          }
+        };
+      }),
 
       updateSwipeResult: (isCorrect) => set((state) => ({
         stats: {
@@ -117,6 +141,10 @@ export const useCodexStore = create<CodexState>()(
       saveSessionProgress: (progress) => set(() => ({ sessionProgress: progress })),
 
       clearSessionProgress: () => set(() => ({ sessionProgress: null })),
+
+      updateSettings: (newSettings) => set((state) => ({
+        settings: { ...state.settings, ...newSettings }
+      })),
     }),
     {
       name: 'dr-swipe-codex',

@@ -23,9 +23,15 @@ export const EventAlert: React.FC<EventAlertProps> = ({ event, onClose }) => {
   };
 
   const theme = getEventTheme(event.type);
-  // These events are narrative color only — never promise a mechanical effect
-  // that the engine doesn't apply.
-  const effectText = "Anotado en la bitácora de la guardia";
+  const getEffectText = (type: string) => {
+    switch (type) {
+      case 'lab': return "Revela pista de vitales/carta gratis 🧪";
+      case 'archive': return "+10 monedas de hospital 🪙";
+      case 'systemic': return "-10 segundos de tiempo de triage 🏥";
+      default: return "Anotado en la bitácora de la guardia 📝";
+    }
+  };
+  const effectText = getEffectText(event.type);
 
   return (
     <motion.div

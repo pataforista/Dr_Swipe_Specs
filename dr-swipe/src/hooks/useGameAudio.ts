@@ -124,19 +124,36 @@ class AudioEngine {
   }
 }
 
+import { useCodexStore } from '../store/useCodexStore';
+
 const engine = new AudioEngine();
 
 export const useGameAudio = () => {
   const alarmRef = useRef<number | null>(null);
 
-  const playSwipe = (direction: Dir) => engine.swipe(direction);
-  const playFeedback = (type: 'correct' | 'wrong') => (type === 'correct' ? engine.correct() : engine.wrong());
-  const playGacha = () => engine.gacha();
+  const isSoundEnabled = () => {
+    return useCodexStore.getState().settings?.soundEnabled ?? true;
+  };
+
+  const playSwipe = (direction: Dir) => {
+    if (isSoundEnabled()) engine.swipe(direction);
+  };
+  const playFeedback = (type: 'correct' | 'wrong') => {
+    if (isSoundEnabled()) {
+      if (type === 'correct') engine.correct();
+      else engine.wrong();
+    }
+  };
+  const playGacha = () => {
+    if (isSoundEnabled()) engine.gacha();
+  };
 
   const startTriageAlarm = () => {
     if (alarmRef.current !== null) return;
-    engine.tick();
-    alarmRef.current = window.setInterval(() => engine.tick(), 1000);
+    if (isSoundEnabled()) engine.tick();
+    alarmRef.current = window.setInterval(() => {
+      if (isSoundEnabled()) engine.tick();
+    }, 1000);
   };
 
   const stopTriageAlarm = () => {

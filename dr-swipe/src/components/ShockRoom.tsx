@@ -94,11 +94,22 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
             <div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden border-2 border-white p-0.5 shadow-inner">
                 <motion.div
                    initial={{ width: 0 }}
-                   animate={{ width: `${((currentStep + 1) / totalSteps) * 100}%` }}
+                   animate={{ width: `${(currentStep / totalSteps) * 100}%` }}
                    className="h-full bg-emerald-400 rounded-full"
                 />
             </div>
         </div>
+
+        {wrongAttempts > 0 && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            className="bg-rose-50 border border-rose-200 text-rose-700 px-4 py-3 rounded-2xl text-xs sm:text-sm font-semibold mb-4 flex items-center gap-2"
+          >
+            <span>⚠️</span>
+            <span>Opción incorrecta. Revisa el diario y los vitales. ¡Queda 1 intento crítico!</span>
+          </motion.div>
+        )}
 
         <AnimatePresence mode="wait">
           <motion.div
@@ -133,8 +144,8 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
         <div className="mt-3 sm:mt-8 pt-3 sm:pt-6 border-t-2 border-slate-50 flex flex-wrap gap-3 opacity-60">
             <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest block w-full mb-2 lettering italic">Hallazgos registrados en el diario:</span>
             {dossierItems.slice(-3).map((item, idx) => (
-                <span key={idx} className="bg-slate-50 px-4 py-1 rounded-full text-[10px] lowercase lettering font-bold border-2 border-white">
-                   #{item.card_id || item.category}
+                <span key={idx} className="bg-slate-50 px-4 py-1.5 rounded-full text-[10px] lettering font-bold border-2 border-white max-w-[200px] truncate" title={item.card_text}>
+                   📌 {item.card_text.length > 40 ? `${item.card_text.slice(0, 40)}...` : item.card_text}
                 </span>
             ))}
         </div>

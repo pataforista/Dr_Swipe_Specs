@@ -64,23 +64,33 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
 
       {/* Deck Vertical Spacer/Container */}
       <div className="relative w-full aspect-[3/4] sm:aspect-[3/4.2] flex items-center justify-center overflow-hidden">
-        {/* Progress Dots inside the deck area for focus */}
-        <div className="absolute -top-9 sm:-top-10 left-1/2 -translate-x-1/2 flex gap-1 pointer-events-none z-50 w-full justify-center flex-wrap px-4">
-          {cards.map((_, i) => (
-            <motion.div
-              key={i}
-              animate={{
-                width: i === currentIndex ? '40px' : '6px',
-                backgroundColor: i < currentIndex
-                  ? 'rgba(13, 148, 136, 0.35)'
-                  : i === currentIndex
-                  ? '#0D9488'
-                  : 'rgba(148, 163, 184, 0.4)'
-              }}
-              transition={{ duration: 0.4, type: 'spring' }}
-              className="h-1 sm:h-1.5 rounded-full"
-            />
-          ))}
+        {/* Progress indicator inside the deck area */}
+        <div className="absolute -top-9 sm:-top-10 left-1/2 -translate-x-1/2 flex gap-1 pointer-events-none z-50 w-full justify-center px-6">
+          {cards.length > 8 ? (
+            <div className="w-full h-1.5 bg-slate-200/50 rounded-full overflow-hidden border border-slate-300/10 max-w-[280px]">
+              <motion.div
+                animate={{ width: `${(currentIndex / cards.length) * 100}%` }}
+                transition={{ duration: 0.3 }}
+                className="h-full bg-[#0D9488] rounded-full"
+              />
+            </div>
+          ) : (
+            cards.map((_, i) => (
+              <motion.div
+                key={i}
+                animate={{
+                  width: i === currentIndex ? '40px' : '6px',
+                  backgroundColor: i < currentIndex
+                    ? 'rgba(13, 148, 136, 0.35)'
+                    : i === currentIndex
+                    ? '#0D9488'
+                    : 'rgba(148, 163, 184, 0.4)'
+                }}
+                transition={{ duration: 0.4, type: 'spring' }}
+                className="h-1 sm:h-1.5 rounded-full"
+              />
+            ))
+          )}
         </div>
 
         <AnimatePresence initial={false}>
@@ -268,9 +278,9 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
   const getFontSizeClass = (text: string) => {
     const len = text.length;
     if (len < 50) return 'text-2xl sm:text-3xl md:text-4xl';
-    if (len < 100) return 'text-lg sm:text-xl md:text-2xl';
-    if (len < 150) return 'text-base sm:text-lg md:text-xl';
-    return 'text-sm sm:text-base md:text-lg';
+    if (len < 100) return 'text-xl sm:text-2xl md:text-3xl';
+    if (len < 150) return 'text-lg sm:text-xl md:text-2xl';
+    return 'text-base sm:text-lg md:text-xl';
   };
 
   const rotate = useTransform(x, [-300, 300], [-10, 10]);
@@ -373,13 +383,18 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
       {/* Highlighter Labels */}
       {(isLethal || isCritical) && (
         <div className="p-4 sm:p-6 pt-0 sm:pt-0 pl-8 sm:pl-14 flex justify-center gap-2 sm:gap-3 flex-wrap">
-          {isLethal && (
-            <div className="bg-rose-500 text-white text-[9px] sm:text-[10px] font-bold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider">
-              ⚠️ ¡Letal!
+          {card.safety_flags?.lethal_risk && (
+            <div className="bg-rose-500 text-white text-[9px] sm:text-[10px] font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider">
+              ☠️ LETAL SI LO ACEPTAS
+            </div>
+          )}
+          {card.safety_flags?.lethal_if_discarded && (
+            <div className="bg-amber-500 text-white text-[9px] sm:text-[10px] font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider border-2 border-rose-500/30">
+              ⚠️ LETAL SI LO TIRAS
             </div>
           )}
           {isCritical && (
-             <div className="bg-amber-400 text-slate-800 text-[9px] sm:text-[10px] font-bold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider">
+             <div className="bg-amber-400 text-slate-850 text-[9px] sm:text-[10px] font-bold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider">
               👀 ¡ENARM!
             </div>
           )}
