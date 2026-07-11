@@ -45,6 +45,8 @@ interface CodexState {
 }
 
 export const LIFELINE_COST = 25;
+export const UNDO_COST = 40;
+export const REVIVE_COST = 75;
 
 export const useCodexStore = create<CodexState>()(
   persist(
@@ -101,11 +103,16 @@ export const useCodexStore = create<CodexState>()(
           ...currentStats,
           [caseId]: {
             timesSolved: caseStat.timesSolved + 1,
-            mistakes: caseStat.mistakes + mistakes,
+            // Reflects the most recent attempt, not a lifetime total, so a
+            // case cleared perfectly on replay drops out of the "review my
+            // mistakes" list instead of staying flagged forever.
+            mistakes,
             bestScore: Math.max(caseStat.bestScore, score)
           }
         };
-        const newHistory = state.history.includes(caseId) ? state.history : [...state.history, caseId];
+        // Move caseId to the end so the "avoid recently played" exclusion
+        // window (history.slice(-30)) still excludes it after a replay.
+        const newHistory = [...state.history.filter(id => id !== caseId), caseId];
         return {
           history: newHistory,
           caseStats: updatedStats,

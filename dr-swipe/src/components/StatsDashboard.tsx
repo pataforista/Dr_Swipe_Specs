@@ -111,22 +111,22 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
           </div>
 
           {/* XP progress */}
-          {nextThreshold && (
-            <div className="mb-6 sm:mb-8 px-1 sm:px-2 relative z-10">
-              <div className="flex justify-between mb-2 sm:mb-4 items-end gap-2">
-                <span className="text-[9px] sm:text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] sm:tracking-[0.4em] lettering">EXPERIENCIA</span>
-                <span className="text-[10px] sm:text-[12px] font-bold text-primary italic lettering">{stats.xp} / {nextThreshold.min}</span>
-              </div>
-              <div className="w-full h-3 sm:h-4 bg-slate-100 rounded-full overflow-hidden border-2 border-white p-0.5 shadow-inner">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${xpProgress}%` }}
-                  transition={{ duration: 1.5, type: 'spring', bounce: 0.2 }}
-                  className="h-full bg-[#0D9488] rounded-full shadow-sm"
-                />
-              </div>
+          <div className="mb-6 sm:mb-8 px-1 sm:px-2 relative z-10">
+            <div className="flex justify-between mb-2 sm:mb-4 items-end gap-2">
+              <span className="text-[9px] sm:text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] sm:tracking-[0.4em] lettering">EXPERIENCIA</span>
+              <span className="text-[10px] sm:text-[12px] font-bold text-primary italic lettering">
+                {nextThreshold ? `${stats.xp} / ${nextThreshold.min}` : `${stats.xp} 🌟`}
+              </span>
             </div>
-          )}
+            <div className="w-full h-3 sm:h-4 bg-slate-100 rounded-full overflow-hidden border-2 border-white p-0.5 shadow-inner">
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: `${xpProgress}%` }}
+                transition={{ duration: 1.5, type: 'spring', bounce: 0.2 }}
+                className="h-full bg-[#0D9488] rounded-full shadow-sm"
+              />
+            </div>
+          </div>
 
           {/* Avatar and Best Case */}
           <div className="mb-8 w-full flex justify-center relative z-10 mt-6">

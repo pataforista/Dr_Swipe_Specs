@@ -94,7 +94,7 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
             <div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden border-2 border-white p-0.5 shadow-inner">
                 <motion.div
                    initial={{ width: 0 }}
-                   animate={{ width: `${(currentStep / totalSteps) * 100}%` }}
+                   animate={{ width: `${((currentStep + 1) / totalSteps) * 100}%` }}
                    className="h-full bg-emerald-400 rounded-full"
                 />
             </div>
