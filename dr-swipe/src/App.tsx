@@ -11,7 +11,7 @@ import { shuffleBossQuestion } from './utils/formatters';
 import { triggerHaptic } from './utils/hapticFeedback';
 import { calculatePerfectRoundBonus, getDailyStreakMultiplier } from './utils/scoringEngine';
 import { safeStorage } from './utils/safeStorage';
-import { LIFELINE_COST } from './store/useCodexStore';
+import { LIFELINE_COST, UNDO_COST, REVIVE_COST } from './store/useCodexStore';
 import { useCodexStore, type SessionProgress } from './store/useCodexStore';
 import { TutorialOverlay } from './components/TutorialOverlay';
 import { StatsDashboard } from './components/StatsDashboard';
@@ -33,7 +33,7 @@ export function App() {
   const [state, send, actorRef] = useMachine(gameMachine);
   const { playFeedback, playGacha, startTriageAlarm, stopTriageAlarm } = useGameAudio();
   const [currentCase, setCurrentCase] = useState<ClinicalCase | null>(null);
-  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak, settings = { soundEnabled: true, hapticsEnabled: true }, updateSettings } = useCodexStore();
+  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak, settings = { soundEnabled: true, hapticsEnabled: true }, updateSettings, caseStats } = useCodexStore();
   const [selectedSpecialty, setSelectedSpecialty] = useState<string>('all');
   const [showSettings, setShowSettings] = useState(false);
   const timeLimitRef = useRef<number>(60);
@@ -125,13 +125,15 @@ export function App() {
       const xpGained = Math.floor(state.context.score * streakMult);
       addXp(xpGained);
       let totalCoins = state.context.coinsEarnedThisCase;
-      if (state.context.mistakesThisCase === 0) {
+      const isPerfectRound = state.context.mistakesThisCase === 0 && !state.context.hasRescuedThisCase;
+      if (isPerfectRound) {
         const bonus = calculatePerfectRoundBonus(state.context.deck.length, state.context.difficulty);
         totalCoins += bonus;
         showToast(`¡GUARDIA PERFECTA! +${bonus} 🪙`, 'milestone');
+      } else if (totalCoins > 0) {
+        showToast(`+${totalCoins} 🪙`, 'coins');
       }
       addCoins(totalCoins);
-      if (totalCoins > 0 && state.context.mistakesThisCase > 0) showToast(`+${totalCoins} 🪙`, 'coins');
       registerCaseSolved(currentCase.case_id, state.context.score, state.context.mistakesThisCase);
       const pearl = currentCase.enarm_pearl ?? currentCase.perla_enarm;
       if (pearl) unlockPearl(pearl);
@@ -238,7 +240,7 @@ export function App() {
       }
       const finalIds = pool.slice(0, n);
       
-      const loadedCases = await Promise.all(finalIds.map(id => dataLoader.loadCase(id)));
+      const loadedCases = await Promise.all(finalIds.map(id => dataLoader.loadCaseById(id)));
       for (const c of loadedCases) {
         if (c.boss_fight_triad?.questions) c.boss_fight_triad.questions = c.boss_fight_triad.questions.map(q => shuffleBossQuestion(q));
       }
@@ -288,17 +290,27 @@ export function App() {
     if (mentorTimerRef.current !== null) clearTimeout(mentorTimerRef.current);
   }, []);
 
+  // Mirrors the machine's own UNDO_SWIPE guard: with no lastAction snapshot
+  // there is nothing to revert, so don't let the paid path spend coins for
+  // a swipe that silently no-ops. Also blocked while an event/loot overlay
+  // from the swipe being undone is still on screen, so it can't be claimed
+  // after the swipe that triggered it has been reverted.
+  const canUndo = state.context.currentCardIndex > 0
+    && state.context.lastAction !== null
+    && !state.context.activeEvent
+    && !state.context.activePenalty
+    && !state.context.lootBoxReward;
+
   const handleUndo = () => {
-    if (state.context.undoCharges > 0 && state.context.currentCardIndex > 0) {
+    if (!canUndo) return;
+    if (state.context.undoCharges > 0) {
       send({ type: 'UNDO_SWIPE' });
       triggerHaptic('warning');
-    } else if (state.context.undoCharges === 0 && state.context.currentCardIndex > 0 && stats.coins >= 40) {
-      if (spendCoins(40)) {
-        send({ type: 'BUY_UNDO' });
-        send({ type: 'UNDO_SWIPE' });
-        triggerHaptic('criticalSuccess');
-        showToast("+1 Deshacer ⏪", 'coins');
-      }
+    } else if (stats.coins >= UNDO_COST && spendCoins(UNDO_COST)) {
+      send({ type: 'BUY_UNDO' });
+      send({ type: 'UNDO_SWIPE' });
+      triggerHaptic('criticalSuccess');
+      showToast("+1 Deshacer ⏪", 'coins');
     }
   };
 
@@ -453,7 +465,7 @@ export function App() {
               </button>
 
               {/* Repasar Errores Button */}
-              {Object.keys(useCodexStore.getState().caseStats || {}).some(id => (useCodexStore.getState().caseStats?.[id]?.mistakes ?? 0) > 0) && (
+              {Object.values(caseStats ?? {}).some(s => s.mistakes > 0) && (
                 <button onClick={() => startMistakesRepass()} disabled={isLoadingCase} className="marker-btn py-4 sm:py-5 text-base sm:text-xl !bg-rose-600 !border-rose-500 shadow-rose-200">
                    REPASAR MIS ERRORES 🖍️
                 </button>
@@ -480,19 +492,19 @@ export function App() {
               <SwipeDeck cards={state.context.deck} currentIndex={state.context.currentCardIndex} onSwipe={handleSwipe} isLocked={isLoadingCase || isPaused} lifelineActive={state.context.lifelineActive} canUseLifeline={stats.coins >= LIFELINE_COST && !state.context.lifelineActive} onUseLifeline={handleLifeline} />
               <div className="absolute -bottom-10 sm:-bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-[110] pointer-events-auto">
                 <button
-                  disabled={state.context.currentCardIndex === 0 || (state.context.undoCharges === 0 && stats.coins < 40)}
+                  disabled={!canUndo || (state.context.undoCharges === 0 && stats.coins < UNDO_COST)}
                   onClick={handleUndo}
                   className={`w-10 sm:w-12 h-10 sm:h-12 rounded-full border-2 border-white flex items-center justify-center text-lg sm:text-xl shadow-md transition-all active:scale-90 ${
                     state.context.undoCharges === 0
                       ? 'bg-amber-500 hover:bg-amber-600'
                       : 'bg-secondary/80 hover:bg-secondary'
                   }`}
-                  title={state.context.undoCharges === 0 ? "Comprar Deshacer por 40 🪙" : "Deshacer"}
+                  title={state.context.undoCharges === 0 ? `Comprar Deshacer por ${UNDO_COST} 🪙` : "Deshacer"}
                 >
                   {state.context.undoCharges === 0 ? '🪙' : '⏪'}
                 </button>
                 <span className="text-[10px] font-black text-slate-400 uppercase lettering tracking-tighter">
-                  {state.context.undoCharges === 0 ? '40 🪙' : `${state.context.undoCharges}/5`}
+                  {state.context.undoCharges === 0 ? `${UNDO_COST} 🪙` : `${state.context.undoCharges}/5`}
                 </span>
               </div>
             </div>
@@ -528,10 +540,10 @@ export function App() {
               "{state.context.fatalError || 'El servicio no sobrevivió.'}"
             </div>
             <div className="flex flex-col gap-3 sm:gap-4">
-              {stats.coins >= 75 && (
+              {stats.coins >= REVIVE_COST && (
                 <button
                   onClick={() => {
-                    if (spendCoins(75)) {
+                    if (spendCoins(REVIVE_COST)) {
                       setTimeLeft(timeLimitRef.current);
                       send({ type: 'REVIVE_INTERN' });
                       triggerHaptic('criticalSuccess');
@@ -540,7 +552,7 @@ export function App() {
                   }}
                   className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl !bg-emerald-600 hover:!bg-emerald-700 !border-emerald-500 shadow-emerald-200"
                 >
-                  CONTRATAR INTERNO 🩺 (75 🪙)
+                  CONTRATAR INTERNO 🩺 ({REVIVE_COST} 🪙)
                 </button>
               )}
               <button onClick={() => send({ type: 'VIEW_DEBRIEF' })} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl !bg-slate-700">VER NOTAS 📝</button>
