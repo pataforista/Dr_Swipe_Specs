@@ -27,7 +27,6 @@ import { AvatarFeedback } from './components/AvatarFeedback';
 import { ReloadPrompt } from './components/overlays/ReloadPrompt';
 import { LootScreen } from './components/overlays/LootScreen';
 import { EventAlert } from './components/overlays/EventAlert';
-import { DoodleButton } from './components/ui/DoodleButton';
 import { DoodleToggle } from './components/ui/DoodleToggle';
 export function App() {
   const [state, send, actorRef] = useMachine(gameMachine);
@@ -450,12 +449,10 @@ export function App() {
             </div>
 
             <div className="flex flex-col gap-3 sm:gap-4 w-full max-w-xs px-2 z-10">
-              <div className="relative group flex justify-center mt-2 mb-4 w-full">
-                <DoodleButton
-                  label={isLoadingCase ? 'PREPARANDO' : 'INICIAR GUARDIA'}
-                  onClick={() => startNewCase(false, selectedSpecialty)}
-                  disabled={isLoadingCase}
-                />
+              <div className="relative group mt-2 mb-4 w-full">
+                <button onClick={() => startNewCase(false, selectedSpecialty)} disabled={isLoadingCase} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl">
+                  {isLoadingCase ? 'PREPARANDO...' : 'INICIAR GUARDIA ⚡'}
+                </button>
                 <div className="absolute -top-3 right-0 sm:-right-4 bg-rose-500 text-white text-[10px] px-2 py-0.5 rounded-full shadow-md z-20 animate-pulse pointer-events-none">NUEVA</div>
               </div>
 
