@@ -19,8 +19,8 @@ export interface DraggableCardHandle {
   swipeOut: (direction: 'left' | 'right') => Promise<void>;
 }
 
-export const SwipeDeck: React.FC<SwipeDeckProps> = ({ 
-  cards, currentIndex, onSwipe, isLocked, lifelineActive, canUseLifeline, onUseLifeline 
+const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
+  cards, currentIndex, onSwipe, isLocked, lifelineActive, canUseLifeline, onUseLifeline
 }) => {
   const { playSwipe } = useGameAudio();
   const topX = useMotionValue(0);
@@ -212,6 +212,11 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
     </div>
   );
 };
+
+// The countdown timer in App ticks every second and re-renders the whole
+// tree; none of that state affects the deck, so a shallow memo keeps
+// SwipeDeck (and its 3 framer-motion cards) from re-rendering on every tick.
+export const SwipeDeck = React.memo(SwipeDeckComponent);
 
 interface DraggableCardProps {
   card: Card;

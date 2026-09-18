@@ -2,8 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useMachine } from '@xstate/react';
 import { gameMachine } from './machines/gameMachine';
 import { SwipeDeck } from './components/SwipeDeck';
-import { ShockRoom } from './components/ShockRoom';
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, lazy, Suspense } from 'react';
 import type { Card, ClinicalCase } from './types/game';
 import { dataLoader } from './utils/dataLoader';
 import { useGameAudio } from './hooks/useGameAudio';
@@ -13,9 +12,13 @@ import { calculatePerfectRoundBonus, getDailyStreakMultiplier } from './utils/sc
 import { safeStorage } from './utils/safeStorage';
 import { LIFELINE_COST, UNDO_COST, REVIVE_COST } from './store/useCodexStore';
 import { useCodexStore, type SessionProgress } from './store/useCodexStore';
-import { TutorialOverlay } from './components/TutorialOverlay';
-import { StatsDashboard } from './components/StatsDashboard';
-import { RetrospectiveView } from './components/RetrospectiveView';
+
+// None of these are needed for the first paint (idle screen / first card),
+// so they ship as separate chunks instead of bloating the initial bundle.
+const TutorialOverlay = lazy(() => import('./components/TutorialOverlay').then(m => ({ default: m.TutorialOverlay })));
+const StatsDashboard = lazy(() => import('./components/StatsDashboard').then(m => ({ default: m.StatsDashboard })));
+const RetrospectiveView = lazy(() => import('./components/RetrospectiveView').then(m => ({ default: m.RetrospectiveView })));
+const ShockRoom = lazy(() => import('./components/ShockRoom').then(m => ({ default: m.ShockRoom })));
 
 import { FeedbackToast } from './components/overlays/FeedbackToast';
 import { RewardToast } from './components/overlays/RewardToast';
@@ -32,7 +35,7 @@ export function App() {
   const [state, send, actorRef] = useMachine(gameMachine);
   const { playFeedback, playGacha, startTriageAlarm, stopTriageAlarm } = useGameAudio();
   const [currentCase, setCurrentCase] = useState<ClinicalCase | null>(null);
-  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak, settings = { soundEnabled: true, hapticsEnabled: true }, updateSettings, caseStats } = useCodexStore();
+  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak, lastPlayedDate, settings = { soundEnabled: true, hapticsEnabled: true }, updateSettings, caseStats } = useCodexStore();
   const [selectedSpecialty, setSelectedSpecialty] = useState<string>('all');
   const [showSettings, setShowSettings] = useState(false);
   const timeLimitRef = useRef<number>(60);
@@ -259,7 +262,7 @@ export function App() {
     }
   };
 
-  const handleSwipe = (direction: 'left' | 'right') => {
+  const handleSwipe = useCallback((direction: 'left' | 'right') => {
     if (isPaused) return;
     const before = actorRef.getSnapshot().context.feedbackHistory.length;
     send({ type: 'SWIPE', direction });
@@ -283,7 +286,7 @@ export function App() {
       setMentorExpression('neutral');
       mentorTimerRef.current = null;
     }, 4500);
-  };
+  }, [isPaused, actorRef, send, updateSwipeResult, playFeedback]);
 
   useEffect(() => () => {
     if (mentorTimerRef.current !== null) clearTimeout(mentorTimerRef.current);
@@ -325,13 +328,13 @@ export function App() {
     setShowIntro(true); // Trigger intro card for next patient
   };
 
-  const handleLifeline = () => {
+  const handleLifeline = useCallback(() => {
     if (isLoadingCase || isPaused) return;
     if (spendCoins(LIFELINE_COST)) {
       send({ type: 'USE_LIFELINE' });
       triggerHaptic('warning');
     }
-  };
+  }, [isLoadingCase, isPaused, spendCoins, send]);
 
   const handleLootClaim = () => {
     const item = state.context.lootBoxReward?.item;
@@ -420,7 +423,16 @@ export function App() {
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-black text-slate-800 lettering drop-shadow-sm">Dr. Swipe</h1>
               <div className="h-2 w-32 sm:w-48 washi-tape-pink mx-auto mt-3 sm:mt-4 rotate-1" />
             </div>
-            {dailyStreak > 0 && <div className="flex items-center gap-2 bg-amber-100 px-4 sm:px-6 py-2 rounded-2xl mb-6 sm:mb-10 shadow-sm font-bold text-amber-700 lettering uppercase text-[10px] sm:text-[11px]">🔥 Racha: {dailyStreak} Días</div>}
+            {dailyStreak > 0 && (() => {
+              const playedToday = lastPlayedDate === new Date().toISOString().slice(0, 10);
+              return (
+                <div className={`flex items-center gap-2 px-4 sm:px-6 py-2 rounded-2xl mb-6 sm:mb-10 shadow-sm font-bold lettering uppercase text-[10px] sm:text-[11px] ${
+                  playedToday ? 'bg-amber-100 text-amber-700' : 'bg-rose-100 text-rose-600 animate-pulse'
+                }`}>
+                  🔥 Racha: {dailyStreak} Días{!playedToday && ' — ¡juega hoy para no perderla!'}
+                </div>
+              );
+            })()}
             
             {/* Specialty Selector Chips */}
             <div className="mb-6 sm:mb-8 text-center max-w-sm w-full z-20">
@@ -509,7 +521,11 @@ export function App() {
         );
       case state.matches('boss_fight'):
         if (!currentCase?.boss_fight_triad?.questions?.length) return null; // skipped via effect
-        return <ShockRoom questions={currentCase.boss_fight_triad.questions} dossierItems={state.context.dossier} onSurvive={() => { stopTriageAlarm(); send({ type: 'ANSWER_CORRECT' }); }} onGhosted={handleBossGhosted} />;
+        return (
+          <Suspense fallback={null}>
+            <ShockRoom questions={currentCase.boss_fight_triad.questions} dossierItems={state.context.dossier} onSurvive={() => { stopTriageAlarm(); send({ type: 'ANSWER_CORRECT' }); }} onGhosted={handleBossGhosted} />
+          </Suspense>
+        );
       case state.matches('reward'):
         return (
           <LootScreen
@@ -613,8 +629,8 @@ export function App() {
       </div>
 
       <div className="w-full flex-grow flex items-center justify-center relative z-10">{renderCurrentView()}</div>
-      <AnimatePresence>{showTutorial && <TutorialOverlay onComplete={() => { safeStorage.setItem('dr_swipe_tutorial_seen', '1'); setShowTutorial(false); }} />}</AnimatePresence>
-      <AnimatePresence>{showStats && <div className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-6 overflow-hidden"><StatsDashboard onClose={() => setShowStats(false)} /></div>}</AnimatePresence>
+      <AnimatePresence>{showTutorial && <Suspense fallback={null}><TutorialOverlay onComplete={() => { safeStorage.setItem('dr_swipe_tutorial_seen', '1'); setShowTutorial(false); }} /></Suspense>}</AnimatePresence>
+      <AnimatePresence>{showStats && <div className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-6 overflow-hidden"><Suspense fallback={null}><StatsDashboard onClose={() => setShowStats(false)} /></Suspense></div>}</AnimatePresence>
       <AnimatePresence mode="wait">{state.context.activeEvent?.item && <EventAlert key={state.context.activeEvent?.item?.id ?? 'event'} event={state.context.activeEvent} onClose={handleEventClose} />}</AnimatePresence>
       <AnimatePresence>{state.context.lootBoxReward?.active && state.context.lootBoxReward.item && <LootBoxOverlay reward={{ active: true, item: state.context.lootBoxReward.item }} onClaim={handleLootClaim} />}</AnimatePresence>
       <AnimatePresence>{state.context.activePenalty?.active && <PenaltyOverlay penalty={{ active: true, item: state.context.activePenalty.item }} onAccept={() => send({ type: 'CLEAR_OVERLAYS' })} />}</AnimatePresence>
@@ -629,7 +645,7 @@ export function App() {
           onRestart={() => send({ type: 'RESTART' })}
         />
       )}</AnimatePresence>
-      {showRetro && <div className="fixed inset-0 z-[150] bg-[#FDFBF7]/90 backdrop-blur-md p-6"><RetrospectiveView history={state.context.feedbackHistory} onClose={() => setShowRetro(false)} /></div>}
+      {showRetro && <div className="fixed inset-0 z-[150] bg-[#FDFBF7]/90 backdrop-blur-md p-6"><Suspense fallback={null}><RetrospectiveView history={state.context.feedbackHistory} onClose={() => setShowRetro(false)} /></Suspense></div>}
       <FeedbackToast result={swipeFeedback} points={lastSwipePoints} />
       <RewardToast toast={rewardToast} />
       <AnimatePresence>{isPaused && state.matches('triage') && (
