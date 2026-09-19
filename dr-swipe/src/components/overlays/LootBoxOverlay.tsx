@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import type { LoreItem } from '../../types/game';
+import { useFocusTrap } from '../../hooks/useFocusTrap';
 
 interface LootBoxOverlayProps {
   reward: {
@@ -11,6 +12,7 @@ interface LootBoxOverlayProps {
 }
 
 export const LootBoxOverlay: React.FC<LootBoxOverlayProps> = ({ reward, onClaim }) => {
+  const trapRef = useFocusTrap<HTMLDivElement>(reward.active, onClaim);
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center z-overlay p-6">
       <motion.div
@@ -20,6 +22,9 @@ export const LootBoxOverlay: React.FC<LootBoxOverlayProps> = ({ reward, onClaim 
         exit={{ opacity: 0 }}
       />
       <motion.div
+        ref={trapRef}
+        role="dialog"
+        aria-modal="true"
         initial={{ scale: 0.5, rotate: -15, opacity: 0 }}
         animate={{ scale: 1, rotate: 0, opacity: 1 }}
         exit={{ scale: 1.5, opacity: 0 }}

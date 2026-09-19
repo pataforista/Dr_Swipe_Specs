@@ -4,8 +4,8 @@
   --socket-on: #34d399; /* emerald-400 */
   --bulb-off: #f1f5f9; /* slate-100 */
   --bulb-on: #ffdf6c; /* Warm yellow doodle */
-  --glow-1: #ff007f;
-  --glow-2: #00d4ff;
+  --glow-1: var(--primary);
+  --glow-2: var(--secondary);
 
   display: inline-block;
   font-family: 'Fraunces', "Comic Sans MS", cursive;

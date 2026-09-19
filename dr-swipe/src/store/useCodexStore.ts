@@ -12,7 +12,6 @@ export interface SessionProgress {
   caseStreak: number;
   coinsEarnedThisCase: number;
   mistakesThisCase: number;
-  warningCount: number;
   difficulty: string;
   savedAt: number; // timestamp
 }

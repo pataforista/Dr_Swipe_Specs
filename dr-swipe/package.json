@@ -4,16 +4,18 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predev": "node sync_cases.js && node regen_index.js",
     "dev": "vite",
-    "prebuild": "node regen_index.js",
+    "prebuild": "node sync_cases.js && node regen_index.js",
     "build": "tsc -b && vite build",
+    "test": "vitest run",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.2.2",
     "@xstate/react": "^6.1.0",
     "framer-motion": "^12.37.0",
+    "lucide-react": "^1.47.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "xstate": "^5.28.0",

@@ -23,10 +23,13 @@ jobs:
           cache-dependency-path: 'dr-swipe/package-lock.json'
 
       - name: Validate clinical cases
-        run: python3 tools/validate_cases.py dr-swipe/public/cases
+        run: python3 tools/validate_cases.py cases
 
       - name: Install dependencies
         run: cd dr-swipe && npm ci
+
+      - name: Run tests
+        run: cd dr-swipe && npm test
 
       # `npm run build` runs `tsc -b` first, so type regressions fail CI here.
       - name: Build

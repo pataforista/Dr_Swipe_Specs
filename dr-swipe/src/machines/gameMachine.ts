@@ -26,7 +26,6 @@ export interface ResumeSnapshot {
   caseStreak: number;
   coinsEarnedThisCase: number;
   mistakesThisCase: number;
-  warningCount: number;
 }
 
 interface GameContext {
@@ -39,7 +38,6 @@ interface GameContext {
   combo: number;
   multiplier: number;
   difficulty: string;
-  warningCount: number;
   caseStreak: number;
   lastCardPresentedAt: number;
   debriefData: { title: string; text: string; gpc: string; comment: string } | null;
@@ -64,8 +62,6 @@ interface GameContext {
   lastVitals: { ta?: string; fc?: number; temp?: number; status: string } | null;
   // Shift (Guardia) context
   isSandiaMode: boolean;
-  totalCasesInShift: number;
-  casesCompleted: number;
   lives: number; // Number of interns left (max 5)
   // Rewind (Undo) context
   undoCharges: number;
@@ -118,7 +114,6 @@ export const gameMachine = setup({
       score: 0,
       combo: 0,
       multiplier: 1,
-      warningCount: 0,
       caseStreak: 0,
       lastCardPresentedAt: 0,
       debriefData: null,
@@ -295,7 +290,6 @@ export const gameMachine = setup({
     combo: 0,
     multiplier: 1,
     difficulty: 'standard',
-    warningCount: 0,
     caseStreak: 0,
     lastCardPresentedAt: 0,
     debriefData: null,
@@ -309,8 +303,6 @@ export const gameMachine = setup({
     activeEvent: null,
     feedbackHistory: [],
     lastVitals: null,
-    totalCasesInShift: 1,
-    casesCompleted: 0,
     lives: 5,
     isSandiaMode: false,
     undoCharges: 5,
@@ -346,8 +338,6 @@ export const gameMachine = setup({
             vitality: 100,
             lootBoxReward: null,
             feedbackHistory: [],
-            totalCasesInShift: 3, // Default to 3 cases for a full shift
-            casesCompleted: 0,
             lives: 5,
             isSandiaMode: ({ event }) => event.type === 'START_GUARD' ? !!event.isSandiaMode : false,
             hasRescuedThisCase: false
@@ -369,7 +359,6 @@ export const gameMachine = setup({
             caseStreak: ({ event }) => event.snapshot.caseStreak,
             coinsEarnedThisCase: ({ event }) => event.snapshot.coinsEarnedThisCase,
             mistakesThisCase: ({ event }) => event.snapshot.mistakesThisCase,
-            warningCount: ({ event }) => event.snapshot.warningCount,
             fatalError: null,
             difficulty: ({ event }) => event.difficulty,
             lastCardPresentedAt: Date.now(),
@@ -385,8 +374,6 @@ export const gameMachine = setup({
             activePenalty: null,
             activeEvent: null,
             feedbackHistory: [],
-            totalCasesInShift: 1, // resumed sessions run a single case
-            casesCompleted: 0,
             lives: 5,
             isSandiaMode: false,
             undoCharges: 5,
@@ -493,7 +480,6 @@ export const gameMachine = setup({
           actions: assign({
             deck: ({ event }) => event.deck,
             currentCardIndex: 0,
-            casesCompleted: ({ context }) => context.casesCompleted + 1,
             debriefData: ({ event }) => ({
               title: event.puzzle?.title || "Siguiente Paciente",
               text: event.puzzle?.text || "",

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import type { LoreItem } from '../../types/game';
+import { useFocusTrap } from '../../hooks/useFocusTrap';
 
 interface PenaltyOverlayProps {
   penalty: {
@@ -11,6 +12,7 @@ interface PenaltyOverlayProps {
 }
 
 export const PenaltyOverlay: React.FC<PenaltyOverlayProps> = ({ penalty, onAccept }) => {
+  const trapRef = useFocusTrap<HTMLDivElement>(penalty.active, onAccept);
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center z-overlay p-6">
       <motion.div
@@ -20,6 +22,9 @@ export const PenaltyOverlay: React.FC<PenaltyOverlayProps> = ({ penalty, onAccep
         exit={{ opacity: 0 }}
       />
       <motion.div
+        ref={trapRef}
+        role="dialog"
+        aria-modal="true"
         initial={{ scale: 0.8, y: 50, opacity: 0 }}
         animate={{ scale: 1, y: 0, opacity: 1 }}
         exit={{ scale: 0.8, opacity: 0 }}

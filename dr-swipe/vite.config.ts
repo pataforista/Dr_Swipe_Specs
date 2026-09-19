@@ -5,6 +5,20 @@ import { VitePWA } from 'vite-plugin-pwa';
 // https://vite.dev/config/
 export default defineConfig({
   base: '/',
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id: string) {
+          if (!id.includes('node_modules')) return undefined;
+          if (id.includes('framer-motion')) return 'vendor-motion';
+          if (id.includes('xstate')) return 'vendor-xstate';
+          if (id.includes('zod')) return 'vendor-zod';
+          if (id.includes('react-dom') || id.includes('/react/')) return 'vendor-react';
+          return 'vendor';
+        },
+      },
+    },
+  },
   plugins: [
     react(),
     VitePWA({
@@ -13,7 +27,7 @@ export default defineConfig({
         name: 'Dr. Swipe: Triage Fatal',
         short_name: 'Dr. Swipe',
         description: 'Simulador de razonamiento clínico y supervivencia hospitalaria.',
-        theme_color: '#FF007F',
+        theme_color: '#0D9488',
         background_color: '#FDFBF7',
         display: 'standalone',
         orientation: 'portrait',

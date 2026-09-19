@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion, useMotionValue, useTransform, useAnimation, AnimatePresence, type MotionValue, type PanInfo } from 'framer-motion';
+import { X, Heart, Dna, Sparkles } from 'lucide-react';
 import type { Card } from '../types/game';
 import { useGameAudio } from '../hooks/useGameAudio';
 import { triggerHaptic } from '../utils/hapticFeedback';
@@ -19,8 +20,8 @@ export interface DraggableCardHandle {
   swipeOut: (direction: 'left' | 'right') => Promise<void>;
 }
 
-export const SwipeDeck: React.FC<SwipeDeckProps> = ({ 
-  cards, currentIndex, onSwipe, isLocked, lifelineActive, canUseLifeline, onUseLifeline 
+const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
+  cards, currentIndex, onSwipe, isLocked, lifelineActive, canUseLifeline, onUseLifeline
 }) => {
   const { playSwipe } = useGameAudio();
   const topX = useMotionValue(0);
@@ -113,6 +114,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
                 cardNumber={keyIndex + 1}
                 totalCards={cards.length}
                 topX={topX}
+                animatingRef={isAnimatingRef}
               />
             );
           })}
@@ -158,7 +160,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
             }`}
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,theme(colors.accent-alert/10),transparent)] opacity-0 hover:opacity-100 transition-opacity" />
-            <span className="relative z-10">✕</span>
+            <X className="relative z-10 w-7 h-7 sm:w-8 sm:h-8" strokeWidth={3} aria-hidden="true" />
           </motion.button>
           <span className={`text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] transition-colors line-clamp-2 text-center max-w-[70px] sm:max-w-none ${
             lifelineActive && cards[currentIndex]?.expected_action === 'discard' ? 'text-accent-alert' : 'text-slate-500 group-hover:text-accent-alert'
@@ -179,7 +181,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
             }`}
               title={`Escanear Carta (Cuesta ${LIFELINE_COST} 🪙)`}
           >
-            {lifelineActive ? '✨' : '🧬'}
+            {lifelineActive ? <Sparkles className="w-6 h-6 sm:w-7 sm:h-7" aria-hidden="true" /> : <Dna className="w-6 h-6 sm:w-7 sm:h-7" aria-hidden="true" />}
           </motion.button>
           <span className={`text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] ${lifelineActive ? 'text-secondary' : 'text-slate-500'}`}>
             {lifelineActive ? 'ACTIVO' : `${LIFELINE_COST} 🪙`}
@@ -202,16 +204,26 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
             }`}
           >
              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,theme(colors.primary/10),transparent)] opacity-0 hover:opacity-100 transition-opacity" />
-             <span className="relative z-10">♥</span>
+             <Heart className="relative z-10 w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2.5} fill="currentColor" aria-hidden="true" />
           </motion.button>
           <span className={`text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] transition-colors line-clamp-2 text-center max-w-[70px] sm:max-w-none ${
             lifelineActive && cards[currentIndex]?.expected_action === 'keep' ? 'text-primary' : 'text-slate-500 group-hover:text-primary'
           }`}>ESTO CAMBIA TODO</span>
         </div>
       </div>
+
+      {/* Visible keyboard hint — the ← / → shortcut was previously only announced via aria-label */}
+      <span className="hidden sm:block text-[11px] font-bold text-slate-300 uppercase tracking-widest text-center" aria-hidden="true">
+        ← Descartar &nbsp;·&nbsp; Mantener →
+      </span>
     </div>
   );
 };
+
+// The countdown timer in App ticks every second and re-renders the whole
+// tree; none of that state affects the deck, so a shallow memo keeps
+// SwipeDeck (and its 3 framer-motion cards) from re-rendering on every tick.
+export const SwipeDeck = React.memo(SwipeDeckComponent);
 
 interface DraggableCardProps {
   card: Card;
@@ -223,6 +235,7 @@ interface DraggableCardProps {
   cardNumber: number;
   totalCards: number;
   topX: MotionValue<number>;
+  animatingRef: React.RefObject<boolean>;
 }
 
 // Icon helper for scrapbook categories
@@ -245,7 +258,7 @@ const getIconForCategory = (category: string) => {
 import { calculateExitPosition, SWIPE_CONFIG } from '../utils/swipePhysics';
 
 const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(({
-  card, isTop, indexOffset, onSwipe, playSwipe, isLocked, cardNumber, totalCards, topX
+  card, isTop, indexOffset, onSwipe, playSwipe, isLocked, cardNumber, totalCards, topX, animatingRef
 }, ref) => {
   const fallbackX = useMotionValue(0);
   const x = isTop ? topX : fallbackX;
@@ -308,21 +321,29 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
 
     if (Math.abs(info.offset.x) > threshold || Math.abs(velocity) > SWIPE_CONFIG.VELOCITY_THRESHOLD * 1000) {
       const direction = info.offset.x > 0 ? 'right' : 'left';
-      
-      // IMMEDIATE FEEDBACK (T+0)
-      playSwipe(direction);
-      triggerHaptic('cardSwipe');
-      
-      const exitPos = calculateExitPosition(direction, velocity / 1000);
-      
-      await controls.start({ 
-        x: exitPos.x, 
-        y: exitPos.y,
-        opacity: 0, 
-        rotate: exitPos.rotate, 
-        transition: { duration: SWIPE_CONFIG.EXIT_DURATION, ease: "easeOut" } 
-      });
-      onSwipe(direction);
+
+      // Mirrors handleActionSwipe's guard: without it, a button tap during the
+      // ~250ms exit animation still sees this as the top card and fires a
+      // second onSwipe that lands on the NEXT card, sight-unseen (F5).
+      animatingRef.current = true;
+      try {
+        // IMMEDIATE FEEDBACK (T+0)
+        playSwipe(direction);
+        triggerHaptic('cardSwipe');
+
+        const exitPos = calculateExitPosition(direction, velocity / 1000);
+
+        await controls.start({
+          x: exitPos.x,
+          y: exitPos.y,
+          opacity: 0,
+          rotate: exitPos.rotate,
+          transition: { duration: SWIPE_CONFIG.EXIT_DURATION, ease: "easeOut" }
+        });
+        onSwipe(direction);
+      } finally {
+        animatingRef.current = false;
+      }
     } else {
       controls.start({ x: 0, y: 0, rotate: 0, scale: 1, transition: { type: 'spring', stiffness: 600, damping: 30 } });
     }
@@ -344,7 +365,11 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
       dragConstraints={{ left: -500, right: 500 }}
       dragElastic={0.4}
       onDragEnd={handleDragEnd}
-      initial={isTop ? { opacity: 0, scale: 0.9, y: 30 } : false}
+      // The card promoted to top was already visible a frame ago, sitting in
+      // the stack at (opacity .9, scale .96, y 12) — starting its entrance
+      // from there instead of a hard fade-from-nothing keeps the deck feeling
+      // continuous instead of blinking (F1).
+      initial={isTop ? { opacity: 0.9, scale: 0.96, y: 12 } : false}
       animate={isTop ? controls : undefined}
       exit={{ opacity: 0, scale: 0.8 }}
     >
@@ -362,14 +387,14 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
       {/* Header (Subject Tab) */}
       <div className={`p-4 sm:p-6 pl-8 sm:pl-14 flex justify-between items-center gap-2 border-b border-slate-100 ${isLethal ? 'bg-rose-100/40' : isCritical ? 'bg-amber-100/40' : 'bg-slate-50/60'}`}>
         <div className="flex flex-col min-w-0">
-          <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Materia</span>
+          <span className="text-[11px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Materia</span>
           <span className="bg-white px-2 sm:px-3 py-1 rounded-lg text-[11px] sm:text-xs font-bold text-slate-600 shadow-sm border border-slate-100 flex items-center gap-1 sm:gap-2 truncate">
             <span className="flex-shrink-0">{getIconForCategory(card.category)}</span>
             <span className="truncate">{card.category}</span>
           </span>
         </div>
         <div className="bg-white/80 px-2 sm:px-3 py-1 rounded-lg border border-slate-100 flex-shrink-0">
-           <span className="text-[9px] sm:text-[10px] font-black text-slate-400 tracking-tighter">#{card.card_id.split('_').pop()}</span>
+           <span className="text-[11px] sm:text-[10px] font-black text-slate-400 tracking-tighter">#{card.card_id.split('_').pop()}</span>
         </div>
       </div>
 
@@ -384,17 +409,17 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
       {(isLethal || isCritical) && (
         <div className="p-4 sm:p-6 pt-0 sm:pt-0 pl-8 sm:pl-14 flex justify-center gap-2 sm:gap-3 flex-wrap">
           {card.safety_flags?.lethal_risk && (
-            <div className="bg-rose-500 text-white text-[9px] sm:text-[10px] font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider">
+            <div className="bg-rose-500 text-white text-[11px] sm:text-[10px] font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider">
               ☠️ LETAL SI LO ACEPTAS
             </div>
           )}
           {card.safety_flags?.lethal_if_discarded && (
-            <div className="bg-amber-500 text-white text-[9px] sm:text-[10px] font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider border-2 border-rose-500/30">
+            <div className="bg-amber-500 text-white text-[11px] sm:text-[10px] font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider border-2 border-rose-500/30">
               ⚠️ LETAL SI LO TIRAS
             </div>
           )}
           {isCritical && (
-             <div className="bg-amber-400 text-slate-850 text-[9px] sm:text-[10px] font-bold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider">
+             <div className="bg-amber-400 text-slate-850 text-[11px] sm:text-[10px] font-bold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider">
               👀 ¡ENARM!
             </div>
           )}
