@@ -12,9 +12,23 @@ interface TelemetryHUDProps {
   onPause?: () => void;
 }
 
-export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({ 
+export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
   timeLeft, state, score, combo, vitality, coins, lastVitals, onPause
 }) => {
+  // A vitality drop should read as a hit, not just a number changing — flash
+  // the bar red for a beat instead of just easing the width down (F2).
+  const prevVitalityRef = React.useRef(vitality);
+  const [tookDamage, setTookDamage] = React.useState(false);
+  React.useEffect(() => {
+    if (vitality < prevVitalityRef.current) {
+      setTookDamage(true);
+      const t = setTimeout(() => setTookDamage(false), 400);
+      prevVitalityRef.current = vitality;
+      return () => clearTimeout(t);
+    }
+    prevVitalityRef.current = vitality;
+  }, [vitality]);
+
   if (state !== 'triage' && state !== 'boss_fight') return null;
 
   return (
@@ -22,7 +36,7 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
     <div className="fixed top-2 sm:top-4 left-2 sm:left-4 right-2 sm:right-4 z-hud flex flex-col sm:flex-row items-center justify-between p-3 sm:p-4 paper-sheet shadow-md border-2 border-white/50 bg-white/60 backdrop-blur-md rounded-2xl gap-3 sm:gap-0 pointer-events-none">
       <div className="flex items-center gap-3 sm:gap-4 flex-1 w-full sm:w-auto justify-between sm:justify-start">
         <div className="flex flex-col gap-0.5">
-          <span className="text-[9px] sm:text-[10px] font-black tracking-widest text-primary uppercase leading-none lettering">
+          <span className="text-[11px] sm:text-[10px] font-black tracking-widest text-primary uppercase leading-none lettering">
             Puntaje
           </span>
           <motion.span
@@ -35,7 +49,7 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
         </div>
         <div className="w-px h-6 bg-slate-200 hidden sm:block" />
         <div className="flex flex-col gap-0.5">
-          <span className="text-[9px] sm:text-[10px] font-black tracking-widest text-secondary uppercase leading-none lettering">
+          <span className="text-[11px] sm:text-[10px] font-black tracking-widest text-secondary uppercase leading-none lettering">
             Créditos 🪙
           </span>
           <motion.span
@@ -48,10 +62,12 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
         </div>
         <div className="w-px h-6 bg-slate-200 hidden sm:block" />
         <div className="flex flex-col gap-0.5 flex-1 max-w-[80px] sm:max-w-[100px]">
-          <span className="text-[9px] sm:text-[10px] font-black tracking-widest text-primary uppercase leading-none lettering">
+          <span className="text-[11px] sm:text-[10px] font-black tracking-widest text-primary uppercase leading-none lettering">
             Salud Px
           </span>
-          <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden border border-slate-200 shadow-inner">
+          <div className={`h-1.5 w-full bg-slate-100 rounded-full overflow-hidden border shadow-inner transition-colors ${
+            tookDamage ? 'border-rose-400 ring-2 ring-rose-300/60' : 'border-slate-200'
+          }`}>
             <motion.div
               animate={{
                 width: `${vitality}%`,
@@ -64,16 +80,28 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
       </div>
       <div className="flex items-center gap-3 sm:gap-5">
         <AnimatePresence>
-          {combo > 1 && (
-            <motion.div
-              initial={{ scale: 0, rotate: 10 }}
-              animate={{ scale: 1, rotate: -3 }}
-              exit={{ scale: 0 }}
-              className="px-2 sm:px-3 py-1 rounded-full text-[9px] sm:text-[10px] font-black tracking-widest shadow-sm bg-amber-100 text-amber-700 border border-amber-200 lettering"
-            >
-              x{combo} ✨
-            </motion.div>
-          )}
+          {combo > 1 && (() => {
+            // The pill escalates by tier instead of staying static — a combo
+            // of 20 should look and feel different from a combo of 2 (F3).
+            const tier = combo >= 12 ? 'rose' : combo >= 5 ? 'amber' : 'slate';
+            const tierClass = {
+              slate: 'bg-slate-100 text-slate-600 border-slate-200',
+              amber: 'bg-amber-100 text-amber-700 border-amber-200',
+              rose: 'bg-rose-100 text-rose-600 border-rose-300',
+            }[tier];
+            const scale = tier === 'rose' ? 1.25 : tier === 'amber' ? 1.1 : 1;
+            return (
+              <motion.div
+                key={tier}
+                initial={{ scale: 0, rotate: 10 }}
+                animate={{ scale, rotate: -3 }}
+                exit={{ scale: 0 }}
+                className={`px-2 sm:px-3 py-1 rounded-full text-[11px] sm:text-[10px] font-black tracking-widest shadow-sm border lettering ${tierClass}`}
+              >
+                x{combo} ✨
+              </motion.div>
+            );
+          })()}
         </AnimatePresence>
         {state !== 'boss_fight' && (
           <div className="flex items-center gap-3">
@@ -85,7 +113,7 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
               ⏸️
             </button>
             <div className="flex flex-col items-end gap-0.5">
-              <span className="text-[9px] sm:text-[10px] font-black tracking-widest text-rose-400 uppercase leading-none lettering">
+              <span className="text-[11px] sm:text-[10px] font-black tracking-widest text-rose-400 uppercase leading-none lettering">
                 Tiempo
               </span>
               <span
@@ -154,10 +182,10 @@ const VitalsMonitor: React.FC<{ vitals: TelemetryHUDProps['lastVitals'] }> = ({ 
     >
       <div className="absolute top-0 right-3 w-10 h-3 washi-tape-pink opacity-50 -rotate-2" />
       <div className="flex justify-between items-center">
-        <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 flex items-center gap-1 lettering">
+        <span className="text-[11px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 flex items-center gap-1 lettering">
           <span className={`w-1 h-1 ${dotColor} rounded-full animate-pulse`} /> Monitor
         </span>
-        <span className={`text-[9px] sm:text-[10px] font-bold uppercase ${getStatusColor(vitals.status)}`}>
+        <span className={`text-[11px] sm:text-[10px] font-bold uppercase ${getStatusColor(vitals.status)}`}>
           {vitals.status === 'normal' ? 'Estable' : vitals.status === 'alert' ? 'Riesgo' : 'CRÍTICO'}
         </span>
       </div>
@@ -172,7 +200,7 @@ const VitalsMonitor: React.FC<{ vitals: TelemetryHUDProps['lastVitals'] }> = ({ 
         {vitals.fc && (
            <div className="flex justify-between items-baseline gap-2">
              <span className="text-[10px] font-bold text-slate-400">FC</span>
-             <span className={`text-xs sm:text-sm font-black tabular-nums ${getStatusColor(vitals.status)}`}>{vitals.fc} <span className="text-[9px] opacity-50">lpm</span></span>
+             <span className={`text-xs sm:text-sm font-black tabular-nums ${getStatusColor(vitals.status)}`}>{vitals.fc} <span className="text-[11px] opacity-50">lpm</span></span>
            </div>
         )}
         {vitals.temp && (

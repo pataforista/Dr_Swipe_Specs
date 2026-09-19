@@ -38,18 +38,3 @@ export function triggerHaptic(pattern: HapticPattern): void {
     console.debug('Haptic feedback not supported:', e);
   }
 }
-
-/**
- * Stop all ongoing vibrations.
- */
-export function stopHaptic(): void {
-  if (typeof navigator === 'undefined' || !navigator.vibrate) {
-    return;
-  }
-
-  try {
-    navigator.vibrate(0);
-  } catch (e) {
-    console.debug('Failed to stop haptic:', e);
-  }
-}

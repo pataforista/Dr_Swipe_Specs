@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Generated copy of ../cases/ (see sync_cases.js) — the source of truth lives
+# at the repo root and is the only place these files are tracked in git.
+public/cases/*.json

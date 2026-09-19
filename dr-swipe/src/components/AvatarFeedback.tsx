@@ -87,6 +87,8 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
                 {dialogueText && (
                   <motion.div
                     key={dialogueText}
+                    role="status"
+                    aria-live="polite"
                     initial={{ opacity: 0, y: 15, scale: 0.85, rotate: -2 }}
                     animate={{ opacity: 1, y: 0, scale: 1, rotate: 1 }}
                     exit={{ opacity: 0, y: -10, scale: 0.85, rotate: 2 }}

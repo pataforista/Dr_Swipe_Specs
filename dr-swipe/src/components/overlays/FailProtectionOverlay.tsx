@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useFocusTrap } from '../../hooks/useFocusTrap';
 
 interface FailProtectionOverlayProps {
   error: string;
@@ -8,9 +9,12 @@ interface FailProtectionOverlayProps {
   onRestart: () => void;
 }
 
-export const FailProtectionOverlay: React.FC<FailProtectionOverlayProps> = ({ 
-  error, livesRemaining, onRescue, onRestart 
+export const FailProtectionOverlay: React.FC<FailProtectionOverlayProps> = ({
+  error, livesRemaining, onRescue, onRestart
 }) => {
+  // No onEscape here: both choices (rescue/restart) have real consequences,
+  // so an accidental Escape must not silently pick either one.
+  const trapRef = useFocusTrap<HTMLDivElement>(true);
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center z-fail-protection p-6">
       <motion.div
@@ -20,6 +24,9 @@ export const FailProtectionOverlay: React.FC<FailProtectionOverlayProps> = ({
         exit={{ opacity: 0 }}
       />
       <motion.div
+        ref={trapRef}
+        role="dialog"
+        aria-modal="true"
         initial={{ scale: 0.9, y: 20, opacity: 0 }}
         animate={{ scale: 1, y: 0, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}

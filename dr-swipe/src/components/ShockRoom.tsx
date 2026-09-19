@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { BossQuestion, Card } from '../types/game';
+import { useGameAudio } from '../hooks/useGameAudio';
 
 interface ShockRoomProps {
   questions: BossQuestion[];
@@ -9,14 +10,19 @@ interface ShockRoomProps {
   onGhosted: (error: string) => void;
 }
 
+// Every step gets the same window instead of the first one arbitrarily
+// getting 15s and the rest 12s (F7).
+const STEP_TIME_LIMIT = 12;
+
 export const ShockRoom: React.FC<ShockRoomProps> = ({
   questions,
   dossierItems,
   onSurvive,
   onGhosted
 }) => {
+  const { playFeedback, startTriageAlarm, stopTriageAlarm } = useGameAudio();
   const [currentStep, setCurrentStep] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(15);
+  const [timeLeft, setTimeLeft] = useState(STEP_TIME_LIMIT);
   const [wrongAttempts, setWrongAttempts] = useState(0);
   const [shakeIndicator, setShakeIndicator] = useState(false);
   const totalSteps = questions.length;
@@ -31,16 +37,27 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
     return () => clearInterval(timer);
   }, [timeLeft, onGhosted]);
 
+  // The most tense phase of the game was completely silent (F7): reuse the
+  // same clock-tick urgency cue the triage timer already has.
+  useEffect(() => {
+    if (timeLeft > 0 && timeLeft <= 5) {
+      startTriageAlarm();
+    } else {
+      stopTriageAlarm();
+    }
+  }, [timeLeft, startTriageAlarm, stopTriageAlarm]);
+
   const handleAnswer = (selectedIndex: number) => {
     const question = questions[currentStep];
     const isCorrect = selectedIndex === question.correct_index;
+    playFeedback(isCorrect ? 'correct' : 'wrong');
     if (isCorrect) {
       setWrongAttempts(0); // Reset on correct answer
       if (currentStep + 1 >= totalSteps) {
         onSurvive();
       } else {
         setCurrentStep(prev => prev + 1);
-        setTimeLeft(12); // Refresh time for next step
+        setTimeLeft(STEP_TIME_LIMIT); // Refresh time for next step
       }
     } else {
       const nextAttempts = wrongAttempts + 1;

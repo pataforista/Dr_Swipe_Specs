@@ -14,6 +14,8 @@ export const RewardToast: React.FC<RewardToastProps> = ({ toast }) => {
     <AnimatePresence>
       {toast.show && (
         <motion.div
+          role="status"
+          aria-live="polite"
           initial={{ opacity: 0, y: 50, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8, y: -20 }}

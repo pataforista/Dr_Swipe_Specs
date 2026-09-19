@@ -8,10 +8,11 @@ import { dataLoader } from './utils/dataLoader';
 import { useGameAudio } from './hooks/useGameAudio';
 import { shuffleBossQuestion } from './utils/formatters';
 import { triggerHaptic } from './utils/hapticFeedback';
-import { calculatePerfectRoundBonus, getDailyStreakMultiplier } from './utils/scoringEngine';
+import { calculatePerfectRoundBonus, getDailyStreakMultiplier, COMBO_MILESTONES } from './utils/scoringEngine';
 import { safeStorage } from './utils/safeStorage';
 import { LIFELINE_COST, UNDO_COST, REVIVE_COST } from './store/useCodexStore';
 import { useCodexStore, type SessionProgress } from './store/useCodexStore';
+import { useFocusTrap } from './hooks/useFocusTrap';
 
 // None of these are needed for the first paint (idle screen / first card),
 // so they ship as separate chunks instead of bloating the initial bundle.
@@ -58,9 +59,16 @@ export function App() {
   const [showIntro, setShowIntro] = useState(false);
   const [lastSwipePoints, setLastSwipePoints] = useState<number>(0);
   const [swipeFeedback, setSwipeFeedback] = useState<'correct' | 'wrong' | null>(null);
+  const [errorImpact, setErrorImpact] = useState<'normal' | 'lethal' | null>(null);
+  const [hitStop, setHitStop] = useState(false);
   const [mentorDialogue, setMentorDialogue] = useState<string | null>(null);
   const [mentorExpression, setMentorExpression] = useState<'neutral' | 'happy' | 'angry' | 'shocked'>('neutral');
   const [timeLeft, setTimeLeft] = useState(60);
+
+  const settingsTrapRef = useFocusTrap<HTMLDivElement>(showSettings, () => setShowSettings(false));
+  const pauseTrapRef = useFocusTrap<HTMLDivElement>(isPaused && state.matches('triage'), () => setIsPaused(false));
+  const statsTrapRef = useFocusTrap<HTMLDivElement>(showStats, () => setShowStats(false));
+  const retroTrapRef = useFocusTrap<HTMLDivElement>(showRetro, () => setShowRetro(false));
 
   const showToast = useCallback((text: string, type: 'coins' | 'xp' | 'milestone' = 'coins') => {
     // Deferred a tick: the reward payout effect calls this while React is
@@ -112,7 +120,6 @@ export function App() {
         caseStreak: state.context.caseStreak,
         coinsEarnedThisCase: state.context.coinsEarnedThisCase,
         mistakesThisCase: state.context.mistakesThisCase,
-        warningCount: state.context.warningCount,
         difficulty: state.context.difficulty,
         savedAt: Date.now()
       });
@@ -274,8 +281,31 @@ export function App() {
     updateSwipeResult(last.isCorrect);
     setLastSwipePoints(last.points);
     setSwipeFeedback(last.isCorrect ? 'correct' : 'wrong');
-    playFeedback(last.isCorrect ? 'correct' : 'wrong');
-    triggerHaptic(last.isCorrect ? 'criticalSuccess' : 'warning');
+    // The card that was just swiped: currentCardIndex has already advanced.
+    const swipedCard = ctx.deck[ctx.currentCardIndex - 1];
+    const isLethalMistake = !last.isCorrect && !!(swipedCard?.safety_flags?.lethal_risk || swipedCard?.safety_flags?.lethal_if_discarded);
+    if (last.isCorrect) {
+      playFeedback('correct', ctx.combo);
+      triggerHaptic('criticalSuccess');
+      // Combo milestones get their own cue instead of sounding like any other
+      // correct swipe — reuses the gacha jingle already in the audio engine (F3).
+      if ((COMBO_MILESTONES as readonly number[]).includes(ctx.combo)) playGacha();
+    } else if (isLethalMistake) {
+      // The error that teaches the stakes of the game deserves to feel like
+      // one: its own low sound, its own haptic pattern (previously defined
+      // and never called), and a beat where the UI itself flinches (F2).
+      playFeedback('lethal');
+      triggerHaptic('lethalError');
+      setErrorImpact('lethal');
+      setHitStop(true);
+      setTimeout(() => setHitStop(false), 120);
+      setTimeout(() => setErrorImpact(null), 400);
+    } else {
+      playFeedback('wrong');
+      triggerHaptic('warning');
+      setErrorImpact('normal');
+      setTimeout(() => setErrorImpact(null), 250);
+    }
     setTimeout(() => setSwipeFeedback(null), 2000);
     // Mentor bubble for this swipe
     setMentorDialogue(last.feedback);
@@ -286,7 +316,7 @@ export function App() {
       setMentorExpression('neutral');
       mentorTimerRef.current = null;
     }, 4500);
-  }, [isPaused, actorRef, send, updateSwipeResult, playFeedback]);
+  }, [isPaused, actorRef, send, updateSwipeResult, playFeedback, playGacha]);
 
   useEffect(() => () => {
     if (mentorTimerRef.current !== null) clearTimeout(mentorTimerRef.current);
@@ -374,7 +404,7 @@ export function App() {
         <div className="fixed inset-0 bg-[#FDFBF7] flex flex-col items-center justify-center p-4 sm:p-8 z-[120] overflow-y-auto">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-6 sm:p-10 max-w-md w-full text-center shadow-xl relative bg-white my-auto">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 sm:w-40 h-6 sm:h-8 washi-tape-pink -rotate-1 shadow-sm" />
-            <span className="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase lettering block mt-3 sm:mt-4 mb-1 sm:mb-2">EXPEDIENTE MÉDICO 📔</span>
+            <span className="text-[11px] sm:text-[10px] font-bold text-slate-400 uppercase lettering block mt-3 sm:mt-4 mb-1 sm:mb-2">EXPEDIENTE MÉDICO 📔</span>
             <h2 className="text-3xl sm:text-5xl font-black text-slate-800 lettering mb-3 sm:mb-4 break-words">{currentCase.patient_intro.name}</h2>
             <div className="bg-slate-50 p-4 sm:p-6 rounded-2xl mb-6 sm:mb-8 border-2 border-dashed border-slate-100 italic lettering text-base sm:text-lg">"{currentCase.patient_intro.arrival_scenario}"</div>
             <button
@@ -397,7 +427,6 @@ export function App() {
                       caseStreak: snapshot.caseStreak,
                       coinsEarnedThisCase: snapshot.coinsEarnedThisCase,
                       mistakesThisCase: snapshot.mistakesThisCase,
-                      warningCount: snapshot.warningCount,
                     }
                   });
                 } else if (state.matches('idle')) {
@@ -419,7 +448,7 @@ export function App() {
         return (
           <div className="fixed inset-0 bg-[#FDFBF7] flex flex-col items-center justify-center p-4 sm:p-8 overflow-hidden z-[120]">
             <div className="text-center mb-6 sm:mb-10">
-              <span className="text-[9px] sm:text-[10px] font-black tracking-widest text-primary uppercase mb-2 block lettering">NOTAS DE ESTUDIO ✨</span>
+              <span className="text-[11px] sm:text-[10px] font-black tracking-widest text-primary uppercase mb-2 block lettering">NOTAS DE ESTUDIO ✨</span>
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-black text-slate-800 lettering drop-shadow-sm">Dr. Swipe</h1>
               <div className="h-2 w-32 sm:w-48 washi-tape-pink mx-auto mt-3 sm:mt-4 rotate-1" />
             </div>
@@ -436,7 +465,7 @@ export function App() {
             
             {/* Specialty Selector Chips */}
             <div className="mb-6 sm:mb-8 text-center max-w-sm w-full z-20">
-              <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest block mb-2.5 lettering">SELECCIONAR ESPECIALIDAD:</span>
+              <span className="text-[11px] font-black text-slate-400 uppercase tracking-widest block mb-2.5 lettering">SELECCIONAR ESPECIALIDAD:</span>
               <div className="flex flex-wrap justify-center gap-2">
                 {[
                   { id: 'all', label: 'Mixta 🎲' },
@@ -470,7 +499,7 @@ export function App() {
 
               <button onClick={() => startNewCase(true, selectedSpecialty)} disabled={isLoadingCase} className="marker-btn py-4 sm:py-5 text-base sm:text-xl !bg-emerald-600 !border-emerald-500 shadow-emerald-200 group">
                  {isLoadingCase ? 'PREPARANDO...' : 'MODO ESTUDIO 🍉'}
-                 <div className="absolute -top-1 -right-1 bg-amber-500 text-white text-[9px] px-2 py-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">SIN DAÑO</div>
+                 <div className="absolute -top-1 -right-1 bg-amber-500 text-white text-[11px] px-2 py-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">SIN DAÑO</div>
               </button>
 
               {/* Repasar Errores Button */}
@@ -498,7 +527,7 @@ export function App() {
         return (
           <div className="flex flex-col items-center justify-center w-full max-w-sm gap-2 sm:gap-4 px-2 sm:px-4 h-full pt-12 sm:pt-16 pb-8 sm:pb-12">
             <div className="relative w-full h-full flex flex-col items-center">
-              <SwipeDeck cards={state.context.deck} currentIndex={state.context.currentCardIndex} onSwipe={handleSwipe} isLocked={isLoadingCase || isPaused} lifelineActive={state.context.lifelineActive} canUseLifeline={stats.coins >= LIFELINE_COST && !state.context.lifelineActive} onUseLifeline={handleLifeline} />
+              <SwipeDeck cards={state.context.deck} currentIndex={state.context.currentCardIndex} onSwipe={handleSwipe} isLocked={isLoadingCase || isPaused || hitStop} lifelineActive={state.context.lifelineActive} canUseLifeline={stats.coins >= LIFELINE_COST && !state.context.lifelineActive} onUseLifeline={handleLifeline} />
               <div className="absolute -bottom-10 sm:-bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-[110] pointer-events-auto">
                 <button
                   disabled={!canUndo || (state.context.undoCharges === 0 && stats.coins < UNDO_COST)}
@@ -547,7 +576,7 @@ export function App() {
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-6 sm:p-10 max-w-md w-full text-center shadow-xl relative mx-4">
             <div className="absolute top-0 left-0 w-full h-2 bg-rose-400" />
             <div className="text-6xl sm:text-7xl mb-4 sm:mb-6 mt-3 sm:mt-4">💀</div>
-            <span className="lettering text-rose-500 font-bold block mb-2 text-[9px] sm:text-[10px] uppercase">Turno Terminado</span>
+            <span className="lettering text-rose-500 font-bold block mb-2 text-[11px] sm:text-[10px] uppercase">Turno Terminado</span>
             <h2 className="text-4xl sm:text-5xl font-black text-slate-800 mb-3 sm:mb-4 lettering">Sin más internos</h2>
             <div className="bg-rose-50 p-4 sm:p-6 rounded-2xl mb-6 sm:mb-8 border-2 border-dashed border-rose-100 italic lettering text-base sm:text-lg">
               "{state.context.fatalError || 'El servicio no sobrevivió.'}"
@@ -569,7 +598,7 @@ export function App() {
                 </button>
               )}
               <button onClick={() => send({ type: 'VIEW_DEBRIEF' })} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl !bg-slate-700">VER NOTAS 📝</button>
-              <button onClick={() => send({ type: 'RESTART' })} className="text-[9px] sm:text-[10px] font-bold text-slate-500 hover:text-rose-500 uppercase tracking-widest py-2 transition-all lettering">— Nueva Guardia —</button>
+              <button onClick={() => send({ type: 'RESTART' })} className="text-[11px] sm:text-[10px] font-bold text-slate-500 hover:text-rose-500 uppercase tracking-widest py-2 transition-all lettering">— Nueva Guardia —</button>
             </div>
           </motion.div>
         );
@@ -605,7 +634,7 @@ export function App() {
   };
 
   return (
-    <div className={`fixed inset-0 bg-[#FDFBF7] flex flex-col items-center select-none overflow-hidden text-slate-800 p-safe-top p-safe-bottom p-safe-left p-safe-right ${timeLeft <= 10 && state.matches('triage') ? 'destabilized-content' : ''} ${swipeFeedback === 'wrong' ? 'shake-lite' : ''}`}>
+    <div className={`fixed inset-0 bg-[#FDFBF7] flex flex-col items-center select-none overflow-hidden text-slate-800 p-safe-top p-safe-bottom p-safe-left p-safe-right ${timeLeft <= 10 && state.matches('triage') ? 'destabilized-content' : ''} ${swipeFeedback === 'wrong' ? 'shake-lite' : ''} ${errorImpact === 'lethal' ? 'error-flash-lethal' : errorImpact === 'normal' ? 'error-flash' : ''}`}>
       <div className="absolute inset-0 pointer-events-none opacity-[0.02] medical-grid" />
       <TelemetryHUD
         timeLeft={timeLeft}
@@ -630,7 +659,7 @@ export function App() {
 
       <div className="w-full flex-grow flex items-center justify-center relative z-10">{renderCurrentView()}</div>
       <AnimatePresence>{showTutorial && <Suspense fallback={null}><TutorialOverlay onComplete={() => { safeStorage.setItem('dr_swipe_tutorial_seen', '1'); setShowTutorial(false); }} /></Suspense>}</AnimatePresence>
-      <AnimatePresence>{showStats && <div className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-6 overflow-hidden"><Suspense fallback={null}><StatsDashboard onClose={() => setShowStats(false)} /></Suspense></div>}</AnimatePresence>
+      <AnimatePresence>{showStats && <div ref={statsTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-6 overflow-hidden"><Suspense fallback={null}><StatsDashboard onClose={() => setShowStats(false)} /></Suspense></div>}</AnimatePresence>
       <AnimatePresence mode="wait">{state.context.activeEvent?.item && <EventAlert key={state.context.activeEvent?.item?.id ?? 'event'} event={state.context.activeEvent} onClose={handleEventClose} />}</AnimatePresence>
       <AnimatePresence>{state.context.lootBoxReward?.active && state.context.lootBoxReward.item && <LootBoxOverlay reward={{ active: true, item: state.context.lootBoxReward.item }} onClaim={handleLootClaim} />}</AnimatePresence>
       <AnimatePresence>{state.context.activePenalty?.active && <PenaltyOverlay penalty={{ active: true, item: state.context.activePenalty.item }} onAccept={() => send({ type: 'CLEAR_OVERLAYS' })} />}</AnimatePresence>
@@ -645,12 +674,12 @@ export function App() {
           onRestart={() => send({ type: 'RESTART' })}
         />
       )}</AnimatePresence>
-      {showRetro && <div className="fixed inset-0 z-[150] bg-[#FDFBF7]/90 backdrop-blur-md p-6"><Suspense fallback={null}><RetrospectiveView history={state.context.feedbackHistory} onClose={() => setShowRetro(false)} /></Suspense></div>}
+      {showRetro && <div ref={retroTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] bg-[#FDFBF7]/90 backdrop-blur-md p-6"><Suspense fallback={null}><RetrospectiveView history={state.context.feedbackHistory} onClose={() => setShowRetro(false)} /></Suspense></div>}
       <FeedbackToast result={swipeFeedback} points={lastSwipePoints} />
       <RewardToast toast={rewardToast} />
       <AnimatePresence>{isPaused && state.matches('triage') && (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="fixed inset-0 z-[130] flex flex-col items-center justify-center bg-[#FDFBF7]/80 backdrop-blur-sm">
-          <motion.div initial={{ scale: 0.9 }} animate={{ scale: 1 }} className="paper-sheet p-10 max-w-xs w-full text-center border-primary/20 shadow-xl relative">
+          <motion.div ref={pauseTrapRef} role="dialog" aria-modal="true" initial={{ scale: 0.9 }} animate={{ scale: 1 }} className="paper-sheet p-10 max-w-xs w-full text-center border-primary/20 shadow-xl relative">
             <p className="text-slate-400 text-sm italic mb-8 lettering leading-relaxed">"Guardia en pausa. Tus notas están seguras."</p>
             <button onClick={() => setIsPaused(false)} className="marker-btn w-full py-4 text-sm mb-4">REANUDAR ✨</button>
             <button onClick={() => send({ type: 'RESTART' })} className="text-[10px] font-bold text-slate-500 uppercase py-2 lettering">ABANDONAR</button>
@@ -663,6 +692,9 @@ export function App() {
         {showSettings && (
           <div className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-6 overflow-hidden">
             <motion.div
+              ref={settingsTrapRef}
+              role="dialog"
+              aria-modal="true"
               initial={{ opacity: 0, scale: 0.9, y: 40 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 40 }}
@@ -686,7 +718,7 @@ export function App() {
                 <div className="flex justify-between items-center bg-slate-50 p-4 rounded-2xl border border-slate-100">
                   <div className="flex flex-col">
                     <span className="text-xs font-black text-slate-700 uppercase tracking-wider">Efectos de Sonido</span>
-                    <span className="text-[9px] text-slate-400">Procedural Audio Synth</span>
+                    <span className="text-[11px] text-slate-400">Procedural Audio Synth</span>
                   </div>
                   <DoodleToggle
                     id="sound-toggle"
@@ -700,7 +732,7 @@ export function App() {
                 <div className="flex justify-between items-center bg-slate-50 p-4 rounded-2xl border border-slate-100">
                   <div className="flex flex-col">
                     <span className="text-xs font-black text-slate-700 uppercase tracking-wider">Vibración / Hápticos</span>
-                    <span className="text-[9px] text-slate-400">Tactile Haptic Feedback</span>
+                    <span className="text-[11px] text-slate-400">Tactile Haptic Feedback</span>
                   </div>
                   <DoodleToggle
                     id="haptics-toggle"

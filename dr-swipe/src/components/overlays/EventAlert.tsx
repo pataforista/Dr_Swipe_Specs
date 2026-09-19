@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import type { LoreItem } from '../../types/game';
+import { useFocusTrap } from '../../hooks/useFocusTrap';
 
 interface EventAlertProps {
   event: {
@@ -11,6 +12,7 @@ interface EventAlertProps {
 }
 
 export const EventAlert: React.FC<EventAlertProps> = ({ event, onClose }) => {
+  const trapRef = useFocusTrap<HTMLDivElement>(!!event, onClose);
   if (!event) return null;
 
   const getEventTheme = (type: string) => {
@@ -35,6 +37,9 @@ export const EventAlert: React.FC<EventAlertProps> = ({ event, onClose }) => {
 
   return (
     <motion.div
+      ref={trapRef}
+      role="dialog"
+      aria-modal="true"
       initial={{ opacity: 0, y: 50, scale: 0.9 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: 20, scale: 0.9 }}

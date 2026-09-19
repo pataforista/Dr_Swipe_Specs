@@ -100,16 +100,26 @@ class AudioEngine {
     this.tone({ type: 'sine', from: direction === 'right' ? 340 : 280, to: direction === 'right' ? 460 : 200, dur: 0.16, gain: 0.18, filter: 1800 });
   }
 
-  correct() {
-    // Bright two-note "pop".
-    this.tone({ type: 'sine', from: 660, to: 880, dur: 0.12, gain: 0.5 });
-    this.tone({ type: 'sine', from: 990, dur: 0.16, gain: 0.4, delay: 0.09 });
+  correct(combo = 0) {
+    // Bright two-note "pop" that climbs a semitone per combo point (capped so
+    // a long streak doesn't run off into ultrasonic territory) — the streak
+    // should sound like it's building, not just look like it (F3).
+    const shift = Math.pow(2, Math.min(combo, 24) / 12);
+    this.tone({ type: 'sine', from: 660 * shift, to: 880 * shift, dur: 0.12, gain: 0.5 });
+    this.tone({ type: 'sine', from: 990 * shift, dur: 0.16, gain: 0.4, delay: 0.09 });
   }
 
   wrong() {
     // Dry descending buzz (marker scratch).
     this.tone({ type: 'sawtooth', from: 240, to: 90, dur: 0.22, gain: 0.32, filter: 900 });
     this.noise({ dur: 0.12, gain: 0.18, filter: 800 });
+  }
+
+  lethal() {
+    // Heavier, lower double-hit — distinct from a normal miss, for a fatal error.
+    this.tone({ type: 'sawtooth', from: 160, to: 45, dur: 0.35, gain: 0.5, filter: 500 });
+    this.tone({ type: 'sine', from: 90, to: 35, dur: 0.4, gain: 0.55, delay: 0.05 });
+    this.noise({ dur: 0.22, gain: 0.3, filter: 350 });
   }
 
   gacha() {
@@ -138,9 +148,10 @@ export const useGameAudio = () => {
   const playSwipe = (direction: Dir) => {
     if (isSoundEnabled()) engine.swipe(direction);
   };
-  const playFeedback = (type: 'correct' | 'wrong') => {
+  const playFeedback = (type: 'correct' | 'wrong' | 'lethal', combo = 0) => {
     if (isSoundEnabled()) {
-      if (type === 'correct') engine.correct();
+      if (type === 'correct') engine.correct(combo);
+      else if (type === 'lethal') engine.lethal();
       else engine.wrong();
     }
   };

@@ -86,7 +86,7 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
         >
           Códex de Perlas 🌟
           {unlockedPearls.length > 0 && (
-            <span className="bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded-full text-[9px] font-black leading-none">
+            <span className="bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded-full text-[11px] font-black leading-none">
               {unlockedPearls.length}
             </span>
           )}
@@ -113,7 +113,7 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
           {/* XP progress */}
           <div className="mb-6 sm:mb-8 px-1 sm:px-2 relative z-10">
             <div className="flex justify-between mb-2 sm:mb-4 items-end gap-2">
-              <span className="text-[9px] sm:text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] sm:tracking-[0.4em] lettering">EXPERIENCIA</span>
+              <span className="text-[11px] sm:text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] sm:tracking-[0.4em] lettering">EXPERIENCIA</span>
               <span className="text-[10px] sm:text-[12px] font-bold text-primary italic lettering">
                 {nextThreshold ? `${stats.xp} / ${nextThreshold.min}` : `${stats.xp} 🌟`}
               </span>
@@ -154,7 +154,7 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
             <div className="flex justify-between items-center mb-3 sm:mb-6 px-1 gap-2">
               <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                 <span className="text-xl sm:text-2xl filter drop-shadow-sm flex-shrink-0">{accuracy >= 80 ? '🎯' : '🚧'}</span>
-                <span className="text-[9px] sm:text-[11px] text-slate-500 uppercase tracking-[0.25em] sm:tracking-[0.4em] font-black lettering">PRECISIÓN</span>
+                <span className="text-[11px] sm:text-[11px] text-slate-500 uppercase tracking-[0.25em] sm:tracking-[0.4em] font-black lettering">PRECISIÓN</span>
               </div>
               <span className="text-2xl sm:text-3xl text-slate-700 font-bold lettering italic flex-shrink-0">{accuracy}%</span>
             </div>
@@ -188,11 +188,11 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
               >
                 <div className="absolute top-0 right-0 w-24 h-2 bg-amber-200/50 -rotate-1" />
                 <div className="flex justify-between items-start mb-2 gap-2">
-                  <span className="text-[8px] font-black uppercase bg-primary/10 text-primary px-2 py-0.5 rounded-md">
+                  <span className="text-[11px] font-black uppercase bg-primary/10 text-primary px-2 py-0.5 rounded-md">
                     {pearl.category || 'General'}
                   </span>
                   {pearl.gpc_ref && (
-                    <span className="text-[8px] font-bold text-slate-400 uppercase">
+                    <span className="text-[11px] font-bold text-slate-400 uppercase">
                       GPC: {pearl.gpc_ref}
                     </span>
                   )}
@@ -221,7 +221,7 @@ const StatCard: React.FC<{
   return (
     <div className="bg-white border-2 border-slate-100 rounded-[1.5rem] sm:rounded-[2.2rem] p-4 sm:p-6 flex flex-col justify-between shadow-sm relative overflow-hidden transition-all hover:border-primary/20 group cursor-default">
       <div className="flex justify-between items-start mb-2 sm:mb-3 gap-2">
-        <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.25em] sm:tracking-[0.3em] lettering leading-tight">{label}</span>
+        <span className="text-[11px] font-black text-slate-400 uppercase tracking-[0.25em] sm:tracking-[0.3em] lettering leading-tight">{label}</span>
         <span className="text-base sm:text-xl opacity-60 group-hover:opacity-100 transition-opacity flex-shrink-0">{emoji}</span>
       </div>
       <div className="flex items-baseline gap-1.5 relative z-10">

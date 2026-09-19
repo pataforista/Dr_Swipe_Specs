@@ -94,12 +94,11 @@ h1, h2, h3, .lettering {
   background-color: #FF007F;
   color: white;
   font-weight: 900;
-  padding: 1.25rem 2.5rem;
+  padding: 1rem 2rem;
   border-radius: 9999px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  font-size: 14px !important; /* Aumentado para legibilidad móvil */
-  padding: 1rem 2rem !important; /* Más compacto pero táctil */
+  font-size: 14px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   transform: rotate(-1deg);
   transition: all 0.3s;
@@ -157,6 +156,28 @@ h1, h2, h3, .lettering {
 
 .destabilized-content {
   animation: destabilized-pulse 1s ease-in-out infinite;
+}
+
+/* Error weight: a quick red flash so a mistake reads as an actual hit */
+@keyframes error-flash {
+  0% { box-shadow: inset 0 0 0 0 rgba(244, 63, 94, 0); }
+  30% { box-shadow: inset 0 0 120px 20px rgba(244, 63, 94, 0.35); }
+  100% { box-shadow: inset 0 0 0 0 rgba(244, 63, 94, 0); }
+}
+
+.error-flash {
+  animation: error-flash 0.15s ease-out;
+}
+
+/* Lethal mistakes hit harder: a stronger, longer flash */
+@keyframes error-flash-lethal {
+  0% { box-shadow: inset 0 0 0 0 rgba(244, 63, 94, 0); }
+  25% { box-shadow: inset 0 0 160px 40px rgba(244, 63, 94, 0.55); }
+  100% { box-shadow: inset 0 0 0 0 rgba(244, 63, 94, 0); }
+}
+
+.error-flash-lethal {
+  animation: error-flash-lethal 0.3s ease-out;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
