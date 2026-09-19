@@ -27,7 +27,7 @@ export default defineConfig({
         name: 'Dr. Swipe: Triage Fatal',
         short_name: 'Dr. Swipe',
         description: 'Simulador de razonamiento clínico y supervivencia hospitalaria.',
-        theme_color: '#FF007F',
+        theme_color: '#0D9488',
         background_color: '#FDFBF7',
         display: 'standalone',
         orientation: 'portrait',

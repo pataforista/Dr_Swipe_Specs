@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Pause } from 'lucide-react';
 
 interface TelemetryHUDProps {
   timeLeft: number;
@@ -110,7 +111,7 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
               className="pointer-events-auto w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center bg-white/80 hover:bg-rose-50 border border-slate-200 text-xs sm:text-sm rounded-xl shadow-sm transition-all active:scale-95 cursor-pointer"
               aria-label="Pausar juego"
             >
-              ⏸️
+              <Pause className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" aria-hidden="true" />
             </button>
             <div className="flex flex-col items-end gap-0.5">
               <span className="text-[11px] sm:text-[10px] font-black tracking-widest text-rose-400 uppercase leading-none lettering">

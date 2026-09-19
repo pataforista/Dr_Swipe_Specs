@@ -87,11 +87,11 @@ h1, h2, h3, .lettering {
 }
 
 .washi-tape-pink {
-  background: repeating-linear-gradient(45deg, #FF007F22, #FF007F22 10px, #FF007F44 10px, #FF007F44 20px);
+  background: repeating-linear-gradient(45deg, #0D948822, #0D948822 10px, #0D948844 10px, #0D948844 20px);
 }
 
 .marker-btn {
-  background-color: #FF007F;
+  background-color: var(--primary);
   color: white;
   font-weight: 900;
   padding: 1rem 2rem;
@@ -109,7 +109,7 @@ h1, h2, h3, .lettering {
 }
 
 .sticker-glow {
-  box-shadow: 0 0 30px rgba(255, 0, 127, 0.1);
+  box-shadow: 0 0 30px rgba(13, 148, 136, 0.15);
 }
 
 .lettering {
@@ -187,7 +187,7 @@ h1, h2, h3, .lettering {
   background: #FDFBF7;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #FF007F22;
+  background: #0D948822;
   border-radius: 10px;
 }
 

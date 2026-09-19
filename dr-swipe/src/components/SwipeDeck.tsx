@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion, useMotionValue, useTransform, useAnimation, AnimatePresence, type MotionValue, type PanInfo } from 'framer-motion';
+import { X, Heart, Dna, Sparkles } from 'lucide-react';
 import type { Card } from '../types/game';
 import { useGameAudio } from '../hooks/useGameAudio';
 import { triggerHaptic } from '../utils/hapticFeedback';
@@ -159,7 +160,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
             }`}
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,theme(colors.accent-alert/10),transparent)] opacity-0 hover:opacity-100 transition-opacity" />
-            <span className="relative z-10">✕</span>
+            <X className="relative z-10 w-7 h-7 sm:w-8 sm:h-8" strokeWidth={3} aria-hidden="true" />
           </motion.button>
           <span className={`text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] transition-colors line-clamp-2 text-center max-w-[70px] sm:max-w-none ${
             lifelineActive && cards[currentIndex]?.expected_action === 'discard' ? 'text-accent-alert' : 'text-slate-500 group-hover:text-accent-alert'
@@ -180,7 +181,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
             }`}
               title={`Escanear Carta (Cuesta ${LIFELINE_COST} 🪙)`}
           >
-            {lifelineActive ? '✨' : '🧬'}
+            {lifelineActive ? <Sparkles className="w-6 h-6 sm:w-7 sm:h-7" aria-hidden="true" /> : <Dna className="w-6 h-6 sm:w-7 sm:h-7" aria-hidden="true" />}
           </motion.button>
           <span className={`text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] ${lifelineActive ? 'text-secondary' : 'text-slate-500'}`}>
             {lifelineActive ? 'ACTIVO' : `${LIFELINE_COST} 🪙`}
@@ -203,7 +204,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
             }`}
           >
              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,theme(colors.primary/10),transparent)] opacity-0 hover:opacity-100 transition-opacity" />
-             <span className="relative z-10">♥</span>
+             <Heart className="relative z-10 w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2.5} fill="currentColor" aria-hidden="true" />
           </motion.button>
           <span className={`text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] transition-colors line-clamp-2 text-center max-w-[70px] sm:max-w-none ${
             lifelineActive && cards[currentIndex]?.expected_action === 'keep' ? 'text-primary' : 'text-slate-500 group-hover:text-primary'

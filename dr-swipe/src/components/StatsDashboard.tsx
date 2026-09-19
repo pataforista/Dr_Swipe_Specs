@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { X } from 'lucide-react';
 import { useCodexStore } from '../store/useCodexStore';
 import { DoodlePlayerCard } from './ui/DoodlePlayerCard';
 interface StatsDashboardProps {
@@ -64,7 +65,7 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
           className="w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center rounded-2xl bg-slate-50 border-2 border-white shadow-sm text-slate-400 hover:text-rose-400 transition-colors flex-shrink-0"
           aria-label="Cerrar"
         >
-          <span className="text-lg sm:text-xl font-bold">✕</span>
+          <X className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
         </button>
       </div>
 

@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useMachine } from '@xstate/react';
 import { gameMachine } from './machines/gameMachine';
 import { SwipeDeck } from './components/SwipeDeck';
+import { X, Coins, Undo2 } from 'lucide-react';
 import { useState, useEffect, useRef, useCallback, lazy, Suspense } from 'react';
 import type { Card, ClinicalCase } from './types/game';
 import { dataLoader } from './utils/dataLoader';
@@ -539,7 +540,7 @@ export function App() {
                   }`}
                   title={state.context.undoCharges === 0 ? `Comprar Deshacer por ${UNDO_COST} 🪙` : "Deshacer"}
                 >
-                  {state.context.undoCharges === 0 ? '🪙' : '⏪'}
+                  {state.context.undoCharges === 0 ? <Coins className="w-5 h-5 sm:w-6 sm:h-6 text-white" aria-hidden="true" /> : <Undo2 className="w-5 h-5 sm:w-6 sm:h-6 text-white" aria-hidden="true" />}
                 </button>
                 <span className="text-[10px] font-black text-slate-400 uppercase lettering tracking-tighter">
                   {state.context.undoCharges === 0 ? `${UNDO_COST} 🪙` : `${state.context.undoCharges}/5`}
@@ -709,7 +710,7 @@ export function App() {
                   className="w-8 h-8 flex items-center justify-center rounded-xl bg-slate-50 border-2 border-white shadow-sm text-slate-400 hover:text-rose-400 cursor-pointer"
                   aria-label="Cerrar"
                 >
-                  ✕
+                  <X className="w-4 h-4" aria-hidden="true" />
                 </button>
               </div>
 
