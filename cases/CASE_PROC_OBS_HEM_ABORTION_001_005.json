@@ -155,9 +155,9 @@
                 "options": [
                     "Antes de la semana 20 de gestación",
                     "Antes de la semana 12 de gestación",
-                    "Antes de la semana 20 de gestación"
+                    "Antes de la semana 28 de gestación"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿Qué hallazgo clínico diferencia el aborto incompleto de la amenaza de aborto?",

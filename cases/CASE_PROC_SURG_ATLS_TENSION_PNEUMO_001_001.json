@@ -130,5 +130,10 @@
                 "correct_index": 0
             }
         ]
+    },
+    "enarm_pearl": {
+        "title": "ATLS 10ª: Neumotórax a Tensión",
+        "text": "Cambio Crítico: La descompresión inmediata se realiza en el 5° espacio intercostal, línea axilar anterior o media (mismo sitio del tubo de tórax).",
+        "gpc_ref": "Manual ATLS 10ª Edición"
     }
 }

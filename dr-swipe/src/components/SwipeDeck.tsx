@@ -308,7 +308,12 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
   const overlayOpacityLeft = useTransform(x, [0, -100], [0, 1]);
   const overlayOpacityRight = useTransform(x, [0, 100], [0, 1]);
 
+  // `lethal_risk` is authored on cards in both directions (e.g. "ECG en 10 min"
+  // is a keep card flagged lethal_risk), so the badge wording follows the card's
+  // expected action: lethal to accept only when the right move is to discard.
   const isLethal = card.safety_flags?.lethal_risk || card.safety_flags?.lethal_if_discarded;
+  const lethalIfAccepted = !!card.safety_flags?.lethal_risk && card.expected_action === 'discard';
+  const lethalIfDiscarded = !!(card.safety_flags?.lethal_if_discarded || card.safety_flags?.lethal_risk) && card.expected_action === 'keep';
   const isCritical = card.safety_flags?.decision_critical;
 
   const cardBg = isLethal ? 'bg-rose-50' : isCritical ? 'bg-amber-50' : 'bg-white';
@@ -408,12 +413,12 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
       {/* Highlighter Labels */}
       {(isLethal || isCritical) && (
         <div className="p-4 sm:p-6 pt-0 sm:pt-0 pl-8 sm:pl-14 flex justify-center gap-2 sm:gap-3 flex-wrap">
-          {card.safety_flags?.lethal_risk && (
+          {lethalIfAccepted && (
             <div className="bg-rose-500 text-white text-[11px] sm:text-[10px] font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider">
               ☠️ LETAL SI LO ACEPTAS
             </div>
           )}
-          {card.safety_flags?.lethal_if_discarded && (
+          {lethalIfDiscarded && (
             <div className="bg-amber-500 text-white text-[11px] sm:text-[10px] font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider border-2 border-rose-500/30">
               ⚠️ LETAL SI LO TIRAS
             </div>

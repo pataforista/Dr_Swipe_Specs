@@ -16,11 +16,18 @@ describe('formatters unit tests', () => {
       expect(result).toBe('Correcto. El paciente muestra mejoría con la dosis estándar.');
     });
 
-    it('should format wrong response comments with critical alert', () => {
-      const comment = 'Se debe intubar de inmediato.';
-      const criticalCard = { ...mockCard, safety_flags: { lethal_risk: true } };
+    it('should warn lethal-if-accepted only when the right move is to discard', () => {
+      const comment = 'Está contraindicado en shock.';
+      const criticalCard = { ...mockCard, expected_action: 'discard' as const, safety_flags: { lethal_risk: true } };
       const result = cleanMentorComment(comment, false, criticalCard);
-      expect(result).toBe('☠️ LETAL SI SE ACEPTA: Se debe intubar de inmediato.');
+      expect(result).toBe('☠️ LETAL SI SE ACEPTA: Está contraindicado en shock.');
+    });
+
+    it('should warn lethal-if-discarded when a flagged card should have been kept', () => {
+      const comment = 'Se debe intubar de inmediato.';
+      const criticalCard = { ...mockCard, expected_action: 'keep' as const, safety_flags: { lethal_risk: true } };
+      const result = cleanMentorComment(comment, false, criticalCard);
+      expect(result).toBe('⚠️ LETAL SI SE DESCARTA: Se debe intubar de inmediato.');
     });
 
     it('should format wrong response comment for key data omission', () => {

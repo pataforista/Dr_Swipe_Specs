@@ -164,9 +164,9 @@
                 "options": [
                     "Antes de la semana 20 de gestación",
                     "Antes de la semana 12 de gestación",
-                    "Antes de la semana 20 de gestación"
+                    "Antes de la semana 28 de gestación"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿Cuál es el tratamiento quirúrgico de elección en una paciente con aborto incompleto estable y útero de 10 semanas?",
