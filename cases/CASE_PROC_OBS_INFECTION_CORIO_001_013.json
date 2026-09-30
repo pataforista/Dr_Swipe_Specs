@@ -150,10 +150,10 @@
                 "question": "¿Cuál es el signo clínico INDISPENSABLE para integrar el diagnóstico de Corioamnionitis (Criterios de Gibbs)?",
                 "options": [
                     "Líquido amniótico fétido",
-                    "Fiebre materna >=38.0°C",
-                    "Taquicardia Fetal >160 lpm"
+                    "Taquicardia Fetal >160 lpm",
+                    "Fiebre materna >=38.0°C"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             },
             {
                 "question": "¿Cuál es la vía de interrupción del embarazo preferida en una paciente con Corioamnionitis, si no existe contraindicación obstétrica?",
@@ -167,11 +167,11 @@
             {
                 "question": "¿Cuál es el esquema antibiótico de primera elección recomendado por la GPC para el manejo de la corioamnionitis?",
                 "options": [
+                    "Ampicilina + Gentamicina",
                     "Ceftriaxona + Metronidazol",
-                    "Clindamicina + Amikacina",
-                    "Ampicilina + Gentamicina"
+                    "Clindamicina + Amikacina"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             }
         ]
     }

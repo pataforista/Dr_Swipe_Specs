@@ -153,8 +153,8 @@
             {
                 "question": "¿En qué semanas de gestación se recomienda realizar el tamizaje de Diabetes Gestacional?",
                 "options": [
-                    "32 a 36 semanas",
                     "12 a 16 semanas",
+                    "32 a 36 semanas",
                     "24 a 28 semanas"
                 ],
                 "correct_index": 2
@@ -171,11 +171,11 @@
             {
                 "question": "¿Cuál es el fármaco de primera elección cuando el manejo nutricional no logra las metas de control?",
                 "options": [
+                    "Metformina",
                     "Glibenclamida",
-                    "Insulina",
-                    "Metformina"
+                    "Insulina"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             }
         ]
     }

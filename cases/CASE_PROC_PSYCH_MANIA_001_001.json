@@ -157,26 +157,26 @@
             {
                 "question": "¿Qué malformacion congenita se asocia clasicamente al uso de Litio durante el primer trimestre del embarazo?",
                 "options": [
-                    "Tetralogia de Fallot",
                     "Anomalia de Ebstein",
+                    "Tetralogia de Fallot",
                     "Defecto del tubo neural"
-                ],
-                "correct_index": 1
-            },
-            {
-                "question": "¿Cuál es el farmaco estabilizador del animo considerado el 'estandar de oro' para el tratamiento del Trastorno Bipolar I?",
-                "options": [
-                    "Carbonato de Litio",
-                    "Lamotrigina",
-                    "Ácido Valproico"
                 ],
                 "correct_index": 0
             },
             {
+                "question": "¿Cuál es el farmaco estabilizador del animo considerado el 'estandar de oro' para el tratamiento del Trastorno Bipolar I?",
+                "options": [
+                    "Lamotrigina",
+                    "Ácido Valproico",
+                    "Carbonato de Litio"
+                ],
+                "correct_index": 2
+            },
+            {
                 "question": "¿Cuál es la duracion minima de los síntomas necesaria para diagnosticar un Episodio Maniaco segun el DSM-5?",
                 "options": [
-                    "Al menos 4 dias consecutivos",
                     "Al menos 2 semanas",
+                    "Al menos 4 dias consecutivos",
                     "Al menos 1 semana"
                 ],
                 "correct_index": 2

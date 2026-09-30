@@ -161,17 +161,17 @@
             {
                 "question": "¿A qué familia de virus pertenece el agente de la Rubéola?",
                 "options": [
-                    "Herpesvirus",
+                    "Togavirus",
                     "Paramixovirus",
-                    "Togavirus"
+                    "Herpesvirus"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "De las siguientes opciones, ¿cuál es la complicación más grave de la Rubéola en la población general?",
                 "options": [
-                    "Púrpura Trombocitopénica",
                     "Encefalitis",
+                    "Púrpura Trombocitopénica",
                     "Síndrome de Rubéola Congénita"
                 ],
                 "correct_index": 2
@@ -179,11 +179,11 @@
             {
                 "question": "¿Qué componentes integran la Tríada de Gregg (Rubéola Congénita)?",
                 "options": [
-                    "Fiebre, Tos, Exantema",
                     "Catarata, Sordera, Cardiopatía (PCA)",
+                    "Fiebre, Tos, Exantema",
                     "Ictericia, Anemia, Esplenomegalia"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             }
         ]
     }

@@ -115,26 +115,26 @@
                 "question": "¿Cuál es el tratamiento antibiótico de elección para la Neumonía Atípica por Mycoplasma?",
                 "options": [
                     "Azitromicina",
-                    "Amoxicilina",
-                    "Ceftriaxona"
+                    "Ceftriaxona",
+                    "Amoxicilina"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es el agente etiológico atípico más frecuente en niños mayores de 5 años?",
                 "options": [
-                    "Mycoplasma pneumoniae",
+                    "Legionella pneumophila",
                     "Chlamydia pneumoniae",
-                    "Legionella pneumophila"
+                    "Mycoplasma pneumoniae"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Qué hallazgo radiológico es característico de una neumonía por Mycoplasma?",
                 "options": [
+                    "Absceso pulmonar",
                     "Infiltrados intersticiales bilaterales",
-                    "Consolidación lobar única",
-                    "Absceso pulmonar"
+                    "Consolidación lobar única"
                 ]
             }
         ]

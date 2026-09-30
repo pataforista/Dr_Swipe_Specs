@@ -176,8 +176,8 @@
                 "correct_index": 2,
                 "question": "¿Cuál es el componente de la Triada de Virchow que describe la inmovilidad prolongada?",
                 "options": [
-                    "Hipercoagulabilidad",
                     "Lesión endotelial",
+                    "Hipercoagulabilidad",
                     "Estasis venosa"
                 ]
             }

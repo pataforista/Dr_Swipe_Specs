@@ -154,20 +154,20 @@
             {
                 "question": "¿Qué marcador bioquímico es el más sensible para diagnosticar ruptura de membranas (Amnisure)?",
                 "options": [
+                    "Alfa-fetoproteína",
                     "Fibronectina fetal",
-                    "Microglobulina placentaria alfa-1 (PAMG-1)",
-                    "Alfa-fetoproteína"
+                    "Microglobulina placentaria alfa-1 (PAMG-1)"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             },
             {
                 "question": "¿Cuál es la maniobra exploratoria que debe EVITARSE ante la sospecha de ruptura prematura de membranas?",
                 "options": [
-                    "Maniobra de Tarnier",
                     "Especuloscopía estéril",
-                    "Tacto vaginal repetido"
+                    "Tacto vaginal repetido",
+                    "Maniobra de Tarnier"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             }
         ]
     }

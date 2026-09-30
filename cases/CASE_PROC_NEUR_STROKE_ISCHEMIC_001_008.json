@@ -164,8 +164,8 @@
                 "question": "¿Cuál es la puntuación máxima de la escala NIHSS (indicadora de severidad extrema)?",
                 "options": [
                     "42 puntos",
-                    "15 puntos",
-                    "100 puntos"
+                    "100 puntos",
+                    "15 puntos"
                 ]
             },
             {

@@ -161,8 +161,8 @@
             {
                 "question": "¿Cuál es el hallazgo dermatológico patognomónico de la varicela?",
                 "options": [
-                    "Manchas de Forchheimer",
                     "Exantema monomórfico centrífugo",
+                    "Manchas de Forchheimer",
                     "Pleomorfismo regional (mácula a costra)"
                 ],
                 "correct_index": 2
@@ -170,9 +170,9 @@
             {
                 "question": "¿Cuál es la complicación neurológica más frecuente en niños con varicela?",
                 "options": [
-                    "Mielitis transversa",
+                    "Encefalitis por inclusión",
                     "Ataxia cerebelosa aguda",
-                    "Encefalitis por inclusión"
+                    "Mielitis transversa"
                 ],
                 "correct_index": 1
             },

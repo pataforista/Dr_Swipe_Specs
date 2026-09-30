@@ -150,29 +150,29 @@
             {
                 "question": "Identifique un criterio necesario para indicar manejo MÉDICO con Metotrexato?",
                 "options": [
-                    "Presencia de latido cardíaco fetal",
                     "HCG sérica <5,000 mUI/ml y estabilidad hemodinámica",
+                    "Presencia de latido cardíaco fetal",
                     "Saco gestacional >5 cm"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             },
             {
                 "question": "¿Cuál es el 'estándar de oro' (Gold Standard) para el diagnóstico definitivo de embarazo ectópico?",
                 "options": [
+                    "Niveles de Progesterona Sérica",
                     "Laparoscopia",
-                    "Ultrasonido Transvaginal",
-                    "Niveles de Progesterona Sérica"
+                    "Ultrasonido Transvaginal"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál es la localización anatómica más frecuente del embarazo ectópico?",
                 "options": [
-                    "Región Ampular (Ampula)",
                     "Región Intersticial",
+                    "Región Ampular (Ampula)",
                     "Región Ístmica"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             }
         ]
     }

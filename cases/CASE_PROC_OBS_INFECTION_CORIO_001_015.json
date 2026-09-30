@@ -149,29 +149,29 @@
             {
                 "question": "En este contexto clínico, ¿cuál es el esquema antibiótico de primera elección recomendado por la GPC para el manejo de la corioamnionitis?",
                 "options": [
-                    "Ampicilina + Gentamicina",
+                    "Ceftriaxona + Metronidazol",
                     "Clindamicina + Amikacina",
-                    "Ceftriaxona + Metronidazol"
+                    "Ampicilina + Gentamicina"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             },
             {
                 "question": "¿Cuál es la vía de interrupción del embarazo preferida en una paciente con Corioamnionitis, si no existe contraindicación obstétrica?",
                 "options": [
-                    "Cesárea de Urgencia",
+                    "Vía Vaginal (Inducción/Conducción)",
                     "Histerectomía en bloque",
-                    "Vía Vaginal (Inducción/Conducción)"
+                    "Cesárea de Urgencia"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿Cuál es el signo clínico INDISPENSABLE para integrar el diagnóstico de Corioamnionitis (Criterios de Gibbs)?",
                 "options": [
                     "Líquido amniótico fétido",
-                    "Fiebre materna >=38.0°C",
-                    "Taquicardia Fetal >160 lpm"
+                    "Taquicardia Fetal >160 lpm",
+                    "Fiebre materna >=38.0°C"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             }
         ]
     }

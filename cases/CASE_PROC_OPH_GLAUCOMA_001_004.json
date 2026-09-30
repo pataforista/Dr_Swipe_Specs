@@ -166,10 +166,10 @@
                 "question": "¿Cuál de estas opciones farmacológicas está CONTRAINDICADA en la fase aguda del glaucoma de ángulo cerrado?",
                 "options": [
                     "Anhídrasa carbónica (Acetazolamida)",
-                    "Midriáticos (Atropina)",
-                    "Mióticos (Pilocarpina)"
+                    "Mióticos (Pilocarpina)",
+                    "Midriáticos (Atropina)"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             },
             {
                 "question": "¿Qué hallazgo pupilar es característico del ataque agudo de glaucoma de ángulo cerrado?",
@@ -183,9 +183,9 @@
             {
                 "question": "¿Cuál es el tratamiento quirúrgico/definitivo de elección para prevenir recurrencias en glaucoma primario de ángulo cerrado?",
                 "options": [
-                    "Extracción de catarata",
+                    "Trabeculectomía",
                     "Iridotomía con láser YAG",
-                    "Trabeculectomía"
+                    "Extracción de catarata"
                 ],
                 "correct_index": 1
             }

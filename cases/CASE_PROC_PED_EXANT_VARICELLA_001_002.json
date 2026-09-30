@@ -161,29 +161,29 @@
             {
                 "question": "¿Qué medicamento está estrictamente contraindicado en varicela pediátrica por riesgo de S. de Reye?",
                 "options": [
-                    "Aciclovir",
                     "Ácido Acetilsalicílico",
-                    "Paracetamol"
+                    "Paracetamol",
+                    "Aciclovir"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             },
             {
                 "question": "¿Cuál es el hallazgo dermatológico patognomónico de la varicela?",
                 "options": [
-                    "Manchas de Forchheimer",
+                    "Pleomorfismo regional (mácula a costra)",
                     "Exantema monomórfico centrífugo",
-                    "Pleomorfismo regional (mácula a costra)"
+                    "Manchas de Forchheimer"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿Cuál es la complicación neurológica más frecuente en niños con varicela?",
                 "options": [
+                    "Encefalitis por inclusión",
                     "Mielitis transversa",
-                    "Ataxia cerebelosa aguda",
-                    "Encefalitis por inclusión"
+                    "Ataxia cerebelosa aguda"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             }
         ]
     }

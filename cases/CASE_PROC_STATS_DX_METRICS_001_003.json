@@ -147,8 +147,8 @@
                 "question": "¿Qué sucede con el VPP si la prevalencia disminuye?",
                 "options": [
                     "Disminuye",
-                    "Aumenta",
-                    "Permanece igual"
+                    "Permanece igual",
+                    "Aumenta"
                 ]
             },
             {
@@ -156,8 +156,8 @@
                 "question": "¿Definición de Sensibilidad?",
                 "options": [
                     "VP / Total Enfermos",
-                    "VN / Total Sanos",
-                    "VP / Total Positivos"
+                    "VP / Total Positivos",
+                    "VN / Total Sanos"
                 ]
             },
             {

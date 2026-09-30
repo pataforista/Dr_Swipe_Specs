@@ -153,18 +153,18 @@
             {
                 "question": "Con respecto a la patología, ¿cuál es el valor diagnóstico de glucosa en AYUNO para Diabetes Gestacional en la estrategia de Un Paso (75g)?",
                 "options": [
-                    ">=92 mg/dl",
+                    ">=126 mg/dl",
                     ">=140 mg/dl",
-                    ">=126 mg/dl"
+                    ">=92 mg/dl"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             },
             {
                 "question": "En este contexto clínico, ¿cuál es el fármaco de primera elección cuando el manejo nutricional no logra las metas de control?",
                 "options": [
-                    "Metformina",
+                    "Glibenclamida",
                     "Insulina",
-                    "Glibenclamida"
+                    "Metformina"
                 ],
                 "correct_index": 1
             },

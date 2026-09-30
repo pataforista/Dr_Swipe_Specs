@@ -137,26 +137,26 @@
                 "question": "¿Cuál es el fármaco de elección en DM2 con enfermedad cardiovascular establecida?",
                 "options": [
                     "Agonistas GLP-1",
-                    "Sulfonilureas",
-                    "Metformina sola"
+                    "Metformina sola",
+                    "Sulfonilureas"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es el principal riesgo de las sulfonilureas?",
                 "options": [
+                    "Insuficiencia renal",
                     "Hipoglucemia y ganancia de peso",
-                    "Cetoacidosis",
-                    "Insuficiencia renal"
+                    "Cetoacidosis"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Qué grupo farmacológico aporta mayor beneficio en Insuficiencia Cardíaca?",
                 "options": [
-                    "iSGLT2",
+                    "DPP-4",
                     "GLP-1",
-                    "DPP-4"
+                    "iSGLT2"
                 ]
             }
         ]

@@ -158,10 +158,10 @@
                 "question": "¿En cuál de las siguientes infecciones vaginales es OBLIGATORIO el tratamiento simultáneo a la pareja sexual?",
                 "options": [
                     "Vaginosis Bacteriana",
-                    "Tricomoniasis",
-                    "Candidiasis Vaginal"
+                    "Candidiasis Vaginal",
+                    "Tricomoniasis"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             },
             {
                 "question": "¿Cuál es el hallazgo microscópico considerado patognomónico de la Vaginosis Bacteriana?",
@@ -175,11 +175,11 @@
             {
                 "question": "Con respecto a la patología, ¿cuál es el conjunto de criterios clínicos utilizados para diagnosticar Vaginosis Bacteriana en el consultorio?",
                 "options": [
+                    "Criterios de Amsel",
                     "Criterios de Centor",
-                    "Criterios de Jones",
-                    "Criterios de Amsel"
+                    "Criterios de Jones"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             }
         ]
     }

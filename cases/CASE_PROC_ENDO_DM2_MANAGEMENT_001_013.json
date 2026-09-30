@@ -137,17 +137,17 @@
                 "question": "¿Cuál es el fármaco de elección en pacientes con DM2 y enfermedad cardiovascular establecida (prevención secundaria)?",
                 "options": [
                     "Agonistas GLP-1",
-                    "Sulfonilureas",
-                    "Metformina sola"
+                    "Metformina sola",
+                    "Sulfonilureas"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es el principal riesgo asociado al uso de sulfonilureas como la glibenclamida?",
                 "options": [
-                    "Hipoglucemia y ganancia de peso",
+                    "Insuficiencia renal aguda",
                     "Cetoacidosis diabética",
-                    "Insuficiencia renal aguda"
+                    "Hipoglucemia y ganancia de peso"
                 ]
             },
             {

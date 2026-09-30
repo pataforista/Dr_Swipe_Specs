@@ -139,12 +139,12 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es la traducción correcta de 'Constipation' en un contexto médico?",
                 "options": [
-                    "Estreñimiento",
                     "Congestión nasal",
-                    "Diarrea"
+                    "Diarrea",
+                    "Estreñimiento"
                 ]
             },
             {

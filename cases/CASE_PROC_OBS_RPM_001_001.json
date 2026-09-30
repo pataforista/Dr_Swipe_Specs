@@ -164,8 +164,8 @@
                 "question": "¿Cuál es la conducta recomendada en una paciente con RPM de 32 semanas de gestación sin datos de infección?",
                 "options": [
                     "Manejo conservador (Madurez pulmonar + Antibióticos)",
-                    "Cesárea de urgencia",
-                    "Inducción inmediata del trabajo de parto"
+                    "Inducción inmediata del trabajo de parto",
+                    "Cesárea de urgencia"
                 ],
                 "correct_index": 0
             }

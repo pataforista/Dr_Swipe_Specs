@@ -93,29 +93,29 @@
             {
                 "question": "¿En qué clasificación de riesgo cae una mordedura de murciélago transdérmica en el rostro?",
                 "options": [
-                    "Riesgo Leve (Categoría I)",
                     "Riesgo Moderado (Categoría II)",
-                    "Riesgo Grave (Categoría III)"
+                    "Riesgo Grave (Categoría III)",
+                    "Riesgo Leve (Categoría I)"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál es la profilaxis adecuada para una exposición rábica Categoría III?",
                 "options": [
-                    "Lavado + Observación del animal por 10 días",
+                    "Lavado + Inmunoglobulina Antirrábica + Vacuna Antirrábica",
                     "Vacuna antirrábica en 3 dosis + Amoxicilina",
-                    "Lavado + Inmunoglobulina Antirrábica + Vacuna Antirrábica"
+                    "Lavado + Observación del animal por 10 días"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿Dónde debe administrarse la Inmunoglobulina Antirrábica humana (IGAH)?",
                 "options": [
+                    "Intravenosa diluida en solución fisiológica",
                     "Mitad intramuscular en glúteo, mitad subcutánea",
-                    "La mayor cantidad posible infiltrada dentro y alrededor de la herida",
-                    "Intravenosa diluida en solución fisiológica"
+                    "La mayor cantidad posible infiltrada dentro y alrededor de la herida"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             }
         ]
     }

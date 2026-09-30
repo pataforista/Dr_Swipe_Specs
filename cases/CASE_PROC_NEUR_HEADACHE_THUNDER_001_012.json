@@ -160,25 +160,25 @@
                 "question": "¿Cuál es la causa no traumática más frecuente de Hemorragia Subaracnoidea?",
                 "options": [
                     "Rotura de aneurisma sacular",
-                    "Malformación arteriovenosa (MAV)",
-                    "Angiopatía amiloide"
+                    "Angiopatía amiloide",
+                    "Malformación arteriovenosa (MAV)"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Qué hallazgo en el líquido cefalorraquídeo confirma una HSA frente a una punción traumática?",
                 "options": [
+                    "Presencia de leucocitos PMN",
                     "Xantocromía (coloración amarillenta)",
-                    "Glucosa muy baja",
-                    "Presencia de leucocitos PMN"
+                    "Glucosa muy baja"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es el fármaco de elección para prevenir el vasoespasmo cerebral tras la rotura?",
                 "options": [
-                    "Nimodipino",
                     "Verapamilo",
+                    "Nimodipino",
                     "Amlodipino"
                 ]
             }

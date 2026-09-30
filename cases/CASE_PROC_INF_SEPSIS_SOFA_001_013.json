@@ -176,30 +176,30 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es la meta de Presión Arterial Media (PAM) tras la reanimación inicial?",
                 "options": [
-                    ">=65 mmHg",
                     ">=90 mmHg",
-                    ">=50 mmHg"
+                    ">=50 mmHg",
+                    ">=65 mmHg"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es el vasopresor de primera elección en el choque séptico?",
                 "options": [
-                    "Norepinefrina",
                     "Dopamina",
-                    "Epinefrina"
+                    "Epinefrina",
+                    "Norepinefrina"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Qué par de criterios definen el Choque Séptico tras la reanimación con líquidos?",
                 "options": [
+                    "TAS <100 y qSOFA de 3",
                     "Necesidad de vasopresores y Lactato >2 mmol/L",
-                    "Fiebre y Leucocitosis",
-                    "TAS <100 y qSOFA de 3"
+                    "Fiebre y Leucocitosis"
                 ]
             }
         ]

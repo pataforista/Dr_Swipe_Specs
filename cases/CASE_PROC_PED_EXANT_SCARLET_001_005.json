@@ -173,27 +173,27 @@
             {
                 "question": "¿Cuál es el agente etiológico de la escarlatina?",
                 "options": [
+                    "Streptococcus pneumoniae",
                     "Streptococcus pyogenes",
-                    "Staphylococcus aureus",
-                    "Streptococcus pneumoniae"
+                    "Staphylococcus aureus"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             },
             {
                 "question": "¿Cómo se llama la intensificación del exantema en los pliegues cutáneos?",
                 "options": [
-                    "Líneas de Pastia",
                     "Signo de Nikolsky",
+                    "Líneas de Pastia",
                     "Fenómeno de Koebner"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál es el objetivo principal de administrar penicilina en un paciente con escarlatina?",
                 "options": [
                     "Prevenir la Fiebre Reumática Aguda",
-                    "Prevenir la Glomerulonefritis post-estreptocócica",
-                    "Evitar la caída de la fiebre"
+                    "Evitar la caída de la fiebre",
+                    "Prevenir la Glomerulonefritis post-estreptocócica"
                 ],
                 "correct_index": 0
             }

@@ -178,12 +178,12 @@
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es el valor de glucosa capilar por debajo del cual los síntomas podrían ser un imitador (mimic) del EVC?",
                 "options": [
-                    "Menor a 50 mg/dl",
                     "Menor a 100 mg/dl",
-                    "Mayor a 200 mg/dl"
+                    "Mayor a 200 mg/dl",
+                    "Menor a 50 mg/dl"
                 ]
             }
         ]

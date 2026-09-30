@@ -139,12 +139,12 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es la traducción correcta de 'Constipation' en un contexto médico?",
                 "options": [
+                    "Diarrea",
                     "Estreñimiento",
-                    "Congestión nasal",
-                    "Diarrea"
+                    "Congestión nasal"
                 ]
             },
             {
@@ -157,12 +157,12 @@
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es la diferencia entre 'Wound' e 'Injury'?",
                 "options": [
+                    "Son sinónimos exactos en medicina",
                     "Wound es una herida abierta; Injury es cualquier lesión",
-                    "Wound es una fractura; Injury es un moretón",
-                    "Son sinónimos exactos en medicina"
+                    "Wound es una fractura; Injury es un moretón"
                 ]
             }
         ]

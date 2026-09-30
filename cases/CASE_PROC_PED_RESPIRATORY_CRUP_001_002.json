@@ -161,11 +161,11 @@
             {
                 "question": "¿Cómo se llama el signo radiográfico característico observado en la proyección AP de cuello?",
                 "options": [
+                    "Signo del Pulgar",
                     "Imagen en Coraza",
-                    "Signo de la Torre o Punta de Lápiz",
-                    "Signo del Pulgar"
+                    "Signo de la Torre o Punta de Lápiz"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             },
             {
                 "question": "¿Cuál es el agente etiológico más común del Crup viral?",
@@ -179,9 +179,9 @@
             {
                 "question": "¿Cuál es el tratamiento esteroideo de elección en el servicio de urgencias?",
                 "options": [
-                    "Hidrocortisona",
+                    "Metilprednisolona",
                     "Dexametasona",
-                    "Metilprednisolona"
+                    "Hidrocortisona"
                 ],
                 "correct_index": 1
             }

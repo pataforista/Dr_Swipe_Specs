@@ -166,28 +166,28 @@
                 "question": "¿Cuál es el tratamiento antibiotico de eleccion para una NAC no complicada en el manejo ambulatorio?",
                 "options": [
                     "Eritromicina oral",
-                    "Ceftriaxona intramuscular",
-                    "Amoxicilina a dosis de 80-90 mg/kg/dia"
+                    "Amoxicilina a dosis de 80-90 mg/kg/dia",
+                    "Ceftriaxona intramuscular"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             },
             {
                 "question": "¿A partir de que nivel de saturacion de oxigeno por oximetria de pulso se indica el ingreso hospitalario?",
                 "options": [
-                    "Menor a 95%",
                     "Menor a 88%",
-                    "Menor a 92%"
+                    "Menor a 92%",
+                    "Menor a 95%"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál es el agente etiologico bacteriano mas frecuente de neumonia adquirida en la comunidad en ninos mayores de 3 meses?",
                 "options": [
-                    "Staphylococcus aureus",
                     "Haemophilus influenzae",
-                    "Streptococcus pneumoniae"
+                    "Streptococcus pneumoniae",
+                    "Staphylococcus aureus"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             }
         ]
     }

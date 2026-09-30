@@ -110,19 +110,19 @@
                 "question": "¿Cuál es el antídoto o tratamiento farmacológico específico para el Síndrome Neuroléptico Maligno?",
                 "options": [
                     "Bromocriptina y Dantroleno",
-                    "Ciproheptadina",
-                    "Flumazenil"
+                    "Flumazenil",
+                    "Ciproheptadina"
                 ],
                 "correct_index": 0
             },
             {
                 "question": "¿Qué complicación letal debe prevenirse con hidratación vigorosa en el SNM debido a la elevación masiva de CPK?",
                 "options": [
+                    "Infarto agudo de miocardio",
                     "Falla hepática fulminante",
-                    "Falla renal aguda por mioglobinuria",
-                    "Infarto agudo de miocardio"
+                    "Falla renal aguda por mioglobinuria"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             }
         ]
     }

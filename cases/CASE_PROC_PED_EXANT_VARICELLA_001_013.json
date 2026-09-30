@@ -170,8 +170,8 @@
             {
                 "question": "¿Cuál es la complicación neurológica más frecuente en niños con varicela?",
                 "options": [
-                    "Mielitis transversa",
                     "Encefalitis por inclusión",
+                    "Mielitis transversa",
                     "Ataxia cerebelosa aguda"
                 ],
                 "correct_index": 2
@@ -179,11 +179,11 @@
             {
                 "question": "¿Cuál es el hallazgo dermatológico patognomónico de la varicela?",
                 "options": [
-                    "Pleomorfismo regional (mácula a costra)",
                     "Manchas de Forchheimer",
-                    "Exantema monomórfico centrífugo"
+                    "Exantema monomórfico centrífugo",
+                    "Pleomorfismo regional (mácula a costra)"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             }
         ]
     }

@@ -157,11 +157,11 @@
             {
                 "question": "¿Qué parámetros integran el acrónimo del Síndrome de HELLP?",
                 "options": [
-                    "Hipertensión, Edema, Linfocitos ↑, Leucocitos ↑",
                     "Hemólisis, Enzimas hepáticas ↑, Plaquetas ↓",
-                    "Hipotensión, Enzimas cardiacas ↑, Lactato ↑"
+                    "Hipotensión, Enzimas cardiacas ↑, Lactato ↑",
+                    "Hipertensión, Edema, Linfocitos ↑, Leucocitos ↑"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             },
             {
                 "question": "¿Cuál es el antídoto de elección ante una intoxicación por Sulfato de Magnesio?",
@@ -175,11 +175,11 @@
             {
                 "question": "De las siguientes opciones, ¿cuál es el primer signo clínico de intoxicación por Magnesio?",
                 "options": [
+                    "Somnolencia extrema",
                     "Paro respiratorio",
-                    "Abolición del reflejo rotuliano",
-                    "Somnolencia extrema"
+                    "Abolición del reflejo rotuliano"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             }
         ]
     }

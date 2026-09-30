@@ -153,29 +153,29 @@
             {
                 "question": "¿Qué par de hallazgos adicionales transforman la tríada de Charcot en la péntada de Reynolds?",
                 "options": [
-                    "Bradicardia e hipotermia",
                     "Hipotensión arterial y alteración del estado mental",
-                    "Diarrea y vómitos profusos"
-                ],
-                "correct_index": 1
-            },
-            {
-                "question": "Con respecto a la patología, ¿cuál es el procedimiento diagnóstico y terapéutico de elección en la colangitis aguda?",
-                "options": [
-                    "CPRE (Colangiopancreatografía Retrógrada Endoscópica)",
-                    "Gammagrafía HIDA",
-                    "Colecistectomía laparoscópica de urgencia"
+                    "Diarrea y vómitos profusos",
+                    "Bradicardia e hipotermia"
                 ],
                 "correct_index": 0
             },
             {
+                "question": "Con respecto a la patología, ¿cuál es el procedimiento diagnóstico y terapéutico de elección en la colangitis aguda?",
+                "options": [
+                    "Gammagrafía HIDA",
+                    "Colecistectomía laparoscópica de urgencia",
+                    "CPRE (Colangiopancreatografía Retrógrada Endoscópica)"
+                ],
+                "correct_index": 2
+            },
+            {
                 "question": "¿Cuál es el germen más frecuentemente aislado en esta patología?",
                 "options": [
+                    "Bacteroides fragilis",
                     "Staphylococcus aureus",
-                    "Escherichia coli",
-                    "Bacteroides fragilis"
+                    "Escherichia coli"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             }
         ]
     }

@@ -154,26 +154,26 @@
             {
                 "question": "¿Cuál es la conducta de reperfusión recomendada si el tiempo estimado para realizar una ICP primaria es mayor a 120 minutos?",
                 "options": [
-                    "Esperar el tiempo necesario para ICP",
                     "Manejo conservador con nitratos",
-                    "Fibrinolisis sistémica inmediata"
+                    "Fibrinolisis sistémica inmediata",
+                    "Esperar el tiempo necesario para ICP"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál es la dosis de carga recomendada de Ácido Acetilsalicílico (Aspirina) en la fase aguda del infarto según la GPC?",
                 "options": [
+                    "300 mg",
                     "500 mg",
-                    "100 mg",
-                    "300 mg"
+                    "100 mg"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿Qué hallazgo electrocardiográfico define un IAMCEST según los criterios universales?",
                 "options": [
-                    "Inversión de la onda T en V1-V2",
                     "Presencia aislada de ondas Q profundas",
+                    "Inversión de la onda T en V1-V2",
                     "Elevación del ST >= 1 mm en 2 derivadas contiguas"
                 ],
                 "correct_index": 2

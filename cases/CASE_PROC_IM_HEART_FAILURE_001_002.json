@@ -163,20 +163,20 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuáles son los 'cuatro fantásticos' pilares del tratamiento inicial de la Insuficiencia Cardíaca con FE reducida?",
                 "options": [
-                    "ARNI (o IECA), Beta-bloqueador, ARM e iSGLT2",
                     "Diurético, Digoxina, Calcio-antagonista y AAS",
+                    "ARNI (o IECA), Beta-bloqueador, ARM e iSGLT2",
                     "Amiodarona, Nitratos, IECA y ARM"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Qué escala se utiliza para clasificar la capacidad funcional de los pacientes con insuficiencia cardíaca?",
                 "options": [
-                    "Clasificación NYHA",
                     "Criterios de Framingham",
+                    "Clasificación NYHA",
                     "Puntuación CHA2DS2-VASc"
                 ]
             },
@@ -185,8 +185,8 @@
                 "question": "¿Cuál es el estudio de elección para confirmar el diagnóstico y clasificar la fracción de eyección en la IC?",
                 "options": [
                     "Ecocardiograma Transtorácico",
-                    "Electrocardiograma de 12 derivaciones",
-                    "Radiografía de tórax (PA)"
+                    "Radiografía de tórax (PA)",
+                    "Electrocardiograma de 12 derivaciones"
                 ]
             }
         ]

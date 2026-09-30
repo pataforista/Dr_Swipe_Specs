@@ -160,30 +160,30 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es la puntuación máxima de la escala NIHSS (indicadora de severidad extrema)?",
                 "options": [
-                    "42 puntos",
                     "15 puntos",
-                    "100 puntos"
+                    "100 puntos",
+                    "42 puntos"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Hasta cuántas horas se extiende la ventana terapéutica para rTPA en casos seleccionados?",
                 "options": [
-                    "4.5 horas",
+                    "12 horas",
                     "6 horas",
-                    "12 horas"
+                    "4.5 horas"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es el valor de glucosa capilar por debajo del cual los síntomas podrían ser un imitador (mimic) del EVC?",
                 "options": [
+                    "Mayor a 200 mg/dl",
                     "Menor a 50 mg/dl",
-                    "Menor a 100 mg/dl",
-                    "Mayor a 200 mg/dl"
+                    "Menor a 100 mg/dl"
                 ]
             }
         ]

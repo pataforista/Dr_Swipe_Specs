@@ -163,21 +163,21 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuáles son los 'cuatro fantásticos' pilares del tratamiento inicial de la Insuficiencia Cardíaca con FE reducida?",
                 "options": [
-                    "ARNI (o IECA), Beta-bloqueador, ARM e iSGLT2",
                     "Diurético, Digoxina, Calcio-antagonista y AAS",
-                    "Amiodarona, Nitratos, IECA y ARM"
+                    "Amiodarona, Nitratos, IECA y ARM",
+                    "ARNI (o IECA), Beta-bloqueador, ARM e iSGLT2"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Qué escala se utiliza para clasificar la capacidad funcional de los pacientes con insuficiencia cardíaca?",
                 "options": [
+                    "Puntuación CHA2DS2-VASc",
                     "Clasificación NYHA",
-                    "Criterios de Framingham",
-                    "Puntuación CHA2DS2-VASc"
+                    "Criterios de Framingham"
                 ]
             },
             {

@@ -169,11 +169,11 @@
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es la principal causa de muerte prehospitalaria en un paciente con IAM?",
                 "options": [
-                    "Fibrilación Ventricular",
                     "Ruptura de pared libre",
+                    "Fibrilación Ventricular",
                     "Choque cardiogénico"
                 ]
             }

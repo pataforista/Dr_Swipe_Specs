@@ -133,11 +133,11 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es el fármaco de elección en pacientes con DM2 y enfermedad cardiovascular establecida (prevención secundaria)?",
                 "options": [
-                    "Agonistas GLP-1",
                     "Sulfonilureas",
+                    "Agonistas GLP-1",
                     "Metformina sola"
                 ]
             },
@@ -151,11 +151,11 @@
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "En un paciente con DM2 e Insuficiencia Cardíaca, ¿qué grupo farmacológico aporta mayor beneficio de cardio-protección?",
                 "options": [
-                    "Inhibidores de SGLT2 (iSGLT2)",
                     "Agonistas GLP-1",
+                    "Inhibidores de SGLT2 (iSGLT2)",
                     "Inhibidores de DPP-4"
                 ]
             }

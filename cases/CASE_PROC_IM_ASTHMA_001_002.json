@@ -159,12 +159,12 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es la combinación farmacológica preferente para el rescate y mantenimiento en asma según GINA 2024?",
                 "options": [
-                    "Esteroide inhalado (ICS) + Formoterol",
+                    "Tiotropio (LAMA) solo",
                     "Salbutamol (SABA) solo",
-                    "Tiotropio (LAMA) solo"
+                    "Esteroide inhalado (ICS) + Formoterol"
                 ]
             },
             {
@@ -172,17 +172,17 @@
                 "question": "¿Qué porcentaje de mejoría del FEV1 tras el uso de broncodilatador se considera diagnóstico de asma?",
                 "options": [
                     "Mayor al 12%",
-                    "Mayor al 5%",
-                    "Mayor al 20%"
+                    "Mayor al 20%",
+                    "Mayor al 5%"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es la medida más importante antes de subir de escalón terapéutico en un paciente no controlado?",
                 "options": [
+                    "Cambiar a inmunoterapia",
                     "Revisar técnica inhalatoria y apego",
-                    "Agregar antibióticos",
-                    "Cambiar a inmunoterapia"
+                    "Agregar antibióticos"
                 ]
             }
         ]

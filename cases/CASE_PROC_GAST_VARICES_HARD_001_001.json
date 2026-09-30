@@ -97,20 +97,20 @@
             {
                 "question": "¿Qué complicación previene directamente el uso de Ceftriaxona en este paciente cirrótico con sangrado activo?",
                 "options": [
-                    "Peritonitis Bacteriana Espontánea (PBE)",
                     "Encefalopatía Hepática",
-                    "Síndrome Hepatorrenal"
+                    "Síndrome Hepatorrenal",
+                    "Peritonitis Bacteriana Espontánea (PBE)"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             },
             {
                 "question": "¿Cuál es el tratamiento endoscópico de elección para las várices esofágicas sangrantes?",
                 "options": [
+                    "Ligadura endoscópica con banda elástica",
                     "Escleroterapia con etanolamina",
-                    "Colocación de balón de Sengstaken-Blakemore",
-                    "Ligadura endoscópica con banda elástica"
+                    "Colocación de balón de Sengstaken-Blakemore"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             }
         ]
     }

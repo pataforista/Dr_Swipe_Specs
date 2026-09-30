@@ -162,28 +162,28 @@
                 "question": "¿Cuál es el parámetro de laboratorio más sensible y temprano para diagnosticar la deficiencia de hierro?",
                 "options": [
                     "Hierro sérico",
-                    "Hemoglobina total",
-                    "Ferritina sérica"
+                    "Ferritina sérica",
+                    "Hemoglobina total"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál es la dosis recomendada de hierro elemental para el tratamiento de la anemia ferropénica en niños?",
                 "options": [
                     "3 a 6 mg/kg/día",
-                    "1 mg/kg/día",
-                    "10 a 15 mg/kg/día"
+                    "10 a 15 mg/kg/día",
+                    "1 mg/kg/día"
                 ],
                 "correct_index": 0
             },
             {
                 "question": "¿A los cuántos días de iniciado el tratamiento se observa el pico máximo de reticulocitosis?",
                 "options": [
-                    "30 días",
                     "7 a 10 días",
-                    "2 a 3 días"
+                    "2 a 3 días",
+                    "30 días"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             }
         ]
     }

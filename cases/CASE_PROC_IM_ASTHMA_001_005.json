@@ -168,20 +168,20 @@
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Qué porcentaje de mejoría del FEV1 tras el uso de broncodilatador se considera diagnóstico de asma?",
                 "options": [
+                    "Mayor al 20%",
                     "Mayor al 12%",
-                    "Mayor al 5%",
-                    "Mayor al 20%"
+                    "Mayor al 5%"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es la medida más importante antes de subir de escalón terapéutico en un paciente no controlado?",
                 "options": [
-                    "Revisar técnica inhalatoria y apego",
                     "Agregar antibióticos",
+                    "Revisar técnica inhalatoria y apego",
                     "Cambiar a inmunoterapia"
                 ]
             }

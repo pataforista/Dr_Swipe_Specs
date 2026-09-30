@@ -158,17 +158,17 @@
             {
                 "question": "¿Por cuánto tiempo se recomienda el seguimiento con anticonceptivos orales tras la evacuación de una mola?",
                 "options": [
-                    "No se requiere anticoncepción",
+                    "6 a 12 meses",
                     "3 meses",
-                    "6 a 12 meses"
+                    "No se requiere anticoncepción"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿Cómo se describe clásicamente el patrón ultrasonográfico de una mola hidatidiforme completa?",
                 "options": [
-                    "Imagen en 'anillo de fuego' peritubárica",
                     "Imagen de 'masa heterogénea' con feto presente",
+                    "Imagen en 'anillo de fuego' peritubárica",
                     "Imagen en 'tormenta de nieve' o 'panal de abejas'"
                 ],
                 "correct_index": 2

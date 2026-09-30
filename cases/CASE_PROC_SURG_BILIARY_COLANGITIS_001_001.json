@@ -151,29 +151,29 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Qué par de hallazgos adicionales transforman la tríada de Charcot en la péntada de Reynolds?",
                 "options": [
-                    "Hipotensión y alteración del estado mental",
                     "Diarrea y vómitos",
+                    "Hipotensión y alteración del estado mental",
                     "Bradicardia e hipotermia"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es el procedimiento diagnóstico y terapéutico de elección en la colangitis aguda?",
                 "options": [
-                    "CPRE",
                     "Colecistectomía laparoscópica",
-                    "Gammagrafía HIDA"
+                    "Gammagrafía HIDA",
+                    "CPRE"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es el germen más frecuentemente aislado en colangitis aguda?",
                 "options": [
-                    "Escherichia coli",
                     "Klebsiella pneumoniae",
+                    "Escherichia coli",
                     "Enterococcus faecalis"
                 ]
             }

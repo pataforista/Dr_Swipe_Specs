@@ -164,21 +164,21 @@
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Qué fármaco se utiliza de primera línea para la profilaxis de Pneumocystis jirovecii?",
                 "options": [
-                    "Trimetoprima/Sulfametoxazol",
                     "Linezolid",
+                    "Trimetoprima/Sulfametoxazol",
                     "Clindamicina"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿A qué familia de antirretrovirales pertenece el Dolutegravir (DTG)?",
                 "options": [
-                    "Inhibidor de la Integrasa (INSTI)",
                     "Inhibidor de la Proteasa (IP)",
-                    "Inhibidor de Nucleósidos (ITNR)"
+                    "Inhibidor de Nucleósidos (ITNR)",
+                    "Inhibidor de la Integrasa (INSTI)"
                 ]
             }
         ]

@@ -170,26 +170,26 @@
                 "question": "¿En qué periodo es contagioso el paciente?",
                 "options": [
                     "Desde el pródromo hasta 4-5 días tras inicio de exantema",
-                    "Solo cuando tiene fiebre alta",
-                    "Durante toda la vida"
+                    "Durante toda la vida",
+                    "Solo cuando tiene fiebre alta"
                 ],
                 "correct_index": 0
             },
             {
                 "question": "Identifique la complicación más frecuente del sarampión?",
                 "options": [
+                    "Panencefalitis esclerosante subaguda",
                     "Otitis media aguda",
-                    "Crup",
-                    "Panencefalitis esclerosante subaguda"
+                    "Crup"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál es la causa más común de MUERTE por sarampión?",
                 "options": [
-                    "Deshidratación",
+                    "Encefalitis",
                     "Neumonía",
-                    "Encefalitis"
+                    "Deshidratación"
                 ],
                 "correct_index": 1
             }

@@ -149,11 +149,11 @@
             {
                 "question": "¿Por cuánto tiempo se recomienda el seguimiento con anticonceptivos orales tras la evacuación de una mola?",
                 "options": [
+                    "6 a 12 meses",
                     "3 meses",
-                    "No se requiere anticoncepción",
-                    "6 a 12 meses"
+                    "No se requiere anticoncepción"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿Cómo se describe clásicamente el patrón ultrasonográfico de una mola hidatidiforme completa?",
@@ -167,11 +167,11 @@
             {
                 "question": "¿La aparición de qué patología antes de las 20 semanas de gestación es altamente sugestiva de mola hidatidiforme?",
                 "options": [
-                    "Diabetes Gestacional",
                     "Preeclampsia / Hipertensión",
-                    "Colestasis Intrahepática"
+                    "Colestasis Intrahepática",
+                    "Diabetes Gestacional"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             }
         ]
     }

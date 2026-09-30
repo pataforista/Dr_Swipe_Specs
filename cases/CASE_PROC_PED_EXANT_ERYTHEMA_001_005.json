@@ -166,29 +166,29 @@
             {
                 "question": "¿Cuál es el principal receptor celular para el Parvovirus B19?",
                 "options": [
-                    "Antígeno P (globósido)",
+                    "Receptor ACE2",
                     "CD4",
-                    "Receptor ACE2"
-                ],
-                "correct_index": 0
-            },
-            {
-                "question": "¿En qué momento deja de ser contagioso un niño con la quinta enfermedad?",
-                "options": [
-                    "7 días después del exantema",
-                    "Nunca deja de ser contagioso",
-                    "En cuanto aparece el exantema"
+                    "Antígeno P (globósido)"
                 ],
                 "correct_index": 2
             },
             {
-                "question": "Con respecto a la patología, ¿cuál es el agente etiológico del eritema infeccioso?",
+                "question": "¿En qué momento deja de ser contagioso un niño con la quinta enfermedad?",
                 "options": [
-                    "Parvovirus B19",
-                    "Virus Herpes Humano 6",
-                    "Virus de la Rubéola"
+                    "En cuanto aparece el exantema",
+                    "Nunca deja de ser contagioso",
+                    "7 días después del exantema"
                 ],
                 "correct_index": 0
+            },
+            {
+                "question": "Con respecto a la patología, ¿cuál es el agente etiológico del eritema infeccioso?",
+                "options": [
+                    "Virus de la Rubéola",
+                    "Parvovirus B19",
+                    "Virus Herpes Humano 6"
+                ],
+                "correct_index": 1
             }
         ]
     }

@@ -161,20 +161,20 @@
             {
                 "question": "En este contexto clínico, ¿cuál es la complicación más grave de la Rubéola en la población general?",
                 "options": [
+                    "Encefalitis",
                     "Síndrome de Rubéola Congénita",
-                    "Púrpura Trombocitopénica",
-                    "Encefalitis"
+                    "Púrpura Trombocitopénica"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             },
             {
                 "question": "¿A qué familia de virus pertenece el agente de la Rubéola?",
                 "options": [
-                    "Herpesvirus",
+                    "Togavirus",
                     "Paramixovirus",
-                    "Togavirus"
+                    "Herpesvirus"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿Qué componentes integran la Tríada de Gregg (Rubéola Congénita)?",

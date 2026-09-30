@@ -153,9 +153,9 @@
             {
                 "question": "¿En qué mes aparece típicamente la sedestación sin apoyo (sedestación independiente)?",
                 "options": [
-                    "4 meses",
+                    "9 meses",
                     "6 meses",
-                    "9 meses"
+                    "4 meses"
                 ],
                 "correct_index": 1
             },
@@ -172,8 +172,8 @@
                 "question": "¿A qué edad se considera un SIGNO DE ALARMA la ausencia de marcha independiente?",
                 "options": [
                     "18 meses",
-                    "12 meses",
-                    "24 meses"
+                    "24 meses",
+                    "12 meses"
                 ],
                 "correct_index": 0
             }

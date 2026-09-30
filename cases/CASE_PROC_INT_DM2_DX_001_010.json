@@ -160,11 +160,11 @@
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Qué porcentaje de HbA1c confirma el diagnóstico?",
                 "options": [
-                    ">=6.5%",
                     ">=5.7%",
+                    ">=6.5%",
                     ">=8.0%"
                 ]
             },
@@ -173,8 +173,8 @@
                 "question": "¿En qué momento se diagnostica DM2 con glucosa al azar >=200?",
                 "options": [
                     "Si hay síntomas clásicos (síntomas)",
-                    "Siempre es diagnóstico",
-                    "Nunca, requiere confirmación"
+                    "Nunca, requiere confirmación",
+                    "Siempre es diagnóstico"
                 ]
             }
         ]

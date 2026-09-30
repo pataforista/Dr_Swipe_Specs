@@ -156,11 +156,11 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es la causa no traumática más frecuente de Hemorragia Subaracnoidea?",
                 "options": [
-                    "Rotura de aneurisma sacular",
                     "Malformación arteriovenosa (MAV)",
+                    "Rotura de aneurisma sacular",
                     "Angiopatía amiloide"
                 ]
             },

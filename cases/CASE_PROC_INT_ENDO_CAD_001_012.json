@@ -159,16 +159,16 @@
                 "question": "¿Cuál es el valor mínimo de Potasio requerido para iniciar la infusión de insulina de forma segura?",
                 "options": [
                     "Mayor a 3.3 mEq/L",
-                    "Mayor a 2.5 mEq/L",
-                    "Mayor a 5.0 mEq/L"
+                    "Mayor a 5.0 mEq/L",
+                    "Mayor a 2.5 mEq/L"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿En qué situación clínica se recomienda el uso de Bicarbonato de Sodio?",
                 "options": [
-                    "pH menor a 6.9",
                     "pH menor a 7.2",
+                    "pH menor a 6.9",
                     "Solo ante hiperpotasemia grave"
                 ]
             },
@@ -177,8 +177,8 @@
                 "question": "¿Cuál es el parámetro laboratorial principal para definir la resolución de la CAD?",
                 "options": [
                     "Cierre del Anion Gap / Brecha aniónica",
-                    "Glucosa menor a 100 mg/dl",
-                    "Ausencia de glucosuria"
+                    "Ausencia de glucosuria",
+                    "Glucosa menor a 100 mg/dl"
                 ]
             }
         ]

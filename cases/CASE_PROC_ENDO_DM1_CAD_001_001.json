@@ -150,26 +150,26 @@
             {
                 "question": "¿En qué situación clínica extrema se recomienda la administración de bicarbonato de sodio en un paciente con CAD?",
                 "options": [
-                    "pH arterial menor a 7.2",
                     "pH arterial menor a 6.9",
-                    "Hiperglucemia mayor a 500 mg/dl"
-                ],
-                "correct_index": 1
-            },
-            {
-                "question": "De las siguientes opciones, ¿cuál es el nivel de potasio sérico por debajo del cual está contraindicado iniciar la infusión de insulina en CAD?",
-                "options": [
-                    "Menos de 3.3 mEq/L",
-                    "Menos de 2.5 mEq/L",
-                    "Menos de 4.5 mEq/L"
+                    "Hiperglucemia mayor a 500 mg/dl",
+                    "pH arterial menor a 7.2"
                 ],
                 "correct_index": 0
             },
             {
+                "question": "De las siguientes opciones, ¿cuál es el nivel de potasio sérico por debajo del cual está contraindicado iniciar la infusión de insulina en CAD?",
+                "options": [
+                    "Menos de 2.5 mEq/L",
+                    "Menos de 3.3 mEq/L",
+                    "Menos de 4.5 mEq/L"
+                ],
+                "correct_index": 1
+            },
+            {
                 "question": "¿Cuál es el parámetro más confiable para determinar la resolución de la cetoacidosis diabética según la GPC?",
                 "options": [
-                    "Nivel de glucosa menor a 200 mg/dl",
                     "Ausencia total de glucosa en orina",
+                    "Nivel de glucosa menor a 200 mg/dl",
                     "Normalización de la brecha aniónica (Anion Gap)"
                 ],
                 "correct_index": 2

@@ -150,26 +150,26 @@
             {
                 "question": "¿Cuál es la localización anatómica más frecuente del embarazo ectópico?",
                 "options": [
-                    "Región Intersticial",
                     "Región Ampular (Ampula)",
+                    "Región Intersticial",
                     "Región Ístmica"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             },
             {
                 "question": "¿Cuál es un criterio necesario para indicar manejo MÉDICO con Metotrexato?",
                 "options": [
+                    "HCG sérica <5,000 mUI/ml y estabilidad hemodinámica",
                     "Saco gestacional >5 cm",
-                    "Presencia de latido cardíaco fetal",
-                    "HCG sérica <5,000 mUI/ml y estabilidad hemodinámica"
+                    "Presencia de latido cardíaco fetal"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿Cuál es el 'estándar de oro' (Gold Standard) para el diagnóstico definitivo de embarazo ectópico?",
                 "options": [
-                    "Ultrasonido Transvaginal",
                     "Niveles de Progesterona Sérica",
+                    "Ultrasonido Transvaginal",
                     "Laparoscopia"
                 ],
                 "correct_index": 2

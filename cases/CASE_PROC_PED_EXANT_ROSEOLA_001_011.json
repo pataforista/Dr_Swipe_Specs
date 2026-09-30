@@ -157,29 +157,29 @@
             {
                 "question": "¿Qué hallazgo en la cavidad oral es característico de esta enfermedad?",
                 "options": [
+                    "Manchas de Nagayama",
                     "Manchas de Koplik",
-                    "Manchas de Forchheimer",
-                    "Manchas de Nagayama"
+                    "Manchas de Forchheimer"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "Con respecto a la patología, ¿cuál es el agente etiológico más común del exantema súbito?",
                 "options": [
-                    "Virus Varicela Zóster",
                     "Virus Herpes Humano 6",
-                    "Parvovirus B19"
+                    "Parvovirus B19",
+                    "Virus Varicela Zóster"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             },
             {
                 "question": "¿Cuál es la complicación sistémica más frecuente asociada a la Roseola?",
                 "options": [
-                    "Neumonía",
+                    "Convulsiones febriles",
                     "Glomerulonefritis",
-                    "Convulsiones febriles"
+                    "Neumonía"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             }
         ]
     }

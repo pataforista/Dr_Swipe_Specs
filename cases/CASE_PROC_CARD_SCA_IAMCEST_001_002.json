@@ -96,26 +96,26 @@
                 "question": "¿Cuál es el TIEMPO MAXIMO puerta-aguja para fibrinolisis en IAMCEST?",
                 "options": [
                     "30 minutos",
-                    "60 minutos",
-                    "90 minutos"
+                    "90 minutos",
+                    "60 minutos"
                 ],
                 "correct_index": 0
             },
             {
                 "question": "¿Qué indica ELEVACIÓN de ST nuevamente 30 min post-fibrinolisis?",
                 "options": [
-                    "Éxito del tratamiento",
                     "Reoclusión del vaso → Rescate ICP",
-                    "Arritmia reperfusión"
+                    "Arritmia reperfusión",
+                    "Éxito del tratamiento"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             },
             {
                 "question": "¿En qué orden se dan: ASA, Clopidogrel, y Fibrinolítico?",
                 "options": [
-                    "Fibrinolítico → ASA → Clopidogrel",
+                    "Clopidogrel → Fibrinolítico → ASA",
                     "ASA + Clopidogrel → Fibrinolítico",
-                    "Clopidogrel → Fibrinolítico → ASA"
+                    "Fibrinolítico → ASA → Clopidogrel"
                 ],
                 "correct_index": 1
             }

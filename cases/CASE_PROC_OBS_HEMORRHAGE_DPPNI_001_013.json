@@ -173,10 +173,10 @@
                 "question": "¿Cuál es el factor de riesgo más importante para presentar DPPNI?",
                 "options": [
                     "Diabetes Gestacional",
-                    "Hipertensión Arterial / Preeclampsia",
-                    "Edad materna avanzada"
+                    "Edad materna avanzada",
+                    "Hipertensión Arterial / Preeclampsia"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             }
         ]
     }

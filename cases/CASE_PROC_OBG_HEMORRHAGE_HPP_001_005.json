@@ -165,29 +165,29 @@
             {
                 "question": "¿Cuál es la causa más frecuente de hemorragia posparto inmediata?",
                 "options": [
-                    "Atonía uterina",
                     "Retención de restos placentarios",
+                    "Atonía uterina",
                     "Desgarros del canal del parto"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál es la maniobra inicial prioritaria ante la sospecha de atonía uterina?",
                 "options": [
-                    "Masaje uterino bimanual",
                     "Histerectomía de urgencia",
-                    "Legrado uterino instrumental"
+                    "Legrado uterino instrumental",
+                    "Masaje uterino bimanual"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             },
             {
                 "question": "¿Qué fármaco uterotónico está CONTRAINDICADO en pacientes con hipertensión arterial?",
                 "options": [
-                    "Ergonovina",
                     "Oxitocina",
+                    "Ergonovina",
                     "Misoprostol"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             }
         ]
     }

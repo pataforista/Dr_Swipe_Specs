@@ -155,26 +155,26 @@
                 "question": "¿Cuál es la complicación hematológica más grave asociada al DPPNI?",
                 "options": [
                     "Coagulación Intravascular Diseminada (CID)",
-                    "Trombocitosis reactiva",
-                    "Anemia ferropénica severa"
+                    "Anemia ferropénica severa",
+                    "Trombocitosis reactiva"
                 ],
                 "correct_index": 0
             },
             {
                 "question": "¿Qué hallazgo quirúrgico define al Útero de Couvelaire?",
                 "options": [
-                    "Infiltración de sangre en el miometrio",
+                    "Acretismo placentario focal",
                     "Ruptura de la serosa uterina",
-                    "Acretismo placentario focal"
+                    "Infiltración de sangre en el miometrio"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             },
             {
                 "question": "¿Cuál es el factor de riesgo más importante para presentar DPPNI?",
                 "options": [
                     "Hipertensión Arterial / Preeclampsia",
-                    "Edad materna avanzada",
-                    "Diabetes Gestacional"
+                    "Diabetes Gestacional",
+                    "Edad materna avanzada"
                 ],
                 "correct_index": 0
             }

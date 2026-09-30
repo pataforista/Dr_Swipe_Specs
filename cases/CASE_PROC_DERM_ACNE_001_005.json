@@ -190,8 +190,8 @@
                 "question": "¿Cuál es la bacteria implicada principalmente en la génesis del acné inflamatorio?",
                 "options": [
                     "Cutibacterium acnes",
-                    "Staphylococcus aureus",
-                    "Streptococcus pyogenes"
+                    "Streptococcus pyogenes",
+                    "Staphylococcus aureus"
                 ],
                 "correct_index": 0
             },
@@ -207,11 +207,11 @@
             {
                 "question": "¿Cuál es el principal efecto adverso por el que se debe vigilar estrechamente a una mujer en tratamiento con Isotretinoína?",
                 "options": [
-                    "Teratogenicidad",
                     "Ototoxicidad",
+                    "Teratogenicidad",
                     "Insuficiencia renal"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             }
         ]
     }

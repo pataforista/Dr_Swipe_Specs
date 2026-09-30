@@ -161,11 +161,11 @@
             {
                 "question": "¿Qué arteria se asocia principalmente con la epistaxis posterior grave?",
                 "options": [
-                    "Arteria esfenopalatina",
                     "Arteria palatina mayor",
-                    "Arteria labial superior"
+                    "Arteria labial superior",
+                    "Arteria esfenopalatina"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             },
             {
                 "question": "En este contexto clínico, ¿cuál es el sitio anatómico más frecuente de origen de la epistaxis anterior?",
@@ -179,11 +179,11 @@
             {
                 "question": "¿Cuál es la conducta inicial recomendada para el manejo de la epistaxis aguda?",
                 "options": [
+                    "Taponamiento posterior con sonda Foley",
                     "Cauterización eléctrica inmediata",
-                    "Presión digital directa con cabeza hacia adelante",
-                    "Taponamiento posterior con sonda Foley"
+                    "Presión digital directa con cabeza hacia adelante"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             }
         ]
     }

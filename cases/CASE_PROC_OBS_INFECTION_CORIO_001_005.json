@@ -158,20 +158,20 @@
             {
                 "question": "Identifique la vía de interrupción del embarazo preferida en una paciente con Corioamnionitis, si no existe contraindicación obstétrica?",
                 "options": [
-                    "Cesárea de Urgencia",
+                    "Histerectomía en bloque",
                     "Vía Vaginal (Inducción/Conducción)",
-                    "Histerectomía en bloque"
+                    "Cesárea de Urgencia"
                 ],
                 "correct_index": 1
             },
             {
                 "question": "¿Cuál es el signo clínico INDISPENSABLE para integrar el diagnóstico de Corioamnionitis (Criterios de Gibbs)?",
                 "options": [
+                    "Fiebre materna >=38.0°C",
                     "Taquicardia Fetal >160 lpm",
-                    "Líquido amniótico fétido",
-                    "Fiebre materna >=38.0°C"
+                    "Líquido amniótico fétido"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             }
         ]
     }

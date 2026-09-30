@@ -152,12 +152,12 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 2,
+                "correct_index": 0,
                 "question": "¿Cuál de los siguientes factores se asocia con MAYOR riesgo de suicidio consumado?",
                 "options": [
+                    "Edad avanzada y sexo masculino",
                     "Presencia de ansiedad leve",
-                    "Sexo femenino",
-                    "Edad avanzada y sexo masculino"
+                    "Sexo femenino"
                 ]
             },
             {
@@ -165,8 +165,8 @@
                 "question": "¿Cuál es la conducta inicial MÁS IMPORTANTE ante un paciente con depresión mayor y plan suicida estructurado?",
                 "options": [
                     "Hospitalización psiquiátrica o vigilancia estrecha",
-                    "Solicitar estudios de laboratorio para descartar causas orgánicas",
-                    "Iniciar ISRS (Sertralina) de inmediato"
+                    "Iniciar ISRS (Sertralina) de inmediato",
+                    "Solicitar estudios de laboratorio para descartar causas orgánicas"
                 ]
             },
             {
@@ -174,8 +174,8 @@
                 "question": "¿Cuál es la primera línea farmacológica para el tratamiento de la depresión mayor?",
                 "options": [
                     "ISRS (Inhibidores de la recaptura de serotonina)",
-                    "Benzodiacepinas",
-                    "Antipsicóticos atípicos"
+                    "Antipsicóticos atípicos",
+                    "Benzodiacepinas"
                 ]
             }
         ]

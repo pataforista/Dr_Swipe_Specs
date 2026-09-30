@@ -143,30 +143,30 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Qué sucede con el VPP si la prevalencia disminuye?",
                 "options": [
-                    "Disminuye",
+                    "Permanece igual",
                     "Aumenta",
-                    "Permanece igual"
+                    "Disminuye"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Definición de Sensibilidad?",
                 "options": [
+                    "VP / Total Positivos",
                     "VP / Total Enfermos",
-                    "VN / Total Sanos",
-                    "VP / Total Positivos"
+                    "VN / Total Sanos"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Qué métricas NO se alteran por la prevalencia?",
                 "options": [
-                    "Sensibilidad y Especificidad",
+                    "Prevalencia y Incidencia",
                     "VPP y VPN",
-                    "Prevalencia y Incidencia"
+                    "Sensibilidad y Especificidad"
                 ]
             }
         ]

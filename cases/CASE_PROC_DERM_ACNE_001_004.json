@@ -198,18 +198,18 @@
             {
                 "question": "¿Cuál es el fármaco considerado de elección para el acné nódulo-quístico severo o refractario?",
                 "options": [
-                    "Isotretinoína oral",
+                    "Clindamicina tópica",
                     "Doxiciclina oral",
-                    "Clindamicina tópica"
+                    "Isotretinoína oral"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             },
             {
                 "question": "¿Cuál es el principal efecto adverso por el que se debe vigilar estrechamente a una mujer en tratamiento con Isotretinoína?",
                 "options": [
                     "Teratogenicidad",
-                    "Ototoxicidad",
-                    "Insuficiencia renal"
+                    "Insuficiencia renal",
+                    "Ototoxicidad"
                 ],
                 "correct_index": 0
             }

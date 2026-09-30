@@ -159,21 +159,21 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es el tiempo meta establecido por las guías para la realización e interpretación del ECG?",
                 "options": [
-                    "Menos de 10 minutos",
                     "Menos de 30 minutos",
+                    "Menos de 10 minutos",
                     "A la brevedad posible sin tiempo límite"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es la estrategia de reperfusión de elección si el hospital cuenta con sala de hemodinamia?",
                 "options": [
+                    "Bypass de arteria coronaria urgente",
                     "Intervención Coronaria Percutánea (ICP) primaria",
-                    "Fibrinólisis farmacológica",
-                    "Bypass de arteria coronaria urgente"
+                    "Fibrinólisis farmacológica"
                 ]
             },
             {

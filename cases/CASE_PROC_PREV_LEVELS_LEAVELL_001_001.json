@@ -157,29 +157,29 @@
             {
                 "question": "¿Cómo se llama el periodo de la historia natural donde ocurre la interaccion entre la Triada Ecologica antes del dano?",
                 "options": [
-                    "Periodo de Resolucion",
                     "Periodo Patogenico",
-                    "Periodo Prepatogenico"
+                    "Periodo Prepatogenico",
+                    "Periodo de Resolucion"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál es un ejemplo de Proteccion Especifica dentro de la Prevencion Primaria?",
                 "options": [
-                    "Realizacion de una Mastografia",
+                    "Fisioterapia post-EVC",
                     "Aplicacion de inmunizaciones (vacunas)",
-                    "Fisioterapia post-EVC"
+                    "Realizacion de una Mastografia"
                 ],
                 "correct_index": 1
             },
             {
                 "question": "¿En qué nivel de prevencion de Leavell y Clark se ubica el Tamizaje (descubrimiento de casos)?",
                 "options": [
+                    "Prevencion Primaria",
                     "Prevencion Secundaria",
-                    "Prevencion Terciaria",
-                    "Prevencion Primaria"
+                    "Prevencion Terciaria"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             }
         ]
     }

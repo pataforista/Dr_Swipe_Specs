@@ -176,11 +176,11 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es la meta de Presión Arterial Media (PAM) tras la reanimación inicial?",
                 "options": [
-                    ">=65 mmHg",
                     ">=90 mmHg",
+                    ">=65 mmHg",
                     ">=50 mmHg"
                 ]
             },

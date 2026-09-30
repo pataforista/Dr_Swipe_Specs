@@ -120,29 +120,29 @@
             {
                 "question": "Según el esquema de vacunación vigente en México, ¿a qué edad se aplica la 2Aª dosis de SRP?",
                 "options": [
+                    "4 años",
                     "18 meses",
-                    "6 años",
-                    "4 años"
+                    "6 años"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál biológico se aplica como refuerzo a los 18 meses ADEMÁS de la 2Aª dosis de SRP?",
                 "options": [
+                    "BCG (2Aª dosis)",
                     "Hexavalente Acelular",
-                    "DPT (células enteras)",
-                    "BCG (2Aª dosis)"
+                    "DPT (células enteras)"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál es una contraindicación absoluta para la vacuna SRP?",
                 "options": [
+                    "Alergia leve no anafiláctica al huevo",
                     "Inmunodeficiencia severa o embarazo",
-                    "Infección respiratoria leve con fiebre <38°C",
-                    "Alergia leve no anafiláctica al huevo"
+                    "Infección respiratoria leve con fiebre <38°C"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             }
         ]
     }

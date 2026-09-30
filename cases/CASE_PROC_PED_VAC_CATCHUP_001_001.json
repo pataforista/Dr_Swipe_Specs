@@ -153,11 +153,11 @@
             {
                 "question": "¿A qué edad debe aplicarse actualmente la SEGUNDA dosis de SRP (Sarampión, Rubeola, Parotiditis)?",
                 "options": [
-                    "18 meses",
                     "4 años",
-                    "6 años"
+                    "6 años",
+                    "18 meses"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             },
             {
                 "question": "Identifique la principal forma de tuberculosis que previene la vacuna BCG?",
@@ -171,11 +171,11 @@
             {
                 "question": "¿Cuál es el límite superior de edad para completar el esquema de vacunación contra Rotavirus?",
                 "options": [
-                    "8 meses de edad",
                     "6 meses de edad",
+                    "8 meses de edad",
                     "12 meses de edad"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             }
         ]
     }

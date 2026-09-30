@@ -163,8 +163,8 @@
                 "question": "¿Cuál es la característica clínica definitiva del chancro sifilítico primario?",
                 "options": [
                     "Úlcera indolora de base indurada",
-                    "Múltiples vesículas dolorosas",
-                    "Úlcera sucia con base friable"
+                    "Úlcera sucia con base friable",
+                    "Múltiples vesículas dolorosas"
                 ]
             },
             {
@@ -181,8 +181,8 @@
                 "question": "¿Cuál de las siguientes pruebas se utiliza para evaluar la respuesta al tratamiento y detectar reinfecciones?",
                 "options": [
                     "Pruebas no treponémicas (VDRL/RPR)",
-                    "Pruebas treponémicas (FTA-ABS)",
-                    "Inmunotransferencia (Western Blot)"
+                    "Inmunotransferencia (Western Blot)",
+                    "Pruebas treponémicas (FTA-ABS)"
                 ]
             }
         ]

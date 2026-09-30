@@ -153,29 +153,29 @@
             {
                 "question": "¿Cuál es el fármaco de primera elección cuando el manejo nutricional no logra las metas de control?",
                 "options": [
-                    "Glibenclamida",
                     "Insulina",
+                    "Glibenclamida",
                     "Metformina"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             },
             {
                 "question": "¿En qué semanas de gestación se recomienda realizar el tamizaje de Diabetes Gestacional?",
                 "options": [
-                    "32 a 36 semanas",
                     "24 a 28 semanas",
+                    "32 a 36 semanas",
                     "12 a 16 semanas"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             },
             {
                 "question": "De las siguientes opciones, ¿cuál es el valor diagnóstico de glucosa en AYUNO para Diabetes Gestacional en la estrategia de Un Paso (75g)?",
                 "options": [
-                    ">=92 mg/dl",
                     ">=140 mg/dl",
+                    ">=92 mg/dl",
                     ">=126 mg/dl"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             }
         ]
     }

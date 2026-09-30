@@ -166,8 +166,8 @@
             {
                 "question": "¿En qué momento deja de ser contagioso un niño con la quinta enfermedad?",
                 "options": [
-                    "Nunca deja de ser contagioso",
                     "7 días después del exantema",
+                    "Nunca deja de ser contagioso",
                     "En cuanto aparece el exantema"
                 ],
                 "correct_index": 2
@@ -176,17 +176,17 @@
                 "question": "En este contexto clínico, ¿cuál es el principal receptor celular para el Parvovirus B19?",
                 "options": [
                     "Receptor ACE2",
-                    "Antígeno P (globósido)",
-                    "CD4"
+                    "CD4",
+                    "Antígeno P (globósido)"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             },
             {
                 "question": "¿Cuál es el agente etiológico del eritema infeccioso?",
                 "options": [
-                    "Virus de la Rubéola",
+                    "Virus Herpes Humano 6",
                     "Parvovirus B19",
-                    "Virus Herpes Humano 6"
+                    "Virus de la Rubéola"
                 ],
                 "correct_index": 1
             }

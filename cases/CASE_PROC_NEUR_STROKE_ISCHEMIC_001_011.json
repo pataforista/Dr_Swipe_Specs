@@ -160,12 +160,12 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es la puntuación máxima de la escala NIHSS (indicadora de severidad extrema)?",
                 "options": [
+                    "100 puntos",
                     "42 puntos",
-                    "15 puntos",
-                    "100 puntos"
+                    "15 puntos"
                 ]
             },
             {
@@ -173,8 +173,8 @@
                 "question": "¿Hasta cuántas horas se extiende la ventana terapéutica para rTPA en casos seleccionados?",
                 "options": [
                     "4.5 horas",
-                    "6 horas",
-                    "12 horas"
+                    "12 horas",
+                    "6 horas"
                 ]
             },
             {

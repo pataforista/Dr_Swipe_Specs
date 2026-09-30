@@ -145,11 +145,11 @@
             {
                 "question": "¿Cómo se calcula la Talla Blanco Familiar para una NIÑA?",
                 "options": [
+                    "(Talla Padre + Talla Madre) / 2",
                     "(Talla Padre + Talla Madre - 13) / 2",
-                    "(Talla Padre + Talla Madre + 13) / 2",
-                    "(Talla Padre + Talla Madre) / 2"
+                    "(Talla Padre + Talla Madre + 13) / 2"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             },
             {
                 "question": "¿Qué estudio de gabinete es el estandar de oro para evaluar la Edad Ósea?",
@@ -163,11 +163,11 @@
             {
                 "question": "¿Qué indicador antropométrico evalúa la desnutrición CRONICA en pediatría?",
                 "options": [
-                    "Peso para la Edad (P/E)",
                     "Peso para la Talla (P/T)",
-                    "Talla para la Edad (T/E)"
+                    "Talla para la Edad (T/E)",
+                    "Peso para la Edad (P/E)"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             }
         ]
     }

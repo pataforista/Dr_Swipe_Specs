@@ -152,11 +152,11 @@
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es la conducta recomendada ante un hallazgo categorizado como BI-RADS 3 (Probablemente Benigno)?",
                 "options": [
-                    "Seguimiento mastográfico en 6 meses",
                     "Biopsia percutánea inmediata",
+                    "Seguimiento mastográfico en 6 meses",
                     "Repetir estudio en 2 años"
                 ]
             },

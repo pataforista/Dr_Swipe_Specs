@@ -164,19 +164,19 @@
                 "question": "De las siguientes opciones, ¿cuál es la complicación hematológica más grave asociada al DPPNI?",
                 "options": [
                     "Trombocitosis reactiva",
-                    "Coagulación Intravascular Diseminada (CID)",
-                    "Anemia ferropénica severa"
+                    "Anemia ferropénica severa",
+                    "Coagulación Intravascular Diseminada (CID)"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             },
             {
                 "question": "¿Cuál es el factor de riesgo más importante para presentar DPPNI?",
                 "options": [
-                    "Edad materna avanzada",
                     "Hipertensión Arterial / Preeclampsia",
+                    "Edad materna avanzada",
                     "Diabetes Gestacional"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             }
         ]
     }

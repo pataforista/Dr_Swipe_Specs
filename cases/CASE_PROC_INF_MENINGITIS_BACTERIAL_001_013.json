@@ -169,11 +169,11 @@
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿En qué momento debe administrarse la Dexametasona?",
                 "options": [
-                    "Inmediatamente antes o con la primera dosis de antibiótico",
                     "24 horas después de iniciar el antibiótico",
+                    "Inmediatamente antes o con la primera dosis de antibiótico",
                     "Solo si el paciente no mejora en 48 horas"
                 ]
             },
@@ -182,8 +182,8 @@
                 "question": "¿Qué fármaco se utiliza para la quimioprofilaxis de contactos en caso de sospecha de meningococo?",
                 "options": [
                     "Rifampicina",
-                    "Penicilina V",
-                    "Amoxicilina"
+                    "Amoxicilina",
+                    "Penicilina V"
                 ]
             }
         ]

@@ -157,8 +157,8 @@
             {
                 "question": "¿Qué hallazgo en la cavidad oral es característico de esta enfermedad?",
                 "options": [
-                    "Manchas de Koplik",
                     "Manchas de Forchheimer",
+                    "Manchas de Koplik",
                     "Manchas de Nagayama"
                 ],
                 "correct_index": 2
@@ -166,8 +166,8 @@
             {
                 "question": "De las siguientes opciones, ¿cuál es la complicación sistémica más frecuente asociada a la Roseola?",
                 "options": [
-                    "Neumonía",
                     "Glomerulonefritis",
+                    "Neumonía",
                     "Convulsiones febriles"
                 ],
                 "correct_index": 2

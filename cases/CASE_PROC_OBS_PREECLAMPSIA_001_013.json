@@ -158,26 +158,26 @@
                 "question": "¿Cuál es el primer signo clínico de intoxicación por Magnesio?",
                 "options": [
                     "Paro respiratorio",
-                    "Somnolencia extrema",
-                    "Abolición del reflejo rotuliano"
+                    "Abolición del reflejo rotuliano",
+                    "Somnolencia extrema"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             },
             {
                 "question": "¿Qué parámetros integran el acrónimo del Síndrome de HELLP?",
                 "options": [
-                    "Hipertensión, Edema, Linfocitos ↑, Leucocitos ↑",
                     "Hipotensión, Enzimas cardiacas ↑, Lactato ↑",
-                    "Hemólisis, Enzimas hepáticas ↑, Plaquetas ↓"
+                    "Hemólisis, Enzimas hepáticas ↑, Plaquetas ↓",
+                    "Hipertensión, Edema, Linfocitos ↑, Leucocitos ↑"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             },
             {
                 "question": "En este contexto clínico, ¿cuál es el antídoto de elección ante una intoxicación por Sulfato de Magnesio?",
                 "options": [
-                    "Naloxona",
+                    "Flumazenil",
                     "Gluconato de Calcio",
-                    "Flumazenil"
+                    "Naloxona"
                 ],
                 "correct_index": 1
             }

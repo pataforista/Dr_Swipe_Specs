@@ -150,28 +150,28 @@
                 "question": "¿Qué grosor de músculo pilórico en el ultrasonido confirma el diagnóstico de estenosis?",
                 "options": [
                     "Entre 1.5 y 2 mm",
-                    "Mayor a 3 mm",
-                    "Mayor a 1 mm"
+                    "Mayor a 1 mm",
+                    "Mayor a 3 mm"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             },
             {
                 "question": "¿Cómo se llama el procedimiento quirúrgico de elección para esta patología?",
                 "options": [
-                    "Gastroenterostomía",
                     "Piloromiotomía de Fredet-Ramstedt",
+                    "Gastroenterostomía",
                     "Piloroplastia de Heineke-Mikulicz"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             },
             {
                 "question": "Identifique el trastorno ácido-base característico de la estenosis hipertrófica de píloro?",
                 "options": [
-                    "Alcalosis respiratoria compensada",
                     "Alcalosis metabólica hipoclorémica",
-                    "Acidosis metabólica hiperclorémica"
+                    "Acidosis metabólica hiperclorémica",
+                    "Alcalosis respiratoria compensada"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             }
         ]
     }

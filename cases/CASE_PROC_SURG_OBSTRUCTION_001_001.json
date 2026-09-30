@@ -171,16 +171,16 @@
                 "question": "Con respecto a la patología, ¿cuál es la causa más frecuente de obstrucción mecánica del intestino delgado en pacientes adultos?",
                 "options": [
                     "Hernias de la pared abdominal",
-                    "Neoplasias intestinales",
-                    "Adherencias (Bridas) postquirúrgicas"
+                    "Adherencias (Bridas) postquirúrgicas",
+                    "Neoplasias intestinales"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál es la primera medida terapéutica que debe instaurarse ante un paciente con obstrucción intestinal mecánica franca?",
                 "options": [
-                    "Administración de laxantes",
                     "Laparotomía inmediata",
+                    "Administración de laxantes",
                     "Descompresión con Sonda Nasogástrica"
                 ],
                 "correct_index": 2

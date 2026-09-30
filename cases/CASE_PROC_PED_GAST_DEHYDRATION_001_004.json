@@ -165,29 +165,29 @@
             {
                 "question": "¿Cuál es la osmolaridad de sodio recomendada por la OMS para las sales de rehidratación oral (VSO)?",
                 "options": [
-                    "75 mEq/L",
                     "90 mEq/L",
+                    "75 mEq/L",
                     "60 mEq/L"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál es la conducta inmediata ante un neonato con choque hipovolémico severo (Plan C)?",
                 "options": [
-                    "Administrar solución glucosada al 5%",
+                    "Administrar solución fisiológica 0.9% a 20 ml/kg en bolo",
                     "Iniciar VSO por sonda nasogástrica",
-                    "Administrar solución fisiológica 0.9% a 20 ml/kg en bolo"
+                    "Administrar solución glucosada al 5%"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿Qué mineral se recomienda suplementar durante 14 días en todo paciente con diarrea aguda según la OMS?",
                 "options": [
-                    "Zinc",
                     "Magnesio",
-                    "Hierro"
+                    "Hierro",
+                    "Zinc"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             }
         ]
     }

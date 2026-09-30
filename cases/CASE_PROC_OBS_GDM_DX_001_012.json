@@ -162,11 +162,11 @@
             {
                 "question": "De las siguientes opciones, ¿cuál es el fármaco de primera elección cuando el manejo nutricional no logra las metas de control?",
                 "options": [
-                    "Metformina",
                     "Insulina",
-                    "Glibenclamida"
+                    "Glibenclamida",
+                    "Metformina"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             },
             {
                 "question": "¿En qué semanas de gestación se recomienda realizar el tamizaje de Diabetes Gestacional?",

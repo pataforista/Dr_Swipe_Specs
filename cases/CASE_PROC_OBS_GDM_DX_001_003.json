@@ -162,11 +162,11 @@
             {
                 "question": "¿En qué semanas de gestación se recomienda realizar el tamizaje de Diabetes Gestacional?",
                 "options": [
-                    "32 a 36 semanas",
+                    "24 a 28 semanas",
                     "12 a 16 semanas",
-                    "24 a 28 semanas"
+                    "32 a 36 semanas"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿Cuál es el valor diagnóstico de glucosa en AYUNO para Diabetes Gestacional en la estrategia de Un Paso (75g)?",

@@ -139,21 +139,21 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es la traducción correcta de 'Constipation' en un contexto médico?",
                 "options": [
-                    "Estreñimiento",
+                    "Diarrea",
                     "Congestión nasal",
-                    "Diarrea"
+                    "Estreñimiento"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Qué significa el término 'Shortness of breath'?",
                 "options": [
-                    "Disnea (falta de aire)",
                     "Dolor de pecho",
-                    "Tos seca"
+                    "Tos seca",
+                    "Disnea (falta de aire)"
                 ]
             },
             {

@@ -133,29 +133,29 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es el fármaco de elección en pacientes con DM2 y enfermedad cardiovascular establecida (prevención secundaria)?",
                 "options": [
-                    "Agonistas GLP-1",
                     "Sulfonilureas",
-                    "Metformina sola"
+                    "Metformina sola",
+                    "Agonistas GLP-1"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es el principal riesgo asociado al uso de sulfonilureas como la glibenclamida?",
                 "options": [
-                    "Hipoglucemia y ganancia de peso",
+                    "Insuficiencia renal aguda",
                     "Cetoacidosis diabética",
-                    "Insuficiencia renal aguda"
+                    "Hipoglucemia y ganancia de peso"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "En un paciente con DM2 e Insuficiencia Cardíaca, ¿qué grupo farmacológico aporta mayor beneficio de cardio-protección?",
                 "options": [
-                    "Inhibidores de SGLT2 (iSGLT2)",
                     "Agonistas GLP-1",
+                    "Inhibidores de SGLT2 (iSGLT2)",
                     "Inhibidores de DPP-4"
                 ]
             }

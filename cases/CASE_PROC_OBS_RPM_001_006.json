@@ -145,29 +145,29 @@
             {
                 "question": "¿Qué marcador bioquímico es el más sensible para diagnosticar ruptura de membranas (Amnisure)?",
                 "options": [
-                    "Microglobulina placentaria alfa-1 (PAMG-1)",
                     "Alfa-fetoproteína",
-                    "Fibronectina fetal"
-                ],
-                "correct_index": 0
-            },
-            {
-                "question": "¿Cuál es la maniobra exploratoria que debe EVITARSE ante la sospecha de ruptura prematura de membranas?",
-                "options": [
-                    "Maniobra de Tarnier",
-                    "Especuloscopía estéril",
-                    "Tacto vaginal repetido"
+                    "Fibronectina fetal",
+                    "Microglobulina placentaria alfa-1 (PAMG-1)"
                 ],
                 "correct_index": 2
             },
             {
-                "question": "Con respecto a la patología, ¿cuál es la conducta recomendada en una paciente con RPM de 32 semanas de gestación sin datos de infección?",
+                "question": "¿Cuál es la maniobra exploratoria que debe EVITARSE ante la sospecha de ruptura prematura de membranas?",
                 "options": [
-                    "Manejo conservador (Madurez pulmonar + Antibióticos)",
-                    "Cesárea de urgencia",
-                    "Inducción inmediata del trabajo de parto"
+                    "Tacto vaginal repetido",
+                    "Maniobra de Tarnier",
+                    "Especuloscopía estéril"
                 ],
                 "correct_index": 0
+            },
+            {
+                "question": "Con respecto a la patología, ¿cuál es la conducta recomendada en una paciente con RPM de 32 semanas de gestación sin datos de infección?",
+                "options": [
+                    "Cesárea de urgencia",
+                    "Manejo conservador (Madurez pulmonar + Antibióticos)",
+                    "Inducción inmediata del trabajo de parto"
+                ],
+                "correct_index": 1
             }
         ]
     }

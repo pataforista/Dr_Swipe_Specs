@@ -152,20 +152,20 @@
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es la conducta a seguir ante un reporte citológico de Lesión Intraepitelial de Alto Grado (HSIL)?",
                 "options": [
-                    "Referencia inmediata a Colposcopia",
+                    "Tratamiento con óvulos antibióticos",
                     "Repetir citología en 6 meses",
-                    "Tratamiento con óvulos antibióticos"
+                    "Referencia inmediata a Colposcopia"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es el esquema de tamizaje citológico recomendado tras obtener dos resultados anuales negativos consecutivos?",
                 "options": [
-                    "Cada 3 años",
                     "Cada 5 años",
+                    "Cada 3 años",
                     "Cada 6 meses"
                 ]
             }

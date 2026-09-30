@@ -161,29 +161,29 @@
             {
                 "question": "¿Qué componentes integran la Tríada de Gregg (Rubéola Congénita)?",
                 "options": [
-                    "Ictericia, Anemia, Esplenomegalia",
                     "Catarata, Sordera, Cardiopatía (PCA)",
-                    "Fiebre, Tos, Exantema"
+                    "Fiebre, Tos, Exantema",
+                    "Ictericia, Anemia, Esplenomegalia"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             },
             {
                 "question": "¿A qué familia de virus pertenece el agente de la Rubéola?",
                 "options": [
+                    "Paramixovirus",
                     "Herpesvirus",
-                    "Togavirus",
-                    "Paramixovirus"
+                    "Togavirus"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             },
             {
                 "question": "¿Cuál es la complicación más grave de la rubéola durante el embarazo?",
                 "options": [
+                    "Encefalitis",
                     "Púrpura Trombocitopénica",
-                    "Síndrome de Rubéola Congénita",
-                    "Encefalitis"
+                    "Síndrome de Rubéola Congénita"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             }
         ]
     }

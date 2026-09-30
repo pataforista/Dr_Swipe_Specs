@@ -160,21 +160,21 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es el patrón típico del LCR en la meningitis bacteriana?",
                 "options": [
-                    "Hipoglucorraquia y predominio de polimorfonucleares",
                     "Glucosa normal y predominio de linfocitos",
-                    "Hiperglucorraquia y predominio de monocitos"
+                    "Hiperglucorraquia y predominio de monocitos",
+                    "Hipoglucorraquia y predominio de polimorfonucleares"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿En qué momento debe administrarse la Dexametasona?",
                 "options": [
+                    "Solo si el paciente no mejora en 48 horas",
                     "Inmediatamente antes o con la primera dosis de antibiótico",
-                    "24 horas después de iniciar el antibiótico",
-                    "Solo si el paciente no mejora en 48 horas"
+                    "24 horas después de iniciar el antibiótico"
                 ]
             },
             {
@@ -182,8 +182,8 @@
                 "question": "¿Qué fármaco se utiliza para la quimioprofilaxis de contactos en caso de sospecha de meningococo?",
                 "options": [
                     "Rifampicina",
-                    "Penicilina V",
-                    "Amoxicilina"
+                    "Amoxicilina",
+                    "Penicilina V"
                 ]
             }
         ]

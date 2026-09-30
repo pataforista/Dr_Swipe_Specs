@@ -182,11 +182,11 @@
             {
                 "question": "¿Cómo se llama la intensificación del exantema en los pliegues cutáneos?",
                 "options": [
-                    "Líneas de Pastia",
+                    "Fenómeno de Koebner",
                     "Signo de Nikolsky",
-                    "Fenómeno de Koebner"
+                    "Líneas de Pastia"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             },
             {
                 "question": "¿Cuál es el objetivo principal de administrar penicilina en un paciente con escarlatina?",

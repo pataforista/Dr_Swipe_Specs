@@ -167,11 +167,11 @@
             {
                 "question": "¿Por cuánto tiempo se recomienda el seguimiento con anticonceptivos orales tras la evacuación de una mola?",
                 "options": [
+                    "No se requiere anticoncepción",
                     "6 a 12 meses",
-                    "3 meses",
-                    "No se requiere anticoncepción"
+                    "3 meses"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             }
         ]
     }

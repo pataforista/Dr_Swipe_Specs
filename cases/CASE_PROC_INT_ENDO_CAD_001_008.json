@@ -164,21 +164,21 @@
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿En qué situación clínica se recomienda el uso de Bicarbonato de Sodio?",
                 "options": [
-                    "pH menor a 6.9",
                     "pH menor a 7.2",
-                    "Solo ante hiperpotasemia grave"
+                    "Solo ante hiperpotasemia grave",
+                    "pH menor a 6.9"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es el parámetro laboratorial principal para definir la resolución de la CAD?",
                 "options": [
-                    "Cierre del Anion Gap / Brecha aniónica",
+                    "Ausencia de glucosuria",
                     "Glucosa menor a 100 mg/dl",
-                    "Ausencia de glucosuria"
+                    "Cierre del Anion Gap / Brecha aniónica"
                 ]
             }
         ]

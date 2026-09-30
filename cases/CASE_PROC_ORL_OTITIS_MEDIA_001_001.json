@@ -166,16 +166,16 @@
                 "question": "Identifique el hallazgo en la otoscopia más sugestivo de otitis media aguda?",
                 "options": [
                     "Presencia de cerumen obstructivo",
-                    "Abombamiento de la membrana timpánica",
-                    "Membrana timpánica íntegra y nacarada"
+                    "Membrana timpánica íntegra y nacarada",
+                    "Abombamiento de la membrana timpánica"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             },
             {
                 "question": "¿Cuál es la complicación intratemporal supurativa más frecuente de la OMA?",
                 "options": [
-                    "Meningitis supurativa",
                     "Laberintitis",
+                    "Meningitis supurativa",
                     "Mastoiditis aguda"
                 ],
                 "correct_index": 2
@@ -183,11 +183,11 @@
             {
                 "question": "¿Cuál es el antibiótico de primera elección y su dosis para el tratamiento de la OMA?",
                 "options": [
+                    "Eritromicina 40 mg/kg/día",
                     "Amoxicilina a 80-90 mg/kg/día",
-                    "Ceftriaxona 50 mg/kg IM dosis única",
-                    "Eritromicina 40 mg/kg/día"
+                    "Ceftriaxona 50 mg/kg IM dosis única"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             }
         ]
     }

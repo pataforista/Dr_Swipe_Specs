@@ -153,29 +153,29 @@
             {
                 "question": "¿Qué indica un valor de p < 0.05 en un estudio clinico?",
                 "options": [
-                    "Que no hay diferencia entre los grupos",
+                    "Que el resultado es estadisticamente significativo",
                     "Que el estudio tiene un error de diseno grave",
-                    "Que el resultado es estadisticamente significativo"
+                    "Que no hay diferencia entre los grupos"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿Qué prueba estadística utilizarias para comparar el promedio de peso al nacer entre ninos y ninas?",
                 "options": [
-                    "Chi-cuadrada",
+                    "t de Student para muestras independientes",
                     "Analisis de Varianza (ANOVA)",
-                    "t de Student para muestras independientes"
+                    "Chi-cuadrada"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿Qué sucede si el Intervalo de Confianza del 95% para un Riesgo Relativo (RR) cruza el valor 1.0?",
                 "options": [
-                    "El factor analizado es protector",
+                    "El resultado NO es estadisticamente significativo",
                     "El estudio es altamente preciso",
-                    "El resultado NO es estadisticamente significativo"
+                    "El factor analizado es protector"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             }
         ]
     }

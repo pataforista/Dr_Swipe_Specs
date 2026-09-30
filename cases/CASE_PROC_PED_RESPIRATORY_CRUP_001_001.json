@@ -166,8 +166,8 @@
                 "question": "¿Cuál es el tratamiento esteroideo de eleccion en el servicio de urgencias?",
                 "options": [
                     "Dexametasona",
-                    "Metilprednisolona",
-                    "Hidrocortisona"
+                    "Hidrocortisona",
+                    "Metilprednisolona"
                 ],
                 "correct_index": 0
             },
@@ -175,19 +175,19 @@
                 "question": "¿Cómo se llama el signo radiografico caracteristico observado en la proyeccion AP de cuello?",
                 "options": [
                     "Signo de la Torre o Punta de Lapiz",
-                    "Signo del Pulgar",
-                    "Imagen en Coraza"
+                    "Imagen en Coraza",
+                    "Signo del Pulgar"
                 ],
                 "correct_index": 0
             },
             {
                 "question": "¿Cuál es el agente etiologico mas comun del Crup viral?",
                 "options": [
-                    "Virus Parainfluenza tipo 1",
                     "Virus Sincitial Respiratorio (VSR)",
-                    "Adenovirus"
+                    "Adenovirus",
+                    "Virus Parainfluenza tipo 1"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             }
         ]
     }

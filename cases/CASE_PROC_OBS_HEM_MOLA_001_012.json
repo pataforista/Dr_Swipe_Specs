@@ -150,10 +150,10 @@
                 "question": "¿Cómo se describe clásicamente el patrón ultrasonográfico de una mola hidatidiforme completa?",
                 "options": [
                     "Imagen en 'anillo de fuego' peritubárica",
-                    "Imagen en 'tormenta de nieve' o 'panal de abejas'",
-                    "Imagen de 'masa heterogénea' con feto presente"
+                    "Imagen de 'masa heterogénea' con feto presente",
+                    "Imagen en 'tormenta de nieve' o 'panal de abejas'"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             },
             {
                 "question": "¿Por cuánto tiempo se recomienda el seguimiento con anticonceptivos orales tras la evacuación de una mola?",
@@ -168,10 +168,10 @@
                 "question": "¿La aparición de qué patología antes de las 20 semanas de gestación es altamente sugestiva de mola hidatidiforme?",
                 "options": [
                     "Diabetes Gestacional",
-                    "Colestasis Intrahepática",
-                    "Preeclampsia / Hipertensión"
+                    "Preeclampsia / Hipertensión",
+                    "Colestasis Intrahepática"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             }
         ]
     }

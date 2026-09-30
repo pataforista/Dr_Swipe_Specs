@@ -183,8 +183,8 @@
             {
                 "question": "¿Cuál es la osmolaridad de sodio recomendada por la OMS para las sales de rehidratación oral (VSO)?",
                 "options": [
-                    "90 mEq/L",
                     "60 mEq/L",
+                    "90 mEq/L",
                     "75 mEq/L"
                 ],
                 "correct_index": 2

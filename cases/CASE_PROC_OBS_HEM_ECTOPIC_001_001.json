@@ -159,8 +159,8 @@
             {
                 "question": "¿Cuál es el 'estándar de oro' (Gold Standard) para el diagnóstico definitivo de embarazo ectópico?",
                 "options": [
-                    "Niveles de Progesterona Sérica",
                     "Ultrasonido Transvaginal",
+                    "Niveles de Progesterona Sérica",
                     "Laparoscopia"
                 ],
                 "correct_index": 2
@@ -168,11 +168,11 @@
             {
                 "question": "¿Cuál es la localización anatómica más frecuente del embarazo ectópico?",
                 "options": [
-                    "Región Ístmica",
                     "Región Ampular (Ampula)",
-                    "Región Intersticial"
+                    "Región Intersticial",
+                    "Región Ístmica"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             }
         ]
     }

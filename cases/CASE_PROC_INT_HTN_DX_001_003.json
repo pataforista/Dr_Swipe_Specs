@@ -160,21 +160,21 @@
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Meta de TA en diabéticos según la ADA?",
                 "options": [
-                    "<130/80 mmHg",
                     "<140/90 mmHg",
-                    "<120/70 mmHg"
+                    "<120/70 mmHg",
+                    "<130/80 mmHg"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Qué indica el fondo de ojo en HAS?",
                 "options": [
-                    "Daño a órgano blanco crónico",
+                    "No tiene utilidad",
                     "Solo agudeza visual",
-                    "No tiene utilidad"
+                    "Daño a órgano blanco crónico"
                 ]
             }
         ]

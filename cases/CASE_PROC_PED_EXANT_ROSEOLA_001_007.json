@@ -157,29 +157,29 @@
             {
                 "question": "En este contexto clínico, ¿cuál es el agente etiológico más común del exantema súbito?",
                 "options": [
-                    "Virus Herpes Humano 6",
                     "Virus Varicela Zóster",
+                    "Virus Herpes Humano 6",
                     "Parvovirus B19"
-                ],
-                "correct_index": 0
-            },
-            {
-                "question": "¿Qué hallazgo en la cavidad oral es característico de esta enfermedad?",
-                "options": [
-                    "Manchas de Koplik",
-                    "Manchas de Nagayama",
-                    "Manchas de Forchheimer"
                 ],
                 "correct_index": 1
             },
             {
-                "question": "¿Cuál es la complicación sistémica más frecuente asociada a la Roseola?",
+                "question": "¿Qué hallazgo en la cavidad oral es característico de esta enfermedad?",
                 "options": [
-                    "Convulsiones febriles",
-                    "Glomerulonefritis",
-                    "Neumonía"
+                    "Manchas de Nagayama",
+                    "Manchas de Koplik",
+                    "Manchas de Forchheimer"
                 ],
                 "correct_index": 0
+            },
+            {
+                "question": "¿Cuál es la complicación sistémica más frecuente asociada a la Roseola?",
+                "options": [
+                    "Neumonía",
+                    "Convulsiones febriles",
+                    "Glomerulonefritis"
+                ],
+                "correct_index": 1
             }
         ]
     }

@@ -152,8 +152,8 @@
             {
                 "question": "¿Cuáles son los componentes de la Escala de Alvarado que otorgan 2 puntos?",
                 "options": [
-                    "Anorexia y Náuseas",
                     "Fiebre y Shift a la izquierda",
+                    "Anorexia y Náuseas",
                     "Dolor en FID y Leucocitosis (>10k)"
                 ],
                 "correct_index": 2
@@ -161,18 +161,18 @@
             {
                 "question": "¿Cuál es el tratamiento de elección definitivo para la apendicitis aguda no complicada?",
                 "options": [
-                    "Apendicectomía laparoscópica",
+                    "Drenaje percutáneo",
                     "Antibioticoterapia exclusiva",
-                    "Drenaje percutáneo"
+                    "Apendicectomía laparoscópica"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             },
             {
                 "question": "Con respecto a la patología, ¿cuál es la causa más frecuente de apendicitis en la edad PEDIÁTRICA?",
                 "options": [
                     "Hiperplasia linfoidea (Folículos de Roux)",
-                    "Fecalito",
-                    "Cuerpos extraños"
+                    "Cuerpos extraños",
+                    "Fecalito"
                 ],
                 "correct_index": 0
             }

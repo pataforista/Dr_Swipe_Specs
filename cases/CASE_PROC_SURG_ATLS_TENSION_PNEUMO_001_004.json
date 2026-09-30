@@ -138,12 +138,12 @@
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Qué hallazgo a la percusión diferencia un neumotórax de un hemotórax masivo?",
                 "options": [
+                    "Dolor pleurítico vs IVY",
                     "Hiperresonancia vs Matidez",
-                    "Desviación traqueal vs Crepitación",
-                    "Dolor pleurítico vs IVY"
+                    "Desviación traqueal vs Crepitación"
                 ]
             }
         ]

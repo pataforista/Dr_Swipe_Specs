@@ -161,8 +161,8 @@
             {
                 "question": "¿Cuál de las siguientes pruebas se utiliza para evaluar la respuesta al tratamiento y detectar reinfecciones?",
                 "options": [
-                    "Pruebas treponémicas (FTA-ABS)",
                     "Inmunotransferencia (Western Blot)",
+                    "Pruebas treponémicas (FTA-ABS)",
                     "Pruebas no treponémicas (VDRL/RPR)"
                 ],
                 "correct_index": 2
@@ -170,20 +170,20 @@
             {
                 "question": "¿Cuál es el tratamiento de primera elección para un paciente con diagnóstico de sífilis primaria?",
                 "options": [
-                    "Penicilina G benzatínica 2.4 millones UI IM",
                     "Doxiciclina 100 mg c/12h por 14 días",
+                    "Penicilina G benzatínica 2.4 millones UI IM",
                     "Ceftriaxona 250 mg IM dosis única"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál es la característica clínica definitiva del chancro sifilítico primario?",
                 "options": [
-                    "Úlcera indolora de base indurada",
                     "Úlcera sucia con base friable",
+                    "Úlcera indolora de base indurada",
                     "Múltiples vesículas dolorosas"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             }
         ]
     }

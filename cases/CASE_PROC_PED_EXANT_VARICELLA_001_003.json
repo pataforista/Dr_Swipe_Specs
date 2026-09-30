@@ -161,11 +161,11 @@
             {
                 "question": "¿Cuál es el hallazgo dermatológico patognomónico de la varicela?",
                 "options": [
-                    "Pleomorfismo regional (mácula a costra)",
                     "Exantema monomórfico centrífugo",
+                    "Pleomorfismo regional (mácula a costra)",
                     "Manchas de Forchheimer"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál es la complicación neurológica más frecuente en niños con varicela?",
@@ -179,11 +179,11 @@
             {
                 "question": "¿Qué medicamento está estrictamente contraindicado en varicela pediátrica por riesgo de S. de Reye?",
                 "options": [
-                    "Aciclovir",
+                    "Ácido Acetilsalicílico",
                     "Paracetamol",
-                    "Ácido Acetilsalicílico"
+                    "Aciclovir"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             }
         ]
     }

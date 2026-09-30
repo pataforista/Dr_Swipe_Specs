@@ -170,26 +170,26 @@
                 "correct_index": 2,
                 "question": "En este contexto clínico, ¿cuál es la estrategia de reperfusión de elección si el hospital cuenta con sala de hemodinamia?",
                 "options": [
-                    "Fibrinólisis farmacológica",
                     "Bypass de arteria coronaria urgente",
+                    "Fibrinólisis farmacológica",
                     "Intervención Coronaria Percutánea (ICP) primaria"
                 ]
             },
             {
-                "correct_index": 1,
+                "correct_index": 2,
                 "question": "¿Cuál es el tiempo meta establecido por las guías para la realización e interpretación del ECG?",
                 "options": [
+                    "A la brevedad posible sin tiempo límite",
                     "Menos de 30 minutos",
-                    "Menos de 10 minutos",
-                    "A la brevedad posible sin tiempo límite"
+                    "Menos de 10 minutos"
                 ]
             },
             {
-                "correct_index": 1,
+                "correct_index": 0,
                 "question": "En este contexto clínico, ¿cuál es la principal causa de muerte prehospitalaria en un paciente con IAM?",
                 "options": [
-                    "Ruptura de pared libre",
                     "Fibrilación Ventricular",
+                    "Ruptura de pared libre",
                     "Choque cardiogénico"
                 ]
             }

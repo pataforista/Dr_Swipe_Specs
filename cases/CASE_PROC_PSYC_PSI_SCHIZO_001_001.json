@@ -161,29 +161,29 @@
             {
                 "question": "¿Cuál es la duracion minima de los síntomas para diagnosticar Esquizofrenia segun el DSM-5?",
                 "options": [
+                    "6 meses",
                     "2 anos",
-                    "1 mes",
-                    "6 meses"
+                    "1 mes"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿Cuál de los siguientes se considera un factor de MAL pronostico en la esquizofrenia?",
                 "options": [
                     "Inicio agudo de los síntomas",
-                    "Sexo femenino",
-                    "Presencia predominante de síntomas negativos"
+                    "Presencia predominante de síntomas negativos",
+                    "Sexo femenino"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             },
             {
                 "question": "¿Qué farmaco es el estandar de oro para el tratamiento de la esquizofrenia REFRACTARIA?",
                 "options": [
-                    "Clozapina",
+                    "Aripiprazol",
                     "Haloperidol",
-                    "Aripiprazol"
+                    "Clozapina"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             }
         ]
     }

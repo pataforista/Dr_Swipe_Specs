@@ -154,18 +154,18 @@
             {
                 "question": "¿Cuál es la conducta recomendada en una paciente con RPM de 32 semanas de gestación sin datos de infección?",
                 "options": [
+                    "Inducción inmediata del trabajo de parto",
                     "Cesárea de urgencia",
-                    "Manejo conservador (Madurez pulmonar + Antibióticos)",
-                    "Inducción inmediata del trabajo de parto"
+                    "Manejo conservador (Madurez pulmonar + Antibióticos)"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             },
             {
                 "question": "¿Qué marcador bioquímico es el más sensible para diagnosticar ruptura de membranas (Amnisure)?",
                 "options": [
-                    "Fibronectina fetal",
+                    "Alfa-fetoproteína",
                     "Microglobulina placentaria alfa-1 (PAMG-1)",
-                    "Alfa-fetoproteína"
+                    "Fibronectina fetal"
                 ],
                 "correct_index": 1
             }

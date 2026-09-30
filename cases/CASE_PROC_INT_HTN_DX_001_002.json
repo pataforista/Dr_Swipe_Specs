@@ -151,30 +151,30 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 1,
+                "correct_index": 0,
                 "question": "¿Qué indica el fondo de ojo en HAS?",
                 "options": [
-                    "Solo agudeza visual",
                     "Daño a órgano blanco crónico",
-                    "No tiene utilidad"
+                    "No tiene utilidad",
+                    "Solo agudeza visual"
                 ]
             },
             {
-                "correct_index": 2,
+                "correct_index": 1,
                 "question": "¿Meta de TA en diabéticos según la ADA?",
                 "options": [
-                    "<120/70 mmHg",
                     "<140/90 mmHg",
-                    "<130/80 mmHg"
+                    "<130/80 mmHg",
+                    "<120/70 mmHg"
                 ]
             },
             {
-                "correct_index": 2,
+                "correct_index": 0,
                 "question": "¿Cifra para diagnóstico de HAS según NOM-030?",
                 "options": [
+                    ">=140/90 mmHg",
                     ">=150/95 mmHg",
-                    ">=130/80 mmHg",
-                    ">=140/90 mmHg"
+                    ">=130/80 mmHg"
                 ]
             }
         ]

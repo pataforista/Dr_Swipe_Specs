@@ -168,21 +168,21 @@
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es la estrategia de reperfusión de elección si el hospital cuenta con sala de hemodinamia?",
                 "options": [
-                    "Intervención Coronaria Percutánea (ICP) primaria",
                     "Fibrinólisis farmacológica",
+                    "Intervención Coronaria Percutánea (ICP) primaria",
                     "Bypass de arteria coronaria urgente"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es la principal causa de muerte prehospitalaria en un paciente con IAM?",
                 "options": [
-                    "Fibrilación Ventricular",
+                    "Choque cardiogénico",
                     "Ruptura de pared libre",
-                    "Choque cardiogénico"
+                    "Fibrilación Ventricular"
                 ]
             }
         ]

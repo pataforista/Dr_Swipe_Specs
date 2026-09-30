@@ -155,28 +155,28 @@
                 "question": "¿Cuál es la secuencia de prioridades vitales en la evaluación primaria del paciente con trauma grave?",
                 "options": [
                     "ABCDE (Vía aérea, Respiración, Circulación, Déficit, Exposición)",
-                    "CAB (Circulación, Vía aérea, Respiración)",
-                    "Especialidad, Laboratorio, Imagen, Diagnóstico"
+                    "Especialidad, Laboratorio, Imagen, Diagnóstico",
+                    "CAB (Circulación, Vía aérea, Respiración)"
                 ],
                 "correct_index": 0
             },
             {
                 "question": "¿Qué hallazgo es indispensable para diagnosticar un Neumotórax a Tensión?",
                 "options": [
+                    "Datos clínicos (ingurgitación, timpanismo, ausencia ruidos)",
                     "Confirmación por Radiografía de Tórax",
-                    "Reporte de Gasometría Arterial",
-                    "Datos clínicos (ingurgitación, timpanismo, ausencia ruidos)"
+                    "Reporte de Gasometría Arterial"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿Cuáles son los componentes de la 'Tríada de la Muerte' en el paciente con trauma?",
                 "options": [
+                    "Acidosis Metabólica, Coagulopatía e Hipotermia",
                     "Fiebre, Leucocitosis y Dolor",
-                    "Hipotensión, Bradicardia y Arritmia",
-                    "Acidosis Metabólica, Coagulopatía e Hipotermia"
+                    "Hipotensión, Bradicardia y Arritmia"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             }
         ]
     }

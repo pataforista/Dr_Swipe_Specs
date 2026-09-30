@@ -165,8 +165,8 @@
             {
                 "question": "¿Qué hallazgo pupilar es característico del ataque agudo de glaucoma de ángulo cerrado?",
                 "options": [
-                    "Pupila de Argyll Robertson",
                     "Miosis puntiforme",
+                    "Pupila de Argyll Robertson",
                     "Midriasis media arreactiva"
                 ],
                 "correct_index": 2
@@ -175,19 +175,19 @@
                 "question": "¿Cuál de estas opciones farmacológicas está CONTRAINDICADA en la fase aguda del glaucoma de ángulo cerrado?",
                 "options": [
                     "Anhídrasa carbónica (Acetazolamida)",
-                    "Mióticos (Pilocarpina)",
-                    "Midriáticos (Atropina)"
+                    "Midriáticos (Atropina)",
+                    "Mióticos (Pilocarpina)"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             },
             {
                 "question": "En este contexto clínico, ¿cuál es el tratamiento quirúrgico/definitivo de elección para prevenir recurrencias en glaucoma primario de ángulo cerrado?",
                 "options": [
-                    "Trabeculectomía",
                     "Iridotomía con láser YAG",
+                    "Trabeculectomía",
                     "Extracción de catarata"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             }
         ]
     }

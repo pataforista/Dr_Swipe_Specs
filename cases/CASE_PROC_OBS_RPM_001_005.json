@@ -154,11 +154,11 @@
             {
                 "question": "Identifique la conducta recomendada en una paciente con RPM de 32 semanas de gestación sin datos de infección?",
                 "options": [
-                    "Inducción inmediata del trabajo de parto",
+                    "Manejo conservador (Madurez pulmonar + Antibióticos)",
                     "Cesárea de urgencia",
-                    "Manejo conservador (Madurez pulmonar + Antibióticos)"
+                    "Inducción inmediata del trabajo de parto"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "En este contexto clínico, ¿cuál es la maniobra exploratoria que debe EVITARSE ante la sospecha de ruptura prematura de membranas?",

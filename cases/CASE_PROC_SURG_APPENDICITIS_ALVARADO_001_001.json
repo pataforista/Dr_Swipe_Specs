@@ -151,26 +151,26 @@
                 "question": "En un hombre adulto con puntuación de Alvarado =8, ¿cuál es la conducta recomendada?",
                 "options": [
                     "Apendicectomía directa (sin necesidad de imagen)",
-                    "Observación y reevaluación en 12 horas",
-                    "TC de abdomen para confirmar"
+                    "TC de abdomen para confirmar",
+                    "Observación y reevaluación en 12 horas"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuántos puntos otorga la leucocitosis (>10,000) en la escala de Alvarado?",
                 "options": [
-                    "2 puntos",
                     "3 puntos",
-                    "1 punto"
+                    "1 punto",
+                    "2 puntos"
                 ]
             },
             {
                 "correct_index": 1,
                 "question": "¿Qué puntuación de Alvarado se considera 'zona gris' y requiere estudio de imagen?",
                 "options": [
-                    "=7",
+                    "0-4",
                     "5-6",
-                    "0-4"
+                    "=7"
                 ]
             }
         ]

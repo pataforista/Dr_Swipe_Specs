@@ -153,27 +153,27 @@
             {
                 "question": "¿Cuál es la definición cronológica del aborto según la norma oficial mexicana?",
                 "options": [
+                    "Antes de la semana 28 de gestación",
                     "Antes de la semana 20 de gestación",
-                    "Antes de la semana 12 de gestación",
-                    "Antes de la semana 28 de gestación"
+                    "Antes de la semana 12 de gestación"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             },
             {
                 "question": "Con respecto a la patología, ¿cuál es el tratamiento quirúrgico de elección en una paciente con aborto incompleto estable y útero de 10 semanas?",
                 "options": [
+                    "Histerectomía",
                     "AMEU (Aspiración endouterina)",
-                    "LUI (Legrado uterino)",
-                    "Histerectomía"
+                    "LUI (Legrado uterino)"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             },
             {
                 "question": "¿Qué hallazgo clínico diferencia el aborto incompleto de la amenaza de aborto?",
                 "options": [
-                    "Aparición de dolor abdominal",
+                    "Hemorragia transvaginal",
                     "Dilatación cervical (cérvix abierto)",
-                    "Hemorragia transvaginal"
+                    "Aparición de dolor abdominal"
                 ],
                 "correct_index": 1
             }

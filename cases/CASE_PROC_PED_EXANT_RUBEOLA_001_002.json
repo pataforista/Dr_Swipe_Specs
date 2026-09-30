@@ -161,29 +161,29 @@
             {
                 "question": "¿Cuál es la complicación más grave de la rubéola durante el embarazo?",
                 "options": [
+                    "Púrpura Trombocitopénica",
                     "Encefalitis",
-                    "Síndrome de Rubéola Congénita",
-                    "Púrpura Trombocitopénica"
+                    "Síndrome de Rubéola Congénita"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             },
             {
                 "question": "¿A qué familia de virus pertenece el agente de la Rubéola?",
                 "options": [
                     "Herpesvirus",
-                    "Paramixovirus",
-                    "Togavirus"
+                    "Togavirus",
+                    "Paramixovirus"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             },
             {
                 "question": "¿Qué componentes integran la Tríada de Gregg (Rubéola Congénita)?",
                 "options": [
-                    "Ictericia, Anemia, Esplenomegalia",
                     "Fiebre, Tos, Exantema",
-                    "Catarata, Sordera, Cardiopatía (PCA)"
+                    "Catarata, Sordera, Cardiopatía (PCA)",
+                    "Ictericia, Anemia, Esplenomegalia"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             }
         ]
     }

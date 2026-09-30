@@ -163,27 +163,27 @@
                 "correct_index": 2,
                 "question": "¿Cuál es el fármaco de elección para prevenir el vasoespasmo cerebral tras la rotura?",
                 "options": [
-                    "Verapamilo",
                     "Amlodipino",
+                    "Verapamilo",
                     "Nimodipino"
                 ]
             },
             {
-                "correct_index": 2,
+                "correct_index": 0,
                 "question": "¿Cuál es la causa no traumática más frecuente de Hemorragia Subaracnoidea?",
                 "options": [
-                    "Angiopatía amiloide",
+                    "Rotura de aneurisma sacular",
                     "Malformación arteriovenosa (MAV)",
-                    "Rotura de aneurisma sacular"
+                    "Angiopatía amiloide"
                 ]
             },
             {
-                "correct_index": 1,
+                "correct_index": 2,
                 "question": "¿Qué hallazgo en el líquido cefalorraquídeo confirma una HSA frente a una punción traumática?",
                 "options": [
+                    "Presencia de leucocitos PMN",
                     "Glucosa muy baja",
-                    "Xantocromía (coloración amarillenta)",
-                    "Presencia de leucocitos PMN"
+                    "Xantocromía (coloración amarillenta)"
                 ]
             }
         ]

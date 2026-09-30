@@ -157,26 +157,26 @@
             {
                 "question": "¿A qué familia de antirretrovirales pertenece el Dolutegravir (DTG)?",
                 "options": [
-                    "Inhibidor de la Proteasa (IP)",
                     "Inhibidor de Nucleósidos (ITNR)",
-                    "Inhibidor de la Integrasa (INSTI)"
-                ],
-                "correct_index": 2
-            },
-            {
-                "question": "¿Cuál es el recuento de células CD4 por debajo del cual se define la etapa clínica de SIDA?",
-                "options": [
-                    "Menos de 50 cél/µl",
-                    "Menos de 200 cél/µl",
-                    "Menos de 500 cél/µl"
+                    "Inhibidor de la Integrasa (INSTI)",
+                    "Inhibidor de la Proteasa (IP)"
                 ],
                 "correct_index": 1
             },
             {
+                "question": "¿Cuál es el recuento de células CD4 por debajo del cual se define la etapa clínica de SIDA?",
+                "options": [
+                    "Menos de 200 cél/µl",
+                    "Menos de 500 cél/µl",
+                    "Menos de 50 cél/µl"
+                ],
+                "correct_index": 0
+            },
+            {
                 "question": "¿Qué fármaco se utiliza de primera línea para la profilaxis de Pneumocystis jirovecii?",
                 "options": [
-                    "Linezolid",
                     "Clindamicina",
+                    "Linezolid",
                     "Trimetoprima/Sulfametoxazol"
                 ],
                 "correct_index": 2

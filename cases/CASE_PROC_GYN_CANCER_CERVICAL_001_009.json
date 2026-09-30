@@ -143,21 +143,21 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Qué subtipos de Virus del Papiloma Humano (VPH) se asocian con mayor frecuencia al desarrollo de cáncer cervicouterino?",
                 "options": [
-                    "VPH 16 y 18",
+                    "VPH 31 y 33",
                     "VPH 6 y 11",
-                    "VPH 31 y 33"
+                    "VPH 16 y 18"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es la conducta a seguir ante un reporte citológico de Lesión Intraepitelial de Alto Grado (HSIL)?",
                 "options": [
-                    "Referencia inmediata a Colposcopia",
+                    "Tratamiento con óvulos antibióticos",
                     "Repetir citología en 6 meses",
-                    "Tratamiento con óvulos antibióticos"
+                    "Referencia inmediata a Colposcopia"
                 ]
             },
             {
@@ -165,8 +165,8 @@
                 "question": "¿Cuál es el esquema de tamizaje citológico recomendado tras obtener dos resultados anuales negativos consecutivos?",
                 "options": [
                     "Cada 3 años",
-                    "Cada 5 años",
-                    "Cada 6 meses"
+                    "Cada 6 meses",
+                    "Cada 5 años"
                 ]
             }
         ]

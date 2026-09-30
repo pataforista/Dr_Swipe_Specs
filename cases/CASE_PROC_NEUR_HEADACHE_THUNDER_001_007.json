@@ -156,21 +156,21 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es la causa no traumática más frecuente de Hemorragia Subaracnoidea?",
                 "options": [
-                    "Rotura de aneurisma sacular",
+                    "Angiopatía amiloide",
                     "Malformación arteriovenosa (MAV)",
-                    "Angiopatía amiloide"
+                    "Rotura de aneurisma sacular"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Qué hallazgo en el líquido cefalorraquídeo confirma una HSA frente a una punción traumática?",
                 "options": [
-                    "Xantocromía (coloración amarillenta)",
+                    "Presencia de leucocitos PMN",
                     "Glucosa muy baja",
-                    "Presencia de leucocitos PMN"
+                    "Xantocromía (coloración amarillenta)"
                 ]
             },
             {

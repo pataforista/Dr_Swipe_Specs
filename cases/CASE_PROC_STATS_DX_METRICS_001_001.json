@@ -143,12 +143,12 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Definición de Sensibilidad?",
                 "options": [
-                    "VP / Total Enfermos",
                     "VN / Total Sanos",
-                    "VP / Total Positivos"
+                    "VP / Total Positivos",
+                    "VP / Total Enfermos"
                 ]
             },
             {
@@ -161,12 +161,12 @@
                 ]
             },
             {
-                "correct_index": 2,
+                "correct_index": 1,
                 "question": "¿Qué métricas NO se alteran por la prevalencia?",
                 "options": [
-                    "VPP y VPN",
                     "Prevalencia y Incidencia",
-                    "Sensibilidad y Especificidad"
+                    "Sensibilidad y Especificidad",
+                    "VPP y VPN"
                 ]
             }
         ]

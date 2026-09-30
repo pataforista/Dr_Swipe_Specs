@@ -163,26 +163,26 @@
                 "question": "¿Cuál es el tiempo meta establecido por las guías para la realización e interpretación del ECG?",
                 "options": [
                     "Menos de 10 minutos",
-                    "Menos de 30 minutos",
-                    "A la brevedad posible sin tiempo límite"
+                    "A la brevedad posible sin tiempo límite",
+                    "Menos de 30 minutos"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es la estrategia de reperfusión de elección si el hospital cuenta con sala de hemodinamia?",
                 "options": [
+                    "Bypass de arteria coronaria urgente",
                     "Intervención Coronaria Percutánea (ICP) primaria",
-                    "Fibrinólisis farmacológica",
-                    "Bypass de arteria coronaria urgente"
+                    "Fibrinólisis farmacológica"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es la principal causa de muerte prehospitalaria en un paciente con IAM?",
                 "options": [
-                    "Fibrilación Ventricular",
                     "Ruptura de pared libre",
-                    "Choque cardiogénico"
+                    "Choque cardiogénico",
+                    "Fibrilación Ventricular"
                 ]
             }
         ]

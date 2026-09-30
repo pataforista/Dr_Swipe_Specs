@@ -163,8 +163,8 @@
                 "question": "En este contexto clínico, ¿cuál es la definición cronológica del aborto según la norma oficial mexicana?",
                 "options": [
                     "Antes de la semana 20 de gestación",
-                    "Antes de la semana 12 de gestación",
-                    "Antes de la semana 28 de gestación"
+                    "Antes de la semana 28 de gestación",
+                    "Antes de la semana 12 de gestación"
                 ],
                 "correct_index": 0
             },

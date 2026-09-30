@@ -166,19 +166,19 @@
                 "question": "¿Qué mineral se recomienda suplementar durante 14 días en todo paciente con diarrea aguda según la OMS?",
                 "options": [
                     "Hierro",
-                    "Magnesio",
-                    "Zinc"
+                    "Zinc",
+                    "Magnesio"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál es la osmolaridad de sodio recomendada por la OMS para las sales de rehidratación oral (VSO)?",
                 "options": [
-                    "75 mEq/L",
                     "90 mEq/L",
+                    "75 mEq/L",
                     "60 mEq/L"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál es la conducta inmediata ante un neonato con choque hipovolémico severo (Plan C)?",

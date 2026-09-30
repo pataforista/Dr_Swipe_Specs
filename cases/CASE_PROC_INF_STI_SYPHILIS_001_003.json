@@ -163,17 +163,17 @@
                 "question": "¿Cuál es la característica clínica definitiva del chancro sifilítico primario?",
                 "options": [
                     "Úlcera indolora de base indurada",
-                    "Múltiples vesículas dolorosas",
-                    "Úlcera sucia con base friable"
+                    "Úlcera sucia con base friable",
+                    "Múltiples vesículas dolorosas"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es el tratamiento de primera elección para un paciente con diagnóstico de sífilis primaria?",
                 "options": [
-                    "Penicilina G benzatínica 2.4 millones UI IM",
+                    "Doxiciclina 100 mg c/12h por 14 días",
                     "Ceftriaxona 250 mg IM dosis única",
-                    "Doxiciclina 100 mg c/12h por 14 días"
+                    "Penicilina G benzatínica 2.4 millones UI IM"
                 ]
             },
             {

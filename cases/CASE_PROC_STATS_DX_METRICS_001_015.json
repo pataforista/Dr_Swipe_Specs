@@ -143,12 +143,12 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Qué sucede con el VPP si la prevalencia disminuye?",
                 "options": [
-                    "Disminuye",
                     "Aumenta",
-                    "Permanece igual"
+                    "Permanece igual",
+                    "Disminuye"
                 ]
             },
             {
@@ -165,8 +165,8 @@
                 "question": "¿Qué métricas NO se alteran por la prevalencia?",
                 "options": [
                     "Sensibilidad y Especificidad",
-                    "VPP y VPN",
-                    "Prevalencia y Incidencia"
+                    "Prevalencia y Incidencia",
+                    "VPP y VPN"
                 ]
             }
         ]

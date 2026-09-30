@@ -177,8 +177,8 @@
                 "question": "¿A qué familia de antirretrovirales pertenece el Dolutegravir (DTG)?",
                 "options": [
                     "Inhibidor de la Integrasa (INSTI)",
-                    "Inhibidor de la Proteasa (IP)",
-                    "Inhibidor de Nucleósidos (ITNR)"
+                    "Inhibidor de Nucleósidos (ITNR)",
+                    "Inhibidor de la Proteasa (IP)"
                 ]
             }
         ]

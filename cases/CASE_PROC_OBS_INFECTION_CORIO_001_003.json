@@ -149,8 +149,8 @@
             {
                 "question": "Identifique el esquema antibiótico de primera elección recomendado por la GPC para el manejo de la corioamnionitis?",
                 "options": [
-                    "Clindamicina + Amikacina",
                     "Ceftriaxona + Metronidazol",
+                    "Clindamicina + Amikacina",
                     "Ampicilina + Gentamicina"
                 ],
                 "correct_index": 2
@@ -167,11 +167,11 @@
             {
                 "question": "¿Cuál es la vía de interrupción del embarazo preferida en una paciente con Corioamnionitis, si no existe contraindicación obstétrica?",
                 "options": [
-                    "Vía Vaginal (Inducción/Conducción)",
                     "Cesárea de Urgencia",
-                    "Histerectomía en bloque"
+                    "Histerectomía en bloque",
+                    "Vía Vaginal (Inducción/Conducción)"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             }
         ]
     }

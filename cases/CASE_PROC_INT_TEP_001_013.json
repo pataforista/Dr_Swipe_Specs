@@ -155,12 +155,12 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "Identifique el componente de la Triada de Virchow que describe la inmovilidad prolongada?",
                 "options": [
-                    "Estasis venosa",
+                    "Hipercoagulabilidad",
                     "Lesión endotelial",
-                    "Hipercoagulabilidad"
+                    "Estasis venosa"
                 ]
             },
             {
@@ -173,11 +173,11 @@
                 ]
             },
             {
-                "correct_index": 1,
+                "correct_index": 0,
                 "question": "¿Cuál es la puntuación de Wells que indica ALTA probabilidad clínica de TEP?",
                 "options": [
-                    "Entre 3 y 4 puntos",
                     "Mayor a 6 puntos",
+                    "Entre 3 y 4 puntos",
                     "Menor a 2 puntos"
                 ]
             }

@@ -175,11 +175,11 @@
             {
                 "question": "¿En qué momento deja de ser contagioso un niño con la quinta enfermedad?",
                 "options": [
+                    "7 días después del exantema",
                     "En cuanto aparece el exantema",
-                    "Nunca deja de ser contagioso",
-                    "7 días después del exantema"
+                    "Nunca deja de ser contagioso"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál es el agente etiológico del eritema infeccioso?",

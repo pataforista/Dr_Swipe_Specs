@@ -155,30 +155,30 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "En este contexto clínico, ¿cuál es la puntuación de Wells que indica ALTA probabilidad clínica de TEP?",
                 "options": [
-                    "Mayor a 6 puntos",
                     "Entre 3 y 4 puntos",
-                    "Menor a 2 puntos"
+                    "Menor a 2 puntos",
+                    "Mayor a 6 puntos"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es el componente de la Triada de Virchow que describe la inmovilidad prolongada?",
                 "options": [
-                    "Estasis venosa",
                     "Hipercoagulabilidad",
+                    "Estasis venosa",
                     "Lesión endotelial"
                 ]
             },
             {
-                "correct_index": 2,
+                "correct_index": 1,
                 "question": "¿Qué estudio de imagen es preferible en una mujer EMBARAZADA con sospecha de TEP ante una radiografía normal?",
                 "options": [
                     "Arteriografía pulmonar directa",
-                    "AngioTAC (por dosis fetal baja)",
-                    "Gammagrafía de ventilación/perfusión (V/Q)"
+                    "Gammagrafía de ventilación/perfusión (V/Q)",
+                    "AngioTAC (por dosis fetal baja)"
                 ]
             }
         ]

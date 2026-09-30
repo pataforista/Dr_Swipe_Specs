@@ -145,17 +145,17 @@
             {
                 "question": "¿Qué marcador bioquímico es el más sensible para diagnosticar ruptura de membranas (Amnisure)?",
                 "options": [
-                    "Alfa-fetoproteína",
+                    "Microglobulina placentaria alfa-1 (PAMG-1)",
                     "Fibronectina fetal",
-                    "Microglobulina placentaria alfa-1 (PAMG-1)"
+                    "Alfa-fetoproteína"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿Cuál es la maniobra exploratoria que debe EVITARSE ante la sospecha de ruptura prematura de membranas?",
                 "options": [
-                    "Especuloscopía estéril",
                     "Maniobra de Tarnier",
+                    "Especuloscopía estéril",
                     "Tacto vaginal repetido"
                 ],
                 "correct_index": 2
@@ -163,11 +163,11 @@
             {
                 "question": "Identifique la conducta recomendada en una paciente con RPM de 32 semanas de gestación sin datos de infección?",
                 "options": [
+                    "Cesárea de urgencia",
                     "Manejo conservador (Madurez pulmonar + Antibióticos)",
-                    "Inducción inmediata del trabajo de parto",
-                    "Cesárea de urgencia"
+                    "Inducción inmediata del trabajo de parto"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             }
         ]
     }

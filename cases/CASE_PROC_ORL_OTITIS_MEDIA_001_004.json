@@ -165,20 +165,20 @@
             {
                 "question": "¿Cuál es la complicación intratemporal supurativa más frecuente de la OMA?",
                 "options": [
-                    "Mastoiditis aguda",
                     "Laberintitis",
-                    "Meningitis supurativa"
+                    "Meningitis supurativa",
+                    "Mastoiditis aguda"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             },
             {
                 "question": "¿Cuál es el antibiótico de primera elección y su dosis para el tratamiento de la OMA?",
                 "options": [
-                    "Amoxicilina a 80-90 mg/kg/día",
+                    "Ceftriaxona 50 mg/kg IM dosis única",
                     "Eritromicina 40 mg/kg/día",
-                    "Ceftriaxona 50 mg/kg IM dosis única"
+                    "Amoxicilina a 80-90 mg/kg/día"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             },
             {
                 "question": "Con respecto a la patología, ¿cuál es el hallazgo en la otoscopia más sugestivo de otitis media aguda?",

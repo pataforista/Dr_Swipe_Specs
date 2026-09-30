@@ -160,11 +160,11 @@
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Meta de TA en diabéticos según la ADA?",
                 "options": [
-                    "<130/80 mmHg",
                     "<140/90 mmHg",
+                    "<130/80 mmHg",
                     "<120/70 mmHg"
                 ]
             },

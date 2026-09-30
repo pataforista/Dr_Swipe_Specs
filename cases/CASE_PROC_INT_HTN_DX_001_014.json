@@ -151,12 +151,12 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cifra para diagnóstico de HAS según NOM-030?",
                 "options": [
+                    ">=150/95 mmHg",
                     ">=140/90 mmHg",
-                    ">=130/80 mmHg",
-                    ">=150/95 mmHg"
+                    ">=130/80 mmHg"
                 ]
             },
             {
@@ -169,12 +169,12 @@
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Qué indica el fondo de ojo en HAS?",
                 "options": [
-                    "Daño a órgano blanco crónico",
                     "Solo agudeza visual",
-                    "No tiene utilidad"
+                    "No tiene utilidad",
+                    "Daño a órgano blanco crónico"
                 ]
             }
         ]

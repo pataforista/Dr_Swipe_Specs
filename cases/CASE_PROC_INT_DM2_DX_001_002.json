@@ -154,26 +154,26 @@
                 "correct_index": 1,
                 "question": "¿Qué porcentaje de HbA1c confirma el diagnóstico?",
                 "options": [
-                    ">=5.7%",
+                    ">=8.0%",
                     ">=6.5%",
-                    ">=8.0%"
+                    ">=5.7%"
                 ]
             },
             {
-                "correct_index": 2,
+                "correct_index": 1,
                 "question": "¿En qué momento se diagnostica DM2 con glucosa al azar >=200?",
                 "options": [
-                    "Siempre es diagnóstico",
                     "Nunca, requiere confirmación",
-                    "Si hay síntomas clásicos (síntomas)"
+                    "Si hay síntomas clásicos (síntomas)",
+                    "Siempre es diagnóstico"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "De las siguientes opciones, ¿cuál es la cifra de glucosa en ayuno para diagnóstico de DM2?",
                 "options": [
-                    ">=126 mg/dL",
                     ">=100 mg/dL",
+                    ">=126 mg/dL",
                     ">=200 mg/dL"
                 ]
             }

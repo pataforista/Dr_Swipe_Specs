@@ -120,30 +120,30 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es el sitio de punción preferido actual según ATLS 10a Edición?",
                 "options": [
-                    "5° espacio intercostal (LAA/LAM)",
                     "2° espacio intercostal (LMC)",
+                    "5° espacio intercostal (LAA/LAM)",
                     "4° espacio intercostal (LAA)"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Qué tipo de choque presenta este paciente?",
                 "options": [
-                    "Choque obstructivo",
+                    "Choque distributivo",
                     "Choque hipovolémico",
-                    "Choque distributivo"
+                    "Choque obstructivo"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Qué hallazgo a la percusión diferencia un neumotórax de un hemotórax masivo?",
                 "options": [
+                    "Dolor pleurítico vs IVY",
                     "Hiperresonancia vs Matidez",
-                    "Desviación traqueal vs Crepitación",
-                    "Dolor pleurítico vs IVY"
+                    "Desviación traqueal vs Crepitación"
                 ]
             }
         ]

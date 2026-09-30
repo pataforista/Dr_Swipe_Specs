@@ -152,21 +152,21 @@
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es la conducta recomendada ante un hallazgo categorizado como BI-RADS 3 (Probablemente Benigno)?",
                 "options": [
-                    "Seguimiento mastográfico en 6 meses",
+                    "Repetir estudio en 2 años",
                     "Biopsia percutánea inmediata",
-                    "Repetir estudio en 2 años"
+                    "Seguimiento mastográfico en 6 meses"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál de los siguientes subtipos histopatológicos es el más frecuente en el cáncer de mama invasor?",
                 "options": [
-                    "Carcinoma Ductal Infiltrante",
+                    "Carcinoma Mucinoso",
                     "Carcinoma Lobulillar Infiltrante",
-                    "Carcinoma Mucinoso"
+                    "Carcinoma Ductal Infiltrante"
                 ]
             }
         ]

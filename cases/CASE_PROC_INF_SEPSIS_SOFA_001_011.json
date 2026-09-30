@@ -180,17 +180,17 @@
                 "question": "¿Cuál es la meta de Presión Arterial Media (PAM) tras la reanimación inicial?",
                 "options": [
                     ">=65 mmHg",
-                    ">=90 mmHg",
-                    ">=50 mmHg"
+                    ">=50 mmHg",
+                    ">=90 mmHg"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es el vasopresor de primera elección en el choque séptico?",
                 "options": [
+                    "Epinefrina",
                     "Norepinefrina",
-                    "Dopamina",
-                    "Epinefrina"
+                    "Dopamina"
                 ]
             },
             {

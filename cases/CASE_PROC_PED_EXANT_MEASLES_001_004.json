@@ -169,29 +169,29 @@
             {
                 "question": "De las siguientes opciones, ¿cuál es la causa más común de MUERTE por sarampión?",
                 "options": [
+                    "Encefalitis",
                     "Deshidratación",
-                    "Neumonía",
-                    "Encefalitis"
+                    "Neumonía"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             },
             {
                 "question": "Identifique la complicación más frecuente del sarampión?",
                 "options": [
+                    "Panencefalitis esclerosante subaguda",
                     "Crup",
-                    "Otitis media aguda",
-                    "Panencefalitis esclerosante subaguda"
+                    "Otitis media aguda"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             },
             {
                 "question": "¿En qué periodo es contagioso el paciente?",
                 "options": [
-                    "Desde el pródromo hasta 4-5 días tras inicio de exantema",
                     "Solo cuando tiene fiebre alta",
-                    "Durante toda la vida"
+                    "Durante toda la vida",
+                    "Desde el pródromo hasta 4-5 días tras inicio de exantema"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             }
         ]
     }

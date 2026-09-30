@@ -157,29 +157,29 @@
             {
                 "question": "¿Cuál es la complicación sistémica más frecuente asociada a la Roseola?",
                 "options": [
-                    "Convulsiones febriles",
                     "Glomerulonefritis",
+                    "Convulsiones febriles",
                     "Neumonía"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál es el agente etiológico más común del exantema súbito?",
                 "options": [
-                    "Virus Herpes Humano 6",
+                    "Parvovirus B19",
                     "Virus Varicela Zóster",
-                    "Parvovirus B19"
+                    "Virus Herpes Humano 6"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             },
             {
                 "question": "¿Qué hallazgo en la cavidad oral es característico de esta enfermedad?",
                 "options": [
+                    "Manchas de Nagayama",
                     "Manchas de Forchheimer",
-                    "Manchas de Koplik",
-                    "Manchas de Nagayama"
+                    "Manchas de Koplik"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             }
         ]
     }

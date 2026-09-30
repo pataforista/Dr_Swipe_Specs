@@ -153,17 +153,17 @@
             {
                 "question": "Con respecto a la patología, ¿cuál es el estudio de imagen con mayor sensibilidad y especificidad (Estándar de Oro) para el diagnóstico de diverticulitis?",
                 "options": [
-                    "Tomografía Axial Computarizada (TC)",
                     "Radiografía de Abdomen",
-                    "Ultrasonido Abdominal"
+                    "Ultrasonido Abdominal",
+                    "Tomografía Axial Computarizada (TC)"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             },
             {
                 "question": "¿Cuál es el manejo de elección para un absceso diverticular >5 cm (Hinchey II) según la GPC?",
                 "options": [
-                    "Resección intestinal inmediata",
                     "Antibióticos orales únicamente",
+                    "Resección intestinal inmediata",
                     "Drenaje percutáneo guiado por imagen"
                 ],
                 "correct_index": 2
@@ -171,11 +171,11 @@
             {
                 "question": "¿Cuál de los siguientes estudios está CONTRAINDICADO durante la fase aguda de una diverticulitis por riesgo de perforación?",
                 "options": [
-                    "Resonancia Magnética",
                     "Colonoscopía",
-                    "Tomografía Computada"
+                    "Tomografía Computada",
+                    "Resonancia Magnética"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             }
         ]
     }

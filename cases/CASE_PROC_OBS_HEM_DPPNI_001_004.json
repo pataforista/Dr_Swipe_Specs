@@ -154,9 +154,9 @@
             {
                 "question": "¿Qué hallazgo quirúrgico define al Útero de Couvelaire?",
                 "options": [
-                    "Ruptura de la serosa uterina",
+                    "Acretismo placentario focal",
                     "Infiltración de sangre en el miometrio",
-                    "Acretismo placentario focal"
+                    "Ruptura de la serosa uterina"
                 ],
                 "correct_index": 1
             },
@@ -164,19 +164,19 @@
                 "question": "¿Cuál es el factor de riesgo más importante para presentar DPPNI?",
                 "options": [
                     "Hipertensión Arterial / Preeclampsia",
-                    "Diabetes Gestacional",
-                    "Edad materna avanzada"
+                    "Edad materna avanzada",
+                    "Diabetes Gestacional"
                 ],
                 "correct_index": 0
             },
             {
                 "question": "¿Cuál es la complicación hematológica más grave asociada al DPPNI?",
                 "options": [
+                    "Coagulación Intravascular Diseminada (CID)",
                     "Trombocitosis reactiva",
-                    "Anemia ferropénica severa",
-                    "Coagulación Intravascular Diseminada (CID)"
+                    "Anemia ferropénica severa"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             }
         ]
     }

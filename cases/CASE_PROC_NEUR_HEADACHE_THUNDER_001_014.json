@@ -165,21 +165,21 @@
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Qué hallazgo en el líquido cefalorraquídeo confirma una HSA frente a una punción traumática?",
                 "options": [
-                    "Xantocromía (coloración amarillenta)",
                     "Glucosa muy baja",
-                    "Presencia de leucocitos PMN"
+                    "Presencia de leucocitos PMN",
+                    "Xantocromía (coloración amarillenta)"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es el fármaco de elección para prevenir el vasoespasmo cerebral tras la rotura?",
                 "options": [
-                    "Nimodipino",
+                    "Amlodipino",
                     "Verapamilo",
-                    "Amlodipino"
+                    "Nimodipino"
                 ]
             }
         ]

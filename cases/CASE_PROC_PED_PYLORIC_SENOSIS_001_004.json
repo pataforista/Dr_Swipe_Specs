@@ -158,20 +158,20 @@
             {
                 "question": "¿Qué grosor de músculo pilórico en el ultrasonido confirma el diagnóstico de estenosis?",
                 "options": [
+                    "Mayor a 1 mm",
                     "Mayor a 3 mm",
-                    "Entre 1.5 y 2 mm",
-                    "Mayor a 1 mm"
+                    "Entre 1.5 y 2 mm"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             },
             {
                 "question": "Con respecto a la patología, ¿cuál es el trastorno ácido-base característico de la estenosis hipertrófica de píloro?",
                 "options": [
-                    "Acidosis metabólica hiperclorémica",
                     "Alcalosis respiratoria compensada",
-                    "Alcalosis metabólica hipoclorémica"
+                    "Alcalosis metabólica hipoclorémica",
+                    "Acidosis metabólica hiperclorémica"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             }
         ]
     }

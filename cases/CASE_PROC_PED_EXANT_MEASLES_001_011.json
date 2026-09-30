@@ -169,8 +169,8 @@
             {
                 "question": "¿Cuál es la complicación más frecuente del sarampión?",
                 "options": [
-                    "Crup",
                     "Panencefalitis esclerosante subaguda",
+                    "Crup",
                     "Otitis media aguda"
                 ],
                 "correct_index": 2
@@ -178,20 +178,20 @@
             {
                 "question": "¿En qué periodo es contagioso el paciente?",
                 "options": [
-                    "Desde el pródromo hasta 4-5 días tras inicio de exantema",
                     "Durante toda la vida",
+                    "Desde el pródromo hasta 4-5 días tras inicio de exantema",
                     "Solo cuando tiene fiebre alta"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál es la causa más común de MUERTE por sarampión?",
                 "options": [
-                    "Encefalitis",
                     "Neumonía",
+                    "Encefalitis",
                     "Deshidratación"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             }
         ]
     }

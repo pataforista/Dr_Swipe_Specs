@@ -165,8 +165,8 @@
             {
                 "question": "De las siguientes opciones, ¿cuál es el estudio de imagen de elección para confirmar el diagnóstico y clasificar la FEVI en IC?",
                 "options": [
-                    "Radiografía de tórax",
                     "Resonancia magnética",
+                    "Radiografía de tórax",
                     "Ecocardiograma"
                 ],
                 "correct_index": 2
@@ -175,10 +175,10 @@
                 "question": "¿A qué clase de la NYHA corresponde un paciente con disnea a pequeños esfuerzos que limita la actividad normal?",
                 "options": [
                     "NYHA I",
-                    "NYHA IV",
-                    "NYHA III"
+                    "NYHA III",
+                    "NYHA IV"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál de estos grupos de fármacos NO forma parte de la 'terapia cuádruple' estándar para ICFEr?",

@@ -167,19 +167,19 @@
                 "question": "¿Cuál es el agente etiológico más común del exantema súbito?",
                 "options": [
                     "Virus Herpes Humano 6",
-                    "Parvovirus B19",
-                    "Virus Varicela Zóster"
+                    "Virus Varicela Zóster",
+                    "Parvovirus B19"
                 ],
                 "correct_index": 0
             },
             {
                 "question": "¿Cuál es la complicación sistémica más frecuente asociada a la Roseola?",
                 "options": [
+                    "Neumonía",
                     "Convulsiones febriles",
-                    "Glomerulonefritis",
-                    "Neumonía"
+                    "Glomerulonefritis"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             }
         ]
     }

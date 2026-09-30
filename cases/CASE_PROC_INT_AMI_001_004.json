@@ -168,17 +168,17 @@
                 "question": "¿Cuál es la principal causa de muerte prehospitalaria en un paciente con IAM?",
                 "options": [
                     "Fibrilación Ventricular",
-                    "Ruptura de pared libre",
-                    "Choque cardiogénico"
+                    "Choque cardiogénico",
+                    "Ruptura de pared libre"
                 ]
             },
             {
-                "correct_index": 1,
+                "correct_index": 0,
                 "question": "Identifique la estrategia de reperfusión de elección si el hospital cuenta con sala de hemodinamia?",
                 "options": [
-                    "Bypass de arteria coronaria urgente",
                     "Intervención Coronaria Percutánea (ICP) primaria",
-                    "Fibrinólisis farmacológica"
+                    "Fibrinólisis farmacológica",
+                    "Bypass de arteria coronaria urgente"
                 ]
             }
         ]

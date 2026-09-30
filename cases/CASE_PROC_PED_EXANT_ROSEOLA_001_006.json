@@ -166,11 +166,11 @@
             {
                 "question": "De las siguientes opciones, ¿cuál es la complicación sistémica más frecuente asociada a la Roseola?",
                 "options": [
-                    "Convulsiones febriles",
                     "Neumonía",
-                    "Glomerulonefritis"
+                    "Glomerulonefritis",
+                    "Convulsiones febriles"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             },
             {
                 "question": "¿Qué hallazgo en la cavidad oral es característico de esta enfermedad?",

@@ -95,11 +95,11 @@
             {
                 "question": "¿En qué derivaciones INDICA IAMCEST anterior?",
                 "options": [
-                    "V1-V4 (± aVL) con imagen recíproca en II, III, aVF",
                     "II, III, aVF con imagen recíproca en I, aVL",
-                    "V5-V6 con aVL"
+                    "V5-V6 con aVL",
+                    "V1-V4 (± aVL) con imagen recíproca en II, III, aVF"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             },
             {
                 "question": "¿Cuál es la prioridad si NO hay ICP disponible en <120 min?",
@@ -113,11 +113,11 @@
             {
                 "question": "¿Por qué IAMCEST anterior es más grave que inferior?",
                 "options": [
+                    "Es menos grave, es confusión",
                     "Afecta ventrículo izquierdo grande → mayor riesgo de choque",
-                    "Siempre requiere cirugía",
-                    "Es menos grave, es confusión"
+                    "Siempre requiere cirugía"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             }
         ]
     },

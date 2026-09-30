@@ -153,20 +153,20 @@
             {
                 "question": "Identifique el tratamiento quirúrgico de elección en una paciente con aborto incompleto estable y útero de 10 semanas?",
                 "options": [
-                    "Histerectomía",
+                    "LUI (Legrado uterino)",
                     "AMEU (Aspiración endouterina)",
-                    "LUI (Legrado uterino)"
+                    "Histerectomía"
                 ],
                 "correct_index": 1
             },
             {
                 "question": "En este contexto clínico, ¿cuál es la definición cronológica del aborto según la norma oficial mexicana?",
                 "options": [
+                    "Antes de la semana 28 de gestación",
                     "Antes de la semana 12 de gestación",
-                    "Antes de la semana 20 de gestación",
-                    "Antes de la semana 28 de gestación"
+                    "Antes de la semana 20 de gestación"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             },
             {
                 "question": "¿Qué hallazgo clínico diferencia el aborto incompleto de la amenaza de aborto?",

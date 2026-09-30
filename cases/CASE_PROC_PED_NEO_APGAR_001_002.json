@@ -174,8 +174,8 @@
             {
                 "question": "¿Qué puntuacion de Silverman-Andersen indica una dificultad respiratoria GRAVE?",
                 "options": [
-                    "0 puntos (Normalidad)",
                     "Entre 1 y 3 puntos",
+                    "0 puntos (Normalidad)",
                     "Mayor a 7 puntos"
                 ],
                 "correct_index": 2
@@ -183,11 +183,11 @@
             {
                 "question": "¿Cuál es la conducta inmediata ante una frecuencia cardiaca <100 lpm en el recien nacido?",
                 "options": [
-                    "Iniciar Ventilacion a Presion Positiva (VPP)",
                     "Iniciar Compresiones Toracicas",
-                    "Administrar Adrenalina Umbilical"
+                    "Administrar Adrenalina Umbilical",
+                    "Iniciar Ventilacion a Presion Positiva (VPP)"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             }
         ]
     }

@@ -157,27 +157,27 @@
             {
                 "question": "¿Qué parámetros integran el acrónimo del Síndrome de HELLP?",
                 "options": [
-                    "Hipotensión, Enzimas cardiacas ↑, Lactato ↑",
+                    "Hemólisis, Enzimas hepáticas ↑, Plaquetas ↓",
                     "Hipertensión, Edema, Linfocitos ↑, Leucocitos ↑",
-                    "Hemólisis, Enzimas hepáticas ↑, Plaquetas ↓"
+                    "Hipotensión, Enzimas cardiacas ↑, Lactato ↑"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿Cuál es el antídoto de elección ante una intoxicación por Sulfato de Magnesio?",
                 "options": [
-                    "Flumazenil",
                     "Gluconato de Calcio",
+                    "Flumazenil",
                     "Naloxona"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             },
             {
                 "question": "¿Cuál es el primer signo clínico de intoxicación por Magnesio?",
                 "options": [
-                    "Somnolencia extrema",
+                    "Paro respiratorio",
                     "Abolición del reflejo rotuliano",
-                    "Paro respiratorio"
+                    "Somnolencia extrema"
                 ],
                 "correct_index": 1
             }

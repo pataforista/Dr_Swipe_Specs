@@ -105,29 +105,29 @@
             {
                 "question": "¿Cuál es la clase Killip-Kimball de un IAM con shock cardiogénico (hipotensión y datos de hipoperfusión)?",
                 "options": [
+                    "Killip IV",
                     "Killip I",
-                    "Killip III",
-                    "Killip IV"
+                    "Killip III"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿Cuál es el tratamiento de reperfusión de elección en un paciente con IAM CEST en shock cardiogénico?",
                 "options": [
-                    "Trombolisis IV inmediata",
                     "Intervención Coronaria Percutánea primaria",
-                    "Bypass coronario de urgencia"
+                    "Bypass coronario de urgencia",
+                    "Trombolisis IV inmediata"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             },
             {
                 "question": "¿Qué fármaco está ABSOLUTAMENTE contraindicado en este paciente con PA 70/40 mmHg?",
                 "options": [
-                    "Aspirina",
                     "Nitroglicerina",
-                    "Clopidogrel"
+                    "Clopidogrel",
+                    "Aspirina"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             }
         ]
     }

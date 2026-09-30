@@ -158,8 +158,8 @@
                 "question": "¿Qué parámetros integran el acrónimo del Síndrome de HELLP?",
                 "options": [
                     "Hemólisis, Enzimas hepáticas ↑, Plaquetas ↓",
-                    "Hipotensión, Enzimas cardiacas ↑, Lactato ↑",
-                    "Hipertensión, Edema, Linfocitos ↑, Leucocitos ↑"
+                    "Hipertensión, Edema, Linfocitos ↑, Leucocitos ↑",
+                    "Hipotensión, Enzimas cardiacas ↑, Lactato ↑"
                 ],
                 "correct_index": 0
             },
@@ -175,11 +175,11 @@
             {
                 "question": "Con respecto a la patología, ¿cuál es el antídoto de elección ante una intoxicación por Sulfato de Magnesio?",
                 "options": [
+                    "Naloxona",
                     "Gluconato de Calcio",
-                    "Flumazenil",
-                    "Naloxona"
+                    "Flumazenil"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             }
         ]
     }

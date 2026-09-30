@@ -151,11 +151,11 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es la cifra de glucosa en ayuno para diagnóstico de DM2?",
                 "options": [
-                    ">=126 mg/dL",
                     ">=100 mg/dL",
+                    ">=126 mg/dL",
                     ">=200 mg/dL"
                 ]
             },
@@ -169,11 +169,11 @@
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿En qué momento se diagnostica DM2 con glucosa al azar >=200?",
                 "options": [
-                    "Si hay síntomas clásicos (síntomas)",
                     "Siempre es diagnóstico",
+                    "Si hay síntomas clásicos (síntomas)",
                     "Nunca, requiere confirmación"
                 ]
             }

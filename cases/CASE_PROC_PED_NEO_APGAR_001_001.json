@@ -161,29 +161,29 @@
             {
                 "question": "¿En qué momento se deben iniciar las COMPRESIONES toracicas en el recien nacido?",
                 "options": [
-                    "Inmediatamente al nacer si no llora",
+                    "Si el APGAR inicial es <3",
                     "Si la FC es <60 lpm pese a VPP efectiva",
-                    "Si el APGAR inicial es <3"
+                    "Inmediatamente al nacer si no llora"
                 ],
                 "correct_index": 1
             },
             {
                 "question": "¿Cuál es la frecuencia cardiaca por debajo de la cual se debe iniciar Ventilacion a Presion Positiva (VPP)?",
                 "options": [
-                    "<60 lpm",
                     "<100 lpm",
+                    "<60 lpm",
                     "<120 lpm"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             },
             {
                 "question": "¿Qué evalúa la escala de Silverman-Andersen en el periodo neonatal?",
                 "options": [
-                    "Dificultad Respiratoria",
                     "Madurez Gestacional",
-                    "Vitalidad y Adaptacion"
+                    "Vitalidad y Adaptacion",
+                    "Dificultad Respiratoria"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             }
         ]
     }

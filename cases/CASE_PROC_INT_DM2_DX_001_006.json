@@ -151,21 +151,21 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es la cifra de glucosa en ayuno para diagnóstico de DM2?",
                 "options": [
-                    ">=126 mg/dL",
+                    ">=200 mg/dL",
                     ">=100 mg/dL",
-                    ">=200 mg/dL"
+                    ">=126 mg/dL"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Qué porcentaje de HbA1c confirma el diagnóstico?",
                 "options": [
-                    ">=6.5%",
                     ">=5.7%",
-                    ">=8.0%"
+                    ">=8.0%",
+                    ">=6.5%"
                 ]
             },
             {
