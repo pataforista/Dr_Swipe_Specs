@@ -58,6 +58,11 @@ h1, h2, h3, .lettering {
   letter-spacing: -0.02em;
 }
 
+.medical-grid {
+  background-image: linear-gradient(to right, #0D9488 1px, transparent 1px), linear-gradient(to bottom, #0D9488 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
 .paper-sheet {
   background-color: var(--surface);
   border: 1px solid #E2E8F0;

@@ -1,0 +1,134 @@
+{
+    "case_id": "CASE_PROC_CARD_AMI_EXTREME_001_001",
+    "version": "v3_swipe_action",
+    "theme_config": "card",
+    "difficulty": "extreme",
+    "patient_intro": {
+        "name": "Ingreso Crítico #405: IAM y Shock Cardiogénico",
+        "arrival_scenario": "Hombre de 68 años llega sudoroso y pálido, dolor precordial opresivo irradiado a mandíbula de 4 horas de evolución, PA 70/40 mmHg, FC 120 lpm. Alteración del estado de alerta.",
+        "time_limit_sec": 70
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "Signos Vitales",
+            "card_text": "Signos Iniciales: PA 70/40 mmHg, FC 120 lpm, Temp 36°C, SatO2 88%. Estertores crepitantes bilaterales.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Paciente en shock inminente. Killip-Kimball IV. El tiempo es miocardio."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "activity",
+            "category": "Diagnóstico Inmediato",
+            "card_text": "Electrocardiograma de 12 derivaciones en los primeros 10 minutos.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Navarro: Retrasar el ECG en urgencias es imperdonable, te costará la vida del paciente."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true,
+                "lethal_if_discarded": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "target",
+            "category": "Hallazgo",
+            "card_text": "ECG muestra Supradesnivel del ST en V1-V6. (Infarto Anterior Extenso).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Arteria Descendente Anterior ocluida. Alto riesgo de complicaciones mecánicas o shock."
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "pill",
+            "category": "Manejo Terapéutico",
+            "card_text": "Nitroglicerina sublingual para aliviar dolor y precarga.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "lethal_hazard",
+                "vazquez_comment": "Navarro: ¡Contraindicado en hipotensión grave y shock! Vas a colapsar su hemodinamia completamente."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_4",
+            "ui_icon": "zap",
+            "category": "Manejo Terapéutico",
+            "card_text": "Intervención Coronaria Percutánea (ICP) Primaria urgente.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Navarro: Estándar de oro para el IAM con supradesnivel del ST, más aún en shock cardiogénico."
+            },
+            "safety_flags": {
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_5",
+            "ui_icon": "activity",
+            "category": "Soporte",
+            "card_text": "Inotrópicos (Dobutamina/Norepinefrina) de soporte hemodinámico.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Necesitamos sostener la presión de perfusión mientras abrimos la arteria."
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "IAM Anterior + Shock (Killip IV)",
+        "text": "Evita nitratos y beta-bloqueadores en shock cardiogénico o hipotensión severa. ICP es mandatoria y urgente.",
+        "gpc_ref": "GPC Tratamiento de Infarto Agudo al Miocardio"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "question": "¿Cuál es la clase Killip-Kimball de un IAM con shock cardiogénico (hipotensión y datos de hipoperfusión)?",
+                "options": [
+                    "Killip I",
+                    "Killip III",
+                    "Killip IV"
+                ],
+                "correct_index": 2
+            },
+            {
+                "question": "¿Cuál es el tratamiento de reperfusión de elección en un paciente con IAM CEST en shock cardiogénico?",
+                "options": [
+                    "Trombolisis IV inmediata",
+                    "Intervención Coronaria Percutánea primaria",
+                    "Bypass coronario de urgencia"
+                ],
+                "correct_index": 1
+            },
+            {
+                "question": "¿Qué fármaco está ABSOLUTAMENTE contraindicado en este paciente con PA 70/40 mmHg?",
+                "options": [
+                    "Aspirina",
+                    "Nitroglicerina",
+                    "Clopidogrel"
+                ],
+                "correct_index": 1
+            }
+        ]
+    }
+}

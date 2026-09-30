@@ -1,7 +1,7 @@
 {
     "case_id": "PROC_INF_STI_SYPHILIS_001_005",
     "version": "v3_swipe_action",
-    "theme_config": "med",
+    "theme_config": "inf",
     "difficulty": "standard",
     "patient_intro": {
         "name": "Miguel, 41 años",

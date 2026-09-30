@@ -1,0 +1,117 @@
+{
+    "case_id": "CASE_PROC_GAST_VARICES_HARD_001_001",
+    "version": "v3_swipe_action",
+    "theme_config": "gast",
+    "difficulty": "hard",
+    "patient_intro": {
+        "name": "Ingreso Crítico #702: Hematemesis Masiva",
+        "arrival_scenario": "Hombre de 55 años con antecedente de cirrosis alcohólica (Child-Pugh C) es traído por hematemesis en pozos de café y sangre fresca (aprox 1000ml). Piel fría, letárgico, taquicárdico.",
+        "time_limit_sec": 75
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "Signos Vitales",
+            "card_text": "Vitals Iniciales: PA 85/50 mmHg, FC 115 lpm, FR 24, SatO2 92% aire ambiente.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Choque hipovolémico inminente. Paciente con red venosa colateral e ictericia evidente."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "droplet",
+            "category": "Resucitación",
+            "card_text": "Reanimación intensiva con cristaloides para llevar presión sistólica > 120 mmHg.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "lethal_hazard",
+                "vazquez_comment": "Navarro: ¡No! En sangrado variceal queremos reanimación restrictiva (PAS ~90). Si subes mucho la presión, resangrará masivamente."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "pill",
+            "category": "Fármacos",
+            "card_text": "Infusión de Terlipresina o Octreótido IV inmediatamente.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Navarro: Fundamental. Vasoconstricción esplácnica reduce el flujo portal antes de la endoscopia."
+            },
+            "safety_flags": {
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "activity",
+            "category": "Procedimiento",
+            "card_text": "Endoscopia digestiva alta dentro de las primeras 12-24 horas para ligadura con banda.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: La ligadura endoscópica es el estándar de oro de control hemostático."
+            }
+        },
+        {
+            "card_id": "c_4",
+            "ui_icon": "shield-alert",
+            "category": "Prevención",
+            "card_text": "Ceftriaxona IV profiláctica por 7 días.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Todo paciente cirrótico con sangrado gastrointestinal DEBE recibir antibióticos profilácticos para evitar PBE y resangrado."
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Sangrado Variceal en Cirrosis",
+        "text": "1) Reanimación hemodinámica restrictiva (PAS ~90), 2) Fármacos vasoactivos esplácnicos (Terlipresina), 3) Endoscopia <12h, 4) ATB Profilácticos.",
+        "gpc_ref": "GPC Sangrado de Tubo Digestivo Alto"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "question": "¿Cuál es la medida farmacológica de primera línea para detener el sangrado por varices esofágicas previo a la endoscopia?",
+                "options": [
+                    "Omeprazol IV en infusión",
+                    "Terlipresina / Octreótido IV",
+                    "Ácido Tranexámico IV"
+                ],
+                "correct_index": 1
+            },
+            {
+                "question": "¿Qué complicación previene directamente el uso de Ceftriaxona en este paciente cirrótico con sangrado activo?",
+                "options": [
+                    "Peritonitis Bacteriana Espontánea (PBE)",
+                    "Encefalopatía Hepática",
+                    "Síndrome Hepatorrenal"
+                ],
+                "correct_index": 0
+            },
+            {
+                "question": "¿Cuál es el tratamiento endoscópico de elección para las várices esofágicas sangrantes?",
+                "options": [
+                    "Escleroterapia con etanolamina",
+                    "Colocación de balón de Sengstaken-Blakemore",
+                    "Ligadura endoscópica con banda elástica"
+                ],
+                "correct_index": 2
+            }
+        ]
+    }
+}

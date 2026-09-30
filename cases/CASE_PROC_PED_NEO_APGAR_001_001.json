@@ -30,7 +30,7 @@
             "scoring": {
                 "points": 150,
                 "error_type": "omission",
-                "vazquez_comment": "Castillo: ¡Excelente calculo! El APGAR evalua vitalidad, no pronostico neurologico a largo plazo."
+                "vazquez_comment": "Castillo: ¡Excelente calculo! El APGAR evalúa vitalidad, no pronostico neurologico a largo plazo."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -159,7 +159,7 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "question": "¿En que momento se deben iniciar las COMPRESIONES toracicas en el recien nacido?",
+                "question": "¿En qué momento se deben iniciar las COMPRESIONES toracicas en el recien nacido?",
                 "options": [
                     "Inmediatamente al nacer si no llora",
                     "Si la FC es <60 lpm pese a VPP efectiva",
@@ -168,7 +168,7 @@
                 "correct_index": 1
             },
             {
-                "question": "¿Cual es la frecuencia cardiaca por debajo de la cual se debe iniciar Ventilacion a Presion Positiva (VPP)?",
+                "question": "¿Cuál es la frecuencia cardiaca por debajo de la cual se debe iniciar Ventilacion a Presion Positiva (VPP)?",
                 "options": [
                     "<60 lpm",
                     "<100 lpm",
@@ -177,7 +177,7 @@
                 "correct_index": 1
             },
             {
-                "question": "¿Que evalua la escala de Silverman-Andersen en el periodo neonatal?",
+                "question": "¿Qué evalúa la escala de Silverman-Andersen en el periodo neonatal?",
                 "options": [
                     "Dificultad Respiratoria",
                     "Madurez Gestacional",

@@ -137,7 +137,7 @@
             "card_id": "c_3",
             "ui_icon": "slash",
             "category": "Contraindicacion",
-            "card_text": "Hallazgo: C) Contraindicado: ASA (Acido Acetilsalicilico/Aspirina). Su uso para la fiebre en varicela conlleva alto riesgo de Sindrome de Reye (falla hepatica aguda).",
+            "card_text": "Hallazgo: C) Contraindicado: ASA (Ácido Acetilsalicilico/Aspirina). Su uso para la fiebre en varicela conlleva alto riesgo de Sindrome de Reye (falla hepatica aguda).",
             "expected_action": "discard",
             "scoring": {
                 "points": 150,

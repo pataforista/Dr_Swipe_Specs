@@ -129,7 +129,7 @@
             "card_id": "c_10",
             "ui_icon": "droplet",
             "category": "meds",
-            "card_text": "J) Acido Tranexámico (1g IV): Administrar en las primeras 3 horas del inicio de la HPP para reducir la mortalidad.",
+            "card_text": "J) Ácido Tranexámico (1g IV): Administrar en las primeras 3 horas del inicio de la HPP para reducir la mortalidad.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

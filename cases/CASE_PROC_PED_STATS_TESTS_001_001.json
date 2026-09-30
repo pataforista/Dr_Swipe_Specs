@@ -5,7 +5,7 @@
     "difficulty": "standard",
     "patient_intro": {
         "name": "Dr. Martinez, R1 de Pediatria",
-        "arrival_scenario": "Estas analizando un estudio sobre la eficacia de un nuevo antibiotico en neumonia infantil. ¿Que prueba estadistica es la adecuada para cada tipo de variable y comparacion?",
+        "arrival_scenario": "Estas analizando un estudio sobre la eficacia de un nuevo antibiotico en neumonia infantil. ¿Qué prueba estadística es la adecuada para cada tipo de variable y comparacion?",
         "time_limit_sec": 60
     },
     "card_stream": [
@@ -151,7 +151,7 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "question": "¿Que indica un valor de p < 0.05 en un estudio clinico?",
+                "question": "¿Qué indica un valor de p < 0.05 en un estudio clinico?",
                 "options": [
                     "Que no hay diferencia entre los grupos",
                     "Que el estudio tiene un error de diseno grave",
@@ -160,7 +160,7 @@
                 "correct_index": 2
             },
             {
-                "question": "¿Que prueba estadistica utilizarias para comparar el promedio de peso al nacer entre ninos y ninas?",
+                "question": "¿Qué prueba estadística utilizarias para comparar el promedio de peso al nacer entre ninos y ninas?",
                 "options": [
                     "Chi-cuadrada",
                     "Analisis de Varianza (ANOVA)",
@@ -169,7 +169,7 @@
                 "correct_index": 2
             },
             {
-                "question": "¿Que sucede si el Intervalo de Confianza del 95% para un Riesgo Relativo (RR) cruza el valor 1.0?",
+                "question": "¿Qué sucede si el Intervalo de Confianza del 95% para un Riesgo Relativo (RR) cruza el valor 1.0?",
                 "options": [
                     "El factor analizado es protector",
                     "El estudio es altamente preciso",

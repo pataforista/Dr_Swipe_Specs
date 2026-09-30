@@ -30,7 +30,7 @@
             "scoring": {
                 "points": 150,
                 "error_type": "omission",
-                "vazquez_comment": "Castillo: ¡Excelente calculo! El APGAR evalua vitalidad, no pronostico neurologico a largo plazo."
+                "vazquez_comment": "Castillo: ¡Excelente calculo! El APGAR evalúa vitalidad, no pronostico neurologico a largo plazo."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -163,7 +163,7 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "question": "¿Que evalua la escala de Silverman-Andersen en el periodo neonatal?",
+                "question": "¿Qué evalúa la escala de Silverman-Andersen en el periodo neonatal?",
                 "options": [
                     "Madurez Gestacional",
                     "Dificultad Respiratoria",
@@ -172,7 +172,7 @@
                 "correct_index": 1
             },
             {
-                "question": "¿Que puntuacion de Silverman-Andersen indica una dificultad respiratoria GRAVE?",
+                "question": "¿Qué puntuacion de Silverman-Andersen indica una dificultad respiratoria GRAVE?",
                 "options": [
                     "0 puntos (Normalidad)",
                     "Entre 1 y 3 puntos",
@@ -181,7 +181,7 @@
                 "correct_index": 2
             },
             {
-                "question": "¿Cual es la conducta inmediata ante una frecuencia cardiaca <100 lpm en el recien nacido?",
+                "question": "¿Cuál es la conducta inmediata ante una frecuencia cardiaca <100 lpm en el recien nacido?",
                 "options": [
                     "Iniciar Ventilacion a Presion Positiva (VPP)",
                     "Iniciar Compresiones Toracicas",

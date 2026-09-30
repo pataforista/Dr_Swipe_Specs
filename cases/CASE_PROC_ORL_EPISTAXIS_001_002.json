@@ -1,7 +1,7 @@
 {
     "case_id": "PROC_ORL_EPISTAXIS_001_002",
     "version": "v3_swipe_action",
-    "theme_config": "med",
+    "theme_config": "orl",
     "difficulty": "standard",
     "patient_intro": {
         "name": "Sra. Beatriz, 42 años",

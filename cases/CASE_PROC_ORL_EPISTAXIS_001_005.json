@@ -1,7 +1,7 @@
 {
     "case_id": "PROC_ORL_EPISTAXIS_001_005",
     "version": "v3_swipe_action",
-    "theme_config": "med",
+    "theme_config": "orl",
     "difficulty": "standard",
     "patient_intro": {
         "name": "Estela, 35 años",

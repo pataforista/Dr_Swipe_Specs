@@ -1,7 +1,7 @@
 {
     "case_id": "PROC_OPH_GLAUCOMA_001_002",
     "version": "v3_swipe_action",
-    "theme_config": "med",
+    "theme_config": "oph",
     "difficulty": "hard",
     "patient_intro": {
         "name": "Sr. Manuel, 70 años",

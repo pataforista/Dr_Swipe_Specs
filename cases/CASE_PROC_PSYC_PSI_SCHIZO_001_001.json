@@ -53,12 +53,12 @@
             "card_id": "c_3",
             "ui_icon": "eye",
             "category": "Diagnostico Diferencial",
-            "card_text": "Informacion redundante: C) Trastorno Esquizofreniforme: Presenta los mismos sintomas que la esquizofrenia pero con una duracion entre 1 y 6 meses.",
+            "card_text": "Informacion redundante: C) Trastorno Esquizofreniforme: Presenta los mismos síntomas que la esquizofrenia pero con una duracion entre 1 y 6 meses.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Correcto. Si los sintomas persisten mas de 6 meses, el diagnostico evoluciona a esquizofrenia."
+                "vazquez_comment": "Navarro: Correcto. Si los síntomas persisten mas de 6 meses, el diagnostico evoluciona a esquizofrenia."
             }
         },
         {
@@ -70,7 +70,7 @@
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
-                "vazquez_comment": "Navarro: ¡Excelente! Son los sintomas que 'aparecen' y suelen responder mejor a los antipsicoticos tipicos."
+                "vazquez_comment": "Navarro: ¡Excelente! Son los síntomas que 'aparecen' y suelen responder mejor a los antipsicoticos tipicos."
             }
         },
         {
@@ -82,7 +82,7 @@
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
-                "vazquez_comment": "Navarro: Bien. Son sintomas que 'quitan' funcionalidad y son mas dificiles de tratar, indicando peor pronostico."
+                "vazquez_comment": "Navarro: Bien. Son síntomas que 'quitan' funcionalidad y son mas dificiles de tratar, indicando peor pronostico."
             }
         },
         {
@@ -113,12 +113,12 @@
             "card_id": "c_9",
             "ui_icon": "trending-up",
             "category": "Pronostico",
-            "card_text": "Hallazgo: I) Factores de Buen Pronostico: Inicio tardio, sexo femenino, presencia de factores estresantes claros y sintomas positivos predominantes.",
+            "card_text": "Hallazgo: I) Factores de Buen Pronostico: Inicio tardio, sexo femenino, presencia de factores estresantes claros y síntomas positivos predominantes.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
                 "error_type": "omission",
-                "vazquez_comment": "Navarro: Correcto. El inicio temprano y los sintomas negativos suelen asociarse a un curso mas cronico y deteriorante."
+                "vazquez_comment": "Navarro: Correcto. El inicio temprano y los síntomas negativos suelen asociarse a un curso mas cronico y deteriorante."
             }
         },
         {
@@ -130,7 +130,7 @@
             "scoring": {
                 "points": 100,
                 "error_type": "lethal_omission",
-                "vazquez_comment": "Navarro: ¡Asi es! Tienen menor riesgo de sintomas extrapiramidales que el Haloperidol."
+                "vazquez_comment": "Navarro: ¡Asi es! Tienen menor riesgo de síntomas extrapiramidales que el Haloperidol."
             },
             "safety_flags": {
                 "lethal_risk": true,
@@ -152,14 +152,14 @@
     ],
     "enarm_pearl": {
         "title": "Esquizofrenia: El 6 es la Clave",
-        "text": "Diagnostico: >6 meses. Predominio de sintomas negativos = Peor pronostico. Resistente = Clozapina.",
+        "text": "Diagnostico: >6 meses. Predominio de síntomas negativos = Peor pronostico. Resistente = Clozapina.",
         "gpc_ref": "Guia de Practica Clinica Salud Mental"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
             {
-                "question": "¿Cual es la duracion minima de los sintomas para diagnosticar Esquizofrenia segun el DSM-5?",
+                "question": "¿Cuál es la duracion minima de los síntomas para diagnosticar Esquizofrenia segun el DSM-5?",
                 "options": [
                     "2 anos",
                     "1 mes",
@@ -168,16 +168,16 @@
                 "correct_index": 2
             },
             {
-                "question": "¿Cual de los siguientes se considera un factor de MAL pronostico en la esquizofrenia?",
+                "question": "¿Cuál de los siguientes se considera un factor de MAL pronostico en la esquizofrenia?",
                 "options": [
-                    "Inicio agudo de los sintomas",
+                    "Inicio agudo de los síntomas",
                     "Sexo femenino",
-                    "Presencia predominante de sintomas negativos"
+                    "Presencia predominante de síntomas negativos"
                 ],
                 "correct_index": 2
             },
             {
-                "question": "¿Que farmaco es el estandar de oro para el tratamiento de la esquizofrenia REFRACTARIA?",
+                "question": "¿Qué farmaco es el estandar de oro para el tratamiento de la esquizofrenia REFRACTARIA?",
                 "options": [
                     "Clozapina",
                     "Haloperidol",

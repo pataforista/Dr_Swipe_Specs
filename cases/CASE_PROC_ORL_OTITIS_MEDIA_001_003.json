@@ -81,7 +81,7 @@
             "card_id": "c_5",
             "ui_icon": "activity",
             "category": "meds",
-            "card_text": "E) Amoxicilina con Acido Clavulánico: Indicada si el paciente recibió amoxicilina en los últimos 30 días o tiene conjuntivitis purulenta asociada.",
+            "card_text": "E) Amoxicilina con Ácido Clavulánico: Indicada si el paciente recibió amoxicilina en los últimos 30 días o tiene conjuntivitis purulenta asociada.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

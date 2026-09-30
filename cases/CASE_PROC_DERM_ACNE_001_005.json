@@ -1,7 +1,7 @@
 {
     "case_id": "PROC_DERM_ACNE_001_005",
     "version": "v3_swipe_action",
-    "theme_config": "med",
+    "theme_config": "derm",
     "difficulty": "standard",
     "patient_intro": {
         "name": "Andrea, 25 años",

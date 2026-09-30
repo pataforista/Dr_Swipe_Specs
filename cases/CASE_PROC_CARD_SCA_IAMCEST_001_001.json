@@ -156,12 +156,12 @@
                 "options": [
                     "Esperar el tiempo necesario para ICP",
                     "Manejo conservador con nitratos",
-                    "Fibrinolisis sitémica inmediata"
+                    "Fibrinolisis sistémica inmediata"
                 ],
                 "correct_index": 2
             },
             {
-                "question": "¿Cuál es la dosis de carga recomendada de Acido Acetilsalicílico (Aspirina) en la fase aguda del infarto según la GPC?",
+                "question": "¿Cuál es la dosis de carga recomendada de Ácido Acetilsalicílico (Aspirina) en la fase aguda del infarto según la GPC?",
                 "options": [
                     "500 mg",
                     "100 mg",

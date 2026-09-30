@@ -1,0 +1,129 @@
+{
+    "case_id": "CASE_PROC_PSYC_NMS_EXTREME_001_001",
+    "version": "v3_swipe_action",
+    "theme_config": "psyc",
+    "difficulty": "extreme",
+    "patient_intro": {
+        "name": "Ingreso Crítico #112: Urgencia Psiquiátrica",
+        "arrival_scenario": "Joven de 22 años con esquizofrenia, manejado con Haloperidol IM reciente. Llega con rigidez muscular extrema 'en tubo de plomo', fiebre 40°C, diaforesis, mutismo y alteración del nivel de conciencia.",
+        "time_limit_sec": 70
+    },
+    "card_stream": [
+        {
+            "card_id": "init_vitals",
+            "ui_icon": "heartbeat",
+            "category": "Signos Vitales",
+            "card_text": "Signos Inestables: PA 160/100, FC 125, Temp 40.5°C, FR 28, SatO2 93%. Creatinacinasa (CPK) muy elevada.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Hipertermia extrema, inestabilidad autonómica y rigidez. Es una emergencia vital."
+            }
+        },
+        {
+            "card_id": "c_1",
+            "ui_icon": "target",
+            "category": "Diagnóstico Diferencial",
+            "card_text": "Síndrome Serotoninérgico (Por ISRS).",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 50,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: En el S. Serotoninérgico predominan hiperreflexia y clonus. Aquí hay rigidez 'en tubo de plomo' (extrapiramidal)."
+            }
+        },
+        {
+            "card_id": "c_2",
+            "ui_icon": "alert-triangle",
+            "category": "Diagnóstico Definitivo",
+            "card_text": "Síndrome Neuroléptico Maligno (SNM) secundario a Haloperidol.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Correcto. Antagonismo dopaminérgico agudo central."
+            },
+            "safety_flags": {
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_3",
+            "ui_icon": "pill",
+            "category": "Manejo Terapéutico",
+            "card_text": "Mantener Haloperidol para controlar agitación.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_hazard",
+                "vazquez_comment": "Navarro: ¡No! Suspender el antipsicótico ofensor es la PRIMERA regla del SNM."
+            },
+            "safety_flags": {
+                "lethal_risk": true,
+                "decision_critical": true
+            }
+        },
+        {
+            "card_id": "c_4",
+            "ui_icon": "zap",
+            "category": "Manejo Específico",
+            "card_text": "Bromocriptina (agonista dopaminérgico) y Dantroleno (relajante muscular).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Navarro: Dantroleno reduce el calor por contracción muscular; Bromocriptina revierte el bloqueo dopaminérgico."
+            }
+        },
+        {
+            "card_id": "c_5",
+            "ui_icon": "droplet",
+            "category": "Complicaciones",
+            "card_text": "Administración agresiva de líquidos IV y alcalinización de orina.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 50,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: Crucial para prevenir la falla renal aguda por mioglobinuria inducida por rabdomiólisis."
+            }
+        }
+    ],
+    "enarm_pearl": {
+        "title": "Síndrome Neuroléptico Maligno",
+        "text": "Triada: Rigidez 'tubo de plomo', fiebre alta, inestabilidad autonómica por antipsicóticos típicos. Antídoto: Bromocriptina / Dantroleno.",
+        "gpc_ref": "GPC Urgencias Psiquiátricas"
+    },
+    "boss_fight_triad": {
+        "trigger": "after_cards",
+        "questions": [
+            {
+                "question": "¿Cuál es la alteración muscular típica del Síndrome Neuroléptico Maligno que lo distingue del Síndrome Serotoninérgico?",
+                "options": [
+                    "Hiperreflexia y clonus",
+                    "Parálisis flácida ascendente",
+                    "Rigidez muscular en 'tubo de plomo'"
+                ],
+                "correct_index": 2
+            },
+            {
+                "question": "¿Cuál es el antídoto o tratamiento farmacológico específico para el Síndrome Neuroléptico Maligno?",
+                "options": [
+                    "Bromocriptina y Dantroleno",
+                    "Ciproheptadina",
+                    "Flumazenil"
+                ],
+                "correct_index": 0
+            },
+            {
+                "question": "¿Qué complicación letal debe prevenirse con hidratación vigorosa en el SNM debido a la elevación masiva de CPK?",
+                "options": [
+                    "Falla hepática fulminante",
+                    "Falla renal aguda por mioglobinuria",
+                    "Infarto agudo de miocardio"
+                ],
+                "correct_index": 1
+            }
+        ]
+    }
+}
