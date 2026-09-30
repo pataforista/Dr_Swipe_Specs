@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnostico",
-            "card_text": "Hallazgo: A) Laringotraqueitis (CRUP): Virus Parainfluenza tipe 1 y 3. Triada: Tos traqueal, estridor e hiponia.",
+            "card_text": "Hallazgo: Laringotraqueitis (CRUP): Virus Parainfluenza tipe 1 y 3. Triada: Tos traqueal, estridor e hiponia.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnostico Diferencial",
-            "card_text": "Hallazgo clinico: B) Epiglotitis Aguda: H. influenzae tipo b. Fiebre alta, babeo, posicion de tripode y ausencia de tos perruna.",
+            "card_text": "Hallazgo clinico: Epiglotitis Aguda: H. influenzae tipo b. Fiebre alta, babeo, posicion de tripode y ausencia de tos perruna.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -53,7 +53,7 @@
             "card_id": "c_3",
             "ui_icon": "slash",
             "category": "Diagnostico Diferencial",
-            "card_text": "Dato de importancia: Dato anecdotico: C) Aspiracion de Cuerpo Extrano: Inicio subito tras jugar con objetos pequenos, sin fiebre ni síntomas gripales previos.",
+            "card_text": "Dato de importancia: Dato anecdotico: Aspiracion de Cuerpo Extrano: Inicio subito tras jugar con objetos pequenos, sin fiebre ni síntomas gripales previos.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -65,7 +65,7 @@
             "card_id": "c_4",
             "ui_icon": "clipboard",
             "category": "Evaluacion",
-            "card_text": "Evidencia clinica: D) Escala de Westley: Herramienta clinica para clasificar la gravedad del Crup (Leve, Moderado, Grave).",
+            "card_text": "Evidencia clinica: Escala de Westley: Herramienta clinica para clasificar la gravedad del Crup (Leve, Moderado, Grave).",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -77,7 +77,7 @@
             "card_id": "c_5",
             "ui_icon": "camera",
             "category": "Imagenologia",
-            "card_text": "Hallazgo: E) Signo de la Torre (Punta de Lapiz): Estrechamiento de la via aerea subglotica en radiografia AP de cuello.",
+            "card_text": "Hallazgo: Signo de la Torre (Punta de Lapiz): Estrechamiento de la via aerea subglotica en radiografia AP de cuello.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -166,8 +166,8 @@
                 "question": "¿Cuál es el tratamiento esteroideo de eleccion en el servicio de urgencias?",
                 "options": [
                     "Dexametasona",
-                    "Metilprednisolona",
-                    "Hidrocortisona"
+                    "Hidrocortisona",
+                    "Metilprednisolona"
                 ],
                 "correct_index": 0
             },
@@ -175,19 +175,19 @@
                 "question": "¿Cómo se llama el signo radiografico caracteristico observado en la proyeccion AP de cuello?",
                 "options": [
                     "Signo de la Torre o Punta de Lapiz",
-                    "Signo del Pulgar",
-                    "Imagen en Coraza"
+                    "Imagen en Coraza",
+                    "Signo del Pulgar"
                 ],
                 "correct_index": 0
             },
             {
                 "question": "¿Cuál es el agente etiologico mas comun del Crup viral?",
                 "options": [
-                    "Virus Parainfluenza tipo 1",
                     "Virus Sincitial Respiratorio (VSR)",
-                    "Adenovirus"
+                    "Adenovirus",
+                    "Virus Parainfluenza tipo 1"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             }
         ]
     }

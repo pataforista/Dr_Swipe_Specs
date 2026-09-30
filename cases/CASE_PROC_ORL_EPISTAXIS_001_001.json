@@ -25,7 +25,7 @@
             "card_id": "c_2",
             "ui_icon": "zap",
             "category": "vitals",
-            "card_text": "B) Presión Digital Directa: Comprimir las alas nasales de forma continua durante 5 a 15 minutos con el paciente inclinado hacia ADELANTE.",
+            "card_text": "Presión Digital Directa: Comprimir las alas nasales de forma continua durante 5 a 15 minutos con el paciente inclinado hacia ADELANTE.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -53,7 +53,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Anatomía",
-            "card_text": "A) Plexo de Kiesselbach (Area de Little): Sitio anatómico donde ocurre el 90% de las epistaxis anteriores.",
+            "card_text": "Plexo de Kiesselbach (Area de Little): Sitio anatómico donde ocurre el 90% de las epistaxis anteriores.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -65,7 +65,7 @@
             "card_id": "c_3",
             "ui_icon": "droplet",
             "category": "Exploración",
-            "card_text": "C) Epistaxis Posterior: Sangrado que no cede a la presión anterior, fluye por orofaringe y suele originarse de la arteria esfenopalatina.",
+            "card_text": "Epistaxis Posterior: Sangrado que no cede a la presión anterior, fluye por orofaringe y suele originarse de la arteria esfenopalatina.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -81,7 +81,7 @@
             "card_id": "c_4",
             "ui_icon": "pill",
             "category": "Tópicos",
-            "card_text": "D) Vasoconstrictores Locales (Oximetazolina): Ayudan a reducir el sangrado capilar inicial para permitir una mejor visión del punto sangrante.",
+            "card_text": "Vasoconstrictores Locales (Oximetazolina): Ayudan a reducir el sangrado capilar inicial para permitir una mejor visión del punto sangrante.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -93,7 +93,7 @@
             "card_id": "c_5",
             "ui_icon": "activity",
             "category": "meds",
-            "card_text": "E) Cauterización (Nitrato de Plata / Eléctrica): Indicada si el sitio del sangrado anterior es claramente visible.",
+            "card_text": "Cauterización (Nitrato de Plata / Eléctrica): Indicada si el sitio del sangrado anterior es claramente visible.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -171,19 +171,19 @@
                 "question": "¿Qué arteria se asocia principalmente con la epistaxis posterior grave?",
                 "options": [
                     "Arteria palatina mayor",
-                    "Arteria labial superior",
-                    "Arteria esfenopalatina"
+                    "Arteria esfenopalatina",
+                    "Arteria labial superior"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             },
             {
                 "question": "En este contexto clínico, ¿cuál es la conducta inicial recomendada para el manejo de la epistaxis aguda?",
                 "options": [
                     "Taponamiento posterior con sonda Foley",
-                    "Presión digital directa con cabeza hacia adelante",
-                    "Cauterización eléctrica inmediata"
+                    "Cauterización eléctrica inmediata",
+                    "Presión digital directa con cabeza hacia adelante"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             }
         ]
     }

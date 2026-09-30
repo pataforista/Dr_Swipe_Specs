@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "Hallazgo: A) Diabetes Mellitus Tipo 2 (Confirmada): Criterios: Glucosa ayuno ≥126, HbA1c ≥6.5%, o Glucosa azar ≥200 con síntomas.",
+            "card_text": "Hallazgo: Diabetes Mellitus Tipo 2 (Confirmada): Criterios: Glucosa ayuno ≥126, HbA1c ≥6.5%, o Glucosa azar ≥200 con síntomas.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_3",
             "ui_icon": "calendar",
             "category": "Criterio Ayuno",
-            "card_text": "Hallazgo: C) Glucosa Ayuno >=126 mg/dL: Requiere al menos 8 horas de ayuno calórico y debe confirmarse con una segunda medición en un día distinto.",
+            "card_text": "Hallazgo: Glucosa Ayuno >=126 mg/dL: Requiere al menos 8 horas de ayuno calórico y debe confirmarse con una segunda medición en un día distinto.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -53,7 +53,7 @@
             "card_id": "c_4",
             "ui_icon": "activity",
             "category": "Criterio HbA1c",
-            "card_text": "Hallazgo: D) HbA1c >=6.5%: Refleja el promedio de glucemia de los últimos 3 meses y debe medirse por métodos certificados (NGSP).",
+            "card_text": "Hallazgo: HbA1c >=6.5%: Refleja el promedio de glucemia de los últimos 3 meses y debe medirse por métodos certificados (NGSP).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -65,7 +65,7 @@
             "card_id": "c_5",
             "ui_icon": "search",
             "category": "Tamizaje",
-            "card_text": "Hallazgo clínico: E) Screening (ADA): Iniciar a los 35 años en población general, o antes en adultos con sobrepeso (IMC >=25) y un factor de riesgo.",
+            "card_text": "Hallazgo clínico: Screening (ADA): Iniciar a los 35 años en población general, o antes en adultos con sobrepeso (IMC >=25) y un factor de riesgo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -135,11 +135,11 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es la cifra de glucosa en ayuno para diagnóstico de DM2?",
                 "options": [
-                    ">=126 mg/dL",
                     ">=100 mg/dL",
+                    ">=126 mg/dL",
                     ">=200 mg/dL"
                 ]
             },
@@ -148,8 +148,8 @@
                 "question": "¿Qué porcentaje de HbA1c confirma el diagnóstico?",
                 "options": [
                     ">=6.5%",
-                    ">=5.7%",
-                    ">=8.0%"
+                    ">=8.0%",
+                    ">=5.7%"
                 ]
             },
             {
@@ -157,8 +157,8 @@
                 "question": "¿En qué momento se diagnostica DM2 con glucosa al azar >=200?",
                 "options": [
                     "Si hay síntomas clásicos (síntomas)",
-                    "Siempre es diagnóstico",
-                    "Nunca, requiere confirmación"
+                    "Nunca, requiere confirmación",
+                    "Siempre es diagnóstico"
                 ]
             }
         ]

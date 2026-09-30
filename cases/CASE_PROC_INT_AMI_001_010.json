@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Infarto Agudo al Miocardio (SCACEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
+            "card_text": "Infarto Agudo al Miocardio (SCACEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
-            "card_text": "B) Costocondritis (Síndrome de Tietze): Dolor reproducible a la palpación de las articulaciones condrocostales, sin cambios en el ECG.",
+            "card_text": "Costocondritis (Síndrome de Tietze): Dolor reproducible a la palpación de las articulaciones condrocostales, sin cambios en el ECG.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -53,7 +53,7 @@
             "card_id": "c_3",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
-            "card_text": "C) Tromboembolia Pulmonar: Disnea súbita, taquicardia, dolor pleurítico e hipoxia. ECG con taquicardia sinusal o S1Q3T3.",
+            "card_text": "Tromboembolia Pulmonar: Disnea súbita, taquicardia, dolor pleurítico e hipoxia. ECG con taquicardia sinusal o S1Q3T3.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -65,7 +65,7 @@
             "card_id": "c_5",
             "ui_icon": "pill",
             "category": "Tratamiento Inicial",
-            "card_text": "E) Antiagregación Dual: Aspirina 300 mg (masticada) + Clopidogrel (dosis de carga: 300-600 mg).",
+            "card_text": "Antiagregación Dual: Aspirina 300 mg (masticada) + Clopidogrel (dosis de carga: 300-600 mg).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -113,7 +113,7 @@
             "card_id": "c_4",
             "ui_icon": "heart",
             "category": "imaging",
-            "card_text": "D) ECG de 12 derivaciones: Realización e interpretación en menos de 10 minutos desde la llegada a urgencias.",
+            "card_text": "ECG de 12 derivaciones: Realización e interpretación en menos de 10 minutos desde la llegada a urgencias.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -151,30 +151,30 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es el tiempo meta establecido por las guías para la realización e interpretación del ECG?",
                 "options": [
-                    "Menos de 10 minutos",
+                    "A la brevedad posible sin tiempo límite",
                     "Menos de 30 minutos",
-                    "A la brevedad posible sin tiempo límite"
+                    "Menos de 10 minutos"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es la estrategia de reperfusión de elección si el hospital cuenta con sala de hemodinamia?",
                 "options": [
-                    "Intervención Coronaria Percutánea (ICP) primaria",
                     "Fibrinólisis farmacológica",
-                    "Bypass de arteria coronaria urgente"
+                    "Bypass de arteria coronaria urgente",
+                    "Intervención Coronaria Percutánea (ICP) primaria"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es la principal causa de muerte prehospitalaria en un paciente con IAM?",
                 "options": [
-                    "Fibrilación Ventricular",
                     "Ruptura de pared libre",
-                    "Choque cardiogénico"
+                    "Choque cardiogénico",
+                    "Fibrilación Ventricular"
                 ]
             }
         ]

@@ -37,7 +37,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "meds",
-            "card_text": "B) Administrar Esteroide IV (Hidrocortisona): Indicado únicamente en choque séptico REFRACTARIO que no responde a fluidos ni vasopresores.",
+            "card_text": "Administrar Esteroide IV (Hidrocortisona): Indicado únicamente en choque séptico REFRACTARIO que no responde a fluidos ni vasopresores.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -49,7 +49,7 @@
             "card_id": "c_3",
             "ui_icon": "slash",
             "category": "Diagnóstico Diferencial",
-            "card_text": "C) Choque Cardiogénico: Hipotensión con evidencia de fallo de bomba (ritmo de galope, estertores pulmonares) sin foco infeccioso.",
+            "card_text": "Choque Cardiogénico: Hipotensión con evidencia de fallo de bomba (ritmo de galope, estertores pulmonares) sin foco infeccioso.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -61,7 +61,7 @@
             "card_id": "c_4",
             "ui_icon": "clipboard",
             "category": "Tamizaje",
-            "card_text": "D) Escala qSOFA: Evalúa: FR >=22, Alteración mental (Glasgow <15) y TAS <=100 mmHg. Identifica pacientes graves fuera de UCI.",
+            "card_text": "Escala qSOFA: Evalúa: FR >=22, Alteración mental (Glasgow <15) y TAS <=100 mmHg. Identifica pacientes graves fuera de UCI.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -73,7 +73,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "imaging",
-            "card_text": "A) Bundle de 1 Hora (Cultivos, AB Empírico, Cristaloides): Resucitación inicial agresiva: Toma de lactato, cultivos, antibióticos de amplio espectro y fluidos IV.",
+            "card_text": "Bundle de 1 Hora (Cultivos, AB Empírico, Cristaloides): Resucitación inicial agresiva: Toma de lactato, cultivos, antibióticos de amplio espectro y fluidos IV.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -90,7 +90,7 @@
             "card_id": "c_5",
             "ui_icon": "activity",
             "category": "Definición Sepsis-3",
-            "card_text": "E) Score SOFA >=2 puntos: Define Sepsis como una disfunción orgánica potencialmente mortal causada por una respuesta desregulada del huésped.",
+            "card_text": "Score SOFA >=2 puntos: Define Sepsis como una disfunción orgánica potencialmente mortal causada por una respuesta desregulada del huésped.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -189,17 +189,17 @@
                 "question": "¿Cuál es el vasopresor de primera elección en el choque séptico?",
                 "options": [
                     "Norepinefrina",
-                    "Dopamina",
-                    "Epinefrina"
+                    "Epinefrina",
+                    "Dopamina"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Qué par de criterios definen el Choque Séptico tras la reanimación con líquidos?",
                 "options": [
-                    "Necesidad de vasopresores y Lactato >2 mmol/L",
+                    "TAS <100 y qSOFA de 3",
                     "Fiebre y Leucocitosis",
-                    "TAS <100 y qSOFA de 3"
+                    "Necesidad de vasopresores y Lactato >2 mmol/L"
                 ]
             }
         ]

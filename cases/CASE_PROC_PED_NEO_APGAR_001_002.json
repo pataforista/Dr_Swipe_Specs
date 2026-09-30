@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnostico",
-            "card_text": "Hallazgo: A) APGAR 5 (Depresion Moderada): FC <100 (1) + Llanto debil (1) + Mueca (1) + Flexion (1) + Acrocianosis (1).",
+            "card_text": "Hallazgo: APGAR 5 (Depresion Moderada): FC <100 (1) + Llanto debil (1) + Mueca (1) + Flexion (1) + Acrocianosis (1).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "target",
             "category": "Diagnostico",
-            "card_text": "Evidencia: B) Silverman-Andersen 2 (Dificultad Leve): Aleteo (1) + Tiraje (1) = 2. A diferencia del APGAR, a mayor puntaje Silverman, mayor gravedad.",
+            "card_text": "Evidencia: Silverman-Andersen 2 (Dificultad Leve): Aleteo (1) + Tiraje (1) = 2. A diferencia del APGAR, a mayor puntaje Silverman, mayor gravedad.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -57,7 +57,7 @@
             "card_id": "c_3",
             "ui_icon": "clipboard",
             "category": "Criterios",
-            "card_text": "Hallazgo: C) Signos del APGAR: Evalua Frecuencia Cardiaca, Respiracion, Tono Muscular, Irritabilidad Refleja y Coloracion.",
+            "card_text": "Hallazgo: Signos del APGAR: Evalua Frecuencia Cardiaca, Respiracion, Tono Muscular, Irritabilidad Refleja y Coloracion.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -69,7 +69,7 @@
             "card_id": "c_4",
             "ui_icon": "activity",
             "category": "Criterios",
-            "card_text": "Evidencia: D) Signos de Silverman: Disociacion Toraco-abdominal, Tiraje Intercostal, Retraccion Xifoidea, Aleteo Nasal y Quejido Respiratorio.",
+            "card_text": "Evidencia: Signos de Silverman: Disociacion Toraco-abdominal, Tiraje Intercostal, Retraccion Xifoidea, Aleteo Nasal y Quejido Respiratorio.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -93,7 +93,7 @@
             "card_id": "c_5",
             "ui_icon": "thermometer",
             "category": "Procedimiento",
-            "card_text": "Hallazgo clinico: E) Pasos Iniciales de Reanimacion: Proveer calor, posicionar via aerea, aspirar (si es necesario) y secar/estimular.",
+            "card_text": "Hallazgo clinico: Pasos Iniciales de Reanimacion: Proveer calor, posicionar via aerea, aspirar (si es necesario) y secar/estimular.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -174,8 +174,8 @@
             {
                 "question": "¿Qué puntuacion de Silverman-Andersen indica una dificultad respiratoria GRAVE?",
                 "options": [
-                    "0 puntos (Normalidad)",
                     "Entre 1 y 3 puntos",
+                    "0 puntos (Normalidad)",
                     "Mayor a 7 puntos"
                 ],
                 "correct_index": 2
@@ -183,11 +183,11 @@
             {
                 "question": "¿Cuál es la conducta inmediata ante una frecuencia cardiaca <100 lpm en el recien nacido?",
                 "options": [
-                    "Iniciar Ventilacion a Presion Positiva (VPP)",
                     "Iniciar Compresiones Toracicas",
-                    "Administrar Adrenalina Umbilical"
+                    "Administrar Adrenalina Umbilical",
+                    "Iniciar Ventilacion a Presion Positiva (VPP)"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             }
         ]
     }

@@ -25,7 +25,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "meds",
-            "card_text": "B) Conjuntivitis Bacteriana: Ojo rojo con secreción purulenta y sensación de cuerpo extraño; no causa dolor intenso ni midriasis.",
+            "card_text": "Conjuntivitis Bacteriana: Ojo rojo con secreción purulenta y sensación de cuerpo extraño; no causa dolor intenso ni midriasis.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -37,7 +37,7 @@
             "card_id": "c_3",
             "ui_icon": "zap",
             "category": "meds",
-            "card_text": "C) Acetazolamida (Oral/IV) y Manitol (IV): Agentes hiperosmóticos que reducen rápidamente la presión intraocular.",
+            "card_text": "Acetazolamida (Oral/IV) y Manitol (IV): Agentes hiperosmóticos que reducen rápidamente la presión intraocular.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -53,7 +53,7 @@
             "card_id": "c_4",
             "ui_icon": "droplet",
             "category": "Manejo Inicial",
-            "card_text": "D) Pilocarpina (Gotas): Miótico que ayuda a abrir el ángulo al traccionar el iris hacia el centro.",
+            "card_text": "Pilocarpina (Gotas): Miótico que ayuda a abrir el ángulo al traccionar el iris hacia el centro.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -65,7 +65,7 @@
             "card_id": "c_5",
             "ui_icon": "activity",
             "category": "Gabinete",
-            "card_text": "E) Tonometría: Medición de la presión intraocular. Gold Standard: Tonometría de Goldmann.",
+            "card_text": "Tonometría: Medición de la presión intraocular. Gold Standard: Tonometría de Goldmann.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -125,7 +125,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Glaucoma Agudo de Angulo Cerrado: Emergencia oftalmológica caracterizada por aumento súbito de la PIO (>40-50 mmHg).",
+            "card_text": "Glaucoma Agudo de Angulo Cerrado: Emergencia oftalmológica caracterizada por aumento súbito de la PIO (>40-50 mmHg).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -165,8 +165,8 @@
             {
                 "question": "¿Qué hallazgo pupilar es característico del ataque agudo de glaucoma de ángulo cerrado?",
                 "options": [
-                    "Pupila de Argyll Robertson",
                     "Miosis puntiforme",
+                    "Pupila de Argyll Robertson",
                     "Midriasis media arreactiva"
                 ],
                 "correct_index": 2
@@ -175,19 +175,19 @@
                 "question": "¿Cuál de estas opciones farmacológicas está CONTRAINDICADA en la fase aguda del glaucoma de ángulo cerrado?",
                 "options": [
                     "Anhídrasa carbónica (Acetazolamida)",
-                    "Mióticos (Pilocarpina)",
-                    "Midriáticos (Atropina)"
+                    "Midriáticos (Atropina)",
+                    "Mióticos (Pilocarpina)"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             },
             {
                 "question": "En este contexto clínico, ¿cuál es el tratamiento quirúrgico/definitivo de elección para prevenir recurrencias en glaucoma primario de ángulo cerrado?",
                 "options": [
-                    "Trabeculectomía",
                     "Iridotomía con láser YAG",
+                    "Trabeculectomía",
                     "Extracción de catarata"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             }
         ]
     }

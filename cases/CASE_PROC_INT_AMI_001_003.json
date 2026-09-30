@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Infarto Agudo al Miocardio (SCACEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
+            "card_text": "Infarto Agudo al Miocardio (SCACEST): Dolor típico, factores de riesgo (DM2) y cambios electrocardiográficos evidentes. Urgencia absoluta.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "B) Costocondritis (Síndrome de Tietze): Dolor torácico reproducible a la palpación de las articulaciones condrocostales, sin cambios en ECG.",
+            "card_text": "Costocondritis (Síndrome de Tietze): Dolor torácico reproducible a la palpación de las articulaciones condrocostales, sin cambios en ECG.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -81,7 +81,7 @@
             "card_id": "c_3",
             "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "C) Tromboembolia Pulmonar: Disnea súbita, taquicardia, dolor pleurítico, hipoxia severa. S1Q3T3 raro pero posible.",
+            "card_text": "Tromboembolia Pulmonar: Disnea súbita, taquicardia, dolor pleurítico, hipoxia severa. S1Q3T3 raro pero posible.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -97,7 +97,7 @@
             "card_id": "c_4",
             "ui_icon": "activity",
             "category": "meds",
-            "card_text": "D) Electrocardiograma de 12 derivaciones: Meta institucional de realizar e interpretar en menos de 10 minutos.",
+            "card_text": "Electrocardiograma de 12 derivaciones: Meta institucional de realizar e interpretar en menos de 10 minutos.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -113,7 +113,7 @@
             "card_id": "c_5",
             "ui_icon": "zap",
             "category": "Reperfusión",
-            "card_text": "E) Fibrinólisis Farmacológica: Estrategia de elección si la ICP no está disponible en menos de 120 minutos.",
+            "card_text": "Fibrinólisis Farmacológica: Estrategia de elección si la ICP no está disponible en menos de 120 minutos.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -170,26 +170,26 @@
                 "correct_index": 2,
                 "question": "En este contexto clínico, ¿cuál es la estrategia de reperfusión de elección si el hospital cuenta con sala de hemodinamia?",
                 "options": [
-                    "Fibrinólisis farmacológica",
                     "Bypass de arteria coronaria urgente",
+                    "Fibrinólisis farmacológica",
                     "Intervención Coronaria Percutánea (ICP) primaria"
                 ]
             },
             {
-                "correct_index": 1,
+                "correct_index": 2,
                 "question": "¿Cuál es el tiempo meta establecido por las guías para la realización e interpretación del ECG?",
                 "options": [
+                    "A la brevedad posible sin tiempo límite",
                     "Menos de 30 minutos",
-                    "Menos de 10 minutos",
-                    "A la brevedad posible sin tiempo límite"
+                    "Menos de 10 minutos"
                 ]
             },
             {
-                "correct_index": 1,
+                "correct_index": 0,
                 "question": "En este contexto clínico, ¿cuál es la principal causa de muerte prehospitalaria en un paciente con IAM?",
                 "options": [
-                    "Ruptura de pared libre",
                     "Fibrilación Ventricular",
+                    "Ruptura de pared libre",
                     "Choque cardiogénico"
                 ]
             }

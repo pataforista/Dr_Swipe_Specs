@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Corioamnionitis: Infección aguda de las membranas amnio-coriales y del líquido amniótico, generalmente de origen ascendente.",
+            "card_text": "Corioamnionitis: Infección aguda de las membranas amnio-coriales y del líquido amniótico, generalmente de origen ascendente.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -37,7 +37,7 @@
             "card_id": "c_2",
             "ui_icon": "thermometer",
             "category": "Criterios Gibbs",
-            "card_text": "B) Fiebre Materna: Temperatura oral >=38°C. Es el criterio INDISPENSABLE para el diagnóstico clínico de Gibbs.",
+            "card_text": "Fiebre Materna: Temperatura oral >=38°C. Es el criterio INDISPENSABLE para el diagnóstico clínico de Gibbs.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -49,7 +49,7 @@
             "card_id": "c_3",
             "ui_icon": "heart-pulse",
             "category": "Criterios Gibbs",
-            "card_text": "C) Taquicardia: FC Fetal sostenida >160 lpm o FC Materna >100 lpm en ausencia de otras causas.",
+            "card_text": "Taquicardia: FC Fetal sostenida >160 lpm o FC Materna >100 lpm en ausencia de otras causas.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -61,7 +61,7 @@
             "card_id": "c_4",
             "ui_icon": "droplets",
             "category": "Criterios Gibbs",
-            "card_text": "D) Líquido Fétido: Salida de líquido amniótico con mal olor o aspecto purulento por el canal vaginal.",
+            "card_text": "Líquido Fétido: Salida de líquido amniótico con mal olor o aspecto purulento por el canal vaginal.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -73,7 +73,7 @@
             "card_id": "c_5",
             "ui_icon": "activity",
             "category": "labs",
-            "card_text": "E) Leucocitosis: Conteo de glóbulos blancos >15,000 cel/mm3 con desviación a la izquierda.",
+            "card_text": "Leucocitosis: Conteo de glóbulos blancos >15,000 cel/mm3 con desviación a la izquierda.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -149,29 +149,29 @@
             {
                 "question": "¿Cuál es el esquema antibiótico de primera elección recomendado por la GPC para el manejo de la corioamnionitis?",
                 "options": [
-                    "Ceftriaxona + Metronidazol",
                     "Clindamicina + Amikacina",
-                    "Ampicilina + Gentamicina"
+                    "Ampicilina + Gentamicina",
+                    "Ceftriaxona + Metronidazol"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             },
             {
                 "question": "En este contexto clínico, ¿cuál es la vía de interrupción del embarazo preferida en una paciente con Corioamnionitis, si no existe contraindicación obstétrica?",
                 "options": [
                     "Histerectomía en bloque",
-                    "Vía Vaginal (Inducción/Conducción)",
-                    "Cesárea de Urgencia"
+                    "Cesárea de Urgencia",
+                    "Vía Vaginal (Inducción/Conducción)"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             },
             {
                 "question": "De las siguientes opciones, ¿cuál es el signo clínico INDISPENSABLE para integrar el diagnóstico de Corioamnionitis (Criterios de Gibbs)?",
                 "options": [
-                    "Líquido amniótico fétido",
+                    "Fiebre materna >=38.0°C",
                     "Taquicardia Fetal >160 lpm",
-                    "Fiebre materna >=38.0°C"
+                    "Líquido amniótico fétido"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             }
         ]
     }

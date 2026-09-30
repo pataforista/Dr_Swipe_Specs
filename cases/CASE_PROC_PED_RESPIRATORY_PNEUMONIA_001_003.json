@@ -28,7 +28,7 @@
                 "decision_critical": true
             },
             "ui_icon": "target",
-            "card_text": "Evidencia: A) Neumonía Atípica: Cuadro subagudo, tos seca predominante y disociación clínico-radiológica.",
+            "card_text": "Evidencia: Neumonía Atípica: Cuadro subagudo, tos seca predominante y disociación clínico-radiológica.",
             "scoring": {
                 "vazquez_comment": "Navarro: áExacto! Los síntomas son menos floridos que en la neumonía típica.",
                 "points": 150,
@@ -40,7 +40,7 @@
         {
             "card_id": "c_2",
             "ui_icon": "beaker",
-            "card_text": "Hallazgo: B) Mycoplasma pneumoniae: El patógeno atípico más frecuente en niños mayores de 5 años.",
+            "card_text": "Hallazgo: Mycoplasma pneumoniae: El patógeno atípico más frecuente en niños mayores de 5 años.",
             "scoring": {
                 "vazquez_comment": "Navarro: áCorrecto! Es el principal sospechoso ante esta clínica y edad.",
                 "points": 100,
@@ -52,7 +52,7 @@
         {
             "card_id": "c_3",
             "ui_icon": "camera",
-            "card_text": "Evidencia: C) Infiltrados Intersticiales: Hallazgo radiológico clásico de neumonía atípica, a menudo bilateral y difuso.",
+            "card_text": "Evidencia: Infiltrados Intersticiales: Hallazgo radiológico clásico de neumonía atípica, a menudo bilateral y difuso.",
             "scoring": {
                 "vazquez_comment": "Navarro: Bien. La placa se ve 'peor' que el estado general del paciente.",
                 "points": 100,
@@ -68,7 +68,7 @@
                 "decision_critical": true
             },
             "ui_icon": "pill",
-            "card_text": "Dato de importancia: D) Azitromicina (Macrólido): Tratamiento de elección para gérmenes atípicos. Inhibe la síntesis proteica (50S).",
+            "card_text": "Dato de importancia: Azitromicina (Macrólido): Tratamiento de elección para gérmenes atípicos. Inhibe la síntesis proteica (50S).",
             "scoring": {
                 "vazquez_comment": "Navarro: áExcelente! Los betalactámicos no sirven contra Mycoplasma porque carece de pared celular.",
                 "points": 150,
@@ -80,7 +80,7 @@
         {
             "card_id": "c_5",
             "ui_icon": "eye",
-            "card_text": "Hallazgo: E) Signos Extrapulmonares: Miringitis bulosa, eritema multiforme o anemia hemolítica pueden acompañar la infección.",
+            "card_text": "Hallazgo: Signos Extrapulmonares: Miringitis bulosa, eritema multiforme o anemia hemolítica pueden acompañar la infección.",
             "scoring": {
                 "vazquez_comment": "Navarro: áBuen detalle! Estos hallazgos refuerzan mucho la sospecha de Mycoplasma.",
                 "points": 50,
@@ -115,26 +115,26 @@
                 "question": "¿Cuál es el tratamiento antibiótico de elección para la Neumonía Atípica por Mycoplasma?",
                 "options": [
                     "Azitromicina",
-                    "Amoxicilina",
-                    "Ceftriaxona"
+                    "Ceftriaxona",
+                    "Amoxicilina"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es el agente etiológico atípico más frecuente en niños mayores de 5 años?",
                 "options": [
-                    "Mycoplasma pneumoniae",
+                    "Legionella pneumophila",
                     "Chlamydia pneumoniae",
-                    "Legionella pneumophila"
+                    "Mycoplasma pneumoniae"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Qué hallazgo radiológico es característico de una neumonía por Mycoplasma?",
                 "options": [
+                    "Absceso pulmonar",
                     "Infiltrados intersticiales bilaterales",
-                    "Consolidación lobar única",
-                    "Absceso pulmonar"
+                    "Consolidación lobar única"
                 ]
             }
         ]

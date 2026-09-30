@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "Hallazgo: A) IAMCEST (Fibrinolisis Sistémica): IAMCEST Cara Anterior. Si la ICP >120 min de retraso, se opta por Fibrinolisis (Alteplase).",
+            "card_text": "Hallazgo: IAMCEST (Fibrinolisis Sistémica): IAMCEST Cara Anterior. Si la ICP >120 min de retraso, se opta por Fibrinolisis (Alteplase).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -42,7 +42,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "Información redundante: B) Angina Inestable: Dolor isquémico SIN elevación del ST y SIN elevación de troponinas.",
+            "card_text": "Información redundante: Angina Inestable: Dolor isquémico SIN elevación del ST y SIN elevación de troponinas.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -58,7 +58,7 @@
             "card_id": "c_3",
             "ui_icon": "target",
             "category": "Tratamiento",
-            "card_text": "Dato de importancia: C) Ácido Acetilsalicílico 300mg + Clopidogrel 180mg: Carga dual de antiagregantes. Debe administrarse ANTES de la fibrinolisis.",
+            "card_text": "Dato de importancia: Ácido Acetilsalicílico 300mg + Clopidogrel 180mg: Carga dual de antiagregantes. Debe administrarse ANTES de la fibrinolisis.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -75,7 +75,7 @@
             "card_id": "c_4",
             "ui_icon": "shield",
             "category": "Monitoreo",
-            "card_text": "Hallazgo: D) ECG seriado cada 15 min post-fibrinolisis durante 1 hora: Detección temprana de reoclusión (elevación del ST recurrente).",
+            "card_text": "Hallazgo: ECG seriado cada 15 min post-fibrinolisis durante 1 hora: Detección temprana de reoclusión (elevación del ST recurrente).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -96,26 +96,26 @@
                 "question": "¿Cuál es el TIEMPO MAXIMO puerta-aguja para fibrinolisis en IAMCEST?",
                 "options": [
                     "30 minutos",
-                    "60 minutos",
-                    "90 minutos"
+                    "90 minutos",
+                    "60 minutos"
                 ],
                 "correct_index": 0
             },
             {
                 "question": "¿Qué indica ELEVACIÓN de ST nuevamente 30 min post-fibrinolisis?",
                 "options": [
-                    "Éxito del tratamiento",
-                    "Reoclusión del vaso → Rescate ICP",
-                    "Arritmia reperfusión"
+                    "Reoclusión o falta de reperfusión → Rescate ICP",
+                    "Arritmia reperfusión",
+                    "Éxito del tratamiento"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             },
             {
                 "question": "¿En qué orden se dan: ASA, Clopidogrel, y Fibrinolítico?",
                 "options": [
-                    "Fibrinolítico → ASA → Clopidogrel",
+                    "Clopidogrel → Fibrinolítico → ASA",
                     "ASA + Clopidogrel → Fibrinolítico",
-                    "Clopidogrel → Fibrinolítico → ASA"
+                    "Fibrinolítico → ASA → Clopidogrel"
                 ],
                 "correct_index": 1
             }

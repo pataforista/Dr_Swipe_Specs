@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "meds",
-            "card_text": "A) Eritema Infeccioso (5ta Enfermedad): Parvovirus B19. Signo de la bofetada + Exantema reticulado.",
+            "card_text": "Eritema Infeccioso (5ta Enfermedad): Parvovirus B19. Signo de la bofetada + Exantema reticulado.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_3",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
-            "card_text": "C) Lupus Eritematoso Sistémico (LES): El eritema malar puede confundir, pero el LES suele ser fotosensible y tener compromiso multiorgánico.",
+            "card_text": "Lupus Eritematoso Sistémico (LES): El eritema malar puede confundir, pero el LES suele ser fotosensible y tener compromiso multiorgánico.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -53,7 +53,7 @@
             "card_id": "c_4",
             "ui_icon": "search",
             "category": "Fase Clínica",
-            "card_text": "D) Signo de la Bofetada: Eritema facial bilateral que respeta la zona periorbitaria y nasolabial.",
+            "card_text": "Signo de la Bofetada: Eritema facial bilateral que respeta la zona periorbitaria y nasolabial.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -65,7 +65,7 @@
             "card_id": "c_5",
             "ui_icon": "grid",
             "category": "Fase Clínica",
-            "card_text": "E) Aspecto de Encaje: Exantema reticulado en tronco y extremidades que aparece tras la fase facial.",
+            "card_text": "Aspecto de Encaje: Exantema reticulado en tronco y extremidades que aparece tras la fase facial.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -125,7 +125,7 @@
             "card_id": "c_2",
             "ui_icon": "alert-triangle",
             "category": "meds",
-            "card_text": "B) Crisis Aplásica: El Parvovirus B19 tiene tropismo por precursores eritroides. En esferocitosis, esto causa caída súbita de hemoglobina.",
+            "card_text": "Crisis Aplásica: El Parvovirus B19 tiene tropismo por precursores eritroides. En esferocitosis, esto causa caída súbita de hemoglobina.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -166,29 +166,29 @@
             {
                 "question": "¿Cuál es el principal receptor celular para el Parvovirus B19?",
                 "options": [
+                    "Antígeno P (globósido)",
                     "CD4",
-                    "Receptor ACE2",
-                    "Antígeno P (globósido)"
+                    "Receptor ACE2"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿En qué momento deja de ser contagioso un niño con la quinta enfermedad?",
                 "options": [
                     "En cuanto aparece el exantema",
-                    "7 días después del exantema",
-                    "Nunca deja de ser contagioso"
+                    "Nunca deja de ser contagioso",
+                    "7 días después del exantema"
                 ],
                 "correct_index": 0
             },
             {
                 "question": "¿Cuál es el agente etiológico del eritema infeccioso?",
                 "options": [
-                    "Virus Herpes Humano 6",
                     "Parvovirus B19",
+                    "Virus Herpes Humano 6",
                     "Virus de la Rubéola"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             }
         ]
     }

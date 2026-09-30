@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Candidiasis Vaginal: Flujo grumoso + PH <4.5 + Prurito. Tx: Azoles (Miconazol/Fluconazol).",
+            "card_text": "Candidiasis Vaginal: Flujo grumoso + PH <4.5 + Prurito. Tx: Azoles (Miconazol/Fluconazol).",
             "expected_action": "discard",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "B) Vaginosis Bacteriana (Gardnerella): Flujo gris + Mal olor + PH >4.5 + 'Clue Cells'. Es la causa más común de flujo vaginal.",
+            "card_text": "Vaginosis Bacteriana (Gardnerella): Flujo gris + Mal olor + PH >4.5 + 'Clue Cells'. Es la causa más común de flujo vaginal.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -53,7 +53,7 @@
             "card_id": "c_3",
             "ui_icon": "list",
             "category": "Criterios Amsel",
-            "card_text": "C) Criterios de Amsel: Flujo homogéneo, PH >4.5, Whiff test (+) y Clue cells. Se requieren 3 para diagnóstico clínico.",
+            "card_text": "Criterios de Amsel: Flujo homogéneo, PH >4.5, Whiff test (+) y Clue cells. Se requieren 3 para diagnóstico clínico.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -65,7 +65,7 @@
             "card_id": "c_4",
             "ui_icon": "microscope",
             "category": "Estándar de Oro",
-            "card_text": "D) Puntuación de Nugent: Evaluación microscópica de Gram para cuantificar morfotipos bacterianos; es el estándar de oro.",
+            "card_text": "Puntuación de Nugent: Evaluación microscópica de Gram para cuantificar morfotipos bacterianos; es el estándar de oro.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -77,7 +77,7 @@
             "card_id": "c_5",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
-            "card_text": "E) Tricomoniasis: Flujo amarillento, espumoso, PH >5.0 y cérvix en fresa. Se ven protozoarios móviles en fresco.",
+            "card_text": "Tricomoniasis: Flujo amarillento, espumoso, PH >5.0 y cérvix en fresa. Se ven protozoarios móviles en fresco.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -158,10 +158,10 @@
                 "question": "¿En cuál de las siguientes infecciones vaginales es OBLIGATORIO el tratamiento simultáneo a la pareja sexual?",
                 "options": [
                     "Vaginosis Bacteriana",
-                    "Tricomoniasis",
-                    "Candidiasis Vaginal"
+                    "Candidiasis Vaginal",
+                    "Tricomoniasis"
                 ],
-                "correct_index": 1
+                "correct_index": 2
             },
             {
                 "question": "¿Cuál es el hallazgo microscópico considerado patognomónico de la Vaginosis Bacteriana?",
@@ -175,11 +175,11 @@
             {
                 "question": "Con respecto a la patología, ¿cuál es el conjunto de criterios clínicos utilizados para diagnosticar Vaginosis Bacteriana en el consultorio?",
                 "options": [
+                    "Criterios de Amsel",
                     "Criterios de Centor",
-                    "Criterios de Jones",
-                    "Criterios de Amsel"
+                    "Criterios de Jones"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             }
         ]
     }

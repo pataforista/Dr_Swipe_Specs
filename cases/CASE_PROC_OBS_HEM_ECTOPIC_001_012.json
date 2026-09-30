@@ -25,7 +25,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
-            "card_text": "B) Apendicitis Aguda: Presenta dolor en fosa ilíaca derecha, náuseas y vómito, pero no se asocia a amenorrea ni a inestabilidad hemodinámica súbita.",
+            "card_text": "Apendicitis Aguda: Presenta dolor en fosa ilíaca derecha, náuseas y vómito, pero no se asocia a amenorrea ni a inestabilidad hemodinámica súbita.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -37,7 +37,7 @@
             "card_id": "c_3",
             "ui_icon": "target",
             "category": "imaging",
-            "card_text": "C) Zona de Discriminación (hCG): Si la beta-hCG es >1,500 mUI/ml y el útero está vacío en USG transvaginal, el Dx es Ectópico.",
+            "card_text": "Zona de Discriminación (hCG): Si la beta-hCG es >1,500 mUI/ml y el útero está vacío en USG transvaginal, el Dx es Ectópico.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -49,7 +49,7 @@
             "card_id": "c_4",
             "ui_icon": "slash",
             "category": "imaging",
-            "card_text": "D) Cuerpo Lúteo Hemorrágico: Causa de dolor y líquido libre; en USG se ve el 'anillo de fuego', pero no hay amenorrea prolongada.",
+            "card_text": "Cuerpo Lúteo Hemorrágico: Causa de dolor y líquido libre; en USG se ve el 'anillo de fuego', pero no hay amenorrea prolongada.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -61,7 +61,7 @@
             "card_id": "c_5",
             "ui_icon": "pill",
             "category": "Tratamiento Médico",
-            "card_text": "E) Metotrexato (MTX): Elección si: Paciente ESTABLE, saco <3.5cm, sin latido fetal y beta-hCG <5,000 mUI/ml.",
+            "card_text": "Metotrexato (MTX): Elección si: Paciente ESTABLE, saco <3.5cm, sin latido fetal y beta-hCG <5,000 mUI/ml.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -109,7 +109,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Embarazo Ectópico Roto: Triada: Amenorrea + Dolor pélvico + Sangrado escaso. Evoluciona a choque hemoperitoneo.",
+            "card_text": "Embarazo Ectópico Roto: Triada: Amenorrea + Dolor pélvico + Sangrado escaso. Evoluciona a choque hemoperitoneo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -141,7 +141,7 @@
     ],
     "enarm_pearl": {
         "title": "Ectópico: Tríada y Manejo",
-        "text": "Tríada: Amenorrea + Dolor + Sangrado. Localización: Ampula (95%). MTX: <5,000 hCG + Estable. Dx Oro: Laparoscopia.",
+        "text": "Tríada: Amenorrea + Dolor + Sangrado. Localización: Trompa (95%), sobre todo ampular. MTX: <5,000 hCG + Estable. Dx Oro: Laparoscopia.",
         "gpc_ref": "GPC Diagnóstico y Manejo del Embarazo Ectópico"
     },
     "boss_fight_triad": {
@@ -150,26 +150,26 @@
             {
                 "question": "¿Cuál es la localización anatómica más frecuente del embarazo ectópico?",
                 "options": [
-                    "Región Intersticial",
                     "Región Ampular (Ampula)",
+                    "Región Intersticial",
                     "Región Ístmica"
                 ],
-                "correct_index": 1
+                "correct_index": 0
             },
             {
                 "question": "¿Cuál es un criterio necesario para indicar manejo MÉDICO con Metotrexato?",
                 "options": [
+                    "HCG sérica <5,000 mUI/ml y estabilidad hemodinámica",
                     "Saco gestacional >5 cm",
-                    "Presencia de latido cardíaco fetal",
-                    "HCG sérica <5,000 mUI/ml y estabilidad hemodinámica"
+                    "Presencia de latido cardíaco fetal"
                 ],
-                "correct_index": 2
+                "correct_index": 0
             },
             {
                 "question": "¿Cuál es el 'estándar de oro' (Gold Standard) para el diagnóstico definitivo de embarazo ectópico?",
                 "options": [
-                    "Ultrasonido Transvaginal",
                     "Niveles de Progesterona Sérica",
+                    "Ultrasonido Transvaginal",
                     "Laparoscopia"
                 ],
                 "correct_index": 2

@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "meds",
-            "card_text": "A) Iniciar ART Inmediatamente (Tratamiento Universal): Guías actuales (GPC/WHO): Se recomienda iniciar ART en TODOS los pacientes, sin importar el nivel de CD4.",
+            "card_text": "Iniciar ART Inmediatamente (Tratamiento Universal): Guías actuales (GPC/WHO): Se recomienda iniciar ART en TODOS los pacientes, sin importar el nivel de CD4.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "B) Diferir inicio hasta CD4 <200 (SIDA): Práctica obsoleta que aumentaba el riesgo de infecciones oportunistas y mortalidad.",
+            "card_text": "Diferir inicio hasta CD4 <200 (SIDA): Práctica obsoleta que aumentaba el riesgo de infecciones oportunistas y mortalidad.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -57,7 +57,7 @@
             "card_id": "c_3",
             "ui_icon": "pill",
             "category": "meds",
-            "card_text": "C) Esquema Preferente (Biktarvy): Bictegravir + Emtricitabina + Tenofovir Alafenamida (B/F/TAF) en tableta única.",
+            "card_text": "Esquema Preferente (Biktarvy): Bictegravir + Emtricitabina + Tenofovir Alafenamida (B/F/TAF) en tableta única.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -69,7 +69,7 @@
             "card_id": "c_4",
             "ui_icon": "beaker",
             "category": "Estudio Inicial",
-            "card_text": "D) Genotropificación de Resistencia: Realizar antes de iniciar tratamiento para guiar la elección de fármacos.",
+            "card_text": "Genotropificación de Resistencia: Realizar antes de iniciar tratamiento para guiar la elección de fármacos.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -81,7 +81,7 @@
             "card_id": "c_5",
             "ui_icon": "alert-triangle",
             "category": "Complicación",
-            "card_text": "E) Síndrome de Reconstitución Inmune (IRIS): Empeoramiento paradójico de infecciones tras iniciar ART.",
+            "card_text": "Síndrome de Reconstitución Inmune (IRIS): Empeoramiento paradójico de infecciones tras iniciar ART.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -151,12 +151,12 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Qué fármaco se utiliza de primera línea para la profilaxis de Pneumocystis jirovecii?",
                 "options": [
-                    "Trimetoprima/Sulfametoxazol",
                     "Linezolid",
-                    "Clindamicina"
+                    "Clindamicina",
+                    "Trimetoprima/Sulfametoxazol"
                 ]
             },
             {
@@ -172,8 +172,8 @@
                 "correct_index": 2,
                 "question": "¿Cuál es el recuento de células CD4 por debajo del cual se define la etapa clínica de SIDA?",
                 "options": [
-                    "Menos de 50 cél/µl",
                     "Menos de 500 cél/µl",
+                    "Menos de 50 cél/µl",
                     "Menos de 200 cél/µl"
                 ]
             }

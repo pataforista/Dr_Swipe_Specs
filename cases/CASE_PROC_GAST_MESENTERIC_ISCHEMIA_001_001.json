@@ -25,7 +25,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
-            "card_text": "B) Isquemia Mesentérica Crónica: Dolor postprandial (angina abdominal), miedo a comer y pérdida de peso importante.",
+            "card_text": "Isquemia Mesentérica Crónica: Dolor postprandial (angina abdominal), miedo a comer y pérdida de peso importante.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -37,7 +37,7 @@
             "card_id": "c_3",
             "ui_icon": "target",
             "category": "Pivote Clínico",
-            "card_text": "C) Dolor Desproporcionado: Paciente con dolor 10/10 pero abdomen blando y depresible a la palpación inicial.",
+            "card_text": "Dolor Desproporcionado: Paciente con dolor 10/10 pero abdomen blando y depresible a la palpación inicial.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -49,7 +49,7 @@
             "card_id": "c_4",
             "ui_icon": "alert-triangle",
             "category": "Factores Riesgo",
-            "card_text": "D) Fibrilación Auricular (FA): Principal causa de embolismo a la Arteria Mesentérica Superior (AMS).",
+            "card_text": "Fibrilación Auricular (FA): Principal causa de embolismo a la Arteria Mesentérica Superior (AMS).",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -61,7 +61,7 @@
             "card_id": "c_5",
             "ui_icon": "search",
             "category": "Prueba de Elección",
-            "card_text": "E) Angio-TC de Abdomen: Es el estudio de elección inicial por su rapidez y capacidad para detectar oclusiones vasculares.",
+            "card_text": "Angio-TC de Abdomen: Es el estudio de elección inicial por su rapidez y capacidad para detectar oclusiones vasculares.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -97,7 +97,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Isquemia Mesentérica Aguda: Dolor desproporcionado a la exploración física + Factores de riesgo embólico (FA).",
+            "card_text": "Isquemia Mesentérica Aguda: Dolor desproporcionado a la exploración física + Factores de riesgo embólico (FA).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -155,28 +155,28 @@
                 "question": "¿Cuál es el estudio de imagen inicial de elección para diagnosticar oclusión de la arteria mesentérica superior?",
                 "options": [
                     "Radiografía de tórax en bipedestación",
-                    "Ultrasonido Doppler",
-                    "Angiotomografía Computarizada (Angio-TC)"
+                    "Angiotomografía Computarizada (Angio-TC)",
+                    "Ultrasonido Doppler"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál es el hallazgo clínico clásico ('mismatch') que define la fase temprana de la isquemia mesentérica aguda?",
                 "options": [
-                    "Irritación peritoneal inmediata (rebote positivo)",
                     "Masa palpable en cuadrante superior derecho",
-                    "Dolor intenso desproporcionado a los hallazgos de la exploración física"
+                    "Dolor intenso desproporcionado a los hallazgos de la exploración física",
+                    "Irritación peritoneal inmediata (rebote positivo)"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             },
             {
                 "question": "¿Qué antecedente de la paciente es el factor de riesgo más importante para sospechar un origen embólico de la isquemia?",
                 "options": [
-                    "Colelitiasis",
                     "Diabetes Mellitus",
-                    "Fibrilación Auricular"
+                    "Fibrilación Auricular",
+                    "Colelitiasis"
                 ],
-                "correct_index": 2
+                "correct_index": 1
             }
         ]
     }

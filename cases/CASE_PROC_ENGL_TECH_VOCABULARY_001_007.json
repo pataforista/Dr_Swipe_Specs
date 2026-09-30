@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Chief Complaint",
-            "card_text": "A) Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias (sonido silbante al respirar).",
+            "card_text": "Disnea y Sibilancias: 'Shortness of breath' = Disnea. 'Wheezing' = Sibilancias (sonido silbante al respirar).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -37,7 +37,7 @@
             "card_id": "c_2",
             "ui_icon": "slash",
             "category": "False Friends",
-            "card_text": "B) Estreñimiento (Bowel movement issues): 'Constipation' significa Estreñimiento, NO congestión nasal.",
+            "card_text": "Estreñimiento (Bowel movement issues): 'Constipation' significa Estreñimiento, NO congestión nasal.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -49,7 +49,7 @@
             "card_id": "c_3",
             "ui_icon": "alert-circle",
             "category": "Trauma terms",
-            "card_text": "C) Wound vs Injury: 'Wound' se refiere específicamente a una Herida abierta, mientras que 'Injury' es el término general para Lesión.",
+            "card_text": "Wound vs Injury: 'Wound' se refiere específicamente a una Herida abierta, mientras que 'Injury' es el término general para Lesión.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -61,7 +61,7 @@
             "card_id": "c_4",
             "ui_icon": "frown",
             "category": "Common symptoms",
-            "card_text": "D) Sore Throat: Término común para referirse a la Faringodinia o Dolor de garganta.",
+            "card_text": "Sore Throat: Término común para referirse a la Faringodinia o Dolor de garganta.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -73,7 +73,7 @@
             "card_id": "c_5",
             "ui_icon": "activity",
             "category": "Physical Signs",
-            "card_text": "E) Swelling: Traducción médica de Edema o Inflamación de una parte del cuerpo.",
+            "card_text": "Swelling: Traducción médica de Edema o Inflamación de una parte del cuerpo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -139,21 +139,21 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuál es la traducción correcta de 'Constipation' en un contexto médico?",
                 "options": [
-                    "Estreñimiento",
                     "Congestión nasal",
-                    "Diarrea"
+                    "Diarrea",
+                    "Estreñimiento"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Qué significa el término 'Shortness of breath'?",
                 "options": [
-                    "Disnea (falta de aire)",
                     "Dolor de pecho",
-                    "Tos seca"
+                    "Tos seca",
+                    "Disnea (falta de aire)"
                 ]
             },
             {
@@ -161,8 +161,8 @@
                 "question": "¿Cuál es la diferencia entre 'Wound' e 'Injury'?",
                 "options": [
                     "Wound es una herida abierta; Injury es cualquier lesión",
-                    "Wound es una fractura; Injury es un moretón",
-                    "Son sinónimos exactos en medicina"
+                    "Son sinónimos exactos en medicina",
+                    "Wound es una fractura; Injury es un moretón"
                 ]
             }
         ]

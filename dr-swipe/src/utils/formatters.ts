@@ -56,9 +56,10 @@ export const cleanMentorComment = (comment: string | undefined, isCorrect: boole
     // Neutral correction. Focus on the clinical fact.
     if (reasoning) {
       let prefix = "Nota clínica:";
-      if (card?.safety_flags?.lethal_risk) {
+      const flaggedLethal = card?.safety_flags?.lethal_risk || card?.safety_flags?.lethal_if_discarded;
+      if (flaggedLethal && card?.expected_action === 'discard') {
         prefix = "☠️ LETAL SI SE ACEPTA:";
-      } else if (card?.safety_flags?.lethal_if_discarded) {
+      } else if (flaggedLethal && card?.expected_action === 'keep') {
         prefix = "⚠️ LETAL SI SE DESCARTA:";
       } else if (card?.expected_action === 'keep') {
         prefix = "🎯 DATO CLAVE OMITIDO:"; // the player discarded data they needed

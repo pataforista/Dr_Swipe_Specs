@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Cetoacidosis Diabética (CAD): Descompensación diabética aguda (típica en pacientes jóvenes/DM1). Triada: Hiperglucemia, Cetonemia/Cetonuria y Acidosis Metabólica.",
+            "card_text": "Cetoacidosis Diabética (CAD): Descompensación diabética aguda (típica en pacientes jóvenes/DM1). Triada: Hiperglucemia, Cetonemia/Cetonuria y Acidosis Metabólica.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "labs",
-            "card_text": "B) Estado Hiperosmolar Hiperglucémico (EHH): Glucosa >600, osmolaridad >320, SIN acidosis significativa y deshidratación muy profunda.",
+            "card_text": "Estado Hiperosmolar Hiperglucémico (EHH): Glucosa >600, osmolaridad >320, SIN acidosis significativa y deshidratación muy profunda.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -101,7 +101,7 @@
             "card_id": "c_3",
             "ui_icon": "slash",
             "category": "meds",
-            "card_text": "C) Bicarbonato de Sodio IV: Indicado para corregir la acidosis metabólica en todos los pacientes con pH <7.2.",
+            "card_text": "Bicarbonato de Sodio IV: Indicado para corregir la acidosis metabólica en todos los pacientes con pH <7.2.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -117,7 +117,7 @@
             "card_id": "c_4",
             "ui_icon": "droplet",
             "category": "imaging",
-            "card_text": "D) Hidratación Inicial: Solución Salina 0.9% a razón de 1,000 ml en la primera hora para restaurar el volumen circulante.",
+            "card_text": "Hidratación Inicial: Solución Salina 0.9% a razón de 1,000 ml en la primera hora para restaurar el volumen circulante.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -133,7 +133,7 @@
             "card_id": "c_5",
             "ui_icon": "zap",
             "category": "meds",
-            "card_text": "E) Insulina Rápida IV: Infusión continua a 0.1 U/kg/hora tras asegurar que el Potasio sea >3.3 mEq/L.",
+            "card_text": "Insulina Rápida IV: Infusión continua a 0.1 U/kg/hora tras asegurar que el Potasio sea >3.3 mEq/L.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -155,20 +155,20 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es el valor mínimo de Potasio requerido para iniciar la infusión de insulina de forma segura?",
                 "options": [
+                    "Mayor a 5.0 mEq/L",
                     "Mayor a 3.3 mEq/L",
-                    "Mayor a 2.5 mEq/L",
-                    "Mayor a 5.0 mEq/L"
+                    "Mayor a 2.5 mEq/L"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿En qué situación clínica se recomienda el uso de Bicarbonato de Sodio?",
                 "options": [
-                    "pH menor a 6.9",
                     "pH menor a 7.2",
+                    "pH menor a 6.9",
                     "Solo ante hiperpotasemia grave"
                 ]
             },
@@ -177,8 +177,8 @@
                 "question": "¿Cuál es el parámetro laboratorial principal para definir la resolución de la CAD?",
                 "options": [
                     "Cierre del Anion Gap / Brecha aniónica",
-                    "Glucosa menor a 100 mg/dl",
-                    "Ausencia de glucosuria"
+                    "Ausencia de glucosuria",
+                    "Glucosa menor a 100 mg/dl"
                 ]
             }
         ]

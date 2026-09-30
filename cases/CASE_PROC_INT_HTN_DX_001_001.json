@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Hipertensión Arterial Sistémica Grado 1 (Sustentada): Criterios NOM-030: ≥140/90 mmHg en 2 o más visitas, o promedio de bitácora diagnóstica.",
+            "card_text": "Hipertensión Arterial Sistémica Grado 1 (Sustentada): Criterios NOM-030: ≥140/90 mmHg en 2 o más visitas, o promedio de bitácora diagnóstica.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
-            "card_text": "B) Hipertensión de Bata Blanca: Cifras elevadas en consultorio (>=140/90) pero normales en casa (AMPA) o MAPA.",
+            "card_text": "Hipertensión de Bata Blanca: Cifras elevadas en consultorio (>=140/90) pero normales en casa (AMPA) o MAPA.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -53,7 +53,7 @@
             "card_id": "c_3",
             "ui_icon": "slash",
             "category": "Diagnóstico Diferencial",
-            "card_text": "C) Hipertensión Enmascarada: Cifras normales en el consultorio pero elevadas fuera de él; tiene peor pronóstico que la de bata blanca.",
+            "card_text": "Hipertensión Enmascarada: Cifras normales en el consultorio pero elevadas fuera de él; tiene peor pronóstico que la de bata blanca.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -65,7 +65,7 @@
             "card_id": "c_4",
             "ui_icon": "alert-circle",
             "category": "Criterio Diagnóstico",
-            "card_text": "D) Diagnóstico en Visita Única: Se confirma si la TA es >=180/110 mmHg o si hay daño evidente a órgano blanco inicial.",
+            "card_text": "Diagnóstico en Visita Única: Se confirma si la TA es >=180/110 mmHg o si hay daño evidente a órgano blanco inicial.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -77,7 +77,7 @@
             "card_id": "c_5",
             "ui_icon": "heart",
             "category": "Manejo Inicial",
-            "card_text": "E) Medidas No Farmacológicas: Dieta DASH (baja en sodio, alta en potasio), pérdida de peso y 150 min de ejercicio semanal.",
+            "card_text": "Medidas No Farmacológicas: Dieta DASH (baja en sodio, alta en potasio), pérdida de peso y 150 min de ejercicio semanal.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -151,29 +151,29 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 2,
+                "correct_index": 1,
                 "question": "¿Meta de TA en diabéticos según la ADA?",
                 "options": [
-                    "<140/90 mmHg",
                     "<120/70 mmHg",
-                    "<130/80 mmHg"
+                    "<130/80 mmHg",
+                    "<140/90 mmHg"
                 ]
             },
             {
-                "correct_index": 2,
+                "correct_index": 1,
                 "question": "¿Qué indica el fondo de ojo en HAS?",
                 "options": [
-                    "Solo agudeza visual",
                     "No tiene utilidad",
-                    "Daño a órgano blanco crónico"
+                    "Daño a órgano blanco crónico",
+                    "Solo agudeza visual"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cifra para diagnóstico de HAS según NOM-030?",
                 "options": [
-                    ">=140/90 mmHg",
                     ">=130/80 mmHg",
+                    ">=140/90 mmHg",
                     ">=150/95 mmHg"
                 ]
             }

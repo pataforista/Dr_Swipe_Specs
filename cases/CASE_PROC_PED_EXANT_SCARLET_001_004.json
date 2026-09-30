@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "Hallazgo clínico: A) Escarlatina: S. pyogenes. Toxina eritrogénica. Lengua en fresa + Líneas de Pastia + Fascies de Filatov.",
+            "card_text": "Hallazgo clínico: Escarlatina: S. pyogenes. Toxina eritrogénica. Lengua en fresa + Líneas de Pastia + Fascies de Filatov.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
-            "card_text": "Hallazgo: Información redundante: B) Enfermedad de Kawasaki: Fiebre prolongada (>5 días), inyección conjuntival bilateral, labios fisurados y edema de manos/pies.",
+            "card_text": "Hallazgo: Información redundante: Enfermedad de Kawasaki: Fiebre prolongada (>5 días), inyección conjuntival bilateral, labios fisurados y edema de manos/pies.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -53,7 +53,7 @@
             "card_id": "c_3",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
-            "card_text": "Hallazgo: Dato anecdótico: C) Sarampión: Exantema morbiliforme confluente encabezado por prodrómos respiratorios intensos (Tos, Coriza, Conjuntivitis).",
+            "card_text": "Hallazgo: Dato anecdótico: Sarampión: Exantema morbiliforme confluente encabezado por prodrómos respiratorios intensos (Tos, Coriza, Conjuntivitis).",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -65,7 +65,7 @@
             "card_id": "c_4",
             "ui_icon": "search",
             "category": "Signo Clínico",
-            "card_text": "Hallazgo: D) Lengua en Fresa: Papilas linguales prominentes tras la descamación de una capa blanquecina inicial.",
+            "card_text": "Hallazgo: Lengua en Fresa: Papilas linguales prominentes tras la descamación de una capa blanquecina inicial.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -77,7 +77,7 @@
             "card_id": "c_5",
             "ui_icon": "grid",
             "category": "Signo Clínico",
-            "card_text": "Evidencia: E) Líneas de Pastia: Hiperpigmentación lineal que no desaparece a la vitropresión en pliegues flexores (codo, axila, ingle).",
+            "card_text": "Evidencia: Líneas de Pastia: Hiperpigmentación lineal que no desaparece a la vitropresión en pliegues flexores (codo, axila, ingle).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -173,29 +173,29 @@
             {
                 "question": "¿Cuál es el agente etiológico de la escarlatina?",
                 "options": [
-                    "Streptococcus pyogenes",
                     "Staphylococcus aureus",
+                    "Streptococcus pyogenes",
                     "Streptococcus pneumoniae"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             },
             {
                 "question": "¿Cómo se llama la intensificación del exantema en los pliegues cutáneos?",
                 "options": [
+                    "Fenómeno de Koebner",
                     "Líneas de Pastia",
-                    "Signo de Nikolsky",
-                    "Fenómeno de Koebner"
+                    "Signo de Nikolsky"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             },
             {
                 "question": "¿Cuál es el objetivo principal de administrar penicilina en un paciente con escarlatina?",
                 "options": [
-                    "Prevenir la Fiebre Reumática Aguda",
                     "Prevenir la Glomerulonefritis post-estreptocócica",
+                    "Prevenir la Fiebre Reumática Aguda",
                     "Evitar la caída de la fiebre"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             }
         ]
     }

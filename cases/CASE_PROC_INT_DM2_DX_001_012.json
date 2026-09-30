@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "labs",
-            "card_text": "A) Diabetes Mellitus Tipo 2 (Confirmada): Criterios: Glucosa ayuno ≥126, HbA1c ≥6.5%, o Glucosa azar ≥200 con síntomas.",
+            "card_text": "Diabetes Mellitus Tipo 2 (Confirmada): Criterios: Glucosa ayuno ≥126, HbA1c ≥6.5%, o Glucosa azar ≥200 con síntomas.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "labs",
-            "card_text": "B) Prediabetes (Glucosa Alterada en Ayuno): Glucosa en ayuno entre 100 y 125 mg/dl.",
+            "card_text": "Prediabetes (Glucosa Alterada en Ayuno): Glucosa en ayuno entre 100 y 125 mg/dl.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -57,7 +57,7 @@
             "card_id": "c_3",
             "ui_icon": "activity",
             "category": "labs",
-            "card_text": "C) Hemoglobina Glucosilada (HbA1c) ≥6.5%: Estándar para el diagnóstico y seguimiento crónico. Refleja los últimos 3 meses.",
+            "card_text": "Hemoglobina Glucosilada (HbA1c) ≥6.5%: Estándar para el diagnóstico y seguimiento crónico. Refleja los últimos 3 meses.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -69,7 +69,7 @@
             "card_id": "c_4",
             "ui_icon": "target",
             "category": "labs",
-            "card_text": "D) Glucosa en Ayuno (≥126 mg/dL): Requiere al menos 8 horas de ayuno calórico. Debe repetirse para confirmar si no hay síntomas.",
+            "card_text": "Glucosa en Ayuno (≥126 mg/dL): Requiere al menos 8 horas de ayuno calórico. Debe repetirse para confirmar si no hay síntomas.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -81,7 +81,7 @@
             "card_id": "c_5",
             "ui_icon": "beaker",
             "category": "labs",
-            "card_text": "E) Curva de Tolerancia (CTOG 75g) ≥200: Medición a las 2 horas tras carga de glucosa anhidra.",
+            "card_text": "Curva de Tolerancia (CTOG 75g) ≥200: Medición a las 2 horas tras carga de glucosa anhidra.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -151,11 +151,11 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Cuál es la cifra de glucosa en ayuno para diagnóstico de DM2?",
                 "options": [
-                    ">=126 mg/dL",
                     ">=100 mg/dL",
+                    ">=126 mg/dL",
                     ">=200 mg/dL"
                 ]
             },
@@ -169,11 +169,11 @@
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿En qué momento se diagnostica DM2 con glucosa al azar >=200?",
                 "options": [
-                    "Si hay síntomas clásicos (síntomas)",
                     "Siempre es diagnóstico",
+                    "Si hay síntomas clásicos (síntomas)",
                     "Nunca, requiere confirmación"
                 ]
             }

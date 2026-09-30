@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Insuficiencia Cardíaca con FE reducida (ICFEr): Presencia de síntomas típicos + FEVI <40%. Don Pedro cumple criterios de Framingham.",
+            "card_text": "Insuficiencia Cardíaca con FE reducida (ICFEr): Presencia de síntomas típicos + FEVI <40%. Don Pedro cumple criterios de Framingham.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "beaker",
             "category": "meds",
-            "card_text": "B) Péptidos Natriuréticos (NT-proBNP): Útiles para el diagnóstico por su alto valor predictivo negativo (descartar IC en urgencias).",
+            "card_text": "Péptidos Natriuréticos (NT-proBNP): Útiles para el diagnóstico por su alto valor predictivo negativo (descartar IC en urgencias).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -53,7 +53,7 @@
             "card_id": "c_3",
             "ui_icon": "pill",
             "category": "Tratamiento Pilares",
-            "card_text": "C) Los 'Cuatro Fantásticos': ARNI (o IECA/ARAII), Beta-bloqueador, Antagonista de Mineralocorticoides e iSGLT2.",
+            "card_text": "Los 'Cuatro Fantásticos': ARNI (o IECA/ARAII), Beta-bloqueador, Antagonista de Mineralocorticoides e iSGLT2.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -69,7 +69,7 @@
             "card_id": "c_4",
             "ui_icon": "droplet",
             "category": "Manejo Síntomas",
-            "card_text": "D) Furosemida (Diurético de Asa): Tratamiento de elección para el control de la congestión y el edema.",
+            "card_text": "Furosemida (Diurético de Asa): Tratamiento de elección para el control de la congestión y el edema.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -81,7 +81,7 @@
             "card_id": "c_5",
             "ui_icon": "info",
             "category": "imaging",
-            "card_text": "E) NYHA (New York Heart Association): Clasifica la severidad según la limitación funcional por síntomas (I a IV).",
+            "card_text": "NYHA (New York Heart Association): Clasifica la severidad según la limitación funcional por síntomas (I a IV).",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -163,21 +163,21 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "correct_index": 0,
+                "correct_index": 2,
                 "question": "¿Cuáles son los 'cuatro fantásticos' pilares del tratamiento inicial de la Insuficiencia Cardíaca con FE reducida?",
                 "options": [
-                    "ARNI (o IECA), Beta-bloqueador, ARM e iSGLT2",
                     "Diurético, Digoxina, Calcio-antagonista y AAS",
-                    "Amiodarona, Nitratos, IECA y ARM"
+                    "Amiodarona, Nitratos, IECA y ARM",
+                    "ARNI (o IECA), Beta-bloqueador, ARM e iSGLT2"
                 ]
             },
             {
-                "correct_index": 0,
+                "correct_index": 1,
                 "question": "¿Qué escala se utiliza para clasificar la capacidad funcional de los pacientes con insuficiencia cardíaca?",
                 "options": [
+                    "Puntuación CHA2DS2-VASc",
                     "Clasificación NYHA",
-                    "Criterios de Framingham",
-                    "Puntuación CHA2DS2-VASc"
+                    "Criterios de Framingham"
                 ]
             },
             {

@@ -1,5 +1,5 @@
 ﻿ID_Caso,Especialidad,Dificultad,Nombre_Paciente,Diagnostico_Perla,Numero_Cartas,Preguntas_Boss
-CASE_PROC_CARD_AMI_EXTREME_001_001,card,extreme,Ingreso Crítico #405: IAM y Shock Cardiogénico,IAM Anterior + Shock (Killip IV),6,3
+PROC_CARD_AMI_EXTREME_001_001,card,extreme,Ingreso Crítico #405: IAM y Shock Cardiogénico,IAM Anterior + Shock (Killip IV),6,3
 PROC_CARD_SCA_IAMCEST_001_001,card,hard,Carlos 65 años,IAMCEST: Tiempo es Músculo,10,3
 PROC_CARD_SCA_IAMCEST_001_002,card,hard,Juan 70 años,Tiempos en IAMCEST,5,3
 PROC_CARD_SCA_IAMCEST_001_003,card,hard,Carlos 67 años,IAMCEST Anterior: Urgencia Maximal,5,3
@@ -41,7 +41,7 @@ PROC_ENGL_TECH_VOCABULARY_001_014,engl,standard,José 41 años,Inglés Médico: 
 PROC_ENGL_TECH_VOCABULARY_001_015,engl,standard,María 25 años,Inglés Médico: False Friends,10,3
 PROC_GAST_DIVERTICULITIS_HINCHEY_001_001,gast,standard,Carmen 68 años,Hinchey: TC y Hartmann,10,3
 PROC_GAST_MESENTERIC_ISCHEMIA_001_001,gast,hard,Fernando 61 años,Isquemia: El Gran Mismatch,10,3
-CASE_PROC_GAST_VARICES_HARD_001_001,gast,hard,Ingreso Crítico #702: Hematemesis Masiva,Sangrado Variceal en Cirrosis,5,3
+PROC_GAST_VARICES_HARD_001_001,gast,hard,Ingreso Crítico #702: Hematemesis Masiva,Sangrado Variceal en Cirrosis,5,3
 PROC_GYN_CANCER_BREAST_001_001,gyn,standard,Laura 52 años,Tamizaje Cáncer de Mama,10,3
 PROC_GYN_CANCER_BREAST_001_002,gyn,standard,Marta 52 años,BI-RADS y Conducta,10,3
 PROC_GYN_CANCER_BREAST_001_003,gyn,standard,Isabel 52 años,BI-RADS y Conducta,10,3
@@ -555,10 +555,10 @@ PROC_PED_VAC_CATCHUP_001_001,ped,hard,Marta 19 meses,Cartilla 2024: Novedades,10
 PROC_PED_VAC_SRP_001_001,ped,hard,Carmen 18 meses,Actualización Cartilla SRP,8,3
 PROC_PED_VAC_SRP_001_002,ped,hard,Luis 18 meses,Actualización Cartilla SRP,8,3
 PROC_PREV_LEVELS_LEAVELL_001_001,prev,standard,Carmen 41 anos,Leavell & Clark: Niveles,11,3
-CASE_PROC_PREV_RABIES_EXTREME_001_001,prev,extreme,Consulta Externa: Exposición a Fauna Silvestre,Profilaxis Antirrábica Post-Exposición (Categoría III),5,3
+PROC_PREV_RABIES_EXTREME_001_001,prev,extreme,Consulta Externa: Exposición a Fauna Silvestre,Profilaxis Antirrábica Post-Exposición (Categoría III),5,3
 PROC_PSYCH_MANIA_001_001,psyc,standard,Juan 28 anos,Criterios Mania: DIGFAST,11,3
 PROC_PSYC_DEP_SUICIDE_001_001,psyc,standard,José 70 años,Pregunta por el Suicidio,10,3
-CASE_PROC_PSYC_NMS_EXTREME_001_001,psyc,extreme,Ingreso Crítico #112: Urgencia Psiquiátrica,Síndrome Neuroléptico Maligno,6,3
+PROC_PSYC_NMS_EXTREME_001_001,psyc,extreme,Ingreso Crítico #112: Urgencia Psiquiátrica,Síndrome Neuroléptico Maligno,6,3
 PROC_PSYC_PSI_SCHIZO_001_001,psyc,standard,Fernando 22 anos,Esquizofrenia: El 6 es la Clave,11,3
 PROC_STATS_DX_METRICS_001_001,stats,hard,Marta 57 años,Bioestadística: Sn  Sp y VP,10,3
 PROC_STATS_DX_METRICS_001_002,stats,hard,Elena 54 años,VPP y Prevalencia,10,3
@@ -577,7 +577,7 @@ PROC_STATS_DX_METRICS_001_014,stats,hard,María 49 años,VPP y Prevalencia,10,3
 PROC_STATS_DX_METRICS_001_015,stats,hard,Juan 51 años,VPP y Prevalencia,10,3
 PROC_SURG_APPENDICITIS_001_001,surg,standard,Marta 20 años,Apendicitis: Escala de Alvarado,10,3
 PROC_SURG_APPENDICITIS_ALVARADO_001_001,surg,standard,José 32 años,Alvarado: MANTREM,10,3
-PROC_SURG_ATLS_TENSION_PNEUMO_001_001,surg,hard,Ricardo 28 años,N/A,6,3
+PROC_SURG_ATLS_TENSION_PNEUMO_001_001,surg,hard,Ricardo 28 años,ATLS 10ª: Neumotórax a Tensión,6,3
 PROC_SURG_ATLS_TENSION_PNEUMO_001_002,surg,hard,Fernando 35 años,ATLS 10ª: Neumotórax a Tensión,7,3
 PROC_SURG_ATLS_TENSION_PNEUMO_001_003,surg,hard,Miguel 30 años,ATLS 10ª: Neumotórax a Tensión,7,3
 PROC_SURG_ATLS_TENSION_PNEUMO_001_004,surg,hard,Miguel 30 años,ATLS 10ª: Neumotórax a Tensión,7,3
@@ -597,7 +597,4 @@ PROC_SURG_BILIARY_COLANGITIS_001_001,surg,hard,Marta 68 años,Charcot vs Reynold
 PROC_SURG_OBSTRUCTION_001_001,surg,standard,Laura 61 años,Obstrucción: Pila de Monedas,11,3
 PROC_SURG_TRAUMA_ATLS10_001_001,surg,hard,Pedro 40 años,ATLS 10: ABCDE y PNT,10,3
 PROC_SURG_TRAUMA_PNEUMO_001_001,surg,hard,Fernando 36 años,Neumotórax a Tensión,7,3
-PROC_SURG_TRAUMA_PNEUMO_001_003,surg,hard,Carmen 43 años,N/A,6,3
-SWIPE_EASY_001,theme-default,standard,Paciente,Fatiga Funcional: No Medicalizar al Paciente Sano,10,3
-SWIPE_HARD_001,theme-default,hard,Paciente,Urosepsis / Choque Séptico de Foco Urinario,10,3
-SWIPE_STANDARD_001,theme-default,standard,Paciente,Hemorragia de Tubo Digestivo Alto (HTDA) por AINEs,10,3
+PROC_SURG_TRAUMA_PNEUMO_001_003,surg,hard,Carmen 43 años,ATLS 10ª: Neumotórax a Tensión,6,3

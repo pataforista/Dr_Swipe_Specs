@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "Hallazgo: A) IAMCEST (Fibrinolisis Sistémica): IAMCEST Cara Anterior. Si la ICP >120 min de retraso, se opta por Fibrinolisis (Alteplase).",
+            "card_text": "Hallazgo: IAMCEST (Fibrinolisis Sistémica): IAMCEST Cara Anterior. Si la ICP >120 min de retraso, se opta por Fibrinolisis (Alteplase).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -42,7 +42,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "Hallazgo clínico: Ruido en el expediente: B) Angina Inestable: Dolor isquémico SIN elevación del ST y SIN elevación de troponinas.",
+            "card_text": "Hallazgo clínico: Ruido en el expediente: Angina Inestable: Dolor isquémico SIN elevación del ST y SIN elevación de troponinas.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -58,7 +58,7 @@
             "card_id": "c_3",
             "ui_icon": "target",
             "category": "Tratamiento",
-            "card_text": "Dato de importancia: C) ASA 300mg + Clopidogrel 180mg + Heparina IV: Doble antiagregación y anticoagulante inmediatos. SIN demora.",
+            "card_text": "Dato de importancia: ASA 300mg + Clopidogrel 180mg + Heparina IV: Doble antiagregación y anticoagulante inmediatos. SIN demora.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -75,7 +75,7 @@
             "card_id": "c_4",
             "ui_icon": "shield",
             "category": "Monitoreo",
-            "card_text": "Evidencia: D) Contactar ICP center y organizar traslado inmediato: IAMCEST anterior = alto riesgo de choque (VI disfunción). ICP es gold standard.",
+            "card_text": "Evidencia: Contactar ICP center y organizar traslado inmediato: IAMCEST anterior = alto riesgo de choque (VI disfunción). ICP es gold standard.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -95,11 +95,11 @@
             {
                 "question": "¿En qué derivaciones INDICA IAMCEST anterior?",
                 "options": [
-                    "V1-V4 (± aVL) con imagen recíproca en II, III, aVF",
                     "II, III, aVF con imagen recíproca en I, aVL",
-                    "V5-V6 con aVL"
+                    "V5-V6 con aVL",
+                    "V1-V4 (± aVL) con imagen recíproca en II, III, aVF"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             },
             {
                 "question": "¿Cuál es la prioridad si NO hay ICP disponible en <120 min?",
@@ -113,11 +113,11 @@
             {
                 "question": "¿Por qué IAMCEST anterior es más grave que inferior?",
                 "options": [
+                    "Es menos grave, es confusión",
                     "Afecta ventrículo izquierdo grande → mayor riesgo de choque",
-                    "Siempre requiere cirugía",
-                    "Es menos grave, es confusión"
+                    "Siempre requiere cirugía"
                 ],
-                "correct_index": 0
+                "correct_index": 1
             }
         ]
     },

@@ -5,7 +5,7 @@ Bienvenido al repositorio central de **Dr. Swipe**. Este proyecto aloja tanto el
 ## 🚀 Estado Actual (Septiembre 2026)
 - **Motor:** React + Vite + Tailwind CSS + XState (Máquina de estados para el flujo del juego).
 - **Estética:** *Medical Notebook / Scrapbook*, implementando un sistema altamente cohesivo con doodles, z-index overlays y animaciones hápticas.
-- **Contenido:** **602 Casos Clínicos** integrados, balanceados y probados sin errores.
+- **Contenido:** **599 Casos Clínicos** integrados, balanceados y probados sin errores.
 
 ## 📁 Estructura del Proyecto
 

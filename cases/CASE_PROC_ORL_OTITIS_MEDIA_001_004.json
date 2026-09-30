@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Otitis Media Aguda (OMA): Presencia de efusión en oído medio + inicio súbito de signos y síntomas de inflamación local.",
+            "card_text": "Otitis Media Aguda (OMA): Presencia de efusión en oído medio + inicio súbito de signos y síntomas de inflamación local.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Otoscopia",
-            "card_text": "B) Membrana Timpánica Abombada: Es el signo clínico más sensible y específico para el diagnóstico de efusión en el oído medio.",
+            "card_text": "Membrana Timpánica Abombada: Es el signo clínico más sensible y específico para el diagnóstico de efusión en el oído medio.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -53,7 +53,7 @@
             "card_id": "c_3",
             "ui_icon": "beaker",
             "category": "Etiología",
-            "card_text": "C) Streptococcus pneumoniae: Agente bacteriano principal, seguido por Haemophilus influenzae no tipificable y Moraxella catarrhalis.",
+            "card_text": "Streptococcus pneumoniae: Agente bacteriano principal, seguido por Haemophilus influenzae no tipificable y Moraxella catarrhalis.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -65,7 +65,7 @@
             "card_id": "c_4",
             "ui_icon": "pill",
             "category": "meds",
-            "card_text": "D) Amoxicilina (80-90 mg/kg/día): Tratamiento de primera elección por 5-10 días según la edad y severidad.",
+            "card_text": "Amoxicilina (80-90 mg/kg/día): Tratamiento de primera elección por 5-10 días según la edad y severidad.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -81,7 +81,7 @@
             "card_id": "c_5",
             "ui_icon": "activity",
             "category": "meds",
-            "card_text": "E) Amoxicilina con Ácido Clavulánico: Indicada si el paciente recibió amoxicilina en los últimos 30 días o tiene conjuntivitis purulenta asociada.",
+            "card_text": "Amoxicilina con Ácido Clavulánico: Indicada si el paciente recibió amoxicilina en los últimos 30 días o tiene conjuntivitis purulenta asociada.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -165,20 +165,20 @@
             {
                 "question": "¿Cuál es la complicación intratemporal supurativa más frecuente de la OMA?",
                 "options": [
-                    "Mastoiditis aguda",
                     "Laberintitis",
-                    "Meningitis supurativa"
+                    "Meningitis supurativa",
+                    "Mastoiditis aguda"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             },
             {
                 "question": "¿Cuál es el antibiótico de primera elección y su dosis para el tratamiento de la OMA?",
                 "options": [
-                    "Amoxicilina a 80-90 mg/kg/día",
+                    "Ceftriaxona 50 mg/kg IM dosis única",
                     "Eritromicina 40 mg/kg/día",
-                    "Ceftriaxona 50 mg/kg IM dosis única"
+                    "Amoxicilina a 80-90 mg/kg/día"
                 ],
-                "correct_index": 0
+                "correct_index": 2
             },
             {
                 "question": "Con respecto a la patología, ¿cuál es el hallazgo en la otoscopia más sugestivo de otitis media aguda?",

@@ -41,7 +41,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Rubéola: Adenopatías retroauriculares + Manchas de Forchheimer + Exantema de 3 días.",
+            "card_text": "Rubéola: Adenopatías retroauriculares + Manchas de Forchheimer + Exantema de 3 días.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -57,7 +57,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "meds",
-            "card_text": "B) Sarampión: Cuadro mucho más tóxico, conjuntivitis y manchas de Koplik. Exantema que dura 7 días.",
+            "card_text": "Sarampión: Cuadro mucho más tóxico, conjuntivitis y manchas de Koplik. Exantema que dura 7 días.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -69,7 +69,7 @@
             "card_id": "c_3",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
-            "card_text": "C) Escarlatina: S. pyogenes. Enantema en fresa y exantema en lija que respeta el triángulo nasolabial. No tiene adenopatías retroauriculares.",
+            "card_text": "Escarlatina: S. pyogenes. Enantema en fresa y exantema en lija que respeta el triángulo nasolabial. No tiene adenopatías retroauriculares.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -81,7 +81,7 @@
             "card_id": "c_4",
             "ui_icon": "search",
             "category": "Signo Clínico",
-            "card_text": "D) Manchas de Forchheimer: Pequeñas petequias rojas en el paladar blando.",
+            "card_text": "Manchas de Forchheimer: Pequeñas petequias rojas en el paladar blando.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -93,7 +93,7 @@
             "card_id": "c_5",
             "ui_icon": "beaker",
             "category": "meds",
-            "card_text": "E) Virus de la Rubéola (Togavirus): Virus de ARN, único miembro del género Rubivirus.",
+            "card_text": "Virus de la Rubéola (Togavirus): Virus de ARN, único miembro del género Rubivirus.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -162,26 +162,26 @@
                 "question": "¿Cuál es la complicación más grave de la rubéola durante el embarazo?",
                 "options": [
                     "Encefalitis",
-                    "Púrpura Trombocitopénica",
-                    "Síndrome de Rubéola Congénita"
-                ],
-                "correct_index": 2
-            },
-            {
-                "question": "¿Qué componentes integran la Tríada de Gregg (Rubéola Congénita)?",
-                "options": [
-                    "Ictericia, Anemia, Esplenomegalia",
-                    "Catarata, Sordera, Cardiopatía (PCA)",
-                    "Fiebre, Tos, Exantema"
+                    "Síndrome de Rubéola Congénita",
+                    "Púrpura Trombocitopénica"
                 ],
                 "correct_index": 1
             },
             {
+                "question": "¿Qué componentes integran la Tríada de Gregg (Rubéola Congénita)?",
+                "options": [
+                    "Catarata, Sordera, Cardiopatía (PCA)",
+                    "Ictericia, Anemia, Esplenomegalia",
+                    "Fiebre, Tos, Exantema"
+                ],
+                "correct_index": 0
+            },
+            {
                 "question": "¿A qué familia de virus pertenece el agente de la Rubéola?",
                 "options": [
-                    "Herpesvirus",
+                    "Paramixovirus",
                     "Togavirus",
-                    "Paramixovirus"
+                    "Herpesvirus"
                 ],
                 "correct_index": 1
             }

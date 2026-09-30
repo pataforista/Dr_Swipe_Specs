@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnostico",
-            "card_text": "Hallazgo: A) Episodio Maniaco (Trastorno Bipolar I): Estado de animo elevado/expansivo por al menos 1 semana. Criterios DIGFAST presentes.",
+            "card_text": "Hallazgo: Episodio Maniaco (Trastorno Bipolar I): Estado de animo elevado/expansivo por al menos 1 semana. Criterios DIGFAST presentes.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "slash",
             "category": "Diagnostico Diferencial",
-            "card_text": "Informacion redundante: B) Hipomania: Duracion minima de 4 dias, sin compromiso funcional grave y SIN síntomas psicoticos ni necesidad de hospitalizacion.",
+            "card_text": "Informacion redundante: Hipomania: Duracion minima de 4 dias, sin compromiso funcional grave y SIN síntomas psicoticos ni necesidad de hospitalizacion.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -53,7 +53,7 @@
             "card_id": "c_3",
             "ui_icon": "user-x",
             "category": "Diagnostico Diferencial",
-            "card_text": "Hallazgo: Ruido en el expediente: C) Trastorno Esquizoafectivo: Sintomas psicoticos (delirios/alucinaciones) por >=2 semanas en ausencia de síntomas afectivos.",
+            "card_text": "Hallazgo: Ruido en el expediente: Trastorno Esquizoafectivo: Sintomas psicoticos (delirios/alucinaciones) por >=2 semanas en ausencia de síntomas afectivos.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -65,7 +65,7 @@
             "card_id": "c_4",
             "ui_icon": "pill",
             "category": "Manejo de Primera Linea",
-            "card_text": "Evidencia: D) Carbonato de Litio: Estabilizador del animo de eleccion. Requiere monitoreo de niveles sericos (litemia).",
+            "card_text": "Evidencia: Carbonato de Litio: Estabilizador del animo de eleccion. Requiere monitoreo de niveles sericos (litemia).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -77,7 +77,7 @@
             "card_id": "c_5",
             "ui_icon": "shield",
             "category": "Manejo Alternativo",
-            "card_text": "Evidencia: E) Valproato de Magnesio: Alternativa eficaz al litio, especialmente en episodios mixtos.",
+            "card_text": "Evidencia: Valproato de Magnesio: Alternativa eficaz al litio, especialmente en episodios mixtos.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -157,26 +157,26 @@
             {
                 "question": "¿Qué malformacion congenita se asocia clasicamente al uso de Litio durante el primer trimestre del embarazo?",
                 "options": [
-                    "Tetralogia de Fallot",
                     "Anomalia de Ebstein",
+                    "Tetralogia de Fallot",
                     "Defecto del tubo neural"
-                ],
-                "correct_index": 1
-            },
-            {
-                "question": "¿Cuál es el farmaco estabilizador del animo considerado el 'estandar de oro' para el tratamiento del Trastorno Bipolar I?",
-                "options": [
-                    "Carbonato de Litio",
-                    "Lamotrigina",
-                    "Ácido Valproico"
                 ],
                 "correct_index": 0
             },
             {
+                "question": "¿Cuál es el farmaco estabilizador del animo considerado el 'estandar de oro' para el tratamiento del Trastorno Bipolar I?",
+                "options": [
+                    "Lamotrigina",
+                    "Ácido Valproico",
+                    "Carbonato de Litio"
+                ],
+                "correct_index": 2
+            },
+            {
                 "question": "¿Cuál es la duracion minima de los síntomas necesaria para diagnosticar un Episodio Maniaco segun el DSM-5?",
                 "options": [
-                    "Al menos 4 dias consecutivos",
                     "Al menos 2 semanas",
+                    "Al menos 4 dias consecutivos",
                     "Al menos 1 semana"
                 ],
                 "correct_index": 2

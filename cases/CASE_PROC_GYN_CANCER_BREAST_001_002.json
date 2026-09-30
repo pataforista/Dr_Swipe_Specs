@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Biopsia Percutánea (Trucut): BI-RADS 4 y 5 requieren confirmación histopatológica inmediata mediante biopsia con aguja gruesa.",
+            "card_text": "Biopsia Percutánea (Trucut): BI-RADS 4 y 5 requieren confirmación histopatológica inmediata mediante biopsia con aguja gruesa.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
-            "card_text": "B) Seguimiento en 6 meses (BI-RADS 3): Conducta indicada ante hallazgos probablemente benignos (<2% riesgo de malignidad).",
+            "card_text": "Seguimiento en 6 meses (BI-RADS 3): Conducta indicada ante hallazgos probablemente benignos (<2% riesgo de malignidad).",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -53,7 +53,7 @@
             "card_id": "c_3",
             "ui_icon": "search",
             "category": "Tamizaje",
-            "card_text": "C) Mastografía de Tamizaje: Realizar cada 2 años a partir de los 40 años hasta los 69 años en mamas asintomáticas.",
+            "card_text": "Mastografía de Tamizaje: Realizar cada 2 años a partir de los 40 años hasta los 69 años en mamas asintomáticas.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -65,7 +65,7 @@
             "card_id": "c_4",
             "ui_icon": "slash",
             "category": "Auxilio Diagnóstico",
-            "card_text": "D) Ultrasonido Mamario: Complemento ideal en mamas densas (BI-RADS 0) o en mujeres menores de 35 años con masa palpable.",
+            "card_text": "Ultrasonido Mamario: Complemento ideal en mamas densas (BI-RADS 0) o en mujeres menores de 35 años con masa palpable.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -77,7 +77,7 @@
             "card_id": "c_5",
             "ui_icon": "target",
             "category": "imaging",
-            "card_text": "E) Triple Evaluación: Diagnóstico integral mediante la tríada: clínica, imagen (mastografía/USG) y biopsia histopatológica.",
+            "card_text": "Triple Evaluación: Diagnóstico integral mediante la tríada: clínica, imagen (mastografía/USG) y biopsia histopatológica.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -156,8 +156,8 @@
                 "question": "¿Cuál es la conducta recomendada ante un hallazgo categorizado como BI-RADS 3 (Probablemente Benigno)?",
                 "options": [
                     "Seguimiento mastográfico en 6 meses",
-                    "Biopsia percutánea inmediata",
-                    "Repetir estudio en 2 años"
+                    "Repetir estudio en 2 años",
+                    "Biopsia percutánea inmediata"
                 ]
             },
             {
