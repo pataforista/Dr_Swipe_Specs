@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "Hallazgo: A) Probabilidad BAJA (<10%): En enfermedades raras, incluso pruebas 'buenas' tienen un Valor Predictivo Positivo (VPP) muy bajo por el peso de los FP.",
+            "card_text": "Hallazgo: Probabilidad BAJA (<10%): En enfermedades raras, incluso pruebas 'buenas' tienen un Valor Predictivo Positivo (VPP) muy bajo por el peso de los FP.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "percent",
             "category": "Valor Predictivo (+)",
-            "card_text": "Dato de importancia: B) Valor Predictivo Positivo (VPP): Probabilidad de tener la enfermedad si el resultado es POSITIVO. (VP / VP + FP).",
+            "card_text": "Dato de importancia: Valor Predictivo Positivo (VPP): Probabilidad de tener la enfermedad si el resultado es POSITIVO. (VP / VP + FP).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -53,7 +53,7 @@
             "card_id": "c_3",
             "ui_icon": "search",
             "category": "Sensibilidad",
-            "card_text": "Evidencia: C) Sensibilidad (Sn): Capacidad para detectar enfermos; tasa de verdaderos positivos (VP / VP + FN).",
+            "card_text": "Evidencia: Sensibilidad (Sn): Capacidad para detectar enfermos; tasa de verdaderos positivos (VP / VP + FN).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -65,7 +65,7 @@
             "card_id": "c_4",
             "ui_icon": "check-square",
             "category": "Especificidad",
-            "card_text": "Hallazgo: D) Especificidad (Sp): Capacidad para detectar sanos; tasa de verdaderos negativos (VN / VN + FP).",
+            "card_text": "Hallazgo: Especificidad (Sp): Capacidad para detectar sanos; tasa de verdaderos negativos (VN / VN + FP).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -77,7 +77,7 @@
             "card_id": "c_5",
             "ui_icon": "trending-up",
             "category": "Invarianza",
-            "card_text": "Evidencia: E) Sn y Sp vs Prevalencia: Son propiedades intrínsecas de la prueba y su valor NO se modifica por la prevalencia poblacional.",
+            "card_text": "Evidencia: Sn y Sp vs Prevalencia: Son propiedades intrínsecas de la prueba y su valor NO se modifica por la prevalencia poblacional.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "Evidencia: A) Apendicitis Aguda: Cuadro clásico de migración del dolor (Cronología de Murphy) y febrícula o fiebre. Requiere abordaje quirúrgico.",
+            "card_text": "Evidencia: Apendicitis Aguda: Cuadro clásico de migración del dolor (Cronología de Murphy) y febrícula o fiebre. Requiere abordaje quirúrgico.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "Información redundante: B) Gastroenteritis Infecciosa: Dolor abdominal generalizado, fiebre y náuseas. Frecuentemente autolimitado.",
+            "card_text": "Información redundante: Gastroenteritis Infecciosa: Dolor abdominal generalizado, fiebre y náuseas. Frecuentemente autolimitado.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -57,7 +57,7 @@
             "card_id": "c_4",
             "ui_icon": "clipboard",
             "category": "Escalas",
-            "card_text": "Hallazgo: D) Escala de Alvarado: 7 puntos. Sugiere alta probabilidad de apendicitis.",
+            "card_text": "Hallazgo: Escala de Alvarado: 7 puntos. Sugiere alta probabilidad de apendicitis.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -69,7 +69,7 @@
             "card_id": "c_5",
             "ui_icon": "camera",
             "category": "Gabinete",
-            "card_text": "Hallazgo: E) Ultrasonido de FID: Imagen tubular no compresible >6mm, pared engrosada y líquido periapendicular.",
+            "card_text": "Hallazgo: Ultrasonido de FID: Imagen tubular no compresible >6mm, pared engrosada y líquido periapendicular.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -117,7 +117,7 @@
             "card_id": "c_3",
             "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "Evidencia: C) Embarazo Ectópico Roto: Dolor pélvico agudo, sangrado transvaginal y datos de choque hipovolémico.",
+            "card_text": "Evidencia: Embarazo Ectópico Roto: Dolor pélvico agudo, sangrado transvaginal y datos de choque hipovolémico.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,

@@ -25,7 +25,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "labs",
-            "card_text": "B) Estado Hiperosmolar (EHH): Glucosa >600 + Osmolaridad >320; ausencia de acidosis severa. Común en DM2 adultos.",
+            "card_text": "Estado Hiperosmolar (EHH): Glucosa >600 + Osmolaridad >320; ausencia de acidosis severa. Común en DM2 adultos.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -37,7 +37,7 @@
             "card_id": "c_3",
             "ui_icon": "droplets",
             "category": "imaging",
-            "card_text": "C) Rehidratación Inicial: 1000-1500 ml de Solución Salina 0.9% en la primera hora para restaurar el volumen.",
+            "card_text": "Rehidratación Inicial: 1000-1500 ml de Solución Salina 0.9% en la primera hora para restaurar el volumen.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -49,7 +49,7 @@
             "card_id": "c_5",
             "ui_icon": "pill",
             "category": "meds",
-            "card_text": "E) Infusión de Insulina: 0.1 U/kg/h IV. El objetivo es frenar la cetogénesis, no solo bajar la glucosa.",
+            "card_text": "Infusión de Insulina: 0.1 U/kg/h IV. El objetivo es frenar la cetogénesis, no solo bajar la glucosa.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -109,7 +109,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Cetoacidosis Diabética (CAD): Triada: Hiperglucemia + Acidosis Metabólica (Anion Gap ↑) + Cetonemia/Cetonuria.",
+            "card_text": "Cetoacidosis Diabética (CAD): Triada: Hiperglucemia + Acidosis Metabólica (Anion Gap ↑) + Cetonemia/Cetonuria.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -126,7 +126,7 @@
             "card_id": "c_4",
             "ui_icon": "alert-triangle",
             "category": "Seguridad",
-            "card_text": "D) Regla del Potasio: No iniciar insulina si el K+ es <3.3 mEq/L; repón potasio primero para prevenir arritmias fatales.",
+            "card_text": "Regla del Potasio: No iniciar insulina si el K+ es <3.3 mEq/L; repón potasio primero para prevenir arritmias fatales.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

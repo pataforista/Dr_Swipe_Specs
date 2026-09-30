@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnostico",
-            "card_text": "Hallazgo: A) Esquizofrenia: Sintomas psicoticos (alucinaciones/delirios) con duracion >6 meses y deterioro funcional.",
+            "card_text": "Hallazgo: Esquizofrenia: Sintomas psicoticos (alucinaciones/delirios) con duracion >6 meses y deterioro funcional.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnostico Diferencial",
-            "card_text": "Dato de importancia: Dato anecdotico: B) Trastorno Psicotico Breve: Sintomas psicoticos con duracion mayor a 1 dia pero menor a 1 mes, con retorno total a la funcionalidad.",
+            "card_text": "Dato de importancia: Dato anecdotico: Trastorno Psicotico Breve: Sintomas psicoticos con duracion mayor a 1 dia pero menor a 1 mes, con retorno total a la funcionalidad.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -53,7 +53,7 @@
             "card_id": "c_3",
             "ui_icon": "eye",
             "category": "Diagnostico Diferencial",
-            "card_text": "Informacion redundante: C) Trastorno Esquizofreniforme: Presenta los mismos síntomas que la esquizofrenia pero con una duracion entre 1 y 6 meses.",
+            "card_text": "Informacion redundante: Trastorno Esquizofreniforme: Presenta los mismos síntomas que la esquizofrenia pero con una duracion entre 1 y 6 meses.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -65,7 +65,7 @@
             "card_id": "c_4",
             "ui_icon": "zap",
             "category": "Semiologia",
-            "card_text": "Hallazgo: D) Sintomas Positivos: Alucinaciones auditivas (voces que comentan), ideas delirantes (persecutorias) y desorganizacion del pensamiento.",
+            "card_text": "Hallazgo: Sintomas Positivos: Alucinaciones auditivas (voces que comentan), ideas delirantes (persecutorias) y desorganizacion del pensamiento.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -77,7 +77,7 @@
             "card_id": "c_5",
             "ui_icon": "moon",
             "category": "Semiologia",
-            "card_text": "Hallazgo: E) Sintomas Negativos: Aplanamiento afectivo, abulia (falta de voluntad), alogia (pobreza del habla) y anhedonia.",
+            "card_text": "Hallazgo: Sintomas Negativos: Aplanamiento afectivo, abulia (falta de voluntad), alogia (pobreza del habla) y anhedonia.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

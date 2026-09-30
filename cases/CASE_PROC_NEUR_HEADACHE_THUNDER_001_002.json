@@ -25,7 +25,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico",
-            "card_text": "B) Migraña con Aura: Dolor pulsátil de inicio gradual, precedido por escotomas. No es súbito ni 'en trueno'.",
+            "card_text": "Migraña con Aura: Dolor pulsátil de inicio gradual, precedido por escotomas. No es súbito ni 'en trueno'.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -41,7 +41,7 @@
             "card_id": "c_4",
             "ui_icon": "droplet",
             "category": "labs",
-            "card_text": "D) Xantocromía: Coloración amarillenta del LCR confirmada por espectrofotometría tras 12 horas del inicio.",
+            "card_text": "Xantocromía: Coloración amarillenta del LCR confirmada por espectrofotometría tras 12 horas del inicio.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -89,7 +89,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "imaging",
-            "card_text": "A) Hemorragia Subaracnoidea (HSA): Cefalea en trueno + Irritación meníngea. Causa principal: Rotura de aneurisma sacular.",
+            "card_text": "Hemorragia Subaracnoidea (HSA): Cefalea en trueno + Irritación meníngea. Causa principal: Rotura de aneurisma sacular.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -106,7 +106,7 @@
             "card_id": "c_3",
             "ui_icon": "zap",
             "category": "meds",
-            "card_text": "C) Punción Lumbar: Realizar si la TC es negativa pero la sospecha de HSA sigue siendo muy alta.",
+            "card_text": "Punción Lumbar: Realizar si la TC es negativa pero la sospecha de HSA sigue siendo muy alta.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -122,7 +122,7 @@
             "card_id": "c_5",
             "ui_icon": "pill",
             "category": "meds",
-            "card_text": "E) Nimodipino (60 mg c/4h): Fármaco de elección para prevenir el vasoespasmo isquémico retardado.",
+            "card_text": "Nimodipino (60 mg c/4h): Fármaco de elección para prevenir el vasoespasmo isquémico retardado.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

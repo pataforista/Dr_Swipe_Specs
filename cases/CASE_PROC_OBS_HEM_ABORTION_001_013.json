@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "A) Aborto Incompleto: Expulsión parcial de restos. Cérvix abierto + Sangrado persistente + Útero contraído.",
+            "card_text": "Aborto Incompleto: Expulsión parcial de restos. Cérvix abierto + Sangrado persistente + Útero contraído.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "stethoscope",
             "category": "Diagnóstico",
-            "card_text": "B) Amenaza de Aborto: Sangrado vaginal SIN modificación cervical (cérvix cerrado) con vitalidad fetal presente por USG.",
+            "card_text": "Amenaza de Aborto: Sangrado vaginal SIN modificación cervical (cérvix cerrado) con vitalidad fetal presente por USG.",
             "expected_action": "discard",
             "scoring": {
                 "points": 20,
@@ -53,7 +53,7 @@
             "card_id": "c_3",
             "ui_icon": "slash",
             "category": "imaging",
-            "card_text": "C) Aborto Diferido: Huevo muerto y retenido; ausencia de latido fetal en USG con cérvix CERRADO y sin sangrado.",
+            "card_text": "Aborto Diferido: Huevo muerto y retenido; ausencia de latido fetal en USG con cérvix CERRADO y sin sangrado.",
             "expected_action": "discard",
             "scoring": {
                 "points": 20,
@@ -65,7 +65,7 @@
             "card_id": "c_4",
             "ui_icon": "alert-circle",
             "category": "Definición",
-            "card_text": "D) Definición de Aborto: Terminación del embarazo antes de la semana 22 o expulsión de producto de <500g.",
+            "card_text": "Definición de Aborto: Terminación del embarazo antes de la semana 22 o expulsión de producto de <500g.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -77,7 +77,7 @@
             "card_id": "c_5",
             "ui_icon": "zap",
             "category": "Tratamiento Quirúrgico",
-            "card_text": "E) AMEU (Aspiración Manual Endouterina): Elección en <11 semanas o cuando el útero sea menor de 12cm de altura.",
+            "card_text": "AMEU (Aspiración Manual Endouterina): Elección en <11 semanas o cuando el útero sea menor de 12cm de altura.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -153,7 +153,7 @@
             {
                 "question": "¿Cuál es la definición cronológica del aborto según la norma oficial mexicana?",
                 "options": [
-                    "Antes de la semana 20 de gestación",
+                    "Antes de la semana 22 de gestación (o menos de 500 g)",
                     "Antes de la semana 28 de gestación",
                     "Antes de la semana 12 de gestación"
                 ],

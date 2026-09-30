@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "Evidencia: A) Desarrollo Psicomotor Normal: Sigue los hitos esperados: 9 meses (pinza fina), 18 meses (marcha independiente).",
+            "card_text": "Evidencia: Desarrollo Psicomotor Normal: Sigue los hitos esperados: 9 meses (pinza fina), 18 meses (marcha independiente).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
-            "card_text": "Hallazgo: Dato anecdótico: B) Retraso Global del Desarrollo: Ausencia de hitos clave en dos o más áreas (motor, lenguaje, social) para la edad cronológica.",
+            "card_text": "Hallazgo: Dato anecdótico: Retraso Global del Desarrollo: Ausencia de hitos clave en dos o más áreas (motor, lenguaje, social) para la edad cronológica.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -53,7 +53,7 @@
             "card_id": "c_3",
             "ui_icon": "slash",
             "category": "Diagnostico Diferencial",
-            "card_text": "Hallazgo clínico: Ruido en el expediente: C) Trastorno del Espectro Autista (TEA): Sospechar ante falta de contacto visual, ausencia de señalar y retraso en el lenguaje a los 18-24 meses.",
+            "card_text": "Hallazgo clínico: Ruido en el expediente: Trastorno del Espectro Autista (TEA): Sospechar ante falta de contacto visual, ausencia de señalar y retraso en el lenguaje a los 18-24 meses.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -65,7 +65,7 @@
             "card_id": "c_4",
             "ui_icon": "smile",
             "category": "Area Social",
-            "card_text": "Hallazgo: D) Sonrisa Social (2 meses): El lactante responde con una sonrisa a los estímulos visuales y auditivos de los cuidadores.",
+            "card_text": "Hallazgo: Sonrisa Social (2 meses): El lactante responde con una sonrisa a los estímulos visuales y auditivos de los cuidadores.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -113,7 +113,7 @@
             "card_id": "c_5",
             "ui_icon": "arrow-up",
             "category": "Motor Grueso",
-            "card_text": "Hallazgo: E) Sedestación Independiente (9 meses): Capacidad de mantenerse sentado sin apoyo durante al menos un minuto.",
+            "card_text": "Hallazgo: Sedestación Independiente (9 meses): Capacidad de mantenerse sentado sin apoyo durante al menos un minuto.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

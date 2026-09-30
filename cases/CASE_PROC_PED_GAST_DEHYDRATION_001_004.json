@@ -25,7 +25,7 @@
             "card_id": "c_3",
             "ui_icon": "droplet",
             "category": "VHG",
-            "card_text": "C) Vida Suero Oral (VSO): Pilar del Plan A y B. Contiene la osmolaridad ideal (75 mEq de sodio) recomendada por la OMS.",
+            "card_text": "Vida Suero Oral (VSO): Pilar del Plan A y B. Contiene la osmolaridad ideal (75 mEq de sodio) recomendada por la OMS.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -37,7 +37,7 @@
             "card_id": "c_4",
             "ui_icon": "info",
             "category": "imaging",
-            "card_text": "D) Plan A: Prevención de deshidratación en casa. Menores de 1 año: 75 ml de VSO tras cada evacuación líquida.",
+            "card_text": "Plan A: Prevención de deshidratación en casa. Menores de 1 año: 75 ml de VSO tras cada evacuación líquida.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -49,7 +49,7 @@
             "card_id": "c_5",
             "ui_icon": "activity",
             "category": "imaging",
-            "card_text": "E) Plan B: Deshidratación moderada. Administrar VSO 100 ml/kg en 4 horas (en dosis pequeñas/cucharadas).",
+            "card_text": "Plan B: Deshidratación moderada. Administrar VSO 100 ml/kg en 4 horas (en dosis pequeñas/cucharadas).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -109,7 +109,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "imaging",
-            "card_text": "Hallazgo: A) Deshidratacion Grave con Choque: Perdida ponderal >10%, llenado capilar >4s, letargo y compromiso hemodinamico. Requiere Plan C inmediato.",
+            "card_text": "Hallazgo: Deshidratacion Grave con Choque: Perdida ponderal >10%, llenado capilar >4s, letargo y compromiso hemodinamico. Requiere Plan C inmediato.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -125,7 +125,7 @@
             "card_id": "c_2",
             "ui_icon": "zap",
             "category": "meds",
-            "card_text": "B) Plan C de Rehidratación: Administración de líquidos IV en bolos de Solución Salina 0.9% o Ringer Lactato a 20 ml/kg.",
+            "card_text": "Plan C de Rehidratación: Administración de líquidos IV en bolos de Solución Salina 0.9% o Ringer Lactato a 20 ml/kg.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -163,7 +163,7 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "question": "¿Cuál es la osmolaridad de sodio recomendada por la OMS para las sales de rehidratación oral (VSO)?",
+                "question": "¿Cuál es la concentración de sodio recomendada por la OMS para las sales de rehidratación oral (VSO)?",
                 "options": [
                     "90 mEq/L",
                     "75 mEq/L",

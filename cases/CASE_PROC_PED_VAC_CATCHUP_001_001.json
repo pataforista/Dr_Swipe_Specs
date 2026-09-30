@@ -13,7 +13,7 @@
             "card_id": "c_1",
             "ui_icon": "slash",
             "category": "Manejo",
-            "card_text": "Hallazgo: Dato anecdótico: A) Diferir inmunización por cuadro respiratorio leve: Posponer vacunas hasta que el niño esté completamente asintomático.",
+            "card_text": "Hallazgo: Dato anecdótico: Diferir inmunización por cuadro respiratorio leve: Posponer vacunas hasta que el niño esté completamente asintomático.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -25,7 +25,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
-            "card_text": "Hallazgo: Dato anecdótico: B) Diferir SRP hasta los 6 años de edad: Esquema obsoleto. El retraso en la 2ª dosis aumenta el riesgo de brotes escolares.",
+            "card_text": "Hallazgo: Dato anecdótico: Diferir SRP hasta los 6 años de edad: Esquema obsoleto. El retraso en la 2ª dosis aumenta el riesgo de brotes escolares.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -37,7 +37,7 @@
             "card_id": "c_3",
             "ui_icon": "target",
             "category": "Esquema 18 Meses",
-            "card_text": "Evidencia: C) Aplicar Hexavalente (4ª dosis): Dosis de refuerzo que protege contra Difteria, Tétanos, Tos ferina, Hepatitis B, HiB y Polio.",
+            "card_text": "Evidencia: Aplicar Hexavalente (4ª dosis): Dosis de refuerzo que protege contra Difteria, Tétanos, Tos ferina, Hepatitis B, HiB y Polio.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -49,7 +49,7 @@
             "card_id": "c_4",
             "ui_icon": "slash",
             "category": "Diagnóstico Diferencial",
-            "card_text": "Información redundante: D) Vacuna Varicela: Aunque recomendada, NO está incluida en el esquema básico nacional gratuito de México (Cartilla 2024).",
+            "card_text": "Información redundante: Vacuna Varicela: Aunque recomendada, NO está incluida en el esquema básico nacional gratuito de México (Cartilla 2024).",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -97,7 +97,7 @@
             "card_id": "c_5",
             "ui_icon": "shield",
             "category": "Nacimiento",
-            "card_text": "Evidencia: E) Vacuna BCG (Dosis única): Se aplica al nacer; previene las formas GRAVES de Tuberculosis (Meníngea y Miliar).",
+            "card_text": "Evidencia: Vacuna BCG (Dosis única): Se aplica al nacer; previene las formas GRAVES de Tuberculosis (Meníngea y Miliar).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

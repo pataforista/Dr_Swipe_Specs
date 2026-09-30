@@ -16,7 +16,9 @@ from pathlib import Path
 # C1 control chars are the fingerprint of a broken UTF-8 re-decode.
 C1_RE = re.compile("[\u0080-\u009f]")
 # "DiagnA³stico", "36.6A°C": an accented vowel decayed into "A" + symbol.
-MOJIBAKE_RE = re.compile(r"[A-Za-z]A[³°¡º±]|Ã[©³­±¡]")
+MOJIBAKE_RE = re.compile(r"[A-Za-z]A[³°¡º±]|Ã[©³­±¡]|[Ƒƒ€]|â[€†]|A¢a€")
+# "A) Sarampión…": answer-option letters leaked into card text from exam-style sources.
+OPTION_LETTER_RE = re.compile(r"(^|:\s)[A-E]\)\s")
 REPLACEMENT = "�"
 
 
@@ -55,6 +57,8 @@ def validate_case(path: Path) -> list[str]:
         seen_ids.add(cid)
         if cid == "init_vitals":
             init_vitals += 1
+        if OPTION_LETTER_RE.search(card.get("card_text", "")):
+            errors.append(f"{cid}: card_text conserva prefijo de opción tipo 'A) '")
         if card.get("expected_action") not in ("keep", "discard"):
             errors.append(f"{cid}: expected_action inválido: {card.get('expected_action')!r}")
         # Authoring contradiction: a card that calls itself noise must not be a keep.
@@ -73,6 +77,8 @@ def validate_case(path: Path) -> list[str]:
         for i, q in enumerate(questions):
             options = q.get("options", [])
             ci = q.get("correct_index", -1)
+            if len({o.strip().lower() for o in options}) != len(options):
+                errors.append(f"boss Q{i}: opciones duplicadas (respuesta ambigua)")
             if not isinstance(ci, int) or not 0 <= ci < len(options):
                 errors.append(f"boss Q{i}: correct_index {ci} fuera de rango ({len(options)} opciones)")
 
