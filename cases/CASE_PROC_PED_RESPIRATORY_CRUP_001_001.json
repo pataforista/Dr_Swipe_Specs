@@ -22,6 +22,18 @@
             }
         },
         {
+            "card_id": "l5_cr1",
+            "ui_icon": "pill",
+            "category": "Farmacoterapia",
+            "card_text": "Amoxicilina-clavulanato: Cobertura empírica indicada por la fiebre y el estridor de este cuadro.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: El crup es viral. Los antibióticos no modifican su curso y se reservan para una complicación bacteriana documentada, como la traqueítis."
+            }
+        },
+        {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnostico",
@@ -35,6 +47,18 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
+            }
+        },
+        {
+            "card_id": "l5_cr3",
+            "ui_icon": "camera",
+            "category": "Imagenología",
+            "card_text": "Radiografía lateral de cuello antes de tratar: Estudio obligatorio en todo niño con estridor para decidir la conducta.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: El crup es un diagnóstico clínico y la placa no debe retrasar el tratamiento. La imagen se reserva para presentaciones atípicas o mala respuesta."
             }
         },
         {
@@ -59,6 +83,18 @@
                 "points": 50,
                 "error_type": "hoarding",
                 "vazquez_comment": "Castillo: Correcto. El antecedente de coriza (catarro) orienta mas a una causa viral infecciosa."
+            }
+        },
+        {
+            "card_id": "l5_cr2",
+            "ui_icon": "clock",
+            "category": "Farmacoterapia",
+            "card_text": "Dexametasona solo si hay estridor en reposo: En el crup leve se difiere el corticoide hasta que el niño empeore.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Un corticoide único se ofrece en todo crup, incluso en el leve, porque acorta la evolución y reduce las consultas de retorno."
             }
         },
         {

@@ -22,6 +22,18 @@
             }
         },
         {
+            "card_id": "l5_pn1",
+            "ui_icon": "pill",
+            "category": "Tratamiento Ambulatorio",
+            "card_text": "Azitromicina: Antibiótico de primera elección en el preescolar con neumonía típica no complicada.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Con cuadro típico de neumococo, la amoxicilina a dosis altas sigue siendo la base. Los macrólidos quedan para sospecha de microorganismos atípicos."
+            }
+        },
+        {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnostico",
@@ -35,6 +47,18 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
+            }
+        },
+        {
+            "card_id": "l5_pn2",
+            "ui_icon": "camera",
+            "category": "Imagen",
+            "card_text": "Radiografía de tórax de control a las 48 horas: Se solicita de rutina para confirmar la mejoría en todo niño tratado por NAC.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: En el niño que evoluciona bien no se repite la placa de rutina. Se reserva para fiebre o síntomas persistentes, empeoramiento o complicación sospechada."
             }
         },
         {
@@ -107,6 +131,18 @@
                 "points": 50,
                 "error_type": "hoarding",
                 "vazquez_comment": "Navarro: ¡No! Los antitusigenos estan contraindicados en ninos pequenos; pueden inhibir la eliminacion de secreciones."
+            }
+        },
+        {
+            "card_id": "l5_pn3",
+            "ui_icon": "beaker",
+            "category": "Diagnóstico",
+            "card_text": "Hemocultivo en todo niño con NAC manejado de forma ambulatoria: Estudio necesario antes de iniciar el antibiótico.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: En la NAC no grave tratada en casa el hemocultivo no cambia la conducta. Se reserva para el niño hospitalizado con enfermedad moderada a grave o complicada."
             }
         },
         {

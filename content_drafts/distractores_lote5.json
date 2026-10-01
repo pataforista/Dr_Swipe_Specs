@@ -1,0 +1,112 @@
+{
+    "_descripcion": "Lote 5 (primera tanda) de cartas de descarte: neumotórax a tensión (ATLS), neumonía pediátrica, crup y meningitis bacteriana. Solo se incluyen afirmaciones que una guía de referencia decide de forma explícita; donde no hubo fuente confirmada no se escribió carta. Pendiente de revisión clínica. Se insertan con tools/insert_distractors.py.",
+    "familias": {
+        "PROC_SURG_ATLS_TENSION_PNEUMO_001": [
+            {
+                "card_id": "l5_tp1",
+                "ui_icon": "activity",
+                "category": "Manejo Inmediato",
+                "card_text": "Oxígeno en mascarilla con reservorio y reevaluación a los 15 minutos: Medida suficiente mientras se define la conducta en el paciente con tráquea desviada e hipotensión.",
+                "comment": "Navarro: El oxígeno acompaña, pero no resuelve la obstrucción mecánica. Con inestabilidad hemodinámica y signos de tensión, la descompresión pleural no espera.",
+                "fuente": "ATLS 10a ed., Capítulo 3 (Choque) y Capítulo 4 (Trauma torácico)",
+                "lethal_risk": true
+            },
+            {
+                "card_id": "l5_tp2",
+                "ui_icon": "droplet",
+                "category": "Manejo Inmediato",
+                "card_text": "Bolos de cristaloides hasta normalizar la presión: Tratamiento de la hipotensión de este paciente antes de tocar el tórax.",
+                "comment": "Navarro: Esta hipotensión es obstructiva: el retorno venoso está comprimido. Los líquidos no abren el mediastino; la descompresión sí.",
+                "fuente": "ATLS 10a ed., Capítulo 3 (Choque obstructivo) y Capítulo 4",
+                "lethal_risk": true
+            },
+            {
+                "card_id": "l5_tp3",
+                "ui_icon": "heartbeat",
+                "category": "Manejo Inmediato",
+                "card_text": "Pericardiocentesis subxifoidea: Procedimiento inmediato por ruidos cardíacos apenas audibles e ingurgitación yugular.",
+                "comment": "Navarro: Ruidos apagados y yugulares distendidas también aparecen aquí, pero con tráquea desviada y hemitórax silente el problema está en la pleura. La desviación traqueal y la ausencia de murmullo vesicular inclinan hacia el neumotórax.",
+                "fuente": "ATLS 10a ed., Capítulo 3 y 4 (diagnóstico diferencial del choque obstructivo)"
+            }
+        ],
+        "PROC_PED_RESPIRATORY_PNEUMONIA_001": [
+            {
+                "card_id": "l5_pn1",
+                "ui_icon": "pill",
+                "category": "Tratamiento Ambulatorio",
+                "card_text": "Azitromicina: Antibiótico de primera elección en el preescolar con neumonía típica no complicada.",
+                "comment": "Navarro: Con cuadro típico de neumococo, la amoxicilina a dosis altas sigue siendo la base. Los macrólidos quedan para sospecha de microorganismos atípicos.",
+                "fuente": "IDSA/PIDS, Guías de NAC pediátrica (Bradley et al., Clin Infect Dis 2011)"
+            },
+            {
+                "card_id": "l5_pn2",
+                "ui_icon": "camera",
+                "category": "Imagen",
+                "card_text": "Radiografía de tórax de control a las 48 horas: Se solicita de rutina para confirmar la mejoría en todo niño tratado por NAC.",
+                "comment": "Navarro: En el niño que evoluciona bien no se repite la placa de rutina. Se reserva para fiebre o síntomas persistentes, empeoramiento o complicación sospechada.",
+                "fuente": "IDSA/PIDS, Guías de NAC pediátrica (Bradley et al., Clin Infect Dis 2011)"
+            },
+            {
+                "card_id": "l5_pn3",
+                "ui_icon": "beaker",
+                "category": "Diagnóstico",
+                "card_text": "Hemocultivo en todo niño con NAC manejado de forma ambulatoria: Estudio necesario antes de iniciar el antibiótico.",
+                "comment": "Navarro: En la NAC no grave tratada en casa el hemocultivo no cambia la conducta. Se reserva para el niño hospitalizado con enfermedad moderada a grave o complicada.",
+                "fuente": "IDSA/PIDS, Guías de NAC pediátrica (Bradley et al., Clin Infect Dis 2011)"
+            }
+        ],
+        "PROC_PED_RESPIRATORY_CRUP_001": [
+            {
+                "card_id": "l5_cr1",
+                "ui_icon": "pill",
+                "category": "Farmacoterapia",
+                "card_text": "Amoxicilina-clavulanato: Cobertura empírica indicada por la fiebre y el estridor de este cuadro.",
+                "comment": "Castillo: El crup es viral. Los antibióticos no modifican su curso y se reservan para una complicación bacteriana documentada, como la traqueítis.",
+                "fuente": "Canadian Paediatric Society, Position statement: Croup (2017)"
+            },
+            {
+                "card_id": "l5_cr2",
+                "ui_icon": "clock",
+                "category": "Farmacoterapia",
+                "card_text": "Dexametasona solo si hay estridor en reposo: En el crup leve se difiere el corticoide hasta que el niño empeore.",
+                "comment": "Castillo: Un corticoide único se ofrece en todo crup, incluso en el leve, porque acorta la evolución y reduce las consultas de retorno.",
+                "fuente": "Canadian Paediatric Society, Position statement: Croup (2017); Cochrane, Glucocorticoids for croup"
+            },
+            {
+                "card_id": "l5_cr3",
+                "ui_icon": "camera",
+                "category": "Imagenología",
+                "card_text": "Radiografía lateral de cuello antes de tratar: Estudio obligatorio en todo niño con estridor para decidir la conducta.",
+                "comment": "Castillo: El crup es un diagnóstico clínico y la placa no debe retrasar el tratamiento. La imagen se reserva para presentaciones atípicas o mala respuesta.",
+                "fuente": "Canadian Paediatric Society, Position statement: Croup (2017)"
+            }
+        ],
+        "PROC_INF_MENINGITIS_BACTERIAL_001": [
+            {
+                "card_id": "l5_mg1",
+                "ui_icon": "clock",
+                "category": "Tratamiento",
+                "card_text": "Esperar la tomografía y el resultado del LCR para iniciar antibiótico: Se evita así tratar sin confirmar el germen.",
+                "comment": "Navarro: Cada hora sin antibiótico empeora el pronóstico. Se inicia el tratamiento empírico de inmediato; si hay que estudiar antes de la punción, primero se administra el antibiótico.",
+                "fuente": "IDSA, Practice Guidelines for Bacterial Meningitis (Tunkel et al., Clin Infect Dis 2004); ESCMID Guideline 2016",
+                "lethal_risk": true
+            },
+            {
+                "card_id": "l5_mg2",
+                "ui_icon": "pill",
+                "category": "Tratamiento",
+                "card_text": "Ceftriaxona sola como esquema empírico en el adulto de la comunidad: Cobertura suficiente para los gérmenes habituales.",
+                "comment": "Navarro: Por la resistencia del neumococo a las cefalosporinas, el esquema empírico añade vancomicina a la cefalosporina de tercera generación.",
+                "fuente": "IDSA, Practice Guidelines for Bacterial Meningitis (Tunkel et al., Clin Infect Dis 2004)"
+            },
+            {
+                "card_id": "l5_mg3",
+                "ui_icon": "pill",
+                "category": "Tratamiento",
+                "card_text": "Dexametasona 24 horas después de iniciar el antibiótico: Se espera a ver la respuesta antes de agregar el corticoide.",
+                "comment": "Navarro: El corticoide se administra 10 a 20 minutos antes de la primera dosis de antibiótico o junto con ella; empezarlo después pierde el beneficio sobre las secuelas.",
+                "fuente": "IDSA, Practice Guidelines for Bacterial Meningitis (Tunkel et al., Clin Infect Dis 2004)"
+            }
+        ]
+    }
+}
