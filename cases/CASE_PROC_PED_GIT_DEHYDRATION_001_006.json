@@ -97,6 +97,18 @@
             }
         },
         {
+            "card_id": "l6_dh2",
+            "ui_icon": "syringe",
+            "category": "Tratamiento",
+            "card_text": "Líquidos intravenosos como primera opción en toda deshidratación leve: Se prefieren por ser más rápidos.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: La rehidratación oral con suero de osmolaridad reducida es la primera línea en la deshidratación leve a moderada. La vía intravenosa es para el choque o el fracaso de la vía oral."
+            }
+        },
+        {
             "card_id": "c_8",
             "ui_icon": "pill",
             "category": "meds",
@@ -142,6 +154,18 @@
                 "points": 100,
                 "error_type": "hoarding",
                 "vazquez_comment": "Navarro: Los antibióticos se reservan para la diarrea con sangre (disentería), el cólera grave o infecciones asociadas; no para la diarrea acuosa común."
+            }
+        },
+        {
+            "card_id": "l6_dh1",
+            "ui_icon": "droplet",
+            "category": "Tratamiento",
+            "card_text": "Diluir la fórmula a la mitad durante la rehidratación: Se evita así la sobrecarga osmótica del intestino.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: No se diluye la fórmula ni se restringe la leche. Se continúa la alimentación habitual durante y después de la rehidratación."
             }
         },
         {

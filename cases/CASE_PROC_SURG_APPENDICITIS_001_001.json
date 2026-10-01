@@ -66,6 +66,18 @@
             }
         },
         {
+            "card_id": "l6_ap_2",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Retrasar los analgésicos para no enmascarar la exploración: Se evita así alterar los signos.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "La analgesia no oculta ni retrasa el diagnóstico y es una medida estándar mientras se estudia al paciente."
+            }
+        },
+        {
             "card_id": "c_5",
             "ui_icon": "camera",
             "category": "Gabinete",
@@ -102,6 +114,18 @@
             }
         },
         {
+            "card_id": "l6_ap_1",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Antibióticos posoperatorios por 7 días tras apendicectomía de una apendicitis no complicada: Previenen el absceso residual.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "En la apendicitis no complicada basta una dosis de profilaxis antes de la incisión. Prolongar el antibiótico no reduce las infecciones."
+            }
+        },
+        {
             "card_id": "c_9",
             "ui_icon": "alert-triangle",
             "category": "Complicación",
@@ -130,6 +154,18 @@
             }
         },
         {
+            "card_id": "l6_ap_3",
+            "ui_icon": "camera",
+            "category": "Diagnóstico",
+            "card_text": "Ultrasonido sin visualizar el apéndice: Resultado suficiente para descartar apendicitis.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Un apéndice no visualizado no descarta nada; el estudio es no diagnóstico. Se continúa con tomografía o reevaluación clínica."
+            }
+        },
+        {
             "card_id": "c_6",
             "ui_icon": "beaker",
             "category": "Tratamiento",
@@ -143,6 +179,18 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
+            }
+        },
+        {
+            "card_id": "l6_ap_4",
+            "ui_icon": "clock",
+            "category": "Tratamiento",
+            "card_text": "Operar sin antibiótico preoperatorio: La profilaxis solo se da si hay perforación.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Una dosis preoperatoria de antibiótico se da en toda apendicectomía, aunque no haya perforación, para reducir la infección de herida."
             }
         }
     ],

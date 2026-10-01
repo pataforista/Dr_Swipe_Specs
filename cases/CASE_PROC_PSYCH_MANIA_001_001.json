@@ -74,6 +74,18 @@
             }
         },
         {
+            "card_id": "l6_ma3",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Antiinflamatorios no esteroideos para el dolor en el paciente con litio: Se combinan sin ajustar.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Los AINE y las tiazidas reducen la excreción renal del litio y elevan la litemia, con riesgo de toxicidad."
+            }
+        },
+        {
             "card_id": "c_5",
             "ui_icon": "shield",
             "category": "Manejo Alternativo",
@@ -131,6 +143,33 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. La prevencion de recaidas es el objetivo a largo plazo."
+            }
+        },
+        {
+            "card_id": "l6_ma1",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Antidepresivo en monoterapia durante el episodio maníaco: Se añade para evitar el descenso posterior del ánimo.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Navarro: Un antidepresivo solo puede agravar la manía o inducir ciclado rápido. No se usa en monoterapia en el trastorno bipolar."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
+            "card_id": "l6_ma2",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Valproato como primera elección en la mujer bipolar en edad fértil: Alternativa sin riesgo en el embarazo.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: El valproato es teratogénico, con riesgo de defectos del tubo neural y deterioro del neurodesarrollo. En mujeres en edad fértil se evita."
             }
         },
         {

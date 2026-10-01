@@ -38,6 +38,21 @@
             }
         },
         {
+            "card_id": "l6_ds3",
+            "ui_icon": "pill",
+            "category": "Seguridad",
+            "card_text": "Receta de antidepresivo por 3 meses al dar el alta: Garantiza el apego al tratamiento.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Navarro: Con riesgo suicida se limita la cantidad de fármaco disponible, porque una dosis excesiva se vuelve un medio letal."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
             "card_id": "c_3",
             "ui_icon": "help-circle",
             "category": "Interrogatorio",
@@ -59,6 +74,18 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. Aunque no sustituye al juicio clínico, ayuda a sistematizar el riesgo."
+            }
+        },
+        {
+            "card_id": "l6_ds1",
+            "ui_icon": "file",
+            "category": "Seguridad",
+            "card_text": "Contrato de no suicidio como medida de protección: Se firma antes de dar el alta.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Los contratos de no suicidio no han demostrado reducir el riesgo y pueden dar una falsa seguridad."
             }
         },
         {
@@ -86,6 +113,21 @@
             }
         },
         {
+            "card_id": "l6_ds4",
+            "ui_icon": "clipboard",
+            "category": "Evaluacion",
+            "card_text": "Escala SAD PERSONS como único criterio para decidir el alta: Un puntaje bajo permite el manejo ambulatorio.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Navarro: Las escalas de riesgo no predicen bien el suicidio. La decisión se basa en la evaluación clínica completa, no en un puntaje."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
             "card_id": "c_8",
             "ui_icon": "scissors",
             "category": "Diferencial",
@@ -107,6 +149,18 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Correcto! José cumple con dos de los factores demográficos de más alto riesgo."
+            }
+        },
+        {
+            "card_id": "l6_ds2",
+            "ui_icon": "message",
+            "category": "Entrevista",
+            "card_text": "Evitar preguntar por suicidio para no inducirlo: Se espera a que el paciente lo mencione.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Preguntar directamente no induce la conducta; abre la puerta para evaluar el plan y reduce la angustia."
             }
         },
         {

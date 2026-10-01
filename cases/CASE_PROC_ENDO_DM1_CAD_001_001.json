@@ -46,6 +46,45 @@
             }
         },
         {
+            "card_id": "l6_cd3",
+            "ui_icon": "droplet",
+            "category": "Tratamiento",
+            "card_text": "Solución salina al 0.45% como líquido inicial de reanimación: Evita la sobrecarga de sodio.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: El líquido inicial es solución isotónica. La hipotónica no repone el volumen intravascular que se perdió."
+            }
+        },
+        {
+            "card_id": "l6_cd2",
+            "ui_icon": "clock",
+            "category": "Tratamiento",
+            "card_text": "Suspender la insulina al bajar la glucosa de 200 mg/dL: Se evita así la hipoglucemia.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Mendoza: La insulina se continúa hasta resolver la cetoacidosis y se añade dextrosa a la infusión cuando la glucosa baja. Suspenderla deja la cetogénesis activa."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
+            "card_id": "l6_cd1",
+            "ui_icon": "beaker",
+            "category": "Tratamiento",
+            "card_text": "Bicarbonato intravenoso con pH de 7.1 para corregir pronto la acidosis: Se indica ante cualquier acidosis grave.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: El bicarbonato se reserva para pH menor de 6.9. Por encima de ese valor no mejora los desenlaces."
+            }
+        },
+        {
             "card_id": "c_5",
             "ui_icon": "pill",
             "category": "meds",
@@ -103,6 +142,18 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Bien. Identificar la causa evita que el paciente vuelva a caer en CAD en 48 horas."
+            }
+        },
+        {
+            "card_id": "l6_cd4",
+            "ui_icon": "syringe",
+            "category": "Tratamiento",
+            "card_text": "Insulina subcutánea como único tratamiento de una CAD grave: Esquema más sencillo que la infusión.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: En la CAD moderada a grave la insulina va en infusión intravenosa continua, que permite ajustar la dosis y controlar la cetogénesis."
             }
         },
         {

@@ -98,6 +98,18 @@
             }
         },
         {
+            "card_id": "l6_lv1",
+            "ui_icon": "book",
+            "category": "Prevención",
+            "card_text": "Educación para la salud: Corresponde al nivel de prevención secundaria.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: La educación para la salud es una acción de prevención primaria, dirigida a evitar que la enfermedad aparezca."
+            }
+        },
+        {
             "card_id": "dx_2",
             "ui_icon": "refresh-cw",
             "category": "Prevencion 2aria",
@@ -155,6 +167,18 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Muy bien. Es el segundo subnivel de la prevencion primaria."
+            }
+        },
+        {
+            "card_id": "l6_lv2",
+            "ui_icon": "book",
+            "category": "Prevención",
+            "card_text": "Limitación del daño: Pertenece al nivel de prevención primaria.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: La limitación del daño es prevención secundaria junto con el diagnóstico precoz y el tratamiento oportuno."
             }
         },
         {

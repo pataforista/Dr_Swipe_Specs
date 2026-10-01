@@ -50,6 +50,21 @@
             }
         },
         {
+            "card_id": "l6_dv2",
+            "ui_icon": "camera",
+            "category": "Diagnóstico",
+            "card_text": "Enema con bario en la fase aguda para confirmar el diagnóstico: Estudio contrastado de elección.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Mendoza: Con inflamación aguda hay riesgo de perforación. El estudio de elección es la tomografía de abdomen con contraste."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
             "card_id": "c_4",
             "ui_icon": "slash",
             "category": "Contraindicación",
@@ -83,6 +98,42 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Correcto! La mayoría de los casos grado I resuelven con manejo médico conservador."
+            }
+        },
+        {
+            "card_id": "l6_dv4",
+            "ui_icon": "search",
+            "category": "Seguimiento",
+            "card_text": "Colonoscopia a los 7 días del alta: Se indica para descartar cáncer tras el episodio.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: La colonoscopia de control se hace de 6 a 8 semanas después de resolver el episodio, cuando la inflamación ya cedió."
+            }
+        },
+        {
+            "card_id": "l6_dv3",
+            "ui_icon": "camera",
+            "category": "Diagnóstico",
+            "card_text": "Radiografía simple de abdomen para clasificar el estadio de Hinchey: Estudio inicial suficiente.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: La radiografía simple solo detecta aire libre o íleo. Para clasificar el absceso y la extensión hace falta la tomografía."
+            }
+        },
+        {
+            "card_id": "l6_dv1",
+            "ui_icon": "scissors",
+            "category": "Tratamiento",
+            "card_text": "Cirugía de Hartmann de entrada ante un absceso drenable: Procedimiento definitivo para evitar recurrencias.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: El absceso de más de 3 a 4 cm se drena por vía percutánea guiada por imagen, con antibióticos. La cirugía se reserva para el fracaso del drenaje o la peritonitis."
             }
         },
         {

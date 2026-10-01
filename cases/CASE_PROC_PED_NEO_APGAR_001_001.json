@@ -102,6 +102,18 @@
             }
         },
         {
+            "card_id": "l6_ap2",
+            "ui_icon": "activity",
+            "category": "Manejo Inmediato",
+            "card_text": "Oxígeno al 100% desde el inicio de la ventilación en el recién nacido de término: Corrige la cianosis más rápido.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: En el recién nacido de término la ventilación inicia con aire ambiente (21%) y se ajusta según oximetría. El exceso de oxígeno daña."
+            }
+        },
+        {
             "card_id": "c_5",
             "ui_icon": "zap",
             "category": "Manejo Urgente",
@@ -131,6 +143,51 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
+            }
+        },
+        {
+            "card_id": "l6_ap3",
+            "ui_icon": "syringe",
+            "category": "Manejo Inmediato",
+            "card_text": "Adrenalina intravenosa a 0.1 mg/kg: Dosis habitual en la reanimación neonatal.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Castillo: La dosis intravenosa es de 0.01 a 0.03 mg/kg. Un error de decuplo puede causar hipertensión grave y hemorragia intracraneal."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
+            "card_id": "l6_ap1",
+            "ui_icon": "clock",
+            "category": "Manejo Inmediato",
+            "card_text": "Esperar el Apgar del minuto 1 para decidir si se reanima: Se evita así reanimar de forma innecesaria.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Castillo: La reanimación neonatal no espera al Apgar. Se decide por la respiración, la frecuencia cardíaca y el tono desde los primeros segundos."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
+            "card_id": "l6_ap4",
+            "ui_icon": "heartbeat",
+            "category": "Manejo Inmediato",
+            "card_text": "Iniciar compresiones torácicas con frecuencia cardíaca menor de 100 lpm: Umbral para comprimir.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Castillo: Las compresiones se inician con frecuencia menor de 60 lpm tras 30 segundos de ventilación efectiva. Con menos de 100 lpm el paso es ventilar."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         },
         {

@@ -51,6 +51,36 @@
             }
         },
         {
+            "card_id": "l6_ax3",
+            "ui_icon": "heartbeat",
+            "category": "Tratamiento",
+            "card_text": "Bloqueador beta intravenoso para reducir la frecuencia cardíaca de 120 lpm: Se indica por la taquicardia.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Navarro: La taquicardia compensa un gasto cardíaco bajo. Un bloqueador beta en el choque cardiogénico puede precipitar el colapso."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
+            "card_id": "l6_ax1",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Fibrinólisis sistémica como primera opción en este choque cardiogénico: Se prefiere por ser más rápida que trasladar al paciente.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Navarro: En el infarto con choque cardiogénico la reperfusión de elección es la ICP, sin importar el tiempo de retraso. La fibrinólisis queda como último recurso."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
             "card_id": "c_3",
             "ui_icon": "pill",
             "category": "Manejo Terapéutico",
@@ -91,6 +121,21 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Necesitamos sostener la presión de perfusión mientras abrimos la arteria."
+            }
+        },
+        {
+            "card_id": "l6_ax2",
+            "ui_icon": "droplet",
+            "category": "Manejo Inmediato",
+            "card_text": "Bolos repetidos de cristaloides de 1 litro para corregir la hipotensión: Medida inicial ante PA 70/40 mmHg.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Navarro: Con estertores bilaterales y SatO2 de 88% el pulmón ya está congestionado. Cargar volumen empeora el edema; el soporte hemodinámico va con inotrópicos o vasopresores."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         }
     ],

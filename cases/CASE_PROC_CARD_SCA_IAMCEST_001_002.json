@@ -22,6 +22,18 @@
             }
         },
         {
+            "card_id": "l6_sc1",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Aspirina 81 mg como dosis inicial: Esquema de carga en el IAMCEST.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: La dosis inicial es de 162 a 325 mg masticada, sin cubierta entérica. Los 81 mg son la dosis de mantenimiento."
+            }
+        },
+        {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
@@ -36,6 +48,18 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
+            }
+        },
+        {
+            "card_id": "l6_sc2",
+            "ui_icon": "clock",
+            "category": "Manejo Inmediato",
+            "card_text": "Reperfusión solo si el dolor lleva menos de 3 horas: Pasada esa ventana no hay beneficio.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: El beneficio de la reperfusión se mantiene hasta 12 horas del inicio de los síntomas, y se considera más allá si persiste isquemia."
             }
         },
         {
@@ -72,6 +96,18 @@
             }
         },
         {
+            "card_id": "l6_sc3",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Diferir la estatina hasta el alta: Se prefiere esperar a que el paciente se estabilice.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: Una estatina de alta intensidad se inicia desde el ingreso en todo paciente con infarto, salvo contraindicación."
+            }
+        },
+        {
             "card_id": "c_4",
             "ui_icon": "shield",
             "category": "Monitoreo",
@@ -86,6 +122,21 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": false
+            }
+        },
+        {
+            "card_id": "l6_sc4",
+            "ui_icon": "clock",
+            "category": "Manejo Inmediato",
+            "card_text": "Tiempo puerta-balón de 4 horas como meta aceptable: Margen razonable para trasladar y preparar al paciente.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Mendoza: La meta es una ICP primaria en 90 minutos o menos desde el primer contacto médico; si no se logra, se considera fibrinólisis."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         }
     ],

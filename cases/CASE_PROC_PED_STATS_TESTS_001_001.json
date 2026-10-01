@@ -22,6 +22,18 @@
             }
         },
         {
+            "card_id": "l6_st2",
+            "ui_icon": "bar-chart",
+            "category": "Estadística",
+            "card_text": "Razón de momios cuyo intervalo de confianza al 95% incluye el 1: Indica asociación estadísticamente significativa.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Si el intervalo incluye el 1, el resultado es compatible con ausencia de asociación y no es significativo al nivel del 5%."
+            }
+        },
+        {
             "card_id": "dx_1",
             "ui_icon": "bar-chart",
             "category": "Estadistica Inf.",
@@ -187,6 +199,18 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Oro puro! Recuerda que las pruebas de tamizaje deben ser altamente sensibles."
+            }
+        },
+        {
+            "card_id": "l6_st1",
+            "ui_icon": "bar-chart",
+            "category": "Estadística",
+            "card_text": "Correlación de Pearson para variables ordinales o sin distribución normal: Prueba habitual de asociación.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Con variables ordinales o distribución no normal se usa la correlación de Spearman, que trabaja con rangos."
             }
         }
     ],

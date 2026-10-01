@@ -22,6 +22,33 @@
             }
         },
         {
+            "card_id": "l6_ps_3",
+            "ui_icon": "beaker",
+            "category": "Seguridad",
+            "card_text": "Recuento de neutrófilos innecesario durante el tratamiento con clozapina: El riesgo de neutropenia es bajo.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Navarro: La clozapina exige vigilar el recuento de neutrófilos de forma periódica, porque puede causar agranulocitosis grave."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
+            "card_id": "l6_ps_2",
+            "ui_icon": "clock",
+            "category": "Tratamiento",
+            "card_text": "Suspender el antipsicótico al remitir los síntomas del primer episodio: Se retira para evitar efectos adversos.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Tras un primer episodio se mantiene el antipsicótico de 1 a 2 años como mínimo, porque suspenderlo antes aumenta mucho la recaída."
+            }
+        },
+        {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnostico",
@@ -83,6 +110,18 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. Son síntomas que 'quitan' funcionalidad y son mas dificiles de tratar, indicando peor pronostico."
+            }
+        },
+        {
+            "card_id": "l6_ps_1",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Clozapina como primera línea en el primer episodio: Es el antipsicótico más eficaz.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: La clozapina se reserva para la esquizofrenia resistente a dos antipsicóticos. Por sus riesgos no se usa en el primer episodio."
             }
         },
         {

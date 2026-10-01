@@ -38,6 +38,21 @@
             }
         },
         {
+            "card_id": "l6_co2",
+            "ui_icon": "clock",
+            "category": "Tratamiento",
+            "card_text": "Antibiótico hasta después de la CPRE: Se evita así contaminar los cultivos de la vía biliar.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "El antibiótico se inicia de inmediato, tras tomar hemocultivos. Esperar a la CPRE retrasa el control de la sepsis."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
@@ -59,6 +74,33 @@
                 "points": 50,
                 "error_type": "hoarding",
                 "vazquez_comment": "Correcto. En la hepatitis no suele haber dolor abdominal tan intenso ni leucocitosis importante."
+            }
+        },
+        {
+            "card_id": "l6_co3",
+            "ui_icon": "clock",
+            "category": "Manejo Inmediato",
+            "card_text": "Drenaje biliar diferido 72 horas aunque haya choque: Se espera a estabilizar con antibióticos.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "En la colangitis grave, con choque o disfunción orgánica, el drenaje biliar es urgente y se hace en cuanto el paciente se estabiliza con la reanimación."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
+            "card_id": "l6_co4",
+            "ui_icon": "camera",
+            "category": "Diagnóstico",
+            "card_text": "Vía biliar sin dilatación en el ultrasonido: Descarta la colangitis.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "La dilatación de la vía biliar apoya el diagnóstico pero no es indispensable. Un ultrasonido normal no excluye una colangitis."
             }
         },
         {
@@ -123,6 +165,21 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
+            }
+        },
+        {
+            "card_id": "l6_co1",
+            "ui_icon": "scissors",
+            "category": "Tratamiento",
+            "card_text": "Colecistectomía urgente como tratamiento inicial de la colangitis: Se quita el foco de la infección.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "El problema es la obstrucción del colédoco, no la vesícula. El tratamiento inicial es el drenaje biliar, y la colecistectomía llega después."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         },
         {

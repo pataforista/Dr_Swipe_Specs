@@ -126,6 +126,18 @@
             }
         },
         {
+            "card_id": "l6_vc2",
+            "ui_icon": "syringe",
+            "category": "Prevención",
+            "card_text": "SRP y varicela aplicadas en días distintos sin intervalo mínimo: Se pueden poner con cualquier separación.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Dos vacunas de virus vivos se aplican el mismo día o con al menos 4 semanas de separación, porque la primera puede interferir con la respuesta a la segunda."
+            }
+        },
+        {
             "card_id": "c_10",
             "ui_icon": "alert-triangle",
             "category": "Seguridad",
@@ -139,6 +151,18 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
+            }
+        },
+        {
+            "card_id": "l6_vc1",
+            "ui_icon": "syringe",
+            "category": "Prevención",
+            "card_text": "Reiniciar todo el esquema de hexavalente por el retraso: Se empieza de nuevo para garantizar la protección.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Un esquema retrasado no se reinicia. Se continúa donde quedó, sin repetir las dosis ya aplicadas."
             }
         }
     ],

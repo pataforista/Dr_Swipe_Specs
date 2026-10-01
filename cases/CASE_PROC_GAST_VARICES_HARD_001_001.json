@@ -53,6 +53,33 @@
             }
         },
         {
+            "card_id": "l6_vr2",
+            "ui_icon": "activity",
+            "category": "Manejo Inmediato",
+            "card_text": "Balón de Sengstaken-Blakemore como primera medida en lugar de vasoactivos y endoscopia: Controla la hemorragia al instante.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: El balón es un rescate temporal si falla el tratamiento. Primero van vasoactivos, antibiótico y endoscopia."
+            }
+        },
+        {
+            "card_id": "l6_vr1",
+            "ui_icon": "droplet",
+            "category": "Tratamiento",
+            "card_text": "Transfusión hasta hemoglobina mayor de 10 g/dL: Meta para compensar la pérdida de sangre.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Navarro: La estrategia es restrictiva, con umbral de 7 g/dL y meta de 7 a 9. Sobretransfundir eleva la presión portal y favorece el resangrado."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
             "card_id": "c_3",
             "ui_icon": "activity",
             "category": "Procedimiento",
@@ -74,6 +101,21 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Todo paciente cirrótico con sangrado gastrointestinal DEBE recibir antibióticos profilácticos para evitar PBE y resangrado."
+            }
+        },
+        {
+            "card_id": "l6_vr3",
+            "ui_icon": "heartbeat",
+            "category": "Tratamiento",
+            "card_text": "Propranolol en dosis plena durante la hemorragia activa con hipotensión: Reduce la presión portal de inmediato.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Navarro: Los bloqueadores beta no selectivos son profilaxis, no tratamiento de la hemorragia aguda. Con choque están contraindicados."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         }
     ],
