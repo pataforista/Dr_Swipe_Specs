@@ -18,7 +18,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Atencion! El paciente presenta deshidratacion moderada. Inicia Plan B de Rehidratacion Oral supervisada."
+                "vazquez_comment": "Navarro: El Plan B lo definen los signos clínicos (irritabilidad, ojos hundidos, sed ávida, pliegue lento); estos vitales no muestran choque."
             }
         },
         {

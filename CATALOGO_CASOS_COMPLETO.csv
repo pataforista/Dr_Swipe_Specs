@@ -561,20 +561,20 @@ PROC_PSYC_DEP_SUICIDE_001_001,psyc,standard,José 70 años,Pregunta por el Suici
 PROC_PSYC_NMS_EXTREME_001_001,psyc,extreme,Ingreso Crítico #112: Urgencia Psiquiátrica,Síndrome Neuroléptico Maligno,6,3
 PROC_PSYC_PSI_SCHIZO_001_001,psyc,standard,Fernando 22 anos,Esquizofrenia: El 6 es la Clave,11,3
 PROC_STATS_DX_METRICS_001_001,stats,hard,Marta 57 años,Bioestadística: Sn  Sp y VP,10,3
-PROC_STATS_DX_METRICS_001_002,stats,hard,Elena 54 años,VPP y Prevalencia,10,3
-PROC_STATS_DX_METRICS_001_003,stats,hard,Luis 59 años,VPP y Prevalencia,10,3
-PROC_STATS_DX_METRICS_001_004,stats,hard,Isabel 59 años,VPP y Prevalencia,10,3
-PROC_STATS_DX_METRICS_001_005,stats,hard,Ana 38 años,VPP y Prevalencia,10,3
-PROC_STATS_DX_METRICS_001_006,stats,hard,Pedro 51 años,VPP y Prevalencia,10,3
-PROC_STATS_DX_METRICS_001_007,stats,hard,Pedro 59 años,VPP y Prevalencia,10,3
-PROC_STATS_DX_METRICS_001_008,stats,hard,Pedro 50 años,VPP y Prevalencia,10,3
-PROC_STATS_DX_METRICS_001_009,stats,hard,Fernando 56 años,VPP y Prevalencia,10,3
-PROC_STATS_DX_METRICS_001_010,stats,hard,Juan 43 años,VPP y Prevalencia,10,3
-PROC_STATS_DX_METRICS_001_011,stats,hard,Carlos 55 años,VPP y Prevalencia,10,3
-PROC_STATS_DX_METRICS_001_012,stats,hard,José 32 años,VPP y Prevalencia,10,3
-PROC_STATS_DX_METRICS_001_013,stats,hard,Ana 58 años,VPP y Prevalencia,10,3
-PROC_STATS_DX_METRICS_001_014,stats,hard,María 49 años,VPP y Prevalencia,10,3
-PROC_STATS_DX_METRICS_001_015,stats,hard,Juan 51 años,VPP y Prevalencia,10,3
+PROC_STATS_DX_METRICS_001_002,stats,hard,Elena 54 años,VPP y Prevalencia,9,3
+PROC_STATS_DX_METRICS_001_003,stats,hard,Luis 59 años,VPP y Prevalencia,9,3
+PROC_STATS_DX_METRICS_001_004,stats,hard,Isabel 59 años,VPP y Prevalencia,9,3
+PROC_STATS_DX_METRICS_001_005,stats,hard,Ana 38 años,VPP y Prevalencia,9,3
+PROC_STATS_DX_METRICS_001_006,stats,hard,Pedro 51 años,VPP y Prevalencia,9,3
+PROC_STATS_DX_METRICS_001_007,stats,hard,Pedro 59 años,VPP y Prevalencia,9,3
+PROC_STATS_DX_METRICS_001_008,stats,hard,Pedro 50 años,VPP y Prevalencia,9,3
+PROC_STATS_DX_METRICS_001_009,stats,hard,Fernando 56 años,VPP y Prevalencia,9,3
+PROC_STATS_DX_METRICS_001_010,stats,hard,Juan 43 años,VPP y Prevalencia,9,3
+PROC_STATS_DX_METRICS_001_011,stats,hard,Carlos 55 años,VPP y Prevalencia,9,3
+PROC_STATS_DX_METRICS_001_012,stats,hard,José 32 años,VPP y Prevalencia,9,3
+PROC_STATS_DX_METRICS_001_013,stats,hard,Ana 58 años,VPP y Prevalencia,9,3
+PROC_STATS_DX_METRICS_001_014,stats,hard,María 49 años,VPP y Prevalencia,9,3
+PROC_STATS_DX_METRICS_001_015,stats,hard,Juan 51 años,VPP y Prevalencia,9,3
 PROC_SURG_APPENDICITIS_001_001,surg,standard,Marta 20 años,Apendicitis: Escala de Alvarado,10,3
 PROC_SURG_APPENDICITIS_ALVARADO_001_001,surg,standard,José 32 años,Alvarado: MANTREM,10,3
 PROC_SURG_ATLS_TENSION_PNEUMO_001_001,surg,hard,Ricardo 28 años,ATLS 10ª: Neumotórax a Tensión,6,3

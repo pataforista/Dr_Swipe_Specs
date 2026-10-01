@@ -10,18 +10,6 @@
     },
     "card_stream": [
         {
-            "card_id": "init_vitals",
-            "ui_icon": "heartbeat",
-            "category": "Signos Vitales",
-            "card_text": "TA N/A, FC N/A, Temp N/A",
-            "expected_action": "discard",
-            "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
-            }
-        },
-        {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",

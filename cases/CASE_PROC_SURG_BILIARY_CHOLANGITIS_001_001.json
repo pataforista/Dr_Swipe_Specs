@@ -14,11 +14,11 @@
             "ui_icon": "heartbeat",
             "category": "vitals",
             "card_text": "TA 100/65, FC 120 lpm, Temp 39.5°C",
-            "expected_action": "discard",
+            "expected_action": "keep",
             "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Temperatura de 39 °C o más es criterio de colangitis moderada (Tokyo 2018 grado II): considera drenaje biliar temprano."
             }
         },
         {

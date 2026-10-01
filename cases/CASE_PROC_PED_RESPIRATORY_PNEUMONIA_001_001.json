@@ -14,11 +14,11 @@
             "ui_icon": "heartbeat",
             "category": "vitals",
             "card_text": "FC 130 lpm, FR 45 rpm (Taquipnea), Temp 39.2°C, SatO2 91%.",
-            "expected_action": "discard",
+            "expected_action": "keep",
             "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Cuidado con esa saturacion! Valentina necesita atencion inmediata."
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: SatO2 de 92% o menos en neumonía pediátrica indica hospitalización y oxígeno suplementario."
             }
         },
         {

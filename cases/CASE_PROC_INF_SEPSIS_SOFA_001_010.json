@@ -14,11 +14,14 @@
             "ui_icon": "heartbeat",
             "category": "vitals",
             "card_text": "TA 85/50 mmHg, FC 115 lpm, Temp 39.0°C",
-            "expected_action": "discard",
+            "expected_action": "keep",
             "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en estos signos de hipotensión/choque, R1. El reloj no se detiene."
+                "points": 100,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Navarro: Hipotensión persistente tras 30 mL/kg con lactato mayor de 2: choque séptico (Sepsis-3). Vasopresor para PAM de al menos 65 mmHg."
+            },
+            "safety_flags": {
+                "lethal_if_discarded": true
             }
         },
         {

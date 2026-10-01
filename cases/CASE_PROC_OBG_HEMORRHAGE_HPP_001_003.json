@@ -14,11 +14,14 @@
             "ui_icon": "heartbeat",
             "category": "Signos Vitales",
             "card_text": "TA 85/50 mmHg, FC 125 lpm (Datos de Choque Hipovolémico), SatO2 94%.",
-            "expected_action": "discard",
+            "expected_action": "keep",
             "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Vázquez: Elena se está descompensando. Activa el Código Mater de inmediato."
+                "points": 100,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Vázquez: Índice de choque (FC/TAS) mayor de 1: hemorragia grave. Activa el Código Mater y prepara la transfusión."
+            },
+            "safety_flags": {
+                "lethal_if_discarded": true
             }
         },
         {

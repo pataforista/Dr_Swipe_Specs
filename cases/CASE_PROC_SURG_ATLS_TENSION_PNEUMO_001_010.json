@@ -14,11 +14,14 @@
             "ui_icon": "heartbeat",
             "category": "vitals",
             "card_text": "TA 80/40 mmHg, FC 130 lpm, Temp 36.2°C",
-            "expected_action": "discard",
+            "expected_action": "keep",
             "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "No te detengas en estos signos de choque obstructivo, R1. El reloj no se detiene."
+                "points": 100,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Hipotensión y taquicardia completan el diagnóstico clínico de neumotórax a tensión: descomprime sin esperar la radiografía."
+            },
+            "safety_flags": {
+                "lethal_if_discarded": true
             }
         },
         {

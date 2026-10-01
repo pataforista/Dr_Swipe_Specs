@@ -14,11 +14,14 @@
             "ui_icon": "heartbeat",
             "category": "vitals",
             "card_text": "FC 180 lpm (Taquicardia severa), FR 35 rpm, Temp 37.0 C, TA 70/40 mmHg (Sugerente de Choque).",
-            "expected_action": "discard",
+            "expected_action": "keep",
             "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Urgente! El paciente esta en estado de choque hipovolemico. Plan C inmediato."
+                "points": 100,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Navarro: Taquicardia extrema e hipotensión en un lactante deshidratado son signos de choque: definen el Plan C con líquidos IV inmediatos."
+            },
+            "safety_flags": {
+                "lethal_if_discarded": true
             }
         },
         {

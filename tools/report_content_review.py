@@ -74,7 +74,7 @@ def main() -> int:
                     "card_text": text, "vazquez_comment": comment}
             # A comment that opens by approving the discard ("¡Bien! Un BI-RADS 5
             # exige acción inmediata") urges action *elsewhere*; not a contradiction.
-            approves = APPROVES_RE.match(comment) or re.search(r"no requiere", comment, re.I)
+            approves = APPROVES_RE.match(comment) or re.search(r"no requiere|no muestran", comment, re.I)
             if action == "discard" and ACTION_URGED_RE.search(comment) and not approves:
                 rows.append({"tipo": "contradiccion", **base,
                              "motivo": "Carta de descarte cuyo comentario pide actuar: ¿debería ser 'keep'?"})

@@ -49,6 +49,7 @@ Limpieza automática (idempotente) y lista de revisión clínica:
 \`\`\`bash
 python3 tools/clean_card_leaks.py cases            # quita letras, etiquetas y prefijos horneados
 python3 tools/report_content_review.py cases REVISION_CONTENIDO_JUGABILIDAD.csv
+python3 tools/apply_guideline_review.py cases     # correcciones de vitales validadas contra guías (fuentes en el script)
 \`\`\`
 
 ## 3. Revisión de Casos
