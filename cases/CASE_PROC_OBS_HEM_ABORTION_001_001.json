@@ -86,6 +86,18 @@
             }
         },
         {
+            "card_id": "l5_ab1",
+            "ui_icon": "scissors",
+            "category": "Tratamiento",
+            "card_text": "Legrado uterino instrumental como método de elección en el aborto incompleto estable: Se prefiere por su rapidez.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: En la paciente estable la aspiración manual endouterina o el misoprostol son preferibles. El legrado instrumental se reserva para situaciones que los excluyen."
+            }
+        },
+        {
             "card_id": "c_7",
             "ui_icon": "pill",
             "category": "meds",
@@ -139,6 +151,21 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
+            }
+        },
+        {
+            "card_id": "l5_ab2",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Misoprostol como único tratamiento del aborto séptico: Se administra para evacuar el útero sin necesidad de instrumentar.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Castillo: El aborto séptico requiere antibióticos de amplio espectro y evacuación uterina. El manejo farmacológico solo no es adecuado en el útero infectado."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         }
     ],

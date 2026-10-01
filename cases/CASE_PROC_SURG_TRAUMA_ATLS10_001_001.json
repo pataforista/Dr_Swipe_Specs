@@ -25,6 +25,21 @@
             }
         },
         {
+            "card_id": "l6_at1",
+            "ui_icon": "droplet",
+            "category": "Manejo Inmediato",
+            "card_text": "Cristaloides en bolos sin límite hasta normalizar la presión: Corrige el choque por completo.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "La reanimación con cristaloides en exceso diluye los factores de coagulación y agrava la acidosis. Se limita a 1 L inicial y se pasa pronto a hemoderivados."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Historia Estándar",
@@ -46,6 +61,33 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Correcto! Ignorar esta secuencia mata pacientes; siempre trata el problema más urgente primero."
+            }
+        },
+        {
+            "card_id": "l6_at5",
+            "ui_icon": "camera",
+            "category": "Manejo Inmediato",
+            "card_text": "Trasladar a tomografía antes de estabilizar al paciente con hipotensión persistente: Se completa el estudio para planear la cirugía.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "El paciente hemodinámicamente inestable no va a la tomografía. Se controla la hemorragia en quirófano o se estabiliza primero."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
+            "card_id": "l6_at4",
+            "ui_icon": "thermometer",
+            "category": "Manejo Inmediato",
+            "card_text": "Hipotermia permisiva en el paciente con hemorragia grave: Reduce el consumo de oxígeno.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "La hipotermia forma parte de la tríada letal y empeora la coagulopatía. Se previene con líquidos tibios y mantas."
             }
         },
         {
@@ -85,6 +127,21 @@
             }
         },
         {
+            "card_id": "l6_at2",
+            "ui_icon": "activity",
+            "category": "Manejo Inmediato",
+            "card_text": "Intubación con ventilación a presión positiva antes de descomprimir el tórax: Asegura la vía aérea primero.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "La presión positiva en un neumotórax a tensión sin descomprimir agrava el colapso. Se descomprime antes de intubar."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
             "card_id": "c_9",
             "ui_icon": "activity",
             "category": "Breathing",
@@ -94,6 +151,18 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Excelente! Identificaste los datos clásicos que confirman la hipertensión intratorácica."
+            }
+        },
+        {
+            "card_id": "l6_at3",
+            "ui_icon": "clock",
+            "category": "Tratamiento",
+            "card_text": "Ácido tranexámico después de las primeras 6 horas del trauma: Se administra cuando el paciente se estabiliza.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "El ácido tranexámico se da en las primeras 3 horas. Pasado ese plazo no ayuda y puede aumentar el riesgo de trombosis."
             }
         },
         {

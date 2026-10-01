@@ -22,6 +22,18 @@
             }
         },
         {
+            "card_id": "l6_nm_2",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Paracetamol como tratamiento de la hipertermia: Medida suficiente para bajar los 40.5 °C.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: La hipertermia del síndrome neuroléptico maligno viene de la rigidez y del fallo dopaminérgico central, y los antipiréticos no la corrigen. Se enfría y se trata la causa."
+            }
+        },
+        {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico Diferencial",
@@ -74,6 +86,21 @@
                 "points": 100,
                 "error_type": "lethal_omission",
                 "vazquez_comment": "Navarro: Dantroleno reduce el calor por contracción muscular; Bromocriptina revierte el bloqueo dopaminérgico."
+            }
+        },
+        {
+            "card_id": "l6_nm_1",
+            "ui_icon": "clock",
+            "category": "Tratamiento",
+            "card_text": "Reiniciar el antipsicótico a las 24 horas de la mejoría: Se retoma para evitar la recaída psicótica.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Navarro: Tras un síndrome neuroléptico maligno se espera al menos 2 semanas antes de reintroducir un antipsicótico, con una dosis baja y vigilancia estrecha."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         },
         {

@@ -62,6 +62,18 @@
             }
         },
         {
+            "card_id": "l5_ht1",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "IECA más ARA-II como combinación inicial: Doble bloqueo del sistema renina-angiotensina para lograr un mejor control.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: No se combinan IECA y ARA-II. El doble bloqueo no mejora los desenlaces y aumenta la hiperpotasemia y la lesión renal."
+            }
+        },
+        {
             "card_id": "c_4",
             "ui_icon": "alert-circle",
             "category": "Criterio Diagnóstico",
@@ -95,6 +107,21 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Correcto. No requiere hospitalización ni fármacos intravenosos de entrada."
+            }
+        },
+        {
+            "card_id": "l5_ht2",
+            "ui_icon": "zap",
+            "category": "Tratamiento",
+            "card_text": "Nifedipino sublingual de acción corta para bajar la presión de inmediato: Opción rápida en la urgencia hipertensiva.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Mendoza: El nifedipino de acción corta produce descensos bruscos e impredecibles de la presión y puede causar isquemia cerebral o miocárdica. En urgencia hipertensiva se usa tratamiento oral con descenso gradual."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         },
         {

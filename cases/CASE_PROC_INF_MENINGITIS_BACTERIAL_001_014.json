@@ -34,6 +34,21 @@
             "category": "Anamnesis"
         },
         {
+            "card_id": "l5_mg1",
+            "ui_icon": "clock",
+            "category": "Tratamiento",
+            "card_text": "Esperar la tomografía y el resultado del LCR para iniciar antibiótico: Se evita así tratar sin confirmar el germen.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Navarro: Cada hora sin antibiótico empeora el pronóstico. Se inicia el tratamiento empírico de inmediato; si hay que estudiar antes de la punción, primero se administra el antibiótico."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "labs",
@@ -43,6 +58,18 @@
                 "points": 50,
                 "error_type": "hoarding",
                 "vazquez_comment": "Navarro: ¡Bien! Diferenciaste la meningitis bacteriana (PMN) de la viral/encefalitis (mononucleares)."
+            }
+        },
+        {
+            "card_id": "l5_mg3",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Dexametasona 24 horas después de iniciar el antibiótico: Se espera a ver la respuesta antes de agregar el corticoide.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: El corticoide se administra 10 a 20 minutos antes de la primera dosis de antibiótico o junto con ella; empezarlo después pierde el beneficio sobre las secuelas."
             }
         },
         {
@@ -103,6 +130,18 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Muy bien! Romper la cadena de transmisión es parte de tu labor como médico."
+            }
+        },
+        {
+            "card_id": "l5_mg2",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Ceftriaxona sola como esquema empírico en el adulto de la comunidad: Cobertura suficiente para los gérmenes habituales.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Por la resistencia del neumococo a las cefalosporinas, el esquema empírico añade vancomicina a la cefalosporina de tercera generación."
             }
         },
         {

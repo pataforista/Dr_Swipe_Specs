@@ -50,6 +50,18 @@
             }
         },
         {
+            "card_id": "l5_vg3",
+            "ui_icon": "beaker",
+            "category": "Diagnóstico",
+            "card_text": "Cultivo vaginal de rutina para Gardnerella: Estudio de confirmación de la vaginosis bacteriana.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Gardnerella también habita la vagina de mujeres sanas, así que un cultivo positivo no hace el diagnóstico. Se confirma con criterios de Amsel o con puntuación de Nugent."
+            }
+        },
+        {
             "card_id": "c_3",
             "ui_icon": "list",
             "category": "Criterios Amsel",
@@ -74,6 +86,18 @@
             }
         },
         {
+            "card_id": "l5_vg1",
+            "ui_icon": "users",
+            "category": "Tratamiento",
+            "card_text": "Tratamiento sistemático de la pareja masculina en la vaginosis bacteriana: Se indica metronidazol a ambos para evitar recurrencias.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Tratar a la pareja masculina no reduce la recurrencia de la vaginosis bacteriana. Se trata a la paciente, y la pareja se trata solo en tricomoniasis."
+            }
+        },
+        {
             "card_id": "c_5",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
@@ -95,6 +119,18 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! La Vaginosis es un desequilibrio de la flora, no necesariamente una ITS."
+            }
+        },
+        {
+            "card_id": "l5_vg2",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Fluconazol oral en dosis única para la candidiasis vaginal de la gestante: Esquema práctico por su comodidad.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: En el embarazo la candidiasis vaginal se trata con azoles tópicos durante 7 días; el fluconazol oral no se recomienda."
             }
         },
         {

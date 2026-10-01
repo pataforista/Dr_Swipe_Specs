@@ -25,6 +25,21 @@
             }
         },
         {
+            "card_id": "l5_tp2",
+            "ui_icon": "droplet",
+            "category": "Manejo Inmediato",
+            "card_text": "Bolos de cristaloides hasta normalizar la presión: Tratamiento de la hipotensión de este paciente antes de tocar el tórax.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Navarro: Esta hipotensión es obstructiva: el retorno venoso está comprimido. Los líquidos no abren el mediastino; la descompresión sí."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
@@ -74,6 +89,18 @@
             }
         },
         {
+            "card_id": "l5_tp3",
+            "ui_icon": "heartbeat",
+            "category": "Manejo Inmediato",
+            "card_text": "Pericardiocentesis subxifoidea: Procedimiento inmediato por ruidos cardíacos apenas audibles e ingurgitación yugular.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Ruidos apagados y yugulares distendidas también aparecen aquí, pero con tráquea desviada y hemitórax silente el problema está en la pleura. La desviación traqueal y la ausencia de murmullo vesicular inclinan hacia el neumotórax."
+            }
+        },
+        {
             "card_id": "c_4",
             "ui_icon": "eye",
             "category": "Signo Clínico",
@@ -95,6 +122,21 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Correcto. Indica el componente obstructivo del choque."
+            }
+        },
+        {
+            "card_id": "l5_tp1",
+            "ui_icon": "activity",
+            "category": "Manejo Inmediato",
+            "card_text": "Oxígeno en mascarilla con reservorio y reevaluación a los 15 minutos: Medida suficiente mientras se define la conducta en el paciente con tráquea desviada e hipotensión.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Navarro: El oxígeno acompaña, pero no resuelve la obstrucción mecánica. Con inestabilidad hemodinámica y signos de tensión, la descompresión pleural no espera."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         },
         {

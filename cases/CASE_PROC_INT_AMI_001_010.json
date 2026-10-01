@@ -62,6 +62,21 @@
             }
         },
         {
+            "card_id": "l5_am1",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Nitroglicerina sublingual repetida hasta aliviar el dolor: Se mantiene aun con sospecha de infarto del ventrículo derecho.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Mendoza: En el infarto inferior con compromiso del ventrículo derecho, que depende de la precarga, los nitratos pueden causar hipotensión grave y se evitan."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
             "card_id": "c_5",
             "ui_icon": "pill",
             "category": "Tratamiento Inicial",
@@ -71,6 +86,21 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Correcto. La antiagregación es la base del manejo inicial en el SCACEST."
+            }
+        },
+        {
+            "card_id": "l5_am2",
+            "ui_icon": "clock",
+            "category": "Manejo Inmediato",
+            "card_text": "Esperar la elevación de la troponina para activar la reperfusión: Se confirma el infarto con el marcador antes de movilizar la sala de hemodinamia.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Mendoza: En el SCACEST el diagnóstico es clínico y electrocardiográfico. La reperfusión no espera a los biomarcadores, porque cada minuto es miocardio perdido."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         },
         {
@@ -95,6 +125,21 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Correcto. ¡Cuidado con los infartos inferiores! Pueden tener extensión a VD y la nitro causaría un choque obstructivo."
+            }
+        },
+        {
+            "card_id": "l5_am3",
+            "ui_icon": "heartbeat",
+            "category": "Tratamiento",
+            "card_text": "Bloqueador beta intravenoso en bolo desde el ingreso: Se indica de rutina en el SCACEST para reducir el tamaño del infarto.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Mendoza: El bloqueador beta IV no se da de rutina. Con bradicardia, bloqueo AV, hipotensión o datos de falla cardíaca está contraindicado."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         },
         {

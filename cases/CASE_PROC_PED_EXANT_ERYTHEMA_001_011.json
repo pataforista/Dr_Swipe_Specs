@@ -50,6 +50,18 @@
             }
         },
         {
+            "card_id": "l5_er1",
+            "ui_icon": "home",
+            "category": "Seguridad",
+            "card_text": "Exclusión escolar hasta la desaparición del exantema: Medida necesaria para frenar la transmisión del eritema infeccioso.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Cuando aparece el exantema el niño ya no es contagioso, así que mantenerlo fuera de la escuela no frena la transmisión."
+            }
+        },
+        {
             "card_id": "c_4",
             "ui_icon": "search",
             "category": "Fase Clínica",
@@ -71,6 +83,18 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Así es. Puede durar semanas y reaparecer con calor o ejercicio."
+            }
+        },
+        {
+            "card_id": "l5_er2",
+            "ui_icon": "syringe",
+            "category": "Tratamiento",
+            "card_text": "Inmunoglobulina intravenosa: Tratamiento indicado en todo niño con eritema infeccioso.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La inmunoglobulina intravenosa se reserva para la infección crónica por Parvovirus B19 en inmunodeprimidos. En el niño inmunocompetente el cuadro es autolimitado."
             }
         },
         {

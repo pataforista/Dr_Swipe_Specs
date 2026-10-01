@@ -86,6 +86,30 @@
             }
         },
         {
+            "card_id": "l6_nm2",
+            "ui_icon": "activity",
+            "category": "Evaluacion",
+            "card_text": "Vigilancia del desarrollo solo cuando los padres expresan preocupación: Basta con atender la queja familiar.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La vigilancia es parte de cada consulta de rutina, y los tamizajes con instrumento estandarizado se hacen a edades fijas, aunque nadie sospeche retraso."
+            }
+        },
+        {
+            "card_id": "l6_nm1",
+            "ui_icon": "clock",
+            "category": "Evaluacion",
+            "card_text": "Tamizaje de autismo con M-CHAT a los 6 meses: Edad recomendada para el primer tamizaje.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: El tamizaje específico de autismo se hace a los 18 y 24 meses. A los 6 meses se vigila el desarrollo en cada consulta."
+            }
+        },
+        {
             "card_id": "c_8",
             "ui_icon": "message-circle",
             "category": "Lenguaje",
@@ -107,6 +131,18 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Indica un desarrollo cognitivo y social acorde a la edad preescolar."
+            }
+        },
+        {
+            "card_id": "l6_nm3",
+            "ui_icon": "activity",
+            "category": "Evaluacion",
+            "card_text": "Sonrisa social a los 6 meses: Hito esperado en esa edad.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La sonrisa social aparece alrededor de los 2 meses. Que falte a los 6 meses ya es motivo de evaluación."
             }
         },
         {

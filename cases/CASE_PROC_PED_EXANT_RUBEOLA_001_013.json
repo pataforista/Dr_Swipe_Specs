@@ -78,6 +78,21 @@
             }
         },
         {
+            "card_id": "l5_rb1",
+            "ui_icon": "syringe",
+            "category": "Prevención",
+            "card_text": "Vacuna SRP a la embarazada susceptible tras la exposición: Medida para evitar la rubéola congénita.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Castillo: La vacuna de virus vivos está contraindicada en el embarazo. La susceptible se vacuna en el posparto."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
             "card_id": "c_4",
             "ui_icon": "search",
             "category": "Signo Clínico",
@@ -147,6 +162,18 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: La prevención es la mejor medicina."
+            }
+        },
+        {
+            "card_id": "l5_rb2",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Aciclovir oral por 7 días: Acorta el exantema y previene la artritis posinfecciosa.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: El aciclovir actúa sobre herpesvirus, no sobre el Rubivirus. El tratamiento de la rubéola es de sostén."
             }
         }
     ],

@@ -50,6 +50,18 @@
             }
         },
         {
+            "card_id": "l6_gt1",
+            "ui_icon": "syringe",
+            "category": "Tratamiento",
+            "card_text": "Hormona de crecimiento en el preescolar con talla baja familiar: Se indica para alcanzar la talla blanco.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La talla baja familiar es una variante normal con velocidad de crecimiento y edad ósea normales. No tiene indicación de hormona de crecimiento."
+            }
+        },
+        {
             "card_id": "c_3",
             "ui_icon": "info",
             "category": "Desnutricion",
@@ -71,6 +83,18 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Exacto! Un nino puede estar en el percentil 3, pero si su velocidad es normal, puede ser solo talla baja familiar."
+            }
+        },
+        {
+            "card_id": "l6_gt3",
+            "ui_icon": "activity",
+            "category": "Evaluacion",
+            "card_text": "Peso para edad como indicador de elección para diagnosticar desnutrición crónica: Se mide con más facilidad que la talla.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La desnutrición crónica se define con talla para edad. El peso para edad mezcla el efecto del peso y de la talla y no distingue entre ellas."
             }
         },
         {
@@ -110,6 +134,18 @@
             }
         },
         {
+            "card_id": "l6_gt2",
+            "ui_icon": "activity",
+            "category": "Evaluacion",
+            "card_text": "Curvas del CDC en el menor de 5 años: Referencia estándar de crecimiento para esa edad.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: En menores de 5 años se usan las curvas de la OMS, que describen cómo debe crecer un niño sano con lactancia y buen entorno."
+            }
+        },
+        {
             "card_id": "c_8",
             "ui_icon": "alert-circle",
             "category": "Diagnostico",
@@ -119,6 +155,18 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: El 'slow starter'. Tarda mas en arrancar pero llega bien a la meta."
+            }
+        },
+        {
+            "card_id": "l6_gt4",
+            "ui_icon": "activity",
+            "category": "Evaluacion",
+            "card_text": "Talla baja desde -1 desviación estándar para la edad: Umbral para definir retraso del crecimiento.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: El umbral de talla baja es de menos de -2 desviaciones estándar para la edad. Entre -1 y -2 el niño solo se vigila."
             }
         },
         {

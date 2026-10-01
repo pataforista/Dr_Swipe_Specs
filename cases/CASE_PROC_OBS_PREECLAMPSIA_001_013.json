@@ -130,6 +130,45 @@
             }
         },
         {
+            "card_id": "l5_pe2",
+            "ui_icon": "clock",
+            "category": "Tratamiento",
+            "card_text": "Suspender el sulfato de magnesio al terminar el nacimiento: El riesgo de convulsión desaparece al expulsar la placenta.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: El riesgo de eclampsia persiste en el posparto. El sulfato de magnesio se continúa por 24 horas después del nacimiento."
+            }
+        },
+        {
+            "card_id": "l5_pe1",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Diazepam como anticonvulsivo de primera línea para prevenir la eclampsia: Alternativa al sulfato de magnesio.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Castillo: El sulfato de magnesio es el fármaco de elección para prevenir y tratar las convulsiones eclámpticas. El diazepam no tiene ese respaldo."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
+            "card_id": "l5_pe3",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Enalapril para controlar la crisis hipertensiva del embarazo: Antihipertensivo oral de elección.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Los IECA están contraindicados en el embarazo por su fetotoxicidad. Para la crisis se usan hidralazina, labetalol o nifedipino."
+            }
+        },
+        {
             "card_id": "c_9",
             "ui_icon": "check-circle",
             "category": "Resolución",

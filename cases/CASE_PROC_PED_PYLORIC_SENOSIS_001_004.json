@@ -94,6 +94,18 @@
             }
         },
         {
+            "card_id": "l6_ps1",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Procinéticos orales como tratamiento definitivo: Se evita la cirugía en el lactante.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La estenosis hipertrófica del píloro es mecánica. El tratamiento definitivo es la piloromiotomía; los procinéticos no abren el canal."
+            }
+        },
+        {
             "card_id": "c_6",
             "ui_icon": "beaker",
             "category": "Laboratorio",
@@ -107,6 +119,21 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
+            }
+        },
+        {
+            "card_id": "l6_ps2",
+            "ui_icon": "scissors",
+            "category": "Manejo Inmediato",
+            "card_text": "Cirugía urgente antes de corregir la deshidratación y la alcalosis: Se opera de inmediato para frenar los vómitos.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Castillo: No es una urgencia quirúrgica sino médica. Se corrigen primero volumen, cloro y potasio, porque la anestesia en alcalosis aumenta el riesgo de apnea."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         },
         {

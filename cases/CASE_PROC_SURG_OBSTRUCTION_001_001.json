@@ -22,6 +22,33 @@
             }
         },
         {
+            "card_id": "l6_ob3",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Metoclopramida para acelerar el tránsito: Se indica para vencer la obstrucción.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Los procinéticos están contraindicados en la obstrucción mecánica, porque aumentan la presión sobre el punto obstruido y el riesgo de perforación."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
+            "card_id": "l6_ob4",
+            "ui_icon": "droplet",
+            "category": "Tratamiento",
+            "card_text": "Dieta líquida oral durante la fase conservadora: Mantiene el aporte calórico y el tránsito.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Durante el manejo conservador se mantiene el ayuno y se hidrata por vía intravenosa, con sonda nasogástrica si hay vómito."
+            }
+        },
+        {
             "card_id": "c_1",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
@@ -70,6 +97,18 @@
             }
         },
         {
+            "card_id": "l6_ob1",
+            "ui_icon": "scissors",
+            "category": "Manejo Inmediato",
+            "card_text": "Cirugía inmediata en toda obstrucción por bridas sin signos de estrangulación: Evita la progresión.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Sin fiebre, leucocitosis, irritación peritoneal ni isquemia, la obstrucción por bridas se maneja primero de forma conservadora por 48 a 72 horas."
+            }
+        },
+        {
             "card_id": "c_5",
             "ui_icon": "frown",
             "category": "Clínica",
@@ -91,6 +130,18 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¡Correcto! Muchos casos de bridas resuelven con reposo intestinal sin necesidad de quirófano."
+            }
+        },
+        {
+            "card_id": "l6_ob2",
+            "ui_icon": "beaker",
+            "category": "Diagnóstico",
+            "card_text": "Contraste hidrosoluble contraindicado en la obstrucción por bridas: Podría empeorar la distensión.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "El contraste hidrosoluble oral ayuda a predecir la resolución y también facilita el paso del contenido. Se usa como prueba diagnóstica y terapéutica."
             }
         },
         {

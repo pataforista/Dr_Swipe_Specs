@@ -38,6 +38,18 @@
             }
         },
         {
+            "card_id": "l6_ac1",
+            "ui_icon": "pill",
+            "category": "Farmacoterapia",
+            "card_text": "Doxiciclina oral como único tratamiento sostenido: Esquema suficiente durante todo el control del acné.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: Los antibióticos orales no se usan en monoterapia ni de forma prolongada, por el riesgo de resistencia. Se combinan con retinoide tópico o peróxido de benzoilo."
+            }
+        },
+        {
             "card_id": "c_2",
             "ui_icon": "beaker",
             "category": "Etiología",
@@ -139,6 +151,18 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Excelente! La clave diagnóstica es buscar los comedones."
+            }
+        },
+        {
+            "card_id": "l6_ac2",
+            "ui_icon": "pill",
+            "category": "Farmacoterapia",
+            "card_text": "Isotretinoína oral como primera línea en el acné comedoniano leve: Resuelve el cuadro de forma definitiva.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: La isotretinoína se reserva para el acné severo, nodular o refractario. El cuadro leve se maneja con tratamiento tópico."
             }
         },
         {

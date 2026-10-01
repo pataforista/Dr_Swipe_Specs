@@ -25,6 +25,16 @@ jobs:
       - name: Validate clinical cases
         run: python3 tools/validate_cases.py cases
 
+      # Fail if a manual edit undid a guideline correction, reintroduced an
+      # answer leak, or removed an inserted distractor.
+      - name: Check content corrections are applied
+        run: |
+          python3 tools/apply_guideline_review.py cases --check
+          python3 tools/clean_card_leaks.py cases --check
+          for f in content_drafts/distractores_lote*.json; do
+            python3 tools/insert_distractors.py cases "$f" --check
+          done
+
       - name: Install dependencies
         run: cd dr-swipe && npm ci
 

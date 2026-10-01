@@ -20,7 +20,10 @@ La rama mezcla tres cosas. Propongo un solo PR con la descripción dividida en t
 - La parte C cambia ~600 archivos de casos; conviene que el revisor clínico lea `content_drafts/*.json` y los docstrings de `tools/apply_guideline_review.py` (ahí está cada fuente) y no el diff de los JSON.
 - Pendiente de decisión del revisor: roséola (15 cartas) y umbral de SatO₂ en la GPC mexicana.
 
-## 2. Contenido: lote 5 (familias pequeñas)
+## 2. Contenido: lote 5 y 6 (hechos; quedan 13 familias)
+
+Estado: lotes 5a, 5b, 5c y 6 insertados (`content_drafts/distractores_lote5*.json` y `distractores_lote6.json`). Descarte global: 41%. Quedan bajo 40%: roséola (pendiente de decisión clínica), DPPNI (2 familias), escarlatina, HPP (mazo lleno), EVC isquémico, varicela, corioamnionitis, RPM, DM2, rubéola, eritema infeccioso y neumonía pediátrica (un caso en 29%). Las fuentes de estas cartas se redactaron de memoria y requieren confirmación del revisor clínico. Abajo, el método original.
+
 
 Quedan 55 familias por debajo de 40% de descarte, 417 casos en total, de los cuales unas 35 familias son de 1 a 2 casos: trauma ATLS 10, obstrucción intestinal, Apgar, neumonía y crup pediátricos, CAD en DM1, diverticulitis, isquemia mesentérica, apendicitis y Alvarado, colangitis, depresión/suicidio, HPP, vaginitis, meningitis, eritema infeccioso, entre otras.
 

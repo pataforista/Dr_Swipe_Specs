@@ -132,6 +132,30 @@
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Es la respuesta esperada en el ENARM para el subtipo histopatológico predominante."
             }
+        },
+        {
+            "card_id": "l5_mm1",
+            "ui_icon": "scissors",
+            "category": "Diagnóstico",
+            "card_text": "Biopsia escisional abierta como primer método diagnóstico: Se prefiere ante cualquier lesión BI-RADS 4 o 5 para obtener la pieza completa.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La biopsia con aguja gruesa es el primer método. Evita una cirugía diagnóstica y permite planear el tratamiento definitivo con el diagnóstico histológico ya en la mano."
+            }
+        },
+        {
+            "card_id": "l5_mm2",
+            "ui_icon": "search",
+            "category": "Diagnóstico",
+            "card_text": "Mastografía negativa con masa palpable: El resultado descarta cáncer y se cita a la paciente al tamizaje habitual.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Una masa palpable con mastografía negativa no se cierra con la imagen. Requiere ultrasonido y, si persiste la sospecha, biopsia."
+            }
         }
     ],
     "enarm_pearl": {

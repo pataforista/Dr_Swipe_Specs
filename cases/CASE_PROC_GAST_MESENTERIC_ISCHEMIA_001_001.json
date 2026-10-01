@@ -22,6 +22,21 @@
             }
         },
         {
+            "card_id": "l6_ms1",
+            "ui_icon": "droplet",
+            "category": "Tratamiento",
+            "card_text": "Evitar la heparina por el riesgo de sangrado intestinal: Se difiere hasta después de la cirugía.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Mendoza: La heparina no fraccionada se inicia de inmediato en la isquemia mesentérica aguda para frenar la propagación del trombo, salvo contraindicación mayor."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
@@ -31,6 +46,21 @@
                 "points": 50,
                 "error_type": "hoarding",
                 "vazquez_comment": "Mendoza: ¡Bien! Este cuadro es agudo. La isquemia crónica se presenta con dolor después de las comidas."
+            }
+        },
+        {
+            "card_id": "l6_ms3",
+            "ui_icon": "clock",
+            "category": "Manejo Inmediato",
+            "card_text": "Observación y ayuno por 24 horas antes de definir conducta: Se espera a ver si el dolor cede.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Mendoza: Cada hora de retraso en la revascularización aumenta la necrosis intestinal y la mortalidad. El diagnóstico y el tratamiento van de inmediato."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         },
         {
@@ -67,6 +97,18 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: ¡Excelente! Permite visualizar la luz de los vasos y los signos de sufrimiento intestinal."
+            }
+        },
+        {
+            "card_id": "l6_ms4",
+            "ui_icon": "camera",
+            "category": "Diagnóstico",
+            "card_text": "Radiografía simple de abdomen normal: Resultado suficiente para descartar isquemia mesentérica.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: La radiografía simple es normal en las fases iniciales. El estudio de elección es la angio-TC."
             }
         },
         {
@@ -140,6 +182,21 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
+            }
+        },
+        {
+            "card_id": "l6_ms2",
+            "ui_icon": "zap",
+            "category": "Tratamiento",
+            "card_text": "Vasopresores en dosis altas para sostener la presión: Primera medida ante la hipotensión.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Mendoza: Los vasoconstrictores empeoran la perfusión intestinal. Se reponen líquidos y se evitan salvo que no haya alternativa."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         }
     ],

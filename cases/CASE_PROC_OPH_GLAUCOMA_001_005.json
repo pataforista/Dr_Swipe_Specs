@@ -34,6 +34,30 @@
             }
         },
         {
+            "card_id": "l6_gl2",
+            "ui_icon": "zap",
+            "category": "Tratamiento",
+            "card_text": "Iridotomía láser inmediata como único tratamiento del ataque agudo: Se hace antes de bajar la presión.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "López: Primero se baja la presión intraocular con tratamiento médico. La iridotomía se hace después, cuando la córnea se aclara y el ojo es operable."
+            }
+        },
+        {
+            "card_id": "l6_gl3",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Pilocarpina intensiva como medida principal con presión intraocular superior a 50 mmHg: Abre el ángulo de inmediato.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "López: Con presión muy elevada el esfínter del iris está isquémico y no responde a la pilocarpina. Se baja primero la presión con fármacos sistémicos."
+            }
+        },
+        {
             "card_id": "c_3",
             "ui_icon": "zap",
             "category": "meds",
@@ -59,6 +83,18 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "López: ¡Muy bien! Romper el bloqueo pupilar es el objetivo mecánico."
+            }
+        },
+        {
+            "card_id": "l6_gl1",
+            "ui_icon": "eye",
+            "category": "Diagnóstico",
+            "card_text": "Dilatar la pupila para explorar el fondo de ojo: Estudio prioritario en el ojo doloroso con visión borrosa.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "López: La midriasis puede cerrar aún más el ángulo y agravar el ataque. No se dilata el ojo con sospecha de glaucoma de ángulo cerrado."
             }
         },
         {

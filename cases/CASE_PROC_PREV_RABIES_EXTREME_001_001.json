@@ -22,6 +22,33 @@
             }
         },
         {
+            "card_id": "l6_rb3",
+            "ui_icon": "syringe",
+            "category": "Tratamiento",
+            "card_text": "Aplicar toda la inmunoglobulina por vía intramuscular glútea: Evita el dolor de la infiltración.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: La mayor parte de la dosis se infiltra en y alrededor de las heridas. Solo el remanente va por vía intramuscular, en un sitio distinto al de la vacuna."
+            }
+        },
+        {
+            "card_id": "l6_rb1",
+            "ui_icon": "eye",
+            "category": "Seguimiento",
+            "card_text": "Observar al murciélago por 10 días antes de decidir la profilaxis: Se espera a ver si el animal enferma.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Navarro: La observación de 10 días vale para perros y gatos. Con murciélagos y otros animales silvestres se inicia la profilaxis de inmediato."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
             "card_id": "c_1",
             "ui_icon": "activity",
             "category": "Manejo Local Inicial",
@@ -67,6 +94,21 @@
             "safety_flags": {
                 "decision_critical": true,
                 "lethal_if_discarded": true
+            }
+        },
+        {
+            "card_id": "l6_rb2",
+            "ui_icon": "clock",
+            "category": "Manejo Inmediato",
+            "card_text": "Esperar el resultado de laboratorio del animal para iniciar la profilaxis: Se evita tratar sin certeza.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Navarro: En una mordedura de murciélago en la cara el riesgo es alto, y la rabia, una vez con síntomas, es letal. Se trata de inmediato y se suspende solo si el resultado es negativo."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         },
         {
