@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { calculateCardScore, calculatePerfectRoundBonus, getDailyStreakMultiplier } from '../utils/scoringEngine';
+import { calculateCardScore, calculatePerfectRoundBonus, getDailyStreakMultiplier, computeTimeLimit } from '../utils/scoringEngine';
 import type { Card } from '../types/game';
 
 describe('scoringEngine unit tests', () => {
@@ -96,6 +96,19 @@ describe('scoringEngine unit tests', () => {
       expect(getDailyStreakMultiplier(0)).toBe(1.0);
       expect(getDailyStreakMultiplier(3)).toBe(1.3);
       expect(getDailyStreakMultiplier(10)).toBe(2.0);
+    });
+  });
+
+  describe('computeTimeLimit', () => {
+    it('scales seconds per card with difficulty', () => {
+      expect(computeTimeLimit(10, 'standard')).toBe(100);
+      expect(computeTimeLimit(10, 'hard')).toBe(90);
+      expect(computeTimeLimit(10, 'extreme')).toBe(80);
+    });
+
+    it('clamps very short and very long decks', () => {
+      expect(computeTimeLimit(3)).toBe(45);
+      expect(computeTimeLimit(20)).toBe(130);
     });
   });
 });

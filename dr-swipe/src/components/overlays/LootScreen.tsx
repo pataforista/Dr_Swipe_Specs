@@ -7,6 +7,8 @@ interface LootScreenProps {
   xpTotal: number;
   coins: number;
   isPerfect: boolean;
+  /** Coins added on top of `coins` for a perfect round (already paid out). */
+  perfectBonus?: number;
   onContinue: () => void;
   pearl?: EnarmPearl;
   feedbackHistoryCount?: number;
@@ -14,7 +16,7 @@ interface LootScreenProps {
 }
 
 export const LootScreen: React.FC<LootScreenProps> = ({ 
-  score, xpTotal, coins, isPerfect, onContinue, pearl, feedbackHistoryCount = 0, onViewRetro
+  score, xpTotal, coins, isPerfect, perfectBonus = 0, onContinue, pearl, feedbackHistoryCount = 0, onViewRetro
 }) => {
   return (
     <motion.div 
@@ -65,12 +67,12 @@ export const LootScreen: React.FC<LootScreenProps> = ({
                <span className="text-sm sm:text-base font-bold text-slate-600">Créditos de hospital</span>
              </div>
           </div>
-          <span className="text-2xl sm:text-3xl font-black text-secondary lettering">+{coins}</span>
+          <span className="text-2xl sm:text-3xl font-black text-secondary lettering">+{coins + (isPerfect ? perfectBonus : 0)}</span>
         </div>
 
         {isPerfect && (
           <div className="mt-2 bg-emerald-100 text-emerald-700 px-4 py-2 rounded-2xl text-[10px] font-black uppercase tracking-widest border border-emerald-200 animate-pulse">
-            + Bono de Guardia Perfecta 🌟
+            Incluye bono de Guardia Perfecta: +{perfectBonus} 🪙 🌟
           </div>
         )}
       </div>
@@ -89,7 +91,7 @@ export const LootScreen: React.FC<LootScreenProps> = ({
       {/* Utility Message */}
       <div className="mb-6 sm:mb-8 px-4 relative z-10">
         <p className="text-[10px] sm:text-[11px] text-slate-400 leading-relaxed font-bold lettering uppercase tracking-wide">
-          "Usa tus monedas para **ESCANEAR cartas difíciles** en futuras consultas. Un buen médico invierte en sus herramientas."
+          "Usa tus monedas para ESCANEAR cartas difíciles en futuras consultas. Un buen médico invierte en sus herramientas."
         </p>
       </div>
 

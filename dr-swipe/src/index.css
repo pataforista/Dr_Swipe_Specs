@@ -82,13 +82,17 @@ h1, h2, h3, .lettering {
 .z-fail-protection { z-index: 500; }
 .z-global-toast { z-index: 600; }
 
-.index-card {
-  background-color: var(--surface);
-  border-radius: var(--radius-panel);
-  border: 1px solid #F1F5F9;
-  box-shadow: var(--shadow-md);
-  background-image: linear-gradient(to bottom, transparent 39px, #F1F5F9 40px);
-  background-size: 100% 40px;
+/* In the components layer so `bg-*` utilities on a card (the rose/amber risk
+   tint) can override the white surface; unlayered, it always won. */
+@layer components {
+  .index-card {
+    background-color: var(--surface);
+    border-radius: var(--radius-panel);
+    border: 1px solid #F1F5F9;
+    box-shadow: var(--shadow-md);
+    background-image: linear-gradient(to bottom, transparent 39px, #F1F5F9 40px);
+    background-size: 100% 40px;
+  }
 }
 
 .washi-tape-pink {
@@ -171,7 +175,7 @@ h1, h2, h3, .lettering {
 }
 
 .error-flash {
-  animation: error-flash 0.15s ease-out;
+  animation: error-flash 0.25s ease-out;
 }
 
 /* Lethal mistakes hit harder: a stronger, longer flash */
@@ -194,6 +198,16 @@ h1, h2, h3, .lettering {
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background: #0D948822;
   border-radius: 10px;
+}
+
+/* Code-red transition into the critical phase */
+@keyframes code-red {
+  0%, 100% { background-color: #E11D48; }
+  50% { background-color: #9F1239; }
+}
+
+.code-red {
+  animation: code-red 0.5s ease-in-out infinite;
 }
 
 /* --- ACCESSIBILITY: respeta reduce-motion --- */

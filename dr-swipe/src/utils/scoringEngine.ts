@@ -127,3 +127,26 @@ export function calculateCardScore(
     bonusType
   };
 }
+
+/**
+ * Triage clock for a case. Seconds per card scale with difficulty so the
+ * clock is an actual pressure: the old 18 s/card (capped at 180 s) meant the
+ * last-10-seconds alarm almost never fired.
+ */
+export const SECONDS_PER_CARD = { standard: 10, hard: 9, extreme: 8 } as const;
+export function computeTimeLimit(cardCount: number, difficulty: string = 'standard'): number {
+  const perCard = SECONDS_PER_CARD[difficulty as keyof typeof SECONDS_PER_CARD] ?? SECONDS_PER_CARD.standard;
+  return Math.max(45, Math.min(130, cardCount * perCard));
+}
+
+/** Vitality cost of a wrong swipe: a lethal miss must hurt more than a trivial one. */
+export const VITALITY_HIT = { normal: 15, lethal: 40 } as const;
+
+/** Free undo charges per case: the study mode stays forgiving, the shift does not. */
+export function undoChargesFor(isSandiaMode: boolean): number {
+  return isSandiaMode ? 5 : 1;
+}
+
+export function isLethalCard(card: Pick<Card, 'safety_flags'>): boolean {
+  return !!(card.safety_flags?.lethal_risk || card.safety_flags?.lethal_if_discarded);
+}

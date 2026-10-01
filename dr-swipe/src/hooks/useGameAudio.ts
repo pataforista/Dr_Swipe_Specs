@@ -128,6 +128,14 @@ class AudioEngine {
       this.tone({ type: 'triangle', from: f, dur: 0.28, gain: 0.34, delay: i * 0.08 }));
   }
 
+  /** Two-tone hospital siren for the code-red transition into the critical phase. */
+  siren() {
+    for (let i = 0; i < 3; i++) {
+      this.tone({ type: 'sawtooth', from: 960, dur: 0.22, gain: 0.3, filter: 1600, delay: i * 0.5 });
+      this.tone({ type: 'sawtooth', from: 720, dur: 0.22, gain: 0.3, filter: 1600, delay: i * 0.5 + 0.25 });
+    }
+  }
+
   /** One soft clock tick (used by the looping triage alarm). */
   tick() {
     this.tone({ type: 'square', from: 1400, to: 900, dur: 0.05, gain: 0.22, filter: 2500 });
@@ -158,6 +166,9 @@ export const useGameAudio = () => {
   const playGacha = () => {
     if (isSoundEnabled()) engine.gacha();
   };
+  const playCodeRed = () => {
+    if (isSoundEnabled()) engine.siren();
+  };
 
   const startTriageAlarm = () => {
     if (alarmRef.current !== null) return;
@@ -176,5 +187,5 @@ export const useGameAudio = () => {
 
   useEffect(() => () => stopTriageAlarm(), []);
 
-  return { playSwipe, playFeedback, playGacha, startTriageAlarm, stopTriageAlarm };
+  return { playSwipe, playFeedback, playGacha, playCodeRed, startTriageAlarm, stopTriageAlarm };
 };

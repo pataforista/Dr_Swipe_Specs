@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { motion, useMotionValue, useTransform, useAnimation, AnimatePresence, type MotionValue, type PanInfo } from 'framer-motion';
-import { X, Heart, Dna, Sparkles } from 'lucide-react';
+import { motion, useIsPresent, useMotionValue, useMotionValueEvent, useTransform, useAnimation, AnimatePresence, type MotionValue, type PanInfo } from 'framer-motion';
+import { X, ClipboardCheck, Dna, Sparkles } from 'lucide-react';
 import type { Card } from '../types/game';
 import { useGameAudio } from '../hooks/useGameAudio';
 import { triggerHaptic } from '../utils/hapticFeedback';
@@ -14,6 +14,8 @@ interface SwipeDeckProps {
   lifelineActive?: boolean;
   canUseLifeline?: boolean;
   onUseLifeline?: () => void;
+  /** Study mode only: show which direction is lethal before the decision. */
+  revealLethalDirection?: boolean;
 }
 
 export interface DraggableCardHandle {
@@ -21,7 +23,7 @@ export interface DraggableCardHandle {
 }
 
 const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
-  cards, currentIndex, onSwipe, isLocked, lifelineActive, canUseLifeline, onUseLifeline
+  cards, currentIndex, onSwipe, isLocked, lifelineActive, canUseLifeline, onUseLifeline, revealLethalDirection
 }) => {
   const { playSwipe } = useGameAudio();
   const topX = useMotionValue(0);
@@ -115,6 +117,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
                 totalCards={cards.length}
                 topX={topX}
                 animatingRef={isAnimatingRef}
+                revealLethalDirection={revealLethalDirection}
               />
             );
           })}
@@ -162,9 +165,9 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,theme(colors.accent-alert/10),transparent)] opacity-0 hover:opacity-100 transition-opacity" />
             <X className="relative z-10 w-7 h-7 sm:w-8 sm:h-8" strokeWidth={3} aria-hidden="true" />
           </motion.button>
-          <span className={`text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] transition-colors line-clamp-2 text-center max-w-[70px] sm:max-w-none ${
+          <span className={`text-[10px] font-black uppercase tracking-[0.15em] sm:tracking-[0.3em] transition-colors text-center whitespace-nowrap ${
             lifelineActive && cards[currentIndex]?.expected_action === 'discard' ? 'text-accent-alert' : 'text-slate-500 group-hover:text-accent-alert'
-          }`}>PÉRDIDA DE TIEMPO</span>
+          }`}>DESCARTAR</span>
         </div>
 
         {/* Hint */}
@@ -193,8 +196,8 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
           <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl scale-90 group-hover:scale-110 group-hover:bg-primary/40 transition-all opacity-0 group-hover:opacity-100" />
           <motion.button
             type="button"
-            aria-label="Mantener esta carta médica (Flecha derecha)"
-            title="MANTENER"
+            aria-label="Aceptar esta carta médica (Flecha derecha)"
+            title="ACEPTAR"
             disabled={isLocked || visibleCards.length === 0}
             onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); handleActionSwipe('right'); }}
             whileHover={!isLocked ? { scale: 1.15, y: -4 } : {}}
@@ -204,17 +207,17 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
             }`}
           >
              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,theme(colors.primary/10),transparent)] opacity-0 hover:opacity-100 transition-opacity" />
-             <Heart className="relative z-10 w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2.5} fill="currentColor" aria-hidden="true" />
+             <ClipboardCheck className="relative z-10 w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2.5} aria-hidden="true" />
           </motion.button>
-          <span className={`text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] transition-colors line-clamp-2 text-center max-w-[70px] sm:max-w-none ${
+          <span className={`text-[10px] font-black uppercase tracking-[0.15em] sm:tracking-[0.3em] transition-colors text-center whitespace-nowrap ${
             lifelineActive && cards[currentIndex]?.expected_action === 'keep' ? 'text-primary' : 'text-slate-500 group-hover:text-primary'
-          }`}>ESTO CAMBIA TODO</span>
+          }`}>ACEPTAR</span>
         </div>
       </div>
 
       {/* Visible keyboard hint — the ← / → shortcut was previously only announced via aria-label */}
       <span className="hidden sm:block text-[11px] font-bold text-slate-300 uppercase tracking-widest text-center" aria-hidden="true">
-        ← Descartar &nbsp;·&nbsp; Mantener →
+        ← Descartar &nbsp;·&nbsp; Aceptar →
       </span>
     </div>
   );
@@ -236,33 +239,55 @@ interface DraggableCardProps {
   totalCards: number;
   topX: MotionValue<number>;
   animatingRef: React.RefObject<boolean>;
+  revealLethalDirection?: boolean;
 }
+
+// Card categories are free text written by content authors, and several of
+// them predict the answer on their own ("Diagnóstico Diferencial" is 99%
+// discard, "Signo Clínico" 100% keep). Before the decision the card only shows
+// a broad bucket; the original category is kept for the retrospective.
+const normalizeCategory = (category: string) =>
+  (category || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+const getDisplayCategory = (category: string): string => {
+  const c = normalizeCategory(category);
+  const has = (...keys: string[]) => keys.some(k => c.includes(k));
+  if (has('vital', 'signo', 'clinic', 'explor', 'examen', 'semiolog', 'sintom', 'physical')) return 'Exploración';
+  if (has('diagnost', 'diferencial', 'criterio')) return 'Diagnóstico';
+  if (has('lab', 'imag', 'gabinete', 'tomograf', 'rx', 'paraclin', 'otoscop', 'colposc', 'estudio')) return 'Estudios';
+  if (has('med', 'trat', 'manejo', 'farmac', 'antibiot', 'antidot', 'profilax', 'dosis')) return 'Manejo';
+  return 'Hallazgo';
+};
 
 // Icon helper for scrapbook categories
 
-const getIconForCategory = (category: string) => {
-  const cat = category?.toLowerCase() || '';
-  if (cat.includes('cardio')) return '❤️';
-  if (cat.includes('derma')) return '🩹';
-  if (cat.includes('gastro')) return '🍏';
-  if (cat.includes('neuro')) return '🧠';
-  if (cat.includes('psic')) return '🗣️';
-  if (cat.includes('ped')) return '👶';
-  if (cat.includes('sur')) return '🔪';
-  if (cat.includes('inf')) return '🦠';
-  if (cat.includes('endo')) return '🧪';
-  if (cat.includes('gyn') || cat.includes('obs')) return '🤰';
-  return '📋';
+const CATEGORY_ICONS: Record<string, string> = {
+  'Exploración': '🩺',
+  'Diagnóstico': '🔎',
+  'Estudios': '🧪',
+  'Manejo': '💊',
+  'Hallazgo': '📋',
 };
 
 import { calculateExitPosition, SWIPE_CONFIG } from '../utils/swipePhysics';
 
 const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(({
-  card, isTop, indexOffset, onSwipe, playSwipe, isLocked, cardNumber, totalCards, topX, animatingRef
+  card, isTop, indexOffset, onSwipe, playSwipe, isLocked, cardNumber, totalCards, topX, animatingRef, revealLethalDirection
 }, ref) => {
-  const fallbackX = useMotionValue(0);
-  const x = isTop ? topX : fallbackX;
+  // Each card owns its x. The top card mirrors it into the shared topX so the
+  // cards behind can rise one step as it leaves (they used to read a private
+  // value that never moved, so the stack sat frozen and fully overlapped).
+  // topX is only ever set, never animated or bound to a draggable element:
+  // when it was the top card's own x, the unmounting previous card stopped
+  // the new card's exit animation, its promise never resolved and the deck
+  // locked up after a fast flick.
+  const x = useMotionValue(0);
+  const isPresent = useIsPresent(); // false while a swiped card plays its exit
+  useMotionValueEvent(x, 'change', (latest) => {
+    if (isTop && isPresent) topX.set(latest);
+  });
   const controls = useAnimation();
+  const pastThresholdRef = React.useRef(false);
 
   React.useImperativeHandle(ref, () => ({
     swipeOut: async (direction: 'left' | 'right') => {
@@ -282,10 +307,11 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
 
   useEffect(() => {
     if (isTop) {
-      x.set(0); // Reset position when becoming top card
+      x.set(0);
+      topX.set(0); // the stack settles into its new depths
       controls.start({ opacity: 1, scale: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } });
     }
-  }, [isTop, controls, x]);
+  }, [isTop, controls, x, topX]);
 
   // Dynamic font scaling logic for dense clinical cases
   const getFontSizeClass = (text: string) => {
@@ -296,32 +322,52 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
     return 'text-base sm:text-lg md:text-xl';
   };
 
+  const threshold = SWIPE_CONFIG.CARD_WIDTH * SWIPE_CONFIG.DRAG_THRESHOLD;
   const rotate = useTransform(x, [-300, 300], [-10, 10]);
   const scaleTop = useTransform(x, [-200, 0, 200], [1.02, 1, 1.02]);
-  
-  // Stack visibility: gentle paper stacking
-  const stackScale = useTransform(x, [-300, 0, 300], [1, 0.96, 1]);
-  const stackY = useTransform(x, [-300, 0, 300], [0, 12, 0]);
-  const stackOpacity = useTransform(x, [-300, 0, 300], [1, 0.9, 1]);
-  const stackRotate = useTransform(x, [-300, 0, 300], [0, (indexOffset % 2 === 0 ? 1.5 : -1.5), 0]);
 
-  const overlayOpacityLeft = useTransform(x, [0, -100], [0, 1]);
-  const overlayOpacityRight = useTransform(x, [0, 100], [0, 1]);
+  // Stack depth: each card sits one step further back (offset 1 and 2 used to
+  // share the same pose) and moves one step forward as the top card is dragged.
+  const depth = Math.max(0, indexOffset);
+  const restScale = 1 - depth * 0.04;
+  const nextScale = 1 - Math.max(0, depth - 1) * 0.04;
+  const stackScale = useTransform(topX, [-300, 0, 300], [nextScale, restScale, nextScale]);
+  const stackY = useTransform(topX, [-300, 0, 300], [Math.max(0, depth - 1) * 12, depth * 12, Math.max(0, depth - 1) * 12]);
+  const tilt = indexOffset % 2 === 0 ? 1.5 : -1.5;
+  const stackRotate = useTransform(topX, [-300, 0, 300], [depth > 1 ? tilt : 0, tilt, depth > 1 ? tilt : 0]);
+
+  // Stamps reach full opacity exactly at the commit threshold, so a fully
+  // inked stamp means the swipe will go through.
+  const overlayOpacityLeft = useTransform(x, [-threshold * 0.3, -threshold], [0, 1]);
+  const overlayOpacityRight = useTransform(x, [threshold * 0.3, threshold], [0, 1]);
+
+  const handleDrag = (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    const past = Math.abs(info.offset.x) > threshold;
+    if (past && !pastThresholdRef.current) triggerHaptic('dragHeavy');
+    pastThresholdRef.current = past;
+  };
 
   // `lethal_risk` is authored on cards in both directions (e.g. "ECG en 10 min"
   // is a keep card flagged lethal_risk), so the badge wording follows the card's
   // expected action: lethal to accept only when the right move is to discard.
+  //
+  // Outside study mode the badge stays neutral: the directional wording
+  // matched the expected action one-to-one, so it gave the answer away on
+  // exactly the cards with the most at stake. The direction is revealed after
+  // the decision, in the mentor's feedback.
   const isLethal = card.safety_flags?.lethal_risk || card.safety_flags?.lethal_if_discarded;
-  const lethalIfAccepted = !!card.safety_flags?.lethal_risk && card.expected_action === 'discard';
-  const lethalIfDiscarded = !!(card.safety_flags?.lethal_if_discarded || card.safety_flags?.lethal_risk) && card.expected_action === 'keep';
+  const lethalIfAccepted = !!revealLethalDirection && !!card.safety_flags?.lethal_risk && card.expected_action === 'discard';
+  const lethalIfDiscarded = !!revealLethalDirection && !!(card.safety_flags?.lethal_if_discarded || card.safety_flags?.lethal_risk) && card.expected_action === 'keep';
+  const lethalNeutral = !!isLethal && !lethalIfAccepted && !lethalIfDiscarded;
+  const displayCategory = getDisplayCategory(card.category);
   const isCritical = card.safety_flags?.decision_critical;
 
   const cardBg = isLethal ? 'bg-rose-50' : isCritical ? 'bg-amber-50' : 'bg-white';
   const accentColor = isLethal ? 'border-accent-alert/40 shadow-rose-100' : isCritical ? 'border-secondary/40 shadow-amber-100' : 'border-slate-100 shadow-slate-200/50';
 
   const handleDragEnd = async (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    pastThresholdRef.current = false;
     if (!isTop || isLocked) return;
-    const threshold = SWIPE_CONFIG.CARD_WIDTH * SWIPE_CONFIG.DRAG_THRESHOLD;
     const velocity = info.velocity.x;
 
     if (Math.abs(info.offset.x) > threshold || Math.abs(velocity) > SWIPE_CONFIG.VELOCITY_THRESHOLD * 1000) {
@@ -358,10 +404,10 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
     <motion.div
       className={`absolute w-full h-full rounded-[2.5rem] border-2 ${accentColor} shadow-2xl flex flex-col ${cardBg} select-none overflow-hidden index-card`}
       style={{
-        x, rotate: isTop ? rotate : stackRotate,
+        x,
+        rotate: isTop ? rotate : stackRotate,
         scale: isTop ? scaleTop : stackScale,
         y: isTop ? 0 : stackY,
-        opacity: isTop ? 1 : stackOpacity,
         zIndex: 1000 - (indexOffset * 100),
         isolation: 'isolate',
         touchAction: isTop && !isLocked ? 'pan-y' : 'auto',
@@ -369,12 +415,14 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
       drag={isTop && !isLocked ? "x" : false}
       dragConstraints={{ left: -500, right: 500 }}
       dragElastic={0.4}
+      // The exit is animated by handleDragEnd; built-in momentum would fight it.
+      dragMomentum={false}
+      onDrag={handleDrag}
       onDragEnd={handleDragEnd}
-      // The card promoted to top was already visible a frame ago, sitting in
-      // the stack at (opacity .9, scale .96, y 12) — starting its entrance
-      // from there instead of a hard fade-from-nothing keeps the deck feeling
-      // continuous instead of blinking (F1).
-      initial={isTop ? { opacity: 0.9, scale: 0.96, y: 12 } : false}
+      // The card promoted to top has already risen to the front pose while
+      // the previous one flew out (the stack follows topX), so it mounts
+      // exactly there instead of jumping back and re-entering (F1).
+      initial={isTop ? { scale: 1, y: 0 } : false}
       animate={isTop ? controls : undefined}
       exit={{ opacity: 0, scale: 0.8 }}
     >
@@ -382,11 +430,13 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
       <div className="absolute left-10 top-0 bottom-0 w-px bg-rose-200/40 z-10" />
 
       {/* Swipe Stamps - Marker Style */}
-      <motion.div style={{ opacity: overlayOpacityLeft }} className="absolute top-12 left-12 z-50 pointer-events-none">
-        <div className="bg-rose-500 text-white font-bold lettering text-3xl px-8 py-3 rounded-xl -rotate-12 shadow-lg border-2 border-white/20">NO SIRVE 🖍️</div>
+      {/* Stamps sit on the side the card is moving away from, so they stay
+          inside the card instead of being clipped by its edge. */}
+      <motion.div style={{ opacity: isTop ? overlayOpacityLeft : 0 }} className="absolute top-20 right-5 z-50 pointer-events-none">
+        <div className="bg-white/90 text-rose-500 font-bold lettering text-xl sm:text-2xl px-4 py-1.5 rounded-xl rotate-12 shadow-md border-4 border-rose-500">DESCARTAR ✕</div>
       </motion.div>
-      <motion.div style={{ opacity: overlayOpacityRight }} className="absolute top-12 right-12 z-50 pointer-events-none">
-        <div className="bg-primary text-white font-bold lettering text-3xl px-8 py-3 rounded-xl rotate-12 shadow-lg border-2 border-white/40">¡QUÉ NIVEL! ✨</div>
+      <motion.div style={{ opacity: isTop ? overlayOpacityRight : 0 }} className="absolute top-20 left-5 z-50 pointer-events-none">
+        <div className="bg-white/90 text-primary font-bold lettering text-xl sm:text-2xl px-4 py-1.5 rounded-xl -rotate-12 shadow-md border-4 border-primary">ACEPTAR ✓</div>
       </motion.div>
 
       {/* Header (Subject Tab) */}
@@ -394,12 +444,14 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
         <div className="flex flex-col min-w-0">
           <span className="text-[11px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Materia</span>
           <span className="bg-white px-2 sm:px-3 py-1 rounded-lg text-[11px] sm:text-xs font-bold text-slate-600 shadow-sm border border-slate-100 flex items-center gap-1 sm:gap-2 truncate">
-            <span className="flex-shrink-0">{getIconForCategory(card.category)}</span>
-            <span className="truncate">{card.category}</span>
+            <span className="flex-shrink-0">{CATEGORY_ICONS[displayCategory]}</span>
+            <span className="truncate">{displayCategory}</span>
           </span>
         </div>
         <div className="bg-white/80 px-2 sm:px-3 py-1 rounded-lg border border-slate-100 flex-shrink-0">
-           <span className="text-[11px] sm:text-[10px] font-black text-slate-400 tracking-tighter">#{card.card_id.split('_').pop()}</span>
+           {/* Card number, not the card_id suffix: ids often end in the card's
+               type ("..._vitals"), which leaked the same hint as the category. */}
+           <span className="text-[11px] sm:text-[10px] font-black text-slate-400 tracking-tighter">#{cardNumber}</span>
         </div>
       </div>
 
@@ -416,6 +468,11 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
           {lethalIfAccepted && (
             <div className="bg-rose-500 text-white text-[11px] sm:text-[10px] font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider">
               ☠️ LETAL SI LO ACEPTAS
+            </div>
+          )}
+          {lethalNeutral && (
+            <div className="bg-rose-500 text-white text-[11px] sm:text-[10px] font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider">
+              ⚠️ ALTO RIESGO
             </div>
           )}
           {lethalIfDiscarded && (

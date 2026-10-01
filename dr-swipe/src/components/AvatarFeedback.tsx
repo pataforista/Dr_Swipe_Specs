@@ -6,13 +6,17 @@ interface AvatarFeedbackProps {
   expression: 'neutral' | 'happy' | 'angry' | 'shocked';
   dialogueText: string | null;
   isVisible: boolean;
+  /** Points of the swipe being commented; shown in the bubble header so the
+   *  score no longer needs a separate toast on top of the action buttons. */
+  points?: number | null;
 }
 
 export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
   doctor = 'mendoza',
   expression = 'neutral',
   dialogueText,
-  isVisible
+  isVisible,
+  points = null
 }) => {
   const mentorIcons = {
     mendoza: '👴',
@@ -57,14 +61,14 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.9 }}
             transition={{ duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
-            className="flex flex-col items-center gap-2 py-0 relative pointer-events-none"
+            className="flex items-start gap-2 py-0 px-3 relative pointer-events-none max-w-sm w-full"
           >
             {/* Avatar Circle - Styled as a circular sticker */}
             <motion.div
               key={`avatar-${validExpression}`}
               animate={avatarMotion[validExpression]}
               transition={{ duration: 0.6, ease: 'easeInOut' }}
-              className={`w-12 sm:w-16 h-12 sm:h-16 rounded-full flex items-center justify-center text-3xl sm:text-4xl shadow-md relative z-10 border-4 border-white bg-slate-50 transition-colors duration-500`}
+              className={`w-10 sm:w-12 h-10 sm:h-12 flex-shrink-0 rounded-full flex items-center justify-center text-2xl sm:text-3xl shadow-md relative z-10 border-4 border-white bg-slate-50 transition-colors duration-500`}
             >
               <span className="relative z-10 filter drop-shadow-sm">
                 {mentorIcons[validDoctor]}
@@ -82,7 +86,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
             </motion.div>
 
             {/* Dialogue Bubble - Styled as a handwritten note bubble */}
-            <div className="flex flex-col items-center relative z-20">
+            <div className="flex flex-col flex-1 min-w-0 relative z-20">
               <AnimatePresence mode="wait">
                 {dialogueText && (
                   <motion.div
@@ -93,16 +97,23 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
                     animate={{ opacity: 1, y: 0, scale: 1, rotate: 1 }}
                     exit={{ opacity: 0, y: -10, scale: 0.85, rotate: 2 }}
                     transition={{ duration: 0.45, delay: 0.1, ease: 'easeOut' }}
-                    className={`paper-sheet p-4 sm:p-6 max-w-sm text-center relative border-2 rounded-panel shadow-lg overflow-hidden mx-4 ${bubbleColors[validExpression]}`}
+                    className={`paper-sheet px-3 py-2 sm:px-4 sm:py-3 text-left relative border-2 rounded-panel shadow-lg overflow-hidden ${bubbleColors[validExpression]}`}
                   >
                     {/* Washi Tape Accent */}
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-12 sm:w-16 h-5 sm:h-6 washi-tape-pink opacity-60 -rotate-2" />
 
-                    <span className="block text-[10px] font-black opacity-30 tracking-[0.3em] uppercase mb-2 sm:mb-3 lettering">
-                      {validExpression === 'angry' ? '¡OJO!' : validExpression === 'happy' ? 'CORRECTO' : validExpression === 'shocked' ? '¡PELIGRO!' : 'CONSEJO'}
+                    <span className="flex justify-between items-baseline gap-2 text-[10px] font-black tracking-[0.2em] uppercase mb-1 lettering">
+                      <span className="opacity-40">
+                        {validExpression === 'angry' ? '¡OJO!' : validExpression === 'happy' ? 'CORRECTO' : validExpression === 'shocked' ? '☠️ ERROR LETAL' : 'CONSEJO'}
+                      </span>
+                      {points !== null && (
+                        <span className={`tabular-nums tracking-normal text-xs ${expressionColors[validExpression]}`}>
+                          {points > 0 ? `+${points}` : points} PTS
+                        </span>
+                      )}
                     </span>
 
-                    <p className={`text-sm sm:text-base md:text-xl font-bold leading-relaxed italic lettering ${expressionColors[validExpression]}`}>
+                    <p className={`text-xs sm:text-sm font-bold leading-snug italic lettering line-clamp-4 ${expressionColors[validExpression]}`}>
                       "{dialogueText}"
                     </p>
                   </motion.div>
