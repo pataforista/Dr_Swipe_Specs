@@ -22,6 +22,36 @@
             }
         },
         {
+            "card_id": "dx_4",
+            "ui_icon": "heart",
+            "category": "meds",
+            "card_text": "Propranolol: Útil para controlar la taquicardia causada por el salbutamol.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Mendoza: Los betabloqueadores no selectivos pueden desencadenar broncoespasmo grave en el paciente asmático."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
+            "card_id": "dx_1",
+            "ui_icon": "wind",
+            "category": "Tratamiento GINA",
+            "card_text": "Salmeterol en Monoterapia: LABA sin corticoide inhalado como mantenimiento del asma persistente.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Mendoza: Un LABA sin corticoide inhalado aumenta el riesgo de exacerbaciones graves y de muerte por asma; siempre se combina con ICS."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
@@ -78,6 +108,18 @@
             }
         },
         {
+            "card_id": "dx_2",
+            "ui_icon": "pill",
+            "category": "Crisis Aguda",
+            "card_text": "Antibiótico de Rutina: Indicado en toda exacerbación asmática para evitar la sobreinfección.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: GINA no recomienda antibióticos de rutina en la exacerbación, salvo evidencia clara de infección bacteriana."
+            }
+        },
+        {
             "card_id": "c_5",
             "ui_icon": "thermometer",
             "category": "Crisis Aguda",
@@ -111,6 +153,18 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. Es una herramienta sencilla que empodera al paciente."
+            }
+        },
+        {
+            "card_id": "dx_3",
+            "ui_icon": "activity",
+            "category": "Diagnóstico",
+            "card_text": "Espirometría Normal: Descarta el diagnóstico de asma.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: Una espirometría normal no descarta asma; si la sospecha persiste se busca reversibilidad o hiperreactividad bronquial (metacolina)."
             }
         },
         {

@@ -87,16 +87,16 @@ PROC_GYN_INFECTION_VAGINITIS_001_012,gyn,standard,María 47 años,Diferencial de
 PROC_GYN_INFECTION_VAGINITIS_001_013,gyn,standard,Elena 23 años,Diferencial de Vaginitis,11,3
 PROC_GYN_INFECTION_VAGINITIS_001_014,gyn,standard,Marta 36 años,Diferencial de Vaginitis,11,3
 PROC_GYN_INFECTION_VAGINITIS_001_015,gyn,standard,Isabel 47 años,Diferencial de Vaginitis,11,3
-PROC_IM_ASTHMA_001_001,med,standard,Sofía 22 años,Asma: GINA 2024,11,3
-PROC_IM_ASTHMA_001_002,med,standard,Ramón 35 años,Asma: GINA 2024,11,3
-PROC_IM_ASTHMA_001_003,med,standard,Mariana 8 años,Asma: GINA 2024,11,3
-PROC_IM_ASTHMA_001_004,med,standard,Carlos 45 años,Asma: GINA 2024,11,3
-PROC_IM_ASTHMA_001_005,med,standard,Lucía 17 años,Asma: GINA 2024,11,3
-PROC_IM_HEART_FAILURE_001_001,med,hard,Don Pedro 68 años,IC: Los 4 Fantásticos,11,3
-PROC_IM_HEART_FAILURE_001_002,med,hard,Doña Carmen 72 años,IC: Los 4 Fantásticos,11,3
-PROC_IM_HEART_FAILURE_001_003,med,hard,Héctor 58 años,IC: Los 4 Fantásticos,11,3
-PROC_IM_HEART_FAILURE_001_004,med,hard,Rosa 65 años,IC: Los 4 Fantásticos,11,3
-PROC_IM_HEART_FAILURE_001_005,med,hard,Don Alberto 75 años,IC: Los 4 Fantásticos,11,3
+PROC_IM_ASTHMA_001_001,med,standard,Sofía 22 años,Asma: GINA 2024,15,3
+PROC_IM_ASTHMA_001_002,med,standard,Ramón 35 años,Asma: GINA 2024,15,3
+PROC_IM_ASTHMA_001_003,med,standard,Mariana 8 años,Asma: GINA 2024,15,3
+PROC_IM_ASTHMA_001_004,med,standard,Carlos 45 años,Asma: GINA 2024,15,3
+PROC_IM_ASTHMA_001_005,med,standard,Lucía 17 años,Asma: GINA 2024,15,3
+PROC_IM_HEART_FAILURE_001_001,med,hard,Don Pedro 68 años,IC: Los 4 Fantásticos,15,3
+PROC_IM_HEART_FAILURE_001_002,med,hard,Doña Carmen 72 años,IC: Los 4 Fantásticos,15,3
+PROC_IM_HEART_FAILURE_001_003,med,hard,Héctor 58 años,IC: Los 4 Fantásticos,15,3
+PROC_IM_HEART_FAILURE_001_004,med,hard,Rosa 65 años,IC: Los 4 Fantásticos,15,3
+PROC_IM_HEART_FAILURE_001_005,med,hard,Don Alberto 75 años,IC: Los 4 Fantásticos,15,3
 PROC_INF_HIV_ART_001_001,inf,standard,Luis 47 años,VIH: Perlas ENARM,10,3
 PROC_INF_HIV_ART_001_002,inf,standard,Miguel 38 años,VIH: Inicio de ART,10,3
 PROC_INF_HIV_ART_001_003,inf,standard,Juan 41 años,VIH: Inicio de ART,10,3
@@ -142,11 +142,11 @@ PROC_INF_SEPSIS_SOFA_001_012,inf,hard,Laura 70 años,Sepsis-3: Choque Séptico,1
 PROC_INF_SEPSIS_SOFA_001_013,inf,hard,Carmen 70 años,Sepsis-3: Choque Séptico,11,3
 PROC_INF_SEPSIS_SOFA_001_014,inf,hard,Luis 71 años,Sepsis-3: Choque Séptico,11,3
 PROC_INF_SEPSIS_SOFA_001_015,inf,hard,Ana 61 años,Sepsis-3: Choque Séptico,11,3
-PROC_INF_STI_SYPHILIS_001_001,inf,standard,Alex 28 años,Sífilis: El ABC,11,3
-PROC_INF_STI_SYPHILIS_001_002,inf,standard,Sofía 24 años,Sífilis: El ABC,11,3
-PROC_INF_STI_SYPHILIS_001_003,inf,standard,Roberto 32 años,Sífilis: El ABC,11,3
-PROC_INF_STI_SYPHILIS_001_004,inf,standard,Daniela 19 años,Sífilis: El ABC,11,3
-PROC_INF_STI_SYPHILIS_001_005,inf,standard,Miguel 41 años,Sífilis: El ABC,11,3
+PROC_INF_STI_SYPHILIS_001_001,inf,standard,Alex 28 años,Sífilis: El ABC,15,3
+PROC_INF_STI_SYPHILIS_001_002,inf,standard,Sofía 24 años,Sífilis: El ABC,15,3
+PROC_INF_STI_SYPHILIS_001_003,inf,standard,Roberto 32 años,Sífilis: El ABC,15,3
+PROC_INF_STI_SYPHILIS_001_004,inf,standard,Daniela 19 años,Sífilis: El ABC,15,3
+PROC_INF_STI_SYPHILIS_001_005,inf,standard,Miguel 41 años,Sífilis: El ABC,15,3
 PROC_INT_AMI_001_001,int,hard,Carmen 54 años,Tiempo es Músculo: SCACEST,10,3
 PROC_INT_AMI_001_002,int,hard,Elena 69 años,Cardiopatía Isquémica: Tiempo es Músculo,10,3
 PROC_INT_AMI_001_003,int,hard,José 58 años,Cardiopatía Isquémica: Tiempo es Músculo,10,3
@@ -412,21 +412,21 @@ PROC_OPH_GLAUCOMA_001_002,oph,hard,Sr. Manuel 70 años,Glaucoma Agudo vs Crónic
 PROC_OPH_GLAUCOMA_001_003,oph,hard,Sra. Teresa 58 años,Glaucoma Agudo vs Crónico,11,3
 PROC_OPH_GLAUCOMA_001_004,oph,hard,Don Jorge 62 años,Glaucoma Agudo vs Crónico,11,3
 PROC_OPH_GLAUCOMA_001_005,oph,hard,Sra. Rosa 50 años,Glaucoma Agudo vs Crónico,11,3
-PROC_ORL_EPISTAXIS_001_001,orl,standard,Don Carlos 55 años,Epistaxis: Anterior vs Posterior,11,3
-PROC_ORL_EPISTAXIS_001_002,orl,standard,Sra. Beatriz 42 años,Epistaxis: Anterior vs Posterior,11,3
-PROC_ORL_EPISTAXIS_001_003,orl,standard,Rodrigo 8 años,Epistaxis: Anterior vs Posterior,11,3
-PROC_ORL_EPISTAXIS_001_004,orl,standard,Don Rafael 67 años,Epistaxis: Anterior vs Posterior,11,3
-PROC_ORL_EPISTAXIS_001_005,orl,standard,Estela 35 años,Epistaxis: Anterior vs Posterior,11,3
-PROC_ORL_OTITIS_MEDIA_001_001,ped,standard,Santi 3 años,OMA: Signos y Dosis,11,3
-PROC_ORL_OTITIS_MEDIA_001_002,ped,standard,Isabella 18 meses,OMA: Signos y Dosis,11,3
-PROC_ORL_OTITIS_MEDIA_001_003,ped,standard,Matías 5 años,OMA: Signos y Dosis,11,3
-PROC_ORL_OTITIS_MEDIA_001_004,ped,standard,Sofía 2 años,OMA: Signos y Dosis,11,3
-PROC_ORL_OTITIS_MEDIA_001_005,ped,standard,Lucas 4 años,OMA: Signos y Dosis,11,3
-PROC_PED_ANEMIA_FERROPENICA_001_001,ped,standard,Mateo 14 meses,Anemia Ferropénica,11,3
-PROC_PED_ANEMIA_FERROPENICA_001_002,ped,standard,Camila 8 meses,Anemia Ferropénica,11,3
-PROC_PED_ANEMIA_FERROPENICA_001_003,ped,standard,Pablo 4 años,Anemia Ferropénica,11,3
-PROC_PED_ANEMIA_FERROPENICA_001_004,ped,standard,Sara 13 años,Anemia Ferropénica,11,3
-PROC_PED_ANEMIA_FERROPENICA_001_005,ped,standard,Andrés 2 años,Anemia Ferropénica,11,3
+PROC_ORL_EPISTAXIS_001_001,orl,standard,Don Carlos 55 años,Epistaxis: Anterior vs Posterior,15,3
+PROC_ORL_EPISTAXIS_001_002,orl,standard,Sra. Beatriz 42 años,Epistaxis: Anterior vs Posterior,15,3
+PROC_ORL_EPISTAXIS_001_003,orl,standard,Rodrigo 8 años,Epistaxis: Anterior vs Posterior,15,3
+PROC_ORL_EPISTAXIS_001_004,orl,standard,Don Rafael 67 años,Epistaxis: Anterior vs Posterior,15,3
+PROC_ORL_EPISTAXIS_001_005,orl,standard,Estela 35 años,Epistaxis: Anterior vs Posterior,15,3
+PROC_ORL_OTITIS_MEDIA_001_001,ped,standard,Santi 3 años,OMA: Signos y Dosis,15,3
+PROC_ORL_OTITIS_MEDIA_001_002,ped,standard,Isabella 18 meses,OMA: Signos y Dosis,15,3
+PROC_ORL_OTITIS_MEDIA_001_003,ped,standard,Matías 5 años,OMA: Signos y Dosis,15,3
+PROC_ORL_OTITIS_MEDIA_001_004,ped,standard,Sofía 2 años,OMA: Signos y Dosis,15,3
+PROC_ORL_OTITIS_MEDIA_001_005,ped,standard,Lucas 4 años,OMA: Signos y Dosis,15,3
+PROC_PED_ANEMIA_FERROPENICA_001_001,ped,standard,Mateo 14 meses,Anemia Ferropénica,15,3
+PROC_PED_ANEMIA_FERROPENICA_001_002,ped,standard,Camila 8 meses,Anemia Ferropénica,15,3
+PROC_PED_ANEMIA_FERROPENICA_001_003,ped,standard,Pablo 4 años,Anemia Ferropénica,15,3
+PROC_PED_ANEMIA_FERROPENICA_001_004,ped,standard,Sara 13 años,Anemia Ferropénica,15,3
+PROC_PED_ANEMIA_FERROPENICA_001_005,ped,standard,Andrés 2 años,Anemia Ferropénica,15,3
 PROC_PED_EXANT_ERYTHEMA_001_001,ped,standard,Elena 11 años,Bofetada y Encaje,11,3
 PROC_PED_EXANT_ERYTHEMA_001_002,ped,standard,Marta 5 años,Bofetada y Encaje,11,3
 PROC_PED_EXANT_ERYTHEMA_001_003,ped,standard,Pedro 6 años,Bofetada y Encaje,11,3
@@ -550,11 +550,11 @@ PROC_PED_RESPIRATORY_CRUP_001_001,ped,standard,Luis 2 anos,Crup (Laringotraqueit
 PROC_PED_RESPIRATORY_CRUP_001_002,ped,standard,Carmen 18 meses,Tratamiento de CRUP,10,3
 PROC_PED_RESPIRATORY_PNEUMONIA_001_001,ped,standard,Valentina 3 anos,Neumonia Ped: Pilares Tx,11,3
 PROC_PED_RESPIRATORY_PNEUMONIA_001_003,ped,standard,Ana 7 años,Neumonía Atípica vs Típica,7,3
-PROC_PED_STATS_TESTS_001_001,ped,standard,Dr. Martinez R1 de Pediatria,Bioestadistica: Tipos de Variables,11,3
+PROC_PED_STATS_TESTS_001_001,ped,standard,Dr. Martinez R1 de Pediatria,Bioestadistica: Tipos de Variables,15,3
 PROC_PED_VAC_CATCHUP_001_001,ped,hard,Marta 19 meses,Cartilla 2024: Novedades,10,3
 PROC_PED_VAC_SRP_001_001,ped,hard,Carmen 18 meses,Actualización Cartilla SRP,8,3
 PROC_PED_VAC_SRP_001_002,ped,hard,Luis 18 meses,Actualización Cartilla SRP,8,3
-PROC_PREV_LEVELS_LEAVELL_001_001,prev,standard,Carmen 41 anos,Leavell & Clark: Niveles,11,3
+PROC_PREV_LEVELS_LEAVELL_001_001,prev,standard,Carmen 41 anos,Leavell & Clark: Niveles,15,3
 PROC_PREV_RABIES_EXTREME_001_001,prev,extreme,Consulta Externa: Exposición a Fauna Silvestre,Profilaxis Antirrábica Post-Exposición (Categoría III),5,3
 PROC_PSYCH_MANIA_001_001,psyc,standard,Juan 28 anos,Criterios Mania: DIGFAST,11,3
 PROC_PSYC_DEP_SUICIDE_001_001,psyc,standard,José 70 años,Pregunta por el Suicidio,10,3

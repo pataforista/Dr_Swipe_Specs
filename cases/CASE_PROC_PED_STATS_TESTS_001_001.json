@@ -22,6 +22,30 @@
             }
         },
         {
+            "card_id": "dx_1",
+            "ui_icon": "bar-chart",
+            "category": "Estadistica Inf.",
+            "card_text": "Chi-Cuadrada: Prueba de elección para comparar Medias de una variable continua entre 2 grupos.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Para comparar medias de una variable continua entre 2 grupos se usa t de Student; la chi-cuadrada compara proporciones de variables categóricas."
+            }
+        },
+        {
+            "card_id": "dx_4",
+            "ui_icon": "activity",
+            "category": "Estadistica Inf.",
+            "card_text": "U de Mann-Whitney: Prueba paramétrica que exige distribución normal de los datos.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Mann-Whitney es no paramétrica: se usa precisamente cuando los datos no siguen una distribución normal."
+            }
+        },
+        {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Estadistica Inf.",
@@ -58,6 +82,18 @@
             }
         },
         {
+            "card_id": "dx_3",
+            "ui_icon": "zap",
+            "category": "Error",
+            "card_text": "Poder Estadístico: Se calcula como 1 - α (alfa).",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: El poder es 1 - β: la probabilidad de detectar una diferencia que sí existe. Alfa es la probabilidad del error tipo I."
+            }
+        },
+        {
             "card_id": "c_4",
             "ui_icon": "trending-up",
             "category": "Relacion",
@@ -91,6 +127,18 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Exacto! Si el IC de un RR o OR incluye el 1, NO es significativo."
+            }
+        },
+        {
+            "card_id": "dx_2",
+            "ui_icon": "percent",
+            "category": "Significancia",
+            "card_text": "Valor p > 0.05: Demuestra que no existe diferencia entre los grupos.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Un valor p no significativo solo indica que los datos no bastan para rechazar la hipótesis nula; no prueba que los grupos sean iguales."
             }
         },
         {

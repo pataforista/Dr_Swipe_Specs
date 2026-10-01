@@ -78,6 +78,18 @@
             }
         },
         {
+            "card_id": "dx_2",
+            "ui_icon": "eye",
+            "category": "Diagnóstico",
+            "card_text": "Observación sin Antibiótico: Opción válida en lactantes menores de 6 meses con OMA.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Antes de los 6 meses la OMA se trata con antibiótico; la observación es opción solo a partir de los 6 meses y en casos no graves."
+            }
+        },
+        {
             "card_id": "c_5",
             "ui_icon": "activity",
             "category": "meds",
@@ -106,6 +118,18 @@
             }
         },
         {
+            "card_id": "dx_4",
+            "ui_icon": "shield",
+            "category": "meds",
+            "card_text": "Profilaxis Antibiótica Prolongada: Recomendada para reducir los episodios en niños con OMA recurrente.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: La AAP recomienda no usar profilaxis antibiótica para reducir la frecuencia de OMA recurrente."
+            }
+        },
+        {
             "card_id": "c_7",
             "ui_icon": "info",
             "category": "meds",
@@ -118,6 +142,18 @@
             }
         },
         {
+            "card_id": "dx_3",
+            "ui_icon": "tool",
+            "category": "Etiología",
+            "card_text": "Tubos de Ventilación tras el Primer Episodio: Indicados después de una sola OMA para prevenir recurrencias.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Los tubos se consideran en OMA recurrente: 3 episodios en 6 meses, o 4 en un año con uno en los últimos 6 meses."
+            }
+        },
+        {
             "card_id": "c_8",
             "ui_icon": "slash",
             "category": "Diferencial",
@@ -127,6 +163,18 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Excelente! Evitar el uso innecesario de antibióticos es medicina de calidad."
+            }
+        },
+        {
+            "card_id": "dx_1",
+            "ui_icon": "pill",
+            "category": "meds",
+            "card_text": "Azitromicina: Antibiótico de primera línea para la OMA del lactante.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Los macrólidos no son de primera línea por su alta resistencia; se reservan para alergia grave a penicilina y cefalosporinas. La primera línea es amoxicilina."
             }
         },
         {

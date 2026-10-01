@@ -22,6 +22,18 @@
             }
         },
         {
+            "card_id": "dx_2",
+            "ui_icon": "search",
+            "category": "meds",
+            "card_text": "Pruebas Treponémicas para Seguimiento: El FTA-ABS se negativiza tras la curación y sirve para vigilar la respuesta.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Las pruebas treponémicas suelen quedar positivas de por vida; el seguimiento del tratamiento se hace con VDRL o RPR."
+            }
+        },
+        {
             "card_id": "c_8",
             "ui_icon": "moon",
             "category": "vitals",
@@ -123,6 +135,45 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Excelente perla! No es una alergia; es una reacción esperable que se maneja con sintomáticos."
+            }
+        },
+        {
+            "card_id": "dx_4",
+            "ui_icon": "droplet",
+            "category": "meds",
+            "card_text": "Ceftriaxona IM Dosis Única: Tratamiento de elección para la sífilis primaria.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: La dosis única de ceftriaxona es el tratamiento de la gonorrea; la sífilis primaria se trata con penicilina G benzatínica 2.4 millones UI IM."
+            }
+        },
+        {
+            "card_id": "dx_3",
+            "ui_icon": "trending-down",
+            "category": "Diagnóstico",
+            "card_text": "Respuesta Adecuada: Basta con que el VDRL baje una dilución (por ejemplo, de 1:32 a 1:16).",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: La respuesta adecuada es una caída de cuatro veces (dos diluciones, por ejemplo de 1:32 a 1:8) en los 12 meses siguientes al tratamiento."
+            }
+        },
+        {
+            "card_id": "dx_1",
+            "ui_icon": "pill",
+            "category": "meds",
+            "card_text": "Doxiciclina en el Embarazo: Alternativa de elección en la gestante con sífilis y alergia a la penicilina.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Navarro: En el embarazo solo la penicilina parenteral ha demostrado eficacia; si hay alergia se desensibiliza y se trata con penicilina."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         },
         {

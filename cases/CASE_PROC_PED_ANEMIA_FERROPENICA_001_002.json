@@ -66,6 +66,18 @@
             }
         },
         {
+            "card_id": "dx_2",
+            "ui_icon": "coffee",
+            "category": "Dieta",
+            "card_text": "Hierro con Leche: Administrar el sulfato ferroso junto con la leche para mejorar la tolerancia.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: El calcio y la caseína de la leche inhiben la absorción del hierro; conviene darlo lejos de los lácteos y, si es posible, con vitamina C."
+            }
+        },
+        {
             "card_id": "c_5",
             "ui_icon": "info",
             "category": "Morfología",
@@ -78,6 +90,18 @@
             }
         },
         {
+            "card_id": "dx_3",
+            "ui_icon": "coffee",
+            "category": "Dieta",
+            "card_text": "Leche de Vaca antes del Año: Buena fuente de hierro para el lactante de 9 meses.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La leche de vaca es pobre en hierro y se desaconseja antes de los 12 meses; después se limita a unos 700 mL al día."
+            }
+        },
+        {
             "card_id": "c_6",
             "ui_icon": "droplet",
             "category": "meds",
@@ -87,6 +111,18 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Un signo clínico curioso pero muy preguntado en el ENARM."
+            }
+        },
+        {
+            "card_id": "dx_4",
+            "ui_icon": "calendar",
+            "category": "Duración",
+            "card_text": "Suspender el Hierro al Normalizar la Hb: Una vez corregida la anemia ya no se requiere tratamiento.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: El hierro se continúa 2 a 3 meses después de normalizar la hemoglobina para llenar los depósitos."
             }
         },
         {
@@ -147,6 +183,18 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Bien. Es el primer signo hematológico de que el tratamiento está funcionando."
+            }
+        },
+        {
+            "card_id": "dx_1",
+            "ui_icon": "droplet",
+            "category": "Seguimiento",
+            "card_text": "Transfusión: Indicada en todo lactante con Hb menor de 10 g/dL por ferropenia.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La anemia ferropénica estable se corrige con hierro oral; la transfusión se reserva para anemia grave con repercusión hemodinámica."
             }
         }
     ],

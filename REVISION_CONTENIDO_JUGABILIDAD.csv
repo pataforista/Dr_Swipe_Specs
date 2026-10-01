@@ -71,18 +71,10 @@ vitales,PROC_PED_PYLORIC_SENOSIS_001_002,init_vitals,discard,"FC 140 lpm, Temp 3
 vitales,PROC_PED_PYLORIC_SENOSIS_001_003,init_vitals,discard,"FC 140 lpm, Temp 36.6°C","Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene.",Vitales anormales (FC 140) marcados como descarte
 vitales,PROC_PED_PYLORIC_SENOSIS_001_004,init_vitals,discard,"FC 140 lpm, Temp 36.6°C","Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene.",Vitales anormales (FC 140) marcados como descarte
 vitales,PROC_PED_PYLORIC_SENOSIS_001_005,init_vitals,discard,"FC 140 lpm, Temp 36.6°C","Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene.",Vitales anormales (FC 140) marcados como descarte
-balance,PROC_PED_STATS_TESTS_001,,,1 casos · aceptar 10 / descartar 1 (9% descarte),,Faltan ~6.0 cartas de descarte por caso para llegar a 40%
-balance,PROC_PREV_LEVELS_LEAVELL_001,,,1 casos · aceptar 10 / descartar 1 (9% descarte),,Faltan ~6.0 cartas de descarte por caso para llegar a 40%
 balance,PROC_SURG_TRAUMA_ATLS10_001,,,1 casos · aceptar 9 / descartar 1 (10% descarte),,Faltan ~5.0 cartas de descarte por caso para llegar a 40%
 balance,PROC_PED_GAST_DEHYDRATION_001,,,5 casos · aceptar 47 / descartar 8 (15% descarte),,Faltan ~4.6 cartas de descarte por caso para llegar a 40%
 balance,PROC_PED_GIT_DEHYDRATION_001,,,15 casos · aceptar 140 / descartar 25 (15% descarte),,Faltan ~4.5 cartas de descarte por caso para llegar a 40%
-balance,PROC_IM_ASTHMA_001,,,5 casos · aceptar 45 / descartar 10 (18% descarte),,Faltan ~4.0 cartas de descarte por caso para llegar a 40%
-balance,PROC_IM_HEART_FAILURE_001,,,5 casos · aceptar 45 / descartar 10 (18% descarte),,Faltan ~4.0 cartas de descarte por caso para llegar a 40%
 balance,PROC_INF_SEPSIS_SOFA_001,,,15 casos · aceptar 135 / descartar 30 (18% descarte),,Faltan ~4.0 cartas de descarte por caso para llegar a 40%
-balance,PROC_INF_STI_SYPHILIS_001,,,5 casos · aceptar 45 / descartar 10 (18% descarte),,Faltan ~4.0 cartas de descarte por caso para llegar a 40%
-balance,PROC_ORL_EPISTAXIS_001,,,5 casos · aceptar 45 / descartar 10 (18% descarte),,Faltan ~4.0 cartas de descarte por caso para llegar a 40%
-balance,PROC_ORL_OTITIS_MEDIA_001,,,5 casos · aceptar 45 / descartar 10 (18% descarte),,Faltan ~4.0 cartas de descarte por caso para llegar a 40%
-balance,PROC_PED_ANEMIA_FERROPENICA_001,,,5 casos · aceptar 45 / descartar 10 (18% descarte),,Faltan ~4.0 cartas de descarte por caso para llegar a 40%
 balance,PROC_SURG_OBSTRUCTION_001,,,1 casos · aceptar 9 / descartar 2 (18% descarte),,Faltan ~4.0 cartas de descarte por caso para llegar a 40%
 balance,PROC_PED_NEO_APGAR_001,,,2 casos · aceptar 16 / descartar 4 (20% descarte),,Faltan ~3.5 cartas de descarte por caso para llegar a 40%
 balance,PROC_PED_RESPIRATORY_PNEUMONIA_001,,,2 casos · aceptar 15 / descartar 3 (17% descarte),,Faltan ~3.5 cartas de descarte por caso para llegar a 40%
@@ -117,7 +109,9 @@ balance,PROC_CARD_AMI_EXTREME_001,,,1 casos · aceptar 5 / descartar 1 (17% desc
 balance,PROC_DERM_ACNE_001,,,5 casos · aceptar 45 / descartar 20 (31% descarte),,Faltan ~2.0 cartas de descarte por caso para llegar a 40%
 balance,PROC_GAST_VARICES_HARD_001,,,1 casos · aceptar 4 / descartar 1 (20% descarte),,Faltan ~2.0 cartas de descarte por caso para llegar a 40%
 balance,PROC_PED_NEURO_MILESTONES_001,,,1 casos · aceptar 7 / descartar 3 (30% descarte),,Faltan ~2.0 cartas de descarte por caso para llegar a 40%
+balance,PROC_PED_STATS_TESTS_001,,,1 casos · aceptar 10 / descartar 5 (33% descarte),,Faltan ~2.0 cartas de descarte por caso para llegar a 40%
 balance,PROC_PED_VAC_CATCHUP_001,,,1 casos · aceptar 7 / descartar 3 (30% descarte),,Faltan ~2.0 cartas de descarte por caso para llegar a 40%
+balance,PROC_PREV_LEVELS_LEAVELL_001,,,1 casos · aceptar 10 / descartar 5 (33% descarte),,Faltan ~2.0 cartas de descarte por caso para llegar a 40%
 balance,PROC_PREV_RABIES_EXTREME_001,,,1 casos · aceptar 4 / descartar 1 (20% descarte),,Faltan ~2.0 cartas de descarte por caso para llegar a 40%
 balance,PROC_PSYCH_MANIA_001,,,1 casos · aceptar 8 / descartar 3 (27% descarte),,Faltan ~2.0 cartas de descarte por caso para llegar a 40%
 balance,PROC_PSYC_PSI_SCHIZO_001,,,1 casos · aceptar 8 / descartar 3 (27% descarte),,Faltan ~2.0 cartas de descarte por caso para llegar a 40%

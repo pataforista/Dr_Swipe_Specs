@@ -22,6 +22,18 @@
             }
         },
         {
+            "card_id": "dx_2",
+            "ui_icon": "alert-triangle",
+            "category": "Manejo Síntomas",
+            "card_text": "AINE (Naproxeno): Analgésico de elección para el dolor articular del paciente con IC.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: Los AINE retienen sodio, reducen el efecto de diuréticos e IECA y aumentan las hospitalizaciones por IC; deben evitarse."
+            }
+        },
+        {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
@@ -35,6 +47,18 @@
             "safety_flags": {
                 "lethal_risk": false,
                 "decision_critical": true
+            }
+        },
+        {
+            "card_id": "dx_3",
+            "ui_icon": "heart",
+            "category": "Tratamiento Pilares",
+            "card_text": "Digoxina: Fármaco de primera línea porque reduce la mortalidad en ICFEr.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: En el estudio DIG la digoxina redujo hospitalizaciones pero no la mortalidad; no forma parte de los cuatro pilares."
             }
         },
         {
@@ -114,6 +138,18 @@
             }
         },
         {
+            "card_id": "dx_4",
+            "ui_icon": "heart-pulse",
+            "category": "Beta-bloqueadores",
+            "card_text": "Atenolol: Betabloqueador con beneficio demostrado en mortalidad en ICFEr.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: Solo bisoprolol, carvedilol y metoprolol succinato (y nebivolol en mayores de 70 años) han demostrado beneficio en ICFEr; el atenolol no."
+            }
+        },
+        {
             "card_id": "c_9",
             "ui_icon": "zap",
             "category": "Mantenimiento",
@@ -135,6 +171,18 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Muy bien! Es la punta de lanza del tratamiento actual."
+            }
+        },
+        {
+            "card_id": "dx_1",
+            "ui_icon": "pill",
+            "category": "meds",
+            "card_text": "Pioglitazona: Opción segura para el control glucémico en el paciente con ICFEr y DM2.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: Las glitazonas retienen sodio y agua y empeoran la insuficiencia cardiaca; están contraindicadas. En DM2 con IC se prefieren los iSGLT2."
             }
         },
         {
