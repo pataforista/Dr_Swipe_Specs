@@ -166,11 +166,11 @@
             "ui_icon": "alert-triangle",
             "category": "Diferencial",
             "card_text": "Adenitis Mesentérica: Causa común de dolor en FID en niños, frecuentemente precedida por cuadro respiratorio.",
-            "expected_action": "keep",
+            "expected_action": "discard",
             "scoring": {
                 "points": 50,
-                "error_type": "omission",
-                "vazquez_comment": "Muy bien. Un diagnóstico diferencial clásico."
+                "error_type": "hoarding",
+                "vazquez_comment": "La adenitis mesentérica es una causa de dolor en fosa ilíaca derecha propia de niños, tras una infección respiratoria. En el adulto con Alvarado alto, lo que se sospecha es apendicitis."
             }
         },
         {

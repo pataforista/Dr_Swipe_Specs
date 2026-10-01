@@ -66,11 +66,11 @@
             "ui_icon": "eye",
             "category": "Diagnostico Diferencial",
             "card_text": "Epiglotitis Aguda: H. influenzae tipo b. Fiebre alta, babeo, posicion de tripode y ausencia de tos perruna.",
-            "expected_action": "keep",
+            "expected_action": "discard",
             "scoring": {
                 "points": 50,
-                "error_type": "lethal_hazard",
-                "vazquez_comment": "Castillo: ¡Bien! La epiglotitis es una emergencia quirurgica de la via aerea; aqui la clinica es puramente de Crup."
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La epiglotitis cursa con fiebre alta, babeo, posición de trípode y sin tos perruna. Este paciente tiene tos perruna y mejora con el aire frío: es crup."
             }
         },
         {

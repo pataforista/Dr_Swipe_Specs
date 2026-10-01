@@ -114,11 +114,11 @@
             "ui_icon": "eye",
             "category": "Diagnóstico",
             "card_text": "Epiglotitis Aguda: H. influenzae tipo b. Fiebre alta, babeo (sialorrea), posición de trípode y AUSENCIA de tos.",
-            "expected_action": "keep",
+            "expected_action": "discard",
             "scoring": {
                 "points": 50,
-                "error_type": "lethal_hazard",
-                "vazquez_comment": "Castillo: ¡Bien! Reconociste que el babeo y el aspecto tóxico (ausentes aquí) son de Epiglotitis."
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La epiglotitis cursa con fiebre alta, babeo, posición de trípode y sin tos perruna. Este paciente tiene tos perruna y mejora con el aire frío: es crup."
             },
             "safety_flags": {
                 "lethal_risk": true,

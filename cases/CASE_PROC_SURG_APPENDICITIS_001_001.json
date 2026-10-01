@@ -142,11 +142,11 @@
             "ui_icon": "eye",
             "category": "Diagnóstico",
             "card_text": "Embarazo Ectópico Roto: Dolor pélvico agudo, sangrado transvaginal y datos de choque hipovolémico.",
-            "expected_action": "keep",
+            "expected_action": "discard",
             "scoring": {
                 "points": 50,
-                "error_type": "lethal_hazard",
-                "vazquez_comment": "¡Correcto! TA normal y cuadro más compatible con foco infeccioso intestinal."
+                "error_type": "hoarding",
+                "vazquez_comment": "Dolor y sangrado transvaginal con choque hipovolémico serían el cuadro de un ectópico roto. Aquí la presión es normal y el cuadro orienta a un foco infeccioso intestinal: apendicitis."
             },
             "safety_flags": {
                 "lethal_risk": true,
