@@ -365,7 +365,9 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
   const lethalIfDiscarded = !!revealLethalDirection && !!(card.safety_flags?.lethal_if_discarded || card.safety_flags?.lethal_risk) && card.expected_action === 'keep';
   const lethalNeutral = !!isLethal && !lethalIfAccepted && !lethalIfDiscarded;
   const displayCategory = getDisplayCategory(card.category);
-  const isCritical = card.safety_flags?.decision_critical;
+  // `decision_critical` is 96% "keep" in the authored cases, so its amber tint
+  // and ¡ENARM! badge gave the answer away. Only shown in study mode.
+  const isCritical = !!revealLethalDirection && !!card.safety_flags?.decision_critical;
 
   const cardBg = isLethal ? 'bg-rose-50' : isCritical ? 'bg-amber-50' : 'bg-white';
   const accentColor = isLethal ? 'border-accent-alert/40 shadow-rose-100' : isCritical ? 'border-secondary/40 shadow-amber-100' : 'border-slate-100 shadow-slate-200/50';
