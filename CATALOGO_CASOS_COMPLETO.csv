@@ -57,21 +57,21 @@ PROC_GYN_CANCER_BREAST_001_012,gyn,standard,Carmen 45 años,BI-RADS y Conducta,1
 PROC_GYN_CANCER_BREAST_001_013,gyn,standard,María 52 años,BI-RADS y Conducta,10,3
 PROC_GYN_CANCER_BREAST_001_014,gyn,standard,Elena 52 años,BI-RADS y Conducta,10,3
 PROC_GYN_CANCER_BREAST_001_015,gyn,standard,Isabel 45 años,BI-RADS y Conducta,10,3
-PROC_GYN_CANCER_CERVICAL_001_001,gyn,standard,Isabel 28 años,CaCu: Pap y Colposcopia,10,3
-PROC_GYN_CANCER_CERVICAL_001_002,gyn,standard,Marta 28 años,Citología: Bethesda 2014,10,3
-PROC_GYN_CANCER_CERVICAL_001_003,gyn,standard,Elena 35 años,Citología: Bethesda 2014,10,3
-PROC_GYN_CANCER_CERVICAL_001_004,gyn,standard,Ana 33 años,Citología: Bethesda 2014,10,3
-PROC_GYN_CANCER_CERVICAL_001_005,gyn,standard,María 29 años,Citología: Bethesda 2014,10,3
-PROC_GYN_CANCER_CERVICAL_001_006,gyn,standard,Rosa 39 años,Citología: Bethesda 2014,10,3
-PROC_GYN_CANCER_CERVICAL_001_007,gyn,standard,Marta 42 años,Citología: Bethesda 2014,10,3
-PROC_GYN_CANCER_CERVICAL_001_008,gyn,standard,Marta 41 años,Citología: Bethesda 2014,10,3
-PROC_GYN_CANCER_CERVICAL_001_009,gyn,standard,Ana 29 años,Citología: Bethesda 2014,10,3
-PROC_GYN_CANCER_CERVICAL_001_010,gyn,standard,Isabel 30 años,Citología: Bethesda 2014,10,3
-PROC_GYN_CANCER_CERVICAL_001_011,gyn,standard,Rosa 28 años,Citología: Bethesda 2014,10,3
-PROC_GYN_CANCER_CERVICAL_001_012,gyn,standard,Marta 35 años,Citología: Bethesda 2014,10,3
-PROC_GYN_CANCER_CERVICAL_001_013,gyn,standard,Elena 31 años,Citología: Bethesda 2014,10,3
-PROC_GYN_CANCER_CERVICAL_001_014,gyn,standard,Laura 42 años,Citología: Bethesda 2014,10,3
-PROC_GYN_CANCER_CERVICAL_001_015,gyn,standard,Ana 42 años,Citología: Bethesda 2014,10,3
+PROC_GYN_CANCER_CERVICAL_001_001,gyn,standard,Isabel 28 años,CaCu: Pap y Colposcopia,14,3
+PROC_GYN_CANCER_CERVICAL_001_002,gyn,standard,Marta 28 años,Citología: Bethesda 2014,14,3
+PROC_GYN_CANCER_CERVICAL_001_003,gyn,standard,Elena 35 años,Citología: Bethesda 2014,14,3
+PROC_GYN_CANCER_CERVICAL_001_004,gyn,standard,Ana 33 años,Citología: Bethesda 2014,14,3
+PROC_GYN_CANCER_CERVICAL_001_005,gyn,standard,María 29 años,Citología: Bethesda 2014,14,3
+PROC_GYN_CANCER_CERVICAL_001_006,gyn,standard,Rosa 39 años,Citología: Bethesda 2014,14,3
+PROC_GYN_CANCER_CERVICAL_001_007,gyn,standard,Marta 42 años,Citología: Bethesda 2014,14,3
+PROC_GYN_CANCER_CERVICAL_001_008,gyn,standard,Marta 41 años,Citología: Bethesda 2014,14,3
+PROC_GYN_CANCER_CERVICAL_001_009,gyn,standard,Ana 29 años,Citología: Bethesda 2014,14,3
+PROC_GYN_CANCER_CERVICAL_001_010,gyn,standard,Isabel 30 años,Citología: Bethesda 2014,14,3
+PROC_GYN_CANCER_CERVICAL_001_011,gyn,standard,Rosa 28 años,Citología: Bethesda 2014,14,3
+PROC_GYN_CANCER_CERVICAL_001_012,gyn,standard,Marta 35 años,Citología: Bethesda 2014,14,3
+PROC_GYN_CANCER_CERVICAL_001_013,gyn,standard,Elena 31 años,Citología: Bethesda 2014,14,3
+PROC_GYN_CANCER_CERVICAL_001_014,gyn,standard,Laura 42 años,Citología: Bethesda 2014,14,3
+PROC_GYN_CANCER_CERVICAL_001_015,gyn,standard,Ana 42 años,Citología: Bethesda 2014,14,3
 PROC_GYN_INFECTION_VAGINITIS_001_001,gyn,standard,Carmen 25 años,Triple Diferencial Vaginal,11,3
 PROC_GYN_INFECTION_VAGINITIS_001_002,gyn,standard,Isabel 22 años,Diferencial de Vaginitis,11,3
 PROC_GYN_INFECTION_VAGINITIS_001_003,gyn,standard,Ana 28 años,Diferencial de Vaginitis,11,3
@@ -127,21 +127,21 @@ PROC_INF_MENINGITIS_BACTERIAL_001_012,inf,hard,Pedro 25 años,LCR: Bacterias vs 
 PROC_INF_MENINGITIS_BACTERIAL_001_013,inf,hard,Miguel 27 años,LCR: Bacterias vs Virus,11,3
 PROC_INF_MENINGITIS_BACTERIAL_001_014,inf,hard,Carlos 23 años,LCR: Bacterias vs Virus,11,3
 PROC_INF_MENINGITIS_BACTERIAL_001_015,inf,hard,Miguel 39 años,LCR: Bacterias vs Virus,11,3
-PROC_INF_SEPSIS_SOFA_001_001,inf,hard,María 84 años,Sepsis-3 y Bundle,11,3
-PROC_INF_SEPSIS_SOFA_001_002,inf,hard,María 77 años,Sepsis-3: Choque Séptico,11,3
-PROC_INF_SEPSIS_SOFA_001_003,inf,hard,Pedro 64 años,Sepsis-3: Choque Séptico,11,3
-PROC_INF_SEPSIS_SOFA_001_004,inf,hard,Rosa 71 años,Sepsis-3: Choque Séptico,11,3
-PROC_INF_SEPSIS_SOFA_001_005,inf,hard,Miguel 79 años,Sepsis-3: Choque Séptico,11,3
-PROC_INF_SEPSIS_SOFA_001_006,inf,hard,Fernando 68 años,Sepsis-3: Choque Séptico,11,3
-PROC_INF_SEPSIS_SOFA_001_007,inf,hard,Fernando 78 años,Sepsis-3: Choque Séptico,11,3
-PROC_INF_SEPSIS_SOFA_001_008,inf,hard,Juan 73 años,Sepsis-3: Choque Séptico,11,3
-PROC_INF_SEPSIS_SOFA_001_009,inf,hard,Antonio 80 años,Sepsis-3: Choque Séptico,11,3
-PROC_INF_SEPSIS_SOFA_001_010,inf,hard,Carmen 83 años,Sepsis-3: Choque Séptico,11,3
-PROC_INF_SEPSIS_SOFA_001_011,inf,hard,Miguel 79 años,Sepsis-3: Choque Séptico,11,3
-PROC_INF_SEPSIS_SOFA_001_012,inf,hard,Laura 70 años,Sepsis-3: Choque Séptico,11,3
-PROC_INF_SEPSIS_SOFA_001_013,inf,hard,Carmen 70 años,Sepsis-3: Choque Séptico,11,3
-PROC_INF_SEPSIS_SOFA_001_014,inf,hard,Luis 71 años,Sepsis-3: Choque Séptico,11,3
-PROC_INF_SEPSIS_SOFA_001_015,inf,hard,Ana 61 años,Sepsis-3: Choque Séptico,11,3
+PROC_INF_SEPSIS_SOFA_001_001,inf,hard,María 84 años,Sepsis-3 y Bundle,15,3
+PROC_INF_SEPSIS_SOFA_001_002,inf,hard,María 77 años,Sepsis-3: Choque Séptico,15,3
+PROC_INF_SEPSIS_SOFA_001_003,inf,hard,Pedro 64 años,Sepsis-3: Choque Séptico,15,3
+PROC_INF_SEPSIS_SOFA_001_004,inf,hard,Rosa 71 años,Sepsis-3: Choque Séptico,15,3
+PROC_INF_SEPSIS_SOFA_001_005,inf,hard,Miguel 79 años,Sepsis-3: Choque Séptico,15,3
+PROC_INF_SEPSIS_SOFA_001_006,inf,hard,Fernando 68 años,Sepsis-3: Choque Séptico,15,3
+PROC_INF_SEPSIS_SOFA_001_007,inf,hard,Fernando 78 años,Sepsis-3: Choque Séptico,15,3
+PROC_INF_SEPSIS_SOFA_001_008,inf,hard,Juan 73 años,Sepsis-3: Choque Séptico,15,3
+PROC_INF_SEPSIS_SOFA_001_009,inf,hard,Antonio 80 años,Sepsis-3: Choque Séptico,15,3
+PROC_INF_SEPSIS_SOFA_001_010,inf,hard,Carmen 83 años,Sepsis-3: Choque Séptico,15,3
+PROC_INF_SEPSIS_SOFA_001_011,inf,hard,Miguel 79 años,Sepsis-3: Choque Séptico,15,3
+PROC_INF_SEPSIS_SOFA_001_012,inf,hard,Laura 70 años,Sepsis-3: Choque Séptico,15,3
+PROC_INF_SEPSIS_SOFA_001_013,inf,hard,Carmen 70 años,Sepsis-3: Choque Séptico,15,3
+PROC_INF_SEPSIS_SOFA_001_014,inf,hard,Luis 71 años,Sepsis-3: Choque Séptico,15,3
+PROC_INF_SEPSIS_SOFA_001_015,inf,hard,Ana 61 años,Sepsis-3: Choque Séptico,15,3
 PROC_INF_STI_SYPHILIS_001_001,inf,standard,Alex 28 años,Sífilis: El ABC,15,3
 PROC_INF_STI_SYPHILIS_001_002,inf,standard,Sofía 24 años,Sífilis: El ABC,15,3
 PROC_INF_STI_SYPHILIS_001_003,inf,standard,Roberto 32 años,Sífilis: El ABC,15,3
@@ -162,21 +162,21 @@ PROC_INT_AMI_001_012,int,hard,Laura 50 años,Cardiopatía Isquémica: Tiempo es 
 PROC_INT_AMI_001_013,int,hard,Carlos 68 años,Cardiopatía Isquémica: Tiempo es Músculo,10,3
 PROC_INT_AMI_001_014,int,hard,Carlos 63 años,Cardiopatía Isquémica: Tiempo es Músculo,10,3
 PROC_INT_AMI_001_015,int,hard,Ana 57 años,Cardiopatía Isquémica: Tiempo es Músculo,10,3
-PROC_INT_DM2_DX_001_001,int,standard,Marta 51 años,DM2: Diagnóstico ADA/NOM,9,3
-PROC_INT_DM2_DX_001_002,int,standard,Ana 57 años,Criterios Diagnósticos DM2 (NOM-015),10,3
-PROC_INT_DM2_DX_001_003,int,standard,Juan 52 años,Criterios Diagnósticos DM2 (NOM-015),10,3
-PROC_INT_DM2_DX_001_004,int,standard,José 53 años,Criterios Diagnósticos DM2 (NOM-015),10,3
-PROC_INT_DM2_DX_001_005,int,standard,María 53 años,Criterios Diagnósticos DM2 (NOM-015),10,3
-PROC_INT_DM2_DX_001_006,int,standard,Miguel 43 años,Criterios Diagnósticos DM2 (NOM-015),10,3
-PROC_INT_DM2_DX_001_007,int,standard,Rosa 50 años,Criterios Diagnósticos DM2 (NOM-015),10,3
-PROC_INT_DM2_DX_001_008,int,standard,Carmen 43 años,Criterios Diagnósticos DM2 (NOM-015),10,3
-PROC_INT_DM2_DX_001_009,int,standard,Elena 53 años,Criterios Diagnósticos DM2 (NOM-015),10,3
-PROC_INT_DM2_DX_001_010,int,standard,Carmen 52 años,Criterios Diagnósticos DM2 (NOM-015),10,3
-PROC_INT_DM2_DX_001_011,int,standard,Elena 40 años,Criterios Diagnósticos DM2 (NOM-015),10,3
-PROC_INT_DM2_DX_001_012,int,standard,Carmen 51 años,Criterios Diagnósticos DM2 (NOM-015),10,3
-PROC_INT_DM2_DX_001_013,int,standard,Pedro 40 años,Criterios Diagnósticos DM2 (NOM-015),10,3
-PROC_INT_DM2_DX_001_014,int,standard,María 57 años,Criterios Diagnósticos DM2 (NOM-015),10,3
-PROC_INT_DM2_DX_001_015,int,standard,Marta 41 años,Criterios Diagnósticos DM2 (NOM-015),10,3
+PROC_INT_DM2_DX_001_001,int,standard,Marta 51 años,DM2: Diagnóstico ADA/NOM,13,3
+PROC_INT_DM2_DX_001_002,int,standard,Ana 57 años,Criterios Diagnósticos DM2 (NOM-015),14,3
+PROC_INT_DM2_DX_001_003,int,standard,Juan 52 años,Criterios Diagnósticos DM2 (NOM-015),14,3
+PROC_INT_DM2_DX_001_004,int,standard,José 53 años,Criterios Diagnósticos DM2 (NOM-015),14,3
+PROC_INT_DM2_DX_001_005,int,standard,María 53 años,Criterios Diagnósticos DM2 (NOM-015),14,3
+PROC_INT_DM2_DX_001_006,int,standard,Miguel 43 años,Criterios Diagnósticos DM2 (NOM-015),14,3
+PROC_INT_DM2_DX_001_007,int,standard,Rosa 50 años,Criterios Diagnósticos DM2 (NOM-015),14,3
+PROC_INT_DM2_DX_001_008,int,standard,Carmen 43 años,Criterios Diagnósticos DM2 (NOM-015),14,3
+PROC_INT_DM2_DX_001_009,int,standard,Elena 53 años,Criterios Diagnósticos DM2 (NOM-015),14,3
+PROC_INT_DM2_DX_001_010,int,standard,Carmen 52 años,Criterios Diagnósticos DM2 (NOM-015),14,3
+PROC_INT_DM2_DX_001_011,int,standard,Elena 40 años,Criterios Diagnósticos DM2 (NOM-015),14,3
+PROC_INT_DM2_DX_001_012,int,standard,Carmen 51 años,Criterios Diagnósticos DM2 (NOM-015),14,3
+PROC_INT_DM2_DX_001_013,int,standard,Pedro 40 años,Criterios Diagnósticos DM2 (NOM-015),14,3
+PROC_INT_DM2_DX_001_014,int,standard,María 57 años,Criterios Diagnósticos DM2 (NOM-015),14,3
+PROC_INT_DM2_DX_001_015,int,standard,Marta 41 años,Criterios Diagnósticos DM2 (NOM-015),14,3
 PROC_INT_ENDO_CAD_001_001,int,standard,Carmen 24 años,CAD: Reglas de Oro,10,3
 PROC_INT_ENDO_CAD_001_002,int,standard,Carlos 23 años,Manejo de la CAD: Líquidos Primero,10,3
 PROC_INT_ENDO_CAD_001_003,int,standard,Rosa 24 años,Manejo de la CAD: Líquidos Primero,10,3
@@ -222,21 +222,21 @@ PROC_INT_SCA_IAM_001_012,int,hard,Laura 68 años,Ventana Reperfusión SCA,10,3
 PROC_INT_SCA_IAM_001_013,int,hard,Fernando 68 años,Ventana Reperfusión SCA,10,3
 PROC_INT_SCA_IAM_001_014,int,hard,Pedro 58 años,Ventana Reperfusión SCA,10,3
 PROC_INT_SCA_IAM_001_015,int,hard,Carlos 68 años,Ventana Reperfusión SCA,10,3
-PROC_INT_TEP_001_001,int,hard,Rosa 47 años,TEP: Wells y Virchow,10,3
-PROC_INT_TEP_001_002,int,hard,Fernando 70 años,Diagnóstico de TEP: AngioTAC,10,3
-PROC_INT_TEP_001_003,int,hard,Pedro 56 años,Diagnóstico de TEP: AngioTAC,10,3
-PROC_INT_TEP_001_004,int,hard,Carmen 55 años,Diagnóstico de TEP: AngioTAC,10,3
-PROC_INT_TEP_001_005,int,hard,Luis 61 años,Diagnóstico de TEP: AngioTAC,10,3
-PROC_INT_TEP_001_006,int,hard,Carmen 48 años,Diagnóstico de TEP: AngioTAC,10,3
-PROC_INT_TEP_001_007,int,hard,Miguel 64 años,Diagnóstico de TEP: AngioTAC,10,3
-PROC_INT_TEP_001_008,int,hard,Miguel 54 años,Diagnóstico de TEP: AngioTAC,10,3
-PROC_INT_TEP_001_009,int,hard,Carmen 51 años,Diagnóstico de TEP: AngioTAC,10,3
-PROC_INT_TEP_001_010,int,hard,Ana 64 años,Diagnóstico de TEP: AngioTAC,10,3
-PROC_INT_TEP_001_011,int,hard,Pedro 44 años,Diagnóstico de TEP: AngioTAC,10,3
-PROC_INT_TEP_001_012,int,hard,José 64 años,Diagnóstico de TEP: AngioTAC,10,3
-PROC_INT_TEP_001_013,int,hard,María 41 años,Diagnóstico de TEP: AngioTAC,10,3
-PROC_INT_TEP_001_014,int,hard,Rosa 40 años,Diagnóstico de TEP: AngioTAC,10,3
-PROC_INT_TEP_001_015,int,hard,Laura 63 años,Diagnóstico de TEP: AngioTAC,10,3
+PROC_INT_TEP_001_001,int,hard,Rosa 47 años,TEP: Wells y Virchow,14,3
+PROC_INT_TEP_001_002,int,hard,Fernando 70 años,Diagnóstico de TEP: AngioTAC,14,3
+PROC_INT_TEP_001_003,int,hard,Pedro 56 años,Diagnóstico de TEP: AngioTAC,14,3
+PROC_INT_TEP_001_004,int,hard,Carmen 55 años,Diagnóstico de TEP: AngioTAC,14,3
+PROC_INT_TEP_001_005,int,hard,Luis 61 años,Diagnóstico de TEP: AngioTAC,14,3
+PROC_INT_TEP_001_006,int,hard,Carmen 48 años,Diagnóstico de TEP: AngioTAC,14,3
+PROC_INT_TEP_001_007,int,hard,Miguel 64 años,Diagnóstico de TEP: AngioTAC,14,3
+PROC_INT_TEP_001_008,int,hard,Miguel 54 años,Diagnóstico de TEP: AngioTAC,14,3
+PROC_INT_TEP_001_009,int,hard,Carmen 51 años,Diagnóstico de TEP: AngioTAC,14,3
+PROC_INT_TEP_001_010,int,hard,Ana 64 años,Diagnóstico de TEP: AngioTAC,14,3
+PROC_INT_TEP_001_011,int,hard,Pedro 44 años,Diagnóstico de TEP: AngioTAC,14,3
+PROC_INT_TEP_001_012,int,hard,José 64 años,Diagnóstico de TEP: AngioTAC,14,3
+PROC_INT_TEP_001_013,int,hard,María 41 años,Diagnóstico de TEP: AngioTAC,14,3
+PROC_INT_TEP_001_014,int,hard,Rosa 40 años,Diagnóstico de TEP: AngioTAC,14,3
+PROC_INT_TEP_001_015,int,hard,Laura 63 años,Diagnóstico de TEP: AngioTAC,14,3
 PROC_NEUR_HEADACHE_THUNDER_001_001,neur,hard,Juan 36 años,HSA: Pasos Diagnósticos,10,3
 PROC_NEUR_HEADACHE_THUNDER_001_002,neur,hard,Ana 34 años,Cefalea en Trueno,10,3
 PROC_NEUR_HEADACHE_THUNDER_001_003,neur,hard,Laura 34 años,Cefalea en Trueno,10,3
@@ -252,21 +252,21 @@ PROC_NEUR_HEADACHE_THUNDER_001_012,neur,hard,Fernando 39 años,Cefalea en Trueno
 PROC_NEUR_HEADACHE_THUNDER_001_013,neur,hard,Fernando 38 años,Cefalea en Trueno,10,3
 PROC_NEUR_HEADACHE_THUNDER_001_014,neur,hard,Laura 46 años,Cefalea en Trueno,10,3
 PROC_NEUR_HEADACHE_THUNDER_001_015,neur,hard,Marta 38 años,Cefalea en Trueno,10,3
-PROC_NEUR_STROKE_ISCHEMIC_001_001,neur,hard,Carmen 63 años,EVC Isquémico: Tiempos,10,3
-PROC_NEUR_STROKE_ISCHEMIC_001_002,neur,hard,Rosa 70 años,Ventana de rTPA,10,3
-PROC_NEUR_STROKE_ISCHEMIC_001_003,neur,hard,María 60 años,Ventana de rTPA,10,3
-PROC_NEUR_STROKE_ISCHEMIC_001_004,neur,hard,Pedro 65 años,Ventana de rTPA,10,3
-PROC_NEUR_STROKE_ISCHEMIC_001_005,neur,hard,Pedro 57 años,Ventana de rTPA,10,3
-PROC_NEUR_STROKE_ISCHEMIC_001_006,neur,hard,Marta 59 años,Ventana de rTPA,10,3
-PROC_NEUR_STROKE_ISCHEMIC_001_007,neur,hard,Fernando 64 años,Ventana de rTPA,10,3
-PROC_NEUR_STROKE_ISCHEMIC_001_008,neur,hard,Rosa 68 años,Ventana de rTPA,10,3
-PROC_NEUR_STROKE_ISCHEMIC_001_009,neur,hard,Fernando 69 años,Ventana de rTPA,10,3
-PROC_NEUR_STROKE_ISCHEMIC_001_010,neur,hard,María 64 años,Ventana de rTPA,10,3
-PROC_NEUR_STROKE_ISCHEMIC_001_011,neur,hard,Rosa 79 años,Ventana de rTPA,10,3
-PROC_NEUR_STROKE_ISCHEMIC_001_012,neur,hard,Marta 66 años,Ventana de rTPA,10,3
-PROC_NEUR_STROKE_ISCHEMIC_001_013,neur,hard,Luis 64 años,Ventana de rTPA,10,3
-PROC_NEUR_STROKE_ISCHEMIC_001_014,neur,hard,Carlos 62 años,Ventana de rTPA,10,3
-PROC_NEUR_STROKE_ISCHEMIC_001_015,neur,hard,José 68 años,Ventana de rTPA,10,3
+PROC_NEUR_STROKE_ISCHEMIC_001_001,neur,hard,Carmen 63 años,EVC Isquémico: Tiempos,14,3
+PROC_NEUR_STROKE_ISCHEMIC_001_002,neur,hard,Rosa 70 años,Ventana de rTPA,14,3
+PROC_NEUR_STROKE_ISCHEMIC_001_003,neur,hard,María 60 años,Ventana de rTPA,14,3
+PROC_NEUR_STROKE_ISCHEMIC_001_004,neur,hard,Pedro 65 años,Ventana de rTPA,14,3
+PROC_NEUR_STROKE_ISCHEMIC_001_005,neur,hard,Pedro 57 años,Ventana de rTPA,14,3
+PROC_NEUR_STROKE_ISCHEMIC_001_006,neur,hard,Marta 59 años,Ventana de rTPA,14,3
+PROC_NEUR_STROKE_ISCHEMIC_001_007,neur,hard,Fernando 64 años,Ventana de rTPA,14,3
+PROC_NEUR_STROKE_ISCHEMIC_001_008,neur,hard,Rosa 68 años,Ventana de rTPA,14,3
+PROC_NEUR_STROKE_ISCHEMIC_001_009,neur,hard,Fernando 69 años,Ventana de rTPA,14,3
+PROC_NEUR_STROKE_ISCHEMIC_001_010,neur,hard,María 64 años,Ventana de rTPA,14,3
+PROC_NEUR_STROKE_ISCHEMIC_001_011,neur,hard,Rosa 79 años,Ventana de rTPA,14,3
+PROC_NEUR_STROKE_ISCHEMIC_001_012,neur,hard,Marta 66 años,Ventana de rTPA,14,3
+PROC_NEUR_STROKE_ISCHEMIC_001_013,neur,hard,Luis 64 años,Ventana de rTPA,14,3
+PROC_NEUR_STROKE_ISCHEMIC_001_014,neur,hard,Carlos 62 años,Ventana de rTPA,14,3
+PROC_NEUR_STROKE_ISCHEMIC_001_015,neur,hard,José 68 años,Ventana de rTPA,14,3
 PROC_OBG_HEMORRHAGE_HPP_001_001,obg,hard,Sra. Elena 28 años,HPP: El Minuto de Oro,15,3
 PROC_OBG_HEMORRHAGE_HPP_001_002,obg,hard,Sra. Ana 32 años,HPP: El Minuto de Oro,15,3
 PROC_OBG_HEMORRHAGE_HPP_001_003,obg,hard,Sra. Patricia 25 años,HPP: El Minuto de Oro,15,3
@@ -517,26 +517,26 @@ PROC_PED_EXANT_VARICELLA_001_012,ped,standard,Pablo 2 anos,Varicela: Pleomorfism
 PROC_PED_EXANT_VARICELLA_001_013,ped,standard,Carmen 4 años,Varicela: Pleomorfismo y Reye,11,3
 PROC_PED_EXANT_VARICELLA_001_014,ped,standard,Jorge 3 anos,Varicela: Pleomorfismo y Reye,11,3
 PROC_PED_EXANT_VARICELLA_001_015,ped,standard,Rosa 4 años,Varicela: Pleomorfismo y Reye,11,3
-PROC_PED_GAST_DEHYDRATION_001_001,ped,standard,Iker 9 meses,Planes de Rehidratación,11,3
-PROC_PED_GAST_DEHYDRATION_001_002,ped,standard,Valentina 6 meses,Planes de Rehidratación,11,3
-PROC_PED_GAST_DEHYDRATION_001_003,ped,standard,Diego 2 anos,Planes de Rehidratación,11,3
-PROC_PED_GAST_DEHYDRATION_001_004,ped,standard,Mariana 1 ano,Planes de Rehidratación,11,3
-PROC_PED_GAST_DEHYDRATION_001_005,ped,standard,Sofia 3 anos,Planes de Rehidratación,11,3
-PROC_PED_GIT_DEHYDRATION_001_001,ped,standard,Iker 9 meses,Planes de Rehidratación,11,3
-PROC_PED_GIT_DEHYDRATION_001_002,ped,standard,Valentina 6 meses,Planes de Rehidratación,11,3
-PROC_PED_GIT_DEHYDRATION_001_003,ped,standard,Diego 2 anos,Planes de Rehidratación,11,3
-PROC_PED_GIT_DEHYDRATION_001_004,ped,standard,Mariana 1 ano,Planes de Rehidratación,11,3
-PROC_PED_GIT_DEHYDRATION_001_005,ped,standard,Sofia 3 anos,Planes de Rehidratación,11,3
-PROC_PED_GIT_DEHYDRATION_001_006,ped,standard,Carlos 8 meses,Planes de Rehidratación,11,3
-PROC_PED_GIT_DEHYDRATION_001_007,ped,standard,Elena 5 anos,Planes de Rehidratación,11,3
-PROC_PED_GIT_DEHYDRATION_001_008,ped,standard,Ricardo 18 meses,Planes de Rehidratación,11,3
-PROC_PED_GIT_DEHYDRATION_001_009,ped,standard,Ana 10 meses,Planes de Rehidratación,11,3
-PROC_PED_GIT_DEHYDRATION_001_010,ped,standard,Miguel 4 anos,Planes de Rehidratación,11,3
-PROC_PED_GIT_DEHYDRATION_001_011,ped,standard,Lucia 7 meses,Planes de Rehidratación,11,3
-PROC_PED_GIT_DEHYDRATION_001_012,ped,standard,Pablo 2 anos,Planes de Rehidratación,11,3
-PROC_PED_GIT_DEHYDRATION_001_013,ped,standard,Carmen 14 meses,Planes de Rehidratación,11,3
-PROC_PED_GIT_DEHYDRATION_001_014,ped,standard,Jorge 3 anos,Planes de Rehidratación,11,3
-PROC_PED_GIT_DEHYDRATION_001_015,ped,standard,Rosa 11 meses,Planes de Rehidratación,11,3
+PROC_PED_GAST_DEHYDRATION_001_001,ped,standard,Iker 9 meses,Planes de Rehidratación,15,3
+PROC_PED_GAST_DEHYDRATION_001_002,ped,standard,Valentina 6 meses,Planes de Rehidratación,15,3
+PROC_PED_GAST_DEHYDRATION_001_003,ped,standard,Diego 2 anos,Planes de Rehidratación,15,3
+PROC_PED_GAST_DEHYDRATION_001_004,ped,standard,Mariana 1 ano,Planes de Rehidratación,15,3
+PROC_PED_GAST_DEHYDRATION_001_005,ped,standard,Sofia 3 anos,Planes de Rehidratación,15,3
+PROC_PED_GIT_DEHYDRATION_001_001,ped,standard,Iker 9 meses,Planes de Rehidratación,15,3
+PROC_PED_GIT_DEHYDRATION_001_002,ped,standard,Valentina 6 meses,Planes de Rehidratación,15,3
+PROC_PED_GIT_DEHYDRATION_001_003,ped,standard,Diego 2 anos,Planes de Rehidratación,15,3
+PROC_PED_GIT_DEHYDRATION_001_004,ped,standard,Mariana 1 ano,Planes de Rehidratación,15,3
+PROC_PED_GIT_DEHYDRATION_001_005,ped,standard,Sofia 3 anos,Planes de Rehidratación,15,3
+PROC_PED_GIT_DEHYDRATION_001_006,ped,standard,Carlos 8 meses,Planes de Rehidratación,15,3
+PROC_PED_GIT_DEHYDRATION_001_007,ped,standard,Elena 5 anos,Planes de Rehidratación,15,3
+PROC_PED_GIT_DEHYDRATION_001_008,ped,standard,Ricardo 18 meses,Planes de Rehidratación,15,3
+PROC_PED_GIT_DEHYDRATION_001_009,ped,standard,Ana 10 meses,Planes de Rehidratación,15,3
+PROC_PED_GIT_DEHYDRATION_001_010,ped,standard,Miguel 4 anos,Planes de Rehidratación,15,3
+PROC_PED_GIT_DEHYDRATION_001_011,ped,standard,Lucia 7 meses,Planes de Rehidratación,15,3
+PROC_PED_GIT_DEHYDRATION_001_012,ped,standard,Pablo 2 anos,Planes de Rehidratación,15,3
+PROC_PED_GIT_DEHYDRATION_001_013,ped,standard,Carmen 14 meses,Planes de Rehidratación,15,3
+PROC_PED_GIT_DEHYDRATION_001_014,ped,standard,Jorge 3 anos,Planes de Rehidratación,15,3
+PROC_PED_GIT_DEHYDRATION_001_015,ped,standard,Rosa 11 meses,Planes de Rehidratación,15,3
 PROC_PED_GROWTH_TALLY_001_001,ped,standard,Carmen 5 anos,Indicadores OMS: T/E = Cronico,10,3
 PROC_PED_NEO_APGAR_001_001,ped,standard,Fernando 0 anos,Minuto de Oro Neonatal,10,3
 PROC_PED_NEO_APGAR_001_002,ped,standard,Maria 0 anos,APGAR vs Silverman,10,3

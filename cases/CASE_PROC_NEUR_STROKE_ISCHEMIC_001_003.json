@@ -14,11 +14,11 @@
             "ui_icon": "heartbeat",
             "category": "Signos Vitales",
             "card_text": "TA 170/90 mmHg, FC 110 lpm (irregular), Temp 36.6°C",
-            "expected_action": "discard",
+            "expected_action": "keep",
             "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Mendoza: TA menor de 185/110 permite iniciar la trombólisis sin antihipertensivo previo; el pulso irregular sugiere fibrilación auricular como fuente cardioembólica."
             }
         },
         {
@@ -31,6 +31,21 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: Muy bien. Una escala NIHSS entre 4 y 25 puntos suele ser la ventana ideal para rTPA."
+            }
+        },
+        {
+            "card_id": "dx_2",
+            "ui_icon": "pill",
+            "category": "meds",
+            "card_text": "Aspirina junto con el rTPA: Administrarla al mismo tiempo que la alteplasa para potenciar la reperfusión.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Mendoza: Tras la alteplasa, la aspirina se difiere 24 horas para no aumentar el riesgo de hemorragia."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         },
         {
@@ -47,6 +62,18 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
+            }
+        },
+        {
+            "card_id": "dx_3",
+            "ui_icon": "droplet",
+            "category": "meds",
+            "card_text": "Heparina Plena Urgente: Indicada de rutina en el EVC isquémico agudo para evitar la progresión.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: La anticoagulación urgente no está indicada en la mayoría de los EVC isquémicos agudos: no previene recurrencia y aumenta el sangrado."
             }
         },
         {
@@ -86,6 +113,18 @@
             }
         },
         {
+            "card_id": "dx_1",
+            "ui_icon": "heart",
+            "category": "vitals",
+            "card_text": "Bajar la TA a menos de 140/90: Requisito antes de iniciar la trombólisis.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: Para trombolizar basta con TA menor de 185/110 y mantenerla menor de 180/105 en las siguientes 24 horas; bajarla de más reduce la perfusión de la penumbra."
+            }
+        },
+        {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
@@ -100,6 +139,18 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
+            }
+        },
+        {
+            "card_id": "dx_4",
+            "ui_icon": "clock",
+            "category": "Manejo Inicial",
+            "card_text": "Esperar la Resonancia: Obtener RM antes de decidir la trombólisis.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: La TC simple y la glucosa son los únicos estudios necesarios antes de la alteplasa; esperar la RM consume la ventana terapéutica."
             }
         },
         {

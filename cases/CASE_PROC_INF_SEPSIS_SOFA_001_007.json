@@ -122,6 +122,21 @@
             }
         },
         {
+            "card_id": "dx_2",
+            "ui_icon": "clock",
+            "category": "meds",
+            "card_text": "Esperar los Cultivos: No iniciar antibióticos hasta tener el resultado de los hemocultivos.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Navarro: Los cultivos se toman antes del antibiótico, pero sin retrasarlo: en choque séptico el antibiótico va dentro de la primera hora."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
             "card_id": "c_7",
             "ui_icon": "zap",
             "category": "meds",
@@ -135,6 +150,30 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
+            }
+        },
+        {
+            "card_id": "dx_3",
+            "ui_icon": "droplet",
+            "category": "labs",
+            "card_text": "Almidones (Hidroxietil Almidón): Coloide de elección para la reanimación inicial.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Los almidones aumentan la lesión renal y la mortalidad; se reanima con cristaloides balanceados."
+            }
+        },
+        {
+            "card_id": "dx_1",
+            "ui_icon": "activity",
+            "category": "meds",
+            "card_text": "Dopamina: Vasopresor de primera línea en el choque séptico.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: La norepinefrina es el vasopresor de primera línea; la dopamina se asocia a más arritmias."
             }
         },
         {
@@ -167,6 +206,18 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
+            }
+        },
+        {
+            "card_id": "dx_4",
+            "ui_icon": "target",
+            "category": "Definición Sepsis-3",
+            "card_text": "Meta de PAM de 85 mmHg: Objetivo inicial de la reanimación en todo paciente con choque séptico.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: La meta inicial recomendada es una PAM de 65 mmHg; metas más altas no mejoran la supervivencia."
             }
         }
     ],

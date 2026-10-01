@@ -75,7 +75,10 @@ def main() -> int:
             # A comment that opens by approving the discard ("¡Bien! Un BI-RADS 5
             # exige acción inmediata") urges action *elsewhere*; not a contradiction.
             approves = APPROVES_RE.match(comment) or re.search(r"no requiere|no muestran", comment, re.I)
-            if action == "discard" and ACTION_URGED_RE.search(comment) and not approves:
+            # Curated distractors (dx_*, content_drafts/) explain the right action
+            # in their comment by design and each carries a source.
+            curated = str(card.get("card_id", "")).startswith("dx_")
+            if action == "discard" and ACTION_URGED_RE.search(comment) and not approves and not curated:
                 rows.append({"tipo": "contradiccion", **base,
                              "motivo": "Carta de descarte cuyo comentario pide actuar: ¿debería ser 'keep'?"})
             if re.fullmatch(r"(?:\s*(?:TA|FC|FR|Temp|SatO2)\s+N/A,?)+\s*", text):

@@ -90,6 +90,45 @@
             }
         },
         {
+            "card_id": "dx_1",
+            "ui_icon": "zap",
+            "category": "meds",
+            "card_text": "Trombólisis en TEP de Bajo Riesgo: Indicada aunque el paciente esté estable y con PESI de 0 puntos.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Mendoza: La trombólisis sistémica se reserva para el TEP de alto riesgo (inestabilidad hemodinámica); en bajo riesgo solo añade sangrado."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
+            "card_id": "dx_2",
+            "ui_icon": "search",
+            "category": "Paraclínicos",
+            "card_text": "Dímero D Normal en Probabilidad Alta: Descarta TEP aunque la sospecha clínica sea alta.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: En probabilidad clínica alta no se usa el dímero D; un resultado normal no excluye TEP y se va directo a la angiotomografía."
+            }
+        },
+        {
+            "card_id": "dx_4",
+            "ui_icon": "pill",
+            "category": "meds",
+            "card_text": "Warfarina sola desde el Día 1: Iniciar antagonista de vitamina K sin heparina en el TEP agudo.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: La warfarina debe solaparse con anticoagulación parenteral hasta alcanzar INR terapéutico; sola al inicio no protege y puede ser procoagulante."
+            }
+        },
+        {
             "card_id": "c_9",
             "ui_icon": "shield",
             "category": "Profilaxis Secundaria",
@@ -99,6 +138,18 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Correcto. Es una medida mecánica de protección cuando falla la farmacológica."
+            }
+        },
+        {
+            "card_id": "dx_3",
+            "ui_icon": "image",
+            "category": "imaging",
+            "card_text": "Radiografía de Tórax Normal: Descarta tromboembolia pulmonar.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: La radiografía suele ser normal en el TEP; si lo es, se continúa con angiotomografía o gammagrafía de perfusión."
             }
         },
         {

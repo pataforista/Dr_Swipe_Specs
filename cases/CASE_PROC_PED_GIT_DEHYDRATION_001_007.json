@@ -25,6 +25,21 @@
             }
         },
         {
+            "card_id": "dx_4",
+            "ui_icon": "alert-triangle",
+            "category": "meds",
+            "card_text": "Choque por Deshidratación: Iniciar suero oral por sonda nasogástrica como primera opción en lugar de líquidos IV.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Navarro: El choque se trata con líquidos IV (o intraóseos) de inmediato; la sonda solo es un recurso si no hay acceso vascular posible."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
             "card_id": "c_3",
             "ui_icon": "droplet",
             "category": "VHG",
@@ -49,6 +64,18 @@
             }
         },
         {
+            "card_id": "dx_3",
+            "ui_icon": "pill",
+            "category": "meds",
+            "card_text": "Antibiótico Empírico de Rutina: Indicado en toda diarrea aguda acuosa del lactante.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Los antibióticos se reservan para la diarrea con sangre (disentería), el cólera grave o infecciones asociadas; no para la diarrea acuosa común."
+            }
+        },
+        {
             "card_id": "c_5",
             "ui_icon": "activity",
             "category": "imaging",
@@ -58,6 +85,30 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Correcto! Se realiza en la unidad de salud bajo supervisión médica."
+            }
+        },
+        {
+            "card_id": "dx_2",
+            "ui_icon": "droplet",
+            "category": "VHG",
+            "card_text": "Refrescos o Bebidas Deportivas: Alternativa equivalente al Vida Suero Oral para rehidratar.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Su alta osmolaridad y poco sodio pueden empeorar la diarrea; se rehidrata con suero oral de baja osmolaridad."
+            }
+        },
+        {
+            "card_id": "dx_1",
+            "ui_icon": "coffee",
+            "category": "Gastroenteritis",
+            "card_text": "Suspender la Alimentación: Ayuno hasta que cedan las evacuaciones para dejar descansar el intestino.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: La OMS indica continuar la alimentación, incluida la lactancia, durante la diarrea; el ayuno empeora el estado nutricional."
             }
         },
         {

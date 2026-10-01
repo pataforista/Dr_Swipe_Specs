@@ -78,6 +78,18 @@
             }
         },
         {
+            "card_id": "dx_3",
+            "ui_icon": "activity",
+            "category": "labs",
+            "card_text": "CTOG con 100 g: Carga oral de 100 g de glucosa para diagnosticar DM2 en el adulto no embarazado.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: El diagnóstico de DM2 usa una carga de 75 g de glucosa anhidra y medición a las 2 horas."
+            }
+        },
+        {
             "card_id": "c_5",
             "ui_icon": "beaker",
             "category": "labs",
@@ -87,6 +99,18 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Correcto. Es la prueba más sensible para detectar diabetes en etapas tempranas."
+            }
+        },
+        {
+            "card_id": "dx_1",
+            "ui_icon": "file-text",
+            "category": "labs",
+            "card_text": "Glucosa en Ayuno Única: Una sola cifra de 128 mg/dL en un paciente asintomático confirma el diagnóstico.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: Sin hiperglucemia inequívoca, el diagnóstico requiere confirmación con una segunda prueba (repetida o distinta)."
             }
         },
         {
@@ -114,6 +138,18 @@
             }
         },
         {
+            "card_id": "dx_2",
+            "ui_icon": "droplet",
+            "category": "labs",
+            "card_text": "HbA1c en Hemoglobinopatías: Es igual de confiable para diagnosticar diabetes en anemia, hemoglobinopatías o embarazo.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: Cuando la vida del eritrocito está alterada (hemoglobinopatías, anemia, embarazo) la HbA1c falla; se diagnostica con glucosa plasmática."
+            }
+        },
+        {
             "card_id": "c_9",
             "ui_icon": "calendar",
             "category": "Manejo Crónico",
@@ -123,6 +159,18 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Mendoza: Bien. El control de la albuminuria es tan importante como el control de la glucemia."
+            }
+        },
+        {
+            "card_id": "dx_4",
+            "ui_icon": "pill",
+            "category": "meds",
+            "card_text": "Insulina para Todos: Tratamiento inicial obligatorio en todo paciente con DM2 recién diagnosticada.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: Se inicia con metformina y cambios de estilo de vida; la insulina temprana se reserva para hiperglucemia grave o datos de catabolismo."
             }
         },
         {

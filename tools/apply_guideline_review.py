@@ -18,6 +18,7 @@ Sources:
 - ATLS 10th ed. (tension pneumothorax is a clinical diagnosis).
 - Tokyo Guidelines 2018 (cholangitis grade II: T >=39 C; grade III: hypotension).
 - BTS CAP in children (SpO2 <=92%: admit and give oxygen).
+- AHA/ASA 2019 acute ischaemic stroke (BP <185/110 to start alteplase).
 - Gibbs criteria / ACOG Committee Opinion 712 (maternal fever is the required
   criterion of intraamniotic infection; maternal tachycardia supports it).
 
@@ -56,6 +57,8 @@ RULES = [
      "comment": "Temperatura de 39 °C o más es criterio de colangitis moderada (Tokyo 2018 grado II): considera drenaje biliar temprano."}, 1),
     (r"^PROC_OBS_INFECTION_CORIO_", r"^TA 110/70 mmHg, FC 105 lpm, Temp 38\.5", {**KEEP,
      "comment": "Castillo: Fiebre materna de 38 °C o más es el criterio indispensable de Gibbs; con taquicardia materna mayor de 100 lpm apoya la corioamnionitis."}, 15),
+    (r"^PROC_NEUR_STROKE_ISCHEMIC_", r"^TA 170/90 mmHg, FC 110 lpm \(irregular\)", {**KEEP,
+     "comment": "Mendoza: TA menor de 185/110 permite iniciar la trombólisis sin antihipertensivo previo; el pulso irregular sugiere fibrilación auricular como fuente cardioembólica."}, 15),
     (r"^PROC_PED_RESPIRATORY_PNEUMONIA_", r"SatO2 91%", {**KEEP,
      "comment": "Navarro: SatO2 de 92% o menos en neumonía pediátrica indica hospitalización y oxígeno suplementario."}, 1),
 ]
