@@ -35,7 +35,7 @@ Las familias de 15 casos (vaginitis, meningitis, eritema infeccioso, neumotórax
 ## 3. Contenido: pendientes que no son distractores
 
 - **Estructura repetida:** el 91% de las cartas de las familias con varias variantes aparece idéntico en todas ellas y cambian solo el escenario. Evaluar si 15 variantes aportan; podría bastar con 6 a 8 y más variedad de pacientes.
-- **Mazos de 15 cartas:** el límite del validador impide más distractores en las familias llenas. Decidir si se sube a 18 (cambia el tiempo por caso) o si se reemplazan cartas de aceptar redundantes.
+- **Mazos de hasta 18 cartas (hecho):** el límite subió de 15 a 18 en el validador, el esquema Zod de la app y `insert_distractors.py`; el tope del reloj subió de 130 a 180 s para mantener ~10 s por carta. Falta usar el espacio nuevo: las familias llenas pueden recibir más distractores en el lote 5.
 - **Comentarios del mentor:** 813 comentarios únicos para ~7,100 cartas; los de la carta plantilla de vitales se repiten cientos de veces. Redactar variantes por especialidad.
 - **Cartas "aceptar" que repiten el escenario:** el jugador acierta sin pensar. Marcarlas para revisión (el informe ya lista los vitales; falta un criterio para el resto).
 - **Preguntas del jefe (Shock Room):** auditar las 1,797 preguntas con el mismo método de fuentes que las cartas.
@@ -64,10 +64,9 @@ Prioridad por impacto y esfuerzo:
 2. Mientras tanto, lote 5 en un PR aparte (no bloquea el primero).
 3. Shock Room y HUD (jugabilidad) en otro PR.
 4. CI y mantenimiento junto con el PR del lote 5.
-5. Decidir sobre estructura repetida y límite de cartas tras ver la revisión clínica.
+5. Decidir sobre la estructura repetida de las familias tras ver la revisión clínica.
 
 ## Decisiones que necesito de ti
 
 - ¿Un PR o tres?
-- ¿Subimos el límite de cartas por caso, o preferimos reemplazar cartas redundantes?
-- ¿Quién hace la revisión clínica de la parte C, y en qué formato prefiere leerla (JSON de borradores, CSV, o este plan)?
+- ¿Quién hace la revisión clínica de la parte C? `REVISION_COMPLETA_CASOS.csv` trae todas las cartas con lo que cambió y su fuente.

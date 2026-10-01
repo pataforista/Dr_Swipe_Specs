@@ -1,39 +1,51 @@
 {
-    "_descripcion": "Lote 1 de cartas de descarte (distractores) para las familias con menos descarte. Cada carta es una afirmación plausible pero incorrecta, con el comentario que corrige el dato y la fuente que lo respalda. Las cartas con \"reserva\": true no se insertan (el validador limita los mazos a 15 cartas). Se insertan con tools/insert_distractors.py tras la revisión clínica.",
+    "_descripcion": "Lote 1 de cartas de descarte (distractores) para las familias con menos descarte. Cada carta es una afirmación plausible pero incorrecta, con el comentario que corrige el dato y la fuente que lo respalda. Una carta con \"reserva\": true no se inserta hasta tener fuente confirmada. Se insertan con tools/insert_distractors.py (límite de 18 cartas por caso).",
     "familias": {
         "PROC_STATS_DX_METRICS_001": [
             {
-                "card_id": "dx_1", "ui_icon": "search", "category": "Sensibilidad",
+                "card_id": "dx_1",
+                "ui_icon": "search",
+                "category": "Sensibilidad",
                 "card_text": "Sensibilidad y Prevalencia: Si la prevalencia de la enfermedad aumenta, la sensibilidad de la prueba también aumenta.",
                 "comment": "Navarro: Sensibilidad y especificidad son propiedades de la prueba y no cambian con la prevalencia; lo que cambia con ella son los valores predictivos.",
                 "fuente": "CEBM Oxford, SpPin and SnNout; propiedades intrínsecas de la prueba"
             },
             {
-                "card_id": "dx_2", "ui_icon": "percent", "category": "Valor Predictivo (+)",
+                "card_id": "dx_2",
+                "ui_icon": "percent",
+                "category": "Valor Predictivo (+)",
                 "card_text": "Valor Predictivo Positivo (VPP): Se calcula como VP / (VP + FN).",
                 "comment": "Navarro: VP / (VP + FN) es la sensibilidad. El VPP es VP / (VP + FP): de los positivos, cuántos están realmente enfermos.",
                 "fuente": "Definiciones estándar de exactitud diagnóstica"
             },
             {
-                "card_id": "dx_3", "ui_icon": "check-square", "category": "Especificidad",
+                "card_id": "dx_3",
+                "ui_icon": "check-square",
+                "category": "Especificidad",
                 "card_text": "Prueba Muy Específica: Si su resultado es NEGATIVO, descarta la enfermedad.",
                 "comment": "Navarro: Una prueba muy sensible, si es negativa, descarta (SnNout); una muy específica, si es positiva, confirma (SpPin).",
                 "fuente": "CEBM Oxford, SpPin and SnNout"
             },
             {
-                "card_id": "dx_4", "ui_icon": "activity", "category": "Verosimilitud",
+                "card_id": "dx_4",
+                "ui_icon": "activity",
+                "category": "Verosimilitud",
                 "card_text": "LR (+) igual a 1: Un cociente de probabilidad positivo de 1 confirma el diagnóstico.",
                 "comment": "Navarro: Un LR de 1 no modifica la probabilidad: el resultado es igual de frecuente en enfermos y en sanos. Para confirmar buscamos LR (+) altos, mayores de 10.",
                 "fuente": "Interpretación de razones de verosimilitud (LR = 1: sin cambio en la probabilidad)"
             },
             {
-                "card_id": "dx_5", "ui_icon": "trending-down", "category": "Curva ROC",
+                "card_id": "dx_5",
+                "ui_icon": "trending-down",
+                "category": "Curva ROC",
                 "card_text": "Área bajo la curva de 0.5: Indica una prueba con capacidad discriminativa excelente.",
                 "comment": "Navarro: Un área de 0.5 equivale al azar, como lanzar una moneda. La discriminación mejora cuanto más se acerca a 1.0.",
                 "fuente": "Definición de la curva ROC (ya presente en la carta c_8 del mismo mazo)"
             },
             {
-                "card_id": "dx_6", "ui_icon": "target", "category": "Diagnóstico",
+                "card_id": "dx_6",
+                "ui_icon": "target",
+                "category": "Diagnóstico",
                 "card_text": "Prueba de Tamizaje: Para tamizaje poblacional se elige la prueba más específica, aunque sea poco sensible.",
                 "comment": "Navarro: En tamizaje se prioriza la sensibilidad para no dejar enfermos sin detectar; la especificidad se busca en la prueba confirmatoria.",
                 "fuente": "CEBM Oxford; principio de pruebas de tamizaje (minimizar falsos negativos)"
@@ -41,69 +53,92 @@
         ],
         "PROC_OBS_INFECTION_CORIO_001": [
             {
-                "card_id": "dx_1", "ui_icon": "refresh-cw", "category": "Interrupción",
+                "card_id": "dx_1",
+                "ui_icon": "refresh-cw",
+                "category": "Interrupción",
                 "card_text": "Cesárea Inmediata: El diagnóstico de corioamnionitis es, por sí solo, indicación de cesárea.",
                 "comment": "Castillo: La infección intraamniótica rara vez, si acaso, es indicación de cesárea. Se acelera el nacimiento y la vía vaginal es de elección.",
                 "fuente": "ACOG Committee Opinion 712 (2017, reafirmada 2022)"
             },
             {
-                "card_id": "dx_2", "ui_icon": "pause-circle", "category": "meds", "lethal_risk": true,
+                "card_id": "dx_2",
+                "ui_icon": "pause-circle",
+                "category": "meds",
+                "lethal_risk": true,
                 "card_text": "Tocólisis: Inhibir las contracciones para prolongar el embarazo y completar la maduración pulmonar.",
                 "comment": "Castillo: La corioamnionitis contraindica la tocólisis: prolongar el embarazo deja al feto dentro de un ambiente infectado.",
                 "fuente": "FIGO, recomendaciones de buena práctica en parto pretérmino; contraindicación absoluta de tocólisis en infección intraamniótica"
             },
             {
-                "card_id": "dx_3", "ui_icon": "clock", "category": "meds",
+                "card_id": "dx_3",
+                "ui_icon": "clock",
+                "category": "meds",
                 "card_text": "Diferir Antibióticos: Esperar hemocultivos y cultivo de líquido amniótico antes de iniciar el tratamiento.",
                 "comment": "Castillo: El diagnóstico exige iniciar antibióticos y acelerar el nacimiento; esperar cultivos retrasa el tratamiento de la madre y del feto.",
                 "fuente": "ACOG Committee Opinion 712"
             },
             {
-                "card_id": "dx_4", "ui_icon": "pill", "category": "meds",
+                "card_id": "dx_4",
+                "ui_icon": "pill",
+                "category": "meds",
                 "card_text": "Clindamicina en Monoterapia: Esquema de primera línea para corioamnionitis durante el trabajo de parto.",
                 "comment": "Castillo: La primera línea es ampicilina más gentamicina. La cobertura de anaerobios (clindamicina o metronidazol) se agrega si la paciente va a cesárea.",
                 "fuente": "ACOG Committee Opinion 712; Merck Manual, esquemas para infección intraamniótica"
             },
             {
-                "card_id": "dx_5", "ui_icon": "search", "category": "Diagnóstico",
+                "card_id": "dx_5",
+                "ui_icon": "search",
+                "category": "Diagnóstico",
                 "card_text": "Amniocentesis Obligatoria: Se requiere un cultivo de líquido amniótico positivo antes de iniciar el tratamiento.",
                 "comment": "Castillo: El diagnóstico es clínico (fiebre materna más otros criterios) y el tratamiento no espera a la amniocentesis.",
                 "fuente": "ACOG Committee Opinion 712 (infección sospechada vs. confirmada)"
             },
             {
-                "card_id": "dx_6", "ui_icon": "thermometer", "category": "meds", "reserva": true,
+                "card_id": "dx_6",
+                "ui_icon": "thermometer",
+                "category": "meds",
                 "card_text": "Antipiréticos como Tratamiento: Controlar la fiebre con paracetamol es suficiente si la frecuencia cardiaca fetal se normaliza.",
                 "comment": "Castillo: El paracetamol baja la fiebre pero no trata la infección: se requieren antibióticos y acelerar el nacimiento.",
-                "fuente": "ACOG Committee Opinion 712"
+                "fuente": "ACOG Committee Opinion 712 (el diagnóstico exige antibióticos y acelerar el nacimiento)"
             }
         ],
         "PROC_ENGL_TECH_VOCABULARY_001": [
             {
-                "card_id": "dx_1", "ui_icon": "slash", "category": "False Friends",
+                "card_id": "dx_1",
+                "ui_icon": "slash",
+                "category": "False Friends",
                 "card_text": "Embarrassed: Significa 'Embarazada'.",
                 "comment": "Navarro: 'Embarrassed' significa avergonzada. Embarazada se dice 'pregnant'.",
                 "fuente": "Falso amigo clásico inglés-español"
             },
             {
-                "card_id": "dx_2", "ui_icon": "alert-circle", "category": "Trauma terms",
+                "card_id": "dx_2",
+                "ui_icon": "alert-circle",
+                "category": "Trauma terms",
                 "card_text": "Injury: Significa 'Injuria', es decir, un insulto u ofensa.",
                 "comment": "Navarro: 'Injury' es lesión o traumatismo, no una ofensa.",
                 "fuente": "Falso amigo clásico inglés-español"
             },
             {
-                "card_id": "dx_3", "ui_icon": "activity", "category": "Physical Signs",
+                "card_id": "dx_3",
+                "ui_icon": "activity",
+                "category": "Physical Signs",
                 "card_text": "Rash: Significa 'Raspón' o abrasión de la piel.",
                 "comment": "Navarro: 'Rash' es exantema o erupción cutánea. Un raspón es 'scrape' o 'abrasion'.",
                 "fuente": "Vocabulario médico inglés-español"
             },
             {
-                "card_id": "dx_4", "ui_icon": "target", "category": "Chief Complaint",
+                "card_id": "dx_4",
+                "ui_icon": "target",
+                "category": "Chief Complaint",
                 "card_text": "Physician: Significa 'Físico', el especialista en física.",
                 "comment": "Navarro: 'Physician' es médico. El especialista en física es 'physicist'.",
                 "fuente": "Falso amigo clásico inglés-español"
             },
             {
-                "card_id": "dx_5", "ui_icon": "frown", "category": "Common symptoms",
+                "card_id": "dx_5",
+                "ui_icon": "frown",
+                "category": "Common symptoms",
                 "card_text": "Sensible: 'Sensible abdomen' describe un abdomen doloroso a la palpación.",
                 "comment": "Navarro: 'Sensible' significa sensato. Un abdomen doloroso a la palpación es 'tender abdomen'.",
                 "fuente": "Falso amigo clásico inglés-español; terminología de exploración física"
@@ -111,40 +146,55 @@
         ],
         "PROC_OBG_HEMORRHAGE_HPP_001": [
             {
-                "card_id": "dx_1", "ui_icon": "shield", "category": "meds", "lethal_risk": true,
+                "card_id": "dx_1",
+                "ui_icon": "shield",
+                "category": "meds",
+                "lethal_risk": true,
                 "card_text": "Ergonovina en Preeclampsia: Uterotónico de primera elección en la puérpera hipertensa con atonía.",
                 "comment": "Vázquez: Los derivados del ergot están contraindicados en hipertensión y preeclampsia por riesgo de crisis hipertensiva; la primera línea es la oxitocina.",
                 "fuente": "OMS, uterotónicos para la prevención de HPP; ficha técnica de ergometrina"
             },
             {
-                "card_id": "dx_2", "ui_icon": "droplet", "category": "meds",
+                "card_id": "dx_2",
+                "ui_icon": "droplet",
+                "category": "meds",
                 "card_text": "Ácido Tranexámico Tardío: Ofrece el mismo beneficio si se administra después de 3 horas del parto.",
                 "comment": "Vázquez: El ácido tranexámico reduce la muerte por sangrado solo si se da en las primeras 3 horas; después no muestra beneficio (ensayo WOMAN).",
                 "fuente": "OMS 2017, recomendación sobre ácido tranexámico; ensayo WOMAN"
             },
             {
-                "card_id": "dx_3", "ui_icon": "alert-triangle", "category": "Diagnóstico", "lethal_risk": true,
+                "card_id": "dx_3",
+                "ui_icon": "alert-triangle",
+                "category": "Diagnóstico",
+                "lethal_risk": true,
                 "card_text": "Umbral de Actuación: La hemorragia posparto solo se trata cuando la pérdida estimada supera 1,500 mL.",
                 "comment": "Vázquez: La HPP se define desde 500 mL tras parto vaginal o 1,000 mL tras cesárea, o con cualquier pérdida que cause inestabilidad. Esperar a 1,500 mL es llegar tarde.",
                 "fuente": "FIGO 2022, recomendaciones de manejo de la HPP"
             },
             {
-                "card_id": "dx_4", "ui_icon": "scissors", "category": "Cirugía",
+                "card_id": "dx_4",
+                "ui_icon": "scissors",
+                "category": "Cirugía",
                 "card_text": "Histerectomía Inmediata: Primera medida ante atonía uterina para no perder tiempo.",
                 "comment": "Vázquez: El manejo es escalonado: masaje, uterotónicos, ácido tranexámico, taponamiento y suturas compresivas. La histerectomía es el último recurso.",
                 "fuente": "FIGO 2022 (manejo escalonado)"
             },
             {
-                "card_id": "dx_5", "ui_icon": "pill", "category": "meds", "lethal_risk": true, "reserva": true,
+                "card_id": "dx_5",
+                "ui_icon": "pill",
+                "category": "meds",
+                "lethal_risk": true,
                 "card_text": "Terbutalina: Útil para controlar la atonía uterina al estabilizar el miometrio.",
                 "comment": "Vázquez: La terbutalina es un tocolítico: relaja el útero y empeora la atonía.",
-                "fuente": "Farmacología de agonistas beta-2 (tocolíticos)"
+                "fuente": "Farmacología de agonistas beta-2 (relajan el útero); la hemorragia materna con inestabilidad contraindica los tocolíticos"
             },
             {
-                "card_id": "dx_6", "ui_icon": "info", "category": "Las 4 T's", "reserva": true,
+                "card_id": "dx_6",
+                "ui_icon": "info",
+                "category": "Las 4 T's",
                 "card_text": "Útero Contraído: Si el útero está bien contraído, no es necesario buscar trauma del canal ni restos placentarios.",
                 "comment": "Vázquez: Con útero contraído y sangrado persistente hay que buscar las otras T: trauma del canal, restos (tejido) y coagulopatía (trombina).",
-                "fuente": "Regla de las 4 T (ya presente en la carta c_4 del mismo mazo)"
+                "fuente": "Regla de las 4 T (Medscape, Cleveland Clinic): con útero firme y sangrado persistente se busca trauma, tejido o coagulopatía"
             }
         ]
     }

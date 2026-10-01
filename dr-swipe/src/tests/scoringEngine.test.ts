@@ -108,7 +108,7 @@ describe('scoringEngine unit tests', () => {
 
     it('clamps very short and very long decks', () => {
       expect(computeTimeLimit(3)).toBe(45);
-      expect(computeTimeLimit(20)).toBe(130);
+      expect(computeTimeLimit(20)).toBe(180);
     });
   });
 });

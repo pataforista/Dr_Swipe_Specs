@@ -182,6 +182,18 @@
             }
         },
         {
+            "card_id": "dx_6",
+            "ui_icon": "target",
+            "category": "Diagnóstico",
+            "card_text": "Prueba de Tamizaje: Para tamizaje poblacional se elige la prueba más específica, aunque sea poco sensible.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: En tamizaje se prioriza la sensibilidad para no dejar enfermos sin detectar; la especificidad se busca en la prueba confirmatoria."
+            }
+        },
+        {
             "card_id": "c_9",
             "ui_icon": "scissors",
             "category": "Punto de Corte",

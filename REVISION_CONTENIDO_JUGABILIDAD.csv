@@ -75,7 +75,6 @@ balance,PROC_SURG_TRAUMA_ATLS10_001,,,1 casos · aceptar 9 / descartar 1 (10% de
 balance,PROC_SURG_OBSTRUCTION_001,,,1 casos · aceptar 9 / descartar 2 (18% descarte),,Faltan ~4.0 cartas de descarte por caso para llegar a 40%
 balance,PROC_PED_NEO_APGAR_001,,,2 casos · aceptar 16 / descartar 4 (20% descarte),,Faltan ~3.5 cartas de descarte por caso para llegar a 40%
 balance,PROC_PED_RESPIRATORY_PNEUMONIA_001,,,2 casos · aceptar 15 / descartar 3 (17% descarte),,Faltan ~3.5 cartas de descarte por caso para llegar a 40%
-balance,PROC_OBG_HEMORRHAGE_HPP_001,,,5 casos · aceptar 55 / descartar 20 (27% descarte),,Faltan ~3.4 cartas de descarte por caso para llegar a 40%
 balance,PROC_ENDO_DM1_CAD_001,,,1 casos · aceptar 8 / descartar 2 (20% descarte),,Faltan ~3.0 cartas de descarte por caso para llegar a 40%
 balance,PROC_GAST_DIVERTICULITIS_HINCHEY_001,,,1 casos · aceptar 8 / descartar 2 (20% descarte),,Faltan ~3.0 cartas de descarte por caso para llegar a 40%
 balance,PROC_GAST_MESENTERIC_ISCHEMIA_001,,,1 casos · aceptar 8 / descartar 2 (20% descarte),,Faltan ~3.0 cartas de descarte por caso para llegar a 40%
@@ -112,9 +111,9 @@ balance,PROC_INT_HTN_DX_001,,,15 casos · aceptar 105 / descartar 45 (30% descar
 balance,PROC_INT_SCA_IAM_001,,,15 casos · aceptar 105 / descartar 45 (30% descarte),,Faltan ~1.7 cartas de descarte por caso para llegar a 40%
 balance,PROC_OBS_GDM_DX_001,,,15 casos · aceptar 105 / descartar 45 (30% descarte),,Faltan ~1.7 cartas de descarte por caso para llegar a 40%
 balance,PROC_OBS_HEM_ABORTION_001,,,15 casos · aceptar 105 / descartar 45 (30% descarte),,Faltan ~1.7 cartas de descarte por caso para llegar a 40%
-balance,PROC_OBS_INFECTION_CORIO_001,,,15 casos · aceptar 150 / descartar 75 (33% descarte),,Faltan ~1.7 cartas de descarte por caso para llegar a 40%
 balance,PROC_OBS_PREECLAMPSIA_001,,,15 casos · aceptar 105 / descartar 45 (30% descarte),,Faltan ~1.7 cartas de descarte por caso para llegar a 40%
 balance,PROC_PED_PYLORIC_SENOSIS_001,,,5 casos · aceptar 35 / descartar 15 (30% descarte),,Faltan ~1.6 cartas de descarte por caso para llegar a 40%
+balance,PROC_OBG_HEMORRHAGE_HPP_001,,,5 casos · aceptar 55 / descartar 30 (35% descarte),,Faltan ~1.4 cartas de descarte por caso para llegar a 40%
 balance,PROC_OBS_HEMORRHAGE_DPPNI_001,,,15 casos · aceptar 120 / descartar 60 (33% descarte),,Faltan ~1.3 cartas de descarte por caso para llegar a 40%
 balance,PROC_OBS_HEM_DPPNI_001,,,15 casos · aceptar 120 / descartar 60 (33% descarte),,Faltan ~1.3 cartas de descarte por caso para llegar a 40%
 balance,PROC_PED_EXANT_SCARLET_001,,,15 casos · aceptar 120 / descartar 60 (33% descarte),,Faltan ~1.3 cartas de descarte por caso para llegar a 40%
@@ -122,6 +121,7 @@ balance,PROC_INT_AMI_001,,,15 casos · aceptar 101 / descartar 49 (33% descarte)
 balance,PROC_CARD_SCA_IAMCEST_001,,,3 casos · aceptar 14 / descartar 6 (30% descarte),,Faltan ~1.0 cartas de descarte por caso para llegar a 40%
 balance,PROC_NEUR_STROKE_ISCHEMIC_001,,,15 casos · aceptar 135 / descartar 75 (36% descarte),,Faltan ~1.0 cartas de descarte por caso para llegar a 40%
 balance,PROC_PSYC_NMS_EXTREME_001,,,1 casos · aceptar 4 / descartar 2 (33% descarte),,Faltan ~1.0 cartas de descarte por caso para llegar a 40%
+balance,PROC_OBS_INFECTION_CORIO_001,,,15 casos · aceptar 150 / descartar 90 (38% descarte),,Faltan ~0.7 cartas de descarte por caso para llegar a 40%
 balance,PROC_PED_EXANT_VARICELLA_001,,,15 casos · aceptar 105 / descartar 60 (36% descarte),,Faltan ~0.7 cartas de descarte por caso para llegar a 40%
 balance,PROC_PED_GAST_DEHYDRATION_001,,,5 casos · aceptar 47 / descartar 28 (37% descarte),,Faltan ~0.6 cartas de descarte por caso para llegar a 40%
 balance,PROC_PED_GIT_DEHYDRATION_001,,,15 casos · aceptar 140 / descartar 85 (38% descarte),,Faltan ~0.5 cartas de descarte por caso para llegar a 40%

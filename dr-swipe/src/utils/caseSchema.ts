@@ -90,7 +90,7 @@ export const ClinicalCaseSchema = z.object({
   }),
   card_stream:      z.array(CardSchema)
     .min(3, 'Un caso necesita al menos 3 cartas')
-    .max(15, 'Un caso no debe exceder 15 cartas')
+    .max(18, 'Un caso no debe exceder 18 cartas')
     .superRefine((cards, ctx) => {
       // These two invariants are the fingerprints of the cross-case
       // contamination incident: duplicated card_ids and multiple init_vitals

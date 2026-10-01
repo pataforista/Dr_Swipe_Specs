@@ -267,11 +267,11 @@ PROC_NEUR_STROKE_ISCHEMIC_001_012,neur,hard,Marta 66 años,Ventana de rTPA,14,3
 PROC_NEUR_STROKE_ISCHEMIC_001_013,neur,hard,Luis 64 años,Ventana de rTPA,14,3
 PROC_NEUR_STROKE_ISCHEMIC_001_014,neur,hard,Carlos 62 años,Ventana de rTPA,14,3
 PROC_NEUR_STROKE_ISCHEMIC_001_015,neur,hard,José 68 años,Ventana de rTPA,14,3
-PROC_OBG_HEMORRHAGE_HPP_001_001,obg,hard,Sra. Elena 28 años,HPP: El Minuto de Oro,15,3
-PROC_OBG_HEMORRHAGE_HPP_001_002,obg,hard,Sra. Ana 32 años,HPP: El Minuto de Oro,15,3
-PROC_OBG_HEMORRHAGE_HPP_001_003,obg,hard,Sra. Patricia 25 años,HPP: El Minuto de Oro,15,3
-PROC_OBG_HEMORRHAGE_HPP_001_004,obg,hard,Sra. Laura 30 años,HPP: El Minuto de Oro,15,3
-PROC_OBG_HEMORRHAGE_HPP_001_005,obg,hard,Sra. Fernanda 27 años,HPP: El Minuto de Oro,15,3
+PROC_OBG_HEMORRHAGE_HPP_001_001,obg,hard,Sra. Elena 28 años,HPP: El Minuto de Oro,17,3
+PROC_OBG_HEMORRHAGE_HPP_001_002,obg,hard,Sra. Ana 32 años,HPP: El Minuto de Oro,17,3
+PROC_OBG_HEMORRHAGE_HPP_001_003,obg,hard,Sra. Patricia 25 años,HPP: El Minuto de Oro,17,3
+PROC_OBG_HEMORRHAGE_HPP_001_004,obg,hard,Sra. Laura 30 años,HPP: El Minuto de Oro,17,3
+PROC_OBG_HEMORRHAGE_HPP_001_005,obg,hard,Sra. Fernanda 27 años,HPP: El Minuto de Oro,17,3
 PROC_OBS_GDM_DX_001_001,obs,standard,Rosa 30 años,Diabetes Gestacional: 92-180-153,10,3
 PROC_OBS_GDM_DX_001_002,obs,standard,Elena 26 años,Tamizaje DG: Un Paso vs Dos Pasos,10,3
 PROC_OBS_GDM_DX_001_003,obs,standard,Isabel 29 años,Tamizaje DG: Un Paso vs Dos Pasos,10,3
@@ -362,21 +362,21 @@ PROC_OBS_HEM_MOLA_001_012,obs,standard,Marta 35 años,Mola: HTA <20 Semanas,14,3
 PROC_OBS_HEM_MOLA_001_013,obs,standard,Rosa 27 años,Mola: HTA <20 Semanas,14,3
 PROC_OBS_HEM_MOLA_001_014,obs,standard,Rosa 15 años,Mola: HTA <20 Semanas,14,3
 PROC_OBS_HEM_MOLA_001_015,obs,standard,Ana 17 años,Mola: HTA <20 Semanas,14,3
-PROC_OBS_INFECTION_CORIO_001_001,obs,hard,Rosa 22 años,Corioamnionitis: Gibbs,15,3
-PROC_OBS_INFECTION_CORIO_001_002,obs,hard,Rosa 23 años,Corioamnionitis: Gibbs,15,3
-PROC_OBS_INFECTION_CORIO_001_003,obs,hard,Laura 38 años,Corioamnionitis: Gibbs,15,3
-PROC_OBS_INFECTION_CORIO_001_004,obs,hard,Isabel 36 años,Corioamnionitis: Gibbs,15,3
-PROC_OBS_INFECTION_CORIO_001_005,obs,hard,Laura 20 años,Corioamnionitis: Gibbs,15,3
-PROC_OBS_INFECTION_CORIO_001_006,obs,hard,Elena 30 años,Corioamnionitis: Gibbs,15,3
-PROC_OBS_INFECTION_CORIO_001_007,obs,hard,Marta 18 años,Corioamnionitis: Gibbs,15,3
-PROC_OBS_INFECTION_CORIO_001_008,obs,hard,Isabel 20 años,Corioamnionitis: Gibbs,15,3
-PROC_OBS_INFECTION_CORIO_001_009,obs,hard,Carmen 24 años,Corioamnionitis: Gibbs,15,3
-PROC_OBS_INFECTION_CORIO_001_010,obs,hard,Ana 29 años,Corioamnionitis: Gibbs,15,3
-PROC_OBS_INFECTION_CORIO_001_011,obs,hard,Marta 21 años,Corioamnionitis: Gibbs,15,3
-PROC_OBS_INFECTION_CORIO_001_012,obs,hard,Elena 40 años,Corioamnionitis: Gibbs,15,3
-PROC_OBS_INFECTION_CORIO_001_013,obs,hard,Carmen 22 años,Corioamnionitis: Gibbs,15,3
-PROC_OBS_INFECTION_CORIO_001_014,obs,hard,Laura 39 años,Corioamnionitis: Gibbs,15,3
-PROC_OBS_INFECTION_CORIO_001_015,obs,hard,María 28 años,Corioamnionitis: Gibbs,15,3
+PROC_OBS_INFECTION_CORIO_001_001,obs,hard,Rosa 22 años,Corioamnionitis: Gibbs,16,3
+PROC_OBS_INFECTION_CORIO_001_002,obs,hard,Rosa 23 años,Corioamnionitis: Gibbs,16,3
+PROC_OBS_INFECTION_CORIO_001_003,obs,hard,Laura 38 años,Corioamnionitis: Gibbs,16,3
+PROC_OBS_INFECTION_CORIO_001_004,obs,hard,Isabel 36 años,Corioamnionitis: Gibbs,16,3
+PROC_OBS_INFECTION_CORIO_001_005,obs,hard,Laura 20 años,Corioamnionitis: Gibbs,16,3
+PROC_OBS_INFECTION_CORIO_001_006,obs,hard,Elena 30 años,Corioamnionitis: Gibbs,16,3
+PROC_OBS_INFECTION_CORIO_001_007,obs,hard,Marta 18 años,Corioamnionitis: Gibbs,16,3
+PROC_OBS_INFECTION_CORIO_001_008,obs,hard,Isabel 20 años,Corioamnionitis: Gibbs,16,3
+PROC_OBS_INFECTION_CORIO_001_009,obs,hard,Carmen 24 años,Corioamnionitis: Gibbs,16,3
+PROC_OBS_INFECTION_CORIO_001_010,obs,hard,Ana 29 años,Corioamnionitis: Gibbs,16,3
+PROC_OBS_INFECTION_CORIO_001_011,obs,hard,Marta 21 años,Corioamnionitis: Gibbs,16,3
+PROC_OBS_INFECTION_CORIO_001_012,obs,hard,Elena 40 años,Corioamnionitis: Gibbs,16,3
+PROC_OBS_INFECTION_CORIO_001_013,obs,hard,Carmen 22 años,Corioamnionitis: Gibbs,16,3
+PROC_OBS_INFECTION_CORIO_001_014,obs,hard,Laura 39 años,Corioamnionitis: Gibbs,16,3
+PROC_OBS_INFECTION_CORIO_001_015,obs,hard,María 28 años,Corioamnionitis: Gibbs,16,3
 PROC_OBS_PREECLAMPSIA_001_001,obs,hard,Laura 23 años,Preeclampsia: Datos de Severidad,10,3
 PROC_OBS_PREECLAMPSIA_001_002,obs,hard,María 38 años,Preeclampsia: Datos de Severidad,10,3
 PROC_OBS_PREECLAMPSIA_001_003,obs,hard,Ana 34 años,Preeclampsia: Datos de Severidad,10,3
@@ -560,7 +560,7 @@ PROC_PSYCH_MANIA_001_001,psyc,standard,Juan 28 anos,Criterios Mania: DIGFAST,11,
 PROC_PSYC_DEP_SUICIDE_001_001,psyc,standard,José 70 años,Pregunta por el Suicidio,10,3
 PROC_PSYC_NMS_EXTREME_001_001,psyc,extreme,Ingreso Crítico #112: Urgencia Psiquiátrica,Síndrome Neuroléptico Maligno,6,3
 PROC_PSYC_PSI_SCHIZO_001_001,psyc,standard,Fernando 22 anos,Esquizofrenia: El 6 es la Clave,11,3
-PROC_STATS_DX_METRICS_001_001,stats,hard,Marta 57 años,Bioestadística: Sn  Sp y VP,15,3
+PROC_STATS_DX_METRICS_001_001,stats,hard,Marta 57 años,Bioestadística: Sn  Sp y VP,16,3
 PROC_STATS_DX_METRICS_001_002,stats,hard,Elena 54 años,VPP y Prevalencia,15,3
 PROC_STATS_DX_METRICS_001_003,stats,hard,Luis 59 años,VPP y Prevalencia,15,3
 PROC_STATS_DX_METRICS_001_004,stats,hard,Isabel 59 años,VPP y Prevalencia,15,3

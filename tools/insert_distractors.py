@@ -17,7 +17,7 @@ import re
 import sys
 from pathlib import Path
 
-MAX_CARDS = 15  # same limit as tools/validate_cases.py
+MAX_CARDS = 18  # same limit as tools/validate_cases.py and caseSchema.ts
 
 
 def build_card(draft: dict) -> dict:

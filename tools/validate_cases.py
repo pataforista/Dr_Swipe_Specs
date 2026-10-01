@@ -26,6 +26,8 @@ VERDICT_LABEL_RE = re.compile(
     re.I,
 )
 REPLACEMENT = "�"
+# Keep in sync with caseSchema.ts (.max) and tools/insert_distractors.py.
+MAX_CARDS = 18
 
 
 def validate_case(path: Path) -> list[str]:
@@ -51,8 +53,8 @@ def validate_case(path: Path) -> list[str]:
         errors.append(f"case_id {case_id!r} no coincide con el archivo {path.stem!r}")
 
     cards = case.get("card_stream", [])
-    if not 3 <= len(cards) <= 15:
-        errors.append(f"card_stream con {len(cards)} cartas (esperado 3-15)")
+    if not 3 <= len(cards) <= MAX_CARDS:
+        errors.append(f"card_stream con {len(cards)} cartas (esperado 3-{MAX_CARDS})")
 
     seen_ids: set[str] = set()
     init_vitals = 0

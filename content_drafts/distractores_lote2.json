@@ -1,5 +1,5 @@
 {
-    "_descripcion": "Lote 2 de cartas de descarte (distractores), 4 por familia (los mazos de 11 cartas admiten 4 hasta el límite de 15). Cada carta es una afirmación plausible pero incorrecta, con comentario corrector y fuente. Se insertan con tools/insert_distractors.py.",
+    "_descripcion": "Lote 2 de cartas de descarte (distractores), 4 por familia (los mazos de 11 cartas admiten 4 hasta el límite de 18 (se escribieron 4 por familia, sin llegar al tope)). Cada carta es una afirmación plausible pero incorrecta, con comentario corrector y fuente. Se insertan con tools/insert_distractors.py.",
     "familias": {
         "PROC_PED_STATS_TESTS_001": [
             {

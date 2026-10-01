@@ -7,7 +7,7 @@ Este documento detalla cómo está estructurada la base de datos de casos clíni
 Cada caso es un archivo `.json` que debe cumplir con el esquema **Zod** (`caseSchema.ts`). Un caso se compone de cuatro partes clave:
 
 1.  **Metadatos y Presentación:** Define el ID, dificultad (`standard`, `hard`, `extreme`) y la descripción del paciente.
-2.  **Card Stream (Baraja):** De 3 a 15 cartas que el jugador debe aceptar (keep) o descartar (discard).
+2.  **Card Stream (Baraja):** De 3 a 18 cartas que el jugador debe aceptar (keep) o descartar (discard).
 3.  **Perla ENARM:** La lección o conclusión médica que se desbloquea al final.
 4.  **Boss Fight Triad:** 3 preguntas de opción múltiple (Shock Room) para validar el conocimiento del jugador.
 
@@ -50,6 +50,7 @@ Limpieza automática (idempotente) y lista de revisión clínica:
 python3 tools/clean_card_leaks.py cases            # quita letras, etiquetas y prefijos horneados
 python3 tools/report_content_review.py cases REVISION_CONTENIDO_JUGABILIDAD.csv
 python3 tools/apply_guideline_review.py cases     # correcciones de vitales validadas contra guías (fuentes en el script)
+python3 tools/export_full_review.py cases REVISION_COMPLETA_CASOS.csv   # todas las cartas, qué cambió y su fuente
 \`\`\`
 
 ## 3. Revisión de Casos

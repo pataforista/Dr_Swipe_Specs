@@ -136,7 +136,7 @@ export function calculateCardScore(
 export const SECONDS_PER_CARD = { standard: 10, hard: 9, extreme: 8 } as const;
 export function computeTimeLimit(cardCount: number, difficulty: string = 'standard'): number {
   const perCard = SECONDS_PER_CARD[difficulty as keyof typeof SECONDS_PER_CARD] ?? SECONDS_PER_CARD.standard;
-  return Math.max(45, Math.min(130, cardCount * perCard));
+  return Math.max(45, Math.min(180, cardCount * perCard));
 }
 
 /** Vitality cost of a wrong swipe: a lethal miss must hurt more than a trivial one. */
