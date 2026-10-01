@@ -7,7 +7,7 @@ Este documento detalla cómo está estructurada la base de datos de casos clíni
 Cada caso es un archivo `.json` que debe cumplir con el esquema **Zod** (`caseSchema.ts`). Un caso se compone de cuatro partes clave:
 
 1.  **Metadatos y Presentación:** Define el ID, dificultad (`standard`, `hard`, `extreme`) y la descripción del paciente.
-2.  **Card Stream (Baraja):** De 3 a 15 cartas que el jugador debe aceptar (keep) o descartar (discard).
+2.  **Card Stream (Baraja):** De 3 a 18 cartas que el jugador debe aceptar (keep) o descartar (discard).
 3.  **Perla ENARM:** La lección o conclusión médica que se desbloquea al final.
 4.  **Boss Fight Triad:** 3 preguntas de opción múltiple (Shock Room) para validar el conocimiento del jugador.
 
@@ -36,6 +36,22 @@ Cada caso es un archivo `.json` que debe cumplir con el esquema **Zod** (`caseSc
     *   `lethal_risk`: Si el jugador se equivoca, sufre daño letal (Error crítico).
     *   `lethal_if_discarded`: Si descarta algo vital (ej. intubación en vía aérea inestable).
 *   **Restricción Importante:** El sistema rechaza casos que tengan cartas con el mismo `card_id` (para evitar contaminación cruzada entre enfermedades).
+
+### Cartas que no delatan la respuesta
+El jugador lee `card_text` **antes** de decidir. Si el texto trae una pista del veredicto, la decisión se vuelve reconocimiento de patrones y el juego pierde la tensión.
+
+*   **Sin letras de opción** (`F) `, `G) `, `H) `…): en el corpus original marcaban "aceptar" en ~95% de los casos. El validador las rechaza.
+*   **Sin etiquetas de veredicto** al inicio (`Dato anecdótico:`, `Contraindicado:`, `Información redundante:`, `Ruido en el expediente:`): solo aparecían en cartas de descarte. El validador las rechaza.
+*   **Balance:** apunta a ~40% de cartas de descarte por caso. Con 26% de descarte, deslizar siempre a la derecha acertaba 3 de cada 4.
+*   **`vazquez_comment`** se muestra tanto si el jugador acierta como si falla: escríbelo como explicación clínica válida en ambos casos. Los regaños que solo tienen sentido tras un error deben empezar con `¿` (el juego los omite cuando el jugador acierta). No incluyas prefijos como `🧹 DESCARTE RECOMENDADO:`; el juego los añade.
+
+Limpieza automática (idempotente) y lista de revisión clínica:
+\`\`\`bash
+python3 tools/clean_card_leaks.py cases            # quita letras, etiquetas y prefijos horneados
+python3 tools/report_content_review.py cases REVISION_CONTENIDO_JUGABILIDAD.csv
+python3 tools/apply_guideline_review.py cases     # correcciones de vitales validadas contra guías (fuentes en el script)
+python3 tools/export_full_review.py cases REVISION_COMPLETA_CASOS.csv   # todas las cartas, qué cambió y su fuente
+\`\`\`
 
 ## 3. Revisión de Casos
 

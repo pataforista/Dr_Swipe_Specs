@@ -2,7 +2,7 @@ import { setup, assign } from 'xstate';
 import type { Card, EnarmPearl, LoreItem } from '../types/game';
 import { cleanMentorComment } from '../utils/formatters';
 import { parseVitalsFromText } from '../utils/vitalsParser';
-import { calculateCardScore } from '../utils/scoringEngine';
+import { calculateCardScore, isLethalCard, undoChargesFor, VITALITY_HIT } from '../utils/scoringEngine';
 import rewardData from '../data/lore/rewardItems.json';
 import penaltyData from '../data/lore/penaltyItems.json';
 
@@ -66,6 +66,9 @@ interface GameContext {
   // Rewind (Undo) context
   undoCharges: number;
   hasRescuedThisCase: boolean;
+  // Undo reverts a swipe after its verdict is shown, so a case that used it
+  // can no longer count as a perfect round.
+  usedUndoThisCase: boolean;
   lastAction: {
     vitality: number;
     score: number;
@@ -128,8 +131,9 @@ export const gameMachine = setup({
       feedbackHistory: [],
       lastVitals: null,
       isSandiaMode: false,
-      undoCharges: 5,
+      undoCharges: undoChargesFor(false),
       hasRescuedThisCase: false,
+      usedUndoThisCase: false,
       lastAction: null
     }),
     clearOverlays: assign({
@@ -192,9 +196,10 @@ export const gameMachine = setup({
 
       const nextCombo = isCorrect ? context.combo + 1 : 0;
 
-      // Vitality Logic: +8 on correct, -15 on wrong (more forgiving, rewards learning)
-      // SANDIA MODE: No health reduction
-      const vitalityChange = isCorrect ? 8 : (context.isSandiaMode ? 0 : -15);
+      // Vitality Logic: +8 on correct; a wrong swipe costs 15, a lethal one 40
+      // (it used to cost the same as a trivial miss). SANDIA MODE: no damage.
+      const vitalityHit = isLethalCard(card) ? VITALITY_HIT.lethal : VITALITY_HIT.normal;
+      const vitalityChange = isCorrect ? 8 : (context.isSandiaMode ? 0 : -vitalityHit);
       const nextVitality = Math.max(0, Math.min(100, context.vitality + vitalityChange));
 
       // Error Tracking
@@ -262,7 +267,9 @@ export const gameMachine = setup({
         activePenalty: nextPenalty,
         activeEvent: nextEvent,
         multiplier: scoreBreakdown.comboMultiplier,
-        score: Math.max(0, context.score + (context.isSandiaMode ? Math.floor(scoreBreakdown.finalPoints * 0.5) : scoreBreakdown.finalPoints)),
+        // No floor at 0: a lethal miss on the first card must still cost
+        // something (XP is clamped at payout instead).
+        score: context.score + (context.isSandiaMode ? Math.floor(scoreBreakdown.finalPoints * 0.5) : scoreBreakdown.finalPoints),
         dossier: nextDossier,
         discarded: nextDiscarded,
         currentCardIndex: context.currentCardIndex + 1,
@@ -305,8 +312,9 @@ export const gameMachine = setup({
     lastVitals: null,
     lives: 5,
     isSandiaMode: false,
-    undoCharges: 5,
+    undoCharges: undoChargesFor(false),
     hasRescuedThisCase: false,
+    usedUndoThisCase: false,
     lastAction: null
   },
   states: {
@@ -340,7 +348,10 @@ export const gameMachine = setup({
             feedbackHistory: [],
             lives: 5,
             isSandiaMode: ({ event }) => event.type === 'START_GUARD' ? !!event.isSandiaMode : false,
-            hasRescuedThisCase: false
+            undoCharges: ({ event }) => undoChargesFor(event.type === 'START_GUARD' && !!event.isSandiaMode),
+            hasRescuedThisCase: false,
+            usedUndoThisCase: false,
+            lastAction: null
           })
         },
         RESUME_GUARD: {
@@ -376,8 +387,9 @@ export const gameMachine = setup({
             feedbackHistory: [],
             lives: 5,
             isSandiaMode: false,
-            undoCharges: 5,
+            undoCharges: undoChargesFor(false),
             hasRescuedThisCase: false,
+            usedUndoThisCase: false,
             lastAction: null
           })
         }
@@ -421,6 +433,7 @@ export const gameMachine = setup({
               mistakesThisCase: context.lastAction.mistakesThisCase,
               lastVitals: context.lastAction.lastVitals,
               undoCharges: context.undoCharges - 1,
+              usedUndoThisCase: true,
               lastAction: null
             };
           })
@@ -500,7 +513,9 @@ export const gameMachine = setup({
             consecutiveErrors: 0,
             dossier: [],
             discarded: [],
-            undoCharges: 5,
+            undoCharges: ({ context }) => undoChargesFor(context.isSandiaMode),
+            usedUndoThisCase: false,
+            lastAction: null,
             lootBoxReward: null,
             activePenalty: null,
             activeEvent: null,
@@ -536,8 +551,9 @@ export const gameMachine = setup({
             consecutiveErrors: 0,
             lastVitals: null,
             lifelineActive: false,
-            undoCharges: 5,
+            undoCharges: ({ context }) => undoChargesFor(context.isSandiaMode),
             hasRescuedThisCase: true,
+            usedUndoThisCase: false,
             lastAction: null
           })
         },
@@ -564,8 +580,9 @@ export const gameMachine = setup({
             consecutiveErrors: 0,
             lastVitals: null,
             lifelineActive: false,
-            undoCharges: 5,
+            undoCharges: ({ context }) => undoChargesFor(context.isSandiaMode),
             hasRescuedThisCase: true,
+            usedUndoThisCase: false,
             lastAction: null
           })
         }

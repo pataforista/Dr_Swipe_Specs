@@ -13,7 +13,7 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "vitals",
-            "card_text": "Hallazgo: Informacion redundante: TA N/A, FC 120 lpm, Temp 37.8°C",
+            "card_text": "FC 120 lpm, Temp 37.8°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnostico",
-            "card_text": "Hallazgo: Laringotraqueitis (CRUP): Virus Parainfluenza tipe 1 y 3. Triada: Tos traqueal, estridor e hiponia.",
+            "card_text": "Laringotraqueitis (CRUP): Virus Parainfluenza tipe 1 y 3. Triada: Tos traqueal, estridor e hiponia.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnostico Diferencial",
-            "card_text": "Hallazgo clinico: Epiglotitis Aguda: H. influenzae tipo b. Fiebre alta, babeo, posicion de tripode y ausencia de tos perruna.",
+            "card_text": "Epiglotitis Aguda: H. influenzae tipo b. Fiebre alta, babeo, posicion de tripode y ausencia de tos perruna.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -53,7 +53,7 @@
             "card_id": "c_3",
             "ui_icon": "slash",
             "category": "Diagnostico Diferencial",
-            "card_text": "Dato de importancia: Dato anecdotico: Aspiracion de Cuerpo Extrano: Inicio subito tras jugar con objetos pequenos, sin fiebre ni síntomas gripales previos.",
+            "card_text": "Aspiracion de Cuerpo Extrano: Inicio subito tras jugar con objetos pequenos, sin fiebre ni síntomas gripales previos.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -65,7 +65,7 @@
             "card_id": "c_4",
             "ui_icon": "clipboard",
             "category": "Evaluacion",
-            "card_text": "Evidencia clinica: Escala de Westley: Herramienta clinica para clasificar la gravedad del Crup (Leve, Moderado, Grave).",
+            "card_text": "Escala de Westley: Herramienta clinica para clasificar la gravedad del Crup (Leve, Moderado, Grave).",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -77,7 +77,7 @@
             "card_id": "c_5",
             "ui_icon": "camera",
             "category": "Imagenologia",
-            "card_text": "Hallazgo: Signo de la Torre (Punta de Lapiz): Estrechamiento de la via aerea subglotica en radiografia AP de cuello.",
+            "card_text": "Signo de la Torre (Punta de Lapiz): Estrechamiento de la via aerea subglotica en radiografia AP de cuello.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -89,7 +89,7 @@
             "card_id": "c_9",
             "ui_icon": "home",
             "category": "Cuidados",
-            "card_text": "Hallazgo: I) Manejo Conservador: Mantener al nino tranquilo en brazos de sus padres y evitar exploraciones orales innecesarias.",
+            "card_text": "Manejo Conservador: Mantener al nino tranquilo en brazos de sus padres y evitar exploraciones orales innecesarias.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -101,7 +101,7 @@
             "card_id": "c_10",
             "ui_icon": "slash",
             "category": "Diferencial",
-            "card_text": "Informacion redundante: J) Crup Espasmodico: Similar al viral pero recurrente y sin prodromo de catarro; de causa presumiblemente alergica.",
+            "card_text": "Crup Espasmodico: Similar al viral pero recurrente y sin prodromo de catarro; de causa presumiblemente alergica.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -113,7 +113,7 @@
             "card_id": "c_6",
             "ui_icon": "pill",
             "category": "Manejo Inicial",
-            "card_text": "Evidencia: F) Dexametasona 0.6 mg/kg (Dosis unica): Es el pilar del tratamiento; reduce el edema laringeo y la necesidad de hospitalizacion.",
+            "card_text": "Dexametasona 0.6 mg/kg (Dosis unica): Es el pilar del tratamiento; reduce el edema laringeo y la necesidad de hospitalizacion.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -129,7 +129,7 @@
             "card_id": "c_7",
             "ui_icon": "zap",
             "category": "Manejo de Urgencias",
-            "card_text": "Evidencia: G) Epinefrina Racemica Nebulizada: Indicada si hay estridor inspiratorio en reposo o retracciones moderadas-graves.",
+            "card_text": "Epinefrina Racemica Nebulizada: Indicada si hay estridor inspiratorio en reposo o retracciones moderadas-graves.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -145,7 +145,7 @@
             "card_id": "c_8",
             "ui_icon": "clock",
             "category": "Seguridad",
-            "card_text": "Hallazgo: H) Observacion Post-Nebulizacion: Mantener al nino en urgencias 2-4 horas para vigilar el efecto 'rebote' de la obstruccion.",
+            "card_text": "Observacion Post-Nebulizacion: Mantener al nino en urgencias 2-4 horas para vigilar el efecto 'rebote' de la obstruccion.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

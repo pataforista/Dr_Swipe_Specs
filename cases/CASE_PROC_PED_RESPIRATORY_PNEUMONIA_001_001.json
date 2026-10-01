@@ -14,18 +14,18 @@
             "ui_icon": "heartbeat",
             "category": "vitals",
             "card_text": "FC 130 lpm, FR 45 rpm (Taquipnea), Temp 39.2°C, SatO2 91%.",
-            "expected_action": "discard",
+            "expected_action": "keep",
             "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡Cuidado con esa saturacion! Valentina necesita atencion inmediata."
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Navarro: SatO2 de 92% o menos en neumonía pediátrica indica hospitalización y oxígeno suplementario."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnostico",
-            "card_text": "Evidencia: Neumonia Adquirida en la Comunidad (NAC): Presencia de consolidacion en Rx o estertores + Sintomas de infeccion respiratoria aguda.",
+            "card_text": "Neumonia Adquirida en la Comunidad (NAC): Presencia de consolidacion en Rx o estertores + Sintomas de infeccion respiratoria aguda.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "beaker",
             "category": "Etiologia",
-            "card_text": "Hallazgo: Streptococcus pneumoniae: El patogeno bacteriano mas frecuente de NAC en ninos de todas las edades (excepto neonatos).",
+            "card_text": "Streptococcus pneumoniae: El patogeno bacteriano mas frecuente de NAC en ninos de todas las edades (excepto neonatos).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -53,7 +53,7 @@
             "card_id": "c_5",
             "ui_icon": "info",
             "category": "Neumonia Atipica",
-            "card_text": "Hallazgo: Mycoplasma pneumoniae: Etiologia comun en ninos mayores (>5 anos) con tos persistente, seca y escasa fiebre.",
+            "card_text": "Mycoplasma pneumoniae: Etiologia comun en ninos mayores (>5 anos) con tos persistente, seca y escasa fiebre.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -65,7 +65,7 @@
             "card_id": "c_6",
             "ui_icon": "camera",
             "category": "Imagen",
-            "card_text": "Evidencia: F) Radiografia de Torax: Hallazgo tipico de NAC bacteriana: Consolidacion lobar o segmentaria con broncograma aereo.",
+            "card_text": "Radiografia de Torax: Hallazgo tipico de NAC bacteriana: Consolidacion lobar o segmentaria con broncograma aereo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -77,7 +77,7 @@
             "card_id": "c_7",
             "ui_icon": "droplet",
             "category": "Complicacion",
-            "card_text": "Evidencia: G) Derrame Paraneumonico: Si la fiebre persiste >48-72h tras iniciar antibioticos, sospecha ocupacion pleural.",
+            "card_text": "Derrame Paraneumonico: Si la fiebre persiste >48-72h tras iniciar antibioticos, sospecha ocupacion pleural.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -89,7 +89,7 @@
             "card_id": "c_8",
             "ui_icon": "zap",
             "category": "Prevencion",
-            "card_text": "Evidencia clinica: H) Vacuna Conjugada 13-valente: Ha reducido drasticamente la incidencia de neumonia invasiva por neumococo.",
+            "card_text": "Vacuna Conjugada 13-valente: Ha reducido drasticamente la incidencia de neumonia invasiva por neumococo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -101,7 +101,7 @@
             "card_id": "c_9",
             "ui_icon": "slash",
             "category": "Manejo",
-            "card_text": "Dato de importancia: Dato anecdotico: I) Jarabes para la Tos (Antitusigenos): Recomendados en preescolares para mejorar el descanso nocturno durante la NAC.",
+            "card_text": "Jarabes para la Tos (Antitusigenos): Recomendados en preescolares para mejorar el descanso nocturno durante la NAC.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -113,7 +113,7 @@
             "card_id": "c_10",
             "ui_icon": "pill",
             "category": "Tratamiento Hospitalario",
-            "card_text": "Dato de importancia: J) Ampicilina o Penicilina G Sodica: Tratamiento IV de eleccion para NAC bacteriana en el paciente hospitalizado con esquema de vacunacion completo.",
+            "card_text": "Ampicilina o Penicilina G Sodica: Tratamiento IV de eleccion para NAC bacteriana en el paciente hospitalizado con esquema de vacunacion completo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -125,7 +125,7 @@
             "card_id": "c_3",
             "ui_icon": "pill",
             "category": "Tratamiento Ambulatorio",
-            "card_text": "Dato de importancia: Amoxicilina (Altas dosis): 80-90 mg/kg/dia por 7-10 dias. Tratamiento de primera eleccion para NAC no complicada.",
+            "card_text": "Amoxicilina (Altas dosis): 80-90 mg/kg/dia por 7-10 dias. Tratamiento de primera eleccion para NAC no complicada.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -141,7 +141,7 @@
             "card_id": "c_4",
             "ui_icon": "alert-triangle",
             "category": "Criterios Ingreso",
-            "card_text": "Evidencia clinica: SatO2 <92% (Aire ambiente): Indicacion absoluta de ingreso hospitalario para oxigenoterapia y manejo IV.",
+            "card_text": "SatO2 <92% (Aire ambiente): Indicacion absoluta de ingreso hospitalario para oxigenoterapia y manejo IV.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

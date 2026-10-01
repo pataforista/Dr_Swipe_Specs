@@ -118,7 +118,33 @@ describe('gameMachine state flow', () => {
     
     const state = actor.getSnapshot();
     expect(state.context.currentCardIndex).toBe(0);
-    expect(state.context.undoCharges).toBe(4); // deducts 1 undo charge
+    expect(state.context.undoCharges).toBe(0); // a shift starts with 1 free undo
+    expect(state.context.usedUndoThisCase).toBe(true); // no perfect round after an undo
+  });
+
+  it('keeps 5 free undos in study (sandia) mode', () => {
+    const actor = createActor(gameMachine);
+    actor.start();
+    actor.send({ type: 'START_GUARD', deck: mockDeck, difficulty: 'standard', isSandiaMode: true });
+    expect(actor.getSnapshot().context.undoCharges).toBe(5);
+  });
+
+  it('makes a lethal miss cost more vitality than a trivial one, with no score floor', () => {
+    const lethalDeck: Card[] = [
+      { ...mockDeck[0], safety_flags: { lethal_if_discarded: true } },
+      ...mockDeck.slice(1),
+    ];
+    const actor = createActor(gameMachine);
+    actor.start();
+    actor.send({ type: 'START_GUARD', deck: lethalDeck, difficulty: 'standard' });
+    actor.send({ type: 'SWIPE', direction: 'left' }); // discards a lethal keep card
+    let ctx = actor.getSnapshot().context;
+    expect(ctx.vitality).toBe(60);
+    expect(ctx.score).toBeLessThan(0); // the -1000 is no longer swallowed by a 0 floor
+
+    actor.send({ type: 'SWIPE', direction: 'right' }); // trivial miss on a discard card
+    ctx = actor.getSnapshot().context;
+    expect(ctx.vitality).toBe(45);
   });
 
   it('should support BUY_UNDO to increase undo charges', () => {

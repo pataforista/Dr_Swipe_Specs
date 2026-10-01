@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
 import { useMachine } from '@xstate/react';
 import { gameMachine } from './machines/gameMachine';
 import { SwipeDeck } from './components/SwipeDeck';
@@ -9,7 +9,7 @@ import { dataLoader } from './utils/dataLoader';
 import { useGameAudio } from './hooks/useGameAudio';
 import { shuffleBossQuestion } from './utils/formatters';
 import { triggerHaptic } from './utils/hapticFeedback';
-import { calculatePerfectRoundBonus, getDailyStreakMultiplier, COMBO_MILESTONES } from './utils/scoringEngine';
+import { calculatePerfectRoundBonus, getDailyStreakMultiplier, computeTimeLimit, isLethalCard, COMBO_MILESTONES } from './utils/scoringEngine';
 import { safeStorage } from './utils/safeStorage';
 import { LIFELINE_COST, UNDO_COST, REVIVE_COST } from './store/useCodexStore';
 import { useCodexStore, type SessionProgress } from './store/useCodexStore';
@@ -22,7 +22,6 @@ const StatsDashboard = lazy(() => import('./components/StatsDashboard').then(m =
 const RetrospectiveView = lazy(() => import('./components/RetrospectiveView').then(m => ({ default: m.RetrospectiveView })));
 const ShockRoom = lazy(() => import('./components/ShockRoom').then(m => ({ default: m.ShockRoom })));
 
-import { FeedbackToast } from './components/overlays/FeedbackToast';
 import { RewardToast } from './components/overlays/RewardToast';
 import { LootBoxOverlay } from './components/overlays/LootBoxOverlay';
 import { PenaltyOverlay } from './components/overlays/PenaltyOverlay';
@@ -33,9 +32,20 @@ import { ReloadPrompt } from './components/overlays/ReloadPrompt';
 import { LootScreen } from './components/overlays/LootScreen';
 import { EventAlert } from './components/overlays/EventAlert';
 import { DoodleToggle } from './components/ui/DoodleToggle';
+/** Partial Fisher-Yates: up to `n` distinct random items from `items`. */
+function pickRandom<T>(items: T[], n: number): T[] {
+  const pool = [...items];
+  const count = Math.min(n, pool.length);
+  for (let i = 0; i < count; i++) {
+    const j = i + Math.floor(Math.random() * (pool.length - i));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  return pool.slice(0, count);
+}
+
 export function App() {
   const [state, send, actorRef] = useMachine(gameMachine);
-  const { playFeedback, playGacha, startTriageAlarm, stopTriageAlarm } = useGameAudio();
+  const { playFeedback, playGacha, playCodeRed, startTriageAlarm, stopTriageAlarm } = useGameAudio();
   const [currentCase, setCurrentCase] = useState<ClinicalCase | null>(null);
   const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak, lastPlayedDate, settings = { soundEnabled: true, hapticsEnabled: true }, updateSettings, caseStats } = useCodexStore();
   const [selectedSpecialty, setSelectedSpecialty] = useState<string>('all');
@@ -58,13 +68,17 @@ export function App() {
   const [caseQueue, setCaseQueue] = useState<ClinicalCase[]>([]);
   const [rewardToast, setRewardToast] = useState<{ show: boolean; text: string; type: 'coins' | 'xp' | 'milestone' }>({ show: false, text: '', type: 'coins' });
   const [showIntro, setShowIntro] = useState(false);
-  const [lastSwipePoints, setLastSwipePoints] = useState<number>(0);
+  const [lastSwipePoints, setLastSwipePoints] = useState<number | null>(null);
   const [swipeFeedback, setSwipeFeedback] = useState<'correct' | 'wrong' | null>(null);
   const [errorImpact, setErrorImpact] = useState<'normal' | 'lethal' | null>(null);
   const [hitStop, setHitStop] = useState(false);
   const [mentorDialogue, setMentorDialogue] = useState<string | null>(null);
   const [mentorExpression, setMentorExpression] = useState<'neutral' | 'happy' | 'angry' | 'shocked'>('neutral');
   const [timeLeft, setTimeLeft] = useState(60);
+
+  const isTriage = state.matches('triage');
+  const isOverlayActive = !!(state.context.activeEvent || state.context.activePenalty || state.context.lootBoxReward || showIntro);
+  const clockRunning = isTriage && !isPaused && !isOverlayActive && !state.context.isSandiaMode;
 
   const settingsTrapRef = useFocusTrap<HTMLDivElement>(showSettings, () => setShowSettings(false));
   const pauseTrapRef = useFocusTrap<HTMLDivElement>(isPaused && state.matches('triage'), () => setIsPaused(false));
@@ -82,18 +96,40 @@ export function App() {
     if (state.matches('reward') || state.matches('ghosted') || state.matches('debrief')) clearSessionProgress();
   }, [state, clearSessionProgress]);
 
+  // The interval depends only on whether the clock runs. It used to depend on
+  // the whole machine snapshot, which changes on every swipe: each swipe
+  // cleared and re-armed the interval, so swiping faster than once a second
+  // froze the clock entirely.
   useEffect(() => {
-    let timer: number;
-    const isOverlayActive = !!(state.context.activeEvent || state.context.activePenalty || state.context.lootBoxReward || showIntro);
-    if (!isPaused && !isOverlayActive && timeLeft > 0 && state.matches('triage')) {
-      if (state.context.isSandiaMode) return;
-      timer = window.setInterval(() => setTimeLeft(t => t - 1), 1000);
-    } else if (state.matches('triage') && timeLeft === 0 && !state.context.isSandiaMode) {
+    if (!clockRunning) return;
+    const timer = window.setInterval(() => setTimeLeft(t => Math.max(0, t - 1)), 1000);
+    return () => clearInterval(timer);
+  }, [clockRunning]);
+
+  useEffect(() => {
+    if (isTriage && timeLeft === 0 && !state.context.isSandiaMode) {
       triggerHaptic('timeoutAlarm');
       send({ type: 'TIME_OUT' });
     }
-    return () => clearInterval(timer);
-  }, [state, timeLeft, send, isPaused, showIntro]);
+  }, [isTriage, timeLeft, state.context.isSandiaMode, send]);
+
+  // Code red: the beat between the last card and the critical phase used to
+  // be 1.5 s of empty screen. Siren + haptic + a full-screen alert instead.
+  // The audio helpers are new functions every render, so the ref keeps the
+  // siren to once per alert instead of once per re-render.
+  const isCriticalAlert = state.matches('critical_alert');
+  const codeRedPlayedRef = useRef(false);
+  useEffect(() => {
+    if (!isCriticalAlert) {
+      codeRedPlayedRef.current = false;
+      return;
+    }
+    if (codeRedPlayedRef.current) return;
+    codeRedPlayedRef.current = true;
+    stopTriageAlarm();
+    playCodeRed();
+    triggerHaptic('timeoutAlarm');
+  }, [isCriticalAlert, stopTriageAlarm, playCodeRed]);
 
   // Clock-tick alarm during the last 10 seconds of triage
   useEffect(() => {
@@ -132,10 +168,11 @@ export function App() {
       if (rewardedCaseRef.current === currentCase.case_id) return; // already paid out
       rewardedCaseRef.current = currentCase.case_id;
       const streakMult = getDailyStreakMultiplier(dailyStreak);
-      const xpGained = Math.floor(state.context.score * streakMult);
+      // The score can go negative (lethal misses), XP never does.
+      const xpGained = Math.max(0, Math.floor(state.context.score * streakMult));
       addXp(xpGained);
       let totalCoins = state.context.coinsEarnedThisCase;
-      const isPerfectRound = state.context.mistakesThisCase === 0 && !state.context.hasRescuedThisCase;
+      const isPerfectRound = state.context.mistakesThisCase === 0 && !state.context.hasRescuedThisCase && !state.context.usedUndoThisCase;
       if (isPerfectRound) {
         const bonus = calculatePerfectRoundBonus(state.context.deck.length, state.context.difficulty);
         totalCoins += bonus;
@@ -176,7 +213,7 @@ export function App() {
       const caseData = loadedCases[0];
       setCurrentCase(caseData);
       setCaseQueue(loadedCases.slice(1));
-      const timeLimit = Math.max(90, Math.min(180, caseData.card_stream.length * 18));
+      const timeLimit = computeTimeLimit(caseData.card_stream.length, caseData.difficulty);
       timeLimitRef.current = timeLimit;
       // Cards are played in authored order: clinical decks are sequenced
       // (vitals before their interpretation, options A/B/C), so shuffling
@@ -207,7 +244,7 @@ export function App() {
       setCurrentCase(caseData);
       setCaseQueue([]); // Clearing queue for resumed cases to avoid complexity
 
-      const timeLimit = Math.max(90, Math.min(180, caseData.card_stream.length * 18));
+      const timeLimit = computeTimeLimit(caseData.card_stream.length, caseData.difficulty);
       setTimeLeft(timeLimit);
       timeLimitRef.current = timeLimit;
       // Decks keep their authored order, so the saved currentCardIndex maps to
@@ -242,13 +279,7 @@ export function App() {
     try {
       send({ type: 'RESTART' });
       // Pick up to 3 random case IDs from failedCaseIds
-      const pool = [...failedCaseIds];
-      const n = Math.min(3, pool.length);
-      for (let i = 0; i < n; i++) {
-        const j = i + Math.floor(Math.random() * (pool.length - i));
-        [pool[i], pool[j]] = [pool[j], pool[i]];
-      }
-      const finalIds = pool.slice(0, n);
+      const finalIds = pickRandom(failedCaseIds, 3);
       
       const loadedCases = await Promise.all(finalIds.map(id => dataLoader.loadCaseById(id)));
       for (const c of loadedCases) {
@@ -257,7 +288,7 @@ export function App() {
       const caseData = loadedCases[0];
       setCurrentCase(caseData);
       setCaseQueue(loadedCases.slice(1));
-      const timeLimit = Math.max(90, Math.min(180, caseData.card_stream.length * 18));
+      const timeLimit = computeTimeLimit(caseData.card_stream.length, caseData.difficulty);
       timeLimitRef.current = timeLimit;
       pendingDeckRef.current = [...caseData.card_stream];
       setShowIntro(true);
@@ -284,7 +315,7 @@ export function App() {
     setSwipeFeedback(last.isCorrect ? 'correct' : 'wrong');
     // The card that was just swiped: currentCardIndex has already advanced.
     const swipedCard = ctx.deck[ctx.currentCardIndex - 1];
-    const isLethalMistake = !last.isCorrect && !!(swipedCard?.safety_flags?.lethal_risk || swipedCard?.safety_flags?.lethal_if_discarded);
+    const isLethalMistake = !last.isCorrect && !!swipedCard && isLethalCard(swipedCard);
     if (last.isCorrect) {
       playFeedback('correct', ctx.combo);
       triggerHaptic('criticalSuccess');
@@ -308,15 +339,18 @@ export function App() {
       setTimeout(() => setErrorImpact(null), 250);
     }
     setTimeout(() => setSwipeFeedback(null), 2000);
-    // Mentor bubble for this swipe
+    // Mentor bubble for this swipe (it also carries the points, replacing the
+    // separate toast that sat on top of the action buttons). Correct swipes
+    // get a short beat; mistakes stay up long enough to read the reason.
     setMentorDialogue(last.feedback);
-    setMentorExpression(last.isCorrect ? 'happy' : 'angry');
+    setMentorExpression(last.isCorrect ? 'happy' : isLethalMistake ? 'shocked' : 'angry');
     if (mentorTimerRef.current !== null) clearTimeout(mentorTimerRef.current);
     mentorTimerRef.current = window.setTimeout(() => {
       setMentorDialogue(null);
       setMentorExpression('neutral');
+      setLastSwipePoints(null);
       mentorTimerRef.current = null;
-    }, 4500);
+    }, last.isCorrect ? 2500 : 4500);
   }, [isPaused, actorRef, send, updateSwipeResult, playFeedback, playGacha]);
 
   useEffect(() => () => {
@@ -352,7 +386,7 @@ export function App() {
     const nextCase = caseQueue[0];
     setCurrentCase(nextCase);
     setCaseQueue(caseQueue.slice(1));
-    const timeLimit = Math.max(90, Math.min(180, nextCase.card_stream.length * 18));
+    const timeLimit = computeTimeLimit(nextCase.card_stream.length, nextCase.difficulty);
     setTimeLeft(timeLimit);
     timeLimitRef.current = timeLimit;
     pendingDeckRef.current = [...nextCase.card_stream];
@@ -528,7 +562,9 @@ export function App() {
         return (
           <div className="flex flex-col items-center justify-center w-full max-w-sm gap-2 sm:gap-4 px-2 sm:px-4 h-full pt-12 sm:pt-16 pb-8 sm:pb-12">
             <div className="relative w-full h-full flex flex-col items-center">
-              <SwipeDeck cards={state.context.deck} currentIndex={state.context.currentCardIndex} onSwipe={handleSwipe} isLocked={isLoadingCase || isPaused || hitStop} lifelineActive={state.context.lifelineActive} canUseLifeline={stats.coins >= LIFELINE_COST && !state.context.lifelineActive} onUseLifeline={handleLifeline} />
+              {/* Locked under overlays too: the event sheet pauses the clock but
+                  left the card draggable, so cards could be decided off the clock. */}
+              <SwipeDeck cards={state.context.deck} currentIndex={state.context.currentCardIndex} onSwipe={handleSwipe} isLocked={isLoadingCase || isPaused || hitStop || isOverlayActive} lifelineActive={state.context.lifelineActive} canUseLifeline={stats.coins >= LIFELINE_COST && !state.context.lifelineActive} onUseLifeline={handleLifeline} revealLethalDirection={state.context.isSandiaMode} />
               <div className="absolute -bottom-10 sm:-bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-[110] pointer-events-auto">
                 <button
                   disabled={!canUndo || (state.context.undoCharges === 0 && stats.coins < UNDO_COST)}
@@ -543,10 +579,25 @@ export function App() {
                   {state.context.undoCharges === 0 ? <Coins className="w-5 h-5 sm:w-6 sm:h-6 text-white" aria-hidden="true" /> : <Undo2 className="w-5 h-5 sm:w-6 sm:h-6 text-white" aria-hidden="true" />}
                 </button>
                 <span className="text-[10px] font-black text-slate-400 uppercase lettering tracking-tighter">
-                  {state.context.undoCharges === 0 ? `${UNDO_COST} 🪙` : `${state.context.undoCharges}/5`}
+                  {state.context.undoCharges === 0 ? `${UNDO_COST} 🪙` : `×${state.context.undoCharges}`}
                 </span>
               </div>
             </div>
+          </div>
+        );
+      case state.matches('critical_alert'):
+        return (
+          <div className="fixed inset-0 z-[150] code-red flex flex-col items-center justify-center p-6 text-center text-white" role="alert">
+            <motion.div
+              initial={{ scale: 2.2, opacity: 0, rotate: -6 }}
+              animate={{ scale: 1, opacity: 1, rotate: -2 }}
+              transition={{ type: 'spring', stiffness: 380, damping: 18 }}
+              className="flex flex-col items-center"
+            >
+              <span className="text-6xl sm:text-7xl mb-4" aria-hidden="true">🚨</span>
+              <h2 className="text-5xl sm:text-6xl font-black lettering tracking-tight drop-shadow-lg">CÓDIGO ROJO</h2>
+              <p className="mt-3 text-sm sm:text-base font-bold uppercase tracking-[0.25em] opacity-90">El paciente se descompensa</p>
+            </motion.div>
           </div>
         );
       case state.matches('boss_fight'):
@@ -560,9 +611,10 @@ export function App() {
         return (
           <LootScreen
             score={state.context.score}
-            xpTotal={Math.floor(state.context.score * getDailyStreakMultiplier(dailyStreak))}
+            xpTotal={Math.max(0, Math.floor(state.context.score * getDailyStreakMultiplier(dailyStreak)))}
             coins={state.context.coinsEarnedThisCase}
-            isPerfect={state.context.mistakesThisCase === 0 && !state.context.hasRescuedThisCase}
+            isPerfect={state.context.mistakesThisCase === 0 && !state.context.hasRescuedThisCase && !state.context.usedUndoThisCase}
+            perfectBonus={calculatePerfectRoundBonus(state.context.deck.length, state.context.difficulty)}
             pearl={currentCase?.enarm_pearl ?? currentCase?.perla_enarm}
             feedbackHistoryCount={state.context.feedbackHistory.length}
             onViewRetro={() => setShowRetro(true)}
@@ -635,6 +687,7 @@ export function App() {
   };
 
   return (
+    <MotionConfig reducedMotion="user">
     <div className={`fixed inset-0 bg-[#FDFBF7] flex flex-col items-center select-none overflow-hidden text-slate-800 p-safe-top p-safe-bottom p-safe-left p-safe-right ${timeLeft <= 10 && state.matches('triage') ? 'destabilized-content' : ''} ${swipeFeedback === 'wrong' ? 'shake-lite' : ''} ${errorImpact === 'lethal' ? 'error-flash-lethal' : errorImpact === 'normal' ? 'error-flash' : ''}`}>
       <div className="absolute inset-0 pointer-events-none opacity-[0.02] medical-grid" />
       <TelemetryHUD
@@ -643,6 +696,7 @@ export function App() {
         score={state.context.score}
         combo={state.context.combo}
         vitality={state.context.vitality}
+        lives={state.context.lives}
         coins={stats.coins}
         lastVitals={state.context.lastVitals}
         onPause={() => setIsPaused(true)}
@@ -654,6 +708,7 @@ export function App() {
           doctor="mendoza"
           expression={mentorExpression}
           dialogueText={mentorDialogue}
+          points={lastSwipePoints}
           isVisible={!!mentorDialogue && state.matches('triage')}
         />
       </div>
@@ -676,7 +731,6 @@ export function App() {
         />
       )}</AnimatePresence>
       {showRetro && <div ref={retroTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] bg-[#FDFBF7]/90 backdrop-blur-md p-6"><Suspense fallback={null}><RetrospectiveView history={state.context.feedbackHistory} onClose={() => setShowRetro(false)} /></Suspense></div>}
-      <FeedbackToast result={swipeFeedback} points={lastSwipePoints} />
       <RewardToast toast={rewardToast} />
       <AnimatePresence>{isPaused && state.matches('triage') && (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="fixed inset-0 z-[130] flex flex-col items-center justify-center bg-[#FDFBF7]/80 backdrop-blur-sm">
@@ -768,6 +822,7 @@ export function App() {
       <div className="w-full max-w-md text-center opacity-20 py-4"><p className="text-[10px] font-bold tracking-widest uppercase lettering">HGC ARCHIVE · Dr. Swipe Scrapbook</p></div>
       <ReloadPrompt />
     </div>
+    </MotionConfig>
   );
 }
 

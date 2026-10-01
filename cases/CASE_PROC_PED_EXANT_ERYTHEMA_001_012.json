@@ -13,7 +13,7 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "vitals",
-            "card_text": "TA N/A, FC 80 lpm, Temp 37.2°C",
+            "card_text": "FC 80 lpm, Temp 37.2°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -77,7 +77,7 @@
             "card_id": "c_6",
             "ui_icon": "beaker",
             "category": "Fisiopatología",
-            "card_text": "F) Receptor de Antígeno P: El virus entra a los proeritroblastos a través de este receptor específico.",
+            "card_text": "Receptor de Antígeno P: El virus entra a los proeritroblastos a través de este receptor específico.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -89,7 +89,7 @@
             "card_id": "c_8",
             "ui_icon": "thermometer",
             "category": "meds",
-            "card_text": "H) Medidas de Sostén: Reposo e hidratación. En casos de crisis aplásica puede requerir transfusión.",
+            "card_text": "Medidas de Sostén: Reposo e hidratación. En casos de crisis aplásica puede requerir transfusión.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -101,7 +101,7 @@
             "card_id": "c_9",
             "ui_icon": "shield-off",
             "category": "Salud Pública",
-            "card_text": "I) Período de Contagio: El paciente es contagioso ANTES del exantema. Al aparecer el brote, ya no transmite el virus.",
+            "card_text": "Período de Contagio: El paciente es contagioso ANTES del exantema. Al aparecer el brote, ya no transmite el virus.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -113,7 +113,7 @@
             "card_id": "c_10",
             "ui_icon": "slash",
             "category": "meds",
-            "card_text": "J) Vacuna contra Parvovirus B19: Inmunización universal recomendada en la Cartilla Nacional de Salud de México.",
+            "card_text": "Vacuna contra Parvovirus B19: Inmunización universal recomendada en la Cartilla Nacional de Salud de México.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -142,7 +142,7 @@
             "card_id": "c_7",
             "ui_icon": "baby",
             "category": "Riesgo Obstétrico",
-            "card_text": "G) Hidrops Fetalis: Riesgo de infección transplacentaria en embarazadas no inmunes, causando anemia fetal grave.",
+            "card_text": "Hidrops Fetalis: Riesgo de infección transplacentaria en embarazadas no inmunes, causando anemia fetal grave.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

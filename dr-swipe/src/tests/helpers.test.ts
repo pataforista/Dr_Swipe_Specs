@@ -37,6 +37,21 @@ describe('formatters unit tests', () => {
     });
   });
 
+  describe('cleanMentorComment quips and interjections', () => {
+    const keepCard: Pick<Card, 'expected_action' | 'safety_flags'> = { expected_action: 'keep', safety_flags: {} };
+
+    it('does not scold a correct swipe with an error-only quip', () => {
+      const quip = 'Mendoza: ¿Omites el dato clave? Espero que tengas un buen abogado de negligencia.';
+      expect(cleanMentorComment(quip, true, keepCard)).toBe('Correcto.');
+      expect(cleanMentorComment(quip, false, keepCard)).toBe('🎯 DATO CLAVE OMITIDO: ¿Omites el dato clave? Espero que tengas un buen abogado de negligencia.');
+    });
+
+    it('drops a whole leading interjection instead of leaving a fragment', () => {
+      const comment = 'Navarro: ¡Excelente perla! El Síndrome Inflamatorio de Reconstitución Inmune (IRIS) puede ser fatal.';
+      expect(cleanMentorComment(comment, true, keepCard)).toBe('Correcto. El Síndrome Inflamatorio de Reconstitución Inmune (IRIS) puede ser fatal.');
+    });
+  });
+
   describe('shuffleBossQuestion', () => {
     it('should shuffle options and update correct_index correctly', () => {
       const question: BossQuestion = {

@@ -13,12 +13,12 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "Signos Vitales",
-            "card_text": "Hallazgo clínico: FC 105 lpm, FR 28 rpm, Temp 38.0°C, SatO2 96%.",
+            "card_text": "FC 105 lpm, FR 28 rpm, Temp 38.0°C, SatO2 96%.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "omission",
-                "vazquez_comment": "ðYZ¯ DATO CLAVE OMITIDO: Navarro: Signos vitales estables, típico de una neumonía atípica. No requiere manejo urgente en urgencias."
+                "vazquez_comment": "Navarro: Signos vitales estables, típico de una neumonía atípica. No requiere manejo urgente en urgencias."
             }
         },
         {
@@ -28,7 +28,7 @@
                 "decision_critical": true
             },
             "ui_icon": "target",
-            "card_text": "Evidencia: Neumonía Atípica: Cuadro subagudo, tos seca predominante y disociación clínico-radiológica.",
+            "card_text": "Neumonía Atípica: Cuadro subagudo, tos seca predominante y disociación clínico-radiológica.",
             "scoring": {
                 "vazquez_comment": "Navarro: áExacto! Los síntomas son menos floridos que en la neumonía típica.",
                 "points": 150,
@@ -40,7 +40,7 @@
         {
             "card_id": "c_2",
             "ui_icon": "beaker",
-            "card_text": "Hallazgo: Mycoplasma pneumoniae: El patógeno atípico más frecuente en niños mayores de 5 años.",
+            "card_text": "Mycoplasma pneumoniae: El patógeno atípico más frecuente en niños mayores de 5 años.",
             "scoring": {
                 "vazquez_comment": "Navarro: áCorrecto! Es el principal sospechoso ante esta clínica y edad.",
                 "points": 100,
@@ -52,7 +52,7 @@
         {
             "card_id": "c_3",
             "ui_icon": "camera",
-            "card_text": "Evidencia: Infiltrados Intersticiales: Hallazgo radiológico clásico de neumonía atípica, a menudo bilateral y difuso.",
+            "card_text": "Infiltrados Intersticiales: Hallazgo radiológico clásico de neumonía atípica, a menudo bilateral y difuso.",
             "scoring": {
                 "vazquez_comment": "Navarro: Bien. La placa se ve 'peor' que el estado general del paciente.",
                 "points": 100,
@@ -68,7 +68,7 @@
                 "decision_critical": true
             },
             "ui_icon": "pill",
-            "card_text": "Dato de importancia: Azitromicina (Macrólido): Tratamiento de elección para gérmenes atípicos. Inhibe la síntesis proteica (50S).",
+            "card_text": "Azitromicina (Macrólido): Tratamiento de elección para gérmenes atípicos. Inhibe la síntesis proteica (50S).",
             "scoring": {
                 "vazquez_comment": "Navarro: áExcelente! Los betalactámicos no sirven contra Mycoplasma porque carece de pared celular.",
                 "points": 150,
@@ -80,7 +80,7 @@
         {
             "card_id": "c_5",
             "ui_icon": "eye",
-            "card_text": "Hallazgo: Signos Extrapulmonares: Miringitis bulosa, eritema multiforme o anemia hemolítica pueden acompañar la infección.",
+            "card_text": "Signos Extrapulmonares: Miringitis bulosa, eritema multiforme o anemia hemolítica pueden acompañar la infección.",
             "scoring": {
                 "vazquez_comment": "Navarro: áBuen detalle! Estos hallazgos refuerzan mucho la sospecha de Mycoplasma.",
                 "points": 50,
@@ -92,9 +92,9 @@
         {
             "card_id": "c_6",
             "ui_icon": "slash",
-            "card_text": "Dato de importancia: F) NAC Típica (Neumococo): Cursa con inicio súbito, fiebre alta, dolor pleurítico y consolidación lobar.",
+            "card_text": "NAC Típica (Neumococo): Cursa con inicio súbito, fiebre alta, dolor pleurítico y consolidación lobar.",
             "scoring": {
-                "vazquez_comment": "ðYZ¯ DATO CLAVE OMITIDO: Navarro: Correcto. Este paciente NO tiene la toxicidad ni los hallazgos de una neumonía típica.",
+                "vazquez_comment": "Navarro: Correcto. Este paciente NO tiene la toxicidad ni los hallazgos de una neumonía típica.",
                 "points": 50,
                 "error_type": "hoarding"
             },

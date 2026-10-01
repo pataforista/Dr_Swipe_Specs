@@ -61,7 +61,7 @@
             "card_id": "pad_008",
             "ui_icon": "check-circle",
             "category": "meds",
-            "card_text": "H) Criterios de Reperfusión: Descenso del ST >50% a los 60-90 min de la fibrinólisis y alivio del dolor.",
+            "card_text": "Criterios de Reperfusión: Descenso del ST >50% a los 60-90 min de la fibrinólisis y alivio del dolor.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -73,7 +73,7 @@
             "card_id": "pad_009",
             "ui_icon": "help-circle",
             "category": "Localización EKG",
-            "card_text": "I) Cara Anterior (V1-V4): Corresponde generalmente a la oclusión de la Arteria Descendente Anterior (DAI).",
+            "card_text": "Cara Anterior (V1-V4): Corresponde generalmente a la oclusión de la Arteria Descendente Anterior (DAI).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -118,7 +118,7 @@
             "card_id": "pad_006",
             "ui_icon": "pill",
             "category": "Prevención Secundaria",
-            "card_text": "F) Estatinas: Iniciar Atorvastatina 80mg de forma temprana tras el evento agudo para estabilizar la placa.",
+            "card_text": "Estatinas: Iniciar Atorvastatina 80mg de forma temprana tras el evento agudo para estabilizar la placa.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -130,7 +130,7 @@
             "card_id": "pad_007",
             "ui_icon": "alert-triangle",
             "category": "meds",
-            "card_text": "G) Contraindica Fibrinolisis: EVC hemorrágico previo, neoplasia intracraneal conocida o sangrado interno activo.",
+            "card_text": "Contraindica Fibrinolisis: EVC hemorrágico previo, neoplasia intracraneal conocida o sangrado interno activo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

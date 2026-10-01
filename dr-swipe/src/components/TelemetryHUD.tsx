@@ -8,13 +8,16 @@ interface TelemetryHUDProps {
   score: number;
   combo: number;
   vitality: number;
+  /** Interns left in the shift (fail_protection spends one per incident). */
+  lives: number;
+  maxLives?: number;
   coins: number;
   lastVitals: { ta?: string; fc?: number; temp?: number; status: string } | null;
   onPause?: () => void;
 }
 
 export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
-  timeLeft, state, score, combo, vitality, coins, lastVitals, onPause
+  timeLeft, state, score, combo, vitality, lives, maxLives = 5, coins, lastVitals, onPause
 }) => {
   // A vitality drop should read as a hit, not just a number changing — flash
   // the bar red for a beat instead of just easing the width down (F2).
@@ -45,7 +48,7 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
             animate={{ scale: [1, 1.1, 1] }}
             className="text-lg sm:text-xl font-bold text-slate-700 leading-none lettering tabular-nums"
           >
-            {Math.max(0, score)}
+            {score}
           </motion.span>
         </div>
         <div className="w-px h-6 bg-slate-200 hidden sm:block" />
@@ -76,6 +79,23 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
               }}
               className="h-full transition-all duration-500"
             />
+          </div>
+        </div>
+        <div className="w-px h-6 bg-slate-200 hidden sm:block" />
+        <div className="flex flex-col gap-0.5" aria-label={`${lives} de ${maxLives} internos disponibles`}>
+          <span className="text-[11px] sm:text-[10px] font-black tracking-widest text-rose-400 uppercase leading-none lettering">
+            Internos
+          </span>
+          <div className="flex gap-px text-xs sm:text-sm leading-none" aria-hidden="true">
+            {Array.from({ length: maxLives }, (_, i) => (
+              <motion.span
+                key={i}
+                animate={i < lives ? { opacity: 1, scale: 1 } : { opacity: 0.2, scale: 0.8 }}
+                className={i < lives ? '' : 'grayscale'}
+              >
+                🩺
+              </motion.span>
+            ))}
           </div>
         </div>
       </div>
@@ -150,6 +170,7 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
     prevProps.score === nextProps.score &&
     prevProps.combo === nextProps.combo &&
     prevProps.vitality === nextProps.vitality &&
+    prevProps.lives === nextProps.lives &&
     prevProps.coins === nextProps.coins &&
     vitalsEqual
   );
@@ -212,12 +233,24 @@ const VitalsMonitor: React.FC<{ vitals: TelemetryHUDProps['lastVitals'] }> = ({ 
         )}
       </div>
 
-      <div className="h-4 sm:h-5 w-full bg-slate-100 rounded-lg flex items-center justify-center overflow-hidden border border-slate-200/60">
-         <motion.div
-           animate={{ x: [-100, 100] }}
-           transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-           className={`h-px w-full ${vitals.status === 'critical' ? 'bg-rose-300' : 'bg-slate-300'}`}
-         />
+      {/* A sliding flat line reads as asystole; draw an actual beat whose
+          pace follows the patient's status. */}
+      <div className="h-4 sm:h-5 w-full bg-slate-100 rounded-lg overflow-hidden border border-slate-200/60">
+         <motion.svg
+           viewBox="0 0 120 20"
+           preserveAspectRatio="none"
+           className="h-full w-[200%]"
+           animate={{ x: ['0%', '-50%'] }}
+           transition={{ duration: vitals.status === 'critical' ? 0.7 : vitals.status === 'alert' ? 1.1 : 1.6, repeat: Infinity, ease: 'linear' }}
+           aria-hidden="true"
+         >
+           <polyline
+             fill="none"
+             strokeWidth="1.5"
+             className={vitals.status === 'critical' ? 'stroke-rose-400' : vitals.status === 'alert' ? 'stroke-amber-400' : 'stroke-emerald-400'}
+             points="0,12 14,12 18,10 22,12 26,12 28,15 31,2 34,17 37,12 46,12 50,9 54,12 60,12 74,12 78,10 82,12 86,12 88,15 91,2 94,17 97,12 106,12 110,9 114,12 120,12"
+           />
+         </motion.svg>
       </div>
     </motion.div>
   );

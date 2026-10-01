@@ -13,7 +13,7 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "Signos Vitales",
-            "card_text": "Hallazgo: Ruido en el expediente: TA N/A, FC 90 lpm, Temp 36.5°C",
+            "card_text": "FC 90 lpm, Temp 36.5°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -25,7 +25,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnostico",
-            "card_text": "Evidencia: APGAR 5 (Depresion Moderada): FC <100 (1) + Llanto debil (1) + Mueca (1) + Flexion (1) + Acrocianosis (1).",
+            "card_text": "APGAR 5 (Depresion Moderada): FC <100 (1) + Llanto debil (1) + Mueca (1) + Flexion (1) + Acrocianosis (1).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,7 +41,7 @@
             "card_id": "c_2",
             "ui_icon": "target",
             "category": "Diagnostico",
-            "card_text": "Hallazgo clinico: Silverman-Andersen 2 (Dificultad Leve): Aleteo nasal (1) + Tiraje intercostal (1) = 2. A mayor puntaje en esta escala, peor es la dificultad respiratoria.",
+            "card_text": "Silverman-Andersen 2 (Dificultad Leve): Aleteo nasal (1) + Tiraje intercostal (1) = 2. A mayor puntaje en esta escala, peor es la dificultad respiratoria.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -53,7 +53,7 @@
             "card_id": "c_3",
             "ui_icon": "slash",
             "category": "Diagnostico Diferencial",
-            "card_text": "Evidencia clinica: Ruido en el expediente: Asfixia Neonatal: Requiere pH arterial de cordon <7.0, deficit de base >=12, APGAR 0-3 tras 5 min y dano a organos.",
+            "card_text": "Asfixia Neonatal: Requiere pH arterial de cordon <7.0, deficit de base >=12, APGAR 0-3 tras 5 min y dano a organos.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -65,7 +65,7 @@
             "card_id": "c_6",
             "ui_icon": "help-circle",
             "category": "Correccion",
-            "card_text": "Hallazgo: F) MR. SOPA: Pasos correctivos de la ventilacion: Mascara, Reposicion, Succion, Open mouth, Pressure, Alternative airway.",
+            "card_text": "MR. SOPA: Pasos correctivos de la ventilacion: Mascara, Reposicion, Succion, Open mouth, Pressure, Alternative airway.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -77,7 +77,7 @@
             "card_id": "c_8",
             "ui_icon": "activity",
             "category": "Coordinacion",
-            "card_text": "Evidencia: H) Relacion 3:1 (Manejo 3-1): 90 compresiones y 30 ventilaciones por minuto (120 eventos totales).",
+            "card_text": "Relacion 3:1 (Manejo 3-1): 90 compresiones y 30 ventilaciones por minuto (120 eventos totales).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -89,7 +89,7 @@
             "card_id": "c_4",
             "ui_icon": "thermometer",
             "category": "Pasos Iniciales",
-            "card_text": "Hallazgo: Calentar, Secar y Estimular: Proporcionar calor, posicionar via aerea, succionar secreciones y estimular para iniciar llanto.",
+            "card_text": "Calentar, Secar y Estimular: Proporcionar calor, posicionar via aerea, succionar secreciones y estimular para iniciar llanto.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -105,7 +105,7 @@
             "card_id": "c_5",
             "ui_icon": "zap",
             "category": "Manejo Urgente",
-            "card_text": "Evidencia: VPP (Ventilacion a Presion Positiva): Iniciar si FC <100 lpm, Apnea o Boqueo. Es la accion mas importante en reanimacion.",
+            "card_text": "VPP (Ventilacion a Presion Positiva): Iniciar si FC <100 lpm, Apnea o Boqueo. Es la accion mas importante en reanimacion.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -121,7 +121,7 @@
             "card_id": "c_7",
             "ui_icon": "heart",
             "category": "Compresiones",
-            "card_text": "Evidencia: G) Compresiones Toracicas: Iniciar si la FC es <60 lpm despues de 30 segundos de VPP efectiva con O2 al 100%.",
+            "card_text": "Compresiones Toracicas: Iniciar si la FC es <60 lpm despues de 30 segundos de VPP efectiva con O2 al 100%.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -137,7 +137,7 @@
             "card_id": "c_9",
             "ui_icon": "pill",
             "category": "Farmacologico",
-            "card_text": "Hallazgo: I) Adrenalina Umbilical: Indicada si la FC se mantiene <60 lpm tras VPP y compresiones bien ejecutadas.",
+            "card_text": "Adrenalina Umbilical: Indicada si la FC se mantiene <60 lpm tras VPP y compresiones bien ejecutadas.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

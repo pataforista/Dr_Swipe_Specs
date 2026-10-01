@@ -13,12 +13,30 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "vitals",
-            "card_text": "Dato de importancia: FC 180 lpm (Taquicardia severa), FR 35 rpm, Temp 37.0 C, TA 70/40 mmHg (Sugerente de Choque).",
+            "card_text": "FC 180 lpm (Taquicardia severa), FR 35 rpm, Temp 37.0 C, TA 70/40 mmHg (Sugerente de Choque).",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Navarro: Taquicardia extrema e hipotensión en un lactante deshidratado son signos de choque: definen el Plan C con líquidos IV inmediatos."
+            },
+            "safety_flags": {
+                "lethal_if_discarded": true
+            }
+        },
+        {
+            "card_id": "dx_4",
+            "ui_icon": "alert-triangle",
+            "category": "meds",
+            "card_text": "Choque por Deshidratación: Iniciar suero oral por sonda nasogástrica como primera opción en lugar de líquidos IV.",
             "expected_action": "discard",
             "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "DATO CLAVE OMITIDO: Navarro: Urgente! El paciente esta en estado de choque hipovolemico. Plan C inmediato."
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Navarro: El choque se trata con líquidos IV (o intraóseos) de inmediato; la sonda solo es un recurso si no hay acceso vascular posible."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         },
         {
@@ -46,6 +64,18 @@
             }
         },
         {
+            "card_id": "dx_3",
+            "ui_icon": "pill",
+            "category": "meds",
+            "card_text": "Antibiótico Empírico de Rutina: Indicado en toda diarrea aguda acuosa del lactante.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Los antibióticos se reservan para la diarrea con sangre (disentería), el cólera grave o infecciones asociadas; no para la diarrea acuosa común."
+            }
+        },
+        {
             "card_id": "c_5",
             "ui_icon": "activity",
             "category": "imaging",
@@ -58,10 +88,34 @@
             }
         },
         {
+            "card_id": "dx_2",
+            "ui_icon": "droplet",
+            "category": "VHG",
+            "card_text": "Refrescos o Bebidas Deportivas: Alternativa equivalente al Vida Suero Oral para rehidratar.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: Su alta osmolaridad y poco sodio pueden empeorar la diarrea; se rehidrata con suero oral de baja osmolaridad."
+            }
+        },
+        {
+            "card_id": "dx_1",
+            "ui_icon": "coffee",
+            "category": "Gastroenteritis",
+            "card_text": "Suspender la Alimentación: Ayuno hasta que cedan las evacuaciones para dejar descansar el intestino.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: La OMS indica continuar la alimentación, incluida la lactancia, durante la diarrea; el ayuno empeora el estado nutricional."
+            }
+        },
+        {
             "card_id": "c_6",
             "ui_icon": "search",
             "category": "imaging",
-            "card_text": "F) Signo del Lienzo Húmedo: Persistencia del pliegue cutáneo tras pinchar la piel. Indica deshidratación grave.",
+            "card_text": "Signo del Lienzo Húmedo: Persistencia del pliegue cutáneo tras pinchar la piel. Indica deshidratación grave.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -73,7 +127,7 @@
             "card_id": "c_8",
             "ui_icon": "pill",
             "category": "meds",
-            "card_text": "H) Zinc Elemental: Administrar 10-20 mg al día por 10-14 días para reducir duración y recurrencia de la diarrea.",
+            "card_text": "Zinc Elemental: Administrar 10-20 mg al día por 10-14 días para reducir duración y recurrencia de la diarrea.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -85,7 +139,7 @@
             "card_id": "c_9",
             "ui_icon": "thermometer",
             "category": "labs",
-            "card_text": "I) Electrolitos Séricos: Monitorizar niveles de potasio (K+), ya que la diarrea causa pérdidas masivas y riesgo de íleo.",
+            "card_text": "Electrolitos Séricos: Monitorizar niveles de potasio (K+), ya que la diarrea causa pérdidas masivas y riesgo de íleo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -97,7 +151,7 @@
             "card_id": "c_10",
             "ui_icon": "alert-triangle",
             "category": "meds",
-            "card_text": "J) Vía Intraósea: Alternativa inmediata de acceso vascular si no se logra canalización venosa en 3 intentos o 90 segundos durante el choque.",
+            "card_text": "Vía Intraósea: Alternativa inmediata de acceso vascular si no se logra canalización venosa en 3 intentos o 90 segundos durante el choque.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -109,7 +163,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "imaging",
-            "card_text": "Hallazgo: Deshidratacion Grave con Choque: Perdida ponderal >10%, llenado capilar >4s, letargo y compromiso hemodinamico. Requiere Plan C inmediato.",
+            "card_text": "Deshidratacion Grave con Choque: Perdida ponderal >10%, llenado capilar >4s, letargo y compromiso hemodinamico. Requiere Plan C inmediato.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -141,7 +195,7 @@
             "card_id": "c_7",
             "ui_icon": "slash",
             "category": "Gastroenteritis",
-            "card_text": "G) Loperamida: Recomendada en lactantes para reducir el número de evacuciones y evitar la pérdida de líquidos.",
+            "card_text": "Loperamida: Recomendada en lactantes para reducir el número de evacuciones y evitar la pérdida de líquidos.",
             "expected_action": "discard",
             "scoring": {
                 "points": 100,

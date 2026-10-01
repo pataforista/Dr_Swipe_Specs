@@ -24,7 +24,7 @@
         {
             "card_id": "c_10_perla",
             "ui_icon": "ear",
-            "card_text": "Hallazgo: J) Otitis media aguda reciente: Es el principal factor predisponente para meningitis por Streptococcus pneumoniae en adultos.",
+            "card_text": "Otitis media aguda reciente: Es el principal factor predisponente para meningitis por Streptococcus pneumoniae en adultos.",
             "scoring": {
                 "vazquez_comment": "Navarro: ¡Excelente perla! Siempre busca focos parameníngeos en la historia clínica.",
                 "points": 100,
@@ -73,7 +73,7 @@
             "card_id": "c_6",
             "ui_icon": "droplet",
             "category": "labs",
-            "card_text": "F) Hallazgos Bacterianos: Glucosa <40 mg/dl (consumo por bacterias) y PMN >1000/mm3.",
+            "card_text": "Hallazgos Bacterianos: Glucosa <40 mg/dl (consumo por bacterias) y PMN >1000/mm3.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -85,7 +85,7 @@
             "card_id": "c_7",
             "ui_icon": "beaker",
             "category": "Etiología",
-            "card_text": "G) Streptococcus pneumoniae: Agente más frecuente de meningitis bacteriana en adultos inmunocompetentes.",
+            "card_text": "Streptococcus pneumoniae: Agente más frecuente de meningitis bacteriana en adultos inmunocompetentes.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -97,7 +97,7 @@
             "card_id": "c_8",
             "ui_icon": "shield-alert",
             "category": "imaging",
-            "card_text": "H) Quimioprofilaxis con Rifampicina: Administración a contactos cercanos si se confirma N. meningitidis o H. influenzae b.",
+            "card_text": "Quimioprofilaxis con Rifampicina: Administración a contactos cercanos si se confirma N. meningitidis o H. influenzae b.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -109,7 +109,7 @@
             "card_id": "c_9",
             "ui_icon": "alert-circle",
             "category": "Complicación",
-            "card_text": "I) Hipoacusia Neurosensorial: Secuela permanente más frecuente tras la recuperación de meningitis bacteriana.",
+            "card_text": "Hipoacusia Neurosensorial: Secuela permanente más frecuente tras la recuperación de meningitis bacteriana.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,

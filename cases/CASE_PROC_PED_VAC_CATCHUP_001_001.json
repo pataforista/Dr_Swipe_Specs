@@ -13,31 +13,31 @@
             "card_id": "c_1",
             "ui_icon": "slash",
             "category": "Manejo",
-            "card_text": "Hallazgo: Dato anecdótico: Diferir inmunización por cuadro respiratorio leve: Posponer vacunas hasta que el niño esté completamente asintomático.",
+            "card_text": "Diferir inmunización por cuadro respiratorio leve: Posponer vacunas hasta que el niño esté completamente asintomático.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Castillo: ¡Falso! Una infección leve (catarro) NO es contraindicación para vacunar. No pierdas oportunidades."
+                "vazquez_comment": "Castillo: ¡Falso! Una infección leve (catarro) NO es contraindicación para vacunar. No pierdas oportunidades."
             }
         },
         {
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
-            "card_text": "Hallazgo: Dato anecdótico: Diferir SRP hasta los 6 años de edad: Esquema obsoleto. El retraso en la 2ª dosis aumenta el riesgo de brotes escolares.",
+            "card_text": "Diferir SRP hasta los 6 años de edad: Esquema obsoleto. El retraso en la 2ª dosis aumenta el riesgo de brotes escolares.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Castillo: ¡Bien! Las guías 2024 son taxativas: la protección debe completarse lo antes posible."
+                "vazquez_comment": "Castillo: ¡Bien! Las guías 2024 son taxativas: la protección debe completarse lo antes posible."
             }
         },
         {
             "card_id": "c_3",
             "ui_icon": "target",
             "category": "Esquema 18 Meses",
-            "card_text": "Evidencia: Aplicar Hexavalente (4ª dosis): Dosis de refuerzo que protege contra Difteria, Tétanos, Tos ferina, Hepatitis B, HiB y Polio.",
+            "card_text": "Aplicar Hexavalente (4ª dosis): Dosis de refuerzo que protege contra Difteria, Tétanos, Tos ferina, Hepatitis B, HiB y Polio.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -49,19 +49,19 @@
             "card_id": "c_4",
             "ui_icon": "slash",
             "category": "Diagnóstico Diferencial",
-            "card_text": "Información redundante: Vacuna Varicela: Aunque recomendada, NO está incluida en el esquema básico nacional gratuito de México (Cartilla 2024).",
+            "card_text": "Vacuna Varicela: Aunque recomendada, NO está incluida en el esquema básico nacional gratuito de México (Cartilla 2024).",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Castillo: Correcto. En el ENARM debes basarte en el esquema oficial de la Cartilla Nacional de Salud."
+                "vazquez_comment": "Castillo: Correcto. En el ENARM debes basarte en el esquema oficial de la Cartilla Nacional de Salud."
             }
         },
         {
             "card_id": "c_6",
             "ui_icon": "rotate-cw",
             "category": "Rotavirus",
-            "card_text": "Hallazgo: F) Vacuna Rotavirus: Se aplica a los 2, 4 y 6 meses. Límite: No iniciar tras los 4 meses ni terminar tras los 8 meses.",
+            "card_text": "Vacuna Rotavirus: Se aplica a los 2, 4 y 6 meses. Límite: No iniciar tras los 4 meses ni terminar tras los 8 meses.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -73,7 +73,7 @@
             "card_id": "c_8",
             "ui_icon": "thermometer",
             "category": "Influenza",
-            "card_text": "Hallazgo: H) Influenza Estacional: Aplicación anual a partir de los 6 meses de edad (invierno).",
+            "card_text": "Influenza Estacional: Aplicación anual a partir de los 6 meses de edad (invierno).",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -85,7 +85,7 @@
             "card_id": "c_9",
             "ui_icon": "award",
             "category": "VPH",
-            "card_text": "Evidencia: I) Vacuna VPH: Aplicación en niñas de 5° grado o 11 años. Protege contra cáncer cervicouterino (serotipos 16 y 18).",
+            "card_text": "Vacuna VPH: Aplicación en niñas de 5° grado o 11 años. Protege contra cáncer cervicouterino (serotipos 16 y 18).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -97,7 +97,7 @@
             "card_id": "c_5",
             "ui_icon": "shield",
             "category": "Nacimiento",
-            "card_text": "Evidencia: Vacuna BCG (Dosis única): Se aplica al nacer; previene las formas GRAVES de Tuberculosis (Meníngea y Miliar).",
+            "card_text": "Vacuna BCG (Dosis única): Se aplica al nacer; previene las formas GRAVES de Tuberculosis (Meníngea y Miliar).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -113,7 +113,7 @@
             "card_id": "c_7",
             "ui_icon": "zap",
             "category": "Neumococo",
-            "card_text": "Evidencia: G) Neumococo Conjugada: Se aplica en esquema 2 + 1 (2, 4 y 12 meses de edad).",
+            "card_text": "Neumococo Conjugada: Se aplica en esquema 2 + 1 (2, 4 y 12 meses de edad).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -129,7 +129,7 @@
             "card_id": "c_10",
             "ui_icon": "alert-triangle",
             "category": "Seguridad",
-            "card_text": "Evidencia: J) Contraindicación de Vacunas Vivas (SRP): No aplicar en pacientes con inmunodeficiencia grave o antecedente de anafilaxia a neomicina.",
+            "card_text": "Contraindicación de Vacunas Vivas (SRP): No aplicar en pacientes con inmunodeficiencia grave o antecedente de anafilaxia a neomicina.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

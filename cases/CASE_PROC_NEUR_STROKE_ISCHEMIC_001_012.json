@@ -13,12 +13,12 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "Signos Vitales",
-            "card_text": "Información redundante: TA 170/90 mmHg, FC 110 lpm (irregular), Temp 36.6°C",
-            "expected_action": "discard",
+            "card_text": "TA 170/90 mmHg, FC 110 lpm (irregular), Temp 36.6°C",
+            "expected_action": "keep",
             "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Navarro: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Mendoza: TA menor de 185/110 permite iniciar la trombólisis sin antihipertensivo previo; el pulso irregular sugiere fibrilación auricular como fuente cardioembólica."
             }
         },
         {
@@ -37,7 +37,7 @@
             "card_id": "c_6",
             "ui_icon": "alert-triangle",
             "category": "vitals",
-            "card_text": "F) Control de TA: Mantener la TA por debajo de 185/110 mmHg para iniciar rTPA de forma segura.",
+            "card_text": "Control de TA: Mantener la TA por debajo de 185/110 mmHg para iniciar rTPA de forma segura.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -65,7 +65,7 @@
             "card_id": "c_7",
             "ui_icon": "activity",
             "category": "Fisiología",
-            "card_text": "G) Penumbra Isquémica: Tejido cerebral con riesgo de infarto que aún es rescatable mediante reperfusión.",
+            "card_text": "Penumbra Isquémica: Tejido cerebral con riesgo de infarto que aún es rescatable mediante reperfusión.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -74,10 +74,49 @@
             }
         },
         {
+            "card_id": "dx_2",
+            "ui_icon": "pill",
+            "category": "meds",
+            "card_text": "Aspirina junto con el rTPA: Administrarla al mismo tiempo que la alteplasa para potenciar la reperfusión.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Mendoza: Tras la alteplasa, la aspirina se difiere 24 horas para no aumentar el riesgo de hemorragia."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
+            "card_id": "dx_1",
+            "ui_icon": "heart",
+            "category": "vitals",
+            "card_text": "Bajar la TA a menos de 140/90: Requisito antes de iniciar la trombólisis.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: Para trombolizar basta con TA menor de 185/110 y mantenerla menor de 180/105 en las siguientes 24 horas; bajarla de más reduce la perfusión de la penumbra."
+            }
+        },
+        {
+            "card_id": "dx_4",
+            "ui_icon": "clock",
+            "category": "Manejo Inicial",
+            "card_text": "Esperar la Resonancia: Obtener RM antes de decidir la trombólisis.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: La TC simple y la glucosa son los únicos estudios necesarios antes de la alteplasa; esperar la RM consume la ventana terapéutica."
+            }
+        },
+        {
             "card_id": "c_9",
             "ui_icon": "calendar",
             "category": "meds",
-            "card_text": "I) Iniciar Antiagregación (ASA): Administrar 160-325 mg de Aspirina tras 24 horas de la fibrinólisis.",
+            "card_text": "Iniciar Antiagregación (ASA): Administrar 160-325 mg de Aspirina tras 24 horas de la fibrinólisis.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -100,6 +139,18 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
+            }
+        },
+        {
+            "card_id": "dx_3",
+            "ui_icon": "droplet",
+            "category": "meds",
+            "card_text": "Heparina Plena Urgente: Indicada de rutina en el EVC isquémico agudo para evitar la progresión.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: La anticoagulación urgente no está indicada en la mayoría de los EVC isquémicos agudos: no previene recurrencia y aumenta el sangrado."
             }
         },
         {
@@ -138,7 +189,7 @@
             "card_id": "c_8",
             "ui_icon": "slash",
             "category": "Complicación",
-            "card_text": "H) Transformación Hemorrágica: Vigilar cefalea intensa, náuseas o deterioro neurológico súbito post-rTPA.",
+            "card_text": "Transformación Hemorrágica: Vigilar cefalea intensa, náuseas o deterioro neurológico súbito post-rTPA.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

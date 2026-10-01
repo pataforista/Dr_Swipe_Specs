@@ -13,12 +13,12 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "Signos Vitales",
-            "card_text": "Hallazgo: Ruido en el expediente: TA 145/95 mmHg, FC 75 lpm, Temp 36.6°C",
+            "card_text": "TA 145/95 mmHg, FC 75 lpm, Temp 36.6°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🧹 DESCARTE RECOMENDADO: No te detengas en signos estables, R1. El reloj no se detiene."
+                "vazquez_comment": "No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
@@ -89,7 +89,7 @@
             "card_id": "c_7",
             "ui_icon": "clock",
             "category": "meds",
-            "card_text": "G) Urgencia Hipertensiva: TA >180/120 mmHg SIN daño a órgano blanco. Tratamiento oral y reducción en 24-48h.",
+            "card_text": "Urgencia Hipertensiva: TA >180/120 mmHg SIN daño a órgano blanco. Tratamiento oral y reducción en 24-48h.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -101,7 +101,7 @@
             "card_id": "c_9",
             "ui_icon": "activity",
             "category": "Meta Terapéutica",
-            "card_text": "I) Meta General de Control: Mantener cifras menores a 130/80 mmHg en la mayoría de los pacientes (GPC/AHA).",
+            "card_text": "Meta General de Control: Mantener cifras menores a 130/80 mmHg en la mayoría de los pacientes (GPC/AHA).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -113,7 +113,7 @@
             "card_id": "c_6",
             "ui_icon": "pill",
             "category": "Tratamiento Dual",
-            "card_text": "F) Terapia Combinada Inicial: IECA o ARA-II + Bloqueador de canales de calcio o Diurético tipo tiazida.",
+            "card_text": "Terapia Combinada Inicial: IECA o ARA-II + Bloqueador de canales de calcio o Diurético tipo tiazida.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -129,7 +129,7 @@
             "card_id": "c_8",
             "ui_icon": "zap",
             "category": "meds",
-            "card_text": "H) Emergencia Hipertensiva: TA >180/120 mmHg CON daño agudo (EVC, IAM, EAP). Requiere tratamiento IV y hospitalización.",
+            "card_text": "Emergencia Hipertensiva: TA >180/120 mmHg CON daño agudo (EVC, IAM, EAP). Requiere tratamiento IV y hospitalización.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

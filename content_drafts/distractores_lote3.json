@@ -1,0 +1,248 @@
+{
+    "_descripcion": "Lote 3 de cartas de descarte (distractores), 4 por familia. Las dos familias de deshidratación pediátrica comparten las mismas 4 cartas. Cada carta es una afirmación plausible pero incorrecta, con comentario corrector y fuente. Se insertan con tools/insert_distractors.py.",
+    "familias": {
+        "PROC_PED_GAST_DEHYDRATION_001": [
+            {
+                "card_id": "dx_1",
+                "ui_icon": "coffee",
+                "category": "Gastroenteritis",
+                "card_text": "Suspender la Alimentación: Ayuno hasta que cedan las evacuaciones para dejar descansar el intestino.",
+                "comment": "Navarro: La OMS indica continuar la alimentación, incluida la lactancia, durante la diarrea; el ayuno empeora el estado nutricional.",
+                "fuente": "OMS, The treatment of diarrhoea (manual)"
+            },
+            {
+                "card_id": "dx_2",
+                "ui_icon": "droplet",
+                "category": "VHG",
+                "card_text": "Refrescos o Bebidas Deportivas: Alternativa equivalente al Vida Suero Oral para rehidratar.",
+                "comment": "Navarro: Su alta osmolaridad y poco sodio pueden empeorar la diarrea; se rehidrata con suero oral de baja osmolaridad.",
+                "fuente": "OMS, The treatment of diarrhoea (manual)"
+            },
+            {
+                "card_id": "dx_3",
+                "ui_icon": "pill",
+                "category": "meds",
+                "card_text": "Antibiótico Empírico de Rutina: Indicado en toda diarrea aguda acuosa del lactante.",
+                "comment": "Navarro: Los antibióticos se reservan para la diarrea con sangre (disentería), el cólera grave o infecciones asociadas; no para la diarrea acuosa común.",
+                "fuente": "OMS, The treatment of diarrhoea (manual)"
+            },
+            {
+                "card_id": "dx_4",
+                "ui_icon": "alert-triangle",
+                "category": "meds",
+                "card_text": "Choque por Deshidratación: Iniciar suero oral por sonda nasogástrica como primera opción en lugar de líquidos IV.",
+                "comment": "Navarro: El choque se trata con líquidos IV (o intraóseos) de inmediato; la sonda solo es un recurso si no hay acceso vascular posible.",
+                "fuente": "OMS/AIEPI, Plan C",
+                "lethal_risk": true
+            }
+        ],
+        "PROC_PED_GIT_DEHYDRATION_001": [
+            {
+                "card_id": "dx_1",
+                "ui_icon": "coffee",
+                "category": "Gastroenteritis",
+                "card_text": "Suspender la Alimentación: Ayuno hasta que cedan las evacuaciones para dejar descansar el intestino.",
+                "comment": "Navarro: La OMS indica continuar la alimentación, incluida la lactancia, durante la diarrea; el ayuno empeora el estado nutricional.",
+                "fuente": "OMS, The treatment of diarrhoea (manual)"
+            },
+            {
+                "card_id": "dx_2",
+                "ui_icon": "droplet",
+                "category": "VHG",
+                "card_text": "Refrescos o Bebidas Deportivas: Alternativa equivalente al Vida Suero Oral para rehidratar.",
+                "comment": "Navarro: Su alta osmolaridad y poco sodio pueden empeorar la diarrea; se rehidrata con suero oral de baja osmolaridad.",
+                "fuente": "OMS, The treatment of diarrhoea (manual)"
+            },
+            {
+                "card_id": "dx_3",
+                "ui_icon": "pill",
+                "category": "meds",
+                "card_text": "Antibiótico Empírico de Rutina: Indicado en toda diarrea aguda acuosa del lactante.",
+                "comment": "Navarro: Los antibióticos se reservan para la diarrea con sangre (disentería), el cólera grave o infecciones asociadas; no para la diarrea acuosa común.",
+                "fuente": "OMS, The treatment of diarrhoea (manual)"
+            },
+            {
+                "card_id": "dx_4",
+                "ui_icon": "alert-triangle",
+                "category": "meds",
+                "card_text": "Choque por Deshidratación: Iniciar suero oral por sonda nasogástrica como primera opción en lugar de líquidos IV.",
+                "comment": "Navarro: El choque se trata con líquidos IV (o intraóseos) de inmediato; la sonda solo es un recurso si no hay acceso vascular posible.",
+                "fuente": "OMS/AIEPI, Plan C",
+                "lethal_risk": true
+            }
+        ],
+        "PROC_INF_SEPSIS_SOFA_001": [
+            {
+                "card_id": "dx_1",
+                "ui_icon": "activity",
+                "category": "meds",
+                "card_text": "Dopamina: Vasopresor de primera línea en el choque séptico.",
+                "comment": "Navarro: La norepinefrina es el vasopresor de primera línea; la dopamina se asocia a más arritmias.",
+                "fuente": "Surviving Sepsis Campaign 2021"
+            },
+            {
+                "card_id": "dx_2",
+                "ui_icon": "clock",
+                "category": "meds",
+                "card_text": "Esperar los Cultivos: No iniciar antibióticos hasta tener el resultado de los hemocultivos.",
+                "comment": "Navarro: Los cultivos se toman antes del antibiótico, pero sin retrasarlo: en choque séptico el antibiótico va dentro de la primera hora.",
+                "fuente": "Surviving Sepsis Campaign 2021",
+                "lethal_risk": true
+            },
+            {
+                "card_id": "dx_3",
+                "ui_icon": "droplet",
+                "category": "labs",
+                "card_text": "Almidones (Hidroxietil Almidón): Coloide de elección para la reanimación inicial.",
+                "comment": "Navarro: Los almidones aumentan la lesión renal y la mortalidad; se reanima con cristaloides balanceados.",
+                "fuente": "Surviving Sepsis Campaign 2021"
+            },
+            {
+                "card_id": "dx_4",
+                "ui_icon": "target",
+                "category": "Definición Sepsis-3",
+                "card_text": "Meta de PAM de 85 mmHg: Objetivo inicial de la reanimación en todo paciente con choque séptico.",
+                "comment": "Navarro: La meta inicial recomendada es una PAM de 65 mmHg; metas más altas no mejoran la supervivencia.",
+                "fuente": "Surviving Sepsis Campaign 2021"
+            }
+        ],
+        "PROC_INT_DM2_DX_001": [
+            {
+                "card_id": "dx_1",
+                "ui_icon": "file-text",
+                "category": "labs",
+                "card_text": "Glucosa en Ayuno Única: Una sola cifra de 128 mg/dL en un paciente asintomático confirma el diagnóstico.",
+                "comment": "Mendoza: Sin hiperglucemia inequívoca, el diagnóstico requiere confirmación con una segunda prueba (repetida o distinta).",
+                "fuente": "ADA, Standards of Care: clasificación y diagnóstico"
+            },
+            {
+                "card_id": "dx_2",
+                "ui_icon": "droplet",
+                "category": "labs",
+                "card_text": "HbA1c en Hemoglobinopatías: Es igual de confiable para diagnosticar diabetes en anemia, hemoglobinopatías o embarazo.",
+                "comment": "Mendoza: Cuando la vida del eritrocito está alterada (hemoglobinopatías, anemia, embarazo) la HbA1c falla; se diagnostica con glucosa plasmática.",
+                "fuente": "ADA, Standards of Care: clasificación y diagnóstico"
+            },
+            {
+                "card_id": "dx_3",
+                "ui_icon": "activity",
+                "category": "labs",
+                "card_text": "CTOG con 100 g: Carga oral de 100 g de glucosa para diagnosticar DM2 en el adulto no embarazado.",
+                "comment": "Mendoza: El diagnóstico de DM2 usa una carga de 75 g de glucosa anhidra y medición a las 2 horas.",
+                "fuente": "ADA, Standards of Care (criterios diagnósticos)"
+            },
+            {
+                "card_id": "dx_4",
+                "ui_icon": "pill",
+                "category": "meds",
+                "card_text": "Insulina para Todos: Tratamiento inicial obligatorio en todo paciente con DM2 recién diagnosticada.",
+                "comment": "Mendoza: Se inicia con metformina y cambios de estilo de vida; la insulina temprana se reserva para hiperglucemia grave o datos de catabolismo.",
+                "fuente": "ADA, Standards of Care: tratamiento farmacológico"
+            }
+        ],
+        "PROC_GYN_CANCER_CERVICAL_001": [
+            {
+                "card_id": "dx_1",
+                "ui_icon": "shield",
+                "category": "Etiología",
+                "card_text": "Vacuna VPH como Tratamiento: Aplicarla elimina la infección y las lesiones ya existentes.",
+                "comment": "Castillo: La vacuna es preventiva: protege contra nuevas infecciones, pero no trata la infección ni las lesiones presentes.",
+                "fuente": "Eficacia preventiva de la vacuna en población sin VPH previo"
+            },
+            {
+                "card_id": "dx_2",
+                "ui_icon": "scissors",
+                "category": "Manejo Quirúrgico",
+                "card_text": "Histerectomía: Tratamiento de primera elección para NIC 2-3 en la mujer joven.",
+                "comment": "Castillo: La NIC 2-3 se trata con escisión (cono o LLETZ); la histerectomía no es tratamiento primario de las lesiones precursoras.",
+                "fuente": "ASCCP 2019, guías de manejo"
+            },
+            {
+                "card_id": "dx_3",
+                "ui_icon": "calendar",
+                "category": "meds",
+                "card_text": "Citología Anual desde los 18 años: Tamizaje recomendado en toda mujer desde el inicio de la vida sexual.",
+                "comment": "Castillo: El tamizaje con citología inicia a los 25 años; iniciar antes aumenta tratamientos innecesarios de lesiones que suelen regresar.",
+                "fuente": "NOM-014 y la carta de citología del mismo mazo"
+            },
+            {
+                "card_id": "dx_4",
+                "ui_icon": "eye",
+                "category": "Colposcopia",
+                "card_text": "Colposcopia en el Embarazo: Está contraindicada; se difiere hasta después del parto.",
+                "comment": "Castillo: La colposcopia es segura en el embarazo y se biopsia si hay sospecha de lesión de alto grado; lo contraindicado es el legrado endocervical.",
+                "fuente": "ASCCP; manejo de citología anormal en el embarazo"
+            }
+        ],
+        "PROC_INT_TEP_001": [
+            {
+                "card_id": "dx_1",
+                "ui_icon": "zap",
+                "category": "meds",
+                "card_text": "Trombólisis en TEP de Bajo Riesgo: Indicada aunque el paciente esté estable y con PESI de 0 puntos.",
+                "comment": "Mendoza: La trombólisis sistémica se reserva para el TEP de alto riesgo (inestabilidad hemodinámica); en bajo riesgo solo añade sangrado.",
+                "fuente": "ESC 2019, guía de embolia pulmonar",
+                "lethal_risk": true
+            },
+            {
+                "card_id": "dx_2",
+                "ui_icon": "search",
+                "category": "Paraclínicos",
+                "card_text": "Dímero D Normal en Probabilidad Alta: Descarta TEP aunque la sospecha clínica sea alta.",
+                "comment": "Mendoza: En probabilidad clínica alta no se usa el dímero D; un resultado normal no excluye TEP y se va directo a la angiotomografía.",
+                "fuente": "ESC 2019, guía de embolia pulmonar"
+            },
+            {
+                "card_id": "dx_3",
+                "ui_icon": "image",
+                "category": "imaging",
+                "card_text": "Radiografía de Tórax Normal: Descarta tromboembolia pulmonar.",
+                "comment": "Mendoza: La radiografía suele ser normal en el TEP; si lo es, se continúa con angiotomografía o gammagrafía de perfusión.",
+                "fuente": "ESC 2019, guía de embolia pulmonar"
+            },
+            {
+                "card_id": "dx_4",
+                "ui_icon": "pill",
+                "category": "meds",
+                "card_text": "Warfarina sola desde el Día 1: Iniciar antagonista de vitamina K sin heparina en el TEP agudo.",
+                "comment": "Mendoza: La warfarina debe solaparse con anticoagulación parenteral hasta alcanzar INR terapéutico; sola al inicio no protege y puede ser procoagulante.",
+                "fuente": "ESC 2019, guía de embolia pulmonar"
+            }
+        ],
+        "PROC_NEUR_STROKE_ISCHEMIC_001": [
+            {
+                "card_id": "dx_1",
+                "ui_icon": "heart",
+                "category": "vitals",
+                "card_text": "Bajar la TA a menos de 140/90: Requisito antes de iniciar la trombólisis.",
+                "comment": "Mendoza: Para trombolizar basta con TA menor de 185/110 y mantenerla menor de 180/105 en las siguientes 24 horas; bajarla de más reduce la perfusión de la penumbra.",
+                "fuente": "AHA/ASA 2019, manejo temprano del EVC isquémico"
+            },
+            {
+                "card_id": "dx_2",
+                "ui_icon": "pill",
+                "category": "meds",
+                "card_text": "Aspirina junto con el rTPA: Administrarla al mismo tiempo que la alteplasa para potenciar la reperfusión.",
+                "comment": "Mendoza: Tras la alteplasa, la aspirina se difiere 24 horas para no aumentar el riesgo de hemorragia.",
+                "fuente": "AHA/ASA 2019, manejo temprano del EVC isquémico",
+                "lethal_risk": true
+            },
+            {
+                "card_id": "dx_3",
+                "ui_icon": "droplet",
+                "category": "meds",
+                "card_text": "Heparina Plena Urgente: Indicada de rutina en el EVC isquémico agudo para evitar la progresión.",
+                "comment": "Mendoza: La anticoagulación urgente no está indicada en la mayoría de los EVC isquémicos agudos: no previene recurrencia y aumenta el sangrado.",
+                "fuente": "AHA/ASA 2019, manejo temprano del EVC isquémico"
+            },
+            {
+                "card_id": "dx_4",
+                "ui_icon": "clock",
+                "category": "Manejo Inicial",
+                "card_text": "Esperar la Resonancia: Obtener RM antes de decidir la trombólisis.",
+                "comment": "Mendoza: La TC simple y la glucosa son los únicos estudios necesarios antes de la alteplasa; esperar la RM consume la ventana terapéutica.",
+                "fuente": "AHA/ASA 2019, manejo temprano del EVC isquémico"
+            }
+        ]
+    }
+}

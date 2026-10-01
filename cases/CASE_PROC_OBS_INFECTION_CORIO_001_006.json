@@ -14,11 +14,11 @@
             "ui_icon": "heartbeat",
             "category": "vitals",
             "card_text": "TA 110/70 mmHg, FC 105 lpm, Temp 38.5°C",
-            "expected_action": "discard",
+            "expected_action": "keep",
             "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: No te detengas en estos signos de fiebre, R1. El reloj no se detiene."
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: Fiebre materna de 38 °C o más es el criterio indispensable de Gibbs; con taquicardia materna mayor de 100 lpm apoya la corioamnionitis."
             }
         },
         {
@@ -70,6 +70,18 @@
             }
         },
         {
+            "card_id": "dx_5",
+            "ui_icon": "search",
+            "category": "Diagnóstico",
+            "card_text": "Amniocentesis Obligatoria: Se requiere un cultivo de líquido amniótico positivo antes de iniciar el tratamiento.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: El diagnóstico es clínico (fiebre materna más otros criterios) y el tratamiento no espera a la amniocentesis."
+            }
+        },
+        {
             "card_id": "c_5",
             "ui_icon": "activity",
             "category": "labs",
@@ -82,10 +94,22 @@
             }
         },
         {
+            "card_id": "dx_6",
+            "ui_icon": "thermometer",
+            "category": "meds",
+            "card_text": "Antipiréticos como Tratamiento: Controlar la fiebre con paracetamol es suficiente si la frecuencia cardiaca fetal se normaliza.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: El paracetamol baja la fiebre pero no trata la infección: se requieren antibióticos y acelerar el nacimiento."
+            }
+        },
+        {
             "card_id": "c_9",
             "ui_icon": "user-minus",
             "category": "Factor de Riesgo",
-            "card_text": "I) Tactos Vaginales Múltiples: Realizar más de 5 tactos durante el trabajo de parto es el factor de riesgo modificable más importante.",
+            "card_text": "Tactos Vaginales Múltiples: Realizar más de 5 tactos durante el trabajo de parto es el factor de riesgo modificable más importante.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -94,10 +118,37 @@
             }
         },
         {
+            "card_id": "dx_2",
+            "ui_icon": "pause-circle",
+            "category": "meds",
+            "card_text": "Tocólisis: Inhibir las contracciones para prolongar el embarazo y completar la maduración pulmonar.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Castillo: La corioamnionitis contraindica la tocólisis: prolongar el embarazo deja al feto dentro de un ambiente infectado."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
+            "card_id": "dx_1",
+            "ui_icon": "refresh-cw",
+            "category": "Interrupción",
+            "card_text": "Cesárea Inmediata: El diagnóstico de corioamnionitis es, por sí solo, indicación de cesárea.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La infección intraamniótica rara vez, si acaso, es indicación de cesárea. Se acelera el nacimiento y la vía vaginal es de elección."
+            }
+        },
+        {
             "card_id": "c_6",
             "ui_icon": "zap",
             "category": "meds",
-            "card_text": "F) Antibióticos IV: Esquema de primera línea: Ampicilina 2g IV cada 6h + Gentamicina 3-5mg/kg IV cada 24h.",
+            "card_text": "Antibióticos IV: Esquema de primera línea: Ampicilina 2g IV cada 6h + Gentamicina 3-5mg/kg IV cada 24h.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -113,7 +164,7 @@
             "card_id": "c_7",
             "ui_icon": "refresh-cw",
             "category": "Interrupción",
-            "card_text": "G) Finalización del Embarazo: Debe realizarse lo antes posible tras el diagnóstico. La vía vaginal es de ELECCIÓN.",
+            "card_text": "Finalización del Embarazo: Debe realizarse lo antes posible tras el diagnóstico. La vía vaginal es de ELECCIÓN.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -126,10 +177,34 @@
             }
         },
         {
+            "card_id": "dx_4",
+            "ui_icon": "pill",
+            "category": "meds",
+            "card_text": "Clindamicina en Monoterapia: Esquema de primera línea para corioamnionitis durante el trabajo de parto.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La primera línea es ampicilina más gentamicina. La cobertura de anaerobios (clindamicina o metronidazol) se agrega si la paciente va a cesárea."
+            }
+        },
+        {
+            "card_id": "dx_3",
+            "ui_icon": "clock",
+            "category": "meds",
+            "card_text": "Diferir Antibióticos: Esperar hemocultivos y cultivo de líquido amniótico antes de iniciar el tratamiento.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: El diagnóstico exige iniciar antibióticos y acelerar el nacimiento; esperar cultivos retrasa el tratamiento de la madre y del feto."
+            }
+        },
+        {
             "card_id": "c_8",
             "ui_icon": "shield-off",
             "category": "Prevención",
-            "card_text": "H) RPM Prolongada: Ruptura de membranas >18 horas sin inicio de trabajo de parto aumenta drásticamente el riesgo de infección.",
+            "card_text": "RPM Prolongada: Ruptura de membranas >18 horas sin inicio de trabajo de parto aumenta drásticamente el riesgo de infección.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,

@@ -41,7 +41,7 @@
             "card_id": "c_10",
             "ui_icon": "x-circle",
             "category": "vitals",
-            "card_text": "J) Control Agudo de la TA: Es la medida prioritaria para detener el sangrado nasal antes de cualquier maniobra local.",
+            "card_text": "Control Agudo de la TA: Es la medida prioritaria para detener el sangrado nasal antes de cualquier maniobra local.",
             "expected_action": "discard",
             "scoring": {
                 "points": 100,
@@ -59,6 +59,18 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "¿Omites el dato clave? Espero que tengas un buen abogado de negligencia."
+            }
+        },
+        {
+            "card_id": "dx_4",
+            "ui_icon": "pause-circle",
+            "category": "Manejo Posterior",
+            "card_text": "Suspender el Anticoagulante: Primera medida en todo paciente anticoagulado con epistaxis.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Sin sangrado que amenace la vida, primero van las medidas locales (compresión, vasoconstrictor, taponamiento, cauterio) y después se valora revertir o suspender la anticoagulación."
             }
         },
         {
@@ -102,10 +114,22 @@
             }
         },
         {
+            "card_id": "dx_3",
+            "ui_icon": "file-text",
+            "category": "labs",
+            "card_text": "Coagulación de Rutina: Solicitar TP y TTP a todo paciente con un primer episodio de epistaxis anterior que cedió con presión.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Los estudios de coagulación no son de rutina; se piden si hay anticoagulantes, sangrado grave o recurrente o datos de trastorno hemorrágico."
+            }
+        },
+        {
             "card_id": "c_6",
             "ui_icon": "slash",
             "category": "meds",
-            "card_text": "F) Taponamiento Nasal Anterior: Utilizar gasa con lubricante o esponjas expandibles (Merocel) por 48-72 horas.",
+            "card_text": "Taponamiento Nasal Anterior: Utilizar gasa con lubricante o esponjas expandibles (Merocel) por 48-72 horas.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -117,7 +141,7 @@
             "card_id": "c_7",
             "ui_icon": "alert-triangle",
             "category": "Manejo Posterior",
-            "card_text": "G) Taponamiento Posterior (Sonda Foley / Gasa): Indicado en sangrado incoercible que drena por faringe. Requiere hospitalización.",
+            "card_text": "Taponamiento Posterior (Sonda Foley / Gasa): Indicado en sangrado incoercible que drena por faringe. Requiere hospitalización.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -129,7 +153,7 @@
             "card_id": "c_8",
             "ui_icon": "search",
             "category": "labs",
-            "card_text": "H) Perfil de Coagulación (TP, TTP): Indispensables en pacientes con epistaxis recurrente o uso de anticoagulantes.",
+            "card_text": "Perfil de Coagulación (TP, TTP): Indispensables en pacientes con epistaxis recurrente o uso de anticoagulantes.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -138,15 +162,39 @@
             }
         },
         {
+            "card_id": "dx_1",
+            "ui_icon": "user",
+            "category": "Exploración",
+            "card_text": "Cabeza hacia Atrás: Inclinar la cabeza hacia atrás mientras se comprime la nariz.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: El paciente debe inclinarse hacia adelante; hacia atrás la sangre se traga o se aspira y oculta la magnitud del sangrado."
+            }
+        },
+        {
             "card_id": "c_9",
             "ui_icon": "info",
             "category": "Seguimiento",
-            "card_text": "I) Profilaxis Antibiótica: Recomendada durante el tiempo que dure el taponamiento (anterior o posterior) para evitar el Síndrome de Choque Tóxico.",
+            "card_text": "Profilaxis Antibiótica: Recomendada durante el tiempo que dure el taponamiento (anterior o posterior) para evitar el Síndrome de Choque Tóxico.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "¿De verdad vas a ignorar eso? Mi abuela diagnostica mejor que tú."
+            }
+        },
+        {
+            "card_id": "dx_2",
+            "ui_icon": "zap",
+            "category": "meds",
+            "card_text": "Cauterización Bilateral: Cauterizar ambos lados del tabique en la misma sesión para asegurar el control.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Cauterizar áreas opuestas del tabique a la vez aumenta el riesgo de necrosis y perforación septal; se cauteriza solo el sitio que sangra."
             }
         }
     ],

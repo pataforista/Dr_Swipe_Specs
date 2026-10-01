@@ -22,6 +22,18 @@
             }
         },
         {
+            "card_id": "dx_3",
+            "ui_icon": "clock",
+            "category": "meds",
+            "card_text": "Antibióticos solo 48 horas: Es suficiente con la fase intravenosa de ampicilina más eritromicina.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: El esquema de latencia completa 7 días: 48 horas IV de ampicilina y eritromicina, y luego amoxicilina y eritromicina por vía oral 5 días."
+            }
+        },
+        {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Definición",
@@ -70,6 +82,18 @@
             }
         },
         {
+            "card_id": "dx_1",
+            "ui_icon": "droplet",
+            "category": "Pruebas de Consultorio",
+            "card_text": "Nitrazina con Sangre: Un papel azul confirma la ruptura aunque la muestra esté teñida de sangre.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La sangre, el semen, los antisépticos alcalinos y la vaginosis bacteriana alcalinizan la muestra y dan falsos positivos; se confirma con otras pruebas."
+            }
+        },
+        {
             "card_id": "c_5",
             "ui_icon": "slash",
             "category": "meds",
@@ -85,7 +109,7 @@
             "card_id": "c_8",
             "ui_icon": "pill",
             "category": "meds",
-            "card_text": "H) Antibióticos de Latencia: Ampicilina + Eritromicina IV. Prolongan el periodo de latencia y reducen riesgos infecciosos.",
+            "card_text": "Antibióticos de Latencia: Ampicilina + Eritromicina IV. Prolongan el periodo de latencia y reducen riesgos infecciosos.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -97,7 +121,7 @@
             "card_id": "c_9",
             "ui_icon": "refresh-cw",
             "category": "Finalización",
-            "card_text": "I) Resolución en >34 SDG: Si la ruptura ocurre tras las 34 semanas, el riesgo de infección supera al de prematurez; inducción inmediata.",
+            "card_text": "Resolución en >34 SDG: Si la ruptura ocurre tras las 34 semanas, el riesgo de infección supera al de prematurez; inducción inmediata.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -109,7 +133,7 @@
             "card_id": "c_6",
             "ui_icon": "thermometer",
             "category": "Prevención",
-            "card_text": "F) Control Térmico: Vigilancia estricta de temperatura materna c/4-6h para detección temprana de Corioamnionitis.",
+            "card_text": "Control Térmico: Vigilancia estricta de temperatura materna c/4-6h para detección temprana de Corioamnionitis.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -118,10 +142,22 @@
             }
         },
         {
+            "card_id": "dx_2",
+            "ui_icon": "search",
+            "category": "labs",
+            "card_text": "Helecho con Moco Cervical: Tomar la muestra del cérvix mejora la sensibilidad de la cristalografía.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: El moco cervical estrogenizado da falsos positivos; la muestra se toma del fondo de saco posterior o de las paredes vaginales."
+            }
+        },
+        {
             "card_id": "c_7",
             "ui_icon": "zap",
             "category": "Manejo 24-34 SDG",
-            "card_text": "G) Esquema de Madurez Pulmonar: Indicar Betametasona 12mg IM cada 24h por 2 dosis para reducir distrés respiratorio neonatal.",
+            "card_text": "Esquema de Madurez Pulmonar: Indicar Betametasona 12mg IM cada 24h por 2 dosis para reducir distrés respiratorio neonatal.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

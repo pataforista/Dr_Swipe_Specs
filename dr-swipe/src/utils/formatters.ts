@@ -21,6 +21,11 @@ export const cleanMentorComment = (comment: string | undefined, isCorrect: boole
   // Remove surrounding quotes
   clean = clean.replace(/^"|"$/g, '').trim();
 
+  // Some comments are quips that only make sense after a mistake ("¿Omites
+  // el dato clave? Espero que tengas un buen abogado…"). There is one comment
+  // per card for both outcomes, so on a correct swipe they read as a scolding.
+  if (isCorrect && clean.startsWith('¿')) return "Correcto.";
+
   // Extract reasoning by wiping out generic positive praise
   const positiveMarkers = [
       /^¡?Excelente!?\s*/i,
@@ -35,13 +40,16 @@ export const cleanMentorComment = (comment: string | undefined, isCorrect: boole
       /^¡?Exacto!?\s*/i
   ];
   
-  let reasoning = clean;
+  // A short leading interjection ("¡Excelente perla!", "¡Ojo clínico!") says
+  // nothing on its own; the marker list below only caught exact words and
+  // left fragments like "Perla! El IRIS…" behind.
+  let reasoning = clean.replace(/^¡[^!¡]{1,30}!\s*/, '');
   positiveMarkers.forEach(regex => {
     reasoning = reasoning.replace(regex, '');
   });
   
   // Clean leading punctuation and spaces (fixes "Nota clínica: . Es un criterio...")
-  reasoning = reasoning.replace(/^[\s.]+/, '');
+  reasoning = reasoning.replace(/^[\s.,;:]+/, ''); // "Bien, aunque…" → "Aunque…"
   
   // Capitalize first letter of reasoning
   if (reasoning.length > 0) {

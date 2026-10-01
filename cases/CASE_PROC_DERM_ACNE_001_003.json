@@ -13,12 +13,12 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "Signos Vitales",
-            "card_text": "Hallazgo clínico: Ruido en el expediente: TA 110/60, FC 70 lpm, Temp 36.4°C.",
+            "card_text": "TA 110/60, FC 70 lpm, Temp 36.4°C.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Signos normales. Concentrémonos en la piel."
+                "vazquez_comment": "Signos normales. Concentrémonos en la piel."
             }
         },
         {
@@ -89,7 +89,7 @@
             "card_id": "c_6",
             "ui_icon": "alert-triangle",
             "category": "Tratamiento Avanzado",
-            "card_text": "F) Isotretinoína Oral: Tratamiento de elección para acné quístico severo o refractario. Altamente teratogénico.",
+            "card_text": "Isotretinoína Oral: Tratamiento de elección para acné quístico severo o refractario. Altamente teratogénico.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -105,7 +105,7 @@
             "card_id": "c_7",
             "ui_icon": "shield-off",
             "category": "meds",
-            "card_text": "G) Isotretinoína en Embarazo: Absolutamente contraindicada. Requiere dos métodos anticonceptivos y prueba de embarazo mensual.",
+            "card_text": "Isotretinoína en Embarazo: Absolutamente contraindicada. Requiere dos métodos anticonceptivos y prueba de embarazo mensual.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -121,7 +121,7 @@
             "card_id": "c_8",
             "ui_icon": "user-check",
             "category": "meds",
-            "card_text": "H) Anticonceptivos Orales: Útiles en mujeres con acné que presentan hiperandrogenismo clínico o síndrome de ovario poliquístico.",
+            "card_text": "Anticonceptivos Orales: Útiles en mujeres con acné que presentan hiperandrogenismo clínico o síndrome de ovario poliquístico.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -133,7 +133,7 @@
             "card_id": "c_9",
             "ui_icon": "scissors",
             "category": "Diferencial",
-            "card_text": "I) Rosácea: Se diferencia del acné por la ausencia de comedones y la presencia de flushing (eritema facial) y telangiectasias.",
+            "card_text": "Rosácea: Se diferencia del acné por la ausencia de comedones y la presencia de flushing (eritema facial) y telangiectasias.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -145,7 +145,7 @@
             "card_id": "c_10",
             "ui_icon": "x-circle",
             "category": "Mito",
-            "card_text": "J) Dieta Estricta (Sin Chocolate): Medida de primera línea indispensable para lograr la remisión del acné.",
+            "card_text": "Dieta Estricta (Sin Chocolate): Medida de primera línea indispensable para lograr la remisión del acné.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -156,7 +156,7 @@
         {
             "card_id": "pad_011",
             "ui_icon": "utensils",
-            "card_text": "Hallazgo: Alimentación rica en lácteos y alimentos de alta carga glucémica.",
+            "card_text": "Alimentación rica en lácteos y alimentos de alta carga glucémica.",
             "scoring": {
                 "vazquez_comment": "Mendoza: Bien. Aunque la dieta influye, no es una prioridad diagnóstica ni el trigger principal del tratamiento médico.",
                 "points": 50,
@@ -168,7 +168,7 @@
         {
             "card_id": "pad_012",
             "ui_icon": "brush",
-            "card_text": "Evidencia: Uso recurrente de maquillaje comedogénico y falta de limpieza nocturna.",
+            "card_text": "Uso recurrente de maquillaje comedogénico y falta de limpieza nocturna.",
             "scoring": {
                 "vazquez_comment": "Mendoza: Dato cosmético. Importante para la educación al paciente, pero no es la señal clínica que buscamos en este momento.",
                 "points": 50,

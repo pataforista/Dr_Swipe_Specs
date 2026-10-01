@@ -13,12 +13,12 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "Signos Vitales",
-            "card_text": "Hallazgo clínico: Dato anecdótico: TA 110/70, FC 72 lpm, Temp 36.4°C",
+            "card_text": "TA 110/70, FC 72 lpm, Temp 36.4°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
+                "vazquez_comment": "Castillo: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
@@ -50,6 +50,30 @@
             }
         },
         {
+            "card_id": "dx_2",
+            "ui_icon": "scissors",
+            "category": "Manejo Quirúrgico",
+            "card_text": "Histerectomía: Tratamiento de primera elección para NIC 2-3 en la mujer joven.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La NIC 2-3 se trata con escisión (cono o LLETZ); la histerectomía no es tratamiento primario de las lesiones precursoras."
+            }
+        },
+        {
+            "card_id": "dx_1",
+            "ui_icon": "shield",
+            "category": "Etiología",
+            "card_text": "Vacuna VPH como Tratamiento: Aplicarla elimina la infección y las lesiones ya existentes.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La vacuna es preventiva: protege contra nuevas infecciones, pero no trata la infección ni las lesiones presentes."
+            }
+        },
+        {
             "card_id": "c_3",
             "ui_icon": "alert-circle",
             "category": "Bethesda",
@@ -59,6 +83,18 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Muy bien! Identificar una lesión de alto grado es el primer paso para prevenir el cáncer invasivo."
+            }
+        },
+        {
+            "card_id": "dx_4",
+            "ui_icon": "eye",
+            "category": "Colposcopia",
+            "card_text": "Colposcopia en el Embarazo: Está contraindicada; se difiere hasta después del parto.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La colposcopia es segura en el embarazo y se biopsia si hay sospecha de lesión de alto grado; lo contraindicado es el legrado endocervical."
             }
         },
         {
@@ -89,7 +125,7 @@
             "card_id": "c_6",
             "ui_icon": "alert-triangle",
             "category": "Etiología",
-            "card_text": "F) VPH 16 y 18: Genotipos de alto riesgo oncogénico responsables de la mayoría de los casos de cáncer cervicouterino.",
+            "card_text": "VPH 16 y 18: Genotipos de alto riesgo oncogénico responsables de la mayoría de los casos de cáncer cervicouterino.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -101,7 +137,7 @@
             "card_id": "c_7",
             "ui_icon": "search",
             "category": "meds",
-            "card_text": "G) Citología Cervical (Pap): Tamizaje inicial a los 25 años. Tras dos resultados anuales negativos, se realiza cada 3 años.",
+            "card_text": "Citología Cervical (Pap): Tamizaje inicial a los 25 años. Tras dos resultados anuales negativos, se realiza cada 3 años.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -113,7 +149,7 @@
             "card_id": "c_8",
             "ui_icon": "dna",
             "category": "meds",
-            "card_text": "H) Prueba de ADN para VPH: Tamizaje preferido en mujeres >=35 años por su altísimo valor predictivo negativo.",
+            "card_text": "Prueba de ADN para VPH: Tamizaje preferido en mujeres >=35 años por su altísimo valor predictivo negativo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -125,12 +161,24 @@
             "card_id": "c_9",
             "ui_icon": "activity",
             "category": "Histología",
-            "card_text": "I) Carcinoma Epidermoide (Escamoso): Es el tipo histológico más frecuente de cáncer de cérvix (85% de los casos).",
+            "card_text": "Carcinoma Epidermoide (Escamoso): Es el tipo histológico más frecuente de cáncer de cérvix (85% de los casos).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Excelente! El otro 10-15% corresponde principalmente a adenocarcinoma."
+            }
+        },
+        {
+            "card_id": "dx_3",
+            "ui_icon": "calendar",
+            "category": "meds",
+            "card_text": "Citología Anual desde los 18 años: Tamizaje recomendado en toda mujer desde el inicio de la vida sexual.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: El tamizaje con citología inicia a los 25 años; iniciar antes aumenta tratamientos innecesarios de lesiones que suelen regresar."
             }
         }
     ],

@@ -13,12 +13,12 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "Signos Vitales",
-            "card_text": "Dato de importancia: Dato anecdótico: FC 88 lpm, Temp 36.6°C, SatO2 97% (Aire ambiente).",
+            "card_text": "FC 88 lpm, Temp 36.6°C, SatO2 97% (Aire ambiente).",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Navarro: Signos estables por ahora, Sofía no está en crisis aguda."
+                "vazquez_comment": "Navarro: Signos estables por ahora, Sofía no está en crisis aguda."
             }
         },
         {
@@ -66,6 +66,45 @@
             }
         },
         {
+            "card_id": "dx_2",
+            "ui_icon": "pill",
+            "category": "Crisis Aguda",
+            "card_text": "Antibiótico de Rutina: Indicado en toda exacerbación asmática para evitar la sobreinfección.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: GINA no recomienda antibióticos de rutina en la exacerbación, salvo evidencia clara de infección bacteriana."
+            }
+        },
+        {
+            "card_id": "dx_1",
+            "ui_icon": "wind",
+            "category": "Tratamiento GINA",
+            "card_text": "Salmeterol en Monoterapia: LABA sin corticoide inhalado como mantenimiento del asma persistente.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Mendoza: Un LABA sin corticoide inhalado aumenta el riesgo de exacerbaciones graves y de muerte por asma; siempre se combina con ICS."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
+            "card_id": "dx_3",
+            "ui_icon": "activity",
+            "category": "Diagnóstico",
+            "card_text": "Espirometría Normal: Descarta el diagnóstico de asma.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: Una espirometría normal no descarta asma; si la sospecha persiste se busca reversibilidad o hiperreactividad bronquial (metacolina)."
+            }
+        },
+        {
             "card_id": "c_4",
             "ui_icon": "activity",
             "category": "meds",
@@ -93,7 +132,7 @@
             "card_id": "c_6",
             "ui_icon": "info",
             "category": "Factores Riesgo",
-            "card_text": "F) Atopia y Obesidad: Factores que dificultan el control del asma e incrementan la severidad del cuadro.",
+            "card_text": "Atopia y Obesidad: Factores que dificultan el control del asma e incrementan la severidad del cuadro.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -105,7 +144,7 @@
             "card_id": "c_7",
             "ui_icon": "alert-circle",
             "category": "Función Pulmonar",
-            "card_text": "G) Flujometría (PEF): Útil para el auto-monitoreo del paciente en casa y detección temprana de crisis.",
+            "card_text": "Flujometría (PEF): Útil para el auto-monitoreo del paciente en casa y detección temprana de crisis.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -117,7 +156,7 @@
             "card_id": "c_8",
             "ui_icon": "zap",
             "category": "Manejo Step 3",
-            "card_text": "H) Aumentar dosis de ICS-Formoterol: Si los síntomas persisten a pesar del manejo inicial adecuado.",
+            "card_text": "Aumentar dosis de ICS-Formoterol: Si los síntomas persisten a pesar del manejo inicial adecuado.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -126,10 +165,25 @@
             }
         },
         {
+            "card_id": "dx_4",
+            "ui_icon": "heart",
+            "category": "meds",
+            "card_text": "Propranolol: Útil para controlar la taquicardia causada por el salbutamol.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Mendoza: Los betabloqueadores no selectivos pueden desencadenar broncoespasmo grave en el paciente asmático."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
             "card_id": "c_9",
             "ui_icon": "slash",
             "category": "imaging",
-            "card_text": "I) Prueba de Provocación con Metacolina: Usada si la espirometría es normal pero la sospecha clínica es muy alta.",
+            "card_text": "Prueba de Provocación con Metacolina: Usada si la espirometría es normal pero la sospecha clínica es muy alta.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -141,7 +195,7 @@
             "card_id": "c_10",
             "ui_icon": "check-circle",
             "category": "Técnica",
-            "card_text": "J) Evaluación de Técnica Inhalatoria: Paso obligatorio en CADA consulta antes de escalar el tratamiento.",
+            "card_text": "Evaluación de Técnica Inhalatoria: Paso obligatorio en CADA consulta antes de escalar el tratamiento.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

@@ -57,7 +57,7 @@
             "card_id": "c_8",
             "ui_icon": "clock",
             "category": "Metas de Tiempo",
-            "card_text": "H) Tiempo Puerta-Aguja <30 min: Meta de tiempo desde la llegada al hospital hasta el inicio del fibrinolítico.",
+            "card_text": "Tiempo Puerta-Aguja <30 min: Meta de tiempo desde la llegada al hospital hasta el inicio del fibrinolítico.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -69,7 +69,7 @@
             "card_id": "c_9",
             "ui_icon": "move",
             "category": "meds",
-            "card_text": "I) Traslado a centro con ICP: Todos los pacientes post-fibrinólisis deben ser referidos para estrategia fármaco-invasiva.",
+            "card_text": "Traslado a centro con ICP: Todos los pacientes post-fibrinólisis deben ser referidos para estrategia fármaco-invasiva.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -129,7 +129,7 @@
             "card_id": "c_6",
             "ui_icon": "alert-triangle",
             "category": "Seguridad",
-            "card_text": "F) Antecedente de Hemorragia Intracraneal: Contraindicación absoluta para la administración de fibrinolíticos.",
+            "card_text": "Antecedente de Hemorragia Intracraneal: Contraindicación absoluta para la administración de fibrinolíticos.",
             "expected_action": "discard",
             "scoring": {
                 "points": 150,
@@ -145,7 +145,7 @@
             "card_id": "c_7",
             "ui_icon": "alert-circle",
             "category": "meds",
-            "card_text": "G) Hemorragia Digestiva Activa: Contraindicación absoluta para el uso de terapia fibrinolítica.",
+            "card_text": "Hemorragia Digestiva Activa: Contraindicación absoluta para el uso de terapia fibrinolítica.",
             "expected_action": "discard",
             "scoring": {
                 "points": 100,

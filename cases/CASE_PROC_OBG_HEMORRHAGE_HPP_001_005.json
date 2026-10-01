@@ -13,12 +13,60 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "Signos Vitales",
-            "card_text": "Información redundante: TA 85/50 mmHg, FC 125 lpm (Datos de Choque Hipovolémico), SatO2 94%.",
+            "card_text": "TA 85/50 mmHg, FC 125 lpm (Datos de Choque Hipovolémico), SatO2 94%.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Vázquez: Índice de choque (FC/TAS) mayor de 1: hemorragia grave. Activa el Código Mater y prepara la transfusión."
+            },
+            "safety_flags": {
+                "lethal_if_discarded": true
+            }
+        },
+        {
+            "card_id": "dx_5",
+            "ui_icon": "pill",
+            "category": "meds",
+            "card_text": "Terbutalina: Útil para controlar la atonía uterina al estabilizar el miometrio.",
             "expected_action": "discard",
             "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Vázquez: Elena se está descompensando. Activa el Código Mater de inmediato."
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Vázquez: La terbutalina es un tocolítico: relaja el útero y empeora la atonía."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
+            "card_id": "dx_3",
+            "ui_icon": "alert-triangle",
+            "category": "Diagnóstico",
+            "card_text": "Umbral de Actuación: La hemorragia posparto solo se trata cuando la pérdida estimada supera 1,500 mL.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Vázquez: La HPP se define desde 500 mL tras parto vaginal o 1,000 mL tras cesárea, o con cualquier pérdida que cause inestabilidad. Esperar a 1,500 mL es llegar tarde."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
+            "card_id": "dx_1",
+            "ui_icon": "shield",
+            "category": "meds",
+            "card_text": "Ergonovina en Preeclampsia: Uterotónico de primera elección en la puérpera hipertensa con atonía.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Vázquez: Los derivados del ergot están contraindicados en hipertensión y preeclampsia por riesgo de crisis hipertensiva; la primera línea es la oxitocina."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         },
         {
@@ -66,6 +114,30 @@
             }
         },
         {
+            "card_id": "dx_2",
+            "ui_icon": "droplet",
+            "category": "meds",
+            "card_text": "Ácido Tranexámico Tardío: Ofrece el mismo beneficio si se administra después de 3 horas del parto.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Vázquez: El ácido tranexámico reduce la muerte por sangrado solo si se da en las primeras 3 horas; después no muestra beneficio (ensayo WOMAN)."
+            }
+        },
+        {
+            "card_id": "dx_4",
+            "ui_icon": "scissors",
+            "category": "Cirugía",
+            "card_text": "Histerectomía Inmediata: Primera medida ante atonía uterina para no perder tiempo.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Vázquez: El manejo es escalonado: masaje, uterotónicos, ácido tranexámico, taponamiento y suturas compresivas. La histerectomía es el último recurso."
+            }
+        },
+        {
             "card_id": "c_5",
             "ui_icon": "beaker",
             "category": "Manejo Avanzado",
@@ -78,10 +150,22 @@
             }
         },
         {
+            "card_id": "dx_6",
+            "ui_icon": "info",
+            "category": "Las 4 T's",
+            "card_text": "Útero Contraído: Si el útero está bien contraído, no es necesario buscar trauma del canal ni restos placentarios.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Vázquez: Con útero contraído y sangrado persistente hay que buscar las otras T: trauma del canal, restos (tejido) y coagulopatía (trombina)."
+            }
+        },
+        {
             "card_id": "c_6",
             "ui_icon": "alert-triangle",
             "category": "Segunda Línea",
-            "card_text": "F) Ergonovina / Metilergonovina: Uterotónico potente; CONTRAINDICADO en pacientes con hipertensión o preeclampsia.",
+            "card_text": "Ergonovina / Metilergonovina: Uterotónico potente; CONTRAINDICADO en pacientes con hipertensión o preeclampsia.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -93,7 +177,7 @@
             "card_id": "c_7",
             "ui_icon": "shield",
             "category": "meds",
-            "card_text": "G) Misoprostol (800 mcg rectal): Alternativa eficaz en lugares con poca infraestructura para refrigerar oxitocina.",
+            "card_text": "Misoprostol (800 mcg rectal): Alternativa eficaz en lugares con poca infraestructura para refrigerar oxitocina.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -105,7 +189,7 @@
             "card_id": "c_8",
             "ui_icon": "maximize",
             "category": "meds",
-            "card_text": "H) Balón de Bakri (Taponamiento): Dispositivo intrauterino que ejerce presión interna para detener el sangrado.",
+            "card_text": "Balón de Bakri (Taponamiento): Dispositivo intrauterino que ejerce presión interna para detener el sangrado.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -117,7 +201,7 @@
             "card_id": "c_9",
             "ui_icon": "scissors",
             "category": "Cirugía",
-            "card_text": "I) Suturas de B-Lynch: Técnica de compresión uterina quirúrgica para controlar atonía refractaria.",
+            "card_text": "Suturas de B-Lynch: Técnica de compresión uterina quirúrgica para controlar atonía refractaria.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -129,7 +213,7 @@
             "card_id": "c_10",
             "ui_icon": "droplet",
             "category": "meds",
-            "card_text": "J) Ácido Tranexámico (1g IV): Administrar en las primeras 3 horas del inicio de la HPP para reducir la mortalidad.",
+            "card_text": "Ácido Tranexámico (1g IV): Administrar en las primeras 3 horas del inicio de la HPP para reducir la mortalidad.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

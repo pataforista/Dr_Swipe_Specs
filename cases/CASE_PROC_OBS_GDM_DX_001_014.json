@@ -89,7 +89,7 @@
             "card_id": "c_8",
             "ui_icon": "user-check",
             "category": "imaging",
-            "card_text": "H) Macrosomía Fetal: Principal complicación gestacional; peso fetal estimado >=p90 o >4,000g.",
+            "card_text": "Macrosomía Fetal: Principal complicación gestacional; peso fetal estimado >=p90 o >4,000g.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -101,7 +101,7 @@
             "card_id": "c_6",
             "ui_icon": "pill",
             "category": "Tratamiento Médico",
-            "card_text": "F) Insulina: Tratamiento de elección si la dieta falla tras 2 semanas. No atraviesa la placenta (Categoría B).",
+            "card_text": "Insulina: Tratamiento de elección si la dieta falla tras 2 semanas. No atraviesa la placenta (Categoría B).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -117,7 +117,7 @@
             "card_id": "c_7",
             "ui_icon": "activity",
             "category": "labs",
-            "card_text": "G) Metas Glucémicas: Ayuno <95 mg/dl, 1h postprandial <140 mg/dl y 2h postprandial <120 mg/dl.",
+            "card_text": "Metas Glucémicas: Ayuno <95 mg/dl, 1h postprandial <140 mg/dl y 2h postprandial <120 mg/dl.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -133,7 +133,7 @@
             "card_id": "c_9",
             "ui_icon": "refresh-cw",
             "category": "Seguimiento",
-            "card_text": "I) Re-clasificación Postparto: Realizar CTGO 75g a las 6-12 semanas del puerperio para descartar Diabetes Mellitus tipo 2.",
+            "card_text": "Re-clasificación Postparto: Realizar CTGO 75g a las 6-12 semanas del puerperio para descartar Diabetes Mellitus tipo 2.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

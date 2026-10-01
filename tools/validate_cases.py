@@ -18,8 +18,16 @@ C1_RE = re.compile("[\u0080-\u009f]")
 # "DiagnA³stico", "36.6A°C": an accented vowel decayed into "A" + symbol.
 MOJIBAKE_RE = re.compile(r"[A-Za-z]A[³°¡º±]|Ã[©³­±¡]|[Ƒƒ€]|â[€†]|A¢a€")
 # "A) Sarampión…": answer-option letters leaked into card text from exam-style sources.
-OPTION_LETTER_RE = re.compile(r"(^|:\s)[A-E]\)\s")
+OPTION_LETTER_RE = re.compile(r"(^|:\s)[A-J]\)\s")
+# Labels that state the verdict before the player decides ("Dato anecdótico:"
+# is only ever on discard cards). tools/clean_card_leaks.py strips them.
+VERDICT_LABEL_RE = re.compile(
+    r"^\s*(?:[^:]{1,30}:\s*)?(?:Dato anecd[oó]tico|Contraindicado|Informaci[oó]n redundante|Ruido en el expediente)\s*:",
+    re.I,
+)
 REPLACEMENT = "�"
+# Keep in sync with caseSchema.ts (.max) and tools/insert_distractors.py.
+MAX_CARDS = 18
 
 
 def validate_case(path: Path) -> list[str]:
@@ -45,8 +53,8 @@ def validate_case(path: Path) -> list[str]:
         errors.append(f"case_id {case_id!r} no coincide con el archivo {path.stem!r}")
 
     cards = case.get("card_stream", [])
-    if not 3 <= len(cards) <= 15:
-        errors.append(f"card_stream con {len(cards)} cartas (esperado 3-15)")
+    if not 3 <= len(cards) <= MAX_CARDS:
+        errors.append(f"card_stream con {len(cards)} cartas (esperado 3-{MAX_CARDS})")
 
     seen_ids: set[str] = set()
     init_vitals = 0
@@ -59,6 +67,8 @@ def validate_case(path: Path) -> list[str]:
             init_vitals += 1
         if OPTION_LETTER_RE.search(card.get("card_text", "")):
             errors.append(f"{cid}: card_text conserva prefijo de opción tipo 'A) '")
+        if VERDICT_LABEL_RE.search(card.get("card_text", "")):
+            errors.append(f"{cid}: card_text empieza con una etiqueta que delata la respuesta (usa tools/clean_card_leaks.py)")
         if card.get("expected_action") not in ("keep", "discard"):
             errors.append(f"{cid}: expected_action inválido: {card.get('expected_action')!r}")
         # Authoring contradiction: a card that calls itself noise must not be a keep.

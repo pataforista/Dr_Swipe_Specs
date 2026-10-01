@@ -1,0 +1,280 @@
+{
+    "_descripcion": "Lote 2 de cartas de descarte (distractores), 4 por familia (los mazos de 11 cartas admiten 4 hasta el límite de 18 (se escribieron 4 por familia, sin llegar al tope)). Cada carta es una afirmación plausible pero incorrecta, con comentario corrector y fuente. Se insertan con tools/insert_distractors.py.",
+    "familias": {
+        "PROC_PED_STATS_TESTS_001": [
+            {
+                "card_id": "dx_1",
+                "ui_icon": "bar-chart",
+                "category": "Estadistica Inf.",
+                "card_text": "Chi-Cuadrada: Prueba de elección para comparar Medias de una variable continua entre 2 grupos.",
+                "comment": "Navarro: Para comparar medias de una variable continua entre 2 grupos se usa t de Student; la chi-cuadrada compara proporciones de variables categóricas.",
+                "fuente": "Elección de prueba estadística por tipo de variable (cartas t de Student y Chi-Cuadrada del mismo mazo)"
+            },
+            {
+                "card_id": "dx_2",
+                "ui_icon": "percent",
+                "category": "Significancia",
+                "card_text": "Valor p > 0.05: Demuestra que no existe diferencia entre los grupos.",
+                "comment": "Navarro: Un valor p no significativo solo indica que los datos no bastan para rechazar la hipótesis nula; no prueba que los grupos sean iguales.",
+                "fuente": "ASA Statement on Statistical Significance and P-Values (2016)"
+            },
+            {
+                "card_id": "dx_3",
+                "ui_icon": "zap",
+                "category": "Error",
+                "card_text": "Poder Estadístico: Se calcula como 1 - α (alfa).",
+                "comment": "Navarro: El poder es 1 - β: la probabilidad de detectar una diferencia que sí existe. Alfa es la probabilidad del error tipo I.",
+                "fuente": "Definición de poder estadístico"
+            },
+            {
+                "card_id": "dx_4",
+                "ui_icon": "activity",
+                "category": "Estadistica Inf.",
+                "card_text": "U de Mann-Whitney: Prueba paramétrica que exige distribución normal de los datos.",
+                "comment": "Navarro: Mann-Whitney es no paramétrica: se usa precisamente cuando los datos no siguen una distribución normal.",
+                "fuente": "Clasificación de pruebas paramétricas y no paramétricas"
+            }
+        ],
+        "PROC_PREV_LEVELS_LEAVELL_001": [
+            {
+                "card_id": "dx_1",
+                "ui_icon": "shield",
+                "category": "Prevencion 1aria",
+                "card_text": "Papanicolaou (Prevención Primaria): El tamizaje citológico evita que la paciente adquiera la infección por VPH.",
+                "comment": "Castillo: La citología detecta lesiones ya presentes: es prevención secundaria. La primaria es la vacuna contra VPH y el uso de preservativo.",
+                "fuente": "Niveles de prevención de Leavell y Clark"
+            },
+            {
+                "card_id": "dx_2",
+                "ui_icon": "refresh-cw",
+                "category": "Prevencion 2aria",
+                "card_text": "Rehabilitación (Prevención Secundaria): Recuperar la función tras el tratamiento del cáncer.",
+                "comment": "Castillo: La rehabilitación corresponde a la prevención terciaria; la secundaria es el diagnóstico precoz y el tratamiento oportuno.",
+                "fuente": "Niveles de prevención de Leavell y Clark"
+            },
+            {
+                "card_id": "dx_3",
+                "ui_icon": "search",
+                "category": "Prevencion 4aria",
+                "card_text": "Prevención Cuaternaria: Realizar todos los estudios disponibles a pacientes sanos para no dejar pasar ninguna enfermedad.",
+                "comment": "Castillo: Es lo contrario: la prevención cuaternaria busca evitar el sobrediagnóstico y las intervenciones innecesarias o dañinas.",
+                "fuente": "Prevención cuaternaria (Jamoulle); carta de prevención cuaternaria del mismo mazo"
+            },
+            {
+                "card_id": "dx_4",
+                "ui_icon": "clock",
+                "category": "Historia Natural",
+                "card_text": "Periodo Prepatogénico: Etapa en la que ya existe lesión tisular, pero aún sin síntomas.",
+                "comment": "Castillo: Una lesión sin síntomas ya pertenece al periodo patogénico (etapa subclínica). El prepatogénico es la interacción agente-huésped-ambiente antes de que aparezca la enfermedad.",
+                "fuente": "Historia natural de la enfermedad (Leavell y Clark)"
+            }
+        ],
+        "PROC_IM_ASTHMA_001": [
+            {
+                "card_id": "dx_1",
+                "ui_icon": "wind",
+                "category": "Tratamiento GINA",
+                "card_text": "Salmeterol en Monoterapia: LABA sin corticoide inhalado como mantenimiento del asma persistente.",
+                "comment": "Mendoza: Un LABA sin corticoide inhalado aumenta el riesgo de exacerbaciones graves y de muerte por asma; siempre se combina con ICS.",
+                "fuente": "GINA 2024; estudio SMART",
+                "lethal_risk": true
+            },
+            {
+                "card_id": "dx_2",
+                "ui_icon": "pill",
+                "category": "Crisis Aguda",
+                "card_text": "Antibiótico de Rutina: Indicado en toda exacerbación asmática para evitar la sobreinfección.",
+                "comment": "Mendoza: GINA no recomienda antibióticos de rutina en la exacerbación, salvo evidencia clara de infección bacteriana.",
+                "fuente": "GINA 2024"
+            },
+            {
+                "card_id": "dx_3",
+                "ui_icon": "activity",
+                "category": "Diagnóstico",
+                "card_text": "Espirometría Normal: Descarta el diagnóstico de asma.",
+                "comment": "Mendoza: Una espirometría normal no descarta asma; si la sospecha persiste se busca reversibilidad o hiperreactividad bronquial (metacolina).",
+                "fuente": "GINA 2024"
+            },
+            {
+                "card_id": "dx_4",
+                "ui_icon": "heart",
+                "category": "meds",
+                "card_text": "Propranolol: Útil para controlar la taquicardia causada por el salbutamol.",
+                "comment": "Mendoza: Los betabloqueadores no selectivos pueden desencadenar broncoespasmo grave en el paciente asmático.",
+                "fuente": "GINA (betabloqueadores no selectivos como desencadenante de broncoespasmo)",
+                "lethal_risk": true
+            }
+        ],
+        "PROC_IM_HEART_FAILURE_001": [
+            {
+                "card_id": "dx_1",
+                "ui_icon": "pill",
+                "category": "meds",
+                "card_text": "Pioglitazona: Opción segura para el control glucémico en el paciente con ICFEr y DM2.",
+                "comment": "Mendoza: Las glitazonas retienen sodio y agua y empeoran la insuficiencia cardiaca; están contraindicadas. En DM2 con IC se prefieren los iSGLT2.",
+                "fuente": "ESC 2021, guía de insuficiencia cardiaca"
+            },
+            {
+                "card_id": "dx_2",
+                "ui_icon": "alert-triangle",
+                "category": "Manejo Síntomas",
+                "card_text": "AINE (Naproxeno): Analgésico de elección para el dolor articular del paciente con IC.",
+                "comment": "Mendoza: Los AINE retienen sodio, reducen el efecto de diuréticos e IECA y aumentan las hospitalizaciones por IC; deben evitarse.",
+                "fuente": "AHA/ACC/HFSA 2022; AHA, fármacos que causan o agravan la IC"
+            },
+            {
+                "card_id": "dx_3",
+                "ui_icon": "heart",
+                "category": "Tratamiento Pilares",
+                "card_text": "Digoxina: Fármaco de primera línea porque reduce la mortalidad en ICFEr.",
+                "comment": "Mendoza: En el estudio DIG la digoxina redujo hospitalizaciones pero no la mortalidad; no forma parte de los cuatro pilares.",
+                "fuente": "Digitalis Investigation Group, NEJM 1997"
+            },
+            {
+                "card_id": "dx_4",
+                "ui_icon": "heart-pulse",
+                "category": "Beta-bloqueadores",
+                "card_text": "Atenolol: Betabloqueador con beneficio demostrado en mortalidad en ICFEr.",
+                "comment": "Mendoza: Solo bisoprolol, carvedilol y metoprolol succinato (y nebivolol en mayores de 70 años) han demostrado beneficio en ICFEr; el atenolol no.",
+                "fuente": "ESC 2021, guía de insuficiencia cardiaca"
+            }
+        ],
+        "PROC_INF_STI_SYPHILIS_001": [
+            {
+                "card_id": "dx_1",
+                "ui_icon": "pill",
+                "category": "meds",
+                "card_text": "Doxiciclina en el Embarazo: Alternativa de elección en la gestante con sífilis y alergia a la penicilina.",
+                "comment": "Navarro: En el embarazo solo la penicilina parenteral ha demostrado eficacia; si hay alergia se desensibiliza y se trata con penicilina.",
+                "fuente": "CDC, guías de tratamiento de ITS 2021",
+                "lethal_risk": true
+            },
+            {
+                "card_id": "dx_2",
+                "ui_icon": "search",
+                "category": "meds",
+                "card_text": "Pruebas Treponémicas para Seguimiento: El FTA-ABS se negativiza tras la curación y sirve para vigilar la respuesta.",
+                "comment": "Navarro: Las pruebas treponémicas suelen quedar positivas de por vida; el seguimiento del tratamiento se hace con VDRL o RPR.",
+                "fuente": "CDC, guías de tratamiento de ITS 2021"
+            },
+            {
+                "card_id": "dx_3",
+                "ui_icon": "trending-down",
+                "category": "Diagnóstico",
+                "card_text": "Respuesta Adecuada: Basta con que el VDRL baje una dilución (por ejemplo, de 1:32 a 1:16).",
+                "comment": "Navarro: La respuesta adecuada es una caída de cuatro veces (dos diluciones, por ejemplo de 1:32 a 1:8) en los 12 meses siguientes al tratamiento.",
+                "fuente": "CDC, guías de tratamiento de ITS 2021"
+            },
+            {
+                "card_id": "dx_4",
+                "ui_icon": "droplet",
+                "category": "meds",
+                "card_text": "Ceftriaxona IM Dosis Única: Tratamiento de elección para la sífilis primaria.",
+                "comment": "Navarro: La dosis única de ceftriaxona es el tratamiento de la gonorrea; la sífilis primaria se trata con penicilina G benzatínica 2.4 millones UI IM.",
+                "fuente": "CDC, guías de tratamiento de ITS 2021"
+            }
+        ],
+        "PROC_ORL_EPISTAXIS_001": [
+            {
+                "card_id": "dx_1",
+                "ui_icon": "user",
+                "category": "Exploración",
+                "card_text": "Cabeza hacia Atrás: Inclinar la cabeza hacia atrás mientras se comprime la nariz.",
+                "comment": "Castillo: El paciente debe inclinarse hacia adelante; hacia atrás la sangre se traga o se aspira y oculta la magnitud del sangrado.",
+                "fuente": "AAO-HNS 2020, guía de epistaxis (compresión con el paciente inclinado hacia adelante)"
+            },
+            {
+                "card_id": "dx_2",
+                "ui_icon": "zap",
+                "category": "meds",
+                "card_text": "Cauterización Bilateral: Cauterizar ambos lados del tabique en la misma sesión para asegurar el control.",
+                "comment": "Castillo: Cauterizar áreas opuestas del tabique a la vez aumenta el riesgo de necrosis y perforación septal; se cauteriza solo el sitio que sangra.",
+                "fuente": "Merck Manual, cauterio en epistaxis anterior; AAO-HNS 2020"
+            },
+            {
+                "card_id": "dx_3",
+                "ui_icon": "file-text",
+                "category": "labs",
+                "card_text": "Coagulación de Rutina: Solicitar TP y TTP a todo paciente con un primer episodio de epistaxis anterior que cedió con presión.",
+                "comment": "Castillo: Los estudios de coagulación no son de rutina; se piden si hay anticoagulantes, sangrado grave o recurrente o datos de trastorno hemorrágico.",
+                "fuente": "Medscape, resumen de guías de epistaxis; AAO-HNS 2020"
+            },
+            {
+                "card_id": "dx_4",
+                "ui_icon": "pause-circle",
+                "category": "Manejo Posterior",
+                "card_text": "Suspender el Anticoagulante: Primera medida en todo paciente anticoagulado con epistaxis.",
+                "comment": "Castillo: Sin sangrado que amenace la vida, primero van las medidas locales (compresión, vasoconstrictor, taponamiento, cauterio) y después se valora revertir o suspender la anticoagulación.",
+                "fuente": "AAO-HNS 2020, guía de epistaxis"
+            }
+        ],
+        "PROC_ORL_OTITIS_MEDIA_001": [
+            {
+                "card_id": "dx_1",
+                "ui_icon": "pill",
+                "category": "meds",
+                "card_text": "Azitromicina: Antibiótico de primera línea para la OMA del lactante.",
+                "comment": "Navarro: Los macrólidos no son de primera línea por su alta resistencia; se reservan para alergia grave a penicilina y cefalosporinas. La primera línea es amoxicilina.",
+                "fuente": "AAP 2013, guía de otitis media aguda"
+            },
+            {
+                "card_id": "dx_2",
+                "ui_icon": "eye",
+                "category": "Diagnóstico",
+                "card_text": "Observación sin Antibiótico: Opción válida en lactantes menores de 6 meses con OMA.",
+                "comment": "Navarro: Antes de los 6 meses la OMA se trata con antibiótico; la observación es opción solo a partir de los 6 meses y en casos no graves.",
+                "fuente": "AAP 2013, guía de otitis media aguda"
+            },
+            {
+                "card_id": "dx_3",
+                "ui_icon": "tool",
+                "category": "Etiología",
+                "card_text": "Tubos de Ventilación tras el Primer Episodio: Indicados después de una sola OMA para prevenir recurrencias.",
+                "comment": "Navarro: Los tubos se consideran en OMA recurrente: 3 episodios en 6 meses, o 4 en un año con uno en los últimos 6 meses.",
+                "fuente": "AAP 2013, guía de otitis media aguda"
+            },
+            {
+                "card_id": "dx_4",
+                "ui_icon": "shield",
+                "category": "meds",
+                "card_text": "Profilaxis Antibiótica Prolongada: Recomendada para reducir los episodios en niños con OMA recurrente.",
+                "comment": "Navarro: La AAP recomienda no usar profilaxis antibiótica para reducir la frecuencia de OMA recurrente.",
+                "fuente": "AAP 2013, guía de otitis media aguda"
+            }
+        ],
+        "PROC_PED_ANEMIA_FERROPENICA_001": [
+            {
+                "card_id": "dx_1",
+                "ui_icon": "droplet",
+                "category": "Seguimiento",
+                "card_text": "Transfusión: Indicada en todo lactante con Hb menor de 10 g/dL por ferropenia.",
+                "comment": "Castillo: La anemia ferropénica estable se corrige con hierro oral; la transfusión se reserva para anemia grave con repercusión hemodinámica.",
+                "fuente": "Manejo de la anemia ferropénica (hierro oral como tratamiento de elección, carta del mismo mazo)"
+            },
+            {
+                "card_id": "dx_2",
+                "ui_icon": "coffee",
+                "category": "Dieta",
+                "card_text": "Hierro con Leche: Administrar el sulfato ferroso junto con la leche para mejorar la tolerancia.",
+                "comment": "Castillo: El calcio y la caseína de la leche inhiben la absorción del hierro; conviene darlo lejos de los lácteos y, si es posible, con vitamina C.",
+                "fuente": "Mecanismo de inhibición de la absorción de hierro no hem por calcio y caseína"
+            },
+            {
+                "card_id": "dx_3",
+                "ui_icon": "coffee",
+                "category": "Dieta",
+                "card_text": "Leche de Vaca antes del Año: Buena fuente de hierro para el lactante de 9 meses.",
+                "comment": "Castillo: La leche de vaca es pobre en hierro y se desaconseja antes de los 12 meses; después se limita a unos 700 mL al día.",
+                "fuente": "AAP / AAFP, prevención de la ferropenia en lactantes"
+            },
+            {
+                "card_id": "dx_4",
+                "ui_icon": "calendar",
+                "category": "Duración",
+                "card_text": "Suspender el Hierro al Normalizar la Hb: Una vez corregida la anemia ya no se requiere tratamiento.",
+                "comment": "Castillo: El hierro se continúa 2 a 3 meses después de normalizar la hemoglobina para llenar los depósitos.",
+                "fuente": "Duración del tratamiento con hierro (carta del mismo mazo)"
+            }
+        ]
+    }
+}
