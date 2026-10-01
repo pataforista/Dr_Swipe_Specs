@@ -13,7 +13,10 @@ export const SWIPE_CONFIG = {
   CARD_WIDTH: 320,
 
   // Exit Specs (CRITICAL for "Visceral" feel)
-  EXIT_DURATION: 0.25, // seconds (250ms = catarthic)
+  EXIT_DURATION: 0.18, // seconds; the decision is registered at T+0, this is only the visual
+
+  // Ignore a second commit this soon after the first (held key / double tap)
+  MIN_SWIPE_INTERVAL_MS: 140,
 
   // Momentum Carry
   MOMENTUM_MULTIPLIER: 100, // exitX = 500 + vx * 100

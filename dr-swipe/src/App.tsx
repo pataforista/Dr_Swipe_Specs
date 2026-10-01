@@ -2,7 +2,7 @@ import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
 import { useMachine } from '@xstate/react';
 import { gameMachine } from './machines/gameMachine';
 import { SwipeDeck } from './components/SwipeDeck';
-import { X, Coins, Undo2 } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useState, useEffect, useRef, useCallback, lazy, Suspense } from 'react';
 import type { Card, ClinicalCase } from './types/game';
 import { dataLoader } from './utils/dataLoader';
@@ -27,6 +27,7 @@ import { LootBoxOverlay } from './components/overlays/LootBoxOverlay';
 import { PenaltyOverlay } from './components/overlays/PenaltyOverlay';
 import { FailProtectionOverlay } from './components/overlays/FailProtectionOverlay';
 import { TelemetryHUD } from './components/TelemetryHUD';
+import { resolveRewardEffect } from './utils/rewardEffects';
 import { AvatarFeedback } from './components/AvatarFeedback';
 import { ReloadPrompt } from './components/overlays/ReloadPrompt';
 import { LootScreen } from './components/overlays/LootScreen';
@@ -403,11 +404,12 @@ export function App() {
 
   const handleLootClaim = () => {
     const item = state.context.lootBoxReward?.item;
-    if (item?.efecto?.tipo === 'heal') {
-      send({ type: 'APPLY_REWARD_HEAL', value: item.efecto.valor ?? 20 });
-    } else {
-      send({ type: 'CLEAR_OVERLAYS' });
-    }
+    if (!item) return send({ type: 'CLEAR_OVERLAYS' });
+    const fx = resolveRewardEffect(item.efecto);
+    send({ type: 'APPLY_REWARD', heal: fx.heal, shield: fx.shield, undo: fx.undo, hint: fx.hint });
+    if (fx.seconds) setTimeLeft(t => t + fx.seconds);
+    triggerHaptic('criticalSuccess');
+    showToast(fx.description, 'milestone');
   };
 
   const handleEventClose = () => {
@@ -560,28 +562,11 @@ export function App() {
         );
       case state.matches('triage'):
         return (
-          <div className="flex flex-col items-center justify-center w-full max-w-sm gap-2 sm:gap-4 px-2 sm:px-4 h-full pt-12 sm:pt-16 pb-8 sm:pb-12">
+          <div className="flex flex-col items-center justify-center w-full max-w-sm gap-2 sm:gap-4 px-2 sm:px-4 h-full pt-1 pb-1 sm:pb-3">
             <div className="relative w-full h-full flex flex-col items-center">
               {/* Locked under overlays too: the event sheet pauses the clock but
                   left the card draggable, so cards could be decided off the clock. */}
-              <SwipeDeck cards={state.context.deck} currentIndex={state.context.currentCardIndex} onSwipe={handleSwipe} isLocked={isLoadingCase || isPaused || hitStop || isOverlayActive} lifelineActive={state.context.lifelineActive} canUseLifeline={stats.coins >= LIFELINE_COST && !state.context.lifelineActive} onUseLifeline={handleLifeline} revealLethalDirection={state.context.isSandiaMode} />
-              <div className="absolute -bottom-10 sm:-bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-[110] pointer-events-auto">
-                <button
-                  disabled={!canUndo || (state.context.undoCharges === 0 && stats.coins < UNDO_COST)}
-                  onClick={handleUndo}
-                  className={`w-10 sm:w-12 h-10 sm:h-12 rounded-full border-2 border-white flex items-center justify-center text-lg sm:text-xl shadow-md transition-all active:scale-90 ${
-                    state.context.undoCharges === 0
-                      ? 'bg-amber-500 hover:bg-amber-600'
-                      : 'bg-secondary/80 hover:bg-secondary'
-                  }`}
-                  title={state.context.undoCharges === 0 ? `Comprar Deshacer por ${UNDO_COST} 🪙` : "Deshacer"}
-                >
-                  {state.context.undoCharges === 0 ? <Coins className="w-5 h-5 sm:w-6 sm:h-6 text-white" aria-hidden="true" /> : <Undo2 className="w-5 h-5 sm:w-6 sm:h-6 text-white" aria-hidden="true" />}
-                </button>
-                <span className="text-[10px] font-black text-slate-400 uppercase lettering tracking-tighter">
-                  {state.context.undoCharges === 0 ? `${UNDO_COST} 🪙` : `×${state.context.undoCharges}`}
-                </span>
-              </div>
+              <SwipeDeck cards={state.context.deck} currentIndex={state.context.currentCardIndex} onSwipe={handleSwipe} isLocked={isLoadingCase || isPaused || hitStop || isOverlayActive} lifelineActive={state.context.lifelineActive} canUseLifeline={stats.coins >= LIFELINE_COST && !state.context.lifelineActive} onUseLifeline={handleLifeline} revealLethalDirection={state.context.isSandiaMode} undo={{ onUndo: handleUndo, disabled: !canUndo || (state.context.undoCharges === 0 && stats.coins < UNDO_COST), charges: state.context.undoCharges, cost: UNDO_COST }} />
             </div>
           </div>
         );
@@ -698,12 +683,13 @@ export function App() {
         vitality={state.context.vitality}
         lives={state.context.lives}
         coins={stats.coins}
+        shield={state.context.shieldCharges}
         lastVitals={state.context.lastVitals}
         onPause={() => setIsPaused(true)}
       />
 
       {/* Background Avatar Feedback Layer */}
-      <div className="fixed top-28 left-0 right-0 z-avatar pointer-events-none flex justify-center">
+      <div className="fixed bottom-[12.5rem] left-0 right-0 z-avatar pointer-events-none flex justify-center">
         <AvatarFeedback
           doctor="mendoza"
           expression={mentorExpression}
@@ -717,7 +703,7 @@ export function App() {
       <AnimatePresence>{showTutorial && <Suspense fallback={null}><TutorialOverlay onComplete={() => { safeStorage.setItem('dr_swipe_tutorial_seen', '1'); setShowTutorial(false); }} /></Suspense>}</AnimatePresence>
       <AnimatePresence>{showStats && <div ref={statsTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-6 overflow-hidden"><Suspense fallback={null}><StatsDashboard onClose={() => setShowStats(false)} /></Suspense></div>}</AnimatePresence>
       <AnimatePresence mode="wait">{state.context.activeEvent?.item && <EventAlert key={state.context.activeEvent?.item?.id ?? 'event'} event={state.context.activeEvent} onClose={handleEventClose} />}</AnimatePresence>
-      <AnimatePresence>{state.context.lootBoxReward?.active && state.context.lootBoxReward.item && <LootBoxOverlay reward={{ active: true, item: state.context.lootBoxReward.item }} onClaim={handleLootClaim} />}</AnimatePresence>
+      <AnimatePresence>{state.context.lootBoxReward?.active && state.context.lootBoxReward.item && <LootBoxOverlay reward={{ active: true, item: state.context.lootBoxReward.item }} onClaim={handleLootClaim} effectText={resolveRewardEffect(state.context.lootBoxReward.item.efecto).description} />}</AnimatePresence>
       <AnimatePresence>{state.context.activePenalty?.active && <PenaltyOverlay penalty={{ active: true, item: state.context.activePenalty.item }} onAccept={() => send({ type: 'CLEAR_OVERLAYS' })} />}</AnimatePresence>
       <AnimatePresence>{state.matches('fail_protection') && (
         <FailProtectionOverlay
@@ -819,7 +805,7 @@ export function App() {
           </div>
         )}
       </AnimatePresence>
-      <div className="w-full max-w-md text-center opacity-20 py-4"><p className="text-[10px] font-bold tracking-widest uppercase lettering">HGC ARCHIVE · Dr. Swipe Scrapbook</p></div>
+      <div className="w-full max-w-md flex-shrink-0 text-center opacity-20 py-1"><p className="text-[10px] font-bold tracking-widest uppercase lettering">HGC ARCHIVE · Dr. Swipe Scrapbook</p></div>
       <ReloadPrompt />
     </div>
     </MotionConfig>
