@@ -38,6 +38,18 @@
             }
         },
         {
+            "card_id": "l5_ms1",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Ribavirina: Antiviral específico que acorta el curso del sarampión en el niño inmunocompetente.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: No existe tratamiento antiviral específico de rutina para el sarampión. El manejo es de sostén más vitamina A."
+            }
+        },
+        {
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico",
@@ -155,6 +167,30 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
+            }
+        },
+        {
+            "card_id": "l5_ms3",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Vitamina A solo si hay desnutrición: Se reserva para el niño con déficit nutricional evidente.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La vitamina A se indica a todo niño con sarampión, con o sin desnutrición, en dos dosis separadas por 24 horas."
+            }
+        },
+        {
+            "card_id": "l5_ms2",
+            "ui_icon": "syringe",
+            "category": "Prevención",
+            "card_text": "Vacuna SRP al séptimo día de la exposición: Profilaxis posexposición eficaz para el contacto susceptible.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La vacuna previene la enfermedad si se aplica en las primeras 72 horas tras la exposición. Después de ese plazo, y hasta 6 días, el recurso es la inmunoglobulina."
             }
         }
     ],

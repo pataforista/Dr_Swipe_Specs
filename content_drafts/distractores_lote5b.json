@@ -1,0 +1,94 @@
+{
+    "_descripcion": "Lote 5 (segunda tanda) de cartas de descarte: vaginitis, eritema infeccioso, sarampión y rubéola. Solo afirmaciones que una guía de referencia decide de forma explícita. Roséola excluida: el plan la marca como pendiente de decisión clínica. En rubéola y eritema se escribieron menos cartas por falta de fuente verificada. Pendiente de revisión clínica. Se insertan con tools/insert_distractors.py.",
+    "familias": {
+        "PROC_GYN_INFECTION_VAGINITIS_001": [
+            {
+                "card_id": "l5_vg1",
+                "ui_icon": "users",
+                "category": "Tratamiento",
+                "card_text": "Tratamiento sistemático de la pareja masculina en la vaginosis bacteriana: Se indica metronidazol a ambos para evitar recurrencias.",
+                "comment": "Castillo: Tratar a la pareja masculina no reduce la recurrencia de la vaginosis bacteriana. Se trata a la paciente, y la pareja se trata solo en tricomoniasis.",
+                "fuente": "CDC, Sexually Transmitted Infections Treatment Guidelines 2021 (Bacterial vaginosis)"
+            },
+            {
+                "card_id": "l5_vg2",
+                "ui_icon": "pill",
+                "category": "Tratamiento",
+                "card_text": "Fluconazol oral en dosis única para la candidiasis vaginal de la gestante: Esquema práctico por su comodidad.",
+                "comment": "Castillo: En el embarazo la candidiasis vaginal se trata con azoles tópicos durante 7 días; el fluconazol oral no se recomienda.",
+                "fuente": "CDC, Sexually Transmitted Infections Treatment Guidelines 2021 (Vulvovaginal candidiasis)"
+            },
+            {
+                "card_id": "l5_vg3",
+                "ui_icon": "beaker",
+                "category": "Diagnóstico",
+                "card_text": "Cultivo vaginal de rutina para Gardnerella: Estudio de confirmación de la vaginosis bacteriana.",
+                "comment": "Castillo: Gardnerella también habita la vagina de mujeres sanas, así que un cultivo positivo no hace el diagnóstico. Se confirma con criterios de Amsel o con puntuación de Nugent.",
+                "fuente": "CDC, Sexually Transmitted Infections Treatment Guidelines 2021 (Bacterial vaginosis)"
+            }
+        ],
+        "PROC_PED_EXANT_ERYTHEMA_001": [
+            {
+                "card_id": "l5_er1",
+                "ui_icon": "home",
+                "category": "Seguridad",
+                "card_text": "Exclusión escolar hasta la desaparición del exantema: Medida necesaria para frenar la transmisión del eritema infeccioso.",
+                "comment": "Castillo: Cuando aparece el exantema el niño ya no es contagioso, así que mantenerlo fuera de la escuela no frena la transmisión.",
+                "fuente": "AAP, Red Book 2021 (Parvovirus B19)"
+            },
+            {
+                "card_id": "l5_er2",
+                "ui_icon": "syringe",
+                "category": "Tratamiento",
+                "card_text": "Inmunoglobulina intravenosa: Tratamiento indicado en todo niño con eritema infeccioso.",
+                "comment": "Castillo: La inmunoglobulina intravenosa se reserva para la infección crónica por Parvovirus B19 en inmunodeprimidos. En el niño inmunocompetente el cuadro es autolimitado.",
+                "fuente": "AAP, Red Book 2021 (Parvovirus B19)"
+            }
+        ],
+        "PROC_PED_EXANT_MEASLES_001": [
+            {
+                "card_id": "l5_ms1",
+                "ui_icon": "pill",
+                "category": "Tratamiento",
+                "card_text": "Ribavirina: Antiviral específico que acorta el curso del sarampión en el niño inmunocompetente.",
+                "comment": "Castillo: No existe tratamiento antiviral específico de rutina para el sarampión. El manejo es de sostén más vitamina A.",
+                "fuente": "AAP, Red Book 2021 (Measles); CDC Pink Book"
+            },
+            {
+                "card_id": "l5_ms2",
+                "ui_icon": "syringe",
+                "category": "Prevención",
+                "card_text": "Vacuna SRP al séptimo día de la exposición: Profilaxis posexposición eficaz para el contacto susceptible.",
+                "comment": "Castillo: La vacuna previene la enfermedad si se aplica en las primeras 72 horas tras la exposición. Después de ese plazo, y hasta 6 días, el recurso es la inmunoglobulina.",
+                "fuente": "CDC/ACIP, Prevention of Measles, Rubella, CRS, and Mumps (MMWR 2013)"
+            },
+            {
+                "card_id": "l5_ms3",
+                "ui_icon": "pill",
+                "category": "Tratamiento",
+                "card_text": "Vitamina A solo si hay desnutrición: Se reserva para el niño con déficit nutricional evidente.",
+                "comment": "Castillo: La vitamina A se indica a todo niño con sarampión, con o sin desnutrición, en dos dosis separadas por 24 horas.",
+                "fuente": "OMS, Guidelines for Measles Management; AAP, Red Book 2021"
+            }
+        ],
+        "PROC_PED_EXANT_RUBEOLA_001": [
+            {
+                "card_id": "l5_rb1",
+                "ui_icon": "syringe",
+                "category": "Prevención",
+                "card_text": "Vacuna SRP a la embarazada susceptible tras la exposición: Medida para evitar la rubéola congénita.",
+                "comment": "Castillo: La vacuna de virus vivos está contraindicada en el embarazo. La susceptible se vacuna en el posparto.",
+                "fuente": "CDC/ACIP, Prevention of Measles, Rubella, CRS, and Mumps (MMWR 2013)",
+                "lethal_risk": true
+            },
+            {
+                "card_id": "l5_rb2",
+                "ui_icon": "pill",
+                "category": "Tratamiento",
+                "card_text": "Aciclovir oral por 7 días: Acorta el exantema y previene la artritis posinfecciosa.",
+                "comment": "Castillo: El aciclovir actúa sobre herpesvirus, no sobre el Rubivirus. El tratamiento de la rubéola es de sostén.",
+                "fuente": "AAP, Red Book 2021 (Rubella)"
+            }
+        ]
+    }
+}
