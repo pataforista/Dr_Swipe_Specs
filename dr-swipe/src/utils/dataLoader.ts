@@ -1,5 +1,6 @@
 import type { ClinicalCase } from '../types/game';
 import { ClinicalCaseSchema } from './caseSchema';
+import { pickDistinctFamilies } from './deckOrder';
 
 /**
  * React DataLoader: Handles fetching clinical cases from the public/cases directory.
@@ -78,8 +79,8 @@ export const dataLoader = {
   },
 
   /**
-   * Load `count` random cases in parallel, sampling WITHOUT replacement so a
-   * shift never repeats the same patient.
+   * Load `count` random cases in parallel from distinct disease families, so a
+   * shift never repeats the same patient and recent families are avoided.
    */
   loadRandomCases: async (count: number, specialty: string = 'all', excludeIds: string[] = []): Promise<ClinicalCase[]> => {
     const indexResponse = await fetch(`${import.meta.env.BASE_URL}cases/case_index.json`);
@@ -107,22 +108,11 @@ export const dataLoader = {
       }
     }
     
-    // Exclude recently solved cases
-    let pool = index.filter(id => !excludeIds.includes(id));
-    if (pool.length < count) {
-      pool = index;
-    }
+    if (index.length === 0) throw new Error(`No cases found for specialty: ${specialty}`);
 
-    if (pool.length === 0) throw new Error(`No cases found for specialty: ${specialty}`);
-
-    // Partial Fisher-Yates: shuffle just the first `count` slots
-    const n = Math.min(count, pool.length);
-    for (let i = 0; i < n; i++) {
-      const j = i + Math.floor(Math.random() * (pool.length - i));
-      [pool[i], pool[j]] = [pool[j], pool[i]];
-    }
-
-    return await Promise.all(pool.slice(0, n).map(id => dataLoader.loadCase(id)));
+    // One variant per disease family, avoiding recently played families.
+    const ids = pickDistinctFamilies(index, count, excludeIds);
+    return await Promise.all(ids.map(id => dataLoader.loadCase(id)));
   },
 
   /**

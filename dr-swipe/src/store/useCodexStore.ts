@@ -13,6 +13,8 @@ export interface SessionProgress {
   coinsEarnedThisCase: number;
   mistakesThisCase: number;
   difficulty: string;
+  /** card_ids in the order they are played (decks are shuffled per game). */
+  deckOrder?: string[];
   savedAt: number; // timestamp
 }
 

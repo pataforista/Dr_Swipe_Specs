@@ -28,6 +28,7 @@ import { PenaltyOverlay } from './components/overlays/PenaltyOverlay';
 import { FailProtectionOverlay } from './components/overlays/FailProtectionOverlay';
 import { TelemetryHUD } from './components/TelemetryHUD';
 import { resolveRewardEffect } from './utils/rewardEffects';
+import { shuffleDeck, applyDeckOrder } from './utils/deckOrder';
 import { AvatarFeedback } from './components/AvatarFeedback';
 import { ReloadPrompt } from './components/overlays/ReloadPrompt';
 import { LootScreen } from './components/overlays/LootScreen';
@@ -159,6 +160,7 @@ export function App() {
         coinsEarnedThisCase: state.context.coinsEarnedThisCase,
         mistakesThisCase: state.context.mistakesThisCase,
         difficulty: state.context.difficulty,
+        deckOrder: state.context.deck.map(c => c.card_id),
         savedAt: Date.now()
       });
     }
@@ -216,10 +218,10 @@ export function App() {
       setCaseQueue(loadedCases.slice(1));
       const timeLimit = computeTimeLimit(caseData.card_stream.length, caseData.difficulty);
       timeLimitRef.current = timeLimit;
-      // Cards are played in authored order: clinical decks are sequenced
-      // (vitals before their interpretation, options A/B/C), so shuffling
-      // destroys the narrative.
-      pendingDeckRef.current = [...caseData.card_stream];
+      // Shuffled per game (see utils/deckOrder.ts): authored order made the
+      // first card, usually the vitals card, a 76% discard tell. The deck has no
+      // "option A/B/C" cards, so nothing depends on sequence.
+      pendingDeckRef.current = shuffleDeck(caseData.card_stream);
       setShowIntro(true);
     } catch (err) {
       console.error('Failed to start a new shift:', err);
@@ -248,9 +250,9 @@ export function App() {
       const timeLimit = computeTimeLimit(caseData.card_stream.length, caseData.difficulty);
       setTimeLeft(timeLimit);
       timeLimitRef.current = timeLimit;
-      // Decks keep their authored order, so the saved currentCardIndex maps to
-      // the same card it was saved at.
-      pendingDeckRef.current = [...caseData.card_stream];
+      // The saved currentCardIndex maps to the order the deck was played in;
+      // saves from before decks were shuffled have none and use authored order.
+      pendingDeckRef.current = applyDeckOrder(caseData.card_stream, sessionProgress.deckOrder);
       pendingResumeRef.current = sessionProgress;
       setShowIntro(true);
     } catch (err) {
@@ -291,7 +293,7 @@ export function App() {
       setCaseQueue(loadedCases.slice(1));
       const timeLimit = computeTimeLimit(caseData.card_stream.length, caseData.difficulty);
       timeLimitRef.current = timeLimit;
-      pendingDeckRef.current = [...caseData.card_stream];
+      pendingDeckRef.current = shuffleDeck(caseData.card_stream);
       setShowIntro(true);
     } catch (err) {
       console.error('Failed to load review cases:', err);
@@ -390,7 +392,7 @@ export function App() {
     const timeLimit = computeTimeLimit(nextCase.card_stream.length, nextCase.difficulty);
     setTimeLeft(timeLimit);
     timeLimitRef.current = timeLimit;
-    pendingDeckRef.current = [...nextCase.card_stream];
+    pendingDeckRef.current = shuffleDeck(nextCase.card_stream);
     setShowIntro(true); // Trigger intro card for next patient
   };
 
