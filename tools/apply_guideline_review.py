@@ -18,6 +18,8 @@ Sources:
 - ATLS 10th ed. (tension pneumothorax is a clinical diagnosis).
 - Tokyo Guidelines 2018 (cholangitis grade II: T >=39 C; grade III: hypotension).
 - BTS CAP in children (SpO2 <=92%: admit and give oxygen).
+- Gibbs criteria / ACOG Committee Opinion 712 (maternal fever is the required
+  criterion of intraamniotic infection; maternal tachycardia supports it).
 
 Also removes the placeholder "TA N/A, FC N/A, Temp N/A" card from the
 statistics cases (there is no patient), and rewrites the comment of the
@@ -52,6 +54,8 @@ RULES = [
      "comment": "Hipotensión en colangitis es disfunción orgánica (Tokyo 2018 grado III): drenaje biliar urgente."}, 1),
     (r"^PROC_SURG_BILIARY_CHOLANGITIS_", r"^TA 100/65, FC 120 lpm, Temp 39\.5", {**KEEP,
      "comment": "Temperatura de 39 °C o más es criterio de colangitis moderada (Tokyo 2018 grado II): considera drenaje biliar temprano."}, 1),
+    (r"^PROC_OBS_INFECTION_CORIO_", r"^TA 110/70 mmHg, FC 105 lpm, Temp 38\.5", {**KEEP,
+     "comment": "Castillo: Fiebre materna de 38 °C o más es el criterio indispensable de Gibbs; con taquicardia materna mayor de 100 lpm apoya la corioamnionitis."}, 15),
     (r"^PROC_PED_RESPIRATORY_PNEUMONIA_", r"SatO2 91%", {**KEEP,
      "comment": "Navarro: SatO2 de 92% o menos en neumonía pediátrica indica hospitalización y oxígeno suplementario."}, 1),
 ]

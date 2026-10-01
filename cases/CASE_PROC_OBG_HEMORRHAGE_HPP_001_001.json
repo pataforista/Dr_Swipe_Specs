@@ -81,6 +81,18 @@
             }
         },
         {
+            "card_id": "dx_2",
+            "ui_icon": "droplet",
+            "category": "meds",
+            "card_text": "Ácido Tranexámico Tardío: Ofrece el mismo beneficio si se administra después de 3 horas del parto.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Vázquez: El ácido tranexámico reduce la muerte por sangrado solo si se da en las primeras 3 horas; después no muestra beneficio (ensayo WOMAN)."
+            }
+        },
+        {
             "card_id": "c_6",
             "ui_icon": "alert-triangle",
             "category": "Segunda Línea",
@@ -141,6 +153,33 @@
             }
         },
         {
+            "card_id": "dx_3",
+            "ui_icon": "alert-triangle",
+            "category": "Diagnóstico",
+            "card_text": "Umbral de Actuación: La hemorragia posparto solo se trata cuando la pérdida estimada supera 1,500 mL.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Vázquez: La HPP se define desde 500 mL tras parto vaginal o 1,000 mL tras cesárea, o con cualquier pérdida que cause inestabilidad. Esperar a 1,500 mL es llegar tarde."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
+            "card_id": "dx_4",
+            "ui_icon": "scissors",
+            "category": "Cirugía",
+            "card_text": "Histerectomía Inmediata: Primera medida ante atonía uterina para no perder tiempo.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Vázquez: El manejo es escalonado: masaje, uterotónicos, ácido tranexámico, taponamiento y suturas compresivas. La histerectomía es el último recurso."
+            }
+        },
+        {
             "card_id": "c_3",
             "ui_icon": "pill",
             "category": "meds",
@@ -154,6 +193,21 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
+            }
+        },
+        {
+            "card_id": "dx_1",
+            "ui_icon": "shield",
+            "category": "meds",
+            "card_text": "Ergonovina en Preeclampsia: Uterotónico de primera elección en la puérpera hipertensa con atonía.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Vázquez: Los derivados del ergot están contraindicados en hipertensión y preeclampsia por riesgo de crisis hipertensiva; la primera línea es la oxitocina."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         }
     ],

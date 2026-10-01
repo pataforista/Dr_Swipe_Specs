@@ -14,11 +14,35 @@
             "ui_icon": "heartbeat",
             "category": "vitals",
             "card_text": "TA 110/70 mmHg, FC 105 lpm, Temp 38.5°C",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "Castillo: Fiebre materna de 38 °C o más es el criterio indispensable de Gibbs; con taquicardia materna mayor de 100 lpm apoya la corioamnionitis."
+            }
+        },
+        {
+            "card_id": "dx_5",
+            "ui_icon": "search",
+            "category": "Diagnóstico",
+            "card_text": "Amniocentesis Obligatoria: Se requiere un cultivo de líquido amniótico positivo antes de iniciar el tratamiento.",
             "expected_action": "discard",
             "scoring": {
-                "points": 50,
+                "points": 100,
                 "error_type": "hoarding",
-                "vazquez_comment": "Castillo: No te detengas en estos signos de fiebre, R1. El reloj no se detiene."
+                "vazquez_comment": "Castillo: El diagnóstico es clínico (fiebre materna más otros criterios) y el tratamiento no espera a la amniocentesis."
+            }
+        },
+        {
+            "card_id": "dx_3",
+            "ui_icon": "clock",
+            "category": "meds",
+            "card_text": "Diferir Antibióticos: Esperar hemocultivos y cultivo de líquido amniótico antes de iniciar el tratamiento.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: El diagnóstico exige iniciar antibióticos y acelerar el nacimiento; esperar cultivos retrasa el tratamiento de la madre y del feto."
             }
         },
         {
@@ -91,6 +115,45 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Buen punto! Limitar los tactos es una medida preventiva clave en obstetricia moderna."
+            }
+        },
+        {
+            "card_id": "dx_4",
+            "ui_icon": "pill",
+            "category": "meds",
+            "card_text": "Clindamicina en Monoterapia: Esquema de primera línea para corioamnionitis durante el trabajo de parto.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La primera línea es ampicilina más gentamicina. La cobertura de anaerobios (clindamicina o metronidazol) se agrega si la paciente va a cesárea."
+            }
+        },
+        {
+            "card_id": "dx_1",
+            "ui_icon": "refresh-cw",
+            "category": "Interrupción",
+            "card_text": "Cesárea Inmediata: El diagnóstico de corioamnionitis es, por sí solo, indicación de cesárea.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La infección intraamniótica rara vez, si acaso, es indicación de cesárea. Se acelera el nacimiento y la vía vaginal es de elección."
+            }
+        },
+        {
+            "card_id": "dx_2",
+            "ui_icon": "pause-circle",
+            "category": "meds",
+            "card_text": "Tocólisis: Inhibir las contracciones para prolongar el embarazo y completar la maduración pulmonar.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Castillo: La corioamnionitis contraindica la tocólisis: prolongar el embarazo deja al feto dentro de un ambiente infectado."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         },
         {

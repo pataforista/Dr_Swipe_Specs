@@ -71,12 +71,8 @@ vitales,PROC_PED_PYLORIC_SENOSIS_001_002,init_vitals,discard,"FC 140 lpm, Temp 3
 vitales,PROC_PED_PYLORIC_SENOSIS_001_003,init_vitals,discard,"FC 140 lpm, Temp 36.6°C","Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene.",Vitales anormales (FC 140) marcados como descarte
 vitales,PROC_PED_PYLORIC_SENOSIS_001_004,init_vitals,discard,"FC 140 lpm, Temp 36.6°C","Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene.",Vitales anormales (FC 140) marcados como descarte
 vitales,PROC_PED_PYLORIC_SENOSIS_001_005,init_vitals,discard,"FC 140 lpm, Temp 36.6°C","Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene.",Vitales anormales (FC 140) marcados como descarte
-balance,PROC_OBG_HEMORRHAGE_HPP_001,,,5 casos · aceptar 55 / descartar 0 (0% descarte),,Faltan ~7.4 cartas de descarte por caso para llegar a 40%
 balance,PROC_PED_STATS_TESTS_001,,,1 casos · aceptar 10 / descartar 1 (9% descarte),,Faltan ~6.0 cartas de descarte por caso para llegar a 40%
 balance,PROC_PREV_LEVELS_LEAVELL_001,,,1 casos · aceptar 10 / descartar 1 (9% descarte),,Faltan ~6.0 cartas de descarte por caso para llegar a 40%
-balance,PROC_STATS_DX_METRICS_001,,,15 casos · aceptar 135 / descartar 1 (1% descarte),,Faltan ~5.9 cartas de descarte por caso para llegar a 40%
-balance,PROC_ENGL_TECH_VOCABULARY_001,,,15 casos · aceptar 135 / descartar 15 (10% descarte),,Faltan ~5.0 cartas de descarte por caso para llegar a 40%
-balance,PROC_OBS_INFECTION_CORIO_001,,,15 casos · aceptar 135 / descartar 15 (10% descarte),,Faltan ~5.0 cartas de descarte por caso para llegar a 40%
 balance,PROC_SURG_TRAUMA_ATLS10_001,,,1 casos · aceptar 9 / descartar 1 (10% descarte),,Faltan ~5.0 cartas de descarte por caso para llegar a 40%
 balance,PROC_PED_GAST_DEHYDRATION_001,,,5 casos · aceptar 47 / descartar 8 (15% descarte),,Faltan ~4.6 cartas de descarte por caso para llegar a 40%
 balance,PROC_PED_GIT_DEHYDRATION_001,,,15 casos · aceptar 140 / descartar 25 (15% descarte),,Faltan ~4.5 cartas de descarte por caso para llegar a 40%
@@ -91,6 +87,7 @@ balance,PROC_SURG_OBSTRUCTION_001,,,1 casos · aceptar 9 / descartar 2 (18% desc
 balance,PROC_PED_NEO_APGAR_001,,,2 casos · aceptar 16 / descartar 4 (20% descarte),,Faltan ~3.5 cartas de descarte por caso para llegar a 40%
 balance,PROC_PED_RESPIRATORY_PNEUMONIA_001,,,2 casos · aceptar 15 / descartar 3 (17% descarte),,Faltan ~3.5 cartas de descarte por caso para llegar a 40%
 balance,PROC_INT_DM2_DX_001,,,15 casos · aceptar 120 / descartar 29 (19% descarte),,Faltan ~3.4 cartas de descarte por caso para llegar a 40%
+balance,PROC_OBG_HEMORRHAGE_HPP_001,,,5 casos · aceptar 55 / descartar 20 (27% descarte),,Faltan ~3.4 cartas de descarte por caso para llegar a 40%
 balance,PROC_GYN_CANCER_CERVICAL_001,,,15 casos · aceptar 120 / descartar 30 (20% descarte),,Faltan ~3.3 cartas de descarte por caso para llegar a 40%
 balance,PROC_INT_TEP_001,,,15 casos · aceptar 120 / descartar 30 (20% descarte),,Faltan ~3.3 cartas de descarte por caso para llegar a 40%
 balance,PROC_NEUR_STROKE_ISCHEMIC_001,,,15 casos · aceptar 120 / descartar 30 (20% descarte),,Faltan ~3.3 cartas de descarte por caso para llegar a 40%
@@ -133,6 +130,7 @@ balance,PROC_OBS_GDM_DX_001,,,15 casos · aceptar 105 / descartar 45 (30% descar
 balance,PROC_OBS_HEMORRHAGE_DPPNI_001,,,15 casos · aceptar 105 / descartar 45 (30% descarte),,Faltan ~1.7 cartas de descarte por caso para llegar a 40%
 balance,PROC_OBS_HEM_ABORTION_001,,,15 casos · aceptar 105 / descartar 45 (30% descarte),,Faltan ~1.7 cartas de descarte por caso para llegar a 40%
 balance,PROC_OBS_HEM_DPPNI_001,,,15 casos · aceptar 105 / descartar 45 (30% descarte),,Faltan ~1.7 cartas de descarte por caso para llegar a 40%
+balance,PROC_OBS_INFECTION_CORIO_001,,,15 casos · aceptar 150 / descartar 75 (33% descarte),,Faltan ~1.7 cartas de descarte por caso para llegar a 40%
 balance,PROC_OBS_PREECLAMPSIA_001,,,15 casos · aceptar 105 / descartar 45 (30% descarte),,Faltan ~1.7 cartas de descarte por caso para llegar a 40%
 balance,PROC_PED_PYLORIC_SENOSIS_001,,,5 casos · aceptar 35 / descartar 15 (30% descarte),,Faltan ~1.6 cartas de descarte por caso para llegar a 40%
 balance,PROC_PED_EXANT_SCARLET_001,,,15 casos · aceptar 120 / descartar 60 (33% descarte),,Faltan ~1.3 cartas de descarte por caso para llegar a 40%

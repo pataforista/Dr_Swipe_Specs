@@ -22,6 +22,30 @@
             }
         },
         {
+            "card_id": "dx_2",
+            "ui_icon": "alert-circle",
+            "category": "Trauma terms",
+            "card_text": "Injury: Significa 'Injuria', es decir, un insulto u ofensa.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: 'Injury' es lesión o traumatismo, no una ofensa."
+            }
+        },
+        {
+            "card_id": "dx_5",
+            "ui_icon": "frown",
+            "category": "Common symptoms",
+            "card_text": "Sensible: 'Sensible abdomen' describe un abdomen doloroso a la palpación.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: 'Sensible' significa sensato. Un abdomen doloroso a la palpación es 'tender abdomen'."
+            }
+        },
+        {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Chief Complaint",
@@ -70,6 +94,18 @@
             }
         },
         {
+            "card_id": "dx_3",
+            "ui_icon": "activity",
+            "category": "Physical Signs",
+            "card_text": "Rash: Significa 'Raspón' o abrasión de la piel.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: 'Rash' es exantema o erupción cutánea. Un raspón es 'scrape' o 'abrasion'."
+            }
+        },
+        {
             "card_id": "c_5",
             "ui_icon": "activity",
             "category": "Physical Signs",
@@ -94,6 +130,18 @@
             }
         },
         {
+            "card_id": "dx_1",
+            "ui_icon": "slash",
+            "category": "False Friends",
+            "card_text": "Embarrassed: Significa 'Embarazada'.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: 'Embarrassed' significa avergonzada. Embarazada se dice 'pregnant'."
+            }
+        },
+        {
             "card_id": "c_7",
             "ui_icon": "eye",
             "category": "Visual",
@@ -115,6 +163,18 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Bien! Aunque se confunden, 'dizziness' es más inespecífico (aturdimiento)."
+            }
+        },
+        {
+            "card_id": "dx_4",
+            "ui_icon": "target",
+            "category": "Chief Complaint",
+            "card_text": "Physician: Significa 'Físico', el especialista en física.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: 'Physician' es médico. El especialista en física es 'physicist'."
             }
         },
         {
