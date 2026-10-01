@@ -25,6 +25,21 @@
             }
         },
         {
+            "card_id": "dx_4",
+            "ui_icon": "shield",
+            "category": "Tratamiento Médico",
+            "card_text": "Metotrexato en la Paciente Inestable: Opción segura si hay líquido libre pero el sangrado parece escaso.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Castillo: La inestabilidad hemodinámica o el hemoperitoneo contraindican en forma absoluta el metotrexato y obligan a cirugía."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
@@ -85,6 +100,30 @@
             }
         },
         {
+            "card_id": "dx_5",
+            "ui_icon": "percent",
+            "category": "imaging",
+            "card_text": "hCG Inicial Alta: La tasa de éxito del metotrexato es la misma con cualquier nivel inicial de hCG.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: El éxito del metotrexato disminuye cuanto mayor es la hCG inicial; por eso la hCG es parte de los criterios de elección."
+            }
+        },
+        {
+            "card_id": "dx_1",
+            "ui_icon": "pill",
+            "category": "Tratamiento Médico",
+            "card_text": "Ácido Fólico con Metotrexato: Se indica el suplemento para reducir la toxicidad del tratamiento.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Con metotrexato se evita el ácido fólico, incluidos los alimentos que lo contengan, porque disminuye su eficacia."
+            }
+        },
+        {
             "card_id": "c_8",
             "ui_icon": "map",
             "category": "Anatomía",
@@ -94,6 +133,30 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Correcto! Es una 'perla' clásica del ENARM."
+            }
+        },
+        {
+            "card_id": "dx_3",
+            "ui_icon": "trending-down",
+            "category": "Tratamiento Médico",
+            "card_text": "Descenso de 10% de la hCG (día 4 a día 7): Se considera respuesta adecuada y se suspende el tratamiento.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Si la hCG desciende menos de 15% entre el día 4 y el día 7, se repite la dosis de metotrexato."
+            }
+        },
+        {
+            "card_id": "dx_2",
+            "ui_icon": "activity",
+            "category": "Tratamiento Médico",
+            "card_text": "Ibuprofeno para el Dolor: Analgésico de elección durante el tratamiento con metotrexato.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: Los AINE aumentan el riesgo de toxicidad por metotrexato y deben evitarse."
             }
         },
         {

@@ -14,11 +14,14 @@
             "ui_icon": "heartbeat",
             "category": "vitals",
             "card_text": "TA 90/60 mmHg, FC 115 lpm, Temp 36.5°C",
-            "expected_action": "discard",
+            "expected_action": "keep",
             "scoring": {
-                "points": 50,
-                "error_type": "hoarding",
-                "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+                "points": 100,
+                "error_type": "lethal_omission",
+                "vazquez_comment": "Mendoza: Hipotensión y taquicardia (índice de choque mayor de 1) en un DPPNI son inestabilidad materna: indican cesárea urgente y reposición; el sangrado visible subestima la pérdida real."
+            },
+            "safety_flags": {
+                "lethal_if_discarded": true
             }
         },
         {
@@ -94,6 +97,21 @@
             }
         },
         {
+            "card_id": "dx_1",
+            "ui_icon": "pause-circle",
+            "category": "Manejo",
+            "card_text": "Tocólisis de Rutina: Indicada en todo DPPNI para ganar tiempo y prolongar el embarazo.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Mendoza: En el DPPNI la tocólisis es controvertida: solo se considera con madre estable, sin sufrimiento fetal y un feto pretérmino que se beneficie de esteroides. En el cuadro agudo no es de rutina."
+            },
+            "safety_flags": {
+                "lethal_risk": true
+            }
+        },
+        {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
@@ -108,6 +126,18 @@
                 "lethal_risk": true,
                 "decision_critical": true,
                 "lethal_if_discarded": true
+            }
+        },
+        {
+            "card_id": "dx_2",
+            "ui_icon": "ban",
+            "category": "Manejo",
+            "card_text": "Parto Vaginal Contraindicado: Todo DPPNI se resuelve por cesárea sin excepción.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Mendoza: Con la madre estable y la frecuencia cardiaca fetal tranquilizadora se puede intentar el parto vaginal; y si hay muerte fetal, la vía vaginal es la preferible. La cesárea urgente es para inestabilidad materna o compromiso fetal."
             }
         },
         {

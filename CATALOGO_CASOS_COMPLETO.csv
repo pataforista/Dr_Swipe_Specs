@@ -287,21 +287,21 @@ PROC_OBS_GDM_DX_001_012,obs,standard,María 34 años,Tamizaje DG: Un Paso vs Dos
 PROC_OBS_GDM_DX_001_013,obs,standard,María 24 años,Tamizaje DG: Un Paso vs Dos Pasos,10,3
 PROC_OBS_GDM_DX_001_014,obs,standard,Laura 24 años,Tamizaje DG: Un Paso vs Dos Pasos,10,3
 PROC_OBS_GDM_DX_001_015,obs,standard,María 28 años,Tamizaje DG: Un Paso vs Dos Pasos,10,3
-PROC_OBS_HEMORRHAGE_DPPNI_001_001,obs,hard,Ana 39 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEMORRHAGE_DPPNI_001_002,obs,hard,Elena 21 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEMORRHAGE_DPPNI_001_003,obs,hard,Marta 45 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEMORRHAGE_DPPNI_001_004,obs,hard,Laura 38 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEMORRHAGE_DPPNI_001_005,obs,hard,Laura 21 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEMORRHAGE_DPPNI_001_006,obs,hard,Marta 41 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEMORRHAGE_DPPNI_001_007,obs,hard,Marta 27 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEMORRHAGE_DPPNI_001_008,obs,hard,Marta 34 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEMORRHAGE_DPPNI_001_009,obs,hard,Isabel 22 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEMORRHAGE_DPPNI_001_010,obs,hard,María 27 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEMORRHAGE_DPPNI_001_011,obs,hard,Marta 33 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEMORRHAGE_DPPNI_001_012,obs,hard,María 22 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEMORRHAGE_DPPNI_001_013,obs,hard,Ana 29 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEMORRHAGE_DPPNI_001_014,obs,hard,Carmen 22 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEMORRHAGE_DPPNI_001_015,obs,hard,Isabel 33 años,DPPNI: La Triada de Alarma,10,3
+PROC_OBS_HEMORRHAGE_DPPNI_001_001,obs,hard,Ana 39 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEMORRHAGE_DPPNI_001_002,obs,hard,Elena 21 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEMORRHAGE_DPPNI_001_003,obs,hard,Marta 45 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEMORRHAGE_DPPNI_001_004,obs,hard,Laura 38 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEMORRHAGE_DPPNI_001_005,obs,hard,Laura 21 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEMORRHAGE_DPPNI_001_006,obs,hard,Marta 41 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEMORRHAGE_DPPNI_001_007,obs,hard,Marta 27 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEMORRHAGE_DPPNI_001_008,obs,hard,Marta 34 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEMORRHAGE_DPPNI_001_009,obs,hard,Isabel 22 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEMORRHAGE_DPPNI_001_010,obs,hard,María 27 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEMORRHAGE_DPPNI_001_011,obs,hard,Marta 33 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEMORRHAGE_DPPNI_001_012,obs,hard,María 22 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEMORRHAGE_DPPNI_001_013,obs,hard,Ana 29 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEMORRHAGE_DPPNI_001_014,obs,hard,Carmen 22 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEMORRHAGE_DPPNI_001_015,obs,hard,Isabel 33 años,DPPNI: La Triada de Alarma,12,3
 PROC_OBS_HEM_ABORTION_001_001,obs,standard,Elena 19 años,Aborto: <22 Sem / <500g,10,3
 PROC_OBS_HEM_ABORTION_001_002,obs,standard,Elena 27 años,Clasificación de Aborto,10,3
 PROC_OBS_HEM_ABORTION_001_003,obs,standard,Ana 22 años,Clasificación de Aborto,10,3
@@ -317,51 +317,51 @@ PROC_OBS_HEM_ABORTION_001_012,obs,standard,Marta 28 años,Clasificación de Abor
 PROC_OBS_HEM_ABORTION_001_013,obs,standard,Marta 29 años,Clasificación de Aborto,10,3
 PROC_OBS_HEM_ABORTION_001_014,obs,standard,Ana 21 años,Clasificación de Aborto,10,3
 PROC_OBS_HEM_ABORTION_001_015,obs,standard,Ana 27 años,Clasificación de Aborto,10,3
-PROC_OBS_HEM_DPPNI_001_001,obs,standard,Carmen 36 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEM_DPPNI_001_002,obs,standard,Isabel 27 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEM_DPPNI_001_003,obs,standard,Isabel 27 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEM_DPPNI_001_004,obs,standard,Marta 26 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEM_DPPNI_001_005,obs,standard,Laura 40 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEM_DPPNI_001_006,obs,standard,Laura 25 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEM_DPPNI_001_007,obs,standard,Ana 35 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEM_DPPNI_001_008,obs,standard,Laura 26 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEM_DPPNI_001_009,obs,standard,Ana 27 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEM_DPPNI_001_010,obs,standard,Rosa 35 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEM_DPPNI_001_011,obs,standard,Laura 28 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEM_DPPNI_001_012,obs,standard,Laura 40 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEM_DPPNI_001_013,obs,standard,Rosa 31 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEM_DPPNI_001_014,obs,standard,Laura 32 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEM_DPPNI_001_015,obs,standard,Laura 35 años,DPPNI: La Triada de Alarma,10,3
-PROC_OBS_HEM_ECTOPIC_001_001,obs,hard,Carmen 23 años,Ectópico: Tríada y Manejo,10,3
-PROC_OBS_HEM_ECTOPIC_001_002,obs,hard,María 36 años,Ectópico: Tríada y Manejo,10,3
-PROC_OBS_HEM_ECTOPIC_001_003,obs,hard,Laura 40 años,Ectópico: Tríada y Manejo,10,3
-PROC_OBS_HEM_ECTOPIC_001_004,obs,hard,María 30 años,Ectópico: Tríada y Manejo,10,3
-PROC_OBS_HEM_ECTOPIC_001_005,obs,hard,Rosa 35 años,Ectópico: Tríada y Manejo,10,3
-PROC_OBS_HEM_ECTOPIC_001_006,obs,hard,Marta 20 años,Ectópico: Tríada y Manejo,10,3
-PROC_OBS_HEM_ECTOPIC_001_007,obs,hard,María 32 años,Ectópico: Tríada y Manejo,10,3
-PROC_OBS_HEM_ECTOPIC_001_008,obs,hard,Marta 33 años,Ectópico: Tríada y Manejo,10,3
-PROC_OBS_HEM_ECTOPIC_001_009,obs,hard,Isabel 30 años,Ectópico: Tríada y Manejo,10,3
-PROC_OBS_HEM_ECTOPIC_001_010,obs,hard,Laura 32 años,Ectópico: Tríada y Manejo,10,3
-PROC_OBS_HEM_ECTOPIC_001_011,obs,hard,Isabel 27 años,Ectópico: Tríada y Manejo,10,3
-PROC_OBS_HEM_ECTOPIC_001_012,obs,hard,Elena 25 años,Ectópico: Tríada y Manejo,10,3
-PROC_OBS_HEM_ECTOPIC_001_013,obs,hard,Rosa 32 años,Ectópico: Tríada y Manejo,10,3
-PROC_OBS_HEM_ECTOPIC_001_014,obs,hard,Ana 29 años,Ectópico: Tríada y Manejo,10,3
-PROC_OBS_HEM_ECTOPIC_001_015,obs,hard,Elena 32 años,Ectópico: Tríada y Manejo,10,3
-PROC_OBS_HEM_MOLA_001_001,obs,standard,Ana 33 años,Mola: HTA <20 Semanas,10,3
-PROC_OBS_HEM_MOLA_001_002,obs,standard,Marta 45 años,Mola: HTA <20 Semanas,10,3
-PROC_OBS_HEM_MOLA_001_003,obs,standard,Isabel 19 años,Mola: HTA <20 Semanas,10,3
-PROC_OBS_HEM_MOLA_001_004,obs,standard,Rosa 31 años,Mola: HTA <20 Semanas,10,3
-PROC_OBS_HEM_MOLA_001_005,obs,standard,Isabel 24 años,Mola: HTA <20 Semanas,10,3
-PROC_OBS_HEM_MOLA_001_006,obs,standard,Laura 26 años,Mola: HTA <20 Semanas,10,3
-PROC_OBS_HEM_MOLA_001_007,obs,standard,Laura 29 años,Mola: HTA <20 Semanas,10,3
-PROC_OBS_HEM_MOLA_001_008,obs,standard,Marta 39 años,Mola: HTA <20 Semanas,10,3
-PROC_OBS_HEM_MOLA_001_009,obs,standard,Marta 22 años,Mola: HTA <20 Semanas,10,3
-PROC_OBS_HEM_MOLA_001_010,obs,standard,María 16 años,Mola: HTA <20 Semanas,10,3
-PROC_OBS_HEM_MOLA_001_011,obs,standard,Isabel 30 años,Mola: HTA <20 Semanas,10,3
-PROC_OBS_HEM_MOLA_001_012,obs,standard,Marta 35 años,Mola: HTA <20 Semanas,10,3
-PROC_OBS_HEM_MOLA_001_013,obs,standard,Rosa 27 años,Mola: HTA <20 Semanas,10,3
-PROC_OBS_HEM_MOLA_001_014,obs,standard,Rosa 15 años,Mola: HTA <20 Semanas,10,3
-PROC_OBS_HEM_MOLA_001_015,obs,standard,Ana 17 años,Mola: HTA <20 Semanas,10,3
+PROC_OBS_HEM_DPPNI_001_001,obs,standard,Carmen 36 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEM_DPPNI_001_002,obs,standard,Isabel 27 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEM_DPPNI_001_003,obs,standard,Isabel 27 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEM_DPPNI_001_004,obs,standard,Marta 26 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEM_DPPNI_001_005,obs,standard,Laura 40 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEM_DPPNI_001_006,obs,standard,Laura 25 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEM_DPPNI_001_007,obs,standard,Ana 35 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEM_DPPNI_001_008,obs,standard,Laura 26 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEM_DPPNI_001_009,obs,standard,Ana 27 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEM_DPPNI_001_010,obs,standard,Rosa 35 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEM_DPPNI_001_011,obs,standard,Laura 28 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEM_DPPNI_001_012,obs,standard,Laura 40 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEM_DPPNI_001_013,obs,standard,Rosa 31 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEM_DPPNI_001_014,obs,standard,Laura 32 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEM_DPPNI_001_015,obs,standard,Laura 35 años,DPPNI: La Triada de Alarma,12,3
+PROC_OBS_HEM_ECTOPIC_001_001,obs,hard,Carmen 23 años,Ectópico: Tríada y Manejo,15,3
+PROC_OBS_HEM_ECTOPIC_001_002,obs,hard,María 36 años,Ectópico: Tríada y Manejo,15,3
+PROC_OBS_HEM_ECTOPIC_001_003,obs,hard,Laura 40 años,Ectópico: Tríada y Manejo,15,3
+PROC_OBS_HEM_ECTOPIC_001_004,obs,hard,María 30 años,Ectópico: Tríada y Manejo,15,3
+PROC_OBS_HEM_ECTOPIC_001_005,obs,hard,Rosa 35 años,Ectópico: Tríada y Manejo,15,3
+PROC_OBS_HEM_ECTOPIC_001_006,obs,hard,Marta 20 años,Ectópico: Tríada y Manejo,15,3
+PROC_OBS_HEM_ECTOPIC_001_007,obs,hard,María 32 años,Ectópico: Tríada y Manejo,15,3
+PROC_OBS_HEM_ECTOPIC_001_008,obs,hard,Marta 33 años,Ectópico: Tríada y Manejo,15,3
+PROC_OBS_HEM_ECTOPIC_001_009,obs,hard,Isabel 30 años,Ectópico: Tríada y Manejo,15,3
+PROC_OBS_HEM_ECTOPIC_001_010,obs,hard,Laura 32 años,Ectópico: Tríada y Manejo,15,3
+PROC_OBS_HEM_ECTOPIC_001_011,obs,hard,Isabel 27 años,Ectópico: Tríada y Manejo,15,3
+PROC_OBS_HEM_ECTOPIC_001_012,obs,hard,Elena 25 años,Ectópico: Tríada y Manejo,15,3
+PROC_OBS_HEM_ECTOPIC_001_013,obs,hard,Rosa 32 años,Ectópico: Tríada y Manejo,15,3
+PROC_OBS_HEM_ECTOPIC_001_014,obs,hard,Ana 29 años,Ectópico: Tríada y Manejo,15,3
+PROC_OBS_HEM_ECTOPIC_001_015,obs,hard,Elena 32 años,Ectópico: Tríada y Manejo,15,3
+PROC_OBS_HEM_MOLA_001_001,obs,standard,Ana 33 años,Mola: HTA <20 Semanas,14,3
+PROC_OBS_HEM_MOLA_001_002,obs,standard,Marta 45 años,Mola: HTA <20 Semanas,14,3
+PROC_OBS_HEM_MOLA_001_003,obs,standard,Isabel 19 años,Mola: HTA <20 Semanas,14,3
+PROC_OBS_HEM_MOLA_001_004,obs,standard,Rosa 31 años,Mola: HTA <20 Semanas,14,3
+PROC_OBS_HEM_MOLA_001_005,obs,standard,Isabel 24 años,Mola: HTA <20 Semanas,14,3
+PROC_OBS_HEM_MOLA_001_006,obs,standard,Laura 26 años,Mola: HTA <20 Semanas,14,3
+PROC_OBS_HEM_MOLA_001_007,obs,standard,Laura 29 años,Mola: HTA <20 Semanas,14,3
+PROC_OBS_HEM_MOLA_001_008,obs,standard,Marta 39 años,Mola: HTA <20 Semanas,14,3
+PROC_OBS_HEM_MOLA_001_009,obs,standard,Marta 22 años,Mola: HTA <20 Semanas,14,3
+PROC_OBS_HEM_MOLA_001_010,obs,standard,María 16 años,Mola: HTA <20 Semanas,14,3
+PROC_OBS_HEM_MOLA_001_011,obs,standard,Isabel 30 años,Mola: HTA <20 Semanas,14,3
+PROC_OBS_HEM_MOLA_001_012,obs,standard,Marta 35 años,Mola: HTA <20 Semanas,14,3
+PROC_OBS_HEM_MOLA_001_013,obs,standard,Rosa 27 años,Mola: HTA <20 Semanas,14,3
+PROC_OBS_HEM_MOLA_001_014,obs,standard,Rosa 15 años,Mola: HTA <20 Semanas,14,3
+PROC_OBS_HEM_MOLA_001_015,obs,standard,Ana 17 años,Mola: HTA <20 Semanas,14,3
 PROC_OBS_INFECTION_CORIO_001_001,obs,hard,Rosa 22 años,Corioamnionitis: Gibbs,15,3
 PROC_OBS_INFECTION_CORIO_001_002,obs,hard,Rosa 23 años,Corioamnionitis: Gibbs,15,3
 PROC_OBS_INFECTION_CORIO_001_003,obs,hard,Laura 38 años,Corioamnionitis: Gibbs,15,3
@@ -392,21 +392,21 @@ PROC_OBS_PREECLAMPSIA_001_012,obs,hard,Elena 36 años,Preeclampsia: Datos de Sev
 PROC_OBS_PREECLAMPSIA_001_013,obs,hard,Isabel 38 años,Preeclampsia: Datos de Severidad,10,3
 PROC_OBS_PREECLAMPSIA_001_014,obs,hard,Carmen 24 años,Preeclampsia: Datos de Severidad,10,3
 PROC_OBS_PREECLAMPSIA_001_015,obs,hard,Isabel 19 años,Preeclampsia: Datos de Severidad,10,3
-PROC_OBS_RPM_001_001,obs,standard,Laura 34 años,RPM: ¡No Tacto Vaginal!,10,3
-PROC_OBS_RPM_001_002,obs,standard,Laura 32 años,RPM: ¡No Tacto Vaginal!,10,3
-PROC_OBS_RPM_001_003,obs,standard,Rosa 25 años,RPM: ¡No Tacto Vaginal!,10,3
-PROC_OBS_RPM_001_004,obs,standard,Ana 25 años,RPM: ¡No Tacto Vaginal!,10,3
-PROC_OBS_RPM_001_005,obs,standard,María 21 años,RPM: ¡No Tacto Vaginal!,10,3
-PROC_OBS_RPM_001_006,obs,standard,Laura 26 años,RPM: ¡No Tacto Vaginal!,10,3
-PROC_OBS_RPM_001_007,obs,standard,Isabel 30 años,RPM: ¡No Tacto Vaginal!,10,3
-PROC_OBS_RPM_001_008,obs,standard,Ana 29 años,RPM: ¡No Tacto Vaginal!,10,3
-PROC_OBS_RPM_001_009,obs,standard,Carmen 29 años,RPM: ¡No Tacto Vaginal!,10,3
-PROC_OBS_RPM_001_010,obs,standard,Ana 32 años,RPM: ¡No Tacto Vaginal!,10,3
-PROC_OBS_RPM_001_011,obs,standard,Rosa 35 años,RPM: ¡No Tacto Vaginal!,10,3
-PROC_OBS_RPM_001_012,obs,standard,Elena 25 años,RPM: ¡No Tacto Vaginal!,10,3
-PROC_OBS_RPM_001_013,obs,standard,Ana 35 años,RPM: ¡No Tacto Vaginal!,10,3
-PROC_OBS_RPM_001_014,obs,standard,Ana 34 años,RPM: ¡No Tacto Vaginal!,10,3
-PROC_OBS_RPM_001_015,obs,standard,Elena 34 años,RPM: ¡No Tacto Vaginal!,10,3
+PROC_OBS_RPM_001_001,obs,standard,Laura 34 años,RPM: ¡No Tacto Vaginal!,13,3
+PROC_OBS_RPM_001_002,obs,standard,Laura 32 años,RPM: ¡No Tacto Vaginal!,13,3
+PROC_OBS_RPM_001_003,obs,standard,Rosa 25 años,RPM: ¡No Tacto Vaginal!,13,3
+PROC_OBS_RPM_001_004,obs,standard,Ana 25 años,RPM: ¡No Tacto Vaginal!,13,3
+PROC_OBS_RPM_001_005,obs,standard,María 21 años,RPM: ¡No Tacto Vaginal!,13,3
+PROC_OBS_RPM_001_006,obs,standard,Laura 26 años,RPM: ¡No Tacto Vaginal!,13,3
+PROC_OBS_RPM_001_007,obs,standard,Isabel 30 años,RPM: ¡No Tacto Vaginal!,13,3
+PROC_OBS_RPM_001_008,obs,standard,Ana 29 años,RPM: ¡No Tacto Vaginal!,13,3
+PROC_OBS_RPM_001_009,obs,standard,Carmen 29 años,RPM: ¡No Tacto Vaginal!,13,3
+PROC_OBS_RPM_001_010,obs,standard,Ana 32 años,RPM: ¡No Tacto Vaginal!,13,3
+PROC_OBS_RPM_001_011,obs,standard,Rosa 35 años,RPM: ¡No Tacto Vaginal!,13,3
+PROC_OBS_RPM_001_012,obs,standard,Elena 25 años,RPM: ¡No Tacto Vaginal!,13,3
+PROC_OBS_RPM_001_013,obs,standard,Ana 35 años,RPM: ¡No Tacto Vaginal!,13,3
+PROC_OBS_RPM_001_014,obs,standard,Ana 34 años,RPM: ¡No Tacto Vaginal!,13,3
+PROC_OBS_RPM_001_015,obs,standard,Elena 34 años,RPM: ¡No Tacto Vaginal!,13,3
 PROC_OPH_GLAUCOMA_001_001,oph,hard,Sra. Gloria 65 años,Glaucoma Agudo vs Crónico,11,3
 PROC_OPH_GLAUCOMA_001_002,oph,hard,Sr. Manuel 70 años,Glaucoma Agudo vs Crónico,11,3
 PROC_OPH_GLAUCOMA_001_003,oph,hard,Sra. Teresa 58 años,Glaucoma Agudo vs Crónico,11,3

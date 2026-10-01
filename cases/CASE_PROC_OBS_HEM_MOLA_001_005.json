@@ -22,6 +22,18 @@
             }
         },
         {
+            "card_id": "dx_2",
+            "ui_icon": "pill",
+            "category": "Manejo Quirúrgico",
+            "card_text": "Quimioprofilaxis de Rutina: Administrar metotrexato a toda paciente con mola para evitar la neoplasia.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La quimioprofilaxis se limita a situaciones de riesgo alto o cuando el seguimiento con hCG no es posible; no es de rutina."
+            }
+        },
+        {
             "card_id": "c_1",
             "ui_icon": "brain",
             "category": "Diagnóstico",
@@ -110,6 +122,30 @@
             }
         },
         {
+            "card_id": "dx_1",
+            "ui_icon": "shield",
+            "category": "Seguimiento",
+            "card_text": "DIU Inmediato: Colocarlo tras la evacuación como método anticonceptivo durante el seguimiento.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: El DIU se difiere al menos 6 semanas tras la evacuación y hasta que la hCG sea normal, por riesgo de perforación uterina; en el seguimiento se usan anticonceptivos orales."
+            }
+        },
+        {
+            "card_id": "dx_3",
+            "ui_icon": "droplet",
+            "category": "Manejo Quirúrgico",
+            "card_text": "Anti-D en Mola: No se requiere inmunoglobulina porque la mola no tiene tejido fetal.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: El factor Rh se expresa en el trofoblasto, por eso la paciente Rh negativa recibe inmunoglobulina anti-D en la evacuación."
+            }
+        },
+        {
             "card_id": "c_7",
             "ui_icon": "alert-triangle",
             "category": "meds",
@@ -135,6 +171,18 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: ¡Excelente! Un embarazo nuevo haría imposible saber si la hCG sube por el bebé o por un cáncer."
+            }
+        },
+        {
+            "card_id": "dx_4",
+            "ui_icon": "scissors",
+            "category": "Manejo Quirúrgico",
+            "card_text": "Legrado Instrumental Cortante: Método de elección para evacuar la mola.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La evacuación de elección es la aspiración (AMEU/legrado por succión); el curetaje cortante aumenta el riesgo de perforación y sangrado."
             }
         }
     ],

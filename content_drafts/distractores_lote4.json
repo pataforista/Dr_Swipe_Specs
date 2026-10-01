@@ -1,0 +1,146 @@
+{
+    "_descripcion": "Lote 4 de cartas de descarte (distractores): embarazo ectópico, mola, RPM y DPPNI. Solo se incluyen afirmaciones con fuente confirmada; en RPM y DPPNI se escribieron menos cartas por falta de fuente verificada. Las dos familias de DPPNI comparten las mismas cartas. Se insertan con tools/insert_distractors.py.",
+    "familias": {
+        "PROC_OBS_HEM_ECTOPIC_001": [
+            {
+                "card_id": "dx_1",
+                "ui_icon": "pill",
+                "category": "Tratamiento Médico",
+                "card_text": "Ácido Fólico con Metotrexato: Se indica el suplemento para reducir la toxicidad del tratamiento.",
+                "comment": "Castillo: Con metotrexato se evita el ácido fólico, incluidos los alimentos que lo contengan, porque disminuye su eficacia.",
+                "fuente": "ACOG Practice Bulletin 193"
+            },
+            {
+                "card_id": "dx_2",
+                "ui_icon": "activity",
+                "category": "Tratamiento Médico",
+                "card_text": "Ibuprofeno para el Dolor: Analgésico de elección durante el tratamiento con metotrexato.",
+                "comment": "Castillo: Los AINE aumentan el riesgo de toxicidad por metotrexato y deben evitarse.",
+                "fuente": "ACOG Practice Bulletin 193"
+            },
+            {
+                "card_id": "dx_3",
+                "ui_icon": "trending-down",
+                "category": "Tratamiento Médico",
+                "card_text": "Descenso de 10% de la hCG (día 4 a día 7): Se considera respuesta adecuada y se suspende el tratamiento.",
+                "comment": "Castillo: Si la hCG desciende menos de 15% entre el día 4 y el día 7, se repite la dosis de metotrexato.",
+                "fuente": "ACOG Practice Bulletin 193"
+            },
+            {
+                "card_id": "dx_4",
+                "ui_icon": "shield",
+                "category": "Tratamiento Médico",
+                "card_text": "Metotrexato en la Paciente Inestable: Opción segura si hay líquido libre pero el sangrado parece escaso.",
+                "comment": "Castillo: La inestabilidad hemodinámica o el hemoperitoneo contraindican en forma absoluta el metotrexato y obligan a cirugía.",
+                "fuente": "ACOG Practice Bulletin 193",
+                "lethal_risk": true
+            },
+            {
+                "card_id": "dx_5",
+                "ui_icon": "percent",
+                "category": "imaging",
+                "card_text": "hCG Inicial Alta: La tasa de éxito del metotrexato es la misma con cualquier nivel inicial de hCG.",
+                "comment": "Castillo: El éxito del metotrexato disminuye cuanto mayor es la hCG inicial; por eso la hCG es parte de los criterios de elección.",
+                "fuente": "ACOG Practice Bulletin 193"
+            }
+        ],
+        "PROC_OBS_HEM_MOLA_001": [
+            {
+                "card_id": "dx_1",
+                "ui_icon": "shield",
+                "category": "Seguimiento",
+                "card_text": "DIU Inmediato: Colocarlo tras la evacuación como método anticonceptivo durante el seguimiento.",
+                "comment": "Castillo: El DIU se difiere al menos 6 semanas tras la evacuación y hasta que la hCG sea normal, por riesgo de perforación uterina; en el seguimiento se usan anticonceptivos orales.",
+                "fuente": "Ngan et al., FIGO 2018, enfermedad trofoblástica gestacional"
+            },
+            {
+                "card_id": "dx_2",
+                "ui_icon": "pill",
+                "category": "Manejo Quirúrgico",
+                "card_text": "Quimioprofilaxis de Rutina: Administrar metotrexato a toda paciente con mola para evitar la neoplasia.",
+                "comment": "Castillo: La quimioprofilaxis se limita a situaciones de riesgo alto o cuando el seguimiento con hCG no es posible; no es de rutina.",
+                "fuente": "Ngan et al., FIGO 2018, enfermedad trofoblástica gestacional"
+            },
+            {
+                "card_id": "dx_3",
+                "ui_icon": "droplet",
+                "category": "Manejo Quirúrgico",
+                "card_text": "Anti-D en Mola: No se requiere inmunoglobulina porque la mola no tiene tejido fetal.",
+                "comment": "Castillo: El factor Rh se expresa en el trofoblasto, por eso la paciente Rh negativa recibe inmunoglobulina anti-D en la evacuación.",
+                "fuente": "Ngan et al., FIGO 2018; ACOG, enfermedad trofoblástica gestacional"
+            },
+            {
+                "card_id": "dx_4",
+                "ui_icon": "scissors",
+                "category": "Manejo Quirúrgico",
+                "card_text": "Legrado Instrumental Cortante: Método de elección para evacuar la mola.",
+                "comment": "Castillo: La evacuación de elección es la aspiración (AMEU/legrado por succión); el curetaje cortante aumenta el riesgo de perforación y sangrado.",
+                "fuente": "Medscape, tratamiento de la mola hidatiforme; FIGO 2018"
+            }
+        ],
+        "PROC_OBS_RPM_001": [
+            {
+                "card_id": "dx_1",
+                "ui_icon": "droplet",
+                "category": "Pruebas de Consultorio",
+                "card_text": "Nitrazina con Sangre: Un papel azul confirma la ruptura aunque la muestra esté teñida de sangre.",
+                "comment": "Castillo: La sangre, el semen, los antisépticos alcalinos y la vaginosis bacteriana alcalinizan la muestra y dan falsos positivos; se confirma con otras pruebas.",
+                "fuente": "Merck Manual; AAFP, RPM pretérmino"
+            },
+            {
+                "card_id": "dx_2",
+                "ui_icon": "search",
+                "category": "labs",
+                "card_text": "Helecho con Moco Cervical: Tomar la muestra del cérvix mejora la sensibilidad de la cristalografía.",
+                "comment": "Castillo: El moco cervical estrogenizado da falsos positivos; la muestra se toma del fondo de saco posterior o de las paredes vaginales.",
+                "fuente": "AAFP, RPM pretérmino"
+            },
+            {
+                "card_id": "dx_3",
+                "ui_icon": "clock",
+                "category": "meds",
+                "card_text": "Antibióticos solo 48 horas: Es suficiente con la fase intravenosa de ampicilina más eritromicina.",
+                "comment": "Castillo: El esquema de latencia completa 7 días: 48 horas IV de ampicilina y eritromicina, y luego amoxicilina y eritromicina por vía oral 5 días.",
+                "fuente": "ACOG; ensayo de Mercer, esquema de latencia"
+            }
+        ],
+        "PROC_OBS_HEM_DPPNI_001": [
+            {
+                "card_id": "dx_1",
+                "ui_icon": "pause-circle",
+                "category": "Manejo",
+                "card_text": "Tocólisis de Rutina: Indicada en todo DPPNI para ganar tiempo y prolongar el embarazo.",
+                "comment": "Mendoza: En el DPPNI la tocólisis es controvertida: solo se considera con madre estable, sin sufrimiento fetal y un feto pretérmino que se beneficie de esteroides. En el cuadro agudo no es de rutina.",
+                "fuente": "Medscape, manejo del desprendimiento de placenta",
+                "lethal_risk": true
+            },
+            {
+                "card_id": "dx_2",
+                "ui_icon": "ban",
+                "category": "Manejo",
+                "card_text": "Parto Vaginal Contraindicado: Todo DPPNI se resuelve por cesárea sin excepción.",
+                "comment": "Mendoza: Con la madre estable y la frecuencia cardiaca fetal tranquilizadora se puede intentar el parto vaginal; y si hay muerte fetal, la vía vaginal es la preferible. La cesárea urgente es para inestabilidad materna o compromiso fetal.",
+                "fuente": "AJOG, desprendimiento de placenta a término y cerca del término; Medscape"
+            }
+        ],
+        "PROC_OBS_HEMORRHAGE_DPPNI_001": [
+            {
+                "card_id": "dx_1",
+                "ui_icon": "pause-circle",
+                "category": "Manejo",
+                "card_text": "Tocólisis de Rutina: Indicada en todo DPPNI para ganar tiempo y prolongar el embarazo.",
+                "comment": "Mendoza: En el DPPNI la tocólisis es controvertida: solo se considera con madre estable, sin sufrimiento fetal y un feto pretérmino que se beneficie de esteroides. En el cuadro agudo no es de rutina.",
+                "fuente": "Medscape, manejo del desprendimiento de placenta",
+                "lethal_risk": true
+            },
+            {
+                "card_id": "dx_2",
+                "ui_icon": "ban",
+                "category": "Manejo",
+                "card_text": "Parto Vaginal Contraindicado: Todo DPPNI se resuelve por cesárea sin excepción.",
+                "comment": "Mendoza: Con la madre estable y la frecuencia cardiaca fetal tranquilizadora se puede intentar el parto vaginal; y si hay muerte fetal, la vía vaginal es la preferible. La cesárea urgente es para inestabilidad materna o compromiso fetal.",
+                "fuente": "AJOG, desprendimiento de placenta a término y cerca del término; Medscape"
+            }
+        ]
+    }
+}
