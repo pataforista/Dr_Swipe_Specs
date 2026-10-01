@@ -85,7 +85,7 @@
             "card_id": "c_6",
             "ui_icon": "zap",
             "category": "Neurological",
-            "card_text": "F) Numbness: Sensación de Entumecimiento o Parestesia. A menudo se acompaña de 'Tingling' (hormigueo).",
+            "card_text": "Numbness: Sensación de Entumecimiento o Parestesia. A menudo se acompaña de 'Tingling' (hormigueo).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -97,7 +97,7 @@
             "card_id": "c_7",
             "ui_icon": "eye",
             "category": "Visual",
-            "card_text": "G) Blurred Vision: Término para describir la Visión Borrosa, síntoma clave en patología oftalmológica o sistémica.",
+            "card_text": "Blurred Vision: Término para describir la Visión Borrosa, síntoma clave en patología oftalmológica o sistémica.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -109,7 +109,7 @@
             "card_id": "c_8",
             "ui_icon": "rotate-cw",
             "category": "Dizziness",
-            "card_text": "H) Dizziness vs Vertigo: 'Dizziness' es el término laxo para Mareo, mientras que 'Vertigo' implica ilusión de movimiento.",
+            "card_text": "Dizziness vs Vertigo: 'Dizziness' es el término laxo para Mareo, mientras que 'Vertigo' implica ilusión de movimiento.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -121,7 +121,7 @@
             "card_id": "c_9",
             "ui_icon": "trending-up",
             "category": "timeline",
-            "card_text": "I) Sudden Onset: Término que indica un Inicio Súbito o repentino de los síntomas.",
+            "card_text": "Sudden Onset: Término que indica un Inicio Súbito o repentino de los síntomas.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

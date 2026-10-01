@@ -81,7 +81,7 @@
             "card_id": "c_6",
             "ui_icon": "alert-triangle",
             "category": "Segunda Línea",
-            "card_text": "F) Ergonovina / Metilergonovina: Uterotónico potente; CONTRAINDICADO en pacientes con hipertensión o preeclampsia.",
+            "card_text": "Ergonovina / Metilergonovina: Uterotónico potente; CONTRAINDICADO en pacientes con hipertensión o preeclampsia.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -93,7 +93,7 @@
             "card_id": "c_7",
             "ui_icon": "shield",
             "category": "meds",
-            "card_text": "G) Misoprostol (800 mcg rectal): Alternativa eficaz en lugares con poca infraestructura para refrigerar oxitocina.",
+            "card_text": "Misoprostol (800 mcg rectal): Alternativa eficaz en lugares con poca infraestructura para refrigerar oxitocina.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -105,7 +105,7 @@
             "card_id": "c_8",
             "ui_icon": "maximize",
             "category": "meds",
-            "card_text": "H) Balón de Bakri (Taponamiento): Dispositivo intrauterino que ejerce presión interna para detener el sangrado.",
+            "card_text": "Balón de Bakri (Taponamiento): Dispositivo intrauterino que ejerce presión interna para detener el sangrado.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -117,7 +117,7 @@
             "card_id": "c_9",
             "ui_icon": "scissors",
             "category": "Cirugía",
-            "card_text": "I) Suturas de B-Lynch: Técnica de compresión uterina quirúrgica para controlar atonía refractaria.",
+            "card_text": "Suturas de B-Lynch: Técnica de compresión uterina quirúrgica para controlar atonía refractaria.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -129,7 +129,7 @@
             "card_id": "c_10",
             "ui_icon": "droplet",
             "category": "meds",
-            "card_text": "J) Ácido Tranexámico (1g IV): Administrar en las primeras 3 horas del inicio de la HPP para reducir la mortalidad.",
+            "card_text": "Ácido Tranexámico (1g IV): Administrar en las primeras 3 horas del inicio de la HPP para reducir la mortalidad.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

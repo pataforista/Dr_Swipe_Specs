@@ -85,7 +85,7 @@
             "card_id": "c_8",
             "ui_icon": "pill",
             "category": "meds",
-            "card_text": "H) Antibióticos de Latencia: Ampicilina + Eritromicina IV. Prolongan el periodo de latencia y reducen riesgos infecciosos.",
+            "card_text": "Antibióticos de Latencia: Ampicilina + Eritromicina IV. Prolongan el periodo de latencia y reducen riesgos infecciosos.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -97,7 +97,7 @@
             "card_id": "c_9",
             "ui_icon": "refresh-cw",
             "category": "Finalización",
-            "card_text": "I) Resolución en >34 SDG: Si la ruptura ocurre tras las 34 semanas, el riesgo de infección supera al de prematurez; inducción inmediata.",
+            "card_text": "Resolución en >34 SDG: Si la ruptura ocurre tras las 34 semanas, el riesgo de infección supera al de prematurez; inducción inmediata.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -109,7 +109,7 @@
             "card_id": "c_6",
             "ui_icon": "thermometer",
             "category": "Prevención",
-            "card_text": "F) Control Térmico: Vigilancia estricta de temperatura materna c/4-6h para detección temprana de Corioamnionitis.",
+            "card_text": "Control Térmico: Vigilancia estricta de temperatura materna c/4-6h para detección temprana de Corioamnionitis.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -121,7 +121,7 @@
             "card_id": "c_7",
             "ui_icon": "zap",
             "category": "Manejo 24-34 SDG",
-            "card_text": "G) Esquema de Madurez Pulmonar: Indicar Betametasona 12mg IM cada 24h por 2 dosis para reducir distrés respiratorio neonatal.",
+            "card_text": "Esquema de Madurez Pulmonar: Indicar Betametasona 12mg IM cada 24h por 2 dosis para reducir distrés respiratorio neonatal.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

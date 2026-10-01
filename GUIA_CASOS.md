@@ -37,6 +37,20 @@ Cada caso es un archivo `.json` que debe cumplir con el esquema **Zod** (`caseSc
     *   `lethal_if_discarded`: Si descarta algo vital (ej. intubación en vía aérea inestable).
 *   **Restricción Importante:** El sistema rechaza casos que tengan cartas con el mismo `card_id` (para evitar contaminación cruzada entre enfermedades).
 
+### Cartas que no delatan la respuesta
+El jugador lee `card_text` **antes** de decidir. Si el texto trae una pista del veredicto, la decisión se vuelve reconocimiento de patrones y el juego pierde la tensión.
+
+*   **Sin letras de opción** (`F) `, `G) `, `H) `…): en el corpus original marcaban "aceptar" en ~95% de los casos. El validador las rechaza.
+*   **Sin etiquetas de veredicto** al inicio (`Dato anecdótico:`, `Contraindicado:`, `Información redundante:`, `Ruido en el expediente:`): solo aparecían en cartas de descarte. El validador las rechaza.
+*   **Balance:** apunta a ~40% de cartas de descarte por caso. Con 26% de descarte, deslizar siempre a la derecha acertaba 3 de cada 4.
+*   **`vazquez_comment`** se muestra tanto si el jugador acierta como si falla: escríbelo como explicación clínica válida en ambos casos. Los regaños que solo tienen sentido tras un error deben empezar con `¿` (el juego los omite cuando el jugador acierta). No incluyas prefijos como `🧹 DESCARTE RECOMENDADO:`; el juego los añade.
+
+Limpieza automática (idempotente) y lista de revisión clínica:
+\`\`\`bash
+python3 tools/clean_card_leaks.py cases            # quita letras, etiquetas y prefijos horneados
+python3 tools/report_content_review.py cases REVISION_CONTENIDO_JUGABILIDAD.csv
+\`\`\`
+
 ## 3. Revisión de Casos
 
 Para auditar el contenido sin abrir los archivos JSON directamente, se han habilitado herramientas de exportación en la raíz del proyecto.

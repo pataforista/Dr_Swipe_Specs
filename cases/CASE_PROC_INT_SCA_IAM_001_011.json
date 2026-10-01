@@ -13,12 +13,12 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "Signos Vitales",
-            "card_text": "Dato de importancia: Dato anecdótico: TA 100/60 mmHg, FC 110 lpm, Temp 36.4°C",
+            "card_text": "TA 100/60 mmHg, FC 110 lpm, Temp 36.4°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🧹 DESCARTE RECOMENDADO: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+                "vazquez_comment": "No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
             }
         },
         {
@@ -69,7 +69,7 @@
             "card_id": "c_7",
             "ui_icon": "user-minus",
             "category": "Complicación",
-            "card_text": "G) Taponamiento Cardíaco: Consecuencia de la ruptura de pared libre o hemopericardio post-procedimiento.",
+            "card_text": "Taponamiento Cardíaco: Consecuencia de la ruptura de pared libre o hemopericardio post-procedimiento.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -81,7 +81,7 @@
             "card_id": "c_8",
             "ui_icon": "monitor",
             "category": "Gabinete",
-            "card_text": "H) Ecocardiograma Transtorácico: Estudio de elección ante la sospecha de cualquier complicación mecánica post-AMI.",
+            "card_text": "Ecocardiograma Transtorácico: Estudio de elección ante la sospecha de cualquier complicación mecánica post-AMI.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -93,7 +93,7 @@
             "card_id": "c_9",
             "ui_icon": "shield-alert",
             "category": "Complicación Tardía",
-            "card_text": "I) Síndrome de Dressler: Pericarditis autoinmune que se presenta de 2 a 10 semanas después del infarto.",
+            "card_text": "Síndrome de Dressler: Pericarditis autoinmune que se presenta de 2 a 10 semanas después del infarto.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -137,7 +137,7 @@
             "card_id": "c_6",
             "ui_icon": "slash",
             "category": "Complicación Mecánica",
-            "card_text": "F) Ruptura de Pared Libre: Complicación catastrófica que ocurre típicamente entre el 3er y 5to día post-infarto.",
+            "card_text": "Ruptura de Pared Libre: Complicación catastrófica que ocurre típicamente entre el 3er y 5to día post-infarto.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

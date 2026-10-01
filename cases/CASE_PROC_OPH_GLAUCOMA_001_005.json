@@ -77,7 +77,7 @@
             "card_id": "c_6",
             "ui_icon": "search",
             "category": "Tratamiento Definitivo",
-            "card_text": "F) Iridotomía con Láser YAG: Procedimiento para crear un orificio en el iris y prevenir futuros bloqueos.",
+            "card_text": "Iridotomía con Láser YAG: Procedimiento para crear un orificio en el iris y prevenir futuros bloqueos.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -89,7 +89,7 @@
             "card_id": "c_7",
             "ui_icon": "slash",
             "category": "meds",
-            "card_text": "G) Glaucoma de Angulo Abierto: Crónico, asintomático, pérdida progresiva de visión periférica ('túnel').",
+            "card_text": "Glaucoma de Angulo Abierto: Crónico, asintomático, pérdida progresiva de visión periférica ('túnel').",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -101,7 +101,7 @@
             "card_id": "c_8",
             "ui_icon": "alert-triangle",
             "category": "Fármacos",
-            "card_text": "H) Timolol (Betabloqueador): Reduce la producción del humor acuoso. Contraindicado en pacientes con asma o falla cardíaca.",
+            "card_text": "Timolol (Betabloqueador): Reduce la producción del humor acuoso. Contraindicado en pacientes con asma o falla cardíaca.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -113,7 +113,7 @@
             "card_id": "c_9",
             "ui_icon": "info",
             "category": "Examen",
-            "card_text": "I) Gonioscopia: Técnica para visualizar directamente el ángulo camerular y confirmar si está cerrado o abierto.",
+            "card_text": "Gonioscopia: Técnica para visualizar directamente el ángulo camerular y confirmar si está cerrado o abierto.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -141,7 +141,7 @@
             "card_id": "c_10",
             "ui_icon": "x-circle",
             "category": "meds",
-            "card_text": "J) Atropina (Midriático): Útil para aliviar el dolor espasmódico del iris en la fase aguda del glaucoma cerrado.",
+            "card_text": "Atropina (Midriático): Útil para aliviar el dolor espasmódico del iris en la fase aguda del glaucoma cerrado.",
             "expected_action": "discard",
             "scoring": {
                 "points": 150,

@@ -13,12 +13,12 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "Signos Vitales",
-            "card_text": "Hallazgo: Dato anecdótico: TA 120/80, FC 72 lpm, Temp 36.7°C",
+            "card_text": "TA 120/80, FC 72 lpm, Temp 36.7°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
+                "vazquez_comment": "Navarro: No te detengas en signos estables, R1. El reloj no se detiene."
             }
         },
         {
@@ -77,7 +77,7 @@
             "card_id": "c_8",
             "ui_icon": "alert-triangle",
             "category": "Efectos Secundarios",
-            "card_text": "H) Vigilar Función Renal (Tenofovir): Riesgo de toxicidad tubular proximal; requiere vigilar creatinina y fósforo.",
+            "card_text": "Vigilar Función Renal (Tenofovir): Riesgo de toxicidad tubular proximal; requiere vigilar creatinina y fósforo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -89,7 +89,7 @@
             "card_id": "c_9",
             "ui_icon": "alert-octagon",
             "category": "Coinfección TB",
-            "card_text": "I) Co-infección VIH+TB: Iniciar primero el tratamiento antifímico y diferir el ART 2-8 semanas para evitar el IRIS.",
+            "card_text": "Co-infección VIH+TB: Iniciar primero el tratamiento antifímico y diferir el ART 2-8 semanas para evitar el IRIS.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -117,7 +117,7 @@
             "card_id": "c_6",
             "ui_icon": "pill",
             "category": "Profilaxis",
-            "card_text": "F) TMP/SMX (Trimetoprima/Sulfametoxazol): Indicado si CD4 <200 para prevenir Neumonía por Pneumocystis jirovecii.",
+            "card_text": "TMP/SMX (Trimetoprima/Sulfametoxazol): Indicado si CD4 <200 para prevenir Neumonía por Pneumocystis jirovecii.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -133,7 +133,7 @@
             "card_id": "c_7",
             "ui_icon": "target",
             "category": "Tratamiento de Elección",
-            "card_text": "G) Dolutegravir + Tenofovir + Emtricitabina (TDF/FTC/DTG): Esquema preferente por su alta eficacia y barrera genética.",
+            "card_text": "Dolutegravir + Tenofovir + Emtricitabina (TDF/FTC/DTG): Esquema preferente por su alta eficacia y barrera genética.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

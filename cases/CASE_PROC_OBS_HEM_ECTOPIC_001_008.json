@@ -73,7 +73,7 @@
             "card_id": "c_7",
             "ui_icon": "scissors",
             "category": "Tratamiento Conservador",
-            "card_text": "G) Salpingostomía: Incisión en la trompa para extraer el saco. Elección si se desea preservar la fertilidad en paciente ESTABLE.",
+            "card_text": "Salpingostomía: Incisión en la trompa para extraer el saco. Elección si se desea preservar la fertilidad en paciente ESTABLE.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -85,7 +85,7 @@
             "card_id": "c_8",
             "ui_icon": "map",
             "category": "Anatomía",
-            "card_text": "H) Región Ampular: Localización más frecuente de los embarazos ectópicos (95% de los casos).",
+            "card_text": "Región Ampular: Localización más frecuente de los embarazos ectópicos (95% de los casos).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -97,7 +97,7 @@
             "card_id": "c_9",
             "ui_icon": "alert-triangle",
             "category": "Factores de Riesgo",
-            "card_text": "I) Enfermedad Pélvica Inflamatoria (EPI): Es el factor de riesgo más importante debido al daño de los cilios tubáricos.",
+            "card_text": "Enfermedad Pélvica Inflamatoria (EPI): Es el factor de riesgo más importante debido al daño de los cilios tubáricos.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -126,7 +126,7 @@
             "card_id": "c_6",
             "ui_icon": "zap",
             "category": "Tratamiento Quirúrgico",
-            "card_text": "F) Salpingectomía (Ectópico Roto): Procedimiento de elección ante inestabilidad hemodinámica o sangrado profuso.",
+            "card_text": "Salpingectomía (Ectópico Roto): Procedimiento de elección ante inestabilidad hemodinámica o sangrado profuso.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

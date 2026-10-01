@@ -73,7 +73,7 @@
             "card_id": "c_6",
             "ui_icon": "activity",
             "category": "meds",
-            "card_text": "F) Quistes Tecaluteínicos: Quistes ováricos bilaterales (>6cm) secundarios a la estimulación masiva de la hCG.",
+            "card_text": "Quistes Tecaluteínicos: Quistes ováricos bilaterales (>6cm) secundarios a la estimulación masiva de la hCG.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -85,7 +85,7 @@
             "card_id": "c_8",
             "ui_icon": "copy",
             "category": "meds",
-            "card_text": "H) hCG Semanal: Medir niveles cada semana hasta alcanzar tres valores negativos consecutivos.",
+            "card_text": "hCG Semanal: Medir niveles cada semana hasta alcanzar tres valores negativos consecutivos.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -113,7 +113,7 @@
             "card_id": "c_7",
             "ui_icon": "alert-triangle",
             "category": "meds",
-            "card_text": "G) Preeclampsia Temprana: Hipertensión inducida por el embarazo antes de las 20 semanas es sugestiva de Mola.",
+            "card_text": "Preeclampsia Temprana: Hipertensión inducida por el embarazo antes de las 20 semanas es sugestiva de Mola.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -129,7 +129,7 @@
             "card_id": "c_9",
             "ui_icon": "shield",
             "category": "Seguimiento",
-            "card_text": "I) Anticoncepción (6-12 meses): Indicar OCOs para evitar un embarazo que confunda el seguimiento de la hCG.",
+            "card_text": "Anticoncepción (6-12 meses): Indicar OCOs para evitar un embarazo que confunda el seguimiento de la hCG.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

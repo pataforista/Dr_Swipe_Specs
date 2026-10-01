@@ -13,19 +13,19 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "Signos Vitales",
-            "card_text": "Información redundante: TA N/A, FC 110 lpm, Temp 36.5°C",
+            "card_text": "FC 110 lpm, Temp 36.5°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
+                "vazquez_comment": "Castillo: No te detengas en estos signos de taquicardia, R1. El reloj no se detiene."
             }
         },
         {
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnóstico",
-            "card_text": "Evidencia: Desarrollo Psicomotor Normal: Sigue los hitos esperados: 9 meses (pinza fina), 18 meses (marcha independiente).",
+            "card_text": "Desarrollo Psicomotor Normal: Sigue los hitos esperados: 9 meses (pinza fina), 18 meses (marcha independiente).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -41,31 +41,31 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnóstico Diferencial",
-            "card_text": "Hallazgo: Dato anecdótico: Retraso Global del Desarrollo: Ausencia de hitos clave en dos o más áreas (motor, lenguaje, social) para la edad cronológica.",
+            "card_text": "Retraso Global del Desarrollo: Ausencia de hitos clave en dos o más áreas (motor, lenguaje, social) para la edad cronológica.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Castillo: ¡Bien! Reconocer que el paciente no cumple los criterios de retraso evita derivaciones innecesarias."
+                "vazquez_comment": "Castillo: ¡Bien! Reconocer que el paciente no cumple los criterios de retraso evita derivaciones innecesarias."
             }
         },
         {
             "card_id": "c_3",
             "ui_icon": "slash",
             "category": "Diagnostico Diferencial",
-            "card_text": "Hallazgo clínico: Ruido en el expediente: Trastorno del Espectro Autista (TEA): Sospechar ante falta de contacto visual, ausencia de señalar y retraso en el lenguaje a los 18-24 meses.",
+            "card_text": "Trastorno del Espectro Autista (TEA): Sospechar ante falta de contacto visual, ausencia de señalar y retraso en el lenguaje a los 18-24 meses.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Castillo: Correcto. Aunque el screening (M-CHAT-R) es importante, este paciente tiene una interacción social normal para su edad."
+                "vazquez_comment": "Castillo: Correcto. Aunque el screening (M-CHAT-R) es importante, este paciente tiene una interacción social normal para su edad."
             }
         },
         {
             "card_id": "c_4",
             "ui_icon": "smile",
             "category": "Area Social",
-            "card_text": "Hallazgo: Sonrisa Social (2 meses): El lactante responde con una sonrisa a los estímulos visuales y auditivos de los cuidadores.",
+            "card_text": "Sonrisa Social (2 meses): El lactante responde con una sonrisa a los estímulos visuales y auditivos de los cuidadores.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -77,7 +77,7 @@
             "card_id": "c_6",
             "ui_icon": "target",
             "category": "Motor Fino",
-            "card_text": "Evidencia clínica: F) Pinza Fina (9-10 meses): Uso del pulgar e índice para recoger objetos pequeños (tipo 'pica-pica').",
+            "card_text": "Pinza Fina (9-10 meses): Uso del pulgar e índice para recoger objetos pequeños (tipo 'pica-pica').",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -89,7 +89,7 @@
             "card_id": "c_8",
             "ui_icon": "message-circle",
             "category": "Lenguaje",
-            "card_text": "Hallazgo: H) Binomios de Palabras (24 meses): Capacidad de unir 2 palabras para expresar deseos (ej. 'quiero leche', 'papá vamos').",
+            "card_text": "Binomios de Palabras (24 meses): Capacidad de unir 2 palabras para expresar deseos (ej. 'quiero leche', 'papá vamos').",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -101,7 +101,7 @@
             "card_id": "c_9",
             "ui_icon": "users",
             "category": "Área Social",
-            "card_text": "Hallazgo: I) Juego Simbólico (3 años): Capacidad de representar situaciones (ej. jugar a la comidita o al doctor).",
+            "card_text": "Juego Simbólico (3 años): Capacidad de representar situaciones (ej. jugar a la comidita o al doctor).",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -113,7 +113,7 @@
             "card_id": "c_5",
             "ui_icon": "arrow-up",
             "category": "Motor Grueso",
-            "card_text": "Hallazgo: Sedestación Independiente (9 meses): Capacidad de mantenerse sentado sin apoyo durante al menos un minuto.",
+            "card_text": "Sedestación Independiente (9 meses): Capacidad de mantenerse sentado sin apoyo durante al menos un minuto.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -129,7 +129,7 @@
             "card_id": "c_7",
             "ui_icon": "zap",
             "category": "Motor Grueso",
-            "card_text": "Evidencia clínica: G) Marcha Independiente (18 meses): Falta de caminar solo a esta edad REQUIERE evaluación motriz y auditiva inmediata.",
+            "card_text": "Marcha Independiente (18 meses): Falta de caminar solo a esta edad REQUIERE evaluación motriz y auditiva inmediata.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

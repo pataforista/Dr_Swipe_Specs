@@ -89,7 +89,7 @@
             "card_id": "c_7",
             "ui_icon": "pill",
             "category": "meds",
-            "card_text": "G) Misoprostol: Alternativa farmacológica para evacuación uterina en abortos no complicados de <12 SDG.",
+            "card_text": "Misoprostol: Alternativa farmacológica para evacuación uterina en abortos no complicados de <12 SDG.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -101,7 +101,7 @@
             "card_id": "c_9",
             "ui_icon": "shield-check",
             "category": "meds",
-            "card_text": "I) Inmunoglobulina Anti-D: Administrar en pacientes Rh negativas no sensibilizadas para evitar isoinmunización futura.",
+            "card_text": "Inmunoglobulina Anti-D: Administrar en pacientes Rh negativas no sensibilizadas para evitar isoinmunización futura.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -113,7 +113,7 @@
             "card_id": "c_6",
             "ui_icon": "hammer",
             "category": "Tratamiento Urgente",
-            "card_text": "F) LUI (Legrado Uterino Instrumental): Reservado para inestabilidad hemodinámica, abortos sépticos o úteros >=12 SDG.",
+            "card_text": "LUI (Legrado Uterino Instrumental): Reservado para inestabilidad hemodinámica, abortos sépticos o úteros >=12 SDG.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -129,7 +129,7 @@
             "card_id": "c_8",
             "ui_icon": "frown",
             "category": "Complicaciones",
-            "card_text": "H) Aborto Séptico: Presencia de fiebre (>38°C), fetidez, hipersensibilidad uterina y descarga purulenta.",
+            "card_text": "Aborto Séptico: Presencia de fiebre (>38°C), fetidez, hipersensibilidad uterina y descarga purulenta.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

@@ -77,7 +77,7 @@
             "card_id": "c_6",
             "ui_icon": "pill",
             "category": "meds",
-            "card_text": "F) Hinchey I (Manejo Médico): Absceso pericólico pequeño o solo inflamación. Requiere antibióticos IV y reposo intestinal.",
+            "card_text": "Hinchey I (Manejo Médico): Absceso pericólico pequeño o solo inflamación. Requiere antibióticos IV y reposo intestinal.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -89,7 +89,7 @@
             "card_id": "c_9",
             "ui_icon": "shield",
             "category": "meds",
-            "card_text": "I) Antibióticos Combinados: Esquema que cubra gramnegativos y anaerobios (e.g. Ciprofloxacino + Metronidazol).",
+            "card_text": "Antibióticos Combinados: Esquema que cubra gramnegativos y anaerobios (e.g. Ciprofloxacino + Metronidazol).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -117,7 +117,7 @@
             "card_id": "c_7",
             "ui_icon": "zap",
             "category": "meds",
-            "card_text": "G) Cirugía de Hartmann: Resección del segmento afectado + colostomía. Es el estándar en Hinchey IV (Fecal).",
+            "card_text": "Cirugía de Hartmann: Resección del segmento afectado + colostomía. Es el estándar en Hinchey IV (Fecal).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -133,7 +133,7 @@
             "card_id": "c_8",
             "ui_icon": "link",
             "category": "Complicaciones",
-            "card_text": "H) Fístula Colovesical: Es la fístula más común; sospechar ante neumaturia (aire en orina) o fecaluria.",
+            "card_text": "Fístula Colovesical: Es la fístula más común; sospechar ante neumaturia (aire en orina) o fecaluria.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

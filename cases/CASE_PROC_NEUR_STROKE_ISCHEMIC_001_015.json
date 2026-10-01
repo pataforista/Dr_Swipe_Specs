@@ -13,12 +13,12 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "Signos Vitales",
-            "card_text": "Hallazgo clínico: Dato anecdótico: TA 170/90 mmHg, FC 110 lpm (irregular), Temp 36.6°C",
+            "card_text": "TA 170/90 mmHg, FC 110 lpm (irregular), Temp 36.6°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Navarro: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
+                "vazquez_comment": "Navarro: No te detengas en estos signos de severidad, R1. El reloj no se detiene."
             }
         },
         {
@@ -37,7 +37,7 @@
             "card_id": "c_6",
             "ui_icon": "alert-triangle",
             "category": "vitals",
-            "card_text": "F) Control de TA: Mantener la TA por debajo de 185/110 mmHg para iniciar rTPA de forma segura.",
+            "card_text": "Control de TA: Mantener la TA por debajo de 185/110 mmHg para iniciar rTPA de forma segura.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -65,7 +65,7 @@
             "card_id": "c_7",
             "ui_icon": "activity",
             "category": "Fisiología",
-            "card_text": "G) Penumbra Isquémica: Tejido cerebral con riesgo de infarto que aún es rescatable mediante reperfusión.",
+            "card_text": "Penumbra Isquémica: Tejido cerebral con riesgo de infarto que aún es rescatable mediante reperfusión.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -77,7 +77,7 @@
             "card_id": "c_9",
             "ui_icon": "calendar",
             "category": "meds",
-            "card_text": "I) Iniciar Antiagregación (ASA): Administrar 160-325 mg de Aspirina tras 24 horas de la fibrinólisis.",
+            "card_text": "Iniciar Antiagregación (ASA): Administrar 160-325 mg de Aspirina tras 24 horas de la fibrinólisis.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -138,7 +138,7 @@
             "card_id": "c_8",
             "ui_icon": "slash",
             "category": "Complicación",
-            "card_text": "H) Transformación Hemorrágica: Vigilar cefalea intensa, náuseas o deterioro neurológico súbito post-rTPA.",
+            "card_text": "Transformación Hemorrágica: Vigilar cefalea intensa, náuseas o deterioro neurológico súbito post-rTPA.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

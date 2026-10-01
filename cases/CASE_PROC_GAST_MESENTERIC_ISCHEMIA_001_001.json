@@ -73,7 +73,7 @@
             "card_id": "c_6",
             "ui_icon": "zap",
             "category": "Estándar de Oro",
-            "card_text": "F) Angiografía Convencional: Sigue siendo el estándar de oro y permite el tratamiento intervencionista directo.",
+            "card_text": "Angiografía Convencional: Sigue siendo el estándar de oro y permite el tratamiento intervencionista directo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -85,7 +85,7 @@
             "card_id": "c_9",
             "ui_icon": "image",
             "category": "imaging",
-            "card_text": "I) Neumatosis Intestinal: Gas en la pared del intestino visible en Rx o TC. Indica isquemia transmural grave.",
+            "card_text": "Neumatosis Intestinal: Gas en la pared del intestino visible en Rx o TC. Indica isquemia transmural grave.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -114,7 +114,7 @@
             "card_id": "c_7",
             "ui_icon": "activity",
             "category": "labs",
-            "card_text": "G) Lactato Sérico: Su elevación (>2.0 mmol/L) indica hipoperfusión tisular y acidosis metabólica; es un signo de mal pronóstico.",
+            "card_text": "Lactato Sérico: Su elevación (>2.0 mmol/L) indica hipoperfusión tisular y acidosis metabólica; es un signo de mal pronóstico.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -130,7 +130,7 @@
             "card_id": "c_8",
             "ui_icon": "refresh-cw",
             "category": "Manejo Quirúrgico",
-            "card_text": "H) Revascularización: Embolectomía o puentes arteriales de urgencia para restablecer el flujo antes de que la necrosis sea irreversible.",
+            "card_text": "Revascularización: Embolectomía o puentes arteriales de urgencia para restablecer el flujo antes de que la necrosis sea irreversible.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

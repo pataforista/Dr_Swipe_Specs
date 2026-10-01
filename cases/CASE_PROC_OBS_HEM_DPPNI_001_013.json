@@ -73,7 +73,7 @@
             "card_id": "c_6",
             "ui_icon": "activity",
             "category": "Fisiopatología",
-            "card_text": "F) Útero de Couvelaire: Infiltración hemática del miometrio por el hematoma retroplacentario, dándole un color purpúreo.",
+            "card_text": "Útero de Couvelaire: Infiltración hemática del miometrio por el hematoma retroplacentario, dándole un color purpúreo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -85,7 +85,7 @@
             "card_id": "c_9",
             "ui_icon": "alert-triangle",
             "category": "meds",
-            "card_text": "I) Síndrome de Sheehan: Necrosis hipofisaria post-parto secundaria a choque hipovolémico hemorrágico.",
+            "card_text": "Síndrome de Sheehan: Necrosis hipofisaria post-parto secundaria a choque hipovolémico hemorrágico.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -114,7 +114,7 @@
             "card_id": "c_7",
             "ui_icon": "test-tube",
             "category": "labs",
-            "card_text": "G) Perfil de Coagulación / Fibrinógeno: El DPPNI es la causa más común de Coagulación Intravascular Diseminada (CID) en el embarazo.",
+            "card_text": "Perfil de Coagulación / Fibrinógeno: El DPPNI es la causa más común de Coagulación Intravascular Diseminada (CID) en el embarazo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -130,7 +130,7 @@
             "card_id": "c_8",
             "ui_icon": "zap",
             "category": "Manejo",
-            "card_text": "H) Cesárea de Urgencia: Indicada ante compromiso de la frecuencia cardiaca fetal, inestabilidad materna o hemorragia severa.",
+            "card_text": "Cesárea de Urgencia: Indicada ante compromiso de la frecuencia cardiaca fetal, inestabilidad materna o hemorragia severa.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

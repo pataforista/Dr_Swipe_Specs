@@ -69,7 +69,7 @@
             "card_id": "c_6",
             "ui_icon": "search",
             "category": "meds",
-            "card_text": "F) Signo de Homans: Dolor en la pantorrilla o región poplítea a la dorsiflexión pasiva del pie; sugiere Trombosis Venosa Profunda.",
+            "card_text": "Signo de Homans: Dolor en la pantorrilla o región poplítea a la dorsiflexión pasiva del pie; sugiere Trombosis Venosa Profunda.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -81,7 +81,7 @@
             "card_id": "c_7",
             "ui_icon": "activity",
             "category": "meds",
-            "card_text": "G) Patrón S1Q3T3: Signo de McGinn-White (Onda S profunda en I, Q profunda en III y T negativa en III).",
+            "card_text": "Patrón S1Q3T3: Signo de McGinn-White (Onda S profunda en I, Q profunda en III y T negativa en III).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -93,7 +93,7 @@
             "card_id": "c_9",
             "ui_icon": "shield",
             "category": "Profilaxis Secundaria",
-            "card_text": "I) Filtro de Vena Cava Inferior: Opción para pacientes con TEP recurrente a pesar de anticoagulación o contraindicación para la misma.",
+            "card_text": "Filtro de Vena Cava Inferior: Opción para pacientes con TEP recurrente a pesar de anticoagulación o contraindicación para la misma.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -133,7 +133,7 @@
             "card_id": "c_8",
             "ui_icon": "zap",
             "category": "meds",
-            "card_text": "H) Trombólisis con Alteplasa (r-TPA): Indicada para pacientes con TEP masivo y choque obstructivo.",
+            "card_text": "Trombólisis con Alteplasa (r-TPA): Indicada para pacientes con TEP masivo y choque obstructivo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

@@ -13,7 +13,7 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "vitals",
-            "card_text": "TA N/A, FC 90 lpm, Temp 38.2°C",
+            "card_text": "FC 90 lpm, Temp 38.2°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -77,7 +77,7 @@
             "card_id": "c_6",
             "ui_icon": "test-tube",
             "category": "Diagnóstico",
-            "card_text": "F) Citodiagnóstico de Tzanck: Hallazgo de células gigantes multinucleadas con inclusiones intranucleares.",
+            "card_text": "Citodiagnóstico de Tzanck: Hallazgo de células gigantes multinucleadas con inclusiones intranucleares.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -89,7 +89,7 @@
             "card_id": "c_7",
             "ui_icon": "thermometer",
             "category": "meds",
-            "card_text": "G) Paracetamol y Antihistamínicos: Control de fiebre y prurito para evitar el rascado y sobreinfección.",
+            "card_text": "Paracetamol y Antihistamínicos: Control de fiebre y prurito para evitar el rascado y sobreinfección.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -101,7 +101,7 @@
             "card_id": "c_8",
             "ui_icon": "alert-circle",
             "category": "meds",
-            "card_text": "H) Cerebelitis / Ataxia Cerebelosa Aguda: Complicación neurológica frecuente en niños (pronóstico favorable).",
+            "card_text": "Cerebelitis / Ataxia Cerebelosa Aguda: Complicación neurológica frecuente en niños (pronóstico favorable).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -113,7 +113,7 @@
             "card_id": "c_9",
             "ui_icon": "shield-check",
             "category": "meds",
-            "card_text": "I) Vacuna Varicela: Virus vivos atenuados. Incluida como refuerzo de la SRP (SRPV) o individual.",
+            "card_text": "Vacuna Varicela: Virus vivos atenuados. Incluida como refuerzo de la SRP (SRPV) o individual.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -125,7 +125,7 @@
             "card_id": "c_10",
             "ui_icon": "pill",
             "category": "meds",
-            "card_text": "J) Aciclovir Oral de Rutina: Administrar a todo paciente inmunocompetente menor de 12 años con varicela no complicada.",
+            "card_text": "Aciclovir Oral de Rutina: Administrar a todo paciente inmunocompetente menor de 12 años con varicela no complicada.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -137,7 +137,7 @@
             "card_id": "c_3",
             "ui_icon": "slash",
             "category": "Contraindicacion",
-            "card_text": "Hallazgo: Contraindicado: ASA (Ácido Acetilsalicilico/Aspirina). Su uso para la fiebre en varicela conlleva alto riesgo de Sindrome de Reye (falla hepatica aguda).",
+            "card_text": "ASA (Ácido Acetilsalicilico/Aspirina). Su uso para la fiebre en varicela conlleva alto riesgo de Sindrome de Reye (falla hepatica aguda).",
             "expected_action": "discard",
             "scoring": {
                 "points": 150,

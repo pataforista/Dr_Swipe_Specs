@@ -61,7 +61,7 @@
             "card_id": "c_6",
             "ui_icon": "activity",
             "category": "labs",
-            "card_text": "F) Brecha Aniónica (Anion Gap): Valor >12 indica presencia de cetoácidos circulantes. Clave para el seguimiento.",
+            "card_text": "Brecha Aniónica (Anion Gap): Valor >12 indica presencia de cetoácidos circulantes. Clave para el seguimiento.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -73,7 +73,7 @@
             "card_id": "c_7",
             "ui_icon": "zap",
             "category": "Manejo Bicarbonato",
-            "card_text": "G) Uso de Bicarbonato: Solo reservado si el pH es <6.9. Su uso rutinario aumenta las complicaciones.",
+            "card_text": "Uso de Bicarbonato: Solo reservado si el pH es <6.9. Su uso rutinario aumenta las complicaciones.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -85,7 +85,7 @@
             "card_id": "c_8",
             "ui_icon": "check-circle",
             "category": "labs",
-            "card_text": "H) Criterios de Resolución: pH >7.3, HCO3 >=18 y Anion Gap normalizado. No depende solo del nivel de glucosa.",
+            "card_text": "Criterios de Resolución: pH >7.3, HCO3 >=18 y Anion Gap normalizado. No depende solo del nivel de glucosa.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -97,7 +97,7 @@
             "card_id": "c_9",
             "ui_icon": "search",
             "category": "meds",
-            "card_text": "I) Factor Precipitante: Investigar infecciones (IVU/Neumonía) u omisión de dosis como causa del descontrol.",
+            "card_text": "Factor Precipitante: Investigar infecciones (IVU/Neumonía) u omisión de dosis como causa del descontrol.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,

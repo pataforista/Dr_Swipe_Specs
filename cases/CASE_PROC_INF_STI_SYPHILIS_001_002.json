@@ -13,19 +13,19 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "Signos Vitales",
-            "card_text": "Evidencia clínica: Dato anecdótico: TA 120/80, FC 70 lpm, Temp 36.6°C.",
+            "card_text": "TA 120/80, FC 70 lpm, Temp 36.6°C.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "🧹 DESCARTE RECOMENDADO: Navarro: Paciente estable. Analicemos la lesión."
+                "vazquez_comment": "Navarro: Paciente estable. Analicemos la lesión."
             }
         },
         {
             "card_id": "c_8",
             "ui_icon": "moon",
             "category": "vitals",
-            "card_text": "H) Roséola Sifilítica y Condiloma Lata: Manifestaciones sistémicas. Típico el exantema en palmas y plantas.",
+            "card_text": "Roséola Sifilítica y Condiloma Lata: Manifestaciones sistémicas. Típico el exantema en palmas y plantas.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -101,7 +101,7 @@
             "card_id": "c_6",
             "ui_icon": "pill",
             "category": "meds",
-            "card_text": "F) Penicilina G Benzatínica (2.4 Millones UI IM - Dosis Única): Tratamiento de elección para sífilis primaria, secundaria y latente temprana.",
+            "card_text": "Penicilina G Benzatínica (2.4 Millones UI IM - Dosis Única): Tratamiento de elección para sífilis primaria, secundaria y latente temprana.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -117,7 +117,7 @@
             "card_id": "c_7",
             "ui_icon": "alert-triangle",
             "category": "imaging",
-            "card_text": "G) Reacción de Jarisch-Herxheimer: Episodio febril agudo tras la primera dosis de penicilina por liberación de antígenos del treponema moribundo.",
+            "card_text": "Reacción de Jarisch-Herxheimer: Episodio febril agudo tras la primera dosis de penicilina por liberación de antígenos del treponema moribundo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -129,7 +129,7 @@
             "card_id": "c_9",
             "ui_icon": "users",
             "category": "imaging",
-            "card_text": "I) Tratamiento de Parejas Sexuales: Notificar y tratar a todos los contactos de los últimos 90 días, incluso si son seronegativos.",
+            "card_text": "Tratamiento de Parejas Sexuales: Notificar y tratar a todos los contactos de los últimos 90 días, incluso si son seronegativos.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -141,7 +141,7 @@
             "card_id": "c_10",
             "ui_icon": "activity",
             "category": "Neurosífilis",
-            "card_text": "J) Punción Lumbar: Obligatoria en todo paciente con sífilis y síntomas neurológicos, o sífilis terciaria para descartar neurosífilis.",
+            "card_text": "Punción Lumbar: Obligatoria en todo paciente con sífilis y síntomas neurológicos, o sífilis terciaria para descartar neurosífilis.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

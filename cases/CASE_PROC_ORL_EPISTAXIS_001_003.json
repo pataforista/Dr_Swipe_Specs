@@ -13,7 +13,7 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "vitals",
-            "card_text": "Hallazgo: Información redundante: TA 105/65 mmHg (Normal para la edad), FC 90 lpm, FR 18 rpm.",
+            "card_text": "TA 105/65 mmHg (Normal para la edad), FC 90 lpm, FR 18 rpm.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -41,7 +41,7 @@
             "card_id": "c_10",
             "ui_icon": "x-circle",
             "category": "vitals",
-            "card_text": "J) Control Agudo de la TA: Es la medida prioritaria para detener el sangrado nasal antes de cualquier maniobra local.",
+            "card_text": "Control Agudo de la TA: Es la medida prioritaria para detener el sangrado nasal antes de cualquier maniobra local.",
             "expected_action": "discard",
             "scoring": {
                 "points": 100,
@@ -105,7 +105,7 @@
             "card_id": "c_6",
             "ui_icon": "slash",
             "category": "meds",
-            "card_text": "F) Taponamiento Nasal Anterior: Utilizar gasa con lubricante o esponjas expandibles (Merocel) por 48-72 horas.",
+            "card_text": "Taponamiento Nasal Anterior: Utilizar gasa con lubricante o esponjas expandibles (Merocel) por 48-72 horas.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -117,7 +117,7 @@
             "card_id": "c_7",
             "ui_icon": "alert-triangle",
             "category": "Manejo Posterior",
-            "card_text": "G) Taponamiento Posterior (Sonda Foley / Gasa): Indicado en sangrado incoercible que drena por faringe. Requiere hospitalización.",
+            "card_text": "Taponamiento Posterior (Sonda Foley / Gasa): Indicado en sangrado incoercible que drena por faringe. Requiere hospitalización.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -129,7 +129,7 @@
             "card_id": "c_8",
             "ui_icon": "search",
             "category": "labs",
-            "card_text": "H) Perfil de Coagulación (TP, TTP): Indispensables en pacientes con epistaxis recurrente o uso de anticoagulantes.",
+            "card_text": "Perfil de Coagulación (TP, TTP): Indispensables en pacientes con epistaxis recurrente o uso de anticoagulantes.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -141,7 +141,7 @@
             "card_id": "c_9",
             "ui_icon": "info",
             "category": "Seguimiento",
-            "card_text": "I) Profilaxis Antibiótica: Recomendada durante el tiempo que dure el taponamiento (anterior o posterior) para evitar el Síndrome de Choque Tóxico.",
+            "card_text": "Profilaxis Antibiótica: Recomendada durante el tiempo que dure el taponamiento (anterior o posterior) para evitar el Síndrome de Choque Tóxico.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,

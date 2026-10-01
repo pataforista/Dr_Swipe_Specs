@@ -13,7 +13,7 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "vitals",
-            "card_text": "Evidencia clínica: Dato anecdótico: TA 85/50 mmHg, FC 115 lpm, Temp 39.0°C",
+            "card_text": "TA 85/50 mmHg, FC 115 lpm, Temp 39.0°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -24,7 +24,7 @@
         {
             "card_id": "c_10_perla",
             "ui_icon": "pill",
-            "card_text": "Dato de importancia: J) Antecedente de uso de antibióticos recientes: Factor de riesgo clave para microorganismos multirresistentes (MDR).",
+            "card_text": "Antecedente de uso de antibióticos recientes: Factor de riesgo clave para microorganismos multirresistentes (MDR).",
             "scoring": {
                 "vazquez_comment": "Navarro: ¡Excelente! La historia previa de antibióticos guía la agresividad del esquema empírico.",
                 "points": 100,
@@ -106,7 +106,7 @@
             "card_id": "c_6",
             "ui_icon": "droplet",
             "category": "imaging",
-            "card_text": "F) Medición de Lactato: Tomar muestra inicial de lactato sérico para guiar la terapia de resucitación hemodinámica.",
+            "card_text": "Medición de Lactato: Tomar muestra inicial de lactato sérico para guiar la terapia de resucitación hemodinámica.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -122,7 +122,7 @@
             "card_id": "c_7",
             "ui_icon": "zap",
             "category": "meds",
-            "card_text": "G) Antibióticos en <60 min: Administrar terapia empírica de amplio espectro tras la toma de hemocultivos.",
+            "card_text": "Antibióticos en <60 min: Administrar terapia empírica de amplio espectro tras la toma de hemocultivos.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -138,7 +138,7 @@
             "card_id": "c_8",
             "ui_icon": "battery-charging",
             "category": "labs",
-            "card_text": "H) Carga de Cristaloides (30 mL/kg): Iniciar en las primeras 3 horas ante hipotensión o lactato >=4 mmol/L.",
+            "card_text": "Carga de Cristaloides (30 mL/kg): Iniciar en las primeras 3 horas ante hipotensión o lactato >=4 mmol/L.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -154,7 +154,7 @@
             "card_id": "c_9",
             "ui_icon": "alert-triangle",
             "category": "meds",
-            "card_text": "I) Soporte Vasopresor: Iniciar Norepinefrina si la PAM persiste <65 mmHg a pesar de una adecuada reanimación volémica.",
+            "card_text": "Soporte Vasopresor: Iniciar Norepinefrina si la PAM persiste <65 mmHg a pesar de una adecuada reanimación volémica.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

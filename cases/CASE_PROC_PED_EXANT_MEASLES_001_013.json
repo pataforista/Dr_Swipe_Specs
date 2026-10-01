@@ -13,7 +13,7 @@
             "card_id": "init_vitals",
             "ui_icon": "heartbeat",
             "category": "vitals",
-            "card_text": "TA N/A, FC 120 lpm, Temp 39.5°C",
+            "card_text": "FC 120 lpm, Temp 39.5°C",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -85,7 +85,7 @@
             "card_id": "c_6",
             "ui_icon": "shield",
             "category": "Salud Pública",
-            "card_text": "F) Notificación Inmediata a Epidemiología: Reporte obligatorio por riesgo de brote.",
+            "card_text": "Notificación Inmediata a Epidemiología: Reporte obligatorio por riesgo de brote.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -97,7 +97,7 @@
             "card_id": "c_7",
             "ui_icon": "beaker",
             "category": "meds",
-            "card_text": "G) Virus del Sarampión (Paramixovirus): Virus de ARN de cadena negativa, altamente contagioso vía aerosoles.",
+            "card_text": "Virus del Sarampión (Paramixovirus): Virus de ARN de cadena negativa, altamente contagioso vía aerosoles.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -109,7 +109,7 @@
             "card_id": "c_8",
             "ui_icon": "volume-2",
             "category": "Complicación",
-            "card_text": "H) Otitis Media Aguda: Complicación más frecuente del sarampión en niños.",
+            "card_text": "Otitis Media Aguda: Complicación más frecuente del sarampión en niños.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
@@ -121,7 +121,7 @@
             "card_id": "c_9",
             "ui_icon": "brain",
             "category": "meds",
-            "card_text": "I) Panencefalitis Esclerosante Subaguda (PEES): Degeneración progresiva del SNC que ocurre años después del cuadro agudo.",
+            "card_text": "Panencefalitis Esclerosante Subaguda (PEES): Degeneración progresiva del SNC que ocurre años después del cuadro agudo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -133,7 +133,7 @@
             "card_id": "c_10",
             "ui_icon": "alert-triangle",
             "category": "Aislamiento",
-            "card_text": "J) Reglas de Aislamiento: El paciente debe permanecer aislado desde el inicio de la fiebre hasta 4-5 días DESPUÉS del inicio del exantema.",
+            "card_text": "Reglas de Aislamiento: El paciente debe permanecer aislado desde el inicio de la fiebre hasta 4-5 días DESPUÉS del inicio del exantema.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,

@@ -65,7 +65,7 @@
             "card_id": "c_6",
             "ui_icon": "zap",
             "category": "Antídoto",
-            "card_text": "F) Gluconato de Calcio: Administración inmediata en caso de sospecha clínica de intoxicación por Magnesio.",
+            "card_text": "Gluconato de Calcio: Administración inmediata en caso de sospecha clínica de intoxicación por Magnesio.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -77,7 +77,7 @@
             "card_id": "c_7",
             "ui_icon": "pill",
             "category": "meds",
-            "card_text": "G) Hidralazina o Nifedipino: Tratamiento de elección para el control de la crisis hipertensiva (TA ≥160/110).",
+            "card_text": "Hidralazina o Nifedipino: Tratamiento de elección para el control de la crisis hipertensiva (TA ≥160/110).",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -89,7 +89,7 @@
             "card_id": "c_8",
             "ui_icon": "alert-triangle",
             "category": "Complicación",
-            "card_text": "H) Síndrome de HELLP: Hemólisis (esquizocitos), Enzimas hepáticas elevadas y Plaquetas bajas (<100,000).",
+            "card_text": "Síndrome de HELLP: Hemólisis (esquizocitos), Enzimas hepáticas elevadas y Plaquetas bajas (<100,000).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -133,7 +133,7 @@
             "card_id": "c_9",
             "ui_icon": "check-circle",
             "category": "Resolución",
-            "card_text": "I) Interrupción del Embarazo: Vía de nacimiento según indicación obstétrica, tras estabilización inicial.",
+            "card_text": "Interrupción del Embarazo: Vía de nacimiento según indicación obstétrica, tras estabilización inicial.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
