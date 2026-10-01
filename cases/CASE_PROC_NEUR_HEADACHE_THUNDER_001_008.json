@@ -22,6 +22,18 @@
             }
         },
         {
+            "card_id": "l5_ct1",
+            "ui_icon": "syringe",
+            "category": "Diagnóstico",
+            "card_text": "Punción lumbar inmediata antes de cualquier imagen: Se obtiene el LCR de entrada para confirmar la hemorragia.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: La tomografía simple de cráneo va primero. Si es negativa y la sospecha persiste, entonces se hace la punción lumbar para buscar xantocromía."
+            }
+        },
+        {
             "card_id": "c_3",
             "ui_icon": "slash",
             "category": "vitals",
@@ -55,6 +67,21 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Muy bien! Es la escala clínica por excelencia para la HSA en el servicio de urgencias."
+            }
+        },
+        {
+            "card_id": "l5_ct3",
+            "ui_icon": "droplet",
+            "category": "Tratamiento",
+            "card_text": "Nimodipino intravenoso en bolo: Vía rápida para prevenir el vasoespasmo al ingreso.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 150,
+                "error_type": "lethal_commission",
+                "vazquez_comment": "Navarro: El nimodipino se da por vía oral. En bolo intravenoso produce hipotensión, y la hipoperfusión agrava el vasoespasmo que se quiere prevenir."
+            },
+            "safety_flags": {
+                "lethal_risk": true
             }
         },
         {
@@ -144,6 +171,18 @@
             "safety_flags": {
                 "lethal_risk": true,
                 "decision_critical": true
+            }
+        },
+        {
+            "card_id": "l5_ct2",
+            "ui_icon": "camera",
+            "category": "Diagnóstico",
+            "card_text": "Tomografía normal a las 24 horas del inicio: Resultado suficiente para descartar hemorragia subaracnoidea.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: La sensibilidad de la tomografía cae con el paso de las horas. Más allá de las primeras 6 horas, una imagen normal no descarta la hemorragia y se completa con punción lumbar."
             }
         }
     ],

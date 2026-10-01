@@ -62,6 +62,18 @@
             }
         },
         {
+            "card_id": "l5_hv2",
+            "ui_icon": "user-x",
+            "category": "Tratamiento",
+            "card_text": "Diferir el ART hasta que el paciente logre abstinencia de drogas intravenosas: Condición previa para asegurar la adherencia.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: El uso de sustancias no es motivo para retener el ART. Se inicia el tratamiento y se acompaña con apoyo para la adherencia y manejo del consumo."
+            }
+        },
+        {
             "card_id": "c_4",
             "ui_icon": "activity",
             "category": "Infección Aguda",
@@ -71,6 +83,18 @@
                 "points": 100,
                 "error_type": "omission",
                 "vazquez_comment": "Navarro: ¡Muy bien! Ocurre a las 2-4 semanas de la exposición. La sospecha clínica en esta fase es vital."
+            }
+        },
+        {
+            "card_id": "l5_hv1",
+            "ui_icon": "clock",
+            "category": "Tratamiento",
+            "card_text": "Esperar el genotipo de resistencia para iniciar el ART: Se evita así un esquema inadecuado en un paciente que aún no se trató.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Navarro: El genotipo se solicita antes de empezar, pero su resultado no se espera para iniciar. Se arranca con un esquema de alta barrera genética y se ajusta si el resultado lo exige."
             }
         },
         {

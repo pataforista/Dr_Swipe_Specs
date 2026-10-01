@@ -62,6 +62,30 @@
             }
         },
         {
+            "card_id": "l5_gd3",
+            "ui_icon": "beaker",
+            "category": "Diagnóstico",
+            "card_text": "Hemoglobina glucosilada a las 28 semanas: Prueba suficiente para diagnosticar diabetes gestacional.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La hemoglobina glucosilada no sirve para diagnosticar diabetes gestacional. Se diagnostica con la curva de tolerancia a la glucosa."
+            }
+        },
+        {
+            "card_id": "l5_gd2",
+            "ui_icon": "baby",
+            "category": "Manejo",
+            "card_text": "Cesárea electiva sistemática por diabetes gestacional: Indicación por sí sola para evitar el trauma obstétrico.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La diabetes gestacional por sí sola no es indicación de cesárea. La vía depende de la indicación obstétrica y del peso fetal estimado."
+            }
+        },
+        {
             "card_id": "c_4",
             "ui_icon": "calendar",
             "category": "Tamizaje",
@@ -83,6 +107,18 @@
                 "points": 50,
                 "error_type": "omission",
                 "vazquez_comment": "Castillo: Bien. La dieta debe ser fraccionada en 3 comidas y 2-3 colaciones."
+            }
+        },
+        {
+            "card_id": "l5_gd1",
+            "ui_icon": "pill",
+            "category": "Tratamiento",
+            "card_text": "Glibenclamida como primera elección farmacológica: Hipoglucemiante oral de inicio cuando la dieta no basta.",
+            "expected_action": "discard",
+            "scoring": {
+                "points": 100,
+                "error_type": "hoarding",
+                "vazquez_comment": "Castillo: La insulina es el tratamiento farmacológico de primera línea. La glibenclamida atraviesa la placenta y se asocia con mayor macrosomía e hipoglucemia neonatal."
             }
         },
         {

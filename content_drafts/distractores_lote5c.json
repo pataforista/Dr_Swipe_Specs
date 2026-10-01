@@ -1,0 +1,217 @@
+{
+    "_descripcion": "Lote 5 (tercera tanda) de cartas de descarte para las familias de 15 casos con 30% de descarte: cáncer de mama, VIH/ART, IAM (dos familias que comparten cartas), HTA, cefalea en trueno, diabetes gestacional, aborto y preeclampsia. Solo afirmaciones que una guía de referencia decide de forma explícita; en mama, VIH y aborto se escribieron menos cartas por falta de fuente verificada. Pendiente de revisión clínica. Se insertan con tools/insert_distractors.py.",
+    "familias": {
+        "PROC_GYN_CANCER_BREAST_001": [
+            {
+                "card_id": "l5_mm1",
+                "ui_icon": "scissors",
+                "category": "Diagnóstico",
+                "card_text": "Biopsia escisional abierta como primer método diagnóstico: Se prefiere ante cualquier lesión BI-RADS 4 o 5 para obtener la pieza completa.",
+                "comment": "Castillo: La biopsia con aguja gruesa es el primer método. Evita una cirugía diagnóstica y permite planear el tratamiento definitivo con el diagnóstico histológico ya en la mano.",
+                "fuente": "ACR, BI-RADS Atlas 5a ed.; NCCN, Breast Cancer Screening and Diagnosis"
+            },
+            {
+                "card_id": "l5_mm2",
+                "ui_icon": "search",
+                "category": "Diagnóstico",
+                "card_text": "Mastografía negativa con masa palpable: El resultado descarta cáncer y se cita a la paciente al tamizaje habitual.",
+                "comment": "Castillo: Una masa palpable con mastografía negativa no se cierra con la imagen. Requiere ultrasonido y, si persiste la sospecha, biopsia.",
+                "fuente": "ACR, Appropriateness Criteria: Palpable Breast Masses"
+            }
+        ],
+        "PROC_INF_HIV_ART_001": [
+            {
+                "card_id": "l5_hv1",
+                "ui_icon": "clock",
+                "category": "Tratamiento",
+                "card_text": "Esperar el genotipo de resistencia para iniciar el ART: Se evita así un esquema inadecuado en un paciente que aún no se trató.",
+                "comment": "Navarro: El genotipo se solicita antes de empezar, pero su resultado no se espera para iniciar. Se arranca con un esquema de alta barrera genética y se ajusta si el resultado lo exige.",
+                "fuente": "DHHS, Guidelines for the Use of Antiretroviral Agents in Adults and Adolescents with HIV"
+            },
+            {
+                "card_id": "l5_hv2",
+                "ui_icon": "user-x",
+                "category": "Tratamiento",
+                "card_text": "Diferir el ART hasta que el paciente logre abstinencia de drogas intravenosas: Condición previa para asegurar la adherencia.",
+                "comment": "Navarro: El uso de sustancias no es motivo para retener el ART. Se inicia el tratamiento y se acompaña con apoyo para la adherencia y manejo del consumo.",
+                "fuente": "DHHS, Guidelines for the Use of Antiretroviral Agents in Adults and Adolescents with HIV"
+            }
+        ],
+        "PROC_INT_AMI_001": [
+            {
+                "card_id": "l5_am1",
+                "ui_icon": "pill",
+                "category": "Tratamiento",
+                "card_text": "Nitroglicerina sublingual repetida hasta aliviar el dolor: Se mantiene aun con sospecha de infarto del ventrículo derecho.",
+                "comment": "Mendoza: En el infarto inferior con compromiso del ventrículo derecho, que depende de la precarga, los nitratos pueden causar hipotensión grave y se evitan.",
+                "fuente": "ACC/AHA, Guideline for the Management of STEMI (2013); ESC STEMI Guidelines (2017)",
+                "lethal_risk": true
+            },
+            {
+                "card_id": "l5_am2",
+                "ui_icon": "clock",
+                "category": "Manejo Inmediato",
+                "card_text": "Esperar la elevación de la troponina para activar la reperfusión: Se confirma el infarto con el marcador antes de movilizar la sala de hemodinamia.",
+                "comment": "Mendoza: En el SCACEST el diagnóstico es clínico y electrocardiográfico. La reperfusión no espera a los biomarcadores, porque cada minuto es miocardio perdido.",
+                "fuente": "ACC/AHA, Guideline for the Management of STEMI (2013); ESC STEMI Guidelines (2017)",
+                "lethal_risk": true
+            },
+            {
+                "card_id": "l5_am3",
+                "ui_icon": "heartbeat",
+                "category": "Tratamiento",
+                "card_text": "Bloqueador beta intravenoso en bolo desde el ingreso: Se indica de rutina en el SCACEST para reducir el tamaño del infarto.",
+                "comment": "Mendoza: El bloqueador beta IV no se da de rutina. Con bradicardia, bloqueo AV, hipotensión o datos de falla cardíaca está contraindicado.",
+                "fuente": "ACC/AHA, Guideline for the Management of STEMI (2013); ESC STEMI Guidelines (2017)",
+                "lethal_risk": true
+            }
+        ],
+        "PROC_INT_SCA_IAM_001": [
+            {
+                "card_id": "l5_am1",
+                "ui_icon": "pill",
+                "category": "Tratamiento",
+                "card_text": "Nitroglicerina sublingual repetida hasta aliviar el dolor: Se mantiene aun con sospecha de infarto del ventrículo derecho.",
+                "comment": "Mendoza: En el infarto inferior con compromiso del ventrículo derecho, que depende de la precarga, los nitratos pueden causar hipotensión grave y se evitan.",
+                "fuente": "ACC/AHA, Guideline for the Management of STEMI (2013); ESC STEMI Guidelines (2017)",
+                "lethal_risk": true
+            },
+            {
+                "card_id": "l5_am2",
+                "ui_icon": "clock",
+                "category": "Manejo Inmediato",
+                "card_text": "Esperar la elevación de la troponina para activar la reperfusión: Se confirma el infarto con el marcador antes de movilizar la sala de hemodinamia.",
+                "comment": "Mendoza: En el SCACEST el diagnóstico es clínico y electrocardiográfico. La reperfusión no espera a los biomarcadores, porque cada minuto es miocardio perdido.",
+                "fuente": "ACC/AHA, Guideline for the Management of STEMI (2013); ESC STEMI Guidelines (2017)",
+                "lethal_risk": true
+            },
+            {
+                "card_id": "l5_am3",
+                "ui_icon": "heartbeat",
+                "category": "Tratamiento",
+                "card_text": "Bloqueador beta intravenoso en bolo desde el ingreso: Se indica de rutina en el SCACEST para reducir el tamaño del infarto.",
+                "comment": "Mendoza: El bloqueador beta IV no se da de rutina. Con bradicardia, bloqueo AV, hipotensión o datos de falla cardíaca está contraindicado.",
+                "fuente": "ACC/AHA, Guideline for the Management of STEMI (2013); ESC STEMI Guidelines (2017)",
+                "lethal_risk": true
+            }
+        ],
+        "PROC_INT_HTN_DX_001": [
+            {
+                "card_id": "l5_ht1",
+                "ui_icon": "pill",
+                "category": "Tratamiento",
+                "card_text": "IECA más ARA-II como combinación inicial: Doble bloqueo del sistema renina-angiotensina para lograr un mejor control.",
+                "comment": "Mendoza: No se combinan IECA y ARA-II. El doble bloqueo no mejora los desenlaces y aumenta la hiperpotasemia y la lesión renal.",
+                "fuente": "ACC/AHA, Guideline for High Blood Pressure in Adults (2017); ESC/ESH Guidelines (2018)"
+            },
+            {
+                "card_id": "l5_ht2",
+                "ui_icon": "zap",
+                "category": "Tratamiento",
+                "card_text": "Nifedipino sublingual de acción corta para bajar la presión de inmediato: Opción rápida en la urgencia hipertensiva.",
+                "comment": "Mendoza: El nifedipino de acción corta produce descensos bruscos e impredecibles de la presión y puede causar isquemia cerebral o miocárdica. En urgencia hipertensiva se usa tratamiento oral con descenso gradual.",
+                "fuente": "ACC/AHA, Guideline for High Blood Pressure in Adults (2017)",
+                "lethal_risk": true
+            }
+        ],
+        "PROC_NEUR_HEADACHE_THUNDER_001": [
+            {
+                "card_id": "l5_ct1",
+                "ui_icon": "syringe",
+                "category": "Diagnóstico",
+                "card_text": "Punción lumbar inmediata antes de cualquier imagen: Se obtiene el LCR de entrada para confirmar la hemorragia.",
+                "comment": "Navarro: La tomografía simple de cráneo va primero. Si es negativa y la sospecha persiste, entonces se hace la punción lumbar para buscar xantocromía.",
+                "fuente": "AHA/ASA, Guidelines for the Management of Aneurysmal SAH (2012); ACEP Clinical Policy: Acute Headache (2019)"
+            },
+            {
+                "card_id": "l5_ct2",
+                "ui_icon": "camera",
+                "category": "Diagnóstico",
+                "card_text": "Tomografía normal a las 24 horas del inicio: Resultado suficiente para descartar hemorragia subaracnoidea.",
+                "comment": "Navarro: La sensibilidad de la tomografía cae con el paso de las horas. Más allá de las primeras 6 horas, una imagen normal no descarta la hemorragia y se completa con punción lumbar.",
+                "fuente": "ACEP Clinical Policy: Acute Headache (2019); AHA/ASA, Guidelines for the Management of Aneurysmal SAH (2012)"
+            },
+            {
+                "card_id": "l5_ct3",
+                "ui_icon": "droplet",
+                "category": "Tratamiento",
+                "card_text": "Nimodipino intravenoso en bolo: Vía rápida para prevenir el vasoespasmo al ingreso.",
+                "comment": "Navarro: El nimodipino se da por vía oral. En bolo intravenoso produce hipotensión, y la hipoperfusión agrava el vasoespasmo que se quiere prevenir.",
+                "fuente": "AHA/ASA, Guidelines for the Management of Aneurysmal SAH (2012)",
+                "lethal_risk": true
+            }
+        ],
+        "PROC_OBS_GDM_DX_001": [
+            {
+                "card_id": "l5_gd1",
+                "ui_icon": "pill",
+                "category": "Tratamiento",
+                "card_text": "Glibenclamida como primera elección farmacológica: Hipoglucemiante oral de inicio cuando la dieta no basta.",
+                "comment": "Castillo: La insulina es el tratamiento farmacológico de primera línea. La glibenclamida atraviesa la placenta y se asocia con mayor macrosomía e hipoglucemia neonatal.",
+                "fuente": "ACOG Practice Bulletin 190: Gestational Diabetes Mellitus (2018)"
+            },
+            {
+                "card_id": "l5_gd2",
+                "ui_icon": "baby",
+                "category": "Manejo",
+                "card_text": "Cesárea electiva sistemática por diabetes gestacional: Indicación por sí sola para evitar el trauma obstétrico.",
+                "comment": "Castillo: La diabetes gestacional por sí sola no es indicación de cesárea. La vía depende de la indicación obstétrica y del peso fetal estimado.",
+                "fuente": "ACOG Practice Bulletin 190: Gestational Diabetes Mellitus (2018)"
+            },
+            {
+                "card_id": "l5_gd3",
+                "ui_icon": "beaker",
+                "category": "Diagnóstico",
+                "card_text": "Hemoglobina glucosilada a las 28 semanas: Prueba suficiente para diagnosticar diabetes gestacional.",
+                "comment": "Castillo: La hemoglobina glucosilada no sirve para diagnosticar diabetes gestacional. Se diagnostica con la curva de tolerancia a la glucosa.",
+                "fuente": "ADA, Standards of Care in Diabetes: Management of Diabetes in Pregnancy"
+            }
+        ],
+        "PROC_OBS_HEM_ABORTION_001": [
+            {
+                "card_id": "l5_ab1",
+                "ui_icon": "scissors",
+                "category": "Tratamiento",
+                "card_text": "Legrado uterino instrumental como método de elección en el aborto incompleto estable: Se prefiere por su rapidez.",
+                "comment": "Castillo: En la paciente estable la aspiración manual endouterina o el misoprostol son preferibles. El legrado instrumental se reserva para situaciones que los excluyen.",
+                "fuente": "OMS, Safe abortion: technical and policy guidance (2012); ACOG Practice Bulletin 200 (2018)"
+            },
+            {
+                "card_id": "l5_ab2",
+                "ui_icon": "pill",
+                "category": "Tratamiento",
+                "card_text": "Misoprostol como único tratamiento del aborto séptico: Se administra para evacuar el útero sin necesidad de instrumentar.",
+                "comment": "Castillo: El aborto séptico requiere antibióticos de amplio espectro y evacuación uterina. El manejo farmacológico solo no es adecuado en el útero infectado.",
+                "fuente": "ACOG Practice Bulletin 200: Early Pregnancy Loss (2018)",
+                "lethal_risk": true
+            }
+        ],
+        "PROC_OBS_PREECLAMPSIA_001": [
+            {
+                "card_id": "l5_pe1",
+                "ui_icon": "pill",
+                "category": "Tratamiento",
+                "card_text": "Diazepam como anticonvulsivo de primera línea para prevenir la eclampsia: Alternativa al sulfato de magnesio.",
+                "comment": "Castillo: El sulfato de magnesio es el fármaco de elección para prevenir y tratar las convulsiones eclámpticas. El diazepam no tiene ese respaldo.",
+                "fuente": "ACOG Practice Bulletin 222: Gestational Hypertension and Preeclampsia (2020)",
+                "lethal_risk": true
+            },
+            {
+                "card_id": "l5_pe2",
+                "ui_icon": "clock",
+                "category": "Tratamiento",
+                "card_text": "Suspender el sulfato de magnesio al terminar el nacimiento: El riesgo de convulsión desaparece al expulsar la placenta.",
+                "comment": "Castillo: El riesgo de eclampsia persiste en el posparto. El sulfato de magnesio se continúa por 24 horas después del nacimiento.",
+                "fuente": "ACOG Practice Bulletin 222: Gestational Hypertension and Preeclampsia (2020)"
+            },
+            {
+                "card_id": "l5_pe3",
+                "ui_icon": "pill",
+                "category": "Tratamiento",
+                "card_text": "Enalapril para controlar la crisis hipertensiva del embarazo: Antihipertensivo oral de elección.",
+                "comment": "Castillo: Los IECA están contraindicados en el embarazo por su fetotoxicidad. Para la crisis se usan hidralazina, labetalol o nifedipino.",
+                "fuente": "ACOG Practice Bulletin 222: Gestational Hypertension and Preeclampsia (2020)"
+            }
+        ]
+    }
+}
