@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion, useIsPresent, useMotionValue, useMotionValueEvent, useTransform, useAnimation, AnimatePresence, type MotionValue, type PanInfo } from 'framer-motion';
-import { X, ClipboardCheck, Dna, Sparkles } from 'lucide-react';
+import { X, ClipboardCheck, Dna, Sparkles, Undo2, Coins } from 'lucide-react';
 import type { Card } from '../types/game';
 import { useGameAudio } from '../hooks/useGameAudio';
 import { triggerHaptic } from '../utils/hapticFeedback';
@@ -16,59 +16,57 @@ interface SwipeDeckProps {
   onUseLifeline?: () => void;
   /** Study mode only: show which direction is lethal before the decision. */
   revealLethalDirection?: boolean;
+  /** Rewind button, rendered in the action row so it can't overlap other controls. */
+  undo?: { onUndo: () => void; disabled: boolean; charges: number; cost: number };
 }
 
-export interface DraggableCardHandle {
-  swipeOut: (direction: 'left' | 'right') => Promise<void>;
-}
+interface ExitInfo { direction: 'left' | 'right'; velocity: number }
 
 const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
-  cards, currentIndex, onSwipe, isLocked, lifelineActive, canUseLifeline, onUseLifeline, revealLethalDirection
+  cards, currentIndex, onSwipe, isLocked, lifelineActive, canUseLifeline, onUseLifeline, revealLethalDirection, undo
 }) => {
   const { playSwipe } = useGameAudio();
   const topX = useMotionValue(0);
-  const topCardRef = React.useRef<DraggableCardHandle>(null);
-  // Blocks inputs while the exit animation runs (~250ms). Without it, a double
-  // tap or a held arrow key in auto-repeat dispatches a second swipe that the
-  // machine applies to the NEXT card, deciding it sight-unseen.
-  const isAnimatingRef = React.useRef(false);
+  // Direction of the swipe that is flying out. AnimatePresence forwards it to
+  // the exiting card, which keeps animating after it has left `cards`.
+  const [exitInfo, setExitInfo] = React.useState<ExitInfo>({ direction: 'right', velocity: 0 });
+  // The decision is registered at T+0 and the card flies out in parallel
+  // (it used to wait ~250ms for the animation before scoring, which felt
+  // sluggish). This window stops a held arrow key or a double tap from
+  // deciding the NEXT card sight-unseen.
+  const lastCommitRef = React.useRef(0);
 
   // Take current + 2 more for the stack
   const visibleCards = cards.slice(currentIndex, currentIndex + 3).reverse();
 
-  const handleActionSwipe = React.useCallback(async (direction: 'left' | 'right') => {
-    if (isLocked || isAnimatingRef.current || currentIndex >= cards.length) return;
-    isAnimatingRef.current = true;
-    try {
-      if (topCardRef.current) {
-        await topCardRef.current.swipeOut(direction);
-      } else {
-        playSwipe(direction);
-        onSwipe(direction);
-      }
-    } finally {
-      isAnimatingRef.current = false;
-    }
+  const commitSwipe = React.useCallback((direction: 'left' | 'right', velocity = 0) => {
+    if (isLocked || currentIndex >= cards.length) return;
+    const now = performance.now();
+    if (now - lastCommitRef.current < SWIPE_CONFIG.MIN_SWIPE_INTERVAL_MS) return;
+    lastCommitRef.current = now;
+    playSwipe(direction);
+    triggerHaptic('cardSwipe');
+    setExitInfo({ direction, velocity });
+    onSwipe(direction);
   }, [isLocked, onSwipe, playSwipe, currentIndex, cards.length]);
 
   // Keyboard support (ArrowLeft / ArrowRight)
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
-      if (isLocked) return;
-      if (e.key === 'ArrowLeft') handleActionSwipe('left');
-      if (e.key === 'ArrowRight') handleActionSwipe('right');
+      if (isLocked || e.repeat) return;
+      if (e.key === 'ArrowLeft') commitSwipe('left');
+      if (e.key === 'ArrowRight') commitSwipe('right');
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, [isLocked, handleActionSwipe]);
+  }, [isLocked, commitSwipe]);
 
   return (
-    <div className="flex flex-col items-center w-full max-w-sm mx-auto gap-4 sm:gap-8 px-2 sm:px-3 relative overflow-hidden">
+    <div className="flex flex-col items-center w-full max-w-sm mx-auto gap-2 sm:gap-6 px-2 sm:px-3 relative h-full min-h-0">
 
-      {/* Deck Vertical Spacer/Container */}
-      <div className="relative w-full aspect-[3/4] sm:aspect-[3/4.2] flex items-center justify-center overflow-hidden">
-        {/* Progress indicator inside the deck area */}
-        <div className="absolute -top-9 sm:-top-10 left-1/2 -translate-x-1/2 flex gap-1 pointer-events-none z-50 w-full justify-center px-6">
+      {/* Progress indicator: in flow. As an absolutely positioned child above
+          the deck it fell outside the root's overflow-hidden and never showed. */}
+      <div className="flex-shrink-0 flex gap-1 pointer-events-none w-full justify-center px-6 pt-1">
           {cards.length > 8 ? (
             <div className="w-full h-1.5 bg-slate-200/50 rounded-full overflow-hidden border border-slate-300/10 max-w-[280px]">
               <motion.div
@@ -94,9 +92,12 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
               />
             ))
           )}
-        </div>
+      </div>
 
-        <AnimatePresence initial={false}>
+      {/* Deck: takes the height left by the HUD and the action row. Cards fly
+          out past its edges; the app root clips them. */}
+      <div className="relative w-full flex-1 min-h-[260px] max-h-[34rem] flex items-center justify-center">
+        <AnimatePresence initial={false} custom={exitInfo}>
           {visibleCards.map((card, idx) => {
             const keyIndex = currentIndex + (visibleCards.length - 1 - idx);
             const isTop = idx === visibleCards.length - 1;
@@ -106,17 +107,14 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
                 // CRITICAL: Key includes isTop to force re-mount when becoming top card.
                 // This resets Framer Motion drag handlers for the new top card.
                 key={`${card.card_id}-${isTop}`}
-                ref={isTop ? topCardRef : undefined}
                 card={card}
                 isTop={isTop}
                 indexOffset={keyIndex - currentIndex}
-                onSwipe={onSwipe}
-                playSwipe={playSwipe}
+                onCommit={commitSwipe}
                 isLocked={isLocked}
                 cardNumber={keyIndex + 1}
                 totalCards={cards.length}
                 topX={topX}
-                animatingRef={isAnimatingRef}
                 revealLethalDirection={revealLethalDirection}
               />
             );
@@ -146,7 +144,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
       </AnimatePresence>
 
       {/* Action Buttons Hub */}
-      <div className="flex items-center justify-center gap-4 sm:gap-10 w-full mt-2 sm:mt-4 relative z-[60]">
+      <div className="flex-shrink-0 flex items-start justify-center gap-3 sm:gap-8 w-full mt-1 sm:mt-2 relative z-[60]">
         {/* Discard */}
         <div className="flex flex-col items-center gap-2 sm:gap-3 relative group">
           <div className="absolute inset-0 bg-accent-alert/20 rounded-full blur-xl scale-90 group-hover:scale-110 group-hover:bg-accent-alert/40 transition-all opacity-0 group-hover:opacity-100" />
@@ -155,7 +153,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
             aria-label="Descartar esta carta médica (Flecha izquierda)"
             title="DESCARTAR"
             disabled={isLocked || visibleCards.length === 0}
-            onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); handleActionSwipe('left'); }}
+            onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); commitSwipe('left'); }}
             whileHover={!isLocked ? { scale: 1.15, y: -4 } : {}}
             whileTap={!isLocked ? { scale: 0.9 } : {}}
             className={`w-16 sm:w-20 h-16 sm:h-20 rounded-full bg-white border text-accent-alert shadow-xl flex items-center justify-center text-2xl sm:text-3xl hover:bg-rose-50 hover:border-accent-alert/50 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner relative ${
@@ -170,7 +168,8 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
           }`}>DESCARTAR</span>
         </div>
 
-        {/* Hint */}
+        {/* Hint + rewind, side by side */}
+        <div className="flex items-start gap-2 sm:gap-3">
         <div className="flex flex-col items-center gap-2 sm:gap-3">
           <motion.button
             type="button"
@@ -179,7 +178,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
             onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); onUseLifeline?.(); }}
             whileHover={canUseLifeline && !isLocked ? { scale: 1.15, rotate: 180, boxShadow: '0 0 30px rgba(129,140,248,0.4)' } : {}}
             whileTap={canUseLifeline && !isLocked ? { scale: 0.85 } : {}}
-            className={`w-14 sm:w-16 h-14 sm:h-16 rounded-full border shadow-lg flex items-center justify-center text-xl sm:text-2xl transition-all ${
+            className={`w-12 sm:w-14 h-12 sm:h-14 rounded-full border shadow-lg flex items-center justify-center text-xl sm:text-2xl transition-all ${
               lifelineActive ? 'bg-amber-100 border-secondary text-amber-700 sticker-glow' : 'bg-white border-slate-200 text-secondary hover:bg-amber-50 hover:border-secondary/40 disabled:opacity-20'
             }`}
               title={`Escanear Carta (Cuesta ${LIFELINE_COST} 🪙)`}
@@ -191,6 +190,30 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
           </span>
         </div>
 
+        {undo && (
+          <div className="flex flex-col items-center gap-2 sm:gap-3">
+            <motion.button
+              type="button"
+              aria-label={undo.charges === 0 ? `Comprar deshacer por ${undo.cost} créditos` : 'Deshacer el último swipe'}
+              title={undo.charges === 0 ? `Comprar Deshacer por ${undo.cost} 🪙` : 'Deshacer'}
+              disabled={undo.disabled || isLocked}
+              onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); undo.onUndo(); }}
+              whileTap={!undo.disabled && !isLocked ? { scale: 0.85 } : {}}
+              className={`w-12 sm:w-14 h-12 sm:h-14 rounded-full border shadow-lg flex items-center justify-center transition-colors disabled:opacity-20 ${
+                undo.charges === 0 ? 'bg-amber-100 border-amber-300 text-amber-700' : 'bg-white border-slate-200 text-slate-600'
+              }`}
+            >
+              {undo.charges === 0
+                ? <Coins className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
+                : <Undo2 className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />}
+            </motion.button>
+            <span className="text-[10px] font-black uppercase tracking-[0.15em] text-slate-500 whitespace-nowrap">
+              {undo.charges === 0 ? `${undo.cost} 🪙` : `×${undo.charges}`}
+            </span>
+          </div>
+        )}
+        </div>
+
         {/* Keep */}
         <div className="flex flex-col items-center gap-2 sm:gap-3 relative group">
           <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl scale-90 group-hover:scale-110 group-hover:bg-primary/40 transition-all opacity-0 group-hover:opacity-100" />
@@ -199,7 +222,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
             aria-label="Aceptar esta carta médica (Flecha derecha)"
             title="ACEPTAR"
             disabled={isLocked || visibleCards.length === 0}
-            onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); handleActionSwipe('right'); }}
+            onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); commitSwipe('right'); }}
             whileHover={!isLocked ? { scale: 1.15, y: -4 } : {}}
             whileTap={!isLocked ? { scale: 0.9 } : {}}
             className={`w-16 sm:w-20 h-16 sm:h-20 rounded-full bg-white border text-primary shadow-xl flex items-center justify-center text-2xl sm:text-3xl hover:bg-teal-50 hover:border-primary/50 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner relative ${
@@ -216,7 +239,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
       </div>
 
       {/* Visible keyboard hint — the ← / → shortcut was previously only announced via aria-label */}
-      <span className="hidden sm:block text-[11px] font-bold text-slate-300 uppercase tracking-widest text-center" aria-hidden="true">
+      <span className="hidden sm:block flex-shrink-0 text-[11px] font-bold text-slate-300 uppercase tracking-widest text-center" aria-hidden="true">
         ← Descartar &nbsp;·&nbsp; Aceptar →
       </span>
     </div>
@@ -232,13 +255,11 @@ interface DraggableCardProps {
   card: Card;
   isTop: boolean;
   indexOffset: number;
-  onSwipe: (direction: 'left' | 'right') => void;
-  playSwipe: (direction: 'left' | 'right') => void;
+  onCommit: (direction: 'left' | 'right', velocity?: number) => void;
   isLocked?: boolean;
   cardNumber: number;
   totalCards: number;
   topX: MotionValue<number>;
-  animatingRef: React.RefObject<boolean>;
   revealLethalDirection?: boolean;
 }
 
@@ -271,9 +292,9 @@ const CATEGORY_ICONS: Record<string, string> = {
 
 import { calculateExitPosition, SWIPE_CONFIG } from '../utils/swipePhysics';
 
-const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(({
-  card, isTop, indexOffset, onSwipe, playSwipe, isLocked, cardNumber, totalCards, topX, animatingRef, revealLethalDirection
-}, ref) => {
+const DraggableCard: React.FC<DraggableCardProps> = ({
+  card, isTop, indexOffset, onCommit, isLocked, cardNumber, totalCards, topX, revealLethalDirection
+}) => {
   // Each card owns its x. The top card mirrors it into the shared topX so the
   // cards behind can rise one step as it leaves (they used to read a private
   // value that never moved, so the stack sat frozen and fully overlapped).
@@ -289,27 +310,11 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
   const controls = useAnimation();
   const pastThresholdRef = React.useRef(false);
 
-  React.useImperativeHandle(ref, () => ({
-    swipeOut: async (direction: 'left' | 'right') => {
-      playSwipe(direction);
-      triggerHaptic('cardSwipe');
-      const exitPos = calculateExitPosition(direction, 0); // No velocity on button click
-      await controls.start({ 
-        x: exitPos.x, 
-        y: exitPos.y,
-        opacity: 0, 
-        rotate: exitPos.rotate, 
-        transition: { duration: SWIPE_CONFIG.EXIT_DURATION, ease: "easeOut" } 
-      });
-      onSwipe(direction);
-    }
-  }));
-
   useEffect(() => {
     if (isTop) {
       x.set(0);
       topX.set(0); // the stack settles into its new depths
-      controls.start({ opacity: 1, scale: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } });
+      controls.start({ opacity: 1, scale: 1, y: 0, transition: { type: 'spring', stiffness: 520, damping: 34 } });
     }
   }, [isTop, controls, x, topX]);
 
@@ -360,44 +365,36 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
   const lethalIfDiscarded = !!revealLethalDirection && !!(card.safety_flags?.lethal_if_discarded || card.safety_flags?.lethal_risk) && card.expected_action === 'keep';
   const lethalNeutral = !!isLethal && !lethalIfAccepted && !lethalIfDiscarded;
   const displayCategory = getDisplayCategory(card.category);
-  const isCritical = card.safety_flags?.decision_critical;
+  // `decision_critical` is 96% "keep" in the authored cases, so its amber tint
+  // and ¡ENARM! badge gave the answer away. Only shown in study mode.
+  const isCritical = !!revealLethalDirection && !!card.safety_flags?.decision_critical;
 
   const cardBg = isLethal ? 'bg-rose-50' : isCritical ? 'bg-amber-50' : 'bg-white';
   const accentColor = isLethal ? 'border-accent-alert/40 shadow-rose-100' : isCritical ? 'border-secondary/40 shadow-amber-100' : 'border-slate-100 shadow-slate-200/50';
 
-  const handleDragEnd = async (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+  const handleDragEnd = (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     pastThresholdRef.current = false;
     if (!isTop || isLocked) return;
     const velocity = info.velocity.x;
 
     if (Math.abs(info.offset.x) > threshold || Math.abs(velocity) > SWIPE_CONFIG.VELOCITY_THRESHOLD * 1000) {
-      const direction = info.offset.x > 0 ? 'right' : 'left';
-
-      // Mirrors handleActionSwipe's guard: without it, a button tap during the
-      // ~250ms exit animation still sees this as the top card and fires a
-      // second onSwipe that lands on the NEXT card, sight-unseen (F5).
-      animatingRef.current = true;
-      try {
-        // IMMEDIATE FEEDBACK (T+0)
-        playSwipe(direction);
-        triggerHaptic('cardSwipe');
-
-        const exitPos = calculateExitPosition(direction, velocity / 1000);
-
-        await controls.start({
-          x: exitPos.x,
-          y: exitPos.y,
-          opacity: 0,
-          rotate: exitPos.rotate,
-          transition: { duration: SWIPE_CONFIG.EXIT_DURATION, ease: "easeOut" }
-        });
-        onSwipe(direction);
-      } finally {
-        animatingRef.current = false;
-      }
+      // The exit variant takes over from the card's current x.
+      onCommit(info.offset.x > 0 ? 'right' : 'left', velocity / 1000);
     } else {
       controls.start({ x: 0, y: 0, rotate: 0, scale: 1, transition: { type: 'spring', stiffness: 600, damping: 30 } });
     }
+  };
+
+  // Flight of the card that was just decided. Variants because the card has
+  // already left `cards` by then: AnimatePresence's `custom` carries the
+  // direction. Cards behind that get promoted remount under a new key; their
+  // old instance just disappears (the new top starts at the same pose).
+  const exitVariants = {
+    fly: (info: ExitInfo) => {
+      const pos = calculateExitPosition(info.direction, info.velocity);
+      return { x: pos.x, y: pos.y, rotate: pos.rotate, opacity: 0, transition: { duration: SWIPE_CONFIG.EXIT_DURATION, ease: 'easeOut' as const } };
+    },
+    vanish: { opacity: 0, transition: { duration: 0 } },
   };
 
   return (
@@ -411,6 +408,7 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
         zIndex: 1000 - (indexOffset * 100),
         isolation: 'isolate',
         touchAction: isTop && !isLocked ? 'pan-y' : 'auto',
+        pointerEvents: isPresent ? 'auto' : 'none',
       }}
       drag={isTop && !isLocked ? "x" : false}
       dragConstraints={{ left: -500, right: 500 }}
@@ -422,9 +420,10 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
       // The card promoted to top has already risen to the front pose while
       // the previous one flew out (the stack follows topX), so it mounts
       // exactly there instead of jumping back and re-entering (F1).
-      initial={isTop ? { scale: 1, y: 0 } : false}
+      initial={isTop ? { scale: 0.96, y: 10 } : false}
       animate={isTop ? controls : undefined}
-      exit={{ opacity: 0, scale: 0.8 }}
+      variants={exitVariants}
+      exit={isTop ? 'fly' : 'vanish'}
     >
       {/* Red line margin effect (Notebook style) */}
       <div className="absolute left-10 top-0 bottom-0 w-px bg-rose-200/40 z-10" />
@@ -497,4 +496,4 @@ const DraggableCard = React.forwardRef<DraggableCardHandle, DraggableCardProps>(
       </div>
     </motion.div>
   );
-});
+};

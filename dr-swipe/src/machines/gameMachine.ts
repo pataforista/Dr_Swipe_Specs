@@ -63,6 +63,8 @@ interface GameContext {
   // Shift (Guardia) context
   isSandiaMode: boolean;
   lives: number; // Number of interns left (max 5)
+  // Loot-box shield: mistakes that cost no vitality
+  shieldCharges: number;
   // Rewind (Undo) context
   undoCharges: number;
   hasRescuedThisCase: boolean;
@@ -97,6 +99,7 @@ type GameEvent =
   | { type: 'VIEW_DEBRIEF' }
   | { type: 'USE_LIFELINE' }
   | { type: 'APPLY_REWARD_HEAL'; value: number }
+  | { type: 'APPLY_REWARD'; heal: number; shield: number; undo: number; hint: boolean }
   | { type: 'CONTINUE_SHIFT'; deck: Card[]; puzzle?: EnarmPearl; isSandiaMode?: boolean } // deck of the NEXT case
   | { type: 'RESCUE' }
   | { type: 'BUY_UNDO' }
@@ -134,7 +137,8 @@ export const gameMachine = setup({
       undoCharges: undoChargesFor(false),
       hasRescuedThisCase: false,
       usedUndoThisCase: false,
-      lastAction: null
+      lastAction: null,
+      shieldCharges: 0
     }),
     clearOverlays: assign({
       lootBoxReward: null,
@@ -146,6 +150,16 @@ export const gameMachine = setup({
       // Sandia mode: no heal needed as there is no damage, but we allow it for consistency
       return {
         vitality: Math.min(100, context.vitality + event.value),
+        lootBoxReward: null
+      };
+    }),
+    applyReward: assign(({ context, event }) => {
+      if (event.type !== 'APPLY_REWARD') return {};
+      return {
+        vitality: Math.min(100, context.vitality + event.heal),
+        shieldCharges: context.shieldCharges + event.shield,
+        undoCharges: context.undoCharges + event.undo,
+        lifelineActive: context.lifelineActive || event.hint,
         lootBoxReward: null
       };
     }),
@@ -199,7 +213,8 @@ export const gameMachine = setup({
       // Vitality Logic: +8 on correct; a wrong swipe costs 15, a lethal one 40
       // (it used to cost the same as a trivial miss). SANDIA MODE: no damage.
       const vitalityHit = isLethalCard(card) ? VITALITY_HIT.lethal : VITALITY_HIT.normal;
-      const vitalityChange = isCorrect ? 8 : (context.isSandiaMode ? 0 : -vitalityHit);
+      const shielded = !isCorrect && context.shieldCharges > 0;
+      const vitalityChange = isCorrect ? 8 : (context.isSandiaMode || shielded ? 0 : -vitalityHit);
       const nextVitality = Math.max(0, Math.min(100, context.vitality + vitalityChange));
 
       // Error Tracking
@@ -264,6 +279,7 @@ export const gameMachine = setup({
         vitality: nextVitality,
         consecutiveErrors: nextConsecutiveErrors >= 5 ? 0 : nextConsecutiveErrors,
         lootBoxReward: nextLootBox,
+        shieldCharges: shielded ? context.shieldCharges - 1 : context.shieldCharges,
         activePenalty: nextPenalty,
         activeEvent: nextEvent,
         multiplier: scoreBreakdown.comboMultiplier,
@@ -311,6 +327,7 @@ export const gameMachine = setup({
     feedbackHistory: [],
     lastVitals: null,
     lives: 5,
+    shieldCharges: 0,
     isSandiaMode: false,
     undoCharges: undoChargesFor(false),
     hasRescuedThisCase: false,
@@ -449,6 +466,9 @@ export const gameMachine = setup({
         },
         APPLY_REWARD_HEAL: {
           actions: 'applyRewardHeal'
+        },
+        APPLY_REWARD: {
+          actions: 'applyReward'
         },
         USE_LIFELINE: {
           actions: assign({ lifelineActive: true })
