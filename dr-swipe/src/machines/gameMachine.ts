@@ -141,7 +141,7 @@ export const gameMachine = setup({
       deck: [],
       dossier: [],
       discarded: [],
-      currentCardIndex: 0,
+      currentCardIndex: 0, // Restart current case cards for learning
       fatalError: null,
       score: 0,
       combo: 0,
@@ -349,7 +349,7 @@ export const gameMachine = setup({
     deck: [],
     dossier: [],
     discarded: [],
-    currentCardIndex: 0,
+    currentCardIndex: 0, // Restart current case cards for learning
     fatalError: null,
     score: 0,
     combo: 0,
@@ -389,7 +389,7 @@ export const gameMachine = setup({
             deck: ({ event }) => event.deck,
             dossier: [],
             discarded: [],
-            currentCardIndex: 0,
+            currentCardIndex: 0, // Restart current case cards for learning
             fatalError: null,
             score: 0,
             combo: 0,
@@ -567,7 +567,7 @@ export const gameMachine = setup({
           target: 'triage',
           actions: assign({
             deck: ({ event }) => event.deck,
-            currentCardIndex: 0,
+            currentCardIndex: 0, // Restart current case cards for learning
             debriefData: ({ event }) => ({
               title: event.puzzle?.title || "Siguiente Paciente",
               text: event.puzzle?.text || "",
@@ -619,7 +619,7 @@ export const gameMachine = setup({
           actions: assign({
             lives: ({ context }) => context.lives - 1,
             vitality: 100,
-            currentCardIndex: ({ context }) => context.currentCardIndex + 1, // El Adjunto resuelve esta carta, el jugador contin�a la guardia
+            currentCardIndex: 0, // Restart current case cards for learning
             caseStreak: 0,
             score: 0,
             coinsEarnedThisCase: 0,
@@ -653,7 +653,7 @@ export const gameMachine = setup({
           actions: assign({
             lives: 1,
             vitality: 100,
-            currentCardIndex: 0,
+            currentCardIndex: 0, // Restart current case cards for learning
             caseStreak: 0,
             score: 0,
             coinsEarnedThisCase: 0,

@@ -1,4 +1,4 @@
-ROADMAP.md — Documento Maestro de Dr. Swipe
+| 006 | caseQueue empty = victoria | Un turno fallido no es victoria | Unificar debrief con victoria |\n| 007 | session solo guarda caseResults; XP/coins se derivan | Evita doble fuente de verdad (Principio 3.4) | Acumular totalXP/totalCoins |\n| 008 | CaseResult se graba en reward/debrief, no en ghosted | ghosted es transitorio (rescate lo revierte) | Grabar en ghosted y actualizar si rescata |ROADMAP.md — Documento Maestro de Dr. Swipe
 
 Este es el primer archivo que se abre cada sesión de trabajo.
 Toda decisión de código, contenido o diseño debe poder rastrearse hasta aquí.
