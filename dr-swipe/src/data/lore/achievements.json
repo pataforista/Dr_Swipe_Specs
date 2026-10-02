@@ -1,0 +1,21 @@
+{
+  "achievements": [
+    { "id": "primera_guardia", "emoji": "🩺", "nombre": "Bienvenido a la guardia, R1", "chiste": "Tu primer caso resuelto. Todavía crees que vas a salir a las 2.", "metric": "cases_solved", "umbral": 1 },
+    { "id": "mas_ingresos", "emoji": "🛏️", "nombre": "El interno con más ingresos", "chiste": "Ya hay una cama con tu nombre. Y la de al lado. Y la de al lado de esa.", "metric": "cases_solved", "umbral": 25 },
+    { "id": "mandrake", "emoji": "🎩", "nombre": "Dr. Mandrake", "chiste": "Diez aciertos seguidos. Ni tú sabes cómo, pero el paciente ya está mejor.", "metric": "bestCombo", "umbral": 10 },
+    { "id": "mandrake_gran", "emoji": "🪄", "nombre": "Mandrake, el Gran Ilusionista", "chiste": "Veinte seguidos. El jefe de servicio pidió que le expliques el truco.", "metric": "bestCombo", "umbral": 20 },
+    { "id": "cafe_4am", "emoji": "☕", "nombre": "Café de las 4 AM", "chiste": "Jugaste de madrugada. Tu cafeína ya tiene cama propia en urgencias.", "metric": "nightShifts", "umbral": 1 },
+    { "id": "guardia_36", "emoji": "😵‍💫", "nombre": "Guardia de 36 horas", "chiste": "Diez guardias iniciadas. El sueño es un mito urbano.", "metric": "total_sessions", "umbral": 10 },
+    { "id": "impecable", "emoji": "✨", "nombre": "Impecable, doctor", "chiste": "Cinco casos sin un solo error. Hasta la nota de evolución te quedó bonita.", "metric": "perfectCases", "umbral": 5 },
+    { "id": "llamada_adjunto", "emoji": "📞", "nombre": "Adjunto, ¿tiene un minutito?", "chiste": "Pediste ayuda a tiempo. Eso no es debilidad, es criterio clínico.", "metric": "revives", "umbral": 1 },
+    { "id": "consentido", "emoji": "🤝", "nombre": "El consentido del Adjunto", "chiste": "Guardas tantos favores que ya te invitan a comer.", "metric": "favors", "umbral": 5 },
+    { "id": "error_caro", "emoji": "📓", "nombre": "De los errores también se aprende", "chiste": "Tu primer error letal. Por suerte fue simulacro y no hay formato de incidente que llenar.", "metric": "lethalErrors", "umbral": 1 },
+    { "id": "se_vale_caerse", "emoji": "🩹", "nombre": "Se vale caerse", "chiste": "Perdiste un caso y volviste. Así se forma un residente.", "metric": "failedCases", "umbral": 1 },
+    { "id": "salvado_campana", "emoji": "🔔", "nombre": "Salvado por la campana", "chiste": "Terminaste un caso con rescate. Final feliz es final feliz.", "metric": "rescuedCases", "umbral": 1 },
+    { "id": "vive_hospital", "emoji": "🏥", "nombre": "Ya vives en el hospital", "chiste": "Siete días de racha. Tu casa te extraña; tu planta, ya no.", "metric": "dailyStreak", "umbral": 7 },
+    { "id": "perlero", "emoji": "🦪", "nombre": "Perlero profesional", "chiste": "Diez perlas en tu códex. Ya puedes presumirlas en el pase de visita.", "metric": "pearls", "umbral": 10 },
+    { "id": "todologo", "emoji": "🧰", "nombre": "Todólogo", "chiste": "Cinco especialidades distintas. Sabes de todo… y de todo un poquito.", "metric": "specialtiesPlayed", "umbral": 5 },
+    { "id": "memoria_elefante", "emoji": "🐘", "nombre": "Memoria de elefante (con bata)", "chiste": "Tres casos dominados con repaso espaciado. Nadie te agarra en curva.", "metric": "masteredCases", "umbral": 3 },
+    { "id": "tacos_canasta", "emoji": "🌮", "nombre": "Combustible: tacos de canasta", "chiste": "Quinientos aciertos. Cada uno se paga con un taco de la esquina.", "metric": "correct_swipes", "umbral": 500 }
+  ]
+}

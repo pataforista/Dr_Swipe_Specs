@@ -5,6 +5,7 @@ import type { Card } from '../types/game';
 import { useGameAudio } from '../hooks/useGameAudio';
 import { triggerHaptic } from '../utils/hapticFeedback';
 import { LIFELINE_COST } from '../store/useCodexStore';
+import { calculateExitPosition, decideSwipe, exitDuration, releaseVelocity, SWIPE_CONFIG } from '../utils/swipePhysics';
 
 interface SwipeDeckProps {
   cards: Card[];
@@ -290,8 +291,6 @@ const CATEGORY_ICONS: Record<string, string> = {
   'Hallazgo': '📋',
 };
 
-import { calculateExitPosition, SWIPE_CONFIG } from '../utils/swipePhysics';
-
 const DraggableCard: React.FC<DraggableCardProps> = ({
   card, isTop, indexOffset, onCommit, isLocked, cardNumber, totalCards, topX, revealLethalDirection
 }) => {
@@ -303,12 +302,15 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
   // the new card's exit animation, its promise never resolved and the deck
   // locked up after a fast flick.
   const x = useMotionValue(0);
+  // The top card follows the finger a little in Y, like Tinder.
+  const y = useMotionValue(0);
   const isPresent = useIsPresent(); // false while a swiped card plays its exit
   useMotionValueEvent(x, 'change', (latest) => {
     if (isTop && isPresent) topX.set(latest);
   });
   const controls = useAnimation();
   const pastThresholdRef = React.useRef(false);
+  const dragStartRef = React.useRef(0);
 
   useEffect(() => {
     if (isTop) {
@@ -328,18 +330,25 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
   };
 
   const threshold = SWIPE_CONFIG.CARD_WIDTH * SWIPE_CONFIG.DRAG_THRESHOLD;
-  const rotate = useTransform(x, [-300, 300], [-10, 10]);
-  const scaleTop = useTransform(x, [-200, 0, 200], [1.02, 1, 1.02]);
+  const rotate = useTransform(x, [-SWIPE_CONFIG.ROTATION_RANGE, SWIPE_CONFIG.ROTATION_RANGE], [-SWIPE_CONFIG.MAX_DRAG_ROTATION, SWIPE_CONFIG.MAX_DRAG_ROTATION]);
+  const scaleTop = useTransform(x, [-200, 0, 200], [1.03, 1, 1.03]);
+  // Colour wash that deepens as the card nears the commit point.
+  const washColor = useTransform(
+    x,
+    [-threshold, -threshold * 0.25, 0, threshold * 0.25, threshold],
+    ['rgba(244,63,94,0.20)', 'rgba(244,63,94,0)', 'rgba(0,0,0,0)', 'rgba(13,148,136,0)', 'rgba(13,148,136,0.20)'],
+  );
 
   // Stack depth: each card sits one step further back (offset 1 and 2 used to
   // share the same pose) and moves one step forward as the top card is dragged.
   const depth = Math.max(0, indexOffset);
   const restScale = 1 - depth * 0.04;
   const nextScale = 1 - Math.max(0, depth - 1) * 0.04;
-  const stackScale = useTransform(topX, [-300, 0, 300], [nextScale, restScale, nextScale]);
-  const stackY = useTransform(topX, [-300, 0, 300], [Math.max(0, depth - 1) * 12, depth * 12, Math.max(0, depth - 1) * 12]);
+  // The cards behind finish rising exactly when the top card reaches the commit point.
+  const stackScale = useTransform(topX, [-threshold, 0, threshold], [nextScale, restScale, nextScale]);
+  const stackY = useTransform(topX, [-threshold, 0, threshold], [Math.max(0, depth - 1) * 12, depth * 12, Math.max(0, depth - 1) * 12]);
   const tilt = indexOffset % 2 === 0 ? 1.5 : -1.5;
-  const stackRotate = useTransform(topX, [-300, 0, 300], [depth > 1 ? tilt : 0, tilt, depth > 1 ? tilt : 0]);
+  const stackRotate = useTransform(topX, [-threshold, 0, threshold], [depth > 1 ? tilt : 0, tilt, depth > 1 ? tilt : 0]);
 
   // Stamps reach full opacity exactly at the commit threshold, so a fully
   // inked stamp means the swipe will go through.
@@ -375,13 +384,14 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
   const handleDragEnd = (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     pastThresholdRef.current = false;
     if (!isTop || isLocked) return;
-    const velocity = info.velocity.x;
+    const velocity = releaseVelocity(info.velocity.x / 1000, info.offset.x, performance.now() - dragStartRef.current); // framer reports px/s
+    const direction = decideSwipe(info.offset.x, velocity);
 
-    if (Math.abs(info.offset.x) > threshold || Math.abs(velocity) > SWIPE_CONFIG.VELOCITY_THRESHOLD * 1000) {
+    if (direction) {
       // The exit variant takes over from the card's current x.
-      onCommit(info.offset.x > 0 ? 'right' : 'left', velocity / 1000);
+      onCommit(direction, velocity);
     } else {
-      controls.start({ x: 0, y: 0, rotate: 0, scale: 1, transition: { type: 'spring', stiffness: 600, damping: 30 } });
+      controls.start({ x: 0, y: 0, rotate: 0, scale: 1, transition: SWIPE_CONFIG.RETURN_SPRING });
     }
   };
 
@@ -392,7 +402,12 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
   const exitVariants = {
     fly: (info: ExitInfo) => {
       const pos = calculateExitPosition(info.direction, info.velocity);
-      return { x: pos.x, y: pos.y, rotate: pos.rotate, opacity: 0, transition: { duration: SWIPE_CONFIG.EXIT_DURATION, ease: 'easeOut' as const } };
+      const duration = exitDuration(info.velocity);
+      // Solid for most of the flight, fading only near the edge of the screen.
+      return {
+        x: pos.x, y: pos.y, rotate: pos.rotate, opacity: [1, 1, 0],
+        transition: { duration, ease: 'easeIn' as const, opacity: { duration, times: [0, 0.7, 1] } },
+      };
     },
     vanish: { opacity: 0, transition: { duration: 0 } },
   };
@@ -404,17 +419,21 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
         x,
         rotate: isTop ? rotate : stackRotate,
         scale: isTop ? scaleTop : stackScale,
-        y: isTop ? 0 : stackY,
+        y: isTop ? y : stackY,
+        // Pivot below the card: the top swings wider than the bottom.
+        originX: 0.5,
+        originY: isTop ? SWIPE_CONFIG.PIVOT_Y : 0.5,
         zIndex: 1000 - (indexOffset * 100),
         isolation: 'isolate',
-        touchAction: isTop && !isLocked ? 'pan-y' : 'auto',
+        touchAction: isTop && !isLocked ? 'none' : 'auto',
         pointerEvents: isPresent ? 'auto' : 'none',
       }}
-      drag={isTop && !isLocked ? "x" : false}
-      dragConstraints={{ left: -500, right: 500 }}
-      dragElastic={0.4}
+      drag={isTop && !isLocked}
+      dragConstraints={{ left: -500, right: 500, top: -SWIPE_CONFIG.DRAG_Y_LIMIT, bottom: SWIPE_CONFIG.DRAG_Y_LIMIT }}
+      dragElastic={0.5}
       // The exit is animated by handleDragEnd; built-in momentum would fight it.
       dragMomentum={false}
+      onDragStart={() => { dragStartRef.current = performance.now(); }}
       onDrag={handleDrag}
       onDragEnd={handleDragEnd}
       // The card promoted to top has already risen to the front pose while
@@ -425,6 +444,9 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
       variants={exitVariants}
       exit={isTop ? 'fly' : 'vanish'}
     >
+      {/* Colour wash: rose toward discard, teal toward keep */}
+      {isTop && <motion.div style={{ backgroundColor: washColor }} className="absolute inset-0 z-40 pointer-events-none rounded-[2.5rem]" />}
+
       {/* Red line margin effect (Notebook style) */}
       <div className="absolute left-10 top-0 bottom-0 w-px bg-rose-200/40 z-10" />
 

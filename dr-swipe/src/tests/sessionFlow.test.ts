@@ -115,4 +115,20 @@ describe('commitSession and SRS in the store', () => {
     expect(migrated.caseProgress.Y.nextReviewDate).toBeGreaterThan(Date.now());
     expect(Object.keys(migrated.caseStats)).toEqual(['X', 'Y']);
   });
+
+  it('perder al paciente (ghosted) cuenta como error letal: calidad SM-2 0, decisión intencional (ADR 013)', async () => {
+    const { outcomeToQuality } = await import('../utils/srsEngine');
+    const a = createActor(gameMachine).start();
+    a.send({ type: 'START_GUARD', deck, difficulty: 'standard', case_id: 'PROC_PED_X_001_001' });
+    // Each timeout costs an intern (RESCUE); with none left the patient is lost.
+    for (let i = 0; i < 5; i++) {
+      a.send({ type: 'TIME_OUT' });
+      a.send({ type: 'RESCUE' });
+    }
+    a.send({ type: 'TIME_OUT' });
+    const snap = a.getSnapshot();
+    expect(snap.matches('ghosted')).toBe(true);
+    expect(snap.context.lethalErrorsThisCase).toBeGreaterThanOrEqual(1);
+    expect(outcomeToQuality({ caseId: 'x', specialty: 'ped', outcome: 'failed', mistakes: 3, lethalErrors: snap.context.lethalErrorsThisCase, timeSpentMs: 0 })).toBe(0);
+  });
 });

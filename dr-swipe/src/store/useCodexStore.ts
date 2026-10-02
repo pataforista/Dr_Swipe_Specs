@@ -4,6 +4,8 @@ import type { PlayerStats, EnarmPearl, CaseResult } from '../types/game';
 import type { CaseProgress } from '../types/srs';
 import { applySM2, outcomeToQuality } from '../utils/srsEngine';
 import { safeStorage } from '../utils/safeStorage';
+import { evaluateAchievements, buildAchievementSnapshot, isNightHour, EMPTY_COUNTERS, type AchievementCounters, type AchievementDef } from '../utils/achievementsEngine';
+import { addFavorsCapped, nextDailyStreak, DAILY_FAVOR } from '../utils/favorsEngine';
 
 export interface SessionProgress {
   caseId?: string;
@@ -27,6 +29,12 @@ interface CodexState {
   caseStats?: Record<string, { timesSolved: number; mistakes: number; bestScore: number }>;
   /** SM-2 schedule per case (replaces the old "has mistakes" flag). */
   caseProgress: Record<string, CaseProgress>;
+  /** Favores del Adjunto: earned by performance, capped, spent only on revive (ADR 011). */
+  favors: number;
+  /** Unlocked achievements: id -> unlock timestamp. */
+  achievements: Record<string, number>;
+  /** Lifetime counters the machine does not keep (feed the achievements). */
+  counters: AchievementCounters;
   settings: {
     soundEnabled: boolean;
     hapticsEnabled: boolean;
@@ -39,6 +47,12 @@ interface CodexState {
   addXp: (amount: number) => void;
   addCoins: (amount: number) => void;
   spendCoins: (amount: number) => boolean; // returns false if insufficient
+  earnFavors: (amount: number) => void;
+  recordRevive: () => void;
+  noteCombo: (combo: number) => void;
+  /** Checks every achievement against the current state; returns the newly unlocked ones. */
+  unlockEarnedAchievements: (now?: number) => AchievementDef[];
+  spendFavors: (amount: number) => boolean; // returns false if insufficient
   unlockPearl: (pearl: EnarmPearl) => void;
   registerCaseSolved: (caseId: string, score?: number, mistakes?: number) => void;
   /**
@@ -48,7 +62,7 @@ interface CodexState {
   commitSession: (results: CaseResult[], now?: number) => void;
   getCasesDueForReview: (now?: number) => string[];
   updateSwipeResult: (isCorrect: boolean) => void;
-  incrementSessions: () => void;
+  incrementSessions: (now?: Date) => void;
   updateDailyStreak: () => void;
   saveSessionProgress: (progress: SessionProgress) => void;
   clearSessionProgress: () => void;
@@ -72,7 +86,6 @@ export function migrateCodexState(persisted: unknown, fromVersion: number): unkn
 
 export const LIFELINE_COST = 25;
 export const UNDO_COST = 40;
-export const REVIVE_COST = 75;
 
 export const useCodexStore = create<CodexState>()(
   persist(
@@ -90,6 +103,9 @@ export const useCodexStore = create<CodexState>()(
       history: [],
       caseStats: {},
       caseProgress: {},
+      favors: 0,
+      achievements: {},
+      counters: EMPTY_COUNTERS,
       settings: {
         soundEnabled: true,
         hapticsEnabled: true,
@@ -116,6 +132,48 @@ export const useCodexStore = create<CodexState>()(
           return state;
         });
         return success;
+      },
+
+      earnFavors: (amount) => set((state) => ({ favors: addFavorsCapped(state.favors ?? 0, amount) })),
+
+      spendFavors: (amount) => {
+        let success = false;
+        set((state) => {
+          if ((state.favors ?? 0) >= amount) {
+            success = true;
+            return { favors: (state.favors ?? 0) - amount };
+          }
+          return state;
+        });
+        return success;
+      },
+
+      recordRevive: () => set((state) => ({
+        counters: { ...EMPTY_COUNTERS, ...state.counters, revives: (state.counters?.revives ?? 0) + 1 },
+      })),
+
+      noteCombo: (combo) => set((state) => {
+        if (combo <= (state.counters?.bestCombo ?? 0)) return state;
+        return { counters: { ...EMPTY_COUNTERS, ...state.counters, bestCombo: combo } };
+      }),
+
+      unlockEarnedAchievements: (now = Date.now()) => {
+        const state = get();
+        const snapshot = buildAchievementSnapshot({
+          stats: state.stats,
+          counters: state.counters,
+          dailyStreak: state.dailyStreak,
+          pearlCount: state.unlockedPearls.length,
+          caseProgress: state.caseProgress,
+          favors: state.favors,
+        });
+        const earned = evaluateAchievements(snapshot, state.achievements ?? {});
+        if (earned.length > 0) {
+          set((st) => ({
+            achievements: { ...st.achievements, ...Object.fromEntries(earned.map(a => [a.id, now])) },
+          }));
+        }
+        return earned;
       },
 
       unlockPearl: (pearl) => set((state) => {
@@ -157,7 +215,14 @@ export const useCodexStore = create<CodexState>()(
         for (const r of results) {
           caseProgress[r.caseId] = applySM2(caseProgress[r.caseId] ?? null, r.caseId, outcomeToQuality(r), now);
         }
-        return { caseProgress };
+        const counters = { ...EMPTY_COUNTERS, ...state.counters };
+        for (const r of results) {
+          if (r.outcome === 'perfect') counters.perfectCases += 1;
+          if (r.outcome === 'rescued') counters.rescuedCases += 1;
+          if (r.outcome === 'failed') counters.failedCases += 1;
+          counters.lethalErrors += r.lethalErrors;
+        }
+        return { caseProgress, counters };
       }),
 
       getCasesDueForReview: (now = Date.now()) =>
@@ -174,17 +239,24 @@ export const useCodexStore = create<CodexState>()(
         }
       })),
 
-      incrementSessions: () => set((state) => ({
-        stats: { ...state.stats, total_sessions: (state.stats.total_sessions ?? 0) + 1 }
+      incrementSessions: (now = new Date()) => set((state) => ({
+        stats: { ...state.stats, total_sessions: (state.stats.total_sessions ?? 0) + 1 },
+        counters: {
+          ...EMPTY_COUNTERS,
+          ...state.counters,
+          nightShifts: (state.counters?.nightShifts ?? 0) + (isNightHour(now.getHours()) ? 1 : 0),
+        },
       })),
 
       updateDailyStreak: () => set((state) => {
         const today = new Date().toISOString().slice(0, 10);
         if (state.lastPlayedDate === today) return state; // Already updated today
-
-        const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
-        const newStreak = state.lastPlayedDate === yesterday ? state.dailyStreak + 1 : 1;
-        return { dailyStreak: newStreak, lastPlayedDate: today };
+        // A new day played is a reason to come back: it also pays one favor.
+        return {
+          dailyStreak: nextDailyStreak(state.dailyStreak, state.lastPlayedDate, today),
+          lastPlayedDate: today,
+          favors: addFavorsCapped(state.favors ?? 0, DAILY_FAVOR),
+        };
       }),
 
       saveSessionProgress: (progress) => set(() => ({ sessionProgress: progress })),
