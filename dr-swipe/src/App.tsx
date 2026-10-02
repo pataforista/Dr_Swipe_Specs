@@ -11,7 +11,9 @@ import { shuffleBossQuestion } from './utils/formatters';
 import { triggerHaptic } from './utils/hapticFeedback';
 import { calculatePerfectRoundBonus, getDailyStreakMultiplier, computeTimeLimit, isLethalCard, COMBO_MILESTONES } from './utils/scoringEngine';
 import { safeStorage } from './utils/safeStorage';
-import { LIFELINE_COST, UNDO_COST, REVIVE_COST } from './store/useCodexStore';
+import { LIFELINE_COST, UNDO_COST } from './store/useCodexStore';
+import { favorsForCase, REVIVE_FAVOR_COST } from './utils/favorsEngine';
+import { computeSuccessOutcome } from './utils/rewardsEngine';
 import { useCodexStore, type SessionProgress } from './store/useCodexStore';
 import { useFocusTrap } from './hooks/useFocusTrap';
 import { useSessionCommit } from './hooks/useSessionCommit';
@@ -52,7 +54,7 @@ export function App() {
   const [state, send, actorRef] = useMachine(gameMachine);
   const { playFeedback, playGacha, playCodeRed, startTriageAlarm, stopTriageAlarm } = useGameAudio();
   const [currentCase, setCurrentCase] = useState<ClinicalCase | null>(null);
-  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak, lastPlayedDate, settings = { soundEnabled: true, hapticsEnabled: true }, updateSettings, commitSession, caseProgress } = useCodexStore();
+  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, earnFavors, spendFavors, favors, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak, lastPlayedDate, settings = { soundEnabled: true, hapticsEnabled: true }, updateSettings, commitSession, caseProgress } = useCodexStore();
   const [selectedSpecialty, setSelectedSpecialty] = useState<string>('all');
   const [showSettings, setShowSettings] = useState(false);
   const timeLimitRef = useRef<number>(60);
@@ -191,6 +193,14 @@ export function App() {
         showToast(`+${totalCoins} 🪙`, 'coins');
       }
       addCoins(totalCoins);
+      const favorsGained = favorsForCase(
+        computeSuccessOutcome(state.context.wasRescued, state.context.mistakesThisCase),
+        state.context.mistakesThisCase,
+      );
+      if (favorsGained > 0) {
+        earnFavors(favorsGained);
+        showToast(`+${favorsGained} Favor${favorsGained > 1 ? 'es' : ''} del Adjunto 🩺`, 'milestone');
+      }
       // Deferred like the toast: setState inside this effect would cascade renders.
       window.setTimeout(() => setShiftPayout(p => ({ xp: p.xp + xpGained, coins: p.coins + totalCoins })), 0);
       registerCaseSolved(currentCase.case_id, state.context.score, state.context.mistakesThisCase);
@@ -199,7 +209,7 @@ export function App() {
     } else if (!state.matches('reward')) {
       rewardedCaseRef.current = null;
     }
-  }, [state, currentCase, dailyStreak, addXp, addCoins, registerCaseSolved, unlockPearl, showToast]);
+  }, [state, currentCase, dailyStreak, addXp, addCoins, earnFavors, registerCaseSolved, unlockPearl, showToast]);
 
   // Cases without a boss triad (or with 0 questions) skip the ShockRoom instead
   // of crashing on questions[currentStep].
@@ -640,10 +650,10 @@ export function App() {
               "{state.context.fatalError || 'El paciente sufrió una complicación letal.'}"
             </div>
             <div className="flex flex-col gap-3 sm:gap-4">
-              {stats.coins >= REVIVE_COST && (
+              {favors >= REVIVE_FAVOR_COST && (
                 <button
                   onClick={() => {
-                    if (spendCoins(REVIVE_COST)) {
+                    if (spendFavors(REVIVE_FAVOR_COST)) {
                       setTimeLeft(timeLimitRef.current);
                       send({ type: 'REVIVE_INTERN' });
                       triggerHaptic('criticalSuccess');
@@ -652,7 +662,7 @@ export function App() {
                   }}
                   className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl !bg-emerald-600 hover:!bg-emerald-700 !border-emerald-500 shadow-emerald-200"
                 >
-                  LLAMAR AL ADJUNTO 📞 ({REVIVE_COST} 🪙)
+                  LLAMAR AL ADJUNTO 📞 ({REVIVE_FAVOR_COST} 🩺 de {favors})
                 </button>
               )}
               <button onClick={() => send({ type: 'VIEW_DEBRIEF' })} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl !bg-slate-700">VER NOTAS 📝</button>
@@ -703,6 +713,7 @@ export function App() {
         vitality={state.context.vitality}
         lives={state.context.lives}
         coins={stats.coins}
+        favors={favors}
         shield={state.context.shieldCharges}
         lastVitals={state.context.lastVitals}
         onPause={() => setIsPaused(true)}

@@ -12,6 +12,8 @@ interface TelemetryHUDProps {
   lives: number;
   maxLives?: number;
   coins: number;
+  /** Favores del Adjunto, shown beside the coins to keep the HUD at 390 px. */
+  favors?: number;
   /** Loot-box shield charges left (mistakes that cost no vitality). */
   shield?: number;
   lastVitals: { ta?: string; fc?: number; temp?: number; status: string } | null;
@@ -19,7 +21,7 @@ interface TelemetryHUDProps {
 }
 
 export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
-  timeLeft, state, score, combo, vitality, lives, maxLives = 5, coins, shield = 0, lastVitals, onPause
+  timeLeft, state, score, combo, vitality, lives, maxLives = 5, coins, favors = 0, shield = 0, lastVitals, onPause
 }) => {
   // A vitality drop should read as a hit, not just a number changing — flash
   // the bar red for a beat instead of just easing the width down (F2).
@@ -62,6 +64,7 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
             className="text-lg font-bold text-slate-700 leading-none lettering tabular-nums"
           >
             {coins}
+            <span title="Favores del Adjunto" className="ml-1.5 text-[11px] font-black text-emerald-600">🩺{favors}</span>
           </motion.span>
         </div>
         <div className="flex flex-col gap-0.5 flex-1 min-w-[64px] max-w-[110px]">
@@ -169,6 +172,7 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
     prevProps.lives === nextProps.lives &&
     prevProps.shield === nextProps.shield &&
     prevProps.coins === nextProps.coins &&
+    prevProps.favors === nextProps.favors &&
     vitalsEqual
   );
 });

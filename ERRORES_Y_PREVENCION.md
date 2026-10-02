@@ -36,7 +36,8 @@ La mayoría nace de un solo patrón: **editar código con scripts de reemplazo p
 
 ## Pendiente conocido
 
-- `ghosted` suma un error letal al entrar (`lethalErrorsThisCase + 1`) aunque el caso no haya tenido ninguno. Afecta a la calidad SM-2 de un caso fallado (0 en vez de 1). Decidir si es intencional.
+- Resuelto: `ghosted` suma un error letal al entrar y es intencional (perder al paciente es el desenlace letal; SM-2 calidad 0). Ver ADR 013 y su test en `sessionFlow.test.ts`.
+- Lección del propio test: la primera versión envolvía las aserciones en un `if` y pasaba sin comprobar nada. Una prueba que puede pasar sin ejecutar su aserción no es una prueba; se cambió por aserciones incondicionales.
 
 ## Controles recomendados
 

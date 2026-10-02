@@ -5,7 +5,7 @@ Toda decisión de código, contenido o diseño debe poder rastrearse hasta aquí
 Si algo no está en este documento, no existe todavía. Si algo cambia, se actualiza aquí antes de tocar código.
 
 Última actualización: 2026-10-02
-Versión del proyecto: 0.6.0-alpha
+Versión del proyecto: 0.7.0-alpha
 Estado global: 🟡 En construcción activa
 
 🧭 Índice
@@ -43,7 +43,7 @@ Regla de oro: nunca se empieza una fase nueva sin marcar la anterior como ✅ Ce
 | Contenido | ✅ | 599 casos, descarte global 41 % (ver PLAN_SIGUIENTES_PASOS.md) |
 | CI (validación de casos, tests, build, deploy) | ✅ | `.github/workflows/cloudflare-deploy.yml` |
 | Lazy Loading de casos | ✅ | Manifest + un archivo por caso; 3 descargas por guardia |
-| "Favores del Adjunto" (moneda blanda) | ❌ | Planificado para Fase 5 |
+| "Favores del Adjunto" (moneda blanda) | ✅ | Store, pago por caso, revive y HUD (ADR 011). Falta prueba manual en móvil |
 
 Leyenda: ✅ Cerrado · 🟡 En progreso · ❌ No iniciado · ⏸️ Pausado · 🔴 Bloqueado
 
@@ -234,6 +234,8 @@ Dr_Swipe_Specs/
 | caseProgress: Record<string, CaseProgress> | ✅ |
 | commitSession(results, now?) | ✅ Solo alimenta el SRS; XP/monedas se pagan por caso en la pantalla de recompensa |
 | getCasesDueForReview(now?) | ✅ |
+| favors, earnFavors(n), spendFavors(n) | ✅ Tope 5; solo paga el revive (ADR 011) |
+| updateDailyStreak (1 día de gracia, +1 favor por día nuevo) | ✅ ADR 012 |
 | migrateCodexState (persist v2) | ✅ |
 | getSpecialtyStats() | ❌ Fase 5 |
 | spendFavors(cost) / earnFavors(amount) | ❌ Fase 5 |
@@ -325,7 +327,7 @@ Tareas:
 🟪 Fase 5 — Meta-progresión
 Objetivo: Razones para volver mañana.
 Tareas:
-- [ ] Moneda blanda "Favores del Adjunto".
+- [x] Moneda blanda "Favores del Adjunto" (`utils/favorsEngine.ts`, store, revive, HUD).
 - [ ] Diálogos del Dr. Navarro/Vázquez.
 - [ ] Pantalla "Codex".
 - [ ] Logros / achievements.
@@ -356,13 +358,21 @@ Tareas:
 | 008 | CaseResult se graba en reward/debrief, no en ghosted | ghosted es transitorio (rescate lo revierte) | Grabar en ghosted y actualizar si rescata |
 | 010 | Manifest por especialidad con un archivo por caso (no `{specialty}.json`) | Un bundle por especialidad obligaría a descargar cientos de casos para jugar 3; el archivo por caso ya escala y se cachea | Bundles por especialidad; paginar el índice |
 | 009 | commitSession solo alimenta el SRS | El XP/monedas ya se pagan por caso; pagarlos al cerrar duplicaría | Mover el pago al cierre de guardia |
+| 011 | "Favores del Adjunto" se ganan, no se compran: +2 por caso perfecto, +1 por caso con un solo error, +1 por día nuevo jugado; tope 5; "Llamar al Adjunto" cuesta 3 y ya no usa monedas | Mantiene ADR 004 (nada de pay-to-win). El tope obliga a gastar; el costo 3 exige ~2 casos perfectos, así que salvar un caso se siente ganado | Comprarlos con monedas; ganarlos solo por racha |
+| 012 | La racha diaria perdona 1 día de ausencia y se rompe con 2 seguidos | Un fin de semana de guardia no debe borrar semanas de hábito; con 2 días ya es abandono | Romper con 1 día (castiga de más); sin límite |
+| 013 | `ghosted` cuenta como error letal (SM-2 calidad 0) | Perder al paciente es el desenlace letal; el caso debe volver pronto al repaso. Test en `sessionFlow.test.ts` | Contar solo errores letales explícitos (calidad 1) |
+| 014 | La guardia estándar dura 3 casos (~5 min); SM-2 no penaliza el tiempo de respuesta | 3 casos caben en una sesión móvil y ya se descargan por lote (ADR 010). El reloj ya castiga la lentitud en el juego; penalizarla otra vez en el SRS mezclaría rapidez con retención | 5 o 10 casos; calidad SM-2 ajustada por tiempo |
 
 9. Preguntas abiertas
-- [ ] ¿Cuántos casos dura una guardia estándar? (3, 5, 10)
-- [ ] ¿Los "Favores del Adjunto" se ganan por racha o compra?
-- [ ] ¿La racha diaria se rompe con 1 día o 2?
-- [ ] ¿El quality de SM-2 penaliza tiempo de respuesta?
-- [ ] ¿Modo "simulacro ENARM" (sin Adjunto)?
+Resueltas el 2026-10-02 (ADR 011 a 014):
+- [x] Guardia estándar: 3 casos (ADR 014).
+- [x] Favores: se ganan por desempeño y racha, no se compran (ADR 011).
+- [x] Racha diaria: se rompe con 2 días de ausencia, no con 1 (ADR 012).
+- [x] SM-2 no penaliza el tiempo de respuesta (ADR 014).
+- [x] Modo "simulacro ENARM" (sin Adjunto): sí, pero después de la Pantalla Codex; el Modo Estudio actual (Sandía) cubre el caso indulgente. Pendiente de diseño, no de decisión.
+Abiertas:
+- [ ] ¿Los logros desbloquean cosméticos o solo se muestran en el Codex?
+- [ ] Prueba manual de balance: ¿3 Favores por revive es suficiente reto en móvil? Ajustar `REVIVE_FAVOR_COST` y `FAVOR_CAP` en `utils/favorsEngine.ts` según lo que se sienta.
 
 10. Cómo usar este documento
 Cada sesión de trabajo: Abrir este archivo. Ir a la fase en progreso. Elegir tarea no marcada. Marcar ✅.
@@ -378,5 +388,6 @@ Nunca empezar Fase N+1 con Fase N en 🟡.
 | 0.4.0 | 2026-10-01 | Documento maestro instaurado, Fase 2 en progreso |
 | 0.5.0 | 2026-10-02 | Build reparado; Fases 2 y 3 cerradas (cierre de guardia, SRS, store v2) |
 | 0.6.0 | 2026-10-02 | Fase 4 cerrada: manifest por especialidad, caché PWA para 3,000+ casos |
+| 0.7.0 | 2026-10-02 | Fase 5 iniciada: Favores del Adjunto, racha con día de gracia, decisiones ADR 011 a 014 |
 
-Siguiente acción concreta: Fase 5 → antes de codificar, resolver las preguntas abiertas de la sección 9 (cómo se ganan los "Favores del Adjunto", duración de la guardia). Antes, prueba manual de una guardia de 3 casos en móvil.
+Siguiente acción concreta: prueba manual en móvil de una guardia de 3 casos con Favores (¿se siente ganado el revive?). Luego Fase 5: Pantalla Codex, diálogos del Dr. Navarro/Vázquez y logros.

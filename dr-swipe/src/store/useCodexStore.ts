@@ -4,6 +4,7 @@ import type { PlayerStats, EnarmPearl, CaseResult } from '../types/game';
 import type { CaseProgress } from '../types/srs';
 import { applySM2, outcomeToQuality } from '../utils/srsEngine';
 import { safeStorage } from '../utils/safeStorage';
+import { addFavorsCapped, nextDailyStreak, DAILY_FAVOR } from '../utils/favorsEngine';
 
 export interface SessionProgress {
   caseId?: string;
@@ -27,6 +28,8 @@ interface CodexState {
   caseStats?: Record<string, { timesSolved: number; mistakes: number; bestScore: number }>;
   /** SM-2 schedule per case (replaces the old "has mistakes" flag). */
   caseProgress: Record<string, CaseProgress>;
+  /** Favores del Adjunto: earned by performance, capped, spent only on revive (ADR 011). */
+  favors: number;
   settings: {
     soundEnabled: boolean;
     hapticsEnabled: boolean;
@@ -39,6 +42,8 @@ interface CodexState {
   addXp: (amount: number) => void;
   addCoins: (amount: number) => void;
   spendCoins: (amount: number) => boolean; // returns false if insufficient
+  earnFavors: (amount: number) => void;
+  spendFavors: (amount: number) => boolean; // returns false if insufficient
   unlockPearl: (pearl: EnarmPearl) => void;
   registerCaseSolved: (caseId: string, score?: number, mistakes?: number) => void;
   /**
@@ -72,7 +77,6 @@ export function migrateCodexState(persisted: unknown, fromVersion: number): unkn
 
 export const LIFELINE_COST = 25;
 export const UNDO_COST = 40;
-export const REVIVE_COST = 75;
 
 export const useCodexStore = create<CodexState>()(
   persist(
@@ -90,6 +94,7 @@ export const useCodexStore = create<CodexState>()(
       history: [],
       caseStats: {},
       caseProgress: {},
+      favors: 0,
       settings: {
         soundEnabled: true,
         hapticsEnabled: true,
@@ -112,6 +117,20 @@ export const useCodexStore = create<CodexState>()(
           if (state.stats.coins >= amount) {
             success = true;
             return { stats: { ...state.stats, coins: state.stats.coins - amount } };
+          }
+          return state;
+        });
+        return success;
+      },
+
+      earnFavors: (amount) => set((state) => ({ favors: addFavorsCapped(state.favors ?? 0, amount) })),
+
+      spendFavors: (amount) => {
+        let success = false;
+        set((state) => {
+          if ((state.favors ?? 0) >= amount) {
+            success = true;
+            return { favors: (state.favors ?? 0) - amount };
           }
           return state;
         });
@@ -181,10 +200,12 @@ export const useCodexStore = create<CodexState>()(
       updateDailyStreak: () => set((state) => {
         const today = new Date().toISOString().slice(0, 10);
         if (state.lastPlayedDate === today) return state; // Already updated today
-
-        const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
-        const newStreak = state.lastPlayedDate === yesterday ? state.dailyStreak + 1 : 1;
-        return { dailyStreak: newStreak, lastPlayedDate: today };
+        // A new day played is a reason to come back: it also pays one favor.
+        return {
+          dailyStreak: nextDailyStreak(state.dailyStreak, state.lastPlayedDate, today),
+          lastPlayedDate: today,
+          favors: addFavorsCapped(state.favors ?? 0, DAILY_FAVOR),
+        };
       }),
 
       saveSessionProgress: (progress) => set(() => ({ sessionProgress: progress })),
