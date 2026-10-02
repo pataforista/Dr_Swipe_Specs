@@ -43,7 +43,7 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
       initial={{ opacity: 0, scale: 0.9, y: 40 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.9, y: 40 }}
-      className="paper-sheet p-6 sm:p-10 md:p-14 max-w-md w-full text-left shadow-2xl relative overflow-hidden bg-white mx-4"
+      className="paper-sheet p-6 sm:p-10 md:p-14 max-w-md w-full text-left shadow-2xl relative overflow-hidden bg-white mx-4 my-auto shrink-0"
     >
       {/* Paper texture overlay (Dot Grid) */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] medical-grid z-0" />

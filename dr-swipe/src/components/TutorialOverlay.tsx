@@ -32,14 +32,14 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({ onComplete }) 
   const slide = SLIDES[current];
 
   return (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-md p-6">
+    <div className="fixed inset-0 z-[200] flex flex-col items-center overflow-y-auto overscroll-contain bg-[#FDFBF7]/90 backdrop-blur-md p-6">
       {/* Paper texture overlay (Dot Grid) */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] medical-grid z-0" />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.9, y: 30 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        className="paper-sheet p-6 sm:p-12 max-w-md w-full text-center shadow-2xl relative overflow-hidden bg-white"
+        className="paper-sheet p-6 sm:p-12 max-w-md w-full text-center shadow-2xl relative overflow-hidden bg-white my-auto shrink-0"
       >
         {/* Washi Tape Header */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 sm:w-48 h-7 sm:h-10 washi-tape-pink -rotate-1 shadow-sm border-x-2 border-white/40 z-20" />

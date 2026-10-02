@@ -36,13 +36,13 @@ export const PerformanceReview: React.FC<PerformanceReviewProps> = ({ metrics, m
   };
 
   return (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-sm">
+    <div className="fixed inset-0 z-[200] flex flex-col items-center overflow-y-auto overscroll-contain p-4 sm:p-6 bg-slate-900/60 backdrop-blur-sm">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)] pointer-events-none" />
       
       <motion.div 
         initial={{ opacity: 0, scale: 0.95, y: 10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        className="paper-sheet w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden relative"
+        className="paper-sheet w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden relative my-auto shrink-0"
       >
         {/* Top Tape */}
         <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-32 h-8 bg-amber-500/20 backdrop-blur-md rotate-2 border border-amber-500/10 z-10" />
