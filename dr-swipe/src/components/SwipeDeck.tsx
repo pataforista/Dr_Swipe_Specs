@@ -54,8 +54,8 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (isLocked || e.repeat) return;
-      if (e.key === 'ArrowLeft') commitSwipe('left');
-      if (e.key === 'ArrowRight') commitSwipe('right');
+      if (e.key === 'ArrowLeft' || e.key === 'Backspace') commitSwipe('left');
+      if (e.key === 'ArrowRight' || e.key === 'Enter' || e.key === ' ') commitSwipe('right');
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);

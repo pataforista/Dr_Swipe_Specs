@@ -616,10 +616,10 @@ export function App() {
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-6 sm:p-10 max-w-md w-full text-center shadow-xl relative mx-4">
             <div className="absolute top-0 left-0 w-full h-2 bg-rose-400" />
             <div className="text-6xl sm:text-7xl mb-4 sm:mb-6 mt-3 sm:mt-4">💀</div>
-            <span className="lettering text-rose-500 font-bold block mb-2 text-[11px] sm:text-[10px] uppercase">Turno Terminado</span>
-            <h2 className="text-4xl sm:text-5xl font-black text-slate-800 mb-3 sm:mb-4 lettering">Sin más internos</h2>
+            <span className="lettering text-rose-500 font-bold block mb-2 text-[11px] sm:text-[10px] uppercase">Paciente Inestable</span>
+            <h2 className="text-4xl sm:text-5xl font-black text-slate-800 mb-3 sm:mb-4 lettering">Error Crítico</h2>
             <div className="bg-rose-50 p-4 sm:p-6 rounded-2xl mb-6 sm:mb-8 border-2 border-dashed border-rose-100 italic lettering text-base sm:text-lg">
-              "{state.context.fatalError || 'El servicio no sobrevivió.'}"
+              "{state.context.fatalError || 'El paciente sufrió una complicación letal.'}"
             </div>
             <div className="flex flex-col gap-3 sm:gap-4">
               {stats.coins >= REVIVE_COST && (
@@ -629,12 +629,12 @@ export function App() {
                       setTimeLeft(timeLimitRef.current);
                       send({ type: 'REVIVE_INTERN' });
                       triggerHaptic('criticalSuccess');
-                      showToast("Interno contratado 🩺", 'milestone');
+                      showToast("El Adjunto intervino 🩺", 'milestone');
                     }
                   }}
                   className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl !bg-emerald-600 hover:!bg-emerald-700 !border-emerald-500 shadow-emerald-200"
                 >
-                  CONTRATAR INTERNO 🩺 ({REVIVE_COST} 🪙)
+                  LLAMAR AL ADJUNTO 📞 ({REVIVE_COST} 🪙)
                 </button>
               )}
               <button onClick={() => send({ type: 'VIEW_DEBRIEF' })} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl !bg-slate-700">VER NOTAS 📝</button>

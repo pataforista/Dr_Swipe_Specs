@@ -1,8 +1,10 @@
 import { setup, assign } from 'xstate';
-import type { Card, EnarmPearl, LoreItem } from '../types/game';
+import type { Card, EnarmPearl, LoreItem, SessionState, CaseOutcome } from '../types/game';
 import { cleanMentorComment } from '../utils/formatters';
 import { parseVitalsFromText } from '../utils/vitalsParser';
 import { calculateCardScore, isLethalCard, undoChargesFor, VITALITY_HIT } from '../utils/scoringEngine';
+import { buildCaseResult } from '../utils/sessionEngine';
+import { computeSuccessOutcome } from '../utils/rewardsEngine';
 import rewardData from '../data/lore/rewardItems.json';
 import penaltyData from '../data/lore/penaltyItems.json';
 
@@ -50,6 +52,12 @@ interface GameContext {
   lootBoxReward: { active: boolean; item: LoreItem } | null;
   activePenalty: { active: boolean; item: LoreItem } | null;
   activeEvent: { type: 'lab' | 'archive' | 'systemic'; item: LoreItem } | null;
+  session: SessionState;
+  lethalErrorsThisCase: number;
+  caseStartedAt: number;
+  wasRescued: boolean;
+  caseId: string;
+  pearlId: string | null;
   feedbackHistory: Array<{
     cardId: string;
     cardText: string;
@@ -67,7 +75,6 @@ interface GameContext {
   shieldCharges: number;
   // Rewind (Undo) context
   undoCharges: number;
-  hasRescuedThisCase: boolean;
   // Undo reverts a swipe after its verdict is shown, so a case that used it
   // can no longer count as a perfect round.
   usedUndoThisCase: boolean;
@@ -87,8 +94,8 @@ interface GameContext {
 }
 
 type GameEvent =
-  | { type: 'START_GUARD'; deck: Card[]; difficulty: string; pearl?: EnarmPearl; isSandiaMode?: boolean }
-  | { type: 'RESUME_GUARD'; deck: Card[]; difficulty: string; pearl?: EnarmPearl; snapshot: ResumeSnapshot }
+  | { type: 'START_GUARD'; deck: Card[]; difficulty: string; pearl?: EnarmPearl; isSandiaMode?: boolean; case_id?: string }
+  | { type: 'RESUME_GUARD'; deck: Card[]; difficulty: string; pearl?: EnarmPearl; snapshot: ResumeSnapshot; case_id?: string }
   | { type: 'SWIPE'; direction: 'left' | 'right' }
   | { type: 'UNDO_SWIPE' }
   | { type: 'ANSWER_CORRECT' }
@@ -100,10 +107,29 @@ type GameEvent =
   | { type: 'USE_LIFELINE' }
   | { type: 'APPLY_REWARD_HEAL'; value: number }
   | { type: 'APPLY_REWARD'; heal: number; shield: number; undo: number; hint: boolean }
-  | { type: 'CONTINUE_SHIFT'; deck: Card[]; puzzle?: EnarmPearl; isSandiaMode?: boolean } // deck of the NEXT case
+  | { type: 'CONTINUE_SHIFT'; deck: Card[]; puzzle?: EnarmPearl; isSandiaMode?: boolean; case_id?: string } // deck of the NEXT case
   | { type: 'RESCUE' }
   | { type: 'BUY_UNDO' }
   | { type: 'REVIVE_INTERN' };
+
+const recordCaseResult = (resolveOutcome: (ctx: GameContext) => CaseOutcome) =>
+  assign(({ context }) => {
+    const now = Date.now();
+    const result = buildCaseResult(context, resolveOutcome(context), now);
+    return {
+      session: {
+        ...context.session,
+        caseResults: [...context.session.caseResults, result],
+      },
+      currentCardIndex: 0,
+      mistakesThisCase: 0,
+      lethalErrorsThisCase: 0,
+      wasRescued: false,
+      combo: 0,
+      caseStartedAt: now,
+      lastAction: null,
+    };
+  });
 
 export const gameMachine = setup({
   types: {
@@ -131,11 +157,27 @@ export const gameMachine = setup({
       lootBoxReward: null,
       activePenalty: null,
       activeEvent: null,
+      session: {
+        startedAt: 0,
+        caseResults: [],
+        pearlsEarned: [],
+        casesCompleted: 0,
+        casesFailed: 0,
+        totalXP: 0,
+        totalCoins: 0,
+        maxCombo: 0,
+        correctSwipes: 0,
+        wrongSwipes: 0,
+      },
       feedbackHistory: [],
       lastVitals: null,
       isSandiaMode: false,
       undoCharges: undoChargesFor(false),
-      hasRescuedThisCase: false,
+      wasRescued: false,
+      lethalErrorsThisCase: 0,
+      caseStartedAt: Date.now(),
+      caseId: '',
+      pearlId: null,
       usedUndoThisCase: false,
       lastAction: null,
       shieldCharges: 0
@@ -330,7 +372,11 @@ export const gameMachine = setup({
     shieldCharges: 0,
     isSandiaMode: false,
     undoCharges: undoChargesFor(false),
-    hasRescuedThisCase: false,
+    wasRescued: false,
+    lethalErrorsThisCase: 0,
+    caseStartedAt: Date.now(),
+    caseId: '',
+    pearlId: null,
     usedUndoThisCase: false,
     lastAction: null
   },
@@ -366,7 +412,11 @@ export const gameMachine = setup({
             lives: 5,
             isSandiaMode: ({ event }) => event.type === 'START_GUARD' ? !!event.isSandiaMode : false,
             undoCharges: ({ event }) => undoChargesFor(event.type === 'START_GUARD' && !!event.isSandiaMode),
-            hasRescuedThisCase: false,
+            wasRescued: false,
+            lethalErrorsThisCase: 0,
+            caseStartedAt: Date.now(),
+            caseId: ({ event }) => event.case_id || (event.deck[0] ? event.deck[0].card_id.split('_').slice(0, 2).join('_') : 'unknown'),
+            pearlId: ({ event }) => event.pearl?.id || null,
             usedUndoThisCase: false,
             lastAction: null
           })
@@ -405,7 +455,11 @@ export const gameMachine = setup({
             lives: 5,
             isSandiaMode: false,
             undoCharges: undoChargesFor(false),
-            hasRescuedThisCase: false,
+            wasRescued: false,
+            lethalErrorsThisCase: 0,
+            caseStartedAt: Date.now(),
+            caseId: ({ event }) => event.case_id || (event.deck[0] ? event.deck[0].card_id.split('_').slice(0, 2).join('_') : 'unknown'),
+            pearlId: ({ event }) => event.pearl?.id || null,
             usedUndoThisCase: false,
             lastAction: null
           })
@@ -507,6 +561,7 @@ export const gameMachine = setup({
       }
     },
     reward: {
+      entry: [recordCaseResult(({ context }) => computeSuccessOutcome(context.wasRescued, context.mistakesThisCase))],
       on: {
         CONTINUE_SHIFT: {
           target: 'triage',
@@ -541,7 +596,11 @@ export const gameMachine = setup({
             activeEvent: null,
             lastVitals: null,
             lifelineActive: false,
-            hasRescuedThisCase: false
+            wasRescued: false,
+            lethalErrorsThisCase: 0,
+            caseStartedAt: Date.now(),
+            caseId: ({ event }) => event.case_id || (event.deck[0] ? event.deck[0].card_id.split('_').slice(0, 2).join('_') : 'unknown'),
+            pearlId: ({ event }) => event.puzzle?.id || null
           })
         },
         RESTART: { target: 'idle', actions: ['resetGame'] }
@@ -560,7 +619,7 @@ export const gameMachine = setup({
           actions: assign({
             lives: ({ context }) => context.lives - 1,
             vitality: 100,
-            currentCardIndex: 0, // Restart current case cards for learning
+            currentCardIndex: ({ context }) => context.currentCardIndex + 1, // El Adjunto resuelve esta carta, el jugador contin�a la guardia
             caseStreak: 0,
             score: 0,
             coinsEarnedThisCase: 0,
@@ -572,7 +631,7 @@ export const gameMachine = setup({
             lastVitals: null,
             lifelineActive: false,
             undoCharges: ({ context }) => undoChargesFor(context.isSandiaMode),
-            hasRescuedThisCase: true,
+            wasRescued: true,
             usedUndoThisCase: false,
             lastAction: null
           })
@@ -581,6 +640,11 @@ export const gameMachine = setup({
       }
     },
     ghosted: {
+      entry: [
+        assign({
+          lethalErrorsThisCase: ({ context }) => context.lethalErrorsThisCase + 1
+        })
+      ],
       on: {
         VIEW_DEBRIEF: { target: 'debrief' },
         RESTART: { target: 'idle', actions: ['resetGame'] },
@@ -601,7 +665,7 @@ export const gameMachine = setup({
             lastVitals: null,
             lifelineActive: false,
             undoCharges: ({ context }) => undoChargesFor(context.isSandiaMode),
-            hasRescuedThisCase: true,
+            wasRescued: true,
             usedUndoThisCase: false,
             lastAction: null
           })
@@ -609,6 +673,7 @@ export const gameMachine = setup({
       }
     },
     debrief: {
+      entry: [recordCaseResult(() => 'failed')],
       on: { RESTART: { target: 'idle', actions: ['resetGame'] } }
     }
   }
