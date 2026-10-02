@@ -103,7 +103,7 @@ export interface LoreItem {
   frases?: { start?: string; end?: string };
   efecto?: { tipo: string; valor?: number; duracion?: number };
 }
-export type CaseOutcome = \'perfect\' | \'correct_with_errors\' | \'rescued\' | \'failed\';
+export type CaseOutcome = 'perfect' | 'correct_with_errors' | 'rescued' | 'failed';
 
 export type CaseResult = {
   caseId: string;
@@ -125,7 +125,7 @@ export type SessionState = {
 export interface SessionMetrics {
   precision: number;
   survivalRate: number;
-  grade: \'S\' | \'A\' | \'B\' | \'C\';
+  grade: 'S' | 'A' | 'B' | 'C';
   xpEarned: number;
   coinsEarned: number;
   maxCombo: number;
