@@ -5,7 +5,7 @@ Toda decisión de código, contenido o diseño debe poder rastrearse hasta aquí
 Si algo no está en este documento, no existe todavía. Si algo cambia, se actualiza aquí antes de tocar código.
 
 Última actualización: 2026-10-02
-Versión del proyecto: 0.7.0-alpha
+Versión del proyecto: 0.8.0-alpha
 Estado global: 🟡 En construcción activa
 
 🧭 Índice
@@ -237,7 +237,8 @@ Dr_Swipe_Specs/
 | favors, earnFavors(n), spendFavors(n) | ✅ Tope 5; solo paga el revive (ADR 011) |
 | updateDailyStreak (1 día de gracia, +1 favor por día nuevo) | ✅ ADR 012 |
 | migrateCodexState (persist v2) | ✅ |
-| getSpecialtyStats() | ❌ Fase 5 |
+| getSpecialtyStats() | ✅ `utils/codexStats.ts` (puro, lee `caseProgress`) |
+| achievements, counters, unlockEarnedAchievements(), recordRevive(), noteCombo() | ✅ ADR 015 |
 | spendFavors(cost) / earnFavors(amount) | ❌ Fase 5 |
 
 6.5 machines/gameMachine.ts
@@ -328,9 +329,9 @@ Tareas:
 Objetivo: Razones para volver mañana.
 Tareas:
 - [x] Moneda blanda "Favores del Adjunto" (`utils/favorsEngine.ts`, store, revive, HUD).
-- [ ] Diálogos del Dr. Navarro/Vázquez.
-- [ ] Pantalla "Codex".
-- [ ] Logros / achievements.
+- [x] Diálogos del Dr. Navarro/Vázquez (`data/lore/mentorDialogs.json`, `utils/dialogEngine.ts`): saludo del menú, pantalla de paciente perdido, revive y logros. Quedan sin conectar los contextos `guardia_inicio`, `caso_perfecto` y `caso_con_errores`.
+- [x] Pantalla "Codex" (`components/CodexScreen.tsx`): logros, perlas y casos por especialidad. Las perlas salieron de `StatsDashboard` (una sola fuente).
+- [x] Logros / achievements: 17 en `data/lore/achievements.json`, evaluados por `utils/achievementsEngine.ts`.
 
 🟪 Fase 6 — Accesibilidad y pulido
 Tareas:
@@ -362,6 +363,7 @@ Tareas:
 | 012 | La racha diaria perdona 1 día de ausencia y se rompe con 2 seguidos | Un fin de semana de guardia no debe borrar semanas de hábito; con 2 días ya es abandono | Romper con 1 día (castiga de más); sin límite |
 | 013 | `ghosted` cuenta como error letal (SM-2 calidad 0) | Perder al paciente es el desenlace letal; el caso debe volver pronto al repaso. Test en `sessionFlow.test.ts` | Contar solo errores letales explícitos (calidad 1) |
 | 014 | La guardia estándar dura 3 casos (~5 min); SM-2 no penaliza el tiempo de respuesta | 3 casos caben en una sesión móvil y ya se descargan por lote (ADR 010). El reloj ya castiga la lentitud en el juego; penalizarla otra vez en el SRS mezclaría rapidez con retención | 5 o 10 casos; calidad SM-2 ajustada por tiempo |
+| 015 | Los logros son chistes de guardia con tono respetuoso; se evalúan por umbral sobre un snapshot único (`buildAchievementSnapshot`) y no dan recompensas | Un solo lugar mapea el estado a métricas (principio 3.4). Sin recompensas, el logro no desbalancea la economía de monedas y Favores. Un test impide groserías en logros y diálogos | Logros que pagan monedas o Favores; evaluarlos dentro de la máquina |
 
 9. Preguntas abiertas
 Resueltas el 2026-10-02 (ADR 011 a 014):
@@ -371,7 +373,7 @@ Resueltas el 2026-10-02 (ADR 011 a 014):
 - [x] SM-2 no penaliza el tiempo de respuesta (ADR 014).
 - [x] Modo "simulacro ENARM" (sin Adjunto): sí, pero después de la Pantalla Codex; el Modo Estudio actual (Sandía) cubre el caso indulgente. Pendiente de diseño, no de decisión.
 Abiertas:
-- [ ] ¿Los logros desbloquean cosméticos o solo se muestran en el Codex?
+- [x] Logros: solo se muestran en el Códex y en un aviso al desbloquearse (ADR 015). Cosméticos quedan para después.
 - [ ] Prueba manual de balance: ¿3 Favores por revive es suficiente reto en móvil? Ajustar `REVIVE_FAVOR_COST` y `FAVOR_CAP` en `utils/favorsEngine.ts` según lo que se sienta.
 
 10. Cómo usar este documento
@@ -389,5 +391,6 @@ Nunca empezar Fase N+1 con Fase N en 🟡.
 | 0.5.0 | 2026-10-02 | Build reparado; Fases 2 y 3 cerradas (cierre de guardia, SRS, store v2) |
 | 0.6.0 | 2026-10-02 | Fase 4 cerrada: manifest por especialidad, caché PWA para 3,000+ casos |
 | 0.7.0 | 2026-10-02 | Fase 5 iniciada: Favores del Adjunto, racha con día de gracia, decisiones ADR 011 a 014 |
+| 0.8.0 | 2026-10-02 | Fase 5 completa en lo planificado: Códex, diálogos Navarro/Vázquez y 17 logros |
 
-Siguiente acción concreta: prueba manual en móvil de una guardia de 3 casos con Favores (¿se siente ganado el revive?). Luego Fase 5: Pantalla Codex, diálogos del Dr. Navarro/Vázquez y logros.
+Siguiente acción concreta: prueba manual en móvil (guardia de 3 casos, Favores y Códex). Después, conectar los diálogos que faltan (`guardia_inicio`, `caso_perfecto`, `caso_con_errores`), diseñar el simulacro ENARM y revisar el balance con la tasa de logros desbloqueados.

@@ -12,6 +12,7 @@ import { triggerHaptic } from './utils/hapticFeedback';
 import { calculatePerfectRoundBonus, getDailyStreakMultiplier, computeTimeLimit, isLethalCard, COMBO_MILESTONES } from './utils/scoringEngine';
 import { safeStorage } from './utils/safeStorage';
 import { LIFELINE_COST, UNDO_COST } from './store/useCodexStore';
+import { pickDialog, greetingContext, MENTOR_NAMES, MENTOR_ICONS } from './utils/dialogEngine';
 import { favorsForCase, REVIVE_FAVOR_COST } from './utils/favorsEngine';
 import { computeSuccessOutcome } from './utils/rewardsEngine';
 import { useCodexStore, type SessionProgress } from './store/useCodexStore';
@@ -23,6 +24,7 @@ import { PerformanceReview } from './components/overlays/PerformanceReview';
 // None of these are needed for the first paint (idle screen / first card),
 // so they ship as separate chunks instead of bloating the initial bundle.
 const TutorialOverlay = lazy(() => import('./components/TutorialOverlay').then(m => ({ default: m.TutorialOverlay })));
+const CodexScreen = lazy(() => import('./components/CodexScreen').then(m => ({ default: m.CodexScreen })));
 const StatsDashboard = lazy(() => import('./components/StatsDashboard').then(m => ({ default: m.StatsDashboard })));
 const RetrospectiveView = lazy(() => import('./components/RetrospectiveView').then(m => ({ default: m.RetrospectiveView })));
 const ShockRoom = lazy(() => import('./components/ShockRoom').then(m => ({ default: m.ShockRoom })));
@@ -54,7 +56,7 @@ export function App() {
   const [state, send, actorRef] = useMachine(gameMachine);
   const { playFeedback, playGacha, playCodeRed, startTriageAlarm, stopTriageAlarm } = useGameAudio();
   const [currentCase, setCurrentCase] = useState<ClinicalCase | null>(null);
-  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, earnFavors, spendFavors, favors, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak, lastPlayedDate, settings = { soundEnabled: true, hapticsEnabled: true }, updateSettings, commitSession, caseProgress } = useCodexStore();
+  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, earnFavors, spendFavors, favors, recordRevive, noteCombo, unlockEarnedAchievements, unlockedPearls, achievements, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak, lastPlayedDate, settings = { soundEnabled: true, hapticsEnabled: true }, updateSettings, commitSession, caseProgress } = useCodexStore();
   const [selectedSpecialty, setSelectedSpecialty] = useState<string>('all');
   const [showSettings, setShowSettings] = useState(false);
   const timeLimitRef = useRef<number>(60);
@@ -68,6 +70,7 @@ export function App() {
   const mentorTimerRef = useRef<number | null>(null);
   const [showTutorial, setShowTutorial] = useState(() => !safeStorage.getItem('dr_swipe_tutorial_seen'));
   const [showStats, setShowStats] = useState(false);
+  const [showCodex, setShowCodex] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isStudyModeActive, setIsStudyModeActive] = useState(false);
   const [isLoadingCase, setIsLoadingCase] = useState(false);
@@ -94,6 +97,7 @@ export function App() {
   const settingsTrapRef = useFocusTrap<HTMLDivElement>(showSettings, () => setShowSettings(false));
   const pauseTrapRef = useFocusTrap<HTMLDivElement>(isPaused && state.matches('triage'), () => setIsPaused(false));
   const statsTrapRef = useFocusTrap<HTMLDivElement>(showStats, () => setShowStats(false));
+  const codexTrapRef = useFocusTrap<HTMLDivElement>(showCodex, () => setShowCodex(false));
   const retroTrapRef = useFocusTrap<HTMLDivElement>(showRetro, () => setShowRetro(false));
 
   const showToast = useCallback((text: string, type: 'coins' | 'xp' | 'milestone' = 'coins') => {
@@ -218,6 +222,24 @@ export function App() {
       send({ type: 'ANSWER_CORRECT' });
     }
   }, [state, currentCase, send]);
+
+  // Best combo of the run, for the "Dr. Mandrake" achievements.
+  useEffect(() => { noteCombo(state.context.combo); }, [state.context.combo, noteCombo]);
+
+  // Achievements are re-evaluated whenever the numbers they read change. The
+  // store only reports the ones that are new, so this is idempotent.
+  useEffect(() => {
+    const earned = unlockEarnedAchievements();
+    if (earned.length === 0) return;
+    const line = pickDialog('logro');
+    const extra = earned.length > 1 ? ` (+${earned.length - 1} más)` : '';
+    showToast(`🏆 ${earned[0].nombre}${extra} · ${MENTOR_NAMES[line.quien]}: "${line.texto}"`, 'milestone');
+    triggerHaptic('criticalSuccess');
+  }, [stats, caseProgress, unlockedPearls, favors, dailyStreak, achievements, unlockEarnedAchievements, showToast]);
+
+  // One greeting per visit to the menu (Dra. Navarro / Dr. Vázquez).
+  const [menuGreeting] = useState(() => pickDialog(greetingContext(lastPlayedDate, new Date().toISOString().slice(0, 10))));
+  const [ghostedLine] = useState(() => pickDialog('paciente_perdido'));
 
   const startNewCase = async (studyMode = false, specialty = 'all') => {
     setIsPaused(false);
@@ -511,6 +533,10 @@ export function App() {
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-black text-slate-800 lettering drop-shadow-sm">Dr. Swipe</h1>
               <div className="h-2 w-32 sm:w-48 washi-tape-pink mx-auto mt-3 sm:mt-4 rotate-1" />
             </div>
+            <p className="max-w-xs text-center text-xs sm:text-sm text-slate-600 leading-relaxed italic mb-4 sm:mb-6 px-4">
+              <span className="not-italic font-black text-slate-700">{MENTOR_ICONS[menuGreeting.quien]} {MENTOR_NAMES[menuGreeting.quien]}: </span>
+              {menuGreeting.texto}
+            </p>
             {dailyStreak > 0 && (() => {
               const playedToday = lastPlayedDate === new Date().toISOString().slice(0, 10);
               return (
@@ -576,6 +602,8 @@ export function App() {
 
               <div className="flex gap-4 justify-center pt-2">
                 <button onClick={() => setShowStats(true)} className="text-[10px] sm:text-[11px] font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Ver mi diario 📔</button>
+                <span className="text-slate-300">|</span>
+                <button onClick={() => setShowCodex(true)} className="text-[10px] sm:text-[11px] font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Códex 📖</button>
                 <span className="text-slate-300">|</span>
                 <button onClick={() => setShowSettings(true)} className="text-[10px] sm:text-[11px] font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Ajustes ⚙️</button>
               </div>
@@ -646,18 +674,23 @@ export function App() {
             <div className="text-6xl sm:text-7xl mb-4 sm:mb-6 mt-3 sm:mt-4">💀</div>
             <span className="lettering text-rose-500 font-bold block mb-2 text-[11px] sm:text-[10px] uppercase">Paciente Inestable</span>
             <h2 className="text-4xl sm:text-5xl font-black text-slate-800 mb-3 sm:mb-4 lettering">Error Crítico</h2>
-            <div className="bg-rose-50 p-4 sm:p-6 rounded-2xl mb-6 sm:mb-8 border-2 border-dashed border-rose-100 italic lettering text-base sm:text-lg">
+            <div className="bg-rose-50 p-4 sm:p-6 rounded-2xl mb-4 border-2 border-dashed border-rose-100 italic lettering text-base sm:text-lg">
               "{state.context.fatalError || 'El paciente sufrió una complicación letal.'}"
             </div>
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 sm:mb-8 italic">
+              <span className="not-italic font-black text-slate-700">{MENTOR_ICONS[ghostedLine.quien]} {MENTOR_NAMES[ghostedLine.quien]}: </span>
+              {ghostedLine.texto}
+            </p>
             <div className="flex flex-col gap-3 sm:gap-4">
               {favors >= REVIVE_FAVOR_COST && (
                 <button
                   onClick={() => {
                     if (spendFavors(REVIVE_FAVOR_COST)) {
                       setTimeLeft(timeLimitRef.current);
+                      recordRevive();
                       send({ type: 'REVIVE_INTERN' });
                       triggerHaptic('criticalSuccess');
-                      showToast("El Adjunto intervino 🩺", 'milestone');
+                      showToast(`${MENTOR_NAMES.navarro}: "${pickDialog('adjunto_revive').texto}"`, 'milestone');
                     }
                   }}
                   className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl !bg-emerald-600 hover:!bg-emerald-700 !border-emerald-500 shadow-emerald-200"
@@ -732,6 +765,7 @@ export function App() {
 
       <div className="w-full flex-grow flex items-center justify-center relative z-10">{renderCurrentView()}</div>
       <AnimatePresence>{showTutorial && <Suspense fallback={null}><TutorialOverlay onComplete={() => { safeStorage.setItem('dr_swipe_tutorial_seen', '1'); setShowTutorial(false); }} /></Suspense>}</AnimatePresence>
+      <AnimatePresence>{showCodex && <div ref={codexTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-4 overflow-hidden"><Suspense fallback={null}><CodexScreen onClose={() => setShowCodex(false)} /></Suspense></div>}</AnimatePresence>
       <AnimatePresence>{showStats && <div ref={statsTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-6 overflow-hidden"><Suspense fallback={null}><StatsDashboard onClose={() => setShowStats(false)} /></Suspense></div>}</AnimatePresence>
       <AnimatePresence mode="wait">{state.context.activeEvent?.item && <EventAlert key={state.context.activeEvent?.item?.id ?? 'event'} event={state.context.activeEvent} onClose={handleEventClose} />}</AnimatePresence>
       <AnimatePresence>{state.context.lootBoxReward?.active && state.context.lootBoxReward.item && <LootBoxOverlay reward={{ active: true, item: state.context.lootBoxReward.item }} onClaim={handleLootClaim} effectText={resolveRewardEffect(state.context.lootBoxReward.item.efecto).description} />}</AnimatePresence>

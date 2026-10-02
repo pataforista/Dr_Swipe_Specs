@@ -1,0 +1,45 @@
+{
+  "contextos": {
+    "bienvenida": [
+      { "quien": "navarro", "texto": "Buenas, doctor. Pase a la guardia con calma, que la prisa no cura a nadie." },
+      { "quien": "vazquez", "texto": "Ahí viene mi interno favorito. Échale ganas, que hoy hay mucho trabajo y poco café." },
+      { "quien": "navarro", "texto": "Hoy toca repasar bonito. Un caso a la vez y ya verá cómo se acomoda todo." },
+      { "quien": "vazquez", "texto": "Pase, pase. Ya está listo el pase de visita; llegamos puntuales o no llegamos." }
+    ],
+    "regreso": [
+      { "quien": "navarro", "texto": "¡Qué gusto verlo de vuelta! Todos necesitamos un descanso; lo importante es regresar." },
+      { "quien": "vazquez", "texto": "¿Dónde andaba, doctor? Se le extrañó, aunque la guardia no se lo dijo." }
+    ],
+    "guardia_inicio": [
+      { "quien": "vazquez", "texto": "Tres pacientes y todo el tiempo del mundo… bueno, el del reloj. Va que va." },
+      { "quien": "navarro", "texto": "Lea con calma y decida con criterio. Aquí nadie se burla de quien piensa dos veces." },
+      { "quien": "vazquez", "texto": "Estetoscopio al cuello, cabeza fría. Órale, a trabajar." }
+    ],
+    "caso_perfecto": [
+      { "quien": "vazquez", "texto": "¡Esa estuvo limpia, doctor! Así se hace, sin un solo error." },
+      { "quien": "navarro", "texto": "Muy bien razonado. Se nota que estudió; el paciente se lo agradece." },
+      { "quien": "vazquez", "texto": "Si sigue así, hasta yo le invito los tacos al salir de guardia." }
+    ],
+    "caso_con_errores": [
+      { "quien": "navarro", "texto": "Salió adelante y eso cuenta. Revise lo que falló y lo lleva mejor la próxima." },
+      { "quien": "vazquez", "texto": "Con tropiezos, pero llegó. Ahorita lo repasamos, no se me achicopale." }
+    ],
+    "paciente_perdido": [
+      { "quien": "navarro", "texto": "Esto es simulacro, doctor, y para eso estamos: para equivocarnos aquí y no en la cama real. Respire." },
+      { "quien": "vazquez", "texto": "Se cayó el caso, pero usted se levanta. Lea las notas y vuelve a entrar." },
+      { "quien": "navarro", "texto": "Ningún buen médico se libró de un caso difícil. Lo que importa es qué aprende de él." }
+    ],
+    "adjunto_revive": [
+      { "quien": "navarro", "texto": "Ya estoy aquí, doctor. Pedir ayuda a tiempo también es medicina. Vamos otra vez." },
+      { "quien": "navarro", "texto": "Con gusto lo apoyo. Despacito y con buena letra, que ya sabe cómo sigue." }
+    ],
+    "logro": [
+      { "quien": "vazquez", "texto": "¡Órale, logro nuevo! Eso va directo a su expediente." },
+      { "quien": "navarro", "texto": "Qué bonito detalle en su libreta. Se lo ganó a pulso." }
+    ],
+    "codex": [
+      { "quien": "navarro", "texto": "Aquí guarda lo que ha aprendido. Cada perla es una guardia que le dejó algo." },
+      { "quien": "vazquez", "texto": "Échele un ojo a sus logros. Algunos son en broma, pero se los ganó en serio." }
+    ]
+  }
+}

@@ -4,6 +4,7 @@ import type { PlayerStats, EnarmPearl, CaseResult } from '../types/game';
 import type { CaseProgress } from '../types/srs';
 import { applySM2, outcomeToQuality } from '../utils/srsEngine';
 import { safeStorage } from '../utils/safeStorage';
+import { evaluateAchievements, buildAchievementSnapshot, isNightHour, EMPTY_COUNTERS, type AchievementCounters, type AchievementDef } from '../utils/achievementsEngine';
 import { addFavorsCapped, nextDailyStreak, DAILY_FAVOR } from '../utils/favorsEngine';
 
 export interface SessionProgress {
@@ -30,6 +31,10 @@ interface CodexState {
   caseProgress: Record<string, CaseProgress>;
   /** Favores del Adjunto: earned by performance, capped, spent only on revive (ADR 011). */
   favors: number;
+  /** Unlocked achievements: id -> unlock timestamp. */
+  achievements: Record<string, number>;
+  /** Lifetime counters the machine does not keep (feed the achievements). */
+  counters: AchievementCounters;
   settings: {
     soundEnabled: boolean;
     hapticsEnabled: boolean;
@@ -43,6 +48,10 @@ interface CodexState {
   addCoins: (amount: number) => void;
   spendCoins: (amount: number) => boolean; // returns false if insufficient
   earnFavors: (amount: number) => void;
+  recordRevive: () => void;
+  noteCombo: (combo: number) => void;
+  /** Checks every achievement against the current state; returns the newly unlocked ones. */
+  unlockEarnedAchievements: (now?: number) => AchievementDef[];
   spendFavors: (amount: number) => boolean; // returns false if insufficient
   unlockPearl: (pearl: EnarmPearl) => void;
   registerCaseSolved: (caseId: string, score?: number, mistakes?: number) => void;
@@ -53,7 +62,7 @@ interface CodexState {
   commitSession: (results: CaseResult[], now?: number) => void;
   getCasesDueForReview: (now?: number) => string[];
   updateSwipeResult: (isCorrect: boolean) => void;
-  incrementSessions: () => void;
+  incrementSessions: (now?: Date) => void;
   updateDailyStreak: () => void;
   saveSessionProgress: (progress: SessionProgress) => void;
   clearSessionProgress: () => void;
@@ -95,6 +104,8 @@ export const useCodexStore = create<CodexState>()(
       caseStats: {},
       caseProgress: {},
       favors: 0,
+      achievements: {},
+      counters: EMPTY_COUNTERS,
       settings: {
         soundEnabled: true,
         hapticsEnabled: true,
@@ -137,6 +148,34 @@ export const useCodexStore = create<CodexState>()(
         return success;
       },
 
+      recordRevive: () => set((state) => ({
+        counters: { ...EMPTY_COUNTERS, ...state.counters, revives: (state.counters?.revives ?? 0) + 1 },
+      })),
+
+      noteCombo: (combo) => set((state) => {
+        if (combo <= (state.counters?.bestCombo ?? 0)) return state;
+        return { counters: { ...EMPTY_COUNTERS, ...state.counters, bestCombo: combo } };
+      }),
+
+      unlockEarnedAchievements: (now = Date.now()) => {
+        const state = get();
+        const snapshot = buildAchievementSnapshot({
+          stats: state.stats,
+          counters: state.counters,
+          dailyStreak: state.dailyStreak,
+          pearlCount: state.unlockedPearls.length,
+          caseProgress: state.caseProgress,
+          favors: state.favors,
+        });
+        const earned = evaluateAchievements(snapshot, state.achievements ?? {});
+        if (earned.length > 0) {
+          set((st) => ({
+            achievements: { ...st.achievements, ...Object.fromEntries(earned.map(a => [a.id, now])) },
+          }));
+        }
+        return earned;
+      },
+
       unlockPearl: (pearl) => set((state) => {
         if (state.unlockedPearls.find(p => p.id === pearl.id)) return state;
         return { unlockedPearls: [...state.unlockedPearls, pearl] };
@@ -176,7 +215,14 @@ export const useCodexStore = create<CodexState>()(
         for (const r of results) {
           caseProgress[r.caseId] = applySM2(caseProgress[r.caseId] ?? null, r.caseId, outcomeToQuality(r), now);
         }
-        return { caseProgress };
+        const counters = { ...EMPTY_COUNTERS, ...state.counters };
+        for (const r of results) {
+          if (r.outcome === 'perfect') counters.perfectCases += 1;
+          if (r.outcome === 'rescued') counters.rescuedCases += 1;
+          if (r.outcome === 'failed') counters.failedCases += 1;
+          counters.lethalErrors += r.lethalErrors;
+        }
+        return { caseProgress, counters };
       }),
 
       getCasesDueForReview: (now = Date.now()) =>
@@ -193,8 +239,13 @@ export const useCodexStore = create<CodexState>()(
         }
       })),
 
-      incrementSessions: () => set((state) => ({
-        stats: { ...state.stats, total_sessions: (state.stats.total_sessions ?? 0) + 1 }
+      incrementSessions: (now = new Date()) => set((state) => ({
+        stats: { ...state.stats, total_sessions: (state.stats.total_sessions ?? 0) + 1 },
+        counters: {
+          ...EMPTY_COUNTERS,
+          ...state.counters,
+          nightShifts: (state.counters?.nightShifts ?? 0) + (isNightHour(now.getHours()) ? 1 : 0),
+        },
       })),
 
       updateDailyStreak: () => set((state) => {

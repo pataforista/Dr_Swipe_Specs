@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useCodexStore } from '../store/useCodexStore';
@@ -25,8 +25,7 @@ function getRank(xp: number) {
 }
 
 export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
-  const { stats, unlockedPearls = [] } = useCodexStore();
-  const [activeTab, setActiveTab] = useState<'stats' | 'pearls'>('stats');
+  const { stats } = useCodexStore();
 
   const totalSwipes = stats.correct_swipes + stats.mistakes;
   const accuracy = totalSwipes > 0
@@ -69,32 +68,7 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
         </button>
       </div>
 
-      {/* Tabs */}
-      <div className="flex gap-4 mb-6 border-b border-slate-100 pb-2 relative z-10">
-        <button
-          onClick={() => setActiveTab('stats')}
-          className={`pb-2 text-xs font-black uppercase tracking-wider transition-all duration-200 ${
-            activeTab === 'stats' ? 'text-primary border-b-2 border-primary' : 'text-slate-400 hover:text-slate-600'
-          }`}
-        >
-          Estadísticas 📊
-        </button>
-        <button
-          onClick={() => setActiveTab('pearls')}
-          className={`pb-2 text-xs font-black uppercase tracking-wider transition-all duration-200 flex items-center gap-1.5 ${
-            activeTab === 'pearls' ? 'text-primary border-b-2 border-primary' : 'text-slate-400 hover:text-slate-600'
-          }`}
-        >
-          Códex de Perlas 🌟
-          {unlockedPearls.length > 0 && (
-            <span className="bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded-full text-[11px] font-black leading-none">
-              {unlockedPearls.length}
-            </span>
-          )}
-        </button>
-      </div>
-
-      {activeTab === 'stats' ? (
+      {(
         <>
           {/* Rank badge */}
           <div className="flex items-center gap-4 sm:gap-6 mb-6 sm:mb-8 p-4 sm:p-8 bg-slate-50 rounded-[2rem] sm:rounded-[2.5rem] border-2 border-white shadow-inner relative overflow-hidden">
@@ -172,38 +146,6 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
             </div>
           </div>
         </>
-      ) : (
-        <div className="flex flex-col gap-4 overflow-y-auto max-h-[360px] pr-1 relative z-10 scrollbar-thin">
-          {unlockedPearls.length === 0 ? (
-            <div className="text-center py-12 text-slate-400 text-sm italic lettering leading-relaxed">
-              "Aún no has desbloqueado perlas ENARM.<br />Resuelve casos clínicos con éxito para coleccionarlas en tu códex de estudio."
-            </div>
-          ) : (
-            unlockedPearls.map((pearl, i) => (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.05 }}
-                key={pearl.id || i}
-                className="bg-slate-50 border border-slate-100 rounded-2xl p-4 text-left shadow-sm hover:shadow-md transition-shadow relative overflow-hidden"
-              >
-                <div className="absolute top-0 right-0 w-24 h-2 bg-amber-200/50 -rotate-1" />
-                <div className="flex justify-between items-start mb-2 gap-2">
-                  <span className="text-[11px] font-black uppercase bg-primary/10 text-primary px-2 py-0.5 rounded-md">
-                    {pearl.category || 'General'}
-                  </span>
-                  {pearl.gpc_ref && (
-                    <span className="text-[11px] font-bold text-slate-400 uppercase">
-                      GPC: {pearl.gpc_ref}
-                    </span>
-                  )}
-                </div>
-                <h4 className="text-sm font-black text-slate-800 mb-1 leading-snug">{pearl.title}</h4>
-                <p className="text-xs text-slate-600 leading-relaxed font-medium">{pearl.text}</p>
-              </motion.div>
-            ))
-          )}
-        </div>
       )}
 
       <div className="mt-6 sm:mt-8 flex justify-center relative z-10">
