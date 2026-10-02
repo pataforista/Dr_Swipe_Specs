@@ -364,6 +364,7 @@ Tareas:
 | 013 | `ghosted` cuenta como error letal (SM-2 calidad 0) | Perder al paciente es el desenlace letal; el caso debe volver pronto al repaso. Test en `sessionFlow.test.ts` | Contar solo errores letales explícitos (calidad 1) |
 | 014 | La guardia estándar dura 3 casos (~5 min); SM-2 no penaliza el tiempo de respuesta | 3 casos caben en una sesión móvil y ya se descargan por lote (ADR 010). El reloj ya castiga la lentitud en el juego; penalizarla otra vez en el SRS mezclaría rapidez con retención | 5 o 10 casos; calidad SM-2 ajustada por tiempo |
 | 015 | Los logros son chistes de guardia con tono respetuoso; se evalúan por umbral sobre un snapshot único (`buildAchievementSnapshot`) y no dan recompensas | Un solo lugar mapea el estado a métricas (principio 3.4). Sin recompensas, el logro no desbalancea la economía de monedas y Favores. Un test impide groserías en logros y diálogos | Logros que pagan monedas o Favores; evaluarlos dentro de la máquina |
+| 016 | El swipe imita a Tinder: pivote bajo la carta, seguimiento vertical de ±70 px, umbral 32 % del ancho o flick ligero (0.5 px/ms con 24 px de recorrido), velocidad media para gestos cortos, salida con impulso y sin desvanecer hasta el final | La velocidad que reporta el puntero se suaviza por fotograma y subestima flicks cortos; la decisión vive en `swipePhysics.ts` (pura y con tests) | Umbral fijo de 40 %; solo velocidad del puntero |
 
 9. Preguntas abiertas
 Resueltas el 2026-10-02 (ADR 011 a 014):
