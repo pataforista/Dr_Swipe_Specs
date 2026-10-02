@@ -1,5 +1,5 @@
 import { setup, assign } from 'xstate';
-import type { Card, EnarmPearl, LoreItem, SessionState, CaseOutcome } from '../types/game';
+import type { Card, EnarmPearl, LoreItem, SessionState } from '../types/game';
 import { cleanMentorComment } from '../utils/formatters';
 import { parseVitalsFromText } from '../utils/vitalsParser';
 import { calculateCardScore, isLethalCard, undoChargesFor, VITALITY_HIT } from '../utils/scoringEngine';
@@ -30,7 +30,7 @@ export interface ResumeSnapshot {
   mistakesThisCase: number;
 }
 
-interface GameContext {
+export interface GameContext {
   deck: Card[];
   dossier: Card[];
   discarded: Card[];
@@ -108,28 +108,12 @@ type GameEvent =
   | { type: 'APPLY_REWARD_HEAL'; value: number }
   | { type: 'APPLY_REWARD'; heal: number; shield: number; undo: number; hint: boolean }
   | { type: 'CONTINUE_SHIFT'; deck: Card[]; puzzle?: EnarmPearl; isSandiaMode?: boolean; case_id?: string } // deck of the NEXT case
+  | { type: 'FINISH_SHIFT' } // reward -> victoria_guardia when no cases are left in the queue
   | { type: 'RESCUE' }
   | { type: 'BUY_UNDO' }
   | { type: 'REVIVE_INTERN' };
 
-const recordCaseResult = (resolveOutcome: (ctx: GameContext) => CaseOutcome) =>
-  assign(({ context }) => {
-    const now = Date.now();
-    const result = buildCaseResult(context, resolveOutcome(context), now);
-    return {
-      session: {
-        ...context.session,
-        caseResults: [...context.session.caseResults, result],
-      },
-      currentCardIndex: 0,
-      mistakesThisCase: 0,
-      lethalErrorsThisCase: 0,
-      wasRescued: false,
-      combo: 0,
-      caseStartedAt: now,
-      lastAction: null,
-    };
-  });
+const EMPTY_SESSION: SessionState = { startedAt: 0, caseResults: [], maxCombo: 0 };
 
 export const gameMachine = setup({
   types: {
@@ -137,6 +121,24 @@ export const gameMachine = setup({
     events: {} as GameEvent,
   },
   actions: {
+    // Append the finished case to the shift. These must not touch per-case
+    // counters: the reward/debrief screens still read them (mistakes, score,
+    // rescue flag); CONTINUE_SHIFT / RESTART reset them.
+    recordSuccess: assign(({ context }) => ({
+      session: {
+        ...context.session,
+        caseResults: [
+          ...context.session.caseResults,
+          buildCaseResult(context, computeSuccessOutcome(context.wasRescued, context.mistakesThisCase), Date.now()),
+        ],
+      },
+    })),
+    recordFailure: assign(({ context }) => ({
+      session: {
+        ...context.session,
+        caseResults: [...context.session.caseResults, buildCaseResult(context, 'failed', Date.now())],
+      },
+    })),
     resetGame: assign({
       deck: [],
       dossier: [],
@@ -157,18 +159,7 @@ export const gameMachine = setup({
       lootBoxReward: null,
       activePenalty: null,
       activeEvent: null,
-      session: {
-        startedAt: 0,
-        caseResults: [],
-        pearlsEarned: [],
-        casesCompleted: 0,
-        casesFailed: 0,
-        totalXP: 0,
-        totalCoins: 0,
-        maxCombo: 0,
-        correctSwipes: 0,
-        wrongSwipes: 0,
-      },
+      session: EMPTY_SESSION,
       feedbackHistory: [],
       lastVitals: null,
       isSandiaMode: false,
@@ -338,7 +329,10 @@ export const gameMachine = setup({
         lastVitals: nextVitals,
         feedbackHistory: [...context.feedbackHistory, newHistoryItem],
         lastAction: lastActionState,
-        undoCharges: nextUndoCharges
+        undoCharges: nextUndoCharges,
+        session: nextCombo > context.session.maxCombo
+          ? { ...context.session, maxCombo: nextCombo }
+          : context.session
       };
     })
   }
@@ -366,6 +360,7 @@ export const gameMachine = setup({
     activePenalty: null,
     lootBoxReward: null,
     activeEvent: null,
+    session: EMPTY_SESSION,
     feedbackHistory: [],
     lastVitals: null,
     lives: 5,
@@ -418,7 +413,8 @@ export const gameMachine = setup({
             caseId: ({ event }) => event.case_id || (event.deck[0] ? event.deck[0].card_id.split('_').slice(0, 2).join('_') : 'unknown'),
             pearlId: ({ event }) => event.pearl?.id || null,
             usedUndoThisCase: false,
-            lastAction: null
+            lastAction: null,
+            session: () => ({ ...EMPTY_SESSION, startedAt: Date.now() })
           })
         },
         RESUME_GUARD: {
@@ -461,7 +457,8 @@ export const gameMachine = setup({
             caseId: ({ event }) => event.case_id || (event.deck[0] ? event.deck[0].card_id.split('_').slice(0, 2).join('_') : 'unknown'),
             pearlId: ({ event }) => event.pearl?.id || null,
             usedUndoThisCase: false,
-            lastAction: null
+            lastAction: null,
+            session: () => ({ ...EMPTY_SESSION, startedAt: Date.now() })
           })
         }
       }
@@ -561,7 +558,7 @@ export const gameMachine = setup({
       }
     },
     reward: {
-      entry: [recordCaseResult(({ context }) => computeSuccessOutcome(context.wasRescued, context.mistakesThisCase))],
+      entry: ['recordSuccess'],
       on: {
         CONTINUE_SHIFT: {
           target: 'triage',
@@ -603,8 +600,14 @@ export const gameMachine = setup({
             pearlId: ({ event }) => event.puzzle?.id || null
           })
         },
+        FINISH_SHIFT: { target: 'victoria_guardia' },
         RESTART: { target: 'idle', actions: ['resetGame'] }
       }
+    },
+    victoria_guardia: {
+      // Shift cleared: the summary (PerformanceReview) is shown from here.
+      // Cleared via RESTART; a failed shift ends in `debrief` instead (ADR 006).
+      on: { RESTART: { target: 'idle', actions: ['resetGame'] } }
     },
     fail_protection: {
       always: [
@@ -673,7 +676,7 @@ export const gameMachine = setup({
       }
     },
     debrief: {
-      entry: [recordCaseResult(() => 'failed')],
+      entry: ['recordFailure'],
       on: { RESTART: { target: 'idle', actions: ['resetGame'] } }
     }
   }

@@ -14,6 +14,9 @@ import { safeStorage } from './utils/safeStorage';
 import { LIFELINE_COST, UNDO_COST, REVIVE_COST } from './store/useCodexStore';
 import { useCodexStore, type SessionProgress } from './store/useCodexStore';
 import { useFocusTrap } from './hooks/useFocusTrap';
+import { useSessionCommit } from './hooks/useSessionCommit';
+import { computeSessionMetrics } from './utils/sessionEngine';
+import { PerformanceReview } from './components/overlays/PerformanceReview';
 
 // None of these are needed for the first paint (idle screen / first card),
 // so they ship as separate chunks instead of bloating the initial bundle.
@@ -49,7 +52,7 @@ export function App() {
   const [state, send, actorRef] = useMachine(gameMachine);
   const { playFeedback, playGacha, playCodeRed, startTriageAlarm, stopTriageAlarm } = useGameAudio();
   const [currentCase, setCurrentCase] = useState<ClinicalCase | null>(null);
-  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak, lastPlayedDate, settings = { soundEnabled: true, hapticsEnabled: true }, updateSettings, caseStats } = useCodexStore();
+  const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak, lastPlayedDate, settings = { soundEnabled: true, hapticsEnabled: true }, updateSettings, commitSession, caseProgress } = useCodexStore();
   const [selectedSpecialty, setSelectedSpecialty] = useState<string>('all');
   const [showSettings, setShowSettings] = useState(false);
   const timeLimitRef = useRef<number>(60);
@@ -77,6 +80,10 @@ export function App() {
   const [mentorDialogue, setMentorDialogue] = useState<string | null>(null);
   const [mentorExpression, setMentorExpression] = useState<'neutral' | 'happy' | 'angry' | 'shocked'>('neutral');
   const [timeLeft, setTimeLeft] = useState(60);
+  // XP/coins actually granted this shift (they depend on score and daily streak),
+  // so the summary matches what the player received.
+  const [shiftPayout, setShiftPayout] = useState({ xp: 0, coins: 0 });
+  useSessionCommit(state.context.session.startedAt, state.context.session.caseResults, commitSession);
 
   const isTriage = state.matches('triage');
   const isOverlayActive = !!(state.context.activeEvent || state.context.activePenalty || state.context.lootBoxReward || showIntro);
@@ -95,7 +102,7 @@ export function App() {
   }, []);
 
   useEffect(() => {
-    if (state.matches('reward') || state.matches('ghosted') || state.matches('debrief')) clearSessionProgress();
+    if (state.matches('reward') || state.matches('victoria_guardia') || state.matches('ghosted') || state.matches('debrief')) clearSessionProgress();
   }, [state, clearSessionProgress]);
 
   // The interval depends only on whether the clock runs. It used to depend on
@@ -175,7 +182,7 @@ export function App() {
       const xpGained = Math.max(0, Math.floor(state.context.score * streakMult));
       addXp(xpGained);
       let totalCoins = state.context.coinsEarnedThisCase;
-      const isPerfectRound = state.context.mistakesThisCase === 0 && !state.context.hasRescuedThisCase && !state.context.usedUndoThisCase;
+      const isPerfectRound = state.context.mistakesThisCase === 0 && !state.context.wasRescued && !state.context.usedUndoThisCase;
       if (isPerfectRound) {
         const bonus = calculatePerfectRoundBonus(state.context.deck.length, state.context.difficulty);
         totalCoins += bonus;
@@ -184,6 +191,8 @@ export function App() {
         showToast(`+${totalCoins} 🪙`, 'coins');
       }
       addCoins(totalCoins);
+      // Deferred like the toast: setState inside this effect would cascade renders.
+      window.setTimeout(() => setShiftPayout(p => ({ xp: p.xp + xpGained, coins: p.coins + totalCoins })), 0);
       registerCaseSolved(currentCase.case_id, state.context.score, state.context.mistakesThisCase);
       const pearl = currentCase.enarm_pearl ?? currentCase.perla_enarm;
       if (pearl) unlockPearl(pearl);
@@ -206,6 +215,7 @@ export function App() {
     setIsStudyModeActive(studyMode);
     incrementSessions();
     updateDailyStreak();
+    setShiftPayout({ xp: 0, coins: 0 });
     try {
       send({ type: 'RESTART' });
       const excludeIds = useCodexStore.getState().history.slice(-30);
@@ -265,11 +275,10 @@ export function App() {
   };
 
   const startMistakesRepass = async () => {
-    const statsObj = useCodexStore.getState().caseStats || {};
-    const failedCaseIds = Object.keys(statsObj).filter(id => statsObj[id].mistakes > 0);
-    
+    const failedCaseIds = useCodexStore.getState().getCasesDueForReview();
+
     if (failedCaseIds.length === 0) {
-      showToast("¡No tienes casos fallados para repasar! 🌟", "milestone");
+      showToast("¡No tienes casos pendientes de repaso! 🌟", "milestone");
       return;
     }
     
@@ -458,6 +467,7 @@ export function App() {
                     deck: pendingDeckRef.current,
                     difficulty: snapshot.difficulty,
                     pearl: currentCase.enarm_pearl ?? currentCase.perla_enarm,
+                    case_id: currentCase.case_id,
                     snapshot: {
                       currentCardIndex: snapshot.currentCardIndex,
                       score: snapshot.score,
@@ -469,9 +479,9 @@ export function App() {
                     }
                   });
                 } else if (state.matches('idle')) {
-                  send({ type: 'START_GUARD', deck: pendingDeckRef.current, difficulty: currentCase.difficulty || 'standard', pearl: currentCase.enarm_pearl ?? currentCase.perla_enarm, isSandiaMode: isStudyModeActive });
+                  send({ type: 'START_GUARD', deck: pendingDeckRef.current, difficulty: currentCase.difficulty || 'standard', pearl: currentCase.enarm_pearl ?? currentCase.perla_enarm, isSandiaMode: isStudyModeActive, case_id: currentCase.case_id });
                 } else {
-                  send({ type: 'CONTINUE_SHIFT', deck: pendingDeckRef.current, puzzle: currentCase.enarm_pearl ?? currentCase.perla_enarm, isSandiaMode: isStudyModeActive });
+                  send({ type: 'CONTINUE_SHIFT', deck: pendingDeckRef.current, puzzle: currentCase.enarm_pearl ?? currentCase.perla_enarm, isSandiaMode: isStudyModeActive, case_id: currentCase.case_id });
                 }
               }}
               className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl group"
@@ -542,7 +552,7 @@ export function App() {
               </button>
 
               {/* Repasar Errores Button */}
-              {Object.values(caseStats ?? {}).some(s => s.mistakes > 0) && (
+              {Object.values(caseProgress).some(p => p.nextReviewDate <= Date.now()) && (
                 <button onClick={() => startMistakesRepass()} disabled={isLoadingCase} className="marker-btn py-4 sm:py-5 text-base sm:text-xl !bg-rose-600 !border-rose-500 shadow-rose-200">
                    REPASAR MIS ERRORES 🖍️
                 </button>
@@ -600,15 +610,23 @@ export function App() {
             score={state.context.score}
             xpTotal={Math.max(0, Math.floor(state.context.score * getDailyStreakMultiplier(dailyStreak)))}
             coins={state.context.coinsEarnedThisCase}
-            isPerfect={state.context.mistakesThisCase === 0 && !state.context.hasRescuedThisCase && !state.context.usedUndoThisCase}
+            isPerfect={state.context.mistakesThisCase === 0 && !state.context.wasRescued && !state.context.usedUndoThisCase}
             perfectBonus={calculatePerfectRoundBonus(state.context.deck.length, state.context.difficulty)}
             pearl={currentCase?.enarm_pearl ?? currentCase?.perla_enarm}
             feedbackHistoryCount={state.context.feedbackHistory.length}
             onViewRetro={() => setShowRetro(true)}
             onContinue={() => {
               if (caseQueue.length > 0) handleCaseTransition();
-              else send({ type: 'RESTART' });
+              else send({ type: 'FINISH_SHIFT' });
             }}
+          />
+        );
+      case state.matches('victoria_guardia'):
+        return (
+          <PerformanceReview
+            metrics={computeSessionMetrics(state.context.session, shiftPayout)}
+            mode="victory"
+            onClose={() => send({ type: 'RESTART' })}
           />
         );
       case state.matches('ghosted'):

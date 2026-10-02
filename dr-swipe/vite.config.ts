@@ -41,7 +41,7 @@ export default defineConfig({
         runtimeCaching: [
           {
             // The index must revalidate so newly published cases appear.
-            urlPattern: ({ url }) => url.pathname === '/cases/case_index.json',
+            urlPattern: ({ url }) => url.pathname === '/cases/case_index.json' || url.pathname === '/cases/manifest.json',
             handler: 'StaleWhileRevalidate',
             options: { cacheName: 'clinical-cases-index' }
           },
@@ -52,7 +52,8 @@ export default defineConfig({
             handler: 'CacheFirst',
             options: {
               cacheName: 'clinical-cases-cache',
-              expiration: { maxEntries: 650, maxAgeSeconds: 60 * 60 * 24 * 30 },
+              // 4000 entries: headroom for the 3,000+ case target (Phase 4)
+              expiration: { maxEntries: 4000, maxAgeSeconds: 60 * 60 * 24 * 30 },
               cacheableResponse: { statuses: [200] }
             }
           },

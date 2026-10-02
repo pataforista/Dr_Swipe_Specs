@@ -116,7 +116,7 @@ export const PerformanceReview: React.FC<PerformanceReviewProps> = ({ metrics, m
                 <Brain className="w-5 h-5 text-indigo-500 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="text-sm font-bold text-indigo-900">
-                    {metrics.casesToReview} {metrics.casesToReview === 1 ? 'caso' : 'casos'} para repasar
+                    {metrics.casesScheduledAhead} {metrics.casesScheduledAhead === 1 ? 'caso' : 'casos'} para repasar
                   </p>
                   <p className="text-xs font-medium text-indigo-700/70 mt-0.5 leading-tight">
                     Programado en tu sistema de estudio. Te lo volveremos a preguntar pronto para asegurar la memoria a largo plazo.
