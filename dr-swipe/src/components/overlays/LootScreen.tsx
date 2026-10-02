@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import type { EnarmPearl } from '../../types/game';
+import { MENTOR_NAMES, MENTOR_ICONS, type MentorLine } from '../../utils/dialogEngine';
 
 interface LootScreenProps {
   score: number;
@@ -13,10 +14,12 @@ interface LootScreenProps {
   pearl?: EnarmPearl;
   feedbackHistoryCount?: number;
   onViewRetro?: () => void;
+  /** Comment from Dra. Navarro / Dr. Vázquez on how the case went. */
+  mentorLine?: MentorLine;
 }
 
 export const LootScreen: React.FC<LootScreenProps> = ({ 
-  score, xpTotal, coins, isPerfect, perfectBonus = 0, onContinue, pearl, feedbackHistoryCount = 0, onViewRetro
+  score, xpTotal, coins, isPerfect, perfectBonus = 0, onContinue, pearl, feedbackHistoryCount = 0, onViewRetro, mentorLine
 }) => {
   return (
     <motion.div 
@@ -40,6 +43,12 @@ export const LootScreen: React.FC<LootScreenProps> = ({
         </motion.div>
         <h2 className="text-4xl sm:text-5xl font-black text-slate-800 lettering uppercase tracking-tight">Botín de Guardia</h2>
         <div className="h-1 w-24 bg-amber-200 mx-auto mt-2 rounded-full" />
+        {mentorLine && (
+          <p className="mt-4 text-xs sm:text-sm text-slate-600 leading-relaxed italic normal-case">
+            <span className="not-italic font-black text-slate-700">{MENTOR_ICONS[mentorLine.quien]} {MENTOR_NAMES[mentorLine.quien]}: </span>
+            {mentorLine.texto}
+          </p>
+        )}
       </div>
 
       {/* Items List */}

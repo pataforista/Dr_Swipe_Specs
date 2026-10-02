@@ -329,7 +329,7 @@ Tareas:
 Objetivo: Razones para volver mañana.
 Tareas:
 - [x] Moneda blanda "Favores del Adjunto" (`utils/favorsEngine.ts`, store, revive, HUD).
-- [x] Diálogos del Dr. Navarro/Vázquez (`data/lore/mentorDialogs.json`, `utils/dialogEngine.ts`): saludo del menú, pantalla de paciente perdido, revive y logros. Quedan sin conectar los contextos `guardia_inicio`, `caso_perfecto` y `caso_con_errores`.
+- [x] Diálogos del Dr. Navarro/Vázquez (`data/lore/mentorDialogs.json`, `utils/dialogEngine.ts`): saludo del menú, hoja de expediente (`guardia_inicio`), botín de guardia (`caso_perfecto` / `caso_con_errores`), paciente perdido, revive y logros. Los 8 contextos están conectados.
 - [x] Pantalla "Codex" (`components/CodexScreen.tsx`): logros, perlas y casos por especialidad. Las perlas salieron de `StatsDashboard` (una sola fuente).
 - [x] Logros / achievements: 17 en `data/lore/achievements.json`, evaluados por `utils/achievementsEngine.ts`.
 
@@ -393,4 +393,4 @@ Nunca empezar Fase N+1 con Fase N en 🟡.
 | 0.7.0 | 2026-10-02 | Fase 5 iniciada: Favores del Adjunto, racha con día de gracia, decisiones ADR 011 a 014 |
 | 0.8.0 | 2026-10-02 | Fase 5 completa en lo planificado: Códex, diálogos Navarro/Vázquez y 17 logros |
 
-Siguiente acción concreta: prueba manual en móvil (guardia de 3 casos, Favores y Códex). Después, conectar los diálogos que faltan (`guardia_inicio`, `caso_perfecto`, `caso_con_errores`), diseñar el simulacro ENARM y revisar el balance con la tasa de logros desbloqueados.
+Siguiente acción concreta: prueba manual en móvil (guardia de 3 casos, Favores y Códex). Después, diseñar el simulacro ENARM y revisar el balance con la tasa de logros desbloqueados.

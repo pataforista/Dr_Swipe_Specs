@@ -20,3 +20,10 @@ export function greetingContext(lastPlayedDate: string | null, today: string): D
   const gap = Math.round((Date.parse(today) - Date.parse(lastPlayedDate)) / 86_400_000);
   return Number.isFinite(gap) && gap >= 3 ? 'regreso' : 'bienvenida';
 }
+
+/** Deterministic 0..1 value from a string, so a case keeps the same line across re-renders. */
+export function seededRng(seed: string): () => number {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
+  return () => (h % 1000) / 1000;
+}

@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { ACHIEVEMENTS, evaluateAchievements, buildAchievementSnapshot, isNightHour, EMPTY_COUNTERS } from '../utils/achievementsEngine';
 import dialogsData from '../data/lore/mentorDialogs.json';
-import { pickDialog, greetingContext, type DialogContext } from '../utils/dialogEngine';
+import { pickDialog, seededRng, greetingContext, type DialogContext } from '../utils/dialogEngine';
 import { getSpecialtyStats } from '../utils/codexStats';
 import { useCodexStore } from '../store/useCodexStore';
 import type { CaseResult } from '../types/game';
@@ -95,6 +95,11 @@ describe('diálogos de los mentores', () => {
   it('pickDialog no repite la última línea cuando hay alternativas', () => {
     const first = pickDialog('bienvenida', () => 0);
     for (let i = 0; i < 20; i++) expect(pickDialog('bienvenida', Math.random, first.texto).texto).not.toBe(first.texto);
+  });
+  it('la línea de un caso es estable entre renders y siempre válida', () => {
+    const a = pickDialog('caso_perfecto', seededRng('PROC_PED_X_001_001'));
+    expect(pickDialog('caso_perfecto', seededRng('PROC_PED_X_001_001'))).toEqual(a);
+    for (const id of ['', 'a', 'PROC_OBS_Z_001_015']) expect(pickDialog('guardia_inicio', seededRng(id)).texto).toBeTruthy();
   });
   it('tras 3 días de ausencia saluda con "regreso"', () => {
     expect(greetingContext(null, '2026-10-02')).toBe('bienvenida');

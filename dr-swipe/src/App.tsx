@@ -3,7 +3,7 @@ import { useMachine } from '@xstate/react';
 import { gameMachine } from './machines/gameMachine';
 import { SwipeDeck } from './components/SwipeDeck';
 import { X } from 'lucide-react';
-import { useState, useEffect, useRef, useCallback, lazy, Suspense } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo, lazy, Suspense } from 'react';
 import type { Card, ClinicalCase } from './types/game';
 import { dataLoader } from './utils/dataLoader';
 import { useGameAudio } from './hooks/useGameAudio';
@@ -12,7 +12,7 @@ import { triggerHaptic } from './utils/hapticFeedback';
 import { calculatePerfectRoundBonus, getDailyStreakMultiplier, computeTimeLimit, isLethalCard, COMBO_MILESTONES } from './utils/scoringEngine';
 import { safeStorage } from './utils/safeStorage';
 import { LIFELINE_COST, UNDO_COST } from './store/useCodexStore';
-import { pickDialog, greetingContext, MENTOR_NAMES, MENTOR_ICONS } from './utils/dialogEngine';
+import { pickDialog, seededRng, greetingContext, MENTOR_NAMES, MENTOR_ICONS } from './utils/dialogEngine';
 import { favorsForCase, REVIVE_FAVOR_COST } from './utils/favorsEngine';
 import { computeSuccessOutcome } from './utils/rewardsEngine';
 import { useCodexStore, type SessionProgress } from './store/useCodexStore';
@@ -239,6 +239,11 @@ export function App() {
 
   // One greeting per visit to the menu (Dra. Navarro / Dr. Vázquez).
   const [menuGreeting] = useState(() => pickDialog(greetingContext(lastPlayedDate, new Date().toISOString().slice(0, 10))));
+  // One line per case: the opening remark on the intro sheet and the verdict on the loot screen.
+  const rewardIsPerfect = state.context.mistakesThisCase === 0 && !state.context.wasRescued && !state.context.usedUndoThisCase;
+  const caseKey = currentCase?.case_id;
+  const introLine = useMemo(() => (caseKey ? pickDialog('guardia_inicio', seededRng(caseKey)) : null), [caseKey]);
+  const rewardLine = useMemo(() => pickDialog(rewardIsPerfect ? 'caso_perfecto' : 'caso_con_errores', seededRng(caseKey ?? '')), [caseKey, rewardIsPerfect]);
   const [ghostedLine] = useState(() => pickDialog('paciente_perdido'));
 
   const startNewCase = async (studyMode = false, specialty = 'all') => {
@@ -486,7 +491,13 @@ export function App() {
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 sm:w-40 h-6 sm:h-8 washi-tape-pink -rotate-1 shadow-sm" />
             <span className="text-[11px] sm:text-[10px] font-bold text-slate-400 uppercase lettering block mt-3 sm:mt-4 mb-1 sm:mb-2">EXPEDIENTE MÉDICO 📔</span>
             <h2 className="text-3xl sm:text-5xl font-black text-slate-800 lettering mb-3 sm:mb-4 break-words">{currentCase.patient_intro.name}</h2>
-            <div className="bg-slate-50 p-4 sm:p-6 rounded-2xl mb-6 sm:mb-8 border-2 border-dashed border-slate-100 italic lettering text-base sm:text-lg">"{currentCase.patient_intro.arrival_scenario}"</div>
+            <div className="bg-slate-50 p-4 sm:p-6 rounded-2xl mb-4 border-2 border-dashed border-slate-100 italic lettering text-base sm:text-lg">"{currentCase.patient_intro.arrival_scenario}"</div>
+            {introLine && (
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed italic mb-6 sm:mb-8">
+                <span className="not-italic font-black text-slate-700">{MENTOR_ICONS[introLine.quien]} {MENTOR_NAMES[introLine.quien]}: </span>
+                {introLine.texto}
+              </p>
+            )}
             <button
               onClick={() => {
                 setShowIntro(false);
@@ -648,7 +659,8 @@ export function App() {
             score={state.context.score}
             xpTotal={Math.max(0, Math.floor(state.context.score * getDailyStreakMultiplier(dailyStreak)))}
             coins={state.context.coinsEarnedThisCase}
-            isPerfect={state.context.mistakesThisCase === 0 && !state.context.wasRescued && !state.context.usedUndoThisCase}
+            isPerfect={rewardIsPerfect}
+            mentorLine={rewardLine}
             perfectBonus={calculatePerfectRoundBonus(state.context.deck.length, state.context.difficulty)}
             pearl={currentCase?.enarm_pearl ?? currentCase?.perla_enarm}
             feedbackHistoryCount={state.context.feedbackHistory.length}
