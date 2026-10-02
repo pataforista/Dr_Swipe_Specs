@@ -1,12 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { buildManifest } from './manifest.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const publicCasesDir = path.join(__dirname, 'public', 'cases');
 const indexPath = path.join(publicCasesDir, 'case_index.json');
+const manifestPath = path.join(publicCasesDir, 'manifest.json');
 
 try {
   const files = fs.readdirSync(publicCasesDir);
@@ -16,6 +18,9 @@ try {
     .sort();
 
   fs.writeFileSync(indexPath, JSON.stringify(caseIds, null, 2));
+  const manifest = buildManifest(caseIds);
+  fs.writeFileSync(manifestPath, JSON.stringify(manifest));
+  console.log(`manifest.json: ${Object.entries(manifest.specialties).map(([k, v]) => `${k}=${v.length}`).join(' ')}`);
   console.log(`Successfully regenerated case_index.json with ${caseIds.length} IDs.`);
 } catch (error) {
   console.error('Error regenerating case index:', error.message);

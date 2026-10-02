@@ -5,7 +5,7 @@ Toda decisión de código, contenido o diseño debe poder rastrearse hasta aquí
 Si algo no está en este documento, no existe todavía. Si algo cambia, se actualiza aquí antes de tocar código.
 
 Última actualización: 2026-10-02
-Versión del proyecto: 0.5.0-alpha
+Versión del proyecto: 0.6.0-alpha
 Estado global: 🟡 En construcción activa
 
 🧭 Índice
@@ -42,7 +42,7 @@ Regla de oro: nunca se empieza una fase nueva sin marcar la anterior como ✅ Ce
 | commitSession + SRS | ✅ | Store v2 con `caseProgress`; migración v0/v1 → v2 |
 | Contenido | ✅ | 599 casos, descarte global 41 % (ver PLAN_SIGUIENTES_PASOS.md) |
 | CI (validación de casos, tests, build, deploy) | ✅ | `.github/workflows/cloudflare-deploy.yml` |
-| Lazy Loading de casos | ❌ | Planificado para Fase 4 |
+| Lazy Loading de casos | ✅ | Manifest + un archivo por caso; 3 descargas por guardia |
 | "Favores del Adjunto" (moneda blanda) | ❌ | Planificado para Fase 5 |
 
 Leyenda: ✅ Cerrado · 🟡 En progreso · ❌ No iniciado · ⏸️ Pausado · 🔴 Bloqueado
@@ -163,8 +163,8 @@ Dr_Swipe_Specs/
 │
 ├── dr-swipe/
 │   ├── public/cases/
-│   │   ├── manifest.json        ← [Fase 4] índice de especialidades
-│   │   └── cardiologia.json     ← [Fase 4] segmentado
+│   │   ├── manifest.json        ← generado: ids por especialidad
+│   │   └── CASE_*.json          ← generados desde ../cases (un archivo por caso)
 │   │
 │   ├── src/
 │   │   ├── components/
@@ -216,7 +216,8 @@ Dr_Swipe_Specs/
 | Función | Firma | Estado |
 |---|---|---|
 | loadCases | (specialty, count, excludeIds) => Promise<ClinicalCase[]> | ✅ |
-| loadCasesBySpecialty | (specialty) => Promise<ClinicalCase[]> | ❌ Fase 4 |
+| loadManifest / idsForSpecialty | () => Promise<CaseManifest> / (manifest, specialty) => string[] | ✅ |
+| loadRandomCases | (count, specialty, excludeIds) => Promise<ClinicalCase[]> | ✅ |
 | loadCaseById | (caseId) => Promise<ClinicalCase> | ✅ (usado por el repaso SRS) |
 
 6.3 utils/srsEngine.ts (Fase 3)
@@ -312,13 +313,14 @@ DoD:
 - [x] Fallo reprograma a now + 1d.
 - [x] Migración v1 a v2 sin pérdida.
 
-🟦 Fase 4 — Escalado de contenido
+🟩 Fase 4 — Escalado de contenido ✅ CERRADA
 Objetivo: Soportar 3,000+ casos sin degradar rendimiento móvil.
 Tareas:
-- [ ] Segmentar cases/ por especialidad → public/cases/{specialty}.json.
-- [ ] Crear manifest.json.
-- [ ] dataLoader carga especialidad activa.
-- [ ] Validación Zod diferida.
+- [x] Segmentar por especialidad vía `manifest.json` (ver ADR 010: se mantiene un archivo por caso en vez de `{specialty}.json`).
+- [x] Crear manifest.json (lo genera `regen_index.js` en predev/prebuild con `manifest.js`).
+- [x] dataLoader resuelve la especialidad desde el manifest y descarga solo los casos elegidos.
+- [x] Validación Zod diferida (por caso, al cargarlo).
+- [x] Caché PWA con holgura para 3,000+ casos (maxEntries 4000) y manifest con StaleWhileRevalidate.
 
 🟪 Fase 5 — Meta-progresión
 Objetivo: Razones para volver mañana.
@@ -352,6 +354,7 @@ Tareas:
 | 006 | caseQueue empty = victoria | Un turno fallido no es victoria | Unificar debrief con victoria |
 | 007 | session solo guarda caseResults; XP/coins se derivan | Evita doble fuente de verdad (Principio 3.4) | Acumular totalXP/totalCoins |
 | 008 | CaseResult se graba en reward/debrief, no en ghosted | ghosted es transitorio (rescate lo revierte) | Grabar en ghosted y actualizar si rescata |
+| 010 | Manifest por especialidad con un archivo por caso (no `{specialty}.json`) | Un bundle por especialidad obligaría a descargar cientos de casos para jugar 3; el archivo por caso ya escala y se cachea | Bundles por especialidad; paginar el índice |
 | 009 | commitSession solo alimenta el SRS | El XP/monedas ya se pagan por caso; pagarlos al cerrar duplicaría | Mover el pago al cierre de guardia |
 
 9. Preguntas abiertas
@@ -374,5 +377,6 @@ Nunca empezar Fase N+1 con Fase N en 🟡.
 | 0.3.0 | — | PerformanceReview creado, SRS diseñado |
 | 0.4.0 | 2026-10-01 | Documento maestro instaurado, Fase 2 en progreso |
 | 0.5.0 | 2026-10-02 | Build reparado; Fases 2 y 3 cerradas (cierre de guardia, SRS, store v2) |
+| 0.6.0 | 2026-10-02 | Fase 4 cerrada: manifest por especialidad, caché PWA para 3,000+ casos |
 
-Siguiente acción concreta: Fase 4 → segmentar cases/ por especialidad (manifest.json + public/cases/{specialty}.json). Antes, prueba manual de una guardia de 3 casos en móvil.
+Siguiente acción concreta: Fase 5 → antes de codificar, resolver las preguntas abiertas de la sección 9 (cómo se ganan los "Favores del Adjunto", duración de la guardia). Antes, prueba manual de una guardia de 3 casos en móvil.
