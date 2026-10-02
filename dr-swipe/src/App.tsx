@@ -4,6 +4,7 @@ import { gameMachine } from './machines/gameMachine';
 import { SwipeDeck } from './components/SwipeDeck';
 import { X } from 'lucide-react';
 import type { ReactNode } from 'react';
+import { ToastQueue, toastHoldMs, type ToastType } from './utils/toastQueue';
 import { useState, useEffect, useRef, useCallback, useMemo, lazy, Suspense } from 'react';
 import type { Card, ClinicalCase } from './types/game';
 import { dataLoader } from './utils/dataLoader';
@@ -77,7 +78,7 @@ export function App() {
   const [isLoadingCase, setIsLoadingCase] = useState(false);
   const [showRetro, setShowRetro] = useState(false);
   const [caseQueue, setCaseQueue] = useState<ClinicalCase[]>([]);
-  const [rewardToast, setRewardToast] = useState<{ show: boolean; text: string; type: 'coins' | 'xp' | 'milestone' }>({ show: false, text: '', type: 'coins' });
+  const [rewardToast, setRewardToast] = useState<{ show: boolean; text: string; type: ToastType }>({ show: false, text: '', type: 'coins' });
   const [showIntro, setShowIntro] = useState(false);
   const [lastSwipePoints, setLastSwipePoints] = useState<number | null>(null);
   const [swipeFeedback, setSwipeFeedback] = useState<'correct' | 'wrong' | null>(null);
@@ -101,11 +102,37 @@ export function App() {
   const codexTrapRef = useFocusTrap<HTMLDivElement>(showCodex, () => setShowCodex(false));
   const retroTrapRef = useFocusTrap<HTMLDivElement>(showRetro, () => setShowRetro(false));
 
-  const showToast = useCallback((text: string, type: 'coins' | 'xp' | 'milestone' = 'coins') => {
+  const toastQueueRef = useRef(new ToastQueue());
+  const toastTimersRef = useRef<number[]>([]);
+  const pumpToastRef = useRef<() => void>(() => {});
+  useEffect(() => {
+   pumpToastRef.current = () => {
+    const next = toastQueueRef.current.start();
+    if (!next) return;
+    setRewardToast({ show: true, text: next.text, type: next.type });
+    const hide = window.setTimeout(() => {
+      setRewardToast(prev => ({ ...prev, show: false }));
+      // Short gap so the exit animation finishes before the next one enters.
+      const gap = window.setTimeout(() => {
+        toastQueueRef.current.finish();
+        pumpToastRef.current();
+      }, 350);
+      toastTimersRef.current.push(gap);
+    }, toastHoldMs(next.text));
+    toastTimersRef.current.push(hide);
+   };
+  }, []);
+  useEffect(() => {
+    const timers = toastTimersRef;
+    const queue = toastQueueRef.current;
+    return () => { timers.current.forEach(window.clearTimeout); queue.reset(); };
+  }, []);
+
+  const showToast = useCallback((text: string, type: ToastType = 'coins') => {
+    if (!toastQueueRef.current.enqueue({ text, type })) return;
     // Deferred a tick: the reward payout effect calls this while React is
     // still committing, and a synchronous setState there cascades renders.
-    window.setTimeout(() => setRewardToast({ show: true, text, type }), 0);
-    window.setTimeout(() => setRewardToast(prev => ({ ...prev, show: false })), 2500);
+    window.setTimeout(() => pumpToastRef.current(), 0);
   }, []);
 
   useEffect(() => {
