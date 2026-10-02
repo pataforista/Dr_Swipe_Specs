@@ -3,6 +3,7 @@ import { useMachine } from '@xstate/react';
 import { gameMachine } from './machines/gameMachine';
 import { SwipeDeck } from './components/SwipeDeck';
 import { X } from 'lucide-react';
+import type { ReactNode } from 'react';
 import { useState, useEffect, useRef, useCallback, useMemo, lazy, Suspense } from 'react';
 import type { Card, ClinicalCase } from './types/game';
 import { dataLoader } from './utils/dataLoader';
@@ -483,6 +484,15 @@ export function App() {
     send({ type: 'ANSWER_WRONG', error });
   }, [stopTriageAlarm, playFeedback, send]);
 
+  // Long panels (loot, defeat, debrief) can exceed the phone viewport while the
+  // app root is overflow-hidden. `min-h-full` + centering keeps short ones
+  // centered; taller ones scroll instead of being clipped top and bottom.
+  const scrollPanel = (node: ReactNode) => (
+    <div className="fixed inset-0 z-[120] overflow-y-auto overscroll-contain bg-[#FDFBF7]" style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}>
+      <div className="min-h-full flex items-center justify-center py-6 px-2">{node}</div>
+    </div>
+  );
+
   const renderCurrentView = () => {
     if (showIntro && currentCase) {
       return (
@@ -538,7 +548,8 @@ export function App() {
     switch (true) {
       case state.matches('idle'):
         return (
-          <div className="fixed inset-0 bg-[#FDFBF7] flex flex-col items-center justify-center p-4 sm:p-8 overflow-hidden z-[120]">
+          <div className="fixed inset-0 bg-[#FDFBF7] overflow-y-auto overscroll-contain z-[120]" style={{ touchAction: 'pan-y' }}>
+           <div className="min-h-full flex flex-col items-center justify-center p-4 sm:p-8">
             <div className="text-center mb-6 sm:mb-10">
               <span className="text-[11px] sm:text-[10px] font-black tracking-widest text-primary uppercase mb-2 block lettering">NOTAS DE ESTUDIO ✨</span>
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-black text-slate-800 lettering drop-shadow-sm">Dr. Swipe</h1>
@@ -619,6 +630,7 @@ export function App() {
                 <button onClick={() => setShowSettings(true)} className="text-[10px] sm:text-[11px] font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Ajustes ⚙️</button>
               </div>
             </div>
+           </div>
           </div>
         );
       case state.matches('triage'):
@@ -654,7 +666,7 @@ export function App() {
           </Suspense>
         );
       case state.matches('reward'):
-        return (
+        return scrollPanel(
           <LootScreen
             score={state.context.score}
             xpTotal={Math.max(0, Math.floor(state.context.score * getDailyStreakMultiplier(dailyStreak)))}
@@ -680,7 +692,7 @@ export function App() {
           />
         );
       case state.matches('ghosted'):
-        return (
+        return scrollPanel(
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-6 sm:p-10 max-w-md w-full text-center shadow-xl relative mx-4">
             <div className="absolute top-0 left-0 w-full h-2 bg-rose-400" />
             <div className="text-6xl sm:text-7xl mb-4 sm:mb-6 mt-3 sm:mt-4">💀</div>
@@ -716,7 +728,7 @@ export function App() {
           </motion.div>
         );
       case state.matches('debrief'):
-        return (
+        return scrollPanel(
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-6 sm:p-10 max-w-md w-full text-left shadow-xl relative mx-4">
             <div className="mb-4 sm:mb-6">
               <span className="bg-rose-500 text-white px-3 sm:px-4 py-1 rounded-lg lettering text-sm sm:text-base shadow-sm rotate-[-2deg] inline-block">
