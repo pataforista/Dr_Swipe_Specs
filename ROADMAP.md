@@ -1,11 +1,11 @@
-| 006 | caseQueue empty = victoria | Un turno fallido no es victoria | Unificar debrief con victoria |\n| 007 | session solo guarda caseResults; XP/coins se derivan | Evita doble fuente de verdad (Principio 3.4) | Acumular totalXP/totalCoins |\n| 008 | CaseResult se graba en reward/debrief, no en ghosted | ghosted es transitorio (rescate lo revierte) | Grabar en ghosted y actualizar si rescata |ROADMAP.md — Documento Maestro de Dr. Swipe
+ROADMAP.md — Documento Maestro de Dr. Swipe
 
 Este es el primer archivo que se abre cada sesión de trabajo.
 Toda decisión de código, contenido o diseño debe poder rastrearse hasta aquí.
 Si algo no está en este documento, no existe todavía. Si algo cambia, se actualiza aquí antes de tocar código.
 
-Última actualización: 2026-10-01
-Versión del proyecto: 0.4.0-alpha
+Última actualización: 2026-10-02
+Versión del proyecto: 0.5.0-alpha
 Estado global: 🟡 En construcción activa
 
 🧭 Índice
@@ -37,9 +37,11 @@ Regla de oro: nunca se empieza una fase nueva sin marcar la anterior como ✅ Ce
 | UI Triage (SwipeDeck) | ✅ | Botones + teclado + swipe |
 | Motor háptico / audio | ✅ | useGameAudio, hapticFeedback.ts con bandera lastAction |
 | Boss Fight (ShockRoom) | 🟡 | Funcional, pendiente de balance |
-| Estados XState completos | 🟡 | Falta victoria_guardia conectado |
-| PerformanceReview | 🟡 | Componente creado, no conectado |
-| commitSession + SRS | ❌ | Diseñado, sin implementar |
+| Estados XState completos | ✅ | `victoria_guardia` conectado (evento `FINISH_SHIFT`) |
+| PerformanceReview | ✅ | Conectado a `victoria_guardia` con `computeSessionMetrics` |
+| commitSession + SRS | ✅ | Store v2 con `caseProgress`; migración v0/v1 → v2 |
+| Contenido | ✅ | 599 casos, descarte global 41 % (ver PLAN_SIGUIENTES_PASOS.md) |
+| CI (validación de casos, tests, build, deploy) | ✅ | `.github/workflows/cloudflare-deploy.yml` |
 | Lazy Loading de casos | ❌ | Planificado para Fase 4 |
 | "Favores del Adjunto" (moneda blanda) | ❌ | Planificado para Fase 5 |
 
@@ -98,16 +100,21 @@ export type ClinicalCase = {
 export type CaseOutcome = 'perfect' | 'correct_with_errors' | 'rescued' | 'failed';
 export type CaseResult = {
   caseId: string;
-  specialty: string;
+  specialty: Specialty;
   outcome: CaseOutcome;
   mistakes: number;
   lethalErrors: number;
   timeSpentMs: number;
+  cardsSeen: number;
+  xpEarned: number;
+  coinsEarned: number;
+  pearlId: string | null;
 };
+// XP, monedas y perlas se derivan de caseResults (ADR 007).
 export type SessionState = {
   startedAt: number;
   caseResults: CaseResult[];
-  pearlsEarned: string[];
+  maxCombo: number;
 };
 export type SessionMetrics = {
   precision: number;
@@ -144,6 +151,7 @@ export type GameState =
   | 'ghosted'
   | 'fail_protection'
   | 'debrief'
+  | 'critical_alert'
   | 'boss_fight'
   | 'reward'
   | 'victoria_guardia';
@@ -151,7 +159,7 @@ export type GameState =
 5. Mapa del proyecto (estructura de archivos)
 Dr_Swipe_Specs/
 ├── ROADMAP.md                   ← Este documento
-├── cases/                       ← 602 casos en JSON crudo
+├── cases/                       ← 599 casos en JSON crudo
 │
 ├── dr-swipe/
 │   ├── public/cases/
@@ -161,7 +169,7 @@ Dr_Swipe_Specs/
 │   ├── src/
 │   │   ├── components/
 │   │   │   ├── overlays/
-│   │   │   │   ├── LootBox.tsx
+│   │   │   │   ├── LootBoxOverlay.tsx
 │   │   │   │   ├── PerformanceReview.tsx    ← 🟡 En progreso
 │   │   │   │   └── Toast.tsx
 │   │   │   ├── ui/
@@ -209,7 +217,7 @@ Dr_Swipe_Specs/
 |---|---|---|
 | loadCases | (specialty, count, excludeIds) => Promise<ClinicalCase[]> | ✅ |
 | loadCasesBySpecialty | (specialty) => Promise<ClinicalCase[]> | ❌ Fase 4 |
-| loadDueCases | (caseIds: string[]) => Promise<ClinicalCase[]> | ❌ Fase 3 |
+| loadCaseById | (caseId) => Promise<ClinicalCase> | ✅ (usado por el repaso SRS) |
 
 6.3 utils/srsEngine.ts (Fase 3)
 | Función | Firma | Estado |
@@ -222,9 +230,10 @@ Dr_Swipe_Specs/
 |---|---|
 | coins, totalXP, streak, lastPlayedAt | ✅ |
 | pearlsUnlocked, sessionsPlayed | ✅ |
-| caseProgress: Record<string, CaseProgress> | ❌ Fase 3 |
-| commitSession(metrics, sessionState) | ❌ Fase 2 |
-| getCasesDueForReview(now?) | ❌ Fase 3 |
+| caseProgress: Record<string, CaseProgress> | ✅ |
+| commitSession(results, now?) | ✅ Solo alimenta el SRS; XP/monedas se pagan por caso en la pantalla de recompensa |
+| getCasesDueForReview(now?) | ✅ |
+| migrateCodexState (persist v2) | ✅ |
 | getSpecialtyStats() | ❌ Fase 5 |
 | spendFavors(cost) / earnFavors(amount) | ❌ Fase 5 |
 
@@ -232,16 +241,17 @@ Dr_Swipe_Specs/
 | Estado / Acción | Estado |
 |---|---|
 | idle, triage, ghosted, boss_fight, reward | ✅ |
-| victoria_guardia | 🟡 |
+| victoria_guardia (reward → FINISH_SHIFT) | ✅ |
 | debrief con RetrospectiveView | ✅ |
-| session.startedAt inicializado al entrar a triage | ❌ Fase 2 |
-| session.caseResults.push(...) en reward / ghosted | ❌ Fase 2 |
-| session.pearlsEarned acumulado | ❌ Fase 2 |
+| session.startedAt inicializado en START_GUARD / RESUME_GUARD | ✅ |
+| session.caseResults en reward (éxito) y debrief (fracaso) | ✅ |
+| session.maxCombo | ✅ |
+| session.pearlsEarned | ➖ Descartado: se deriva de caseResults (ADR 007) |
 
 6.6 hooks/ (Fase 2+)
 | Hook | Firma | Estado |
 |---|---|---|
-| useSessionCommit | (state) => void (con guard anti doble-commit) | ❌ |
+| useSessionCommit | (startedAt, caseResults, commit) => void (confirma cada caso una sola vez por guardia) | ✅ |
 
 6.7 components/overlays/PerformanceReview.tsx
 | Elemento | Estado |
@@ -251,13 +261,13 @@ Dr_Swipe_Specs/
 | 3 columnas (precisión, combo, supervivencia) | ✅ |
 | SRS placeholder | ✅ |
 | Vignette médica | ✅ |
-| Conectado a computeSessionMetrics | ❌ Fase 2 |
+| Conectado a computeSessionMetrics | ✅ |
 
 7. Roadmap por fases
 
 🟩 Fase 0 — Fundación ✅ CERRADA
 Objetivo: Stack, tipos, esquema Zod, estructura de carpetas.
-DoD: npm run dev levanta, npm run build pasa sin errores, caseSchema valida 602 casos.
+DoD: npm run dev levanta, npm run build pasa sin errores, caseSchema valida 599 casos.
 
 🟩 Fase 1 — Núcleo jugable ✅ CERRADA
 Objetivo: Triage funcional con swipe, audio, hápticos, scoring.
@@ -267,40 +277,40 @@ DoD:
 ☑ useGameAudio y hapticFeedback reaccionan a lastAction.
 ☑ Sin solapamiento de sonidos en render.
 
-🟨 Fase 2 — Cierre de sesión (EN PROGRESO)
+🟩 Fase 2 — Cierre de sesión ✅ CERRADA (pendiente de prueba manual en dispositivo)
 Objetivo: La guardia tiene final. El jugador ve su recompensa antes de volver al menú.
 Tareas:
-- [ ] Añadir session: SessionState al contexto de gameMachine.
-- [ ] Inicializar session.startedAt al entrar a triage desde idle.
-- [ ] Acumular CaseResult en reward (éxito) y ghosted (fallo).
-- [ ] Estado victoria_guardia con transición reward → victoria_guardia cuando caseQueue.length === 0.
-- [ ] Distinguir victoria_guardia de debrief (cierre por fracaso).
-- [ ] Implementar computeSessionMetrics(context).
-- [ ] Implementar commitSession(metrics, sessionState) en Zustand.
-- [ ] Crear useSessionCommit con useRef guard para StrictMode.
-- [ ] Conectar PerformanceReview a state.matches('victoria_guardia').
-- [ ] Botón "Regresar al Menú" → send('RESTART').
+- [x] Añadir session: SessionState al contexto de gameMachine.
+- [x] Inicializar session.startedAt al iniciar/reanudar la guardia.
+- [x] Acumular CaseResult en reward (éxito) y debrief (fracaso; ADR 008).
+- [x] Estado victoria_guardia con transición reward → victoria_guardia (evento FINISH_SHIFT cuando la cola de casos está vacía).
+- [x] Distinguir victoria_guardia de debrief (cierre por fracaso).
+- [x] Implementar computeSessionMetrics(session, payout?).
+- [x] Implementar commitSession en Zustand.
+- [x] Crear useSessionCommit con useRef guard para StrictMode.
+- [x] Conectar PerformanceReview a state.matches('victoria_guardia').
+- [x] Botón "Regresar al Menú" → send('RESTART').
 DoD:
-- [ ] El jugador puede jugar 3 casos y ver PerformanceReview.
-- [ ] Recargar no duplica XP.
-- [ ] Fracaso va a debrief.
-- [ ] commitSession testeado.
+- [x] El jugador puede jugar 3 casos y ver PerformanceReview (flujo cubierto por test de máquina; falta prueba manual).
+- [x] Recargar no duplica XP (el estado de la máquina no se persiste; el hook confirma cada caso una vez).
+- [x] Fracaso va a debrief.
+- [x] commitSession testeado.
 
-🟦 Fase 3 — Aprendizaje (SRS SM-2)
+🟩 Fase 3 — Aprendizaje (SRS SM-2) ✅ CERRADA
 Objetivo: El juego recuerda lo que fallaste y te lo reprograma.
 Tareas:
 - [x] Crear types/srs.ts con CaseProgress.
 - [x] Crear utils/srsEngine.ts con applySM2 y outcomeToQuality.
-- [ ] Migrar useCodexStore de mistakes a caseProgress.
-- [ ] Añadir migrate en persist (v1 → v2).
-- [ ] Implementar getCasesDueForReview(now).
-- [ ] Conectar botón "REPASAR MIS ERRORES 🖍️".
-- [ ] PerformanceReview lee casesScheduledAhead.
+- [x] Migrar useCodexStore de mistakes a caseProgress (caseStats se conserva para estadísticas).
+- [x] Añadir migrate en persist (v0/v1 → v2).
+- [x] Implementar getCasesDueForReview(now).
+- [x] Conectar botón "REPASAR MIS ERRORES 🖍️" (casos con nextReviewDate vencido).
+- [x] PerformanceReview lee casesScheduledAhead (casos con calidad SM-2 < 4).
 - [x] Tests de progresión SM-2.
 DoD:
-- [ ] Caso dominado (interval >= 21).
-- [ ] Fallo reprograma a now + 1d.
-- [ ] Migración v1 a v2 sin pérdida.
+- [x] Caso dominado (interval >= 21).
+- [x] Fallo reprograma a now + 1d.
+- [x] Migración v1 a v2 sin pérdida.
 
 🟦 Fase 4 — Escalado de contenido
 Objetivo: Soportar 3,000+ casos sin degradar rendimiento móvil.
@@ -320,14 +330,14 @@ Tareas:
 
 🟪 Fase 6 — Accesibilidad y pulido
 Tareas:
-- [ ] prefers-reduced-motion.
+- [x] prefers-reduced-motion (CSS + MotionConfig reducedMotion="user").
 - [x] aria-label en botones icónicos.
 - [x] Foco visible / teclado completo.
 
 🟥 Fase 7 — Producción
 Tareas:
 - [ ] Sentry / Analytics.
-- [ ] CI/CD.
+- [x] CI/CD (GitHub Actions → Cloudflare Pages).
 - [ ] Tests E2E.
 - [ ] Versión 1.0.0.
 
@@ -340,6 +350,9 @@ Tareas:
 | 004 | "Llamar Adjunto" | Ludonarrativa médica | Pay-to-win |
 | 005 | SM-2 en lugar de errores | SRS real, educativo | Leitner simple |
 | 006 | caseQueue empty = victoria | Un turno fallido no es victoria | Unificar debrief con victoria |
+| 007 | session solo guarda caseResults; XP/coins se derivan | Evita doble fuente de verdad (Principio 3.4) | Acumular totalXP/totalCoins |
+| 008 | CaseResult se graba en reward/debrief, no en ghosted | ghosted es transitorio (rescate lo revierte) | Grabar en ghosted y actualizar si rescata |
+| 009 | commitSession solo alimenta el SRS | El XP/monedas ya se pagan por caso; pagarlos al cerrar duplicaría | Mover el pago al cierre de guardia |
 
 9. Preguntas abiertas
 - [ ] ¿Cuántos casos dura una guardia estándar? (3, 5, 10)
@@ -359,6 +372,7 @@ Nunca empezar Fase N+1 con Fase N en 🟡.
 | 0.1.0 | — | Fundación (stack, tipos, Zod) |
 | 0.2.0 | — | Triage jugable |
 | 0.3.0 | — | PerformanceReview creado, SRS diseñado |
-| 0.4.0 | Hoy | Documento maestro instaurado, Fase 2 en progreso |
+| 0.4.0 | 2026-10-01 | Documento maestro instaurado, Fase 2 en progreso |
+| 0.5.0 | 2026-10-02 | Build reparado; Fases 2 y 3 cerradas (cierre de guardia, SRS, store v2) |
 
-Siguiente acción concreta: continuar Fase 2 → tarea "Añadir session: SessionState al contexto de gameMachine".
+Siguiente acción concreta: Fase 4 → segmentar cases/ por especialidad (manifest.json + public/cases/{specialty}.json). Antes, prueba manual de una guardia de 3 casos en móvil.

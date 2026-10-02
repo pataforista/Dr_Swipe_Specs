@@ -1,6 +1,8 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import type { PlayerStats, EnarmPearl } from '../types/game';
+import type { PlayerStats, EnarmPearl, CaseResult } from '../types/game';
+import type { CaseProgress } from '../types/srs';
+import { applySM2, outcomeToQuality } from '../utils/srsEngine';
 import { safeStorage } from '../utils/safeStorage';
 
 export interface SessionProgress {
@@ -23,6 +25,8 @@ interface CodexState {
   unlockedPearls: EnarmPearl[];
   history: string[]; // case ids solved
   caseStats?: Record<string, { timesSolved: number; mistakes: number; bestScore: number }>;
+  /** SM-2 schedule per case (replaces the old "has mistakes" flag). */
+  caseProgress: Record<string, CaseProgress>;
   settings: {
     soundEnabled: boolean;
     hapticsEnabled: boolean;
@@ -37,6 +41,12 @@ interface CodexState {
   spendCoins: (amount: number) => boolean; // returns false if insufficient
   unlockPearl: (pearl: EnarmPearl) => void;
   registerCaseSolved: (caseId: string, score?: number, mistakes?: number) => void;
+  /**
+   * Feeds finished cases into the SRS schedule. It does not grant XP/coins:
+   * those are paid per case when the reward screen is reached.
+   */
+  commitSession: (results: CaseResult[], now?: number) => void;
+  getCasesDueForReview: (now?: number) => string[];
   updateSwipeResult: (isCorrect: boolean) => void;
   incrementSessions: () => void;
   updateDailyStreak: () => void;
@@ -45,13 +55,28 @@ interface CodexState {
   updateSettings: (settings: Partial<CodexState['settings']>) => void;
 }
 
+/** v0/v1 -> v2: seed caseProgress from caseStats so no history is lost. */
+export function migrateCodexState(persisted: unknown, fromVersion: number): unknown {
+  if (!persisted || typeof persisted !== 'object' || fromVersion >= 2) return persisted;
+  const old = persisted as { caseStats?: CodexState['caseStats']; caseProgress?: CodexState['caseProgress'] };
+  if (old.caseProgress) return persisted;
+  const now = Date.now();
+  const caseProgress: Record<string, CaseProgress> = {};
+  for (const [caseId, stat] of Object.entries(old.caseStats ?? {})) {
+    // A case left with mistakes is due now; a clean one starts its schedule.
+    const seeded = applySM2(null, caseId, stat.mistakes > 0 ? 2 : 5, now);
+    caseProgress[caseId] = stat.mistakes > 0 ? { ...seeded, nextReviewDate: now } : seeded;
+  }
+  return { ...old, caseProgress };
+}
+
 export const LIFELINE_COST = 25;
 export const UNDO_COST = 40;
 export const REVIVE_COST = 75;
 
 export const useCodexStore = create<CodexState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       stats: {
         xp: 0,
         coins: 0,
@@ -64,6 +89,7 @@ export const useCodexStore = create<CodexState>()(
       unlockedPearls: [],
       history: [],
       caseStats: {},
+      caseProgress: {},
       settings: {
         soundEnabled: true,
         hapticsEnabled: true,
@@ -125,6 +151,21 @@ export const useCodexStore = create<CodexState>()(
         };
       }),
 
+      commitSession: (results, now = Date.now()) => set((state) => {
+        if (results.length === 0) return state;
+        const caseProgress = { ...state.caseProgress };
+        for (const r of results) {
+          caseProgress[r.caseId] = applySM2(caseProgress[r.caseId] ?? null, r.caseId, outcomeToQuality(r), now);
+        }
+        return { caseProgress };
+      }),
+
+      getCasesDueForReview: (now = Date.now()) =>
+        Object.values(get().caseProgress)
+          .filter(p => p.nextReviewDate <= now)
+          .sort((a, b) => a.nextReviewDate - b.nextReviewDate)
+          .map(p => p.caseId),
+
       updateSwipeResult: (isCorrect) => set((state) => ({
         stats: {
           ...state.stats,
@@ -156,6 +197,8 @@ export const useCodexStore = create<CodexState>()(
     }),
     {
       name: 'dr-swipe-codex',
+      version: 2,
+      migrate: migrateCodexState as never,
       // safeStorage never throws: blocked storage (private browsing, quota)
       // degrades to in-memory persistence instead of crashing on mount.
       storage: createJSONStorage(() => safeStorage),

@@ -112,14 +112,18 @@ export type CaseResult = {
   mistakes: number;
   lethalErrors: number;
   timeSpentMs: number;
+  /** Cards the player actually decided in this case (denominator for precision). */
+  cardsSeen: number;
   xpEarned: number;
   coinsEarned: number;
   pearlId: string | null;
 };
 
+/** One shift (guardia). XP/coins/pearls are derived from caseResults (ADR 007). */
 export type SessionState = {
   startedAt: number;
   caseResults: CaseResult[];
+  maxCombo: number;
 };
 
 export interface SessionMetrics {
