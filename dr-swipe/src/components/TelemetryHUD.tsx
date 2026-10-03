@@ -116,6 +116,7 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
             </button>
           </div>
         )}
+        <VitalsMonitor vitals={lastVitals} />
         {/* Shield and combo pills hang off the HUD's bottom edge instead of
             owning a row: no layout shift when they appear, and no wasted height. */}
         <div className="absolute right-4 -bottom-2.5 z-10 flex items-center gap-2 pointer-events-none">
@@ -150,7 +151,6 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
           </AnimatePresence>
         </div>
       </div>
-      <VitalsMonitor vitals={lastVitals} />
     </div>
   );
 }, (prevProps, nextProps) => {
@@ -184,13 +184,14 @@ const Reading: React.FC<{ label: string; value: string; unit?: string; color: st
   </span>
 );
 
-// Fixed-height strip: values appear and disappear without moving the deck.
+// Slim fixed-height row inside the HUD card: values appear and disappear
+// without moving the deck, and it no longer needs a card (and gap) of its own.
 const VitalsMonitor: React.FC<{ vitals: TelemetryHUDProps['lastVitals'] }> = ({ vitals }) => {
-  const shell = 'paper-sheet !overflow-hidden bg-white/80 backdrop-blur-md rounded-xl border-2 border-white/60 shadow-sm h-9 px-3 flex items-center gap-3';
+  const shell = 'basis-full h-[22px] border-t border-slate-100 pt-1 flex items-center gap-2.5';
   if (!vitals) return (
     <div className={`${shell} text-slate-400`}>
       <span className="text-[10px] font-black uppercase tracking-widest">Telemetría</span>
-      <div className="flex-1 h-1.5 bg-slate-200/70 rounded-full" />
+      <div className="flex-1 h-1 bg-slate-200/70 rounded-full" />
     </div>
   );
 
@@ -214,7 +215,7 @@ const VitalsMonitor: React.FC<{ vitals: TelemetryHUDProps['lastVitals'] }> = ({ 
       {vitals.temp && <Reading color={color} label="T°" value={String(vitals.temp)} unit="°C" />}
       {/* A sliding flat line reads as asystole; draw an actual beat whose
           pace follows the patient's status. */}
-      <div className="flex-1 min-w-[28px] h-5 bg-slate-100 rounded-md overflow-hidden border border-slate-200/60">
+      <div className="flex-1 min-w-[28px] h-4 bg-slate-100 rounded-md overflow-hidden border border-slate-200/60">
         <motion.svg
           viewBox="0 0 120 20"
           preserveAspectRatio="none"
