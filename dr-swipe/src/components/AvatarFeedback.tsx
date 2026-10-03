@@ -33,9 +33,9 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
 
   const bubbleColors = {
     neutral: 'border-slate-100 bg-white',
-    happy: 'border-emerald-100 bg-emerald-50/50',
-    angry: 'border-rose-100 bg-rose-50/50',
-    shocked: 'border-amber-100 bg-amber-50/50'
+    happy: 'border-emerald-100 bg-emerald-50',
+    angry: 'border-rose-100 bg-rose-50',
+    shocked: 'border-amber-100 bg-amber-50'
   };
 
   const validDoctor = (doctor in mentorIcons) ? doctor : 'mendoza';

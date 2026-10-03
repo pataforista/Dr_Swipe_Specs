@@ -53,7 +53,7 @@ export const FailProtectionOverlay: React.FC<FailProtectionOverlayProps> = ({
             onClick={onRescue}
             className="marker-btn w-full py-6 text-xl flex flex-col items-center justify-center gap-1 group"
           >
-            <span className="text-sm font-black uppercase">CAMBIAR DE INTERNO ✨</span>
+            <span className="text-sm font-black uppercase whitespace-nowrap">CAMBIAR DE INTERNO ✨</span>
             <span className="text-[10px] opacity-60 font-bold uppercase tracking-widest">
               ({livesRemaining - 1} DISPONIBLES)
             </span>

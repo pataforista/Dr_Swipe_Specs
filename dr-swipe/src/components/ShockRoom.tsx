@@ -73,7 +73,7 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-[150] flex flex-col items-center pt-20 sm:pt-24 pb-4 sm:pb-6 px-4 sm:px-6 bg-[#FDFBF7]/90 backdrop-blur-md overflow-y-auto">
+    <div className="fixed inset-0 z-[150] flex flex-col items-center pt-28 sm:pt-32 pb-4 sm:pb-6 px-4 sm:px-6 bg-[#FDFBF7]/90 backdrop-blur-md overflow-y-auto">
       {/* Paper texture overlay */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] medical-grid z-0" />
 

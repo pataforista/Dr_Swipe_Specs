@@ -806,7 +806,9 @@ export function App() {
       />
 
       {/* Background Avatar Feedback Layer */}
-      <div className="fixed bottom-[12.5rem] left-0 right-0 z-avatar pointer-events-none flex justify-center">
+      {/* Anchored just above the action row, over the card's footer strip, so
+          it no longer covers the last lines of the card text. */}
+      <div className="fixed bottom-[8.75rem] sm:bottom-[12.75rem] left-0 right-0 z-avatar pointer-events-none flex justify-center">
         <AvatarFeedback
           doctor="mendoza"
           expression={mentorExpression}
@@ -874,10 +876,10 @@ export function App() {
 
               <div className="flex flex-col gap-5 mb-8">
                 {/* Sound Setting */}
-                <div className="flex justify-between items-center bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                  <div className="flex flex-col">
-                    <span className="text-xs font-black text-slate-700 uppercase tracking-wider">Efectos de Sonido</span>
-                    <span className="text-[11px] text-slate-400">Procedural Audio Synth</span>
+                <div className="flex justify-between items-center gap-3 bg-slate-50 p-4 pr-5 rounded-2xl border border-slate-100">
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-xs font-black text-slate-700 uppercase tracking-wider">Sonido</span>
+                    <span className="text-[11px] text-slate-500">Efectos y alarmas</span>
                   </div>
                   <DoodleToggle
                     id="sound-toggle"
@@ -888,10 +890,10 @@ export function App() {
                 </div>
 
                 {/* Haptics Setting */}
-                <div className="flex justify-between items-center bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                  <div className="flex flex-col">
-                    <span className="text-xs font-black text-slate-700 uppercase tracking-wider">Vibración / Hápticos</span>
-                    <span className="text-[11px] text-slate-400">Tactile Haptic Feedback</span>
+                <div className="flex justify-between items-center gap-3 bg-slate-50 p-4 pr-5 rounded-2xl border border-slate-100">
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-xs font-black text-slate-700 uppercase tracking-wider">Vibración</span>
+                    <span className="text-[11px] text-slate-500">Al deslizar y en errores</span>
                   </div>
                   <DoodleToggle
                     id="haptics-toggle"
@@ -909,7 +911,7 @@ export function App() {
                   }}
                   className="marker-btn py-3 text-xs w-full"
                 >
-                  VER TUTORIAL DE NUEVO 📘
+                  VER TUTORIAL 📘
                 </button>
               </div>
 
