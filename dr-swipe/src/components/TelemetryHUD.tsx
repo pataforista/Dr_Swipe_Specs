@@ -80,6 +80,20 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
               className="h-full transition-all duration-500"
             />
           </div>
+          {/* Interns live under the health bar: they used to take a whole second
+              row of the HUD that was empty on its right side. */}
+          <div className="flex gap-px text-[12px] leading-none mt-0.5" role="img" aria-label={`${lives} de ${maxLives} internos disponibles`}>
+            {Array.from({ length: maxLives }, (_, i) => (
+              <motion.span
+                key={i}
+                aria-hidden="true"
+                animate={i < lives ? { opacity: 1, scale: 1 } : { opacity: 0.2, scale: 0.8 }}
+                className={i < lives ? '' : 'grayscale'}
+              >
+                🩺
+              </motion.span>
+            ))}
+          </div>
         </div>
         {state !== 'boss_fight' && (
           <div className="flex items-center gap-2 ml-auto">
@@ -102,52 +116,38 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
             </button>
           </div>
         )}
-        <div className="basis-full flex items-center justify-between gap-2 border-t border-slate-100 pt-1.5">
-          <div className="flex items-center gap-2" aria-label={`${lives} de ${maxLives} internos disponibles`}>
-            <span className="text-[10px] font-black tracking-widest text-rose-400 uppercase leading-none lettering">Internos</span>
-            <div className="flex gap-px text-sm leading-none" aria-hidden="true">
-              {Array.from({ length: maxLives }, (_, i) => (
-                <motion.span
-                  key={i}
-                  animate={i < lives ? { opacity: 1, scale: 1 } : { opacity: 0.2, scale: 0.8 }}
-                  className={i < lives ? '' : 'grayscale'}
+        {/* Shield and combo pills hang off the HUD's bottom edge instead of
+            owning a row: no layout shift when they appear, and no wasted height. */}
+        <div className="absolute right-4 -bottom-2.5 z-10 flex items-center gap-2 pointer-events-none">
+          {shield > 0 && (
+            <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-sky-100 text-sky-700 border border-sky-200" title="Escudo: errores sin daño">
+              🛡️ ×{shield}
+            </span>
+          )}
+          <AnimatePresence>
+            {combo > 1 && (() => {
+              // The pill escalates by tier instead of staying static — a combo
+              // of 20 should look and feel different from a combo of 2 (F3).
+              const tier = combo >= 12 ? 'rose' : combo >= 5 ? 'amber' : 'slate';
+              const tierClass = {
+                slate: 'bg-slate-100 text-slate-600 border-slate-200',
+                amber: 'bg-amber-100 text-amber-700 border-amber-200',
+                rose: 'bg-rose-100 text-rose-600 border-rose-300',
+              }[tier];
+              const scale = tier === 'rose' ? 1.2 : tier === 'amber' ? 1.1 : 1;
+              return (
+                <motion.div
+                  key={tier}
+                  initial={{ scale: 0, rotate: 10 }}
+                  animate={{ scale, rotate: -3 }}
+                  exit={{ scale: 0 }}
+                  className={`px-2.5 py-0.5 rounded-full text-[11px] font-black tracking-widest shadow-sm border lettering ${tierClass}`}
                 >
-                  🩺
-                </motion.span>
-              ))}
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            {shield > 0 && (
-              <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-sky-100 text-sky-700 border border-sky-200" title="Escudo: errores sin daño">
-                🛡️ ×{shield}
-              </span>
-            )}
-            <AnimatePresence>
-              {combo > 1 && (() => {
-                // The pill escalates by tier instead of staying static — a combo
-                // of 20 should look and feel different from a combo of 2 (F3).
-                const tier = combo >= 12 ? 'rose' : combo >= 5 ? 'amber' : 'slate';
-                const tierClass = {
-                  slate: 'bg-slate-100 text-slate-600 border-slate-200',
-                  amber: 'bg-amber-100 text-amber-700 border-amber-200',
-                  rose: 'bg-rose-100 text-rose-600 border-rose-300',
-                }[tier];
-                const scale = tier === 'rose' ? 1.2 : tier === 'amber' ? 1.1 : 1;
-                return (
-                  <motion.div
-                    key={tier}
-                    initial={{ scale: 0, rotate: 10 }}
-                    animate={{ scale, rotate: -3 }}
-                    exit={{ scale: 0 }}
-                    className={`px-2.5 py-0.5 rounded-full text-[11px] font-black tracking-widest shadow-sm border lettering ${tierClass}`}
-                  >
-                    x{combo} ✨
-                  </motion.div>
-                );
-              })()}
-            </AnimatePresence>
-          </div>
+                  x{combo} ✨
+                </motion.div>
+              );
+            })()}
+          </AnimatePresence>
         </div>
       </div>
       <VitalsMonitor vitals={lastVitals} />
