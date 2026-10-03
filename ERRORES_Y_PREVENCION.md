@@ -31,8 +31,25 @@ La mayoría nace de un solo patrón: **editar código con scripts de reemplazo p
 | 14 | `ROADMAP.md` corrupto: tres filas del registro de decisiones pegadas a la primera línea, con `\n` literales, y la fila 006 duplicada | `ROADMAP.md` | Lectura del archivo | Editar el roadmap con herramientas de texto, no concatenando cadenas con `\n`. Releer las primeras líneas tras cada edición. |
 | 15 | El roadmap decía una cosa y el código otra (Fase 2 "sin hacer" con la mitad hecha; reduced-motion y CI "sin hacer" estando hechos; 602 casos frente a 599 reales) | `ROADMAP.md` | Contrastar cada casilla con el código | La regla del documento ("se actualiza antes de tocar código") se cumple si cada PR incluye el cambio de casilla. Revisar el roadmap en cada cierre de fase. |
 | 16 | `PLAN_SIGUIENTES_PASOS.md` habla de un PR "sin abrir" que ya se fusionó | `PLAN_SIGUIENTES_PASOS.md` | Historial de git (PR #57 a #59) | Fechar los planes y archivarlos o actualizarlos al fusionar. |
-| 17 | El CI no corre en ramas de trabajo: solo en `push` a `main`/`master` y en PR hacia ellas | `.github/workflows/cloudflare-deploy.yml` | Lectura del workflow | Ver "Controles recomendados". |
+| 17 | El CI no corre en ramas de trabajo: solo en `push` a `main`/`master` y en PR hacia ellas | `.github/workflows/cloudflare-deploy.yml` | Lectura del workflow | Resuelto el 2026-10-03: el CI valida cualquier rama y solo despliega desde `main`/`master`. |
 | 18 | La Fase 4 pedía `public/cases/{specialty}.json`, lo que obligaría a descargar cientos de casos para jugar 3 | `ROADMAP.md` | Análisis de `dataLoader.ts`, que ya carga un archivo por caso | Antes de implementar una tarea del roadmap, comprobar que sigue siendo la mejor solución. Se resolvió con un manifest y se registró como ADR 010. |
+
+## Revisión completa del 2026-10-03
+
+El pipeline estaba en verde (599 casos, 109 tests, lint y build), y aun así la lectura del código encontró ocho fallos de comportamiento. Ninguno rompía la compilación; todos rompían una regla del juego. Cada uno tiene ahora un test en `dr-swipe/src/tests/reviewFixes.test.ts` que falla con el código anterior.
+
+| # | Error | Dónde | Efecto | Corrección |
+|---|---|---|---|---|
+| 19 | `triage` no aceptaba `RESTART` | `gameMachine.ts` | El botón ABANDONAR del menú de pausa no hacía nada | `RESTART` en `triage`; el botón además cierra la pausa y apaga la alarma |
+| 20 | Un swipe sobre carta letal no sumaba `lethalErrorsThisCase` | `gameMachine.ts` | El logro "primer error letal" solo llegaba al perder al paciente; SM-2 no distinguía un fallo con error letal | Se cuenta cada error letal explícito; `ghosted` sigue sumando uno (ADR 013) |
+| 21 | Deshacer no devolvía la carga de escudo ni el contador letal | `gameMachine.ts` | El escudo se perdía en un error que ya no existía | `lastAction` guarda y restaura ambos |
+| 22 | `RESCUE` y `REVIVE_INTERN` no reiniciaban combo ni multiplicador | `gameMachine.ts` | Tras un fallo por tiempo, el caso reiniciado heredaba el multiplicador | Combo 0 y multiplicador 1 al reiniciar |
+| 23 | Una partida de Modo Estudio guardada se reanudaba como guardia real | `App.tsx`, `useCodexStore.ts`, `gameMachine.ts` | Daño y reloj activos en una sesión que el jugador eligió sin daño | `isSandiaMode` viaja en el guardado y en `RESUME_GUARD` |
+| 24 | `PSYC` no estaba en el mapa de especialidades | `sessionEngine.ts` | Los casos de psiquiatría contaban como Medicina Interna en el Códex | `PSYC → psych` |
+| 25 | Enter/Espacio/Retroceso sobre un botón con foco también decidían la carta | `SwipeDeck.tsx` | Activar la pista o Deshacer con teclado mandaba un swipe a la derecha | Esas teclas se ignoran sobre controles; las flechas siguen funcionando |
+| 26 | `connect-src 'self'` en la CSP | `public/_headers` | El service worker (Workbox) no podía pedir la hoja de Google Fonts y la fuente fallaba con la PWA instalada | `connect-src` admite `fonts.googleapis.com` y `fonts.gstatic.com` |
+
+Pendiente, sin corregir porque es decisión de diseño: abandonar un caso fallido con "Nueva Guardia" (desde `fail_protection` o `ghosted`) no registra el fallo en SM-2; solo lo hace "VER NOTAS". Un caso perdido y abandonado no vuelve al repaso.
 
 ## Pendiente conocido
 
@@ -42,7 +59,7 @@ La mayoría nace de un solo patrón: **editar código con scripts de reemplazo p
 ## Controles recomendados
 
 1. **Antes de cada commit**, desde `dr-swipe/`: `npm run lint && npm test && npm run build`. El `build` ejecuta `tsc -b`, así que detecta los errores 1, 2, 4, 5, 10 y 11.
-2. **Hacer que el CI valide cualquier rama.** Hoy el workflow solo se activa en `main`/`master` y en PR hacia ellas. Añadir `branches: ['**']` al disparador `push` y restringir el paso de despliegue con `if: github.event_name == 'push' && github.ref == 'refs/heads/main'` (hoy solo comprueba `push`, y desplegaría desde cualquier rama). Con eso los commits `1` y `2` habrían fallado el mismo día.
+2. **(Hecho el 2026-10-03)** **Hacer que el CI valide cualquier rama.** Hoy el workflow solo se activa en `main`/`master` y en PR hacia ellas. Añadir `branches: ['**']` al disparador `push` y restringir el paso de despliegue con `if: github.event_name == 'push' && github.ref == 'refs/heads/main'` (hoy solo comprueba `push`, y desplegaría desde cualquier rama). Con eso los commits `1` y `2` habrían fallado el mismo día.
 3. **Hook de pre-commit** (por ejemplo `husky` o un `.git/hooks/pre-commit`) que ejecute `npm run lint` y `npx tsc -b`. Es lo más barato para evitar el patrón de la fila 1.
 4. **Tests para cada regla de la máquina de estados.** El error 3 solo se vio leyendo el diff; el test de flujo (`sessionFlow.test.ts`) ahora lo protege.
 5. **Cambiar el roadmap en el mismo commit** que cierra la tarea.

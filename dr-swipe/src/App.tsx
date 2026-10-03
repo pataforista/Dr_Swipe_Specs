@@ -202,6 +202,7 @@ export function App() {
         mistakesThisCase: state.context.mistakesThisCase,
         difficulty: state.context.difficulty,
         deckOrder: state.context.deck.map(c => c.card_id),
+        isSandiaMode: state.context.isSandiaMode,
         savedAt: Date.now()
       });
     }
@@ -310,7 +311,7 @@ export function App() {
   const resumeSession = async () => {
     if (!sessionProgress || !sessionProgress.caseId) return;
     setIsLoadingCase(true);
-    setIsStudyModeActive(false);
+    setIsStudyModeActive(!!sessionProgress.isSandiaMode);
     incrementSessions();
     updateDailyStreak();
     try {
@@ -548,6 +549,7 @@ export function App() {
                     difficulty: snapshot.difficulty,
                     pearl: currentCase.enarm_pearl ?? currentCase.perla_enarm,
                     case_id: currentCase.case_id,
+                    isSandiaMode: !!snapshot.isSandiaMode,
                     snapshot: {
                       currentCardIndex: snapshot.currentCardIndex,
                       score: snapshot.score,
@@ -839,7 +841,7 @@ export function App() {
           <motion.div ref={pauseTrapRef} role="dialog" aria-modal="true" initial={{ scale: 0.9 }} animate={{ scale: 1 }} className="paper-sheet p-10 max-w-xs w-full text-center border-primary/20 shadow-xl relative">
             <p className="text-slate-400 text-sm italic mb-8 lettering leading-relaxed">"Guardia en pausa. Tus notas están seguras."</p>
             <button onClick={() => setIsPaused(false)} className="marker-btn w-full py-4 text-sm mb-4">REANUDAR ✨</button>
-            <button onClick={() => send({ type: 'RESTART' })} className="text-[10px] font-bold text-slate-500 uppercase py-2 lettering">ABANDONAR</button>
+            <button onClick={() => { setIsPaused(false); stopTriageAlarm(); send({ type: 'RESTART' }); }} className="text-[10px] font-bold text-slate-500 uppercase py-2 lettering">ABANDONAR</button>
           </motion.div>
         </motion.div>
       )}</AnimatePresence>
