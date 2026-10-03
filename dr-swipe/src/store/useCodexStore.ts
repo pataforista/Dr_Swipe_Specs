@@ -19,6 +19,8 @@ export interface SessionProgress {
   difficulty: string;
   /** card_ids in the order they are played (decks are shuffled per game). */
   deckOrder?: string[];
+  /** Study mode (Sandía): resumed without damage or clock. */
+  isSandiaMode?: boolean;
   savedAt: number; // timestamp
 }
 

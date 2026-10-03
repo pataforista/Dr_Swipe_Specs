@@ -75,9 +75,13 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
   // Keyboard support (ArrowLeft / ArrowRight)
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
-      if (isLocked || e.repeat) return;
-      if (e.key === 'ArrowLeft' || e.key === 'Backspace') commitSwipe('left');
-      if (e.key === 'ArrowRight' || e.key === 'Enter' || e.key === ' ') commitSwipe('right');
+      if (isLocked || e.repeat || e.altKey || e.ctrlKey || e.metaKey) return;
+      // Enter/Space/Backspace on a focused control belong to that control
+      // (hint, rewind, a dialog button), not to the card.
+      const target = e.target as HTMLElement | null;
+      const onControl = !!target?.closest('button, a, input, textarea, select, [contenteditable="true"]');
+      if (e.key === 'ArrowLeft' || (e.key === 'Backspace' && !onControl)) commitSwipe('left');
+      if (e.key === 'ArrowRight' || ((e.key === 'Enter' || e.key === ' ') && !onControl)) commitSwipe('right');
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);

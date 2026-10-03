@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -21,10 +21,36 @@ export const ReloadPrompt: React.FC = () => {
     setNeedRefresh(false);
   };
 
+  // "Offline ready" is good news, not a decision: it appears on the very first
+  // visit, on top of the tutorial, so it is a small pill that leaves on its own.
+  useEffect(() => {
+    if (!offlineReady || needRefresh) return;
+    const t = window.setTimeout(() => setOfflineReady(false), 4000);
+    return () => window.clearTimeout(t);
+  }, [offlineReady, needRefresh, setOfflineReady]);
+
   return (
     <AnimatePresence>
-      {(offlineReady || needRefresh) && (
+      {offlineReady && !needRefresh && (
         <motion.div
+          key="offline"
+          initial={{ y: 40, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 40, opacity: 0 }}
+          className="fixed bottom-4 left-0 right-0 z-[1000] flex justify-center pointer-events-none px-4"
+          role="status"
+        >
+          <button
+            onClick={close}
+            className="pointer-events-auto bg-white border border-primary/20 shadow-lg rounded-full px-4 py-2 text-[11px] font-bold text-slate-600"
+          >
+            🚀 Listo para usar sin conexión
+          </button>
+        </motion.div>
+      )}
+      {needRefresh && (
+        <motion.div
+          key="refresh"
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
@@ -36,33 +62,29 @@ export const ReloadPrompt: React.FC = () => {
             
             <div className="mt-4 text-center">
               <span className="text-[10px] font-black text-primary uppercase tracking-[0.2em] block mb-1">
-                {offlineReady ? 'MODO OFFLINE LISTO 🚀' : 'ACTUALIZACIÓN DISPONIBLE ✨'}
+                ACTUALIZACIÓN DISPONIBLE ✨
               </span>
               
               <h3 className="text-xl font-black text-slate-800 lettering mb-3">
-                {offlineReady ? '¡Listo para la guardia!' : '¡Nuevas notas de estudio!'}
+                ¡Nuevas notas de estudio!
               </h3>
               
               <p className="text-xs text-slate-500 mb-6 leading-relaxed italic">
-                {offlineReady 
-                  ? 'La aplicación ya funciona sin conexión. Puedes estudiar en el metro o en quirófano.'
-                  : 'Hemos actualizado el manual de Dr. Swipe con mejoras visuales y nuevos casos.'}
+                Hemos actualizado el manual de Dr. Swipe con mejoras visuales y nuevos casos.
               </p>
 
               <div className="flex gap-3">
-                {needRefresh && (
-                  <button
-                    onClick={() => updateServiceWorker(true)}
-                    className="marker-btn flex-grow py-3 text-xs !rotate-0 hover:scale-105"
-                  >
-                    ACTUALIZAR YA ✨
-                  </button>
-                )}
+                <button
+                  onClick={() => updateServiceWorker(true)}
+                  className="marker-btn flex-grow py-3 text-xs !rotate-0 hover:scale-105"
+                >
+                  ACTUALIZAR YA ✨
+                </button>
                 <button
                   onClick={close}
                   className="px-6 py-3 rounded-full border border-slate-200 text-slate-400 text-[10px] font-bold uppercase tracking-wider hover:bg-slate-50 transition-colors"
                 >
-                  {needRefresh ? 'LUEGO' : 'CERRAR'}
+                  LUEGO
                 </button>
               </div>
             </div>

@@ -89,13 +89,15 @@ export interface GameContext {
     feedbackHistory: GameContext['feedbackHistory'];
     coinsEarnedThisCase: number;
     mistakesThisCase: number;
+    lethalErrorsThisCase: number;
+    shieldCharges: number;
     lastVitals: { ta?: string; fc?: number; temp?: number; status: string } | null;
   } | null;
 }
 
 type GameEvent =
   | { type: 'START_GUARD'; deck: Card[]; difficulty: string; pearl?: EnarmPearl; isSandiaMode?: boolean; case_id?: string }
-  | { type: 'RESUME_GUARD'; deck: Card[]; difficulty: string; pearl?: EnarmPearl; snapshot: ResumeSnapshot; case_id?: string }
+  | { type: 'RESUME_GUARD'; deck: Card[]; difficulty: string; pearl?: EnarmPearl; snapshot: ResumeSnapshot; isSandiaMode?: boolean; case_id?: string }
   | { type: 'SWIPE'; direction: 'left' | 'right' }
   | { type: 'UNDO_SWIPE' }
   | { type: 'ANSWER_CORRECT' }
@@ -220,6 +222,8 @@ export const gameMachine = setup({
         feedbackHistory: [...context.feedbackHistory],
         coinsEarnedThisCase: context.coinsEarnedThisCase,
         mistakesThisCase: context.mistakesThisCase,
+        lethalErrorsThisCase: context.lethalErrorsThisCase,
+        shieldCharges: context.shieldCharges,
         lastVitals: context.lastVitals
       };
 
@@ -325,6 +329,9 @@ export const gameMachine = setup({
         lastCardPresentedAt: Date.now(),
         coinsEarnedThisCase: context.coinsEarnedThisCase + (context.isSandiaMode ? Math.floor(scoreBreakdown.coinsEarned * 0.5) : scoreBreakdown.coinsEarned),
         mistakesThisCase: isCorrect ? context.mistakesThisCase : context.mistakesThisCase + 1,
+        // An explicit lethal miss counts on its own; losing the patient adds
+        // one more on entering `ghosted` (ADR 013).
+        lethalErrorsThisCase: !isCorrect && isLethalCard(card) ? context.lethalErrorsThisCase + 1 : context.lethalErrorsThisCase,
         lifelineActive: false, // Reset lifeline after swipe
         lastVitals: nextVitals,
         feedbackHistory: [...context.feedbackHistory, newHistoryItem],
@@ -449,8 +456,9 @@ export const gameMachine = setup({
             activeEvent: null,
             feedbackHistory: [],
             lives: 5,
-            isSandiaMode: false,
-            undoCharges: undoChargesFor(false),
+            // A study-mode save resumes in study mode (no damage, no clock).
+            isSandiaMode: ({ event }) => event.type === 'RESUME_GUARD' ? !!event.isSandiaMode : false,
+            undoCharges: ({ event }) => undoChargesFor(event.type === 'RESUME_GUARD' && !!event.isSandiaMode),
             wasRescued: false,
             lethalErrorsThisCase: 0,
             caseStartedAt: Date.now(),
@@ -499,6 +507,8 @@ export const gameMachine = setup({
               feedbackHistory: context.lastAction.feedbackHistory,
               coinsEarnedThisCase: context.lastAction.coinsEarnedThisCase,
               mistakesThisCase: context.lastAction.mistakesThisCase,
+              lethalErrorsThisCase: context.lastAction.lethalErrorsThisCase,
+              shieldCharges: context.lastAction.shieldCharges,
               lastVitals: context.lastAction.lastVitals,
               undoCharges: context.undoCharges - 1,
               usedUndoThisCase: true,
@@ -524,6 +534,8 @@ export const gameMachine = setup({
         USE_LIFELINE: {
           actions: assign({ lifelineActive: true })
         },
+        // "Abandonar" from the pause menu.
+        RESTART: { target: 'idle', actions: ['resetGame'] },
         BUY_UNDO: {
           actions: assign({
             undoCharges: ({ context }) => context.undoCharges + 1
@@ -625,6 +637,10 @@ export const gameMachine = setup({
             currentCardIndex: 0, // Restart current case cards for learning
             caseStreak: 0,
             score: 0,
+            // A timeout or a wrong boss answer leaves the combo standing; the
+            // restarted case must not inherit its multiplier.
+            combo: 0,
+            multiplier: 1,
             coinsEarnedThisCase: 0,
             dossier: [],
             discarded: [],
@@ -659,6 +675,10 @@ export const gameMachine = setup({
             currentCardIndex: 0, // Restart current case cards for learning
             caseStreak: 0,
             score: 0,
+            // A timeout or a wrong boss answer leaves the combo standing; the
+            // restarted case must not inherit its multiplier.
+            combo: 0,
+            multiplier: 1,
             coinsEarnedThisCase: 0,
             dossier: [],
             discarded: [],

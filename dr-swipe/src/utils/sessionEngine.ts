@@ -18,6 +18,7 @@ const SPECIALTY_BY_TOKEN: Record<string, Specialty> = {
   STATS: 'stats',
   ENGL: 'engl',
   PSYCH: 'psych',
+  PSYC: 'psych',
 };
 
 export function specialtyFromCaseId(caseId: string): Specialty {
