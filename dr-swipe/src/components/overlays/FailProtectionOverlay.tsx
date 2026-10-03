@@ -16,7 +16,7 @@ export const FailProtectionOverlay: React.FC<FailProtectionOverlayProps> = ({
   // so an accidental Escape must not silently pick either one.
   const trapRef = useFocusTrap<HTMLDivElement>(true);
   return (
-    <div className="fixed inset-0 flex flex-col items-center justify-center z-fail-protection p-6">
+    <div className="fixed inset-0 flex flex-col items-center overflow-y-auto overscroll-contain z-fail-protection p-6">
       <motion.div
         className="absolute inset-0 bg-rose-50/95 backdrop-blur-md"
         initial={{ opacity: 0 }}
@@ -30,7 +30,7 @@ export const FailProtectionOverlay: React.FC<FailProtectionOverlayProps> = ({
         initial={{ scale: 0.9, y: 20, opacity: 0 }}
         animate={{ scale: 1, y: 0, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
-        className="paper-sheet p-10 max-w-md w-full text-center border-rose-200 shadow-2xl relative overflow-hidden"
+        className="paper-sheet p-10 max-w-md w-full text-center border-rose-200 shadow-2xl relative overflow-hidden my-auto shrink-0"
       >
         <div className="absolute top-0 left-0 w-full h-2 bg-rose-400 sticker-glow" />
         <div className="text-7xl mb-6">🚑</div>

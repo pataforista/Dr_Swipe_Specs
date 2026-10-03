@@ -16,7 +16,7 @@ interface LootBoxOverlayProps {
 export const LootBoxOverlay: React.FC<LootBoxOverlayProps> = ({ reward, onClaim, effectText }) => {
   const trapRef = useFocusTrap<HTMLDivElement>(reward.active, onClaim);
   return (
-    <div className="fixed inset-0 flex flex-col items-center justify-center z-overlay p-6">
+    <div className="fixed inset-0 flex flex-col items-center overflow-y-auto overscroll-contain z-overlay p-6">
       <motion.div
         className="absolute inset-0 bg-[#FDFBF7]/90 backdrop-blur-md"
         initial={{ opacity: 0 }}
@@ -30,7 +30,7 @@ export const LootBoxOverlay: React.FC<LootBoxOverlayProps> = ({ reward, onClaim,
         initial={{ scale: 0.5, rotate: -15, opacity: 0 }}
         animate={{ scale: 1, rotate: 0, opacity: 1 }}
         exit={{ scale: 1.5, opacity: 0 }}
-        className="paper-sheet p-6 sm:p-10 max-w-sm w-full text-center border-primary/20 shadow-2xl relative overflow-hidden"
+        className="paper-sheet p-6 sm:p-10 max-w-sm w-full text-center border-primary/20 shadow-2xl relative overflow-hidden my-auto shrink-0"
       >
         <div className="absolute top-0 left-0 w-full h-1.5 bg-primary/20 sticker-glow" />
         <motion.div 

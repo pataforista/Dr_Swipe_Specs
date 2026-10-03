@@ -3,6 +3,8 @@ import { useMachine } from '@xstate/react';
 import { gameMachine } from './machines/gameMachine';
 import { SwipeDeck } from './components/SwipeDeck';
 import { X } from 'lucide-react';
+import type { ReactNode } from 'react';
+import { ToastQueue, toastHoldMs, type ToastType } from './utils/toastQueue';
 import { useState, useEffect, useRef, useCallback, useMemo, lazy, Suspense } from 'react';
 import type { Card, ClinicalCase } from './types/game';
 import { dataLoader } from './utils/dataLoader';
@@ -76,7 +78,7 @@ export function App() {
   const [isLoadingCase, setIsLoadingCase] = useState(false);
   const [showRetro, setShowRetro] = useState(false);
   const [caseQueue, setCaseQueue] = useState<ClinicalCase[]>([]);
-  const [rewardToast, setRewardToast] = useState<{ show: boolean; text: string; type: 'coins' | 'xp' | 'milestone' }>({ show: false, text: '', type: 'coins' });
+  const [rewardToast, setRewardToast] = useState<{ show: boolean; text: string; type: ToastType }>({ show: false, text: '', type: 'coins' });
   const [showIntro, setShowIntro] = useState(false);
   const [lastSwipePoints, setLastSwipePoints] = useState<number | null>(null);
   const [swipeFeedback, setSwipeFeedback] = useState<'correct' | 'wrong' | null>(null);
@@ -100,11 +102,37 @@ export function App() {
   const codexTrapRef = useFocusTrap<HTMLDivElement>(showCodex, () => setShowCodex(false));
   const retroTrapRef = useFocusTrap<HTMLDivElement>(showRetro, () => setShowRetro(false));
 
-  const showToast = useCallback((text: string, type: 'coins' | 'xp' | 'milestone' = 'coins') => {
+  const toastQueueRef = useRef(new ToastQueue());
+  const toastTimersRef = useRef<number[]>([]);
+  const pumpToastRef = useRef<() => void>(() => {});
+  useEffect(() => {
+   pumpToastRef.current = () => {
+    const next = toastQueueRef.current.start();
+    if (!next) return;
+    setRewardToast({ show: true, text: next.text, type: next.type });
+    const hide = window.setTimeout(() => {
+      setRewardToast(prev => ({ ...prev, show: false }));
+      // Short gap so the exit animation finishes before the next one enters.
+      const gap = window.setTimeout(() => {
+        toastQueueRef.current.finish();
+        pumpToastRef.current();
+      }, 350);
+      toastTimersRef.current.push(gap);
+    }, toastHoldMs(next.text));
+    toastTimersRef.current.push(hide);
+   };
+  }, []);
+  useEffect(() => {
+    const timers = toastTimersRef;
+    const queue = toastQueueRef.current;
+    return () => { timers.current.forEach(window.clearTimeout); queue.reset(); };
+  }, []);
+
+  const showToast = useCallback((text: string, type: ToastType = 'coins') => {
+    if (!toastQueueRef.current.enqueue({ text, type })) return;
     // Deferred a tick: the reward payout effect calls this while React is
     // still committing, and a synchronous setState there cascades renders.
-    window.setTimeout(() => setRewardToast({ show: true, text, type }), 0);
-    window.setTimeout(() => setRewardToast(prev => ({ ...prev, show: false })), 2500);
+    window.setTimeout(() => pumpToastRef.current(), 0);
   }, []);
 
   useEffect(() => {
@@ -483,11 +511,20 @@ export function App() {
     send({ type: 'ANSWER_WRONG', error });
   }, [stopTriageAlarm, playFeedback, send]);
 
+  // Long panels (loot, defeat, debrief) can exceed the phone viewport while the
+  // app root is overflow-hidden. `min-h-full` + centering keeps short ones
+  // centered; taller ones scroll instead of being clipped top and bottom.
+  const scrollPanel = (node: ReactNode) => (
+    <div className="fixed inset-0 z-[120] overflow-y-auto overscroll-contain bg-[#FDFBF7]" style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}>
+      <div className="min-h-full flex items-center justify-center py-6 px-2">{node}</div>
+    </div>
+  );
+
   const renderCurrentView = () => {
     if (showIntro && currentCase) {
       return (
         <div className="fixed inset-0 bg-[#FDFBF7] flex flex-col items-center justify-center p-4 sm:p-8 z-[120] overflow-y-auto">
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-6 sm:p-10 max-w-md w-full text-center shadow-xl relative bg-white my-auto">
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-6 sm:p-10 max-w-md w-full text-center shadow-xl relative bg-white my-auto shrink-0">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 sm:w-40 h-6 sm:h-8 washi-tape-pink -rotate-1 shadow-sm" />
             <span className="text-[11px] sm:text-[10px] font-bold text-slate-400 uppercase lettering block mt-3 sm:mt-4 mb-1 sm:mb-2">EXPEDIENTE MÉDICO 📔</span>
             <h2 className="text-3xl sm:text-5xl font-black text-slate-800 lettering mb-3 sm:mb-4 break-words">{currentCase.patient_intro.name}</h2>
@@ -538,7 +575,8 @@ export function App() {
     switch (true) {
       case state.matches('idle'):
         return (
-          <div className="fixed inset-0 bg-[#FDFBF7] flex flex-col items-center justify-center p-4 sm:p-8 overflow-hidden z-[120]">
+          <div className="fixed inset-0 bg-[#FDFBF7] overflow-y-auto overscroll-contain z-[120]" style={{ touchAction: 'pan-y' }}>
+           <div className="min-h-full flex flex-col items-center justify-center p-4 sm:p-8">
             <div className="text-center mb-6 sm:mb-10">
               <span className="text-[11px] sm:text-[10px] font-black tracking-widest text-primary uppercase mb-2 block lettering">NOTAS DE ESTUDIO ✨</span>
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-black text-slate-800 lettering drop-shadow-sm">Dr. Swipe</h1>
@@ -619,6 +657,7 @@ export function App() {
                 <button onClick={() => setShowSettings(true)} className="text-[10px] sm:text-[11px] font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Ajustes ⚙️</button>
               </div>
             </div>
+           </div>
           </div>
         );
       case state.matches('triage'):
@@ -654,7 +693,7 @@ export function App() {
           </Suspense>
         );
       case state.matches('reward'):
-        return (
+        return scrollPanel(
           <LootScreen
             score={state.context.score}
             xpTotal={Math.max(0, Math.floor(state.context.score * getDailyStreakMultiplier(dailyStreak)))}
@@ -680,7 +719,7 @@ export function App() {
           />
         );
       case state.matches('ghosted'):
-        return (
+        return scrollPanel(
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-6 sm:p-10 max-w-md w-full text-center shadow-xl relative mx-4">
             <div className="absolute top-0 left-0 w-full h-2 bg-rose-400" />
             <div className="text-6xl sm:text-7xl mb-4 sm:mb-6 mt-3 sm:mt-4">💀</div>
@@ -716,7 +755,7 @@ export function App() {
           </motion.div>
         );
       case state.matches('debrief'):
-        return (
+        return scrollPanel(
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-6 sm:p-10 max-w-md w-full text-left shadow-xl relative mx-4">
             <div className="mb-4 sm:mb-6">
               <span className="bg-rose-500 text-white px-3 sm:px-4 py-1 rounded-lg lettering text-sm sm:text-base shadow-sm rotate-[-2deg] inline-block">
@@ -778,7 +817,7 @@ export function App() {
       <div className="w-full flex-grow flex items-center justify-center relative z-10">{renderCurrentView()}</div>
       <AnimatePresence>{showTutorial && <Suspense fallback={null}><TutorialOverlay onComplete={() => { safeStorage.setItem('dr_swipe_tutorial_seen', '1'); setShowTutorial(false); }} /></Suspense>}</AnimatePresence>
       <AnimatePresence>{showCodex && <div ref={codexTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-4 overflow-hidden"><Suspense fallback={null}><CodexScreen onClose={() => setShowCodex(false)} /></Suspense></div>}</AnimatePresence>
-      <AnimatePresence>{showStats && <div ref={statsTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-6 overflow-hidden"><Suspense fallback={null}><StatsDashboard onClose={() => setShowStats(false)} /></Suspense></div>}</AnimatePresence>
+      <AnimatePresence>{showStats && <div ref={statsTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] flex flex-col items-center overflow-y-auto overscroll-contain bg-[#FDFBF7]/90 backdrop-blur-sm p-6"><Suspense fallback={null}><StatsDashboard onClose={() => setShowStats(false)} /></Suspense></div>}</AnimatePresence>
       <AnimatePresence mode="wait">{state.context.activeEvent?.item && <EventAlert key={state.context.activeEvent?.item?.id ?? 'event'} event={state.context.activeEvent} onClose={handleEventClose} />}</AnimatePresence>
       <AnimatePresence>{state.context.lootBoxReward?.active && state.context.lootBoxReward.item && <LootBoxOverlay reward={{ active: true, item: state.context.lootBoxReward.item }} onClaim={handleLootClaim} effectText={resolveRewardEffect(state.context.lootBoxReward.item.efecto).description} />}</AnimatePresence>
       <AnimatePresence>{state.context.activePenalty?.active && <PenaltyOverlay penalty={{ active: true, item: state.context.activePenalty.item }} onAccept={() => send({ type: 'CLEAR_OVERLAYS' })} />}</AnimatePresence>

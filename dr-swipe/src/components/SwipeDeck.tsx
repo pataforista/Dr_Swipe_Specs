@@ -23,6 +23,15 @@ interface SwipeDeckProps {
 
 interface ExitInfo { direction: 'left' | 'right'; velocity: number }
 
+// How much room the deck area has. Below COMPACT the cards behind are hidden
+// (they peeked out under the action row) and the card chrome tightens; above
+// ROOMY the text steps up a size so tall phones aren't left with empty paper.
+type Density = 'compact' | 'normal' | 'roomy';
+const COMPACT_BELOW_PX = 340;
+const ROOMY_FROM_PX = 460;
+const densityFor = (height: number): Density =>
+  height < COMPACT_BELOW_PX ? 'compact' : height >= ROOMY_FROM_PX ? 'roomy' : 'normal';
+
 const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
   cards, currentIndex, onSwipe, isLocked, lifelineActive, canUseLifeline, onUseLifeline, revealLethalDirection, undo
 }) => {
@@ -36,6 +45,18 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
   // sluggish). This window stops a held arrow key or a double tap from
   // deciding the NEXT card sight-unseen.
   const lastCommitRef = React.useRef(0);
+
+  const deckRef = React.useRef<HTMLDivElement>(null);
+  const [density, setDensity] = React.useState<Density>('normal');
+  useEffect(() => {
+    const el = deckRef.current;
+    if (!el || typeof ResizeObserver === 'undefined') return;
+    const update = () => setDensity(densityFor(el.getBoundingClientRect().height));
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   // Take current + 2 more for the stack
   const visibleCards = cards.slice(currentIndex, currentIndex + 3).reverse();
@@ -97,7 +118,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
 
       {/* Deck: takes the height left by the HUD and the action row. Cards fly
           out past its edges; the app root clips them. */}
-      <div className="relative w-full flex-1 min-h-[260px] max-h-[34rem] flex items-center justify-center">
+      <div ref={deckRef} className="relative w-full flex-1 min-h-[260px] max-h-[44rem] flex items-center justify-center">
         <AnimatePresence initial={false} custom={exitInfo}>
           {visibleCards.map((card, idx) => {
             const keyIndex = currentIndex + (visibleCards.length - 1 - idx);
@@ -117,6 +138,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
                 totalCards={cards.length}
                 topX={topX}
                 revealLethalDirection={revealLethalDirection}
+                density={density}
               />
             );
           })}
@@ -262,6 +284,7 @@ interface DraggableCardProps {
   totalCards: number;
   topX: MotionValue<number>;
   revealLethalDirection?: boolean;
+  density: Density;
 }
 
 // Card categories are free text written by content authors, and several of
@@ -292,7 +315,7 @@ const CATEGORY_ICONS: Record<string, string> = {
 };
 
 const DraggableCard: React.FC<DraggableCardProps> = ({
-  card, isTop, indexOffset, onCommit, isLocked, cardNumber, totalCards, topX, revealLethalDirection
+  card, isTop, indexOffset, onCommit, isLocked, cardNumber, totalCards, topX, revealLethalDirection, density
 }) => {
   // Each card owns its x. The top card mirrors it into the shared topX so the
   // cards behind can rise one step as it leaves (they used to read a private
@@ -323,11 +346,14 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
   // Dynamic font scaling logic for dense clinical cases
   const getFontSizeClass = (text: string) => {
     const len = text.length;
-    if (len < 50) return 'text-2xl sm:text-3xl md:text-4xl';
-    if (len < 100) return 'text-xl sm:text-2xl md:text-3xl';
-    if (len < 150) return 'text-lg sm:text-xl md:text-2xl';
-    return 'text-base sm:text-lg md:text-xl';
+    // Tall deck: one step up on phones; sm+ sizes are unchanged.
+    const roomy = density === 'roomy';
+    if (len < 50) return `${roomy ? 'text-3xl' : 'text-2xl'} sm:text-3xl md:text-4xl`;
+    if (len < 100) return `${roomy ? 'text-2xl' : 'text-xl'} sm:text-2xl md:text-3xl`;
+    if (len < 150) return `${roomy ? 'text-xl' : 'text-lg'} sm:text-xl md:text-2xl`;
+    return `${roomy ? 'text-lg' : 'text-base'} sm:text-lg md:text-xl`;
   };
+  const compact = density === 'compact';
 
   const threshold = SWIPE_CONFIG.CARD_WIDTH * SWIPE_CONFIG.DRAG_THRESHOLD;
   const rotate = useTransform(x, [-SWIPE_CONFIG.ROTATION_RANGE, SWIPE_CONFIG.ROTATION_RANGE], [-SWIPE_CONFIG.MAX_DRAG_ROTATION, SWIPE_CONFIG.MAX_DRAG_ROTATION]);
@@ -427,6 +453,8 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
         isolation: 'isolate',
         touchAction: isTop && !isLocked ? 'none' : 'auto',
         pointerEvents: isPresent ? 'auto' : 'none',
+        // Tight deck: keep the stack mounted (so promotion stays smooth) but invisible.
+        ...(compact && !isTop ? { opacity: 0 } : {}),
       }}
       drag={isTop && !isLocked}
       dragConstraints={{ left: -500, right: 500, top: -SWIPE_CONFIG.DRAG_Y_LIMIT, bottom: SWIPE_CONFIG.DRAG_Y_LIMIT }}
@@ -461,7 +489,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
       </motion.div>
 
       {/* Header (Subject Tab) */}
-      <div className={`p-4 sm:p-6 pl-8 sm:pl-14 flex justify-between items-center gap-2 border-b border-slate-100 ${isLethal ? 'bg-rose-100/40' : isCritical ? 'bg-amber-100/40' : 'bg-slate-50/60'}`}>
+      <div className={`${compact ? 'p-2.5 pl-8' : 'p-4 pl-8'} sm:p-6 sm:pl-14 flex justify-between items-center gap-2 border-b border-slate-100 ${isLethal ? 'bg-rose-100/40' : isCritical ? 'bg-amber-100/40' : 'bg-slate-50/60'}`}>
         <div className="flex flex-col min-w-0">
           <span className="text-[11px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Materia</span>
           <span className="bg-white px-2 sm:px-3 py-1 rounded-lg text-[11px] sm:text-xs font-bold text-slate-600 shadow-sm border border-slate-100 flex items-center gap-1 sm:gap-2 truncate">
@@ -477,7 +505,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-grow p-6 sm:p-10 pl-10 sm:pl-16 flex flex-col justify-center relative">
+      <div className={`flex-grow ${compact ? 'p-3 pl-10' : 'p-6 pl-10'} sm:p-10 sm:pl-16 flex flex-col justify-center relative`}>
          <p className={`font-semibold leading-relaxed text-slate-800 text-center ${getFontSizeClass(card.card_text)} px-2`}>
           {card.card_text}
         </p>
@@ -510,7 +538,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
       )}
 
       {/* Card Footer */}
-      <div className="p-3 sm:p-5 pl-8 sm:pl-14 bg-slate-50/40 border-t border-slate-100 flex justify-between items-center text-[10px] font-bold text-slate-400 gap-2">
+      <div className={`${compact ? 'p-2' : 'p-3'} pl-8 sm:p-5 sm:pl-14 bg-slate-50/40 border-t border-slate-100 flex justify-between items-center text-[10px] font-bold text-slate-400 gap-2`}>
         <span className="lettering text-sm sm:text-lg text-slate-300 truncate">Guardia nocturna...</span>
         <div className="bg-white px-2 sm:px-3 py-1 rounded-full border border-slate-100 text-slate-500 flex-shrink-0 whitespace-nowrap">
           {cardNumber}/{totalCards}
