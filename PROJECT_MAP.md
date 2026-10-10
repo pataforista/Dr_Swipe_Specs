@@ -149,5 +149,5 @@ Antes de cada commit de código: `npm run lint && npm test && npm run build` (el
 ## 9. Pendientes vivos (resumen; detalle en `PLAN_SIGUIENTES_PASOS.md`)
 
 Contenido: familias aún bajo 40 % de descarte (roséola, DPPNI, escarlatina, HPP, EVC isquémico, varicela, corioamnionitis, RPM, DM2, rubéola, eritema infeccioso, neumonía pediátrica); revisión clínica de las fuentes; variedad de comentarios del mentor; auditoría de las 1,797 preguntas de jefe.
-Jugabilidad: animación del combo en cada acierto, dificultad adaptativa, telemetría opcional, simulacro ENARM.
+Jugabilidad: dificultad adaptativa, telemetría opcional, simulacro ENARM.
 Producción (ROADMAP Fase 7): Sentry/Analytics, E2E, v1.0.0. Balance de Favores por probar en móvil.
