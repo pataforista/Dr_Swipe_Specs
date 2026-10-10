@@ -268,4 +268,29 @@ describe('gameMachine state flow', () => {
       vi.useRealTimers();
     }
   });
+
+  it('lets study mode retry the boss for free', () => {
+    vi.useFakeTimers();
+    try {
+      const actor = createActor(gameMachine);
+      actor.start();
+      actor.send({ type: 'START_GUARD', deck: mockDeck, difficulty: 'standard', isSandiaMode: true });
+      for (const card of mockDeck) {
+        actor.send({ type: 'SWIPE', direction: card.expected_action === 'keep' ? 'right' : 'left' });
+      }
+      vi.advanceTimersByTime(1500);
+      const before = actor.getSnapshot().context;
+      expect(actor.getSnapshot().value).toBe('boss_fight');
+
+      actor.send({ type: 'ANSWER_WRONG', error: 'wrong' });
+      const state = actor.getSnapshot();
+      expect(state.value).toBe('boss_fight');
+      expect(state.context.lives).toBe(before.lives);
+      expect(state.context.combo).toBe(before.combo);
+      expect(state.context.bossAttempt).toBe(before.bossAttempt + 1);
+      expect(state.context.wasRescued).toBe(true); // still scheduled for review
+    } finally {
+      vi.useRealTimers();
+    }
+  });
 });

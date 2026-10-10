@@ -19,18 +19,26 @@ const hapticPatterns = {
 export type HapticPattern = keyof typeof hapticPatterns;
 
 /**
+ * Whether a vibration can actually reach the player.
+ *
+ * iOS Safari (and any WebKit-based browser on iOS) does not implement
+ * navigator.vibrate, and there is no web API that drives the Taptic Engine.
+ * This is a platform limit, not a bug to fix here: don't try to "repair" it
+ * with another vibrate() call. When this returns false, useImpactFeedback
+ * shows a stronger vignette instead. The error itself already has its own
+ * sound (useGameAudio: wrong / lethal), so no extra tone is played.
+ */
+export function hapticsAvailable(): boolean {
+  if (useCodexStore.getState().settings?.hapticsEnabled === false) return false;
+  return typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function';
+}
+
+/**
  * Trigger a haptic pattern on supported devices.
  * Silently fails on unsupported devices.
  */
 export function triggerHaptic(pattern: HapticPattern): void {
-  const store = useCodexStore.getState();
-  if (store.settings && !store.settings.hapticsEnabled) {
-    return;
-  }
-
-  if (typeof navigator === 'undefined' || !navigator.vibrate) {
-    return;
-  }
+  if (!hapticsAvailable()) return;
 
   const vibrationPattern = hapticPatterns[pattern];
   try {

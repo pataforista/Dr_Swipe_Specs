@@ -146,6 +146,11 @@ h1, h2, h3, .lettering {
   box-shadow: inset 0 0 140px 30px rgb(var(--accent-alert-rgb) / 0.45);
 }
 
+/* Devices without vibration get a deeper, more saturated hit. */
+.vignette[data-strong="true"] {
+  box-shadow: inset 0 0 170px 45px rgb(225 29 72 / 0.65);
+}
+
 /* Panic mode for the last 10s of triage: a subtle red pulse, not a full takeover */
 @keyframes destabilized-pulse {
   0%, 100% { opacity: 0; }

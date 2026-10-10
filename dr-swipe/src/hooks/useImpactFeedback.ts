@@ -1,4 +1,5 @@
 import { useCallback, useRef } from 'react';
+import { hapticsAvailable } from '../utils/hapticFeedback';
 
 /** How long a lethal mistake freezes input and the clock. */
 export const HIT_STOP_MS = 220;
@@ -50,12 +51,15 @@ export function useImpactFeedback() {
     running.current = [];
     const root = rootRef.current;
     const vignette = vignetteRef.current;
+    // No vibration (iOS, or turned off): the screen has to carry the hit alone.
+    const strong = !hapticsAvailable();
+    if (vignette) vignette.dataset.strong = String(strong);
     if (vignette?.animate) {
       running.current.push(kind === 'lethal'
         ? vignette.animate(
             [{ opacity: 0 }, { opacity: 1, offset: 0.06 }, { opacity: 1, offset: 0.5 }, { opacity: 0 }],
             { duration: 700, easing: 'ease-out' })
-        : vignette.animate([{ opacity: 0 }, { opacity: 0.75, offset: 0.3 }, { opacity: 0 }], { duration: 280, easing: 'ease-out' }));
+        : vignette.animate([{ opacity: 0 }, { opacity: strong ? 1 : 0.75, offset: 0.3 }, { opacity: 0 }], { duration: strong ? 340 : 280, easing: 'ease-out' }));
     }
     if (root?.animate && !prefersReducedMotion()) {
       running.current.push(kind === 'lethal'

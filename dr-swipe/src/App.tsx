@@ -535,8 +535,9 @@ export function App() {
   const handleBossGhosted = useCallback((error: string) => {
     stopTriageAlarm();
     playFeedback('wrong');
+    if (actorRef.getSnapshot().context.isSandiaMode) showToast('Modo estudio: repasa la respuesta y reintenta la fase crítica', 'milestone');
     send({ type: 'ANSWER_WRONG', error });
-  }, [stopTriageAlarm, playFeedback, send]);
+  }, [stopTriageAlarm, playFeedback, actorRef, showToast, send]);
 
   // Long panels (loot, defeat, debrief) can exceed the phone viewport while the
   // app root is overflow-hidden. `min-h-full` + centering keeps short ones
@@ -748,7 +749,7 @@ export function App() {
         if (!currentCase?.boss_fight_triad?.questions?.length) return null; // skipped via effect
         return (
           <Suspense fallback={null}>
-            <ShockRoom questions={currentCase.boss_fight_triad.questions} dossierItems={state.context.dossier} onSurvive={() => { stopTriageAlarm(); send({ type: 'ANSWER_CORRECT' }); }} onGhosted={handleBossGhosted} />
+            <ShockRoom key={state.context.bossAttempt} questions={currentCase.boss_fight_triad.questions} dossierItems={state.context.dossier} onSurvive={() => { stopTriageAlarm(); send({ type: 'ANSWER_CORRECT' }); }} onGhosted={handleBossGhosted} />
           </Suspense>
         );
       case state.matches('reward'):

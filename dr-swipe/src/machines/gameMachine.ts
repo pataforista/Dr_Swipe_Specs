@@ -59,6 +59,8 @@ export interface GameContext {
   /** The last failure happened in the boss phase: a rescue retries the boss,
    *  not the whole case (the cards were already decided). */
   failedInBoss: boolean;
+  /** Bumped on every boss retry; the ShockRoom is keyed on it so it remounts fresh. */
+  bossAttempt: number;
   caseId: string;
   pearlId: string | null;
   feedbackHistory: Array<{
@@ -171,6 +173,7 @@ export const gameMachine = setup({
       undoCharges: undoChargesFor(false),
       wasRescued: false,
       failedInBoss: false,
+      bossAttempt: 0,
       lethalErrorsThisCase: 0,
       caseStartedAt: Date.now(),
       caseId: '',
@@ -180,6 +183,7 @@ export const gameMachine = setup({
       shieldCharges: 0
     }),
     retryBoss: assign(({ context }) => ({
+      bossAttempt: context.bossAttempt + 1,
       lives: context.lives - 1,
       combo: 0,
       multiplier: 1,
@@ -387,6 +391,7 @@ export const gameMachine = setup({
     undoCharges: undoChargesFor(false),
     wasRescued: false,
     failedInBoss: false,
+    bossAttempt: 0,
     lethalErrorsThisCase: 0,
     caseStartedAt: Date.now(),
     caseId: '',
@@ -428,6 +433,7 @@ export const gameMachine = setup({
             undoCharges: ({ event }) => undoChargesFor(event.type === 'START_GUARD' && !!event.isSandiaMode),
             wasRescued: false,
             failedInBoss: false,
+            bossAttempt: 0,
             lethalErrorsThisCase: 0,
             caseStartedAt: Date.now(),
             caseId: ({ event }) => event.case_id || (event.deck[0] ? event.deck[0].card_id.split('_').slice(0, 2).join('_') : 'unknown'),
@@ -474,6 +480,7 @@ export const gameMachine = setup({
             undoCharges: ({ event }) => undoChargesFor(event.type === 'RESUME_GUARD' && !!event.isSandiaMode),
             wasRescued: false,
             failedInBoss: false,
+            bossAttempt: 0,
             lethalErrorsThisCase: 0,
             caseStartedAt: Date.now(),
             caseId: ({ event }) => event.case_id || (event.deck[0] ? event.deck[0].card_id.split('_').slice(0, 2).join('_') : 'unknown'),
@@ -576,14 +583,25 @@ export const gameMachine = setup({
             score: ({ context }) => context.score + (context.caseStreak * 500) // Streak Bonus
           })
         },
-        ANSWER_WRONG: {
+        ANSWER_WRONG: [{
+          // Study mode does no damage anywhere else, so the boss doesn't
+          // either: no intern, no combo, straight back to the questions. The
+          // case still counts as rescued, so spaced repetition brings it back.
+          target: 'boss_fight',
+          reenter: true,
+          guard: ({ context }) => context.isSandiaMode,
+          actions: assign({
+            bossAttempt: ({ context }) => context.bossAttempt + 1,
+            wasRescued: true
+          })
+        }, {
           target: 'fail_protection',
           actions: assign({
             fatalError: ({ event }) => event.type === 'ANSWER_WRONG' ? event.error : "Error en Shock Room",
             caseStreak: 0,
             failedInBoss: true
           })
-        }
+        }]
       }
     },
     reward: {
@@ -624,6 +642,7 @@ export const gameMachine = setup({
             lifelineActive: false,
             wasRescued: false,
             failedInBoss: false,
+            bossAttempt: 0,
             lethalErrorsThisCase: 0,
             caseStartedAt: Date.now(),
             caseId: ({ event }) => event.case_id || (event.deck[0] ? event.deck[0].card_id.split('_').slice(0, 2).join('_') : 'unknown'),
