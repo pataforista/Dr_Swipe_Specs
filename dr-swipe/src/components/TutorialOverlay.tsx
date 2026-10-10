@@ -32,7 +32,7 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({ onComplete }) 
   const slide = SLIDES[current];
 
   return (
-    <div className="fixed inset-0 z-[200] flex flex-col items-center overflow-y-auto overscroll-contain bg-[#FDFBF7]/90 backdrop-blur-md p-6">
+    <div className="fixed inset-0 z-[200] flex flex-col items-center overflow-y-auto overscroll-contain bg-paper/90 backdrop-blur-md p-6">
       {/* Paper texture overlay (Dot Grid) */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] medical-grid z-0" />
 
@@ -42,9 +42,9 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({ onComplete }) 
         className="paper-sheet p-6 sm:p-12 max-w-md w-full text-center shadow-2xl relative overflow-hidden bg-white my-auto shrink-0"
       >
         {/* Washi Tape Header */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 sm:w-48 h-7 sm:h-10 washi-tape-pink -rotate-1 shadow-sm border-x-2 border-white/40 z-20" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 sm:w-48 h-7 sm:h-10 washi-tape -rotate-1 shadow-sm border-x-2 border-white/40 z-20" />
 
-        <span className="text-primary/60 block mb-6 sm:mb-10 text-[10px] sm:text-[12px] font-black tracking-[0.3em] sm:tracking-[0.4em] lettering uppercase">
+        <span className="text-primary/60 block mb-6 sm:mb-10 text-xs sm:text-[12px] font-black tracking-[0.3em] sm:tracking-[0.4em] lettering uppercase">
           Guía de Estudio ✨ {current + 1}/{SLIDES.length}
         </span>
 
@@ -66,7 +66,7 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({ onComplete }) 
             </p>
 
             <div className="relative py-4 sm:py-6 px-3 sm:px-4 bg-slate-50 border-2 border-dashed border-slate-200 rounded-2 sm:rounded-3xl mb-6 sm:mb-8">
-              <p className="text-[10px] sm:text-[12px] font-black text-primary uppercase tracking-[0.25em] sm:tracking-[0.3em] lettering relative z-10">
+              <p className="text-xs sm:text-[12px] font-black text-primary uppercase tracking-[0.25em] sm:tracking-[0.3em] lettering relative z-10">
                 {slide.hint}
               </p>
             </div>
@@ -99,7 +99,7 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({ onComplete }) 
         {current === 0 && (
           <button
             onClick={onComplete}
-            className="mt-8 text-[11px] font-black tracking-[0.4em] text-slate-500 hover:text-rose-500 transition-colors uppercase lettering italic"
+            className="mt-8 text-xs font-black tracking-[0.4em] text-slate-500 hover:text-rose-500 transition-colors uppercase lettering italic"
           >
             — SALTAR TUTORIAL —
           </button>

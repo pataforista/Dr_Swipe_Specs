@@ -1,4 +1,4 @@
-export type ToastType = 'coins' | 'xp' | 'milestone';
+export type ToastType = 'coins' | 'xp' | 'milestone' | 'alert';
 
 export interface ToastItem {
   text: string;

@@ -5,12 +5,14 @@ import { useFocusTrap } from '../../hooks/useFocusTrap';
 interface FailProtectionOverlayProps {
   error: string;
   livesRemaining: number;
+  /** The failure came from the critical phase: the rescue retries only it. */
+  retriesBoss?: boolean;
   onRescue: () => void;
   onRestart: () => void;
 }
 
 export const FailProtectionOverlay: React.FC<FailProtectionOverlayProps> = ({
-  error, livesRemaining, onRescue, onRestart
+  error, livesRemaining, retriesBoss = false, onRescue, onRestart
 }) => {
   // No onEscape here: both choices (rescue/restart) have real consequences,
   // so an accidental Escape must not silently pick either one.
@@ -41,7 +43,7 @@ export const FailProtectionOverlay: React.FC<FailProtectionOverlayProps> = ({
           RELEVO MÉDICO
         </h3>
         <div className="bg-white p-6 rounded-2xl mb-8 border-2 border-dashed border-rose-100 text-left relative overflow-hidden">
-          <p className="text-[10px] font-black text-rose-300 uppercase tracking-widest mb-1 lettering">
+          <p className="text-xs font-black text-rose-300 uppercase tracking-widest mb-1 lettering">
             NOTAS DEL DIRECTOR:
           </p>
           <p className="text-lg font-medium text-slate-600 italic leading-relaxed relative z-10 lettering">
@@ -54,13 +56,16 @@ export const FailProtectionOverlay: React.FC<FailProtectionOverlayProps> = ({
             className="marker-btn w-full py-6 text-xl flex flex-col items-center justify-center gap-1 group"
           >
             <span className="text-sm font-black uppercase whitespace-nowrap">CAMBIAR DE INTERNO ✨</span>
-            <span className="text-[10px] opacity-60 font-bold uppercase tracking-widest">
+            <span className="text-xs opacity-60 font-bold uppercase tracking-widest">
               ({livesRemaining - 1} DISPONIBLES)
+            </span>
+            <span className="text-xs opacity-80 font-bold normal-case tracking-normal">
+              {retriesBoss ? 'Reintentas solo la fase crítica' : 'El caso vuelve a empezar'}
             </span>
           </button>
           <button
             onClick={onRestart}
-            className="text-[10px] font-bold text-slate-500 hover:text-rose-500 uppercase tracking-widest py-2 transition-all lettering"
+            className="text-xs font-bold text-slate-500 hover:text-rose-500 uppercase tracking-widest py-2 transition-all lettering"
           >
             — Terminar Turno —
           </button>

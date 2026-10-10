@@ -3,16 +3,19 @@
 @tailwind utilities;
 
 :root {
-  /* Semantic Palette */
-  --bg-app: #FDFBF7;
+  /* Semantic palette, as RGB channels so Tailwind can apply opacity. */
+  --paper-rgb: 253 251 247;   /* cream notebook paper */
+  --ink-rgb: 51 65 85;        /* slate-700 */
+  --primary-rgb: 13 148 136;  /* teal-600 */
+  --secondary-rgb: 217 119 6; /* amber-600: warm, readable on paper */
+  --accent-alert-rgb: 244 63 94; /* rose-500, the red used everywhere else */
+
+  --bg-app: rgb(var(--paper-rgb));
   --surface: #FFFFFF;
-  --text-main: #334155;
-  --text-muted: #64748B;
-  --primary: #0D9488;    /* Teal 600 - More medical */
-  --secondary: #FBBC05;
-  --tertiary: #5DBCA7;  /* Darker teal for better contrast */
-  --accent-alert: #EF4444; /* Red 500 */
-  --accent-info: #0EA5E9;
+  --text-main: rgb(var(--ink-rgb));
+  --primary: rgb(var(--primary-rgb));
+  --secondary: rgb(var(--secondary-rgb));
+  --accent-alert: rgb(var(--accent-alert-rgb));
 
   /* Shadows - Layered & Premium */
   --shadow-sm: 0 2px 4px rgba(92,64,51,0.05);
@@ -38,8 +41,8 @@ html {
 }
 
 body {
-  background-color: #FDFBF7;
-  color: #334155;
+  background-color: var(--bg-app);
+  color: var(--text-main);
   font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   background-image: radial-gradient(#E2E8F0 1px, transparent 1px);
   background-size: 24px 24px;
@@ -59,7 +62,7 @@ h1, h2, h3, .lettering {
 }
 
 .medical-grid {
-  background-image: linear-gradient(to right, #0D9488 1px, transparent 1px), linear-gradient(to bottom, #0D9488 1px, transparent 1px);
+  background-image: linear-gradient(to right, var(--primary) 1px, transparent 1px), linear-gradient(to bottom, var(--primary) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
@@ -90,13 +93,20 @@ h1, h2, h3, .lettering {
     border-radius: var(--radius-panel);
     border: 1px solid #F1F5F9;
     box-shadow: var(--shadow-md);
-    background-image: linear-gradient(to bottom, transparent 39px, #F1F5F9 40px);
-    background-size: 100% 40px;
   }
 }
 
-.washi-tape-pink {
-  background: repeating-linear-gradient(45deg, #0D948822, #0D948822 10px, #0D948844 10px, #0D948844 20px);
+/* Notebook rules drawn under each line of the card text. They used to be a
+   fixed 40 px pattern on the whole card, which never matched the text's line
+   height (it changes with the font size). 1lh is the element's own line
+   height; where it is unsupported the size is ignored and no rule shows. */
+.ruled-text {
+  background-image: linear-gradient(to bottom, transparent calc(100% - 1px), rgb(148 163 184 / 0.22) calc(100% - 1px));
+  background-size: 100% 1lh;
+}
+
+.washi-tape {
+  background: repeating-linear-gradient(45deg, rgb(var(--primary-rgb) / 0.13), rgb(var(--primary-rgb) / 0.13) 10px, rgb(var(--primary-rgb) / 0.27) 10px, rgb(var(--primary-rgb) / 0.27) 20px);
 }
 
 .marker-btn {
@@ -118,85 +128,47 @@ h1, h2, h3, .lettering {
 }
 
 .sticker-glow {
-  box-shadow: 0 0 30px rgba(13, 148, 136, 0.15);
+  box-shadow: 0 0 30px rgb(var(--primary-rgb) / 0.15);
 }
 
 .lettering {
   font-family: 'Fraunces', Georgia, 'Iowan Old Style', serif;
 }
 
-@keyframes sticker-slap {
-  0% { transform: scale(2) rotate(20deg); opacity: 0; }
-  100% { transform: scale(1) rotate(-5deg); opacity: 1; }
+/* Red vignettes. The shadow is painted once on a fixed layer and only its
+   opacity animates (composited), instead of animating a full-screen
+   box-shadow, which repainted the whole screen every frame. */
+.vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  box-shadow: inset 0 0 140px 30px rgb(var(--accent-alert-rgb) / 0.45);
 }
 
-@keyframes heartbeat-soft {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.15); }
-  100% { transform: scale(1); }
-}
-
-.sticker-slap {
-  animation: sticker-slap 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-.card-enter {
-  animation: sticker-slap 0.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-}
-
-/* Error feedback: brief screen-shake on a failed swipe */
-@keyframes shake-lite {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  20% { transform: translate3d(-6px, 0, 0); }
-  40% { transform: translate3d(5px, 0, 0); }
-  60% { transform: translate3d(-4px, 0, 0); }
-  80% { transform: translate3d(3px, 0, 0); }
-}
-
-.shake-lite {
-  animation: shake-lite 0.3s ease-in-out;
+/* Devices without vibration get a deeper, more saturated hit. */
+.vignette[data-strong="true"] {
+  box-shadow: inset 0 0 170px 45px rgb(225 29 72 / 0.65);
 }
 
 /* Panic mode for the last 10s of triage: a subtle red pulse, not a full takeover */
 @keyframes destabilized-pulse {
-  0%, 100% { box-shadow: inset 0 0 0 0 rgba(239, 68, 68, 0); }
-  50% { box-shadow: inset 0 0 60px 10px rgba(239, 68, 68, 0.15); }
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.35; }
 }
 
-.destabilized-content {
+.vignette-pulse {
   animation: destabilized-pulse 1s ease-in-out infinite;
-}
-
-/* Error weight: a quick red flash so a mistake reads as an actual hit */
-@keyframes error-flash {
-  0% { box-shadow: inset 0 0 0 0 rgba(244, 63, 94, 0); }
-  30% { box-shadow: inset 0 0 120px 20px rgba(244, 63, 94, 0.35); }
-  100% { box-shadow: inset 0 0 0 0 rgba(244, 63, 94, 0); }
-}
-
-.error-flash {
-  animation: error-flash 0.25s ease-out;
-}
-
-/* Lethal mistakes hit harder: a stronger, longer flash */
-@keyframes error-flash-lethal {
-  0% { box-shadow: inset 0 0 0 0 rgba(244, 63, 94, 0); }
-  25% { box-shadow: inset 0 0 160px 40px rgba(244, 63, 94, 0.55); }
-  100% { box-shadow: inset 0 0 0 0 rgba(244, 63, 94, 0); }
-}
-
-.error-flash-lethal {
-  animation: error-flash-lethal 0.3s ease-out;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
 }
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #FDFBF7;
+  background: var(--bg-app);
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #0D948822;
+  background: rgb(var(--primary-rgb) / 0.13);
   border-radius: 10px;
 }
 

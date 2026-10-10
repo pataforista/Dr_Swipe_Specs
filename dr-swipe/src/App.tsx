@@ -32,8 +32,6 @@ const RetrospectiveView = lazy(() => import('./components/RetrospectiveView').th
 const ShockRoom = lazy(() => import('./components/ShockRoom').then(m => ({ default: m.ShockRoom })));
 
 import { RewardToast } from './components/overlays/RewardToast';
-import { LootBoxOverlay } from './components/overlays/LootBoxOverlay';
-import { PenaltyOverlay } from './components/overlays/PenaltyOverlay';
 import { FailProtectionOverlay } from './components/overlays/FailProtectionOverlay';
 import { TelemetryHUD } from './components/TelemetryHUD';
 import { resolveRewardEffect } from './utils/rewardEffects';
@@ -41,8 +39,8 @@ import { shuffleDeck, applyDeckOrder } from './utils/deckOrder';
 import { AvatarFeedback } from './components/AvatarFeedback';
 import { ReloadPrompt } from './components/overlays/ReloadPrompt';
 import { LootScreen } from './components/overlays/LootScreen';
-import { EventAlert } from './components/overlays/EventAlert';
 import { DoodleToggle } from './components/ui/DoodleToggle';
+import { useImpactFeedback, HIT_STOP_MS } from './hooks/useImpactFeedback';
 /** Partial Fisher-Yates: up to `n` distinct random items from `items`. */
 function pickRandom<T>(items: T[], n: number): T[] {
   const pool = [...items];
@@ -57,6 +55,7 @@ function pickRandom<T>(items: T[], n: number): T[] {
 export function App() {
   const [state, send, actorRef] = useMachine(gameMachine);
   const { playFeedback, playGacha, playCodeRed, startTriageAlarm, stopTriageAlarm } = useGameAudio();
+  const { rootRef, vignetteRef, playImpact } = useImpactFeedback();
   const [currentCase, setCurrentCase] = useState<ClinicalCase | null>(null);
   const { addXp, addCoins, registerCaseSolved, unlockPearl, updateSwipeResult, incrementSessions, spendCoins, updateDailyStreak, earnFavors, spendFavors, favors, recordRevive, noteCombo, unlockEarnedAchievements, unlockedPearls, achievements, saveSessionProgress, clearSessionProgress, sessionProgress, stats, dailyStreak, lastPlayedDate, settings = { soundEnabled: true, hapticsEnabled: true }, updateSettings, commitSession, caseProgress } = useCodexStore();
   const [selectedSpecialty, setSelectedSpecialty] = useState<string>('all');
@@ -81,10 +80,13 @@ export function App() {
   const [rewardToast, setRewardToast] = useState<{ show: boolean; text: string; type: ToastType }>({ show: false, text: '', type: 'coins' });
   const [showIntro, setShowIntro] = useState(false);
   const [lastSwipePoints, setLastSwipePoints] = useState<number | null>(null);
-  const [swipeFeedback, setSwipeFeedback] = useState<'correct' | 'wrong' | null>(null);
-  const [errorImpact, setErrorImpact] = useState<'normal' | 'lethal' | null>(null);
+  // Points of a correct swipe float over the deck; `id` restarts the animation
+  // when two swipes score the same.
+  const [pointsPop, setPointsPop] = useState<{ value: number; id: number } | null>(null);
   const [hitStop, setHitStop] = useState(false);
   const [mentorDialogue, setMentorDialogue] = useState<string | null>(null);
+  // What the swiped card said and what was right, so a mistake teaches.
+  const [mistakeContext, setMistakeContext] = useState<{ cardText: string; expected: 'keep' | 'discard' } | null>(null);
   const [mentorExpression, setMentorExpression] = useState<'neutral' | 'happy' | 'angry' | 'shocked'>('neutral');
   const [timeLeft, setTimeLeft] = useState(60);
   // XP/coins actually granted this shift (they depend on score and daily streak),
@@ -93,8 +95,11 @@ export function App() {
   useSessionCommit(state.context.session.startedAt, state.context.session.caseResults, commitSession);
 
   const isTriage = state.matches('triage');
-  const isOverlayActive = !!(state.context.activeEvent || state.context.activePenalty || state.context.lootBoxReward || showIntro);
-  const clockRunning = isTriage && !isPaused && !isOverlayActive && !state.context.isSandiaMode;
+  // Loot, events and penalties no longer open blocking sheets (they resolve
+  // as toasts, see below); the intro sheet is the only overlay left in triage.
+  const isOverlayActive = showIntro;
+  // The clock also stands still during a lethal hit-stop.
+  const clockRunning = isTriage && !isPaused && !isOverlayActive && !hitStop && !state.context.isSandiaMode;
 
   const settingsTrapRef = useFocusTrap<HTMLDivElement>(showSettings, () => setShowSettings(false));
   const pauseTrapRef = useFocusTrap<HTMLDivElement>(isPaused && state.matches('triage'), () => setIsPaused(false));
@@ -148,6 +153,15 @@ export function App() {
     const timer = window.setInterval(() => setTimeLeft(t => Math.max(0, t - 1)), 1000);
     return () => clearInterval(timer);
   }, [clockRunning]);
+
+  // Leaving the app (a call, the notification shade) pauses the shift instead
+  // of letting the clock run out in the background.
+  useEffect(() => {
+    if (!isTriage) return;
+    const onVisibility = () => { if (document.hidden) setIsPaused(true); };
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => document.removeEventListener('visibilitychange', onVisibility);
+  }, [isTriage]);
 
   useEffect(() => {
     if (isTriage && timeLeft === 0 && !state.context.isSandiaMode) {
@@ -379,6 +393,36 @@ export function App() {
     }
   };
 
+  // Loot boxes, random events and the 5-errors penalty used to open sheets
+  // that had to be dismissed: on a ~3 s swipe loop they broke the flow every
+  // few cards. They now apply on the spot and announce themselves as toasts.
+  const resolveSwipeEvents = useCallback((ctx: ReturnType<typeof actorRef.getSnapshot>['context']) => {
+    const { lootBoxReward, activeEvent, activePenalty } = ctx;
+    if (!lootBoxReward && !activeEvent && !activePenalty) return;
+    if (lootBoxReward?.item) {
+      const fx = resolveRewardEffect(lootBoxReward.item.efecto);
+      send({ type: 'APPLY_REWARD', heal: fx.heal, shield: fx.shield, undo: fx.undo, hint: fx.hint });
+      if (fx.seconds) setTimeLeft(t => t + fx.seconds);
+      showToast(`Premio · ${lootBoxReward.item.nombre}: ${fx.description}`, 'milestone');
+    }
+    if (activeEvent) {
+      if (activeEvent.type === 'archive') {
+        addCoins(10);
+        showToast(`${activeEvent.item.nombre}: +10 créditos`, 'coins');
+      } else if (activeEvent.type === 'systemic') {
+        setTimeLeft(t => Math.max(0, t - 10));
+        showToast(`${activeEvent.item.nombre}: −10 s`, 'alert');
+      } else {
+        send({ type: 'USE_LIFELINE' });
+        showToast(`Laboratorio · ${activeEvent.item.nombre}: pista revelada`, 'milestone');
+      }
+    }
+    if (activePenalty?.item) {
+      showToast(`${activePenalty.item.nombre} · 5 errores seguidos: relee con calma. −1 deshacer`, 'alert');
+    }
+    send({ type: 'CLEAR_OVERLAYS' });
+  }, [actorRef, send, addCoins, showToast]);
+
   const handleSwipe = useCallback((direction: 'left' | 'right') => {
     if (isPaused) return;
     const before = actorRef.getSnapshot().context.feedbackHistory.length;
@@ -389,47 +433,55 @@ export function App() {
     if (ctx.feedbackHistory.length === before) return; // swipe was ignored (no card)
     const last = ctx.feedbackHistory[ctx.feedbackHistory.length - 1];
     updateSwipeResult(last.isCorrect);
-    setLastSwipePoints(last.points);
-    setSwipeFeedback(last.isCorrect ? 'correct' : 'wrong');
+    resolveSwipeEvents(ctx);
     // The card that was just swiped: currentCardIndex has already advanced.
     const swipedCard = ctx.deck[ctx.currentCardIndex - 1];
     const isLethalMistake = !last.isCorrect && !!swipedCard && isLethalCard(swipedCard);
-    if (last.isCorrect) {
-      playFeedback('correct', ctx.combo);
-      triggerHaptic('criticalSuccess');
-      // Combo milestones get their own cue instead of sounding like any other
-      // correct swipe — reuses the gacha jingle already in the audio engine (F3).
-      if ((COMBO_MILESTONES as readonly number[]).includes(ctx.combo)) playGacha();
-    } else if (isLethalMistake) {
-      // The error that teaches the stakes of the game deserves to feel like
-      // one: its own low sound, its own haptic pattern (previously defined
-      // and never called), and a beat where the UI itself flinches (F2).
-      playFeedback('lethal');
-      triggerHaptic('lethalError');
-      setErrorImpact('lethal');
-      setHitStop(true);
-      setTimeout(() => setHitStop(false), 120);
-      setTimeout(() => setErrorImpact(null), 400);
-    } else {
-      playFeedback('wrong');
-      triggerHaptic('warning');
-      setErrorImpact('normal');
-      setTimeout(() => setErrorImpact(null), 250);
-    }
-    setTimeout(() => setSwipeFeedback(null), 2000);
-    // Mentor bubble for this swipe (it also carries the points, replacing the
-    // separate toast that sat on top of the action buttons). Correct swipes
-    // get a short beat; mistakes stay up long enough to read the reason.
-    setMentorDialogue(last.feedback);
-    setMentorExpression(last.isCorrect ? 'happy' : isLethalMistake ? 'shocked' : 'angry');
-    if (mentorTimerRef.current !== null) clearTimeout(mentorTimerRef.current);
-    mentorTimerRef.current = window.setTimeout(() => {
+    const clearMentor = () => {
+      if (mentorTimerRef.current !== null) clearTimeout(mentorTimerRef.current);
+      mentorTimerRef.current = null;
       setMentorDialogue(null);
       setMentorExpression('neutral');
       setLastSwipePoints(null);
-      mentorTimerRef.current = null;
-    }, last.isCorrect ? 2500 : 4500);
-  }, [isPaused, actorRef, send, updateSwipeResult, playFeedback, playGacha]);
+      setMistakeContext(null);
+    };
+    if (last.isCorrect) {
+      playFeedback('correct', ctx.combo);
+      // Weight follows the stakes: a light tick for a routine card, more for
+      // a critical one, the full pattern only for a combo milestone.
+      const isMilestone = (COMBO_MILESTONES as readonly number[]).includes(ctx.combo);
+      const isCriticalCard = !!swipedCard && (isLethalCard(swipedCard) || !!swipedCard.safety_flags?.decision_critical);
+      triggerHaptic(isMilestone ? 'criticalSuccess' : isCriticalCard ? 'correctCritical' : 'correctTap');
+      if (isMilestone) playGacha();
+      // A correct swipe needs no lecture: the mentor stays quiet and the
+      // points float over the deck. Any open mistake note is dismissed.
+      clearMentor();
+      setPointsPop({ value: last.points, id: Date.now() });
+      return;
+    }
+    setPointsPop(null);
+    if (isLethalMistake) {
+      // The error that teaches the stakes of the game deserves to feel like
+      // one: its own low sound and haptic, and a real hit-stop (input and
+      // clock frozen while the screen holds the hit).
+      playFeedback('lethal');
+      triggerHaptic('lethalError');
+      playImpact('lethal');
+      setHitStop(true);
+      window.setTimeout(() => setHitStop(false), HIT_STOP_MS);
+    } else {
+      playFeedback('wrong');
+      triggerHaptic('warning');
+      playImpact('normal');
+    }
+    // Mistakes stay up long enough to read the card, the right call and why.
+    clearMentor();
+    setLastSwipePoints(last.points);
+    setMentorDialogue(last.feedback);
+    setMistakeContext({ cardText: last.cardText, expected: last.expectedAction });
+    setMentorExpression(isLethalMistake ? 'shocked' : 'angry');
+    mentorTimerRef.current = window.setTimeout(clearMentor, isLethalMistake ? 6000 : 4500);
+  }, [isPaused, actorRef, send, updateSwipeResult, resolveSwipeEvents, playFeedback, playGacha, playImpact]);
 
   useEffect(() => () => {
     if (mentorTimerRef.current !== null) clearTimeout(mentorTimerRef.current);
@@ -479,44 +531,19 @@ export function App() {
     }
   }, [isLoadingCase, isPaused, spendCoins, send]);
 
-  const handleLootClaim = () => {
-    const item = state.context.lootBoxReward?.item;
-    if (!item) return send({ type: 'CLEAR_OVERLAYS' });
-    const fx = resolveRewardEffect(item.efecto);
-    send({ type: 'APPLY_REWARD', heal: fx.heal, shield: fx.shield, undo: fx.undo, hint: fx.hint });
-    if (fx.seconds) setTimeLeft(t => t + fx.seconds);
-    triggerHaptic('criticalSuccess');
-    showToast(fx.description, 'milestone');
-  };
-
-  const handleEventClose = () => {
-    const activeEvent = state.context.activeEvent;
-    if (activeEvent) {
-      if (activeEvent.type === 'archive') {
-        addCoins(10);
-        showToast("+10 🪙 de archivo", 'coins');
-      } else if (activeEvent.type === 'systemic') {
-        setTimeLeft(t => Math.max(0, t - 10));
-        showToast("-10s: Evento sistémico 🏥", 'milestone');
-      } else if (activeEvent.type === 'lab') {
-        send({ type: 'USE_LIFELINE' });
-        showToast("Pista revelada por laboratorio 🧪", 'milestone');
-      }
-    }
-    send({ type: 'CLEAR_OVERLAYS' });
-  };
 
   const handleBossGhosted = useCallback((error: string) => {
     stopTriageAlarm();
     playFeedback('wrong');
+    if (actorRef.getSnapshot().context.isSandiaMode) showToast('Modo estudio: repasa la respuesta y reintenta la fase crítica', 'milestone');
     send({ type: 'ANSWER_WRONG', error });
-  }, [stopTriageAlarm, playFeedback, send]);
+  }, [stopTriageAlarm, playFeedback, actorRef, showToast, send]);
 
   // Long panels (loot, defeat, debrief) can exceed the phone viewport while the
   // app root is overflow-hidden. `min-h-full` + centering keeps short ones
   // centered; taller ones scroll instead of being clipped top and bottom.
   const scrollPanel = (node: ReactNode) => (
-    <div className="fixed inset-0 z-[120] overflow-y-auto overscroll-contain bg-[#FDFBF7]" style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}>
+    <div className="fixed inset-0 z-[120] overflow-y-auto overscroll-contain bg-paper" style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}>
       <div className="min-h-full flex items-center justify-center py-6 px-2">{node}</div>
     </div>
   );
@@ -524,10 +551,10 @@ export function App() {
   const renderCurrentView = () => {
     if (showIntro && currentCase) {
       return (
-        <div className="fixed inset-0 bg-[#FDFBF7] flex flex-col items-center justify-center p-4 sm:p-8 z-[120] overflow-y-auto">
+        <div className="fixed inset-0 bg-paper flex flex-col items-center justify-center p-4 sm:p-8 z-[120] overflow-y-auto">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-6 sm:p-10 max-w-md w-full text-center shadow-xl relative bg-white my-auto shrink-0">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 sm:w-40 h-6 sm:h-8 washi-tape-pink -rotate-1 shadow-sm" />
-            <span className="text-[11px] sm:text-[10px] font-bold text-slate-400 uppercase lettering block mt-3 sm:mt-4 mb-1 sm:mb-2">EXPEDIENTE MÉDICO 📔</span>
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 sm:w-40 h-6 sm:h-8 washi-tape -rotate-1 shadow-sm" />
+            <span className="text-xs font-bold text-slate-400 uppercase lettering block mt-3 sm:mt-4 mb-1 sm:mb-2">EXPEDIENTE MÉDICO 📔</span>
             <h2 className="text-3xl sm:text-5xl font-black text-slate-800 lettering mb-3 sm:mb-4 break-words">{currentCase.patient_intro.name}</h2>
             <div className="bg-slate-50 p-4 sm:p-6 rounded-2xl mb-4 border-2 border-dashed border-slate-100 italic lettering text-base sm:text-lg">"{currentCase.patient_intro.arrival_scenario}"</div>
             {introLine && (
@@ -577,12 +604,12 @@ export function App() {
     switch (true) {
       case state.matches('idle'):
         return (
-          <div className="fixed inset-0 bg-[#FDFBF7] overflow-y-auto overscroll-contain z-[120]" style={{ touchAction: 'pan-y' }}>
+          <div className="fixed inset-0 bg-paper overflow-y-auto overscroll-contain z-[120]" style={{ touchAction: 'pan-y' }}>
            <div className="min-h-full flex flex-col items-center justify-center p-4 sm:p-8">
             <div className="text-center mb-6 sm:mb-10">
-              <span className="text-[11px] sm:text-[10px] font-black tracking-widest text-primary uppercase mb-2 block lettering">NOTAS DE ESTUDIO ✨</span>
+              <span className="text-xs font-black tracking-widest text-primary uppercase mb-2 block lettering">NOTAS DE ESTUDIO ✨</span>
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-black text-slate-800 lettering drop-shadow-sm">Dr. Swipe</h1>
-              <div className="h-2 w-32 sm:w-48 washi-tape-pink mx-auto mt-3 sm:mt-4 rotate-1" />
+              <div className="h-2 w-32 sm:w-48 washi-tape mx-auto mt-3 sm:mt-4 rotate-1" />
             </div>
             <p className="max-w-xs text-center text-xs sm:text-sm text-slate-600 leading-relaxed italic mb-4 sm:mb-6 px-4">
               <span className="not-italic font-black text-slate-700">{MENTOR_ICONS[menuGreeting.quien]} {MENTOR_NAMES[menuGreeting.quien]}: </span>
@@ -591,7 +618,7 @@ export function App() {
             {dailyStreak > 0 && (() => {
               const playedToday = lastPlayedDate === new Date().toISOString().slice(0, 10);
               return (
-                <div className={`flex items-center gap-2 px-4 sm:px-6 py-2 rounded-2xl mb-6 sm:mb-10 shadow-sm font-bold lettering uppercase text-[10px] sm:text-[11px] ${
+                <div className={`flex items-center gap-2 px-4 sm:px-6 py-2 rounded-2xl mb-6 sm:mb-10 shadow-sm font-bold lettering uppercase text-xs ${
                   playedToday ? 'bg-amber-100 text-amber-700' : 'bg-rose-100 text-rose-600 animate-pulse'
                 }`}>
                   🔥 Racha: {dailyStreak} Días{!playedToday && ' — ¡juega hoy para no perderla!'}
@@ -601,7 +628,7 @@ export function App() {
             
             {/* Specialty Selector Chips */}
             <div className="mb-6 sm:mb-8 text-center max-w-sm w-full z-20">
-              <span className="text-[11px] font-black text-slate-400 uppercase tracking-widest block mb-2.5 lettering">SELECCIONAR ESPECIALIDAD:</span>
+              <span className="text-xs font-black text-slate-400 uppercase tracking-widest block mb-2.5 lettering">SELECCIONAR ESPECIALIDAD:</span>
               <div className="flex flex-wrap justify-center gap-2">
                 {[
                   { id: 'all', label: 'Mixta 🎲' },
@@ -613,7 +640,7 @@ export function App() {
                   <button
                     key={spec.id}
                     onClick={() => setSelectedSpecialty(spec.id)}
-                    className={`px-3 py-1.5 rounded-full text-[10px] font-black tracking-wider uppercase transition-all duration-150 active:scale-95 cursor-pointer border-2 ${
+                    className={`px-3 py-1.5 rounded-full text-xs font-black tracking-wider uppercase transition-all duration-150 active:scale-95 cursor-pointer border-2 ${
                       selectedSpecialty === spec.id
                         ? 'bg-primary border-primary text-white shadow-sm'
                         : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300'
@@ -630,12 +657,12 @@ export function App() {
                 <button onClick={() => startNewCase(false, selectedSpecialty)} disabled={isLoadingCase} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl">
                   {isLoadingCase ? 'PREPARANDO...' : 'INICIAR GUARDIA ⚡'}
                 </button>
-                <div className="absolute -top-3 right-0 sm:-right-4 bg-rose-500 text-white text-[10px] px-2 py-0.5 rounded-full shadow-md z-20 animate-pulse pointer-events-none">NUEVA</div>
+                <div className="absolute -top-3 right-0 sm:-right-4 bg-rose-500 text-white text-xs px-2 py-0.5 rounded-full shadow-md z-20 animate-pulse pointer-events-none">NUEVA</div>
               </div>
 
               <button onClick={() => startNewCase(true, selectedSpecialty)} disabled={isLoadingCase} className="marker-btn py-4 sm:py-5 text-base sm:text-xl !bg-emerald-600 !border-emerald-500 shadow-emerald-200 group">
                  {isLoadingCase ? 'PREPARANDO...' : 'MODO ESTUDIO 🍉'}
-                 <div className="absolute -top-1 -right-1 bg-amber-500 text-white text-[11px] px-2 py-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">SIN DAÑO</div>
+                 <div className="absolute -top-1 -right-1 bg-amber-500 text-white text-xs px-2 py-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">SIN DAÑO</div>
               </button>
 
               {/* Repasar Errores Button */}
@@ -652,11 +679,11 @@ export function App() {
               )}
 
               <div className="flex gap-4 justify-center pt-2">
-                <button onClick={() => setShowStats(true)} className="text-[10px] sm:text-[11px] font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Ver mi diario 📔</button>
+                <button onClick={() => setShowStats(true)} className="text-xs font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Ver mi diario 📔</button>
                 <span className="text-slate-300">|</span>
-                <button onClick={() => setShowCodex(true)} className="text-[10px] sm:text-[11px] font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Códex 📖</button>
+                <button onClick={() => setShowCodex(true)} className="text-xs font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Códex 📖</button>
                 <span className="text-slate-300">|</span>
-                <button onClick={() => setShowSettings(true)} className="text-[10px] sm:text-[11px] font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Ajustes ⚙️</button>
+                <button onClick={() => setShowSettings(true)} className="text-xs font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Ajustes ⚙️</button>
               </div>
             </div>
            </div>
@@ -666,9 +693,40 @@ export function App() {
         return (
           <div className="flex flex-col items-center justify-center w-full max-w-sm gap-2 sm:gap-4 px-2 sm:px-4 h-full pt-1 pb-1 sm:pb-3">
             <div className="relative w-full h-full flex flex-col items-center">
+              {/* Mistake notes sit over the card header (subject and number),
+                  never over the card text or the action buttons. */}
+              <div className="absolute top-5 left-0 right-0 z-avatar pointer-events-none flex justify-center">
+                <AvatarFeedback
+                  doctor="mendoza"
+                  expression={mentorExpression}
+                  dialogueText={mentorDialogue}
+                  points={lastSwipePoints}
+                  mistake={mistakeContext}
+                  isVisible={!!mentorDialogue}
+                />
+              </div>
+              <AnimatePresence>
+                {pointsPop && (
+                  <motion.span
+                    key={pointsPop.id}
+                    aria-hidden="true"
+                    initial={{ opacity: 0, y: 8, scale: 0.8 }}
+                    animate={{ opacity: [0, 1, 1, 0], y: -36, scale: 1 }}
+                    transition={{ duration: 0.8, ease: 'easeOut', times: [0, 0.15, 0.6, 1] }}
+                    onAnimationComplete={() => setPointsPop(p => (p?.id === pointsPop.id ? null : p))}
+                    className="absolute top-1/3 left-1/2 -translate-x-1/2 z-avatar pointer-events-none text-2xl font-black lettering text-primary tabular-nums drop-shadow-sm"
+                  >
+                    {pointsPop.value > 0 ? `+${pointsPop.value}` : pointsPop.value}
+                  </motion.span>
+                )}
+              </AnimatePresence>
+              {/* Own stacking context: the cards' z-index (up to 1000) must not
+                  rise above the mistake note and the floating points. */}
+              <div className="relative z-0 isolate w-full h-full flex flex-col items-center">
               {/* Locked under overlays too: the event sheet pauses the clock but
                   left the card draggable, so cards could be decided off the clock. */}
               <SwipeDeck cards={state.context.deck} currentIndex={state.context.currentCardIndex} onSwipe={handleSwipe} isLocked={isLoadingCase || isPaused || hitStop || isOverlayActive} lifelineActive={state.context.lifelineActive} canUseLifeline={stats.coins >= LIFELINE_COST && !state.context.lifelineActive} onUseLifeline={handleLifeline} revealLethalDirection={state.context.isSandiaMode} undo={{ onUndo: handleUndo, disabled: !canUndo || (state.context.undoCharges === 0 && stats.coins < UNDO_COST), charges: state.context.undoCharges, cost: UNDO_COST }} />
+              </div>
             </div>
           </div>
         );
@@ -691,7 +749,7 @@ export function App() {
         if (!currentCase?.boss_fight_triad?.questions?.length) return null; // skipped via effect
         return (
           <Suspense fallback={null}>
-            <ShockRoom questions={currentCase.boss_fight_triad.questions} dossierItems={state.context.dossier} onSurvive={() => { stopTriageAlarm(); send({ type: 'ANSWER_CORRECT' }); }} onGhosted={handleBossGhosted} />
+            <ShockRoom key={state.context.bossAttempt} questions={currentCase.boss_fight_triad.questions} dossierItems={state.context.dossier} onSurvive={() => { stopTriageAlarm(); send({ type: 'ANSWER_CORRECT' }); }} onGhosted={handleBossGhosted} />
           </Suspense>
         );
       case state.matches('reward'):
@@ -725,7 +783,7 @@ export function App() {
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-6 sm:p-10 max-w-md w-full text-center shadow-xl relative mx-4">
             <div className="absolute top-0 left-0 w-full h-2 bg-rose-400" />
             <div className="text-6xl sm:text-7xl mb-4 sm:mb-6 mt-3 sm:mt-4">💀</div>
-            <span className="lettering text-rose-500 font-bold block mb-2 text-[11px] sm:text-[10px] uppercase">Paciente Inestable</span>
+            <span className="lettering text-rose-500 font-bold block mb-2 text-xs uppercase">Paciente Inestable</span>
             <h2 className="text-4xl sm:text-5xl font-black text-slate-800 mb-3 sm:mb-4 lettering">Error Crítico</h2>
             <div className="bg-rose-50 p-4 sm:p-6 rounded-2xl mb-4 border-2 border-dashed border-rose-100 italic lettering text-base sm:text-lg">
               "{state.context.fatalError || 'El paciente sufrió una complicación letal.'}"
@@ -752,7 +810,7 @@ export function App() {
                 </button>
               )}
               <button onClick={() => send({ type: 'VIEW_DEBRIEF' })} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl !bg-slate-700">VER NOTAS 📝</button>
-              <button onClick={() => send({ type: 'RESTART' })} className="text-[11px] sm:text-[10px] font-bold text-slate-500 hover:text-rose-500 uppercase tracking-widest py-2 transition-all lettering">— Nueva Guardia —</button>
+              <button onClick={() => send({ type: 'RESTART' })} className="text-xs font-bold text-slate-500 hover:text-rose-500 uppercase tracking-widest py-2 transition-all lettering">— Nueva Guardia —</button>
             </div>
           </motion.div>
         );
@@ -773,7 +831,7 @@ export function App() {
               {state.context.debriefData?.text || "Revisa las cartas de tu consulta para repasar los conceptos clave."}
             </div>
             {state.context.debriefData?.gpc && (
-              <p className="text-[10px] font-bold text-slate-400 uppercase mb-3 sm:mb-4 lettering">
+              <p className="text-xs font-bold text-slate-400 uppercase mb-3 sm:mb-4 lettering">
                 GPC: {state.context.debriefData.gpc}
               </p>
             )}
@@ -789,8 +847,11 @@ export function App() {
 
   return (
     <MotionConfig reducedMotion="user">
-    <div className={`fixed inset-0 bg-[#FDFBF7] flex flex-col items-center select-none overflow-hidden text-slate-800 p-safe-top p-safe-bottom p-safe-left p-safe-right ${timeLeft <= 10 && state.matches('triage') ? 'destabilized-content' : ''} ${swipeFeedback === 'wrong' ? 'shake-lite' : ''} ${errorImpact === 'lethal' ? 'error-flash-lethal' : errorImpact === 'normal' ? 'error-flash' : ''}`}>
+    <div ref={rootRef} className="fixed inset-0 bg-paper flex flex-col items-center select-none overflow-hidden text-slate-800 p-safe-top p-safe-bottom p-safe-left p-safe-right">
       <div className="absolute inset-0 pointer-events-none opacity-[0.02] medical-grid" />
+      {/* Hit vignette (driven by useImpactFeedback) and the last-10-seconds pulse. */}
+      <div ref={vignetteRef} className="vignette z-[90]" aria-hidden="true" />
+      {clockRunning && timeLeft <= 10 && <div className="vignette vignette-pulse z-[90]" aria-hidden="true" />}
       <TelemetryHUD
         timeLeft={timeLeft}
         state={state.value as string}
@@ -805,30 +866,15 @@ export function App() {
         onPause={() => setIsPaused(true)}
       />
 
-      {/* Background Avatar Feedback Layer */}
-      {/* Anchored just above the action row, over the card's footer strip, so
-          it no longer covers the last lines of the card text. */}
-      <div className="fixed bottom-[8.75rem] sm:bottom-[12.75rem] left-0 right-0 z-avatar pointer-events-none flex justify-center">
-        <AvatarFeedback
-          doctor="mendoza"
-          expression={mentorExpression}
-          dialogueText={mentorDialogue}
-          points={lastSwipePoints}
-          isVisible={!!mentorDialogue && state.matches('triage')}
-        />
-      </div>
-
       <div className="w-full flex-grow flex items-center justify-center relative z-10">{renderCurrentView()}</div>
       <AnimatePresence>{showTutorial && <Suspense fallback={null}><TutorialOverlay onComplete={() => { safeStorage.setItem('dr_swipe_tutorial_seen', '1'); setShowTutorial(false); }} /></Suspense>}</AnimatePresence>
-      <AnimatePresence>{showCodex && <div ref={codexTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-4 overflow-hidden"><Suspense fallback={null}><CodexScreen onClose={() => setShowCodex(false)} /></Suspense></div>}</AnimatePresence>
-      <AnimatePresence>{showStats && <div ref={statsTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] flex flex-col items-center overflow-y-auto overscroll-contain bg-[#FDFBF7]/90 backdrop-blur-sm p-6"><Suspense fallback={null}><StatsDashboard onClose={() => setShowStats(false)} /></Suspense></div>}</AnimatePresence>
-      <AnimatePresence mode="wait">{state.context.activeEvent?.item && <EventAlert key={state.context.activeEvent?.item?.id ?? 'event'} event={state.context.activeEvent} onClose={handleEventClose} />}</AnimatePresence>
-      <AnimatePresence>{state.context.lootBoxReward?.active && state.context.lootBoxReward.item && <LootBoxOverlay reward={{ active: true, item: state.context.lootBoxReward.item }} onClaim={handleLootClaim} effectText={resolveRewardEffect(state.context.lootBoxReward.item.efecto).description} />}</AnimatePresence>
-      <AnimatePresence>{state.context.activePenalty?.active && <PenaltyOverlay penalty={{ active: true, item: state.context.activePenalty.item }} onAccept={() => send({ type: 'CLEAR_OVERLAYS' })} />}</AnimatePresence>
+      <AnimatePresence>{showCodex && <div ref={codexTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] flex items-center justify-center bg-paper/90 backdrop-blur-sm p-4 overflow-hidden"><Suspense fallback={null}><CodexScreen onClose={() => setShowCodex(false)} /></Suspense></div>}</AnimatePresence>
+      <AnimatePresence>{showStats && <div ref={statsTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] flex flex-col items-center overflow-y-auto overscroll-contain bg-paper/90 backdrop-blur-sm p-6"><Suspense fallback={null}><StatsDashboard onClose={() => setShowStats(false)} /></Suspense></div>}</AnimatePresence>
       <AnimatePresence>{state.matches('fail_protection') && (
         <FailProtectionOverlay
           error={state.context.fatalError || "Error Clínico"}
           livesRemaining={state.context.lives}
+          retriesBoss={state.context.failedInBoss}
           onRescue={() => {
             setTimeLeft(timeLimitRef.current);
             send({ type: 'RESCUE' });
@@ -836,14 +882,14 @@ export function App() {
           onRestart={() => send({ type: 'RESTART' })}
         />
       )}</AnimatePresence>
-      {showRetro && <div ref={retroTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] bg-[#FDFBF7]/90 backdrop-blur-md p-6"><Suspense fallback={null}><RetrospectiveView history={state.context.feedbackHistory} onClose={() => setShowRetro(false)} /></Suspense></div>}
+      {showRetro && <div ref={retroTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] bg-paper/90 backdrop-blur-md p-6"><Suspense fallback={null}><RetrospectiveView history={state.context.feedbackHistory} onClose={() => setShowRetro(false)} /></Suspense></div>}
       <RewardToast toast={rewardToast} />
       <AnimatePresence>{isPaused && state.matches('triage') && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="fixed inset-0 z-[130] flex flex-col items-center justify-center bg-[#FDFBF7]/80 backdrop-blur-sm">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="fixed inset-0 z-[130] flex flex-col items-center justify-center bg-paper/80 backdrop-blur-sm">
           <motion.div ref={pauseTrapRef} role="dialog" aria-modal="true" initial={{ scale: 0.9 }} animate={{ scale: 1 }} className="paper-sheet p-10 max-w-xs w-full text-center border-primary/20 shadow-xl relative">
             <p className="text-slate-400 text-sm italic mb-8 lettering leading-relaxed">"Guardia en pausa. Tus notas están seguras."</p>
             <button onClick={() => setIsPaused(false)} className="marker-btn w-full py-4 text-sm mb-4">REANUDAR ✨</button>
-            <button onClick={() => { setIsPaused(false); stopTriageAlarm(); send({ type: 'RESTART' }); }} className="text-[10px] font-bold text-slate-500 uppercase py-2 lettering">ABANDONAR</button>
+            <button onClick={() => { setIsPaused(false); stopTriageAlarm(); send({ type: 'RESTART' }); }} className="text-xs font-bold text-slate-500 uppercase py-2 lettering">ABANDONAR</button>
           </motion.div>
         </motion.div>
       )}</AnimatePresence>
@@ -851,7 +897,7 @@ export function App() {
       {/* Settings Modal */}
       <AnimatePresence>
         {showSettings && (
-          <div className="fixed inset-0 z-[150] flex items-center justify-center bg-[#FDFBF7]/90 backdrop-blur-sm p-6 overflow-hidden">
+          <div className="fixed inset-0 z-[150] flex items-center justify-center bg-paper/90 backdrop-blur-sm p-6 overflow-hidden">
             <motion.div
               ref={settingsTrapRef}
               role="dialog"
@@ -861,10 +907,10 @@ export function App() {
               exit={{ opacity: 0, scale: 0.9, y: 40 }}
               className="paper-sheet p-8 max-w-sm w-full text-left shadow-2xl relative overflow-hidden bg-white"
             >
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 washi-tape-pink -rotate-1 shadow-sm border-x-2 border-white/40 z-20" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 washi-tape -rotate-1 shadow-sm border-x-2 border-white/40 z-20" />
               
               <div className="flex justify-between items-center mb-6 pt-4">
-                <span className="text-[10px] font-black tracking-[0.3em] text-primary/60 uppercase lettering">AJUSTES ⚙️</span>
+                <span className="text-xs font-black tracking-[0.3em] text-primary/60 uppercase lettering">AJUSTES ⚙️</span>
                 <button
                   onClick={() => setShowSettings(false)}
                   className="w-8 h-8 flex items-center justify-center rounded-xl bg-slate-50 border-2 border-white shadow-sm text-slate-400 hover:text-rose-400 cursor-pointer"
@@ -879,7 +925,7 @@ export function App() {
                 <div className="flex justify-between items-center gap-3 bg-slate-50 p-4 pr-5 rounded-2xl border border-slate-100">
                   <div className="flex flex-col min-w-0">
                     <span className="text-xs font-black text-slate-700 uppercase tracking-wider">Sonido</span>
-                    <span className="text-[11px] text-slate-500">Efectos y alarmas</span>
+                    <span className="text-xs text-slate-500">Efectos y alarmas</span>
                   </div>
                   <DoodleToggle
                     id="sound-toggle"
@@ -893,7 +939,7 @@ export function App() {
                 <div className="flex justify-between items-center gap-3 bg-slate-50 p-4 pr-5 rounded-2xl border border-slate-100">
                   <div className="flex flex-col min-w-0">
                     <span className="text-xs font-black text-slate-700 uppercase tracking-wider">Vibración</span>
-                    <span className="text-[11px] text-slate-500">Al deslizar y en errores</span>
+                    <span className="text-xs text-slate-500">Al deslizar y en errores</span>
                   </div>
                   <DoodleToggle
                     id="haptics-toggle"
@@ -917,7 +963,7 @@ export function App() {
 
               <button
                 onClick={() => setShowSettings(false)}
-                className="w-full py-3.5 bg-slate-100 border-2 border-white rounded-xl text-[10px] font-black tracking-widest text-slate-500 uppercase hover:bg-slate-200 transition-colors"
+                className="w-full py-3.5 bg-slate-100 border-2 border-white rounded-xl text-xs font-black tracking-widest text-slate-500 uppercase hover:bg-slate-200 transition-colors"
               >
                 Cerrar Ajustes
               </button>
@@ -925,7 +971,6 @@ export function App() {
           </div>
         )}
       </AnimatePresence>
-      <div className="w-full max-w-md flex-shrink-0 text-center opacity-20 py-1"><p className="text-[10px] font-bold tracking-widest uppercase lettering">HGC ARCHIVE · Dr. Swipe Scrapbook</p></div>
       <ReloadPrompt />
     </div>
     </MotionConfig>
