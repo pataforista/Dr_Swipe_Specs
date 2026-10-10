@@ -7,6 +7,8 @@ Bienvenido al repositorio central de **Dr. Swipe**. Este proyecto aloja tanto el
 - **Estética:** *Medical Notebook / Scrapbook*, implementando un sistema altamente cohesivo con doodles, z-index overlays y animaciones hápticas.
 - **Contenido:** **599 Casos Clínicos** integrados, balanceados y probados sin errores.
 
+> 🗺️ **¿Vas a trabajar con un modelo o llegas nuevo?** Empieza por [`PROJECT_MAP.md`](PROJECT_MAP.md): dónde está cada cosa, el modelo de datos, los comandos y las trampas conocidas.
+
 ## 📁 Estructura del Proyecto
 
 \`\`\`text
