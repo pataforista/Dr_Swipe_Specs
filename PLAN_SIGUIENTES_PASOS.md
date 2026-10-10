@@ -56,7 +56,7 @@ Prioridad por impacto y esfuerzo:
 ## 5. Calidad y mantenimiento
 
 - **CI:** añadir al workflow `python3 tools/apply_guideline_review.py cases --check`, `tools/clean_card_leaks.py cases --check` y `tools/insert_distractors.py` de cada lote con `--check`, para que ningún cambio manual deshaga las correcciones.
-- **Validador TS de la raíz** (`validate_cases.ts`): falla fuera de `dr-swipe/` por la ruta de importación. Moverlo a `dr-swipe/` o documentar el comando.
+- ~~Validador TS de la raíz~~ (hecho): reemplazado por `dr-swipe/src/tests/casesSchema.test.ts`.
 - **Fin de línea:** `REVISION_CONTENIDO_JUGABILIDAD.csv` avisa de CRLF; fijarlo en `.gitattributes`.
 - **Pruebas de contenido:** convertir el test temporal de "los 599 casos pasan el esquema Zod" en un test permanente de `dr-swipe/src/tests/`.
 - **Detector de vitales** (`report_content_review.py`): usa umbrales de adulto y marca falsos positivos pediátricos. Añadir rangos por edad (PALS) o un campo `edad` por caso.
