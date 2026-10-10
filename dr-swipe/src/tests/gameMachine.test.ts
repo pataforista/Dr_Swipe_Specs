@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { createActor } from 'xstate';
 import { gameMachine } from '../machines/gameMachine';
 import type { Card } from '../types/game';
@@ -233,5 +233,39 @@ describe('gameMachine state flow', () => {
     const revivedState = actor.getSnapshot();
     expect(revivedState.value).toBe('triage');
     expect(revivedState.context.lives).toBe(1);
+  });
+
+  it('retries only the boss after a boss failure, keeping the decided cards', () => {
+    vi.useFakeTimers();
+    try {
+      const actor = createActor(gameMachine);
+      actor.start();
+      actor.send({ type: 'START_GUARD', deck: mockDeck, difficulty: 'standard' });
+      for (const card of mockDeck) {
+        actor.send({ type: 'SWIPE', direction: card.expected_action === 'keep' ? 'right' : 'left' });
+      }
+      vi.advanceTimersByTime(1500); // critical_alert -> boss_fight
+      expect(actor.getSnapshot().value).toBe('boss_fight');
+      const scoreBefore = actor.getSnapshot().context.score;
+
+      actor.send({ type: 'ANSWER_WRONG', error: 'wrong' });
+      expect(actor.getSnapshot().value).toBe('fail_protection');
+      actor.send({ type: 'RESCUE' });
+
+      const state = actor.getSnapshot();
+      expect(state.value).toBe('boss_fight');
+      expect(state.context.lives).toBe(4);
+      expect(state.context.currentCardIndex).toBe(mockDeck.length);
+      expect(state.context.score).toBe(scoreBefore);
+      expect(state.context.combo).toBe(0);
+      expect(state.context.wasRescued).toBe(true);
+
+      // The checkpoint flag is spent by the retry.
+      actor.send({ type: 'ANSWER_CORRECT' });
+      expect(actor.getSnapshot().value).toBe('reward');
+      expect(actor.getSnapshot().context.failedInBoss).toBe(false);
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });

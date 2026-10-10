@@ -56,6 +56,9 @@ export interface GameContext {
   lethalErrorsThisCase: number;
   caseStartedAt: number;
   wasRescued: boolean;
+  /** The last failure happened in the boss phase: a rescue retries the boss,
+   *  not the whole case (the cards were already decided). */
+  failedInBoss: boolean;
   caseId: string;
   pearlId: string | null;
   feedbackHistory: Array<{
@@ -167,6 +170,7 @@ export const gameMachine = setup({
       isSandiaMode: false,
       undoCharges: undoChargesFor(false),
       wasRescued: false,
+      failedInBoss: false,
       lethalErrorsThisCase: 0,
       caseStartedAt: Date.now(),
       caseId: '',
@@ -175,6 +179,13 @@ export const gameMachine = setup({
       lastAction: null,
       shieldCharges: 0
     }),
+    retryBoss: assign(({ context }) => ({
+      lives: context.lives - 1,
+      combo: 0,
+      multiplier: 1,
+      wasRescued: true,
+      failedInBoss: false,
+    })),
     clearOverlays: assign({
       lootBoxReward: null,
       activePenalty: null,
@@ -375,6 +386,7 @@ export const gameMachine = setup({
     isSandiaMode: false,
     undoCharges: undoChargesFor(false),
     wasRescued: false,
+    failedInBoss: false,
     lethalErrorsThisCase: 0,
     caseStartedAt: Date.now(),
     caseId: '',
@@ -415,6 +427,7 @@ export const gameMachine = setup({
             isSandiaMode: ({ event }) => event.type === 'START_GUARD' ? !!event.isSandiaMode : false,
             undoCharges: ({ event }) => undoChargesFor(event.type === 'START_GUARD' && !!event.isSandiaMode),
             wasRescued: false,
+            failedInBoss: false,
             lethalErrorsThisCase: 0,
             caseStartedAt: Date.now(),
             caseId: ({ event }) => event.case_id || (event.deck[0] ? event.deck[0].card_id.split('_').slice(0, 2).join('_') : 'unknown'),
@@ -460,6 +473,7 @@ export const gameMachine = setup({
             isSandiaMode: ({ event }) => event.type === 'RESUME_GUARD' ? !!event.isSandiaMode : false,
             undoCharges: ({ event }) => undoChargesFor(event.type === 'RESUME_GUARD' && !!event.isSandiaMode),
             wasRescued: false,
+            failedInBoss: false,
             lethalErrorsThisCase: 0,
             caseStartedAt: Date.now(),
             caseId: ({ event }) => event.case_id || (event.deck[0] ? event.deck[0].card_id.split('_').slice(0, 2).join('_') : 'unknown'),
@@ -477,7 +491,8 @@ export const gameMachine = setup({
           target: 'fail_protection',
           guard: ({ context }) => context.vitality <= 0,
           actions: assign({
-            fatalError: () => "VITALIDAD AGOTADA: El paciente se ha desestabilizado."
+            fatalError: () => "VITALIDAD AGOTADA: El paciente se ha desestabilizado.",
+            failedInBoss: false
           })
         },
         {
@@ -520,6 +535,7 @@ export const gameMachine = setup({
           target: 'fail_protection',
           actions: assign({
             fatalError: () => "Tiempo agotado. El paciente se desestabilizó.",
+            failedInBoss: false
           })
         },
         CLEAR_OVERLAYS: {
@@ -564,7 +580,8 @@ export const gameMachine = setup({
           target: 'fail_protection',
           actions: assign({
             fatalError: ({ event }) => event.type === 'ANSWER_WRONG' ? event.error : "Error en Shock Room",
-            caseStreak: 0
+            caseStreak: 0,
+            failedInBoss: true
           })
         }
       }
@@ -606,6 +623,7 @@ export const gameMachine = setup({
             lastVitals: null,
             lifelineActive: false,
             wasRescued: false,
+            failedInBoss: false,
             lethalErrorsThisCase: 0,
             caseStartedAt: Date.now(),
             caseId: ({ event }) => event.case_id || (event.deck[0] ? event.deck[0].card_id.split('_').slice(0, 2).join('_') : 'unknown'),
@@ -629,7 +647,14 @@ export const gameMachine = setup({
         }
       ],
       on: {
-        RESCUE: {
+        RESCUE: [{
+          // Boss checkpoint: the intern is spent and the combo lost, but the
+          // decided cards stand. Repeating 13 cards for one wrong answer
+          // punished time, not judgement.
+          target: 'boss_fight',
+          guard: ({ context }) => context.failedInBoss,
+          actions: 'retryBoss'
+        }, {
           target: 'triage',
           actions: assign({
             lives: ({ context }) => context.lives - 1,
@@ -654,7 +679,7 @@ export const gameMachine = setup({
             usedUndoThisCase: false,
             lastAction: null
           })
-        },
+        }],
         RESTART: { target: 'idle', actions: ['resetGame'] }
       }
     },
@@ -667,7 +692,12 @@ export const gameMachine = setup({
       on: {
         VIEW_DEBRIEF: { target: 'debrief' },
         RESTART: { target: 'idle', actions: ['resetGame'] },
-        REVIVE_INTERN: {
+        REVIVE_INTERN: [{
+          // lives is 0 here: retryBoss would take it to -1, so set it after.
+          target: 'boss_fight',
+          guard: ({ context }) => context.failedInBoss,
+          actions: ['retryBoss', assign({ lives: 1 })]
+        }, {
           target: 'triage',
           actions: assign({
             lives: 1,
@@ -692,7 +722,7 @@ export const gameMachine = setup({
             usedUndoThisCase: false,
             lastAction: null
           })
-        }
+        }]
       }
     },
     debrief: {

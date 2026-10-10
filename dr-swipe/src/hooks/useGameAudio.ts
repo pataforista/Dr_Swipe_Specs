@@ -13,6 +13,9 @@ import { useEffect, useRef } from 'react';
 
 type Dir = 'left' | 'right';
 
+/** Major pentatonic, in semitones above the base pitch, capped at one octave. */
+const PENTATONIC_STEPS = [0, 2, 4, 7, 9, 12] as const;
+
 class AudioEngine {
   private ctx: AudioContext | null = null;
   private master: GainNode | null = null;
@@ -27,7 +30,14 @@ class AudioEngine {
         this.ctx = new Ctor();
         this.master = this.ctx.createGain();
         this.master.gain.value = 0.35; // keep it gentle
-        this.master.connect(this.ctx.destination);
+        // Soft limiter: overlapping cues (correct + milestone jingle) used to
+        // stack into a harsh peak.
+        const limiter = this.ctx.createDynamicsCompressor();
+        limiter.threshold.value = -14;
+        limiter.knee.value = 12;
+        limiter.ratio.value = 6;
+        this.master.connect(limiter);
+        limiter.connect(this.ctx.destination);
       }
       // Browsers start the context suspended until a user gesture; resume on use.
       if (this.ctx.state === 'suspended') void this.ctx.resume();
@@ -101,12 +111,19 @@ class AudioEngine {
   }
 
   correct(combo = 0) {
-    // Bright two-note "pop" that climbs a semitone per combo point (capped so
-    // a long streak doesn't run off into ultrasonic territory) — the streak
-    // should sound like it's building, not just look like it (F3).
-    const shift = Math.pow(2, Math.min(combo, 24) / 12);
-    this.tone({ type: 'sine', from: 660 * shift, to: 880 * shift, dur: 0.12, gain: 0.5 });
-    this.tone({ type: 'sine', from: 990 * shift, dur: 0.16, gain: 0.4, delay: 0.09 });
+    // Bright two-note "pop" that climbs the major pentatonic with the combo,
+    // so the streak sounds like it is building. It stops one octave up: one
+    // semitone per point reached ~2.7 kHz at combo 17 and turned shrill.
+    const step = PENTATONIC_STEPS[Math.min(Math.max(combo - 1, 0), PENTATONIC_STEPS.length - 1)];
+    const shift = Math.pow(2, step / 12);
+    this.tone({ type: 'sine', from: 660 * shift, to: 880 * shift, dur: 0.12, gain: 0.45 });
+    this.tone({ type: 'sine', from: 990 * shift, dur: 0.16, gain: 0.32, delay: 0.09, filter: 3200 });
+  }
+
+  /** Lower, rounder confirmation for a correct answer in the critical phase. */
+  bossCorrect() {
+    this.tone({ type: 'triangle', from: 392, to: 523.25, dur: 0.18, gain: 0.45 });
+    this.tone({ type: 'sine', from: 784, dur: 0.22, gain: 0.3, delay: 0.12 });
   }
 
   wrong() {
@@ -163,6 +180,9 @@ export const useGameAudio = () => {
       else engine.wrong();
     }
   };
+  const playBossCorrect = () => {
+    if (isSoundEnabled()) engine.bossCorrect();
+  };
   const playGacha = () => {
     if (isSoundEnabled()) engine.gacha();
   };
@@ -187,5 +207,5 @@ export const useGameAudio = () => {
 
   useEffect(() => () => stopTriageAlarm(), []);
 
-  return { playSwipe, playFeedback, playGacha, playCodeRed, startTriageAlarm, stopTriageAlarm };
+  return { playSwipe, playFeedback, playBossCorrect, playGacha, playCodeRed, startTriageAlarm, stopTriageAlarm };
 };

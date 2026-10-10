@@ -58,7 +58,7 @@ export const LootScreen: React.FC<LootScreenProps> = ({
           <div className="flex items-center gap-3">
             <span className="text-2xl sm:text-3xl bg-white w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center rounded-xl shadow-sm border border-slate-100">✨</span>
             <div className="text-left">
-              <span className="text-[11px] sm:text-[10px] font-black uppercase text-slate-400 block tracking-widest leading-none">Experiencia</span>
+              <span className="text-xs font-black uppercase text-slate-400 block tracking-widest leading-none">Experiencia</span>
               <span className="text-sm sm:text-base font-bold text-slate-600">Puntaje: {score}{xpTotal !== score ? ' × racha diaria' : ''}</span>
             </div>
           </div>
@@ -72,7 +72,7 @@ export const LootScreen: React.FC<LootScreenProps> = ({
           <div className="flex items-center gap-3">
              <span className="text-2xl sm:text-3xl bg-white w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center rounded-xl shadow-sm border border-slate-100">🪙</span>
              <div className="text-left">
-               <span className="text-[11px] sm:text-[10px] font-black uppercase text-slate-400 block tracking-widest leading-none">Monedas</span>
+               <span className="text-xs font-black uppercase text-slate-400 block tracking-widest leading-none">Monedas</span>
                <span className="text-sm sm:text-base font-bold text-slate-600">Créditos de hospital</span>
              </div>
           </div>
@@ -80,7 +80,7 @@ export const LootScreen: React.FC<LootScreenProps> = ({
         </div>
 
         {isPerfect && (
-          <div className="mt-2 bg-emerald-100 text-emerald-700 px-4 py-2 rounded-2xl text-[10px] font-black uppercase tracking-widest border border-emerald-200 animate-pulse">
+          <div className="mt-2 bg-emerald-100 text-emerald-700 px-4 py-2 rounded-2xl text-xs font-black uppercase tracking-widest border border-emerald-200 animate-pulse">
             Incluye bono de Guardia Perfecta: +{perfectBonus} 🪙 🌟
           </div>
         )}
@@ -90,16 +90,16 @@ export const LootScreen: React.FC<LootScreenProps> = ({
       {pearl && (
         <div className="bg-amber-50/70 p-4 sm:p-5 rounded-[2rem] border border-amber-100 text-left mb-6 relative overflow-hidden z-10">
           <div className="absolute top-2 right-2 text-xs opacity-20">💡</div>
-          <span className="text-[11px] sm:text-[11px] font-black uppercase text-amber-600 block tracking-widest mb-1 leading-none">Perla ENARM Desbloqueada 🌟</span>
+          <span className="text-xs font-black uppercase text-amber-600 block tracking-widest mb-1 leading-none">Perla ENARM Desbloqueada 🌟</span>
           <h4 className="text-sm sm:text-base font-black text-slate-800 mb-1 leading-snug">{pearl.title}</h4>
-          <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed">{pearl.text}</p>
-          {pearl.gpc_ref && <span className="text-[11px] font-bold text-slate-400 mt-2 block">GPC: {pearl.gpc_ref}</span>}
+          <p className="text-xs text-slate-600 leading-relaxed">{pearl.text}</p>
+          {pearl.gpc_ref && <span className="text-xs font-bold text-slate-400 mt-2 block">GPC: {pearl.gpc_ref}</span>}
         </div>
       )}
 
       {/* Utility Message */}
       <div className="mb-6 sm:mb-8 px-4 relative z-10">
-        <p className="text-[10px] sm:text-[11px] text-slate-400 leading-relaxed font-bold lettering uppercase tracking-wide">
+        <p className="text-xs text-slate-400 leading-relaxed font-bold lettering uppercase tracking-wide">
           "Usa tus monedas para ESCANEAR cartas difíciles en futuras consultas. Un buen médico invierte en sus herramientas."
         </p>
       </div>

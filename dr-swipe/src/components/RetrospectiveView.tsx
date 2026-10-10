@@ -29,7 +29,7 @@ export const RetrospectiveView: React.FC<RetrospectiveViewProps> = ({ history, o
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] medical-grid z-0" />
       
       {/* Washi Tape Header */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-10 washi-tape-pink -rotate-1 shadow-sm border-x-2 border-white/40 z-20" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-10 washi-tape -rotate-1 shadow-sm border-x-2 border-white/40 z-20" />
 
       {/* Header */}
       <div className="flex justify-between items-center mb-10 pt-6 relative z-10 border-b-2 border-slate-50 pb-8">
@@ -67,7 +67,7 @@ export const RetrospectiveView: React.FC<RetrospectiveViewProps> = ({ history, o
               }`}
             >
               <div className="flex justify-between items-start mb-6">
-                <span className="bg-slate-100 text-slate-500 px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest lettering">
+                <span className="bg-slate-100 text-slate-500 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest lettering">
                   {item.category}
                 </span>
                 <span className={`text-[12px] font-bold px-4 py-1.5 rounded-full border-2 lettering ${item.points >= 0 ? 'bg-emerald-50 text-emerald-600 border-white' : 'bg-rose-50 text-rose-600 border-white'}`}>
@@ -80,7 +80,7 @@ export const RetrospectiveView: React.FC<RetrospectiveViewProps> = ({ history, o
               </p>
 
               <div className="flex items-center gap-4 mb-6">
-                <span className={`text-[11px] font-bold px-5 py-2 rounded-2xl border-2 uppercase tracking-widest lettering ${
+                <span className={`text-xs font-bold px-5 py-2 rounded-2xl border-2 uppercase tracking-widest lettering ${
                   item.isCorrect ? 'bg-emerald-500 text-white border-white' : 'bg-rose-500 text-white border-white'
                 }`}>
                   {item.expectedAction === 'keep' ? 'ACEPTAR' : 'DESCARTAR'} {item.isCorrect ? '✅' : '❌'}
@@ -90,7 +90,7 @@ export const RetrospectiveView: React.FC<RetrospectiveViewProps> = ({ history, o
               <div className={`p-6 rounded-3xl text-[14px] font-bold leading-relaxed border-2 border-dashed lettering italic ${
                 item.isCorrect ? 'bg-slate-50 border-emerald-100 text-slate-500' : 'bg-rose-50/30 border-rose-100 text-rose-600/80'
               }`}>
-                <span className="not-italic text-[10px] uppercase font-black mr-3 opacity-40">PERLA MÉDICA:</span>
+                <span className="not-italic text-xs uppercase font-black mr-3 opacity-40">PERLA MÉDICA:</span>
                 "{item.feedback}"
               </div>
             </motion.div>

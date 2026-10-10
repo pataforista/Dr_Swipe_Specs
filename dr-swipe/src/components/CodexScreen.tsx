@@ -40,7 +40,7 @@ export const CodexScreen: React.FC<CodexScreenProps> = ({ onClose }) => {
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] medical-grid z-0" />
       <div className="flex justify-between items-center mb-3 pt-2 relative z-10 gap-2">
         <div className="flex flex-col gap-1 min-w-0">
-          <span className="text-[10px] sm:text-[12px] font-black tracking-[0.3em] text-primary/60 uppercase lettering">CÓDEX 📖</span>
+          <span className="text-xs sm:text-[12px] font-black tracking-[0.3em] text-primary/60 uppercase lettering">CÓDEX 📖</span>
           <div className="h-1 w-20 bg-cyan-100 rounded-full" />
         </div>
         <button
@@ -67,12 +67,12 @@ export const CodexScreen: React.FC<CodexScreenProps> = ({ onClose }) => {
             role="tab"
             aria-selected={tab === t.id}
             onClick={() => setTab(t.id)}
-            className={`pb-2 text-[11px] font-black uppercase tracking-wide whitespace-nowrap flex items-center gap-1.5 transition-all ${
+            className={`pb-2 text-xs font-black uppercase tracking-wide whitespace-nowrap flex items-center gap-1.5 transition-all ${
               tab === t.id ? 'text-primary border-b-2 border-primary' : 'text-slate-400 hover:text-slate-600'
             }`}
           >
             {t.label}
-            {t.badge && <span className="bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded-full text-[11px] font-black leading-none">{t.badge}</span>}
+            {t.badge && <span className="bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded-full text-xs font-black leading-none">{t.badge}</span>}
           </button>
         ))}
       </div>
@@ -99,7 +99,7 @@ export const CodexScreen: React.FC<CodexScreenProps> = ({ onClose }) => {
                     <div className="h-1.5 flex-1 bg-slate-200 rounded-full overflow-hidden">
                       <div className="h-full bg-primary/70 rounded-full" style={{ width: `${(value / a.umbral) * 100}%` }} />
                     </div>
-                    <span className="text-[11px] font-bold text-slate-400 tabular-nums">{value}/{a.umbral}</span>
+                    <span className="text-xs font-bold text-slate-400 tabular-nums">{value}/{a.umbral}</span>
                   </div>
                 )}
               </div>
@@ -120,8 +120,8 @@ export const CodexScreen: React.FC<CodexScreenProps> = ({ onClose }) => {
             className="bg-slate-50 border border-slate-100 rounded-2xl p-4 shadow-sm"
           >
             <div className="flex justify-between items-start mb-2 gap-2">
-              <span className="text-[11px] font-black uppercase bg-primary/10 text-primary px-2 py-0.5 rounded-md">{pearl.category || 'General'}</span>
-              {pearl.gpc_ref && <span className="text-[11px] font-bold text-slate-400 uppercase">GPC: {pearl.gpc_ref}</span>}
+              <span className="text-xs font-black uppercase bg-primary/10 text-primary px-2 py-0.5 rounded-md">{pearl.category || 'General'}</span>
+              {pearl.gpc_ref && <span className="text-xs font-bold text-slate-400 uppercase">GPC: {pearl.gpc_ref}</span>}
             </div>
             <h4 className="text-sm font-black text-slate-800 mb-1 leading-snug">{pearl.title}</h4>
             <p className="text-xs text-slate-600 leading-relaxed font-medium">{pearl.text}</p>
@@ -136,9 +136,9 @@ export const CodexScreen: React.FC<CodexScreenProps> = ({ onClose }) => {
           <div key={row.specialty} className="bg-slate-50 border border-slate-100 rounded-2xl p-3">
             <div className="flex justify-between items-baseline gap-2 mb-2">
               <h4 className="text-sm font-black text-slate-800">{row.label}</h4>
-              <span className="text-[11px] font-bold text-slate-400 tabular-nums">{row.seen} {row.seen === 1 ? 'caso' : 'casos'}</span>
+              <span className="text-xs font-bold text-slate-400 tabular-nums">{row.seen} {row.seen === 1 ? 'caso' : 'casos'}</span>
             </div>
-            <div className="flex gap-2 text-[11px] font-bold">
+            <div className="flex gap-2 text-xs font-bold">
               <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700">Dominados {row.mastered}</span>
               <span className={`px-2 py-0.5 rounded-full ${row.due > 0 ? 'bg-rose-50 text-rose-600' : 'bg-slate-100 text-slate-400'}`}>Por repasar {row.due}</span>
             </div>

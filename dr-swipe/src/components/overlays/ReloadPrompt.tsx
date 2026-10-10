@@ -42,7 +42,7 @@ export const ReloadPrompt: React.FC = () => {
         >
           <button
             onClick={close}
-            className="pointer-events-auto bg-white border border-primary/20 shadow-lg rounded-full px-4 py-2 text-[11px] font-bold text-slate-600"
+            className="pointer-events-auto bg-white border border-primary/20 shadow-lg rounded-full px-4 py-2 text-xs font-bold text-slate-600"
           >
             🚀 Listo para usar sin conexión
           </button>
@@ -58,10 +58,10 @@ export const ReloadPrompt: React.FC = () => {
         >
           <div className="paper-sheet p-6 max-w-sm w-full shadow-2xl pointer-events-auto bg-white border-primary/20 relative overflow-hidden">
             {/* Washi Tape Header */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 washi-tape-pink -rotate-2 opacity-80" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 washi-tape -rotate-2 opacity-80" />
             
             <div className="mt-4 text-center">
-              <span className="text-[10px] font-black text-primary uppercase tracking-[0.2em] block mb-1">
+              <span className="text-xs font-black text-primary uppercase tracking-[0.2em] block mb-1">
                 ACTUALIZACIÓN DISPONIBLE ✨
               </span>
               
@@ -82,7 +82,7 @@ export const ReloadPrompt: React.FC = () => {
                 </button>
                 <button
                   onClick={close}
-                  className="px-6 py-3 rounded-full border border-slate-200 text-slate-400 text-[10px] font-bold uppercase tracking-wider hover:bg-slate-50 transition-colors"
+                  className="px-6 py-3 rounded-full border border-slate-200 text-slate-400 text-xs font-bold uppercase tracking-wider hover:bg-slate-50 transition-colors"
                 >
                   LUEGO
                 </button>

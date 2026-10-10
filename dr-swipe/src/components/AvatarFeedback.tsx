@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
+import { Skull, ArrowLeft, ArrowRight } from 'lucide-react';
 import ErrorBoundary from './ErrorBoundary';
 
 interface AvatarFeedbackProps {
@@ -9,6 +10,9 @@ interface AvatarFeedbackProps {
   /** Points of the swipe being commented; shown in the bubble header so the
    *  score no longer needs a separate toast on top of the action buttons. */
   points?: number | null;
+  /** On a mistake: the card that was swiped and the right call, so the note
+   *  teaches instead of only scolding (the card has already flown away). */
+  mistake?: { cardText: string; expected: 'keep' | 'discard' } | null;
 }
 
 export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
@@ -16,7 +20,8 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
   expression = 'neutral',
   dialogueText,
   isVisible,
-  points = null
+  points = null,
+  mistake = null
 }) => {
   const mentorIcons = {
     mendoza: '👴',
@@ -51,7 +56,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
   return (
     <ErrorBoundary fallback={
       <div className="paper-sheet p-4 border-rose-200 text-center animate-pulse bg-rose-50">
-        <p className="text-rose-500 font-bold text-[10px] uppercase lettering">Notas Perdidas...</p>
+        <p className="text-rose-500 font-bold text-xs uppercase lettering">Notas Perdidas...</p>
       </div>
     }>
       <AnimatePresence>
@@ -80,7 +85,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
                   className={`absolute inset-0 rounded-full border-4 ${validExpression === 'angry' ? 'border-rose-300' : 'border-amber-300'}`}
                   initial={{ scale: 1, opacity: 0.6 }}
                   animate={{ scale: 1.6, opacity: 0 }}
-                  transition={{ duration: 0.8, repeat: Infinity }}
+                  transition={{ duration: 0.8, repeat: 2 }}
                 />
               )}
             </motion.div>
@@ -100,11 +105,12 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
                     className={`paper-sheet px-3 py-2 sm:px-4 sm:py-3 text-left relative border-2 rounded-panel shadow-lg overflow-hidden ${bubbleColors[validExpression]}`}
                   >
                     {/* Washi Tape Accent */}
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-12 sm:w-16 h-5 sm:h-6 washi-tape-pink opacity-60 -rotate-2" />
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-12 sm:w-16 h-5 sm:h-6 washi-tape opacity-60 -rotate-2" />
 
-                    <span className="flex justify-between items-baseline gap-2 text-[10px] font-black tracking-[0.2em] uppercase mb-1 lettering">
-                      <span className="opacity-40">
-                        {validExpression === 'angry' ? '¡OJO!' : validExpression === 'happy' ? 'CORRECTO' : validExpression === 'shocked' ? '☠️ ERROR LETAL' : 'CONSEJO'}
+                    <span className="flex justify-between items-baseline gap-2 text-xs font-black tracking-[0.2em] uppercase mb-1 lettering">
+                      <span className={validExpression === 'shocked' ? 'flex items-center gap-1 text-rose-600' : 'opacity-50'}>
+                        {validExpression === 'shocked' && <Skull className="w-3.5 h-3.5" aria-hidden="true" />}
+                        {validExpression === 'angry' ? '¡OJO!' : validExpression === 'happy' ? 'CORRECTO' : validExpression === 'shocked' ? 'ERROR LETAL' : 'CONSEJO'}
                       </span>
                       {points !== null && (
                         <span className={`tabular-nums tracking-normal text-xs ${expressionColors[validExpression]}`}>
@@ -113,6 +119,17 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
                       )}
                     </span>
 
+                    {mistake && (
+                      <div className="mb-1.5 flex items-center gap-2 text-xs text-slate-600">
+                        <span className="min-w-0 truncate">«{mistake.cardText}»</span>
+                        <span className={`flex-shrink-0 flex items-center gap-0.5 font-black uppercase tracking-wider ${mistake.expected === 'keep' ? 'text-primary' : 'text-rose-600'}`}>
+                          <span className="font-bold normal-case tracking-normal text-slate-400 mr-0.5">era</span>
+                          {mistake.expected === 'keep'
+                            ? <>Aceptar <ArrowRight className="w-3 h-3" strokeWidth={3} aria-hidden="true" /></>
+                            : <><ArrowLeft className="w-3 h-3" strokeWidth={3} aria-hidden="true" /> Descartar</>}
+                        </span>
+                      </div>
+                    )}
                     <p className={`text-xs sm:text-sm font-bold leading-snug italic lettering line-clamp-4 ${expressionColors[validExpression]}`}>
                       "{dialogueText}"
                     </p>

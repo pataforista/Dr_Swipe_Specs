@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion, useIsPresent, useMotionValue, useMotionValueEvent, useTransform, useAnimation, AnimatePresence, type MotionValue, type PanInfo } from 'framer-motion';
-import { X, ClipboardCheck, Dna, Sparkles, Undo2, Coins } from 'lucide-react';
+import { X, ClipboardCheck, Dna, Sparkles, Undo2, Coins, Stethoscope, Search, FlaskConical, Pill, ClipboardList, Skull, TriangleAlert, Eye, ArrowLeft, ArrowRight, type LucideIcon } from 'lucide-react';
 import type { Card } from '../types/game';
 import { useGameAudio } from '../hooks/useGameAudio';
 import { triggerHaptic } from '../utils/hapticFeedback';
@@ -66,8 +66,9 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
     const now = performance.now();
     if (now - lastCommitRef.current < SWIPE_CONFIG.MIN_SWIPE_INTERVAL_MS) return;
     lastCommitRef.current = now;
+    // No haptic here: the verdict haptic fires in the same tick and
+    // navigator.vibrate replaces any pattern still playing.
     playSwipe(direction);
-    triggerHaptic('cardSwipe');
     setExitInfo({ direction, velocity });
     onSwipe(direction);
   }, [isLocked, onSwipe, playSwipe, currentIndex, cards.length]);
@@ -98,7 +99,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
               <motion.div
                 animate={{ width: `${(currentIndex / cards.length) * 100}%` }}
                 transition={{ duration: 0.3 }}
-                className="h-full bg-[#0D9488] rounded-full"
+                className="h-full bg-primary rounded-full"
               />
             </div>
           ) : (
@@ -156,7 +157,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
             initial={{ opacity: 0, scale: 0.9, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className={`mt-2 sm:mt-4 px-4 sm:px-8 py-4 sm:py-5 rounded-2xl sm:rounded-3xl italic text-[10px] sm:text-[11px] font-black tracking-[0.15em] sm:tracking-[0.2em] uppercase shadow-lg z-50 relative backdrop-blur-sm border-2 max-w-xs ${
+            className={`mt-2 sm:mt-4 px-4 sm:px-8 py-3 sm:py-4 rounded-2xl sm:rounded-3xl text-xs font-black tracking-[0.15em] uppercase shadow-lg z-50 relative backdrop-blur-sm border-2 max-w-xs ${
               cards[currentIndex].expected_action === 'keep'
                 ? 'bg-primary/10 border-primary/20 text-primary'
                 : 'bg-accent-alert/10 border-accent-alert/20 text-accent-alert'
@@ -164,7 +165,9 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
           >
             <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 rotate-45 border-l border-t bg-inherit border-inherit" />
             <span className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
-               {cards[currentIndex].expected_action === 'keep' ? '⚡ DATO CRÍTICO ➡️' : '🛡️ DESCARTAR ⬅️'}
+               {cards[currentIndex].expected_action === 'keep'
+                 ? <>Dato crítico <ArrowRight className="w-4 h-4" strokeWidth={3} aria-hidden="true" /></>
+                 : <><ArrowLeft className="w-4 h-4" strokeWidth={3} aria-hidden="true" /> Descartar</>}
             </span>
           </motion.div>
         )}
@@ -180,7 +183,9 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
             aria-label="Descartar esta carta médica (Flecha izquierda)"
             title="DESCARTAR"
             disabled={isLocked || visibleCards.length === 0}
-            onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); commitSwipe('left'); }}
+            // Click fires on release inside the button: sliding the finger off
+            // cancels, which pointerdown never allowed.
+            onClick={() => commitSwipe('left')}
             whileHover={!isLocked ? { scale: 1.15, y: -4 } : {}}
             whileTap={!isLocked ? { scale: 0.9 } : {}}
             className={`w-16 sm:w-20 h-16 sm:h-20 rounded-full bg-white border text-accent-alert shadow-xl flex items-center justify-center text-2xl sm:text-3xl hover:bg-rose-50 hover:border-accent-alert/50 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner relative ${
@@ -190,7 +195,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,theme(colors.accent-alert/10),transparent)] opacity-0 hover:opacity-100 transition-opacity" />
             <X className="relative z-10 w-7 h-7 sm:w-8 sm:h-8" strokeWidth={3} aria-hidden="true" />
           </motion.button>
-          <span className={`text-[10px] font-black uppercase tracking-[0.15em] sm:tracking-[0.3em] transition-colors text-center whitespace-nowrap ${
+          <span className={`text-xs font-black uppercase tracking-[0.15em] sm:tracking-[0.3em] transition-colors text-center whitespace-nowrap ${
             lifelineActive && cards[currentIndex]?.expected_action === 'discard' ? 'text-accent-alert' : 'text-slate-500 group-hover:text-accent-alert'
           }`}>DESCARTAR</span>
         </div>
@@ -202,7 +207,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
             type="button"
             aria-label="Escanear carta médica usando créditos (25 🪙)"
             disabled={!canUseLifeline || isLocked}
-            onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); onUseLifeline?.(); }}
+            onClick={() => onUseLifeline?.()}
             whileHover={canUseLifeline && !isLocked ? { scale: 1.15, rotate: 180, boxShadow: '0 0 30px rgba(129,140,248,0.4)' } : {}}
             whileTap={canUseLifeline && !isLocked ? { scale: 0.85 } : {}}
             className={`w-12 sm:w-14 h-12 sm:h-14 rounded-full border shadow-lg flex items-center justify-center text-xl sm:text-2xl transition-all ${
@@ -212,7 +217,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
           >
             {lifelineActive ? <Sparkles className="w-6 h-6 sm:w-7 sm:h-7" aria-hidden="true" /> : <Dna className="w-6 h-6 sm:w-7 sm:h-7" aria-hidden="true" />}
           </motion.button>
-          <span className={`text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] ${lifelineActive ? 'text-secondary' : 'text-slate-500'}`}>
+          <span className={`text-xs font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] ${lifelineActive ? 'text-secondary' : 'text-slate-500'}`}>
             {lifelineActive ? 'ACTIVO' : `${LIFELINE_COST} 🪙`}
           </span>
         </div>
@@ -224,7 +229,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
               aria-label={undo.charges === 0 ? `Comprar deshacer por ${undo.cost} créditos` : 'Deshacer el último swipe'}
               title={undo.charges === 0 ? `Comprar Deshacer por ${undo.cost} 🪙` : 'Deshacer'}
               disabled={undo.disabled || isLocked}
-              onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); undo.onUndo(); }}
+              onClick={() => undo.onUndo()}
               whileTap={!undo.disabled && !isLocked ? { scale: 0.85 } : {}}
               className={`w-12 sm:w-14 h-12 sm:h-14 rounded-full border shadow-lg flex items-center justify-center transition-colors disabled:opacity-20 ${
                 undo.charges === 0 ? 'bg-amber-100 border-amber-300 text-amber-700' : 'bg-white border-slate-200 text-slate-600'
@@ -234,7 +239,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
                 ? <Coins className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
                 : <Undo2 className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />}
             </motion.button>
-            <span className="text-[10px] font-black uppercase tracking-[0.15em] text-slate-500 whitespace-nowrap">
+            <span className="text-xs font-black uppercase tracking-[0.15em] text-slate-500 whitespace-nowrap">
               {undo.charges === 0 ? `${undo.cost} 🪙` : `×${undo.charges}`}
             </span>
           </div>
@@ -249,7 +254,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
             aria-label="Aceptar esta carta médica (Flecha derecha)"
             title="ACEPTAR"
             disabled={isLocked || visibleCards.length === 0}
-            onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); commitSwipe('right'); }}
+            onClick={() => commitSwipe('right')}
             whileHover={!isLocked ? { scale: 1.15, y: -4 } : {}}
             whileTap={!isLocked ? { scale: 0.9 } : {}}
             className={`w-16 sm:w-20 h-16 sm:h-20 rounded-full bg-white border text-primary shadow-xl flex items-center justify-center text-2xl sm:text-3xl hover:bg-teal-50 hover:border-primary/50 transition-all disabled:opacity-20 select-none overflow-hidden active:shadow-inner relative ${
@@ -259,14 +264,14 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,theme(colors.primary/10),transparent)] opacity-0 hover:opacity-100 transition-opacity" />
              <ClipboardCheck className="relative z-10 w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2.5} aria-hidden="true" />
           </motion.button>
-          <span className={`text-[10px] font-black uppercase tracking-[0.15em] sm:tracking-[0.3em] transition-colors text-center whitespace-nowrap ${
+          <span className={`text-xs font-black uppercase tracking-[0.15em] sm:tracking-[0.3em] transition-colors text-center whitespace-nowrap ${
             lifelineActive && cards[currentIndex]?.expected_action === 'keep' ? 'text-primary' : 'text-slate-500 group-hover:text-primary'
           }`}>ACEPTAR</span>
         </div>
       </div>
 
       {/* Visible keyboard hint — the ← / → shortcut was previously only announced via aria-label */}
-      <span className="hidden sm:block flex-shrink-0 text-[11px] font-bold text-slate-300 uppercase tracking-widest text-center" aria-hidden="true">
+      <span className="hidden sm:block flex-shrink-0 text-xs font-bold text-slate-300 uppercase tracking-widest text-center" aria-hidden="true">
         ← Descartar &nbsp;·&nbsp; Aceptar →
       </span>
     </div>
@@ -310,12 +315,12 @@ const getDisplayCategory = (category: string): string => {
 
 // Icon helper for scrapbook categories
 
-const CATEGORY_ICONS: Record<string, string> = {
-  'Exploración': '🩺',
-  'Diagnóstico': '🔎',
-  'Estudios': '🧪',
-  'Manejo': '💊',
-  'Hallazgo': '📋',
+const CATEGORY_ICONS: Record<string, LucideIcon> = {
+  'Exploración': Stethoscope,
+  'Diagnóstico': Search,
+  'Estudios': FlaskConical,
+  'Manejo': Pill,
+  'Hallazgo': ClipboardList,
 };
 
 const DraggableCard: React.FC<DraggableCardProps> = ({
@@ -336,6 +341,13 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
     if (isTop && isPresent) topX.set(latest);
   });
   const controls = useAnimation();
+  // Pose the promoted card had while it was still second in the stack (it rose
+  // with the top card's drag), so it mounts exactly there instead of dipping
+  // back to the resting depth and popping up again.
+  const [enterPose] = React.useState(() => {
+    const progress = Math.min(1, Math.abs(topX.get()) / (SWIPE_CONFIG.CARD_WIDTH * SWIPE_CONFIG.DRAG_THRESHOLD));
+    return { scale: 0.96 + 0.04 * progress, y: 12 * (1 - progress) };
+  });
   const pastThresholdRef = React.useRef(false);
   const dragStartRef = React.useRef(0);
 
@@ -404,6 +416,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
   const lethalIfDiscarded = !!revealLethalDirection && !!(card.safety_flags?.lethal_if_discarded || card.safety_flags?.lethal_risk) && card.expected_action === 'keep';
   const lethalNeutral = !!isLethal && !lethalIfAccepted && !lethalIfDiscarded;
   const displayCategory = getDisplayCategory(card.category);
+  const CategoryIcon = CATEGORY_ICONS[displayCategory];
   // `decision_critical` is 96% "keep" in the authored cases, so its amber tint
   // and ¡ENARM! badge gave the answer away. Only shown in study mode.
   const isCritical = !!revealLethalDirection && !!card.safety_flags?.decision_critical;
@@ -471,7 +484,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
       // The card promoted to top has already risen to the front pose while
       // the previous one flew out (the stack follows topX), so it mounts
       // exactly there instead of jumping back and re-entering (F1).
-      initial={isTop ? { scale: 0.96, y: 10 } : false}
+      initial={isTop ? enterPose : false}
       animate={isTop ? controls : undefined}
       variants={exitVariants}
       exit={isTop ? 'fly' : 'vanish'}
@@ -495,22 +508,22 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
       {/* Header (Subject Tab) */}
       <div className={`${compact ? 'p-2.5 pl-8' : 'p-4 pl-8'} sm:p-6 sm:pl-14 flex justify-between items-center gap-2 border-b border-slate-100 ${isLethal ? 'bg-rose-100/40' : isCritical ? 'bg-amber-100/40' : 'bg-slate-50/60'}`}>
         <div className="flex flex-col min-w-0">
-          <span className="text-[11px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Materia</span>
-          <span className="bg-white px-2 sm:px-3 py-1 rounded-lg text-[11px] sm:text-xs font-bold text-slate-600 shadow-sm border border-slate-100 flex items-center gap-1 sm:gap-2 truncate">
-            <span className="flex-shrink-0">{CATEGORY_ICONS[displayCategory]}</span>
+          <span className="text-xs font-black uppercase tracking-widest text-slate-400 mb-1">Materia</span>
+          <span className="bg-white px-2 sm:px-3 py-1 rounded-lg text-xs font-bold text-slate-600 shadow-sm border border-slate-100 flex items-center gap-1 sm:gap-2 truncate">
+            <CategoryIcon className="w-3.5 h-3.5 flex-shrink-0 text-primary" aria-hidden="true" />
             <span className="truncate">{displayCategory}</span>
           </span>
         </div>
         <div className="bg-white/80 px-2 sm:px-3 py-1 rounded-lg border border-slate-100 flex-shrink-0">
            {/* Card number, not the card_id suffix: ids often end in the card's
                type ("..._vitals"), which leaked the same hint as the category. */}
-           <span className="text-[11px] sm:text-[10px] font-black text-slate-400 tracking-tighter">#{cardNumber}</span>
+           <span className="text-xs font-black text-slate-400 tracking-tighter">#{cardNumber}</span>
         </div>
       </div>
 
       {/* Main Content Area */}
       <div className={`flex-grow ${compact ? 'p-3 pl-10' : 'p-6 pl-10'} sm:p-10 sm:pl-16 flex flex-col justify-center relative`}>
-         <p className={`font-semibold leading-relaxed text-slate-800 text-center ${getFontSizeClass(card.card_text)} px-2`}>
+         <p className={`ruled-text font-semibold leading-relaxed text-slate-800 text-center ${getFontSizeClass(card.card_text)} px-2`}>
           {card.card_text}
         </p>
       </div>
@@ -519,30 +532,30 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
       {(isLethal || isCritical) && (
         <div className="p-4 sm:p-6 pt-0 sm:pt-0 pl-8 sm:pl-14 flex justify-center gap-2 sm:gap-3 flex-wrap">
           {lethalIfAccepted && (
-            <div className="bg-rose-500 text-white text-[11px] sm:text-[10px] font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider">
-              ☠️ LETAL SI LO ACEPTAS
+            <div className="bg-rose-500 text-white text-xs font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider flex items-center gap-1">
+              <Skull className="w-3.5 h-3.5" aria-hidden="true" /> LETAL SI LO ACEPTAS
             </div>
           )}
           {lethalNeutral && (
-            <div className="bg-rose-500 text-white text-[11px] sm:text-[10px] font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider">
-              ⚠️ ALTO RIESGO
+            <div className="bg-rose-500 text-white text-xs font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider flex items-center gap-1">
+              <TriangleAlert className="w-3.5 h-3.5" aria-hidden="true" /> ALTO RIESGO
             </div>
           )}
           {lethalIfDiscarded && (
-            <div className="bg-amber-500 text-white text-[11px] sm:text-[10px] font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider border-2 border-rose-500/30">
-              ⚠️ LETAL SI LO TIRAS
+            <div className="bg-amber-500 text-white text-xs font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider border-2 border-rose-500/30 flex items-center gap-1">
+              <Skull className="w-3.5 h-3.5" aria-hidden="true" /> LETAL SI LO TIRAS
             </div>
           )}
           {isCritical && (
-             <div className="bg-amber-400 text-slate-850 text-[11px] sm:text-[10px] font-bold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider">
-              👀 ¡ENARM!
+             <div className="bg-amber-400 text-slate-800 text-xs font-bold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider flex items-center gap-1">
+              <Eye className="w-3.5 h-3.5" aria-hidden="true" /> ¡ENARM!
             </div>
           )}
         </div>
       )}
 
       {/* Card Footer */}
-      <div className={`${compact ? 'p-2' : 'p-3'} pl-8 sm:p-5 sm:pl-14 bg-slate-50/40 border-t border-slate-100 flex justify-between items-center text-[10px] font-bold text-slate-400 gap-2`}>
+      <div className={`${compact ? 'p-2' : 'p-3'} pl-8 sm:p-5 sm:pl-14 bg-slate-50/40 border-t border-slate-100 flex justify-between items-center text-xs font-bold text-slate-400 gap-2`}>
         <span className="lettering text-sm sm:text-lg text-slate-300 truncate">Guardia nocturna...</span>
         <div className="bg-white px-2 sm:px-3 py-1 rounded-full border border-slate-100 text-slate-500 flex-shrink-0 whitespace-nowrap">
           {cardNumber}/{totalCards}

@@ -4,14 +4,16 @@ import { useCodexStore } from '../store/useCodexStore';
  * Centralized haptic feedback patterns for consistent mobile experience.
  */
 
+// Ordered by weight. Every correct swipe used to fire `criticalSuccess`
+// (7 pulses), so the strong pattern meant nothing by the time a milestone came.
 const hapticPatterns = {
-  lethalError: [200, 100, 200, 100, 500],
-  warning: [100, 50, 100],
-  timeoutAlarm: [500, 100, 500, 100, 1000],
-  criticalSuccess: [50, 30, 50, 30, 50, 30, 100],
-  cardSwipe: [20, 10, 20],
+  correctTap: [12],
+  correctCritical: [25, 40, 25],
   dragHeavy: [10, 10],
-  qteInteract: [30, 20, 30]
+  warning: [60, 40, 60],
+  criticalSuccess: [50, 30, 50, 30, 50, 30, 100],
+  lethalError: [200, 100, 200, 100, 500],
+  timeoutAlarm: [500, 100, 500, 100, 1000],
 } as const;
 
 export type HapticPattern = keyof typeof hapticPatterns;

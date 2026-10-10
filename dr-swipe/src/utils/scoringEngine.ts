@@ -19,11 +19,11 @@ export interface ScoreBreakdown {
 
 /**
  * Coin thresholds for combo milestones.
- * Reaching these combo counts awards bonus coins.
- * Reducido de [5,10,15,20] a [5,8,12,16] para celebraciones más frecuentes
+ * The combo resets every case and the longest case has 17 cards, so 16 and 20
+ * were (almost) never reachable: every milestone here fits in a single case.
  */
-export const COMBO_MILESTONES = [5, 8, 12, 16, 20] as const;
-export const COMBO_MILESTONE_COINS = { 5: 8, 8: 15, 12: 25, 16: 40, 20: 60 } as const;
+export const COMBO_MILESTONES = [3, 5, 8, 12] as const;
+export const COMBO_MILESTONE_COINS = { 3: 4, 5: 8, 8: 15, 12: 25 } as const;
 
 /**
  * Calculate bonus coins for perfect round (zero mistakes across all cards).

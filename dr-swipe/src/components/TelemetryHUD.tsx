@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Pause } from 'lucide-react';
+import { Pause, Handshake, UserRound, Shield, Sparkles } from 'lucide-react';
 
 interface TelemetryHUDProps {
   timeLeft: number;
@@ -45,9 +45,9 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
   // In flow, the deck below simply gets the remaining height.
   return (
     <div className="relative z-hud w-full max-w-md flex-shrink-0 px-2 sm:px-4 pt-1 sm:pt-2 flex flex-col gap-1.5">
-      <div className="paper-sheet !overflow-visible shadow-md border-2 border-white/50 bg-white/70 backdrop-blur-md rounded-2xl px-3 py-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5">
+      <div className="paper-sheet !overflow-visible shadow-md border-2 border-white/50 bg-white/90 rounded-2xl px-3 py-2 flex flex-wrap items-center justify-between gap-x-2.5 gap-y-1.5">
         <div className="flex flex-col gap-0.5">
-          <span className="text-[10px] font-black tracking-widest text-primary uppercase leading-none lettering">Puntaje</span>
+          <span className="text-xs font-black tracking-wide text-primary uppercase leading-none lettering">Puntaje</span>
           <motion.span
             key={score}
             animate={{ scale: [1, 1.1, 1] }}
@@ -57,27 +57,30 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
           </motion.span>
         </div>
         <div className="flex flex-col gap-0.5">
-          <span className="text-[10px] font-black tracking-widest text-secondary uppercase leading-none lettering">Créditos 🪙</span>
+          <span className="text-xs font-black tracking-wide text-secondary uppercase leading-none lettering">Créditos</span>
           <motion.span
             key={coins}
             animate={{ scale: [1, 1.2, 1] }}
             className="text-lg font-bold text-slate-700 leading-none lettering tabular-nums"
           >
             {coins}
-            <span title="Favores del Adjunto" className="ml-1.5 text-[11px] font-black text-emerald-600">🩺{favors}</span>
+            <span title="Favores del Adjunto" className="ml-1.5 inline-flex items-center gap-0.5 text-xs font-black text-emerald-600"><Handshake className="w-3.5 h-3.5" aria-hidden="true" />{favors}</span>
           </motion.span>
         </div>
         <div className="flex flex-col gap-0.5 flex-1 min-w-[64px] max-w-[110px]">
-          <span className="text-[10px] font-black tracking-widest text-primary uppercase leading-none lettering">Salud Px</span>
+          <span className="text-xs font-black tracking-wide text-primary uppercase leading-none lettering">Salud Px</span>
           <div className={`h-2 w-full bg-slate-100 rounded-full overflow-hidden border shadow-inner transition-colors ${
             tookDamage ? 'border-rose-400 ring-2 ring-rose-300/60' : 'border-slate-200'
           }`}>
+            {/* framer animates width and colour; a CSS transition on the same
+                properties fought it. */}
             <motion.div
               animate={{
                 width: `${vitality}%`,
                 backgroundColor: vitality > 60 ? '#10B981' : vitality > 30 ? '#F59E0B' : '#F43F5E',
               }}
-              className="h-full transition-all duration-500"
+              transition={{ duration: 0.45, ease: 'easeOut' }}
+              className="h-full"
             />
           </div>
           {/* Interns live under the health bar: they used to take a whole second
@@ -88,9 +91,9 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
                 key={i}
                 aria-hidden="true"
                 animate={i < lives ? { opacity: 1, scale: 1 } : { opacity: 0.2, scale: 0.8 }}
-                className={i < lives ? '' : 'grayscale'}
+                className={i < lives ? 'text-primary' : 'text-slate-400'}
               >
-                🩺
+                <UserRound className="w-3 h-3" strokeWidth={2.5} />
               </motion.span>
             ))}
           </div>
@@ -98,7 +101,7 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
         {state !== 'boss_fight' && (
           <div className="flex items-center gap-2 ml-auto">
             <div className="flex flex-col items-end gap-0.5">
-              <span className="text-[10px] font-black tracking-widest text-rose-400 uppercase leading-none lettering">Tiempo</span>
+              <span className="text-xs font-black tracking-wide text-rose-400 uppercase leading-none lettering">Tiempo</span>
               <span
                 className={`text-lg font-bold leading-none lettering tabular-nums ${
                   timeLeft <= 10 ? 'text-rose-500 animate-pulse' : 'text-slate-600'
@@ -121,8 +124,8 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
             owning a row: no layout shift when they appear, and no wasted height. */}
         <div className="absolute right-4 -bottom-2.5 z-10 flex items-center gap-2 pointer-events-none">
           {shield > 0 && (
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-sky-100 text-sky-700 border border-sky-200" title="Escudo: errores sin daño">
-              🛡️ ×{shield}
+            <span className="flex items-center gap-0.5 px-2 py-0.5 rounded-full text-xs font-black bg-sky-100 text-sky-700 border border-sky-200" title="Escudo: errores sin daño">
+              <Shield className="w-3 h-3" aria-hidden="true" /> ×{shield}
             </span>
           )}
           <AnimatePresence>
@@ -142,9 +145,9 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
                   initial={{ scale: 0, rotate: 10 }}
                   animate={{ scale, rotate: -3 }}
                   exit={{ scale: 0 }}
-                  className={`px-2.5 py-0.5 rounded-full text-[11px] font-black tracking-widest shadow-sm border lettering ${tierClass}`}
+                  className={`flex items-center gap-0.5 px-2.5 py-0.5 rounded-full text-xs font-black tracking-wide shadow-sm border lettering ${tierClass}`}
                 >
-                  x{combo} ✨
+                  x{combo} <Sparkles className="w-3 h-3" aria-hidden="true" />
                 </motion.div>
               );
             })()}
@@ -179,8 +182,8 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
 
 const Reading: React.FC<{ label: string; value: string; unit?: string; color: string }> = ({ label, value, unit, color }) => (
   <span className="flex items-baseline gap-1 whitespace-nowrap">
-    <span className="text-[10px] font-bold text-slate-400">{label}</span>
-    <span className={`text-xs font-black tabular-nums ${color}`}>{value}{unit && <span className="text-[10px] opacity-60 ml-0.5">{unit}</span>}</span>
+    <span className="text-xs font-bold text-slate-400">{label}</span>
+    <span className={`text-xs font-black tabular-nums ${color}`}>{value}{unit && <span className="text-xs opacity-60 ml-0.5">{unit}</span>}</span>
   </span>
 );
 
@@ -190,7 +193,7 @@ const VitalsMonitor: React.FC<{ vitals: TelemetryHUDProps['lastVitals'] }> = ({ 
   const shell = 'basis-full h-[22px] border-t border-slate-100 pt-1 flex items-center gap-2.5';
   if (!vitals) return (
     <div className={`${shell} text-slate-400`}>
-      <span className="text-[10px] font-black uppercase tracking-widest">Telemetría</span>
+      <span className="text-xs font-black uppercase tracking-widest">Telemetría</span>
       <div className="flex-1 h-1 bg-slate-200/70 rounded-full" />
     </div>
   );
@@ -206,7 +209,7 @@ const VitalsMonitor: React.FC<{ vitals: TelemetryHUDProps['lastVitals'] }> = ({ 
   const color = getStatusColor(vitals.status);
   return (
     <div className={shell}>
-      <span className="flex items-center gap-1 text-[10px] font-black uppercase tracking-widest text-slate-400 lettering">
+      <span className="flex items-center gap-1 text-xs font-black uppercase tracking-widest text-slate-400 lettering">
         <span className={`w-1.5 h-1.5 ${dotColor} rounded-full animate-pulse`} />
         <span className={color}>{vitals.status === 'normal' ? 'Estable' : vitals.status === 'alert' ? 'Riesgo' : 'CRÍTICO'}</span>
       </span>

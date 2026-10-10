@@ -1,5 +1,12 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Coins, Trophy, TriangleAlert } from 'lucide-react';
+
+const TOAST_STYLE = {
+  milestone: { className: 'bg-amber-50 border-secondary text-amber-900', Icon: Trophy },
+  alert: { className: 'bg-rose-50 border-rose-200 text-rose-700', Icon: TriangleAlert },
+  coins: { className: 'bg-white border-emerald-100 text-primary', Icon: Coins },
+} as const;
 
 interface RewardToastProps {
   toast: {
@@ -10,6 +17,7 @@ interface RewardToastProps {
 }
 
 export const RewardToast: React.FC<RewardToastProps> = ({ toast }) => {
+  const { className, Icon } = TOAST_STYLE[toast.type as keyof typeof TOAST_STYLE] ?? TOAST_STYLE.coins;
   return (
     <AnimatePresence>
       {toast.show && (
@@ -25,12 +33,10 @@ export const RewardToast: React.FC<RewardToastProps> = ({ toast }) => {
             initial={{ opacity: 0, y: 30, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8, y: -20 }}
-            className={`max-w-full px-4 sm:px-8 py-2 sm:py-4 rounded-2xl shadow-xl border-2 flex items-center gap-3 sm:gap-4 font-black italic tracking-tighter backdrop-blur-xl
-              ${toast.type === 'milestone' ? 'bg-secondary/90 border-secondary text-amber-900 sticker-glow' : 'bg-white/90 border-emerald-100 text-primary'}
-            `}
+            className={`max-w-full px-4 sm:px-8 py-2 sm:py-4 rounded-2xl shadow-xl border-2 flex items-center gap-3 sm:gap-4 font-black italic tracking-tighter ${className}`}
           >
-            <span className="text-2xl flex-shrink-0">{toast.type === 'milestone' ? '🏆' : '🪙'}</span>
-            <span className="uppercase text-[11px] sm:text-sm tracking-wider sm:tracking-widest leading-snug break-words min-w-0 line-clamp-2">{toast.text}</span>
+            <Icon className="w-6 h-6 flex-shrink-0" aria-hidden="true" />
+            <span className="uppercase text-xs sm:text-sm tracking-wider sm:tracking-widest leading-snug break-words min-w-0 line-clamp-2">{toast.text}</span>
           </motion.div>
         </div>
       )}

@@ -6,19 +6,14 @@ export default {
   ],
   theme: {
     extend: {
+      // Channels + <alpha-value>: with a bare var() Tailwind 3 silently drops
+      // every opacity variant (bg-primary/10, bg-secondary/90...).
       colors: {
-        primary: 'var(--primary)',
-        secondary: 'var(--secondary)',
-        'accent-alert': 'var(--accent-alert)',
-        medical: {
-          primary: 'var(--primary)',
-          secondary: 'var(--secondary)',
-          danger: 'var(--accent-alert)',
-          warning: '#F59E0B',
-          info: 'var(--primary)',
-          dark: 'var(--bg-app)',
-          glass: 'var(--surface)',
-        },
+        paper: 'rgb(var(--paper-rgb) / <alpha-value>)',
+        ink: 'rgb(var(--ink-rgb) / <alpha-value>)',
+        primary: 'rgb(var(--primary-rgb) / <alpha-value>)',
+        secondary: 'rgb(var(--secondary-rgb) / <alpha-value>)',
+        'accent-alert': 'rgb(var(--accent-alert-rgb) / <alpha-value>)',
       },
       borderRadius: {
         button: 'var(--radius-button)',

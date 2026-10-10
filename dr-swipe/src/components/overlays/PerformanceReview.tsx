@@ -66,7 +66,7 @@ export const PerformanceReview: React.FC<PerformanceReviewProps> = ({ metrics, m
             transition={{ delay: 0.2 }}
             className="mb-8 pr-20"
           >
-            <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-slate-400 block mb-1">
+            <span className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 block mb-1">
               EXPEDIENTE CERRADO
             </span>
             <h2 className={`text-3xl sm:text-4xl font-black lettering tracking-tight leading-none ${isVictory ? 'text-slate-800' : 'text-rose-600'}`}>
@@ -85,12 +85,12 @@ export const PerformanceReview: React.FC<PerformanceReviewProps> = ({ metrics, m
               <div className="flex-1 bg-amber-50 rounded-2xl p-4 border border-amber-100 flex flex-col items-center justify-center">
                 <Zap className="w-6 h-6 text-amber-500 mb-1" />
                 <span className="text-2xl font-black text-amber-600 lettering">+{metrics.xpEarned}</span>
-                <span className="text-[10px] font-bold text-amber-700/60 uppercase tracking-widest">XP Ganada</span>
+                <span className="text-xs font-bold text-amber-700/60 uppercase tracking-widest">XP Ganada</span>
               </div>
               <div className="flex-1 bg-emerald-50 rounded-2xl p-4 border border-emerald-100 flex flex-col items-center justify-center">
                 <Coins className="w-6 h-6 text-emerald-500 mb-1" />
                 <span className="text-2xl font-black text-emerald-600 lettering">+{metrics.coinsEarned}</span>
-                <span className="text-[10px] font-bold text-emerald-700/60 uppercase tracking-widest">Monedas</span>
+                <span className="text-xs font-bold text-emerald-700/60 uppercase tracking-widest">Monedas</span>
               </div>
             </motion.div>
 
