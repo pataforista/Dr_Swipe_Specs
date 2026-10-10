@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# CSV exports are written with LF; avoid CRLF warnings.
+*.csv text eol=lf
