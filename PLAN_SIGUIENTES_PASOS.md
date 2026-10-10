@@ -43,22 +43,24 @@ Las familias de 15 casos (vaginitis, meningitis, eritema infeccioso, neumotórax
 - **Cartas "aceptar" que repiten el escenario:** el jugador acierta sin pensar. Marcarlas para revisión (el informe ya lista los vitales; falta un criterio para el resto).
 - **Preguntas del jefe (Shock Room):** auditar las 1,797 preguntas con el mismo método de fuentes que las cartas.
 
-## 4. Jugabilidad (sin cambios aún)
+## 4. Jugabilidad (actualizado 2026-10-10)
+
+Hecho desde que se escribió este plan: Shock Room marca la opción fallada, tiene háptica y sonido de acierto, reintenta desde un checkpoint sin repetir las cartas, y es gratis en Modo Estudio (verificado en `ShockRoom.tsx` y `gameMachine.ts`). Quedan los puntos 3 a 5.
 
 Prioridad por impacto y esfuerzo:
 
-1. **Shock Room:** marcar qué opción falló (hoy se puede volver a pulsar la misma), añadir háptica y sonido de acierto, y no reiniciar el caso completo al fallar (reiniciar desde la carta 1 es desproporcionado frente al triage).
-2. **HUD a 390 px:** el monitor de vitales tapa el "Tiempo" cuando aparece la píldora de combo. Reordenar o colapsar el monitor.
-3. **Recompensas:** conteo ascendente en el botín y animación del combo en cada acierto (hoy solo cambia por nivel).
+1. ~~**Shock Room:**~~ (hecho) opción fallada marcada, háptica y sonido, checkpoint en vez de reiniciar el caso.
+2. ~~**HUD a 390 px:**~~ (verificado 2026-10-10 con captura a 390×780: puntaje, créditos, salud, tiempo y pausa caben en una fila; la píldora de combo y el escudo cuelgan del borde inferior sin tapar el tiempo. Ya no aplica. Falta probar con combo ≥ 12, escudo y 4 dígitos de puntaje a la vez.)
+3. **Recompensas:** ~~conteo ascendente en el botín~~ (hecho: `hooks/useCountUp.ts`, respeta movimiento reducido; sin verificación visual todavía). Animación del combo en cada acierto (hecho: el número hace un pop en `TelemetryHUD.tsx`; verificado a 390 px con ×2).
 4. **Dificultad adaptativa:** subir el costo de vitalidad o recortar tiempo tras rachas largas; ahora el reto es plano dentro de un caso.
 5. **Telemetría opcional:** registrar tiempo por carta y tasa de acierto por familia para ver con datos qué cartas son demasiado fáciles o demasiado confusas.
 
 ## 5. Calidad y mantenimiento
 
-- **CI:** añadir al workflow `python3 tools/apply_guideline_review.py cases --check`, `tools/clean_card_leaks.py cases --check` y `tools/insert_distractors.py` de cada lote con `--check`, para que ningún cambio manual deshaga las correcciones.
+- ~~**CI:**~~ (hecho, ver el workflow) añadir al workflow `python3 tools/apply_guideline_review.py cases --check`, `tools/clean_card_leaks.py cases --check` y `tools/insert_distractors.py` de cada lote con `--check`, para que ningún cambio manual deshaga las correcciones.
 - ~~Validador TS de la raíz~~ (hecho): reemplazado por `dr-swipe/src/tests/casesSchema.test.ts`.
-- **Fin de línea:** `REVISION_CONTENIDO_JUGABILIDAD.csv` avisa de CRLF; fijarlo en `.gitattributes`.
-- **Pruebas de contenido:** convertir el test temporal de "los 599 casos pasan el esquema Zod" en un test permanente de `dr-swipe/src/tests/`.
+- ~~**Fin de línea:**~~ (hecho en `.gitattributes`) `REVISION_CONTENIDO_JUGABILIDAD.csv` avisa de CRLF; fijarlo en `.gitattributes`.
+- ~~**Pruebas de contenido:**~~ (hecho: `casesSchema.test.ts`) convertir el test temporal de "los 599 casos pasan el esquema Zod" en un test permanente de `dr-swipe/src/tests/`.
 - **Detector de vitales** (`report_content_review.py`): usa umbrales de adulto y marca falsos positivos pediátricos. Añadir rangos por edad (PALS) o un campo `edad` por caso.
 
 ## 6. Orden sugerido

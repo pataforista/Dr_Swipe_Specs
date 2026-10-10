@@ -147,7 +147,18 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
                   exit={{ scale: 0 }}
                   className={`flex items-center gap-0.5 px-2.5 py-0.5 rounded-full text-xs font-black tracking-wide shadow-sm border lettering ${tierClass}`}
                 >
-                  x{combo} <Sparkles className="w-3 h-3" aria-hidden="true" />
+                  {/* The pill itself only re-animates when the tier changes; the number
+                      pops on every hit so each correct swipe is acknowledged. */}
+                  <motion.span
+                    key={combo}
+                    initial={{ scale: 1.5, y: -2 }}
+                    animate={{ scale: 1, y: 0 }}
+                    transition={{ type: 'spring', stiffness: 520, damping: 14 }}
+                    className="inline-block tabular-nums"
+                  >
+                    x{combo}
+                  </motion.span>{' '}
+                  <Sparkles className="w-3 h-3" aria-hidden="true" />
                 </motion.div>
               );
             })()}
