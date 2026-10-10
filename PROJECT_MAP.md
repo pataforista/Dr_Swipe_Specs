@@ -135,6 +135,8 @@ Antes de cada commit de código: `npm run lint && npm test && npm run build` (el
 
 ## 8. Trampas conocidas
 
+- Para ver la app en un navegador: `npm run dev` (corre `sync_cases.js` y `regen_index.js`). Si arrancas `npx vite` directo, `public/cases/` queda vacío y "INICIAR GUARDIA" no hace nada. Hay un tutorial inicial con "SALTAR TUTORIAL"; tras "INICIAR GUARDIA" aparece la hoja del paciente con "INICIAR CONSULTA". Playwright y Chromium ya están instalados en el entorno de nube.
+
 - Editar con regex y no compilar rompió el proyecto dos veces; lee `git diff` completo tras cualquier reemplazo masivo.
 - Un renombre a medias en `gameMachine.ts` se detecta solo con `tsc`; busca el nombre antiguo con grep.
 - Una acción de entrada a un estado no debe borrar datos que la pantalla de ese estado aún lee.
@@ -146,5 +148,5 @@ Antes de cada commit de código: `npm run lint && npm test && npm run build` (el
 ## 9. Pendientes vivos (resumen; detalle en `PLAN_SIGUIENTES_PASOS.md`)
 
 Contenido: familias aún bajo 40 % de descarte (roséola, DPPNI, escarlatina, HPP, EVC isquémico, varicela, corioamnionitis, RPM, DM2, rubéola, eritema infeccioso, neumonía pediátrica); revisión clínica de las fuentes; variedad de comentarios del mentor; auditoría de las 1,797 preguntas de jefe.
-Jugabilidad: HUD a 390 px (el monitor de vitales tapa el tiempo con la píldora de combo), conteo ascendente en el botín, dificultad adaptativa, telemetría opcional, simulacro ENARM.
+Jugabilidad: conteo ascendente en el botín, dificultad adaptativa, telemetría opcional, simulacro ENARM.
 Producción (ROADMAP Fase 7): Sentry/Analytics, E2E, v1.0.0. Balance de Favores por probar en móvil.
