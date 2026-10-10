@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import type { EnarmPearl } from '../../types/game';
+import { useCountUp } from '../../hooks/useCountUp';
 import { MENTOR_NAMES, MENTOR_ICONS, type MentorLine } from '../../utils/dialogEngine';
 
 interface LootScreenProps {
@@ -21,6 +22,9 @@ interface LootScreenProps {
 export const LootScreen: React.FC<LootScreenProps> = ({ 
   score, xpTotal, coins, isPerfect, perfectBonus = 0, onContinue, pearl, feedbackHistoryCount = 0, onViewRetro, mentorLine
 }) => {
+  const xpShown = useCountUp(xpTotal, 900, 350);
+  const coinsTotal = coins + (isPerfect ? perfectBonus : 0);
+  const coinsShown = useCountUp(coinsTotal, 900, 700);
   return (
     <motion.div 
       initial={{ opacity: 0, scale: 0.9, y: 30 }} 
@@ -62,7 +66,7 @@ export const LootScreen: React.FC<LootScreenProps> = ({
               <span className="text-sm sm:text-base font-bold text-slate-600">Puntaje: {score}{xpTotal !== score ? ' × racha diaria' : ''}</span>
             </div>
           </div>
-          <span className="text-2xl sm:text-3xl font-black text-primary lettering">+{xpTotal}</span>
+          <span className="text-2xl sm:text-3xl font-black text-primary lettering">+{xpShown}</span>
         </div>
 
         <div className="h-px w-full bg-slate-200/50" />
@@ -76,7 +80,7 @@ export const LootScreen: React.FC<LootScreenProps> = ({
                <span className="text-sm sm:text-base font-bold text-slate-600">Créditos de hospital</span>
              </div>
           </div>
-          <span className="text-2xl sm:text-3xl font-black text-secondary lettering">+{coins + (isPerfect ? perfectBonus : 0)}</span>
+          <span className="text-2xl sm:text-3xl font-black text-secondary lettering">+{coinsShown}</span>
         </div>
 
         {isPerfect && (

@@ -27,7 +27,7 @@ Dr_Swipe_Specs/
 │   ├── src/components/               UI; overlays/ y ui/ son subcarpetas
 │   ├── src/hooks/                    Efectos: audio, háptica, commit de sesión, foco
 │   ├── src/data/lore/*.json          Diálogos de mentores, logros, objetos, eventos
-│   ├── src/tests/                    16 archivos vitest
+│   ├── src/tests/                    17 archivos vitest
 │   ├── sync_cases.js, regen_index.js Copian cases/ → public/cases/ y generan manifest.json (prebuild/predev)
 │   └── public/cases/                 GENERADO, ignorado por git. No editar
 ├── CORE_CANON/             Base de decisiones críticas (JSON/JSONL por especialidad). Referencia clínica, el juego NO la lee
@@ -90,6 +90,7 @@ Invariantes que el validador y Zod hacen cumplir: `card_id` únicos por caso; m�
 | Barajar mazo / elegir familias distintas | `utils/deckOrder.ts` |
 | Limpiar comentario del mentor según acierto/fallo | `utils/formatters.ts` (`cleanMentorComment`, `shuffleBossQuestion`) |
 | Vitales → monitor del HUD | `utils/vitalsParser.ts`, `components/TelemetryHUD.tsx` |
+| Conteo ascendente del botín | `utils/countUp.ts`, `hooks/useCountUp.ts`, `components/overlays/LootScreen.tsx` |
 | Cola de avisos de recompensa | `utils/toastQueue.ts`, `components/overlays/RewardToast.tsx` |
 | Jefe (Shock Room): 12 s por pregunta, 2 fallos permitidos, checkpoint | `components/ShockRoom.tsx`; el reintento lo maneja `gameMachine.ts` |
 | Audio / háptica | `hooks/useGameAudio.ts`, `useImpactFeedback.ts`, `utils/hapticFeedback.ts` |
@@ -125,7 +126,7 @@ Receta para añadir distractores: leer el mazo de la familia → redactar 3–4 
 ```bash
 python3 tools/validate_cases.py cases          # desde la raíz
 cd dr-swipe && npm ci
-npm test                                       # vitest, 16 archivos / 119 tests
+npm test                                       # vitest, 17 archivos / 123 tests
 npm run lint
 npm run build                                  # prebuild sincroniza casos; luego tsc -b && vite build
 npm run dev                                    # localhost:5173
@@ -148,5 +149,5 @@ Antes de cada commit de código: `npm run lint && npm test && npm run build` (el
 ## 9. Pendientes vivos (resumen; detalle en `PLAN_SIGUIENTES_PASOS.md`)
 
 Contenido: familias aún bajo 40 % de descarte (roséola, DPPNI, escarlatina, HPP, EVC isquémico, varicela, corioamnionitis, RPM, DM2, rubéola, eritema infeccioso, neumonía pediátrica); revisión clínica de las fuentes; variedad de comentarios del mentor; auditoría de las 1,797 preguntas de jefe.
-Jugabilidad: conteo ascendente en el botín, dificultad adaptativa, telemetría opcional, simulacro ENARM.
+Jugabilidad: animación del combo en cada acierto, dificultad adaptativa, telemetría opcional, simulacro ENARM.
 Producción (ROADMAP Fase 7): Sentry/Analytics, E2E, v1.0.0. Balance de Favores por probar en móvil.

@@ -51,7 +51,7 @@ Prioridad por impacto y esfuerzo:
 
 1. ~~**Shock Room:**~~ (hecho) opción fallada marcada, háptica y sonido, checkpoint en vez de reiniciar el caso.
 2. ~~**HUD a 390 px:**~~ (verificado 2026-10-10 con captura a 390×780: puntaje, créditos, salud, tiempo y pausa caben en una fila; la píldora de combo y el escudo cuelgan del borde inferior sin tapar el tiempo. Ya no aplica. Falta probar con combo ≥ 12, escudo y 4 dígitos de puntaje a la vez.)
-3. **Recompensas:** conteo ascendente en el botín y animación del combo en cada acierto (hoy solo cambia por nivel).
+3. **Recompensas:** ~~conteo ascendente en el botín~~ (hecho: `hooks/useCountUp.ts`, respeta movimiento reducido; sin verificación visual todavía). Pendiente: animación del combo en cada acierto (hoy solo cambia por nivel).
 4. **Dificultad adaptativa:** subir el costo de vitalidad o recortar tiempo tras rachas largas; ahora el reto es plano dentro de un caso.
 5. **Telemetría opcional:** registrar tiempo por carta y tasa de acierto por familia para ver con datos qué cartas son demasiado fáciles o demasiado confusas.
 
