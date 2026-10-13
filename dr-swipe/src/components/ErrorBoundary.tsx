@@ -1,4 +1,5 @@
 import { Component, type ErrorInfo, type ReactNode } from "react";
+import { reportError } from "../utils/monitoring";
 
 interface Props {
   children: ReactNode;
@@ -31,6 +32,7 @@ class ErrorBoundary extends Component<Props, State> {
       stack: error.stack,
       componentStack: errorInfo.componentStack
     });
+    reportError(error, { componentStack: errorInfo.componentStack });
   }
 
   private handleReload = () => {

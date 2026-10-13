@@ -22,6 +22,7 @@ import { useFocusTrap } from './hooks/useFocusTrap';
 import { useSessionCommit } from './hooks/useSessionCommit';
 import { computeSessionMetrics } from './utils/sessionEngine';
 import { PerformanceReview } from './components/overlays/PerformanceReview';
+import { monitoringEnabled } from './utils/monitoring';
 
 // None of these are needed for the first paint (idle screen / first card),
 // so they ship as separate chunks instead of bloating the initial bundle.
@@ -975,7 +976,7 @@ export function App() {
               </div>
 
               <p className="text-[11px] text-slate-400 leading-snug mb-4">
-                {DISCLAIMER} Tu progreso se guarda solo en este dispositivo. Versión {__APP_VERSION__}.
+                {DISCLAIMER} Tu progreso se guarda solo en este dispositivo.{monitoringEnabled && ' Si la app falla, envía un reporte técnico sin datos personales para corregirlo.'} Versión {__APP_VERSION__}.
               </p>
 
               <button

@@ -45,6 +45,9 @@ jobs:
       # `npm run build` runs `tsc -b` first, so type regressions fail CI here.
       - name: Build
         run: cd dr-swipe && npm run build
+        env:
+          # Public DSN (a repository variable, not a secret). Unset = no reporting.
+          VITE_SENTRY_DSN: ${{ vars.SENTRY_DSN }}
 
       - name: Deploy to Cloudflare Pages
         if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')

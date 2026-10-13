@@ -13,6 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@sentry/react": "^10.76.2",
     "@xstate/react": "^6.1.0",
     "framer-motion": "^12.37.0",
     "lucide-react": "^1.49.0",

@@ -4,6 +4,9 @@ import { MotionConfig } from 'framer-motion'
 import './index.css'
 import App from './App.tsx'
 import ErrorBoundary from './components/ErrorBoundary.tsx'
+import { initMonitoring } from './utils/monitoring'
+
+initMonitoring()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

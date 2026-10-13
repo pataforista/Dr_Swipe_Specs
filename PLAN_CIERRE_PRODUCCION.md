@@ -51,7 +51,14 @@ Una app que enseña a decidir urgencias no debería enseñar una afirmación let
 
 1. **¿Se lanza antes o después de revisar las 63 cartas letales?** Mi recomendación: después; son pocas y son las que pueden enseñar algo dañino.
 2. ~~**Abandonar un caso perdido, ¿cuenta para el repaso?**~~ Decidido: sí. Hecho; "Nueva guardia" tras perder registra el fallo en SM-2.
-3. **Monitoreo de errores (Sentry) desde el día uno, ¿sí o no?** Sin él no sabremos si la app falla en teléfonos reales. Añadirlo implica una dependencia, un aviso de privacidad y ampliar la CSP; por eso queda como decisión, no como cierre.
+3. ~~**Monitoreo de errores (Sentry)**~~ Decidido: sí, solo errores. Integrado (`utils/monitoring.ts`): sin rastreo de rendimiento, sin grabación de sesión, sin datos de usuario ni migas de consola. Se descarga después del primer render (29 kB gzip, trozo `vendor-sentry`) y **solo si existe la clave**. Para activarlo:
+   - Crear el proyecto React en sentry.io y, en *Settings → Security & Privacy*, activar **Prevent Storing of IP Addresses**.
+   - En GitHub: *Settings → Secrets and variables → Actions → Variables*, crear `SENTRY_DSN` con el DSN (es público, no secreto). El CI lo pasa al build.
+   - La CSP de `_headers` ya admite `*.ingest.sentry.io` (y sus regiones US y DE). Ajustes muestra la línea de privacidad solo cuando la clave existe.
+
+## 5b. Dependencias de desarrollo
+
+`npm audit` marca vulnerabilidades moderadas y altas **solo en herramientas de build y test** (vitest, postcss, browserslist, brace-expansion…); `npm audit --omit=dev` da 0, así que nada llega al jugador. `npm audit fix` falla con un error interno de npm (`edgesOut`) y la corrección de `braces` exige Tailwind 4 (cambio mayor). Queda para después de 1.0.
 
 ## 6. Fuera de 1.0 (no tocar antes del lanzamiento)
 
