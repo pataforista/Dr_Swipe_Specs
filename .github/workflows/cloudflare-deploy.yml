@@ -32,6 +32,7 @@ jobs:
         run: |
           python3 tools/apply_guideline_review.py cases --check
           python3 tools/clean_card_leaks.py cases --check
+          python3 tools/apply_clinical_review_2026_10.py --check
           for f in content_drafts/distractores_lote*.json; do
             python3 tools/insert_distractors.py cases "$f" --check
           done

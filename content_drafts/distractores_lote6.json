@@ -7,8 +7,8 @@
                 "ui_icon": "pill",
                 "category": "Tratamiento",
                 "card_text": "Fibrinólisis sistémica como primera opción en este choque cardiogénico: Se prefiere por ser más rápida que trasladar al paciente.",
-                "comment": "Navarro: En el infarto con choque cardiogénico la reperfusión de elección es la ICP, sin importar el tiempo de retraso. La fibrinólisis queda como último recurso.",
-                "fuente": "ACC/AHA, Guideline for the Management of STEMI (2013); ESC STEMI Guidelines (2017); ESC Guidelines on ACS (2023)",
+                "comment": "Navarro: En el infarto con choque cardiogénico la reperfusión de elección es la ICP inmediata. La fibrinólisis solo se considera si la ICP no puede hacerse a tiempo.",
+                "fuente": "Samsky MD et al., Cardiogenic Shock After Acute Myocardial Infarction: A Review, JAMA 2021 (doi:10.1001/jama.2021.18323); Thiele H et al., CULPRIT-SHOCK, NEJM 2017 (doi:10.1056/NEJMoa1710261)",
                 "lethal_risk": true
             },
             {
@@ -60,8 +60,8 @@
                 "ui_icon": "clock",
                 "category": "Manejo Inmediato",
                 "card_text": "Tiempo puerta-balón de 4 horas como meta aceptable: Margen razonable para trasladar y preparar al paciente.",
-                "comment": "Mendoza: La meta es una ICP primaria en 90 minutos o menos desde el primer contacto médico; si no se logra, se considera fibrinólisis.",
-                "fuente": "ACC/AHA, Guideline for the Management of STEMI (2013); ESC STEMI Guidelines (2017)",
+                "comment": "Mendoza: La ICP primaria se hace lo antes posible; si no puede realizarse dentro de los 120 minutos siguientes al diagnóstico, se administra fibrinólisis.",
+                "fuente": "Bhatt DL et al., Diagnosis and Treatment of Acute Coronary Syndromes: A Review, JAMA 2022 (doi:10.1001/jama.2022.0358); Vogel B et al., Nat Rev Dis Primers 2019 (doi:10.1038/s41572-019-0090-3)",
                 "lethal_risk": true
             }
         ],
@@ -196,8 +196,8 @@
                 "ui_icon": "droplet",
                 "category": "Tratamiento",
                 "card_text": "Transfusión hasta hemoglobina mayor de 10 g/dL: Meta para compensar la pérdida de sangre.",
-                "comment": "Navarro: La estrategia es restrictiva, con umbral de 7 g/dL y meta de 7 a 9. Sobretransfundir eleva la presión portal y favorece el resangrado.",
-                "fuente": "Baveno VII Consensus (J Hepatol 2022); AASLD Guidance on Portal Hypertensive Bleeding (2017)",
+                "comment": "Navarro: La estrategia es restrictiva: se transfunde con hemoglobina cercana a 7 g/dL y la meta es de 7 a 8 g/dL. Sobretransfundir eleva la presión portal y favorece el resangrado.",
+                "fuente": "Baveno VII, J Hepatol 2022 (doi:10.1016/j.jhep.2021.12.022), recomendación 6.2; Villanueva C et al., NEJM 2013 (doi:10.1056/NEJMoa1211801)",
                 "lethal_risk": true
             },
             {
@@ -537,7 +537,7 @@
                 "category": "Evaluacion",
                 "card_text": "Escala SAD PERSONS como único criterio para decidir el alta: Un puntaje bajo permite el manejo ambulatorio.",
                 "comment": "Navarro: Las escalas de riesgo no predicen bien el suicidio. La decisión se basa en la evaluación clínica completa, no en un puntaje.",
-                "fuente": "NICE NG225, Self-harm: assessment, management and preventing recurrence (2022)",
+                "fuente": "NICE NG225 (2022); Steeg S et al., Accuracy of risk scales for predicting repeat self-harm and suicide, BMC Psychiatry 2018 (doi:10.1186/s12888-018-1693-z): AUC 51% para SAD PERSONS",
                 "lethal_risk": true
             }
         ],
@@ -547,8 +547,8 @@
                 "ui_icon": "clock",
                 "category": "Tratamiento",
                 "card_text": "Reiniciar el antipsicótico a las 24 horas de la mejoría: Se retoma para evitar la recaída psicótica.",
-                "comment": "Navarro: Tras un síndrome neuroléptico maligno se espera al menos 2 semanas antes de reintroducir un antipsicótico, con una dosis baja y vigilancia estrecha.",
-                "fuente": "APA, Practice Guideline for the Treatment of Patients with Schizophrenia (2020); Strawn et al., Am J Psychiatry (2007)",
+                "comment": "Navarro: Tras un síndrome neuroléptico maligno el antipsicótico se reintroduce solo después de un periodo sin fármaco (suele recomendarse al menos 2 semanas), de preferencia con otro agente, a dosis baja y con vigilancia estrecha.",
+                "fuente": "Pileggi DJ, Cook AM, Neuroleptic Malignant Syndrome, Ann Pharmacother 2016 (doi:10.1177/1060028016657553); Strawn JR et al., Am J Psychiatry 2007 (doi:10.1176/ajp.2007.164.6.870)",
                 "lethal_risk": true
             },
             {
@@ -752,7 +752,7 @@
                 "category": "Tratamiento",
                 "card_text": "Metoclopramida para acelerar el tránsito: Se indica para vencer la obstrucción.",
                 "comment": "Los procinéticos están contraindicados en la obstrucción mecánica, porque aumentan la presión sobre el punto obstruido y el riesgo de perforación.",
-                "fuente": "WSES, Management of Adhesive Small Bowel Obstruction Guidelines (2017)",
+                "fuente": "Ponte CD, Nappi JM, Review of a new gastrointestinal drug: metoclopramide, Am J Hosp Pharm 1981 (doi:10.1093/ajhp/38.6.829): contraindicada en obstrucción, hemorragia o perforación gastrointestinal; ficha técnica",
                 "lethal_risk": true
             },
             {

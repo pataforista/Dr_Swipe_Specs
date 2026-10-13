@@ -146,7 +146,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Dolor y sangrado transvaginal con choque hipovolémico serían el cuadro de un ectópico roto. Aquí la presión es normal y el cuadro orienta a un foco infeccioso intestinal: apendicitis."
+                "vazquez_comment": "Dolor y sangrado transvaginal con choque hipovolémico serían el cuadro de un ectópico roto. Aquí la presión es normal, no hay sangrado transvaginal y el cuadro orienta a apendicitis."
             },
             "safety_flags": {
                 "lethal_risk": true,

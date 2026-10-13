@@ -31,8 +31,8 @@
                 "ui_icon": "shield",
                 "category": "Tratamiento Médico",
                 "card_text": "Metotrexato en la Paciente Inestable: Opción segura si hay líquido libre pero el sangrado parece escaso.",
-                "comment": "Castillo: La inestabilidad hemodinámica o el hemoperitoneo contraindican en forma absoluta el metotrexato y obligan a cirugía.",
-                "fuente": "ACOG Practice Bulletin 193",
+                "comment": "Castillo: La inestabilidad hemodinámica o los datos de rotura contraindican el metotrexato y obligan a cirugía.",
+                "fuente": "ACOG Practice Bulletin 193: Tubal Ectopic Pregnancy, Obstet Gynecol 2018 (doi:10.1097/AOG.0000000000002560)",
                 "lethal_risk": true
             },
             {
@@ -111,7 +111,7 @@
                 "category": "Manejo",
                 "card_text": "Tocólisis de Rutina: Indicada en todo DPPNI para ganar tiempo y prolongar el embarazo.",
                 "comment": "Mendoza: En el DPPNI la tocólisis es controvertida: solo se considera con madre estable, sin sufrimiento fetal y un feto pretérmino que se beneficie de esteroides. En el cuadro agudo no es de rutina.",
-                "fuente": "Medscape, manejo del desprendimiento de placenta",
+                "fuente": "Towers CV et al., Is tocolysis safe in the management of third-trimester bleeding?, Am J Obstet Gynecol 1999 (doi:10.1016/s0002-9378(99)70053-0); Hladky K et al., Placental Abruption, Obstet Gynecol Surv 2002",
                 "lethal_risk": true
             },
             {
@@ -130,7 +130,7 @@
                 "category": "Manejo",
                 "card_text": "Tocólisis de Rutina: Indicada en todo DPPNI para ganar tiempo y prolongar el embarazo.",
                 "comment": "Mendoza: En el DPPNI la tocólisis es controvertida: solo se considera con madre estable, sin sufrimiento fetal y un feto pretérmino que se beneficie de esteroides. En el cuadro agudo no es de rutina.",
-                "fuente": "Medscape, manejo del desprendimiento de placenta",
+                "fuente": "Towers CV et al., Is tocolysis safe in the management of third-trimester bleeding?, Am J Obstet Gynecol 1999 (doi:10.1016/s0002-9378(99)70053-0); Hladky K et al., Placental Abruption, Obstet Gynecol Surv 2002",
                 "lethal_risk": true
             },
             {

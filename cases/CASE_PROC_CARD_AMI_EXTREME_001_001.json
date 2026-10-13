@@ -74,7 +74,7 @@
             "scoring": {
                 "points": 150,
                 "error_type": "lethal_commission",
-                "vazquez_comment": "Navarro: En el infarto con choque cardiogénico la reperfusión de elección es la ICP, sin importar el tiempo de retraso. La fibrinólisis queda como último recurso."
+                "vazquez_comment": "Navarro: En el infarto con choque cardiogénico la reperfusión de elección es la ICP inmediata. La fibrinólisis solo se considera si la ICP no puede hacerse a tiempo."
             },
             "safety_flags": {
                 "lethal_risk": true

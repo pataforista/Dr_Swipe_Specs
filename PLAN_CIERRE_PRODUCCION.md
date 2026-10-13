@@ -35,21 +35,18 @@ Defectos de juego y de producción. Cada uno tiene su fila en `ERRORES_Y_PREVENC
 | T4 | Etiquetar `v1.0.0` en git tras el despliegue | Tú o yo | 1 min |
 | T5 | Aviso de privacidad de una línea en la página o la ficha: el progreso vive solo en el dispositivo; las fuentes se piden a Google Fonts (eso expone la IP del jugador a Google). Si te importa, autoalojar las fuentes es el cambio mínimo | Tú decides | 15 min |
 
-## 4. Bloqueador real: contenido clínico sin verificar
+## 4. Contenido clínico: estado tras la revisión del 2026-10-13
 
-`REVISION_CLINICA/` reúne 300 cartas cuyas fuentes **se redactaron de memoria y nadie ha verificado**, 63 de ellas marcadas de riesgo letal, más 3 diferenciales que cambiaron de "aceptar" a "descartar". Quedan además dos decisiones clínicas abiertas: roséola (15 cartas) y el umbral de SatO₂ de la GPC mexicana.
+`REVISION_CLINICA/` reúne 237 cartas cuyas fuentes se redactaron de memoria; 63 tienen riesgo letal. Esas 63, más las 3 correcciones de diagnóstico, ya se contrastaron con PubMed y Consensus (detalle en `REVISION_CLINICA/VEREDICTOS_RIESGO_LETAL.md`):
 
-Una app que enseña a decidir urgencias no debería enseñar una afirmación letal falsa. Por eso el mínimo para lanzar es:
-
-1. Un médico revisa la hoja `Prioridad (riesgo letal)` (63 cartas) y la hoja `Correcciones` (3).
-2. Las cartas con veredicto "Rechazar" o "Corregir" se aplican con la tubería de siempre (`insert_distractors.py --check`, validador, `npm test`, build).
-3. El resto (237 cartas sin riesgo letal) puede revisarse después del lanzamiento, con el aviso educativo ya visible.
-
-**Insufficient data** para fijar fecha: depende de quién haga la revisión y cuándo.
+- **Ninguna carta enseña una conducta peligrosa:** 53 se aprueban, 10 se corrigieron (comentario o fuente) y 0 se rechazan. Las correcciones ya están en el juego; el CI comprueba que sigan aplicadas.
+- **Fuentes:** 22 verificadas en el texto, 33 localizadas sin texto disponible para esa afirmación y 8 sin localizar (*Insufficient data*).
+- **La revisión la hizo una IA, no un médico.** Para un lanzamiento público sigue siendo recomendable que un médico mire las 8 filas sin fuente y la pregunta abierta sobre la prueba de embarazo en la apendicitis; es media hora de trabajo, no una revisión completa.
+- Quedan sin revisar las 174 cartas sin riesgo letal, la roséola (15 cartas) y el umbral de SatO₂ de la GPC mexicana. Ninguna bloquea el lanzamiento.
 
 ## 5. Decisiones que necesito de ti
 
-1. **¿Se lanza antes o después de revisar las 63 cartas letales?** Mi recomendación: después; son pocas y son las que pueden enseñar algo dañino.
+1. ~~**¿Se lanza antes o después de revisar las 63 cartas letales?**~~ Revisadas el 2026-10-13 (§4). Queda opcional la mirada de un médico a 8 filas.
 2. ~~**Abandonar un caso perdido, ¿cuenta para el repaso?**~~ Decidido: sí. Hecho; "Nueva guardia" tras perder registra el fallo en SM-2.
 3. ~~**Monitoreo de errores (Sentry)**~~ Decidido: sí, solo errores. Integrado (`utils/monitoring.ts`): sin rastreo de rendimiento, sin grabación de sesión, sin datos de usuario ni migas de consola. Se descarga después del primer render (29 kB gzip, trozo `vendor-sentry`) y **solo si existe la clave**. Para activarlo:
    - Crear el proyecto React en sentry.io y, en *Settings → Security & Privacy*, activar **Prevent Storing of IP Addresses**.

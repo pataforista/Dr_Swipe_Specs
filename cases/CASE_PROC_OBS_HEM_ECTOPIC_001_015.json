@@ -45,7 +45,7 @@
             "scoring": {
                 "points": 150,
                 "error_type": "lethal_commission",
-                "vazquez_comment": "Castillo: La inestabilidad hemodinámica o el hemoperitoneo contraindican en forma absoluta el metotrexato y obligan a cirugía."
+                "vazquez_comment": "Castillo: La inestabilidad hemodinámica o los datos de rotura contraindican el metotrexato y obligan a cirugía."
             },
             "safety_flags": {
                 "lethal_risk": true

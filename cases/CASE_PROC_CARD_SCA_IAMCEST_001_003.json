@@ -42,7 +42,7 @@
             "scoring": {
                 "points": 150,
                 "error_type": "lethal_commission",
-                "vazquez_comment": "Mendoza: La meta es una ICP primaria en 90 minutos o menos desde el primer contacto médico; si no se logra, se considera fibrinólisis."
+                "vazquez_comment": "Mendoza: La ICP primaria se hace lo antes posible; si no puede realizarse dentro de los 120 minutos siguientes al diagnóstico, se administra fibrinólisis."
             },
             "safety_flags": {
                 "lethal_risk": true
