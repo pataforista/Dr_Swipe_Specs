@@ -32,7 +32,7 @@
                 "category": "meds",
                 "card_text": "Choque por Deshidratación: Iniciar suero oral por sonda nasogástrica como primera opción en lugar de líquidos IV.",
                 "comment": "Navarro: El choque se trata con líquidos IV (o intraóseos) de inmediato; la sonda solo es un recurso si no hay acceso vascular posible.",
-                "fuente": "OMS/AIEPI, Plan C",
+                "fuente": "OMS, Plan C; Houston KA et al., GASTRO, BMC Med 2019 (doi:10.1186/s12916-019-1356-z): Plan C = rehidratación IV con bolos para el choque; Maitland K et al., NEJM 2025 (doi:10.1056/NEJMoa2505752): bolos IV para el choque incluso en el brazo oral",
                 "lethal_risk": true
             }
         ],
@@ -67,7 +67,7 @@
                 "category": "meds",
                 "card_text": "Choque por Deshidratación: Iniciar suero oral por sonda nasogástrica como primera opción en lugar de líquidos IV.",
                 "comment": "Navarro: El choque se trata con líquidos IV (o intraóseos) de inmediato; la sonda solo es un recurso si no hay acceso vascular posible.",
-                "fuente": "OMS/AIEPI, Plan C",
+                "fuente": "OMS, Plan C; Houston KA et al., GASTRO, BMC Med 2019 (doi:10.1186/s12916-019-1356-z): Plan C = rehidratación IV con bolos para el choque; Maitland K et al., NEJM 2025 (doi:10.1056/NEJMoa2505752): bolos IV para el choque incluso en el brazo oral",
                 "lethal_risk": true
             }
         ],

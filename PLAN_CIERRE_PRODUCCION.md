@@ -39,14 +39,14 @@ Defectos de juego y de producción. Cada uno tiene su fila en `ERRORES_Y_PREVENC
 
 `REVISION_CLINICA/` reúne 237 cartas cuyas fuentes se redactaron de memoria; 63 tienen riesgo letal. Esas 63, más las 3 correcciones de diagnóstico, ya se contrastaron con PubMed y Consensus (detalle en `REVISION_CLINICA/VEREDICTOS_RIESGO_LETAL.md`):
 
-- **Ninguna carta enseña una conducta peligrosa:** 53 se aprueban, 10 se corrigieron (comentario o fuente) y 0 se rechazan. Las correcciones ya están en el juego; el CI comprueba que sigan aplicadas.
-- **Fuentes:** 22 verificadas en el texto, 33 localizadas sin texto disponible para esa afirmación y 8 sin localizar (*Insufficient data*).
-- **La revisión la hizo una IA, no un médico.** Para un lanzamiento público sigue siendo recomendable que un médico mire las 8 filas sin fuente y la pregunta abierta sobre la prueba de embarazo en la apendicitis; es media hora de trabajo, no una revisión completa.
+- **Ninguna carta enseña una conducta peligrosa:** 45 se aprueban, 18 se corrigieron (comentario o fuente) y 0 se rechazan. Las correcciones ya están en el juego; el CI comprueba que sigan aplicadas.
+- **Fuentes:** 30 verificadas en el texto y 33 localizadas sin texto disponible para esa afirmación; ninguna queda sin fuente. Las GPC mexicanas no fueron accesibles desde el entorno (dominios `.gob.mx` bloqueados por su red).
+- **La revisión la hizo una IA, no un médico.** Para un lanzamiento público sigue siendo recomendable que un médico confirme la pregunta abierta sobre la prueba de embarazo en la apendicitis y, si quiere, eche un vistazo a las filas "Parcial".
 - Quedan sin revisar las 174 cartas sin riesgo letal, la roséola (15 cartas) y el umbral de SatO₂ de la GPC mexicana. Ninguna bloquea el lanzamiento.
 
 ## 5. Decisiones que necesito de ti
 
-1. ~~**¿Se lanza antes o después de revisar las 63 cartas letales?**~~ Revisadas el 2026-10-13 (§4). Queda opcional la mirada de un médico a 8 filas.
+1. ~~**¿Se lanza antes o después de revisar las 63 cartas letales?**~~ Revisadas el 2026-10-13 (§4). Queda opcional la mirada de un médico.
 2. ~~**Abandonar un caso perdido, ¿cuenta para el repaso?**~~ Decidido: sí. Hecho; "Nueva guardia" tras perder registra el fallo en SM-2.
 3. ~~**Monitoreo de errores (Sentry)**~~ Decidido: sí, solo errores. Integrado (`utils/monitoring.ts`): sin rastreo de rendimiento, sin grabación de sesión, sin datos de usuario ni migas de consola. Se descarga después del primer render (29 kB gzip, trozo `vendor-sentry`) y **solo si existe la clave**. Para activarlo:
    - Crear el proyecto React en sentry.io y, en *Settings → Security & Privacy*, activar **Prevent Storing of IP Addresses**.

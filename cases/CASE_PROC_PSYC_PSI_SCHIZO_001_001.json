@@ -30,7 +30,7 @@
             "scoring": {
                 "points": 150,
                 "error_type": "lethal_commission",
-                "vazquez_comment": "Navarro: La clozapina exige vigilar el recuento de neutrófilos de forma periódica, porque puede causar agranulocitosis grave."
+                "vazquez_comment": "Navarro: La clozapina exige vigilar el recuento de neutrófilos de forma periódica, sobre todo en los primeros 2 años, porque puede causar agranulocitosis grave."
             },
             "safety_flags": {
                 "lethal_risk": true

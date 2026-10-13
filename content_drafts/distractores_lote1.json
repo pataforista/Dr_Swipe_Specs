@@ -67,7 +67,7 @@
                 "lethal_risk": true,
                 "card_text": "Tocólisis: Inhibir las contracciones para prolongar el embarazo y completar la maduración pulmonar.",
                 "comment": "Castillo: La corioamnionitis contraindica la tocólisis: prolongar el embarazo deja al feto dentro de un ambiente infectado.",
-                "fuente": "FIGO, recomendaciones de buena práctica en parto pretérmino; contraindicación absoluta de tocólisis en infección intraamniótica"
+                "fuente": "CNGOF, Schmitz T et al., Eur J Obstet Gynecol Reprod Biol 2019 (doi:10.1016/j.ejogrb.2019.02.021): ante infección intrauterina, antibiótico IV inmediato y nacimiento temprano (grado A); ACOG Committee Opinion 712 (2017)"
             },
             {
                 "card_id": "dx_3",
@@ -186,7 +186,7 @@
                 "lethal_risk": true,
                 "card_text": "Terbutalina: Útil para controlar la atonía uterina al estabilizar el miometrio.",
                 "comment": "Vázquez: La terbutalina es un tocolítico: relaja el útero y empeora la atonía.",
-                "fuente": "Farmacología de agonistas beta-2 (relajan el útero); la hemorragia materna con inestabilidad contraindica los tocolíticos"
+                "fuente": "Lee HL et al., Medicine 2020 (doi:10.1097/md.0000000000023651): los tocolíticos aumentan la hemorragia por atonía (betamiméticos aHR 1.71); FIGO 2022: oxitocina de primera línea"
             },
             {
                 "card_id": "dx_6",

@@ -57,6 +57,35 @@ FIXES = [
         "text": "Aspirina junto con el rTPA",
         "fuente": "AHA/ASA 2019, Powers WJ et al., Stroke 2019 (doi:10.1161/STR.0000000000000211); Zinkstok SM et al., ARTIS, Lancet 2012 (doi:10.1016/S0140-6736(12)60949-0)",
     },
+    {
+        "text": "Terbutalina: Útil para controlar la atonía",
+        "fuente": "Lee HL et al., Medicine 2020 (doi:10.1097/md.0000000000023651): los tocolíticos aumentan la hemorragia por atonía (betamiméticos aHR 1.71); FIGO 2022: oxitocina de primera línea",
+    },
+    {
+        "text": "Tocólisis: Inhibir las contracciones para prolongar",
+        "fuente": "CNGOF, Schmitz T et al., Eur J Obstet Gynecol Reprod Biol 2019 (doi:10.1016/j.ejogrb.2019.02.021): ante infección intrauterina, antibiótico IV inmediato y nacimiento temprano (grado A); ACOG Committee Opinion 712 (2017)",
+    },
+    {
+        "text": "Diazepam como anticonvulsivo de primera línea",
+        "fuente": "Duley L et al., Magnesium sulphate versus diazepam for eclampsia, Cochrane 2010 (doi:10.1002/14651858.CD000127.pub2): menos muertes maternas (RR 0.59) y menos convulsiones recurrentes (RR 0.43); ACOG PB 222 (2020)",
+    },
+    {
+        "text": "Choque por Deshidratación: Iniciar suero oral por sonda",
+        "fuente": "OMS, Plan C; Houston KA et al., GASTRO, BMC Med 2019 (doi:10.1186/s12916-019-1356-z): Plan C = rehidratación IV con bolos para el choque; Maitland K et al., NEJM 2025 (doi:10.1056/NEJMoa2505752): bolos IV para el choque incluso en el brazo oral",
+    },
+    {
+        "text": "Cirugía urgente antes de corregir la deshidratación",
+        "fuente": "Gilbertson LE et al., Anesth Analg 2019 (doi:10.1213/ane.0000000000004446): la alcalosis es una urgencia médica y se asocia a apnea; Spicer RD, Br J Surg 1982 (doi:10.1002/bjs.1800690304): corrección hidroelectrolítica preoperatoria esencial",
+    },
+    {
+        "text": "Receta de antidepresivo por 3 meses al dar el alta",
+        "fuente": "Mann JJ et al., JAMA 2005 (doi:10.1001/jama.294.16.2064) y Zalsman G et al., Lancet Psychiatry 2016 (doi:10.1016/s2215-0366(16)30030-x): restringir el acceso a medios letales, incluidos fármacos, previene el suicidio",
+    },
+    {
+        "text": "Recuento de neutrófilos innecesario durante el tratamiento con clozapina",
+        "comment": "Navarro: La clozapina exige vigilar el recuento de neutrófilos de forma periódica, sobre todo en los primeros 2 años, porque puede causar agranulocitosis grave.",
+        "fuente": "Siskind D et al., consenso Delphi global, Lancet Psychiatry 2025 (doi:10.1016/s2215-0366(25)00098-7): vigilancia de neutrófilos durante los primeros 2 años; Zhou H et al., Br J Psychiatry 2026: riesgo máximo en las primeras 18 semanas",
+    },
 ]
 
 # Cards that live only in cases (corrected keep -> discard); comment text only.

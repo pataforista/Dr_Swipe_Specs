@@ -8,17 +8,17 @@ Revisión de las 63 filas de la hoja `Prioridad (riesgo letal)` y de las 3 de `C
 
 | | Filas |
 |---|---|
-| Aprobar | 53 |
-| Corregir (ya aplicado al juego) | 10 |
+| Aprobar | 45 |
+| Corregir (ya aplicado al juego) | 18 |
 | Rechazar | 0 |
 
 Ninguna carta enseña lo contrario de lo que dice la evidencia. Cada carta es una conducta errónea que el jugador debe descartar, y en las 63 esa conducta resultó, en efecto, errónea. Lo que falló en algunas fue el comentario del mentor o la fuente citada.
 
 | Fuente verificada | Filas | Significado |
 |---|---|---|
-| Sí | 22 | Leí la afirmación en el resumen o el texto completo de la fuente |
+| Sí | 30 | Leí la afirmación en el resumen o el texto completo de la fuente |
 | Parcial | 33 | Localicé la guía, pero su texto no estaba disponible para esa afirmación concreta (ATLS es un libro; varias guías de AHA, ESC, ACOG y CDC no tienen texto libre en PubMed Central) |
-| No | 8 | No localicé la fuente citada: *Insufficient data*. La afirmación es farmacología o práctica estándar, pero falta la cita |
+| No | 0 | Las 8 filas que quedaron sin fuente en la primera pasada se resolvieron en la segunda (ver abajo) |
 
 ## Correcciones aplicadas al juego
 
@@ -34,6 +34,20 @@ Ninguna carta enseña lo contrario de lo que dice la evidencia. Cada carta es un
 | Aspirina junto con rTPA | Fuente sin el ensayo que la sostiene | Se añade ARTIS | Zinkstok, Lancet 2012 ([doi](https://doi.org/10.1016/S0140-6736(12)60949-0)) |
 | SAD PERSONS como único criterio | NICE (no indexado) | Se añade estudio de precisión: AUC 51 % | Steeg 2018 ([doi](https://doi.org/10.1186/s12888-018-1693-z)) |
 
+Segunda pasada (fuentes que faltaban). Busqué primero en las GPC mexicanas, pero el entorno no puede abrir dominios `.gob.mx` (IMSS, CENETEC, HRAEI, Edomex), ni `who.int` ni `fda.gov`. Las 8 filas se resolvieron con literatura indexada; las afirmaciones no cambiaron, salvo la de clozapina:
+
+| Carta | Fuente nueva |
+|---|---|
+| Terbutalina en la atonía | Lee 2020: los tocolíticos aumentan la hemorragia por atonía ([doi](https://doi.org/10.1097/md.0000000000023651)) |
+| Tocólisis en la corioamnionitis | CNGOF 2019: ante infección intrauterina, nacimiento temprano, grado A ([doi](https://doi.org/10.1016/j.ejogrb.2019.02.021)) |
+| Diazepam frente a sulfato de magnesio | Cochrane, Duley 2010: RR de muerte materna 0.59 ([doi](https://doi.org/10.1002/14651858.CD000127.pub2)) |
+| Sonda nasogástrica en el choque (2 filas) | Houston 2019 ([doi](https://doi.org/10.1186/s12916-019-1356-z)) y Maitland 2025 ([doi](https://doi.org/10.1056/NEJMoa2505752)): el choque recibe bolos IV |
+| Píloro: cirugía antes de corregir | La fuente citada ("AAP Clinical Report") no existe en PubMed; la sustituyen Gilbertson 2019 ([doi](https://doi.org/10.1213/ane.0000000000004446)) y Spicer 1982 ([doi](https://doi.org/10.1002/bjs.1800690304)) |
+| Antidepresivo por 3 meses con riesgo suicida | Mann 2005 ([doi](https://doi.org/10.1001/jama.294.16.2064)) y Zalsman 2016 ([doi](https://doi.org/10.1016/s2215-0366(16)30030-x)): restringir medios letales |
+| Neutrófilos con clozapina | Consenso Delphi global, Siskind 2025 ([doi](https://doi.org/10.1016/s2215-0366(25)00098-7)): vigilancia durante los primeros 2 años; el comentario ahora lo dice |
+
+Si se habilitan los dominios del IMSS y del CENETEC en la red del entorno, las 33 filas "Parcial" pueden subir a "Sí" citando la GPC mexicana correspondiente.
+
 Hoja `Correcciones`:
 - **Crup (CRUP_001_002):** el comentario decía "este paciente tiene tos perruna" y ese escenario no la menciona. Se corrigió. También se corrigieron dos erratas de la tríada ("tipe" → "tipo", "hiponía" → "disfonía").
 - **Apendicitis (Marta, 20 años):** el comentario ahora dice que no hay sangrado transvaginal. **Pendiente para el revisor:** si conviene enseñar que en una mujer en edad fértil se pide prueba de embarazo. No lo añadí porque no localicé una guía que lo diga de forma explícita.
@@ -41,7 +55,7 @@ Hoja `Correcciones`:
 
 ## Lo que un médico debe mirar primero
 
-1. **Las 8 filas con `Fuente verificada = No`:** terbutalina en la atonía, tocólisis en la corioamnionitis, diazepam frente a sulfato de magnesio, sonda nasogástrica en el choque por deshidratación, cirugía de píloro antes de corregir la alcalosis, límite de fármaco al alta con riesgo suicida y monitoreo de neutrófilos con clozapina. Las conductas son estándar, pero sus citas no se pudieron comprobar. La de píloro cita un "AAP Clinical Report" que no aparece en PubMed.
+1. **Las 33 filas `Parcial`:** la guía existe y la conducta es estándar, pero su texto no pudo leerse aquí. Son las candidatas a citar la GPC mexicana.
 2. **El nimodipino:** la carta dice que va por vía oral. En Europa también se usa en infusión IV continua; lo que se evita es el bolo. El comentario no lo contradice, pero el revisor puede querer matizarlo.
 3. **Las 174 cartas sin riesgo letal:** no se revisaron en esta tanda.
 

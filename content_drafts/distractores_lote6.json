@@ -392,7 +392,7 @@
                 "category": "Manejo Inmediato",
                 "card_text": "Cirugía urgente antes de corregir la deshidratación y la alcalosis: Se opera de inmediato para frenar los vómitos.",
                 "comment": "Castillo: No es una urgencia quirúrgica sino médica. Se corrigen primero volumen, cloro y potasio, porque la anestesia en alcalosis aumenta el riesgo de apnea.",
-                "fuente": "AAP, Clinical Report: Hypertrophic Pyloric Stenosis; Hernanz-Schulman, Radiology (2003)",
+                "fuente": "Gilbertson LE et al., Anesth Analg 2019 (doi:10.1213/ane.0000000000004446): la alcalosis es una urgencia médica y se asocia a apnea; Spicer RD, Br J Surg 1982 (doi:10.1002/bjs.1800690304): corrección hidroelectrolítica preoperatoria esencial",
                 "lethal_risk": true
             }
         ],
@@ -528,7 +528,7 @@
                 "category": "Seguridad",
                 "card_text": "Receta de antidepresivo por 3 meses al dar el alta: Garantiza el apego al tratamiento.",
                 "comment": "Navarro: Con riesgo suicida se limita la cantidad de fármaco disponible, porque una dosis excesiva se vuelve un medio letal.",
-                "fuente": "APA, Practice Guideline for the Assessment and Treatment of Patients with Suicidal Behaviors (2010)",
+                "fuente": "Mann JJ et al., JAMA 2005 (doi:10.1001/jama.294.16.2064) y Zalsman G et al., Lancet Psychiatry 2016 (doi:10.1016/s2215-0366(16)30030-x): restringir el acceso a medios letales, incluidos fármacos, previene el suicidio",
                 "lethal_risk": true
             },
             {
@@ -582,8 +582,8 @@
                 "ui_icon": "beaker",
                 "category": "Seguridad",
                 "card_text": "Recuento de neutrófilos innecesario durante el tratamiento con clozapina: El riesgo de neutropenia es bajo.",
-                "comment": "Navarro: La clozapina exige vigilar el recuento de neutrófilos de forma periódica, porque puede causar agranulocitosis grave.",
-                "fuente": "APA, Practice Guideline for the Treatment of Patients with Schizophrenia (2020)",
+                "comment": "Navarro: La clozapina exige vigilar el recuento de neutrófilos de forma periódica, sobre todo en los primeros 2 años, porque puede causar agranulocitosis grave.",
+                "fuente": "Siskind D et al., consenso Delphi global, Lancet Psychiatry 2025 (doi:10.1016/s2215-0366(25)00098-7): vigilancia de neutrófilos durante los primeros 2 años; Zhou H et al., Br J Psychiatry 2026: riesgo máximo en las primeras 18 semanas",
                 "lethal_risk": true
             }
         ],
