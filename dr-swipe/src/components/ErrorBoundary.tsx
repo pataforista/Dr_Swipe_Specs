@@ -45,7 +45,8 @@ class ErrorBoundary extends Component<Props, State> {
             <div className="text-4xl mb-4">⚠️</div>
             <h1 className="text-2xl font-black text-red-400 mb-4">Error de Aplicación</h1>
             <p className="text-slate-300 mb-6 text-sm">
-              {this.state.errorMessage || "Algo salió mal. Por favor, intenta recargar la página."}
+              {/* Raw error text means nothing to a player; it stays a dev aid. */}
+              {(import.meta.env.DEV && this.state.errorMessage) || "Algo salió mal. Tu progreso está guardado; recarga la página para continuar."}
             </p>
             {import.meta.env.DEV && this.state.errorStack && (
               <details className="mb-6 text-left">

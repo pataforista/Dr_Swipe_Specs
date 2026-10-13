@@ -16,7 +16,7 @@ const SLIDES = [
     emoji: '💖',
     title: 'Cuida tus Notas.',
     body: 'Los errores en el diagnóstico drenan la Vitalidad del paciente. Mantén tu enfoque: las notas impecables salvan vidas y mantienen tu guardia bajo control.',
-    hint: 'Error: -15 Vitalidad  ·  Acierto: +8 Vitalidad',
+    hint: 'Error: −15  ·  Error letal: −40  ·  Acierto: +8 Vitalidad',
   },
   {
     emoji: '✨',
