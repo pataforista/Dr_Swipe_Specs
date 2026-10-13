@@ -58,7 +58,7 @@
                 "category": "Interrupción",
                 "card_text": "Cesárea Inmediata: El diagnóstico de corioamnionitis es, por sí solo, indicación de cesárea.",
                 "comment": "Castillo: La infección intraamniótica rara vez, si acaso, es indicación de cesárea. Se acelera el nacimiento y la vía vaginal es de elección.",
-                "fuente": "ACOG Committee Opinion 712 (2017, reafirmada 2022)"
+                "fuente": "Conde-Agudelo 2020 (doi:10.1016/j.ajog.2020.09.044) y Jung 2023 (doi:10.1016/j.ajog.2023.02.002): ampicilina más gentamicina, antibiótico intraparto, cesárea solo por indicación obstétrica"
             },
             {
                 "card_id": "dx_2",
@@ -75,7 +75,7 @@
                 "category": "meds",
                 "card_text": "Diferir Antibióticos: Esperar hemocultivos y cultivo de líquido amniótico antes de iniciar el tratamiento.",
                 "comment": "Castillo: El diagnóstico exige iniciar antibióticos y acelerar el nacimiento; esperar cultivos retrasa el tratamiento de la madre y del feto.",
-                "fuente": "ACOG Committee Opinion 712"
+                "fuente": "Conde-Agudelo 2020 (doi:10.1016/j.ajog.2020.09.044) y Jung 2023 (doi:10.1016/j.ajog.2023.02.002): ampicilina más gentamicina, antibiótico intraparto, cesárea solo por indicación obstétrica"
             },
             {
                 "card_id": "dx_4",
@@ -83,7 +83,7 @@
                 "category": "meds",
                 "card_text": "Clindamicina en Monoterapia: Esquema de primera línea para corioamnionitis durante el trabajo de parto.",
                 "comment": "Castillo: La primera línea es ampicilina más gentamicina. La cobertura de anaerobios (clindamicina o metronidazol) se agrega si la paciente va a cesárea.",
-                "fuente": "ACOG Committee Opinion 712; Merck Manual, esquemas para infección intraamniótica"
+                "fuente": "Conde-Agudelo 2020 (doi:10.1016/j.ajog.2020.09.044) y Jung 2023 (doi:10.1016/j.ajog.2023.02.002): ampicilina más gentamicina, antibiótico intraparto, cesárea solo por indicación obstétrica"
             },
             {
                 "card_id": "dx_5",
@@ -91,7 +91,7 @@
                 "category": "Diagnóstico",
                 "card_text": "Amniocentesis Obligatoria: Se requiere un cultivo de líquido amniótico positivo antes de iniciar el tratamiento.",
                 "comment": "Castillo: El diagnóstico es clínico (fiebre materna más otros criterios) y el tratamiento no espera a la amniocentesis.",
-                "fuente": "ACOG Committee Opinion 712 (infección sospechada vs. confirmada)"
+                "fuente": "Conde-Agudelo 2020 (doi:10.1016/j.ajog.2020.09.044) y Jung 2023 (doi:10.1016/j.ajog.2023.02.002): ampicilina más gentamicina, antibiótico intraparto, cesárea solo por indicación obstétrica"
             },
             {
                 "card_id": "dx_6",
@@ -99,7 +99,7 @@
                 "category": "meds",
                 "card_text": "Antipiréticos como Tratamiento: Controlar la fiebre con paracetamol es suficiente si la frecuencia cardiaca fetal se normaliza.",
                 "comment": "Castillo: El paracetamol baja la fiebre pero no trata la infección: se requieren antibióticos y acelerar el nacimiento.",
-                "fuente": "ACOG Committee Opinion 712 (el diagnóstico exige antibióticos y acelerar el nacimiento)"
+                "fuente": "Conde-Agudelo 2020 (doi:10.1016/j.ajog.2020.09.044) y Jung 2023 (doi:10.1016/j.ajog.2023.02.002): ampicilina más gentamicina, antibiótico intraparto, cesárea solo por indicación obstétrica"
             }
         ],
         "PROC_ENGL_TECH_VOCABULARY_001": [
@@ -160,7 +160,7 @@
                 "category": "meds",
                 "card_text": "Ácido Tranexámico Tardío: Ofrece el mismo beneficio si se administra después de 3 horas del parto.",
                 "comment": "Vázquez: El ácido tranexámico reduce la muerte por sangrado solo si se da en las primeras 3 horas; después no muestra beneficio (ensayo WOMAN).",
-                "fuente": "OMS 2017, recomendación sobre ácido tranexámico; ensayo WOMAN"
+                "fuente": "FIGO 2022 (doi:10.1002/ijgo.14116): ácido tranexámico en las primeras 3 h; la histerectomía es la última opción quirúrgica"
             },
             {
                 "card_id": "dx_3",
@@ -177,7 +177,7 @@
                 "category": "Cirugía",
                 "card_text": "Histerectomía Inmediata: Primera medida ante atonía uterina para no perder tiempo.",
                 "comment": "Vázquez: El manejo es escalonado: masaje, uterotónicos, ácido tranexámico, taponamiento y suturas compresivas. La histerectomía es el último recurso.",
-                "fuente": "FIGO 2022 (manejo escalonado)"
+                "fuente": "FIGO 2022 (doi:10.1002/ijgo.14116): ácido tranexámico en las primeras 3 h; la histerectomía es la última opción quirúrgica"
             },
             {
                 "card_id": "dx_5",

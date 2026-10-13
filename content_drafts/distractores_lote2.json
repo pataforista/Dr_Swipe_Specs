@@ -85,7 +85,7 @@
                 "category": "Crisis Aguda",
                 "card_text": "Antibiótico de Rutina: Indicado en toda exacerbación asmática para evitar la sobreinfección.",
                 "comment": "Mendoza: GINA no recomienda antibióticos de rutina en la exacerbación, salvo evidencia clara de infección bacteriana.",
-                "fuente": "GINA 2024"
+                "fuente": "EAACI 2025 (doi:10.1111/all.70091) y Ramakrishnan 2021: los antibióticos no se recomiendan de rutina en la exacerbación"
             },
             {
                 "card_id": "dx_3",
@@ -112,7 +112,7 @@
                 "category": "meds",
                 "card_text": "Pioglitazona: Opción segura para el control glucémico en el paciente con ICFEr y DM2.",
                 "comment": "Mendoza: Las glitazonas retienen sodio y agua y empeoran la insuficiencia cardiaca; están contraindicadas. En DM2 con IC se prefieren los iSGLT2.",
-                "fuente": "ESC 2021, guía de insuficiencia cardiaca"
+                "fuente": "Nesti 2021 (doi:10.1186/s12933-021-01294-7): la pioglitazona aumenta la hospitalización por IC por retención de líquidos; ESC 2021 localizada"
             },
             {
                 "card_id": "dx_2",
@@ -120,7 +120,7 @@
                 "category": "Manejo Síntomas",
                 "card_text": "AINE (Naproxeno): Analgésico de elección para el dolor articular del paciente con IC.",
                 "comment": "Mendoza: Los AINE retienen sodio, reducen el efecto de diuréticos e IECA y aumentan las hospitalizaciones por IC; deben evitarse.",
-                "fuente": "AHA/ACC/HFSA 2022; AHA, fármacos que causan o agravan la IC"
+                "fuente": "Holt 2023 (doi:10.1016/j.jacc.2023.02.027): los AINE se asocian a hospitalización por IC (OR 1.43)"
             },
             {
                 "card_id": "dx_3",
@@ -155,7 +155,7 @@
                 "category": "meds",
                 "card_text": "Pruebas Treponémicas para Seguimiento: El FTA-ABS se negativiza tras la curación y sirve para vigilar la respuesta.",
                 "comment": "Navarro: Las pruebas treponémicas suelen quedar positivas de por vida; el seguimiento del tratamiento se hace con VDRL o RPR.",
-                "fuente": "CDC, guías de tratamiento de ITS 2021"
+                "fuente": "CDC ITS 2021: las pruebas treponémicas suelen quedar reactivas de por vida"
             },
             {
                 "card_id": "dx_3",
@@ -163,7 +163,7 @@
                 "category": "Diagnóstico",
                 "card_text": "Respuesta Adecuada: Basta con que el VDRL baje una dilución (por ejemplo, de 1:32 a 1:16).",
                 "comment": "Navarro: La respuesta adecuada es una caída de cuatro veces (dos diluciones, por ejemplo de 1:32 a 1:8) en los 12 meses siguientes al tratamiento.",
-                "fuente": "CDC, guías de tratamiento de ITS 2021"
+                "fuente": "CDC ITS 2021: respuesta = caída de cuatro veces en 12 meses"
             },
             {
                 "card_id": "dx_4",
@@ -171,7 +171,7 @@
                 "category": "meds",
                 "card_text": "Ceftriaxona IM Dosis Única: Tratamiento de elección para la sífilis primaria.",
                 "comment": "Navarro: La dosis única de ceftriaxona es el tratamiento de la gonorrea; la sífilis primaria se trata con penicilina G benzatínica 2.4 millones UI IM.",
-                "fuente": "CDC, guías de tratamiento de ITS 2021"
+                "fuente": "CDC ITS 2021: ceftriaxona 500 mg IM para gonorrea; penicilina G benzatínica 2.4 MU para sífilis"
             }
         ],
         "PROC_ORL_EPISTAXIS_001": [
@@ -189,7 +189,7 @@
                 "category": "meds",
                 "card_text": "Cauterización Bilateral: Cauterizar ambos lados del tabique en la misma sesión para asegurar el control.",
                 "comment": "Castillo: Cauterizar áreas opuestas del tabique a la vez aumenta el riesgo de necrosis y perforación septal; se cauteriza solo el sitio que sangra.",
-                "fuente": "Merck Manual, cauterio en epistaxis anterior; AAO-HNS 2020"
+                "fuente": "AAO-HNSF 2020: el cauterio se limita al sitio o sitios de sangrado"
             },
             {
                 "card_id": "dx_3",
@@ -205,7 +205,7 @@
                 "category": "Manejo Posterior",
                 "card_text": "Suspender el Anticoagulante: Primera medida en todo paciente anticoagulado con epistaxis.",
                 "comment": "Castillo: Sin sangrado que amenace la vida, primero van las medidas locales (compresión, vasoconstrictor, taponamiento, cauterio) y después se valora revertir o suspender la anticoagulación.",
-                "fuente": "AAO-HNS 2020, guía de epistaxis"
+                "fuente": "AAO-HNSF 2020: sin sangrado que ponga en riesgo la vida, los tratamientos de primera línea van antes de revertir o suspender el anticoagulante"
             }
         ],
         "PROC_ORL_OTITIS_MEDIA_001": [
@@ -215,7 +215,7 @@
                 "category": "meds",
                 "card_text": "Azitromicina: Antibiótico de primera línea para la OMA del lactante.",
                 "comment": "Navarro: Los macrólidos no son de primera línea por su alta resistencia; se reservan para alergia grave a penicilina y cefalosporinas. La primera línea es amoxicilina.",
-                "fuente": "AAP 2013, guía de otitis media aguda"
+                "fuente": "Frost 2022 (doi:10.1016/j.jpeds.2022.07.053): menos fracasos con amoxicilina que con azitromicina"
             },
             {
                 "card_id": "dx_2",
@@ -223,7 +223,7 @@
                 "category": "Diagnóstico",
                 "card_text": "Observación sin Antibiótico: Opción válida en lactantes menores de 6 meses con OMA.",
                 "comment": "Navarro: Antes de los 6 meses la OMA se trata con antibiótico; la observación es opción solo a partir de los 6 meses y en casos no graves.",
-                "fuente": "AAP 2013, guía de otitis media aguda"
+                "fuente": "Marchisio 2019 (doi:10.1097/inf.0000000000002452): antibiótico inmediato en menores de 6 meses"
             },
             {
                 "card_id": "dx_3",
@@ -231,15 +231,15 @@
                 "category": "Etiología",
                 "card_text": "Tubos de Ventilación tras el Primer Episodio: Indicados después de una sola OMA para prevenir recurrencias.",
                 "comment": "Navarro: Los tubos se consideran en OMA recurrente: 3 episodios en 6 meses, o 4 en un año con uno en los últimos 6 meses.",
-                "fuente": "AAP 2013, guía de otitis media aguda"
+                "fuente": "Hoberman 2021 (doi:10.1056/nejmoa2027278) y AAO-HNSF 2022 (doi:10.1177/01945998211065662): criterios de OMA recurrente"
             },
             {
                 "card_id": "dx_4",
                 "ui_icon": "shield",
                 "category": "meds",
                 "card_text": "Profilaxis Antibiótica Prolongada: Recomendada para reducir los episodios en niños con OMA recurrente.",
-                "comment": "Navarro: La AAP recomienda no usar profilaxis antibiótica para reducir la frecuencia de OMA recurrente.",
-                "fuente": "AAP 2013, guía de otitis media aguda"
+                "comment": "Navarro: La profilaxis antibiótica prolongada reduce los episodios solo mientras se toma, y a cambio favorece la resistencia; no se recomienda de rutina. En la OMA recurrente se valora primero la prevención y, si cumple criterios, los tubos de ventilación.",
+                "fuente": "Leach 2006, Cochrane (doi:10.1002/14651858.cd004401.pub2): la profilaxis prolongada reduce los episodios mientras se toma; no se encontró la recomendación de la AAP que citaba el comentario"
             }
         ],
         "PROC_PED_ANEMIA_FERROPENICA_001": [
@@ -257,7 +257,7 @@
                 "category": "Dieta",
                 "card_text": "Hierro con Leche: Administrar el sulfato ferroso junto con la leche para mejorar la tolerancia.",
                 "comment": "Castillo: El calcio y la caseína de la leche inhiben la absorción del hierro; conviene darlo lejos de los lácteos y, si es posible, con vitamina C.",
-                "fuente": "Mecanismo de inhibición de la absorción de hierro no hem por calcio y caseína"
+                "fuente": "Gallahan 2024 (doi:10.3390/nu16223834): la leche de vaca sin modificar reduce la absorción de hierro"
             },
             {
                 "card_id": "dx_3",
@@ -265,7 +265,7 @@
                 "category": "Dieta",
                 "card_text": "Leche de Vaca antes del Año: Buena fuente de hierro para el lactante de 9 meses.",
                 "comment": "Castillo: La leche de vaca es pobre en hierro y se desaconseja antes de los 12 meses; después se limita a unos 700 mL al día.",
-                "fuente": "AAP / AAFP, prevención de la ferropenia en lactantes"
+                "fuente": "Zipper 2025 (doi:10.1182/blood-2025-2903): el exceso de leche de vaca es causa principal de anemia ferropénica grave; Baker 2010 localizada"
             },
             {
                 "card_id": "dx_4",

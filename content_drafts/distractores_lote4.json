@@ -24,7 +24,7 @@
                 "category": "Tratamiento Médico",
                 "card_text": "Descenso de 10% de la hCG (día 4 a día 7): Se considera respuesta adecuada y se suspende el tratamiento.",
                 "comment": "Castillo: Si la hCG desciende menos de 15% entre el día 4 y el día 7, se repite la dosis de metotrexato.",
-                "fuente": "ACOG Practice Bulletin 193"
+                "fuente": "Kirk 2007 (doi:10.1093/humrep/del433): descenso >15 % entre los días 4 y 7 predice éxito"
             },
             {
                 "card_id": "dx_4",
@@ -50,16 +50,16 @@
                 "ui_icon": "shield",
                 "category": "Seguimiento",
                 "card_text": "DIU Inmediato: Colocarlo tras la evacuación como método anticonceptivo durante el seguimiento.",
-                "comment": "Castillo: El DIU se difiere al menos 6 semanas tras la evacuación y hasta que la hCG sea normal, por riesgo de perforación uterina; en el seguimiento se usan anticonceptivos orales.",
-                "fuente": "Ngan et al., FIGO 2018, enfermedad trofoblástica gestacional"
+                "comment": "Castillo: El DIU suele diferirse hasta que la hCG sea normal por el riesgo de perforación y sangrado; las guías no coinciden y la evidencia no muestra más neoplasia con él. En el seguimiento se prefieren métodos hormonales o de barrera.",
+                "fuente": "hay desacuerdo entre guías (RCOG 2010 vs OMS/CDC); la evidencia (Gaffield 2009, doi:10.1016/j.contraception.2009.03.022; Hagey 2024, doi:10.1016/j.contraception.2024.110488) no muestra más neoplasia con DIU. Se sugiere confirmación médica"
             },
             {
                 "card_id": "dx_2",
                 "ui_icon": "pill",
                 "category": "Manejo Quirúrgico",
                 "card_text": "Quimioprofilaxis de Rutina: Administrar metotrexato a toda paciente con mola para evitar la neoplasia.",
-                "comment": "Castillo: La quimioprofilaxis se limita a situaciones de riesgo alto o cuando el seguimiento con hCG no es posible; no es de rutina.",
-                "fuente": "Ngan et al., FIGO 2018, enfermedad trofoblástica gestacional"
+                "comment": "Castillo: La quimioprofilaxis no es de rutina: la evidencia es de baja calidad y puede retrasar el diagnóstico del tumor y aumentar la resistencia a la quimioterapia. Solo se discute en la mola completa de alto riesgo.",
+                "fuente": "Cochrane 2017 (doi:10.1002/14651858.cd007289.pub3): la quimioprofilaxis no puede recomendarse por la baja calidad de la evidencia"
             },
             {
                 "card_id": "dx_3",
@@ -101,7 +101,7 @@
                 "category": "meds",
                 "card_text": "Antibióticos solo 48 horas: Es suficiente con la fase intravenosa de ampicilina más eritromicina.",
                 "comment": "Castillo: El esquema de latencia completa 7 días: 48 horas IV de ampicilina y eritromicina, y luego amoxicilina y eritromicina por vía oral 5 días.",
-                "fuente": "ACOG; ensayo de Mercer, esquema de latencia"
+                "fuente": "Navathe 2019 (doi:10.1016/j.ajog.2019.03.009) y CNGOF 2019 (doi:10.1016/j.ejogrb.2019.02.021): ampicilina más macrólido 48 h y luego vía oral hasta 7 días"
             }
         ],
         "PROC_OBS_HEM_DPPNI_001": [

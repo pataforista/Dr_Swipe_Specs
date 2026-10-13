@@ -1,6 +1,6 @@
 # Paquete de revisión clínica
 
-> **2026-10-13:** las 63 cartas con riesgo letal y la hoja `Correcciones` ya tienen un primer veredicto contrastado con PubMed y Consensus (hecho por Claude, no por un médico). Empieza por [`VEREDICTOS_RIESGO_LETAL.md`](VEREDICTOS_RIESGO_LETAL.md).
+> **2026-10-13:** las 237 cartas (63 con riesgo letal, 174 sin él) y la hoja `Correcciones` ya tienen un primer veredicto contrastado con PubMed y Consensus (hecho por Claude, no por un médico). Empieza por [`VEREDICTOS_RIESGO_LETAL.md`](VEREDICTOS_RIESGO_LETAL.md).
 
 Para quien revisa el contenido médico de las cartas nuevas de Dr. Swipe. No hace falta abrir ningún JSON.
 

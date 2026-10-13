@@ -1,6 +1,6 @@
-# Veredictos: cartas con riesgo letal (2026-10-13)
+# Veredictos de la revisión clínica asistida (2026-10-13)
 
-Revisión de las 63 filas de la hoja `Prioridad (riesgo letal)` y de las 3 de `Correcciones`. Las 63 filas son unas 45 afirmaciones distintas: varias cartas se repiten entre familias (colangitis, neumotórax a tensión, SCACEST, DPPNI).
+Revisión de las 237 cartas del paquete: las 63 con riesgo letal (hoja `Prioridad (riesgo letal)`), las 174 restantes y las 3 de `Correcciones`. La primera parte describe las 63 de riesgo letal; la sección final, las 174 restantes. Las 63 filas son unas 45 afirmaciones distintas: varias cartas se repiten entre familias (colangitis, neumotórax a tensión, SCACEST, DPPNI).
 
 **Quién y cómo.** La hizo Claude (asistente de IA) contrastando cada afirmación contra PubMed y Consensus, no un médico. Es una primera criba que reduce el trabajo del revisor clínico; no lo sustituye. Los veredictos están en las columnas `Veredicto`, `Corrección sugerida` y `Fuente verificada` de `revision_clinica.xlsx` y `.csv`.
 
@@ -66,3 +66,39 @@ python3 tools/export_review_pack.py cases content_drafts REVISION_CLINICA   # re
 python3 tools/fill_review_verdicts.py                                       # vuelve a escribir los veredictos
 python3 tools/apply_clinical_review_2026_10.py --check                      # el CI comprueba que las correcciones siguen aplicadas
 ```
+
+
+## Las 174 cartas sin riesgo letal
+
+162 afirmaciones distintas (algunas se repiten entre familias). Todas pasaron por la misma criba contra PubMed y Consensus.
+
+| | Filas |
+|---|---|
+| Aprobar | 166 |
+| Corregir (ya aplicado al juego) | 8 |
+| Rechazar | 0 |
+
+| Fuente verificada | Filas | Significado |
+|---|---|---|
+| Sí | 93 | Leí la afirmación en el resumen o el texto de la fuente |
+| Parcial | 58 | Localicé la guía o el estudio, pero no pude leer esa afirmación (ATLS, AHA, ESC, ACOG, GINA y ADA no tienen texto libre aquí) |
+| Texto estándar | 23 | Definiciones de libro de texto (bioestadística, niveles de prevención, vocabulario inglés-español) que no dependen de una guía |
+
+Tampoco aquí hubo una carta que enseñe algo peligroso. Las ocho correcciones afectaron al comentario del mentor, no a la conducta:
+
+| Carta | Qué decía el comentario | Ahora | Fuente |
+|---|---|---|---|
+| Ácido tranexámico después de 6 h | "Puede aumentar el riesgo de trombosis" | Después de 3 h puede aumentar la **muerte por sangrado** | CRASH-2 exploratorio, *Lancet* 2011 ([doi](https://doi.org/10.1016/S0140-6736(11)60278-X)): RR 1.44 |
+| Contraste hidrosoluble en obstrucción por bridas | "Facilita el paso del contenido… terapéutico" | Sirve para estratificar; el efecto terapéutico es discutido | Scotté 2017 ([doi](https://doi.org/10.1016/j.surg.2016.11.026)) y Walshaw 2025 ([doi](https://doi.org/10.1093/bjs/znaf104)) |
+| Bajar la TA <140/90 antes de trombólisis | "Bajarla de más reduce la perfusión de la penumbra" | Bajarla más no mejora el desenlace y retrasa el tratamiento | ESO 2026 ([doi](https://doi.org/10.1093/esj/aakag004)) y ENCHANTED ([doi](https://doi.org/10.1016/s0140-6736(19)30038-8)) |
+| Profilaxis antibiótica prolongada en OMA recurrente | "La AAP recomienda no usarla" | Reduce los episodios solo mientras se toma y favorece la resistencia; no es de rutina | Cochrane, Leach 2006 ([doi](https://doi.org/10.1002/14651858.cd004401.pub2)) |
+| Quimioprofilaxis en mola | "Solo en riesgo alto o sin seguimiento" | La evidencia es de baja calidad; no es de rutina | Cochrane 2017 ([doi](https://doi.org/10.1002/14651858.cd007289.pub3)) |
+| DIU tras evacuar una mola | "Se difiere ≥6 semanas por riesgo de perforación" | Las guías no coinciden; la evidencia no muestra más neoplasia | Gaffield 2009 ([doi](https://doi.org/10.1016/j.contraception.2009.03.022)) y Hagey 2024 ([doi](https://doi.org/10.1016/j.contraception.2024.110488)) |
+| Citología anual desde los 18 años | "Inicia a los 25 años" | Entre los 21 y los 25 años según la guía; en México, 25 | USPSTF 2018, ACS 2020 ([doi](https://doi.org/10.3322/caac.21628)) |
+| Suspender el sulfato de magnesio al nacer | "Se continúa 24 h" | Estándar de 24 h; algunos ensayos sugieren que periodos más cortos podrían bastar | Vigil-De Gracia 2018 ([doi](https://doi.org/10.1111/1471-0528.15320)) y Okonkwo 2022 ([doi](https://doi.org/10.1097/aog.0000000000004720)) |
+
+**Dos para el revisor médico:** el DIU en mola y el sulfato de magnesio posparto. En ambas la norma mexicana puede ser más estricta que la evidencia; no la cambié, solo quité las afirmaciones que la literatura no sostiene.
+
+## Carta nueva: prueba de embarazo en la apendicitis
+
+A petición del dueño del producto, el caso de Marta (20 años, `PROC_SURG_APPENDICITIS_001_001`) ahora tiene una carta de aceptar: *"Prueba de embarazo (β-hCG): en la mujer en edad fértil con dolor en fosa ilíaca derecha se solicita antes de decidir la conducta, para descartar un embarazo ectópico"*. Fuente: Borthwick, *BMJ* 2022 ([doi](https://doi.org/10.1136/bmj-2021-068020)), β-hCG en orina con sensibilidad de 95.3 % y especificidad de 100 %, y ACR 2023 ([doi](https://doi.org/10.1016/j.jacr.2024.02.014)). El caso pasó de 14 a 15 cartas.

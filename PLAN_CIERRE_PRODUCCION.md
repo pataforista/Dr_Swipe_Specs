@@ -41,8 +41,9 @@ Defectos de juego y de producción. Cada uno tiene su fila en `ERRORES_Y_PREVENC
 
 - **Ninguna carta enseña una conducta peligrosa:** 45 se aprueban, 18 se corrigieron (comentario o fuente) y 0 se rechazan. Las correcciones ya están en el juego; el CI comprueba que sigan aplicadas.
 - **Fuentes:** 30 verificadas en el texto y 33 localizadas sin texto disponible para esa afirmación; ninguna queda sin fuente. Las GPC mexicanas no fueron accesibles desde el entorno (dominios `.gob.mx` bloqueados por su red).
-- **La revisión la hizo una IA, no un médico.** Para un lanzamiento público sigue siendo recomendable que un médico confirme la pregunta abierta sobre la prueba de embarazo en la apendicitis y, si quiere, eche un vistazo a las filas "Parcial".
-- Quedan sin revisar las 174 cartas sin riesgo letal, la roséola (15 cartas) y el umbral de SatO₂ de la GPC mexicana. Ninguna bloquea el lanzamiento.
+- **La revisión la hizo una IA, no un médico.** Para un lanzamiento público sigue siendo recomendable que un médico revise las dos cartas que dejé con matiz (DIU en mola y sulfato de magnesio posparto) y, si quiere, las filas "Parcial".
+- Las 174 cartas sin riesgo letal también se revisaron (166 aprobadas, 8 corregidas; 93 con fuente leída, 58 localizadas sin texto y 23 de definición estándar). Quedan abiertas la roséola (15 cartas) y el umbral de SatO₂ de la GPC mexicana; ninguna bloquea el lanzamiento.
+- La carta de prueba de embarazo en la apendicitis ya está en el juego (decisión del dueño del producto).
 
 ## 5. Decisiones que necesito de ti
 

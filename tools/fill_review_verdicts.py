@@ -14,6 +14,11 @@ from pathlib import Path
 
 import openpyxl
 
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from review_2026_10_nonlethal import NONLETHAL  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 PACK = ROOT / "REVISION_CLINICA"
 
@@ -88,14 +93,16 @@ def lookup(text, table):
     return None
 
 
+NL = [(e["prefix"], e["verdict"], e["verified"],
+       e["note"] + (" Aplicada el 2026-10-13." if "comment" in e else "")) for e in NONLETHAL]
+
+
 def main() -> int:
     path = PACK / "revision_clinica.csv"
     rows = list(csv.DictReader(path.open(encoding="utf-8-sig")))
     hit = 0
     for r in rows:
-        if r["Riesgo letal"] != "Sí":
-            continue
-        v = lookup(r["Texto de la carta (se descarta)"], V)
+        v = lookup(r["Texto de la carta (se descarta)"], V if r["Riesgo letal"] == "Sí" else NL)
         if v:
             r["Veredicto"], r["Corrección sugerida"], r["Fuente verificada"] = v
             hit += 1
@@ -116,9 +123,8 @@ def main() -> int:
         table = CORR if ws.title == "Correcciones" else V
         for row in ws.iter_rows(min_row=2):
             text = row[text_col].value or ""
-            if ws.title != "Correcciones" and "Riesgo letal" in col and row[col["Riesgo letal"]].value != "Sí":
-                continue
-            v = lookup(text, table)
+            lethal = ws.title == "Correcciones" or "Riesgo letal" not in col or row[col["Riesgo letal"]].value == "Sí"
+            v = lookup(text, table if lethal else NL)
             if v:
                 row[col["Veredicto"]].value, row[col["Corrección sugerida"]].value, row[col["Fuente verificada"]].value = v
                 filled += 1

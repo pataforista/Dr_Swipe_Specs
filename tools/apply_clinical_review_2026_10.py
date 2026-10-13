@@ -13,6 +13,9 @@ import json
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from review_2026_10_nonlethal import NONLETHAL  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 
 FIXES = [
@@ -88,6 +91,37 @@ FIXES = [
     },
 ]
 
+# The 174 non-lethal cards: comment fixes go to drafts and cases, verified
+# sources go to the drafts (cases carry no source field).
+FIXES += [{**{k: v for k, v in e.items() if k in ("comment", "fuente")}, "text": e["prefix"]}
+          for e in NONLETHAL if "comment" in e or "fuente" in e]
+
+# New cards. Source of the pregnancy-test card: Borthwick M et al., BMJ 2022
+# (doi:10.1136/bmj-2021-068020), urine beta-hCG 95.3 % sensitivity and 100 %
+# specificity; ACR Appropriateness Criteria, Acute Pelvic Pain 2023
+# (doi:10.1016/j.jacr.2024.02.014). The pregnancy test was requested by the product owner: a woman of
+# reproductive age with lower abdominal pain gets a pregnancy test first
+# (ectopic pregnancy mimics appendicitis).
+ADD_CARDS = [
+    {
+        "case": "CASE_PROC_SURG_APPENDICITIS_001_001.json",
+        "after": "c_4",
+        "card": {
+            "card_id": "rev_hcg_1",
+            "ui_icon": "clipboard",
+            "category": "Gabinete",
+            "card_text": "Prueba de embarazo (β-hCG): En la mujer en edad fértil con dolor en fosa ilíaca derecha se solicita antes de decidir la conducta, para descartar un embarazo ectópico.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "La prueba de embarazo va primero en toda mujer en edad fértil con dolor abdominal bajo: el ectópico imita a la apendicitis, y la β-hCG en orina tiene sensibilidad de 95 % y especificidad de 100 %.",
+            },
+            "safety_flags": {"lethal_risk": False, "decision_critical": True},
+        },
+    },
+]
+
 # Cards that live only in cases (corrected keep -> discard); comment text only.
 CASE_FIXES = [
     {
@@ -155,6 +189,25 @@ def main() -> int:
             changed.append(str(path.relative_to(ROOT)))
             if not check:
                 path.write_text(dump_like(raw, case), encoding="utf-8")
+
+    for add in ADD_CARDS:
+        path = ROOT / "cases" / add["case"]
+        raw = path.read_text(encoding="utf-8")
+        case = json.loads(raw)
+        stream = case["card_stream"]
+        existing = next((i for i, c in enumerate(stream) if c["card_id"] == add["card"]["card_id"]), None)
+        if existing is not None:
+            if stream[existing] != add["card"]:
+                stream[existing] = add["card"]
+                changed.append(str(path.relative_to(ROOT)))
+                if not check:
+                    path.write_text(dump_like(raw, case), encoding="utf-8")
+            continue
+        idx = next((i for i, c in enumerate(stream) if c["card_id"] == add["after"]), len(stream) - 1) + 1
+        stream.insert(idx, add["card"])
+        changed.append(str(path.relative_to(ROOT)))
+        if not check:
+            path.write_text(dump_like(raw, case), encoding="utf-8")
 
     print(f"{len(changed)} archivos {'cambiarían' if check else 'cambiados'}")
     for c in changed:

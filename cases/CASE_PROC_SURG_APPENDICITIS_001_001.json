@@ -66,6 +66,22 @@
             }
         },
         {
+            "card_id": "rev_hcg_1",
+            "ui_icon": "clipboard",
+            "category": "Gabinete",
+            "card_text": "Prueba de embarazo (β-hCG): En la mujer en edad fértil con dolor en fosa ilíaca derecha se solicita antes de decidir la conducta, para descartar un embarazo ectópico.",
+            "expected_action": "keep",
+            "scoring": {
+                "points": 100,
+                "error_type": "omission",
+                "vazquez_comment": "La prueba de embarazo va primero en toda mujer en edad fértil con dolor abdominal bajo: el ectópico imita a la apendicitis, y la β-hCG en orina tiene sensibilidad de 95 % y especificidad de 100 %."
+            },
+            "safety_flags": {
+                "lethal_risk": false,
+                "decision_critical": true
+            }
+        },
+        {
             "card_id": "l6_ap_2",
             "ui_icon": "pill",
             "category": "Tratamiento",
