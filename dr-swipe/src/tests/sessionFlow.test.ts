@@ -45,7 +45,39 @@ describe('shift flow', () => {
 
       a.send({ type: 'RESTART' });
       expect(a.getSnapshot().matches('idle')).toBe(true);
+      // The finished session stays until the next shift opens a fresh one.
+      a.send({ type: 'START_GUARD', deck, difficulty: 'standard', case_id: 'PROC_PED_X_001_002' });
       expect(a.getSnapshot().context.session.caseResults).toHaveLength(0);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it('records a lost case as failed when the player abandons it, from ghosted or fail_protection', () => {
+    vi.useFakeTimers();
+    try {
+      const start = () => {
+        const a = createActor(gameMachine).start();
+        a.send({ type: 'START_GUARD', deck, difficulty: 'standard', case_id: 'PROC_PED_X_001_001' });
+        return a;
+      };
+      // A timeout opens fail_protection; RESCUE spends an intern and resumes.
+      const fromProtection = start();
+      fromProtection.send({ type: 'TIME_OUT' });
+      expect(fromProtection.getSnapshot().matches('fail_protection')).toBe(true);
+      fromProtection.send({ type: 'RESTART' });
+      expect(fromProtection.getSnapshot().matches('idle')).toBe(true);
+      expect(fromProtection.getSnapshot().context.session.caseResults.map(r => r.outcome)).toEqual(['failed']);
+
+      const fromGhosted = start();
+      while (fromGhosted.getSnapshot().context.lives > 0) {
+        fromGhosted.send({ type: 'TIME_OUT' });
+        fromGhosted.send({ type: 'RESCUE' });
+      }
+      fromGhosted.send({ type: 'TIME_OUT' });
+      expect(fromGhosted.getSnapshot().matches('ghosted')).toBe(true);
+      fromGhosted.send({ type: 'RESTART' });
+      expect(fromGhosted.getSnapshot().context.session.caseResults.map(r => r.outcome)).toEqual(['failed']);
     } finally {
       vi.useRealTimers();
     }

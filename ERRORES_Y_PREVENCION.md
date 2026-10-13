@@ -49,7 +49,7 @@ El pipeline estaba en verde (599 casos, 109 tests, lint y build), y aun así la 
 | 25 | Enter/Espacio/Retroceso sobre un botón con foco también decidían la carta | `SwipeDeck.tsx` | Activar la pista o Deshacer con teclado mandaba un swipe a la derecha | Esas teclas se ignoran sobre controles; las flechas siguen funcionando |
 | 26 | `connect-src 'self'` en la CSP | `public/_headers` | El service worker (Workbox) no podía pedir la hoja de Google Fonts y la fuente fallaba con la PWA instalada | `connect-src` admite `fonts.googleapis.com` y `fonts.gstatic.com` |
 
-Pendiente, sin corregir porque es decisión de diseño: abandonar un caso fallido con "Nueva Guardia" (desde `fail_protection` o `ghosted`) no registra el fallo en SM-2; solo lo hace "VER NOTAS". Un caso perdido y abandonado no vuelve al repaso.
+Resuelto el 2026-10-13 (decisión del dueño del producto): abandonar un caso fallido con "Nueva Guardia" desde `fail_protection` o `ghosted` lo registra como fallo y vuelve al repaso SM-2. `resetGame` ya no vacía la sesión (la abre `START_GUARD`/`RESUME_GUARD`) para que `useSessionCommit` vea ese fallo. Test en `sessionFlow.test.ts`.
 
 ## Revisión de cierre para producción (2026-10-13)
 

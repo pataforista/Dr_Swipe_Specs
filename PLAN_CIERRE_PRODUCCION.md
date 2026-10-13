@@ -50,7 +50,7 @@ Una app que enseña a decidir urgencias no debería enseñar una afirmación let
 ## 5. Decisiones que necesito de ti
 
 1. **¿Se lanza antes o después de revisar las 63 cartas letales?** Mi recomendación: después; son pocas y son las que pueden enseñar algo dañino.
-2. **Abandonar un caso perdido, ¿cuenta para el repaso?** Hoy "Nueva guardia" desde la pantalla de paciente perdido no lo registra en SM-2; solo "VER NOTAS" lo hace. Recomiendo que sí cuente (un caso perdido es el que más hay que repasar). Es un cambio pequeño, pero altera una regla de juego y no lo hice sin tu visto bueno.
+2. ~~**Abandonar un caso perdido, ¿cuenta para el repaso?**~~ Decidido: sí. Hecho; "Nueva guardia" tras perder registra el fallo en SM-2.
 3. **Monitoreo de errores (Sentry) desde el día uno, ¿sí o no?** Sin él no sabremos si la app falla en teléfonos reales. Añadirlo implica una dependencia, un aviso de privacidad y ampliar la CSP; por eso queda como decisión, no como cierre.
 
 ## 6. Fuera de 1.0 (no tocar antes del lanzamiento)
