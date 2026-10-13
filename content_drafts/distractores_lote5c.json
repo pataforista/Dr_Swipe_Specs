@@ -8,7 +8,7 @@
                 "category": "Diagnóstico",
                 "card_text": "Biopsia escisional abierta como primer método diagnóstico: Se prefiere ante cualquier lesión BI-RADS 4 o 5 para obtener la pieza completa.",
                 "comment": "Castillo: La biopsia con aguja gruesa es el primer método. Evita una cirugía diagnóstica y permite planear el tratamiento definitivo con el diagnóstico histológico ya en la mano.",
-                "fuente": "ACR, BI-RADS Atlas 5a ed.; NCCN, Breast Cancer Screening and Diagnosis"
+                "fuente": "CNGOF 2016 (doi:10.1016/j.ejogrb.2016.02.017): biopsia percutánea para BI-RADS 4-5 (grado B)"
             },
             {
                 "card_id": "l5_mm2",
@@ -16,7 +16,7 @@
                 "category": "Diagnóstico",
                 "card_text": "Mastografía negativa con masa palpable: El resultado descarta cáncer y se cita a la paciente al tamizaje habitual.",
                 "comment": "Castillo: Una masa palpable con mastografía negativa no se cierra con la imagen. Requiere ultrasonido y, si persiste la sospecha, biopsia.",
-                "fuente": "ACR, Appropriateness Criteria: Palpable Breast Masses"
+                "fuente": "ACR Appropriateness Criteria, masas palpables (doi:10.1016/j.jacr.2017.02.033): diagnóstico por imagen y biopsia si hay hallazgo sospechoso"
             }
         ],
         "PROC_INF_HIV_ART_001": [
@@ -26,7 +26,7 @@
                 "category": "Tratamiento",
                 "card_text": "Esperar el genotipo de resistencia para iniciar el ART: Se evita así un esquema inadecuado en un paciente que aún no se trató.",
                 "comment": "Navarro: El genotipo se solicita antes de empezar, pero su resultado no se espera para iniciar. Se arranca con un esquema de alta barrera genética y se ajusta si el resultado lo exige.",
-                "fuente": "DHHS, Guidelines for the Use of Antiretroviral Agents in Adults and Adolescents with HIV"
+                "fuente": "Saag 2018 (doi:10.1001/jama.2018.8431): TAR lo antes posible; el genotipo se solicita pero no se espera"
             },
             {
                 "card_id": "l5_hv2",
@@ -34,7 +34,7 @@
                 "category": "Tratamiento",
                 "card_text": "Diferir el ART hasta que el paciente logre abstinencia de drogas intravenosas: Condición previa para asegurar la adherencia.",
                 "comment": "Navarro: El uso de sustancias no es motivo para retener el ART. Se inicia el tratamiento y se acompaña con apoyo para la adherencia y manejo del consumo.",
-                "fuente": "DHHS, Guidelines for the Use of Antiretroviral Agents in Adults and Adolescents with HIV"
+                "fuente": "Coffey 2019 (doi:10.1097/qad.0000000000002124): inicio inmediato con 51 % de consumo de sustancias y 92 % de supresión viral"
             }
         ],
         "PROC_INT_AMI_001": [
@@ -102,7 +102,7 @@
                 "category": "Tratamiento",
                 "card_text": "IECA más ARA-II como combinación inicial: Doble bloqueo del sistema renina-angiotensina para lograr un mejor control.",
                 "comment": "Mendoza: No se combinan IECA y ARA-II. El doble bloqueo no mejora los desenlaces y aumenta la hiperpotasemia y la lesión renal.",
-                "fuente": "ACC/AHA, Guideline for High Blood Pressure in Adults (2017); ESC/ESH Guidelines (2018)"
+                "fuente": "Makani 2013 (doi:10.1136/bmj.f360): el doble bloqueo no reduce la mortalidad y aumenta hiperpotasemia, hipotensión e insuficiencia renal"
             },
             {
                 "card_id": "l5_ht2",
@@ -121,7 +121,7 @@
                 "category": "Diagnóstico",
                 "card_text": "Punción lumbar inmediata antes de cualquier imagen: Se obtiene el LCR de entrada para confirmar la hemorragia.",
                 "comment": "Navarro: La tomografía simple de cráneo va primero. Si es negativa y la sospecha persiste, entonces se hace la punción lumbar para buscar xantocromía.",
-                "fuente": "AHA/ASA, Guidelines for the Management of Aneurysmal SAH (2012); ACEP Clinical Policy: Acute Headache (2019)"
+                "fuente": "Perry 2019 (doi:10.1161/strokeaha.119.026969): TC primero; punción lumbar si la TC es negativa y pasaron más de 6 h"
             },
             {
                 "card_id": "l5_ct2",
@@ -129,7 +129,7 @@
                 "category": "Diagnóstico",
                 "card_text": "Tomografía normal a las 24 horas del inicio: Resultado suficiente para descartar hemorragia subaracnoidea.",
                 "comment": "Navarro: La sensibilidad de la tomografía cae con el paso de las horas. Más allá de las primeras 6 horas, una imagen normal no descarta la hemorragia y se completa con punción lumbar.",
-                "fuente": "ACEP Clinical Policy: Acute Headache (2019); AHA/ASA, Guidelines for the Management of Aneurysmal SAH (2012)"
+                "fuente": "Aaseth 2024 (doi:10.1111/ene.16385) y Perry 2019: una TC normal dentro de 6 h descarta HSA; después, no"
             },
             {
                 "card_id": "l5_ct3",
@@ -148,7 +148,7 @@
                 "category": "Tratamiento",
                 "card_text": "Glibenclamida como primera elección farmacológica: Hipoglucemiante oral de inicio cuando la dieta no basta.",
                 "comment": "Castillo: La insulina es el tratamiento farmacológico de primera línea. La glibenclamida atraviesa la placenta y se asocia con mayor macrosomía e hipoglucemia neonatal.",
-                "fuente": "ACOG Practice Bulletin 190: Gestational Diabetes Mellitus (2018)"
+                "fuente": "Balsells, BMJ 2015 (doi:10.1136/bmj.h102) y Sénat, JAMA 2018 (doi:10.1001/jama.2018.4072): la glibenclamida no debe ser primera línea"
             },
             {
                 "card_id": "l5_gd2",
@@ -193,7 +193,7 @@
                 "category": "Tratamiento",
                 "card_text": "Diazepam como anticonvulsivo de primera línea para prevenir la eclampsia: Alternativa al sulfato de magnesio.",
                 "comment": "Castillo: El sulfato de magnesio es el fármaco de elección para prevenir y tratar las convulsiones eclámpticas. El diazepam no tiene ese respaldo.",
-                "fuente": "ACOG Practice Bulletin 222: Gestational Hypertension and Preeclampsia (2020)",
+                "fuente": "Duley L et al., Magnesium sulphate versus diazepam for eclampsia, Cochrane 2010 (doi:10.1002/14651858.CD000127.pub2): menos muertes maternas (RR 0.59) y menos convulsiones recurrentes (RR 0.43); ACOG PB 222 (2020)",
                 "lethal_risk": true
             },
             {
@@ -201,8 +201,8 @@
                 "ui_icon": "clock",
                 "category": "Tratamiento",
                 "card_text": "Suspender el sulfato de magnesio al terminar el nacimiento: El riesgo de convulsión desaparece al expulsar la placenta.",
-                "comment": "Castillo: El riesgo de eclampsia persiste en el posparto. El sulfato de magnesio se continúa por 24 horas después del nacimiento.",
-                "fuente": "ACOG Practice Bulletin 222: Gestational Hypertension and Preeclampsia (2020)"
+                "comment": "Castillo: El riesgo de eclampsia persiste en el posparto, por eso el esquema estándar mantiene el sulfato de magnesio 24 horas después del nacimiento. Algunos ensayos sugieren que periodos más cortos podrían bastar, pero no es la conducta estándar.",
+                "fuente": "24 h es el esquema estándar; Vigil-De Gracia 2018 (doi:10.1111/1471-0528.15320) y Okonkwo 2022 (doi:10.1097/aog.0000000000004720) sugieren que periodos más cortos podrían bastar. Se sugiere confirmación médica"
             },
             {
                 "card_id": "l5_pe3",

@@ -8,7 +8,7 @@
                 "category": "Tratamiento",
                 "card_text": "Tratamiento sistemático de la pareja masculina en la vaginosis bacteriana: Se indica metronidazol a ambos para evitar recurrencias.",
                 "comment": "Castillo: Tratar a la pareja masculina no reduce la recurrencia de la vaginosis bacteriana. Se trata a la paciente, y la pareja se trata solo en tricomoniasis.",
-                "fuente": "CDC, Sexually Transmitted Infections Treatment Guidelines 2021 (Bacterial vaginosis)"
+                "fuente": "CDC ITS 2021 (doi:10.15585/mmwr.rr7004a1): pareja masculina sin beneficio; solo azoles tópicos 7 días en el embarazo; la VB se diagnostica con Amsel o Nugent"
             },
             {
                 "card_id": "l5_vg2",
@@ -16,7 +16,7 @@
                 "category": "Tratamiento",
                 "card_text": "Fluconazol oral en dosis única para la candidiasis vaginal de la gestante: Esquema práctico por su comodidad.",
                 "comment": "Castillo: En el embarazo la candidiasis vaginal se trata con azoles tópicos durante 7 días; el fluconazol oral no se recomienda.",
-                "fuente": "CDC, Sexually Transmitted Infections Treatment Guidelines 2021 (Vulvovaginal candidiasis)"
+                "fuente": "CDC ITS 2021 (doi:10.15585/mmwr.rr7004a1): pareja masculina sin beneficio; solo azoles tópicos 7 días en el embarazo; la VB se diagnostica con Amsel o Nugent"
             },
             {
                 "card_id": "l5_vg3",
@@ -24,7 +24,7 @@
                 "category": "Diagnóstico",
                 "card_text": "Cultivo vaginal de rutina para Gardnerella: Estudio de confirmación de la vaginosis bacteriana.",
                 "comment": "Castillo: Gardnerella también habita la vagina de mujeres sanas, así que un cultivo positivo no hace el diagnóstico. Se confirma con criterios de Amsel o con puntuación de Nugent.",
-                "fuente": "CDC, Sexually Transmitted Infections Treatment Guidelines 2021 (Bacterial vaginosis)"
+                "fuente": "CDC ITS 2021 (doi:10.15585/mmwr.rr7004a1): pareja masculina sin beneficio; solo azoles tópicos 7 días en el embarazo; la VB se diagnostica con Amsel o Nugent"
             }
         ],
         "PROC_PED_EXANT_ERYTHEMA_001": [
@@ -68,7 +68,7 @@
                 "category": "Tratamiento",
                 "card_text": "Vitamina A solo si hay desnutrición: Se reserva para el niño con déficit nutricional evidente.",
                 "comment": "Castillo: La vitamina A se indica a todo niño con sarampión, con o sin desnutrición, en dos dosis separadas por 24 horas.",
-                "fuente": "OMS, Guidelines for Measles Management; AAP, Red Book 2021"
+                "fuente": "D'Souza 2001 y Fawzi 1993 (doi:10.1001/jama.269.7.898): dos dosis de 200 000 UI reducen la mortalidad; todo paciente con sarampión, con o sin déficit"
             }
         ],
         "PROC_PED_EXANT_RUBEOLA_001": [

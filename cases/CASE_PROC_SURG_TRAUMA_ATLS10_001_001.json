@@ -162,7 +162,7 @@
             "scoring": {
                 "points": 100,
                 "error_type": "hoarding",
-                "vazquez_comment": "El ácido tranexámico se da en las primeras 3 horas. Pasado ese plazo no ayuda y puede aumentar el riesgo de trombosis."
+                "vazquez_comment": "El ácido tranexámico se da lo antes posible y dentro de las primeras 3 horas. Después de 3 horas no ayuda y puede aumentar la muerte por sangrado."
             }
         },
         {

@@ -97,7 +97,7 @@
             "scoring": {
                 "points": 150,
                 "error_type": "lethal_commission",
-                "vazquez_comment": "Navarro: Tras un síndrome neuroléptico maligno se espera al menos 2 semanas antes de reintroducir un antipsicótico, con una dosis baja y vigilancia estrecha."
+                "vazquez_comment": "Navarro: Tras un síndrome neuroléptico maligno el antipsicótico se reintroduce solo después de un periodo sin fármaco (suele recomendarse al menos 2 semanas), de preferencia con otro agente, a dosis baja y con vigilancia estrecha."
             },
             "safety_flags": {
                 "lethal_risk": true

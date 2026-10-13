@@ -7,8 +7,8 @@
                 "ui_icon": "pill",
                 "category": "Tratamiento",
                 "card_text": "Fibrinólisis sistémica como primera opción en este choque cardiogénico: Se prefiere por ser más rápida que trasladar al paciente.",
-                "comment": "Navarro: En el infarto con choque cardiogénico la reperfusión de elección es la ICP, sin importar el tiempo de retraso. La fibrinólisis queda como último recurso.",
-                "fuente": "ACC/AHA, Guideline for the Management of STEMI (2013); ESC STEMI Guidelines (2017); ESC Guidelines on ACS (2023)",
+                "comment": "Navarro: En el infarto con choque cardiogénico la reperfusión de elección es la ICP inmediata. La fibrinólisis solo se considera si la ICP no puede hacerse a tiempo.",
+                "fuente": "Samsky MD et al., Cardiogenic Shock After Acute Myocardial Infarction: A Review, JAMA 2021 (doi:10.1001/jama.2021.18323); Thiele H et al., CULPRIT-SHOCK, NEJM 2017 (doi:10.1056/NEJMoa1710261)",
                 "lethal_risk": true
             },
             {
@@ -60,8 +60,8 @@
                 "ui_icon": "clock",
                 "category": "Manejo Inmediato",
                 "card_text": "Tiempo puerta-balón de 4 horas como meta aceptable: Margen razonable para trasladar y preparar al paciente.",
-                "comment": "Mendoza: La meta es una ICP primaria en 90 minutos o menos desde el primer contacto médico; si no se logra, se considera fibrinólisis.",
-                "fuente": "ACC/AHA, Guideline for the Management of STEMI (2013); ESC STEMI Guidelines (2017)",
+                "comment": "Mendoza: La ICP primaria se hace lo antes posible; si no puede realizarse dentro de los 120 minutos siguientes al diagnóstico, se administra fibrinólisis.",
+                "fuente": "Bhatt DL et al., Diagnosis and Treatment of Acute Coronary Syndromes: A Review, JAMA 2022 (doi:10.1001/jama.2022.0358); Vogel B et al., Nat Rev Dis Primers 2019 (doi:10.1038/s41572-019-0090-3)",
                 "lethal_risk": true
             }
         ],
@@ -72,7 +72,7 @@
                 "category": "Farmacoterapia",
                 "card_text": "Doxiciclina oral como único tratamiento sostenido: Esquema suficiente durante todo el control del acné.",
                 "comment": "Mendoza: Los antibióticos orales no se usan en monoterapia ni de forma prolongada, por el riesgo de resistencia. Se combinan con retinoide tópico o peróxido de benzoilo.",
-                "fuente": "AAD, Guidelines of care for the management of acne vulgaris (2016)"
+                "fuente": "AAD 2024 (doi:10.1016/j.jaad.2023.12.017): limitar los antibióticos sistémicos y combinarlos con tratamiento tópico; isotretinoína para acné grave o refractario"
             },
             {
                 "card_id": "l6_ac2",
@@ -80,7 +80,7 @@
                 "category": "Farmacoterapia",
                 "card_text": "Isotretinoína oral como primera línea en el acné comedoniano leve: Resuelve el cuadro de forma definitiva.",
                 "comment": "Mendoza: La isotretinoína se reserva para el acné severo, nodular o refractario. El cuadro leve se maneja con tratamiento tópico.",
-                "fuente": "AAD, Guidelines of care for the management of acne vulgaris (2016)"
+                "fuente": "AAD 2024 (doi:10.1016/j.jaad.2023.12.017): limitar los antibióticos sistémicos y combinarlos con tratamiento tópico; isotretinoína para acné grave o refractario"
             }
         ],
         "PROC_ENDO_DM1_CAD_001": [
@@ -90,7 +90,7 @@
                 "category": "Tratamiento",
                 "card_text": "Bicarbonato intravenoso con pH de 7.1 para corregir pronto la acidosis: Se indica ante cualquier acidosis grave.",
                 "comment": "Mendoza: El bicarbonato se reserva para pH menor de 6.9. Por encima de ese valor no mejora los desenlaces.",
-                "fuente": "ADA, Hyperglycemic Crises in Adults with Diabetes: A Consensus Report (2024)"
+                "fuente": "Duhon 2013 (doi:10.1345/aph.1s014) y Wu 2026 (doi:10.1097/md.0000000000047529): la guía reserva el bicarbonato para pH <6.9"
             },
             {
                 "card_id": "l6_cd2",
@@ -115,7 +115,7 @@
                 "category": "Tratamiento",
                 "card_text": "Insulina subcutánea como único tratamiento de una CAD grave: Esquema más sencillo que la infusión.",
                 "comment": "Mendoza: En la CAD moderada a grave la insulina va en infusión intravenosa continua, que permite ajustar la dosis y controlar la cetogénesis.",
-                "fuente": "ADA, Hyperglycemic Crises in Adults with Diabetes: A Consensus Report (2024)"
+                "fuente": "JBDS (guía británica de CAD): insulina IV a ritmo fijo hasta resolver la cetosis"
             }
         ],
         "PROC_GAST_DIVERTICULITIS_HINCHEY_001": [
@@ -125,7 +125,7 @@
                 "category": "Tratamiento",
                 "card_text": "Cirugía de Hartmann de entrada ante un absceso drenable: Procedimiento definitivo para evitar recurrencias.",
                 "comment": "Mendoza: El absceso de más de 3 a 4 cm se drena por vía percutánea guiada por imagen, con antibióticos. La cirugía se reserva para el fracaso del drenaje o la peritonitis.",
-                "fuente": "ASCRS, Clinical Practice Guidelines for Left-Sided Colonic Diverticulitis (2020)"
+                "fuente": "Cirocchi 2023 (doi:10.3390/jcm12175522) y Peery, BMJ 2021 (doi:10.1136/bmj.n72): drenaje percutáneo según tamaño; cirugía ante contaminación peritoneal"
             },
             {
                 "card_id": "l6_dv2",
@@ -150,7 +150,7 @@
                 "category": "Seguimiento",
                 "card_text": "Colonoscopia a los 7 días del alta: Se indica para descartar cáncer tras el episodio.",
                 "comment": "Mendoza: La colonoscopia de control se hace de 6 a 8 semanas después de resolver el episodio, cuando la inflamación ya cedió.",
-                "fuente": "ASCRS, Clinical Practice Guidelines for Left-Sided Colonic Diverticulitis (2020)"
+                "fuente": "Peery, BMJ 2021 (doi:10.1136/bmj.n72): colonoscopia a las 6-8 semanas"
             }
         ],
         "PROC_GAST_MESENTERIC_ISCHEMIA_001": [
@@ -187,7 +187,7 @@
                 "category": "Diagnóstico",
                 "card_text": "Radiografía simple de abdomen normal: Resultado suficiente para descartar isquemia mesentérica.",
                 "comment": "Mendoza: La radiografía simple es normal en las fases iniciales. El estudio de elección es la angio-TC.",
-                "fuente": "ESVS, Guidelines on the Management of Diseases of Mesenteric Arteries (2017)"
+                "fuente": "WSES 2022 (doi:10.1186/s13017-022-00443-x): una radiografía negativa no excluye isquemia mesentérica; la angio-TC es el estudio diagnóstico"
             }
         ],
         "PROC_GAST_VARICES_HARD_001": [
@@ -196,8 +196,8 @@
                 "ui_icon": "droplet",
                 "category": "Tratamiento",
                 "card_text": "Transfusión hasta hemoglobina mayor de 10 g/dL: Meta para compensar la pérdida de sangre.",
-                "comment": "Navarro: La estrategia es restrictiva, con umbral de 7 g/dL y meta de 7 a 9. Sobretransfundir eleva la presión portal y favorece el resangrado.",
-                "fuente": "Baveno VII Consensus (J Hepatol 2022); AASLD Guidance on Portal Hypertensive Bleeding (2017)",
+                "comment": "Navarro: La estrategia es restrictiva: se transfunde con hemoglobina cercana a 7 g/dL y la meta es de 7 a 8 g/dL. Sobretransfundir eleva la presión portal y favorece el resangrado.",
+                "fuente": "Baveno VII, J Hepatol 2022 (doi:10.1016/j.jhep.2021.12.022), recomendación 6.2; Villanueva C et al., NEJM 2013 (doi:10.1056/NEJMoa1211801)",
                 "lethal_risk": true
             },
             {
@@ -206,7 +206,7 @@
                 "category": "Manejo Inmediato",
                 "card_text": "Balón de Sengstaken-Blakemore como primera medida en lugar de vasoactivos y endoscopia: Controla la hemorragia al instante.",
                 "comment": "Navarro: El balón es un rescate temporal si falla el tratamiento. Primero van vasoactivos, antibiótico y endoscopia.",
-                "fuente": "AASLD Guidance on Portal Hypertensive Bleeding (2017)"
+                "fuente": "Baveno VII (doi:10.1016/j.jhep.2021.12.022) 6.5: vasoactivos lo antes posible; el balón es un rescate"
             },
             {
                 "card_id": "l6_vr3",
@@ -225,7 +225,7 @@
                 "category": "Tratamiento",
                 "card_text": "Diluir la fórmula a la mitad durante la rehidratación: Se evita así la sobrecarga osmótica del intestino.",
                 "comment": "Navarro: No se diluye la fórmula ni se restringe la leche. Se continúa la alimentación habitual durante y después de la rehidratación.",
-                "fuente": "ESPGHAN/ESPID, Guidelines for Acute Gastroenteritis in Children (2014); OMS"
+                "fuente": "ESPGHAN/ESPID 2014 (doi:10.1097/mpg.0000000000000375): rehidratación oral hipoosmolar, alimentación sin cambios, antibióticos solo en casos excepcionales; la vía enteral es superior a la intravenosa"
             },
             {
                 "card_id": "l6_dh2",
@@ -233,7 +233,7 @@
                 "category": "Tratamiento",
                 "card_text": "Líquidos intravenosos como primera opción en toda deshidratación leve: Se prefieren por ser más rápidos.",
                 "comment": "Navarro: La rehidratación oral con suero de osmolaridad reducida es la primera línea en la deshidratación leve a moderada. La vía intravenosa es para el choque o el fracaso de la vía oral.",
-                "fuente": "ESPGHAN/ESPID, Guidelines for Acute Gastroenteritis in Children (2014); OMS"
+                "fuente": "ESPGHAN/ESPID 2014 (doi:10.1097/mpg.0000000000000375): rehidratación oral hipoosmolar, alimentación sin cambios, antibióticos solo en casos excepcionales; la vía enteral es superior a la intravenosa"
             }
         ],
         "PROC_PED_GIT_DEHYDRATION_001": [
@@ -243,7 +243,7 @@
                 "category": "Tratamiento",
                 "card_text": "Diluir la fórmula a la mitad durante la rehidratación: Se evita así la sobrecarga osmótica del intestino.",
                 "comment": "Navarro: No se diluye la fórmula ni se restringe la leche. Se continúa la alimentación habitual durante y después de la rehidratación.",
-                "fuente": "ESPGHAN/ESPID, Guidelines for Acute Gastroenteritis in Children (2014); OMS"
+                "fuente": "ESPGHAN/ESPID 2014 (doi:10.1097/mpg.0000000000000375): rehidratación oral hipoosmolar, alimentación sin cambios, antibióticos solo en casos excepcionales; la vía enteral es superior a la intravenosa"
             },
             {
                 "card_id": "l6_dh2",
@@ -251,7 +251,7 @@
                 "category": "Tratamiento",
                 "card_text": "Líquidos intravenosos como primera opción en toda deshidratación leve: Se prefieren por ser más rápidos.",
                 "comment": "Navarro: La rehidratación oral con suero de osmolaridad reducida es la primera línea en la deshidratación leve a moderada. La vía intravenosa es para el choque o el fracaso de la vía oral.",
-                "fuente": "ESPGHAN/ESPID, Guidelines for Acute Gastroenteritis in Children (2014); OMS"
+                "fuente": "ESPGHAN/ESPID 2014 (doi:10.1097/mpg.0000000000000375): rehidratación oral hipoosmolar, alimentación sin cambios, antibióticos solo en casos excepcionales; la vía enteral es superior a la intravenosa"
             }
         ],
         "PROC_OPH_GLAUCOMA_001": [
@@ -269,7 +269,7 @@
                 "category": "Tratamiento",
                 "card_text": "Iridotomía láser inmediata como único tratamiento del ataque agudo: Se hace antes de bajar la presión.",
                 "comment": "López: Primero se baja la presión intraocular con tratamiento médico. La iridotomía se hace después, cuando la córnea se aclara y el ojo es operable.",
-                "fuente": "AAO, Preferred Practice Pattern: Primary Angle-Closure Disease (2020)"
+                "fuente": "Lam 2002 (doi:10.1016/s0161-6420(02)01158-2): tratamiento médico para bajar la presión mientras se prepara la iridotomía"
             },
             {
                 "card_id": "l6_gl3",
@@ -311,7 +311,7 @@
                 "category": "Evaluacion",
                 "card_text": "Talla baja desde -1 desviación estándar para la edad: Umbral para definir retraso del crecimiento.",
                 "comment": "Castillo: El umbral de talla baja es de menos de -2 desviaciones estándar para la edad. Entre -1 y -2 el niño solo se vigila.",
-                "fuente": "OMS, Child Growth Standards (2006)"
+                "fuente": "Christesen 2016 (doi:10.1371/journal.pone.0157277): el umbral clínico de talla baja es -2 DE"
             }
         ],
         "PROC_PED_NEO_APGAR_001": [
@@ -330,7 +330,7 @@
                 "category": "Manejo Inmediato",
                 "card_text": "Oxígeno al 100% desde el inicio de la ventilación en el recién nacido de término: Corrige la cianosis más rápido.",
                 "comment": "Castillo: En el recién nacido de término la ventilación inicia con aire ambiente (21%) y se ajusta según oximetría. El exceso de oxígeno daña.",
-                "fuente": "AHA/AAP, Neonatal Resuscitation Program, 8a ed. (2021)"
+                "fuente": "Sankaran 2025 (doi:10.1159/000549372): la reanimación del recién nacido inicia con 21 % de oxígeno y se titula; Wang 2008 matiza a los prematuros"
             },
             {
                 "card_id": "l6_ap3",
@@ -358,7 +358,7 @@
                 "category": "Evaluacion",
                 "card_text": "Tamizaje de autismo con M-CHAT a los 6 meses: Edad recomendada para el primer tamizaje.",
                 "comment": "Castillo: El tamizaje específico de autismo se hace a los 18 y 24 meses. A los 6 meses se vigila el desarrollo en cada consulta.",
-                "fuente": "AAP, Identification, Evaluation, and Management of Children with ASD (2020)"
+                "fuente": "Sturner 2022 (doi:10.1186/s13229-021-00480-4): el tamizaje de autismo se recomienda a los 18 y 24 meses"
             },
             {
                 "card_id": "l6_nm2",
@@ -366,7 +366,7 @@
                 "category": "Evaluacion",
                 "card_text": "Vigilancia del desarrollo solo cuando los padres expresan preocupación: Basta con atender la queja familiar.",
                 "comment": "Castillo: La vigilancia es parte de cada consulta de rutina, y los tamizajes con instrumento estandarizado se hacen a edades fijas, aunque nadie sospeche retraso.",
-                "fuente": "AAP, Promoting Optimal Development: Identifying Infants and Young Children with Developmental Disorders (2020)"
+                "fuente": "Lipkin 2019, AAP (doi:10.1542/peds.2019-3449): vigilancia en cada visita y tamizaje estandarizado a edades fijas"
             },
             {
                 "card_id": "l6_nm3",
@@ -392,7 +392,7 @@
                 "category": "Manejo Inmediato",
                 "card_text": "Cirugía urgente antes de corregir la deshidratación y la alcalosis: Se opera de inmediato para frenar los vómitos.",
                 "comment": "Castillo: No es una urgencia quirúrgica sino médica. Se corrigen primero volumen, cloro y potasio, porque la anestesia en alcalosis aumenta el riesgo de apnea.",
-                "fuente": "AAP, Clinical Report: Hypertrophic Pyloric Stenosis; Hernanz-Schulman, Radiology (2003)",
+                "fuente": "Gilbertson LE et al., Anesth Analg 2019 (doi:10.1213/ane.0000000000004446): la alcalosis es una urgencia médica y se asocia a apnea; Spicer RD, Br J Surg 1982 (doi:10.1002/bjs.1800690304): corrección hidroelectrolítica preoperatoria esencial",
                 "lethal_risk": true
             }
         ],
@@ -429,7 +429,7 @@
                 "category": "Prevención",
                 "card_text": "SRP y varicela aplicadas en días distintos sin intervalo mínimo: Se pueden poner con cualquier separación.",
                 "comment": "Castillo: Dos vacunas de virus vivos se aplican el mismo día o con al menos 4 semanas de separación, porque la primera puede interferir con la respuesta a la segunda.",
-                "fuente": "CDC/ACIP, General Best Practice Guidelines for Immunization"
+                "fuente": "Kirtland 2019 (doi:10.1016/j.vaccine.2019.09.058) y Zimmermann 2020 (doi:10.1136/archdischild-2020-320091): vacunas vivas el mismo día o con 24-28 días de separación"
             }
         ],
         "PROC_PREV_LEVELS_LEAVELL_001": [
@@ -494,7 +494,7 @@
                 "category": "Tratamiento",
                 "card_text": "Valproato como primera elección en la mujer bipolar en edad fértil: Alternativa sin riesgo en el embarazo.",
                 "comment": "Navarro: El valproato es teratogénico, con riesgo de defectos del tubo neural y deterioro del neurodesarrollo. En mujeres en edad fértil se evita.",
-                "fuente": "CANMAT/ISBD, Guidelines for the Management of Patients with Bipolar Disorder (2018)"
+                "fuente": "Pack 2024, AAN/AES/SMFM (doi:10.1212/wnl.0000000000209279): evitar el valproato en personas con potencial de embarazo"
             },
             {
                 "card_id": "l6_ma3",
@@ -502,7 +502,7 @@
                 "category": "Tratamiento",
                 "card_text": "Antiinflamatorios no esteroideos para el dolor en el paciente con litio: Se combinan sin ajustar.",
                 "comment": "Navarro: Los AINE y las tiazidas reducen la excreción renal del litio y elevan la litemia, con riesgo de toxicidad.",
-                "fuente": "CANMAT/ISBD, Guidelines for the Management of Patients with Bipolar Disorder (2018)"
+                "fuente": "Müller-Oerlinghausen 1999 (doi:10.2165/00023210-199911010-00004): los AINE y las tiazidas reducen la depuración renal de litio"
             }
         ],
         "PROC_PSYC_DEP_SUICIDE_001": [
@@ -512,7 +512,7 @@
                 "category": "Seguridad",
                 "card_text": "Contrato de no suicidio como medida de protección: Se firma antes de dar el alta.",
                 "comment": "Navarro: Los contratos de no suicidio no han demostrado reducir el riesgo y pueden dar una falsa seguridad.",
-                "fuente": "APA, Practice Guideline for the Assessment and Treatment of Patients with Suicidal Behaviors (2010)"
+                "fuente": "Bryan 2017 (doi:10.1016/j.jad.2017.01.028) y Kroll 2000 (doi:10.1176/appi.ajp.157.10.1684): sin datos de eficacia de los contratos; el plan de crisis es superior"
             },
             {
                 "card_id": "l6_ds2",
@@ -520,7 +520,7 @@
                 "category": "Entrevista",
                 "card_text": "Evitar preguntar por suicidio para no inducirlo: Se espera a que el paciente lo mencione.",
                 "comment": "Navarro: Preguntar directamente no induce la conducta; abre la puerta para evaluar el plan y reduce la angustia.",
-                "fuente": "APA, Practice Guideline for the Assessment and Treatment of Patients with Suicidal Behaviors (2010); OMS mhGAP"
+                "fuente": "Dazzi 2014 (doi:10.1017/s0033291714001299) y Blades 2018 (doi:10.1016/j.cpr.2018.07.001): preguntar por suicidio no lo induce"
             },
             {
                 "card_id": "l6_ds3",
@@ -528,7 +528,7 @@
                 "category": "Seguridad",
                 "card_text": "Receta de antidepresivo por 3 meses al dar el alta: Garantiza el apego al tratamiento.",
                 "comment": "Navarro: Con riesgo suicida se limita la cantidad de fármaco disponible, porque una dosis excesiva se vuelve un medio letal.",
-                "fuente": "APA, Practice Guideline for the Assessment and Treatment of Patients with Suicidal Behaviors (2010)",
+                "fuente": "Mann JJ et al., JAMA 2005 (doi:10.1001/jama.294.16.2064) y Zalsman G et al., Lancet Psychiatry 2016 (doi:10.1016/s2215-0366(16)30030-x): restringir el acceso a medios letales, incluidos fármacos, previene el suicidio",
                 "lethal_risk": true
             },
             {
@@ -537,7 +537,7 @@
                 "category": "Evaluacion",
                 "card_text": "Escala SAD PERSONS como único criterio para decidir el alta: Un puntaje bajo permite el manejo ambulatorio.",
                 "comment": "Navarro: Las escalas de riesgo no predicen bien el suicidio. La decisión se basa en la evaluación clínica completa, no en un puntaje.",
-                "fuente": "NICE NG225, Self-harm: assessment, management and preventing recurrence (2022)",
+                "fuente": "NICE NG225 (2022); Steeg S et al., Accuracy of risk scales for predicting repeat self-harm and suicide, BMC Psychiatry 2018 (doi:10.1186/s12888-018-1693-z): AUC 51% para SAD PERSONS",
                 "lethal_risk": true
             }
         ],
@@ -547,8 +547,8 @@
                 "ui_icon": "clock",
                 "category": "Tratamiento",
                 "card_text": "Reiniciar el antipsicótico a las 24 horas de la mejoría: Se retoma para evitar la recaída psicótica.",
-                "comment": "Navarro: Tras un síndrome neuroléptico maligno se espera al menos 2 semanas antes de reintroducir un antipsicótico, con una dosis baja y vigilancia estrecha.",
-                "fuente": "APA, Practice Guideline for the Treatment of Patients with Schizophrenia (2020); Strawn et al., Am J Psychiatry (2007)",
+                "comment": "Navarro: Tras un síndrome neuroléptico maligno el antipsicótico se reintroduce solo después de un periodo sin fármaco (suele recomendarse al menos 2 semanas), de preferencia con otro agente, a dosis baja y con vigilancia estrecha.",
+                "fuente": "Pileggi DJ, Cook AM, Neuroleptic Malignant Syndrome, Ann Pharmacother 2016 (doi:10.1177/1060028016657553); Strawn JR et al., Am J Psychiatry 2007 (doi:10.1176/ajp.2007.164.6.870)",
                 "lethal_risk": true
             },
             {
@@ -567,7 +567,7 @@
                 "category": "Tratamiento",
                 "card_text": "Clozapina como primera línea en el primer episodio: Es el antipsicótico más eficaz.",
                 "comment": "Navarro: La clozapina se reserva para la esquizofrenia resistente a dos antipsicóticos. Por sus riesgos no se usa en el primer episodio.",
-                "fuente": "APA, Practice Guideline for the Treatment of Patients with Schizophrenia (2020); NICE CG178"
+                "fuente": "Agid 2024 (doi:10.1016/j.euroneuro.2024.04.012): la clozapina se reserva para esquizofrenia resistente tras dos antipsicóticos"
             },
             {
                 "card_id": "l6_ps_2",
@@ -575,15 +575,15 @@
                 "category": "Tratamiento",
                 "card_text": "Suspender el antipsicótico al remitir los síntomas del primer episodio: Se retira para evitar efectos adversos.",
                 "comment": "Navarro: Tras un primer episodio se mantiene el antipsicótico de 1 a 2 años como mínimo, porque suspenderlo antes aumenta mucho la recaída.",
-                "fuente": "APA, Practice Guideline for the Treatment of Patients with Schizophrenia (2020)"
+                "fuente": "Kishi 2026 (doi:10.1016/j.euroneuro.2026.112828): mantener el antipsicótico reduce la recaída hasta 24 meses (RR 0.45)"
             },
             {
                 "card_id": "l6_ps_3",
                 "ui_icon": "beaker",
                 "category": "Seguridad",
                 "card_text": "Recuento de neutrófilos innecesario durante el tratamiento con clozapina: El riesgo de neutropenia es bajo.",
-                "comment": "Navarro: La clozapina exige vigilar el recuento de neutrófilos de forma periódica, porque puede causar agranulocitosis grave.",
-                "fuente": "APA, Practice Guideline for the Treatment of Patients with Schizophrenia (2020)",
+                "comment": "Navarro: La clozapina exige vigilar el recuento de neutrófilos de forma periódica, sobre todo en los primeros 2 años, porque puede causar agranulocitosis grave.",
+                "fuente": "Siskind D et al., consenso Delphi global, Lancet Psychiatry 2025 (doi:10.1016/s2215-0366(25)00098-7): vigilancia de neutrófilos durante los primeros 2 años; Zhou H et al., Br J Psychiatry 2026: riesgo máximo en las primeras 18 semanas",
                 "lethal_risk": true
             }
         ],
@@ -594,7 +594,7 @@
                 "category": "Tratamiento",
                 "card_text": "Antibióticos posoperatorios por 7 días tras apendicectomía de una apendicitis no complicada: Previenen el absceso residual.",
                 "comment": "En la apendicitis no complicada basta una dosis de profilaxis antes de la incisión. Prolongar el antibiótico no reduce las infecciones.",
-                "fuente": "WSES, Jerusalem Guidelines for Diagnosis and Treatment of Acute Appendicitis (2020)"
+                "fuente": "WSES 2020 (doi:10.1186/s13017-020-00306-3): se recomienda no dar antibióticos posoperatorios en la apendicitis no complicada (1A)"
             },
             {
                 "card_id": "l6_ap_2",
@@ -610,7 +610,7 @@
                 "category": "Diagnóstico",
                 "card_text": "Ultrasonido sin visualizar el apéndice: Resultado suficiente para descartar apendicitis.",
                 "comment": "Un apéndice no visualizado no descarta nada; el estudio es no diagnóstico. Se continúa con tomografía o reevaluación clínica.",
-                "fuente": "WSES, Jerusalem Guidelines for Diagnosis and Treatment of Acute Appendicitis (2020)"
+                "fuente": "WSES 2020: el apéndice no visualizado es frecuente (34-71 %) y se sigue con RM/TC"
             },
             {
                 "card_id": "l6_ap_4",
@@ -618,7 +618,7 @@
                 "category": "Tratamiento",
                 "card_text": "Operar sin antibiótico preoperatorio: La profilaxis solo se da si hay perforación.",
                 "comment": "Una dosis preoperatoria de antibiótico se da en toda apendicectomía, aunque no haya perforación, para reducir la infección de herida.",
-                "fuente": "WSES, Jerusalem Guidelines for Diagnosis and Treatment of Acute Appendicitis (2020)"
+                "fuente": "WSES 2020: una dosis preoperatoria de antibiótico de amplio espectro en toda apendicectomía"
             }
         ],
         "PROC_SURG_APPENDICITIS_ALVARADO_001": [
@@ -628,7 +628,7 @@
                 "category": "Tratamiento",
                 "card_text": "Antibióticos posoperatorios por 7 días tras apendicectomía de una apendicitis no complicada: Previenen el absceso residual.",
                 "comment": "En la apendicitis no complicada basta una dosis de profilaxis antes de la incisión. Prolongar el antibiótico no reduce las infecciones.",
-                "fuente": "WSES, Jerusalem Guidelines for Diagnosis and Treatment of Acute Appendicitis (2020)"
+                "fuente": "WSES 2020 (doi:10.1186/s13017-020-00306-3): se recomienda no dar antibióticos posoperatorios en la apendicitis no complicada (1A)"
             },
             {
                 "card_id": "l6_ap_2",
@@ -644,7 +644,7 @@
                 "category": "Diagnóstico",
                 "card_text": "Ultrasonido sin visualizar el apéndice: Resultado suficiente para descartar apendicitis.",
                 "comment": "Un apéndice no visualizado no descarta nada; el estudio es no diagnóstico. Se continúa con tomografía o reevaluación clínica.",
-                "fuente": "WSES, Jerusalem Guidelines for Diagnosis and Treatment of Acute Appendicitis (2020)"
+                "fuente": "WSES 2020: el apéndice no visualizado es frecuente (34-71 %) y se sigue con RM/TC"
             },
             {
                 "card_id": "l6_ap_4",
@@ -652,7 +652,7 @@
                 "category": "Tratamiento",
                 "card_text": "Operar sin antibiótico preoperatorio: La profilaxis solo se da si hay perforación.",
                 "comment": "Una dosis preoperatoria de antibiótico se da en toda apendicectomía, aunque no haya perforación, para reducir la infección de herida.",
-                "fuente": "WSES, Jerusalem Guidelines for Diagnosis and Treatment of Acute Appendicitis (2020)"
+                "fuente": "WSES 2020: una dosis preoperatoria de antibiótico de amplio espectro en toda apendicectomía"
             }
         ],
         "PROC_SURG_BILIARY_CHOLANGITIS_001": [
@@ -736,15 +736,15 @@
                 "category": "Manejo Inmediato",
                 "card_text": "Cirugía inmediata en toda obstrucción por bridas sin signos de estrangulación: Evita la progresión.",
                 "comment": "Sin fiebre, leucocitosis, irritación peritoneal ni isquemia, la obstrucción por bridas se maneja primero de forma conservadora por 48 a 72 horas.",
-                "fuente": "WSES, Management of Adhesive Small Bowel Obstruction Guidelines (2017)"
+                "fuente": "Walshaw 2025 (doi:10.1093/bjs/znaf104): el manejo no quirúrgico tiene éxito en >70 % y los retrasos >72 h aumentan la morbilidad"
             },
             {
                 "card_id": "l6_ob2",
                 "ui_icon": "beaker",
                 "category": "Diagnóstico",
                 "card_text": "Contraste hidrosoluble contraindicado en la obstrucción por bridas: Podría empeorar la distensión.",
-                "comment": "El contraste hidrosoluble oral ayuda a predecir la resolución y también facilita el paso del contenido. Se usa como prueba diagnóstica y terapéutica.",
-                "fuente": "WSES, Management of Adhesive Small Bowel Obstruction Guidelines (2017)"
+                "comment": "El contraste hidrosoluble oral no está contraindicado en la obstrucción por bridas sin signos de isquemia. Sirve para estratificar (si llega al colon predice resolución), aunque su efecto terapéutico es discutido.",
+                "fuente": "el efecto terapéutico del contraste es discutido (Scotté 2017, doi:10.1016/j.surg.2016.11.026); su valor predictivo es moderado (Walshaw 2025)"
             },
             {
                 "card_id": "l6_ob3",
@@ -752,7 +752,7 @@
                 "category": "Tratamiento",
                 "card_text": "Metoclopramida para acelerar el tránsito: Se indica para vencer la obstrucción.",
                 "comment": "Los procinéticos están contraindicados en la obstrucción mecánica, porque aumentan la presión sobre el punto obstruido y el riesgo de perforación.",
-                "fuente": "WSES, Management of Adhesive Small Bowel Obstruction Guidelines (2017)",
+                "fuente": "Ponte CD, Nappi JM, Review of a new gastrointestinal drug: metoclopramide, Am J Hosp Pharm 1981 (doi:10.1093/ajhp/38.6.829): contraindicada en obstrucción, hemorragia o perforación gastrointestinal; ficha técnica",
                 "lethal_risk": true
             },
             {
@@ -761,7 +761,7 @@
                 "category": "Tratamiento",
                 "card_text": "Dieta líquida oral durante la fase conservadora: Mantiene el aporte calórico y el tránsito.",
                 "comment": "Durante el manejo conservador se mantiene el ayuno y se hidrata por vía intravenosa, con sonda nasogástrica si hay vómito.",
-                "fuente": "WSES, Management of Adhesive Small Bowel Obstruction Guidelines (2017)"
+                "fuente": "Walshaw 2025: descompresión nasogástrica, reposición hidroelectrolítica y ayuno en el manejo inicial"
             }
         ],
         "PROC_SURG_TRAUMA_ATLS10_001": [
@@ -788,8 +788,8 @@
                 "ui_icon": "clock",
                 "category": "Tratamiento",
                 "card_text": "Ácido tranexámico después de las primeras 6 horas del trauma: Se administra cuando el paciente se estabiliza.",
-                "comment": "El ácido tranexámico se da en las primeras 3 horas. Pasado ese plazo no ayuda y puede aumentar el riesgo de trombosis.",
-                "fuente": "ACS, ATLS 10a ed. (2018); CRASH-2 Collaborators, Lancet (2010)"
+                "comment": "El ácido tranexámico se da lo antes posible y dentro de las primeras 3 horas. Después de 3 horas no ayuda y puede aumentar la muerte por sangrado.",
+                "fuente": "CRASH-2 exploratorio (Lancet 2011, doi:10.1016/S0140-6736(11)60278-X): después de 3 h, RR 1.44 de muerte por sangrado; no se describe riesgo de trombosis"
             },
             {
                 "card_id": "l6_at4",

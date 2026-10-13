@@ -78,7 +78,7 @@
             "scoring": {
                 "points": 100,
                 "error_type": "hoarding",
-                "vazquez_comment": "Castillo: La quimioprofilaxis se limita a situaciones de riesgo alto o cuando el seguimiento con hCG no es posible; no es de rutina."
+                "vazquez_comment": "Castillo: La quimioprofilaxis no es de rutina: la evidencia es de baja calidad y puede retrasar el diagnóstico del tumor y aumentar la resistencia a la quimioterapia. Solo se discute en la mola completa de alto riesgo."
             }
         },
         {
@@ -170,7 +170,7 @@
             "scoring": {
                 "points": 100,
                 "error_type": "hoarding",
-                "vazquez_comment": "Castillo: El DIU se difiere al menos 6 semanas tras la evacuación y hasta que la hCG sea normal, por riesgo de perforación uterina; en el seguimiento se usan anticonceptivos orales."
+                "vazquez_comment": "Castillo: El DIU suele diferirse hasta que la hCG sea normal por el riesgo de perforación y sangrado; las guías no coinciden y la evidencia no muestra más neoplasia con él. En el seguimiento se prefieren métodos hormonales o de barrera."
             }
         },
         {

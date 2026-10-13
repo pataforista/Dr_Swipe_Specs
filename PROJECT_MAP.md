@@ -40,9 +40,10 @@ Dr_Swipe_Specs/
 
 Documentos de gestión, en orden de autoridad:
 1. `ROADMAP.md` — estado por fase, principios, ADR 001–016, preguntas abiertas. Sus secciones 4–6 describen la estructura **planeada**; hay tipos (`types/case.ts`, `types/state.ts`) que no existen. Los tipos reales viven en `dr-swipe/src/types/game.ts` y `srs.ts`.
-2. `PLAN_SIGUIENTES_PASOS.md` — pendientes de contenido y jugabilidad.
-3. `GUIA_CASOS.md` — cómo se escribe una carta sin delatar la respuesta.
-4. `ERRORES_Y_PREVENCION.md` — 26 errores pasados y el control que evita cada uno. Léelo antes de refactorizar `gameMachine.ts`.
+2. `PLAN_CIERRE_PRODUCCION.md` — lo que falta para lanzar 1.0 (manda sobre el siguiente mientras no se publique).
+3. `PLAN_SIGUIENTES_PASOS.md` — pendientes de contenido y jugabilidad.
+4. `GUIA_CASOS.md` — cómo se escribe una carta sin delatar la respuesta.
+5. `ERRORES_Y_PREVENCION.md` — 36 errores pasados y el control que evita cada uno. Léelo antes de refactorizar `gameMachine.ts`.
 
 ## 3. Modelo de datos del caso (`cases/CASE_*.json`)
 

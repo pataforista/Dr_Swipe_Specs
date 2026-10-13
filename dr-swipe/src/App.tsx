@@ -22,6 +22,7 @@ import { useFocusTrap } from './hooks/useFocusTrap';
 import { useSessionCommit } from './hooks/useSessionCommit';
 import { computeSessionMetrics } from './utils/sessionEngine';
 import { PerformanceReview } from './components/overlays/PerformanceReview';
+import { monitoringEnabled } from './utils/monitoring';
 
 // None of these are needed for the first paint (idle screen / first card),
 // so they ship as separate chunks instead of bloating the initial bundle.
@@ -41,6 +42,8 @@ import { ReloadPrompt } from './components/overlays/ReloadPrompt';
 import { LootScreen } from './components/overlays/LootScreen';
 import { DoodleToggle } from './components/ui/DoodleToggle';
 import { useImpactFeedback, HIT_STOP_MS } from './hooks/useImpactFeedback';
+const DISCLAIMER = 'Herramienta educativa para preparar el ENARM. No sustituye el juicio clínico ni la consulta de las guías vigentes.';
+
 /** Partial Fisher-Yates: up to `n` distinct random items from `items`. */
 function pickRandom<T>(items: T[], n: number): T[] {
   const pool = [...items];
@@ -183,6 +186,12 @@ export function App() {
     }
     if (codeRedPlayedRef.current) return;
     codeRedPlayedRef.current = true;
+    // Toasts still queued from triage (a lab hint, a loot item) would cover the
+    // Shock Room header and no longer apply; drop them here.
+    toastTimersRef.current.forEach(window.clearTimeout);
+    toastTimersRef.current = [];
+    toastQueueRef.current.reset();
+    setRewardToast(prev => ({ ...prev, show: false }));
     stopTriageAlarm();
     playCodeRed();
     triggerHaptic('timeoutAlarm');
@@ -293,13 +302,15 @@ export function App() {
     setIsPaused(false);
     setIsLoadingCase(true);
     setIsStudyModeActive(studyMode);
-    incrementSessions();
-    updateDailyStreak();
     setShiftPayout({ xp: 0, coins: 0 });
     try {
       send({ type: 'RESTART' });
       const excludeIds = useCodexStore.getState().history.slice(-30);
       const loadedCases = await dataLoader.loadRandomCases(3, specialty, excludeIds);
+      // Counted only once the cases loaded: an offline attempt is not a session
+      // and must not keep the daily streak alive.
+      incrementSessions();
+      updateDailyStreak();
       for (const c of loadedCases) {
         if (c.boss_fight_triad?.questions) c.boss_fight_triad.questions = c.boss_fight_triad.questions.map(q => shuffleBossQuestion(q));
       }
@@ -326,11 +337,11 @@ export function App() {
     if (!sessionProgress || !sessionProgress.caseId) return;
     setIsLoadingCase(true);
     setIsStudyModeActive(!!sessionProgress.isSandiaMode);
-    incrementSessions();
-    updateDailyStreak();
     try {
       // Find the specific case file
       const caseData = await dataLoader.loadCaseById(sessionProgress.caseId);
+      incrementSessions();
+      updateDailyStreak();
       if (caseData.boss_fight_triad?.questions) {
          caseData.boss_fight_triad.questions = caseData.boss_fight_triad.questions.map(q => shuffleBossQuestion(q));
       }
@@ -365,15 +376,16 @@ export function App() {
     setIsPaused(false);
     setIsLoadingCase(true);
     setIsStudyModeActive(true); // Study mode default for review
-    incrementSessions();
-    updateDailyStreak();
-    
+    setShiftPayout({ xp: 0, coins: 0 });
+
     try {
       send({ type: 'RESTART' });
       // Pick up to 3 random case IDs from failedCaseIds
       const finalIds = pickRandom(failedCaseIds, 3);
-      
+
       const loadedCases = await Promise.all(finalIds.map(id => dataLoader.loadCaseById(id)));
+      incrementSessions();
+      updateDailyStreak();
       for (const c of loadedCases) {
         if (c.boss_fight_triad?.questions) c.boss_fight_triad.questions = c.boss_fight_triad.questions.map(q => shuffleBossQuestion(q));
       }
@@ -657,18 +669,17 @@ export function App() {
                 <button onClick={() => startNewCase(false, selectedSpecialty)} disabled={isLoadingCase} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl">
                   {isLoadingCase ? 'PREPARANDO...' : 'INICIAR GUARDIA ⚡'}
                 </button>
-                <div className="absolute -top-3 right-0 sm:-right-4 bg-rose-500 text-white text-xs px-2 py-0.5 rounded-full shadow-md z-20 animate-pulse pointer-events-none">NUEVA</div>
               </div>
 
-              <button onClick={() => startNewCase(true, selectedSpecialty)} disabled={isLoadingCase} className="marker-btn py-4 sm:py-5 text-base sm:text-xl !bg-emerald-600 !border-emerald-500 shadow-emerald-200 group">
+              <button onClick={() => startNewCase(true, selectedSpecialty)} disabled={isLoadingCase} className="marker-btn relative py-4 sm:py-5 text-base sm:text-xl !bg-emerald-600 !border-emerald-500 shadow-emerald-200">
                  {isLoadingCase ? 'PREPARANDO...' : 'MODO ESTUDIO 🍉'}
-                 <div className="absolute -top-1 -right-1 bg-amber-500 text-white text-xs px-2 py-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">SIN DAÑO</div>
+                 <div className="absolute -top-3 right-0 sm:-right-4 bg-amber-500 text-white text-xs px-2 py-0.5 rounded-full shadow-md pointer-events-none">SIN DAÑO</div>
               </button>
 
               {/* Repasar Errores Button */}
               {Object.values(caseProgress).some(p => p.nextReviewDate <= Date.now()) && (
                 <button onClick={() => startMistakesRepass()} disabled={isLoadingCase} className="marker-btn py-4 sm:py-5 text-base sm:text-xl !bg-rose-600 !border-rose-500 shadow-rose-200">
-                   REPASAR MIS ERRORES 🖍️
+                   REPASO PENDIENTE 🖍️
                 </button>
               )}
 
@@ -686,6 +697,9 @@ export function App() {
                 <button onClick={() => setShowSettings(true)} className="text-xs font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Ajustes ⚙️</button>
               </div>
             </div>
+            <p className="max-w-xs text-center text-[11px] text-slate-400 leading-snug mt-6 px-4">
+              {DISCLAIMER}
+            </p>
            </div>
           </div>
         );
@@ -879,7 +893,7 @@ export function App() {
             setTimeLeft(timeLimitRef.current);
             send({ type: 'RESCUE' });
           }}
-          onRestart={() => send({ type: 'RESTART' })}
+          onRestart={() => { clearSessionProgress(); send({ type: 'RESTART' }); }}
         />
       )}</AnimatePresence>
       {showRetro && <div ref={retroTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] bg-paper/90 backdrop-blur-md p-6"><Suspense fallback={null}><RetrospectiveView history={state.context.feedbackHistory} onClose={() => setShowRetro(false)} /></Suspense></div>}
@@ -889,7 +903,7 @@ export function App() {
           <motion.div ref={pauseTrapRef} role="dialog" aria-modal="true" initial={{ scale: 0.9 }} animate={{ scale: 1 }} className="paper-sheet p-10 max-w-xs w-full text-center border-primary/20 shadow-xl relative">
             <p className="text-slate-400 text-sm italic mb-8 lettering leading-relaxed">"Guardia en pausa. Tus notas están seguras."</p>
             <button onClick={() => setIsPaused(false)} className="marker-btn w-full py-4 text-sm mb-4">REANUDAR ✨</button>
-            <button onClick={() => { setIsPaused(false); stopTriageAlarm(); send({ type: 'RESTART' }); }} className="text-xs font-bold text-slate-500 uppercase py-2 lettering">ABANDONAR</button>
+            <button onClick={() => { setIsPaused(false); stopTriageAlarm(); clearSessionProgress(); send({ type: 'RESTART' }); }} className="text-xs font-bold text-slate-500 uppercase py-2 lettering">ABANDONAR</button>
           </motion.div>
         </motion.div>
       )}</AnimatePresence>
@@ -960,6 +974,10 @@ export function App() {
                   VER TUTORIAL 📘
                 </button>
               </div>
+
+              <p className="text-[11px] text-slate-400 leading-snug mb-4">
+                {DISCLAIMER} Tu progreso se guarda solo en este dispositivo.{monitoringEnabled && ' Si la app falla, envía un reporte técnico sin datos personales para corregirlo.'} Versión {__APP_VERSION__}.
+              </p>
 
               <button
                 onClick={() => setShowSettings(false)}

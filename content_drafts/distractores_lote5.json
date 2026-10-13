@@ -36,7 +36,7 @@
                 "category": "Tratamiento Ambulatorio",
                 "card_text": "Azitromicina: Antibiótico de primera elección en el preescolar con neumonía típica no complicada.",
                 "comment": "Navarro: Con cuadro típico de neumococo, la amoxicilina a dosis altas sigue siendo la base. Los macrólidos quedan para sospecha de microorganismos atípicos.",
-                "fuente": "IDSA/PIDS, Guías de NAC pediátrica (Bradley et al., Clin Infect Dis 2011)"
+                "fuente": "Bradley 2011 (doi:10.1093/cid/cir531) y Ambroggio 2023 (doi:10.1093/cid/ciad385): la guía enfatiza aminopenicilinas"
             },
             {
                 "card_id": "l5_pn2",
@@ -44,7 +44,7 @@
                 "category": "Imagen",
                 "card_text": "Radiografía de tórax de control a las 48 horas: Se solicita de rutina para confirmar la mejoría en todo niño tratado por NAC.",
                 "comment": "Navarro: En el niño que evoluciona bien no se repite la placa de rutina. Se reserva para fiebre o síntomas persistentes, empeoramiento o complicación sospechada.",
-                "fuente": "IDSA/PIDS, Guías de NAC pediátrica (Bradley et al., Clin Infect Dis 2011)"
+                "fuente": "Ambroggio 2023: la guía IDSA/PIDS restó énfasis a la radiografía y al hemocultivo en pacientes ambulatorios"
             },
             {
                 "card_id": "l5_pn3",
@@ -52,7 +52,7 @@
                 "category": "Diagnóstico",
                 "card_text": "Hemocultivo en todo niño con NAC manejado de forma ambulatoria: Estudio necesario antes de iniciar el antibiótico.",
                 "comment": "Navarro: En la NAC no grave tratada en casa el hemocultivo no cambia la conducta. Se reserva para el niño hospitalizado con enfermedad moderada a grave o complicada.",
-                "fuente": "IDSA/PIDS, Guías de NAC pediátrica (Bradley et al., Clin Infect Dis 2011)"
+                "fuente": "Ambroggio 2023: la guía IDSA/PIDS restó énfasis a la radiografía y al hemocultivo en pacientes ambulatorios"
             }
         ],
         "PROC_PED_RESPIRATORY_CRUP_001": [
@@ -70,7 +70,7 @@
                 "category": "Farmacoterapia",
                 "card_text": "Dexametasona solo si hay estridor en reposo: En el crup leve se difiere el corticoide hasta que el niño empeore.",
                 "comment": "Castillo: Un corticoide único se ofrece en todo crup, incluso en el leve, porque acorta la evolución y reduce las consultas de retorno.",
-                "fuente": "Canadian Paediatric Society, Position statement: Croup (2017); Cochrane, Glucocorticoids for croup"
+                "fuente": "Bjornson 2004 (doi:10.1056/nejmoa033534): la dexametasona reduce las consultas de retorno incluso en el crup leve"
             },
             {
                 "card_id": "l5_cr3",
@@ -105,7 +105,7 @@
                 "category": "Tratamiento",
                 "card_text": "Dexametasona 24 horas después de iniciar el antibiótico: Se espera a ver la respuesta antes de agregar el corticoide.",
                 "comment": "Navarro: El corticoide se administra 10 a 20 minutos antes de la primera dosis de antibiótico o junto con ella; empezarlo después pierde el beneficio sobre las secuelas.",
-                "fuente": "IDSA, Practice Guidelines for Bacterial Meningitis (Tunkel et al., Clin Infect Dis 2004)"
+                "fuente": "de Gans 2002 (doi:10.1056/nejmoa021334): dexametasona 15-20 min antes o junto con la primera dosis de antibiótico"
             }
         ]
     }

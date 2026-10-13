@@ -166,7 +166,9 @@ export const gameMachine = setup({
       lootBoxReward: null,
       activePenalty: null,
       activeEvent: null,
-      session: EMPTY_SESSION,
+      // The session is kept: a failure recorded in the same transition
+      // (abandoning a lost case) must still reach useSessionCommit. START_GUARD
+      // and RESUME_GUARD open a fresh session, so nothing carries over.
       feedbackHistory: [],
       lastVitals: null,
       isSandiaMode: false,
@@ -699,7 +701,8 @@ export const gameMachine = setup({
             lastAction: null
           })
         }],
-        RESTART: { target: 'idle', actions: ['resetGame'] }
+        // Abandoning a failed case counts as a failure so SM-2 brings it back.
+        RESTART: { target: 'idle', actions: ['recordFailure', 'resetGame'] }
       }
     },
     ghosted: {
@@ -710,7 +713,7 @@ export const gameMachine = setup({
       ],
       on: {
         VIEW_DEBRIEF: { target: 'debrief' },
-        RESTART: { target: 'idle', actions: ['resetGame'] },
+        RESTART: { target: 'idle', actions: ['recordFailure', 'resetGame'] },
         REVIVE_INTERN: [{
           // lives is 0 here: retryBoss would take it to -1, so set it after.
           target: 'boss_fight',

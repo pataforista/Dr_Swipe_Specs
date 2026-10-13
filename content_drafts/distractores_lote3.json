@@ -8,7 +8,7 @@
                 "category": "Gastroenteritis",
                 "card_text": "Suspender la Alimentación: Ayuno hasta que cedan las evacuaciones para dejar descansar el intestino.",
                 "comment": "Navarro: La OMS indica continuar la alimentación, incluida la lactancia, durante la diarrea; el ayuno empeora el estado nutricional.",
-                "fuente": "OMS, The treatment of diarrhoea (manual)"
+                "fuente": "ESPGHAN/ESPID 2014 (doi:10.1097/mpg.0000000000000375): rehidratación oral hipoosmolar, alimentación sin cambios, antibióticos solo en casos excepcionales; la vía enteral es superior a la intravenosa"
             },
             {
                 "card_id": "dx_2",
@@ -16,7 +16,7 @@
                 "category": "VHG",
                 "card_text": "Refrescos o Bebidas Deportivas: Alternativa equivalente al Vida Suero Oral para rehidratar.",
                 "comment": "Navarro: Su alta osmolaridad y poco sodio pueden empeorar la diarrea; se rehidrata con suero oral de baja osmolaridad.",
-                "fuente": "OMS, The treatment of diarrhoea (manual)"
+                "fuente": "ESPGHAN/ESPID 2014 (doi:10.1097/mpg.0000000000000375): rehidratación oral hipoosmolar, alimentación sin cambios, antibióticos solo en casos excepcionales; la vía enteral es superior a la intravenosa"
             },
             {
                 "card_id": "dx_3",
@@ -24,7 +24,7 @@
                 "category": "meds",
                 "card_text": "Antibiótico Empírico de Rutina: Indicado en toda diarrea aguda acuosa del lactante.",
                 "comment": "Navarro: Los antibióticos se reservan para la diarrea con sangre (disentería), el cólera grave o infecciones asociadas; no para la diarrea acuosa común.",
-                "fuente": "OMS, The treatment of diarrhoea (manual)"
+                "fuente": "ESPGHAN/ESPID 2014 (doi:10.1097/mpg.0000000000000375): rehidratación oral hipoosmolar, alimentación sin cambios, antibióticos solo en casos excepcionales; la vía enteral es superior a la intravenosa"
             },
             {
                 "card_id": "dx_4",
@@ -32,7 +32,7 @@
                 "category": "meds",
                 "card_text": "Choque por Deshidratación: Iniciar suero oral por sonda nasogástrica como primera opción en lugar de líquidos IV.",
                 "comment": "Navarro: El choque se trata con líquidos IV (o intraóseos) de inmediato; la sonda solo es un recurso si no hay acceso vascular posible.",
-                "fuente": "OMS/AIEPI, Plan C",
+                "fuente": "OMS, Plan C; Houston KA et al., GASTRO, BMC Med 2019 (doi:10.1186/s12916-019-1356-z): Plan C = rehidratación IV con bolos para el choque; Maitland K et al., NEJM 2025 (doi:10.1056/NEJMoa2505752): bolos IV para el choque incluso en el brazo oral",
                 "lethal_risk": true
             }
         ],
@@ -43,7 +43,7 @@
                 "category": "Gastroenteritis",
                 "card_text": "Suspender la Alimentación: Ayuno hasta que cedan las evacuaciones para dejar descansar el intestino.",
                 "comment": "Navarro: La OMS indica continuar la alimentación, incluida la lactancia, durante la diarrea; el ayuno empeora el estado nutricional.",
-                "fuente": "OMS, The treatment of diarrhoea (manual)"
+                "fuente": "ESPGHAN/ESPID 2014 (doi:10.1097/mpg.0000000000000375): rehidratación oral hipoosmolar, alimentación sin cambios, antibióticos solo en casos excepcionales; la vía enteral es superior a la intravenosa"
             },
             {
                 "card_id": "dx_2",
@@ -51,7 +51,7 @@
                 "category": "VHG",
                 "card_text": "Refrescos o Bebidas Deportivas: Alternativa equivalente al Vida Suero Oral para rehidratar.",
                 "comment": "Navarro: Su alta osmolaridad y poco sodio pueden empeorar la diarrea; se rehidrata con suero oral de baja osmolaridad.",
-                "fuente": "OMS, The treatment of diarrhoea (manual)"
+                "fuente": "ESPGHAN/ESPID 2014 (doi:10.1097/mpg.0000000000000375): rehidratación oral hipoosmolar, alimentación sin cambios, antibióticos solo en casos excepcionales; la vía enteral es superior a la intravenosa"
             },
             {
                 "card_id": "dx_3",
@@ -59,7 +59,7 @@
                 "category": "meds",
                 "card_text": "Antibiótico Empírico de Rutina: Indicado en toda diarrea aguda acuosa del lactante.",
                 "comment": "Navarro: Los antibióticos se reservan para la diarrea con sangre (disentería), el cólera grave o infecciones asociadas; no para la diarrea acuosa común.",
-                "fuente": "OMS, The treatment of diarrhoea (manual)"
+                "fuente": "ESPGHAN/ESPID 2014 (doi:10.1097/mpg.0000000000000375): rehidratación oral hipoosmolar, alimentación sin cambios, antibióticos solo en casos excepcionales; la vía enteral es superior a la intravenosa"
             },
             {
                 "card_id": "dx_4",
@@ -67,7 +67,7 @@
                 "category": "meds",
                 "card_text": "Choque por Deshidratación: Iniciar suero oral por sonda nasogástrica como primera opción en lugar de líquidos IV.",
                 "comment": "Navarro: El choque se trata con líquidos IV (o intraóseos) de inmediato; la sonda solo es un recurso si no hay acceso vascular posible.",
-                "fuente": "OMS/AIEPI, Plan C",
+                "fuente": "OMS, Plan C; Houston KA et al., GASTRO, BMC Med 2019 (doi:10.1186/s12916-019-1356-z): Plan C = rehidratación IV con bolos para el choque; Maitland K et al., NEJM 2025 (doi:10.1056/NEJMoa2505752): bolos IV para el choque incluso en el brazo oral",
                 "lethal_risk": true
             }
         ],
@@ -78,7 +78,7 @@
                 "category": "meds",
                 "card_text": "Dopamina: Vasopresor de primera línea en el choque séptico.",
                 "comment": "Navarro: La norepinefrina es el vasopresor de primera línea; la dopamina se asocia a más arritmias.",
-                "fuente": "Surviving Sepsis Campaign 2021"
+                "fuente": "Surviving Sepsis 2021 (doi:10.1007/s00134-021-06506-y): norepinefrina de primera línea, no almidones, PAM de 65"
             },
             {
                 "card_id": "dx_2",
@@ -95,7 +95,7 @@
                 "category": "labs",
                 "card_text": "Almidones (Hidroxietil Almidón): Coloide de elección para la reanimación inicial.",
                 "comment": "Navarro: Los almidones aumentan la lesión renal y la mortalidad; se reanima con cristaloides balanceados.",
-                "fuente": "Surviving Sepsis Campaign 2021"
+                "fuente": "Surviving Sepsis 2021 (doi:10.1007/s00134-021-06506-y): norepinefrina de primera línea, no almidones, PAM de 65"
             },
             {
                 "card_id": "dx_4",
@@ -103,7 +103,7 @@
                 "category": "Definición Sepsis-3",
                 "card_text": "Meta de PAM de 85 mmHg: Objetivo inicial de la reanimación en todo paciente con choque séptico.",
                 "comment": "Navarro: La meta inicial recomendada es una PAM de 65 mmHg; metas más altas no mejoran la supervivencia.",
-                "fuente": "Surviving Sepsis Campaign 2021"
+                "fuente": "Surviving Sepsis 2021 (doi:10.1007/s00134-021-06506-y): norepinefrina de primera línea, no almidones, PAM de 65"
             }
         ],
         "PROC_INT_DM2_DX_001": [
@@ -162,8 +162,8 @@
                 "ui_icon": "calendar",
                 "category": "meds",
                 "card_text": "Citología Anual desde los 18 años: Tamizaje recomendado en toda mujer desde el inicio de la vida sexual.",
-                "comment": "Castillo: El tamizaje con citología inicia a los 25 años; iniciar antes aumenta tratamientos innecesarios de lesiones que suelen regresar.",
-                "fuente": "NOM-014 y la carta de citología del mismo mazo"
+                "comment": "Castillo: El tamizaje con citología no es anual ni empieza a los 18 años: las guías lo inician entre los 21 y los 25 años (en México, a los 25). Antes aumenta los tratamientos innecesarios de lesiones que suelen regresar.",
+                "fuente": "las guías inician entre los 21 años (USPSTF 2018) y los 25 (ACS 2020), nunca a los 18, y no es anual"
             },
             {
                 "card_id": "dx_4",
@@ -190,7 +190,7 @@
                 "category": "Paraclínicos",
                 "card_text": "Dímero D Normal en Probabilidad Alta: Descarta TEP aunque la sospecha clínica sea alta.",
                 "comment": "Mendoza: En probabilidad clínica alta no se usa el dímero D; un resultado normal no excluye TEP y se va directo a la angiotomografía.",
-                "fuente": "ESC 2019, guía de embolia pulmonar"
+                "fuente": "ACEP 2018 (doi:10.1016/j.annemergmed.2018.03.006): el dímero D se aplica a probabilidad baja o intermedia"
             },
             {
                 "card_id": "dx_3",
@@ -215,8 +215,8 @@
                 "ui_icon": "heart",
                 "category": "vitals",
                 "card_text": "Bajar la TA a menos de 140/90: Requisito antes de iniciar la trombólisis.",
-                "comment": "Mendoza: Para trombolizar basta con TA menor de 185/110 y mantenerla menor de 180/105 en las siguientes 24 horas; bajarla de más reduce la perfusión de la penumbra.",
-                "fuente": "AHA/ASA 2019, manejo temprano del EVC isquémico"
+                "comment": "Mendoza: Para trombolizar basta con TA menor de 185/110 y mantenerla menor de 180/105 durante las siguientes 24 horas. Bajarla más de lo necesario no mejora el desenlace y retrasa el tratamiento.",
+                "fuente": "ESO 2026 (doi:10.1093/esj/aakag004) <185/110 antes y <180/105 durante 24 h; ENCHANTED (doi:10.1016/s0140-6736(19)30038-8): bajar más no mejora el desenlace"
             },
             {
                 "card_id": "dx_2",
@@ -224,7 +224,7 @@
                 "category": "meds",
                 "card_text": "Aspirina junto con el rTPA: Administrarla al mismo tiempo que la alteplasa para potenciar la reperfusión.",
                 "comment": "Mendoza: Tras la alteplasa, la aspirina se difiere 24 horas para no aumentar el riesgo de hemorragia.",
-                "fuente": "AHA/ASA 2019, manejo temprano del EVC isquémico",
+                "fuente": "AHA/ASA 2019, Powers WJ et al., Stroke 2019 (doi:10.1161/STR.0000000000000211); Zinkstok SM et al., ARTIS, Lancet 2012 (doi:10.1016/S0140-6736(12)60949-0)",
                 "lethal_risk": true
             },
             {

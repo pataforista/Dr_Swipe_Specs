@@ -73,7 +73,7 @@
             "scoring": {
                 "points": 150,
                 "error_type": "lethal_commission",
-                "vazquez_comment": "Navarro: La estrategia es restrictiva, con umbral de 7 g/dL y meta de 7 a 9. Sobretransfundir eleva la presión portal y favorece el resangrado."
+                "vazquez_comment": "Navarro: La estrategia es restrictiva: se transfunde con hemoglobina cercana a 7 g/dL y la meta es de 7 a 8 g/dL. Sobretransfundir eleva la presión portal y favorece el resangrado."
             },
             "safety_flags": {
                 "lethal_risk": true

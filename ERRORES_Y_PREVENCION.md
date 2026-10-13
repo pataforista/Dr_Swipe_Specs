@@ -49,7 +49,24 @@ El pipeline estaba en verde (599 casos, 109 tests, lint y build), y aun así la 
 | 25 | Enter/Espacio/Retroceso sobre un botón con foco también decidían la carta | `SwipeDeck.tsx` | Activar la pista o Deshacer con teclado mandaba un swipe a la derecha | Esas teclas se ignoran sobre controles; las flechas siguen funcionando |
 | 26 | `connect-src 'self'` en la CSP | `public/_headers` | El service worker (Workbox) no podía pedir la hoja de Google Fonts y la fuente fallaba con la PWA instalada | `connect-src` admite `fonts.googleapis.com` y `fonts.gstatic.com` |
 
-Pendiente, sin corregir porque es decisión de diseño: abandonar un caso fallido con "Nueva Guardia" (desde `fail_protection` o `ghosted`) no registra el fallo en SM-2; solo lo hace "VER NOTAS". Un caso perdido y abandonado no vuelve al repaso.
+Resuelto el 2026-10-13 (decisión del dueño del producto): abandonar un caso fallido con "Nueva Guardia" desde `fail_protection` o `ghosted` lo registra como fallo y vuelve al repaso SM-2. `resetGame` ya no vacía la sesión (la abre `START_GUARD`/`RESUME_GUARD`) para que `useSessionCommit` vea ese fallo. Test en `sessionFlow.test.ts`.
+
+## Revisión de cierre para producción (2026-10-13)
+
+Pipeline en verde antes y después (599 casos, 123 tests, lint, build, 0 vulnerabilidades). Partida completa probada en Chromium a 390×780 sin errores de consola. Detalle y pendientes en `PLAN_CIERRE_PRODUCCION.md`.
+
+| # | Error | Dónde | Efecto | Corrección |
+|---|---|---|---|---|
+| 27 | ABANDONAR (pausa) y "Nueva guardia" desde `fail_protection` no borraban el autoguardado | `App.tsx` | REANUDAR GUARDIA devolvía un caso abandonado o perdido, con su puntaje | Ambos botones llaman a `clearSessionProgress()` |
+| 28 | Sesión y racha diaria se contaban antes de cargar los casos | `App.tsx` | Un intento sin conexión sumaba sesión y salvaba la racha | Se cuentan tras la carga exitosa (guardia, repaso y reanudar) |
+| 29 | Avisos de triaje (pista de laboratorio, botín) seguían en cola al entrar al Shock Room | `App.tsx` | Tapaban el encabezado del jefe con información que ya no aplicaba | La cola se vacía al entrar en `critical_alert` |
+| 30 | Casos en caché `CacheFirst` por 30 días | `vite.config.ts` | Una corrección clínica tardaba hasta un mes en llegar a quien ya jugó ese caso | `StaleWhileRevalidate`: llega en la siguiente visita y el juego sin conexión sigue igual |
+| 31 | Etiqueta "SIN DAÑO" solo visible con `hover` | `App.tsx` | Invisible en móvil | Siempre visible |
+| 32 | Etiqueta "NUEVA" permanente y parpadeante en INICIAR GUARDIA | `App.tsx` | Afirmaba algo falso para todo jugador | Eliminada |
+| 33 | "REPASAR MIS ERRORES" listaba también casos resueltos sin error | `App.tsx` | La etiqueta no correspondía a SM-2 | "REPASO PENDIENTE" |
+| 34 | Tutorial: "Error: −15" omitía el error letal (−40) | `TutorialOverlay.tsx` | El jugador no sabía por qué una carta le quitaba casi media barra | Muestra ambos costos |
+| 35 | La pantalla de error mostraba el mensaje técnico en producción | `ErrorBoundary.tsx` | Texto incomprensible para el jugador | Mensaje técnico solo en desarrollo |
+| 36 | Ícono `any maskable` combinado; manifiesto sin `id`/`lang` | `vite.config.ts` | Ícono recortado donde se usa como `any`; aviso de Lighthouse | Entradas separadas; `id`, `lang`, `start_url`, `scope` |
 
 ## Pendiente conocido
 

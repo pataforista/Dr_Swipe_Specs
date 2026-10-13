@@ -5,11 +5,16 @@ import { VitePWA } from 'vite-plugin-pwa';
 // https://vite.dev/config/
 export default defineConfig({
   base: '/',
+  define: {
+    __APP_VERSION__: JSON.stringify(process.env.npm_package_version ?? 'dev'),
+  },
   build: {
     rollupOptions: {
       output: {
         manualChunks(id: string) {
           if (!id.includes('node_modules')) return undefined;
+          // Error reporting loads after first paint, never in the startup bundle.
+          if (id.includes('@sentry')) return 'vendor-sentry';
           if (id.includes('framer-motion')) return 'vendor-motion';
           if (id.includes('xstate')) return 'vendor-xstate';
           if (id.includes('zod')) return 'vendor-zod';
@@ -24,6 +29,10 @@ export default defineConfig({
     VitePWA({
       registerType: 'prompt',
       manifest: {
+        id: '/',
+        lang: 'es',
+        start_url: '/',
+        scope: '/',
         name: 'Dr. Swipe: Triage Fatal',
         short_name: 'Dr. Swipe',
         description: 'Simulador de razonamiento clínico y supervivencia hospitalaria.',
@@ -33,7 +42,10 @@ export default defineConfig({
         orientation: 'portrait',
         icons: [
           { src: 'pwa-192x192.png', sizes: '192x192', type: 'image/png' },
-          { src: 'pwa-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' }
+          // Separate entries: a combined "any maskable" icon gets cropped where
+          // it is used as "any".
+          { src: 'pwa-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+          { src: 'pwa-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }
         ]
       },
       workbox: {
@@ -49,7 +61,10 @@ export default defineConfig({
             // NOTE: regex patterns match against the FULL url (https://host/...),
             // so a regex anchored at "^/cases/" never fires — use the pathname.
             urlPattern: ({ url }) => url.pathname.startsWith('/cases/'),
-            handler: 'CacheFirst',
+            // Stale-while-revalidate, not cache-first: a clinical correction to
+            // a case must reach players on their next visit, not after 30 days.
+            // Offline play still works from the cache.
+            handler: 'StaleWhileRevalidate',
             options: {
               cacheName: 'clinical-cases-cache',
               // 4000 entries: headroom for the 3,000+ case target (Phase 4)

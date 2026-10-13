@@ -32,6 +32,7 @@ jobs:
         run: |
           python3 tools/apply_guideline_review.py cases --check
           python3 tools/clean_card_leaks.py cases --check
+          python3 tools/apply_clinical_review_2026_10.py --check
           for f in content_drafts/distractores_lote*.json; do
             python3 tools/insert_distractors.py cases "$f" --check
           done
@@ -45,6 +46,9 @@ jobs:
       # `npm run build` runs `tsc -b` first, so type regressions fail CI here.
       - name: Build
         run: cd dr-swipe && npm run build
+        env:
+          # Public DSN (a repository variable, not a secret). Unset = no reporting.
+          VITE_SENTRY_DSN: ${{ vars.SENTRY_DSN }}
 
       - name: Deploy to Cloudflare Pages
         if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')

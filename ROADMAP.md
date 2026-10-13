@@ -344,7 +344,7 @@ Tareas:
 - [ ] Sentry / Analytics.
 - [x] CI/CD (GitHub Actions → Cloudflare Pages).
 - [ ] Tests E2E.
-- [ ] Versión 1.0.0.
+- [x] Versión 1.0.0 en `package.json` (visible en Ajustes). Falta la etiqueta git `v1.0.0` al publicar.
 
 8. Registro de decisiones (ADR ligero)
 | # | Decisión | Motivo | Alternativas |

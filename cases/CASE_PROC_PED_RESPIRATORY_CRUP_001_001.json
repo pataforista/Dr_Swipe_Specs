@@ -37,7 +37,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnostico",
-            "card_text": "Laringotraqueitis (CRUP): Virus Parainfluenza tipe 1 y 3. Triada: Tos traqueal, estridor e hiponia.",
+            "card_text": "Laringotraqueitis (CRUP): Virus Parainfluenza tipo 1 y 3. Triada: Tos traqueal, estridor y disfonía.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -70,7 +70,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Castillo: La epiglotitis cursa con fiebre alta, babeo, posición de trípode y sin tos perruna. Este paciente tiene tos perruna y mejora con el aire frío: es crup."
+                "vazquez_comment": "Castillo: La epiglotitis cursa con fiebre alta, babeo, posición de trípode y sin tos perruna. Este paciente tiene estridor y mejora con el aire frío: el cuadro es de crup."
             }
         },
         {
