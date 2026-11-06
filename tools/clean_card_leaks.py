@@ -96,6 +96,7 @@ def main() -> int:
     check = "--check" in sys.argv[2:]
     total = files = 0
     for path in sorted(cases_dir.glob("CASE_*.json")):
+        if not path.name.startswith("CASE_"): continue
         case = json.loads(path.read_text(encoding="utf-8"))
         changes = clean_case(case)
         if not changes:

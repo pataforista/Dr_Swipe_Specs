@@ -173,6 +173,7 @@ def main() -> int:
 
     all_fixes = [f for f in FIXES if "comment" in f] + CASE_FIXES
     for path in sorted((ROOT / "cases").glob("CASE_*.json")):
+        if not path.name.startswith("CASE_"): continue
         raw = path.read_text(encoding="utf-8")
         case = json.loads(raw)
         dirty = False

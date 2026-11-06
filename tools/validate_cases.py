@@ -97,7 +97,7 @@ def validate_case(path: Path) -> list[str]:
 
 def main() -> int:
     cases_dir = Path(sys.argv[1] if len(sys.argv) > 1 else "dr-swipe/public/cases")
-    files = sorted(cases_dir.glob("CASE_*.json"))
+    files = [p for p in sorted(cases_dir.glob("CASE_*.json")) if p.name.startswith("CASE_")]
     if not files:
         print(f"ERROR: no se encontraron casos en {cases_dir}")
         return 1

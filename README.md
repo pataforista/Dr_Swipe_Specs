@@ -46,3 +46,10 @@ npx tsx export_qa.ts       # Genera REVISION_PREGUNTAS_RESPUESTAS.csv
 - **XState (`gameMachine.ts`):** Maneja transiciones complejas (Idle -> Triage -> Boss Fight -> Reward/Ghosted).
 - **Diseño Inmersivo:** Uso intensivo de CSS Modules y variables CSS (`.medical-grid`, `.paper-sheet`, `.washi-tape-pink`) para una UI lúdica pero profesional.
 - **Validación Estricta:** Uso de **Zod** (`caseSchema.ts`) para garantizar que ningún caso clínico rompa el motor del juego.
+
+## 🔒 Privacidad y Almacenamiento Local
+
+- **Progreso y Estadísticas:** Todo el progreso (monedas, experiencia, racha, SRS, perlas desbloqueadas) se almacena 100% de manera local en el dispositivo del usuario (localStorage).
+- **Sin cuentas ni rastreadores:** No se recolectan nombres, correos ni datos personales.
+- **Tipografías:** Se solicitan a Google Fonts (Outfit y Fraunces).
+- **Reporte de errores:** Se incluye integración opt-in con Sentry para fallos técnicos, activo únicamente si se define SENTRY_DSN en tiempo de compilación, sin registro de IPs ni datos de usuario.

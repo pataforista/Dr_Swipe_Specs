@@ -976,7 +976,7 @@ export function App() {
               </div>
 
               <p className="text-[11px] text-slate-400 leading-snug mb-4">
-                {DISCLAIMER} Tu progreso se guarda solo en este dispositivo.{monitoringEnabled && ' Si la app falla, envía un reporte técnico sin datos personales para corregirlo.'} Versión {__APP_VERSION__}.
+                {DISCLAIMER} Tu progreso se guarda únicamente en este dispositivo. Tipografías cargadas desde Google Fonts.{monitoringEnabled && ' Si la app falla, envía un reporte técnico sin datos personales para corregirlo.'} Versión {__APP_VERSION__}.
               </p>
 
               <button

@@ -96,6 +96,7 @@ def main() -> int:
     rows = []
     family_totals = defaultdict(lambda: [0, 0])
     for path in sorted(cases_dir.glob("CASE_*.json")):
+        if not path.name.startswith("CASE_"): continue
         case = json.loads(path.read_text(encoding="utf-8"))
         cid = case["case_id"]
         family = re.sub(r"_\d+$", "", cid)
