@@ -30,7 +30,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
   };
 
   const expressionColors = {
-    neutral: 'text-slate-400',
+    neutral: 'text-slate-500',
     happy: 'text-emerald-500',
     angry: 'text-rose-500',
     shocked: 'text-amber-500'
@@ -123,7 +123,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
                       <div className="mb-1.5 flex items-center gap-2 text-xs text-slate-600">
                         <span className="min-w-0 truncate">«{mistake.cardText}»</span>
                         <span className={`flex-shrink-0 flex items-center gap-0.5 font-black uppercase tracking-wider ${mistake.expected === 'keep' ? 'text-primary' : 'text-rose-600'}`}>
-                          <span className="font-bold normal-case tracking-normal text-slate-400 mr-0.5">era</span>
+                          <span className="font-bold normal-case tracking-normal text-slate-500 mr-0.5">era</span>
                           {mistake.expected === 'keep'
                             ? <>Aceptar <ArrowRight className="w-3 h-3" strokeWidth={3} aria-hidden="true" /></>
                             : <><ArrowLeft className="w-3 h-3" strokeWidth={3} aria-hidden="true" /> Descartar</>}

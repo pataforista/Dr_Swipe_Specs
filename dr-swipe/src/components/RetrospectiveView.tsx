@@ -44,7 +44,7 @@ export const RetrospectiveView: React.FC<RetrospectiveViewProps> = ({ history, o
         </div>
         <button
           onClick={onClose}
-          className="w-12 h-12 flex items-center justify-center rounded-2xl bg-slate-50 hover:bg-slate-100 transition-colors text-slate-400 font-bold border-2 border-white shadow-sm"
+          className="w-12 h-12 flex items-center justify-center rounded-2xl bg-slate-50 hover:bg-slate-100 transition-colors text-slate-500 font-bold border-2 border-white shadow-sm"
         >
           <X className="w-5 h-5" aria-hidden="true" />
         </button>

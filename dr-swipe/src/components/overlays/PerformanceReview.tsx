@@ -66,7 +66,7 @@ export const PerformanceReview: React.FC<PerformanceReviewProps> = ({ metrics, m
             transition={{ delay: 0.2 }}
             className="mb-8 pr-20"
           >
-            <span className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 block mb-1">
+            <span className="text-xs font-black uppercase tracking-[0.2em] text-slate-500 block mb-1">
               EXPEDIENTE CERRADO
             </span>
             <h2 className={`text-3xl sm:text-4xl font-black lettering tracking-tight leading-none ${isVictory ? 'text-slate-800' : 'text-rose-600'}`}>
@@ -98,15 +98,15 @@ export const PerformanceReview: React.FC<PerformanceReviewProps> = ({ metrics, m
             <motion.div variants={ITEM_VARIANTS} className="grid grid-cols-3 gap-2">
               <div className="bg-slate-50 p-3 rounded-xl border border-slate-100 flex flex-col items-center text-center">
                 <span className="text-lg font-black text-slate-700">{Math.round(metrics.precision * 100)}%</span>
-                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider leading-tight mt-1">Precisión<br/>Clínica</span>
+                <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider leading-tight mt-1">Precisión<br/>Clínica</span>
               </div>
               <div className="bg-slate-50 p-3 rounded-xl border border-slate-100 flex flex-col items-center text-center">
                 <span className="text-lg font-black text-slate-700">x{metrics.maxCombo}</span>
-                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider leading-tight mt-1">Combo<br/>Máximo</span>
+                <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider leading-tight mt-1">Combo<br/>Máximo</span>
               </div>
               <div className="bg-slate-50 p-3 rounded-xl border border-slate-100 flex flex-col items-center text-center">
                 <span className="text-lg font-black text-slate-700">{metrics.casesCompleted}/{metrics.casesCompleted + metrics.casesFailed}</span>
-                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider leading-tight mt-1">Pacientes<br/>Estables</span>
+                <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider leading-tight mt-1">Pacientes<br/>Estables</span>
               </div>
             </motion.div>
 

@@ -45,7 +45,7 @@ export const CodexScreen: React.FC<CodexScreenProps> = ({ onClose }) => {
         </div>
         <button
           onClick={onClose}
-          className="w-10 h-10 flex items-center justify-center rounded-2xl bg-slate-50 border-2 border-white shadow-sm text-slate-400 hover:text-rose-400 transition-colors flex-shrink-0"
+          className="w-10 h-10 flex items-center justify-center rounded-2xl bg-slate-50 border-2 border-white shadow-sm text-slate-500 hover:text-rose-400 transition-colors flex-shrink-0"
           aria-label="Cerrar"
         >
           <X className="w-5 h-5" aria-hidden="true" />
@@ -68,7 +68,7 @@ export const CodexScreen: React.FC<CodexScreenProps> = ({ onClose }) => {
             aria-selected={tab === t.id}
             onClick={() => setTab(t.id)}
             className={`pb-2 text-xs font-black uppercase tracking-wide whitespace-nowrap flex items-center gap-1.5 transition-all ${
-              tab === t.id ? 'text-primary border-b-2 border-primary' : 'text-slate-400 hover:text-slate-600'
+              tab === t.id ? 'text-primary border-b-2 border-primary' : 'text-slate-500 hover:text-slate-600'
             }`}
           >
             {t.label}
@@ -90,7 +90,7 @@ export const CodexScreen: React.FC<CodexScreenProps> = ({ onClose }) => {
               transition={{ delay: i * 0.03 }}
               className={`rounded-2xl p-3 border flex gap-3 items-start ${done ? 'bg-amber-50/60 border-amber-100' : 'bg-slate-50 border-slate-100'}`}
             >
-              <div className={`w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 ${done ? 'bg-amber-100 text-amber-700' : 'bg-slate-200 text-slate-400'}`}>
+              <div className={`w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 ${done ? 'bg-amber-100 text-amber-700' : 'bg-slate-200 text-slate-500'}`}>
                 <Award className="w-4 h-4" aria-hidden="true" />
               </div>
               <div className="min-w-0 flex-1">
@@ -101,7 +101,7 @@ export const CodexScreen: React.FC<CodexScreenProps> = ({ onClose }) => {
                     <div className="h-1.5 flex-1 bg-slate-200 rounded-full overflow-hidden">
                       <div className="h-full bg-primary/70 rounded-full" style={{ width: `${(value / a.umbral) * 100}%` }} />
                     </div>
-                    <span className="text-xs font-bold text-slate-400 tabular-nums">{value}/{a.umbral}</span>
+                    <span className="text-xs font-bold text-slate-500 tabular-nums">{value}/{a.umbral}</span>
                   </div>
                 )}
               </div>
@@ -110,7 +110,7 @@ export const CodexScreen: React.FC<CodexScreenProps> = ({ onClose }) => {
         })}
 
         {tab === 'perlas' && (unlockedPearls.length === 0 ? (
-          <div className="text-center py-12 text-slate-400 text-sm italic lettering leading-relaxed">
+          <div className="text-center py-12 text-slate-500 text-sm italic lettering leading-relaxed">
             "Aún no has desbloqueado perlas ENARM.<br />Resuelve casos clínicos con éxito para coleccionarlas aquí."
           </div>
         ) : unlockedPearls.map((pearl, i) => (
@@ -123,7 +123,7 @@ export const CodexScreen: React.FC<CodexScreenProps> = ({ onClose }) => {
           >
             <div className="flex justify-between items-start mb-2 gap-2">
               <span className="text-xs font-black uppercase bg-primary/10 text-primary px-2 py-0.5 rounded-md">{pearl.category || 'General'}</span>
-              {pearl.gpc_ref && <span className="text-xs font-bold text-slate-400 uppercase">GPC: {pearl.gpc_ref}</span>}
+              {pearl.gpc_ref && <span className="text-xs font-bold text-slate-500 uppercase">GPC: {pearl.gpc_ref}</span>}
             </div>
             <h4 className="text-sm font-black text-slate-800 mb-1 leading-snug">{pearl.title}</h4>
             <p className="text-xs text-slate-600 leading-relaxed font-medium">{pearl.text}</p>
@@ -131,18 +131,18 @@ export const CodexScreen: React.FC<CodexScreenProps> = ({ onClose }) => {
         )))}
 
         {tab === 'especialidades' && (specialties.length === 0 ? (
-          <div className="text-center py-12 text-slate-400 text-sm italic lettering leading-relaxed">
+          <div className="text-center py-12 text-slate-500 text-sm italic lettering leading-relaxed">
             "Todavía no hay casos en tu libreta.<br />Cada guardia que termines aparece aquí por especialidad."
           </div>
         ) : specialties.map(row => (
           <div key={row.specialty} className="bg-slate-50 border border-slate-100 rounded-2xl p-3">
             <div className="flex justify-between items-baseline gap-2 mb-2">
               <h4 className="text-sm font-black text-slate-800">{row.label}</h4>
-              <span className="text-xs font-bold text-slate-400 tabular-nums">{row.seen} {row.seen === 1 ? 'caso' : 'casos'}</span>
+              <span className="text-xs font-bold text-slate-500 tabular-nums">{row.seen} {row.seen === 1 ? 'caso' : 'casos'}</span>
             </div>
             <div className="flex gap-2 text-xs font-bold">
               <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700">Dominados {row.mastered}</span>
-              <span className={`px-2 py-0.5 rounded-full ${row.due > 0 ? 'bg-rose-50 text-rose-600' : 'bg-slate-100 text-slate-400'}`}>Por repasar {row.due}</span>
+              <span className={`px-2 py-0.5 rounded-full ${row.due > 0 ? 'bg-rose-50 text-rose-600' : 'bg-slate-100 text-slate-500'}`}>Por repasar {row.due}</span>
             </div>
           </div>
         )))}

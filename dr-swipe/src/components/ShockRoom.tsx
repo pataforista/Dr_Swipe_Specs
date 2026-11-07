@@ -176,7 +176,7 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
 
         <div className="mb-3 sm:mb-10 relative z-10">
             <div className="flex justify-between items-end mb-4">
-              <span className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] lettering">Progreso del caso</span>
+              <span className="text-xs font-black text-slate-500 uppercase tracking-[0.2em] lettering">Progreso del caso</span>
               <div className="flex gap-4 items-center">
                 <span className="text-xs font-bold text-slate-500 lettering">{currentStep + 1} / {totalSteps}</span>
               </div>
@@ -239,7 +239,7 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
                     <span className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center font-bold text-xs sm:text-sm transition-colors flex-shrink-0 ${
                       st === 'right' ? 'border-emerald-500 bg-emerald-500 text-white'
                         : st === 'wrong' ? 'border-rose-400 bg-rose-400 text-white'
-                        : 'border-slate-200 text-slate-400 group-hover:border-emerald-300 group-hover:text-emerald-500'
+                        : 'border-slate-200 text-slate-500 group-hover:border-emerald-300 group-hover:text-emerald-500'
                     }`}>
                       {st === 'right' ? <Check className="w-4 h-4" strokeWidth={3} aria-hidden="true" />
                         : st === 'wrong' ? <X className="w-4 h-4" strokeWidth={3} aria-hidden="true" />
@@ -255,7 +255,7 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
 
         {/* Marginal notes for previous findings (Dossier) */}
         <div className="mt-3 sm:mt-8 pt-3 sm:pt-6 border-t-2 border-slate-50 flex flex-wrap gap-3 opacity-60">
-            <span className="text-xs font-black text-slate-400 uppercase tracking-widest block w-full mb-2 lettering italic">Hallazgos registrados en el diario:</span>
+            <span className="text-xs font-black text-slate-500 uppercase tracking-widest block w-full mb-2 lettering italic">Hallazgos registrados en el diario:</span>
             {dossierItems.slice(-3).map((item, idx) => (
                 <span key={idx} className="bg-slate-50 px-4 py-1.5 rounded-full text-xs lettering font-bold border-2 border-white max-w-[200px] truncate" title={item.card_text}>
                    {item.card_text.length > 40 ? `${item.card_text.slice(0, 40)}...` : item.card_text}

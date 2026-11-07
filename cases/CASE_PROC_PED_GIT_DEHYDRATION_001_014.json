@@ -4,7 +4,7 @@
     "theme_config": "ped",
     "difficulty": "standard",
     "patient_intro": {
-        "name": "Jorge, 3 anos",
+        "name": "Jorge, 3 años",
         "arrival_scenario": "Lactante con evacuaciones liquidas abundantes. Se observa irritable, con sed avida, ojos ligeramente hundidos y signo del pliegue lento. Acepta y busca ansiosamente el VSO.",
         "time_limit_sec": 60
     },
@@ -184,7 +184,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "imaging",
-            "card_text": "Deshidratacion Moderada (Plan B): Perdida ponderal 5-9%, ojos ligeramente hundidos, signo del pliegue lento e irritabilidad. Acepta VSO oral.",
+            "card_text": "Deshidratación Moderada (Plan B): Perdida ponderal 5-9%, ojos ligeramente hundidos, signo del pliegue lento e irritabilidad. Acepta VSO oral.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

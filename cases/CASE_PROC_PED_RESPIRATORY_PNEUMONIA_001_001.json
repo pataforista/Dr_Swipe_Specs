@@ -4,8 +4,8 @@
     "theme_config": "ped",
     "difficulty": "standard",
     "patient_intro": {
-        "name": "Valentina, 3 anos",
-        "arrival_scenario": "Preescolar con tos productiva, fiebre de 39°C y dificultad respiratoria (taquipnea y aleteo nasal). A la auscultacion se perciben estertores crepitantes localizados en base pulmonar derecha.",
+        "name": "Valentina, 3 años",
+        "arrival_scenario": "Preescolar con tos productiva, fiebre de 39°C y dificultad respiratoria (taquipnea y aleteo nasal). A la auscultación se perciben estertores crepitantes localizados en base pulmonar derecha.",
         "time_limit_sec": 60
     },
     "card_stream": [
@@ -37,7 +37,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "Diagnostico",
-            "card_text": "Neumonia Adquirida en la Comunidad (NAC): Presencia de consolidacion en Rx o estertores + Sintomas de infeccion respiratoria aguda.",
+            "card_text": "Neumonia Adquirida en la Comunidad (NAC): Presencia de consolidación en Rx o estertores + Sintomas de infección respiratoria aguda.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -77,19 +77,19 @@
             "card_id": "c_5",
             "ui_icon": "info",
             "category": "Neumonia Atipica",
-            "card_text": "Mycoplasma pneumoniae: Etiologia comun en ninos mayores (>5 anos) con tos persistente, seca y escasa fiebre.",
+            "card_text": "Mycoplasma pneumoniae: Etiologia comun en ninos mayores (>5 años) con tos persistente, seca y escasa fiebre.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
-                "vazquez_comment": "Navarro: Bien. En estos casos los macrolidos (Azitromicina) son la eleccion."
+                "vazquez_comment": "Navarro: Bien. En estos casos los macrolidos (Azitromicina) son la elección."
             }
         },
         {
             "card_id": "c_6",
             "ui_icon": "camera",
             "category": "Imagen",
-            "card_text": "Radiografia de Torax: Hallazgo tipico de NAC bacteriana: Consolidacion lobar o segmentaria con broncograma aereo.",
+            "card_text": "Radiografia de Torax: Hallazgo tipico de NAC bacteriana: Consolidación lobar o segmentaria con broncograma aereo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -100,8 +100,8 @@
         {
             "card_id": "c_7",
             "ui_icon": "droplet",
-            "category": "Complicacion",
-            "card_text": "Derrame Paraneumonico: Si la fiebre persiste >48-72h tras iniciar antibioticos, sospecha ocupacion pleural.",
+            "category": "Complicación",
+            "card_text": "Derrame Paraneumonico: Si la fiebre persiste >48-72h tras iniciar antibioticos, sospecha ocupación pleural.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -112,13 +112,13 @@
         {
             "card_id": "c_8",
             "ui_icon": "zap",
-            "category": "Prevencion",
+            "category": "Prevención",
             "card_text": "Vacuna Conjugada 13-valente: Ha reducido drasticamente la incidencia de neumonia invasiva por neumococo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
                 "error_type": "omission",
-                "vazquez_comment": "Navarro: ¡Fundamental! La prevencion es la mejor medicina."
+                "vazquez_comment": "Navarro: ¡Fundamental! La prevención es la mejor medicina."
             }
         },
         {
@@ -130,7 +130,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: ¡No! Los antitusigenos estan contraindicados en ninos pequenos; pueden inhibir la eliminacion de secreciones."
+                "vazquez_comment": "Navarro: ¡No! Los antitusigenos estan contraindicados en ninos pequenos; pueden inhibir la eliminación de secreciones."
             }
         },
         {
@@ -149,19 +149,19 @@
             "card_id": "c_10",
             "ui_icon": "pill",
             "category": "Tratamiento Hospitalario",
-            "card_text": "Ampicilina o Penicilina G Sodica: Tratamiento IV de eleccion para NAC bacteriana en el paciente hospitalizado con esquema de vacunacion completo.",
+            "card_text": "Ampicilina o Penicilina G Sodica: Tratamiento IV de elección para NAC bacteriana en el paciente hospitalizado con esquema de vacunación completo.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
-                "vazquez_comment": "Navarro: Correcto. Si el nino esta vacunado, no necesitamos cefalosporinas de 3ra generacion de entrada."
+                "vazquez_comment": "Navarro: Correcto. Si el nino esta vacunado, no necesitamos cefalosporinas de 3ra generación de entrada."
             }
         },
         {
             "card_id": "c_3",
             "ui_icon": "pill",
             "category": "Tratamiento Ambulatorio",
-            "card_text": "Amoxicilina (Altas dosis): 80-90 mg/kg/dia por 7-10 dias. Tratamiento de primera eleccion para NAC no complicada.",
+            "card_text": "Amoxicilina (Altas dosis): 80-90 mg/kg/dia por 7-10 dias. Tratamiento de primera elección para NAC no complicada.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -177,7 +177,7 @@
             "card_id": "c_4",
             "ui_icon": "alert-triangle",
             "category": "Criterios Ingreso",
-            "card_text": "SatO2 <92% (Aire ambiente): Indicacion absoluta de ingreso hospitalario para oxigenoterapia y manejo IV.",
+            "card_text": "SatO2 <92% (Aire ambiente): Indicación absoluta de ingreso hospitalario para oxigenoterapia y manejo IV.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -193,13 +193,13 @@
     "enarm_pearl": {
         "title": "Neumonia Ped: Pilares Tx",
         "text": "1ra linea Ambulatorio: Amoxicilina (High dose). Hospital: Ampicilina IV. Atipica (>5a): Azitromicina. Criterios: Sat <92% o dificultad grave.",
-        "gpc_ref": "GPC Prevencion, Diagnostico y Tratamiento de la Neumonia Adquirida en la Comunidad"
+        "gpc_ref": "GPC Prevención, Diagnostico y Tratamiento de la Neumonia Adquirida en la Comunidad"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",
         "questions": [
             {
-                "question": "¿Cuál es el tratamiento antibiotico de eleccion para una NAC no complicada en el manejo ambulatorio?",
+                "question": "¿Cuál es el tratamiento antibiotico de elección para una NAC no complicada en el manejo ambulatorio?",
                 "options": [
                     "Eritromicina oral",
                     "Amoxicilina a dosis de 80-90 mg/kg/dia",
@@ -208,7 +208,7 @@
                 "correct_index": 1
             },
             {
-                "question": "¿A partir de que nivel de saturacion de oxigeno por oximetria de pulso se indica el ingreso hospitalario?",
+                "question": "¿A partir de que nivel de saturación de oxigeno por oximetria de pulso se indica el ingreso hospitalario?",
                 "options": [
                     "Menor a 88%",
                     "Menor a 92%",

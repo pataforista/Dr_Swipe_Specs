@@ -115,7 +115,7 @@
         {
             "card_id": "l6_ds4",
             "ui_icon": "clipboard",
-            "category": "Evaluacion",
+            "category": "Evaluación",
             "card_text": "Escala SAD PERSONS como único criterio para decidir el alta: Un puntaje bajo permite el manejo ambulatorio.",
             "expected_action": "discard",
             "scoring": {
