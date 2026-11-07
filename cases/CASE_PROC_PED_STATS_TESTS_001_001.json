@@ -5,7 +5,7 @@
     "difficulty": "standard",
     "patient_intro": {
         "name": "Dr. Martinez, R1 de Pediatria",
-        "arrival_scenario": "Estas analizando un estudio sobre la eficacia de un nuevo antibiotico en neumonia infantil. ¿Qué prueba estadística es la adecuada para cada tipo de variable y comparacion?",
+        "arrival_scenario": "Estas analizando un estudio sobre la eficacia de un nuevo antibiotico en neumonia infantil. ¿Qué prueba estadística es la adecuada para cada tipo de variable y comparación?",
         "time_limit_sec": 60
     },
     "card_stream": [
@@ -73,7 +73,7 @@
             "card_id": "c_2",
             "ui_icon": "grid",
             "category": "Estadistica Inf.",
-            "card_text": "Chi-Cuadrada (Pearson): Se usa para comparar proporciones o asociacion entre variables Categoricas/Nominales (Ej: Sexo y Presencia de Tos).",
+            "card_text": "Chi-Cuadrada (Pearson): Se usa para comparar proporciones o asociación entre variables Categoricas/Nominales (Ej: Sexo y Presencia de Tos).",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -108,13 +108,13 @@
         {
             "card_id": "c_4",
             "ui_icon": "trending-up",
-            "category": "Relacion",
-            "card_text": "Correlacion de Pearson (r): Mide la fuerza y direccion de la relacion lineal entre dos variables continuas.",
+            "category": "Relación",
+            "card_text": "Correlación de Pearson (r): Mide la fuerza y dirección de la relación lineal entre dos variables continuas.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
                 "error_type": "omission",
-                "vazquez_comment": "Navarro: Correcto. Cerca de +1 o -1 es una relacion fuerte."
+                "vazquez_comment": "Navarro: Correcto. Cerca de +1 o -1 es una relación fuerte."
             }
         },
         {
@@ -132,7 +132,7 @@
         {
             "card_id": "c_6",
             "ui_icon": "maximize",
-            "category": "Precision",
+            "category": "Precisión",
             "card_text": "Intervalo de Confianza (IC 95%): Rango donde se encuentra el verdadero valor poblacional con un 95% de certeza.",
             "expected_action": "keep",
             "scoring": {
@@ -181,12 +181,12 @@
             "card_id": "c_9",
             "ui_icon": "users",
             "category": "Muestreo",
-            "card_text": "Muestreo Aleatorio Simple: Cada individuo de la poblacion tiene la misma probabilidad de ser elegido para el estudio.",
+            "card_text": "Muestreo Aleatorio Simple: Cada individuo de la población tiene la misma probabilidad de ser elegido para el estudio.",
             "expected_action": "keep",
             "scoring": {
                 "points": 50,
                 "error_type": "omission",
-                "vazquez_comment": "Navarro: El ideal teorica para evitar sesgos de seleccion."
+                "vazquez_comment": "Navarro: El ideal teorica para evitar sesgos de selección."
             }
         },
         {
@@ -217,7 +217,7 @@
     "enarm_pearl": {
         "title": "Bioestadistica: Tipos de Variables",
         "text": "Nominal: Sin orden (Sexo). Ordinal: Con orden (Grado escolar). Continua: Medible (Peso). Discreta: Contable (N° hijos).",
-        "gpc_ref": "Metodologia de la Investigacion Clinica"
+        "gpc_ref": "Metodologia de la Investigación Clinica"
     },
     "boss_fight_triad": {
         "trigger": "after_cards",

@@ -45,7 +45,7 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({ onComplete }) 
         {/* Washi Tape Header */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 sm:w-48 h-7 sm:h-10 washi-tape -rotate-1 shadow-sm border-x-2 border-white/40 z-20" />
 
-        <span className="text-primary/60 block mb-6 sm:mb-10 text-xs sm:text-[12px] font-black tracking-[0.3em] sm:tracking-[0.4em] lettering uppercase">
+        <span className="text-primary block mb-6 sm:mb-10 text-xs sm:text-[12px] font-black tracking-[0.3em] sm:tracking-[0.4em] lettering uppercase">
           Guía de Estudio · {current + 1}/{SLIDES.length}
         </span>
 
@@ -102,7 +102,7 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({ onComplete }) 
         {current === 0 && (
           <button
             onClick={onComplete}
-            className="mt-8 text-xs font-black tracking-[0.4em] text-slate-500 hover:text-rose-500 transition-colors uppercase lettering italic"
+            className="mt-4 px-4 py-3 text-xs font-black tracking-[0.4em] text-slate-500 hover:text-rose-500 transition-colors uppercase lettering italic"
           >
             — SALTAR TUTORIAL —
           </button>

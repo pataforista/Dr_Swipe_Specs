@@ -79,7 +79,7 @@ export const ReloadPrompt: React.FC = () => {
                 </button>
                 <button
                   onClick={close}
-                  className="px-6 py-3 rounded-full border border-slate-200 text-slate-400 text-xs font-bold uppercase tracking-wider hover:bg-slate-50 transition-colors"
+                  className="px-6 py-3 rounded-full border border-slate-200 text-slate-500 text-xs font-bold uppercase tracking-wider hover:bg-slate-50 transition-colors"
                 >
                   LUEGO
                 </button>

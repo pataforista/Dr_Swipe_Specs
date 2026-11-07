@@ -4,7 +4,7 @@
     "theme_config": "ped",
     "difficulty": "standard",
     "patient_intro": {
-        "name": "Diego, 2 anos",
+        "name": "Diego, 2 años",
         "arrival_scenario": "Preescolar con evacuaciones liquidas frecuentes pero activo y alerta. Mucosas humedas, llanto con lagrimas, perdida ponderal estimada menos del 5%. Tolera la via oral sin vomitos.",
         "time_limit_sec": 60
     },
@@ -18,7 +18,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "hoarding",
-                "vazquez_comment": "Navarro: Bien! No hay signos de deshidratacion clinica. Inicia Plan A ambulatorio en casa."
+                "vazquez_comment": "Navarro: Bien! No hay signos de deshidratación clinica. Inicia Plan A ambulatorio en casa."
             }
         },
         {
@@ -133,7 +133,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "imaging",
-            "card_text": "Sin deshidratacion clinica (Plan A): Perdida ponderal menos del 5%, mucosas humedas, llanto con lagrimas. Tolera la via oral. Manejo preventivo ambulatorio.",
+            "card_text": "Sin deshidratación clinica (Plan A): Perdida ponderal menos del 5%, mucosas humedas, llanto con lagrimas. Tolera la via oral. Manejo preventivo ambulatorio.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

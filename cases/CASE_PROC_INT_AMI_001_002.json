@@ -187,7 +187,7 @@
             "scoring": {
                 "points": 150,
                 "error_type": "lethal_hazard",
-                "vazquez_comment": "Mendoza: ¡PELIGRO! En el infarto inferior con sospecha de extension a ventrículo derecho, los nitratos pueden causar colapso circulatorio."
+                "vazquez_comment": "Mendoza: ¡PELIGRO! En el infarto inferior con sospecha de extensión a ventrículo derecho, los nitratos pueden causar colapso circulatorio."
             },
             "safety_flags": {
                 "lethal_risk": true,

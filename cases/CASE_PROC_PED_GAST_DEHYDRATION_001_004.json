@@ -175,7 +175,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "imaging",
-            "card_text": "Deshidratacion Grave con Choque: Perdida ponderal >10%, llenado capilar >4s, letargo y compromiso hemodinamico. Requiere Plan C inmediato.",
+            "card_text": "Deshidratación Grave con Choque: Perdida ponderal >10%, llenado capilar >4s, letargo y compromiso hemodinamico. Requiere Plan C inmediato.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

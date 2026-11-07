@@ -91,7 +91,7 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
                 key={i}
                 aria-hidden="true"
                 animate={i < lives ? { opacity: 1, scale: 1 } : { opacity: 0.2, scale: 0.8 }}
-                className={i < lives ? 'text-primary' : 'text-slate-400'}
+                className={i < lives ? 'text-primary' : 'text-slate-500'}
               >
                 <UserRound className="w-3 h-3" strokeWidth={2.5} />
               </motion.span>
@@ -112,7 +112,7 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
             </div>
             <button
               onClick={onPause}
-              className="w-9 h-9 flex items-center justify-center bg-white/80 hover:bg-rose-50 border border-slate-200 rounded-xl shadow-sm transition-all active:scale-95 cursor-pointer"
+              className="w-11 h-11 flex items-center justify-center bg-white/80 hover:bg-rose-50 border border-slate-200 rounded-xl shadow-sm transition-all active:scale-95 cursor-pointer"
               aria-label="Pausar juego"
             >
               <Pause className="w-4 h-4" fill="currentColor" aria-hidden="true" />
@@ -193,7 +193,7 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
 
 const Reading: React.FC<{ label: string; value: string; unit?: string; color: string }> = ({ label, value, unit, color }) => (
   <span className="flex items-baseline gap-1 whitespace-nowrap">
-    <span className="text-xs font-bold text-slate-400">{label}</span>
+    <span className="text-xs font-bold text-slate-500">{label}</span>
     <span className={`text-xs font-black tabular-nums ${color}`}>{value}{unit && <span className="text-xs opacity-60 ml-0.5">{unit}</span>}</span>
   </span>
 );
@@ -203,7 +203,7 @@ const Reading: React.FC<{ label: string; value: string; unit?: string; color: st
 const VitalsMonitor: React.FC<{ vitals: TelemetryHUDProps['lastVitals'] }> = ({ vitals }) => {
   const shell = 'basis-full h-[22px] border-t border-slate-100 pt-1 flex items-center gap-2.5';
   if (!vitals) return (
-    <div className={`${shell} text-slate-400`}>
+    <div className={`${shell} text-slate-500`}>
       <span className="text-xs font-black uppercase tracking-widest">Telemetría</span>
       <div className="flex-1 h-1 bg-slate-200/70 rounded-full" />
     </div>
@@ -220,7 +220,7 @@ const VitalsMonitor: React.FC<{ vitals: TelemetryHUDProps['lastVitals'] }> = ({ 
   const color = getStatusColor(vitals.status);
   return (
     <div className={shell}>
-      <span className="flex items-center gap-1 text-xs font-black uppercase tracking-widest text-slate-400 lettering">
+      <span className="flex items-center gap-1 text-xs font-black uppercase tracking-widest text-slate-500 lettering">
         <span className={`w-1.5 h-1.5 ${dotColor} rounded-full animate-pulse`} />
         <span className={color}>{vitals.status === 'normal' ? 'Estable' : vitals.status === 'alert' ? 'Riesgo' : 'CRÍTICO'}</span>
       </span>

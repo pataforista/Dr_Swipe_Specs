@@ -568,7 +568,7 @@ export function App() {
   // app root is overflow-hidden. `min-h-full` + centering keeps short ones
   // centered; taller ones scroll instead of being clipped top and bottom.
   const scrollPanel = (node: ReactNode) => (
-    <div className="fixed inset-0 z-[120] overflow-y-auto overscroll-contain bg-paper" style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}>
+    <div role="main" className="fixed inset-0 z-[120] overflow-y-auto overscroll-contain bg-paper" style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}>
       <div className="min-h-full flex items-center justify-center py-6 px-2">{node}</div>
     </div>
   );
@@ -579,7 +579,7 @@ export function App() {
         <div className="fixed inset-0 bg-paper flex flex-col items-center justify-center p-4 sm:p-8 z-[120] overflow-y-auto">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-6 sm:p-10 max-w-md w-full text-center shadow-xl relative bg-white my-auto shrink-0">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 sm:w-40 h-6 sm:h-8 washi-tape -rotate-1 shadow-sm" />
-            <span className="text-xs font-bold text-slate-400 uppercase lettering block mt-3 sm:mt-4 mb-1 sm:mb-2">EXPEDIENTE MÉDICO</span>
+            <span className="text-xs font-bold text-slate-500 uppercase lettering block mt-3 sm:mt-4 mb-1 sm:mb-2">EXPEDIENTE MÉDICO</span>
             <h2 className="text-3xl sm:text-5xl font-black text-slate-800 lettering mb-3 sm:mb-4 break-words">{currentCase.patient_intro.name}</h2>
             <div className="bg-slate-50 p-4 sm:p-6 rounded-2xl mb-4 border-2 border-dashed border-slate-100 italic lettering text-base sm:text-lg">"{currentCase.patient_intro.arrival_scenario}"</div>
             {introLine && (
@@ -629,7 +629,7 @@ export function App() {
     switch (true) {
       case state.matches('idle'):
         return (
-          <div className="fixed inset-0 bg-paper overflow-y-auto overscroll-contain z-[120]" style={{ touchAction: 'pan-y' }}>
+          <div role="main" className="fixed inset-0 bg-paper overflow-y-auto overscroll-contain z-[120]" style={{ touchAction: 'pan-y' }}>
            <div className="min-h-full flex flex-col items-center justify-center p-4 sm:p-8">
             <div className="text-center mb-6 sm:mb-10">
               <span className="text-xs font-black tracking-widest text-primary uppercase mb-2 block lettering">NOTAS DE ESTUDIO</span>
@@ -653,7 +653,7 @@ export function App() {
             
             {/* Specialty Selector Chips */}
             <div className="mb-6 sm:mb-8 text-center max-w-sm w-full z-20">
-              <span className="text-xs font-black text-slate-400 uppercase tracking-widest block mb-2.5 lettering">SELECCIONAR ESPECIALIDAD:</span>
+              <span className="text-xs font-black text-slate-500 uppercase tracking-widest block mb-2.5 lettering">SELECCIONAR ESPECIALIDAD:</span>
               <div className="flex flex-wrap justify-center gap-2">
                 {[
                   { id: 'all', label: 'Mixta' },
@@ -684,9 +684,9 @@ export function App() {
                 </button>
               </div>
 
-              <button onClick={() => startNewCase(true, selectedSpecialty)} disabled={isLoadingCase} className="marker-btn relative py-4 sm:py-5 text-base sm:text-xl !bg-emerald-600 !border-emerald-500 shadow-emerald-200">
+              <button onClick={() => startNewCase(true, selectedSpecialty)} disabled={isLoadingCase} className="marker-btn relative py-4 sm:py-5 text-base sm:text-xl !bg-emerald-700 !border-emerald-600 shadow-emerald-200">
                  {isLoadingCase ? 'PREPARANDO...' : 'MODO ESTUDIO'}
-                 <div className="absolute -top-3 right-0 sm:-right-4 bg-amber-500 text-white text-xs px-2 py-0.5 rounded-full shadow-md pointer-events-none">SIN DAÑO</div>
+                 <div className="absolute -top-3 right-0 sm:-right-4 bg-amber-400 text-slate-900 font-bold text-xs px-2 py-0.5 rounded-full shadow-md pointer-events-none">SIN DAÑO</div>
               </button>
 
               {/* Repasar Errores Button */}
@@ -704,13 +704,13 @@ export function App() {
 
               <div className="flex gap-4 justify-center pt-2">
                 <button onClick={() => setShowStats(true)} className="text-xs font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Ver mi diario</button>
-                <span className="text-slate-300">|</span>
+                <span className="text-slate-300" aria-hidden="true">|</span>
                 <button onClick={() => setShowCodex(true)} className="text-xs font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Códex</button>
-                <span className="text-slate-300">|</span>
+                <span className="text-slate-300" aria-hidden="true">|</span>
                 <button onClick={() => setShowSettings(true)} className="text-xs font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Ajustes</button>
               </div>
             </div>
-            <p className="max-w-xs text-center text-[11px] text-slate-400 leading-snug mt-6 px-4">
+            <p className="max-w-xs text-center text-xs text-slate-500 leading-snug mt-6 px-4">
               {DISCLAIMER}
             </p>
            </div>
@@ -833,7 +833,7 @@ export function App() {
                       showToast(`${MENTOR_NAMES.navarro}: "${pickDialog('adjunto_revive').texto}"`, 'milestone');
                     }
                   }}
-                  className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl !bg-emerald-600 hover:!bg-emerald-700 !border-emerald-500 shadow-emerald-200"
+                  className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl !bg-emerald-600 hover:!bg-emerald-800 !border-emerald-600 shadow-emerald-200"
                 >
                   LLAMAR AL ADJUNTO ({REVIVE_FAVOR_COST} Favores de {favors})
                 </button>
@@ -860,7 +860,7 @@ export function App() {
               {state.context.debriefData?.text || "Revisa las cartas de tu consulta para repasar los conceptos clave."}
             </div>
             {state.context.debriefData?.gpc && (
-              <p className="text-xs font-bold text-slate-400 uppercase mb-3 sm:mb-4 lettering">
+              <p className="text-xs font-bold text-slate-500 uppercase mb-3 sm:mb-4 lettering">
                 GPC: {state.context.debriefData.gpc}
               </p>
             )}
@@ -876,7 +876,7 @@ export function App() {
 
   return (
     <MotionConfig reducedMotion="user">
-    <div ref={rootRef} className="fixed inset-0 bg-paper flex flex-col items-center select-none overflow-hidden text-slate-800 p-safe-top p-safe-bottom p-safe-left p-safe-right">
+    <div ref={rootRef} role="main" className="fixed inset-0 bg-paper flex flex-col items-center select-none overflow-hidden text-slate-800 p-safe-top p-safe-bottom p-safe-left p-safe-right">
       <div className="absolute inset-0 pointer-events-none opacity-[0.02] medical-grid" />
       {/* Hit vignette (driven by useImpactFeedback) and the last-10-seconds pulse. */}
       <div ref={vignetteRef} className="vignette z-[90]" aria-hidden="true" />
@@ -916,7 +916,7 @@ export function App() {
       <AnimatePresence>{isPaused && state.matches('triage') && (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="fixed inset-0 z-[130] flex flex-col items-center justify-center bg-paper/80 backdrop-blur-sm">
           <motion.div ref={pauseTrapRef} role="dialog" aria-modal="true" initial={{ scale: 0.9 }} animate={{ scale: 1 }} className="paper-sheet p-10 max-w-xs w-full text-center border-primary/20 shadow-xl relative">
-            <p className="text-slate-400 text-sm italic mb-8 lettering leading-relaxed">"Guardia en pausa. Tus notas están seguras."</p>
+            <p className="text-slate-500 text-sm italic mb-8 lettering leading-relaxed">"Guardia en pausa. Tus notas están seguras."</p>
             <button onClick={() => setIsPaused(false)} className="marker-btn w-full py-4 text-sm mb-4">REANUDAR</button>
             <button onClick={() => { setIsPaused(false); stopTriageAlarm(); clearSessionProgress(); send({ type: 'RESTART' }); }} className="text-xs font-bold text-slate-500 uppercase py-2 lettering">ABANDONAR</button>
           </motion.div>
@@ -942,7 +942,7 @@ export function App() {
                 <span className="text-xs font-black tracking-[0.3em] text-primary/60 uppercase lettering">AJUSTES</span>
                 <button
                   onClick={() => setShowSettings(false)}
-                  className="w-8 h-8 flex items-center justify-center rounded-xl bg-slate-50 border-2 border-white shadow-sm text-slate-400 hover:text-rose-400 cursor-pointer"
+                  className="w-8 h-8 flex items-center justify-center rounded-xl bg-slate-50 border-2 border-white shadow-sm text-slate-500 hover:text-rose-400 cursor-pointer"
                   aria-label="Cerrar"
                 >
                   <X className="w-4 h-4" aria-hidden="true" />
@@ -990,7 +990,7 @@ export function App() {
                 </button>
               </div>
 
-              <p className="text-[11px] text-slate-400 leading-snug mb-4">
+              <p className="text-xs text-slate-500 leading-snug mb-4">
                 {DISCLAIMER} Tu progreso se guarda únicamente en este dispositivo. Tipografías cargadas desde Google Fonts.{monitoringEnabled && ' Si la app falla, envía un reporte técnico sin datos personales para corregirlo.'} Versión {__APP_VERSION__}.
               </p>
 

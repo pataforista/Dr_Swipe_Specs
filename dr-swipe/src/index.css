@@ -6,7 +6,7 @@
   /* Semantic palette, as RGB channels so Tailwind can apply opacity. */
   --paper-rgb: 253 251 247;   /* cream notebook paper */
   --ink-rgb: 51 65 85;        /* slate-700 */
-  --primary-rgb: 13 148 136;  /* teal-600 */
+  --primary-rgb: 15 118 110;  /* teal-700: texto blanco 5.5:1 (teal-600 daba 3.7:1) */
   --secondary-rgb: 217 119 6; /* amber-600: warm, readable on paper */
   --accent-alert-rgb: 244 63 94; /* rose-500, the red used everywhere else */
 
@@ -180,6 +180,13 @@ h1, h2, h3, .lettering {
 
 .code-red {
   animation: code-red 0.5s ease-in-out infinite;
+}
+
+/* --- ACCESSIBILITY: anillo de foco visible para teclado (no se muestra al tocar) --- */
+:focus-visible {
+  outline: 3px solid rgb(var(--primary-rgb));
+  outline-offset: 3px;
+  border-radius: 0.5rem;
 }
 
 /* --- ACCESSIBILITY: respeta reduce-motion --- */

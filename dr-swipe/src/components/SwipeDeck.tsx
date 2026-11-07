@@ -508,7 +508,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
       {/* Header (Subject Tab) */}
       <div className={`${compact ? 'p-2.5 pl-8' : 'p-4 pl-8'} sm:p-6 sm:pl-14 flex justify-between items-center gap-2 border-b border-slate-100 ${isLethal ? 'bg-rose-100/40' : isCritical ? 'bg-amber-100/40' : 'bg-slate-50/60'}`}>
         <div className="flex flex-col min-w-0">
-          <span className="text-xs font-black uppercase tracking-widest text-slate-400 mb-1">Materia</span>
+          <span className="text-xs font-black uppercase tracking-widest text-slate-500 mb-1">Materia</span>
           <span className="bg-white px-2 sm:px-3 py-1 rounded-lg text-xs font-bold text-slate-600 shadow-sm border border-slate-100 flex items-center gap-1 sm:gap-2 truncate">
             <CategoryIcon className="w-3.5 h-3.5 flex-shrink-0 text-primary" aria-hidden="true" />
             <span className="truncate">{displayCategory}</span>
@@ -517,7 +517,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
         <div className="bg-white/80 px-2 sm:px-3 py-1 rounded-lg border border-slate-100 flex-shrink-0">
            {/* Card number, not the card_id suffix: ids often end in the card's
                type ("..._vitals"), which leaked the same hint as the category. */}
-           <span className="text-xs font-black text-slate-400 tracking-tighter">#{cardNumber}</span>
+           <span className="text-xs font-black text-slate-500 tracking-tighter">#{cardNumber}</span>
         </div>
       </div>
 
@@ -542,7 +542,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
             </div>
           )}
           {lethalIfDiscarded && (
-            <div className="bg-amber-500 text-white text-xs font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider border-2 border-rose-500/30 flex items-center gap-1">
+            <div className="bg-amber-400 text-slate-900 text-xs font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider border-2 border-rose-500/30 flex items-center gap-1">
               <Skull className="w-3.5 h-3.5" aria-hidden="true" /> LETAL SI LO TIRAS
             </div>
           )}
@@ -555,7 +555,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
       )}
 
       {/* Card Footer */}
-      <div className={`${compact ? 'p-2' : 'p-3'} pl-8 sm:p-5 sm:pl-14 bg-slate-50/40 border-t border-slate-100 flex justify-between items-center text-xs font-bold text-slate-400 gap-2`}>
+      <div className={`${compact ? 'p-2' : 'p-3'} pl-8 sm:p-5 sm:pl-14 bg-slate-50/40 border-t border-slate-100 flex justify-between items-center text-xs font-bold text-slate-500 gap-2`}>
         <span className="lettering text-sm sm:text-lg text-slate-300 truncate">Guardia nocturna...</span>
         <div className="bg-white px-2 sm:px-3 py-1 rounded-full border border-slate-100 text-slate-500 flex-shrink-0 whitespace-nowrap">
           {cardNumber}/{totalCards}

@@ -4,7 +4,7 @@
     "theme_config": "ped",
     "difficulty": "standard",
     "patient_intro": {
-        "name": "Elena, 5 anos",
+        "name": "Elena, 5 años",
         "arrival_scenario": "Lactante con diarrea y vomitos profundos. Al examen: letargo, llanto sin lagrimas, ojos muy hundidos y llenado capilar de 4-5 segundos. Ha perdido mas del 10% de su peso corporal.",
         "time_limit_sec": 60
     },
@@ -187,7 +187,7 @@
             "card_id": "c_1",
             "ui_icon": "target",
             "category": "imaging",
-            "card_text": "Deshidratacion Grave con Choque: Perdida ponderal >10%, llenado capilar >4s, letargo y compromiso hemodinamico. Requiere Plan C inmediato.",
+            "card_text": "Deshidratación Grave con Choque: Perdida ponderal >10%, llenado capilar >4s, letargo y compromiso hemodinamico. Requiere Plan C inmediato.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,

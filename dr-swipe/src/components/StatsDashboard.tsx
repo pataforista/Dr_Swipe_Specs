@@ -61,7 +61,7 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
         </div>
         <button
           onClick={onClose}
-          className="w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center rounded-2xl bg-slate-50 border-2 border-white shadow-sm text-slate-400 hover:text-rose-400 transition-colors flex-shrink-0"
+          className="w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center rounded-2xl bg-slate-50 border-2 border-white shadow-sm text-slate-500 hover:text-rose-400 transition-colors flex-shrink-0"
           aria-label="Cerrar"
         >
           <X className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
@@ -80,7 +80,7 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
               <GraduationCap className="w-10 sm:w-14 h-10 sm:h-14 text-primary" aria-hidden="true" />
             </motion.div>
             <div className="relative z-10 min-w-0">
-              <span className="text-xs font-black text-slate-400 uppercase tracking-[0.25em] sm:tracking-[0.3em] block mb-1 sm:mb-2 lettering">RANGO ACTUAL:</span>
+              <span className="text-xs font-black text-slate-500 uppercase tracking-[0.25em] sm:tracking-[0.3em] block mb-1 sm:mb-2 lettering">RANGO ACTUAL:</span>
               <span className="text-base sm:text-xl font-bold text-slate-800 lettering tracking-tight break-words">{rank}</span>
             </div>
           </div>
@@ -88,7 +88,7 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
           {/* XP progress */}
           <div className="mb-6 sm:mb-8 px-1 sm:px-2 relative z-10">
             <div className="flex justify-between mb-2 sm:mb-4 items-end gap-2">
-              <span className="text-xs font-black text-slate-400 uppercase tracking-[0.3em] sm:tracking-[0.4em] lettering">EXPERIENCIA</span>
+              <span className="text-xs font-black text-slate-500 uppercase tracking-[0.3em] sm:tracking-[0.4em] lettering">EXPERIENCIA</span>
               <span className="text-xs sm:text-[12px] font-bold text-primary italic lettering">
                 {nextThreshold ? `${stats.xp} / ${nextThreshold.min}` : `${stats.xp} XP`}
               </span>
@@ -164,7 +164,7 @@ const StatCard: React.FC<{
   return (
     <div className="bg-white border-2 border-slate-100 rounded-[1.5rem] sm:rounded-[2.2rem] p-4 sm:p-6 flex flex-col justify-between shadow-sm relative overflow-hidden transition-all hover:border-primary/20 group cursor-default">
       <div className="flex justify-between items-start mb-2 sm:mb-3 gap-2">
-        <span className="text-xs font-black text-slate-400 uppercase tracking-[0.25em] sm:tracking-[0.3em] lettering leading-tight">{label}</span>
+        <span className="text-xs font-black text-slate-500 uppercase tracking-[0.25em] sm:tracking-[0.3em] lettering leading-tight">{label}</span>
         <span className="opacity-60 group-hover:opacity-100 transition-opacity flex-shrink-0"><Icon className="w-4 h-4 sm:w-5 sm:h-5 text-slate-500" aria-hidden="true" /></span>
       </div>
       <div className="flex items-baseline gap-1.5 relative z-10">

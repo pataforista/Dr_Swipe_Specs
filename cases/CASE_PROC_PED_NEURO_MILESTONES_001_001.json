@@ -88,7 +88,7 @@
         {
             "card_id": "l6_nm2",
             "ui_icon": "activity",
-            "category": "Evaluacion",
+            "category": "Evaluación",
             "card_text": "Vigilancia del desarrollo solo cuando los padres expresan preocupación: Basta con atender la queja familiar.",
             "expected_action": "discard",
             "scoring": {
@@ -100,7 +100,7 @@
         {
             "card_id": "l6_nm1",
             "ui_icon": "clock",
-            "category": "Evaluacion",
+            "category": "Evaluación",
             "card_text": "Tamizaje de autismo con M-CHAT a los 6 meses: Edad recomendada para el primer tamizaje.",
             "expected_action": "discard",
             "scoring": {
@@ -136,7 +136,7 @@
         {
             "card_id": "l6_nm3",
             "ui_icon": "activity",
-            "category": "Evaluacion",
+            "category": "Evaluación",
             "card_text": "Sonrisa social a los 6 meses: Hito esperado en esa edad.",
             "expected_action": "discard",
             "scoring": {

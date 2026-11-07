@@ -4,8 +4,8 @@
     "theme_config": "ped",
     "difficulty": "standard",
     "patient_intro": {
-        "name": "Luis, 2 anos",
-        "arrival_scenario": "Lactante de 2 anos que inicia subitamente por la noche con tos 'perruna', estridor inspiratorio y disfonia. Antecedente de coriza leve. El paciente mejora notablemente al contacto con el aire frio de la noche.",
+        "name": "Luis, 2 años",
+        "arrival_scenario": "Lactante de 2 años que inicia subitamente por la noche con tos 'perruna', estridor inspiratorio y disfonia. Antecedente de coriza leve. El paciente mejora notablemente al contacto con el aire frio de la noche.",
         "time_limit_sec": 60
     },
     "card_stream": [
@@ -42,7 +42,7 @@
             "scoring": {
                 "points": 150,
                 "error_type": "omission",
-                "vazquez_comment": "Castillo: ¡Perfecto! El manejo de eleccion segun GPC es la DEXAMETASONA dosis unica (IM u Oral)."
+                "vazquez_comment": "Castillo: ¡Perfecto! El manejo de elección segun GPC es la DEXAMETASONA dosis unica (IM u Oral)."
             },
             "safety_flags": {
                 "lethal_risk": false,
@@ -65,7 +65,7 @@
             "card_id": "c_2",
             "ui_icon": "eye",
             "category": "Diagnostico Diferencial",
-            "card_text": "Epiglotitis Aguda: H. influenzae tipo b. Fiebre alta, babeo, posicion de tripode y ausencia de tos perruna.",
+            "card_text": "Epiglotitis Aguda: H. influenzae tipo b. Fiebre alta, babeo, posición de tripode y ausencia de tos perruna.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -77,7 +77,7 @@
             "card_id": "c_3",
             "ui_icon": "slash",
             "category": "Diagnostico Diferencial",
-            "card_text": "Aspiracion de Cuerpo Extrano: Inicio subito tras jugar con objetos pequenos, sin fiebre ni síntomas gripales previos.",
+            "card_text": "Aspiración de Cuerpo Extrano: Inicio subito tras jugar con objetos pequenos, sin fiebre ni síntomas gripales previos.",
             "expected_action": "discard",
             "scoring": {
                 "points": 50,
@@ -100,7 +100,7 @@
         {
             "card_id": "c_4",
             "ui_icon": "clipboard",
-            "category": "Evaluacion",
+            "category": "Evaluación",
             "card_text": "Escala de Westley: Herramienta clinica para clasificar la gravedad del Crup (Leve, Moderado, Grave).",
             "expected_action": "keep",
             "scoring": {
@@ -130,7 +130,7 @@
             "scoring": {
                 "points": 50,
                 "error_type": "omission",
-                "vazquez_comment": "Castillo: ¡Exacto! La agitacion empeora la obstruccion dinamica de la laringe."
+                "vazquez_comment": "Castillo: ¡Exacto! La agitación empeora la obstrucción dinamica de la laringe."
             }
         },
         {
@@ -149,7 +149,7 @@
             "card_id": "c_6",
             "ui_icon": "pill",
             "category": "Manejo Inicial",
-            "card_text": "Dexametasona 0.6 mg/kg (Dosis unica): Es el pilar del tratamiento; reduce el edema laringeo y la necesidad de hospitalizacion.",
+            "card_text": "Dexametasona 0.6 mg/kg (Dosis unica): Es el pilar del tratamiento; reduce el edema laringeo y la necesidad de hospitalización.",
             "expected_action": "keep",
             "scoring": {
                 "points": 150,
@@ -170,7 +170,7 @@
             "scoring": {
                 "points": 150,
                 "error_type": "lethal_omission",
-                "vazquez_comment": "Castillo: ¡Vital! La adrenalina ofrece una mejoria rapida pero transitoria de la obstruccion de la via aerea."
+                "vazquez_comment": "Castillo: ¡Vital! La adrenalina ofrece una mejoria rapida pero transitoria de la obstrucción de la via aerea."
             },
             "safety_flags": {
                 "lethal_risk": true,
@@ -181,7 +181,7 @@
             "card_id": "c_8",
             "ui_icon": "clock",
             "category": "Seguridad",
-            "card_text": "Observacion Post-Nebulizacion: Mantener al nino en urgencias 2-4 horas para vigilar el efecto 'rebote' de la obstruccion.",
+            "card_text": "Observación Post-Nebulización: Mantener al nino en urgencias 2-4 horas para vigilar el efecto 'rebote' de la obstrucción.",
             "expected_action": "keep",
             "scoring": {
                 "points": 100,
@@ -199,7 +199,7 @@
         "trigger": "after_cards",
         "questions": [
             {
-                "question": "¿Cuál es el tratamiento esteroideo de eleccion en el servicio de urgencias?",
+                "question": "¿Cuál es el tratamiento esteroideo de elección en el servicio de urgencias?",
                 "options": [
                     "Dexametasona",
                     "Hidrocortisona",
@@ -208,7 +208,7 @@
                 "correct_index": 0
             },
             {
-                "question": "¿Cómo se llama el signo radiografico caracteristico observado en la proyeccion AP de cuello?",
+                "question": "¿Cómo se llama el signo radiografico caracteristico observado en la proyección AP de cuello?",
                 "options": [
                     "Signo de la Torre o Punta de Lapiz",
                     "Imagen en Coraza",

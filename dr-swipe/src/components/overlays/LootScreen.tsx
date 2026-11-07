@@ -63,7 +63,7 @@ export const LootScreen: React.FC<LootScreenProps> = ({
           <div className="flex items-center gap-3">
             <span className="bg-white w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center rounded-xl shadow-sm border border-slate-100 text-amber-500"><Zap className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" /></span>
             <div className="text-left">
-              <span className="text-xs font-black uppercase text-slate-400 block tracking-widest leading-none">Experiencia</span>
+              <span className="text-xs font-black uppercase text-slate-500 block tracking-widest leading-none">Experiencia</span>
               <span className="text-sm sm:text-base font-bold text-slate-600">Puntaje: {score}{xpTotal !== score ? ' × racha diaria' : ''}</span>
             </div>
           </div>
@@ -77,7 +77,7 @@ export const LootScreen: React.FC<LootScreenProps> = ({
           <div className="flex items-center gap-3">
              <span className="bg-white w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center rounded-xl shadow-sm border border-slate-100 text-amber-500"><Coins className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" /></span>
              <div className="text-left">
-               <span className="text-xs font-black uppercase text-slate-400 block tracking-widest leading-none">Monedas</span>
+               <span className="text-xs font-black uppercase text-slate-500 block tracking-widest leading-none">Monedas</span>
                <span className="text-sm sm:text-base font-bold text-slate-600">Créditos de hospital</span>
              </div>
           </div>
@@ -98,13 +98,13 @@ export const LootScreen: React.FC<LootScreenProps> = ({
           <span className="text-xs font-black uppercase text-amber-600 block tracking-widest mb-1 leading-none">Perla ENARM Desbloqueada</span>
           <h4 className="text-sm sm:text-base font-black text-slate-800 mb-1 leading-snug">{pearl.title}</h4>
           <p className="text-xs text-slate-600 leading-relaxed">{pearl.text}</p>
-          {pearl.gpc_ref && <span className="text-xs font-bold text-slate-400 mt-2 block">GPC: {pearl.gpc_ref}</span>}
+          {pearl.gpc_ref && <span className="text-xs font-bold text-slate-500 mt-2 block">GPC: {pearl.gpc_ref}</span>}
         </div>
       )}
 
       {/* Utility Message */}
       <div className="mb-6 sm:mb-8 px-4 relative z-10">
-        <p className="text-xs text-slate-400 leading-relaxed font-bold lettering uppercase tracking-wide">
+        <p className="text-xs text-slate-500 leading-relaxed font-bold lettering uppercase tracking-wide">
           "Usa tus monedas para ESCANEAR cartas difíciles en futuras consultas. Un buen médico invierte en sus herramientas."
         </p>
       </div>
