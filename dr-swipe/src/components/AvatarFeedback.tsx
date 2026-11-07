@@ -23,10 +23,10 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
   points = null,
   mistake = null
 }) => {
-  const mentorIcons = {
-    mendoza: '👴',
-    castillo: '👩‍🔬',
-    navarro: '👩‍⚕️'
+  const mentorInitials = {
+    mendoza: 'MD',
+    castillo: 'CT',
+    navarro: 'NV'
   };
 
   const expressionColors = {
@@ -43,7 +43,7 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
     shocked: 'border-amber-100 bg-amber-50'
   };
 
-  const validDoctor = (doctor in mentorIcons) ? doctor : 'mendoza';
+  const validDoctor = (doctor in mentorInitials) ? doctor : 'mendoza';
   const validExpression = (expression in expressionColors) ? expression : 'neutral';
 
   const avatarMotion = {
@@ -73,10 +73,10 @@ export const AvatarFeedback: React.FC<AvatarFeedbackProps> = ({
               key={`avatar-${validExpression}`}
               animate={avatarMotion[validExpression]}
               transition={{ duration: 0.6, ease: 'easeInOut' }}
-              className={`w-10 sm:w-12 h-10 sm:h-12 flex-shrink-0 rounded-full flex items-center justify-center text-2xl sm:text-3xl shadow-md relative z-10 border-4 border-white bg-slate-50 transition-colors duration-500`}
+              className={`w-10 sm:w-12 h-10 sm:h-12 flex-shrink-0 rounded-full flex items-center justify-center shadow-md relative z-10 border-4 border-white bg-slate-100 transition-colors duration-500`}
             >
-              <span className="relative z-10 filter drop-shadow-sm">
-                {mentorIcons[validDoctor]}
+              <span className="relative z-10 font-black text-xs sm:text-sm text-slate-700 tracking-wider">
+                {mentorInitials[validDoctor]}
               </span>
 
               {/* Playful ring pulse for high emotion */}

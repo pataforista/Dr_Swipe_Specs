@@ -1,10 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
-import { X } from 'lucide-react';
+import { X, Award } from 'lucide-react';
 import { useCodexStore } from '../store/useCodexStore';
 import { ACHIEVEMENTS, buildAchievementSnapshot } from '../utils/achievementsEngine';
 import { getSpecialtyStats } from '../utils/codexStats';
-import { pickDialog, MENTOR_NAMES, MENTOR_ICONS } from '../utils/dialogEngine';
+import { pickDialog, MENTOR_NAMES } from '../utils/dialogEngine';
 
 interface CodexScreenProps {
   onClose: () => void;
@@ -25,9 +25,9 @@ export const CodexScreen: React.FC<CodexScreenProps> = ({ onClose }) => {
   const specialties = useMemo(() => getSpecialtyStats(caseProgress, openedAt), [caseProgress, openedAt]);
 
   const tabs: { id: Tab; label: string; badge?: string }[] = [
-    { id: 'logros', label: 'Logros 🏆', badge: `${unlockedCount}/${ACHIEVEMENTS.length}` },
-    { id: 'perlas', label: 'Perlas 🌟', badge: unlockedPearls.length > 0 ? String(unlockedPearls.length) : undefined },
-    { id: 'especialidades', label: 'Materias 📚' },
+    { id: 'logros', label: 'Logros', badge: `${unlockedCount}/${ACHIEVEMENTS.length}` },
+    { id: 'perlas', label: 'Perlas', badge: unlockedPearls.length > 0 ? String(unlockedPearls.length) : undefined },
+    { id: 'especialidades', label: 'Materias' },
   ];
 
   return (
@@ -40,7 +40,7 @@ export const CodexScreen: React.FC<CodexScreenProps> = ({ onClose }) => {
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] medical-grid z-0" />
       <div className="flex justify-between items-center mb-3 pt-2 relative z-10 gap-2">
         <div className="flex flex-col gap-1 min-w-0">
-          <span className="text-xs sm:text-[12px] font-black tracking-[0.3em] text-primary/60 uppercase lettering">CÓDEX 📖</span>
+          <span className="text-xs sm:text-[12px] font-black tracking-[0.3em] text-primary/60 uppercase lettering">CÓDEX</span>
           <div className="h-1 w-20 bg-cyan-100 rounded-full" />
         </div>
         <button
@@ -53,7 +53,7 @@ export const CodexScreen: React.FC<CodexScreenProps> = ({ onClose }) => {
       </div>
 
       <div className="flex items-start gap-3 mb-4 relative z-10 bg-slate-50 rounded-2xl p-3 border border-slate-100">
-        <span className="text-2xl flex-shrink-0" aria-hidden="true">{MENTOR_ICONS[greeting.quien]}</span>
+        <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-black text-xs text-slate-700 flex-shrink-0">{greeting.quien === 'navarro' ? 'NV' : 'VZ'}</div>
         <p className="text-xs text-slate-600 leading-relaxed italic">
           <span className="font-black not-italic text-slate-700">{MENTOR_NAMES[greeting.quien]}: </span>
           {greeting.texto}
@@ -90,7 +90,9 @@ export const CodexScreen: React.FC<CodexScreenProps> = ({ onClose }) => {
               transition={{ delay: i * 0.03 }}
               className={`rounded-2xl p-3 border flex gap-3 items-start ${done ? 'bg-amber-50/60 border-amber-100' : 'bg-slate-50 border-slate-100'}`}
             >
-              <span className={`text-2xl flex-shrink-0 ${done ? '' : 'grayscale opacity-40'}`} aria-hidden="true">{a.emoji}</span>
+              <div className={`w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 ${done ? 'bg-amber-100 text-amber-700' : 'bg-slate-200 text-slate-400'}`}>
+                <Award className="w-4 h-4" aria-hidden="true" />
+              </div>
               <div className="min-w-0 flex-1">
                 <h4 className={`text-sm font-black leading-snug ${done ? 'text-slate-800' : 'text-slate-500'}`}>{a.nombre}</h4>
                 <p className="text-xs text-slate-600 leading-relaxed">{done ? a.chiste : 'Pista: sigue jugando guardias para descubrirlo.'}</p>
@@ -147,7 +149,7 @@ export const CodexScreen: React.FC<CodexScreenProps> = ({ onClose }) => {
       </div>
 
       <div className="mt-4 flex justify-center relative z-10">
-        <button onClick={onClose} className="marker-btn py-3 px-10 text-base">CERRAR LIBRETA ✨</button>
+        <button onClick={onClose} className="marker-btn py-3 px-10 text-base">CERRAR LIBRETA</button>
       </div>
     </motion.div>
   );

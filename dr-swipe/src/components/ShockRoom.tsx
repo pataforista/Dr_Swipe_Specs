@@ -159,7 +159,7 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
               transition={{ type: 'spring', stiffness: 420, damping: 20 }}
               className="absolute top-16 right-4 sm:right-8 z-30 pointer-events-none bg-white/95 text-emerald-600 border-4 border-emerald-500 rounded-xl px-3 py-1 lettering font-bold text-lg sm:text-2xl shadow-md"
             >
-              {beat.kind === 'stabilized' ? '¡ESTABILIZADO!' : 'CORRECTO ✓'}
+              {beat.kind === 'stabilized' ? '¡ESTABILIZADO!' : 'CORRECTO'}
             </motion.div>
           )}
         </AnimatePresence>
@@ -258,7 +258,7 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
             <span className="text-xs font-black text-slate-400 uppercase tracking-widest block w-full mb-2 lettering italic">Hallazgos registrados en el diario:</span>
             {dossierItems.slice(-3).map((item, idx) => (
                 <span key={idx} className="bg-slate-50 px-4 py-1.5 rounded-full text-xs lettering font-bold border-2 border-white max-w-[200px] truncate" title={item.card_text}>
-                   📌 {item.card_text.length > 40 ? `${item.card_text.slice(0, 40)}...` : item.card_text}
+                   {item.card_text.length > 40 ? `${item.card_text.slice(0, 40)}...` : item.card_text}
                 </span>
             ))}
         </div>

@@ -41,7 +41,7 @@ export const ReloadPrompt: React.FC = () => {
             onClick={close}
             className="pointer-events-auto bg-white border border-primary/20 shadow-lg rounded-full px-4 py-2 text-xs font-bold text-slate-600"
           >
-            🚀 Listo para usar sin conexión
+            Listo para usar sin conexión
           </button>
         </motion.div>
       )}
@@ -59,7 +59,7 @@ export const ReloadPrompt: React.FC = () => {
             
             <div className="mt-4 text-center">
               <span className="text-xs font-black text-primary uppercase tracking-[0.2em] block mb-1">
-                ACTUALIZACIÓN DISPONIBLE ✨
+                ACTUALIZACIÓN DISPONIBLE
               </span>
               
               <h3 className="text-xl font-black text-slate-800 lettering mb-3">
@@ -75,7 +75,7 @@ export const ReloadPrompt: React.FC = () => {
                   onClick={() => updateServiceWorker(true)}
                   className="marker-btn flex-grow py-3 text-xs !rotate-0 hover:scale-105"
                 >
-                  ACTUALIZAR YA ✨
+                  ACTUALIZAR YA
                 </button>
                 <button
                   onClick={close}

@@ -5,7 +5,7 @@ export type DialogContext = keyof typeof dialogsData.contextos;
 export interface MentorLine { quien: MentorId; texto: string }
 
 export const MENTOR_NAMES: Record<MentorId, string> = { navarro: 'Dra. Navarro', vazquez: 'Dr. Vázquez' };
-export const MENTOR_ICONS: Record<MentorId, string> = { navarro: '👩‍⚕️', vazquez: '🧑‍⚕️' };
+export const MENTOR_ICONS: Record<MentorId, string> = { navarro: '', vazquez: '' };
 
 /** Picks a line for the context; `avoid` keeps the same line from repeating back to back. */
 export function pickDialog(context: DialogContext, rng: () => number = Math.random, avoid?: string): MentorLine {

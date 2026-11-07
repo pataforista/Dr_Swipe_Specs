@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FileText, Heart, Award } from 'lucide-react';
 
 interface TutorialOverlayProps {
   onComplete: () => void;
@@ -7,19 +8,19 @@ interface TutorialOverlayProps {
 
 const SLIDES = [
   {
-    emoji: '📝',
+    icon: FileText,
     title: 'Tu Diario de Guardia.',
     body: 'Cada paciente es una historia. Desliza a la derecha para ACEPTAR los hallazgos que explican el caso, y a la izquierda para DESCARTAR lo irrelevante. Tu criterio es la mejor medicina.',
     hint: '← Descartar  |  Aceptar →',
   },
   {
-    emoji: '💖',
+    icon: Heart,
     title: 'Cuida tus Notas.',
     body: 'Los errores en el diagnóstico drenan la Vitalidad del paciente. Mantén tu enfoque: las notas impecables salvan vidas y mantienen tu guardia bajo control.',
     hint: 'Error: −15  ·  Error letal: −40  ·  Acierto: +8 Vitalidad',
   },
   {
-    emoji: '✨',
+    icon: Award,
     title: 'Colecciona Logros.',
     body: 'Una racha de aciertos te premia con Caja de Suministros. Úsalas para obtener ventajas y demostrar que eres el mejor del servicio.',
     hint: 'Racha x8 = Premio Especial',
@@ -45,7 +46,7 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({ onComplete }) 
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 sm:w-48 h-7 sm:h-10 washi-tape -rotate-1 shadow-sm border-x-2 border-white/40 z-20" />
 
         <span className="text-primary/60 block mb-6 sm:mb-10 text-xs sm:text-[12px] font-black tracking-[0.3em] sm:tracking-[0.4em] lettering uppercase">
-          Guía de Estudio ✨ {current + 1}/{SLIDES.length}
+          Guía de Estudio · {current + 1}/{SLIDES.length}
         </span>
 
         <AnimatePresence mode="wait">
@@ -57,7 +58,9 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({ onComplete }) 
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             className="px-2"
           >
-            <div className="text-6xl sm:text-8xl mb-4 sm:mb-8 filter drop-shadow-sm animate-pulse">{slide.emoji}</div>
+            <div className="w-20 sm:w-28 h-20 sm:h-28 mx-auto mb-4 sm:mb-8 rounded-3xl bg-teal-50 border-2 border-teal-100 flex items-center justify-center text-primary shadow-sm">
+              <slide.icon className="w-10 sm:w-14 h-10 sm:h-14" aria-hidden="true" />
+            </div>
             <h3 className="text-2xl sm:text-4xl font-bold text-slate-800 mb-4 sm:mb-6 tracking-tighter lettering leading-tight">
               {slide.title}
             </h3>
@@ -92,7 +95,7 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({ onComplete }) 
           className="marker-btn w-full py-4 sm:py-6 text-base sm:text-xl group"
         >
           <span className="flex items-center justify-center gap-2 sm:gap-3">
-            {isLast ? '¡VAMOS A LA GUARDIA! 🚀' : 'SIGUIENTE NOTA ✨'}
+            {isLast ? 'INICIAR GUARDIA' : 'SIGUIENTE'}
           </span>
         </button>
 

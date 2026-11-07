@@ -205,7 +205,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
         <div className="flex flex-col items-center gap-2 sm:gap-3">
           <motion.button
             type="button"
-            aria-label="Escanear carta médica usando créditos (25 🪙)"
+            aria-label={`Escanear carta médica usando créditos (${LIFELINE_COST} cr.)`}
             disabled={!canUseLifeline || isLocked}
             onClick={() => onUseLifeline?.()}
             whileHover={canUseLifeline && !isLocked ? { scale: 1.15, rotate: 180, boxShadow: '0 0 30px rgba(129,140,248,0.4)' } : {}}
@@ -213,12 +213,12 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
             className={`w-12 sm:w-14 h-12 sm:h-14 rounded-full border shadow-lg flex items-center justify-center text-xl sm:text-2xl transition-all ${
               lifelineActive ? 'bg-amber-100 border-secondary text-amber-700 sticker-glow' : 'bg-white border-slate-200 text-secondary hover:bg-amber-50 hover:border-secondary/40 disabled:opacity-20'
             }`}
-              title={`Escanear Carta (Cuesta ${LIFELINE_COST} 🪙)`}
+              title={`Escanear Carta (Cuesta ${LIFELINE_COST} cr.)`}
           >
             {lifelineActive ? <Sparkles className="w-6 h-6 sm:w-7 sm:h-7" aria-hidden="true" /> : <Dna className="w-6 h-6 sm:w-7 sm:h-7" aria-hidden="true" />}
           </motion.button>
           <span className={`text-xs font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] ${lifelineActive ? 'text-secondary' : 'text-slate-500'}`}>
-            {lifelineActive ? 'ACTIVO' : `${LIFELINE_COST} 🪙`}
+            {lifelineActive ? 'ACTIVO' : `${LIFELINE_COST} cr.`}
           </span>
         </div>
 
@@ -227,7 +227,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
             <motion.button
               type="button"
               aria-label={undo.charges === 0 ? `Comprar deshacer por ${undo.cost} créditos` : 'Deshacer el último swipe'}
-              title={undo.charges === 0 ? `Comprar Deshacer por ${undo.cost} 🪙` : 'Deshacer'}
+              title={undo.charges === 0 ? `Comprar Deshacer por ${undo.cost} cr.` : 'Deshacer'}
               disabled={undo.disabled || isLocked}
               onClick={() => undo.onUndo()}
               whileTap={!undo.disabled && !isLocked ? { scale: 0.85 } : {}}
@@ -240,7 +240,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
                 : <Undo2 className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />}
             </motion.button>
             <span className="text-xs font-black uppercase tracking-[0.15em] text-slate-500 whitespace-nowrap">
-              {undo.charges === 0 ? `${undo.cost} 🪙` : `×${undo.charges}`}
+              {undo.charges === 0 ? `${undo.cost} cr.` : `×${undo.charges}`}
             </span>
           </div>
         )}
@@ -499,10 +499,10 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
       {/* Stamps sit on the side the card is moving away from, so they stay
           inside the card instead of being clipped by its edge. */}
       <motion.div style={{ opacity: isTop ? overlayOpacityLeft : 0 }} className="absolute top-20 right-5 z-50 pointer-events-none">
-        <div className="bg-white/90 text-rose-500 font-bold lettering text-xl sm:text-2xl px-4 py-1.5 rounded-xl rotate-12 shadow-md border-4 border-rose-500">DESCARTAR ✕</div>
+        <div className="bg-white/90 text-rose-500 font-bold lettering text-xl sm:text-2xl px-4 py-1.5 rounded-xl rotate-12 shadow-md border-4 border-rose-500">DESCARTAR</div>
       </motion.div>
       <motion.div style={{ opacity: isTop ? overlayOpacityRight : 0 }} className="absolute top-20 left-5 z-50 pointer-events-none">
-        <div className="bg-white/90 text-primary font-bold lettering text-xl sm:text-2xl px-4 py-1.5 rounded-xl -rotate-12 shadow-md border-4 border-primary">ACEPTAR ✓</div>
+        <div className="bg-white/90 text-primary font-bold lettering text-xl sm:text-2xl px-4 py-1.5 rounded-xl -rotate-12 shadow-md border-4 border-primary">ACEPTAR</div>
       </motion.div>
 
       {/* Header (Subject Tab) */}

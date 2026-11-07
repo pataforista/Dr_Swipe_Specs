@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { X, Check } from 'lucide-react';
 
 interface FeedbackItem {
   cardId: string;
@@ -35,7 +36,7 @@ export const RetrospectiveView: React.FC<RetrospectiveViewProps> = ({ history, o
       <div className="flex justify-between items-center mb-10 pt-6 relative z-10 border-b-2 border-slate-50 pb-8">
         <div>
           <span className="text-[12px] font-black tracking-[0.4em] text-primary/60 uppercase block mb-2 lettering">
-            Log de Aprendizaje 📔
+            Log de Aprendizaje
           </span>
           <h2 className="text-4xl font-bold text-slate-800 tracking-tight lettering">
             {caseId ? `Caso: ${caseId.split('_').pop()}` : 'Notas de la Guardia'}
@@ -45,7 +46,7 @@ export const RetrospectiveView: React.FC<RetrospectiveViewProps> = ({ history, o
           onClick={onClose}
           className="w-12 h-12 flex items-center justify-center rounded-2xl bg-slate-50 hover:bg-slate-100 transition-colors text-slate-400 font-bold border-2 border-white shadow-sm"
         >
-          ✕
+          <X className="w-5 h-5" aria-hidden="true" />
         </button>
       </div>
 
@@ -53,7 +54,7 @@ export const RetrospectiveView: React.FC<RetrospectiveViewProps> = ({ history, o
       <div className="flex-grow overflow-y-auto px-4 custom-scrollbar space-y-8 pb-10 relative z-10">
         {history.length === 0 ? (
           <div className="py-20 text-center opacity-30 lettering">
-            <p className="text-2xl italic">"Todavía no hay notas en este diario..." ✍️</p>
+            <p className="text-2xl italic">"Todavía no hay notas en este diario..."</p>
           </div>
         ) : (
           history.map((item, idx) => (
@@ -71,7 +72,7 @@ export const RetrospectiveView: React.FC<RetrospectiveViewProps> = ({ history, o
                   {item.category}
                 </span>
                 <span className={`text-[12px] font-bold px-4 py-1.5 rounded-full border-2 lettering ${item.points >= 0 ? 'bg-emerald-50 text-emerald-600 border-white' : 'bg-rose-50 text-rose-600 border-white'}`}>
-                  {item.points >= 0 ? '✨' : '🖍️'} {item.points >= 0 ? '+' : ''}{item.points} pts
+                  {item.points >= 0 ? '+' : ''}{item.points} pts
                 </span>
               </div>
 
@@ -83,7 +84,10 @@ export const RetrospectiveView: React.FC<RetrospectiveViewProps> = ({ history, o
                 <span className={`text-xs font-bold px-5 py-2 rounded-2xl border-2 uppercase tracking-widest lettering ${
                   item.isCorrect ? 'bg-emerald-500 text-white border-white' : 'bg-rose-500 text-white border-white'
                 }`}>
-                  {item.expectedAction === 'keep' ? 'ACEPTAR' : 'DESCARTAR'} {item.isCorrect ? '✅' : '❌'}
+                  <span className="inline-flex items-center gap-1.5">
+                    {item.expectedAction === 'keep' ? 'ACEPTAR' : 'DESCARTAR'}
+                    {item.isCorrect ? <Check className="w-3.5 h-3.5" aria-hidden="true" /> : <X className="w-3.5 h-3.5" aria-hidden="true" />}
+                  </span>
                 </span>
               </div>
 
@@ -104,7 +108,7 @@ export const RetrospectiveView: React.FC<RetrospectiveViewProps> = ({ history, o
           onClick={onClose}
           className="marker-btn py-5 px-20 text-xl group shadow-teal-100"
         >
-          CERRAR DIARIO ✨
+          CERRAR DIARIO
         </button>
       </div>
     </motion.div>

@@ -2,7 +2,7 @@ import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
 import { useMachine } from '@xstate/react';
 import { gameMachine } from './machines/gameMachine';
 import { SwipeDeck } from './components/SwipeDeck';
-import { X } from 'lucide-react';
+import { X, AlertOctagon, AlertCircle } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { ToastQueue, toastHoldMs, type ToastType } from './utils/toastQueue';
 import { useState, useEffect, useRef, useCallback, useMemo, lazy, Suspense } from 'react';
@@ -14,7 +14,7 @@ import { triggerHaptic } from './utils/hapticFeedback';
 import { calculatePerfectRoundBonus, getDailyStreakMultiplier, computeTimeLimit, isLethalCard, COMBO_MILESTONES } from './utils/scoringEngine';
 import { safeStorage } from './utils/safeStorage';
 import { LIFELINE_COST, UNDO_COST } from './store/useCodexStore';
-import { pickDialog, seededRng, greetingContext, MENTOR_NAMES, MENTOR_ICONS } from './utils/dialogEngine';
+import { pickDialog, seededRng, greetingContext, MENTOR_NAMES } from './utils/dialogEngine';
 import { favorsForCase, REVIVE_FAVOR_COST } from './utils/favorsEngine';
 import { computeSuccessOutcome } from './utils/rewardsEngine';
 import { useCodexStore, type SessionProgress } from './store/useCodexStore';
@@ -244,9 +244,9 @@ export function App() {
       if (isPerfectRound) {
         const bonus = calculatePerfectRoundBonus(state.context.deck.length, state.context.difficulty);
         totalCoins += bonus;
-        showToast(`¡GUARDIA PERFECTA! +${bonus} 🪙`, 'milestone');
+        showToast(`¡GUARDIA PERFECTA! +${bonus} cr.`, 'milestone');
       } else if (totalCoins > 0) {
-        showToast(`+${totalCoins} 🪙`, 'coins');
+        showToast(`+${totalCoins} cr.`, 'coins');
       }
       addCoins(totalCoins);
       const favorsGained = favorsForCase(
@@ -255,7 +255,7 @@ export function App() {
       );
       if (favorsGained > 0) {
         earnFavors(favorsGained);
-        showToast(`+${favorsGained} Favor${favorsGained > 1 ? 'es' : ''} del Adjunto 🩺`, 'milestone');
+        showToast(`+${favorsGained} Favor${favorsGained > 1 ? 'es' : ''} del Adjunto`, 'milestone');
       }
       // Deferred like the toast: setState inside this effect would cascade renders.
       window.setTimeout(() => setShiftPayout(p => ({ xp: p.xp + xpGained, coins: p.coins + totalCoins })), 0);
@@ -285,7 +285,7 @@ export function App() {
     if (earned.length === 0) return;
     const line = pickDialog('logro');
     const extra = earned.length > 1 ? ` (+${earned.length - 1} más)` : '';
-    showToast(`🏆 ${earned[0].nombre}${extra} · ${MENTOR_NAMES[line.quien]}: "${line.texto}"`, 'milestone');
+    showToast(`${earned[0].nombre}${extra} · ${MENTOR_NAMES[line.quien]}: "${line.texto}"`, 'milestone');
     triggerHaptic('criticalSuccess');
   }, [stats, caseProgress, unlockedPearls, favors, dailyStreak, achievements, unlockEarnedAchievements, showToast]);
 
@@ -326,7 +326,7 @@ export function App() {
       setShowIntro(true);
     } catch (err) {
       console.error('Failed to start a new shift:', err);
-      showToast('SIN CONEXIÓN: no se pudo cargar la guardia 📡', 'milestone');
+      showToast('SIN CONEXIÓN: no se pudo cargar la guardia', 'milestone');
       send({ type: 'RESTART' });
     } finally {
       setIsLoadingCase(false);
@@ -360,7 +360,7 @@ export function App() {
       setShowIntro(true);
     } catch (err) {
       console.error("Failed to resume session", err);
-      showToast('No se pudo reanudar la guardia 📡', 'milestone');
+      showToast('No se pudo reanudar la guardia', 'milestone');
       clearSessionProgress();
     } finally {
       setIsLoadingCase(false);
@@ -371,7 +371,7 @@ export function App() {
     const failedCaseIds = useCodexStore.getState().getCasesDueForReview();
 
     if (failedCaseIds.length === 0) {
-      showToast("¡No tienes casos pendientes de repaso! 🌟", "milestone");
+      showToast("¡No tienes casos pendientes de repaso!", "milestone");
       return;
     }
     
@@ -400,7 +400,7 @@ export function App() {
       setShowIntro(true);
     } catch (err) {
       console.error('Failed to load review cases:', err);
-      showToast('Error al cargar repaso 📡', 'milestone');
+      showToast('Error al cargar repaso', 'milestone');
       send({ type: 'RESTART' });
     } finally {
       setIsLoadingCase(false);
@@ -579,12 +579,12 @@ export function App() {
         <div className="fixed inset-0 bg-paper flex flex-col items-center justify-center p-4 sm:p-8 z-[120] overflow-y-auto">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-6 sm:p-10 max-w-md w-full text-center shadow-xl relative bg-white my-auto shrink-0">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 sm:w-40 h-6 sm:h-8 washi-tape -rotate-1 shadow-sm" />
-            <span className="text-xs font-bold text-slate-400 uppercase lettering block mt-3 sm:mt-4 mb-1 sm:mb-2">EXPEDIENTE MÉDICO 📔</span>
+            <span className="text-xs font-bold text-slate-400 uppercase lettering block mt-3 sm:mt-4 mb-1 sm:mb-2">EXPEDIENTE MÉDICO</span>
             <h2 className="text-3xl sm:text-5xl font-black text-slate-800 lettering mb-3 sm:mb-4 break-words">{currentCase.patient_intro.name}</h2>
             <div className="bg-slate-50 p-4 sm:p-6 rounded-2xl mb-4 border-2 border-dashed border-slate-100 italic lettering text-base sm:text-lg">"{currentCase.patient_intro.arrival_scenario}"</div>
             {introLine && (
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed italic mb-6 sm:mb-8">
-                <span className="not-italic font-black text-slate-700">{MENTOR_ICONS[introLine.quien]} {MENTOR_NAMES[introLine.quien]}: </span>
+                <span className="not-italic font-black text-slate-700">{MENTOR_NAMES[introLine.quien]}: </span>
                 {introLine.texto}
               </p>
             )}
@@ -620,7 +620,7 @@ export function App() {
               }}
               className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl group"
             >
-              INICIAR CONSULTA ✨
+              INICIAR CONSULTA
             </button>
           </motion.div>
         </div>
@@ -632,12 +632,12 @@ export function App() {
           <div className="fixed inset-0 bg-paper overflow-y-auto overscroll-contain z-[120]" style={{ touchAction: 'pan-y' }}>
            <div className="min-h-full flex flex-col items-center justify-center p-4 sm:p-8">
             <div className="text-center mb-6 sm:mb-10">
-              <span className="text-xs font-black tracking-widest text-primary uppercase mb-2 block lettering">NOTAS DE ESTUDIO ✨</span>
+              <span className="text-xs font-black tracking-widest text-primary uppercase mb-2 block lettering">NOTAS DE ESTUDIO</span>
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-black text-slate-800 lettering drop-shadow-sm">Dr. Swipe</h1>
               <div className="h-2 w-32 sm:w-48 washi-tape mx-auto mt-3 sm:mt-4 rotate-1" />
             </div>
             <p className="max-w-xs text-center text-xs sm:text-sm text-slate-600 leading-relaxed italic mb-4 sm:mb-6 px-4">
-              <span className="not-italic font-black text-slate-700">{MENTOR_ICONS[menuGreeting.quien]} {MENTOR_NAMES[menuGreeting.quien]}: </span>
+              <span className="not-italic font-black text-slate-700">{MENTOR_NAMES[menuGreeting.quien]}: </span>
               {menuGreeting.texto}
             </p>
             {dailyStreak > 0 && (() => {
@@ -646,7 +646,7 @@ export function App() {
                 <div className={`flex items-center gap-2 px-4 sm:px-6 py-2 rounded-2xl mb-6 sm:mb-10 shadow-sm font-bold lettering uppercase text-xs ${
                   playedToday ? 'bg-amber-100 text-amber-700' : 'bg-rose-100 text-rose-600 animate-pulse'
                 }`}>
-                  🔥 Racha: {dailyStreak} Días{!playedToday && ' — ¡juega hoy para no perderla!'}
+                  Racha: {dailyStreak} Días{!playedToday && ' — ¡juega hoy para no perderla!'}
                 </div>
               );
             })()}
@@ -656,11 +656,11 @@ export function App() {
               <span className="text-xs font-black text-slate-400 uppercase tracking-widest block mb-2.5 lettering">SELECCIONAR ESPECIALIDAD:</span>
               <div className="flex flex-wrap justify-center gap-2">
                 {[
-                  { id: 'all', label: 'Mixta 🎲' },
-                  { id: 'im', label: 'Med. Interna 🩺' },
-                  { id: 'ped', label: 'Pediatría 👶' },
-                  { id: 'go', label: 'Gineco-Obstetricia 🤰' },
-                  { id: 'surg', label: 'Cirugía 🩹' }
+                  { id: 'all', label: 'Mixta' },
+                  { id: 'im', label: 'Med. Interna' },
+                  { id: 'ped', label: 'Pediatría' },
+                  { id: 'go', label: 'Gineco-Obstetricia' },
+                  { id: 'surg', label: 'Cirugía' }
                 ].map(spec => (
                   <button
                     key={spec.id}
@@ -680,34 +680,34 @@ export function App() {
             <div className="flex flex-col gap-3 sm:gap-4 w-full max-w-xs px-2 z-10">
               <div className="relative group mt-2 mb-4 w-full">
                 <button onClick={() => startNewCase(false, selectedSpecialty)} disabled={isLoadingCase} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl">
-                  {isLoadingCase ? 'PREPARANDO...' : 'INICIAR GUARDIA ⚡'}
+                  {isLoadingCase ? 'PREPARANDO...' : 'INICIAR GUARDIA'}
                 </button>
               </div>
 
               <button onClick={() => startNewCase(true, selectedSpecialty)} disabled={isLoadingCase} className="marker-btn relative py-4 sm:py-5 text-base sm:text-xl !bg-emerald-600 !border-emerald-500 shadow-emerald-200">
-                 {isLoadingCase ? 'PREPARANDO...' : 'MODO ESTUDIO 🍉'}
+                 {isLoadingCase ? 'PREPARANDO...' : 'MODO ESTUDIO'}
                  <div className="absolute -top-3 right-0 sm:-right-4 bg-amber-500 text-white text-xs px-2 py-0.5 rounded-full shadow-md pointer-events-none">SIN DAÑO</div>
               </button>
 
               {/* Repasar Errores Button */}
               {Object.values(caseProgress).some(p => p.nextReviewDate <= Date.now()) && (
                 <button onClick={() => startMistakesRepass()} disabled={isLoadingCase} className="marker-btn py-4 sm:py-5 text-base sm:text-xl !bg-rose-600 !border-rose-500 shadow-rose-200">
-                   REPASO PENDIENTE 🖍️
+                   REPASO PENDIENTE
                 </button>
               )}
 
               {sessionProgress && (
                 <button onClick={() => resumeSession()} disabled={isLoadingCase} className="marker-btn py-4 sm:py-5 text-base sm:text-xl !bg-slate-700 !border-slate-600 shadow-slate-200">
-                   REANUDAR GUARDIA 📑
+                   REANUDAR GUARDIA
                 </button>
               )}
 
               <div className="flex gap-4 justify-center pt-2">
-                <button onClick={() => setShowStats(true)} className="text-xs font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Ver mi diario 📔</button>
+                <button onClick={() => setShowStats(true)} className="text-xs font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Ver mi diario</button>
                 <span className="text-slate-300">|</span>
-                <button onClick={() => setShowCodex(true)} className="text-xs font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Códex 📖</button>
+                <button onClick={() => setShowCodex(true)} className="text-xs font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Códex</button>
                 <span className="text-slate-300">|</span>
-                <button onClick={() => setShowSettings(true)} className="text-xs font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Ajustes ⚙️</button>
+                <button onClick={() => setShowSettings(true)} className="text-xs font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Ajustes</button>
               </div>
             </div>
             <p className="max-w-xs text-center text-[11px] text-slate-400 leading-snug mt-6 px-4">
@@ -766,7 +766,7 @@ export function App() {
               transition={{ type: 'spring', stiffness: 380, damping: 18 }}
               className="flex flex-col items-center"
             >
-              <span className="text-6xl sm:text-7xl mb-4" aria-hidden="true">🚨</span>
+              <AlertOctagon className="w-16 h-16 sm:w-20 sm:h-20 mb-4 text-white animate-pulse" aria-hidden="true" />
               <h2 className="text-5xl sm:text-6xl font-black lettering tracking-tight drop-shadow-lg">CÓDIGO ROJO</h2>
               <p className="mt-3 text-sm sm:text-base font-bold uppercase tracking-[0.25em] opacity-90">El paciente se descompensa</p>
             </motion.div>
@@ -809,14 +809,16 @@ export function App() {
         return scrollPanel(
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-6 sm:p-10 max-w-md w-full text-center shadow-xl relative mx-4">
             <div className="absolute top-0 left-0 w-full h-2 bg-rose-400" />
-            <div className="text-6xl sm:text-7xl mb-4 sm:mb-6 mt-3 sm:mt-4">💀</div>
+            <div className="w-16 sm:w-20 h-16 sm:h-20 mx-auto mb-4 sm:mb-6 mt-3 sm:mt-4 rounded-3xl bg-rose-100 flex items-center justify-center text-rose-600 shadow-inner">
+              <AlertCircle className="w-10 sm:w-12 h-10 sm:h-12" aria-hidden="true" />
+            </div>
             <span className="lettering text-rose-500 font-bold block mb-2 text-xs uppercase">Paciente Inestable</span>
             <h2 className="text-4xl sm:text-5xl font-black text-slate-800 mb-3 sm:mb-4 lettering">Error Crítico</h2>
             <div className="bg-rose-50 p-4 sm:p-6 rounded-2xl mb-4 border-2 border-dashed border-rose-100 italic lettering text-base sm:text-lg">
               "{state.context.fatalError || 'El paciente sufrió una complicación letal.'}"
             </div>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 sm:mb-8 italic">
-              <span className="not-italic font-black text-slate-700">{MENTOR_ICONS[ghostedLine.quien]} {MENTOR_NAMES[ghostedLine.quien]}: </span>
+              <span className="not-italic font-black text-slate-700">{MENTOR_NAMES[ghostedLine.quien]}: </span>
               {ghostedLine.texto}
             </p>
             <div className="flex flex-col gap-3 sm:gap-4">
@@ -833,10 +835,10 @@ export function App() {
                   }}
                   className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl !bg-emerald-600 hover:!bg-emerald-700 !border-emerald-500 shadow-emerald-200"
                 >
-                  LLAMAR AL ADJUNTO 📞 ({REVIVE_FAVOR_COST} 🩺 de {favors})
+                  LLAMAR AL ADJUNTO ({REVIVE_FAVOR_COST} Favores de {favors})
                 </button>
               )}
-              <button onClick={() => send({ type: 'VIEW_DEBRIEF' })} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl !bg-slate-700">VER NOTAS 📝</button>
+              <button onClick={() => send({ type: 'VIEW_DEBRIEF' })} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl !bg-slate-700">VER NOTAS</button>
               <button onClick={() => send({ type: 'RESTART' })} className="text-xs font-bold text-slate-500 hover:text-rose-500 uppercase tracking-widest py-2 transition-all lettering">— Nueva Guardia —</button>
             </div>
           </motion.div>
@@ -846,7 +848,7 @@ export function App() {
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="paper-sheet p-6 sm:p-10 max-w-md w-full text-left shadow-xl relative mx-4">
             <div className="mb-4 sm:mb-6">
               <span className="bg-rose-500 text-white px-3 sm:px-4 py-1 rounded-lg lettering text-sm sm:text-base shadow-sm rotate-[-2deg] inline-block">
-                PERLA ENARM DE REPASO 📚
+                PERLA ENARM DE REPASO
               </span>
             </div>
             {state.context.debriefData?.title && (
@@ -863,9 +865,9 @@ export function App() {
               </p>
             )}
             {state.context.feedbackHistory.length > 0 && (
-              <button onClick={() => setShowRetro(true)} className="marker-btn w-full py-3 sm:py-4 text-sm sm:text-base !bg-slate-700 mb-3 sm:mb-4">VER REPASO DE CARTAS 📋</button>
+              <button onClick={() => setShowRetro(true)} className="marker-btn w-full py-3 sm:py-4 text-sm sm:text-base !bg-slate-700 mb-3 sm:mb-4">VER REPASO DE CARTAS</button>
             )}
-            <button onClick={() => send({ type: 'RESTART' })} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-lg">Continuar Estudiando ✨</button>
+            <button onClick={() => send({ type: 'RESTART' })} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-lg">Continuar Estudiando</button>
           </motion.div>
         );
       default: return null;
@@ -915,7 +917,7 @@ export function App() {
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="fixed inset-0 z-[130] flex flex-col items-center justify-center bg-paper/80 backdrop-blur-sm">
           <motion.div ref={pauseTrapRef} role="dialog" aria-modal="true" initial={{ scale: 0.9 }} animate={{ scale: 1 }} className="paper-sheet p-10 max-w-xs w-full text-center border-primary/20 shadow-xl relative">
             <p className="text-slate-400 text-sm italic mb-8 lettering leading-relaxed">"Guardia en pausa. Tus notas están seguras."</p>
-            <button onClick={() => setIsPaused(false)} className="marker-btn w-full py-4 text-sm mb-4">REANUDAR ✨</button>
+            <button onClick={() => setIsPaused(false)} className="marker-btn w-full py-4 text-sm mb-4">REANUDAR</button>
             <button onClick={() => { setIsPaused(false); stopTriageAlarm(); clearSessionProgress(); send({ type: 'RESTART' }); }} className="text-xs font-bold text-slate-500 uppercase py-2 lettering">ABANDONAR</button>
           </motion.div>
         </motion.div>
@@ -937,7 +939,7 @@ export function App() {
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 washi-tape -rotate-1 shadow-sm border-x-2 border-white/40 z-20" />
               
               <div className="flex justify-between items-center mb-6 pt-4">
-                <span className="text-xs font-black tracking-[0.3em] text-primary/60 uppercase lettering">AJUSTES ⚙️</span>
+                <span className="text-xs font-black tracking-[0.3em] text-primary/60 uppercase lettering">AJUSTES</span>
                 <button
                   onClick={() => setShowSettings(false)}
                   className="w-8 h-8 flex items-center justify-center rounded-xl bg-slate-50 border-2 border-white shadow-sm text-slate-400 hover:text-rose-400 cursor-pointer"
@@ -984,7 +986,7 @@ export function App() {
                   }}
                   className="marker-btn py-3 text-xs w-full"
                 >
-                  VER TUTORIAL 📘
+                  VER TUTORIAL
                 </button>
               </div>
 

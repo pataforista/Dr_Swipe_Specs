@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { X } from 'lucide-react';
+import { X, GraduationCap, FileCheck, TrendingUp, AlertCircle, Target, type LucideIcon } from 'lucide-react';
 import { useCodexStore } from '../store/useCodexStore';
 import { DoodlePlayerCard } from './ui/DoodlePlayerCard';
 interface StatsDashboardProps {
@@ -8,12 +8,12 @@ interface StatsDashboardProps {
 }
 
 const RANK_THRESHOLDS = [
-  { min: 0, label: '🩺 ESTUDIANTE MÉDICO' },
-  { min: 500, label: '🧪 INTERNO DE GUARDIA' },
-  { min: 2000, label: '🏥 MÉDICO RESIDENTE' },
-  { min: 5000, label: '⚡ ESPECIALISTA' },
-  { min: 10000, label: '👑 JEFE DE ENSEÑANZA' },
-  { min: 25000, label: '🌟 DIRECTOR MÉDICO' },
+  { min: 0, label: 'ESTUDIANTE MÉDICO' },
+  { min: 500, label: 'INTERNO DE GUARDIA' },
+  { min: 2000, label: 'MÉDICO RESIDENTE' },
+  { min: 5000, label: 'ESPECIALISTA' },
+  { min: 10000, label: 'JEFE DE ENSEÑANZA' },
+  { min: 25000, label: 'DIRECTOR MÉDICO' },
 ];
 
 function getRank(xp: number) {
@@ -55,7 +55,7 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
       <div className="flex justify-between items-center mb-6 sm:mb-8 pt-4 sm:pt-6 relative z-10 gap-2">
         <div className="flex flex-col gap-1 min-w-0">
           <span className="text-xs sm:text-[12px] font-black tracking-[0.3em] sm:tracking-[0.4em] text-primary/60 uppercase lettering">
-            LIBRETA DE LOGROS 📔
+            LIBRETA DE LOGROS
           </span>
           <div className="h-1 w-20 sm:w-24 bg-cyan-100 rounded-full" />
         </div>
@@ -77,7 +77,7 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
               transition={{ repeat: Infinity, duration: 3 }}
               className="text-4xl sm:text-6xl filter drop-shadow-sm relative z-10 flex-shrink-0"
             >
-              🎓
+              <GraduationCap className="w-10 sm:w-14 h-10 sm:h-14 text-primary" aria-hidden="true" />
             </motion.div>
             <div className="relative z-10 min-w-0">
               <span className="text-xs font-black text-slate-400 uppercase tracking-[0.25em] sm:tracking-[0.3em] block mb-1 sm:mb-2 lettering">RANGO ACTUAL:</span>
@@ -90,7 +90,7 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
             <div className="flex justify-between mb-2 sm:mb-4 items-end gap-2">
               <span className="text-xs font-black text-slate-400 uppercase tracking-[0.3em] sm:tracking-[0.4em] lettering">EXPERIENCIA</span>
               <span className="text-xs sm:text-[12px] font-bold text-primary italic lettering">
-                {nextThreshold ? `${stats.xp} / ${nextThreshold.min}` : `${stats.xp} 🌟`}
+                {nextThreshold ? `${stats.xp} / ${nextThreshold.min}` : `${stats.xp} XP`}
               </span>
             </div>
             <div className="w-full h-3 sm:h-4 bg-slate-100 rounded-full overflow-hidden border-2 border-white p-0.5 shadow-inner">
@@ -117,10 +117,10 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
 
           {/* Stats grid */}
           <div className="grid grid-cols-2 gap-3 sm:gap-5 mb-6 sm:mb-8 relative z-10">
-            <StatCard label="RESUELTOS" value={stats.cases_solved} emoji="📑" color="primary" />
-            <StatCard label="ACIERTOS" value={stats.correct_swipes} emoji="📈" color="primary" />
+            <StatCard label="RESUELTOS" value={stats.cases_solved} icon={FileCheck} color="primary" />
+            <StatCard label="ACIERTOS" value={stats.correct_swipes} icon={TrendingUp} color="primary" />
             <div className="col-span-2">
-              <StatCard label="FALLOS" value={stats.mistakes} emoji="🖍️" color="accent-alert" />
+              <StatCard label="FALLOS" value={stats.mistakes} icon={AlertCircle} color="accent-alert" />
             </div>
           </div>
 
@@ -128,7 +128,7 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
           <div className="bg-slate-50 border-2 border-dashed border-slate-200 rounded-[1.8rem] sm:rounded-[2.5rem] p-4 sm:p-8 relative z-10">
             <div className="flex justify-between items-center mb-3 sm:mb-6 px-1 gap-2">
               <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-                <span className="text-xl sm:text-2xl filter drop-shadow-sm flex-shrink-0">{accuracy >= 80 ? '🎯' : '🚧'}</span>
+                <Target className="w-5 h-5 sm:w-6 sm:h-6 text-slate-500 flex-shrink-0" aria-hidden="true" />
                 <span className="text-xs text-slate-500 uppercase tracking-[0.25em] sm:tracking-[0.4em] font-black lettering">PRECISIÓN</span>
               </div>
               <span className="text-2xl sm:text-3xl text-slate-700 font-bold lettering italic flex-shrink-0">{accuracy}%</span>
@@ -149,7 +149,7 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
       )}
 
       <div className="mt-6 sm:mt-8 flex justify-center relative z-10">
-         <button onClick={onClose} className="marker-btn py-4 sm:py-5 px-8 sm:px-16 text-base sm:text-xl">DESPRENDER RANGO ✨</button>
+         <button onClick={onClose} className="marker-btn py-4 sm:py-5 px-8 sm:px-16 text-base sm:text-xl">CERRAR DIARIO</button>
       </div>
     </motion.div>
   );
@@ -158,14 +158,14 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ onClose }) => {
 const StatCard: React.FC<{
   label: string;
   value: string | number;
-  emoji: string;
+  icon: LucideIcon;
   color: 'primary' | 'secondary' | 'accent-alert';
-}> = ({ label, value, emoji, color }) => {
+}> = ({ label, value, icon: Icon, color }) => {
   return (
     <div className="bg-white border-2 border-slate-100 rounded-[1.5rem] sm:rounded-[2.2rem] p-4 sm:p-6 flex flex-col justify-between shadow-sm relative overflow-hidden transition-all hover:border-primary/20 group cursor-default">
       <div className="flex justify-between items-start mb-2 sm:mb-3 gap-2">
         <span className="text-xs font-black text-slate-400 uppercase tracking-[0.25em] sm:tracking-[0.3em] lettering leading-tight">{label}</span>
-        <span className="text-base sm:text-xl opacity-60 group-hover:opacity-100 transition-opacity flex-shrink-0">{emoji}</span>
+        <span className="opacity-60 group-hover:opacity-100 transition-opacity flex-shrink-0"><Icon className="w-4 h-4 sm:w-5 sm:h-5 text-slate-500" aria-hidden="true" /></span>
       </div>
       <div className="flex items-baseline gap-1.5 relative z-10">
         <span className={`text-2xl sm:text-3xl font-bold lettering tracking-tighter ${

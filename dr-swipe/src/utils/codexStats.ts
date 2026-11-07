@@ -3,9 +3,9 @@ import type { Specialty } from '../types/game';
 import { specialtyFromCaseId } from './sessionEngine';
 
 export const SPECIALTY_LABELS: Record<Specialty, string> = {
-  ped: 'Pediatría 👶', obs: 'Obstetricia 🤰', gyn: 'Ginecología 🌸', im: 'Medicina Interna 🩺',
-  surg: 'Cirugía 🩹', psych: 'Psiquiatría 🧠', neur: 'Neurología ⚡', inf: 'Infectología 🦠',
-  prev: 'Medicina Preventiva 💉', stats: 'Estadística 📊', engl: 'Inglés médico 🔤',
+  ped: 'Pediatría', obs: 'Obstetricia', gyn: 'Ginecología', im: 'Medicina Interna',
+  surg: 'Cirugía', psych: 'Psiquiatría', neur: 'Neurología', inf: 'Infectología',
+  prev: 'Medicina Preventiva', stats: 'Estadística', engl: 'Inglés médico',
 };
 
 export interface SpecialtyStat {

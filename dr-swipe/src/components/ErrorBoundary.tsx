@@ -1,4 +1,5 @@
 import { Component, type ErrorInfo, type ReactNode } from "react";
+import { AlertTriangle } from "lucide-react";
 import { reportError } from "../utils/monitoring";
 
 interface Props {
@@ -44,7 +45,9 @@ class ErrorBoundary extends Component<Props, State> {
       return this.props.fallback || (
         <div className="fixed inset-0 flex items-center justify-center bg-black/90 z-50">
           <div className="max-w-md w-full mx-4 p-8 bg-slate-900 border border-red-500/50 rounded-lg text-center">
-            <div className="text-4xl mb-4">⚠️</div>
+            <div className="w-12 h-12 mx-auto mb-4 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400">
+              <AlertTriangle className="w-6 h-6" aria-hidden="true" />
+            </div>
             <h1 className="text-2xl font-black text-red-400 mb-4">Error de Aplicación</h1>
             <p className="text-slate-300 mb-6 text-sm">
               {/* Raw error text means nothing to a player; it stays a dev aid. */}

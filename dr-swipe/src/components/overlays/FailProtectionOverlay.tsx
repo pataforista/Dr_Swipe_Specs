@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ShieldAlert } from 'lucide-react';
 import { useFocusTrap } from '../../hooks/useFocusTrap';
 
 interface FailProtectionOverlayProps {
@@ -35,7 +36,9 @@ export const FailProtectionOverlay: React.FC<FailProtectionOverlayProps> = ({
         className="paper-sheet p-10 max-w-md w-full text-center border-rose-200 shadow-2xl relative overflow-hidden my-auto shrink-0"
       >
         <div className="absolute top-0 left-0 w-full h-2 bg-rose-400 sticker-glow" />
-        <div className="text-7xl mb-6">🚑</div>
+        <div className="w-20 h-20 mx-auto mb-6 rounded-3xl bg-rose-100 border-2 border-rose-200 flex items-center justify-center text-rose-600 shadow-inner">
+          <ShieldAlert className="w-10 h-10" aria-hidden="true" />
+        </div>
         <span className="lettering text-rose-500 font-bold block mb-2 text-xs uppercase">
           Incidente en la Guardia
         </span>
@@ -55,7 +58,7 @@ export const FailProtectionOverlay: React.FC<FailProtectionOverlayProps> = ({
             onClick={onRescue}
             className="marker-btn w-full py-6 text-xl flex flex-col items-center justify-center gap-1 group"
           >
-            <span className="text-sm font-black uppercase whitespace-nowrap">CAMBIAR DE INTERNO ✨</span>
+            <span className="text-sm font-black uppercase whitespace-nowrap">CAMBIAR DE INTERNO</span>
             <span className="text-xs opacity-60 font-bold uppercase tracking-widest">
               ({livesRemaining - 1} DISPONIBLES)
             </span>
