@@ -33,7 +33,7 @@ Defectos de juego y de producción. Cada uno tiene su fila en `ERRORES_Y_PREVENC
 | T2 | Probar en el dominio real: instalar la PWA en Android e iOS, jugar sin conexión, revisar que la CSP de `_headers` no bloquee fuentes (la CSP solo existe en Cloudflare, no en `vite preview`) | Tú, con teléfono | 30 min |
 | T3 | Revisar en móvil el balance de Favores (tope 5, revivir cuesta 3), pendiente desde la fase 6 | Tú | 1 partida larga |
 | T4 | Etiquetar `v1.0.0` en git tras el despliegue | Tú o yo | 1 min |
-| T5 | Aviso de privacidad de una línea en la página o la ficha: el progreso vive solo en el dispositivo; las fuentes se piden a Google Fonts (eso expone la IP del jugador a Google). Si te importa, autoalojar las fuentes es el cambio mínimo | Tú decides | 15 min |
+| T5 | ✅ **Hecho:** Aviso de privacidad en Ajustes (`App.tsx`) y sección dedicada en `README.md` (progreso local, Google Fonts, Sentry opt-in) | Completado | — |
 
 ## 4. Contenido clínico: estado tras la revisión del 2026-10-13
 

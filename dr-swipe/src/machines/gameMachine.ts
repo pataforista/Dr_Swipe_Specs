@@ -428,7 +428,12 @@ export const gameMachine = setup({
             mistakesThisCase: 0,
             lifelineActive: false,
             vitality: 100,
+            consecutiveErrors: 0,
             lootBoxReward: null,
+            activePenalty: null,
+            activeEvent: null,
+            lastVitals: null,
+            shieldCharges: 0,
             feedbackHistory: [],
             lives: 5,
             isSandiaMode: ({ event }) => event.type === 'START_GUARD' ? !!event.isSandiaMode : false,
@@ -439,7 +444,7 @@ export const gameMachine = setup({
             lethalErrorsThisCase: 0,
             caseStartedAt: Date.now(),
             caseId: ({ event }) => event.case_id || (event.deck[0] ? event.deck[0].card_id.split('_').slice(0, 2).join('_') : 'unknown'),
-            pearlId: ({ event }) => event.pearl?.id || null,
+            pearlId: ({ event }) => event.pearl?.id || event.pearl?.title || null,
             usedUndoThisCase: false,
             lastAction: null,
             session: () => ({ ...EMPTY_SESSION, startedAt: Date.now() })
@@ -472,9 +477,12 @@ export const gameMachine = setup({
             }),
             lifelineActive: false,
             vitality: 100,
+            consecutiveErrors: 0,
             lootBoxReward: null,
             activePenalty: null,
             activeEvent: null,
+            lastVitals: null,
+            shieldCharges: 0,
             feedbackHistory: [],
             lives: 5,
             // A study-mode save resumes in study mode (no damage, no clock).
@@ -486,7 +494,7 @@ export const gameMachine = setup({
             lethalErrorsThisCase: 0,
             caseStartedAt: Date.now(),
             caseId: ({ event }) => event.case_id || (event.deck[0] ? event.deck[0].card_id.split('_').slice(0, 2).join('_') : 'unknown'),
-            pearlId: ({ event }) => event.pearl?.id || null,
+            pearlId: ({ event }) => event.pearl?.id || event.pearl?.title || null,
             usedUndoThisCase: false,
             lastAction: null,
             session: () => ({ ...EMPTY_SESSION, startedAt: Date.now() })
@@ -648,7 +656,7 @@ export const gameMachine = setup({
             lethalErrorsThisCase: 0,
             caseStartedAt: Date.now(),
             caseId: ({ event }) => event.case_id || (event.deck[0] ? event.deck[0].card_id.split('_').slice(0, 2).join('_') : 'unknown'),
-            pearlId: ({ event }) => event.puzzle?.id || null
+            pearlId: ({ event }) => event.puzzle?.id || event.puzzle?.title || null
           })
         },
         FINISH_SHIFT: { target: 'victoria_guardia' },
@@ -681,6 +689,7 @@ export const gameMachine = setup({
             lives: ({ context }) => context.lives - 1,
             vitality: 100,
             currentCardIndex: 0, // Restart current case cards for learning
+            lastCardPresentedAt: Date.now(),
             caseStreak: 0,
             score: 0,
             // A timeout or a wrong boss answer leaves the combo standing; the
@@ -693,6 +702,9 @@ export const gameMachine = setup({
             feedbackHistory: [],
             mistakesThisCase: 0,
             consecutiveErrors: 0,
+            lootBoxReward: null,
+            activePenalty: null,
+            activeEvent: null,
             lastVitals: null,
             lifelineActive: false,
             undoCharges: ({ context }) => undoChargesFor(context.isSandiaMode),
@@ -725,6 +737,7 @@ export const gameMachine = setup({
             lives: 1,
             vitality: 100,
             currentCardIndex: 0, // Restart current case cards for learning
+            lastCardPresentedAt: Date.now(),
             caseStreak: 0,
             score: 0,
             // A timeout or a wrong boss answer leaves the combo standing; the
@@ -737,6 +750,9 @@ export const gameMachine = setup({
             feedbackHistory: [],
             mistakesThisCase: 0,
             consecutiveErrors: 0,
+            lootBoxReward: null,
+            activePenalty: null,
+            activeEvent: null,
             lastVitals: null,
             lifelineActive: false,
             undoCharges: ({ context }) => undoChargesFor(context.isSandiaMode),

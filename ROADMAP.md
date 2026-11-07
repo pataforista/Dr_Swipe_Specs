@@ -4,9 +4,9 @@ Este es el primer archivo que se abre cada sesión de trabajo.
 Toda decisión de código, contenido o diseño debe poder rastrearse hasta aquí.
 Si algo no está en este documento, no existe todavía. Si algo cambia, se actualiza aquí antes de tocar código.
 
-Última actualización: 2026-10-02
-Versión del proyecto: 0.8.0-alpha
-Estado global: 🟡 En construcción activa
+Última actualización: 2026-11-06
+Versión del proyecto: 1.0.0
+Estado global: ✅ Listo para producción (1.0.0)
 
 🧭 Índice
 1. Propósito del documento
@@ -36,7 +36,7 @@ Regla de oro: nunca se empieza una fase nueva sin marcar la anterior como ✅ Ce
 | Validación (Zod) | ✅ | caseSchema.ts activo |
 | UI Triage (SwipeDeck) | ✅ | Botones + teclado + swipe |
 | Motor háptico / audio | ✅ | useGameAudio, hapticFeedback.ts con bandera lastAction |
-| Boss Fight (ShockRoom) | 🟡 | Funcional, pendiente de balance |
+| Boss Fight (ShockRoom) | ✅ | Opción fallada marcada, háptica/audio y checkpoint sin repetir cartas |
 | Estados XState completos | ✅ | `victoria_guardia` conectado (evento `FINISH_SHIFT`) |
 | PerformanceReview | ✅ | Conectado a `victoria_guardia` con `computeSessionMetrics` |
 | commitSession + SRS | ✅ | Store v2 con `caseProgress`; migración v0/v1 → v2 |
@@ -170,7 +170,7 @@ Dr_Swipe_Specs/
 │   │   ├── components/
 │   │   │   ├── overlays/
 │   │   │   │   ├── LootBoxOverlay.tsx
-│   │   │   │   ├── PerformanceReview.tsx    ← 🟡 En progreso
+│   │   │   │   ├── PerformanceReview.tsx    ← ✅
 │   │   │   │   └── Toast.tsx
 │   │   │   ├── ui/
 │   │   │   ├── SwipeDeck.tsx
@@ -239,7 +239,6 @@ Dr_Swipe_Specs/
 | migrateCodexState (persist v2) | ✅ |
 | getSpecialtyStats() | ✅ `utils/codexStats.ts` (puro, lee `caseProgress`) |
 | achievements, counters, unlockEarnedAchievements(), recordRevive(), noteCombo() | ✅ ADR 015 |
-| spendFavors(cost) / earnFavors(amount) | ❌ Fase 5 |
 
 6.5 machines/gameMachine.ts
 | Estado / Acción | Estado |
@@ -341,7 +340,7 @@ Tareas:
 
 🟥 Fase 7 — Producción
 Tareas:
-- [ ] Sentry / Analytics.
+- [x] Sentry / Analytics (opt-in vía `VITE_SENTRY_DSN` en `utils/monitoring.ts`, sin PII).
 - [x] CI/CD (GitHub Actions → Cloudflare Pages).
 - [ ] Tests E2E.
 - [x] Versión 1.0.0 en `package.json` (visible en Ajustes). Falta la etiqueta git `v1.0.0` al publicar.
@@ -393,5 +392,6 @@ Nunca empezar Fase N+1 con Fase N en 🟡.
 | 0.6.0 | 2026-10-02 | Fase 4 cerrada: manifest por especialidad, caché PWA para 3,000+ casos |
 | 0.7.0 | 2026-10-02 | Fase 5 iniciada: Favores del Adjunto, racha con día de gracia, decisiones ADR 011 a 014 |
 | 0.8.0 | 2026-10-02 | Fase 5 completa en lo planificado: Códex, diálogos Navarro/Vázquez y 17 logros |
+| 1.0.0 | 2026-11-06 | Cierre de producción, revisión clínica 237 cartas, Sentry opt-in, rangos PALS en auditoría y Beads (bd) |
 
 Siguiente acción concreta: prueba manual en móvil (guardia de 3 casos, Favores y Códex). Después, diseñar el simulacro ENARM y revisar el balance con la tasa de logros desbloqueados.

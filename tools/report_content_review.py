@@ -133,7 +133,7 @@ def main() -> int:
     families: dict[str, dict[str, int]] = defaultdict(lambda: {"keep": 0, "discard": 0, "cases": 0})
 
     for path in sorted(cases_dir.glob("CASE_*.json")):
-        if path.name.lower() == "case_index.json":
+        if not path.name.startswith("CASE_"):
             continue
         raw = path.read_text(encoding="utf-8")
         case = json.loads(raw)
@@ -185,7 +185,7 @@ def main() -> int:
     fields = ["tipo", "case_id", "card_id", "expected_action", "card_text", "vazquez_comment", "motivo"]
     # utf-8-sig so Excel opens the accents correctly, like the other review CSVs.
     with out_path.open("w", encoding="utf-8-sig", newline="") as fh:
-        writer = csv.DictWriter(fh, fieldnames=fields)
+        writer = csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows + balance_rows)
 

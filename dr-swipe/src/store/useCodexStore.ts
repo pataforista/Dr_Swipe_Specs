@@ -179,8 +179,9 @@ export const useCodexStore = create<CodexState>()(
       },
 
       unlockPearl: (pearl) => set((state) => {
-        if (state.unlockedPearls.find(p => p.id === pearl.id)) return state;
-        return { unlockedPearls: [...state.unlockedPearls, pearl] };
+        const key = pearl.id || pearl.title;
+        if (!key || state.unlockedPearls.some(p => (p.id || p.title) === key)) return state;
+        return { unlockedPearls: [...state.unlockedPearls, { ...pearl, id: key }] };
       }),
 
       registerCaseSolved: (caseId, score = 0, mistakes = 0) => set((state) => {

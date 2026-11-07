@@ -1,6 +1,6 @@
 # PROJECT_MAP — Dr. Swipe
 
-Mapa para modelos y colaboradores que necesitan trabajar en el repositorio sin leerlo entero. Verificado el 2026-10-10 sobre `main` (599 casos, 119 tests, lint limpio). Si algo de aquí contradice al código, manda el código; corrige este archivo en el mismo commit.
+Mapa para modelos y colaboradores que necesitan trabajar en el repositorio sin leerlo entero. Verificado el 2026-11-06 sobre `main` (599 casos, 126 tests, lint limpio). Si algo de aquí contradice al código, manda el código; corrige este archivo en el mismo commit.
 
 ## 1. Qué es
 
@@ -111,7 +111,7 @@ Todas operan sobre `cases/` y son idempotentes. Con `--check` no escriben y sale
 | `clean_card_leaks.py <dir> [--check]` | Quita letras, etiquetas y prefijos horneados |
 | `apply_guideline_review.py <dir> [--check]` | Correcciones de signos vitales según guías; cada fuente está en el docstring |
 | `insert_distractors.py <dir> <lote.json> [--check]` | Inserta cartas `discard` desde `content_drafts/`; posición aleatoria sembrada por `case_id`; respeta el tope de 18; omite las marcadas `"reserva": true` |
-| `report_content_review.py` | Informe → `REVISION_CONTENIDO_JUGABILIDAD.csv` (usa umbrales de adulto: falsos positivos pediátricos) |
+| `report_content_review.py` | Informe → `REVISION_CONTENIDO_JUGABILIDAD.csv` (incluye rangos pediátricos PALS por edad) |
 | `export_full_review.py`, `export_review_pack.py` | `REVISION_COMPLETA_CASOS.csv` y el paquete de `REVISION_CLINICA/` |
 
 **Regla de contenido que no se negocia:** sin guía confirmada no se escribe la carta; se responde "Insufficient data". Las fuentes de varios lotes (5 y 6) se redactaron de memoria y esperan confirmación del revisor clínico.
@@ -127,7 +127,7 @@ Receta para añadir distractores: leer el mazo de la familia → redactar 3–4 
 ```bash
 python3 tools/validate_cases.py cases          # desde la raíz
 cd dr-swipe && npm ci
-npm test                                       # vitest, 17 archivos / 123 tests
+npm test                                       # vitest, 17 archivos / 126 tests
 npm run lint
 npm run build                                  # prebuild sincroniza casos; luego tsc -b && vite build
 npm run dev                                    # localhost:5173

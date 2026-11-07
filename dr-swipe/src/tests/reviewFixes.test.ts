@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { createActor } from 'xstate';
 import { gameMachine } from '../machines/gameMachine';
 import { specialtyFromCaseId } from '../utils/sessionEngine';
+import { useCodexStore } from '../store/useCodexStore';
 import type { Card } from '../types/game';
 
 const card = (id: string, action: 'keep' | 'discard', lethal = false): Card => ({
@@ -68,5 +69,27 @@ describe('fixes from the full review', () => {
 
   it('PSYC case ids map to psychiatry', () => {
     expect(specialtyFromCaseId('PROC_PSYC_DEPRESSION_001_001')).toBe('psych');
+  });
+
+  it('unlocks multiple real pearls without id field by using title as fallback key', () => {
+    useCodexStore.setState({ unlockedPearls: [] });
+    const { unlockPearl } = useCodexStore.getState();
+    unlockPearl({ title: 'Perla Sarampión', text: 'Manchas de Koplik.' });
+    unlockPearl({ title: 'Perla Rubéola', text: 'Adenopatías retroauriculares.' });
+    unlockPearl({ title: 'Perla Sarampión', text: 'Duplicada de otra variante.' });
+    const pearls = useCodexStore.getState().unlockedPearls;
+    expect(pearls).toHaveLength(2);
+    expect(pearls.map(p => p.id)).toEqual(['Perla Sarampión', 'Perla Rubéola']);
+  });
+
+  it('populates pearlId from pearl.title when pearl.id is omitted in JSON cases', () => {
+    const a = createActor(gameMachine).start();
+    a.send({
+      type: 'START_GUARD',
+      deck,
+      difficulty: 'standard',
+      pearl: { title: 'Perla Croup', text: 'Dexametasona dosis única.' },
+    });
+    expect(a.getSnapshot().context.pearlId).toBe('Perla Croup');
   });
 });

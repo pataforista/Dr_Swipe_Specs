@@ -261,7 +261,7 @@ export function App() {
       window.setTimeout(() => setShiftPayout(p => ({ xp: p.xp + xpGained, coins: p.coins + totalCoins })), 0);
       registerCaseSolved(currentCase.case_id, state.context.score, state.context.mistakesThisCase);
       const pearl = currentCase.enarm_pearl ?? currentCase.perla_enarm;
-      if (pearl) unlockPearl(pearl);
+      if (pearl) unlockPearl({ ...pearl, id: pearl.id || pearl.title, category: pearl.category || currentCase.theme_config?.toUpperCase() });
     } else if (!state.matches('reward')) {
       rewardedCaseRef.current = null;
     }
@@ -335,8 +335,10 @@ export function App() {
 
   const resumeSession = async () => {
     if (!sessionProgress || !sessionProgress.caseId) return;
+    setIsPaused(false);
     setIsLoadingCase(true);
     setIsStudyModeActive(!!sessionProgress.isSandiaMode);
+    setShiftPayout({ xp: 0, coins: 0 });
     try {
       // Find the specific case file
       const caseData = await dataLoader.loadCaseById(sessionProgress.caseId);
@@ -512,10 +514,21 @@ export function App() {
 
   const handleUndo = () => {
     if (!canUndo) return;
+    const clearUndoFeedback = () => {
+      if (mentorTimerRef.current !== null) clearTimeout(mentorTimerRef.current);
+      mentorTimerRef.current = null;
+      setMentorDialogue(null);
+      setMentorExpression('neutral');
+      setLastSwipePoints(null);
+      setMistakeContext(null);
+      setPointsPop(null);
+    };
     if (state.context.undoCharges > 0) {
+      clearUndoFeedback();
       send({ type: 'UNDO_SWIPE' });
       triggerHaptic('warning');
     } else if (stats.coins >= UNDO_COST && spendCoins(UNDO_COST)) {
+      clearUndoFeedback();
       send({ type: 'BUY_UNDO' });
       send({ type: 'UNDO_SWIPE' });
       triggerHaptic('criticalSuccess');

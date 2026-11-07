@@ -45,6 +45,7 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
   const [currentStep, setCurrentStep] = useState(0);
   const [timeLeft, setTimeLeft] = useState(STEP_TIME_LIMIT);
   const [wrongAttempts, setWrongAttempts] = useState(0);
+  const [wrongPicks, setWrongPicks] = useState<number[]>([]);
   const [beat, setBeat] = useState<Beat | null>(null);
   const [hidden, setHidden] = useState(() => typeof document !== 'undefined' && document.hidden);
   const totalSteps = questions.length;
@@ -81,6 +82,8 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
     }
   }, [timeLeft, locked, hidden, startTriageAlarm, stopTriageAlarm]);
 
+  useEffect(() => () => stopTriageAlarm(), [stopTriageAlarm]);
+
   // Resolve each beat once it has played.
   useEffect(() => {
     if (!beat) return;
@@ -92,6 +95,7 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
     const t = window.setTimeout(() => {
       if (beat.kind === 'correct') {
         setBeat(null);
+        setWrongPicks([]);
         setCurrentStep(prev => prev + 1);
         setTimeLeft(STEP_TIME_LIMIT); // Refresh time for next step
       } else if (beat.kind === 'stabilized') {
@@ -104,7 +108,7 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
   }, [beat]);
 
   const handleAnswer = (selectedIndex: number) => {
-    if (locked) return;
+    if (locked || wrongPicks.includes(selectedIndex)) return;
     const isCorrect = selectedIndex === question.correct_index;
     if (isCorrect) {
       playBossCorrect();
@@ -115,6 +119,7 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
     }
     playFeedback('wrong');
     triggerHaptic('warning');
+    setWrongPicks(prev => [...prev, selectedIndex]);
     const nextAttempts = wrongAttempts + 1;
     setWrongAttempts(nextAttempts);
     setBeat(nextAttempts >= MAX_WRONG_ATTEMPTS
@@ -123,10 +128,9 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
   };
 
   const optionState = (idx: number): 'right' | 'wrong' | 'idle' => {
-    if (!beat) return 'idle';
-    if ((beat.kind === 'correct' || beat.kind === 'stabilized') && beat.picked === idx) return 'right';
-    if (beat.kind === 'reveal' && idx === question.correct_index) return 'right';
-    if ((beat.kind === 'wrong' || beat.kind === 'reveal') && beat.picked === idx) return 'wrong';
+    if (beat && (beat.kind === 'correct' || beat.kind === 'stabilized') && beat.picked === idx) return 'right';
+    if (beat?.kind === 'reveal' && idx === question.correct_index) return 'right';
+    if (wrongPicks.includes(idx) || (beat && (beat.kind === 'wrong' || beat.kind === 'reveal') && beat.picked === idx)) return 'wrong';
     return 'idle';
   };
 
@@ -225,7 +229,7 @@ export const ShockRoom: React.FC<ShockRoomProps> = ({
                   <button
                     key={idx}
                     onClick={() => handleAnswer(idx)}
-                    disabled={locked}
+                    disabled={locked || wrongPicks.includes(idx)}
                     className={`paper-sheet p-2.5 sm:p-5 text-left transition-all group flex items-center gap-2 sm:gap-4 border-2 flex-shrink-0 ${
                       st === 'right' ? 'border-emerald-400 bg-emerald-50'
                         : st === 'wrong' ? 'border-rose-300 bg-rose-50'
