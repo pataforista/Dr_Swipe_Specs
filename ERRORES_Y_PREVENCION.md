@@ -74,6 +74,7 @@ Pipeline en verde antes y después (599 casos, 123 tests, lint, build, 0 vulnera
 | 41 | `RESCUE` y `REVIVE_INTERN` hacia `triage` no actualizaban `lastCardPresentedAt` ni limpiaban overlays | `gameMachine.ts` | La 1.ª carta tras revivir medía el tiempo desde antes de morir (perdiendo bono de velocidad) | `lastCardPresentedAt: Date.now()` y limpieza de `lootBoxReward`, `activePenalty` y `activeEvent` |
 | 42 | `sync_cases.js` copiaba casos pero no eliminaba `CASE_*.json` obsoletos en `public/cases/` | `dr-swipe/sync_cases.js` | Quedaban 3 archivos legados `CASE_SWIPE_*.json` en local (`602 IDs` en vez de `599`) | `sync_cases.js` purga cualquier `CASE_*.json` en destino que no exista en `cases/` |
 | 43 | Workbox cacheaba `fonts.googleapis.com` (CSS) pero no `fonts.gstatic.com` (`.woff2`) | `dr-swipe/vite.config.ts` | Sin conexión, los binarios de las fuentes podían fallar al expirar la caché HTTP | Regla `CacheFirst` (`google-fonts-webfonts`) para `fonts.gstatic.com` |
+| 44 | El commit `afa6d3a` regeneró `package-lock.json` con otra versión de npm y quitó `@emnapi/core` y `@emnapi/runtime` sin tocar `package.json` | `dr-swipe/package-lock.json` | `npm ci` fallaba ("lockfile out of sync"): el CI no podía instalar, probar ni desplegar | Lockfile actualizado dentro de los rangos de `package.json`; `npm ci` verificado con npm 10 (el del CI, Node 20) y npm 11. De paso se eliminaron todas las vulnerabilidades altas (`zod`, `vite`, `postcss`); `npm audit --omit=dev` queda en 0 |
 
 ## Pendiente conocido
 
@@ -87,3 +88,4 @@ Pipeline en verde antes y después (599 casos, 123 tests, lint, build, 0 vulnera
 3. **Hook de pre-commit** (por ejemplo `husky` o un `.git/hooks/pre-commit`) que ejecute `npm run lint` y `npx tsc -b`. Es lo más barato para evitar el patrón de la fila 1.
 4. **Tests para cada regla de la máquina de estados.** El error 3 solo se vio leyendo el diff; el test de flujo (`sessionFlow.test.ts`) ahora lo protege.
 5. **Cambiar el roadmap en el mismo commit** que cierra la tarea.
+6. **Si cambia `package-lock.json`, correr `rm -rf node_modules && npm ci`** antes del commit. `npm install` tolera un lockfile desincronizado; `npm ci` (el que usa el CI) no. Ver fila 44.
