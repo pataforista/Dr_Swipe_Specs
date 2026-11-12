@@ -66,17 +66,40 @@ La base es buena: papel crema, verde quirúrgico, contraste AA, objetivos tácti
 | E2 | **Tokens únicos.** Los colores ya viven en `index.css`, pero hay cientos de clases `slate-*`, `rose-*`, `emerald-*` sueltas en los componentes | Colores semánticos (acierto, error, letal, moneda, XP, favor) en Tailwind y sustitución en componentes |
 | E3 | **Roles tipográficos.** Fraunces solo para títulos y números grandes; Outfit para todo texto de lectura, etiquetas y opciones | Escala de 5 o 6 tamaños; fuera la cursiva serif en etiquetas pequeñas |
 | E4 | **Rediseñar la carta.** Franja de color e ícono grande por categoría (historia, exploración, laboratorio, imagen, manejo, diagnóstico), texto alineado arriba con tamaño según longitud, pie útil (paciente y número de carta) | Anatomía de carta en 3 longitudes de texto; decidir si el riesgo letal se señala antes o solo después de decidir |
-| E5 | **Dar rostro a los mentores.** Retratos de la Dra. Navarro y el Dr. Vázquez con 3 o 4 expresiones (neutral, contento, molesto, alarmado) | Ilustraciones SVG en el estilo de E1, usadas en inicio, expediente, nota de error, botín y Códex |
+| E5 | **Ilustraciones y sprites generados con IA.** El estilo lo decide el dueño; el juego fija contenido, tamaños y formato | Hojas de sprites según `ESTETICA/ACTIVOS_ILUSTRACION.md` (resumen en §4.3) |
 | E6 | **Pantalla de inicio.** Logotipo o emblema, un botón principal, los modos secundarios más pequeños, racha y repaso pendiente como tarjetas de estado | Maqueta y componente |
 | E7 | **HUD.** Menos etiquetas y más lectura: salud y tiempo como protagonistas, puntaje y créditos secundarios, sitio fijo para combo y escudo; la fila de signos vitales solo cuando tenga datos | Maqueta a 390 px con el peor caso (combo ≥ 12, escudo, 4 dígitos) |
 | E8 | **Unificar o retirar el estilo doodle.** Redibujar interruptores y tarjeta de jugador en el estilo de E1, o eliminarlos | `DoodleToggle`, `DoodlePlayerCard` |
 | E9 | **Cierre de guardia en el mismo estilo.** Hoja de papel con sello de calificación en lugar del panel oscuro | `PerformanceReview` |
 | E10 | **Ceremonia en los momentos clave.** Entrada del Código Rojo (monitor, línea de ECG), sello que cae al calificar, perla que se "pega" en la libreta, paciente estabilizado | Animaciones cortas que respeten movimiento reducido |
-| E11 | **Sonido.** Revisar los efectos en teléfono; decidir si se añade un ambiente tenue de hospital (opcional y apagable) | Decisión del dueño tras la prueba en dispositivo |
+| E11 | **Sonido y música.** Revisar los efectos en teléfono y añadir música ambiente tenue, apagable. La música es el único factor de diseño con efecto significativo sobre el disfrute en el metaanálisis disponible | Pista ambiente y prueba en dispositivo |
 | E12 | **Identidad fuera de la app.** Ícono, pantalla de arranque, capturas en el manifiesto (mejoran el diálogo de instalación), imagen para compartir (Open Graph) | Recursos en `public/` |
 | E13 | **Tema nocturno** (opcional). Una guardia nocturna con pantalla blanca cansa; el papel admite una versión oscura | Segunda paleta con los mismos tokens de E2 |
 
 Orden dentro de la fase: E1 → E2 y E3 → E4 y E5 (lo que más cambia la percepción) → E6 a E10 → E11 a E13.
+
+### 4.3 Ilustraciones y sprites: qué hay que generar
+
+El estilo es decisión tuya. Lo que sigue es lo que el juego necesita, sea cual sea el estilo; el detalle (encuadres, expresiones, alineación, plantilla de instrucción y lista de revisión) está en `ESTETICA/ACTIVOS_ILUSTRACION.md`.
+
+Condiciones que cualquier estilo debe cumplir: reconocerse a 40 px, fondo transparente, contraste sobre fondo crema y blanco, sin texto dentro de la imagen, paleta limitada y repetida, sin rostros de personas reales.
+
+| Prioridad | Grupo | Cantidad | Entrega | Tamaño de uso |
+|---|---|---|---|---|
+| 1 | Mentores (Navarro y Vázquez) | 2 × 6 expresiones: neutral, contenta, molesta, alarmada, orgullosa, apenada | Hoja 3×2 por mentor, celda de 512 px | 40 a 160 px |
+| 1 | Categorías de carta | 8 íconos (los 238 rótulos actuales se agrupan en 8) | SVG o PNG de 256 px, una tinta | 26 a 46 px |
+| 1 | Sellos de calificación | 4 marcos (la letra la pone el juego) | 512 px | 104 px |
+| 1 | Emblema | 1, con lo importante en el 80 % central | 1024 px, con y sin fondo | 120 px e ícono |
+| 1 | Código Rojo | 1, trazo claro sobre rojo | 768 px | 240 px |
+| 2 | Pacientes genéricos | 8 por grupo de edad | Hoja 4×2, celda de 256 px | 64 a 96 px |
+| 2 | Insignias de rango | 6 | Hoja 3×2, celda de 256 px | 48 px |
+| 2 | Recursos (moneda, favor, escudo, experiencia, vida) | 5 | Hoja 5×1, celda de 128 px | 16 a 24 px |
+| 2 | Objetos de botín | 7 | Hoja 4×2, celda de 256 px | 48 a 64 px |
+| 3 | Logros, eventos, cosméticos | Según se necesite | — | — |
+
+- **Formato:** WebP con transparencia; menos de 80 kB por hoja. Presupuesto de la prioridad 1: unos 400 kB.
+- **Animación:** imágenes fijas y movimiento por código. Sprites animados solo si se quiere (4 a 8 cuadros, 12 por segundo, tira horizontal), empezando por un parpadeo de prueba.
+- **Método:** una imagen de referencia aprobada por mentor antes de generar sus expresiones; misma instrucción de estilo en todo; guardar instrucciones y semillas.
 
 ## 5. Fase 2 — Contenido (en paralelo; es lo más largo)
 
@@ -104,6 +127,25 @@ Orden dentro de la fase: E1 → E2 y E3 → E4 y E5 (lo que más cambia la perce
 | J7 | Balance de Favores (tope 5, revivir cuesta 3) | Requiere jugar en teléfono |
 | J8 | Tutorial jugable: una carta de práctica en lugar de tres láminas de texto | Las láminas actuales se saltan sin leer |
 
+### 6.1 Lo que añade la evidencia
+
+Resumen de `DISENO_BASADO_EN_EVIDENCIA.md` (17 fuentes, la mayoría revisiones sistemáticas y metaanálisis; leídas por resumen, no completas).
+
+- **Divertido:** en juegos móviles el disfrute se asocia con facilidad de uso, novedad y estética; el reto pesa poco. En el único metaanálisis de decisiones de diseño, solo la música mostró efecto significativo.
+- **Educativo:** los juegos enseñan algo mejor que la instrucción convencional (d ≈ 0.3), y los elementos pensados para aprender el contenido rinden más que los pensados para la experiencia de juego. Retroalimentación inmediata, evocación y repetición espaciada son lo mejor respaldado.
+- **Sin datos suficientes:** presión de tiempo, mecánica de deslizar, efecto de monedas y cosméticos sobre el aprendizaje.
+
+Tareas nuevas y cambios de prioridad:
+
+| # | Tarea | Prioridad |
+|---|---|---|
+| V1 | Explicación legible en cada error y una línea de porqué al acertar una carta crítica | Máxima (junto con la Fase 0) |
+| V2 | Repaso espaciado en primer plano: botón principal cuando hay casos vencidos; el cierre dice cuándo vuelve cada caso | Alta, antes que J2 y J5 |
+| V3 | "Temas para leer hoy" al cerrar la guardia, con la guía citada | Media, bajo costo |
+| V4 | Medir en el dispositivo el acierto por especialidad a lo largo del tiempo y mostrarlo | Media |
+| V5 | Música ambiente opcional (E11) | Media |
+| — | J2 (cosméticos) y J6 (dificultad adaptativa) bajan al final | Baja |
+
 ## 7. Fase 4 — Producción y mantenimiento
 
 | # | Pendiente |
@@ -119,29 +161,31 @@ Orden dentro de la fase: E1 → E2 y E3 → E4 y E5 (lo que más cambia la perce
 
 ## 8. Orden recomendado
 
-1. **Fase 0** completa (D1 a D11). Sin D1 y D2 no conviene publicar.
+1. **Fase 0** completa (D1 a D11) y V1. Sin D1 y D2 no conviene publicar.
 2. **Fase 1**, E1 a E5: dirección de arte, tokens, tipografía, carta y mentores.
 3. P1, P2 y etiqueta `v1.0.0`: primera versión pública.
-4. Resto de la Fase 1 y J1 a J4.
+4. Resto de la Fase 1, V2 a V5 y J1, J3, J4.
 5. Contenido (Fase 2) de forma continua desde el paso 2; C4 antes de cualquier difusión amplia.
-6. J5 a J8, P3 a P8.
+6. J5, J7, J8, P3 a P8; al final J2 y J6.
 
 ## 9. Decisiones
 
 Tomadas el 2026-11-11:
 
-- **Ilustraciones:** se generan con IA y se integran como hojas de sprites. Especificación en `DEFICIENCIAS.md`, bloque C.
+- **Ilustraciones:** se generan con IA y se integran como hojas de sprites. **El estilo lo decide el dueño.** Ficha técnica en `ESTETICA/ACTIVOS_ILUSTRACION.md` (§4.3).
 - **Ritmo de progresión:** el rango máximo cuesta unas 150 guardias (`DEFICIENCIAS.md`, A2).
 
 Pendientes:
 
-1. **Dirección de arte:** ¿libreta de guardia (recomendada), doodle, o una tercera? Bloquea la generación de sprites.
+1. **Estilo:** lo define el dueño; `ESTETICA/GUIA_ESTETICA.md` y su maqueta quedan como una opción de referencia, no como decisión. Mientras no esté escrito, no conviene generar sprites.
 2. **Riesgo letal en la carta:** ¿se avisa antes de decidir (como hoy) o solo después? Cambia la dificultad.
 3. **Contenido:** ¿recortar variantes repetidas o conservarlas? ¿Qué especialidades se amplían primero?
 4. **Revisión médica:** ¿quién revisa? El material está en `REVISION_CONTENIDO/`.
 
 ## 10. Documentos relacionados
 
-- `ESTETICA/GUIA_ESTETICA.md`: dirección de arte, colores, tipografía, pantallas y sprites, con maqueta (`ESTETICA/maqueta.png`).
+- `ESTETICA/ACTIVOS_ILUSTRACION.md`: qué ilustraciones y sprites generar, con tamaños, formato y método (sin fijar estilo).
+- `ESTETICA/GUIA_ESTETICA.md`: una opción de estilo, con maqueta (`ESTETICA/maqueta.png`). Referencia, no decisión.
+- `DISENO_BASADO_EN_EVIDENCIA.md`: qué hace divertido y qué hace educativo a un juego casual, con fuentes.
 - `DEFICIENCIAS.md`: detalle de cada deficiencia, con evidencia y criterio de cierre.
 - `REVISION_CONTENIDO/`: libro para revisar todo el contenido sin repeticiones.

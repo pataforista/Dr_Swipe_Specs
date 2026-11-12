@@ -2,6 +2,8 @@
 
 Propuesta del 2026-11-12. Convierte el bloque C de `DEFICIENCIAS.md` en decisiones concretas: qué estilo, con qué colores y letras, cómo se ve cada pantalla y qué ilustraciones hacen falta. **Es una propuesta: nada de esto está en el juego todavía.**
 
+> **El estilo lo decide el dueño del proyecto.** Esta guía es una opción de referencia. Lo que el juego necesita de las ilustraciones, con independencia del estilo, está en `ACTIVOS_ILUSTRACION.md`; en lo que ambos documentos difieran, manda ese.
+
 | Archivo | Qué es |
 |---|---|
 | `antes.png` | Cuatro pantallas del juego actual (inicio, carta, nota de error, cierre) |
