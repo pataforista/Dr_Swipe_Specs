@@ -142,5 +142,6 @@ Pendientes:
 
 ## 10. Documentos relacionados
 
+- `ESTETICA/GUIA_ESTETICA.md`: dirección de arte, colores, tipografía, pantallas y sprites, con maqueta (`ESTETICA/maqueta.png`).
 - `DEFICIENCIAS.md`: detalle de cada deficiencia, con evidencia y criterio de cierre.
 - `REVISION_CONTENIDO/`: libro para revisar todo el contenido sin repeticiones.
