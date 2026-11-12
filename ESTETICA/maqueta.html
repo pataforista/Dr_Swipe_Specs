@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Dr. Swipe · Maqueta estética</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Fraunces:opsz,wght@9..144,700;9..144,900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#FBF7EE; --hoja:#FFFEFA; --tinta:#1F2A37; --tinta-suave:#5B6675; --linea:#E6DFD0;
+  --verde:#0F766E; --verde-osc:#0B5A54; --acierto:#15803D; --error:#BE123C; --letal:#9F1239;
+  --moneda:#B45309; --xp:#7C3AED; --sello:#B91C1C;
+  --cat-historia:#B45309; --cat-explora:#0F766E; --cat-lab:#6D28D9; --cat-imagen:#1D4ED8; --cat-manejo:#15803D; --cat-dx:#BE123C;
+  --serif:'Fraunces',Georgia,serif; --sans:'Outfit',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+body{background:#2B2F36;font-family:var(--sans);color:var(--tinta);padding:28px}
+h1.t{color:#fff;font-family:var(--serif);font-size:26px;margin-bottom:4px}
+p.s{color:#B8C0CC;font-size:14px;margin-bottom:24px}
+.fila{display:flex;gap:28px;flex-wrap:wrap}
+figure{width:390px}
+figcaption{color:#DCE2EA;font-size:13px;margin-top:10px;line-height:1.4}
+figcaption b{color:#fff}
+.tel{width:390px;height:780px;background:var(--papel);border-radius:28px;overflow:hidden;position:relative;
+  background-image:linear-gradient(var(--linea) 1px,transparent 1px);background-size:100% 28px;background-position:0 14px}
+.margen{position:absolute;left:34px;top:0;bottom:0;width:1px;background:#E9B4B4;opacity:.7}
+.et{font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-suave)}
+.btn{display:block;width:100%;border:0;border-radius:14px;padding:17px;font:800 16px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--verde);box-shadow:0 4px 0 var(--verde-osc)}
+.btn.sec{background:var(--hoja);color:var(--tinta);box-shadow:0 0 0 1.5px var(--tinta) inset,0 3px 0 var(--tinta);padding:13px;font-size:13px}
+.cinta{position:absolute;height:22px;width:120px;background:repeating-linear-gradient(45deg,#BFE3DC 0 8px,#DDF1ED 8px 16px);opacity:.9}
+.retrato{border-radius:50%;background:#FDE7C8;border:2px solid var(--tinta);position:relative;overflow:hidden;flex:none}
+.retrato svg{width:100%;height:100%;display:block}
+.bocad{background:var(--hoja);border:1.5px solid var(--tinta);border-radius:14px;padding:10px 12px;font-size:13.5px;line-height:1.4;position:relative}
+.bocad b{font-weight:800}
+/* INICIO */
+.ini{padding:54px 26px 20px 50px;height:100%;display:flex;flex-direction:column;gap:16px}
+.logo{font:900 54px/0.95 var(--serif);letter-spacing:-.03em}
+.logo i{font-style:normal;color:var(--verde)}
+.estado{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ficha{background:var(--hoja);border:1.5px solid var(--tinta);border-radius:12px;padding:10px 12px}
+.ficha .n{font:900 24px var(--serif);display:block;margin-top:4px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font:600 12px var(--sans);padding:6px 10px;border-radius:999px;border:1.5px solid var(--tinta);background:var(--hoja)}
+.chip.on{background:var(--tinta);color:#fff}
+.nav{display:flex;justify-content:space-around;margin-top:auto;padding-top:10px;border-top:1.5px solid var(--tinta)}
+.nav span{font:600 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--tinta-suave)}
+/* TRIAJE */
+.hud{position:absolute;top:14px;left:14px;right:14px;display:flex;align-items:center;gap:10px;background:var(--hoja);border:1.5px solid var(--tinta);border-radius:14px;padding:8px 12px}
+.barra{flex:1}.barra .v{height:10px;border-radius:6px;background:#E5E7EB;overflow:hidden;border:1.5px solid var(--tinta)}
+.barra .v i{display:block;height:100%;background:var(--acierto)}
+.reloj{font:900 22px var(--serif);min-width:52px;text-align:right}
+.mini{font:600 11px var(--sans);color:var(--tinta-suave)}
+.mini b{color:var(--tinta);font:800 13px var(--sans)}
+.combo{position:absolute;top:70px;right:18px;background:#FEF3C7;border:1.5px solid var(--tinta);border-radius:999px;padding:3px 10px;font:800 12px var(--sans);transform:rotate(3deg)}
+.prog{position:absolute;top:76px;left:18px;display:flex;gap:4px}
+.prog i{width:14px;height:5px;border-radius:3px;background:#D8D2C4}.prog i.h{background:var(--verde)}.prog i.a{width:26px;background:var(--tinta)}
+.pila{position:absolute;left:28px;right:28px;top:104px;height:480px}
+.carta{position:absolute;inset:0;background:var(--hoja);border:1.5px solid var(--tinta);border-radius:18px;box-shadow:0 6px 0 rgba(31,42,55,.18);overflow:hidden;display:flex;flex-direction:column}
+.carta.atras{transform:rotate(2.2deg) translateY(8px);background:#F4EEDF;box-shadow:none}
+.carta.atras2{transform:rotate(-1.6deg) translateY(14px);background:#EEE7D5;box-shadow:none}
+.cab{display:flex;align-items:center;gap:12px;padding:14px 16px;color:#fff}
+.cab .ico{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.2);display:grid;place-items:center;border:1.5px solid rgba(255,255,255,.6)}
+.cab .ico svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cab .k{font:600 10.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;opacity:.85}
+.cab .c{font:900 20px var(--serif)}
+.cab .num{margin-left:auto;font:800 12px var(--sans);background:rgba(0,0,0,.2);border-radius:999px;padding:4px 9px}
+.cuerpo{flex:1;padding:22px 20px;font:600 22px/1.36 var(--sans);background-image:linear-gradient(var(--linea) 1px,transparent 1px);background-size:100% 30px;background-position:0 20px}
+.pie{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-top:1.5px dashed var(--linea);font:600 12px var(--sans);color:var(--tinta-suave)}
+.acc{position:absolute;left:0;right:0;bottom:22px;display:flex;justify-content:center;align-items:flex-end;gap:16px}
+.red{width:68px;height:68px;border-radius:50%;background:var(--hoja);border:1.5px solid var(--tinta);box-shadow:0 4px 0 var(--tinta);display:grid;place-items:center}
+.red svg{width:30px;height:30px;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.red.p{width:48px;height:48px;box-shadow:0 3px 0 var(--tinta)}.red.p svg{width:20px;height:20px;stroke-width:2.2;stroke:var(--tinta)}
+.rot{display:block;text-align:center;font:600 10.5px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-suave);margin-top:8px}
+/* NOTA DE ERROR */
+.velo{position:absolute;inset:0;background:rgba(31,42,55,.35)}
+.nota{position:absolute;left:0;right:0;bottom:0;background:var(--hoja);border-top:1.5px solid var(--tinta);border-radius:22px 22px 0 0;padding:20px 20px 24px}
+.nota h3{font:900 22px var(--serif);color:var(--letal);margin:6px 0 10px}
+.cita{border-left:4px solid var(--letal);padding:4px 0 4px 12px;font-size:14px;color:var(--tinta-suave);margin-bottom:12px}
+.era{display:inline-block;font:800 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--acierto);border-radius:6px;padding:4px 8px;margin-bottom:14px}
+.costo{display:flex;gap:8px;margin:14px 0}
+.costo span{font:800 12px var(--sans);border:1.5px solid var(--tinta);border-radius:999px;padding:4px 10px}
+/* CIERRE */
+.cie{padding:46px 24px 20px 50px;height:100%;display:flex;flex-direction:column;gap:14px}
+.cie h2{font:900 34px/1 var(--serif)}
+.sello{position:absolute;right:22px;top:40px;width:104px;height:104px;border-radius:50%;border:4px double var(--sello);color:var(--sello);display:grid;place-items:center;transform:rotate(-12deg);opacity:.88}
+.sello b{font:900 54px var(--serif);line-height:1}.sello small{position:absolute;bottom:14px;font:800 8px var(--sans);letter-spacing:.2em}
+.ren{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1.5px dashed #CFC7B4;padding:9px 0;font-size:15px}
+.ren b{font:900 22px var(--serif)}
+.rango{background:var(--hoja);border:1.5px solid var(--tinta);border-radius:12px;padding:12px}
+.rango .v{height:10px;border:1.5px solid var(--tinta);border-radius:6px;margin-top:8px;overflow:hidden}.rango .v i{display:block;height:100%;width:38%;background:var(--xp)}
+.perla{background:#FEF9E7;border:1.5px solid var(--tinta);border-radius:4px;padding:12px;transform:rotate(-1.2deg);box-shadow:0 3px 0 rgba(31,42,55,.15);font-size:13.5px;line-height:1.4;position:relative}
+.perla b{display:block;font:900 15px var(--serif);margin-bottom:4px}
+</style></head><body>
+<h1 class="t">Dr. Swipe · propuesta «Libreta de guardia»</h1>
+<p class="s">Maqueta estática para decidir la dirección de arte. Los retratos son marcadores de posición: los definitivos serán sprites generados con IA.</p>
+<div class="fila">
+
+<figure><div class="tel"><div class="margen"></div>
+ <div class="ini">
+  <div><span class="et">Preparación ENARM</span><div class="logo">Dr.<br><i>Swipe</i></div></div>
+  <div style="display:flex;gap:10px;align-items:flex-start">
+   <div class="retrato" style="width:58px;height:58px"><svg viewBox="0 0 60 60"><circle cx="30" cy="25" r="12" fill="#F2C9A0" stroke="#1F2A37" stroke-width="2"/><path d="M17 23c0-12 26-12 26 0-4-6-22-6-26 0z" fill="#3B2A20" stroke="#1F2A37" stroke-width="2"/><path d="M10 60c2-16 38-16 40 0z" fill="#fff" stroke="#1F2A37" stroke-width="2"/><path d="M25 29q5 4 10 0" fill="none" stroke="#1F2A37" stroke-width="2" stroke-linecap="round"/></svg></div>
+   <div class="bocad"><b>Dra. Navarro:</b> Pase con calma, doctor. La prisa no cura a nadie.</div>
+  </div>
+  <div class="estado">
+   <div class="ficha"><span class="et">Racha</span><span class="n">4 días</span></div>
+   <div class="ficha"><span class="et">Repaso</span><span class="n" style="color:var(--error)">3 casos</span></div>
+  </div>
+  <div><span class="et">Guardia de</span><div class="chips" style="margin-top:8px"><span class="chip on">Mixta</span><span class="chip">Interna</span><span class="chip">Pediatría</span><span class="chip">Gineco</span><span class="chip">Cirugía</span></div></div>
+  <button class="btn">Iniciar guardia</button>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><button class="btn sec">Modo estudio</button><button class="btn sec">Repasar · 3</button></div>
+  <div class="nav"><span>Diario</span><span>Códex</span><span>Ajustes</span></div>
+ </div></div>
+ <figcaption><b>Inicio.</b> Emblema, mentor con rostro, un solo botón principal; racha y repaso como fichas de estado.</figcaption></figure>
+
+<figure><div class="tel">
+ <div class="hud"><div class="barra"><span class="mini">Paciente</span><div class="v"><i style="width:82%"></i></div></div><span class="mini"><b>640</b> pts</span><span class="reloj">1:16</span></div>
+ <div class="prog"><i class="h"></i><i class="h"></i><i class="h"></i><i class="h"></i><i class="h"></i><i class="a"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+ <div class="combo">racha ×5</div>
+ <div class="pila">
+  <div class="carta atras2"></div><div class="carta atras"></div>
+  <div class="carta">
+   <div class="cab" style="background:var(--cat-lab)"><div class="ico"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3M7.5 15h9"/></svg></div><div><div class="k">Categoría</div><div class="c">Laboratorio</div></div><span class="num">6 / 12</span></div>
+   <div class="cuerpo">Gasometría arterial: pH 7.52, HCO₃ 34 mEq/L, Cl 88 mEq/L. Alcalosis metabólica hipoclorémica.</div>
+   <div class="pie"><span>Lactante, 5 semanas</span><span>Vómito en proyectil</span></div>
+  </div>
+ </div>
+ <div class="acc">
+  <div><div class="red"><svg viewBox="0 0 24 24" stroke="#BE123C"><path d="M6 6l12 12M18 6L6 18"/></svg></div><span class="rot">Descartar</span></div>
+  <div><div class="red p"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4-4"/></svg></div><span class="rot">25</span></div>
+  <div><div class="red p"><svg viewBox="0 0 24 24"><path d="M9 14L4 9l5-5M4 9h10a6 6 0 0 1 0 12h-3"/></svg></div><span class="rot">×1</span></div>
+  <div><div class="red"><svg viewBox="0 0 24 24" stroke="#15803D"><path d="M5 12.5l5 5L19 7"/></svg></div><span class="rot">Aceptar</span></div>
+ </div></div>
+ <figcaption><b>Carta.</b> Franja de color e ícono por categoría, texto anclado arriba y más grande, pie con el paciente. HUD con dos protagonistas: salud y tiempo.</figcaption></figure>
+
+<figure><div class="tel">
+ <div class="hud"><div class="barra"><span class="mini">Paciente</span><div class="v"><i style="width:42%;background:var(--error)"></i></div></div><span class="mini"><b>640</b> pts</span><span class="reloj">1:09</span></div>
+ <div class="pila" style="opacity:.55"><div class="carta"><div class="cab" style="background:var(--cat-manejo)"><div class="ico"></div><div><div class="k">Categoría</div><div class="c">Manejo</div></div></div><div class="cuerpo"></div></div></div>
+ <div class="velo"></div>
+ <div class="nota">
+  <div style="display:flex;gap:12px;align-items:center">
+   <div class="retrato" style="width:64px;height:64px;background:#FAD4D4"><svg viewBox="0 0 60 60"><circle cx="30" cy="25" r="12" fill="#E8B48C" stroke="#1F2A37" stroke-width="2"/><path d="M18 20c2-11 22-11 24 0z" fill="#8A8F98" stroke="#1F2A37" stroke-width="2"/><path d="M10 60c2-16 38-16 40 0z" fill="#fff" stroke="#1F2A37" stroke-width="2"/><path d="M25 32q5-4 10 0M23 21l5 2M37 21l-5 2" fill="none" stroke="#1F2A37" stroke-width="2" stroke-linecap="round"/></svg></div>
+   <div><span class="et">Dr. Vázquez</span><h3 style="margin:2px 0 0">Error letal</h3></div>
+  </div>
+  <div class="costo"><span style="color:var(--letal)">−40 salud</span><span>−1000 pts</span><span>racha perdida</span></div>
+  <div class="cita">«Antibióticos IV: ampicilina 2 g cada 6 h + gentamicina.»</div>
+  <span class="era">Debías aceptar</span>
+  <p style="font-size:15px;line-height:1.45;margin-bottom:16px">Este esquema cubre la flora vaginal y entérica. Retrasarlo en una corioamnionitis pone en riesgo a la madre y al feto.</p>
+  <button class="btn">Entendido</button>
+ </div></div>
+ <figcaption><b>Nota de error.</b> Hoja inferior opaca: quién habla, qué costó, qué carta era, qué debías hacer y por qué. Hoy este texto se encima con la carta.</figcaption></figure>
+
+<figure><div class="tel"><div class="margen"></div>
+ <div class="sello"><b>S</b><small>GUARDIA</small></div>
+ <div class="cinta" style="left:120px;top:-4px;transform:rotate(-2deg)"></div>
+ <div class="cie">
+  <div><span class="et">Expediente cerrado</span><h2>Guardia<br>superada</h2></div>
+  <div>
+   <div class="ren"><span>Pacientes estables</span><b>3 / 3</b></div>
+   <div class="ren"><span>Precisión clínica</span><b>100 %</b></div>
+   <div class="ren"><span>Mejor racha</span><b>×15</b></div>
+   <div class="ren"><span>Experiencia</span><b style="color:var(--xp)">+320</b></div>
+   <div class="ren"><span>Monedas</span><b style="color:var(--moneda)">+45</b></div>
+  </div>
+  <div class="rango"><div style="display:flex;justify-content:space-between"><span class="et">Interno de guardia</span><span class="et">guardia 3 de 5</span></div><div class="v"><i></i></div></div>
+  <div class="perla"><b>Perla nueva · Estenosis pilórica</b>Alcalosis metabólica hipoclorémica con aciduria paradójica. Corrige líquidos antes de operar.</div>
+  <button class="btn" style="margin-top:auto">Volver al menú</button>
+ </div></div>
+ <figcaption><b>Cierre de guardia.</b> Misma libreta, con sello de calificación, renglones y la perla como nota adhesiva. Sustituye al panel oscuro. Cifras de ejemplo con la economía ya corregida.</figcaption></figure>
+</div></body></html>
