@@ -374,11 +374,11 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
   const threshold = SWIPE_CONFIG.CARD_WIDTH * SWIPE_CONFIG.DRAG_THRESHOLD;
   const rotate = useTransform(x, [-SWIPE_CONFIG.ROTATION_RANGE, SWIPE_CONFIG.ROTATION_RANGE], [-SWIPE_CONFIG.MAX_DRAG_ROTATION, SWIPE_CONFIG.MAX_DRAG_ROTATION]);
   const scaleTop = useTransform(x, [-200, 0, 200], [1.03, 1, 1.03]);
-  // Colour wash that deepens as the card nears the commit point.
+  // Colour wash that deepens as the card nears the commit point - lavender palette.
   const washColor = useTransform(
     x,
     [-threshold, -threshold * 0.25, 0, threshold * 0.25, threshold],
-    ['rgba(244,63,94,0.20)', 'rgba(244,63,94,0)', 'rgba(0,0,0,0)', 'rgba(13,148,136,0)', 'rgba(13,148,136,0.20)'],
+    ['rgba(195,50,75,0.15)', 'rgba(195,50,75,0)', 'rgba(0,0,0,0)', 'rgba(142,154,175,0)', 'rgba(142,154,175,0.15)'],
   );
 
   // Stack depth: each card sits one step further back (offset 1 and 2 used to
@@ -421,8 +421,8 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
   // and ¡ENARM! badge gave the answer away. Only shown in study mode.
   const isCritical = !!revealLethalDirection && !!card.safety_flags?.decision_critical;
 
-  const cardBg = isLethal ? 'bg-rose-50' : isCritical ? 'bg-amber-50' : 'bg-white';
-  const accentColor = isLethal ? 'border-accent-alert/40 shadow-rose-100' : isCritical ? 'border-secondary/40 shadow-amber-100' : 'border-slate-100 shadow-slate-200/50';
+  const cardBg = isLethal ? 'bg-[#FEF2F4]' : isCritical ? 'bg-[#FDFBFF]' : 'bg-white';
+  const accentColor = isLethal ? 'border-[#EFD3D7] shadow-[rgba(239,211,215,0.3)]' : isCritical ? 'border-[#CBC0D3] shadow-[rgba(203,192,211,0.3)]' : 'border-[#CBC0D3] shadow-[rgba(142,154,175,0.15)]';
 
   const handleDragEnd = (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     pastThresholdRef.current = false;
@@ -495,18 +495,18 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
       {/* Red line margin effect (Notebook style) */}
       <div className="absolute left-10 top-0 bottom-0 w-px bg-rose-200/40 z-10" />
 
-      {/* Swipe Stamps - Marker Style */}
+      {/* Swipe Stamps - Marker Style with lavender palette */}
       {/* Stamps sit on the side the card is moving away from, so they stay
           inside the card instead of being clipped by its edge. */}
       <motion.div style={{ opacity: isTop ? overlayOpacityLeft : 0 }} className="absolute top-20 right-5 z-50 pointer-events-none">
-        <div className="bg-white/90 text-rose-500 font-bold lettering text-xl sm:text-2xl px-4 py-1.5 rounded-xl rotate-12 shadow-md border-4 border-rose-500">DESCARTAR</div>
+        <div className="bg-white/90 text-[#C3324B] font-bold lettering text-xl sm:text-2xl px-4 py-1.5 rounded-xl rotate-12 shadow-md border-4 border-[#EFD3D7]">DESCARTAR</div>
       </motion.div>
       <motion.div style={{ opacity: isTop ? overlayOpacityRight : 0 }} className="absolute top-20 left-5 z-50 pointer-events-none">
-        <div className="bg-white/90 text-primary font-bold lettering text-xl sm:text-2xl px-4 py-1.5 rounded-xl -rotate-12 shadow-md border-4 border-primary">ACEPTAR</div>
+        <div className="bg-white/90 text-[#8E9AAF] font-bold lettering text-xl sm:text-2xl px-4 py-1.5 rounded-xl -rotate-12 shadow-md border-4 border-[#8E9AAF]">ACEPTAR</div>
       </motion.div>
 
-      {/* Header (Subject Tab) */}
-      <div className={`${compact ? 'p-2.5 pl-8' : 'p-4 pl-8'} sm:p-6 sm:pl-14 flex justify-between items-center gap-2 border-b border-slate-100 ${isLethal ? 'bg-rose-100/40' : isCritical ? 'bg-amber-100/40' : 'bg-slate-50/60'}`}>
+      {/* Header (Subject Tab) - lavender palette */}
+      <div className={`${compact ? 'p-2.5 pl-8' : 'p-4 pl-8'} sm:p-6 sm:pl-14 flex justify-between items-center gap-2 border-b border-[#E7E2F0] ${isLethal ? 'bg-[#FEF2F4]' : isCritical ? 'bg-[#FDFBFF]' : 'bg-[#FEFAFF]'}`}>
         <div className="flex flex-col min-w-0">
           <span className="text-xs font-black uppercase tracking-widest text-slate-500 mb-1">Materia</span>
           <span className="bg-white px-2 sm:px-3 py-1 rounded-lg text-xs font-bold text-slate-600 shadow-sm border border-slate-100 flex items-center gap-1 sm:gap-2 truncate">
@@ -521,43 +521,46 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
         </div>
       </div>
 
-      {/* Main Content Area */}
-      <div className={`flex-grow ${compact ? 'p-3 pl-10' : 'p-6 pl-10'} sm:p-10 sm:pl-16 flex flex-col justify-center relative`}>
-         <p className={`ruled-text font-semibold leading-relaxed text-slate-800 text-center ${getFontSizeClass(card.card_text)} px-2`}>
-          {card.card_text}
-        </p>
+      {/* Main Content Area - with scroll for long content */}
+      <div className={`flex-grow ${compact ? 'p-3 pl-10' : 'p-6 pl-10'} sm:p-10 sm:pl-16 flex flex-col relative overflow-hidden`}>
+         {/* Scrollable container for long text */}
+         <div className="flex-1 overflow-y-auto custom-scrollbar flex flex-col justify-center">
+           <p className={`ruled-text font-semibold leading-relaxed text-slate-800 text-center ${getFontSizeClass(card.card_text)} px-2`}>
+            {card.card_text}
+           </p>
+         </div>
       </div>
 
-      {/* Highlighter Labels */}
+      {/* Highlighter Labels - lavender palette with accessibility */}
       {(isLethal || isCritical) && (
         <div className="p-4 sm:p-6 pt-0 sm:pt-0 pl-8 sm:pl-14 flex justify-center gap-2 sm:gap-3 flex-wrap">
           {lethalIfAccepted && (
-            <div className="bg-rose-500 text-white text-xs font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider flex items-center gap-1">
+            <div className="bg-[#C3324B] text-white text-xs font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider flex items-center gap-1">
               <Skull className="w-3.5 h-3.5" aria-hidden="true" /> LETAL SI LO ACEPTAS
             </div>
           )}
           {lethalNeutral && (
-            <div className="bg-rose-500 text-white text-xs font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider flex items-center gap-1">
+            <div className="bg-[#C3324B] text-white text-xs font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider flex items-center gap-1">
               <TriangleAlert className="w-3.5 h-3.5" aria-hidden="true" /> ALTO RIESGO
             </div>
           )}
           {lethalIfDiscarded && (
-            <div className="bg-amber-400 text-slate-900 text-xs font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider border-2 border-rose-500/30 flex items-center gap-1">
+            <div className="bg-[#8E9AAF] text-white text-xs font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider border-2 border-[#CBC0D3] flex items-center gap-1">
               <Skull className="w-3.5 h-3.5" aria-hidden="true" /> LETAL SI LO TIRAS
             </div>
           )}
           {isCritical && (
-             <div className="bg-amber-400 text-slate-800 text-xs font-bold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider flex items-center gap-1">
+             <div className="bg-[#CBC0D3] text-[#2A2F3A] text-xs font-bold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider flex items-center gap-1">
               <Eye className="w-3.5 h-3.5" aria-hidden="true" /> ¡ENARM!
             </div>
           )}
         </div>
       )}
 
-      {/* Card Footer */}
-      <div className={`${compact ? 'p-2' : 'p-3'} pl-8 sm:p-5 sm:pl-14 bg-slate-50/40 border-t border-slate-100 flex justify-between items-center text-xs font-bold text-slate-500 gap-2`}>
-        <span className="lettering text-sm sm:text-lg text-slate-300 truncate">Guardia nocturna...</span>
-        <div className="bg-white px-2 sm:px-3 py-1 rounded-full border border-slate-100 text-slate-500 flex-shrink-0 whitespace-nowrap">
+      {/* Card Footer - lavender palette */}
+      <div className={`${compact ? 'p-2' : 'p-3'} pl-8 sm:p-5 sm:pl-14 bg-[#FEFAFF] border-t border-[#E7E2F0] flex justify-between items-center text-xs font-bold text-slate-500 gap-2`}>
+        <span className="lettering text-sm sm:text-lg text-[#8E9AAF] truncate">Guardia nocturna...</span>
+        <div className="bg-white px-2 sm:px-3 py-1 rounded-full border border-[#CBC0D3] text-[#2A2F3A] flex-shrink-0 whitespace-nowrap">
           {cardNumber}/{totalCards}
         </div>
       </div>

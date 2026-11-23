@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { calculateCardScore, calculatePerfectRoundBonus, getDailyStreakMultiplier, computeTimeLimit } from '../utils/scoringEngine';
+import { calculateCardScore, calculatePerfectRoundBonus, getDailyStreakMultiplier, computeTimeLimit, computeAdaptiveDifficulty } from '../utils/scoringEngine';
 import type { Card } from '../types/game';
 
 describe('scoringEngine unit tests', () => {
@@ -109,6 +109,26 @@ describe('scoringEngine unit tests', () => {
     it('clamps very short and very long decks', () => {
       expect(computeTimeLimit(3)).toBe(45);
       expect(computeTimeLimit(20)).toBe(180);
+    });
+  });
+
+  describe('computeAdaptiveDifficulty', () => {
+    it('returns base multipliers for streak < 5', () => {
+      expect(computeAdaptiveDifficulty(0)).toEqual({ timeMultiplier: 1.0, pointsMultiplier: 1.0 });
+      expect(computeAdaptiveDifficulty(3)).toEqual({ timeMultiplier: 1.0, pointsMultiplier: 1.0 });
+      expect(computeAdaptiveDifficulty(4)).toEqual({ timeMultiplier: 1.0, pointsMultiplier: 1.0 });
+    });
+
+    it('applies tier 1 at streak >= 5', () => {
+      expect(computeAdaptiveDifficulty(5)).toEqual({ timeMultiplier: 0.9, pointsMultiplier: 1.2 });
+      expect(computeAdaptiveDifficulty(7)).toEqual({ timeMultiplier: 0.9, pointsMultiplier: 1.2 });
+      expect(computeAdaptiveDifficulty(9)).toEqual({ timeMultiplier: 0.9, pointsMultiplier: 1.2 });
+    });
+
+    it('applies tier 2 at streak >= 10', () => {
+      expect(computeAdaptiveDifficulty(10)).toEqual({ timeMultiplier: 0.8, pointsMultiplier: 1.5 });
+      expect(computeAdaptiveDifficulty(15)).toEqual({ timeMultiplier: 0.8, pointsMultiplier: 1.5 });
+      expect(computeAdaptiveDifficulty(50)).toEqual({ timeMultiplier: 0.8, pointsMultiplier: 1.5 });
     });
   });
 });

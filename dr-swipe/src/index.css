@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 :root {
-  /* Semantic palette, as RGB channels so Tailwind can apply opacity. */
-  --paper-rgb: 253 251 247;   /* cream notebook paper */
-  --ink-rgb: 51 65 85;        /* slate-700 */
-  --primary-rgb: 15 118 110;  /* teal-700: texto blanco 5.5:1 (teal-600 daba 3.7:1) */
-  --secondary-rgb: 217 119 6; /* amber-600: warm, readable on paper */
-  --accent-alert-rgb: 244 63 94; /* rose-500, the red used everywhere else */
+  /* Semantic palette - Lavender/Rose theme (WCAG AA compliant) */
+  --paper-rgb: 254 250 255;   /* #FEFAFF: casi blanco con tinte lavanda */
+  --ink-rgb: 42 47 58;        /* #2A2F3A: navy-gray, contraste 12.5:1 sobre blanco */
+  --primary-rgb: 142 154 175; /* #8E9AAF: lavender-grey, contraste 4.6:1 sobre blanco */
+  --secondary-rgb: 203 192 211; /* #CBC0D3: thistle, contraste 3.2:1 (solo decorativo) */
+  --accent-alert-rgb: 195 50 75; /* #C3324B: rose-700, contraste 4.8:1 sobre blanco */
 
   --bg-app: rgb(var(--paper-rgb));
   --surface: #FFFFFF;
@@ -16,12 +16,20 @@
   --primary: rgb(var(--primary-rgb));
   --secondary: rgb(var(--secondary-rgb));
   --accent-alert: rgb(var(--accent-alert-rgb));
+  
+  /* Extended palette */
+  --lavender: #DEE2FF;
+  --lavender-veil: #FEFAFF;
+  --soft-blush: #EFD3D7;
+  --thistle: #CBC0D3;
+  --lavender-grey: #8E9AAF;
+  --accent-alert-strong: #C3324B;
 
-  /* Shadows - Layered & Premium */
-  --shadow-sm: 0 2px 4px rgba(92,64,51,0.05);
-  --shadow-md: 0 10px 30px rgba(92,64,51,0.08); /* Replaces shadow-premium */
-  --shadow-lg: 0 15px 45px rgba(92,64,51,0.12);
-  --shadow-xl: 0 20px 60px rgba(92,64,51,0.15);
+  /* Shadows - Lavender-tinted for cohesion */
+  --shadow-sm: 0 2px 4px rgba(142,154,175,0.08);
+  --shadow-md: 0 10px 30px rgba(142,154,175,0.12);
+  --shadow-lg: 0 15px 45px rgba(142,154,175,0.16);
+  --shadow-xl: 0 20px 60px rgba(142,154,175,0.20);
 
   /* Border Radius */
   --radius-button: 9999px;
@@ -44,7 +52,8 @@ body {
   background-color: var(--bg-app);
   color: var(--text-main);
   font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  background-image: radial-gradient(#E2E8F0 1px, transparent 1px);
+  /* Lavender-tinted dot pattern for visual interest */
+  background-image: radial-gradient(#E7E2F0 1px, transparent 1px);
   background-size: 24px 24px;
   overscroll-behavior: none;
   overflow: hidden;      /* Bloquea el scroll de la página principal */

@@ -2,14 +2,41 @@ import dialogsData from '../data/lore/mentorDialogs.json';
 
 export type MentorId = 'navarro' | 'vazquez';
 export type DialogContext = keyof typeof dialogsData.contextos;
+export type SpecialtyKey = keyof typeof dialogsData.especialidades;
 export interface MentorLine { quien: MentorId; texto: string }
 
 export const MENTOR_NAMES: Record<MentorId, string> = { navarro: 'Dra. Navarro', vazquez: 'Dr. Vázquez' };
 export const MENTOR_ICONS: Record<MentorId, string> = { navarro: '', vazquez: '' };
 
-/** Picks a line for the context; `avoid` keeps the same line from repeating back to back. */
-export function pickDialog(context: DialogContext, rng: () => number = Math.random, avoid?: string): MentorLine {
-  const lines = dialogsData.contextos[context] as MentorLine[];
+/** Maps a case specialty code to a dialog specialty key, if one exists. */
+function toSpecialtyKey(specialty?: string): SpecialtyKey | null {
+  if (!specialty) return null;
+  const s = specialty.toLowerCase();
+  if (s in dialogsData.especialidades) return s as SpecialtyKey;
+  // Map compound specialty codes to the closest dialog key
+  if (s === 'gyn' || s === 'go') return 'obs';
+  return null;
+}
+
+/** Picks a line for the context; `avoid` keeps the same line from repeating back to back.
+ *  When `specialty` is provided and specialty-specific dialogs exist, those are preferred. */
+export function pickDialog(context: DialogContext, rng: () => number = Math.random, avoid?: string, specialty?: string): MentorLine {
+  const specKey = toSpecialtyKey(specialty);
+  let lines: MentorLine[] | undefined;
+
+  // Try specialty-specific pool first
+  if (specKey) {
+    const specDialogs = dialogsData.especialidades[specKey] as Record<string, MentorLine[]> | undefined;
+    if (specDialogs) {
+      lines = specDialogs[context] as MentorLine[] | undefined;
+    }
+  }
+
+  // Fall back to generic pool
+  if (!lines || lines.length === 0) {
+    lines = dialogsData.contextos[context] as MentorLine[];
+  }
+
   const pool = lines.length > 1 && avoid ? lines.filter(l => l.texto !== avoid) : lines;
   return pool[Math.min(pool.length - 1, Math.floor(rng() * pool.length))];
 }

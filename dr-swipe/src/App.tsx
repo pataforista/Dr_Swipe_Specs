@@ -20,7 +20,7 @@ import { computeSuccessOutcome } from './utils/rewardsEngine';
 import { useCodexStore, type SessionProgress } from './store/useCodexStore';
 import { useFocusTrap } from './hooks/useFocusTrap';
 import { useSessionCommit } from './hooks/useSessionCommit';
-import { computeSessionMetrics } from './utils/sessionEngine';
+import { computeSessionMetrics, specialtyFromCaseId } from './utils/sessionEngine';
 import { PerformanceReview } from './components/overlays/PerformanceReview';
 import { monitoringEnabled } from './utils/monitoring';
 
@@ -294,9 +294,10 @@ export function App() {
   // One line per case: the opening remark on the intro sheet and the verdict on the loot screen.
   const rewardIsPerfect = state.context.mistakesThisCase === 0 && !state.context.wasRescued && !state.context.usedUndoThisCase;
   const caseKey = currentCase?.case_id;
-  const introLine = useMemo(() => (caseKey ? pickDialog('guardia_inicio', seededRng(caseKey)) : null), [caseKey]);
-  const rewardLine = useMemo(() => pickDialog(rewardIsPerfect ? 'caso_perfecto' : 'caso_con_errores', seededRng(caseKey ?? '')), [caseKey, rewardIsPerfect]);
-  const [ghostedLine] = useState(() => pickDialog('paciente_perdido'));
+  const caseSpecialty = caseKey ? specialtyFromCaseId(caseKey) : undefined;
+  const introLine = useMemo(() => (caseKey ? pickDialog('guardia_inicio', seededRng(caseKey), undefined, caseSpecialty) : null), [caseKey, caseSpecialty]);
+  const rewardLine = useMemo(() => pickDialog(rewardIsPerfect ? 'caso_perfecto' : 'caso_con_errores', seededRng(caseKey ?? ''), undefined, caseSpecialty), [caseKey, rewardIsPerfect, caseSpecialty]);
+  const [ghostedLine] = useState(() => pickDialog('paciente_perdido', Math.random, undefined, caseSpecialty));
 
   const startNewCase = async (studyMode = false, specialty = 'all') => {
     setIsPaused(false);

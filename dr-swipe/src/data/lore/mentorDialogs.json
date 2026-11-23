@@ -41,5 +41,151 @@
       { "quien": "navarro", "texto": "Aquí guarda lo que ha aprendido. Cada perla es una guardia que le dejó algo." },
       { "quien": "vazquez", "texto": "Échele un ojo a sus logros. Algunos son en broma, pero se los ganó en serio." }
     ]
+  },
+  "especialidades": {
+    "ped": {
+      "guardia_inicio": [
+        { "quien": "navarro", "texto": "En pediatría el paciente no dice lo que le duele: hay que leerlo entre líneas. Ánimo." },
+        { "quien": "vazquez", "texto": "Recuerde: el niño no es un adulto chiquito. Dosis por kilo y cabeza fría." },
+        { "quien": "navarro", "texto": "Los papás están nerviosos, el niño llora. Respire y vaya por pasos." },
+        { "quien": "vazquez", "texto": "Cheque los signos vitales pediátricos con calma; los valores cambian con la edad." }
+      ],
+      "caso_perfecto": [
+        { "quien": "navarro", "texto": "¡Muy bien con ese pequeño paciente! La pediatría se le está dando bonito." },
+        { "quien": "vazquez", "texto": "Diagnosticar en un niño que no habla tiene mérito. Excelente trabajo." },
+        { "quien": "navarro", "texto": "Los papás se van tranquilos a casa gracias a su buen criterio." },
+        { "quien": "vazquez", "texto": "Esa dosis fue exacta al peso. Así se hace en pediatría." }
+      ],
+      "caso_con_errores": [
+        { "quien": "navarro", "texto": "Los niños se descompensan rápido; no se culpe. Repase los signos de alarma." },
+        { "quien": "vazquez", "texto": "A veces la semiología pediátrica engaña. Revise lo que pasó y siga adelante." },
+        { "quien": "navarro", "texto": "No pasó nada irreversible. Aprenda de esto y la próxima será más fino." }
+      ],
+      "paciente_perdido": [
+        { "quien": "navarro", "texto": "Perder un caso pediátrico duele mucho, pero esto es simulacro. Estudie y regrese más fuerte." },
+        { "quien": "vazquez", "texto": "En pediatría los márgenes son estrechos. Revise las guías y vuelva a intentarlo." },
+        { "quien": "navarro", "texto": "Cada caso perdido enseña más que diez perfectos. No lo olvide." }
+      ]
+    },
+    "obs": {
+      "guardia_inicio": [
+        { "quien": "vazquez", "texto": "En obstetricia son dos pacientes en uno. Revise bien a ambos antes de decidir." },
+        { "quien": "navarro", "texto": "Monitoreo fetal en una mano, partograma en la otra. Así se empieza bien." },
+        { "quien": "vazquez", "texto": "Toda paciente en edad fértil es embarazada hasta que se demuestre lo contrario." },
+        { "quien": "navarro", "texto": "Cheque los tiempos de trabajo de parto; aquí los minutos cuentan doble." }
+      ],
+      "caso_perfecto": [
+        { "quien": "vazquez", "texto": "¡Ese manejo obstétrico estuvo de libro! Madre e hijo, perfectos." },
+        { "quien": "navarro", "texto": "Supo leer el trazo del monitoreo fetal. Eso salva vidas." },
+        { "quien": "vazquez", "texto": "Ni una contracción de más ni una decisión de menos. Impecable." },
+        { "quien": "navarro", "texto": "Esa resolución a tiempo hizo la diferencia. Muy bien visto." }
+      ],
+      "caso_con_errores": [
+        { "quien": "navarro", "texto": "El puerperio le jugó una mala pasada. Revise los criterios de egreso y siga." },
+        { "quien": "vazquez", "texto": "No interpretó bien el NST, pero para eso estamos: para aprender." },
+        { "quien": "navarro", "texto": "La hemorragia obstétrica no perdona dudas. Repase los protocolos." }
+      ],
+      "paciente_perdido": [
+        { "quien": "navarro", "texto": "En obstetricia las decisiones son a contrarreloj. Estudie el caso y vuelva más preparado." },
+        { "quien": "vazquez", "texto": "Se perdió el caso, no la vocación. Lea el expediente y aprenda." },
+        { "quien": "navarro", "texto": "Ningún obstetra bueno se libró de un caso difícil. Lo importante es lo que viene." }
+      ]
+    },
+    "surg": {
+      "guardia_inicio": [
+        { "quien": "vazquez", "texto": "Manos limpias, mente clara. En cirugía la técnica empieza antes del bisturí." },
+        { "quien": "navarro", "texto": "Revise bien la imagen antes de abrir. Aquí no hay marcha atrás." },
+        { "quien": "vazquez", "texto": "Anatomía, anatomía y más anatomía. Eso y un buen criterio quirúrgico." },
+        { "quien": "navarro", "texto": "Decida si opera o no opera; la indecisión también mata en cirugía." }
+      ],
+      "caso_perfecto": [
+        { "quien": "vazquez", "texto": "¡Cirugía impecable, doctor! El tejido lo agradece." },
+        { "quien": "navarro", "texto": "Esa decisión quirúrgica fue a tiempo. Bien hecho." },
+        { "quien": "vazquez", "texto": "Sutura limpia, hemostasia perfecta. Así se opera en este hospital." },
+        { "quien": "navarro", "texto": "Supo cuándo abrir y cuándo cerrar. Eso es criterio quirúrgico." }
+      ],
+      "caso_con_errores": [
+        { "quien": "navarro", "texto": "Una complicación no define al cirujano; lo define cómo la maneja." },
+        { "quien": "vazquez", "texto": "No cayó en el diagnóstico quirúrgico a tiempo. Revise la semiología abdominal." },
+        { "quien": "navarro", "texto": "El postoperatorio le salió chueco. Repase los criterios de alarma." }
+      ],
+      "paciente_perdido": [
+        { "quien": "navarro", "texto": "En cirugía los errores se pagan caro. Estudie el caso y aprenda la lección." },
+        { "quien": "vazquez", "texto": "Se perdió al paciente, pero la experiencia queda. No repita el error." },
+        { "quien": "navarro", "texto": "Ningún cirujano nació aprendido. Esto es parte del camino." }
+      ]
+    },
+    "im": {
+      "guardia_inicio": [
+        { "quien": "navarro", "texto": "Medicina interna es pensar antes de actuar. Lea bien el caso." },
+        { "quien": "vazquez", "texto": "Aquí el diagnóstico diferencial es rey. No se case con la primera idea." },
+        { "quien": "navarro", "texto": "Revise laboratorios, antecedentes y medicamentos. Todo cuenta en clínica." },
+        { "quien": "vazquez", "texto": "Un buen internista escucha más de lo que receta. Empiece por ahí." }
+      ],
+      "caso_perfecto": [
+        { "quien": "navarro", "texto": "Razonamiento clínico de libro, doctor. Así se hace medicina interna." },
+        { "quien": "vazquez", "texto": "Ese diagnóstico diferencial fue impecable. Se nota que leyó." },
+        { "quien": "navarro", "texto": "Interpretación perfecta de los laboratorios. El paciente está en buenas manos." },
+        { "quien": "vazquez", "texto": "Supo integrar clínica, laboratorio e imagen. Excelente criterio." }
+      ],
+      "caso_con_errores": [
+        { "quien": "navarro", "texto": "El cuadro clínico era más complejo de lo que pareció. Revise y aprenda." },
+        { "quien": "vazquez", "texto": "No pidió los estudios adecuados a tiempo. Repase los algoritmos diagnósticos." },
+        { "quien": "navarro", "texto": "La clínica engaña a veces. Confronte hallazgos y ajuste el plan." }
+      ],
+      "paciente_perdido": [
+        { "quien": "navarro", "texto": "Los casos complejos dejan las mejores lecciones. Estudie qué faltó." },
+        { "quien": "vazquez", "texto": "Se fue el caso, pero el conocimiento se queda. Repase la fisiopatología." },
+        { "quien": "navarro", "texto": "En medicina interna el diagnóstico es un rompecabezas. A veces faltan piezas." }
+      ]
+    },
+    "cardio": {
+      "guardia_inicio": [
+        { "quien": "navarro", "texto": "En cardiología cada segundo cuenta. Revise el ECG con calma pero sin demora." },
+        { "quien": "vazquez", "texto": "Un soplo bien auscultado vale más que mil estudios. Oído atento." },
+        { "quien": "navarro", "texto": "Presión, ritmo y perfusión. Esos tres datos le salvan la vida a cualquiera." },
+        { "quien": "vazquez", "texto": "Antes de pedir un ecocardiograma, use bien el estetoscopio." }
+      ],
+      "caso_perfecto": [
+        { "quien": "navarro", "texto": "¡Excelente interpretación del ECG! Eso fue clave en este caso." },
+        { "quien": "vazquez", "texto": "Bien visto, eso es clave en cardiología. El ritmo no mintió." },
+        { "quien": "navarro", "texto": "Supo manejar los antiarrítmicos con precisión. Muy bien." },
+        { "quien": "vazquez", "texto": "Ese manejo de la falla cardíaca estuvo a la altura de un cardiólogo." }
+      ],
+      "caso_con_errores": [
+        { "quien": "navarro", "texto": "El ECG tenía la respuesta y no la vio. Repase los trazos." },
+        { "quien": "vazquez", "texto": "No ajustó la dosis del anticoagulante. Revise las guías de práctica clínica." },
+        { "quien": "navarro", "texto": "La hemodinamia es traicionera. Confronte signos y síntomas con más detalle." }
+      ],
+      "paciente_perdido": [
+        { "quien": "navarro", "texto": "El corazón no perdona errores de criterio. Estudie el caso a fondo." },
+        { "quien": "vazquez", "texto": "Se perdió el caso cardiaco. Revise el algoritmo de reanimación." },
+        { "quien": "navarro", "texto": "En cardiología el tiempo es músculo. Recuerde eso la próxima vez." }
+      ]
+    },
+    "emerg": {
+      "guardia_inicio": [
+        { "quien": "vazquez", "texto": "En urgencias lo primero es lo primero: ABC, siempre ABC." },
+        { "quien": "navarro", "texto": "Aquí se decide en segundos. Evalúe, priorice y actúe." },
+        { "quien": "vazquez", "texto": "Triage antes que todo. No todos los pacientes son igual de urgentes." },
+        { "quien": "navarro", "texto": "Mantenga la calma. La prisa en urgencias mata más que la enfermedad." }
+      ],
+      "caso_perfecto": [
+        { "quien": "vazquez", "texto": "¡Esa reanimación fue de manual! El paciente vive gracias a usted." },
+        { "quien": "navarro", "texto": "Triaje perfecto y decisión a tiempo. Así se trabaja en urgencias." },
+        { "quien": "vazquez", "texto": "No se dejó intimidar por el caos. Excelente manejo del paciente crítico." },
+        { "quien": "navarro", "texto": "Cada minuto contó y usted lo supo aprovechar. Bien hecho." }
+      ],
+      "caso_con_errores": [
+        { "quien": "navarro", "texto": "En urgencias los errores se pagan rápido. Revise el ABC la próxima vez." },
+        { "quien": "vazquez", "texto": "No priorizó bien al paciente. Repase los algoritmos de urgencia." },
+        { "quien": "navarro", "texto": "El golden hour se le escapó. Estudie los tiempos de atención." }
+      ],
+      "paciente_perdido": [
+        { "quien": "navarro", "texto": "En urgencias no siempre se puede salvar a todos. Estudie y regrese más fuerte." },
+        { "quien": "vazquez", "texto": "Se perdió el caso de urgencia. Revise el protocolo de reanimación." },
+        { "quien": "navarro", "texto": "La medicina de urgencias es así de dura. Lo importante es aprender." }
+      ]
+    }
   }
 }

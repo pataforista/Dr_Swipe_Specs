@@ -4,9 +4,14 @@ import type { CaseOutcome } from '../types/game';
  * "Favores del Adjunto" (ADR 011): soft currency earned by playing well, never
  * bought. It only pays for "Llamar al Adjunto" (revive), so coins stay for
  * lifeline and undo and the two economies do not blur (principle 3.4).
+ * 
+ * Balance para móvil (2026-11-23):
+ * - CAP aumentado de 5 a 7 para sesiones largas (10-15 casos)
+ * - REVIVE_COST reducido de 3 a 2 para hacerlo más accesible (28% del cap vs 60%)
+ * - Mantiene escasez sin frustrar al jugador
  */
-export const FAVOR_CAP = 5;
-export const REVIVE_FAVOR_COST = 3;
+export const FAVOR_CAP = 7;
+export const REVIVE_FAVOR_COST = 2;
 export const DAILY_FAVOR = 1;
 
 /** A clean case earns 2, a case with a single slip earns 1, anything messier earns none. */

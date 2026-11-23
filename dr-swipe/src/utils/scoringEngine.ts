@@ -150,3 +150,22 @@ export function undoChargesFor(isSandiaMode: boolean): number {
 export function isLethalCard(card: Pick<Card, 'safety_flags'>): boolean {
   return !!(card.safety_flags?.lethal_risk || card.safety_flags?.lethal_if_discarded);
 }
+
+/**
+ * Compute adaptive difficulty based on consecutive correct answers (winning streak).
+ * - Streak >= 10: timeMultiplier 0.8 (20% less time), pointsMultiplier 1.5
+ * - Streak >= 5:  timeMultiplier 0.9 (10% less time), pointsMultiplier 1.2
+ * - Streak < 5:   no adjustment (both multipliers = 1.0)
+ */
+export function computeAdaptiveDifficulty(consecutiveCorrect: number): {
+  timeMultiplier: number;
+  pointsMultiplier: number;
+} {
+  if (consecutiveCorrect >= 10) {
+    return { timeMultiplier: 0.8, pointsMultiplier: 1.5 };
+  }
+  if (consecutiveCorrect >= 5) {
+    return { timeMultiplier: 0.9, pointsMultiplier: 1.2 };
+  }
+  return { timeMultiplier: 1.0, pointsMultiplier: 1.0 };
+}

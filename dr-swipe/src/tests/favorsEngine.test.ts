@@ -11,13 +11,13 @@ describe('favorsEngine', () => {
   });
 
   it('el tope obliga a gastar: nunca acumula más de FAVOR_CAP', () => {
-    expect(addFavorsCapped(4, 2)).toBe(FAVOR_CAP);
+    expect(addFavorsCapped(5, 4)).toBe(FAVOR_CAP); // 5 + 4 = 9, capped to 7
     expect(addFavorsCapped(0, -3)).toBe(0);
   });
 
-  it('un revive cuesta menos que el tope y más que un caso perfecto', () => {
+  it('un revive cuesta menos que el tope y al menos un caso perfecto', () => {
     expect(REVIVE_FAVOR_COST).toBeLessThanOrEqual(FAVOR_CAP);
-    expect(REVIVE_FAVOR_COST).toBeGreaterThan(favorsForCase('perfect', 0));
+    expect(REVIVE_FAVOR_COST).toBeGreaterThanOrEqual(favorsForCase('perfect', 0));
   });
 
   describe('nextDailyStreak (un día de gracia)', () => {
