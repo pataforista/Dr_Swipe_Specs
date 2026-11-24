@@ -217,6 +217,8 @@ h1, h2, h3, .lettering {
 .p-safe-bottom { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
 .p-safe-left { padding-left: max(0px, env(safe-area-inset-left)); }
 .p-safe-right { padding-right: max(0px, env(safe-area-inset-right)); }
+.px-safe-left { padding-left: max(0px, env(safe-area-inset-left)); }
+.px-safe-right { padding-right: max(0px, env(safe-area-inset-right)); }
 
 /* Fine adjustment for very small screens */
 @media (max-width: 375px) {

@@ -123,7 +123,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
 
       {/* Deck: takes the height left by the HUD and the action row. Cards fly
           out past its edges; the app root clips them. */}
-      <div ref={deckRef} className="relative w-full flex-1 min-h-[260px] max-h-[44rem] flex items-center justify-center">
+      <div ref={deckRef} className="relative w-full flex-1 min-h-[260px] max-h-[44rem] flex items-center justify-center px-safe-left px-safe-right">
         <AnimatePresence initial={false} custom={exitInfo}>
           {visibleCards.map((card, idx) => {
             const keyIndex = currentIndex + (visibleCards.length - 1 - idx);

@@ -476,6 +476,10 @@ export function App() {
       // points float over the deck. Any open mistake note is dismissed.
       clearMentor();
       setPointsPop({ value: last.points, id: Date.now() });
+      // Celebratory visual feedback: green glow for correct answers
+      if (isMilestone || isCriticalCard) {
+        showToast(`¡${isMilestone ? 'COMBO x' + ctx.combo : 'EXCELENTE'}!`, 'milestone');
+      }
       return;
     }
     setPointsPop(null);
@@ -713,12 +717,12 @@ export function App() {
                 </button>
               )}
 
-              <div className="flex gap-4 justify-center pt-2">
-                <button onClick={() => setShowStats(true)} className="text-xs font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Ver mi diario</button>
+              <div className="flex gap-3 justify-center pt-2">
+                <button onClick={() => setShowStats(true)} className="text-sm font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer px-3 py-2 rounded-lg hover:bg-slate-100">Ver mi diario</button>
                 <span className="text-slate-300" aria-hidden="true">|</span>
-                <button onClick={() => setShowCodex(true)} className="text-xs font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Códex</button>
+                <button onClick={() => setShowCodex(true)} className="text-sm font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer px-3 py-2 rounded-lg hover:bg-slate-100">Códex</button>
                 <span className="text-slate-300" aria-hidden="true">|</span>
-                <button onClick={() => setShowSettings(true)} className="text-xs font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer">Ajustes</button>
+                <button onClick={() => setShowSettings(true)} className="text-sm font-bold text-slate-500 hover:text-primary transition-colors uppercase lettering tracking-widest cursor-pointer px-3 py-2 rounded-lg hover:bg-slate-100">Ajustes</button>
               </div>
             </div>
             <p className="max-w-xs text-center text-xs text-slate-500 leading-snug mt-6 px-4">
