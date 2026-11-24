@@ -75,6 +75,7 @@ export interface GameContext {
   lastVitals: { ta?: string; fc?: number; temp?: number; status: string } | null;
   // Shift (Guardia) context
   isSandiaMode: boolean;
+  isEnarmMode: boolean; // Modo simulacro ENARM: sin ayudas (revive, lifelines, undo)
   lives: number; // Number of interns left (max 5)
   // Loot-box shield: mistakes that cost no vitality
   shieldCharges: number;
@@ -101,8 +102,8 @@ export interface GameContext {
 }
 
 type GameEvent =
-  | { type: 'START_GUARD'; deck: Card[]; difficulty: string; pearl?: EnarmPearl; isSandiaMode?: boolean; case_id?: string }
-  | { type: 'RESUME_GUARD'; deck: Card[]; difficulty: string; pearl?: EnarmPearl; snapshot: ResumeSnapshot; isSandiaMode?: boolean; case_id?: string }
+  | { type: 'START_GUARD'; deck: Card[]; difficulty: string; pearl?: EnarmPearl; isSandiaMode?: boolean; isEnarmMode?: boolean; case_id?: string }
+  | { type: 'RESUME_GUARD'; deck: Card[]; difficulty: string; pearl?: EnarmPearl; snapshot: ResumeSnapshot; isSandiaMode?: boolean; isEnarmMode?: boolean; case_id?: string }
   | { type: 'SWIPE'; direction: 'left' | 'right' }
   | { type: 'UNDO_SWIPE' }
   | { type: 'ANSWER_CORRECT' }
@@ -114,7 +115,7 @@ type GameEvent =
   | { type: 'USE_LIFELINE' }
   | { type: 'APPLY_REWARD_HEAL'; value: number }
   | { type: 'APPLY_REWARD'; heal: number; shield: number; undo: number; hint: boolean }
-  | { type: 'CONTINUE_SHIFT'; deck: Card[]; puzzle?: EnarmPearl; isSandiaMode?: boolean; case_id?: string } // deck of the NEXT case
+  | { type: 'CONTINUE_SHIFT'; deck: Card[]; puzzle?: EnarmPearl; isSandiaMode?: boolean; isEnarmMode?: boolean; case_id?: string } // deck of the NEXT case
   | { type: 'FINISH_SHIFT' } // reward -> victoria_guardia when no cases are left in the queue
   | { type: 'RESCUE' }
   | { type: 'BUY_UNDO' }
@@ -172,6 +173,7 @@ export const gameMachine = setup({
       feedbackHistory: [],
       lastVitals: null,
       isSandiaMode: false,
+      isEnarmMode: false,
       undoCharges: undoChargesFor(false),
       wasRescued: false,
       failedInBoss: false,
@@ -390,6 +392,7 @@ export const gameMachine = setup({
     lives: 5,
     shieldCharges: 0,
     isSandiaMode: false,
+    isEnarmMode: false,
     undoCharges: undoChargesFor(false),
     wasRescued: false,
     failedInBoss: false,
@@ -437,6 +440,7 @@ export const gameMachine = setup({
             feedbackHistory: [],
             lives: 5,
             isSandiaMode: ({ event }) => event.type === 'START_GUARD' ? !!event.isSandiaMode : false,
+            isEnarmMode: ({ event }) => event.type === 'START_GUARD' ? !!event.isEnarmMode : false,
             undoCharges: ({ event }) => undoChargesFor(event.type === 'START_GUARD' && !!event.isSandiaMode),
             wasRescued: false,
             failedInBoss: false,
@@ -487,6 +491,7 @@ export const gameMachine = setup({
             lives: 5,
             // A study-mode save resumes in study mode (no damage, no clock).
             isSandiaMode: ({ event }) => event.type === 'RESUME_GUARD' ? !!event.isSandiaMode : false,
+            isEnarmMode: ({ event }) => event.type === 'RESUME_GUARD' ? !!event.isEnarmMode : false,
             undoCharges: ({ event }) => undoChargesFor(event.type === 'RESUME_GUARD' && !!event.isSandiaMode),
             wasRescued: false,
             failedInBoss: false,
@@ -642,6 +647,7 @@ export const gameMachine = setup({
             consecutiveErrors: 0,
             dossier: [],
             discarded: [],
+            isEnarmMode: ({ event }) => event.type === 'CONTINUE_SHIFT' ? !!event.isEnarmMode : false,
             undoCharges: ({ context }) => undoChargesFor(context.isSandiaMode),
             usedUndoThisCase: false,
             lastAction: null,

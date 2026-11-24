@@ -77,6 +77,8 @@ export function App() {
   const [showCodex, setShowCodex] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isStudyModeActive, setIsStudyModeActive] = useState(false);
+  const [isEnarmModeActive, setIsEnarmModeActive] = useState(false);
+  const handleEnarmModeToggle = () => setIsEnarmModeActive(prev => !prev);
   const [isLoadingCase, setIsLoadingCase] = useState(false);
   const [showRetro, setShowRetro] = useState(false);
   const [caseQueue, setCaseQueue] = useState<ClinicalCase[]>([]);
@@ -303,6 +305,8 @@ export function App() {
     setIsPaused(false);
     setIsLoadingCase(true);
     setIsStudyModeActive(studyMode);
+    // ENARM mode is mutually exclusive with study mode
+    if (studyMode) setIsEnarmModeActive(false);
     setShiftPayout({ xp: 0, coins: 0 });
     try {
       send({ type: 'RESTART' });
@@ -614,9 +618,9 @@ export function App() {
                     }
                   });
                 } else if (state.matches('idle')) {
-                  send({ type: 'START_GUARD', deck: pendingDeckRef.current, difficulty: currentCase.difficulty || 'standard', pearl: currentCase.enarm_pearl ?? currentCase.perla_enarm, isSandiaMode: isStudyModeActive, case_id: currentCase.case_id });
+                  send({ type: 'START_GUARD', deck: pendingDeckRef.current, difficulty: currentCase.difficulty || 'standard', pearl: currentCase.enarm_pearl ?? currentCase.perla_enarm, isSandiaMode: isStudyModeActive, isEnarmMode: isEnarmModeActive, case_id: currentCase.case_id });
                 } else {
-                  send({ type: 'CONTINUE_SHIFT', deck: pendingDeckRef.current, puzzle: currentCase.enarm_pearl ?? currentCase.perla_enarm, isSandiaMode: isStudyModeActive, case_id: currentCase.case_id });
+                  send({ type: 'CONTINUE_SHIFT', deck: pendingDeckRef.current, puzzle: currentCase.enarm_pearl ?? currentCase.perla_enarm, isSandiaMode: isStudyModeActive, isEnarmMode: isEnarmModeActive, case_id: currentCase.case_id });
                 }
               }}
               className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl group"
@@ -685,9 +689,15 @@ export function App() {
                 </button>
               </div>
 
-              <button onClick={() => startNewCase(true, selectedSpecialty)} disabled={isLoadingCase} className="marker-btn relative py-4 sm:py-5 text-base sm:text-xl !bg-emerald-700 !border-emerald-600 shadow-emerald-200">
+              <button onClick={() => { setIsEnarmModeActive(false); startNewCase(true, selectedSpecialty); }} disabled={isLoadingCase} className="marker-btn relative py-4 sm:py-5 text-base sm:text-xl !bg-emerald-700 !border-emerald-600 shadow-emerald-200">
                  {isLoadingCase ? 'PREPARANDO...' : 'MODO ESTUDIO'}
                  <div className="absolute -top-3 right-0 sm:-right-4 bg-amber-400 text-slate-900 font-bold text-xs px-2 py-0.5 rounded-full shadow-md pointer-events-none">SIN DAÑO</div>
+              </button>
+
+              {/* Modo Simulacro ENARM Toggle */}
+              <button onClick={() => { setIsStudyModeActive(false); handleEnarmModeToggle(); }} disabled={isLoadingCase} className={`marker-btn relative py-4 sm:py-5 text-base sm:text-xl transition-all ${isEnarmModeActive ? '!bg-indigo-700 !border-indigo-600 shadow-indigo-200' : '!bg-slate-600 !border-slate-500 shadow-slate-200'}`}>
+                 {isLoadingCase ? 'PREPARANDO...' : isEnarmModeActive ? 'SIMULACRO ENARM ✓' : 'SIMULACRO ENARM'}
+                 <div className="absolute -top-3 right-0 sm:-right-4 bg-indigo-500 text-white font-bold text-xs px-2 py-0.5 rounded-full shadow-md pointer-events-none">EXAMEN</div>
               </button>
 
               {/* Repasar Errores Button */}
@@ -753,7 +763,7 @@ export function App() {
               <div className="relative z-0 isolate w-full h-full flex flex-col items-center">
               {/* Locked under overlays too: the event sheet pauses the clock but
                   left the card draggable, so cards could be decided off the clock. */}
-              <SwipeDeck cards={state.context.deck} currentIndex={state.context.currentCardIndex} onSwipe={handleSwipe} isLocked={isLoadingCase || isPaused || hitStop || isOverlayActive} lifelineActive={state.context.lifelineActive} canUseLifeline={stats.coins >= LIFELINE_COST && !state.context.lifelineActive} onUseLifeline={handleLifeline} revealLethalDirection={state.context.isSandiaMode} undo={{ onUndo: handleUndo, disabled: !canUndo || (state.context.undoCharges === 0 && stats.coins < UNDO_COST), charges: state.context.undoCharges, cost: UNDO_COST }} />
+              <SwipeDeck cards={state.context.deck} currentIndex={state.context.currentCardIndex} onSwipe={handleSwipe} isLocked={isLoadingCase || isPaused || hitStop || isOverlayActive} lifelineActive={state.context.lifelineActive} canUseLifeline={stats.coins >= LIFELINE_COST && !state.context.lifelineActive && !state.context.isEnarmMode} onUseLifeline={handleLifeline} revealLethalDirection={state.context.isSandiaMode} undo={{ onUndo: handleUndo, disabled: !canUndo || (state.context.undoCharges === 0 && stats.coins < UNDO_COST) || state.context.isEnarmMode, charges: state.context.isEnarmMode ? 0 : state.context.undoCharges, cost: UNDO_COST }} />
               </div>
             </div>
           </div>
@@ -823,7 +833,7 @@ export function App() {
               {ghostedLine.texto}
             </p>
             <div className="flex flex-col gap-3 sm:gap-4">
-              {favors >= REVIVE_FAVOR_COST && (
+              {favors >= REVIVE_FAVOR_COST && !state.context.isEnarmMode && (
                 <button
                   onClick={() => {
                     if (spendFavors(REVIVE_FAVOR_COST)) {
@@ -838,6 +848,11 @@ export function App() {
                 >
                   LLAMAR AL ADJUNTO ({REVIVE_FAVOR_COST} Favores de {favors})
                 </button>
+              )}
+              {state.context.isEnarmMode && (
+                <div className="text-center text-xs font-bold text-slate-400 uppercase tracking-widest py-2">
+                  Modo Simulacro ENARM · Sin ayudas
+                </div>
               )}
               <button onClick={() => send({ type: 'VIEW_DEBRIEF' })} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl !bg-slate-700">VER NOTAS</button>
               <button onClick={() => send({ type: 'RESTART' })} className="text-xs font-bold text-slate-500 hover:text-rose-500 uppercase tracking-widest py-2 transition-all lettering">— Nueva Guardia —</button>
