@@ -913,12 +913,13 @@ export function App() {
         shield={state.context.shieldCharges}
         lastVitals={state.context.lastVitals}
         onPause={() => setIsPaused(true)}
+        difficulty={state.context.difficulty}
       />
 
       <div className="w-full flex-grow flex items-center justify-center relative z-10">{renderCurrentView()}</div>
       <AnimatePresence>{showTutorial && <Suspense fallback={null}><TutorialOverlay onComplete={() => { safeStorage.setItem('dr_swipe_tutorial_seen', '1'); setShowTutorial(false); }} /></Suspense>}</AnimatePresence>
-      <AnimatePresence>{showCodex && <div ref={codexTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] flex items-center justify-center bg-paper/90 backdrop-blur-sm p-4 overflow-hidden"><Suspense fallback={null}><CodexScreen onClose={() => setShowCodex(false)} /></Suspense></div>}</AnimatePresence>
-      <AnimatePresence>{showStats && <div ref={statsTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] flex flex-col items-center overflow-y-auto overscroll-contain bg-paper/90 backdrop-blur-sm p-6"><Suspense fallback={null}><StatsDashboard onClose={() => setShowStats(false)} /></Suspense></div>}</AnimatePresence>
+      <AnimatePresence>{showCodex && <div ref={codexTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] flex items-center justify-center bg-paper/90 backdrop-blur-sm p-4 overflow-hidden"><motion.div initial={{ opacity: 0, scale: 0.9, y: 40 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 40 }} transition={{ duration: 0.25 }} className="w-full h-full flex items-center justify-center"><Suspense fallback={null}><CodexScreen onClose={() => setShowCodex(false)} /></Suspense></motion.div></div>}</AnimatePresence>
+      <AnimatePresence>{showStats && <div ref={statsTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] flex flex-col items-center overflow-y-auto overscroll-contain bg-paper/90 backdrop-blur-sm p-6"><motion.div initial={{ opacity: 0, scale: 0.9, y: 40 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 40 }} transition={{ duration: 0.25 }} className="w-full flex flex-col items-center"><Suspense fallback={null}><StatsDashboard onClose={() => setShowStats(false)} /></Suspense></motion.div></div>}</AnimatePresence>
       <AnimatePresence>{state.matches('fail_protection') && (
         <FailProtectionOverlay
           error={state.context.fatalError || "Error Clínico"}
@@ -931,7 +932,7 @@ export function App() {
           onRestart={() => { clearSessionProgress(); send({ type: 'RESTART' }); }}
         />
       )}</AnimatePresence>
-      {showRetro && <div ref={retroTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] bg-paper/90 backdrop-blur-md p-6"><Suspense fallback={null}><RetrospectiveView history={state.context.feedbackHistory} onClose={() => setShowRetro(false)} /></Suspense></div>}
+      {showRetro && <div ref={retroTrapRef} role="dialog" aria-modal="true" className="fixed inset-0 z-[150] bg-paper/90 backdrop-blur-md p-6"><motion.div initial={{ opacity: 0, scale: 0.9, y: 40 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 40 }} transition={{ duration: 0.25 }} className="w-full h-full"><Suspense fallback={null}><RetrospectiveView history={state.context.feedbackHistory} onClose={() => setShowRetro(false)} /></Suspense></motion.div></div>}
       <RewardToast toast={rewardToast} />
       <AnimatePresence>{isPaused && state.matches('triage') && (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="fixed inset-0 z-[130] flex flex-col items-center justify-center bg-paper/80 backdrop-blur-sm">

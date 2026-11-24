@@ -20,9 +20,18 @@ export const ReloadPrompt: React.FC = () => {
 
   // "Offline ready" is good news, not a decision: it appears on the very first
   // visit, on top of the tutorial, so it is a small pill that leaves on its own.
+  // Only show on first installation to avoid annoying returning users.
   useEffect(() => {
     if (!offlineReady || needRefresh) return;
-    const t = window.setTimeout(() => setOfflineReady(false), 4000);
+    const hasShownOfflineToast = localStorage.getItem('dr_swipe_offline_toast_shown');
+    if (hasShownOfflineToast) {
+      setOfflineReady(false);
+      return;
+    }
+    const t = window.setTimeout(() => {
+      setOfflineReady(false);
+      localStorage.setItem('dr_swipe_offline_toast_shown', 'true');
+    }, 4000);
     return () => window.clearTimeout(t);
   }, [offlineReady, needRefresh, setOfflineReady]);
 

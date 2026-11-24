@@ -18,10 +18,12 @@ interface TelemetryHUDProps {
   shield?: number;
   lastVitals: { ta?: string; fc?: number; temp?: number; status: string } | null;
   onPause?: () => void;
+  /** Current difficulty level for visual indicator */
+  difficulty?: string;
 }
 
 export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
-  timeLeft, state, score, combo, vitality, lives, maxLives = 5, coins, favors = 0, shield = 0, lastVitals, onPause
+  timeLeft, state, score, combo, vitality, lives, maxLives = 5, coins, favors = 0, shield = 0, lastVitals, onPause, difficulty = 'standard'
 }) => {
   // A vitality drop should read as a hit, not just a number changing — flash
   // the bar red for a beat instead of just easing the width down (F2).
@@ -39,6 +41,14 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
 
   if (state !== 'triage' && state !== 'boss_fight') return null;
 
+  // Difficulty badge colors and labels
+  const difficultyConfig = {
+    standard: { label: 'Normal', bgClass: 'bg-emerald-100', textClass: 'text-emerald-700', borderClass: 'border-emerald-200' },
+    hard: { label: 'Difícil', bgClass: 'bg-amber-100', textClass: 'text-amber-700', borderClass: 'border-amber-200' },
+    expert: { label: 'Experto', bgClass: 'bg-rose-100', textClass: 'text-rose-700', borderClass: 'border-rose-200' },
+  };
+  const diffConfig = difficultyConfig[difficulty as keyof typeof difficultyConfig] || difficultyConfig.standard;
+
   // In normal flow (not `fixed`): `.paper-sheet` sets position: relative
   // outside Tailwind's layer, which silently overrode `fixed` and let the flex
   // column squeeze the HUD until its second row was clipped by overflow-hidden.
@@ -47,7 +57,12 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
     <div className="relative z-hud w-full max-w-md flex-shrink-0 px-2 sm:px-4 pt-1 sm:pt-2 flex flex-col gap-1.5">
       <div className="paper-sheet !overflow-visible shadow-md border-2 border-white/50 bg-white/90 rounded-2xl px-3 py-2 flex flex-wrap items-center justify-between gap-x-2.5 gap-y-1.5">
         <div className="flex flex-col gap-0.5">
-          <span className="text-xs font-black tracking-wide text-primary uppercase leading-none lettering">Puntaje</span>
+          <div className="flex items-center gap-1.5">
+            <span className="text-xs font-black tracking-wide text-primary uppercase leading-none lettering">Puntaje</span>
+            <span className={`text-[9px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded-full border ${diffConfig.bgClass} ${diffConfig.textClass} ${diffConfig.borderClass}`}>
+              {diffConfig.label}
+            </span>
+          </div>
           <motion.span
             key={score}
             animate={{ scale: [1, 1.1, 1] }}
@@ -187,6 +202,7 @@ export const TelemetryHUD: React.FC<TelemetryHUDProps> = React.memo(({
     prevProps.shield === nextProps.shield &&
     prevProps.coins === nextProps.coins &&
     prevProps.favors === nextProps.favors &&
+    prevProps.difficulty === nextProps.difficulty &&
     vitalsEqual
   );
 });
