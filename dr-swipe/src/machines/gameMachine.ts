@@ -2,7 +2,7 @@ import { setup, assign } from 'xstate';
 import type { Card, EnarmPearl, LoreItem, SessionState } from '../types/game';
 import { cleanMentorComment } from '../utils/formatters';
 import { parseVitalsFromText } from '../utils/vitalsParser';
-import { calculateCardScore, isLethalCard, undoChargesFor, VITALITY_HIT } from '../utils/scoringEngine';
+import { calculateCardScore, computeAdaptiveDifficulty, isLethalCard, undoChargesFor, VITALITY_HIT } from '../utils/scoringEngine';
 import { buildCaseResult } from '../utils/sessionEngine';
 import { computeSuccessOutcome } from '../utils/rewardsEngine';
 import rewardData from '../data/lore/rewardItems.json';
@@ -265,6 +265,10 @@ export const gameMachine = setup({
       );
 
       const nextCombo = isCorrect ? context.combo + 1 : 0;
+      const adaptive = computeAdaptiveDifficulty(nextCombo);
+      const awardedPoints = isCorrect
+        ? Math.floor(scoreBreakdown.finalPoints * adaptive.pointsMultiplier)
+        : scoreBreakdown.finalPoints;
 
       // Vitality Logic: +8 on correct; a wrong swipe costs 15, a lethal one 40
       // (it used to cost the same as a trivial miss). SANDIA MODE: no damage.
@@ -289,7 +293,7 @@ export const gameMachine = setup({
       // Loot Box logic: Trigger every 8 combo hits (más frecuente para permitir recuperación)
       // Cambio: 10 → 8 para dar más oportunidades de curación y motivar racha positiva
       let nextLootBox = context.lootBoxReward;
-      if (isCorrect && nextCombo > 0 && nextCombo % 8 === 0) {
+      if (!context.isEnarmMode && isCorrect && nextCombo > 0 && nextCombo % 8 === 0) {
         nextLootBox = {
           active: true,
           item: rewardItemsList[Math.floor(Math.random() * rewardItemsList.length)]
@@ -307,7 +311,7 @@ export const gameMachine = setup({
 
       // Random Probabilistic Events (Lab, Archive, Systemic) - 5% chance if answering correctly
       let nextEvent = context.activeEvent;
-      if (isCorrect && !nextEvent && Math.random() < 0.05) {
+      if (!context.isEnarmMode && isCorrect && !nextEvent && Math.random() < 0.05) {
         const eventPool = Math.random();
         if (eventPool < 0.4) {
           nextEvent = { type: 'lab', item: labEventsList[Math.floor(Math.random() * labEventsList.length)] };
@@ -326,7 +330,7 @@ export const gameMachine = setup({
         isCorrect,
         feedback: feedbackText,
         category: card.category,
-        points: scoreBreakdown.finalPoints,
+        points: awardedPoints,
         expectedAction: card.expected_action
       };
 
@@ -341,7 +345,7 @@ export const gameMachine = setup({
         multiplier: scoreBreakdown.comboMultiplier,
         // No floor at 0: a lethal miss on the first card must still cost
         // something (XP is clamped at payout instead).
-        score: context.score + (context.isSandiaMode ? Math.floor(scoreBreakdown.finalPoints * 0.5) : scoreBreakdown.finalPoints),
+        score: context.score + (context.isSandiaMode ? Math.floor(awardedPoints * 0.5) : awardedPoints),
         dossier: nextDossier,
         discarded: nextDiscarded,
         currentCardIndex: context.currentCardIndex + 1,
@@ -438,10 +442,10 @@ export const gameMachine = setup({
             lastVitals: null,
             shieldCharges: 0,
             feedbackHistory: [],
-            lives: 5,
+            lives: ({ event }) => event.type === 'START_GUARD' && event.isEnarmMode ? 0 : 5,
             isSandiaMode: ({ event }) => event.type === 'START_GUARD' ? !!event.isSandiaMode : false,
             isEnarmMode: ({ event }) => event.type === 'START_GUARD' ? !!event.isEnarmMode : false,
-            undoCharges: ({ event }) => undoChargesFor(event.type === 'START_GUARD' && !!event.isSandiaMode),
+            undoCharges: ({ event }) => event.type === 'START_GUARD' && event.isEnarmMode ? 0 : undoChargesFor(event.type === 'START_GUARD' && !!event.isSandiaMode),
             wasRescued: false,
             failedInBoss: false,
             bossAttempt: 0,
@@ -488,11 +492,11 @@ export const gameMachine = setup({
             lastVitals: null,
             shieldCharges: 0,
             feedbackHistory: [],
-            lives: 5,
+            lives: ({ event }) => event.type === 'RESUME_GUARD' && event.isEnarmMode ? 0 : 5,
             // A study-mode save resumes in study mode (no damage, no clock).
             isSandiaMode: ({ event }) => event.type === 'RESUME_GUARD' ? !!event.isSandiaMode : false,
             isEnarmMode: ({ event }) => event.type === 'RESUME_GUARD' ? !!event.isEnarmMode : false,
-            undoCharges: ({ event }) => undoChargesFor(event.type === 'RESUME_GUARD' && !!event.isSandiaMode),
+            undoCharges: ({ event }) => event.type === 'RESUME_GUARD' && event.isEnarmMode ? 0 : undoChargesFor(event.type === 'RESUME_GUARD' && !!event.isSandiaMode),
             wasRescued: false,
             failedInBoss: false,
             bossAttempt: 0,
@@ -529,7 +533,7 @@ export const gameMachine = setup({
         },
         UNDO_SWIPE: {
           target: 'triage',
-          guard: ({ context }) => context.undoCharges > 0 && context.currentCardIndex > 0 && context.lastAction !== null,
+          guard: ({ context }) => !context.isEnarmMode && context.undoCharges > 0 && context.currentCardIndex > 0 && context.lastAction !== null,
           actions: assign(({ context }) => {
             if (!context.lastAction) return {};
             return {
@@ -570,11 +574,13 @@ export const gameMachine = setup({
           actions: 'applyReward'
         },
         USE_LIFELINE: {
+          guard: ({ context }) => !context.isEnarmMode,
           actions: assign({ lifelineActive: true })
         },
         // "Abandonar" from the pause menu.
         RESTART: { target: 'idle', actions: ['resetGame'] },
         BUY_UNDO: {
+          guard: ({ context }) => !context.isEnarmMode,
           actions: assign({
             undoCharges: ({ context }) => context.undoCharges + 1
           })
@@ -648,7 +654,7 @@ export const gameMachine = setup({
             dossier: [],
             discarded: [],
             isEnarmMode: ({ event }) => event.type === 'CONTINUE_SHIFT' ? !!event.isEnarmMode : false,
-            undoCharges: ({ context }) => undoChargesFor(context.isSandiaMode),
+            undoCharges: ({ context, event }) => (event.type === 'CONTINUE_SHIFT' && event.isEnarmMode) ? 0 : undoChargesFor(context.isSandiaMode),
             usedUndoThisCase: false,
             lastAction: null,
             lootBoxReward: null,
@@ -735,10 +741,11 @@ export const gameMachine = setup({
         REVIVE_INTERN: [{
           // lives is 0 here: retryBoss would take it to -1, so set it after.
           target: 'boss_fight',
-          guard: ({ context }) => context.failedInBoss,
+          guard: ({ context }) => !context.isEnarmMode && context.failedInBoss,
           actions: ['retryBoss', assign({ lives: 1 })]
         }, {
           target: 'triage',
+          guard: ({ context }) => !context.isEnarmMode,
           actions: assign({
             lives: 1,
             vitality: 100,

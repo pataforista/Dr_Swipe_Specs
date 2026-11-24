@@ -11,7 +11,7 @@ import { dataLoader } from './utils/dataLoader';
 import { useGameAudio } from './hooks/useGameAudio';
 import { shuffleBossQuestion } from './utils/formatters';
 import { triggerHaptic } from './utils/hapticFeedback';
-import { calculatePerfectRoundBonus, getDailyStreakMultiplier, computeTimeLimit, isLethalCard, COMBO_MILESTONES } from './utils/scoringEngine';
+import { calculatePerfectRoundBonus, getDailyStreakMultiplier, computeTimeLimit, computeAdaptiveDifficulty, isLethalCard, COMBO_MILESTONES } from './utils/scoringEngine';
 import { safeStorage } from './utils/safeStorage';
 import { LIFELINE_COST, UNDO_COST } from './store/useCodexStore';
 import { pickDialog, seededRng, greetingContext, MENTOR_NAMES } from './utils/dialogEngine';
@@ -78,7 +78,6 @@ export function App() {
   const [isPaused, setIsPaused] = useState(false);
   const [isStudyModeActive, setIsStudyModeActive] = useState(false);
   const [isEnarmModeActive, setIsEnarmModeActive] = useState(false);
-  const handleEnarmModeToggle = () => setIsEnarmModeActive(prev => !prev);
   const [isLoadingCase, setIsLoadingCase] = useState(false);
   const [showRetro, setShowRetro] = useState(false);
   const [caseQueue, setCaseQueue] = useState<ClinicalCase[]>([]);
@@ -228,6 +227,7 @@ export function App() {
         difficulty: state.context.difficulty,
         deckOrder: state.context.deck.map(c => c.card_id),
         isSandiaMode: state.context.isSandiaMode,
+        isEnarmMode: state.context.isEnarmMode,
         savedAt: Date.now()
       });
     }
@@ -299,14 +299,14 @@ export function App() {
   const caseSpecialty = caseKey ? specialtyFromCaseId(caseKey) : undefined;
   const introLine = useMemo(() => (caseKey ? pickDialog('guardia_inicio', seededRng(caseKey), undefined, caseSpecialty) : null), [caseKey, caseSpecialty]);
   const rewardLine = useMemo(() => pickDialog(rewardIsPerfect ? 'caso_perfecto' : 'caso_con_errores', seededRng(caseKey ?? ''), undefined, caseSpecialty), [caseKey, rewardIsPerfect, caseSpecialty]);
-  const [ghostedLine] = useState(() => pickDialog('paciente_perdido', Math.random, undefined, caseSpecialty));
+  const ghostedLine = useMemo(() => pickDialog('paciente_perdido', seededRng(`${caseKey ?? ''}:ghosted`), undefined, caseSpecialty), [caseKey, caseSpecialty]);
 
-  const startNewCase = async (studyMode = false, specialty = 'all') => {
+  const startNewCase = async (studyMode = false, specialty = 'all', enarmMode = false) => {
     setIsPaused(false);
     setIsLoadingCase(true);
     setIsStudyModeActive(studyMode);
     // ENARM mode is mutually exclusive with study mode
-    if (studyMode) setIsEnarmModeActive(false);
+    setIsEnarmModeActive(enarmMode && !studyMode);
     setShiftPayout({ xp: 0, coins: 0 });
     try {
       send({ type: 'RESTART' });
@@ -343,6 +343,7 @@ export function App() {
     setIsPaused(false);
     setIsLoadingCase(true);
     setIsStudyModeActive(!!sessionProgress.isSandiaMode);
+    setIsEnarmModeActive(!!sessionProgress.isEnarmMode);
     setShiftPayout({ xp: 0, coins: 0 });
     try {
       // Find the specific case file
@@ -383,6 +384,7 @@ export function App() {
     setIsPaused(false);
     setIsLoadingCase(true);
     setIsStudyModeActive(true); // Study mode default for review
+    setIsEnarmModeActive(false);
     setShiftPayout({ xp: 0, coins: 0 });
 
     try {
@@ -504,7 +506,7 @@ export function App() {
     setMistakeContext({ cardText: last.cardText, expected: last.expectedAction });
     setMentorExpression(isLethalMistake ? 'shocked' : 'angry');
     mentorTimerRef.current = window.setTimeout(clearMentor, isLethalMistake ? 6000 : 4500);
-  }, [isPaused, actorRef, send, updateSwipeResult, resolveSwipeEvents, playFeedback, playGacha, playImpact]);
+  }, [isPaused, actorRef, send, updateSwipeResult, resolveSwipeEvents, playFeedback, playGacha, playImpact, showToast]);
 
   useEffect(() => () => {
     if (mentorTimerRef.current !== null) clearTimeout(mentorTimerRef.current);
@@ -541,7 +543,7 @@ export function App() {
       send({ type: 'BUY_UNDO' });
       send({ type: 'UNDO_SWIPE' });
       triggerHaptic('criticalSuccess');
-      showToast("+1 Deshacer ⏪", 'coins');
+      showToast("+1 Deshacer", 'coins');
     }
   };
 
@@ -550,7 +552,8 @@ export function App() {
     const nextCase = caseQueue[0];
     setCurrentCase(nextCase);
     setCaseQueue(caseQueue.slice(1));
-    const timeLimit = computeTimeLimit(nextCase.card_stream.length, nextCase.difficulty);
+    const { timeMultiplier } = computeAdaptiveDifficulty(state.context.session.maxCombo);
+    const timeLimit = Math.max(30, Math.round(computeTimeLimit(nextCase.card_stream.length, nextCase.difficulty) * timeMultiplier));
     setTimeLeft(timeLimit);
     timeLimitRef.current = timeLimit;
     pendingDeckRef.current = shuffleDeck(nextCase.card_stream);
@@ -611,6 +614,7 @@ export function App() {
                     pearl: currentCase.enarm_pearl ?? currentCase.perla_enarm,
                     case_id: currentCase.case_id,
                     isSandiaMode: !!snapshot.isSandiaMode,
+                    isEnarmMode: !!snapshot.isEnarmMode,
                     snapshot: {
                       currentCardIndex: snapshot.currentCardIndex,
                       score: snapshot.score,
@@ -688,19 +692,19 @@ export function App() {
 
             <div className="flex flex-col gap-3 sm:gap-4 w-full max-w-xs px-2 z-10">
               <div className="relative group mt-2 mb-4 w-full">
-                <button onClick={() => startNewCase(false, selectedSpecialty)} disabled={isLoadingCase} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl">
+                <button onClick={() => startNewCase(false, selectedSpecialty, false)} disabled={isLoadingCase} className="marker-btn w-full py-4 sm:py-5 text-base sm:text-xl">
                   {isLoadingCase ? 'PREPARANDO...' : 'INICIAR GUARDIA'}
                 </button>
               </div>
 
-              <button onClick={() => { setIsEnarmModeActive(false); startNewCase(true, selectedSpecialty); }} disabled={isLoadingCase} className="marker-btn relative py-4 sm:py-5 text-base sm:text-xl !bg-emerald-700 !border-emerald-600 shadow-emerald-200">
+              <button onClick={() => startNewCase(true, selectedSpecialty, false)} disabled={isLoadingCase} className="marker-btn relative py-4 sm:py-5 text-base sm:text-xl !bg-emerald-700 !border-emerald-600 shadow-emerald-200">
                  {isLoadingCase ? 'PREPARANDO...' : 'MODO ESTUDIO'}
                  <div className="absolute -top-3 right-0 sm:-right-4 bg-amber-400 text-slate-900 font-bold text-xs px-2 py-0.5 rounded-full shadow-md pointer-events-none">SIN DAÑO</div>
               </button>
 
-              {/* Modo Simulacro ENARM Toggle */}
-              <button onClick={() => { setIsStudyModeActive(false); handleEnarmModeToggle(); }} disabled={isLoadingCase} className={`marker-btn relative py-4 sm:py-5 text-base sm:text-xl transition-all ${isEnarmModeActive ? '!bg-indigo-700 !border-indigo-600 shadow-indigo-200' : '!bg-slate-600 !border-slate-500 shadow-slate-200'}`}>
-                 {isLoadingCase ? 'PREPARANDO...' : isEnarmModeActive ? 'SIMULACRO ENARM ✓' : 'SIMULACRO ENARM'}
+              {/* Modo Simulacro ENARM */}
+              <button onClick={() => startNewCase(false, selectedSpecialty, true)} disabled={isLoadingCase} className="marker-btn relative py-4 sm:py-5 text-base sm:text-xl !bg-indigo-700 !border-indigo-600 shadow-indigo-200 transition-all">
+                 {isLoadingCase ? 'PREPARANDO...' : 'SIMULACRO ENARM'}
                  <div className="absolute -top-3 right-0 sm:-right-4 bg-indigo-500 text-white font-bold text-xs px-2 py-0.5 rounded-full shadow-md pointer-events-none">EXAMEN</div>
               </button>
 

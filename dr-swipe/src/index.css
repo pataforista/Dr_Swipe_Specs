@@ -6,8 +6,8 @@
   /* Semantic palette - Lavender/Rose theme (WCAG AA compliant) */
   --paper-rgb: 254 250 255;   /* #FEFAFF: casi blanco con tinte lavanda */
   --ink-rgb: 42 47 58;        /* #2A2F3A: navy-gray, contraste 12.5:1 sobre blanco */
-  --primary-rgb: 142 154 175; /* #8E9AAF: lavender-grey, contraste 4.6:1 sobre blanco */
-  --secondary-rgb: 203 192 211; /* #CBC0D3: thistle, contraste 3.2:1 (solo decorativo) */
+  --primary-rgb: 92 103 132;  /* #5C6784: slate-lavender, contraste 5.63:1 sobre blanco (WCAG AA) */
+  --secondary-rgb: 110 90 123; /* #6E5A7B: plum-lavender, contraste 6.16:1 sobre blanco (WCAG AA) */
   --accent-alert-rgb: 195 50 75; /* #C3324B: rose-700, contraste 4.8:1 sobre blanco */
 
   --bg-app: rgb(var(--paper-rgb));
@@ -222,13 +222,13 @@ h1, h2, h3, .lettering {
 
 /* Focus visible styles for accessibility */
 button:focus-visible, a:focus-visible {
-  outline: 3px solid #8E9AAF;
+  outline: 3px solid #5C6784;
   outline-offset: 2px;
   border-radius: 0.5rem;
 }
 
 .marker-btn:focus-visible {
-  outline: 3px solid #8E9AAF;
+  outline: 3px solid #5C6784;
   outline-offset: 2px;
   box-shadow: 0 0 0 4px rgba(142, 154, 175, 0.2);
 }

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { safeStorage } from '../../utils/safeStorage';
 
 export const ReloadPrompt: React.FC = () => {
   const {
@@ -23,14 +24,14 @@ export const ReloadPrompt: React.FC = () => {
   // Only show on first installation to avoid annoying returning users.
   useEffect(() => {
     if (!offlineReady || needRefresh) return;
-    const hasShownOfflineToast = localStorage.getItem('dr_swipe_offline_toast_shown');
+    const hasShownOfflineToast = safeStorage.getItem('dr_swipe_offline_toast_shown');
     if (hasShownOfflineToast) {
       setOfflineReady(false);
       return;
     }
     const t = window.setTimeout(() => {
       setOfflineReady(false);
-      localStorage.setItem('dr_swipe_offline_toast_shown', 'true');
+      safeStorage.setItem('dr_swipe_offline_toast_shown', 'true');
     }, 4000);
     return () => window.clearTimeout(t);
   }, [offlineReady, needRefresh, setOfflineReady]);

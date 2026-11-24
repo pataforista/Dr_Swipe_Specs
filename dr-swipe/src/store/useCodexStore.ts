@@ -21,6 +21,8 @@ export interface SessionProgress {
   deckOrder?: string[];
   /** Study mode (Sandía): resumed without damage or clock. */
   isSandiaMode?: boolean;
+  /** ENARM simulation mode: strict exam without aids or rescues. */
+  isEnarmMode?: boolean;
   savedAt: number; // timestamp
 }
 

@@ -111,7 +111,7 @@ const SwipeDeckComponent: React.FC<SwipeDeckProps> = ({
                   backgroundColor: i < currentIndex
                     ? 'rgba(13, 148, 136, 0.35)'
                     : i === currentIndex
-                    ? '#0D9488'
+                    ? '#5C6784'
                     : 'rgba(148, 163, 184, 0.4)'
                 }}
                 transition={{ duration: 0.4, type: 'spring' }}
@@ -504,7 +504,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
         <div className="bg-white/90 text-[#C3324B] font-bold lettering text-xl sm:text-2xl px-4 py-1.5 rounded-xl rotate-12 shadow-md border-4 border-[#EFD3D7]">DESCARTAR</div>
       </motion.div>
       <motion.div style={{ opacity: isTop ? overlayOpacityRight : 0 }} className="absolute top-20 left-5 z-50 pointer-events-none">
-        <div className="bg-white/90 text-[#8E9AAF] font-bold lettering text-xl sm:text-2xl px-4 py-1.5 rounded-xl -rotate-12 shadow-md border-4 border-[#8E9AAF]">ACEPTAR</div>
+        <div className="bg-white/90 text-[#5C6784] font-bold lettering text-xl sm:text-2xl px-4 py-1.5 rounded-xl -rotate-12 shadow-md border-4 border-[#5C6784]">ACEPTAR</div>
       </motion.div>
 
       {/* Header (Subject Tab) - lavender palette */}
@@ -547,7 +547,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
             </div>
           )}
           {lethalIfDiscarded && (
-            <div className="bg-[#8E9AAF] text-white text-xs font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider border-2 border-[#CBC0D3] flex items-center gap-1">
+            <div className="bg-[#5C6784] text-white text-xs font-black px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-sm lettering tracking-wider border-2 border-[#CBC0D3] flex items-center gap-1">
               <Skull className="w-3.5 h-3.5" aria-hidden="true" /> LETAL SI LO TIRAS
             </div>
           )}
@@ -561,7 +561,7 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
 
       {/* Card Footer - lavender palette */}
       <div className={`${compact ? 'p-2' : 'p-3'} pl-8 sm:p-5 sm:pl-14 bg-[#FEFAFF] border-t border-[#E7E2F0] flex justify-between items-center text-xs font-bold text-slate-500 gap-2`}>
-        <span className="lettering text-sm sm:text-lg text-[#8E9AAF] truncate">Guardia nocturna...</span>
+        <span className="lettering text-sm sm:text-lg text-[#5C6784] truncate">Guardia nocturna...</span>
         <div className="bg-white px-2 sm:px-3 py-1 rounded-full border border-[#CBC0D3] text-[#2A2F3A] flex-shrink-0 whitespace-nowrap">
           {cardNumber}/{totalCards}
         </div>

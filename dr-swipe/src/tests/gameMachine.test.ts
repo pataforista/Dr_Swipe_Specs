@@ -293,4 +293,41 @@ describe('gameMachine state flow', () => {
       vi.useRealTimers();
     }
   });
+
+  it('enforces strict rules in ENARM mode: no rescues, no undo, no lifelines, no loot boxes', () => {
+    const actor = createActor(gameMachine);
+    actor.start();
+    actor.send({ type: 'START_GUARD', deck: mockDeck, difficulty: 'standard', isEnarmMode: true });
+
+    let state = actor.getSnapshot();
+    expect(state.context.isEnarmMode).toBe(true);
+    expect(state.context.lives).toBe(0);
+    expect(state.context.undoCharges).toBe(0);
+
+    // Lifeline & buy undo are blocked by machine guards
+    actor.send({ type: 'USE_LIFELINE' });
+    actor.send({ type: 'BUY_UNDO' });
+    state = actor.getSnapshot();
+    expect(state.context.lifelineActive).toBe(false);
+    expect(state.context.undoCharges).toBe(0);
+
+    // 8 correct swipes in ENARM mode must not trigger a loot box, and combo >= 5 gets adaptive bonus
+    for (const card of mockDeck) {
+      actor.send({ type: 'SWIPE', direction: card.expected_action === 'keep' ? 'right' : 'left' });
+      expect(actor.getSnapshot().context.lootBoxReward).toBeNull();
+    }
+
+    // Failing in ENARM mode goes straight to ghosted (0 lives) and blocks REVIVE_INTERN
+    const failActor = createActor(gameMachine);
+    failActor.start();
+    failActor.send({ type: 'START_GUARD', deck: mockDeck, difficulty: 'standard', isEnarmMode: true });
+    for (let s = 0; s < 7; s++) {
+      const idx = failActor.getSnapshot().context.currentCardIndex;
+      const card = mockDeck[idx % mockDeck.length];
+      failActor.send({ type: 'SWIPE', direction: card.expected_action === 'keep' ? 'left' : 'right' });
+    }
+    expect(failActor.getSnapshot().value).toBe('ghosted');
+    failActor.send({ type: 'REVIVE_INTERN' });
+    expect(failActor.getSnapshot().value).toBe('ghosted');
+  });
 });

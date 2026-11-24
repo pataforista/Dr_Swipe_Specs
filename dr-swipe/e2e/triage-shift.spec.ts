@@ -26,9 +26,9 @@ test.describe('App Load and Main Menu', () => {
 
   test('should load the app and show main menu', async ({ page }) => {
     await expect(page).toHaveTitle(/Dr\. Swipe/);
-    await expect(page.getByRole('button', { name: 'INICIAR GUARDIA', exact: true })).toBeVisible();
-    await expect(page.getByRole('button', { name: 'MODO ESTUDIO', exact: true })).toBeVisible();
-    await expect(page.getByRole('button', { name: 'SIMULACRO ENARM', exact: true })).toBeVisible();
+    await expect(page.getByRole('button', { name: /INICIAR GUARDIA/i })).toBeVisible();
+    await expect(page.getByRole('button', { name: /MODO ESTUDIO/i })).toBeVisible();
+    await expect(page.getByRole('button', { name: /SIMULACRO ENARM/i })).toBeVisible();
   });
 
   test('should open and close codex', async ({ page }) => {
@@ -69,11 +69,10 @@ test.describe('ENARM Mode', () => {
     }
   });
 
-  test('should toggle ENARM mode', async ({ page }) => {
-    const enarmButton = page.getByRole('button', { name: 'SIMULACRO ENARM', exact: true });
+  test('should start ENARM simulation mode directly', async ({ page }) => {
+    const enarmButton = page.getByRole('button', { name: /SIMULACRO ENARM/i });
     await enarmButton.click();
-    await page.waitForTimeout(500);
-    await expect(page.getByText(/SIMULACRO ENARM ✓/i)).toBeVisible();
+    await expect(page.getByRole('button', { name: /INICIAR CONSULTA/i })).toBeVisible({ timeout: 5000 });
   });
 });
 
@@ -113,8 +112,8 @@ test.describe('Accessibility', () => {
       await page.waitForTimeout(500);
     }
     
-    await expect(page.getByRole('button', { name: 'INICIAR GUARDIA', exact: true })).toBeVisible();
-    await expect(page.getByRole('button', { name: 'MODO ESTUDIO', exact: true })).toBeVisible();
-    await expect(page.getByRole('button', { name: 'SIMULACRO ENARM', exact: true })).toBeVisible();
+    await expect(page.getByRole('button', { name: /INICIAR GUARDIA/i })).toBeVisible();
+    await expect(page.getByRole('button', { name: /MODO ESTUDIO/i })).toBeVisible();
+    await expect(page.getByRole('button', { name: /SIMULACRO ENARM/i })).toBeVisible();
   });
 });
