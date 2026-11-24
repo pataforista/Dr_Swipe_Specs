@@ -458,6 +458,8 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
   return (
     <motion.div
       className={`absolute w-full h-full rounded-[2.5rem] border-2 ${accentColor} shadow-2xl flex flex-col ${cardBg} select-none overflow-hidden index-card`}
+      role="article"
+      aria-label={`Carta ${cardNumber} de ${totalCards}: ${card.card_text}`}
       style={{
         x,
         rotate: isTop ? rotate : stackRotate,
